@@ -4,12 +4,6 @@ package gdextension
 #include <stdlib.h>
 #include <stdint.h>
 
-// declared in C
-void go_dot_gdextension_call_variant_constructor(void (*fn)(void *p_self, const void *p_args, int p_argcount), void *p_self, const void *p_args, int p_argcount);
-void go_dot_gdextension_call_variant_type_constructor(void (*fn)(void *p_self, const void *inside), void *p_self, const void *inside);
-void go_dot_gdextension_call_variant_destructor(void (*fn)(void *p_self), void *p_self);
-void go_dot_gdextension_call_utility_function(void (*fn)(void** ret, const void *p_args, int p_argcount), void** ret, const void *p_args, int p_argcount);
-
 // declared in Go
 void *go_dot_gdextension_class_create_instance(void *userdata);
 void go_dot_gdextension_class_free_instance(void *userdata, void *instance);
@@ -33,76 +27,40 @@ var (
 )
 
 func (me *extension) makeString(contents string) (gdc.UninitializedStringPtr, func()) {
-	stringDtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeString)
-
 	str := (gdc.UninitializedStringPtr)(C.malloc(gdapi.ClassSizeString))
 	me.iface.StringNewWithUtf8Chars(str, contents)
 	return str, func() {
-		me.callVariantDestructor(stringDtr, gdc.VariantPtr(str))
+		stringDtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeString)
+		me.iface.CallPtrDestructor(stringDtr, gdc.TypePtr(str))
 		C.free(unsafe.Pointer(str))
 	}
 }
 
 func (me *extension) makeStringName(contents string) (gdc.StringNamePtr, func()) {
-	stringNameCtr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeStringName, 2)
-	stringNameDtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeStringName)
-
 	str, clean := me.makeString(contents)
 	defer clean()
 
-	strName := (gdc.StringNamePtr)(C.malloc(gdapi.ClassSizeStringName))
-	me.callVariantConstructor(stringNameCtr, gdc.VariantPtr(strName), [1]gdc.ConstTypePtr{gdc.ConstTypePtr(str)})
-	return strName, func() {
-		me.callVariantDestructor(stringNameDtr, gdc.VariantPtr(strName))
+	stringNameCtr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeStringName, 2)
+	strName := (gdc.UninitializedTypePtr)(C.malloc(gdapi.ClassSizeStringName))
+	me.iface.CallPtrConstructor(stringNameCtr, strName, &[]gdc.ConstTypePtr{gdc.ConstTypePtr(str)}[0])
+	return gdc.StringNamePtr(strName), func() {
+		stringNameDtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeStringName)
+		me.iface.CallPtrDestructor(stringNameDtr, gdc.TypePtr(strName))
 		C.free(unsafe.Pointer(strName))
 	}
 }
 
 func (me *extension) makeStringVariant(contents string) (gdc.VariantPtr, func()) {
-	variantCtr := me.iface.GetVariantFromTypeConstructor(gdc.VariantTypeString)
-
 	str, clean := me.makeString(contents)
 
-	strVariant := (gdc.VariantPtr)(C.malloc(gdapi.ClassSizeVariant))
-	me.callVariantTypeConstructor(variantCtr, strVariant, unsafe.Pointer(str))
-	return strVariant, func() {
+	variantCtr := me.iface.GetVariantFromTypeConstructor(gdc.VariantTypeString)
+	strVariant := (gdc.UninitializedVariantPtr)(C.malloc(gdapi.ClassSizeVariant))
+	me.iface.CallVariantFromTypeConstructorFunc(variantCtr, strVariant, gdc.TypePtr(str))
+	return gdc.VariantPtr(strVariant), func() {
 		me.iface.VariantDestroy(gdc.VariantPtr(strVariant))
 		C.free(unsafe.Pointer(strVariant))
 		clean()
 	}
-}
-
-func (me *extension) callVariantConstructor(constructor gdc.PtrConstructor, variant gdc.VariantPtr, args [1]gdc.ConstTypePtr) {
-	C.go_dot_gdextension_call_variant_constructor(
-		constructor,
-		unsafe.Pointer(variant),
-		unsafe.Pointer(&args[0]),
-		C.int(len(args)),
-	)
-}
-
-func (me *extension) callVariantTypeConstructor(constructor gdc.VariantFromTypeConstructorFunc, variant gdc.VariantPtr, inside unsafe.Pointer) {
-	C.go_dot_gdextension_call_variant_type_constructor(
-		constructor,
-		unsafe.Pointer(variant),
-		inside,
-	)
-}
-
-func (me *extension) callVariantDestructor(destructor gdc.PtrDestructor, variant gdc.VariantPtr) {
-	C.go_dot_gdextension_call_variant_destructor(
-		destructor,
-		unsafe.Pointer(variant),
-	)
-}
-
-func (me *extension) callUtilityFunction(function gdc.PtrUtilityFunction, args []gdc.ConstVariantPtr) {
-	C.go_dot_gdextension_call_utility_function(
-		function,
-		nil,
-		unsafe.Pointer(&args[0]),
-		C.int(len(args)),
-	)
 }
 
 func (me *extension) callPrint(message string) error {
@@ -113,7 +71,7 @@ func (me *extension) callPrint(message string) error {
 	defer clean()
 
 	printPtr := me.iface.VariantGetPtrUtilityFunction(gdc.ConstStringNamePtr(printNamePtr), 2648703342)
-	me.callUtilityFunction(printPtr, []gdc.ConstVariantPtr{gdc.ConstVariantPtr(msgPtr)})
+	me.iface.CallPtrUtilityFunction(printPtr, nil, &[]gdc.ConstTypePtr{gdc.ConstTypePtr(msgPtr)}[0], 1)
 	return nil
 }
 

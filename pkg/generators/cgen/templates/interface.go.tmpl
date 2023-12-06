@@ -1,6 +1,9 @@
 
 type Interface interface {
-{{range .Funcs}}  {{.Name}}({{range .Args}}{{.Name}} {{.GoType}}, {{end}}) {{.ReturnType.GoType}}
+{{range .Funcs}}  {{.Name}}(
+  {{- if eq .Proc ""}}ptrToCall {{.RealName}}, {{end}}
+  {{- range .Args}}{{.Name}} {{.GoType}}, {{end -}}
+) {{.ReturnType.GoType}}
 {{end -}}
 }
 
@@ -21,26 +24,39 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
   iface := &interfaceImpl{
   }
   var err error
-{{range .Funcs}}
+{{range .Funcs}}{{if ne .Proc ""}}
   iface.ptr{{.Name}}, err = callGetProcAddress[{{.CGoType}}](getProcAddr, "{{.Proc}}")
   if err != nil {
     return nil, err
   }
-{{end}}
+{{end}}{{end}}
   return iface, nil
 }
 
 type interfaceImpl struct {
-{{range .Funcs}}  ptr{{.Name}} {{.CGoType}}
-{{end -}}
+{{range .Funcs}}{{if ne .Proc ""}}  ptr{{.Name}} {{.CGoType}}
+{{end}}{{end -}}
 }
 {{range .Funcs}}
-func (me *interfaceImpl) {{.Name}}({{range .Args}}{{.Name}} {{.GoType}}, {{end}}) {{.ReturnType.GoType}} {
-{{range .Args}}{{if ne .GoToCGo.Def ""}}  {{.GoToCGo.Def}}
-{{end}}{{end}}  defer func() {
-{{range .Args}}{{if ne .GoToCGo.Free ""}}    {{.GoToCGo.Free}}
-{{end}}{{end}}  }()
-  {{if ne .ReturnType.GoType ""}}ret := {{end}}C.call{{.Name}}(me.ptr{{.Name}},{{range .Args}} {{.GoToCGo.Use}},{{end}}){{if ne .ReturnType.GoType ""}}
+func (me *interfaceImpl) {{.Name}}(
+  {{- if eq .Proc ""}}ptrToCall {{.RealName}}, {{end}}
+  {{- range .Args}}{{.Name}} {{.GoType}}, {{end -}}
+) {{.ReturnType.GoType}} {
+{{range .Args -}}
+  {{- if ne .GoToCGo.Def ""}}  {{.GoToCGo.Def}}
+{{end -}}
+{{- end -}}
+{{if .AnyFree}}  defer func() {
+{{range .Args -}}
+  {{- if ne .GoToCGo.Free ""}}    {{.GoToCGo.Free}}
+{{end -}}
+{{- end }}  }(){{- end}}
+  {{if ne .ReturnType.GoType ""}}ret := {{end -}}
+  C.call{{.Name}}(
+    {{- if eq .Proc ""}}ptrToCall{{else}}me.ptr{{.Name}}{{end -}}
+    ,{{range .Args}} {{.GoToCGo.Use}},{{end -}}
+  )
+  {{- if ne .ReturnType.GoType ""}}
   return {{.ReturnType.CGoToGo}}{{end}}
 }
 {{end}}

@@ -56,7 +56,11 @@ uint64_t callGetNativeStructSize(GDExtensionInterfaceGetNativeStructSize fn, GDE
 
 GDExtensionVariantFromTypeConstructorFunc callGetVariantFromTypeConstructor(GDExtensionInterfaceGetVariantFromTypeConstructor fn, GDExtensionVariantType pType);
 
+void callCallVariantFromTypeConstructorFunc(GDExtensionVariantFromTypeConstructorFunc fn, GDExtensionUninitializedVariantPtr arg0, GDExtensionTypePtr arg1);
+
 GDExtensionTypeFromVariantConstructorFunc callGetVariantToTypeConstructor(GDExtensionInterfaceGetVariantToTypeConstructor fn, GDExtensionVariantType pType);
+
+void callCallTypeFromVariantConstructorFunc(GDExtensionTypeFromVariantConstructorFunc fn, GDExtensionUninitializedTypePtr arg0, GDExtensionVariantPtr arg1);
 
 GDExtensionObjectPtr callGlobalGetSingleton(GDExtensionInterfaceGlobalGetSingleton fn, GDExtensionConstStringNamePtr pName);
 
@@ -214,27 +218,51 @@ void callVariantGetNamed(GDExtensionInterfaceVariantGetNamed fn, GDExtensionCons
 
 GDExtensionPtrBuiltInMethod callVariantGetPtrBuiltinMethod(GDExtensionInterfaceVariantGetPtrBuiltinMethod fn, GDExtensionVariantType pType, GDExtensionConstStringNamePtr pMethod, GDExtensionInt pHash);
 
+void callCallPtrBuiltInMethod(GDExtensionPtrBuiltInMethod fn, GDExtensionTypePtr pBase, const GDExtensionConstTypePtr* pArgs, GDExtensionTypePtr rReturn, int pArgumentCount);
+
 GDExtensionPtrConstructor callVariantGetPtrConstructor(GDExtensionInterfaceVariantGetPtrConstructor fn, GDExtensionVariantType pType, int32_t pConstructor);
+
+void callCallPtrConstructor(GDExtensionPtrConstructor fn, GDExtensionUninitializedTypePtr pBase, const GDExtensionConstTypePtr* pArgs);
 
 GDExtensionPtrDestructor callVariantGetPtrDestructor(GDExtensionInterfaceVariantGetPtrDestructor fn, GDExtensionVariantType pType);
 
+void callCallPtrDestructor(GDExtensionPtrDestructor fn, GDExtensionTypePtr pBase);
+
 GDExtensionPtrGetter callVariantGetPtrGetter(GDExtensionInterfaceVariantGetPtrGetter fn, GDExtensionVariantType pType, GDExtensionConstStringNamePtr pMember);
+
+void callCallPtrGetter(GDExtensionPtrGetter fn, GDExtensionConstTypePtr pBase, GDExtensionTypePtr rValue);
 
 GDExtensionPtrIndexedGetter callVariantGetPtrIndexedGetter(GDExtensionInterfaceVariantGetPtrIndexedGetter fn, GDExtensionVariantType pType);
 
+void callCallPtrIndexedGetter(GDExtensionPtrIndexedGetter fn, GDExtensionConstTypePtr pBase, GDExtensionInt pIndex, GDExtensionTypePtr rValue);
+
 GDExtensionPtrIndexedSetter callVariantGetPtrIndexedSetter(GDExtensionInterfaceVariantGetPtrIndexedSetter fn, GDExtensionVariantType pType);
+
+void callCallPtrIndexedSetter(GDExtensionPtrIndexedSetter fn, GDExtensionTypePtr pBase, GDExtensionInt pIndex, GDExtensionConstTypePtr pValue);
 
 GDExtensionPtrKeyedChecker callVariantGetPtrKeyedChecker(GDExtensionInterfaceVariantGetPtrKeyedChecker fn, GDExtensionVariantType pType);
 
+uint32_t callCallPtrKeyedChecker(GDExtensionPtrKeyedChecker fn, GDExtensionConstVariantPtr pBase, GDExtensionConstVariantPtr pKey);
+
 GDExtensionPtrKeyedGetter callVariantGetPtrKeyedGetter(GDExtensionInterfaceVariantGetPtrKeyedGetter fn, GDExtensionVariantType pType);
+
+void callCallPtrKeyedGetter(GDExtensionPtrKeyedGetter fn, GDExtensionConstTypePtr pBase, GDExtensionConstTypePtr pKey, GDExtensionTypePtr rValue);
 
 GDExtensionPtrKeyedSetter callVariantGetPtrKeyedSetter(GDExtensionInterfaceVariantGetPtrKeyedSetter fn, GDExtensionVariantType pType);
 
+void callCallPtrKeyedSetter(GDExtensionPtrKeyedSetter fn, GDExtensionTypePtr pBase, GDExtensionConstTypePtr pKey, GDExtensionConstTypePtr pValue);
+
 GDExtensionPtrOperatorEvaluator callVariantGetPtrOperatorEvaluator(GDExtensionInterfaceVariantGetPtrOperatorEvaluator fn, GDExtensionVariantOperator pOperator, GDExtensionVariantType pTypeA, GDExtensionVariantType pTypeB);
+
+void callCallPtrOperatorEvaluator(GDExtensionPtrOperatorEvaluator fn, GDExtensionConstTypePtr pLeft, GDExtensionConstTypePtr pRight, GDExtensionTypePtr rResult);
 
 GDExtensionPtrSetter callVariantGetPtrSetter(GDExtensionInterfaceVariantGetPtrSetter fn, GDExtensionVariantType pType, GDExtensionConstStringNamePtr pMember);
 
+void callCallPtrSetter(GDExtensionPtrSetter fn, GDExtensionTypePtr pBase, GDExtensionConstTypePtr pValue);
+
 GDExtensionPtrUtilityFunction callVariantGetPtrUtilityFunction(GDExtensionInterfaceVariantGetPtrUtilityFunction fn, GDExtensionConstStringNamePtr pFunction, GDExtensionInt pHash);
+
+void callCallPtrUtilityFunction(GDExtensionPtrUtilityFunction fn, GDExtensionTypePtr rReturn, const GDExtensionConstTypePtr* pArgs, int pArgumentCount);
 
 GDExtensionVariantType callVariantGetType(GDExtensionInterfaceVariantGetType fn, GDExtensionConstVariantPtr pSelf);
 
