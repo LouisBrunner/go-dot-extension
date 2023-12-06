@@ -37,6 +37,8 @@ func transformType(name string, typ cc.Type, isConst bool) (cType, error) {
 						return nil, err
 					}
 					spec.ctype = typedef
+				} else if spec.ctype == "" {
+					spec.ctype = "void*"
 				}
 			}
 			return spec, nil
@@ -57,10 +59,16 @@ func transformType(name string, typ cc.Type, isConst bool) (cType, error) {
 	case cc.SChar:
 		spec.gotype = "int8"
 	case cc.UChar:
+		if spec.ctype == "" {
+			spec.ctype = "uint8_t"
+		}
 		spec.gotype = "uint8"
 	case cc.Short:
 		spec.gotype = "int16"
 	case cc.UShort:
+		if spec.ctype == "" {
+			spec.ctype = "uint16_t"
+		}
 		spec.gotype = "uint16"
 	case cc.Int:
 		spec.gotype = "int"
@@ -97,9 +105,13 @@ func transformType(name string, typ cc.Type, isConst bool) (cType, error) {
 	case cc.Struct:
 		return transformStruct(typ, spec)
 	case cc.Function:
-		return transformFunc(typ, spec, isConst)
+		return transformFunc(name, typ, spec, isConst)
 	default:
 		return nil, fmt.Errorf("unsupported type kind %d", typ.Kind())
+	}
+
+	if spec.ctype == "" {
+		spec.ctype = typ.Kind().String()
 	}
 
 	return spec, nil
@@ -133,14 +145,8 @@ func transformStruct(typ cc.Type, base *baseType) (*structType, error) {
 		return nil, fmt.Errorf("not actually a struct: %T", typ)
 	}
 
-	tag := structTyp.Tag()
-	name := tag.SrcStr()
-	if typ.Typedef() != nil {
-		name = typ.Typedef().Name()
-	}
-
 	spec := &structType{
-		name:     name,
+		name:     typ.Typedef().Name(),
 		pointers: base.pointers,
 	}
 
@@ -162,7 +168,7 @@ func transformStruct(typ cc.Type, base *baseType) (*structType, error) {
 	return spec, nil
 }
 
-func transformFunc(typ cc.Type, base *baseType, isConst bool) (cType, error) {
+func transformFunc(name string, typ cc.Type, base *baseType, isConst bool) (cType, error) {
 	funcTyp, ok := typ.(*cc.FunctionType)
 	if !ok {
 		return nil, fmt.Errorf("not actually a function: %T", typ)
@@ -173,6 +179,7 @@ func transformFunc(typ cc.Type, base *baseType, isConst bool) (cType, error) {
 	}
 
 	spec := &funcType{
+		name:     name,
 		ctype:    base.ctype,
 		pointers: base.pointers,
 	}
@@ -194,10 +201,6 @@ func transformFunc(typ cc.Type, base *baseType, isConst bool) (cType, error) {
 	}
 
 	for i, p := range funcTyp.Parameters() {
-		if p.Type().Kind() == cc.Void {
-			continue
-		}
-
 		var isConst bool
 		decl := p.Declarator
 		if decl != nil {

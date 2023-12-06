@@ -120,6 +120,10 @@ func output(ast *cc.AST, ifaceFuncs map[string]string, outputDir string) error {
 		if err != nil {
 			return err
 		}
+		err = typ.validate()
+		if err != nil {
+			return err
+		}
 		return handleType(out, typ)
 	})
 	if err != nil {

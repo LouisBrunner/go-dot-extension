@@ -56,11 +56,16 @@ func addGoStructType(out *outputFiles, t *structType) error {
 				return err
 			}
 		}
+		def, free, use := member.typ.goToCGo(fmt.Sprintf("me.%s", fnName))
 		members = append(members, map[string]interface{}{
-			"Name":    fnName,
-			"CName":   makeCGoName(member.name),
-			"GoType":  member.typ.getGoType(),
-			"GoToCGo": member.typ.goToCGo(fmt.Sprintf("me.%s", fnName)),
+			"Name":   fnName,
+			"CName":  makeCGoName(member.name),
+			"GoType": member.typ.getGoType(),
+			"GoToCGo": map[string]interface{}{
+				"Def":  def,
+				"Free": free,
+				"Use":  use,
+			},
 		})
 	}
 

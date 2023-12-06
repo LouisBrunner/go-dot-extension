@@ -4,3 +4,549 @@
 void* callGetProcAddress(GDExtensionInterfaceGetProcAddress getProcAddr, const char* procName) {
   return getProcAddr(procName);
 }
+
+
+GDExtensionVariantPtr callArrayOperatorIndex(GDExtensionInterfaceArrayOperatorIndex fn, GDExtensionTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+GDExtensionVariantPtr callArrayOperatorIndexConst(GDExtensionInterfaceArrayOperatorIndexConst fn, GDExtensionConstTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+void callArrayRef(GDExtensionInterfaceArrayRef fn, GDExtensionTypePtr pSelf, GDExtensionConstTypePtr pFrom) {
+  return fn(pSelf, pFrom);
+}
+
+void callArraySetTyped(GDExtensionInterfaceArraySetTyped fn, GDExtensionTypePtr pSelf, GDExtensionVariantType pType, GDExtensionConstStringNamePtr pClassName, GDExtensionConstVariantPtr pScript) {
+  return fn(pSelf, pType, pClassName, pScript);
+}
+
+GDExtensionObjectPtr callClassdbConstructObject(GDExtensionInterfaceClassdbConstructObject fn, GDExtensionConstStringNamePtr pClassname) {
+  return fn(pClassname);
+}
+
+void* callClassdbGetClassTag(GDExtensionInterfaceClassdbGetClassTag fn, GDExtensionConstStringNamePtr pClassname) {
+  return fn(pClassname);
+}
+
+const GDExtensionMethodBindPtr callClassdbGetMethodBind(GDExtensionInterfaceClassdbGetMethodBind fn, GDExtensionConstStringNamePtr pClassname, GDExtensionConstStringNamePtr pMethodname, GDExtensionInt pHash) {
+  return fn(pClassname, pMethodname, pHash);
+}
+
+void callClassdbRegisterExtensionClass(GDExtensionInterfaceClassdbRegisterExtensionClass fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringNamePtr pParentClassName, GDExtensionClassCreationInfo* pExtensionFuncs) {
+  return fn(pLibrary, pClassName, pParentClassName, pExtensionFuncs);
+}
+
+void callClassdbRegisterExtensionClassIntegerConstant(GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringNamePtr pEnumName, GDExtensionConstStringNamePtr pConstantName, GDExtensionInt pConstantValue, GDExtensionBool pIsBitfield) {
+  return fn(pLibrary, pClassName, pEnumName, pConstantName, pConstantValue, pIsBitfield);
+}
+
+void callClassdbRegisterExtensionClassMethod(GDExtensionInterfaceClassdbRegisterExtensionClassMethod fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionClassMethodInfo* pMethodInfo) {
+  return fn(pLibrary, pClassName, pMethodInfo);
+}
+
+void callClassdbRegisterExtensionClassProperty(GDExtensionInterfaceClassdbRegisterExtensionClassProperty fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionPropertyInfo* pInfo, GDExtensionConstStringNamePtr pSetter, GDExtensionConstStringNamePtr pGetter) {
+  return fn(pLibrary, pClassName, pInfo, pSetter, pGetter);
+}
+
+void callClassdbRegisterExtensionClassPropertyGroup(GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringPtr pGroupName, GDExtensionConstStringPtr pPrefix) {
+  return fn(pLibrary, pClassName, pGroupName, pPrefix);
+}
+
+void callClassdbRegisterExtensionClassPropertySubgroup(GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringPtr pSubgroupName, GDExtensionConstStringPtr pPrefix) {
+  return fn(pLibrary, pClassName, pSubgroupName, pPrefix);
+}
+
+void callClassdbRegisterExtensionClassSignal(GDExtensionInterfaceClassdbRegisterExtensionClassSignal fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringNamePtr pSignalName, GDExtensionPropertyInfo* pArgumentInfo, GDExtensionInt pArgumentCount) {
+  return fn(pLibrary, pClassName, pSignalName, pArgumentInfo, pArgumentCount);
+}
+
+void callClassdbUnregisterExtensionClass(GDExtensionInterfaceClassdbUnregisterExtensionClass fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName) {
+  return fn(pLibrary, pClassName);
+}
+
+GDExtensionVariantPtr callDictionaryOperatorIndex(GDExtensionInterfaceDictionaryOperatorIndex fn, GDExtensionTypePtr pSelf, GDExtensionConstVariantPtr pKey) {
+  return fn(pSelf, pKey);
+}
+
+GDExtensionVariantPtr callDictionaryOperatorIndexConst(GDExtensionInterfaceDictionaryOperatorIndexConst fn, GDExtensionConstTypePtr pSelf, GDExtensionConstVariantPtr pKey) {
+  return fn(pSelf, pKey);
+}
+
+void callEditorAddPlugin(GDExtensionInterfaceEditorAddPlugin fn, GDExtensionConstStringNamePtr pClassName) {
+  return fn(pClassName);
+}
+
+void callEditorRemovePlugin(GDExtensionInterfaceEditorRemovePlugin fn, GDExtensionConstStringNamePtr pClassName) {
+  return fn(pClassName);
+}
+
+uint64_t callFileAccessGetBuffer(GDExtensionInterfaceFileAccessGetBuffer fn, GDExtensionConstObjectPtr pInstance, uint8_t* pDst, uint64_t pLength) {
+  return fn(pInstance, pDst, pLength);
+}
+
+void callFileAccessStoreBuffer(GDExtensionInterfaceFileAccessStoreBuffer fn, GDExtensionObjectPtr pInstance, const uint8_t* pSrc, uint64_t pLength) {
+  return fn(pInstance, pSrc, pLength);
+}
+
+void callGetGodotVersion(GDExtensionInterfaceGetGodotVersion fn, GDExtensionGodotVersion* rGodotVersion) {
+  return fn(rGodotVersion);
+}
+
+void callGetLibraryPath(GDExtensionInterfaceGetLibraryPath fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionUninitializedStringPtr rPath) {
+  return fn(pLibrary, rPath);
+}
+
+uint64_t callGetNativeStructSize(GDExtensionInterfaceGetNativeStructSize fn, GDExtensionConstStringNamePtr pName) {
+  return fn(pName);
+}
+
+GDExtensionVariantFromTypeConstructorFunc callGetVariantFromTypeConstructor(GDExtensionInterfaceGetVariantFromTypeConstructor fn, GDExtensionVariantType pType) {
+  return fn(pType);
+}
+
+GDExtensionTypeFromVariantConstructorFunc callGetVariantToTypeConstructor(GDExtensionInterfaceGetVariantToTypeConstructor fn, GDExtensionVariantType pType) {
+  return fn(pType);
+}
+
+GDExtensionObjectPtr callGlobalGetSingleton(GDExtensionInterfaceGlobalGetSingleton fn, GDExtensionConstStringNamePtr pName) {
+  return fn(pName);
+}
+
+void* callMemAlloc(GDExtensionInterfaceMemAlloc fn, size_t pBytes) {
+  return fn(pBytes);
+}
+
+void callMemFree(GDExtensionInterfaceMemFree fn, void* pPtr) {
+  return fn(pPtr);
+}
+
+void* callMemRealloc(GDExtensionInterfaceMemRealloc fn, void* pPtr, size_t pBytes) {
+  return fn(pPtr, pBytes);
+}
+
+GDExtensionObjectPtr callObjectCastTo(GDExtensionInterfaceObjectCastTo fn, GDExtensionConstObjectPtr pObject, void* pClassTag) {
+  return fn(pObject, pClassTag);
+}
+
+void callObjectDestroy(GDExtensionInterfaceObjectDestroy fn, GDExtensionObjectPtr pO) {
+  return fn(pO);
+}
+
+GDExtensionBool callObjectGetClassName(GDExtensionInterfaceObjectGetClassName fn, GDExtensionConstObjectPtr pObject, GDExtensionClassLibraryPtr pLibrary, GDExtensionUninitializedStringNamePtr rClassName) {
+  return fn(pObject, pLibrary, rClassName);
+}
+
+void* callObjectGetInstanceBinding(GDExtensionInterfaceObjectGetInstanceBinding fn, GDExtensionObjectPtr pO, void* pToken, GDExtensionInstanceBindingCallbacks* pCallbacks) {
+  return fn(pO, pToken, pCallbacks);
+}
+
+GDExtensionObjectPtr callObjectGetInstanceFromId(GDExtensionInterfaceObjectGetInstanceFromId fn, GDObjectInstanceID pInstanceId) {
+  return fn(pInstanceId);
+}
+
+GDObjectInstanceID callObjectGetInstanceId(GDExtensionInterfaceObjectGetInstanceId fn, GDExtensionConstObjectPtr pObject) {
+  return fn(pObject);
+}
+
+void callObjectMethodBindCall(GDExtensionInterfaceObjectMethodBindCall fn, GDExtensionMethodBindPtr pMethodBind, GDExtensionObjectPtr pInstance, const GDExtensionConstVariantPtr* pArgs, GDExtensionInt pArgCount, GDExtensionUninitializedVariantPtr rRet, GDExtensionCallError* rError) {
+  return fn(pMethodBind, pInstance, pArgs, pArgCount, rRet, rError);
+}
+
+void callObjectMethodBindPtrcall(GDExtensionInterfaceObjectMethodBindPtrcall fn, GDExtensionMethodBindPtr pMethodBind, GDExtensionObjectPtr pInstance, const GDExtensionConstTypePtr* pArgs, GDExtensionTypePtr rRet) {
+  return fn(pMethodBind, pInstance, pArgs, rRet);
+}
+
+void callObjectSetInstance(GDExtensionInterfaceObjectSetInstance fn, GDExtensionObjectPtr pO, GDExtensionConstStringNamePtr pClassname, GDExtensionClassInstancePtr pInstance) {
+  return fn(pO, pClassname, pInstance);
+}
+
+void callObjectSetInstanceBinding(GDExtensionInterfaceObjectSetInstanceBinding fn, GDExtensionObjectPtr pO, void* pToken, void* pBinding, GDExtensionInstanceBindingCallbacks* pCallbacks) {
+  return fn(pO, pToken, pBinding, pCallbacks);
+}
+
+uint8_t* callPackedByteArrayOperatorIndex(GDExtensionInterfacePackedByteArrayOperatorIndex fn, GDExtensionTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+const uint8_t* callPackedByteArrayOperatorIndexConst(GDExtensionInterfacePackedByteArrayOperatorIndexConst fn, GDExtensionConstTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+GDExtensionTypePtr callPackedColorArrayOperatorIndex(GDExtensionInterfacePackedColorArrayOperatorIndex fn, GDExtensionTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+GDExtensionTypePtr callPackedColorArrayOperatorIndexConst(GDExtensionInterfacePackedColorArrayOperatorIndexConst fn, GDExtensionConstTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+float* callPackedFloat32ArrayOperatorIndex(GDExtensionInterfacePackedFloat32ArrayOperatorIndex fn, GDExtensionTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+const float* callPackedFloat32ArrayOperatorIndexConst(GDExtensionInterfacePackedFloat32ArrayOperatorIndexConst fn, GDExtensionConstTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+double* callPackedFloat64ArrayOperatorIndex(GDExtensionInterfacePackedFloat64ArrayOperatorIndex fn, GDExtensionTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+const double* callPackedFloat64ArrayOperatorIndexConst(GDExtensionInterfacePackedFloat64ArrayOperatorIndexConst fn, GDExtensionConstTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+int* callPackedInt32ArrayOperatorIndex(GDExtensionInterfacePackedInt32ArrayOperatorIndex fn, GDExtensionTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+const int* callPackedInt32ArrayOperatorIndexConst(GDExtensionInterfacePackedInt32ArrayOperatorIndexConst fn, GDExtensionConstTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+long long* callPackedInt64ArrayOperatorIndex(GDExtensionInterfacePackedInt64ArrayOperatorIndex fn, GDExtensionTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+const long long* callPackedInt64ArrayOperatorIndexConst(GDExtensionInterfacePackedInt64ArrayOperatorIndexConst fn, GDExtensionConstTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+GDExtensionStringPtr callPackedStringArrayOperatorIndex(GDExtensionInterfacePackedStringArrayOperatorIndex fn, GDExtensionTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+GDExtensionStringPtr callPackedStringArrayOperatorIndexConst(GDExtensionInterfacePackedStringArrayOperatorIndexConst fn, GDExtensionConstTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+GDExtensionTypePtr callPackedVector2ArrayOperatorIndex(GDExtensionInterfacePackedVector2ArrayOperatorIndex fn, GDExtensionTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+GDExtensionTypePtr callPackedVector2ArrayOperatorIndexConst(GDExtensionInterfacePackedVector2ArrayOperatorIndexConst fn, GDExtensionConstTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+GDExtensionTypePtr callPackedVector3ArrayOperatorIndex(GDExtensionInterfacePackedVector3ArrayOperatorIndex fn, GDExtensionTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+GDExtensionTypePtr callPackedVector3ArrayOperatorIndexConst(GDExtensionInterfacePackedVector3ArrayOperatorIndexConst fn, GDExtensionConstTypePtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+void callPrintError(GDExtensionInterfacePrintError fn, const char* pDescription, const char* pFunction, const char* pFile, int32_t pLine, GDExtensionBool pEditorNotify) {
+  return fn(pDescription, pFunction, pFile, pLine, pEditorNotify);
+}
+
+void callPrintErrorWithMessage(GDExtensionInterfacePrintErrorWithMessage fn, const char* pDescription, const char* pMessage, const char* pFunction, const char* pFile, int32_t pLine, GDExtensionBool pEditorNotify) {
+  return fn(pDescription, pMessage, pFunction, pFile, pLine, pEditorNotify);
+}
+
+void callPrintScriptError(GDExtensionInterfacePrintScriptError fn, const char* pDescription, const char* pFunction, const char* pFile, int32_t pLine, GDExtensionBool pEditorNotify) {
+  return fn(pDescription, pFunction, pFile, pLine, pEditorNotify);
+}
+
+void callPrintScriptErrorWithMessage(GDExtensionInterfacePrintScriptErrorWithMessage fn, const char* pDescription, const char* pMessage, const char* pFunction, const char* pFile, int32_t pLine, GDExtensionBool pEditorNotify) {
+  return fn(pDescription, pMessage, pFunction, pFile, pLine, pEditorNotify);
+}
+
+void callPrintWarning(GDExtensionInterfacePrintWarning fn, const char* pDescription, const char* pFunction, const char* pFile, int32_t pLine, GDExtensionBool pEditorNotify) {
+  return fn(pDescription, pFunction, pFile, pLine, pEditorNotify);
+}
+
+void callPrintWarningWithMessage(GDExtensionInterfacePrintWarningWithMessage fn, const char* pDescription, const char* pMessage, const char* pFunction, const char* pFile, int32_t pLine, GDExtensionBool pEditorNotify) {
+  return fn(pDescription, pMessage, pFunction, pFile, pLine, pEditorNotify);
+}
+
+GDExtensionObjectPtr callRefGetObject(GDExtensionInterfaceRefGetObject fn, GDExtensionConstRefPtr pRef) {
+  return fn(pRef);
+}
+
+void callRefSetObject(GDExtensionInterfaceRefSetObject fn, GDExtensionRefPtr pRef, GDExtensionObjectPtr pObject) {
+  return fn(pRef, pObject);
+}
+
+GDExtensionScriptInstancePtr callScriptInstanceCreate(GDExtensionInterfaceScriptInstanceCreate fn, GDExtensionScriptInstanceInfo* pInfo, GDExtensionScriptInstanceDataPtr pInstanceData) {
+  return fn(pInfo, pInstanceData);
+}
+
+void callStringNewWithLatin1Chars(GDExtensionInterfaceStringNewWithLatin1Chars fn, GDExtensionUninitializedStringPtr rDest, const char* pContents) {
+  return fn(rDest, pContents);
+}
+
+void callStringNewWithLatin1CharsAndLen(GDExtensionInterfaceStringNewWithLatin1CharsAndLen fn, GDExtensionUninitializedStringPtr rDest, const char* pContents, GDExtensionInt pSize) {
+  return fn(rDest, pContents, pSize);
+}
+
+void callStringNewWithUtf16Chars(GDExtensionInterfaceStringNewWithUtf16Chars fn, GDExtensionUninitializedStringPtr rDest, const uint16_t* pContents) {
+  return fn(rDest, pContents);
+}
+
+void callStringNewWithUtf16CharsAndLen(GDExtensionInterfaceStringNewWithUtf16CharsAndLen fn, GDExtensionUninitializedStringPtr rDest, const uint16_t* pContents, GDExtensionInt pSize) {
+  return fn(rDest, pContents, pSize);
+}
+
+void callStringNewWithUtf32Chars(GDExtensionInterfaceStringNewWithUtf32Chars fn, GDExtensionUninitializedStringPtr rDest, const unsigned* pContents) {
+  return fn(rDest, pContents);
+}
+
+void callStringNewWithUtf32CharsAndLen(GDExtensionInterfaceStringNewWithUtf32CharsAndLen fn, GDExtensionUninitializedStringPtr rDest, const unsigned* pContents, GDExtensionInt pSize) {
+  return fn(rDest, pContents, pSize);
+}
+
+void callStringNewWithUtf8Chars(GDExtensionInterfaceStringNewWithUtf8Chars fn, GDExtensionUninitializedStringPtr rDest, const char* pContents) {
+  return fn(rDest, pContents);
+}
+
+void callStringNewWithUtf8CharsAndLen(GDExtensionInterfaceStringNewWithUtf8CharsAndLen fn, GDExtensionUninitializedStringPtr rDest, const char* pContents, GDExtensionInt pSize) {
+  return fn(rDest, pContents, pSize);
+}
+
+void callStringNewWithWideChars(GDExtensionInterfaceStringNewWithWideChars fn, GDExtensionUninitializedStringPtr rDest, const int* pContents) {
+  return fn(rDest, pContents);
+}
+
+void callStringNewWithWideCharsAndLen(GDExtensionInterfaceStringNewWithWideCharsAndLen fn, GDExtensionUninitializedStringPtr rDest, const int* pContents, GDExtensionInt pSize) {
+  return fn(rDest, pContents, pSize);
+}
+
+unsigned* callStringOperatorIndex(GDExtensionInterfaceStringOperatorIndex fn, GDExtensionStringPtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+const unsigned* callStringOperatorIndexConst(GDExtensionInterfaceStringOperatorIndexConst fn, GDExtensionConstStringPtr pSelf, GDExtensionInt pIndex) {
+  return fn(pSelf, pIndex);
+}
+
+void callStringOperatorPlusEqC32Str(GDExtensionInterfaceStringOperatorPlusEqC32str fn, GDExtensionStringPtr pSelf, const unsigned* pB) {
+  return fn(pSelf, pB);
+}
+
+void callStringOperatorPlusEqChar(GDExtensionInterfaceStringOperatorPlusEqChar fn, GDExtensionStringPtr pSelf, char32_t pB) {
+  return fn(pSelf, pB);
+}
+
+void callStringOperatorPlusEqCstr(GDExtensionInterfaceStringOperatorPlusEqCstr fn, GDExtensionStringPtr pSelf, const char* pB) {
+  return fn(pSelf, pB);
+}
+
+void callStringOperatorPlusEqString(GDExtensionInterfaceStringOperatorPlusEqString fn, GDExtensionStringPtr pSelf, GDExtensionConstStringPtr pB) {
+  return fn(pSelf, pB);
+}
+
+void callStringOperatorPlusEqWcstr(GDExtensionInterfaceStringOperatorPlusEqWcstr fn, GDExtensionStringPtr pSelf, const int* pB) {
+  return fn(pSelf, pB);
+}
+
+GDExtensionInt callStringToLatin1Chars(GDExtensionInterfaceStringToLatin1Chars fn, GDExtensionConstStringPtr pSelf, char* rText, GDExtensionInt pMaxWriteLength) {
+  return fn(pSelf, rText, pMaxWriteLength);
+}
+
+GDExtensionInt callStringToUtf16Chars(GDExtensionInterfaceStringToUtf16Chars fn, GDExtensionConstStringPtr pSelf, uint16_t* rText, GDExtensionInt pMaxWriteLength) {
+  return fn(pSelf, rText, pMaxWriteLength);
+}
+
+GDExtensionInt callStringToUtf32Chars(GDExtensionInterfaceStringToUtf32Chars fn, GDExtensionConstStringPtr pSelf, unsigned* rText, GDExtensionInt pMaxWriteLength) {
+  return fn(pSelf, rText, pMaxWriteLength);
+}
+
+GDExtensionInt callStringToUtf8Chars(GDExtensionInterfaceStringToUtf8Chars fn, GDExtensionConstStringPtr pSelf, char* rText, GDExtensionInt pMaxWriteLength) {
+  return fn(pSelf, rText, pMaxWriteLength);
+}
+
+GDExtensionInt callStringToWideChars(GDExtensionInterfaceStringToWideChars fn, GDExtensionConstStringPtr pSelf, int* rText, GDExtensionInt pMaxWriteLength) {
+  return fn(pSelf, rText, pMaxWriteLength);
+}
+
+GDExtensionBool callVariantBooleanize(GDExtensionInterfaceVariantBooleanize fn, GDExtensionConstVariantPtr pSelf) {
+  return fn(pSelf);
+}
+
+void callVariantCall(GDExtensionInterfaceVariantCall fn, GDExtensionVariantPtr pSelf, GDExtensionConstStringNamePtr pMethod, const GDExtensionConstVariantPtr* pArgs, GDExtensionInt pArgumentCount, GDExtensionUninitializedVariantPtr rReturn, GDExtensionCallError* rError) {
+  return fn(pSelf, pMethod, pArgs, pArgumentCount, rReturn, rError);
+}
+
+void callVariantCallStatic(GDExtensionInterfaceVariantCallStatic fn, GDExtensionVariantType pType, GDExtensionConstStringNamePtr pMethod, const GDExtensionConstVariantPtr* pArgs, GDExtensionInt pArgumentCount, GDExtensionUninitializedVariantPtr rReturn, GDExtensionCallError* rError) {
+  return fn(pType, pMethod, pArgs, pArgumentCount, rReturn, rError);
+}
+
+GDExtensionBool callVariantCanConvert(GDExtensionInterfaceVariantCanConvert fn, GDExtensionVariantType pFrom, GDExtensionVariantType pTo) {
+  return fn(pFrom, pTo);
+}
+
+GDExtensionBool callVariantCanConvertStrict(GDExtensionInterfaceVariantCanConvertStrict fn, GDExtensionVariantType pFrom, GDExtensionVariantType pTo) {
+  return fn(pFrom, pTo);
+}
+
+void callVariantConstruct(GDExtensionInterfaceVariantConstruct fn, GDExtensionVariantType pType, GDExtensionUninitializedVariantPtr rBase, const GDExtensionConstVariantPtr* pArgs, int32_t pArgumentCount, GDExtensionCallError* rError) {
+  return fn(pType, rBase, pArgs, pArgumentCount, rError);
+}
+
+void callVariantDestroy(GDExtensionInterfaceVariantDestroy fn, GDExtensionVariantPtr pSelf) {
+  return fn(pSelf);
+}
+
+void callVariantDuplicate(GDExtensionInterfaceVariantDuplicate fn, GDExtensionConstVariantPtr pSelf, GDExtensionVariantPtr rRet, GDExtensionBool pDeep) {
+  return fn(pSelf, rRet, pDeep);
+}
+
+void callVariantEvaluate(GDExtensionInterfaceVariantEvaluate fn, GDExtensionVariantOperator pOp, GDExtensionConstVariantPtr pA, GDExtensionConstVariantPtr pB, GDExtensionUninitializedVariantPtr rReturn, uint8_t* rValid) {
+  return fn(pOp, pA, pB, rReturn, rValid);
+}
+
+void callVariantGet(GDExtensionInterfaceVariantGet fn, GDExtensionConstVariantPtr pSelf, GDExtensionConstVariantPtr pKey, GDExtensionUninitializedVariantPtr rRet, uint8_t* rValid) {
+  return fn(pSelf, pKey, rRet, rValid);
+}
+
+void callVariantGetConstantValue(GDExtensionInterfaceVariantGetConstantValue fn, GDExtensionVariantType pType, GDExtensionConstStringNamePtr pConstant, GDExtensionUninitializedVariantPtr rRet) {
+  return fn(pType, pConstant, rRet);
+}
+
+void callVariantGetIndexed(GDExtensionInterfaceVariantGetIndexed fn, GDExtensionConstVariantPtr pSelf, GDExtensionInt pIndex, GDExtensionUninitializedVariantPtr rRet, uint8_t* rValid, uint8_t* rOob) {
+  return fn(pSelf, pIndex, rRet, rValid, rOob);
+}
+
+void callVariantGetKeyed(GDExtensionInterfaceVariantGetKeyed fn, GDExtensionConstVariantPtr pSelf, GDExtensionConstVariantPtr pKey, GDExtensionUninitializedVariantPtr rRet, uint8_t* rValid) {
+  return fn(pSelf, pKey, rRet, rValid);
+}
+
+void callVariantGetNamed(GDExtensionInterfaceVariantGetNamed fn, GDExtensionConstVariantPtr pSelf, GDExtensionConstStringNamePtr pKey, GDExtensionUninitializedVariantPtr rRet, uint8_t* rValid) {
+  return fn(pSelf, pKey, rRet, rValid);
+}
+
+GDExtensionPtrBuiltInMethod callVariantGetPtrBuiltinMethod(GDExtensionInterfaceVariantGetPtrBuiltinMethod fn, GDExtensionVariantType pType, GDExtensionConstStringNamePtr pMethod, GDExtensionInt pHash) {
+  return fn(pType, pMethod, pHash);
+}
+
+GDExtensionPtrConstructor callVariantGetPtrConstructor(GDExtensionInterfaceVariantGetPtrConstructor fn, GDExtensionVariantType pType, int32_t pConstructor) {
+  return fn(pType, pConstructor);
+}
+
+GDExtensionPtrDestructor callVariantGetPtrDestructor(GDExtensionInterfaceVariantGetPtrDestructor fn, GDExtensionVariantType pType) {
+  return fn(pType);
+}
+
+GDExtensionPtrGetter callVariantGetPtrGetter(GDExtensionInterfaceVariantGetPtrGetter fn, GDExtensionVariantType pType, GDExtensionConstStringNamePtr pMember) {
+  return fn(pType, pMember);
+}
+
+GDExtensionPtrIndexedGetter callVariantGetPtrIndexedGetter(GDExtensionInterfaceVariantGetPtrIndexedGetter fn, GDExtensionVariantType pType) {
+  return fn(pType);
+}
+
+GDExtensionPtrIndexedSetter callVariantGetPtrIndexedSetter(GDExtensionInterfaceVariantGetPtrIndexedSetter fn, GDExtensionVariantType pType) {
+  return fn(pType);
+}
+
+GDExtensionPtrKeyedChecker callVariantGetPtrKeyedChecker(GDExtensionInterfaceVariantGetPtrKeyedChecker fn, GDExtensionVariantType pType) {
+  return fn(pType);
+}
+
+GDExtensionPtrKeyedGetter callVariantGetPtrKeyedGetter(GDExtensionInterfaceVariantGetPtrKeyedGetter fn, GDExtensionVariantType pType) {
+  return fn(pType);
+}
+
+GDExtensionPtrKeyedSetter callVariantGetPtrKeyedSetter(GDExtensionInterfaceVariantGetPtrKeyedSetter fn, GDExtensionVariantType pType) {
+  return fn(pType);
+}
+
+GDExtensionPtrOperatorEvaluator callVariantGetPtrOperatorEvaluator(GDExtensionInterfaceVariantGetPtrOperatorEvaluator fn, GDExtensionVariantOperator pOperator, GDExtensionVariantType pTypeA, GDExtensionVariantType pTypeB) {
+  return fn(pOperator, pTypeA, pTypeB);
+}
+
+GDExtensionPtrSetter callVariantGetPtrSetter(GDExtensionInterfaceVariantGetPtrSetter fn, GDExtensionVariantType pType, GDExtensionConstStringNamePtr pMember) {
+  return fn(pType, pMember);
+}
+
+GDExtensionPtrUtilityFunction callVariantGetPtrUtilityFunction(GDExtensionInterfaceVariantGetPtrUtilityFunction fn, GDExtensionConstStringNamePtr pFunction, GDExtensionInt pHash) {
+  return fn(pFunction, pHash);
+}
+
+GDExtensionVariantType callVariantGetType(GDExtensionInterfaceVariantGetType fn, GDExtensionConstVariantPtr pSelf) {
+  return fn(pSelf);
+}
+
+void callVariantGetTypeName(GDExtensionInterfaceVariantGetTypeName fn, GDExtensionVariantType pType, GDExtensionUninitializedStringPtr rName) {
+  return fn(pType, rName);
+}
+
+GDExtensionBool callVariantHasKey(GDExtensionInterfaceVariantHasKey fn, GDExtensionConstVariantPtr pSelf, GDExtensionConstVariantPtr pKey, uint8_t* rValid) {
+  return fn(pSelf, pKey, rValid);
+}
+
+GDExtensionBool callVariantHasMember(GDExtensionInterfaceVariantHasMember fn, GDExtensionVariantType pType, GDExtensionConstStringNamePtr pMember) {
+  return fn(pType, pMember);
+}
+
+GDExtensionBool callVariantHasMethod(GDExtensionInterfaceVariantHasMethod fn, GDExtensionConstVariantPtr pSelf, GDExtensionConstStringNamePtr pMethod) {
+  return fn(pSelf, pMethod);
+}
+
+GDExtensionInt callVariantHash(GDExtensionInterfaceVariantHash fn, GDExtensionConstVariantPtr pSelf) {
+  return fn(pSelf);
+}
+
+GDExtensionBool callVariantHashCompare(GDExtensionInterfaceVariantHashCompare fn, GDExtensionConstVariantPtr pSelf, GDExtensionConstVariantPtr pOther) {
+  return fn(pSelf, pOther);
+}
+
+void callVariantIterGet(GDExtensionInterfaceVariantIterGet fn, GDExtensionConstVariantPtr pSelf, GDExtensionVariantPtr rIter, GDExtensionUninitializedVariantPtr rRet, uint8_t* rValid) {
+  return fn(pSelf, rIter, rRet, rValid);
+}
+
+GDExtensionBool callVariantIterInit(GDExtensionInterfaceVariantIterInit fn, GDExtensionConstVariantPtr pSelf, GDExtensionUninitializedVariantPtr rIter, uint8_t* rValid) {
+  return fn(pSelf, rIter, rValid);
+}
+
+GDExtensionBool callVariantIterNext(GDExtensionInterfaceVariantIterNext fn, GDExtensionConstVariantPtr pSelf, GDExtensionVariantPtr rIter, uint8_t* rValid) {
+  return fn(pSelf, rIter, rValid);
+}
+
+void callVariantNewCopy(GDExtensionInterfaceVariantNewCopy fn, GDExtensionUninitializedVariantPtr rDest, GDExtensionConstVariantPtr pSrc) {
+  return fn(rDest, pSrc);
+}
+
+void callVariantNewNil(GDExtensionInterfaceVariantNewNil fn, GDExtensionUninitializedVariantPtr rDest) {
+  return fn(rDest);
+}
+
+GDExtensionInt callVariantRecursiveHash(GDExtensionInterfaceVariantRecursiveHash fn, GDExtensionConstVariantPtr pSelf, GDExtensionInt pRecursionCount) {
+  return fn(pSelf, pRecursionCount);
+}
+
+void callVariantSet(GDExtensionInterfaceVariantSet fn, GDExtensionVariantPtr pSelf, GDExtensionConstVariantPtr pKey, GDExtensionConstVariantPtr pValue, uint8_t* rValid) {
+  return fn(pSelf, pKey, pValue, rValid);
+}
+
+void callVariantSetIndexed(GDExtensionInterfaceVariantSetIndexed fn, GDExtensionVariantPtr pSelf, GDExtensionInt pIndex, GDExtensionConstVariantPtr pValue, uint8_t* rValid, uint8_t* rOob) {
+  return fn(pSelf, pIndex, pValue, rValid, rOob);
+}
+
+void callVariantSetKeyed(GDExtensionInterfaceVariantSetKeyed fn, GDExtensionVariantPtr pSelf, GDExtensionConstVariantPtr pKey, GDExtensionConstVariantPtr pValue, uint8_t* rValid) {
+  return fn(pSelf, pKey, pValue, rValid);
+}
+
+void callVariantSetNamed(GDExtensionInterfaceVariantSetNamed fn, GDExtensionVariantPtr pSelf, GDExtensionConstStringNamePtr pKey, GDExtensionConstVariantPtr pValue, uint8_t* rValid) {
+  return fn(pSelf, pKey, pValue, rValid);
+}
+
+void callVariantStringify(GDExtensionInterfaceVariantStringify fn, GDExtensionConstVariantPtr pSelf, GDExtensionStringPtr rRet) {
+  return fn(pSelf, rRet);
+}
+
+int64_t callWorkerThreadPoolAddNativeGroupTask(GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask fn, GDExtensionObjectPtr pInstance, void* pFunc, void* pUserdata, int pElements, int pTasks, GDExtensionBool pHighPriority, GDExtensionConstStringPtr pDescription) {
+  return fn(pInstance, pFunc, pUserdata, pElements, pTasks, pHighPriority, pDescription);
+}
+
+int64_t callWorkerThreadPoolAddNativeTask(GDExtensionInterfaceWorkerThreadPoolAddNativeTask fn, GDExtensionObjectPtr pInstance, void* pFunc, void* pUserdata, GDExtensionBool pHighPriority, GDExtensionConstStringPtr pDescription) {
+  return fn(pInstance, pFunc, pUserdata, pHighPriority, pDescription);
+}
+
+GDExtensionInt callXmlParserOpenBuffer(GDExtensionInterfaceXmlParserOpenBuffer fn, GDExtensionObjectPtr pInstance, const uint8_t* pBuffer, size_t pSize) {
+  return fn(pInstance, pBuffer, pSize);
+}
+

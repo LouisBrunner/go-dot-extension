@@ -4,6 +4,7 @@ package gdc
 // #cgo CFLAGS: -I${SRCDIR}/../gdraw
 /*
 #include <string.h>
+#include <stdlib.h>
 
 #include <gdextension_interface.h>
 
@@ -159,13 +160,15 @@ type CallError struct {
 }
 
 // ToRaw converts CallError to a CallErrorRaw
-func (me *CallError) ToRaw() CallErrorRaw {
+func (me *CallError) ToRaw() (CallErrorRaw, func()) {
+
 	raw := CallErrorRaw{}
 	raw.error = C.GDExtensionCallErrorType(me.Error)
 	raw.argument = C.int32_t(me.Argument)
 	raw.expected = C.int32_t(me.Expected)
 
-	return raw
+	return raw, func() {
+  }
 }
 // VariantFromTypeConstructorFunc corresponds to C type GDExtensionVariantFromTypeConstructorFunc
 type VariantFromTypeConstructorFunc C.GDExtensionVariantFromTypeConstructorFunc
@@ -218,13 +221,15 @@ type InstanceBindingCallbacks struct {
 }
 
 // ToRaw converts InstanceBindingCallbacks to a InstanceBindingCallbacksRaw
-func (me *InstanceBindingCallbacks) ToRaw() InstanceBindingCallbacksRaw {
+func (me *InstanceBindingCallbacks) ToRaw() (InstanceBindingCallbacksRaw, func()) {
+
 	raw := InstanceBindingCallbacksRaw{}
 	raw.create_callback = C.GDExtensionInstanceBindingCreateCallback(me.CreateCallback)
 	raw.free_callback = C.GDExtensionInstanceBindingFreeCallback(me.FreeCallback)
 	raw.reference_callback = C.GDExtensionInstanceBindingReferenceCallback(me.ReferenceCallback)
 
-	return raw
+	return raw, func() {
+  }
 }
 // ClassInstancePtr is equivalent to C type GDExtensionClassInstancePtr
 type ClassInstancePtr C.GDExtensionClassInstancePtr
@@ -252,7 +257,8 @@ type PropertyInfo struct {
 }
 
 // ToRaw converts PropertyInfo to a PropertyInfoRaw
-func (me *PropertyInfo) ToRaw() PropertyInfoRaw {
+func (me *PropertyInfo) ToRaw() (PropertyInfoRaw, func()) {
+
 	raw := PropertyInfoRaw{}
 	raw._type = C.GDExtensionVariantType(me.Type)
 	raw.name = C.GDExtensionStringNamePtr(me.Name)
@@ -261,7 +267,8 @@ func (me *PropertyInfo) ToRaw() PropertyInfoRaw {
 	raw.hint_string = C.GDExtensionStringPtr(me.HintString)
 	raw.usage = C.uint32_t(me.Usage)
 
-	return raw
+	return raw, func() {
+  }
 }
 // MethodInfoRaw corresponds to C type GDExtensionMethodInfo
 type MethodInfoRaw C.GDExtensionMethodInfo
@@ -283,7 +290,8 @@ type MethodInfo struct {
 }
 
 // ToRaw converts MethodInfo to a MethodInfoRaw
-func (me *MethodInfo) ToRaw() MethodInfoRaw {
+func (me *MethodInfo) ToRaw() (MethodInfoRaw, func()) {
+
 	raw := MethodInfoRaw{}
 	raw.name = C.GDExtensionStringNamePtr(me.Name)
 	raw.return_value = *(*C.GDExtensionPropertyInfo)(unsafe.Pointer(&me.ReturnValue))
@@ -292,9 +300,10 @@ func (me *MethodInfo) ToRaw() MethodInfoRaw {
 	raw.argument_count = C.uint32_t(me.ArgumentCount)
 	raw.arguments = (*C.GDExtensionPropertyInfo)(unsafe.Pointer(me.Arguments))
 	raw.default_argument_count = C.uint32_t(me.DefaultArgumentCount)
-	raw.default_arguments = (*C.GDExtensionVariantPtr)(me.DefaultArguments)
+	raw.default_arguments = *(**C.GDExtensionVariantPtr)(unsafe.Pointer(&me.DefaultArguments))
 
-	return raw
+	return raw, func() {
+  }
 }
 // ClassGetPropertyList corresponds to C type GDExtensionClassGetPropertyList
 type ClassGetPropertyList C.GDExtensionClassGetPropertyList
@@ -349,7 +358,8 @@ type ClassCreationInfo struct {
 }
 
 // ToRaw converts ClassCreationInfo to a ClassCreationInfoRaw
-func (me *ClassCreationInfo) ToRaw() ClassCreationInfoRaw {
+func (me *ClassCreationInfo) ToRaw() (ClassCreationInfoRaw, func()) {
+
 	raw := ClassCreationInfoRaw{}
 	raw.is_virtual = C.GDExtensionBool(me.IsVirtual)
 	raw.is_abstract = C.GDExtensionBool(me.IsAbstract)
@@ -369,7 +379,8 @@ func (me *ClassCreationInfo) ToRaw() ClassCreationInfoRaw {
 	raw.get_rid_func = C.GDExtensionClassGetRID(me.GetRidFunc)
 	raw.class_userdata = me.ClassUserdata
 
-	return raw
+	return raw, func() {
+  }
 }
 // ClassLibraryPtr is equivalent to C type GDExtensionClassLibraryPtr
 type ClassLibraryPtr C.GDExtensionClassLibraryPtr
@@ -434,7 +445,8 @@ type ClassMethodInfo struct {
 }
 
 // ToRaw converts ClassMethodInfo to a ClassMethodInfoRaw
-func (me *ClassMethodInfo) ToRaw() ClassMethodInfoRaw {
+func (me *ClassMethodInfo) ToRaw() (ClassMethodInfoRaw, func()) {
+
 	raw := ClassMethodInfoRaw{}
 	raw.name = C.GDExtensionStringNamePtr(me.Name)
 	raw.method_userdata = me.MethodUserdata
@@ -448,9 +460,10 @@ func (me *ClassMethodInfo) ToRaw() ClassMethodInfoRaw {
 	raw.arguments_info = (*C.GDExtensionPropertyInfo)(unsafe.Pointer(me.ArgumentsInfo))
 	raw.arguments_metadata = (*C.GDExtensionClassMethodArgumentMetadata)(me.ArgumentsMetadata)
 	raw.default_argument_count = C.uint32_t(me.DefaultArgumentCount)
-	raw.default_arguments = (*C.GDExtensionVariantPtr)(me.DefaultArguments)
+	raw.default_arguments = *(**C.GDExtensionVariantPtr)(unsafe.Pointer(&me.DefaultArguments))
 
-	return raw
+	return raw, func() {
+  }
 }
 // ScriptInstanceDataPtr is equivalent to C type GDExtensionScriptInstanceDataPtr
 type ScriptInstanceDataPtr C.GDExtensionScriptInstanceDataPtr
@@ -537,7 +550,8 @@ type ScriptInstanceInfo struct {
 }
 
 // ToRaw converts ScriptInstanceInfo to a ScriptInstanceInfoRaw
-func (me *ScriptInstanceInfo) ToRaw() ScriptInstanceInfoRaw {
+func (me *ScriptInstanceInfo) ToRaw() (ScriptInstanceInfoRaw, func()) {
+
 	raw := ScriptInstanceInfoRaw{}
 	raw.set_func = C.GDExtensionScriptInstanceSet(me.SetFunc)
 	raw.get_func = C.GDExtensionScriptInstanceGet(me.GetFunc)
@@ -563,7 +577,8 @@ func (me *ScriptInstanceInfo) ToRaw() ScriptInstanceInfoRaw {
 	raw.get_language_func = C.GDExtensionScriptInstanceGetLanguage(me.GetLanguageFunc)
 	raw.free_func = C.GDExtensionScriptInstanceFree(me.FreeFunc)
 
-	return raw
+	return raw, func() {
+  }
 }
 // InitializationLevel represents the enum GDExtensionInitializationLevel
 type InitializationLevel uint32
@@ -596,14 +611,16 @@ type Initialization struct {
 }
 
 // ToRaw converts Initialization to a InitializationRaw
-func (me *Initialization) ToRaw() InitializationRaw {
+func (me *Initialization) ToRaw() (InitializationRaw, func()) {
+
 	raw := InitializationRaw{}
 	raw.minimum_initialization_level = C.GDExtensionInitializationLevel(me.MinimumInitializationLevel)
 	raw.userdata = me.Userdata
 	raw.initialize = (*[0]byte)(me.Initialize)
 	raw.deinitialize = (*[0]byte)(me.Deinitialize)
 
-	return raw
+	return raw, func() {
+  }
 }
 // InterfaceFunctionPtr corresponds to C type GDExtensionInterfaceFunctionPtr
 type InterfaceFunctionPtr C.GDExtensionInterfaceFunctionPtr
@@ -627,14 +644,18 @@ type GodotVersion struct {
 }
 
 // ToRaw converts GodotVersion to a GodotVersionRaw
-func (me *GodotVersion) ToRaw() GodotVersionRaw {
+func (me *GodotVersion) ToRaw() (GodotVersionRaw, func()) {
+  cmeString := C.CString(me.String)
+
 	raw := GodotVersionRaw{}
 	raw.major = C.uint32_t(me.Major)
 	raw.minor = C.uint32_t(me.Minor)
 	raw.patch = C.uint32_t(me.Patch)
-	raw.string = C.CString(me.String)
+	raw.string = cmeString
 
-	return raw
+	return raw, func() {
+    C.free(unsafe.Pointer(cmeString))
+  }
 }
 // InterfaceGetGodotVersion corresponds to C type GDExtensionInterfaceGetGodotVersion
 type InterfaceGetGodotVersion C.GDExtensionInterfaceGetGodotVersion

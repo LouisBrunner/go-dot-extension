@@ -4,8 +4,8 @@ package gdc
 // #cgo CFLAGS: -I${SRCDIR}/../gdraw
 /*
 #include <string.h>
-
 #include <stdlib.h>
+
 #include "interface.gen.h"
 
 */
@@ -998,546 +998,947 @@ type interfaceImpl struct {
 }
 
 func (me *interfaceImpl) ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) VariantPtr {
-  return C.callArrayOperatorIndex(me.ptrArrayOperatorIndex, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callArrayOperatorIndex(me.ptrArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return VariantPtr(ret)
 }
 
 func (me *interfaceImpl) ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) VariantPtr {
-  return C.callArrayOperatorIndexConst(me.ptrArrayOperatorIndexConst, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callArrayOperatorIndexConst(me.ptrArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return VariantPtr(ret)
 }
 
 func (me *interfaceImpl) ArrayRef(pSelf TypePtr, pFrom ConstTypePtr, )  {
-  C.callArrayRef(me.ptrArrayRef, pSelf, pFrom,)
+  defer func() {
+  }()
+  C.callArrayRef(me.ptrArrayRef, C.GDExtensionTypePtr(pSelf), C.GDExtensionConstTypePtr(pFrom),)
 }
 
 func (me *interfaceImpl) ArraySetTyped(pSelf TypePtr, pType VariantType, pClassName ConstStringNamePtr, pScript ConstVariantPtr, )  {
-  C.callArraySetTyped(me.ptrArraySetTyped, pSelf, pType, pClassName, pScript,)
+  defer func() {
+  }()
+  C.callArraySetTyped(me.ptrArraySetTyped, C.GDExtensionTypePtr(pSelf), C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstVariantPtr(pScript),)
 }
 
 func (me *interfaceImpl) ClassdbConstructObject(pClassname ConstStringNamePtr, ) ObjectPtr {
-  return C.callClassdbConstructObject(me.ptrClassdbConstructObject, pClassname,)
+  defer func() {
+  }()
+  ret := C.callClassdbConstructObject(me.ptrClassdbConstructObject, C.GDExtensionConstStringNamePtr(pClassname),)
+  return ObjectPtr(ret)
 }
 
 func (me *interfaceImpl) ClassdbGetClassTag(pClassname ConstStringNamePtr, ) unsafe.Pointer {
-  return C.callClassdbGetClassTag(me.ptrClassdbGetClassTag, pClassname,)
+  defer func() {
+  }()
+  ret := C.callClassdbGetClassTag(me.ptrClassdbGetClassTag, C.GDExtensionConstStringNamePtr(pClassname),)
+  return unsafe.Pointer(ret)
 }
 
 func (me *interfaceImpl) ClassdbGetMethodBind(pClassname ConstStringNamePtr, pMethodname ConstStringNamePtr, pHash Int, ) MethodBindPtr {
-  return C.callClassdbGetMethodBind(me.ptrClassdbGetMethodBind, pClassname, pMethodname, pHash,)
+  defer func() {
+  }()
+  ret := C.callClassdbGetMethodBind(me.ptrClassdbGetMethodBind, C.GDExtensionConstStringNamePtr(pClassname), C.GDExtensionConstStringNamePtr(pMethodname), C.GDExtensionInt(pHash),)
+  return MethodBindPtr(ret)
 }
 
 func (me *interfaceImpl) ClassdbRegisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo, )  {
-  C.callClassdbRegisterExtensionClass(me.ptrClassdbRegisterExtensionClass, pLibrary, pClassName, pParentClassName, pExtensionFuncs,)
+  defer func() {
+  }()
+  C.callClassdbRegisterExtensionClass(me.ptrClassdbRegisterExtensionClass, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pParentClassName), (*C.GDExtensionClassCreationInfo)(unsafe.Pointer(pExtensionFuncs)),)
 }
 
 func (me *interfaceImpl) ClassdbRegisterExtensionClassIntegerConstant(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pEnumName ConstStringNamePtr, pConstantName ConstStringNamePtr, pConstantValue Int, pIsBitfield Bool, )  {
-  C.callClassdbRegisterExtensionClassIntegerConstant(me.ptrClassdbRegisterExtensionClassIntegerConstant, pLibrary, pClassName, pEnumName, pConstantName, pConstantValue, pIsBitfield,)
+  defer func() {
+  }()
+  C.callClassdbRegisterExtensionClassIntegerConstant(me.ptrClassdbRegisterExtensionClassIntegerConstant, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pEnumName), C.GDExtensionConstStringNamePtr(pConstantName), C.GDExtensionInt(pConstantValue), C.GDExtensionBool(pIsBitfield),)
 }
 
 func (me *interfaceImpl) ClassdbRegisterExtensionClassMethod(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pMethodInfo *ClassMethodInfo, )  {
-  C.callClassdbRegisterExtensionClassMethod(me.ptrClassdbRegisterExtensionClassMethod, pLibrary, pClassName, pMethodInfo,)
+  defer func() {
+  }()
+  C.callClassdbRegisterExtensionClassMethod(me.ptrClassdbRegisterExtensionClassMethod, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), (*C.GDExtensionClassMethodInfo)(unsafe.Pointer(pMethodInfo)),)
 }
 
 func (me *interfaceImpl) ClassdbRegisterExtensionClassProperty(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr, )  {
-  C.callClassdbRegisterExtensionClassProperty(me.ptrClassdbRegisterExtensionClassProperty, pLibrary, pClassName, pInfo, pSetter, pGetter,)
+  defer func() {
+  }()
+  C.callClassdbRegisterExtensionClassProperty(me.ptrClassdbRegisterExtensionClassProperty, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), (*C.GDExtensionPropertyInfo)(unsafe.Pointer(pInfo)), C.GDExtensionConstStringNamePtr(pSetter), C.GDExtensionConstStringNamePtr(pGetter),)
 }
 
 func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertyGroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pGroupName ConstStringPtr, pPrefix ConstStringPtr, )  {
-  C.callClassdbRegisterExtensionClassPropertyGroup(me.ptrClassdbRegisterExtensionClassPropertyGroup, pLibrary, pClassName, pGroupName, pPrefix,)
+  defer func() {
+  }()
+  C.callClassdbRegisterExtensionClassPropertyGroup(me.ptrClassdbRegisterExtensionClassPropertyGroup, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringPtr(pGroupName), C.GDExtensionConstStringPtr(pPrefix),)
 }
 
 func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertySubgroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSubgroupName ConstStringPtr, pPrefix ConstStringPtr, )  {
-  C.callClassdbRegisterExtensionClassPropertySubgroup(me.ptrClassdbRegisterExtensionClassPropertySubgroup, pLibrary, pClassName, pSubgroupName, pPrefix,)
+  defer func() {
+  }()
+  C.callClassdbRegisterExtensionClassPropertySubgroup(me.ptrClassdbRegisterExtensionClassPropertySubgroup, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringPtr(pSubgroupName), C.GDExtensionConstStringPtr(pPrefix),)
 }
 
 func (me *interfaceImpl) ClassdbRegisterExtensionClassSignal(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSignalName ConstStringNamePtr, pArgumentInfo *PropertyInfo, pArgumentCount Int, )  {
-  C.callClassdbRegisterExtensionClassSignal(me.ptrClassdbRegisterExtensionClassSignal, pLibrary, pClassName, pSignalName, pArgumentInfo, pArgumentCount,)
+  defer func() {
+  }()
+  C.callClassdbRegisterExtensionClassSignal(me.ptrClassdbRegisterExtensionClassSignal, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pSignalName), (*C.GDExtensionPropertyInfo)(unsafe.Pointer(pArgumentInfo)), C.GDExtensionInt(pArgumentCount),)
 }
 
 func (me *interfaceImpl) ClassdbUnregisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, )  {
-  C.callClassdbUnregisterExtensionClass(me.ptrClassdbUnregisterExtensionClass, pLibrary, pClassName,)
+  defer func() {
+  }()
+  C.callClassdbUnregisterExtensionClass(me.ptrClassdbUnregisterExtensionClass, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName),)
 }
 
 func (me *interfaceImpl) DictionaryOperatorIndex(pSelf TypePtr, pKey ConstVariantPtr, ) VariantPtr {
-  return C.callDictionaryOperatorIndex(me.ptrDictionaryOperatorIndex, pSelf, pKey,)
+  defer func() {
+  }()
+  ret := C.callDictionaryOperatorIndex(me.ptrDictionaryOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionConstVariantPtr(pKey),)
+  return VariantPtr(ret)
 }
 
 func (me *interfaceImpl) DictionaryOperatorIndexConst(pSelf ConstTypePtr, pKey ConstVariantPtr, ) VariantPtr {
-  return C.callDictionaryOperatorIndexConst(me.ptrDictionaryOperatorIndexConst, pSelf, pKey,)
+  defer func() {
+  }()
+  ret := C.callDictionaryOperatorIndexConst(me.ptrDictionaryOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionConstVariantPtr(pKey),)
+  return VariantPtr(ret)
 }
 
 func (me *interfaceImpl) EditorAddPlugin(pClassName ConstStringNamePtr, )  {
-  C.callEditorAddPlugin(me.ptrEditorAddPlugin, pClassName,)
+  defer func() {
+  }()
+  C.callEditorAddPlugin(me.ptrEditorAddPlugin, C.GDExtensionConstStringNamePtr(pClassName),)
 }
 
 func (me *interfaceImpl) EditorRemovePlugin(pClassName ConstStringNamePtr, )  {
-  C.callEditorRemovePlugin(me.ptrEditorRemovePlugin, pClassName,)
+  defer func() {
+  }()
+  C.callEditorRemovePlugin(me.ptrEditorRemovePlugin, C.GDExtensionConstStringNamePtr(pClassName),)
 }
 
 func (me *interfaceImpl) FileAccessGetBuffer(pInstance ConstObjectPtr, pDst *uint8, pLength uint64, ) uint64 {
-  return C.callFileAccessGetBuffer(me.ptrFileAccessGetBuffer, pInstance, pDst, pLength,)
+  defer func() {
+  }()
+  ret := C.callFileAccessGetBuffer(me.ptrFileAccessGetBuffer, C.GDExtensionConstObjectPtr(pInstance), *(**C.uint8_t)(unsafe.Pointer(&pDst)), C.uint64_t(pLength),)
+  return uint64(ret)
 }
 
 func (me *interfaceImpl) FileAccessStoreBuffer(pInstance ObjectPtr, pSrc *uint8, pLength uint64, )  {
-  C.callFileAccessStoreBuffer(me.ptrFileAccessStoreBuffer, pInstance, pSrc, pLength,)
+  defer func() {
+  }()
+  C.callFileAccessStoreBuffer(me.ptrFileAccessStoreBuffer, C.GDExtensionObjectPtr(pInstance), *(**C.uint8_t)(unsafe.Pointer(&pSrc)), C.uint64_t(pLength),)
 }
 
 func (me *interfaceImpl) GetGodotVersion(rGodotVersion *GodotVersion, )  {
-  C.callGetGodotVersion(me.ptrGetGodotVersion, rGodotVersion,)
+  defer func() {
+  }()
+  C.callGetGodotVersion(me.ptrGetGodotVersion, (*C.GDExtensionGodotVersion)(unsafe.Pointer(rGodotVersion)),)
 }
 
 func (me *interfaceImpl) GetLibraryPath(pLibrary ClassLibraryPtr, rPath UninitializedStringPtr, )  {
-  C.callGetLibraryPath(me.ptrGetLibraryPath, pLibrary, rPath,)
+  defer func() {
+  }()
+  C.callGetLibraryPath(me.ptrGetLibraryPath, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionUninitializedStringPtr(rPath),)
 }
 
 func (me *interfaceImpl) GetNativeStructSize(pName ConstStringNamePtr, ) uint64 {
-  return C.callGetNativeStructSize(me.ptrGetNativeStructSize, pName,)
+  defer func() {
+  }()
+  ret := C.callGetNativeStructSize(me.ptrGetNativeStructSize, C.GDExtensionConstStringNamePtr(pName),)
+  return uint64(ret)
 }
 
 func (me *interfaceImpl) GetVariantFromTypeConstructor(pType VariantType, ) VariantFromTypeConstructorFunc {
-  return C.callGetVariantFromTypeConstructor(me.ptrGetVariantFromTypeConstructor, pType,)
+  defer func() {
+  }()
+  ret := C.callGetVariantFromTypeConstructor(me.ptrGetVariantFromTypeConstructor, C.GDExtensionVariantType(pType),)
+  return VariantFromTypeConstructorFunc(ret)
 }
 
 func (me *interfaceImpl) GetVariantToTypeConstructor(pType VariantType, ) TypeFromVariantConstructorFunc {
-  return C.callGetVariantToTypeConstructor(me.ptrGetVariantToTypeConstructor, pType,)
+  defer func() {
+  }()
+  ret := C.callGetVariantToTypeConstructor(me.ptrGetVariantToTypeConstructor, C.GDExtensionVariantType(pType),)
+  return TypeFromVariantConstructorFunc(ret)
 }
 
 func (me *interfaceImpl) GlobalGetSingleton(pName ConstStringNamePtr, ) ObjectPtr {
-  return C.callGlobalGetSingleton(me.ptrGlobalGetSingleton, pName,)
+  defer func() {
+  }()
+  ret := C.callGlobalGetSingleton(me.ptrGlobalGetSingleton, C.GDExtensionConstStringNamePtr(pName),)
+  return ObjectPtr(ret)
 }
 
 func (me *interfaceImpl) MemAlloc(pBytes uint64, ) unsafe.Pointer {
-  return C.callMemAlloc(me.ptrMemAlloc, pBytes,)
+  defer func() {
+  }()
+  ret := C.callMemAlloc(me.ptrMemAlloc, C.size_t(pBytes),)
+  return unsafe.Pointer(ret)
 }
 
 func (me *interfaceImpl) MemFree(pPtr unsafe.Pointer, )  {
+  defer func() {
+  }()
   C.callMemFree(me.ptrMemFree, pPtr,)
 }
 
 func (me *interfaceImpl) MemRealloc(pPtr unsafe.Pointer, pBytes uint64, ) unsafe.Pointer {
-  return C.callMemRealloc(me.ptrMemRealloc, pPtr, pBytes,)
+  defer func() {
+  }()
+  ret := C.callMemRealloc(me.ptrMemRealloc, pPtr, C.size_t(pBytes),)
+  return unsafe.Pointer(ret)
 }
 
 func (me *interfaceImpl) ObjectCastTo(pObject ConstObjectPtr, pClassTag unsafe.Pointer, ) ObjectPtr {
-  return C.callObjectCastTo(me.ptrObjectCastTo, pObject, pClassTag,)
+  defer func() {
+  }()
+  ret := C.callObjectCastTo(me.ptrObjectCastTo, C.GDExtensionConstObjectPtr(pObject), pClassTag,)
+  return ObjectPtr(ret)
 }
 
 func (me *interfaceImpl) ObjectDestroy(pO ObjectPtr, )  {
-  C.callObjectDestroy(me.ptrObjectDestroy, pO,)
+  defer func() {
+  }()
+  C.callObjectDestroy(me.ptrObjectDestroy, C.GDExtensionObjectPtr(pO),)
 }
 
 func (me *interfaceImpl) ObjectGetClassName(pObject ConstObjectPtr, pLibrary ClassLibraryPtr, rClassName UninitializedStringNamePtr, ) Bool {
-  return C.callObjectGetClassName(me.ptrObjectGetClassName, pObject, pLibrary, rClassName,)
+  defer func() {
+  }()
+  ret := C.callObjectGetClassName(me.ptrObjectGetClassName, C.GDExtensionConstObjectPtr(pObject), C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionUninitializedStringNamePtr(rClassName),)
+  return Bool(ret)
 }
 
 func (me *interfaceImpl) ObjectGetInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, pCallbacks *InstanceBindingCallbacks, ) unsafe.Pointer {
-  return C.callObjectGetInstanceBinding(me.ptrObjectGetInstanceBinding, pO, pToken, pCallbacks,)
+  defer func() {
+  }()
+  ret := C.callObjectGetInstanceBinding(me.ptrObjectGetInstanceBinding, C.GDExtensionObjectPtr(pO), pToken, (*C.GDExtensionInstanceBindingCallbacks)(unsafe.Pointer(pCallbacks)),)
+  return unsafe.Pointer(ret)
 }
 
 func (me *interfaceImpl) ObjectGetInstanceFromId(pInstanceId uint64, ) ObjectPtr {
-  return C.callObjectGetInstanceFromId(me.ptrObjectGetInstanceFromId, pInstanceId,)
+  defer func() {
+  }()
+  ret := C.callObjectGetInstanceFromId(me.ptrObjectGetInstanceFromId, C.GDObjectInstanceID(pInstanceId),)
+  return ObjectPtr(ret)
 }
 
 func (me *interfaceImpl) ObjectGetInstanceId(pObject ConstObjectPtr, ) uint64 {
-  return C.callObjectGetInstanceId(me.ptrObjectGetInstanceId, pObject,)
+  defer func() {
+  }()
+  ret := C.callObjectGetInstanceId(me.ptrObjectGetInstanceId, C.GDExtensionConstObjectPtr(pObject),)
+  return uint64(ret)
 }
 
 func (me *interfaceImpl) ObjectMethodBindCall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstVariantPtr, pArgCount Int, rRet UninitializedVariantPtr, rError *CallError, )  {
-  C.callObjectMethodBindCall(me.ptrObjectMethodBindCall, pMethodBind, pInstance, pArgs, pArgCount, rRet, rError,)
+  defer func() {
+  }()
+  C.callObjectMethodBindCall(me.ptrObjectMethodBindCall, C.GDExtensionMethodBindPtr(pMethodBind), C.GDExtensionObjectPtr(pInstance), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.GDExtensionInt(pArgCount), C.GDExtensionUninitializedVariantPtr(rRet), (*C.GDExtensionCallError)(unsafe.Pointer(rError)),)
 }
 
 func (me *interfaceImpl) ObjectMethodBindPtrcall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstTypePtr, rRet TypePtr, )  {
-  C.callObjectMethodBindPtrcall(me.ptrObjectMethodBindPtrcall, pMethodBind, pInstance, pArgs, rRet,)
+  defer func() {
+  }()
+  C.callObjectMethodBindPtrcall(me.ptrObjectMethodBindPtrcall, C.GDExtensionMethodBindPtr(pMethodBind), C.GDExtensionObjectPtr(pInstance), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)), C.GDExtensionTypePtr(rRet),)
 }
 
 func (me *interfaceImpl) ObjectSetInstance(pO ObjectPtr, pClassname ConstStringNamePtr, pInstance ClassInstancePtr, )  {
-  C.callObjectSetInstance(me.ptrObjectSetInstance, pO, pClassname, pInstance,)
+  defer func() {
+  }()
+  C.callObjectSetInstance(me.ptrObjectSetInstance, C.GDExtensionObjectPtr(pO), C.GDExtensionConstStringNamePtr(pClassname), C.GDExtensionClassInstancePtr(pInstance),)
 }
 
 func (me *interfaceImpl) ObjectSetInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, pBinding unsafe.Pointer, pCallbacks *InstanceBindingCallbacks, )  {
-  C.callObjectSetInstanceBinding(me.ptrObjectSetInstanceBinding, pO, pToken, pBinding, pCallbacks,)
+  defer func() {
+  }()
+  C.callObjectSetInstanceBinding(me.ptrObjectSetInstanceBinding, C.GDExtensionObjectPtr(pO), pToken, pBinding, (*C.GDExtensionInstanceBindingCallbacks)(unsafe.Pointer(pCallbacks)),)
 }
 
 func (me *interfaceImpl) PackedByteArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *uint8 {
-  return C.callPackedByteArrayOperatorIndex(me.ptrPackedByteArrayOperatorIndex, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedByteArrayOperatorIndex(me.ptrPackedByteArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**uint8)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) PackedByteArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *uint8 {
-  return C.callPackedByteArrayOperatorIndexConst(me.ptrPackedByteArrayOperatorIndexConst, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedByteArrayOperatorIndexConst(me.ptrPackedByteArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**uint8)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) PackedColorArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) TypePtr {
-  return C.callPackedColorArrayOperatorIndex(me.ptrPackedColorArrayOperatorIndex, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedColorArrayOperatorIndex(me.ptrPackedColorArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return TypePtr(ret)
 }
 
 func (me *interfaceImpl) PackedColorArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) TypePtr {
-  return C.callPackedColorArrayOperatorIndexConst(me.ptrPackedColorArrayOperatorIndexConst, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedColorArrayOperatorIndexConst(me.ptrPackedColorArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return TypePtr(ret)
 }
 
 func (me *interfaceImpl) PackedFloat32ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *float32 {
-  return C.callPackedFloat32ArrayOperatorIndex(me.ptrPackedFloat32ArrayOperatorIndex, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedFloat32ArrayOperatorIndex(me.ptrPackedFloat32ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**float32)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) PackedFloat32ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *float32 {
-  return C.callPackedFloat32ArrayOperatorIndexConst(me.ptrPackedFloat32ArrayOperatorIndexConst, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedFloat32ArrayOperatorIndexConst(me.ptrPackedFloat32ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**float32)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) PackedFloat64ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *float64 {
-  return C.callPackedFloat64ArrayOperatorIndex(me.ptrPackedFloat64ArrayOperatorIndex, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedFloat64ArrayOperatorIndex(me.ptrPackedFloat64ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**float64)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) PackedFloat64ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *float64 {
-  return C.callPackedFloat64ArrayOperatorIndexConst(me.ptrPackedFloat64ArrayOperatorIndexConst, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedFloat64ArrayOperatorIndexConst(me.ptrPackedFloat64ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**float64)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) PackedInt32ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *int {
-  return C.callPackedInt32ArrayOperatorIndex(me.ptrPackedInt32ArrayOperatorIndex, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedInt32ArrayOperatorIndex(me.ptrPackedInt32ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**int)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) PackedInt32ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *int {
-  return C.callPackedInt32ArrayOperatorIndexConst(me.ptrPackedInt32ArrayOperatorIndexConst, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedInt32ArrayOperatorIndexConst(me.ptrPackedInt32ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**int)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) PackedInt64ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *int64 {
-  return C.callPackedInt64ArrayOperatorIndex(me.ptrPackedInt64ArrayOperatorIndex, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedInt64ArrayOperatorIndex(me.ptrPackedInt64ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**int64)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) PackedInt64ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *int64 {
-  return C.callPackedInt64ArrayOperatorIndexConst(me.ptrPackedInt64ArrayOperatorIndexConst, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedInt64ArrayOperatorIndexConst(me.ptrPackedInt64ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**int64)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) PackedStringArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) StringPtr {
-  return C.callPackedStringArrayOperatorIndex(me.ptrPackedStringArrayOperatorIndex, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedStringArrayOperatorIndex(me.ptrPackedStringArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return StringPtr(ret)
 }
 
 func (me *interfaceImpl) PackedStringArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) StringPtr {
-  return C.callPackedStringArrayOperatorIndexConst(me.ptrPackedStringArrayOperatorIndexConst, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedStringArrayOperatorIndexConst(me.ptrPackedStringArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return StringPtr(ret)
 }
 
 func (me *interfaceImpl) PackedVector2ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) TypePtr {
-  return C.callPackedVector2ArrayOperatorIndex(me.ptrPackedVector2ArrayOperatorIndex, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedVector2ArrayOperatorIndex(me.ptrPackedVector2ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return TypePtr(ret)
 }
 
 func (me *interfaceImpl) PackedVector2ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) TypePtr {
-  return C.callPackedVector2ArrayOperatorIndexConst(me.ptrPackedVector2ArrayOperatorIndexConst, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedVector2ArrayOperatorIndexConst(me.ptrPackedVector2ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return TypePtr(ret)
 }
 
 func (me *interfaceImpl) PackedVector3ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) TypePtr {
-  return C.callPackedVector3ArrayOperatorIndex(me.ptrPackedVector3ArrayOperatorIndex, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedVector3ArrayOperatorIndex(me.ptrPackedVector3ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return TypePtr(ret)
 }
 
 func (me *interfaceImpl) PackedVector3ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) TypePtr {
-  return C.callPackedVector3ArrayOperatorIndexConst(me.ptrPackedVector3ArrayOperatorIndexConst, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callPackedVector3ArrayOperatorIndexConst(me.ptrPackedVector3ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
+  return TypePtr(ret)
 }
 
 func (me *interfaceImpl) PrintError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  C.callPrintError(me.ptrPrintError, pDescription, pFunction, pFile, pLine, pEditorNotify,)
+  cpDescription := C.CString(pDescription)
+  cpFunction := C.CString(pFunction)
+  cpFile := C.CString(pFile)
+  defer func() {
+    C.free(unsafe.Pointer(cpDescription))
+    C.free(unsafe.Pointer(cpFunction))
+    C.free(unsafe.Pointer(cpFile))
+  }()
+  C.callPrintError(me.ptrPrintError, cpDescription, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
 }
 
 func (me *interfaceImpl) PrintErrorWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  C.callPrintErrorWithMessage(me.ptrPrintErrorWithMessage, pDescription, pMessage, pFunction, pFile, pLine, pEditorNotify,)
+  cpDescription := C.CString(pDescription)
+  cpMessage := C.CString(pMessage)
+  cpFunction := C.CString(pFunction)
+  cpFile := C.CString(pFile)
+  defer func() {
+    C.free(unsafe.Pointer(cpDescription))
+    C.free(unsafe.Pointer(cpMessage))
+    C.free(unsafe.Pointer(cpFunction))
+    C.free(unsafe.Pointer(cpFile))
+  }()
+  C.callPrintErrorWithMessage(me.ptrPrintErrorWithMessage, cpDescription, cpMessage, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
 }
 
 func (me *interfaceImpl) PrintScriptError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  C.callPrintScriptError(me.ptrPrintScriptError, pDescription, pFunction, pFile, pLine, pEditorNotify,)
+  cpDescription := C.CString(pDescription)
+  cpFunction := C.CString(pFunction)
+  cpFile := C.CString(pFile)
+  defer func() {
+    C.free(unsafe.Pointer(cpDescription))
+    C.free(unsafe.Pointer(cpFunction))
+    C.free(unsafe.Pointer(cpFile))
+  }()
+  C.callPrintScriptError(me.ptrPrintScriptError, cpDescription, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
 }
 
 func (me *interfaceImpl) PrintScriptErrorWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  C.callPrintScriptErrorWithMessage(me.ptrPrintScriptErrorWithMessage, pDescription, pMessage, pFunction, pFile, pLine, pEditorNotify,)
+  cpDescription := C.CString(pDescription)
+  cpMessage := C.CString(pMessage)
+  cpFunction := C.CString(pFunction)
+  cpFile := C.CString(pFile)
+  defer func() {
+    C.free(unsafe.Pointer(cpDescription))
+    C.free(unsafe.Pointer(cpMessage))
+    C.free(unsafe.Pointer(cpFunction))
+    C.free(unsafe.Pointer(cpFile))
+  }()
+  C.callPrintScriptErrorWithMessage(me.ptrPrintScriptErrorWithMessage, cpDescription, cpMessage, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
 }
 
 func (me *interfaceImpl) PrintWarning(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  C.callPrintWarning(me.ptrPrintWarning, pDescription, pFunction, pFile, pLine, pEditorNotify,)
+  cpDescription := C.CString(pDescription)
+  cpFunction := C.CString(pFunction)
+  cpFile := C.CString(pFile)
+  defer func() {
+    C.free(unsafe.Pointer(cpDescription))
+    C.free(unsafe.Pointer(cpFunction))
+    C.free(unsafe.Pointer(cpFile))
+  }()
+  C.callPrintWarning(me.ptrPrintWarning, cpDescription, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
 }
 
 func (me *interfaceImpl) PrintWarningWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  C.callPrintWarningWithMessage(me.ptrPrintWarningWithMessage, pDescription, pMessage, pFunction, pFile, pLine, pEditorNotify,)
+  cpDescription := C.CString(pDescription)
+  cpMessage := C.CString(pMessage)
+  cpFunction := C.CString(pFunction)
+  cpFile := C.CString(pFile)
+  defer func() {
+    C.free(unsafe.Pointer(cpDescription))
+    C.free(unsafe.Pointer(cpMessage))
+    C.free(unsafe.Pointer(cpFunction))
+    C.free(unsafe.Pointer(cpFile))
+  }()
+  C.callPrintWarningWithMessage(me.ptrPrintWarningWithMessage, cpDescription, cpMessage, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
 }
 
 func (me *interfaceImpl) RefGetObject(pRef ConstRefPtr, ) ObjectPtr {
-  return C.callRefGetObject(me.ptrRefGetObject, pRef,)
+  defer func() {
+  }()
+  ret := C.callRefGetObject(me.ptrRefGetObject, C.GDExtensionConstRefPtr(pRef),)
+  return ObjectPtr(ret)
 }
 
 func (me *interfaceImpl) RefSetObject(pRef RefPtr, pObject ObjectPtr, )  {
-  C.callRefSetObject(me.ptrRefSetObject, pRef, pObject,)
+  defer func() {
+  }()
+  C.callRefSetObject(me.ptrRefSetObject, C.GDExtensionRefPtr(pRef), C.GDExtensionObjectPtr(pObject),)
 }
 
 func (me *interfaceImpl) ScriptInstanceCreate(pInfo *ScriptInstanceInfo, pInstanceData ScriptInstanceDataPtr, ) ScriptInstancePtr {
-  return C.callScriptInstanceCreate(me.ptrScriptInstanceCreate, pInfo, pInstanceData,)
+  defer func() {
+  }()
+  ret := C.callScriptInstanceCreate(me.ptrScriptInstanceCreate, (*C.GDExtensionScriptInstanceInfo)(unsafe.Pointer(pInfo)), C.GDExtensionScriptInstanceDataPtr(pInstanceData),)
+  return ScriptInstancePtr(ret)
 }
 
 func (me *interfaceImpl) StringNewWithLatin1Chars(rDest UninitializedStringPtr, pContents string, )  {
-  C.callStringNewWithLatin1Chars(me.ptrStringNewWithLatin1Chars, rDest, pContents,)
+  cpContents := C.CString(pContents)
+  defer func() {
+    C.free(unsafe.Pointer(cpContents))
+  }()
+  C.callStringNewWithLatin1Chars(me.ptrStringNewWithLatin1Chars, C.GDExtensionUninitializedStringPtr(rDest), cpContents,)
 }
 
 func (me *interfaceImpl) StringNewWithLatin1CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int, )  {
-  C.callStringNewWithLatin1CharsAndLen(me.ptrStringNewWithLatin1CharsAndLen, rDest, pContents, pSize,)
+  cpContents := C.CString(pContents)
+  defer func() {
+    C.free(unsafe.Pointer(cpContents))
+  }()
+  C.callStringNewWithLatin1CharsAndLen(me.ptrStringNewWithLatin1CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), cpContents, C.GDExtensionInt(pSize),)
 }
 
 func (me *interfaceImpl) StringNewWithUtf16Chars(rDest UninitializedStringPtr, pContents *uint16, )  {
-  C.callStringNewWithUtf16Chars(me.ptrStringNewWithUtf16Chars, rDest, pContents,)
+  defer func() {
+  }()
+  C.callStringNewWithUtf16Chars(me.ptrStringNewWithUtf16Chars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.uint16_t)(unsafe.Pointer(&pContents)),)
 }
 
 func (me *interfaceImpl) StringNewWithUtf16CharsAndLen(rDest UninitializedStringPtr, pContents *uint16, pSize Int, )  {
-  C.callStringNewWithUtf16CharsAndLen(me.ptrStringNewWithUtf16CharsAndLen, rDest, pContents, pSize,)
+  defer func() {
+  }()
+  C.callStringNewWithUtf16CharsAndLen(me.ptrStringNewWithUtf16CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.uint16_t)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pSize),)
 }
 
 func (me *interfaceImpl) StringNewWithUtf32Chars(rDest UninitializedStringPtr, pContents *uint, )  {
-  C.callStringNewWithUtf32Chars(me.ptrStringNewWithUtf32Chars, rDest, pContents,)
+  defer func() {
+  }()
+  C.callStringNewWithUtf32Chars(me.ptrStringNewWithUtf32Chars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.unsigned)(unsafe.Pointer(&pContents)),)
 }
 
 func (me *interfaceImpl) StringNewWithUtf32CharsAndLen(rDest UninitializedStringPtr, pContents *uint, pSize Int, )  {
-  C.callStringNewWithUtf32CharsAndLen(me.ptrStringNewWithUtf32CharsAndLen, rDest, pContents, pSize,)
+  defer func() {
+  }()
+  C.callStringNewWithUtf32CharsAndLen(me.ptrStringNewWithUtf32CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.unsigned)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pSize),)
 }
 
 func (me *interfaceImpl) StringNewWithUtf8Chars(rDest UninitializedStringPtr, pContents string, )  {
-  C.callStringNewWithUtf8Chars(me.ptrStringNewWithUtf8Chars, rDest, pContents,)
+  cpContents := C.CString(pContents)
+  defer func() {
+    C.free(unsafe.Pointer(cpContents))
+  }()
+  C.callStringNewWithUtf8Chars(me.ptrStringNewWithUtf8Chars, C.GDExtensionUninitializedStringPtr(rDest), cpContents,)
 }
 
 func (me *interfaceImpl) StringNewWithUtf8CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int, )  {
-  C.callStringNewWithUtf8CharsAndLen(me.ptrStringNewWithUtf8CharsAndLen, rDest, pContents, pSize,)
+  cpContents := C.CString(pContents)
+  defer func() {
+    C.free(unsafe.Pointer(cpContents))
+  }()
+  C.callStringNewWithUtf8CharsAndLen(me.ptrStringNewWithUtf8CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), cpContents, C.GDExtensionInt(pSize),)
 }
 
 func (me *interfaceImpl) StringNewWithWideChars(rDest UninitializedStringPtr, pContents *int, )  {
-  C.callStringNewWithWideChars(me.ptrStringNewWithWideChars, rDest, pContents,)
+  defer func() {
+  }()
+  C.callStringNewWithWideChars(me.ptrStringNewWithWideChars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.int)(unsafe.Pointer(&pContents)),)
 }
 
 func (me *interfaceImpl) StringNewWithWideCharsAndLen(rDest UninitializedStringPtr, pContents *int, pSize Int, )  {
-  C.callStringNewWithWideCharsAndLen(me.ptrStringNewWithWideCharsAndLen, rDest, pContents, pSize,)
+  defer func() {
+  }()
+  C.callStringNewWithWideCharsAndLen(me.ptrStringNewWithWideCharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.int)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pSize),)
 }
 
 func (me *interfaceImpl) StringOperatorIndex(pSelf StringPtr, pIndex Int, ) *uint {
-  return C.callStringOperatorIndex(me.ptrStringOperatorIndex, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callStringOperatorIndex(me.ptrStringOperatorIndex, C.GDExtensionStringPtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**uint)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) StringOperatorIndexConst(pSelf ConstStringPtr, pIndex Int, ) *uint {
-  return C.callStringOperatorIndexConst(me.ptrStringOperatorIndexConst, pSelf, pIndex,)
+  defer func() {
+  }()
+  ret := C.callStringOperatorIndexConst(me.ptrStringOperatorIndexConst, C.GDExtensionConstStringPtr(pSelf), C.GDExtensionInt(pIndex),)
+  return *(**uint)(unsafe.Pointer(&ret))
 }
 
 func (me *interfaceImpl) StringOperatorPlusEqC32Str(pSelf StringPtr, pB *uint, )  {
-  C.callStringOperatorPlusEqC32Str(me.ptrStringOperatorPlusEqC32Str, pSelf, pB,)
+  defer func() {
+  }()
+  C.callStringOperatorPlusEqC32Str(me.ptrStringOperatorPlusEqC32Str, C.GDExtensionStringPtr(pSelf), *(**C.unsigned)(unsafe.Pointer(&pB)),)
 }
 
 func (me *interfaceImpl) StringOperatorPlusEqChar(pSelf StringPtr, pB uint, )  {
-  C.callStringOperatorPlusEqChar(me.ptrStringOperatorPlusEqChar, pSelf, pB,)
+  defer func() {
+  }()
+  C.callStringOperatorPlusEqChar(me.ptrStringOperatorPlusEqChar, C.GDExtensionStringPtr(pSelf), C.char32_t(pB),)
 }
 
 func (me *interfaceImpl) StringOperatorPlusEqCstr(pSelf StringPtr, pB string, )  {
-  C.callStringOperatorPlusEqCstr(me.ptrStringOperatorPlusEqCstr, pSelf, pB,)
+  cpB := C.CString(pB)
+  defer func() {
+    C.free(unsafe.Pointer(cpB))
+  }()
+  C.callStringOperatorPlusEqCstr(me.ptrStringOperatorPlusEqCstr, C.GDExtensionStringPtr(pSelf), cpB,)
 }
 
 func (me *interfaceImpl) StringOperatorPlusEqString(pSelf StringPtr, pB ConstStringPtr, )  {
-  C.callStringOperatorPlusEqString(me.ptrStringOperatorPlusEqString, pSelf, pB,)
+  defer func() {
+  }()
+  C.callStringOperatorPlusEqString(me.ptrStringOperatorPlusEqString, C.GDExtensionStringPtr(pSelf), C.GDExtensionConstStringPtr(pB),)
 }
 
 func (me *interfaceImpl) StringOperatorPlusEqWcstr(pSelf StringPtr, pB *int, )  {
-  C.callStringOperatorPlusEqWcstr(me.ptrStringOperatorPlusEqWcstr, pSelf, pB,)
+  defer func() {
+  }()
+  C.callStringOperatorPlusEqWcstr(me.ptrStringOperatorPlusEqWcstr, C.GDExtensionStringPtr(pSelf), *(**C.int)(unsafe.Pointer(&pB)),)
 }
 
 func (me *interfaceImpl) StringToLatin1Chars(pSelf ConstStringPtr, rText string, pMaxWriteLength Int, ) Int {
-  return C.callStringToLatin1Chars(me.ptrStringToLatin1Chars, pSelf, rText, pMaxWriteLength,)
+  crText := C.CString(rText)
+  defer func() {
+    C.free(unsafe.Pointer(crText))
+  }()
+  ret := C.callStringToLatin1Chars(me.ptrStringToLatin1Chars, C.GDExtensionConstStringPtr(pSelf), crText, C.GDExtensionInt(pMaxWriteLength),)
+  return Int(ret)
 }
 
 func (me *interfaceImpl) StringToUtf16Chars(pSelf ConstStringPtr, rText *uint16, pMaxWriteLength Int, ) Int {
-  return C.callStringToUtf16Chars(me.ptrStringToUtf16Chars, pSelf, rText, pMaxWriteLength,)
+  defer func() {
+  }()
+  ret := C.callStringToUtf16Chars(me.ptrStringToUtf16Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.uint16_t)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength),)
+  return Int(ret)
 }
 
 func (me *interfaceImpl) StringToUtf32Chars(pSelf ConstStringPtr, rText *uint, pMaxWriteLength Int, ) Int {
-  return C.callStringToUtf32Chars(me.ptrStringToUtf32Chars, pSelf, rText, pMaxWriteLength,)
+  defer func() {
+  }()
+  ret := C.callStringToUtf32Chars(me.ptrStringToUtf32Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.unsigned)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength),)
+  return Int(ret)
 }
 
 func (me *interfaceImpl) StringToUtf8Chars(pSelf ConstStringPtr, rText string, pMaxWriteLength Int, ) Int {
-  return C.callStringToUtf8Chars(me.ptrStringToUtf8Chars, pSelf, rText, pMaxWriteLength,)
+  crText := C.CString(rText)
+  defer func() {
+    C.free(unsafe.Pointer(crText))
+  }()
+  ret := C.callStringToUtf8Chars(me.ptrStringToUtf8Chars, C.GDExtensionConstStringPtr(pSelf), crText, C.GDExtensionInt(pMaxWriteLength),)
+  return Int(ret)
 }
 
 func (me *interfaceImpl) StringToWideChars(pSelf ConstStringPtr, rText *int, pMaxWriteLength Int, ) Int {
-  return C.callStringToWideChars(me.ptrStringToWideChars, pSelf, rText, pMaxWriteLength,)
+  defer func() {
+  }()
+  ret := C.callStringToWideChars(me.ptrStringToWideChars, C.GDExtensionConstStringPtr(pSelf), *(**C.int)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength),)
+  return Int(ret)
 }
 
 func (me *interfaceImpl) VariantBooleanize(pSelf ConstVariantPtr, ) Bool {
-  return C.callVariantBooleanize(me.ptrVariantBooleanize, pSelf,)
+  defer func() {
+  }()
+  ret := C.callVariantBooleanize(me.ptrVariantBooleanize, C.GDExtensionConstVariantPtr(pSelf),)
+  return Bool(ret)
 }
 
 func (me *interfaceImpl) VariantCall(pSelf VariantPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError, )  {
-  C.callVariantCall(me.ptrVariantCall, pSelf, pMethod, pArgs, pArgumentCount, rReturn, rError,)
+  defer func() {
+  }()
+  C.callVariantCall(me.ptrVariantCall, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pMethod), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.GDExtensionInt(pArgumentCount), C.GDExtensionUninitializedVariantPtr(rReturn), (*C.GDExtensionCallError)(unsafe.Pointer(rError)),)
 }
 
 func (me *interfaceImpl) VariantCallStatic(pType VariantType, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError, )  {
-  C.callVariantCallStatic(me.ptrVariantCallStatic, pType, pMethod, pArgs, pArgumentCount, rReturn, rError,)
+  defer func() {
+  }()
+  C.callVariantCallStatic(me.ptrVariantCallStatic, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMethod), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.GDExtensionInt(pArgumentCount), C.GDExtensionUninitializedVariantPtr(rReturn), (*C.GDExtensionCallError)(unsafe.Pointer(rError)),)
 }
 
 func (me *interfaceImpl) VariantCanConvert(pFrom VariantType, pTo VariantType, ) Bool {
-  return C.callVariantCanConvert(me.ptrVariantCanConvert, pFrom, pTo,)
+  defer func() {
+  }()
+  ret := C.callVariantCanConvert(me.ptrVariantCanConvert, C.GDExtensionVariantType(pFrom), C.GDExtensionVariantType(pTo),)
+  return Bool(ret)
 }
 
 func (me *interfaceImpl) VariantCanConvertStrict(pFrom VariantType, pTo VariantType, ) Bool {
-  return C.callVariantCanConvertStrict(me.ptrVariantCanConvertStrict, pFrom, pTo,)
+  defer func() {
+  }()
+  ret := C.callVariantCanConvertStrict(me.ptrVariantCanConvertStrict, C.GDExtensionVariantType(pFrom), C.GDExtensionVariantType(pTo),)
+  return Bool(ret)
 }
 
 func (me *interfaceImpl) VariantConstruct(pType VariantType, rBase UninitializedVariantPtr, pArgs *ConstVariantPtr, pArgumentCount int, rError *CallError, )  {
-  C.callVariantConstruct(me.ptrVariantConstruct, pType, rBase, pArgs, pArgumentCount, rError,)
+  defer func() {
+  }()
+  C.callVariantConstruct(me.ptrVariantConstruct, C.GDExtensionVariantType(pType), C.GDExtensionUninitializedVariantPtr(rBase), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.int32_t(pArgumentCount), (*C.GDExtensionCallError)(unsafe.Pointer(rError)),)
 }
 
 func (me *interfaceImpl) VariantDestroy(pSelf VariantPtr, )  {
-  C.callVariantDestroy(me.ptrVariantDestroy, pSelf,)
+  defer func() {
+  }()
+  C.callVariantDestroy(me.ptrVariantDestroy, C.GDExtensionVariantPtr(pSelf),)
 }
 
 func (me *interfaceImpl) VariantDuplicate(pSelf ConstVariantPtr, rRet VariantPtr, pDeep Bool, )  {
-  C.callVariantDuplicate(me.ptrVariantDuplicate, pSelf, rRet, pDeep,)
+  defer func() {
+  }()
+  C.callVariantDuplicate(me.ptrVariantDuplicate, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionVariantPtr(rRet), C.GDExtensionBool(pDeep),)
 }
 
 func (me *interfaceImpl) VariantEvaluate(pOp VariantOperator, pA ConstVariantPtr, pB ConstVariantPtr, rReturn UninitializedVariantPtr, rValid *uint8, )  {
-  C.callVariantEvaluate(me.ptrVariantEvaluate, pOp, pA, pB, rReturn, rValid,)
+  defer func() {
+  }()
+  C.callVariantEvaluate(me.ptrVariantEvaluate, C.GDExtensionVariantOperator(pOp), C.GDExtensionConstVariantPtr(pA), C.GDExtensionConstVariantPtr(pB), C.GDExtensionUninitializedVariantPtr(rReturn), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
 }
 
 func (me *interfaceImpl) VariantGet(pSelf ConstVariantPtr, pKey ConstVariantPtr, rRet UninitializedVariantPtr, rValid *uint8, )  {
-  C.callVariantGet(me.ptrVariantGet, pSelf, pKey, rRet, rValid,)
+  defer func() {
+  }()
+  C.callVariantGet(me.ptrVariantGet, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
 }
 
 func (me *interfaceImpl) VariantGetConstantValue(pType VariantType, pConstant ConstStringNamePtr, rRet UninitializedVariantPtr, )  {
-  C.callVariantGetConstantValue(me.ptrVariantGetConstantValue, pType, pConstant, rRet,)
+  defer func() {
+  }()
+  C.callVariantGetConstantValue(me.ptrVariantGetConstantValue, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pConstant), C.GDExtensionUninitializedVariantPtr(rRet),)
 }
 
 func (me *interfaceImpl) VariantGetIndexed(pSelf ConstVariantPtr, pIndex Int, rRet UninitializedVariantPtr, rValid *uint8, rOob *uint8, )  {
-  C.callVariantGetIndexed(me.ptrVariantGetIndexed, pSelf, pIndex, rRet, rValid, rOob,)
+  defer func() {
+  }()
+  C.callVariantGetIndexed(me.ptrVariantGetIndexed, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionInt(pIndex), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)), *(**C.uint8_t)(unsafe.Pointer(&rOob)),)
 }
 
 func (me *interfaceImpl) VariantGetKeyed(pSelf ConstVariantPtr, pKey ConstVariantPtr, rRet UninitializedVariantPtr, rValid *uint8, )  {
-  C.callVariantGetKeyed(me.ptrVariantGetKeyed, pSelf, pKey, rRet, rValid,)
+  defer func() {
+  }()
+  C.callVariantGetKeyed(me.ptrVariantGetKeyed, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
 }
 
 func (me *interfaceImpl) VariantGetNamed(pSelf ConstVariantPtr, pKey ConstStringNamePtr, rRet UninitializedVariantPtr, rValid *uint8, )  {
-  C.callVariantGetNamed(me.ptrVariantGetNamed, pSelf, pKey, rRet, rValid,)
+  defer func() {
+  }()
+  C.callVariantGetNamed(me.ptrVariantGetNamed, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pKey), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
 }
 
 func (me *interfaceImpl) VariantGetPtrBuiltinMethod(pType VariantType, pMethod ConstStringNamePtr, pHash Int, ) PtrBuiltInMethod {
-  return C.callVariantGetPtrBuiltinMethod(me.ptrVariantGetPtrBuiltinMethod, pType, pMethod, pHash,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrBuiltinMethod(me.ptrVariantGetPtrBuiltinMethod, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMethod), C.GDExtensionInt(pHash),)
+  return PtrBuiltInMethod(ret)
 }
 
 func (me *interfaceImpl) VariantGetPtrConstructor(pType VariantType, pConstructor int, ) PtrConstructor {
-  return C.callVariantGetPtrConstructor(me.ptrVariantGetPtrConstructor, pType, pConstructor,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrConstructor(me.ptrVariantGetPtrConstructor, C.GDExtensionVariantType(pType), C.int32_t(pConstructor),)
+  return PtrConstructor(ret)
 }
 
 func (me *interfaceImpl) VariantGetPtrDestructor(pType VariantType, ) PtrDestructor {
-  return C.callVariantGetPtrDestructor(me.ptrVariantGetPtrDestructor, pType,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrDestructor(me.ptrVariantGetPtrDestructor, C.GDExtensionVariantType(pType),)
+  return PtrDestructor(ret)
 }
 
 func (me *interfaceImpl) VariantGetPtrGetter(pType VariantType, pMember ConstStringNamePtr, ) PtrGetter {
-  return C.callVariantGetPtrGetter(me.ptrVariantGetPtrGetter, pType, pMember,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrGetter(me.ptrVariantGetPtrGetter, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMember),)
+  return PtrGetter(ret)
 }
 
 func (me *interfaceImpl) VariantGetPtrIndexedGetter(pType VariantType, ) PtrIndexedGetter {
-  return C.callVariantGetPtrIndexedGetter(me.ptrVariantGetPtrIndexedGetter, pType,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrIndexedGetter(me.ptrVariantGetPtrIndexedGetter, C.GDExtensionVariantType(pType),)
+  return PtrIndexedGetter(ret)
 }
 
 func (me *interfaceImpl) VariantGetPtrIndexedSetter(pType VariantType, ) PtrIndexedSetter {
-  return C.callVariantGetPtrIndexedSetter(me.ptrVariantGetPtrIndexedSetter, pType,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrIndexedSetter(me.ptrVariantGetPtrIndexedSetter, C.GDExtensionVariantType(pType),)
+  return PtrIndexedSetter(ret)
 }
 
 func (me *interfaceImpl) VariantGetPtrKeyedChecker(pType VariantType, ) PtrKeyedChecker {
-  return C.callVariantGetPtrKeyedChecker(me.ptrVariantGetPtrKeyedChecker, pType,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrKeyedChecker(me.ptrVariantGetPtrKeyedChecker, C.GDExtensionVariantType(pType),)
+  return PtrKeyedChecker(ret)
 }
 
 func (me *interfaceImpl) VariantGetPtrKeyedGetter(pType VariantType, ) PtrKeyedGetter {
-  return C.callVariantGetPtrKeyedGetter(me.ptrVariantGetPtrKeyedGetter, pType,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrKeyedGetter(me.ptrVariantGetPtrKeyedGetter, C.GDExtensionVariantType(pType),)
+  return PtrKeyedGetter(ret)
 }
 
 func (me *interfaceImpl) VariantGetPtrKeyedSetter(pType VariantType, ) PtrKeyedSetter {
-  return C.callVariantGetPtrKeyedSetter(me.ptrVariantGetPtrKeyedSetter, pType,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrKeyedSetter(me.ptrVariantGetPtrKeyedSetter, C.GDExtensionVariantType(pType),)
+  return PtrKeyedSetter(ret)
 }
 
 func (me *interfaceImpl) VariantGetPtrOperatorEvaluator(pOperator VariantOperator, pTypeA VariantType, pTypeB VariantType, ) PtrOperatorEvaluator {
-  return C.callVariantGetPtrOperatorEvaluator(me.ptrVariantGetPtrOperatorEvaluator, pOperator, pTypeA, pTypeB,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrOperatorEvaluator(me.ptrVariantGetPtrOperatorEvaluator, C.GDExtensionVariantOperator(pOperator), C.GDExtensionVariantType(pTypeA), C.GDExtensionVariantType(pTypeB),)
+  return PtrOperatorEvaluator(ret)
 }
 
 func (me *interfaceImpl) VariantGetPtrSetter(pType VariantType, pMember ConstStringNamePtr, ) PtrSetter {
-  return C.callVariantGetPtrSetter(me.ptrVariantGetPtrSetter, pType, pMember,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrSetter(me.ptrVariantGetPtrSetter, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMember),)
+  return PtrSetter(ret)
 }
 
 func (me *interfaceImpl) VariantGetPtrUtilityFunction(pFunction ConstStringNamePtr, pHash Int, ) PtrUtilityFunction {
-  return C.callVariantGetPtrUtilityFunction(me.ptrVariantGetPtrUtilityFunction, pFunction, pHash,)
+  defer func() {
+  }()
+  ret := C.callVariantGetPtrUtilityFunction(me.ptrVariantGetPtrUtilityFunction, C.GDExtensionConstStringNamePtr(pFunction), C.GDExtensionInt(pHash),)
+  return PtrUtilityFunction(ret)
 }
 
 func (me *interfaceImpl) VariantGetType(pSelf ConstVariantPtr, ) VariantType {
-  return C.callVariantGetType(me.ptrVariantGetType, pSelf,)
+  defer func() {
+  }()
+  ret := C.callVariantGetType(me.ptrVariantGetType, C.GDExtensionConstVariantPtr(pSelf),)
+  return VariantType(ret)
 }
 
 func (me *interfaceImpl) VariantGetTypeName(pType VariantType, rName UninitializedStringPtr, )  {
-  C.callVariantGetTypeName(me.ptrVariantGetTypeName, pType, rName,)
+  defer func() {
+  }()
+  C.callVariantGetTypeName(me.ptrVariantGetTypeName, C.GDExtensionVariantType(pType), C.GDExtensionUninitializedStringPtr(rName),)
 }
 
 func (me *interfaceImpl) VariantHasKey(pSelf ConstVariantPtr, pKey ConstVariantPtr, rValid *uint8, ) Bool {
-  return C.callVariantHasKey(me.ptrVariantHasKey, pSelf, pKey, rValid,)
+  defer func() {
+  }()
+  ret := C.callVariantHasKey(me.ptrVariantHasKey, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
+  return Bool(ret)
 }
 
 func (me *interfaceImpl) VariantHasMember(pType VariantType, pMember ConstStringNamePtr, ) Bool {
-  return C.callVariantHasMember(me.ptrVariantHasMember, pType, pMember,)
+  defer func() {
+  }()
+  ret := C.callVariantHasMember(me.ptrVariantHasMember, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMember),)
+  return Bool(ret)
 }
 
 func (me *interfaceImpl) VariantHasMethod(pSelf ConstVariantPtr, pMethod ConstStringNamePtr, ) Bool {
-  return C.callVariantHasMethod(me.ptrVariantHasMethod, pSelf, pMethod,)
+  defer func() {
+  }()
+  ret := C.callVariantHasMethod(me.ptrVariantHasMethod, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pMethod),)
+  return Bool(ret)
 }
 
 func (me *interfaceImpl) VariantHash(pSelf ConstVariantPtr, ) Int {
-  return C.callVariantHash(me.ptrVariantHash, pSelf,)
+  defer func() {
+  }()
+  ret := C.callVariantHash(me.ptrVariantHash, C.GDExtensionConstVariantPtr(pSelf),)
+  return Int(ret)
 }
 
 func (me *interfaceImpl) VariantHashCompare(pSelf ConstVariantPtr, pOther ConstVariantPtr, ) Bool {
-  return C.callVariantHashCompare(me.ptrVariantHashCompare, pSelf, pOther,)
+  defer func() {
+  }()
+  ret := C.callVariantHashCompare(me.ptrVariantHashCompare, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pOther),)
+  return Bool(ret)
 }
 
 func (me *interfaceImpl) VariantIterGet(pSelf ConstVariantPtr, rIter VariantPtr, rRet UninitializedVariantPtr, rValid *uint8, )  {
-  C.callVariantIterGet(me.ptrVariantIterGet, pSelf, rIter, rRet, rValid,)
+  defer func() {
+  }()
+  C.callVariantIterGet(me.ptrVariantIterGet, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionVariantPtr(rIter), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
 }
 
 func (me *interfaceImpl) VariantIterInit(pSelf ConstVariantPtr, rIter UninitializedVariantPtr, rValid *uint8, ) Bool {
-  return C.callVariantIterInit(me.ptrVariantIterInit, pSelf, rIter, rValid,)
+  defer func() {
+  }()
+  ret := C.callVariantIterInit(me.ptrVariantIterInit, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionUninitializedVariantPtr(rIter), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
+  return Bool(ret)
 }
 
 func (me *interfaceImpl) VariantIterNext(pSelf ConstVariantPtr, rIter VariantPtr, rValid *uint8, ) Bool {
-  return C.callVariantIterNext(me.ptrVariantIterNext, pSelf, rIter, rValid,)
+  defer func() {
+  }()
+  ret := C.callVariantIterNext(me.ptrVariantIterNext, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionVariantPtr(rIter), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
+  return Bool(ret)
 }
 
 func (me *interfaceImpl) VariantNewCopy(rDest UninitializedVariantPtr, pSrc ConstVariantPtr, )  {
-  C.callVariantNewCopy(me.ptrVariantNewCopy, rDest, pSrc,)
+  defer func() {
+  }()
+  C.callVariantNewCopy(me.ptrVariantNewCopy, C.GDExtensionUninitializedVariantPtr(rDest), C.GDExtensionConstVariantPtr(pSrc),)
 }
 
 func (me *interfaceImpl) VariantNewNil(rDest UninitializedVariantPtr, )  {
-  C.callVariantNewNil(me.ptrVariantNewNil, rDest,)
+  defer func() {
+  }()
+  C.callVariantNewNil(me.ptrVariantNewNil, C.GDExtensionUninitializedVariantPtr(rDest),)
 }
 
 func (me *interfaceImpl) VariantRecursiveHash(pSelf ConstVariantPtr, pRecursionCount Int, ) Int {
-  return C.callVariantRecursiveHash(me.ptrVariantRecursiveHash, pSelf, pRecursionCount,)
+  defer func() {
+  }()
+  ret := C.callVariantRecursiveHash(me.ptrVariantRecursiveHash, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionInt(pRecursionCount),)
+  return Int(ret)
 }
 
 func (me *interfaceImpl) VariantSet(pSelf VariantPtr, pKey ConstVariantPtr, pValue ConstVariantPtr, rValid *uint8, )  {
-  C.callVariantSet(me.ptrVariantSet, pSelf, pKey, pValue, rValid,)
+  defer func() {
+  }()
+  C.callVariantSet(me.ptrVariantSet, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
 }
 
 func (me *interfaceImpl) VariantSetIndexed(pSelf VariantPtr, pIndex Int, pValue ConstVariantPtr, rValid *uint8, rOob *uint8, )  {
-  C.callVariantSetIndexed(me.ptrVariantSetIndexed, pSelf, pIndex, pValue, rValid, rOob,)
+  defer func() {
+  }()
+  C.callVariantSetIndexed(me.ptrVariantSetIndexed, C.GDExtensionVariantPtr(pSelf), C.GDExtensionInt(pIndex), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)), *(**C.uint8_t)(unsafe.Pointer(&rOob)),)
 }
 
 func (me *interfaceImpl) VariantSetKeyed(pSelf VariantPtr, pKey ConstVariantPtr, pValue ConstVariantPtr, rValid *uint8, )  {
-  C.callVariantSetKeyed(me.ptrVariantSetKeyed, pSelf, pKey, pValue, rValid,)
+  defer func() {
+  }()
+  C.callVariantSetKeyed(me.ptrVariantSetKeyed, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
 }
 
 func (me *interfaceImpl) VariantSetNamed(pSelf VariantPtr, pKey ConstStringNamePtr, pValue ConstVariantPtr, rValid *uint8, )  {
-  C.callVariantSetNamed(me.ptrVariantSetNamed, pSelf, pKey, pValue, rValid,)
+  defer func() {
+  }()
+  C.callVariantSetNamed(me.ptrVariantSetNamed, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pKey), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
 }
 
 func (me *interfaceImpl) VariantStringify(pSelf ConstVariantPtr, rRet StringPtr, )  {
-  C.callVariantStringify(me.ptrVariantStringify, pSelf, rRet,)
+  defer func() {
+  }()
+  C.callVariantStringify(me.ptrVariantStringify, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionStringPtr(rRet),)
 }
 
 func (me *interfaceImpl) WorkerThreadPoolAddNativeGroupTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pElements int, pTasks int, pHighPriority Bool, pDescription ConstStringPtr, ) int64 {
-  return C.callWorkerThreadPoolAddNativeGroupTask(me.ptrWorkerThreadPoolAddNativeGroupTask, pInstance, pFunc, pUserdata, pElements, pTasks, pHighPriority, pDescription,)
+  defer func() {
+  }()
+  ret := C.callWorkerThreadPoolAddNativeGroupTask(me.ptrWorkerThreadPoolAddNativeGroupTask, C.GDExtensionObjectPtr(pInstance), pFunc, pUserdata, C.int(pElements), C.int(pTasks), C.GDExtensionBool(pHighPriority), C.GDExtensionConstStringPtr(pDescription),)
+  return int64(ret)
 }
 
 func (me *interfaceImpl) WorkerThreadPoolAddNativeTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pHighPriority Bool, pDescription ConstStringPtr, ) int64 {
-  return C.callWorkerThreadPoolAddNativeTask(me.ptrWorkerThreadPoolAddNativeTask, pInstance, pFunc, pUserdata, pHighPriority, pDescription,)
+  defer func() {
+  }()
+  ret := C.callWorkerThreadPoolAddNativeTask(me.ptrWorkerThreadPoolAddNativeTask, C.GDExtensionObjectPtr(pInstance), pFunc, pUserdata, C.GDExtensionBool(pHighPriority), C.GDExtensionConstStringPtr(pDescription),)
+  return int64(ret)
 }
 
 func (me *interfaceImpl) XmlParserOpenBuffer(pInstance ObjectPtr, pBuffer *uint8, pSize uint64, ) Int {
-  return C.callXmlParserOpenBuffer(me.ptrXmlParserOpenBuffer, pInstance, pBuffer, pSize,)
+  defer func() {
+  }()
+  ret := C.callXmlParserOpenBuffer(me.ptrXmlParserOpenBuffer, C.GDExtensionObjectPtr(pInstance), *(**C.uint8_t)(unsafe.Pointer(&pBuffer)), C.size_t(pSize),)
+  return Int(ret)
 }
 

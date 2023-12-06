@@ -3,3 +3,9 @@
 void* callGetProcAddress(GDExtensionInterfaceGetProcAddress getProcAddr, const char* procName) {
   return getProcAddr(procName);
 }
+
+{{range .Funcs}}
+{{.ReturnType.CType}} call{{.Name}}({{.CName}} fn{{range .Args}}, {{.CType}} {{.Name}}{{end}}) {
+  return fn({{range $i, $e := .Args}}{{ if $i }}, {{ end }}{{$e.Name}}{{end}});
+}
+{{end}}

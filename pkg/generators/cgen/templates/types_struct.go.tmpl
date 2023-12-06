@@ -12,9 +12,13 @@ type {{.Name}} struct {
 }
 
 // ToRaw converts {{.Name}} to a {{.Name}}Raw
-func (me *{{.Name}}) ToRaw() {{.Name}}Raw {
+func (me *{{.Name}}) ToRaw() ({{.Name}}Raw, func()) {
+{{range .Members}}{{if ne .GoToCGo.Def ""}}  {{.GoToCGo.Def}}
+{{end}}{{end}}
 	raw := {{.Name}}Raw{}
-{{range .Members}}	raw.{{.CName}} = {{.GoToCGo}}
+{{range .Members}}	raw.{{.CName}} = {{.GoToCGo.Use}}
 {{end}}
-	return raw
+	return raw, func() {
+{{range .Members}}{{if ne .GoToCGo.Free ""}}    {{.GoToCGo.Free}}
+{{end}}{{end}}  }
 }

@@ -36,6 +36,11 @@ type interfaceImpl struct {
 }
 {{range .Funcs}}
 func (me *interfaceImpl) {{.Name}}({{range .Args}}{{.Name}} {{.GoType}}, {{end}}) {{.ReturnType.GoType}} {
-  {{if ne .ReturnType.GoType ""}}return {{end}}C.call{{.Name}}(me.ptr{{.Name}},{{range .Args}} {{.Name}},{{end}})
+{{range .Args}}{{if ne .GoToCGo.Def ""}}  {{.GoToCGo.Def}}
+{{end}}{{end}}  defer func() {
+{{range .Args}}{{if ne .GoToCGo.Free ""}}    {{.GoToCGo.Free}}
+{{end}}{{end}}  }()
+  {{if ne .ReturnType.GoType ""}}ret := {{end}}C.call{{.Name}}(me.ptr{{.Name}},{{range .Args}} {{.GoToCGo.Use}},{{end}}){{if ne .ReturnType.GoType ""}}
+  return {{.ReturnType.CGoToGo}}{{end}}
 }
 {{end}}

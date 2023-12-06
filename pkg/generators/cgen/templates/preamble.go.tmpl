@@ -3,8 +3,8 @@ package gdc
 // #cgo CFLAGS: -I${SRCDIR}/../gdraw
 /*
 #include <string.h>
-{{if eq .File "interface.gen.go"}}
 #include <stdlib.h>
+{{if eq .File "interface.gen.go"}}
 #include "interface.gen.h"
 {{else}}
 #include <gdextension_interface.h>

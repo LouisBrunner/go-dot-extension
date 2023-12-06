@@ -34,22 +34,14 @@ func New(pGetProcAddr gdc.InterfaceGetProcAddress, pLibrary gdc.ClassLibraryPtr,
 }
 
 func (me *extension) registerClass(className, parentName string, def gdc.ClassCreationInfo) error {
-	// return me.callInterfaceClassdbRegisterExtensionClass(
-	//
-	//	gdc.ClassLibraryPtr(me.pLibrary),
-	//	className,
-	//	parentName,
-	//	UnsafeConvert[*gdc.ClassCreationInfo](&def),
-	//
-	// )
+	// TODO: how?
+	me.iface.ClassdbRegisterExtensionClass(me.pLibrary, nil, nil, &def)
 	return nil
 }
 
 func (me *extension) unregisterClass(className string) error {
-	// return me.callInterfaceClassdbUnregisterExtensionClass(
-	// 	gdc.ClassLibraryPtr(me.pLibrary),
-	// 	className,
-	// )
+	// TODO: how?
+	me.iface.ClassdbUnregisterExtensionClass(me.pLibrary, nil)
 	return nil
 }
 
@@ -83,7 +75,7 @@ func (me *extension) Initialize(rInitialization *gdc.InitializationRaw, init gdc
 		Initialize:                 init,
 		Deinitialize:               fini,
 	}
-	*rInitialization = rInit.ToRaw()
+	*rInitialization, _ = rInit.ToRaw()
 	return gdc.Bool(1)
 }
 
@@ -95,6 +87,7 @@ func (me *extension) OnInit(level gdc.InitializationLevel) error {
 		me.Logf(LogLevelDebug, "registering class %q", name)
 		err := me.registerClass(entry.class.ClassName(), entry.class.ParentClassName(), gdc.ClassCreationInfo{
 			ClassUserdata: store(entry),
+			// TODO: how?
 			// CreateInstanceFunc: trampolineClassCreateInstance,
 			// FreeInstanceFunc:   trampolineClassFreeInstance,
 		})
@@ -134,25 +127,28 @@ func (me *extension) LogDetailedf(level LogLevel, description, function, file st
 
 	msg := fmt.Sprintf(format, args...)
 
+	lineC := int(line)
+	notifyEditorC := gdc.Bool(0)
+	if notifyEditor {
+		notifyEditorC = gdc.Bool(1)
+	}
+
 	editor := ""
 	if notifyEditor {
 		editor = " {EDITOR}"
 	}
 	log.Printf("[%s] %s:%d @ %s(%s): %s%s", level, file, line, function, description, msg, editor)
-	var err error
 	switch level {
 	case LogLevelError:
-		// err = me.callInterfacePrintErrorWithMessage(description, msg, function, file, line, notifyEditor)
+		me.iface.PrintErrorWithMessage(description, msg, function, file, lineC, notifyEditorC)
 	case LogLevelWarning:
-		// err = me.callInterfacePrintWarningWithMessage(description, msg, function, file, line, notifyEditor)
+		me.iface.PrintWarningWithMessage(description, msg, function, file, lineC, notifyEditorC)
 	case LogLevelInfo:
+		// TODO: finish
 		// err = me.callPrint(fmt.Sprintf("%s: %s", description, msg))
 	case LogLevelDebug:
 	default:
 		log.Printf("unknown log level %q for %q", level, msg)
-		// err = me.callInterfacePrintWarningWithMessage(description, fmt.Sprintf("UNKNOWN LEVEL %q: %s", level, msg), function, file, line, notifyEditor)
-	}
-	if err != nil {
-		log.Printf("could not log message to editor: %v", err.Error())
+		me.iface.PrintWarningWithMessage(description, fmt.Sprintf("UNKNOWN LEVEL %q: %s", level, msg), function, file, lineC, notifyEditorC)
 	}
 }

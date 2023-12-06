@@ -21,21 +21,30 @@ func generateInterface(out *outputFiles) error {
 
 		args := make([]map[string]interface{}, 0, len(funcTyp.params))
 		for _, param := range funcTyp.params {
+			name := makeGoVarName(param.name)
+			def, free, use := param.typ.goToCGo(name)
 			args = append(args, map[string]interface{}{
-				"Name":    makeGoVarName(param.name),
+				"Name":    name,
 				"GoType":  param.typ.getGoType(),
 				"CGoType": param.typ.getCGoType(),
 				"CType":   param.typ.getCType(),
+				"GoToCGo": map[string]interface{}{
+					"Def":  def,
+					"Free": free,
+					"Use":  use,
+				},
 			})
 		}
 
 		retGoType := ""
 		retCGoType := ""
 		retCType := "void"
+		cgoCast := "ret"
 		if funcTyp.retType != nil {
 			retGoType = funcTyp.retType.getGoType()
 			retCGoType = funcTyp.retType.getCGoType()
 			retCType = funcTyp.retType.getCType()
+			cgoCast = funcTyp.retType.cgoToGo(cgoCast)
 		}
 
 		funcs = append(funcs, map[string]interface{}{
@@ -48,6 +57,7 @@ func generateInterface(out *outputFiles) error {
 				"GoType":  retGoType,
 				"CGoType": retCGoType,
 				"CType":   retCType,
+				"CGoToGo": cgoCast,
 			},
 		})
 	}
