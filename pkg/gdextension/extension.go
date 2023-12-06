@@ -86,10 +86,9 @@ func (me *extension) OnInit(level gdc.InitializationLevel) error {
 	for name, entry := range me.registered {
 		me.Logf(LogLevelDebug, "registering class %q", name)
 		err := me.registerClass(entry.class.ClassName(), entry.class.ParentClassName(), gdc.ClassCreationInfo{
-			ClassUserdata: store(entry),
-			// TODO: how?
-			// CreateInstanceFunc: trampolineClassCreateInstance,
-			// FreeInstanceFunc:   trampolineClassFreeInstance,
+			ClassUserdata:      store(entry),
+			CreateInstanceFunc: trampolineClassCreateInstance,
+			FreeInstanceFunc:   trampolineClassFreeInstance,
 		})
 		if err != nil {
 			return fmt.Errorf("could not register class %q: %s", name, err.Error())
@@ -144,8 +143,10 @@ func (me *extension) LogDetailedf(level LogLevel, description, function, file st
 	case LogLevelWarning:
 		me.iface.PrintWarningWithMessage(description, msg, function, file, lineC, notifyEditorC)
 	case LogLevelInfo:
-		// TODO: finish
-		// err = me.callPrint(fmt.Sprintf("%s: %s", description, msg))
+		err := me.callPrint(fmt.Sprintf("%s: %s", description, msg))
+		if err != nil {
+			log.Printf("could not call print: %s", err.Error())
+		}
 	case LogLevelDebug:
 	default:
 		log.Printf("unknown log level %q for %q", level, msg)
