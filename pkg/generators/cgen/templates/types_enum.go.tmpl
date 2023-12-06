@@ -1,0 +1,7 @@
+// {{.Name}} represents the enum {{.CType}}
+type {{.Name}} {{.GoType}}
+
+// {{.Name}} values
+const (
+{{range .Members}}  {{.Name}} {{$.Name}} = {{.Value}}
+{{end}})

@@ -1,0 +1,5 @@
+#include "interface.gen.h"
+
+void* callGetProcAddress(GDExtensionInterfaceGetProcAddress getProcAddr, const char* procName) {
+  return getProcAddr(procName);
+}

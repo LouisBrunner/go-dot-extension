@@ -1,0 +1,41 @@
+
+type Interface interface {
+{{range .Funcs}}  {{.Name}}({{range .Args}}{{.Name}} {{.GoType}}, {{end}}) {{.ReturnType.GoType}}
+{{end -}}
+}
+
+func callGetProcAddress[T any](getProcAddr InterfaceGetProcAddress, proc string) (T, error) {
+  cProc := C.CString(proc)
+  defer C.free(unsafe.Pointer(cProc))
+
+  ptr := C.callGetProcAddress(getProcAddr, cProc)
+  finalPtr := *(*T)(unsafe.Pointer(&ptr))
+  if ptr == nil {
+    return finalPtr, fmt.Errorf("failed to get proc address for %q", proc)
+  }
+  return finalPtr, nil
+}
+
+// NewInterface returns a wrapper allowing you to call methods from GDExtension
+func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
+  iface := &interfaceImpl{
+  }
+  var err error
+{{range .Funcs}}
+  iface.ptr{{.Name}}, err = callGetProcAddress[{{.CGoType}}](getProcAddr, "{{.Proc}}")
+  if err != nil {
+    return nil, err
+  }
+{{end}}
+  return iface, nil
+}
+
+type interfaceImpl struct {
+{{range .Funcs}}  ptr{{.Name}} {{.CGoType}}
+{{end -}}
+}
+{{range .Funcs}}
+func (me *interfaceImpl) {{.Name}}({{range .Args}}{{.Name}} {{.GoType}}, {{end}}) {{.ReturnType.GoType}} {
+  {{if ne .ReturnType.GoType ""}}return {{end}}C.call{{.Name}}(me.ptr{{.Name}},{{range .Args}} {{.Name}},{{end}})
+}
+{{end}}

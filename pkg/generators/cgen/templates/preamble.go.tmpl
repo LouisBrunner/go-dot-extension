@@ -1,0 +1,20 @@
+package gdc
+
+// #cgo CFLAGS: -I${SRCDIR}/../gdraw
+/*
+#include <string.h>
+{{if eq .File "interface.gen.go"}}
+#include <stdlib.h>
+#include "interface.gen.h"
+{{else}}
+#include <gdextension_interface.h>
+{{end}}
+*/
+import "C"
+
+import (
+{{if eq .File "interface.gen.go"}}
+  "fmt"
+{{end}}
+	"unsafe"
+)

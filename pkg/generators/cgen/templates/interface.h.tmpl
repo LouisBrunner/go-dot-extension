@@ -1,0 +1,9 @@
+#pragma once
+
+#include <gdextension_interface.h>
+
+void* callGetProcAddress(GDExtensionInterfaceGetProcAddress getProcAddr, const char* procName);
+
+{{range .Funcs}}
+{{.ReturnType.CType}} call{{.Name}}({{.CName}} fn{{range .Args}}, {{.CType}} {{.Name}}{{end}});
+{{end}}

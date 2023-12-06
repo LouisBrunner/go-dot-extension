@@ -1,0 +1,20 @@
+// {{.Name}}Raw corresponds to C type {{.CType}}
+type {{.Name}}Raw C.{{.CType}}
+
+// {{.Name}}RawFromUnsafe creates a {{.Name}}Raw from an unsafe pointer to {{.CType}}
+func {{.Name}}RawFromUnsafe(p unsafe.Pointer) *{{.Name}}Raw {
+	return (*{{.Name}}Raw)(p)
+}
+
+type {{.Name}} struct {
+{{range .Members}}	{{.Name}} {{.GoType}}
+{{end -}}
+}
+
+// ToRaw converts {{.Name}} to a {{.Name}}Raw
+func (me *{{.Name}}) ToRaw() {{.Name}}Raw {
+	raw := {{.Name}}Raw{}
+{{range .Members}}	raw.{{.CName}} = {{.GoToCGo}}
+{{end}}
+	return raw
+}

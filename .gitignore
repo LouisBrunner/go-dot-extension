@@ -1,0 +1,4 @@
+# FIXME: would be nice for users to be able to regenerate these files
+#/*.gen.go
+#/pkg/gdraw/*
+#!/pkg/gdraw/*.go
