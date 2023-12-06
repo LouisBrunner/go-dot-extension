@@ -34,14 +34,18 @@ func New(pGetProcAddr gdc.InterfaceGetProcAddress, pLibrary gdc.ClassLibraryPtr,
 }
 
 func (me *extension) registerClass(className, parentName string, def gdc.ClassCreationInfo) error {
-	// TODO: how?
-	me.iface.ClassdbRegisterExtensionClass(me.pLibrary, nil, nil, &def)
+	class, clean := me.makeStringName(className)
+	defer clean()
+	parent, clean := me.makeStringName(parentName)
+	defer clean()
+	me.iface.ClassdbRegisterExtensionClass(me.pLibrary, gdc.ConstStringNamePtr(class), gdc.ConstStringNamePtr(parent), &def)
 	return nil
 }
 
 func (me *extension) unregisterClass(className string) error {
-	// TODO: how?
-	me.iface.ClassdbUnregisterExtensionClass(me.pLibrary, nil)
+	class, clean := me.makeStringName(className)
+	defer clean()
+	me.iface.ClassdbUnregisterExtensionClass(me.pLibrary, gdc.ConstStringNamePtr(class))
 	return nil
 }
 
