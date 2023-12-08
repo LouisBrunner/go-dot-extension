@@ -3,9 +3,50 @@ package gdextension
 import (
 	"fmt"
 	"reflect"
+	"unsafe"
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+func (me *extension) addClassCallbacks() {
+	gdc.Callbacks.SetClassCreationInfoCreateInstanceFuncHandler(func(pUserdata unsafe.Pointer) gdc.ObjectPtr {
+		class, err := restore[*classEntry](pUserdata)
+		if err != nil {
+			me.Logf(LogLevelError, "could not restore class entry: %s", err.Error())
+			return nil
+		}
+		return me.createClass(class)
+	})
+	gdc.Callbacks.SetClassCreationInfoFreeInstanceFuncHandler(func(pUserdata unsafe.Pointer, pInstance gdc.ClassInstancePtr) {
+		class, err := restore[*classEntry](pUserdata)
+		if err != nil {
+			me.Logf(LogLevelError, "could not restore class entry: %s", err.Error())
+			return
+		}
+		me.freeClass(class, pInstance)
+	})
+	// gdc.Callbacks.SetClassCreationInfoSetFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, pValue gdc.ConstVariantPtr) gdc.Bool {
+	// 	return gdc.Bool(0)
+	// })
+	// gdc.Callbacks.SetClassCreationInfoGetFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, rRet gdc.VariantPtr) gdc.Bool {
+	// 	return gdc.Bool(0)
+	// })
+	// gdc.Callbacks.SetClassCreationInfoGetPropertyListFuncHandler(func(pInstance gdc.ClassInstancePtr, rCount *uint) *gdc.PropertyInfo {
+	// 	return nil
+	// })
+	// gdc.Callbacks.SetClassCreationInfoFreePropertyListFuncHandler(func(pInstance gdc.ClassInstancePtr, pList *gdc.PropertyInfo) {
+
+	// })
+	// gdc.Callbacks.SetClassCreationInfoPropertyCanRevertFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr) gdc.Bool {
+	// 	return gdc.Bool(0)
+	// })
+	// gdc.Callbacks.SetClassCreationInfoPropertyGetRevertFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, rRet gdc.VariantPtr) gdc.Bool {
+	// 	return gdc.Bool(0)
+	// })
+	// gdc.Callbacks.SetClassCreationInfoToStringFuncHandler(func(pInstance gdc.ClassInstancePtr, rIsValid *uint8, pOut gdc.StringPtr) {
+
+	// })
+}
 
 type classEntry struct {
 	name           string
@@ -50,6 +91,13 @@ func (me *extension) registerClass(class *classEntry) {
 		ClassUserdata:      store(class),
 		CreateInstanceFunc: gdc.Callbacks.GetClassCreationInfoCreateInstanceFuncCallback(),
 		FreeInstanceFunc:   gdc.Callbacks.GetClassCreationInfoFreeInstanceFuncCallback(),
+		// SetFunc:               gdc.Callbacks.GetClassCreationInfoSetFuncCallback(),
+		// GetFunc:               gdc.Callbacks.GetClassCreationInfoGetFuncCallback(),
+		// GetPropertyListFunc:   gdc.Callbacks.GetClassCreationInfoGetPropertyListFuncCallback(),
+		// FreePropertyListFunc:  gdc.Callbacks.GetClassCreationInfoFreePropertyListFuncCallback(),
+		// PropertyCanRevertFunc: gdc.Callbacks.GetClassCreationInfoPropertyCanRevertFuncCallback(),
+		// PropertyGetRevertFunc: gdc.Callbacks.GetClassCreationInfoPropertyGetRevertFuncCallback(),
+		// ToStringFunc:          gdc.Callbacks.GetClassCreationInfoToStringFuncCallback(),
 	})
 }
 

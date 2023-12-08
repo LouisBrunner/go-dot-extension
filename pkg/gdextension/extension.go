@@ -44,23 +44,8 @@ func New(pGetProcAddr gdc.InterfaceGetProcAddress, pLibrary gdc.ClassLibraryPtr,
 			ext.Logf(LogLevelError, "error: %s", err.Error())
 		}
 	})
-	gdc.Callbacks.SetClassCreationInfoCreateInstanceFuncHandler(func(pUserdata unsafe.Pointer) gdc.ObjectPtr {
-		class, err := restore[*classEntry](pUserdata)
-		if err != nil {
-			ext.Logf(LogLevelError, "could not restore class entry: %s", err.Error())
-			return nil
-		}
-		return ext.createClass(class)
-	})
-	gdc.Callbacks.SetClassCreationInfoFreeInstanceFuncHandler(func(pUserdata unsafe.Pointer, pInstance gdc.ClassInstancePtr) {
-		class, err := restore[*classEntry](pUserdata)
-		if err != nil {
-			ext.Logf(LogLevelError, "could not restore class entry: %s", err.Error())
-			return
-		}
-		ext.freeClass(class, pInstance)
-	})
 
+	ext.addClassCallbacks()
 	return ext, nil
 }
 
