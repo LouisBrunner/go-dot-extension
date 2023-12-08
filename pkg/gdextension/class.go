@@ -1,7 +1,6 @@
 package gdextension
 
 type classEntry struct {
-	ext         *extension
 	class       Class
 	constructor ClassConstructor
 

@@ -7,14 +7,11 @@ package gdc
 #include <stdlib.h>
 
 #include "interface.gen.h"
-
 */
 import "C"
 
 import (
-
   "fmt"
-
 	"unsafe"
 )
 

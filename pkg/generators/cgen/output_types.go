@@ -46,6 +46,8 @@ func addGoEnumType(out *outputFiles, t *enumType) error {
 func addGoStructType(out *outputFiles, t *structType) error {
 	name := improveTypename(t.name)
 
+	callbacks := map[string]*funcType{}
+
 	members := make([]map[string]interface{}, 0, len(t.members))
 	for _, member := range t.members {
 		fnName := makeGoTypeName(member.name)
@@ -55,6 +57,14 @@ func addGoStructType(out *outputFiles, t *structType) error {
 			if err != nil {
 				return err
 			}
+			funcTyp := anonFn.funcType
+			funcTyp.name = anonFn.name
+			funcTyp.ctype = anonFn.name
+			callbacks[fnName] = &funcTyp
+		}
+		callback, cast := member.typ.(*funcType)
+		if cast {
+			callbacks[fnName] = callback
 		}
 		def, free, use := member.typ.goToCGo(fmt.Sprintf("me.%s", fnName))
 		members = append(members, map[string]interface{}{
@@ -67,6 +77,10 @@ func addGoStructType(out *outputFiles, t *structType) error {
 				"Use":  use,
 			},
 		})
+	}
+
+	if len(callbacks) > 0 {
+		out.callbacks[t] = callbacks
 	}
 
 	return writeTemplate(out.files[fileTypes], "types_struct.go", map[string]interface{}{

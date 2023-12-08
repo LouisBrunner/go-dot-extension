@@ -60,6 +60,9 @@ func (me *baseType) getCGoType() string {
 	if me.gotype == "string" {
 		return "C.CString"
 	}
+	if me.ctype == "void*" {
+		return "unsafe.Pointer"
+	}
 	return withGoPointers(fmt.Sprintf("C.%s", me.ctype), me.pointers)
 }
 
@@ -190,7 +193,10 @@ func (me *structType) goToCGo(v string) (string, string, string) {
 }
 
 func (me *structType) cgoToGo(v string) string {
-	return withGoCast(me.name, me.pointers, v)
+	if me.pointers == 0 {
+		return fmt.Sprintf("*(%s)(unsafe.Pointer(&%s))", me.name, v)
+	}
+	return withGoCast(improveTypename(me.name), me.pointers, fmt.Sprintf("unsafe.Pointer(%s)", v))
 }
 
 func (me *structType) validate() error {
@@ -260,6 +266,7 @@ func (me *funcType) validate() error {
 }
 
 type funcAnonType struct {
+	funcType
 	name string
 }
 

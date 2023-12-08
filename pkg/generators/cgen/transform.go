@@ -174,10 +174,6 @@ func transformFunc(name string, typ cc.Type, base *baseType, isConst bool) (cTyp
 		return nil, fmt.Errorf("not actually a function: %T", typ)
 	}
 
-	if base.ctype == "" {
-		return &funcAnonType{}, nil
-	}
-
 	spec := &funcType{
 		name:     name,
 		ctype:    base.ctype,
@@ -215,5 +211,12 @@ func transformFunc(name string, typ cc.Type, base *baseType, isConst bool) (cTyp
 			typ:  subType,
 		})
 	}
+
+	if base.ctype == "" {
+		return &funcAnonType{
+			funcType: *spec,
+		}, nil
+	}
+
 	return spec, nil
 }

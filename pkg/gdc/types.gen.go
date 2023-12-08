@@ -7,14 +7,13 @@ package gdc
 #include <stdlib.h>
 
 #include <gdextension_interface.h>
-
 */
 import "C"
 
 import (
-
 	"unsafe"
 )
+
 // VariantType represents the enum GDExtensionVariantType
 type VariantType uint32
 

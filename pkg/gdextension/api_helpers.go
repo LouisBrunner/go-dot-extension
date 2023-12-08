@@ -1,29 +1,16 @@
 package gdextension
 
+// TODO: all of those should be generated in gdapi
+
 /*
 #include <stdlib.h>
-#include <stdint.h>
-
-// declared in Go
-void *go_dot_gdextension_class_create_instance(void *userdata);
-void go_dot_gdextension_class_free_instance(void *userdata, void *instance);
 */
 import "C"
 import (
-	"log"
 	"unsafe"
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdapi"
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
-)
-
-func makeTrampoline[T any](fn unsafe.Pointer) T {
-	return *(*T)(unsafe.Pointer(&fn))
-}
-
-var (
-	trampolineClassCreateInstance = makeTrampoline[gdc.ClassCreateInstance](C.go_dot_gdextension_class_create_instance)
-	trampolineClassFreeInstance   = makeTrampoline[gdc.ClassFreeInstance](C.go_dot_gdextension_class_free_instance)
 )
 
 func (me *extension) makeString(contents string) (gdc.UninitializedStringPtr, func()) {
@@ -63,7 +50,7 @@ func (me *extension) makeStringVariant(contents string) (gdc.VariantPtr, func())
 	}
 }
 
-func (me *extension) callPrint(message string) error {
+func (me *extension) callPrint(message string) {
 	printNamePtr, clean := me.makeStringName("print")
 	defer clean()
 
@@ -72,35 +59,4 @@ func (me *extension) callPrint(message string) error {
 
 	printPtr := me.iface.VariantGetPtrUtilityFunction(gdc.ConstStringNamePtr(printNamePtr), 2648703342)
 	me.iface.CallPtrUtilityFunction(printPtr, nil, &[]gdc.ConstTypePtr{gdc.ConstTypePtr(msgPtr)}[0], 1)
-	return nil
-}
-
-//export go_dot_gdextension_class_create_instance
-func go_dot_gdextension_class_create_instance(pUserData unsafe.Pointer) unsafe.Pointer {
-	class, err := restore[*classEntry](pUserData)
-	if err != nil {
-		log.Fatalf("could not restore class entry: %s", err.Error()) // FIXME: should not panic
-	}
-
-	parent, clean := class.ext.makeStringName(class.class.ParentClassName())
-	defer clean()
-	name, clean := class.ext.makeStringName(class.class.ClassName())
-	defer clean()
-
-	obj := class.ext.iface.ClassdbConstructObject(gdc.ConstStringNamePtr(parent))
-	id := class.ext.iface.ObjectGetInstanceId(gdc.ConstObjectPtr(obj))
-	class.ext.iface.ObjectSetInstance(obj, gdc.ConstStringNamePtr(name), gdc.ClassInstancePtr(&id))
-	class.addInstance(uint64(id))
-	return unsafe.Pointer(obj)
-}
-
-//export go_dot_gdextension_class_free_instance
-func go_dot_gdextension_class_free_instance(pUserData unsafe.Pointer, pInstance unsafe.Pointer) {
-	class, err := restore[*classEntry](pUserData)
-	if err != nil {
-		log.Fatalf("could not restore class entry: %s", err.Error()) // FIXME: should not panic
-	}
-
-	id := *(*uint64)(pInstance)
-	class.deleteInstance(uint64(id))
 }

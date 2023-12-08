@@ -68,12 +68,14 @@ const (
 	fileInterface  = "interface.gen.go"
 	fileInterfaceH = "interface.gen.h"
 	fileInterfaceC = "interface.gen.c"
+	fileCallbacks  = "callbacks.gen.go"
 )
 
 type outputFiles struct {
 	files      map[string]*os.File
 	ifaceFuncs map[string]string
 	allFuncs   map[string]*funcType
+	callbacks  map[*structType]map[string]*funcType
 }
 
 func output(ast *cc.AST, ifaceFuncs map[string]string, outputDir string) error {
@@ -81,12 +83,14 @@ func output(ast *cc.AST, ifaceFuncs map[string]string, outputDir string) error {
 		files:      make(map[string]*os.File),
 		ifaceFuncs: ifaceFuncs,
 		allFuncs:   make(map[string]*funcType),
+		callbacks:  make(map[*structType]map[string]*funcType),
 	}
 	for _, fileName := range []string{
 		fileTypes,
 		fileInterface,
 		fileInterfaceH,
 		fileInterfaceC,
+		fileCallbacks,
 	} {
 		file, err := os.Create(filepath.Join(outputDir, fileName))
 		if err != nil {
@@ -131,6 +135,11 @@ func output(ast *cc.AST, ifaceFuncs map[string]string, outputDir string) error {
 	}
 
 	err = generateInterface(out)
+	if err != nil {
+		return err
+	}
+
+	err = generateCallbacks(out)
 	if err != nil {
 		return err
 	}

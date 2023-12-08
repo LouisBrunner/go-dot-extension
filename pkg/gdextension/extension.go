@@ -30,7 +30,57 @@ func New(pGetProcAddr gdc.InterfaceGetProcAddress, pLibrary gdc.ClassLibraryPtr,
 		initLevel: gdc.InitializationScene,
 		logLevel:  logLevel,
 	}
+
+	gdc.Callbacks.SetInitializationInitializeHandler(func(userdata unsafe.Pointer, pLevel gdc.InitializationLevel) {
+		ext.Logf(LogLevelDebug, "initializing module (level=%v)", pLevel)
+		err := ext.onInit(pLevel)
+		if err != nil {
+			ext.Logf(LogLevelError, "error: %s", err.Error())
+		}
+	})
+	gdc.Callbacks.SetInitializationDeinitializeHandler(func(userdata unsafe.Pointer, pLevel gdc.InitializationLevel) {
+		ext.Logf(LogLevelDebug, "uninitializing module (level=%v)", pLevel)
+		err := ext.onFini(pLevel)
+		if err != nil {
+			ext.Logf(LogLevelError, "error: %s", err.Error())
+		}
+	})
+	gdc.Callbacks.SetClassCreationInfoCreateInstanceFuncHandler(func(pUserdata unsafe.Pointer) gdc.ObjectPtr {
+		class, err := restore[*classEntry](pUserdata)
+		if err != nil {
+			ext.Logf(LogLevelError, "could not restore class entry: %s", err.Error())
+			return nil
+		}
+		return ext.createClass(class)
+	})
+	gdc.Callbacks.SetClassCreationInfoFreeInstanceFuncHandler(func(pUserdata unsafe.Pointer, pInstance gdc.ClassInstancePtr) {
+		class, err := restore[*classEntry](pUserdata)
+		if err != nil {
+			ext.Logf(LogLevelError, "could not restore class entry: %s", err.Error())
+			return
+		}
+		ext.freeClass(class, pInstance)
+	})
+
 	return ext, nil
+}
+
+func (me *extension) createClass(class *classEntry) gdc.ObjectPtr {
+	parent, clean := me.makeStringName(class.class.ParentClassName())
+	defer clean()
+	name, clean := me.makeStringName(class.class.ClassName())
+	defer clean()
+
+	obj := me.iface.ClassdbConstructObject(gdc.ConstStringNamePtr(parent))
+	id := me.iface.ObjectGetInstanceId(gdc.ConstObjectPtr(obj))
+	me.iface.ObjectSetInstance(obj, gdc.ConstStringNamePtr(name), gdc.ClassInstancePtr(&id))
+	class.addInstance(uint64(id))
+	return obj
+}
+
+func (me *extension) freeClass(class *classEntry, pInstance gdc.ClassInstancePtr) {
+	id := *(*uint64)(pInstance)
+	class.deleteInstance(uint64(id))
 }
 
 func (me *extension) registerClass(className, parentName string, def gdc.ClassCreationInfo) error {
@@ -67,7 +117,6 @@ func (me *extension) Initialize(rInitialization *gdc.InitializationRaw, init gdc
 		instance := constructor()
 		me.Logf(LogLevelDebug, "adding class %q to tracked classes", instance.ClassName())
 		me.registered[instance.ClassName()] = &classEntry{
-			ext:         me,
 			class:       instance,
 			constructor: constructor,
 			instances:   make(map[uint64]struct{}),
@@ -83,7 +132,7 @@ func (me *extension) Initialize(rInitialization *gdc.InitializationRaw, init gdc
 	return gdc.Bool(1)
 }
 
-func (me *extension) OnInit(level gdc.InitializationLevel) error {
+func (me *extension) onInit(level gdc.InitializationLevel) error {
 	if level != gdc.InitializationLevel(gdc.InitializationScene) {
 		return nil
 	}
@@ -91,8 +140,8 @@ func (me *extension) OnInit(level gdc.InitializationLevel) error {
 		me.Logf(LogLevelDebug, "registering class %q", name)
 		err := me.registerClass(entry.class.ClassName(), entry.class.ParentClassName(), gdc.ClassCreationInfo{
 			ClassUserdata:      store(entry),
-			CreateInstanceFunc: trampolineClassCreateInstance,
-			FreeInstanceFunc:   trampolineClassFreeInstance,
+			CreateInstanceFunc: gdc.Callbacks.GetClassCreationInfoCreateInstanceFuncCallback(),
+			FreeInstanceFunc:   gdc.Callbacks.GetClassCreationInfoFreeInstanceFuncCallback(),
 		})
 		if err != nil {
 			return fmt.Errorf("could not register class %q: %s", name, err.Error())
@@ -101,7 +150,7 @@ func (me *extension) OnInit(level gdc.InitializationLevel) error {
 	return nil
 }
 
-func (me *extension) OnFini(level gdc.InitializationLevel) error {
+func (me *extension) onFini(level gdc.InitializationLevel) error {
 	if level != gdc.InitializationLevel(gdc.InitializationScene) {
 		return nil
 	}
@@ -113,10 +162,6 @@ func (me *extension) OnFini(level gdc.InitializationLevel) error {
 		}
 	}
 	return nil
-}
-
-func RestoreFromC(pUserData unsafe.Pointer) (Extension, error) {
-	return restore[*extension](pUserData)
 }
 
 func (me *extension) Logf(level LogLevel, format string, args ...interface{}) {
@@ -147,10 +192,7 @@ func (me *extension) LogDetailedf(level LogLevel, description, function, file st
 	case LogLevelWarning:
 		me.iface.PrintWarningWithMessage(description, msg, function, file, lineC, notifyEditorC)
 	case LogLevelInfo:
-		err := me.callPrint(fmt.Sprintf("%s: %s", description, msg))
-		if err != nil {
-			log.Printf("could not call print: %s", err.Error())
-		}
+		me.callPrint(fmt.Sprintf("%s: %s", description, msg))
 	case LogLevelDebug:
 	default:
 		log.Printf("unknown log level %q for %q", level, msg)

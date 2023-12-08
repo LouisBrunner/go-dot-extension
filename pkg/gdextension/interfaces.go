@@ -37,8 +37,6 @@ type Extension interface {
 	Register(constructors ...ClassConstructor)
 	SetInitializationLevel(level gdc.InitializationLevel)
 	Initialize(rInitialization *gdc.InitializationRaw, init gdc.InitializationInitializeFn, fini gdc.InitializationDeinitializeFn) gdc.Bool
-	OnInit(level gdc.InitializationLevel) error
-	OnFini(level gdc.InitializationLevel) error
 	Logf(level LogLevel, format string, args ...interface{})
 	LogDetailedf(level LogLevel, description, function, file string, line int32, notifyEditor bool, format string, args ...interface{})
 }

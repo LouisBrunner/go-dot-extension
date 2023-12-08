@@ -1,5 +1,5 @@
 package gdc
-
+{{if ne .File "callbacks.gen.go"}}
 // #cgo CFLAGS: -I${SRCDIR}/../gdraw
 /*
 #include <string.h>
@@ -8,13 +8,12 @@ package gdc
 #include "interface.gen.h"
 {{else}}
 #include <gdextension_interface.h>
-{{end}}
+{{end -}}
 */
 import "C"
-
-import (
-{{if eq .File "interface.gen.go"}}
-  "fmt"
 {{end}}
-	"unsafe"
+import (
+{{if eq .File "interface.gen.go"}}  "fmt"
+{{end}}	"unsafe"
 )
+

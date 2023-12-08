@@ -1,0 +1,54 @@
+// #cgo CFLAGS: -I${SRCDIR}/../gdraw
+/*
+#include <gdextension_interface.h>
+
+{{range .Callbacks}}{{.ReturnType.CType}} cgo_{{.StructName}}{{.MemberName}}({{range $i, $e := .Args}}{{if $i}}, {{end}}{{$e.CCGoType}} {{$e.Name}}{{end}});
+{{end -}}
+*/
+import "C"
+
+// Callbacks allows you to register callbacks that will be called from the C-side of the extension.
+var Callbacks = newCallbacks()
+
+type callbacks interface {
+{{range .Callbacks}}  // Set{{.StructName}}{{.MemberName}}Handler sets the callback which will be used by Get{{.StructName}}{{.MemberName}}Callback.
+  Set{{.StructName}}{{.MemberName}}Handler(fn func({{range .Args}}{{.Name}} {{.GoType}}, {{end}}) {{.ReturnType.GoType}})
+  // Get{{.StructName}}{{.MemberName}}Callback is a C-callable function that will call the Go callback set by Set{{.StructName}}{{.MemberName}}Handler.
+  Get{{.StructName}}{{.MemberName}}Callback() {{.Name}}
+{{end -}}
+}
+
+type callbacksImpl struct {
+{{range .Callbacks}}  fn{{.StructName}}{{.MemberName}} func({{range .Args}}{{.Name}} {{.GoType}}, {{end}}) {{.ReturnType.GoType}}
+{{end -}}
+}
+
+func newCallbacks() *callbacksImpl {
+  return &callbacksImpl{}
+}
+
+var _ callbacks = (*callbacksImpl)(nil)
+
+func transformPointer[T, U any](fn U) T {
+	return *(*T)(unsafe.Pointer(&fn))
+}
+
+{{range .Callbacks}}
+func (me *callbacksImpl) Set{{.StructName}}{{.MemberName}}Handler(fn func({{range .Args}}{{.Name}} {{.GoType}}, {{end}}) {{.ReturnType.GoType}}) {
+  me.fn{{.StructName}}{{.MemberName}} = fn
+}
+
+//export cgo_{{.StructName}}{{.MemberName}}
+func cgo_{{.StructName}}{{.MemberName}}({{range .Args}}{{.Name}} {{.CGoType}}, {{end}}) {{.ReturnType.CGoType}} {
+  {{if ne .ReturnType.GoType ""}}ret := {{end -}}
+  Callbacks.fn{{.StructName}}{{.MemberName}}(
+    {{- range .Args}}{{.CGoToGo}}, {{end -}}
+  )
+  {{- if ne .ReturnType.GoType ""}}
+  return {{.ReturnType.GoToCGo}}{{end}}
+}
+
+func (me *callbacksImpl) Get{{.StructName}}{{.MemberName}}Callback() {{.Name}} {
+  return transformPointer[{{.Name}}](C.cgo_{{.StructName}}{{.MemberName}})
+}
+{{end}}

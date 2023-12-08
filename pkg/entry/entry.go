@@ -5,8 +5,6 @@ package entry
 #include <gdextension_interface.h>
 
 GDExtensionBool go_dot_gdextension_entry(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization* r_initialization);
-void go_dot_gdextension_initialize_module(void* userdata, GDExtensionInitializationLevel p_level);
-void go_dot_gdextension_uninitialize_module(void* userdata, GDExtensionInitializationLevel p_level);
 */
 import "C"
 
@@ -40,35 +38,7 @@ func go_dot_gdextension_entry(pGetProcAddress C.GDExtensionInterfaceGetProcAddre
 	ext.Register(globalRegisteredClasses...)
 	return C.GDExtensionBool(ext.Initialize(
 		gdc.InitializationRawFromUnsafe(unsafe.Pointer(rInitialization)),
-		gdc.InitializationInitializeFn(C.go_dot_gdextension_initialize_module),
-		gdc.InitializationDeinitializeFn(C.go_dot_gdextension_uninitialize_module),
+		gdc.InitializationInitializeFn(gdc.Callbacks.GetInitializationInitializeCallback()),
+		gdc.InitializationDeinitializeFn(gdc.Callbacks.GetInitializationDeinitializeCallback()),
 	))
-}
-
-//export go_dot_gdextension_initialize_module
-func go_dot_gdextension_initialize_module(userData *C.void, pLevel C.GDExtensionInitializationLevel) {
-	ext, err := gdextension.RestoreFromC(unsafe.Pointer(userData))
-	if err != nil {
-		log.Printf("fatal error: %s", err.Error())
-		return
-	}
-	ext.Logf(gdextension.LogLevelDebug, "initializing module (level=%v)", pLevel)
-	err = ext.OnInit(gdc.InitializationLevel(pLevel))
-	if err != nil {
-		ext.Logf(gdextension.LogLevelError, "error: %s", err.Error())
-	}
-}
-
-//export go_dot_gdextension_uninitialize_module
-func go_dot_gdextension_uninitialize_module(userData *C.void, pLevel C.GDExtensionInitializationLevel) {
-	ext, err := gdextension.RestoreFromC(unsafe.Pointer(userData))
-	if err != nil {
-		log.Printf("fatal error: %s", err.Error())
-		return
-	}
-	ext.Logf(gdextension.LogLevelDebug, "uninitializing module (level=%v)", pLevel)
-	err = ext.OnFini(gdc.InitializationLevel(pLevel))
-	if err != nil {
-		ext.Logf(gdextension.LogLevelError, "error: %s", err.Error())
-	}
 }
