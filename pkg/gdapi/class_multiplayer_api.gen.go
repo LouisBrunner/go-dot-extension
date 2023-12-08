@@ -16,3 +16,10 @@ func (me *MultiplayerAPI) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *MultiplayerAPI) BaseClass() string {
   return "MultiplayerAPI"
 }
+
+type MultiplayerAPIRPCMode int
+const (
+  MultiplayerAPIRpcModeDisabled MultiplayerAPIRPCMode = 0
+  MultiplayerAPIRpcModeAnyPeer MultiplayerAPIRPCMode = 1
+  MultiplayerAPIRpcModeAuthority MultiplayerAPIRPCMode = 2
+)

@@ -16,3 +16,9 @@ func (me *AudioEffectSpectrumAnalyzerInstance) SetBaseObject(obj gdc.ObjectPtr) 
 func (me *AudioEffectSpectrumAnalyzerInstance) BaseClass() string {
   return "AudioEffectSpectrumAnalyzerInstance"
 }
+
+type AudioEffectSpectrumAnalyzerInstanceMagnitudeMode int
+const (
+  AudioEffectSpectrumAnalyzerInstanceMagnitudeAverage AudioEffectSpectrumAnalyzerInstanceMagnitudeMode = 0
+  AudioEffectSpectrumAnalyzerInstanceMagnitudeMax AudioEffectSpectrumAnalyzerInstanceMagnitudeMode = 1
+)

@@ -16,3 +16,10 @@ func (me *CSGShape3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CSGShape3D) BaseClass() string {
   return "CSGShape3D"
 }
+
+type CSGShape3DOperation int
+const (
+  CSGShape3DOperationUnion CSGShape3DOperation = 0
+  CSGShape3DOperationIntersection CSGShape3DOperation = 1
+  CSGShape3DOperationSubtraction CSGShape3DOperation = 2
+)

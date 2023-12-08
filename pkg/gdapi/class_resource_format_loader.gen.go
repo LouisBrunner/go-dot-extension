@@ -16,3 +16,10 @@ func (me *ResourceFormatLoader) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ResourceFormatLoader) BaseClass() string {
   return "ResourceFormatLoader"
 }
+
+type ResourceFormatLoaderCacheMode int
+const (
+  ResourceFormatLoaderCacheModeIgnore ResourceFormatLoaderCacheMode = 0
+  ResourceFormatLoaderCacheModeReuse ResourceFormatLoaderCacheMode = 1
+  ResourceFormatLoaderCacheModeReplace ResourceFormatLoaderCacheMode = 2
+)

@@ -16,3 +16,10 @@ func (me *NinePatchRect) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *NinePatchRect) BaseClass() string {
   return "NinePatchRect"
 }
+
+type NinePatchRectAxisStretchMode int
+const (
+  NinePatchRectAxisStretchModeStretch NinePatchRectAxisStretchMode = 0
+  NinePatchRectAxisStretchModeTile NinePatchRectAxisStretchMode = 1
+  NinePatchRectAxisStretchModeTileFit NinePatchRectAxisStretchMode = 2
+)

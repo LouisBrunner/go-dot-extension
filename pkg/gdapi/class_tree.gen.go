@@ -16,3 +16,17 @@ func (me *Tree) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Tree) BaseClass() string {
   return "Tree"
 }
+
+type TreeSelectMode int
+const (
+  TreeSelectSingle TreeSelectMode = 0
+  TreeSelectRow TreeSelectMode = 1
+  TreeSelectMulti TreeSelectMode = 2
+)
+
+type TreeDropModeFlags int
+const (
+  TreeDropModeDisabled TreeDropModeFlags = 0
+  TreeDropModeOnItem TreeDropModeFlags = 1
+  TreeDropModeInbetween TreeDropModeFlags = 2
+)

@@ -16,3 +16,10 @@ func (me *ImageFormatLoader) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ImageFormatLoader) BaseClass() string {
   return "ImageFormatLoader"
 }
+
+type ImageFormatLoaderLoaderFlags int
+const (
+  ImageFormatLoaderFlagNone ImageFormatLoaderLoaderFlags = 0
+  ImageFormatLoaderFlagForceLinear ImageFormatLoaderLoaderFlags = 1
+  ImageFormatLoaderFlagConvertColors ImageFormatLoaderLoaderFlags = 2
+)

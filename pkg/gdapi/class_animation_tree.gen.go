@@ -16,3 +16,10 @@ func (me *AnimationTree) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AnimationTree) BaseClass() string {
   return "AnimationTree"
 }
+
+type AnimationTreeAnimationProcessCallback int
+const (
+  AnimationTreeAnimationProcessPhysics AnimationTreeAnimationProcessCallback = 0
+  AnimationTreeAnimationProcessIdle AnimationTreeAnimationProcessCallback = 1
+  AnimationTreeAnimationProcessManual AnimationTreeAnimationProcessCallback = 2
+)

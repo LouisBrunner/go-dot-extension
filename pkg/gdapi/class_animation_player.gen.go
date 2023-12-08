@@ -16,3 +16,16 @@ func (me *AnimationPlayer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AnimationPlayer) BaseClass() string {
   return "AnimationPlayer"
 }
+
+type AnimationPlayerAnimationProcessCallback int
+const (
+  AnimationPlayerAnimationProcessPhysics AnimationPlayerAnimationProcessCallback = 0
+  AnimationPlayerAnimationProcessIdle AnimationPlayerAnimationProcessCallback = 1
+  AnimationPlayerAnimationProcessManual AnimationPlayerAnimationProcessCallback = 2
+)
+
+type AnimationPlayerAnimationMethodCallMode int
+const (
+  AnimationPlayerAnimationMethodCallDeferred AnimationPlayerAnimationMethodCallMode = 0
+  AnimationPlayerAnimationMethodCallImmediate AnimationPlayerAnimationMethodCallMode = 1
+)

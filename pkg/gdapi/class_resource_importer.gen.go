@@ -16,3 +16,9 @@ func (me *ResourceImporter) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ResourceImporter) BaseClass() string {
   return "ResourceImporter"
 }
+
+type ResourceImporterImportOrder int
+const (
+  ResourceImporterImportOrderDefault ResourceImporterImportOrder = 0
+  ResourceImporterImportOrderScene ResourceImporterImportOrder = 100
+)

@@ -16,3 +16,10 @@ func (me *PlaneMesh) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *PlaneMesh) BaseClass() string {
   return "PlaneMesh"
 }
+
+type PlaneMeshOrientation int
+const (
+  PlaneMeshFaceX PlaneMeshOrientation = 0
+  PlaneMeshFaceY PlaneMeshOrientation = 1
+  PlaneMeshFaceZ PlaneMeshOrientation = 2
+)

@@ -16,3 +16,18 @@ func (me *CameraFeed) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CameraFeed) BaseClass() string {
   return "CameraFeed"
 }
+
+type CameraFeedFeedDataType int
+const (
+  CameraFeedFeedNoimage CameraFeedFeedDataType = 0
+  CameraFeedFeedRgb CameraFeedFeedDataType = 1
+  CameraFeedFeedYcbcr CameraFeedFeedDataType = 2
+  CameraFeedFeedYcbcrSep CameraFeedFeedDataType = 3
+)
+
+type CameraFeedFeedPosition int
+const (
+  CameraFeedFeedUnspecified CameraFeedFeedPosition = 0
+  CameraFeedFeedFront CameraFeedFeedPosition = 1
+  CameraFeedFeedBack CameraFeedFeedPosition = 2
+)

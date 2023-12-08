@@ -16,3 +16,25 @@ func (me *EditorFileDialog) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *EditorFileDialog) BaseClass() string {
   return "EditorFileDialog"
 }
+
+type EditorFileDialogFileMode int
+const (
+  EditorFileDialogFileModeOpenFile EditorFileDialogFileMode = 0
+  EditorFileDialogFileModeOpenFiles EditorFileDialogFileMode = 1
+  EditorFileDialogFileModeOpenDir EditorFileDialogFileMode = 2
+  EditorFileDialogFileModeOpenAny EditorFileDialogFileMode = 3
+  EditorFileDialogFileModeSaveFile EditorFileDialogFileMode = 4
+)
+
+type EditorFileDialogAccess int
+const (
+  EditorFileDialogAccessResources EditorFileDialogAccess = 0
+  EditorFileDialogAccessUserdata EditorFileDialogAccess = 1
+  EditorFileDialogAccessFilesystem EditorFileDialogAccess = 2
+)
+
+type EditorFileDialogDisplayMode int
+const (
+  EditorFileDialogDisplayThumbnails EditorFileDialogDisplayMode = 0
+  EditorFileDialogDisplayList EditorFileDialogDisplayMode = 1
+)

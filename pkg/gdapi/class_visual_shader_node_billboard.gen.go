@@ -16,3 +16,12 @@ func (me *VisualShaderNodeBillboard) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeBillboard) BaseClass() string {
   return "VisualShaderNodeBillboard"
 }
+
+type VisualShaderNodeBillboardBillboardType int
+const (
+  VisualShaderNodeBillboardBillboardTypeDisabled VisualShaderNodeBillboardBillboardType = 0
+  VisualShaderNodeBillboardBillboardTypeEnabled VisualShaderNodeBillboardBillboardType = 1
+  VisualShaderNodeBillboardBillboardTypeFixedY VisualShaderNodeBillboardBillboardType = 2
+  VisualShaderNodeBillboardBillboardTypeParticles VisualShaderNodeBillboardBillboardType = 3
+  VisualShaderNodeBillboardBillboardTypeMax VisualShaderNodeBillboardBillboardType = 4
+)

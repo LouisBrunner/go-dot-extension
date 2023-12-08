@@ -16,3 +16,10 @@ func (me *HashingContext) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *HashingContext) BaseClass() string {
   return "HashingContext"
 }
+
+type HashingContextHashType int
+const (
+  HashingContextHashMd5 HashingContextHashType = 0
+  HashingContextHashSha1 HashingContextHashType = 1
+  HashingContextHashSha256 HashingContextHashType = 2
+)

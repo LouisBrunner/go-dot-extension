@@ -16,3 +16,9 @@ func (me *MultiMesh) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *MultiMesh) BaseClass() string {
   return "MultiMesh"
 }
+
+type MultiMeshTransformFormat int
+const (
+  MultiMeshTransform2D MultiMeshTransformFormat = 0
+  MultiMeshTransform3D MultiMeshTransformFormat = 1
+)

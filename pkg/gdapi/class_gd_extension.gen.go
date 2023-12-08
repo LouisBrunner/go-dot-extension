@@ -16,3 +16,11 @@ func (me *GDExtension) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *GDExtension) BaseClass() string {
   return "GDExtension"
 }
+
+type GDExtensionInitializationLevel int
+const (
+  GDExtensionInitializationLevelCore GDExtensionInitializationLevel = 0
+  GDExtensionInitializationLevelServers GDExtensionInitializationLevel = 1
+  GDExtensionInitializationLevelScene GDExtensionInitializationLevel = 2
+  GDExtensionInitializationLevelEditor GDExtensionInitializationLevel = 3
+)

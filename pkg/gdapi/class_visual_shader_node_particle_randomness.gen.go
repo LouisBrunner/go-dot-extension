@@ -16,3 +16,12 @@ func (me *VisualShaderNodeParticleRandomness) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeParticleRandomness) BaseClass() string {
   return "VisualShaderNodeParticleRandomness"
 }
+
+type VisualShaderNodeParticleRandomnessOpType int
+const (
+  VisualShaderNodeParticleRandomnessOpTypeScalar VisualShaderNodeParticleRandomnessOpType = 0
+  VisualShaderNodeParticleRandomnessOpTypeVector2D VisualShaderNodeParticleRandomnessOpType = 1
+  VisualShaderNodeParticleRandomnessOpTypeVector3D VisualShaderNodeParticleRandomnessOpType = 2
+  VisualShaderNodeParticleRandomnessOpTypeVector4D VisualShaderNodeParticleRandomnessOpType = 3
+  VisualShaderNodeParticleRandomnessOpTypeMax VisualShaderNodeParticleRandomnessOpType = 4
+)

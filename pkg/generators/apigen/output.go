@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"text/template"
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/generators/gencommon"
@@ -31,6 +32,7 @@ func renderFile[T any](templateName, resultFile string, data T, outputDir string
 	templateFilename := fmt.Sprintf("%s.tmpl", fileName)
 	tmpl, err := template.New(templateFilename).Funcs(map[string]interface{}{
 		"pascalCased": strcase.ToCamel,
+		"lowerCased":  strings.ToLower,
 	}).ParseFS(templates, filepath.Join("templates", templateFilename), filepath.Join("templates", "fragments", "*.tmpl"))
 	if err != nil {
 		return err

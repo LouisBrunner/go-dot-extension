@@ -16,3 +16,18 @@ func (me *AudioStreamWAV) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioStreamWAV) BaseClass() string {
   return "AudioStreamWAV"
 }
+
+type AudioStreamWAVFormat int
+const (
+  AudioStreamWAVFormat8Bits AudioStreamWAVFormat = 0
+  AudioStreamWAVFormat16Bits AudioStreamWAVFormat = 1
+  AudioStreamWAVFormatImaAdpcm AudioStreamWAVFormat = 2
+)
+
+type AudioStreamWAVLoopMode int
+const (
+  AudioStreamWAVLoopDisabled AudioStreamWAVLoopMode = 0
+  AudioStreamWAVLoopForward AudioStreamWAVLoopMode = 1
+  AudioStreamWAVLoopPingpong AudioStreamWAVLoopMode = 2
+  AudioStreamWAVLoopBackward AudioStreamWAVLoopMode = 3
+)

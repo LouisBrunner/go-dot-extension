@@ -16,3 +16,10 @@ func (me *VisibleOnScreenEnabler2D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisibleOnScreenEnabler2D) BaseClass() string {
   return "VisibleOnScreenEnabler2D"
 }
+
+type VisibleOnScreenEnabler2DEnableMode int
+const (
+  VisibleOnScreenEnabler2DEnableModeInherit VisibleOnScreenEnabler2DEnableMode = 0
+  VisibleOnScreenEnabler2DEnableModeAlways VisibleOnScreenEnabler2DEnableMode = 1
+  VisibleOnScreenEnabler2DEnableModeWhenPaused VisibleOnScreenEnabler2DEnableMode = 2
+)

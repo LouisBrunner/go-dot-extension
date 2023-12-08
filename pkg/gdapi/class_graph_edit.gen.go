@@ -16,3 +16,9 @@ func (me *GraphEdit) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *GraphEdit) BaseClass() string {
   return "GraphEdit"
 }
+
+type GraphEditPanningScheme int
+const (
+  GraphEditScrollZooms GraphEditPanningScheme = 0
+  GraphEditScrollPans GraphEditPanningScheme = 1
+)

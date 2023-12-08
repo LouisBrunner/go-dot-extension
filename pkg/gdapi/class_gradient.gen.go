@@ -16,3 +16,17 @@ func (me *Gradient) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Gradient) BaseClass() string {
   return "Gradient"
 }
+
+type GradientInterpolationMode int
+const (
+  GradientGradientInterpolateLinear GradientInterpolationMode = 0
+  GradientGradientInterpolateConstant GradientInterpolationMode = 1
+  GradientGradientInterpolateCubic GradientInterpolationMode = 2
+)
+
+type GradientColorSpace int
+const (
+  GradientGradientColorSpaceSrgb GradientColorSpace = 0
+  GradientGradientColorSpaceLinearSrgb GradientColorSpace = 1
+  GradientGradientColorSpaceOklab GradientColorSpace = 2
+)

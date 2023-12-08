@@ -16,3 +16,9 @@ func (me *RibbonTrailMesh) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *RibbonTrailMesh) BaseClass() string {
   return "RibbonTrailMesh"
 }
+
+type RibbonTrailMeshShape int
+const (
+  RibbonTrailMeshShapeFlat RibbonTrailMeshShape = 0
+  RibbonTrailMeshShapeCross RibbonTrailMeshShape = 1
+)

@@ -16,3 +16,11 @@ func (me *SceneState) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *SceneState) BaseClass() string {
   return "SceneState"
 }
+
+type SceneStateGenEditState int
+const (
+  SceneStateGenEditStateDisabled SceneStateGenEditState = 0
+  SceneStateGenEditStateInstance SceneStateGenEditState = 1
+  SceneStateGenEditStateMain SceneStateGenEditState = 2
+  SceneStateGenEditStateMainInherited SceneStateGenEditState = 3
+)

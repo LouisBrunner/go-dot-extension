@@ -16,3 +16,16 @@ func (me *Object) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Object) BaseClass() string {
   return "Object"
 }
+
+const (
+  ObjectNOTIFICATION_POSTINITIALIZE = 0
+  ObjectNOTIFICATION_PREDELETE = 1
+)
+
+type ObjectConnectFlags int
+const (
+  ObjectConnectDeferred ObjectConnectFlags = 1
+  ObjectConnectPersist ObjectConnectFlags = 2
+  ObjectConnectOneShot ObjectConnectFlags = 4
+  ObjectConnectReferenceCounted ObjectConnectFlags = 8
+)

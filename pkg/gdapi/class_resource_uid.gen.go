@@ -16,3 +16,7 @@ func (me *ResourceUID) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ResourceUID) BaseClass() string {
   return "ResourceUID"
 }
+
+const (
+  ResourceUIDINVALID_ID = -1
+)

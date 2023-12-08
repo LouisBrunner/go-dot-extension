@@ -16,3 +16,15 @@ func (me *ResourceSaver) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ResourceSaver) BaseClass() string {
   return "ResourceSaver"
 }
+
+type ResourceSaverSaverFlags int
+const (
+  ResourceSaverFlagNone ResourceSaverSaverFlags = 0
+  ResourceSaverFlagRelativePaths ResourceSaverSaverFlags = 1
+  ResourceSaverFlagBundleResources ResourceSaverSaverFlags = 2
+  ResourceSaverFlagChangePath ResourceSaverSaverFlags = 4
+  ResourceSaverFlagOmitEditorProperties ResourceSaverSaverFlags = 8
+  ResourceSaverFlagSaveBigEndian ResourceSaverSaverFlags = 16
+  ResourceSaverFlagCompress ResourceSaverSaverFlags = 32
+  ResourceSaverFlagReplaceSubresourcePaths ResourceSaverSaverFlags = 64
+)

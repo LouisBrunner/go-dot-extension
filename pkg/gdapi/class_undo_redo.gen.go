@@ -16,3 +16,10 @@ func (me *UndoRedo) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *UndoRedo) BaseClass() string {
   return "UndoRedo"
 }
+
+type UndoRedoMergeMode int
+const (
+  UndoRedoMergeDisable UndoRedoMergeMode = 0
+  UndoRedoMergeEnds UndoRedoMergeMode = 1
+  UndoRedoMergeAll UndoRedoMergeMode = 2
+)

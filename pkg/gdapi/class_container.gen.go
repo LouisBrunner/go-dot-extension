@@ -16,3 +16,8 @@ func (me *Container) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Container) BaseClass() string {
   return "Container"
 }
+
+const (
+  ContainerNOTIFICATION_PRE_SORT_CHILDREN = 50
+  ContainerNOTIFICATION_SORT_CHILDREN = 51
+)

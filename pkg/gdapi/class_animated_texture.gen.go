@@ -16,3 +16,7 @@ func (me *AnimatedTexture) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AnimatedTexture) BaseClass() string {
   return "AnimatedTexture"
 }
+
+const (
+  AnimatedTextureMAX_FRAMES = 256
+)

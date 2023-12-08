@@ -16,3 +16,9 @@ func (me *Timer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Timer) BaseClass() string {
   return "Timer"
 }
+
+type TimerTimerProcessCallback int
+const (
+  TimerTimerProcessPhysics TimerTimerProcessCallback = 0
+  TimerTimerProcessIdle TimerTimerProcessCallback = 1
+)

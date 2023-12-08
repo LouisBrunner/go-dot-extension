@@ -16,3 +16,10 @@ func (me *XRPose) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *XRPose) BaseClass() string {
   return "XRPose"
 }
+
+type XRPoseTrackingConfidence int
+const (
+  XRPoseXrTrackingConfidenceNone XRPoseTrackingConfidence = 0
+  XRPoseXrTrackingConfidenceLow XRPoseTrackingConfidence = 1
+  XRPoseXrTrackingConfidenceHigh XRPoseTrackingConfidence = 2
+)

@@ -16,3 +16,10 @@ func (me *VisualShaderNodeTransformFunc) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeTransformFunc) BaseClass() string {
   return "VisualShaderNodeTransformFunc"
 }
+
+type VisualShaderNodeTransformFuncFunction int
+const (
+  VisualShaderNodeTransformFuncFuncInverse VisualShaderNodeTransformFuncFunction = 0
+  VisualShaderNodeTransformFuncFuncTranspose VisualShaderNodeTransformFuncFunction = 1
+  VisualShaderNodeTransformFuncFuncMax VisualShaderNodeTransformFuncFunction = 2
+)

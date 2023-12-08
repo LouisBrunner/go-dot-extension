@@ -16,3 +16,11 @@ func (me *SceneTree) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *SceneTree) BaseClass() string {
   return "SceneTree"
 }
+
+type SceneTreeGroupCallFlags int
+const (
+  SceneTreeGroupCallDefault SceneTreeGroupCallFlags = 0
+  SceneTreeGroupCallReverse SceneTreeGroupCallFlags = 1
+  SceneTreeGroupCallDeferred SceneTreeGroupCallFlags = 2
+  SceneTreeGroupCallUnique SceneTreeGroupCallFlags = 4
+)

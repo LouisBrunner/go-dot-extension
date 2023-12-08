@@ -16,3 +16,10 @@ func (me *VisualShaderNodeUIntFunc) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeUIntFunc) BaseClass() string {
   return "VisualShaderNodeUIntFunc"
 }
+
+type VisualShaderNodeUIntFuncFunction int
+const (
+  VisualShaderNodeUIntFuncFuncNegate VisualShaderNodeUIntFuncFunction = 0
+  VisualShaderNodeUIntFuncFuncBitwiseNot VisualShaderNodeUIntFuncFunction = 1
+  VisualShaderNodeUIntFuncFuncMax VisualShaderNodeUIntFuncFunction = 2
+)

@@ -16,3 +16,17 @@ func (me *VisualShaderNodeTransformOp) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeTransformOp) BaseClass() string {
   return "VisualShaderNodeTransformOp"
 }
+
+type VisualShaderNodeTransformOpOperator int
+const (
+  VisualShaderNodeTransformOpOpAxb VisualShaderNodeTransformOpOperator = 0
+  VisualShaderNodeTransformOpOpBxa VisualShaderNodeTransformOpOperator = 1
+  VisualShaderNodeTransformOpOpAxbComp VisualShaderNodeTransformOpOperator = 2
+  VisualShaderNodeTransformOpOpBxaComp VisualShaderNodeTransformOpOperator = 3
+  VisualShaderNodeTransformOpOpAdd VisualShaderNodeTransformOpOperator = 4
+  VisualShaderNodeTransformOpOpAMinusB VisualShaderNodeTransformOpOperator = 5
+  VisualShaderNodeTransformOpOpBMinusA VisualShaderNodeTransformOpOperator = 6
+  VisualShaderNodeTransformOpOpADivB VisualShaderNodeTransformOpOperator = 7
+  VisualShaderNodeTransformOpOpBDivA VisualShaderNodeTransformOpOperator = 8
+  VisualShaderNodeTransformOpOpMax VisualShaderNodeTransformOpOperator = 9
+)

@@ -16,3 +16,10 @@ func (me *GraphNode) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *GraphNode) BaseClass() string {
   return "GraphNode"
 }
+
+type GraphNodeOverlay int
+const (
+  GraphNodeOverlayDisabled GraphNodeOverlay = 0
+  GraphNodeOverlayBreakpoint GraphNodeOverlay = 1
+  GraphNodeOverlayPosition GraphNodeOverlay = 2
+)

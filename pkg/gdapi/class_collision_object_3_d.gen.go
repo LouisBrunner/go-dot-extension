@@ -16,3 +16,10 @@ func (me *CollisionObject3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CollisionObject3D) BaseClass() string {
   return "CollisionObject3D"
 }
+
+type CollisionObject3DDisableMode int
+const (
+  CollisionObject3DDisableModeRemove CollisionObject3DDisableMode = 0
+  CollisionObject3DDisableModeMakeStatic CollisionObject3DDisableMode = 1
+  CollisionObject3DDisableModeKeepActive CollisionObject3DDisableMode = 2
+)

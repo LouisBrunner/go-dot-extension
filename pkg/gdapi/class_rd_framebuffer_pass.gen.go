@@ -16,3 +16,7 @@ func (me *RDFramebufferPass) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *RDFramebufferPass) BaseClass() string {
   return "RDFramebufferPass"
 }
+
+const (
+  RDFramebufferPassATTACHMENT_UNUSED = -1
+)

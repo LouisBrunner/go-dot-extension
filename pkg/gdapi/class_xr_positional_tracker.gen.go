@@ -16,3 +16,10 @@ func (me *XRPositionalTracker) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *XRPositionalTracker) BaseClass() string {
   return "XRPositionalTracker"
 }
+
+type XRPositionalTrackerTrackerHand int
+const (
+  XRPositionalTrackerTrackerHandUnknown XRPositionalTrackerTrackerHand = 0
+  XRPositionalTrackerTrackerHandLeft XRPositionalTrackerTrackerHand = 1
+  XRPositionalTrackerTrackerHandRight XRPositionalTrackerTrackerHand = 2
+)

@@ -16,3 +16,11 @@ func (me *AudioServer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioServer) BaseClass() string {
   return "AudioServer"
 }
+
+type AudioServerSpeakerMode int
+const (
+  AudioServerSpeakerModeStereo AudioServerSpeakerMode = 0
+  AudioServerSpeakerSurround31 AudioServerSpeakerMode = 1
+  AudioServerSpeakerSurround51 AudioServerSpeakerMode = 2
+  AudioServerSpeakerSurround71 AudioServerSpeakerMode = 3
+)

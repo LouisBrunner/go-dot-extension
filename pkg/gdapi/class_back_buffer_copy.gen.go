@@ -16,3 +16,10 @@ func (me *BackBufferCopy) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *BackBufferCopy) BaseClass() string {
   return "BackBufferCopy"
 }
+
+type BackBufferCopyCopyMode int
+const (
+  BackBufferCopyCopyModeDisabled BackBufferCopyCopyMode = 0
+  BackBufferCopyCopyModeRect BackBufferCopyCopyMode = 1
+  BackBufferCopyCopyModeViewport BackBufferCopyCopyMode = 2
+)

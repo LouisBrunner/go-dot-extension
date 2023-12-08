@@ -16,3 +16,12 @@ func (me *Area3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Area3D) BaseClass() string {
   return "Area3D"
 }
+
+type Area3DSpaceOverride int
+const (
+  Area3DSpaceOverrideDisabled Area3DSpaceOverride = 0
+  Area3DSpaceOverrideCombine Area3DSpaceOverride = 1
+  Area3DSpaceOverrideCombineReplace Area3DSpaceOverride = 2
+  Area3DSpaceOverrideReplace Area3DSpaceOverride = 3
+  Area3DSpaceOverrideReplaceCombine Area3DSpaceOverride = 4
+)

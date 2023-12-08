@@ -16,3 +16,9 @@ func (me *NavigationPathQueryResult2D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *NavigationPathQueryResult2D) BaseClass() string {
   return "NavigationPathQueryResult2D"
 }
+
+type NavigationPathQueryResult2DPathSegmentType int
+const (
+  NavigationPathQueryResult2DPathSegmentTypeRegion NavigationPathQueryResult2DPathSegmentType = 0
+  NavigationPathQueryResult2DPathSegmentTypeLink NavigationPathQueryResult2DPathSegmentType = 1
+)

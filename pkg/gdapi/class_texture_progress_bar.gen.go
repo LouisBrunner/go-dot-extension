@@ -16,3 +16,16 @@ func (me *TextureProgressBar) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *TextureProgressBar) BaseClass() string {
   return "TextureProgressBar"
 }
+
+type TextureProgressBarFillMode int
+const (
+  TextureProgressBarFillLeftToRight TextureProgressBarFillMode = 0
+  TextureProgressBarFillRightToLeft TextureProgressBarFillMode = 1
+  TextureProgressBarFillTopToBottom TextureProgressBarFillMode = 2
+  TextureProgressBarFillBottomToTop TextureProgressBarFillMode = 3
+  TextureProgressBarFillClockwise TextureProgressBarFillMode = 4
+  TextureProgressBarFillCounterClockwise TextureProgressBarFillMode = 5
+  TextureProgressBarFillBilinearLeftAndRight TextureProgressBarFillMode = 6
+  TextureProgressBarFillBilinearTopAndBottom TextureProgressBarFillMode = 7
+  TextureProgressBarFillClockwiseAndCounterClockwise TextureProgressBarFillMode = 8
+)

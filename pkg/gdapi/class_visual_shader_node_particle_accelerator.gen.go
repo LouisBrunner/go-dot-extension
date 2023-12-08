@@ -16,3 +16,11 @@ func (me *VisualShaderNodeParticleAccelerator) SetBaseObject(obj gdc.ObjectPtr) 
 func (me *VisualShaderNodeParticleAccelerator) BaseClass() string {
   return "VisualShaderNodeParticleAccelerator"
 }
+
+type VisualShaderNodeParticleAcceleratorMode int
+const (
+  VisualShaderNodeParticleAcceleratorModeLinear VisualShaderNodeParticleAcceleratorMode = 0
+  VisualShaderNodeParticleAcceleratorModeRadial VisualShaderNodeParticleAcceleratorMode = 1
+  VisualShaderNodeParticleAcceleratorModeTangential VisualShaderNodeParticleAcceleratorMode = 2
+  VisualShaderNodeParticleAcceleratorModeMax VisualShaderNodeParticleAcceleratorMode = 3
+)

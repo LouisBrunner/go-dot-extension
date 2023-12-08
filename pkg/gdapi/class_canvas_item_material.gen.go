@@ -16,3 +16,19 @@ func (me *CanvasItemMaterial) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CanvasItemMaterial) BaseClass() string {
   return "CanvasItemMaterial"
 }
+
+type CanvasItemMaterialBlendMode int
+const (
+  CanvasItemMaterialBlendModeMix CanvasItemMaterialBlendMode = 0
+  CanvasItemMaterialBlendModeAdd CanvasItemMaterialBlendMode = 1
+  CanvasItemMaterialBlendModeSub CanvasItemMaterialBlendMode = 2
+  CanvasItemMaterialBlendModeMul CanvasItemMaterialBlendMode = 3
+  CanvasItemMaterialBlendModePremultAlpha CanvasItemMaterialBlendMode = 4
+)
+
+type CanvasItemMaterialLightMode int
+const (
+  CanvasItemMaterialLightModeNormal CanvasItemMaterialLightMode = 0
+  CanvasItemMaterialLightModeUnshaded CanvasItemMaterialLightMode = 1
+  CanvasItemMaterialLightModeLightOnly CanvasItemMaterialLightMode = 2
+)

@@ -16,3 +16,10 @@ func (me *AnimationNodeBlendSpace2D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AnimationNodeBlendSpace2D) BaseClass() string {
   return "AnimationNodeBlendSpace2D"
 }
+
+type AnimationNodeBlendSpace2DBlendMode int
+const (
+  AnimationNodeBlendSpace2DBlendModeInterpolated AnimationNodeBlendSpace2DBlendMode = 0
+  AnimationNodeBlendSpace2DBlendModeDiscrete AnimationNodeBlendSpace2DBlendMode = 1
+  AnimationNodeBlendSpace2DBlendModeDiscreteCarry AnimationNodeBlendSpace2DBlendMode = 2
+)

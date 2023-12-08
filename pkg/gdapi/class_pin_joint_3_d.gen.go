@@ -16,3 +16,10 @@ func (me *PinJoint3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *PinJoint3D) BaseClass() string {
   return "PinJoint3D"
 }
+
+type PinJoint3DParam int
+const (
+  PinJoint3DParamBias PinJoint3DParam = 0
+  PinJoint3DParamDamping PinJoint3DParam = 1
+  PinJoint3DParamImpulseClamp PinJoint3DParam = 2
+)

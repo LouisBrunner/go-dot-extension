@@ -16,3 +16,10 @@ func (me *EditorUndoRedoManager) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *EditorUndoRedoManager) BaseClass() string {
   return "EditorUndoRedoManager"
 }
+
+type EditorUndoRedoManagerSpecialHistory int
+const (
+  EditorUndoRedoManagerGlobalHistory EditorUndoRedoManagerSpecialHistory = 0
+  EditorUndoRedoManagerRemoteHistory EditorUndoRedoManagerSpecialHistory = -9
+  EditorUndoRedoManagerInvalidHistory EditorUndoRedoManagerSpecialHistory = -99
+)

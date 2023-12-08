@@ -16,3 +16,9 @@ func (me *TouchScreenButton) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *TouchScreenButton) BaseClass() string {
   return "TouchScreenButton"
 }
+
+type TouchScreenButtonVisibilityMode int
+const (
+  TouchScreenButtonVisibilityAlways TouchScreenButtonVisibilityMode = 0
+  TouchScreenButtonVisibilityTouchscreenOnly TouchScreenButtonVisibilityMode = 1
+)

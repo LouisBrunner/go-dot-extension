@@ -16,3 +16,10 @@ func (me *StyleBoxTexture) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *StyleBoxTexture) BaseClass() string {
   return "StyleBoxTexture"
 }
+
+type StyleBoxTextureAxisStretchMode int
+const (
+  StyleBoxTextureAxisStretchModeStretch StyleBoxTextureAxisStretchMode = 0
+  StyleBoxTextureAxisStretchModeTile StyleBoxTextureAxisStretchMode = 1
+  StyleBoxTextureAxisStretchModeTileFit StyleBoxTextureAxisStretchMode = 2
+)

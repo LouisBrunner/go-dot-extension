@@ -16,3 +16,10 @@ func (me *AudioStreamRandomizer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioStreamRandomizer) BaseClass() string {
   return "AudioStreamRandomizer"
 }
+
+type AudioStreamRandomizerPlaybackMode int
+const (
+  AudioStreamRandomizerPlaybackRandomNoRepeats AudioStreamRandomizerPlaybackMode = 0
+  AudioStreamRandomizerPlaybackRandom AudioStreamRandomizerPlaybackMode = 1
+  AudioStreamRandomizerPlaybackSequential AudioStreamRandomizerPlaybackMode = 2
+)

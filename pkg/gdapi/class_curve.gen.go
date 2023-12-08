@@ -16,3 +16,10 @@ func (me *Curve) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Curve) BaseClass() string {
   return "Curve"
 }
+
+type CurveTangentMode int
+const (
+  CurveTangentFree CurveTangentMode = 0
+  CurveTangentLinear CurveTangentMode = 1
+  CurveTangentModeCount CurveTangentMode = 2
+)

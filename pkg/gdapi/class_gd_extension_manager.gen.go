@@ -16,3 +16,12 @@ func (me *GDExtensionManager) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *GDExtensionManager) BaseClass() string {
   return "GDExtensionManager"
 }
+
+type GDExtensionManagerLoadStatus int
+const (
+  GDExtensionManagerLoadStatusOk GDExtensionManagerLoadStatus = 0
+  GDExtensionManagerLoadStatusFailed GDExtensionManagerLoadStatus = 1
+  GDExtensionManagerLoadStatusAlreadyLoaded GDExtensionManagerLoadStatus = 2
+  GDExtensionManagerLoadStatusNotLoaded GDExtensionManagerLoadStatus = 3
+  GDExtensionManagerLoadStatusNeedsRestart GDExtensionManagerLoadStatus = 4
+)

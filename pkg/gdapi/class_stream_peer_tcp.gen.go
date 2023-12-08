@@ -16,3 +16,11 @@ func (me *StreamPeerTCP) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *StreamPeerTCP) BaseClass() string {
   return "StreamPeerTCP"
 }
+
+type StreamPeerTCPStatus int
+const (
+  StreamPeerTCPStatusNone StreamPeerTCPStatus = 0
+  StreamPeerTCPStatusConnecting StreamPeerTCPStatus = 1
+  StreamPeerTCPStatusConnected StreamPeerTCPStatus = 2
+  StreamPeerTCPStatusError StreamPeerTCPStatus = 3
+)

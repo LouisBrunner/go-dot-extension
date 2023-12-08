@@ -16,3 +16,7 @@ func (me *Skeleton3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Skeleton3D) BaseClass() string {
   return "Skeleton3D"
 }
+
+const (
+  Skeleton3DNOTIFICATION_UPDATE_SKELETON = 50
+)

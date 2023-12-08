@@ -16,3 +16,10 @@ func (me *TileMap) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *TileMap) BaseClass() string {
   return "TileMap"
 }
+
+type TileMapVisibilityMode int
+const (
+  TileMapVisibilityModeDefault TileMapVisibilityMode = 0
+  TileMapVisibilityModeForceHide TileMapVisibilityMode = 2
+  TileMapVisibilityModeForceShow TileMapVisibilityMode = 1
+)

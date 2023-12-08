@@ -16,3 +16,11 @@ func (me *VisualShaderNodeFloatParameter) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeFloatParameter) BaseClass() string {
   return "VisualShaderNodeFloatParameter"
 }
+
+type VisualShaderNodeFloatParameterHint int
+const (
+  VisualShaderNodeFloatParameterHintNone VisualShaderNodeFloatParameterHint = 0
+  VisualShaderNodeFloatParameterHintRange VisualShaderNodeFloatParameterHint = 1
+  VisualShaderNodeFloatParameterHintRangeStep VisualShaderNodeFloatParameterHint = 2
+  VisualShaderNodeFloatParameterHintMax VisualShaderNodeFloatParameterHint = 3
+)

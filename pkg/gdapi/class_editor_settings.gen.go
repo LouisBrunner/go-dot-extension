@@ -16,3 +16,7 @@ func (me *EditorSettings) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *EditorSettings) BaseClass() string {
   return "EditorSettings"
 }
+
+const (
+  EditorSettingsNOTIFICATION_EDITOR_SETTINGS_CHANGED = 10000
+)

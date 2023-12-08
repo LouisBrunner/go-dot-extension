@@ -16,3 +16,7 @@ func (me *GridMap) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *GridMap) BaseClass() string {
   return "GridMap"
 }
+
+const (
+  GridMapINVALID_CELL_ITEM = -1
+)

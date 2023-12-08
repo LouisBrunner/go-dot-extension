@@ -16,3 +16,599 @@ func (me *RenderingDevice) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *RenderingDevice) BaseClass() string {
   return "RenderingDevice"
 }
+
+const (
+  RenderingDeviceINVALID_ID = -1
+  RenderingDeviceINVALID_FORMAT_ID = -1
+)
+
+type RenderingDeviceDeviceType int
+const (
+  RenderingDeviceDeviceTypeOther RenderingDeviceDeviceType = 0
+  RenderingDeviceDeviceTypeIntegratedGpu RenderingDeviceDeviceType = 1
+  RenderingDeviceDeviceTypeDiscreteGpu RenderingDeviceDeviceType = 2
+  RenderingDeviceDeviceTypeVirtualGpu RenderingDeviceDeviceType = 3
+  RenderingDeviceDeviceTypeCpu RenderingDeviceDeviceType = 4
+  RenderingDeviceDeviceTypeMax RenderingDeviceDeviceType = 5
+)
+
+type RenderingDeviceDriverResource int
+const (
+  RenderingDeviceDriverResourceVulkanDevice RenderingDeviceDriverResource = 0
+  RenderingDeviceDriverResourceVulkanPhysicalDevice RenderingDeviceDriverResource = 1
+  RenderingDeviceDriverResourceVulkanInstance RenderingDeviceDriverResource = 2
+  RenderingDeviceDriverResourceVulkanQueue RenderingDeviceDriverResource = 3
+  RenderingDeviceDriverResourceVulkanQueueFamilyIndex RenderingDeviceDriverResource = 4
+  RenderingDeviceDriverResourceVulkanImage RenderingDeviceDriverResource = 5
+  RenderingDeviceDriverResourceVulkanImageView RenderingDeviceDriverResource = 6
+  RenderingDeviceDriverResourceVulkanImageNativeTextureFormat RenderingDeviceDriverResource = 7
+  RenderingDeviceDriverResourceVulkanSampler RenderingDeviceDriverResource = 8
+  RenderingDeviceDriverResourceVulkanDescriptorSet RenderingDeviceDriverResource = 9
+  RenderingDeviceDriverResourceVulkanBuffer RenderingDeviceDriverResource = 10
+  RenderingDeviceDriverResourceVulkanComputePipeline RenderingDeviceDriverResource = 11
+  RenderingDeviceDriverResourceVulkanRenderPipeline RenderingDeviceDriverResource = 12
+)
+
+type RenderingDeviceDataFormat int
+const (
+  RenderingDeviceDataFormatR4G4UnormPack8 RenderingDeviceDataFormat = 0
+  RenderingDeviceDataFormatR4G4B4A4UnormPack16 RenderingDeviceDataFormat = 1
+  RenderingDeviceDataFormatB4G4R4A4UnormPack16 RenderingDeviceDataFormat = 2
+  RenderingDeviceDataFormatR5G6B5UnormPack16 RenderingDeviceDataFormat = 3
+  RenderingDeviceDataFormatB5G6R5UnormPack16 RenderingDeviceDataFormat = 4
+  RenderingDeviceDataFormatR5G5B5A1UnormPack16 RenderingDeviceDataFormat = 5
+  RenderingDeviceDataFormatB5G5R5A1UnormPack16 RenderingDeviceDataFormat = 6
+  RenderingDeviceDataFormatA1R5G5B5UnormPack16 RenderingDeviceDataFormat = 7
+  RenderingDeviceDataFormatR8Unorm RenderingDeviceDataFormat = 8
+  RenderingDeviceDataFormatR8Snorm RenderingDeviceDataFormat = 9
+  RenderingDeviceDataFormatR8Uscaled RenderingDeviceDataFormat = 10
+  RenderingDeviceDataFormatR8Sscaled RenderingDeviceDataFormat = 11
+  RenderingDeviceDataFormatR8Uint RenderingDeviceDataFormat = 12
+  RenderingDeviceDataFormatR8Sint RenderingDeviceDataFormat = 13
+  RenderingDeviceDataFormatR8Srgb RenderingDeviceDataFormat = 14
+  RenderingDeviceDataFormatR8G8Unorm RenderingDeviceDataFormat = 15
+  RenderingDeviceDataFormatR8G8Snorm RenderingDeviceDataFormat = 16
+  RenderingDeviceDataFormatR8G8Uscaled RenderingDeviceDataFormat = 17
+  RenderingDeviceDataFormatR8G8Sscaled RenderingDeviceDataFormat = 18
+  RenderingDeviceDataFormatR8G8Uint RenderingDeviceDataFormat = 19
+  RenderingDeviceDataFormatR8G8Sint RenderingDeviceDataFormat = 20
+  RenderingDeviceDataFormatR8G8Srgb RenderingDeviceDataFormat = 21
+  RenderingDeviceDataFormatR8G8B8Unorm RenderingDeviceDataFormat = 22
+  RenderingDeviceDataFormatR8G8B8Snorm RenderingDeviceDataFormat = 23
+  RenderingDeviceDataFormatR8G8B8Uscaled RenderingDeviceDataFormat = 24
+  RenderingDeviceDataFormatR8G8B8Sscaled RenderingDeviceDataFormat = 25
+  RenderingDeviceDataFormatR8G8B8Uint RenderingDeviceDataFormat = 26
+  RenderingDeviceDataFormatR8G8B8Sint RenderingDeviceDataFormat = 27
+  RenderingDeviceDataFormatR8G8B8Srgb RenderingDeviceDataFormat = 28
+  RenderingDeviceDataFormatB8G8R8Unorm RenderingDeviceDataFormat = 29
+  RenderingDeviceDataFormatB8G8R8Snorm RenderingDeviceDataFormat = 30
+  RenderingDeviceDataFormatB8G8R8Uscaled RenderingDeviceDataFormat = 31
+  RenderingDeviceDataFormatB8G8R8Sscaled RenderingDeviceDataFormat = 32
+  RenderingDeviceDataFormatB8G8R8Uint RenderingDeviceDataFormat = 33
+  RenderingDeviceDataFormatB8G8R8Sint RenderingDeviceDataFormat = 34
+  RenderingDeviceDataFormatB8G8R8Srgb RenderingDeviceDataFormat = 35
+  RenderingDeviceDataFormatR8G8B8A8Unorm RenderingDeviceDataFormat = 36
+  RenderingDeviceDataFormatR8G8B8A8Snorm RenderingDeviceDataFormat = 37
+  RenderingDeviceDataFormatR8G8B8A8Uscaled RenderingDeviceDataFormat = 38
+  RenderingDeviceDataFormatR8G8B8A8Sscaled RenderingDeviceDataFormat = 39
+  RenderingDeviceDataFormatR8G8B8A8Uint RenderingDeviceDataFormat = 40
+  RenderingDeviceDataFormatR8G8B8A8Sint RenderingDeviceDataFormat = 41
+  RenderingDeviceDataFormatR8G8B8A8Srgb RenderingDeviceDataFormat = 42
+  RenderingDeviceDataFormatB8G8R8A8Unorm RenderingDeviceDataFormat = 43
+  RenderingDeviceDataFormatB8G8R8A8Snorm RenderingDeviceDataFormat = 44
+  RenderingDeviceDataFormatB8G8R8A8Uscaled RenderingDeviceDataFormat = 45
+  RenderingDeviceDataFormatB8G8R8A8Sscaled RenderingDeviceDataFormat = 46
+  RenderingDeviceDataFormatB8G8R8A8Uint RenderingDeviceDataFormat = 47
+  RenderingDeviceDataFormatB8G8R8A8Sint RenderingDeviceDataFormat = 48
+  RenderingDeviceDataFormatB8G8R8A8Srgb RenderingDeviceDataFormat = 49
+  RenderingDeviceDataFormatA8B8G8R8UnormPack32 RenderingDeviceDataFormat = 50
+  RenderingDeviceDataFormatA8B8G8R8SnormPack32 RenderingDeviceDataFormat = 51
+  RenderingDeviceDataFormatA8B8G8R8UscaledPack32 RenderingDeviceDataFormat = 52
+  RenderingDeviceDataFormatA8B8G8R8SscaledPack32 RenderingDeviceDataFormat = 53
+  RenderingDeviceDataFormatA8B8G8R8UintPack32 RenderingDeviceDataFormat = 54
+  RenderingDeviceDataFormatA8B8G8R8SintPack32 RenderingDeviceDataFormat = 55
+  RenderingDeviceDataFormatA8B8G8R8SrgbPack32 RenderingDeviceDataFormat = 56
+  RenderingDeviceDataFormatA2R10G10B10UnormPack32 RenderingDeviceDataFormat = 57
+  RenderingDeviceDataFormatA2R10G10B10SnormPack32 RenderingDeviceDataFormat = 58
+  RenderingDeviceDataFormatA2R10G10B10UscaledPack32 RenderingDeviceDataFormat = 59
+  RenderingDeviceDataFormatA2R10G10B10SscaledPack32 RenderingDeviceDataFormat = 60
+  RenderingDeviceDataFormatA2R10G10B10UintPack32 RenderingDeviceDataFormat = 61
+  RenderingDeviceDataFormatA2R10G10B10SintPack32 RenderingDeviceDataFormat = 62
+  RenderingDeviceDataFormatA2B10G10R10UnormPack32 RenderingDeviceDataFormat = 63
+  RenderingDeviceDataFormatA2B10G10R10SnormPack32 RenderingDeviceDataFormat = 64
+  RenderingDeviceDataFormatA2B10G10R10UscaledPack32 RenderingDeviceDataFormat = 65
+  RenderingDeviceDataFormatA2B10G10R10SscaledPack32 RenderingDeviceDataFormat = 66
+  RenderingDeviceDataFormatA2B10G10R10UintPack32 RenderingDeviceDataFormat = 67
+  RenderingDeviceDataFormatA2B10G10R10SintPack32 RenderingDeviceDataFormat = 68
+  RenderingDeviceDataFormatR16Unorm RenderingDeviceDataFormat = 69
+  RenderingDeviceDataFormatR16Snorm RenderingDeviceDataFormat = 70
+  RenderingDeviceDataFormatR16Uscaled RenderingDeviceDataFormat = 71
+  RenderingDeviceDataFormatR16Sscaled RenderingDeviceDataFormat = 72
+  RenderingDeviceDataFormatR16Uint RenderingDeviceDataFormat = 73
+  RenderingDeviceDataFormatR16Sint RenderingDeviceDataFormat = 74
+  RenderingDeviceDataFormatR16Sfloat RenderingDeviceDataFormat = 75
+  RenderingDeviceDataFormatR16G16Unorm RenderingDeviceDataFormat = 76
+  RenderingDeviceDataFormatR16G16Snorm RenderingDeviceDataFormat = 77
+  RenderingDeviceDataFormatR16G16Uscaled RenderingDeviceDataFormat = 78
+  RenderingDeviceDataFormatR16G16Sscaled RenderingDeviceDataFormat = 79
+  RenderingDeviceDataFormatR16G16Uint RenderingDeviceDataFormat = 80
+  RenderingDeviceDataFormatR16G16Sint RenderingDeviceDataFormat = 81
+  RenderingDeviceDataFormatR16G16Sfloat RenderingDeviceDataFormat = 82
+  RenderingDeviceDataFormatR16G16B16Unorm RenderingDeviceDataFormat = 83
+  RenderingDeviceDataFormatR16G16B16Snorm RenderingDeviceDataFormat = 84
+  RenderingDeviceDataFormatR16G16B16Uscaled RenderingDeviceDataFormat = 85
+  RenderingDeviceDataFormatR16G16B16Sscaled RenderingDeviceDataFormat = 86
+  RenderingDeviceDataFormatR16G16B16Uint RenderingDeviceDataFormat = 87
+  RenderingDeviceDataFormatR16G16B16Sint RenderingDeviceDataFormat = 88
+  RenderingDeviceDataFormatR16G16B16Sfloat RenderingDeviceDataFormat = 89
+  RenderingDeviceDataFormatR16G16B16A16Unorm RenderingDeviceDataFormat = 90
+  RenderingDeviceDataFormatR16G16B16A16Snorm RenderingDeviceDataFormat = 91
+  RenderingDeviceDataFormatR16G16B16A16Uscaled RenderingDeviceDataFormat = 92
+  RenderingDeviceDataFormatR16G16B16A16Sscaled RenderingDeviceDataFormat = 93
+  RenderingDeviceDataFormatR16G16B16A16Uint RenderingDeviceDataFormat = 94
+  RenderingDeviceDataFormatR16G16B16A16Sint RenderingDeviceDataFormat = 95
+  RenderingDeviceDataFormatR16G16B16A16Sfloat RenderingDeviceDataFormat = 96
+  RenderingDeviceDataFormatR32Uint RenderingDeviceDataFormat = 97
+  RenderingDeviceDataFormatR32Sint RenderingDeviceDataFormat = 98
+  RenderingDeviceDataFormatR32Sfloat RenderingDeviceDataFormat = 99
+  RenderingDeviceDataFormatR32G32Uint RenderingDeviceDataFormat = 100
+  RenderingDeviceDataFormatR32G32Sint RenderingDeviceDataFormat = 101
+  RenderingDeviceDataFormatR32G32Sfloat RenderingDeviceDataFormat = 102
+  RenderingDeviceDataFormatR32G32B32Uint RenderingDeviceDataFormat = 103
+  RenderingDeviceDataFormatR32G32B32Sint RenderingDeviceDataFormat = 104
+  RenderingDeviceDataFormatR32G32B32Sfloat RenderingDeviceDataFormat = 105
+  RenderingDeviceDataFormatR32G32B32A32Uint RenderingDeviceDataFormat = 106
+  RenderingDeviceDataFormatR32G32B32A32Sint RenderingDeviceDataFormat = 107
+  RenderingDeviceDataFormatR32G32B32A32Sfloat RenderingDeviceDataFormat = 108
+  RenderingDeviceDataFormatR64Uint RenderingDeviceDataFormat = 109
+  RenderingDeviceDataFormatR64Sint RenderingDeviceDataFormat = 110
+  RenderingDeviceDataFormatR64Sfloat RenderingDeviceDataFormat = 111
+  RenderingDeviceDataFormatR64G64Uint RenderingDeviceDataFormat = 112
+  RenderingDeviceDataFormatR64G64Sint RenderingDeviceDataFormat = 113
+  RenderingDeviceDataFormatR64G64Sfloat RenderingDeviceDataFormat = 114
+  RenderingDeviceDataFormatR64G64B64Uint RenderingDeviceDataFormat = 115
+  RenderingDeviceDataFormatR64G64B64Sint RenderingDeviceDataFormat = 116
+  RenderingDeviceDataFormatR64G64B64Sfloat RenderingDeviceDataFormat = 117
+  RenderingDeviceDataFormatR64G64B64A64Uint RenderingDeviceDataFormat = 118
+  RenderingDeviceDataFormatR64G64B64A64Sint RenderingDeviceDataFormat = 119
+  RenderingDeviceDataFormatR64G64B64A64Sfloat RenderingDeviceDataFormat = 120
+  RenderingDeviceDataFormatB10G11R11UfloatPack32 RenderingDeviceDataFormat = 121
+  RenderingDeviceDataFormatE5B9G9R9UfloatPack32 RenderingDeviceDataFormat = 122
+  RenderingDeviceDataFormatD16Unorm RenderingDeviceDataFormat = 123
+  RenderingDeviceDataFormatX8D24UnormPack32 RenderingDeviceDataFormat = 124
+  RenderingDeviceDataFormatD32Sfloat RenderingDeviceDataFormat = 125
+  RenderingDeviceDataFormatS8Uint RenderingDeviceDataFormat = 126
+  RenderingDeviceDataFormatD16UnormS8Uint RenderingDeviceDataFormat = 127
+  RenderingDeviceDataFormatD24UnormS8Uint RenderingDeviceDataFormat = 128
+  RenderingDeviceDataFormatD32SfloatS8Uint RenderingDeviceDataFormat = 129
+  RenderingDeviceDataFormatBc1RgbUnormBlock RenderingDeviceDataFormat = 130
+  RenderingDeviceDataFormatBc1RgbSrgbBlock RenderingDeviceDataFormat = 131
+  RenderingDeviceDataFormatBc1RgbaUnormBlock RenderingDeviceDataFormat = 132
+  RenderingDeviceDataFormatBc1RgbaSrgbBlock RenderingDeviceDataFormat = 133
+  RenderingDeviceDataFormatBc2UnormBlock RenderingDeviceDataFormat = 134
+  RenderingDeviceDataFormatBc2SrgbBlock RenderingDeviceDataFormat = 135
+  RenderingDeviceDataFormatBc3UnormBlock RenderingDeviceDataFormat = 136
+  RenderingDeviceDataFormatBc3SrgbBlock RenderingDeviceDataFormat = 137
+  RenderingDeviceDataFormatBc4UnormBlock RenderingDeviceDataFormat = 138
+  RenderingDeviceDataFormatBc4SnormBlock RenderingDeviceDataFormat = 139
+  RenderingDeviceDataFormatBc5UnormBlock RenderingDeviceDataFormat = 140
+  RenderingDeviceDataFormatBc5SnormBlock RenderingDeviceDataFormat = 141
+  RenderingDeviceDataFormatBc6HUfloatBlock RenderingDeviceDataFormat = 142
+  RenderingDeviceDataFormatBc6HSfloatBlock RenderingDeviceDataFormat = 143
+  RenderingDeviceDataFormatBc7UnormBlock RenderingDeviceDataFormat = 144
+  RenderingDeviceDataFormatBc7SrgbBlock RenderingDeviceDataFormat = 145
+  RenderingDeviceDataFormatEtc2R8G8B8UnormBlock RenderingDeviceDataFormat = 146
+  RenderingDeviceDataFormatEtc2R8G8B8SrgbBlock RenderingDeviceDataFormat = 147
+  RenderingDeviceDataFormatEtc2R8G8B8A1UnormBlock RenderingDeviceDataFormat = 148
+  RenderingDeviceDataFormatEtc2R8G8B8A1SrgbBlock RenderingDeviceDataFormat = 149
+  RenderingDeviceDataFormatEtc2R8G8B8A8UnormBlock RenderingDeviceDataFormat = 150
+  RenderingDeviceDataFormatEtc2R8G8B8A8SrgbBlock RenderingDeviceDataFormat = 151
+  RenderingDeviceDataFormatEacR11UnormBlock RenderingDeviceDataFormat = 152
+  RenderingDeviceDataFormatEacR11SnormBlock RenderingDeviceDataFormat = 153
+  RenderingDeviceDataFormatEacR11G11UnormBlock RenderingDeviceDataFormat = 154
+  RenderingDeviceDataFormatEacR11G11SnormBlock RenderingDeviceDataFormat = 155
+  RenderingDeviceDataFormatAstc4X4UnormBlock RenderingDeviceDataFormat = 156
+  RenderingDeviceDataFormatAstc4X4SrgbBlock RenderingDeviceDataFormat = 157
+  RenderingDeviceDataFormatAstc5X4UnormBlock RenderingDeviceDataFormat = 158
+  RenderingDeviceDataFormatAstc5X4SrgbBlock RenderingDeviceDataFormat = 159
+  RenderingDeviceDataFormatAstc5X5UnormBlock RenderingDeviceDataFormat = 160
+  RenderingDeviceDataFormatAstc5X5SrgbBlock RenderingDeviceDataFormat = 161
+  RenderingDeviceDataFormatAstc6X5UnormBlock RenderingDeviceDataFormat = 162
+  RenderingDeviceDataFormatAstc6X5SrgbBlock RenderingDeviceDataFormat = 163
+  RenderingDeviceDataFormatAstc6X6UnormBlock RenderingDeviceDataFormat = 164
+  RenderingDeviceDataFormatAstc6X6SrgbBlock RenderingDeviceDataFormat = 165
+  RenderingDeviceDataFormatAstc8X5UnormBlock RenderingDeviceDataFormat = 166
+  RenderingDeviceDataFormatAstc8X5SrgbBlock RenderingDeviceDataFormat = 167
+  RenderingDeviceDataFormatAstc8X6UnormBlock RenderingDeviceDataFormat = 168
+  RenderingDeviceDataFormatAstc8X6SrgbBlock RenderingDeviceDataFormat = 169
+  RenderingDeviceDataFormatAstc8X8UnormBlock RenderingDeviceDataFormat = 170
+  RenderingDeviceDataFormatAstc8X8SrgbBlock RenderingDeviceDataFormat = 171
+  RenderingDeviceDataFormatAstc10X5UnormBlock RenderingDeviceDataFormat = 172
+  RenderingDeviceDataFormatAstc10X5SrgbBlock RenderingDeviceDataFormat = 173
+  RenderingDeviceDataFormatAstc10X6UnormBlock RenderingDeviceDataFormat = 174
+  RenderingDeviceDataFormatAstc10X6SrgbBlock RenderingDeviceDataFormat = 175
+  RenderingDeviceDataFormatAstc10X8UnormBlock RenderingDeviceDataFormat = 176
+  RenderingDeviceDataFormatAstc10X8SrgbBlock RenderingDeviceDataFormat = 177
+  RenderingDeviceDataFormatAstc10X10UnormBlock RenderingDeviceDataFormat = 178
+  RenderingDeviceDataFormatAstc10X10SrgbBlock RenderingDeviceDataFormat = 179
+  RenderingDeviceDataFormatAstc12X10UnormBlock RenderingDeviceDataFormat = 180
+  RenderingDeviceDataFormatAstc12X10SrgbBlock RenderingDeviceDataFormat = 181
+  RenderingDeviceDataFormatAstc12X12UnormBlock RenderingDeviceDataFormat = 182
+  RenderingDeviceDataFormatAstc12X12SrgbBlock RenderingDeviceDataFormat = 183
+  RenderingDeviceDataFormatG8B8G8R8422Unorm RenderingDeviceDataFormat = 184
+  RenderingDeviceDataFormatB8G8R8G8422Unorm RenderingDeviceDataFormat = 185
+  RenderingDeviceDataFormatG8B8R83Plane420Unorm RenderingDeviceDataFormat = 186
+  RenderingDeviceDataFormatG8B8R82Plane420Unorm RenderingDeviceDataFormat = 187
+  RenderingDeviceDataFormatG8B8R83Plane422Unorm RenderingDeviceDataFormat = 188
+  RenderingDeviceDataFormatG8B8R82Plane422Unorm RenderingDeviceDataFormat = 189
+  RenderingDeviceDataFormatG8B8R83Plane444Unorm RenderingDeviceDataFormat = 190
+  RenderingDeviceDataFormatR10X6UnormPack16 RenderingDeviceDataFormat = 191
+  RenderingDeviceDataFormatR10X6G10X6Unorm2Pack16 RenderingDeviceDataFormat = 192
+  RenderingDeviceDataFormatR10X6G10X6B10X6A10X6Unorm4Pack16 RenderingDeviceDataFormat = 193
+  RenderingDeviceDataFormatG10X6B10X6G10X6R10X6422Unorm4Pack16 RenderingDeviceDataFormat = 194
+  RenderingDeviceDataFormatB10X6G10X6R10X6G10X6422Unorm4Pack16 RenderingDeviceDataFormat = 195
+  RenderingDeviceDataFormatG10X6B10X6R10X63Plane420Unorm3Pack16 RenderingDeviceDataFormat = 196
+  RenderingDeviceDataFormatG10X6B10X6R10X62Plane420Unorm3Pack16 RenderingDeviceDataFormat = 197
+  RenderingDeviceDataFormatG10X6B10X6R10X63Plane422Unorm3Pack16 RenderingDeviceDataFormat = 198
+  RenderingDeviceDataFormatG10X6B10X6R10X62Plane422Unorm3Pack16 RenderingDeviceDataFormat = 199
+  RenderingDeviceDataFormatG10X6B10X6R10X63Plane444Unorm3Pack16 RenderingDeviceDataFormat = 200
+  RenderingDeviceDataFormatR12X4UnormPack16 RenderingDeviceDataFormat = 201
+  RenderingDeviceDataFormatR12X4G12X4Unorm2Pack16 RenderingDeviceDataFormat = 202
+  RenderingDeviceDataFormatR12X4G12X4B12X4A12X4Unorm4Pack16 RenderingDeviceDataFormat = 203
+  RenderingDeviceDataFormatG12X4B12X4G12X4R12X4422Unorm4Pack16 RenderingDeviceDataFormat = 204
+  RenderingDeviceDataFormatB12X4G12X4R12X4G12X4422Unorm4Pack16 RenderingDeviceDataFormat = 205
+  RenderingDeviceDataFormatG12X4B12X4R12X43Plane420Unorm3Pack16 RenderingDeviceDataFormat = 206
+  RenderingDeviceDataFormatG12X4B12X4R12X42Plane420Unorm3Pack16 RenderingDeviceDataFormat = 207
+  RenderingDeviceDataFormatG12X4B12X4R12X43Plane422Unorm3Pack16 RenderingDeviceDataFormat = 208
+  RenderingDeviceDataFormatG12X4B12X4R12X42Plane422Unorm3Pack16 RenderingDeviceDataFormat = 209
+  RenderingDeviceDataFormatG12X4B12X4R12X43Plane444Unorm3Pack16 RenderingDeviceDataFormat = 210
+  RenderingDeviceDataFormatG16B16G16R16422Unorm RenderingDeviceDataFormat = 211
+  RenderingDeviceDataFormatB16G16R16G16422Unorm RenderingDeviceDataFormat = 212
+  RenderingDeviceDataFormatG16B16R163Plane420Unorm RenderingDeviceDataFormat = 213
+  RenderingDeviceDataFormatG16B16R162Plane420Unorm RenderingDeviceDataFormat = 214
+  RenderingDeviceDataFormatG16B16R163Plane422Unorm RenderingDeviceDataFormat = 215
+  RenderingDeviceDataFormatG16B16R162Plane422Unorm RenderingDeviceDataFormat = 216
+  RenderingDeviceDataFormatG16B16R163Plane444Unorm RenderingDeviceDataFormat = 217
+  RenderingDeviceDataFormatMax RenderingDeviceDataFormat = 218
+)
+
+type RenderingDeviceBarrierMask int
+const (
+  RenderingDeviceBarrierMaskRaster RenderingDeviceBarrierMask = 1
+  RenderingDeviceBarrierMaskCompute RenderingDeviceBarrierMask = 2
+  RenderingDeviceBarrierMaskTransfer RenderingDeviceBarrierMask = 4
+  RenderingDeviceBarrierMaskAllBarriers RenderingDeviceBarrierMask = 7
+  RenderingDeviceBarrierMaskNoBarrier RenderingDeviceBarrierMask = 8
+)
+
+type RenderingDeviceTextureType int
+const (
+  RenderingDeviceTextureType1D RenderingDeviceTextureType = 0
+  RenderingDeviceTextureType2D RenderingDeviceTextureType = 1
+  RenderingDeviceTextureType3D RenderingDeviceTextureType = 2
+  RenderingDeviceTextureTypeCube RenderingDeviceTextureType = 3
+  RenderingDeviceTextureType1DArray RenderingDeviceTextureType = 4
+  RenderingDeviceTextureType2DArray RenderingDeviceTextureType = 5
+  RenderingDeviceTextureTypeCubeArray RenderingDeviceTextureType = 6
+  RenderingDeviceTextureTypeMax RenderingDeviceTextureType = 7
+)
+
+type RenderingDeviceTextureSamples int
+const (
+  RenderingDeviceTextureSamples1 RenderingDeviceTextureSamples = 0
+  RenderingDeviceTextureSamples2 RenderingDeviceTextureSamples = 1
+  RenderingDeviceTextureSamples4 RenderingDeviceTextureSamples = 2
+  RenderingDeviceTextureSamples8 RenderingDeviceTextureSamples = 3
+  RenderingDeviceTextureSamples16 RenderingDeviceTextureSamples = 4
+  RenderingDeviceTextureSamples32 RenderingDeviceTextureSamples = 5
+  RenderingDeviceTextureSamples64 RenderingDeviceTextureSamples = 6
+  RenderingDeviceTextureSamplesMax RenderingDeviceTextureSamples = 7
+)
+
+type RenderingDeviceTextureUsageBits int
+const (
+  RenderingDeviceTextureUsageSamplingBit RenderingDeviceTextureUsageBits = 1
+  RenderingDeviceTextureUsageColorAttachmentBit RenderingDeviceTextureUsageBits = 2
+  RenderingDeviceTextureUsageDepthStencilAttachmentBit RenderingDeviceTextureUsageBits = 4
+  RenderingDeviceTextureUsageStorageBit RenderingDeviceTextureUsageBits = 8
+  RenderingDeviceTextureUsageStorageAtomicBit RenderingDeviceTextureUsageBits = 16
+  RenderingDeviceTextureUsageCpuReadBit RenderingDeviceTextureUsageBits = 32
+  RenderingDeviceTextureUsageCanUpdateBit RenderingDeviceTextureUsageBits = 64
+  RenderingDeviceTextureUsageCanCopyFromBit RenderingDeviceTextureUsageBits = 128
+  RenderingDeviceTextureUsageCanCopyToBit RenderingDeviceTextureUsageBits = 256
+  RenderingDeviceTextureUsageInputAttachmentBit RenderingDeviceTextureUsageBits = 512
+)
+
+type RenderingDeviceTextureSwizzle int
+const (
+  RenderingDeviceTextureSwizzleIdentity RenderingDeviceTextureSwizzle = 0
+  RenderingDeviceTextureSwizzleZero RenderingDeviceTextureSwizzle = 1
+  RenderingDeviceTextureSwizzleOne RenderingDeviceTextureSwizzle = 2
+  RenderingDeviceTextureSwizzleR RenderingDeviceTextureSwizzle = 3
+  RenderingDeviceTextureSwizzleG RenderingDeviceTextureSwizzle = 4
+  RenderingDeviceTextureSwizzleB RenderingDeviceTextureSwizzle = 5
+  RenderingDeviceTextureSwizzleA RenderingDeviceTextureSwizzle = 6
+  RenderingDeviceTextureSwizzleMax RenderingDeviceTextureSwizzle = 7
+)
+
+type RenderingDeviceTextureSliceType int
+const (
+  RenderingDeviceTextureSlice2D RenderingDeviceTextureSliceType = 0
+  RenderingDeviceTextureSliceCubemap RenderingDeviceTextureSliceType = 1
+  RenderingDeviceTextureSlice3D RenderingDeviceTextureSliceType = 2
+)
+
+type RenderingDeviceSamplerFilter int
+const (
+  RenderingDeviceSamplerFilterNearest RenderingDeviceSamplerFilter = 0
+  RenderingDeviceSamplerFilterLinear RenderingDeviceSamplerFilter = 1
+)
+
+type RenderingDeviceSamplerRepeatMode int
+const (
+  RenderingDeviceSamplerRepeatModeRepeat RenderingDeviceSamplerRepeatMode = 0
+  RenderingDeviceSamplerRepeatModeMirroredRepeat RenderingDeviceSamplerRepeatMode = 1
+  RenderingDeviceSamplerRepeatModeClampToEdge RenderingDeviceSamplerRepeatMode = 2
+  RenderingDeviceSamplerRepeatModeClampToBorder RenderingDeviceSamplerRepeatMode = 3
+  RenderingDeviceSamplerRepeatModeMirrorClampToEdge RenderingDeviceSamplerRepeatMode = 4
+  RenderingDeviceSamplerRepeatModeMax RenderingDeviceSamplerRepeatMode = 5
+)
+
+type RenderingDeviceSamplerBorderColor int
+const (
+  RenderingDeviceSamplerBorderColorFloatTransparentBlack RenderingDeviceSamplerBorderColor = 0
+  RenderingDeviceSamplerBorderColorIntTransparentBlack RenderingDeviceSamplerBorderColor = 1
+  RenderingDeviceSamplerBorderColorFloatOpaqueBlack RenderingDeviceSamplerBorderColor = 2
+  RenderingDeviceSamplerBorderColorIntOpaqueBlack RenderingDeviceSamplerBorderColor = 3
+  RenderingDeviceSamplerBorderColorFloatOpaqueWhite RenderingDeviceSamplerBorderColor = 4
+  RenderingDeviceSamplerBorderColorIntOpaqueWhite RenderingDeviceSamplerBorderColor = 5
+  RenderingDeviceSamplerBorderColorMax RenderingDeviceSamplerBorderColor = 6
+)
+
+type RenderingDeviceVertexFrequency int
+const (
+  RenderingDeviceVertexFrequencyVertex RenderingDeviceVertexFrequency = 0
+  RenderingDeviceVertexFrequencyInstance RenderingDeviceVertexFrequency = 1
+)
+
+type RenderingDeviceIndexBufferFormat int
+const (
+  RenderingDeviceIndexBufferFormatUint16 RenderingDeviceIndexBufferFormat = 0
+  RenderingDeviceIndexBufferFormatUint32 RenderingDeviceIndexBufferFormat = 1
+)
+
+type RenderingDeviceStorageBufferUsage int
+const (
+  RenderingDeviceStorageBufferUsageDispatchIndirect RenderingDeviceStorageBufferUsage = 1
+)
+
+type RenderingDeviceUniformType int
+const (
+  RenderingDeviceUniformTypeSampler RenderingDeviceUniformType = 0
+  RenderingDeviceUniformTypeSamplerWithTexture RenderingDeviceUniformType = 1
+  RenderingDeviceUniformTypeTexture RenderingDeviceUniformType = 2
+  RenderingDeviceUniformTypeImage RenderingDeviceUniformType = 3
+  RenderingDeviceUniformTypeTextureBuffer RenderingDeviceUniformType = 4
+  RenderingDeviceUniformTypeSamplerWithTextureBuffer RenderingDeviceUniformType = 5
+  RenderingDeviceUniformTypeImageBuffer RenderingDeviceUniformType = 6
+  RenderingDeviceUniformTypeUniformBuffer RenderingDeviceUniformType = 7
+  RenderingDeviceUniformTypeStorageBuffer RenderingDeviceUniformType = 8
+  RenderingDeviceUniformTypeInputAttachment RenderingDeviceUniformType = 9
+  RenderingDeviceUniformTypeMax RenderingDeviceUniformType = 10
+)
+
+type RenderingDeviceRenderPrimitive int
+const (
+  RenderingDeviceRenderPrimitivePoints RenderingDeviceRenderPrimitive = 0
+  RenderingDeviceRenderPrimitiveLines RenderingDeviceRenderPrimitive = 1
+  RenderingDeviceRenderPrimitiveLinesWithAdjacency RenderingDeviceRenderPrimitive = 2
+  RenderingDeviceRenderPrimitiveLinestrips RenderingDeviceRenderPrimitive = 3
+  RenderingDeviceRenderPrimitiveLinestripsWithAdjacency RenderingDeviceRenderPrimitive = 4
+  RenderingDeviceRenderPrimitiveTriangles RenderingDeviceRenderPrimitive = 5
+  RenderingDeviceRenderPrimitiveTrianglesWithAdjacency RenderingDeviceRenderPrimitive = 6
+  RenderingDeviceRenderPrimitiveTriangleStrips RenderingDeviceRenderPrimitive = 7
+  RenderingDeviceRenderPrimitiveTriangleStripsWithAjacency RenderingDeviceRenderPrimitive = 8
+  RenderingDeviceRenderPrimitiveTriangleStripsWithRestartIndex RenderingDeviceRenderPrimitive = 9
+  RenderingDeviceRenderPrimitiveTesselationPatch RenderingDeviceRenderPrimitive = 10
+  RenderingDeviceRenderPrimitiveMax RenderingDeviceRenderPrimitive = 11
+)
+
+type RenderingDevicePolygonCullMode int
+const (
+  RenderingDevicePolygonCullDisabled RenderingDevicePolygonCullMode = 0
+  RenderingDevicePolygonCullFront RenderingDevicePolygonCullMode = 1
+  RenderingDevicePolygonCullBack RenderingDevicePolygonCullMode = 2
+)
+
+type RenderingDevicePolygonFrontFace int
+const (
+  RenderingDevicePolygonFrontFaceClockwise RenderingDevicePolygonFrontFace = 0
+  RenderingDevicePolygonFrontFaceCounterClockwise RenderingDevicePolygonFrontFace = 1
+)
+
+type RenderingDeviceStencilOperation int
+const (
+  RenderingDeviceStencilOpKeep RenderingDeviceStencilOperation = 0
+  RenderingDeviceStencilOpZero RenderingDeviceStencilOperation = 1
+  RenderingDeviceStencilOpReplace RenderingDeviceStencilOperation = 2
+  RenderingDeviceStencilOpIncrementAndClamp RenderingDeviceStencilOperation = 3
+  RenderingDeviceStencilOpDecrementAndClamp RenderingDeviceStencilOperation = 4
+  RenderingDeviceStencilOpInvert RenderingDeviceStencilOperation = 5
+  RenderingDeviceStencilOpIncrementAndWrap RenderingDeviceStencilOperation = 6
+  RenderingDeviceStencilOpDecrementAndWrap RenderingDeviceStencilOperation = 7
+  RenderingDeviceStencilOpMax RenderingDeviceStencilOperation = 8
+)
+
+type RenderingDeviceCompareOperator int
+const (
+  RenderingDeviceCompareOpNever RenderingDeviceCompareOperator = 0
+  RenderingDeviceCompareOpLess RenderingDeviceCompareOperator = 1
+  RenderingDeviceCompareOpEqual RenderingDeviceCompareOperator = 2
+  RenderingDeviceCompareOpLessOrEqual RenderingDeviceCompareOperator = 3
+  RenderingDeviceCompareOpGreater RenderingDeviceCompareOperator = 4
+  RenderingDeviceCompareOpNotEqual RenderingDeviceCompareOperator = 5
+  RenderingDeviceCompareOpGreaterOrEqual RenderingDeviceCompareOperator = 6
+  RenderingDeviceCompareOpAlways RenderingDeviceCompareOperator = 7
+  RenderingDeviceCompareOpMax RenderingDeviceCompareOperator = 8
+)
+
+type RenderingDeviceLogicOperation int
+const (
+  RenderingDeviceLogicOpClear RenderingDeviceLogicOperation = 0
+  RenderingDeviceLogicOpAnd RenderingDeviceLogicOperation = 1
+  RenderingDeviceLogicOpAndReverse RenderingDeviceLogicOperation = 2
+  RenderingDeviceLogicOpCopy RenderingDeviceLogicOperation = 3
+  RenderingDeviceLogicOpAndInverted RenderingDeviceLogicOperation = 4
+  RenderingDeviceLogicOpNoOp RenderingDeviceLogicOperation = 5
+  RenderingDeviceLogicOpXor RenderingDeviceLogicOperation = 6
+  RenderingDeviceLogicOpOr RenderingDeviceLogicOperation = 7
+  RenderingDeviceLogicOpNor RenderingDeviceLogicOperation = 8
+  RenderingDeviceLogicOpEquivalent RenderingDeviceLogicOperation = 9
+  RenderingDeviceLogicOpInvert RenderingDeviceLogicOperation = 10
+  RenderingDeviceLogicOpOrReverse RenderingDeviceLogicOperation = 11
+  RenderingDeviceLogicOpCopyInverted RenderingDeviceLogicOperation = 12
+  RenderingDeviceLogicOpOrInverted RenderingDeviceLogicOperation = 13
+  RenderingDeviceLogicOpNand RenderingDeviceLogicOperation = 14
+  RenderingDeviceLogicOpSet RenderingDeviceLogicOperation = 15
+  RenderingDeviceLogicOpMax RenderingDeviceLogicOperation = 16
+)
+
+type RenderingDeviceBlendFactor int
+const (
+  RenderingDeviceBlendFactorZero RenderingDeviceBlendFactor = 0
+  RenderingDeviceBlendFactorOne RenderingDeviceBlendFactor = 1
+  RenderingDeviceBlendFactorSrcColor RenderingDeviceBlendFactor = 2
+  RenderingDeviceBlendFactorOneMinusSrcColor RenderingDeviceBlendFactor = 3
+  RenderingDeviceBlendFactorDstColor RenderingDeviceBlendFactor = 4
+  RenderingDeviceBlendFactorOneMinusDstColor RenderingDeviceBlendFactor = 5
+  RenderingDeviceBlendFactorSrcAlpha RenderingDeviceBlendFactor = 6
+  RenderingDeviceBlendFactorOneMinusSrcAlpha RenderingDeviceBlendFactor = 7
+  RenderingDeviceBlendFactorDstAlpha RenderingDeviceBlendFactor = 8
+  RenderingDeviceBlendFactorOneMinusDstAlpha RenderingDeviceBlendFactor = 9
+  RenderingDeviceBlendFactorConstantColor RenderingDeviceBlendFactor = 10
+  RenderingDeviceBlendFactorOneMinusConstantColor RenderingDeviceBlendFactor = 11
+  RenderingDeviceBlendFactorConstantAlpha RenderingDeviceBlendFactor = 12
+  RenderingDeviceBlendFactorOneMinusConstantAlpha RenderingDeviceBlendFactor = 13
+  RenderingDeviceBlendFactorSrcAlphaSaturate RenderingDeviceBlendFactor = 14
+  RenderingDeviceBlendFactorSrc1Color RenderingDeviceBlendFactor = 15
+  RenderingDeviceBlendFactorOneMinusSrc1Color RenderingDeviceBlendFactor = 16
+  RenderingDeviceBlendFactorSrc1Alpha RenderingDeviceBlendFactor = 17
+  RenderingDeviceBlendFactorOneMinusSrc1Alpha RenderingDeviceBlendFactor = 18
+  RenderingDeviceBlendFactorMax RenderingDeviceBlendFactor = 19
+)
+
+type RenderingDeviceBlendOperation int
+const (
+  RenderingDeviceBlendOpAdd RenderingDeviceBlendOperation = 0
+  RenderingDeviceBlendOpSubtract RenderingDeviceBlendOperation = 1
+  RenderingDeviceBlendOpReverseSubtract RenderingDeviceBlendOperation = 2
+  RenderingDeviceBlendOpMinimum RenderingDeviceBlendOperation = 3
+  RenderingDeviceBlendOpMaximum RenderingDeviceBlendOperation = 4
+  RenderingDeviceBlendOpMax RenderingDeviceBlendOperation = 5
+)
+
+type RenderingDevicePipelineDynamicStateFlags int
+const (
+  RenderingDeviceDynamicStateLineWidth RenderingDevicePipelineDynamicStateFlags = 1
+  RenderingDeviceDynamicStateDepthBias RenderingDevicePipelineDynamicStateFlags = 2
+  RenderingDeviceDynamicStateBlendConstants RenderingDevicePipelineDynamicStateFlags = 4
+  RenderingDeviceDynamicStateDepthBounds RenderingDevicePipelineDynamicStateFlags = 8
+  RenderingDeviceDynamicStateStencilCompareMask RenderingDevicePipelineDynamicStateFlags = 16
+  RenderingDeviceDynamicStateStencilWriteMask RenderingDevicePipelineDynamicStateFlags = 32
+  RenderingDeviceDynamicStateStencilReference RenderingDevicePipelineDynamicStateFlags = 64
+)
+
+type RenderingDeviceInitialAction int
+const (
+  RenderingDeviceInitialActionClear RenderingDeviceInitialAction = 0
+  RenderingDeviceInitialActionClearRegion RenderingDeviceInitialAction = 1
+  RenderingDeviceInitialActionClearRegionContinue RenderingDeviceInitialAction = 2
+  RenderingDeviceInitialActionKeep RenderingDeviceInitialAction = 3
+  RenderingDeviceInitialActionDrop RenderingDeviceInitialAction = 4
+  RenderingDeviceInitialActionContinue RenderingDeviceInitialAction = 5
+  RenderingDeviceInitialActionMax RenderingDeviceInitialAction = 6
+)
+
+type RenderingDeviceFinalAction int
+const (
+  RenderingDeviceFinalActionRead RenderingDeviceFinalAction = 0
+  RenderingDeviceFinalActionDiscard RenderingDeviceFinalAction = 1
+  RenderingDeviceFinalActionContinue RenderingDeviceFinalAction = 2
+  RenderingDeviceFinalActionMax RenderingDeviceFinalAction = 3
+)
+
+type RenderingDeviceShaderStage int
+const (
+  RenderingDeviceShaderStageVertex RenderingDeviceShaderStage = 0
+  RenderingDeviceShaderStageFragment RenderingDeviceShaderStage = 1
+  RenderingDeviceShaderStageTesselationControl RenderingDeviceShaderStage = 2
+  RenderingDeviceShaderStageTesselationEvaluation RenderingDeviceShaderStage = 3
+  RenderingDeviceShaderStageCompute RenderingDeviceShaderStage = 4
+  RenderingDeviceShaderStageMax RenderingDeviceShaderStage = 5
+  RenderingDeviceShaderStageVertexBit RenderingDeviceShaderStage = 1
+  RenderingDeviceShaderStageFragmentBit RenderingDeviceShaderStage = 2
+  RenderingDeviceShaderStageTesselationControlBit RenderingDeviceShaderStage = 4
+  RenderingDeviceShaderStageTesselationEvaluationBit RenderingDeviceShaderStage = 8
+  RenderingDeviceShaderStageComputeBit RenderingDeviceShaderStage = 16
+)
+
+type RenderingDeviceShaderLanguage int
+const (
+  RenderingDeviceShaderLanguageGlsl RenderingDeviceShaderLanguage = 0
+  RenderingDeviceShaderLanguageHlsl RenderingDeviceShaderLanguage = 1
+)
+
+type RenderingDevicePipelineSpecializationConstantType int
+const (
+  RenderingDevicePipelineSpecializationConstantTypeBool RenderingDevicePipelineSpecializationConstantType = 0
+  RenderingDevicePipelineSpecializationConstantTypeInt RenderingDevicePipelineSpecializationConstantType = 1
+  RenderingDevicePipelineSpecializationConstantTypeFloat RenderingDevicePipelineSpecializationConstantType = 2
+)
+
+type RenderingDeviceLimit int
+const (
+  RenderingDeviceLimitMaxBoundUniformSets RenderingDeviceLimit = 0
+  RenderingDeviceLimitMaxFramebufferColorAttachments RenderingDeviceLimit = 1
+  RenderingDeviceLimitMaxTexturesPerUniformSet RenderingDeviceLimit = 2
+  RenderingDeviceLimitMaxSamplersPerUniformSet RenderingDeviceLimit = 3
+  RenderingDeviceLimitMaxStorageBuffersPerUniformSet RenderingDeviceLimit = 4
+  RenderingDeviceLimitMaxStorageImagesPerUniformSet RenderingDeviceLimit = 5
+  RenderingDeviceLimitMaxUniformBuffersPerUniformSet RenderingDeviceLimit = 6
+  RenderingDeviceLimitMaxDrawIndexedIndex RenderingDeviceLimit = 7
+  RenderingDeviceLimitMaxFramebufferHeight RenderingDeviceLimit = 8
+  RenderingDeviceLimitMaxFramebufferWidth RenderingDeviceLimit = 9
+  RenderingDeviceLimitMaxTextureArrayLayers RenderingDeviceLimit = 10
+  RenderingDeviceLimitMaxTextureSize1D RenderingDeviceLimit = 11
+  RenderingDeviceLimitMaxTextureSize2D RenderingDeviceLimit = 12
+  RenderingDeviceLimitMaxTextureSize3D RenderingDeviceLimit = 13
+  RenderingDeviceLimitMaxTextureSizeCube RenderingDeviceLimit = 14
+  RenderingDeviceLimitMaxTexturesPerShaderStage RenderingDeviceLimit = 15
+  RenderingDeviceLimitMaxSamplersPerShaderStage RenderingDeviceLimit = 16
+  RenderingDeviceLimitMaxStorageBuffersPerShaderStage RenderingDeviceLimit = 17
+  RenderingDeviceLimitMaxStorageImagesPerShaderStage RenderingDeviceLimit = 18
+  RenderingDeviceLimitMaxUniformBuffersPerShaderStage RenderingDeviceLimit = 19
+  RenderingDeviceLimitMaxPushConstantSize RenderingDeviceLimit = 20
+  RenderingDeviceLimitMaxUniformBufferSize RenderingDeviceLimit = 21
+  RenderingDeviceLimitMaxVertexInputAttributeOffset RenderingDeviceLimit = 22
+  RenderingDeviceLimitMaxVertexInputAttributes RenderingDeviceLimit = 23
+  RenderingDeviceLimitMaxVertexInputBindings RenderingDeviceLimit = 24
+  RenderingDeviceLimitMaxVertexInputBindingStride RenderingDeviceLimit = 25
+  RenderingDeviceLimitMinUniformBufferOffsetAlignment RenderingDeviceLimit = 26
+  RenderingDeviceLimitMaxComputeSharedMemorySize RenderingDeviceLimit = 27
+  RenderingDeviceLimitMaxComputeWorkgroupCountX RenderingDeviceLimit = 28
+  RenderingDeviceLimitMaxComputeWorkgroupCountY RenderingDeviceLimit = 29
+  RenderingDeviceLimitMaxComputeWorkgroupCountZ RenderingDeviceLimit = 30
+  RenderingDeviceLimitMaxComputeWorkgroupInvocations RenderingDeviceLimit = 31
+  RenderingDeviceLimitMaxComputeWorkgroupSizeX RenderingDeviceLimit = 32
+  RenderingDeviceLimitMaxComputeWorkgroupSizeY RenderingDeviceLimit = 33
+  RenderingDeviceLimitMaxComputeWorkgroupSizeZ RenderingDeviceLimit = 34
+  RenderingDeviceLimitMaxViewportDimensionsX RenderingDeviceLimit = 35
+  RenderingDeviceLimitMaxViewportDimensionsY RenderingDeviceLimit = 36
+)
+
+type RenderingDeviceMemoryType int
+const (
+  RenderingDeviceMemoryTextures RenderingDeviceMemoryType = 0
+  RenderingDeviceMemoryBuffers RenderingDeviceMemoryType = 1
+  RenderingDeviceMemoryTotal RenderingDeviceMemoryType = 2
+)

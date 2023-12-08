@@ -16,3 +16,10 @@ func (me *MultiplayerSynchronizer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *MultiplayerSynchronizer) BaseClass() string {
   return "MultiplayerSynchronizer"
 }
+
+type MultiplayerSynchronizerVisibilityUpdateMode int
+const (
+  MultiplayerSynchronizerVisibilityProcessIdle MultiplayerSynchronizerVisibilityUpdateMode = 0
+  MultiplayerSynchronizerVisibilityProcessPhysics MultiplayerSynchronizerVisibilityUpdateMode = 1
+  MultiplayerSynchronizerVisibilityProcessNone MultiplayerSynchronizerVisibilityUpdateMode = 2
+)

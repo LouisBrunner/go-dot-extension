@@ -16,3 +16,9 @@ func (me *MeshConvexDecompositionSettings) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *MeshConvexDecompositionSettings) BaseClass() string {
   return "MeshConvexDecompositionSettings"
 }
+
+type MeshConvexDecompositionSettingsMode int
+const (
+  MeshConvexDecompositionSettingsConvexDecompositionModeVoxel MeshConvexDecompositionSettingsMode = 0
+  MeshConvexDecompositionSettingsConvexDecompositionModeTetrahedron MeshConvexDecompositionSettingsMode = 1
+)

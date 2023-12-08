@@ -16,3 +16,10 @@ func (me *BoxContainer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *BoxContainer) BaseClass() string {
   return "BoxContainer"
 }
+
+type BoxContainerAlignmentMode int
+const (
+  BoxContainerAlignmentBegin BoxContainerAlignmentMode = 0
+  BoxContainerAlignmentCenter BoxContainerAlignmentMode = 1
+  BoxContainerAlignmentEnd BoxContainerAlignmentMode = 2
+)

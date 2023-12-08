@@ -16,3 +16,10 @@ func (me *Thread) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Thread) BaseClass() string {
   return "Thread"
 }
+
+type ThreadPriority int
+const (
+  ThreadPriorityLow ThreadPriority = 0
+  ThreadPriorityNormal ThreadPriority = 1
+  ThreadPriorityHigh ThreadPriority = 2
+)

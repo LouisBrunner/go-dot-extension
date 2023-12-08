@@ -16,3 +16,10 @@ func (me *AnimationNodeStateMachine) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AnimationNodeStateMachine) BaseClass() string {
   return "AnimationNodeStateMachine"
 }
+
+type AnimationNodeStateMachineStateMachineType int
+const (
+  AnimationNodeStateMachineStateMachineTypeRoot AnimationNodeStateMachineStateMachineType = 0
+  AnimationNodeStateMachineStateMachineTypeNested AnimationNodeStateMachineStateMachineType = 1
+  AnimationNodeStateMachineStateMachineTypeGrouped AnimationNodeStateMachineStateMachineType = 2
+)

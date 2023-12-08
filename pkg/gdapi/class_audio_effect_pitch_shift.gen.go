@@ -16,3 +16,13 @@ func (me *AudioEffectPitchShift) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioEffectPitchShift) BaseClass() string {
   return "AudioEffectPitchShift"
 }
+
+type AudioEffectPitchShiftFFTSize int
+const (
+  AudioEffectPitchShiftFftSize256 AudioEffectPitchShiftFFTSize = 0
+  AudioEffectPitchShiftFftSize512 AudioEffectPitchShiftFFTSize = 1
+  AudioEffectPitchShiftFftSize1024 AudioEffectPitchShiftFFTSize = 2
+  AudioEffectPitchShiftFftSize2048 AudioEffectPitchShiftFFTSize = 3
+  AudioEffectPitchShiftFftSize4096 AudioEffectPitchShiftFFTSize = 4
+  AudioEffectPitchShiftFftSizeMax AudioEffectPitchShiftFFTSize = 5
+)

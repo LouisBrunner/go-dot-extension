@@ -16,3 +16,7 @@ func (me *AudioStreamPlaybackPolyphonic) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioStreamPlaybackPolyphonic) BaseClass() string {
   return "AudioStreamPlaybackPolyphonic"
 }
+
+const (
+  AudioStreamPlaybackPolyphonicINVALID_ID = -1
+)

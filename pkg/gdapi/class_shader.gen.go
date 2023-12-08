@@ -16,3 +16,12 @@ func (me *Shader) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Shader) BaseClass() string {
   return "Shader"
 }
+
+type ShaderMode int
+const (
+  ShaderModeSpatial ShaderMode = 0
+  ShaderModeCanvasItem ShaderMode = 1
+  ShaderModeParticles ShaderMode = 2
+  ShaderModeSky ShaderMode = 3
+  ShaderModeFog ShaderMode = 4
+)

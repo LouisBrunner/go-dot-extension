@@ -16,3 +16,9 @@ func (me *SoftBody3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *SoftBody3D) BaseClass() string {
   return "SoftBody3D"
 }
+
+type SoftBody3DDisableMode int
+const (
+  SoftBody3DDisableModeRemove SoftBody3DDisableMode = 0
+  SoftBody3DDisableModeKeepActive SoftBody3DDisableMode = 1
+)

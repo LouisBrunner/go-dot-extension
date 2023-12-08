@@ -16,3 +16,17 @@ func (me *WebSocketPeer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *WebSocketPeer) BaseClass() string {
   return "WebSocketPeer"
 }
+
+type WebSocketPeerWriteMode int
+const (
+  WebSocketPeerWriteModeText WebSocketPeerWriteMode = 0
+  WebSocketPeerWriteModeBinary WebSocketPeerWriteMode = 1
+)
+
+type WebSocketPeerState int
+const (
+  WebSocketPeerStateConnecting WebSocketPeerState = 0
+  WebSocketPeerStateOpen WebSocketPeerState = 1
+  WebSocketPeerStateClosing WebSocketPeerState = 2
+  WebSocketPeerStateClosed WebSocketPeerState = 3
+)

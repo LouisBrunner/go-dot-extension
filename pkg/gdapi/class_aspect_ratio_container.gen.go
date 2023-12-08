@@ -16,3 +16,18 @@ func (me *AspectRatioContainer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AspectRatioContainer) BaseClass() string {
   return "AspectRatioContainer"
 }
+
+type AspectRatioContainerStretchMode int
+const (
+  AspectRatioContainerStretchWidthControlsHeight AspectRatioContainerStretchMode = 0
+  AspectRatioContainerStretchHeightControlsWidth AspectRatioContainerStretchMode = 1
+  AspectRatioContainerStretchFit AspectRatioContainerStretchMode = 2
+  AspectRatioContainerStretchCover AspectRatioContainerStretchMode = 3
+)
+
+type AspectRatioContainerAlignmentMode int
+const (
+  AspectRatioContainerAlignmentBegin AspectRatioContainerAlignmentMode = 0
+  AspectRatioContainerAlignmentCenter AspectRatioContainerAlignmentMode = 1
+  AspectRatioContainerAlignmentEnd AspectRatioContainerAlignmentMode = 2
+)

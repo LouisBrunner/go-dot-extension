@@ -16,3 +16,11 @@ func (me *CameraServer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CameraServer) BaseClass() string {
   return "CameraServer"
 }
+
+type CameraServerFeedImage int
+const (
+  CameraServerFeedRgbaImage CameraServerFeedImage = 0
+  CameraServerFeedYcbcrImage CameraServerFeedImage = 0
+  CameraServerFeedYImage CameraServerFeedImage = 0
+  CameraServerFeedCbcrImage CameraServerFeedImage = 1
+)

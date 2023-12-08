@@ -16,3 +16,10 @@ func (me *SplitContainer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *SplitContainer) BaseClass() string {
   return "SplitContainer"
 }
+
+type SplitContainerDraggerVisibility int
+const (
+  SplitContainerDraggerVisible SplitContainerDraggerVisibility = 0
+  SplitContainerDraggerHidden SplitContainerDraggerVisibility = 1
+  SplitContainerDraggerHiddenCollapsed SplitContainerDraggerVisibility = 2
+)

@@ -16,3 +16,10 @@ func (me *FlowContainer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *FlowContainer) BaseClass() string {
   return "FlowContainer"
 }
+
+type FlowContainerAlignmentMode int
+const (
+  FlowContainerAlignmentBegin FlowContainerAlignmentMode = 0
+  FlowContainerAlignmentCenter FlowContainerAlignmentMode = 1
+  FlowContainerAlignmentEnd FlowContainerAlignmentMode = 2
+)

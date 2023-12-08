@@ -16,3 +16,10 @@ func (me *LinkButton) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *LinkButton) BaseClass() string {
   return "LinkButton"
 }
+
+type LinkButtonUnderlineMode int
+const (
+  LinkButtonUnderlineModeAlways LinkButtonUnderlineMode = 0
+  LinkButtonUnderlineModeOnHover LinkButtonUnderlineMode = 1
+  LinkButtonUnderlineModeNever LinkButtonUnderlineMode = 2
+)

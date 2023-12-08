@@ -16,3 +16,10 @@ func (me *ZIPPacker) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ZIPPacker) BaseClass() string {
   return "ZIPPacker"
 }
+
+type ZIPPackerZipAppend int
+const (
+  ZIPPackerAppendCreate ZIPPackerZipAppend = 0
+  ZIPPackerAppendCreateafter ZIPPackerZipAppend = 1
+  ZIPPackerAppendAddinzip ZIPPackerZipAppend = 2
+)

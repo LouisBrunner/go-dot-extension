@@ -16,3 +16,9 @@ func (me *AnimationNodeAnimation) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AnimationNodeAnimation) BaseClass() string {
   return "AnimationNodeAnimation"
 }
+
+type AnimationNodeAnimationPlayMode int
+const (
+  AnimationNodeAnimationPlayModeForward AnimationNodeAnimationPlayMode = 0
+  AnimationNodeAnimationPlayModeBackward AnimationNodeAnimationPlayMode = 1
+)

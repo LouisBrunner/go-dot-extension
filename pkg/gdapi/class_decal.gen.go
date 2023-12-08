@@ -16,3 +16,12 @@ func (me *Decal) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Decal) BaseClass() string {
   return "Decal"
 }
+
+type DecalDecalTexture int
+const (
+  DecalTextureAlbedo DecalDecalTexture = 0
+  DecalTextureNormal DecalDecalTexture = 1
+  DecalTextureOrm DecalDecalTexture = 2
+  DecalTextureEmission DecalDecalTexture = 3
+  DecalTextureMax DecalDecalTexture = 4
+)

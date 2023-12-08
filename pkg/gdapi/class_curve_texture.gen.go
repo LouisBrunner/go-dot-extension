@@ -16,3 +16,9 @@ func (me *CurveTexture) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CurveTexture) BaseClass() string {
   return "CurveTexture"
 }
+
+type CurveTextureTextureMode int
+const (
+  CurveTextureTextureModeRgb CurveTextureTextureMode = 0
+  CurveTextureTextureModeRed CurveTextureTextureMode = 1
+)

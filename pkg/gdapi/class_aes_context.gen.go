@@ -16,3 +16,12 @@ func (me *AESContext) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AESContext) BaseClass() string {
   return "AESContext"
 }
+
+type AESContextMode int
+const (
+  AESContextModeEcbEncrypt AESContextMode = 0
+  AESContextModeEcbDecrypt AESContextMode = 1
+  AESContextModeCbcEncrypt AESContextMode = 2
+  AESContextModeCbcDecrypt AESContextMode = 3
+  AESContextModeMax AESContextMode = 4
+)

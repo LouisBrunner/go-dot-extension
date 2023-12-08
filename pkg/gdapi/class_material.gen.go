@@ -16,3 +16,8 @@ func (me *Material) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Material) BaseClass() string {
   return "Material"
 }
+
+const (
+  MaterialRENDER_PRIORITY_MAX = 127
+  MaterialRENDER_PRIORITY_MIN = -128
+)

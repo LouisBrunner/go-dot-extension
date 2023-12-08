@@ -16,3 +16,11 @@ func (me *WebXRInterface) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *WebXRInterface) BaseClass() string {
   return "WebXRInterface"
 }
+
+type WebXRInterfaceTargetRayMode int
+const (
+  WebXRInterfaceTargetRayModeUnknown WebXRInterfaceTargetRayMode = 0
+  WebXRInterfaceTargetRayModeGaze WebXRInterfaceTargetRayMode = 1
+  WebXRInterfaceTargetRayModeTrackedPointer WebXRInterfaceTargetRayMode = 2
+  WebXRInterfaceTargetRayModeScreen WebXRInterfaceTargetRayMode = 3
+)

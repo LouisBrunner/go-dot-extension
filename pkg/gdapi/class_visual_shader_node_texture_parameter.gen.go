@@ -16,3 +16,49 @@ func (me *VisualShaderNodeTextureParameter) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeTextureParameter) BaseClass() string {
   return "VisualShaderNodeTextureParameter"
 }
+
+type VisualShaderNodeTextureParameterTextureType int
+const (
+  VisualShaderNodeTextureParameterTypeData VisualShaderNodeTextureParameterTextureType = 0
+  VisualShaderNodeTextureParameterTypeColor VisualShaderNodeTextureParameterTextureType = 1
+  VisualShaderNodeTextureParameterTypeNormalMap VisualShaderNodeTextureParameterTextureType = 2
+  VisualShaderNodeTextureParameterTypeAnisotropy VisualShaderNodeTextureParameterTextureType = 3
+  VisualShaderNodeTextureParameterTypeMax VisualShaderNodeTextureParameterTextureType = 4
+)
+
+type VisualShaderNodeTextureParameterColorDefault int
+const (
+  VisualShaderNodeTextureParameterColorDefaultWhite VisualShaderNodeTextureParameterColorDefault = 0
+  VisualShaderNodeTextureParameterColorDefaultBlack VisualShaderNodeTextureParameterColorDefault = 1
+  VisualShaderNodeTextureParameterColorDefaultTransparent VisualShaderNodeTextureParameterColorDefault = 2
+  VisualShaderNodeTextureParameterColorDefaultMax VisualShaderNodeTextureParameterColorDefault = 3
+)
+
+type VisualShaderNodeTextureParameterTextureFilter int
+const (
+  VisualShaderNodeTextureParameterFilterDefault VisualShaderNodeTextureParameterTextureFilter = 0
+  VisualShaderNodeTextureParameterFilterNearest VisualShaderNodeTextureParameterTextureFilter = 1
+  VisualShaderNodeTextureParameterFilterLinear VisualShaderNodeTextureParameterTextureFilter = 2
+  VisualShaderNodeTextureParameterFilterNearestMipmap VisualShaderNodeTextureParameterTextureFilter = 3
+  VisualShaderNodeTextureParameterFilterLinearMipmap VisualShaderNodeTextureParameterTextureFilter = 4
+  VisualShaderNodeTextureParameterFilterNearestMipmapAnisotropic VisualShaderNodeTextureParameterTextureFilter = 5
+  VisualShaderNodeTextureParameterFilterLinearMipmapAnisotropic VisualShaderNodeTextureParameterTextureFilter = 6
+  VisualShaderNodeTextureParameterFilterMax VisualShaderNodeTextureParameterTextureFilter = 7
+)
+
+type VisualShaderNodeTextureParameterTextureRepeat int
+const (
+  VisualShaderNodeTextureParameterRepeatDefault VisualShaderNodeTextureParameterTextureRepeat = 0
+  VisualShaderNodeTextureParameterRepeatEnabled VisualShaderNodeTextureParameterTextureRepeat = 1
+  VisualShaderNodeTextureParameterRepeatDisabled VisualShaderNodeTextureParameterTextureRepeat = 2
+  VisualShaderNodeTextureParameterRepeatMax VisualShaderNodeTextureParameterTextureRepeat = 3
+)
+
+type VisualShaderNodeTextureParameterTextureSource int
+const (
+  VisualShaderNodeTextureParameterSourceNone VisualShaderNodeTextureParameterTextureSource = 0
+  VisualShaderNodeTextureParameterSourceScreen VisualShaderNodeTextureParameterTextureSource = 1
+  VisualShaderNodeTextureParameterSourceDepth VisualShaderNodeTextureParameterTextureSource = 2
+  VisualShaderNodeTextureParameterSourceNormalRoughness VisualShaderNodeTextureParameterTextureSource = 3
+  VisualShaderNodeTextureParameterSourceMax VisualShaderNodeTextureParameterTextureSource = 4
+)

@@ -16,3 +16,12 @@ func (me *VisualShaderNodeParticleEmit) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeParticleEmit) BaseClass() string {
   return "VisualShaderNodeParticleEmit"
 }
+
+type VisualShaderNodeParticleEmitEmitFlags int
+const (
+  VisualShaderNodeParticleEmitEmitFlagPosition VisualShaderNodeParticleEmitEmitFlags = 1
+  VisualShaderNodeParticleEmitEmitFlagRotScale VisualShaderNodeParticleEmitEmitFlags = 2
+  VisualShaderNodeParticleEmitEmitFlagVelocity VisualShaderNodeParticleEmitEmitFlags = 4
+  VisualShaderNodeParticleEmitEmitFlagColor VisualShaderNodeParticleEmitEmitFlags = 8
+  VisualShaderNodeParticleEmitEmitFlagCustom VisualShaderNodeParticleEmitEmitFlags = 16
+)

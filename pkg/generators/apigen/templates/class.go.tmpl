@@ -16,3 +16,24 @@ func (me *{{.Name}}) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *{{.Name}}) BaseClass() string {
   return "{{.Name}}"
 }
+{{- if .Constants}}
+
+const (
+{{range .Constants}}  {{$.Name}}{{.Name}} = {{.Value}}
+{{end -}}
+)
+{{- end}}
+
+{{- range .Enums}}
+
+type {{$.Name}}{{.Name}} int
+const ({{$name := .Name}}
+{{range .Values}}  {{$.Name}}
+{{- $name2 := pascalCased (lowerCased .Name) -}}
+{{- $name2 -}}
+{{- if eq $name2 $name -}}
+_
+{{- end}} {{$.Name}}{{$name}} = {{.Value}}
+{{end -}}
+)
+{{- end}}

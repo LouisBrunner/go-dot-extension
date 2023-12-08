@@ -16,3 +16,12 @@ func (me *AudioEffectDistortion) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioEffectDistortion) BaseClass() string {
   return "AudioEffectDistortion"
 }
+
+type AudioEffectDistortionMode int
+const (
+  AudioEffectDistortionModeClip AudioEffectDistortionMode = 0
+  AudioEffectDistortionModeAtan AudioEffectDistortionMode = 1
+  AudioEffectDistortionModeLofi AudioEffectDistortionMode = 2
+  AudioEffectDistortionModeOverdrive AudioEffectDistortionMode = 3
+  AudioEffectDistortionModeWaveshape AudioEffectDistortionMode = 4
+)

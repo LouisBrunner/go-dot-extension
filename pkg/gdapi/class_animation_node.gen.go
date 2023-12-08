@@ -16,3 +16,11 @@ func (me *AnimationNode) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AnimationNode) BaseClass() string {
   return "AnimationNode"
 }
+
+type AnimationNodeFilterAction int
+const (
+  AnimationNodeFilterIgnore AnimationNodeFilterAction = 0
+  AnimationNodeFilterPass AnimationNodeFilterAction = 1
+  AnimationNodeFilterStop AnimationNodeFilterAction = 2
+  AnimationNodeFilterBlend AnimationNodeFilterAction = 3
+)

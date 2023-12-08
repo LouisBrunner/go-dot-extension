@@ -16,3 +16,14 @@ func (me *VisualShaderNodeClamp) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeClamp) BaseClass() string {
   return "VisualShaderNodeClamp"
 }
+
+type VisualShaderNodeClampOpType int
+const (
+  VisualShaderNodeClampOpTypeFloat VisualShaderNodeClampOpType = 0
+  VisualShaderNodeClampOpTypeInt VisualShaderNodeClampOpType = 1
+  VisualShaderNodeClampOpTypeUint VisualShaderNodeClampOpType = 2
+  VisualShaderNodeClampOpTypeVector2D VisualShaderNodeClampOpType = 3
+  VisualShaderNodeClampOpTypeVector3D VisualShaderNodeClampOpType = 4
+  VisualShaderNodeClampOpTypeVector4D VisualShaderNodeClampOpType = 5
+  VisualShaderNodeClampOpTypeMax VisualShaderNodeClampOpType = 6
+)
