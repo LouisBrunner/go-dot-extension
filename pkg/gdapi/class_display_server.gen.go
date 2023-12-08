@@ -9,10 +9,8 @@ type DisplayServer struct {
   obj gdc.ObjectPtr
 }
 
-func createDisplayServer(obj gdc.ObjectPtr) *DisplayServer {
-  return &DisplayServer{
-    obj: obj,
-  }
+func (me *DisplayServer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *DisplayServer) BaseClass() string {

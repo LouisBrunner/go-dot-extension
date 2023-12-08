@@ -9,10 +9,8 @@ type Performance struct {
   obj gdc.ObjectPtr
 }
 
-func createPerformance(obj gdc.ObjectPtr) *Performance {
-  return &Performance{
-    obj: obj,
-  }
+func (me *Performance) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Performance) BaseClass() string {

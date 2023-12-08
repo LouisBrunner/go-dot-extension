@@ -9,10 +9,8 @@ type NavigationPathQueryResult3D struct {
   obj gdc.ObjectPtr
 }
 
-func createNavigationPathQueryResult3D(obj gdc.ObjectPtr) *NavigationPathQueryResult3D {
-  return &NavigationPathQueryResult3D{
-    obj: obj,
-  }
+func (me *NavigationPathQueryResult3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NavigationPathQueryResult3D) BaseClass() string {

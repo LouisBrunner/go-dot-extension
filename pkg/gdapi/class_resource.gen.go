@@ -9,10 +9,8 @@ type Resource struct {
   obj gdc.ObjectPtr
 }
 
-func createResource(obj gdc.ObjectPtr) *Resource {
-  return &Resource{
-    obj: obj,
-  }
+func (me *Resource) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Resource) BaseClass() string {

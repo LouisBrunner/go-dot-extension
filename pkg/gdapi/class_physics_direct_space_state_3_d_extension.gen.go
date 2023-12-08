@@ -9,10 +9,8 @@ type PhysicsDirectSpaceState3DExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsDirectSpaceState3DExtension(obj gdc.ObjectPtr) *PhysicsDirectSpaceState3DExtension {
-  return &PhysicsDirectSpaceState3DExtension{
-    obj: obj,
-  }
+func (me *PhysicsDirectSpaceState3DExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsDirectSpaceState3DExtension) BaseClass() string {

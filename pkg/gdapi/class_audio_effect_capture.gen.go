@@ -9,10 +9,8 @@ type AudioEffectCapture struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectCapture(obj gdc.ObjectPtr) *AudioEffectCapture {
-  return &AudioEffectCapture{
-    obj: obj,
-  }
+func (me *AudioEffectCapture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectCapture) BaseClass() string {

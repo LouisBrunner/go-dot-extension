@@ -9,10 +9,8 @@ type GPUParticlesAttractorVectorField3D struct {
   obj gdc.ObjectPtr
 }
 
-func createGPUParticlesAttractorVectorField3D(obj gdc.ObjectPtr) *GPUParticlesAttractorVectorField3D {
-  return &GPUParticlesAttractorVectorField3D{
-    obj: obj,
-  }
+func (me *GPUParticlesAttractorVectorField3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GPUParticlesAttractorVectorField3D) BaseClass() string {

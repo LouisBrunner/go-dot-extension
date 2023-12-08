@@ -9,10 +9,8 @@ type Panel struct {
   obj gdc.ObjectPtr
 }
 
-func createPanel(obj gdc.ObjectPtr) *Panel {
-  return &Panel{
-    obj: obj,
-  }
+func (me *Panel) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Panel) BaseClass() string {

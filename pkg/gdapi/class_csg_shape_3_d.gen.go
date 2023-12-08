@@ -9,10 +9,8 @@ type CSGShape3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCSGShape3D(obj gdc.ObjectPtr) *CSGShape3D {
-  return &CSGShape3D{
-    obj: obj,
-  }
+func (me *CSGShape3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CSGShape3D) BaseClass() string {

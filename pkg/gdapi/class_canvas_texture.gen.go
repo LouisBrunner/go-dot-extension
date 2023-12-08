@@ -9,10 +9,8 @@ type CanvasTexture struct {
   obj gdc.ObjectPtr
 }
 
-func createCanvasTexture(obj gdc.ObjectPtr) *CanvasTexture {
-  return &CanvasTexture{
-    obj: obj,
-  }
+func (me *CanvasTexture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CanvasTexture) BaseClass() string {

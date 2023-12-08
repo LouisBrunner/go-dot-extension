@@ -9,10 +9,8 @@ type AnimationNodeBlendSpace2D struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationNodeBlendSpace2D(obj gdc.ObjectPtr) *AnimationNodeBlendSpace2D {
-  return &AnimationNodeBlendSpace2D{
-    obj: obj,
-  }
+func (me *AnimationNodeBlendSpace2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationNodeBlendSpace2D) BaseClass() string {

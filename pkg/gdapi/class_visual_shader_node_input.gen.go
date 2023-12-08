@@ -9,10 +9,8 @@ type VisualShaderNodeInput struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeInput(obj gdc.ObjectPtr) *VisualShaderNodeInput {
-  return &VisualShaderNodeInput{
-    obj: obj,
-  }
+func (me *VisualShaderNodeInput) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeInput) BaseClass() string {

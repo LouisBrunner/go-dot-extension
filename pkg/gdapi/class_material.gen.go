@@ -9,10 +9,8 @@ type Material struct {
   obj gdc.ObjectPtr
 }
 
-func createMaterial(obj gdc.ObjectPtr) *Material {
-  return &Material{
-    obj: obj,
-  }
+func (me *Material) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Material) BaseClass() string {

@@ -9,10 +9,8 @@ type ScriptCreateDialog struct {
   obj gdc.ObjectPtr
 }
 
-func createScriptCreateDialog(obj gdc.ObjectPtr) *ScriptCreateDialog {
-  return &ScriptCreateDialog{
-    obj: obj,
-  }
+func (me *ScriptCreateDialog) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ScriptCreateDialog) BaseClass() string {

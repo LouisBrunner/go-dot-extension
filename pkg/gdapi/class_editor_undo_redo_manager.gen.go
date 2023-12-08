@@ -9,10 +9,8 @@ type EditorUndoRedoManager struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorUndoRedoManager(obj gdc.ObjectPtr) *EditorUndoRedoManager {
-  return &EditorUndoRedoManager{
-    obj: obj,
-  }
+func (me *EditorUndoRedoManager) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorUndoRedoManager) BaseClass() string {

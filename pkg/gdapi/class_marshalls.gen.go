@@ -9,10 +9,8 @@ type Marshalls struct {
   obj gdc.ObjectPtr
 }
 
-func createMarshalls(obj gdc.ObjectPtr) *Marshalls {
-  return &Marshalls{
-    obj: obj,
-  }
+func (me *Marshalls) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Marshalls) BaseClass() string {

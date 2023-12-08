@@ -9,10 +9,8 @@ type PhysicsMaterial struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsMaterial(obj gdc.ObjectPtr) *PhysicsMaterial {
-  return &PhysicsMaterial{
-    obj: obj,
-  }
+func (me *PhysicsMaterial) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsMaterial) BaseClass() string {

@@ -9,10 +9,8 @@ type EditorTranslationParserPlugin struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorTranslationParserPlugin(obj gdc.ObjectPtr) *EditorTranslationParserPlugin {
-  return &EditorTranslationParserPlugin{
-    obj: obj,
-  }
+func (me *EditorTranslationParserPlugin) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorTranslationParserPlugin) BaseClass() string {

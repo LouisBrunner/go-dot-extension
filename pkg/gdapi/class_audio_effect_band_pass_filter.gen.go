@@ -9,10 +9,8 @@ type AudioEffectBandPassFilter struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectBandPassFilter(obj gdc.ObjectPtr) *AudioEffectBandPassFilter {
-  return &AudioEffectBandPassFilter{
-    obj: obj,
-  }
+func (me *AudioEffectBandPassFilter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectBandPassFilter) BaseClass() string {

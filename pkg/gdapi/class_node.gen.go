@@ -9,10 +9,8 @@ type Node struct {
   obj gdc.ObjectPtr
 }
 
-func createNode(obj gdc.ObjectPtr) *Node {
-  return &Node{
-    obj: obj,
-  }
+func (me *Node) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Node) BaseClass() string {

@@ -9,10 +9,8 @@ type AudioStreamWAV struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioStreamWAV(obj gdc.ObjectPtr) *AudioStreamWAV {
-  return &AudioStreamWAV{
-    obj: obj,
-  }
+func (me *AudioStreamWAV) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioStreamWAV) BaseClass() string {

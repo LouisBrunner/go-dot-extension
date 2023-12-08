@@ -9,10 +9,8 @@ type WebSocketPeer struct {
   obj gdc.ObjectPtr
 }
 
-func createWebSocketPeer(obj gdc.ObjectPtr) *WebSocketPeer {
-  return &WebSocketPeer{
-    obj: obj,
-  }
+func (me *WebSocketPeer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *WebSocketPeer) BaseClass() string {

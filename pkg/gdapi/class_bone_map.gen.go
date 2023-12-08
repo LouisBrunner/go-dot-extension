@@ -9,10 +9,8 @@ type BoneMap struct {
   obj gdc.ObjectPtr
 }
 
-func createBoneMap(obj gdc.ObjectPtr) *BoneMap {
-  return &BoneMap{
-    obj: obj,
-  }
+func (me *BoneMap) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *BoneMap) BaseClass() string {

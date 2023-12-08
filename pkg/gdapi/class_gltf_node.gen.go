@@ -9,10 +9,8 @@ type GLTFNode struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFNode(obj gdc.ObjectPtr) *GLTFNode {
-  return &GLTFNode{
-    obj: obj,
-  }
+func (me *GLTFNode) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFNode) BaseClass() string {

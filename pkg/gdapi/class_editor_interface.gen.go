@@ -9,10 +9,8 @@ type EditorInterface struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorInterface(obj gdc.ObjectPtr) *EditorInterface {
-  return &EditorInterface{
-    obj: obj,
-  }
+func (me *EditorInterface) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorInterface) BaseClass() string {

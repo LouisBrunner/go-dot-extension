@@ -9,10 +9,8 @@ type CameraFeed struct {
   obj gdc.ObjectPtr
 }
 
-func createCameraFeed(obj gdc.ObjectPtr) *CameraFeed {
-  return &CameraFeed{
-    obj: obj,
-  }
+func (me *CameraFeed) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CameraFeed) BaseClass() string {

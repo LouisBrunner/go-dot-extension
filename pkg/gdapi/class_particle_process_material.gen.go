@@ -9,10 +9,8 @@ type ParticleProcessMaterial struct {
   obj gdc.ObjectPtr
 }
 
-func createParticleProcessMaterial(obj gdc.ObjectPtr) *ParticleProcessMaterial {
-  return &ParticleProcessMaterial{
-    obj: obj,
-  }
+func (me *ParticleProcessMaterial) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ParticleProcessMaterial) BaseClass() string {

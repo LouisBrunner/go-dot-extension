@@ -9,10 +9,8 @@ type XMLParser struct {
   obj gdc.ObjectPtr
 }
 
-func createXMLParser(obj gdc.ObjectPtr) *XMLParser {
-  return &XMLParser{
-    obj: obj,
-  }
+func (me *XMLParser) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *XMLParser) BaseClass() string {

@@ -9,10 +9,8 @@ type Viewport struct {
   obj gdc.ObjectPtr
 }
 
-func createViewport(obj gdc.ObjectPtr) *Viewport {
-  return &Viewport{
-    obj: obj,
-  }
+func (me *Viewport) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Viewport) BaseClass() string {

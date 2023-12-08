@@ -9,10 +9,8 @@ type VisualShaderNodeFloatOp struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeFloatOp(obj gdc.ObjectPtr) *VisualShaderNodeFloatOp {
-  return &VisualShaderNodeFloatOp{
-    obj: obj,
-  }
+func (me *VisualShaderNodeFloatOp) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeFloatOp) BaseClass() string {

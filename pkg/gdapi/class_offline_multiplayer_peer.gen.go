@@ -9,10 +9,8 @@ type OfflineMultiplayerPeer struct {
   obj gdc.ObjectPtr
 }
 
-func createOfflineMultiplayerPeer(obj gdc.ObjectPtr) *OfflineMultiplayerPeer {
-  return &OfflineMultiplayerPeer{
-    obj: obj,
-  }
+func (me *OfflineMultiplayerPeer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *OfflineMultiplayerPeer) BaseClass() string {

@@ -9,10 +9,8 @@ type CapsuleShape3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCapsuleShape3D(obj gdc.ObjectPtr) *CapsuleShape3D {
-  return &CapsuleShape3D{
-    obj: obj,
-  }
+func (me *CapsuleShape3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CapsuleShape3D) BaseClass() string {

@@ -9,10 +9,8 @@ type Area3D struct {
   obj gdc.ObjectPtr
 }
 
-func createArea3D(obj gdc.ObjectPtr) *Area3D {
-  return &Area3D{
-    obj: obj,
-  }
+func (me *Area3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Area3D) BaseClass() string {

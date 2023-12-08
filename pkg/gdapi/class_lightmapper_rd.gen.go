@@ -9,10 +9,8 @@ type LightmapperRD struct {
   obj gdc.ObjectPtr
 }
 
-func createLightmapperRD(obj gdc.ObjectPtr) *LightmapperRD {
-  return &LightmapperRD{
-    obj: obj,
-  }
+func (me *LightmapperRD) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *LightmapperRD) BaseClass() string {

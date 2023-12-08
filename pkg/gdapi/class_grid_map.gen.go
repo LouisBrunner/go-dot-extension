@@ -9,10 +9,8 @@ type GridMap struct {
   obj gdc.ObjectPtr
 }
 
-func createGridMap(obj gdc.ObjectPtr) *GridMap {
-  return &GridMap{
-    obj: obj,
-  }
+func (me *GridMap) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GridMap) BaseClass() string {

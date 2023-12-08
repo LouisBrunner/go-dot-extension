@@ -9,10 +9,8 @@ type RDTextureView struct {
   obj gdc.ObjectPtr
 }
 
-func createRDTextureView(obj gdc.ObjectPtr) *RDTextureView {
-  return &RDTextureView{
-    obj: obj,
-  }
+func (me *RDTextureView) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDTextureView) BaseClass() string {

@@ -9,10 +9,8 @@ type AudioEffectNotchFilter struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectNotchFilter(obj gdc.ObjectPtr) *AudioEffectNotchFilter {
-  return &AudioEffectNotchFilter{
-    obj: obj,
-  }
+func (me *AudioEffectNotchFilter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectNotchFilter) BaseClass() string {

@@ -9,10 +9,8 @@ type SphereMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createSphereMesh(obj gdc.ObjectPtr) *SphereMesh {
-  return &SphereMesh{
-    obj: obj,
-  }
+func (me *SphereMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SphereMesh) BaseClass() string {

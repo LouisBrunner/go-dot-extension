@@ -9,10 +9,8 @@ type FogMaterial struct {
   obj gdc.ObjectPtr
 }
 
-func createFogMaterial(obj gdc.ObjectPtr) *FogMaterial {
-  return &FogMaterial{
-    obj: obj,
-  }
+func (me *FogMaterial) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *FogMaterial) BaseClass() string {

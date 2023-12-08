@@ -9,10 +9,8 @@ type GLTFMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFMesh(obj gdc.ObjectPtr) *GLTFMesh {
-  return &GLTFMesh{
-    obj: obj,
-  }
+func (me *GLTFMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFMesh) BaseClass() string {

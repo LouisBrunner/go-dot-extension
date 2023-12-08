@@ -9,10 +9,8 @@ type PacketPeerDTLS struct {
   obj gdc.ObjectPtr
 }
 
-func createPacketPeerDTLS(obj gdc.ObjectPtr) *PacketPeerDTLS {
-  return &PacketPeerDTLS{
-    obj: obj,
-  }
+func (me *PacketPeerDTLS) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PacketPeerDTLS) BaseClass() string {

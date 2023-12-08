@@ -9,10 +9,8 @@ type VScrollBar struct {
   obj gdc.ObjectPtr
 }
 
-func createVScrollBar(obj gdc.ObjectPtr) *VScrollBar {
-  return &VScrollBar{
-    obj: obj,
-  }
+func (me *VScrollBar) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VScrollBar) BaseClass() string {

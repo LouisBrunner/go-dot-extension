@@ -9,10 +9,8 @@ type RandomNumberGenerator struct {
   obj gdc.ObjectPtr
 }
 
-func createRandomNumberGenerator(obj gdc.ObjectPtr) *RandomNumberGenerator {
-  return &RandomNumberGenerator{
-    obj: obj,
-  }
+func (me *RandomNumberGenerator) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RandomNumberGenerator) BaseClass() string {

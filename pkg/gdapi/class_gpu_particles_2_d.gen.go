@@ -9,10 +9,8 @@ type GPUParticles2D struct {
   obj gdc.ObjectPtr
 }
 
-func createGPUParticles2D(obj gdc.ObjectPtr) *GPUParticles2D {
-  return &GPUParticles2D{
-    obj: obj,
-  }
+func (me *GPUParticles2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GPUParticles2D) BaseClass() string {

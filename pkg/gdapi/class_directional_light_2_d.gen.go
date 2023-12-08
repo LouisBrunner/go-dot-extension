@@ -9,10 +9,8 @@ type DirectionalLight2D struct {
   obj gdc.ObjectPtr
 }
 
-func createDirectionalLight2D(obj gdc.ObjectPtr) *DirectionalLight2D {
-  return &DirectionalLight2D{
-    obj: obj,
-  }
+func (me *DirectionalLight2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *DirectionalLight2D) BaseClass() string {

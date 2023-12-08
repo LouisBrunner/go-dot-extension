@@ -9,10 +9,8 @@ type PackedScene struct {
   obj gdc.ObjectPtr
 }
 
-func createPackedScene(obj gdc.ObjectPtr) *PackedScene {
-  return &PackedScene{
-    obj: obj,
-  }
+func (me *PackedScene) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PackedScene) BaseClass() string {

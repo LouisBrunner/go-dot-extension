@@ -9,10 +9,8 @@ type VisualShaderNodeParticleAccelerator struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeParticleAccelerator(obj gdc.ObjectPtr) *VisualShaderNodeParticleAccelerator {
-  return &VisualShaderNodeParticleAccelerator{
-    obj: obj,
-  }
+func (me *VisualShaderNodeParticleAccelerator) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeParticleAccelerator) BaseClass() string {

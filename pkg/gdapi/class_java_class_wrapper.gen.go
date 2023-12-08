@@ -9,10 +9,8 @@ type JavaClassWrapper struct {
   obj gdc.ObjectPtr
 }
 
-func createJavaClassWrapper(obj gdc.ObjectPtr) *JavaClassWrapper {
-  return &JavaClassWrapper{
-    obj: obj,
-  }
+func (me *JavaClassWrapper) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *JavaClassWrapper) BaseClass() string {

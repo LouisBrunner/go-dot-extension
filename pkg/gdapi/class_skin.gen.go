@@ -9,10 +9,8 @@ type Skin struct {
   obj gdc.ObjectPtr
 }
 
-func createSkin(obj gdc.ObjectPtr) *Skin {
-  return &Skin{
-    obj: obj,
-  }
+func (me *Skin) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Skin) BaseClass() string {

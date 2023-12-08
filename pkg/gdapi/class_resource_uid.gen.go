@@ -9,10 +9,8 @@ type ResourceUID struct {
   obj gdc.ObjectPtr
 }
 
-func createResourceUID(obj gdc.ObjectPtr) *ResourceUID {
-  return &ResourceUID{
-    obj: obj,
-  }
+func (me *ResourceUID) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ResourceUID) BaseClass() string {

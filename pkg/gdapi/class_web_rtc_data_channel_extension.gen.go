@@ -9,10 +9,8 @@ type WebRTCDataChannelExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createWebRTCDataChannelExtension(obj gdc.ObjectPtr) *WebRTCDataChannelExtension {
-  return &WebRTCDataChannelExtension{
-    obj: obj,
-  }
+func (me *WebRTCDataChannelExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *WebRTCDataChannelExtension) BaseClass() string {

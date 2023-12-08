@@ -9,10 +9,8 @@ type QuadMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createQuadMesh(obj gdc.ObjectPtr) *QuadMesh {
-  return &QuadMesh{
-    obj: obj,
-  }
+func (me *QuadMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *QuadMesh) BaseClass() string {

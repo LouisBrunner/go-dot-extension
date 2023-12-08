@@ -9,10 +9,8 @@ type RDPipelineSpecializationConstant struct {
   obj gdc.ObjectPtr
 }
 
-func createRDPipelineSpecializationConstant(obj gdc.ObjectPtr) *RDPipelineSpecializationConstant {
-  return &RDPipelineSpecializationConstant{
-    obj: obj,
-  }
+func (me *RDPipelineSpecializationConstant) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDPipelineSpecializationConstant) BaseClass() string {

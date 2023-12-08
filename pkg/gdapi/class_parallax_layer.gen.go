@@ -9,10 +9,8 @@ type ParallaxLayer struct {
   obj gdc.ObjectPtr
 }
 
-func createParallaxLayer(obj gdc.ObjectPtr) *ParallaxLayer {
-  return &ParallaxLayer{
-    obj: obj,
-  }
+func (me *ParallaxLayer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ParallaxLayer) BaseClass() string {

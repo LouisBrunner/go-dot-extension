@@ -9,10 +9,8 @@ type BoxMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createBoxMesh(obj gdc.ObjectPtr) *BoxMesh {
-  return &BoxMesh{
-    obj: obj,
-  }
+func (me *BoxMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *BoxMesh) BaseClass() string {

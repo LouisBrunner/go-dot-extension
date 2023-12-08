@@ -9,10 +9,8 @@ type HSplitContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createHSplitContainer(obj gdc.ObjectPtr) *HSplitContainer {
-  return &HSplitContainer{
-    obj: obj,
-  }
+func (me *HSplitContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *HSplitContainer) BaseClass() string {

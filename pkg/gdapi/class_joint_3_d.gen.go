@@ -9,10 +9,8 @@ type Joint3D struct {
   obj gdc.ObjectPtr
 }
 
-func createJoint3D(obj gdc.ObjectPtr) *Joint3D {
-  return &Joint3D{
-    obj: obj,
-  }
+func (me *Joint3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Joint3D) BaseClass() string {

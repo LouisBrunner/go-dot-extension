@@ -9,10 +9,8 @@ type VFlowContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createVFlowContainer(obj gdc.ObjectPtr) *VFlowContainer {
-  return &VFlowContainer{
-    obj: obj,
-  }
+func (me *VFlowContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VFlowContainer) BaseClass() string {

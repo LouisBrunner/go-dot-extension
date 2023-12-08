@@ -9,10 +9,8 @@ type PrismMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createPrismMesh(obj gdc.ObjectPtr) *PrismMesh {
-  return &PrismMesh{
-    obj: obj,
-  }
+func (me *PrismMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PrismMesh) BaseClass() string {

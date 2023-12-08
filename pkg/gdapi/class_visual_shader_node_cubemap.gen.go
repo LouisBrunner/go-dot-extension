@@ -9,10 +9,8 @@ type VisualShaderNodeCubemap struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeCubemap(obj gdc.ObjectPtr) *VisualShaderNodeCubemap {
-  return &VisualShaderNodeCubemap{
-    obj: obj,
-  }
+func (me *VisualShaderNodeCubemap) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeCubemap) BaseClass() string {

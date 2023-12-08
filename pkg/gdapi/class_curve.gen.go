@@ -9,10 +9,8 @@ type Curve struct {
   obj gdc.ObjectPtr
 }
 
-func createCurve(obj gdc.ObjectPtr) *Curve {
-  return &Curve{
-    obj: obj,
-  }
+func (me *Curve) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Curve) BaseClass() string {

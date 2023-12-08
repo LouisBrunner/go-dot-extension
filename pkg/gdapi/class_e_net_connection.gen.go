@@ -9,10 +9,8 @@ type ENetConnection struct {
   obj gdc.ObjectPtr
 }
 
-func createENetConnection(obj gdc.ObjectPtr) *ENetConnection {
-  return &ENetConnection{
-    obj: obj,
-  }
+func (me *ENetConnection) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ENetConnection) BaseClass() string {

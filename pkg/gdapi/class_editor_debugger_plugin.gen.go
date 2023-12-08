@@ -9,10 +9,8 @@ type EditorDebuggerPlugin struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorDebuggerPlugin(obj gdc.ObjectPtr) *EditorDebuggerPlugin {
-  return &EditorDebuggerPlugin{
-    obj: obj,
-  }
+func (me *EditorDebuggerPlugin) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorDebuggerPlugin) BaseClass() string {

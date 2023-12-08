@@ -9,10 +9,8 @@ type NavigationMeshSourceGeometryData3D struct {
   obj gdc.ObjectPtr
 }
 
-func createNavigationMeshSourceGeometryData3D(obj gdc.ObjectPtr) *NavigationMeshSourceGeometryData3D {
-  return &NavigationMeshSourceGeometryData3D{
-    obj: obj,
-  }
+func (me *NavigationMeshSourceGeometryData3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NavigationMeshSourceGeometryData3D) BaseClass() string {

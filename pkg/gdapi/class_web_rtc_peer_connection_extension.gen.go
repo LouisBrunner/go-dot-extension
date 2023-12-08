@@ -9,10 +9,8 @@ type WebRTCPeerConnectionExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createWebRTCPeerConnectionExtension(obj gdc.ObjectPtr) *WebRTCPeerConnectionExtension {
-  return &WebRTCPeerConnectionExtension{
-    obj: obj,
-  }
+func (me *WebRTCPeerConnectionExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *WebRTCPeerConnectionExtension) BaseClass() string {

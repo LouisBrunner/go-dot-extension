@@ -9,10 +9,8 @@ type VisualShaderNodeClamp struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeClamp(obj gdc.ObjectPtr) *VisualShaderNodeClamp {
-  return &VisualShaderNodeClamp{
-    obj: obj,
-  }
+func (me *VisualShaderNodeClamp) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeClamp) BaseClass() string {

@@ -9,10 +9,8 @@ type BackBufferCopy struct {
   obj gdc.ObjectPtr
 }
 
-func createBackBufferCopy(obj gdc.ObjectPtr) *BackBufferCopy {
-  return &BackBufferCopy{
-    obj: obj,
-  }
+func (me *BackBufferCopy) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *BackBufferCopy) BaseClass() string {

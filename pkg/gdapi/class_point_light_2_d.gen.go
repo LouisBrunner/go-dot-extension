@@ -9,10 +9,8 @@ type PointLight2D struct {
   obj gdc.ObjectPtr
 }
 
-func createPointLight2D(obj gdc.ObjectPtr) *PointLight2D {
-  return &PointLight2D{
-    obj: obj,
-  }
+func (me *PointLight2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PointLight2D) BaseClass() string {

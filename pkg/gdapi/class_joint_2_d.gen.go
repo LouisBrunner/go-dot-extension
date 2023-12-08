@@ -9,10 +9,8 @@ type Joint2D struct {
   obj gdc.ObjectPtr
 }
 
-func createJoint2D(obj gdc.ObjectPtr) *Joint2D {
-  return &Joint2D{
-    obj: obj,
-  }
+func (me *Joint2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Joint2D) BaseClass() string {

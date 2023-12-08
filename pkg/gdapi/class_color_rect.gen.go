@@ -9,10 +9,8 @@ type ColorRect struct {
   obj gdc.ObjectPtr
 }
 
-func createColorRect(obj gdc.ObjectPtr) *ColorRect {
-  return &ColorRect{
-    obj: obj,
-  }
+func (me *ColorRect) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ColorRect) BaseClass() string {

@@ -9,10 +9,8 @@ type MeshLibrary struct {
   obj gdc.ObjectPtr
 }
 
-func createMeshLibrary(obj gdc.ObjectPtr) *MeshLibrary {
-  return &MeshLibrary{
-    obj: obj,
-  }
+func (me *MeshLibrary) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MeshLibrary) BaseClass() string {

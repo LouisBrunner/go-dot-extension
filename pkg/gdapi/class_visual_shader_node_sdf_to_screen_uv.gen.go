@@ -9,10 +9,8 @@ type VisualShaderNodeSDFToScreenUV struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeSDFToScreenUV(obj gdc.ObjectPtr) *VisualShaderNodeSDFToScreenUV {
-  return &VisualShaderNodeSDFToScreenUV{
-    obj: obj,
-  }
+func (me *VisualShaderNodeSDFToScreenUV) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeSDFToScreenUV) BaseClass() string {

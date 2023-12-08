@@ -9,10 +9,8 @@ type MethodTweener struct {
   obj gdc.ObjectPtr
 }
 
-func createMethodTweener(obj gdc.ObjectPtr) *MethodTweener {
-  return &MethodTweener{
-    obj: obj,
-  }
+func (me *MethodTweener) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MethodTweener) BaseClass() string {

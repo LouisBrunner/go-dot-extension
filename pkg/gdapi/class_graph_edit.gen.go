@@ -9,10 +9,8 @@ type GraphEdit struct {
   obj gdc.ObjectPtr
 }
 
-func createGraphEdit(obj gdc.ObjectPtr) *GraphEdit {
-  return &GraphEdit{
-    obj: obj,
-  }
+func (me *GraphEdit) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GraphEdit) BaseClass() string {

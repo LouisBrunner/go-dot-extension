@@ -9,10 +9,8 @@ type CallbackTweener struct {
   obj gdc.ObjectPtr
 }
 
-func createCallbackTweener(obj gdc.ObjectPtr) *CallbackTweener {
-  return &CallbackTweener{
-    obj: obj,
-  }
+func (me *CallbackTweener) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CallbackTweener) BaseClass() string {

@@ -9,10 +9,8 @@ type SceneState struct {
   obj gdc.ObjectPtr
 }
 
-func createSceneState(obj gdc.ObjectPtr) *SceneState {
-  return &SceneState{
-    obj: obj,
-  }
+func (me *SceneState) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SceneState) BaseClass() string {

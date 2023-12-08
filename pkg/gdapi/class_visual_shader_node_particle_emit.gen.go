@@ -9,10 +9,8 @@ type VisualShaderNodeParticleEmit struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeParticleEmit(obj gdc.ObjectPtr) *VisualShaderNodeParticleEmit {
-  return &VisualShaderNodeParticleEmit{
-    obj: obj,
-  }
+func (me *VisualShaderNodeParticleEmit) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeParticleEmit) BaseClass() string {

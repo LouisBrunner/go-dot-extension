@@ -9,10 +9,8 @@ type WorldEnvironment struct {
   obj gdc.ObjectPtr
 }
 
-func createWorldEnvironment(obj gdc.ObjectPtr) *WorldEnvironment {
-  return &WorldEnvironment{
-    obj: obj,
-  }
+func (me *WorldEnvironment) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *WorldEnvironment) BaseClass() string {

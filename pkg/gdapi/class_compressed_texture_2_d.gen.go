@@ -9,10 +9,8 @@ type CompressedTexture2D struct {
   obj gdc.ObjectPtr
 }
 
-func createCompressedTexture2D(obj gdc.ObjectPtr) *CompressedTexture2D {
-  return &CompressedTexture2D{
-    obj: obj,
-  }
+func (me *CompressedTexture2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CompressedTexture2D) BaseClass() string {

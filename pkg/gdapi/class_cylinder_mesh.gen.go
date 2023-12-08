@@ -9,10 +9,8 @@ type CylinderMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createCylinderMesh(obj gdc.ObjectPtr) *CylinderMesh {
-  return &CylinderMesh{
-    obj: obj,
-  }
+func (me *CylinderMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CylinderMesh) BaseClass() string {

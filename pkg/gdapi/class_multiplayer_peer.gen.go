@@ -9,10 +9,8 @@ type MultiplayerPeer struct {
   obj gdc.ObjectPtr
 }
 
-func createMultiplayerPeer(obj gdc.ObjectPtr) *MultiplayerPeer {
-  return &MultiplayerPeer{
-    obj: obj,
-  }
+func (me *MultiplayerPeer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MultiplayerPeer) BaseClass() string {

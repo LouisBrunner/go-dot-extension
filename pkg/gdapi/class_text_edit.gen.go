@@ -9,10 +9,8 @@ type TextEdit struct {
   obj gdc.ObjectPtr
 }
 
-func createTextEdit(obj gdc.ObjectPtr) *TextEdit {
-  return &TextEdit{
-    obj: obj,
-  }
+func (me *TextEdit) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextEdit) BaseClass() string {

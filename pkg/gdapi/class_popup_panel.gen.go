@@ -9,10 +9,8 @@ type PopupPanel struct {
   obj gdc.ObjectPtr
 }
 
-func createPopupPanel(obj gdc.ObjectPtr) *PopupPanel {
-  return &PopupPanel{
-    obj: obj,
-  }
+func (me *PopupPanel) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PopupPanel) BaseClass() string {

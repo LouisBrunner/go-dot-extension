@@ -9,10 +9,8 @@ type CameraServer struct {
   obj gdc.ObjectPtr
 }
 
-func createCameraServer(obj gdc.ObjectPtr) *CameraServer {
-  return &CameraServer{
-    obj: obj,
-  }
+func (me *CameraServer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CameraServer) BaseClass() string {

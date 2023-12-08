@@ -9,10 +9,8 @@ type PolygonOccluder3D struct {
   obj gdc.ObjectPtr
 }
 
-func createPolygonOccluder3D(obj gdc.ObjectPtr) *PolygonOccluder3D {
-  return &PolygonOccluder3D{
-    obj: obj,
-  }
+func (me *PolygonOccluder3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PolygonOccluder3D) BaseClass() string {

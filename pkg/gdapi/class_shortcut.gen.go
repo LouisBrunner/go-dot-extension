@@ -9,10 +9,8 @@ type Shortcut struct {
   obj gdc.ObjectPtr
 }
 
-func createShortcut(obj gdc.ObjectPtr) *Shortcut {
-  return &Shortcut{
-    obj: obj,
-  }
+func (me *Shortcut) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Shortcut) BaseClass() string {

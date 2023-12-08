@@ -9,10 +9,8 @@ type ProceduralSkyMaterial struct {
   obj gdc.ObjectPtr
 }
 
-func createProceduralSkyMaterial(obj gdc.ObjectPtr) *ProceduralSkyMaterial {
-  return &ProceduralSkyMaterial{
-    obj: obj,
-  }
+func (me *ProceduralSkyMaterial) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ProceduralSkyMaterial) BaseClass() string {

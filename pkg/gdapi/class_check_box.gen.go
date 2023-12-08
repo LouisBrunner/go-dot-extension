@@ -9,10 +9,8 @@ type CheckBox struct {
   obj gdc.ObjectPtr
 }
 
-func createCheckBox(obj gdc.ObjectPtr) *CheckBox {
-  return &CheckBox{
-    obj: obj,
-  }
+func (me *CheckBox) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CheckBox) BaseClass() string {

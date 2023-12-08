@@ -9,10 +9,8 @@ type MultiplayerAPIExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createMultiplayerAPIExtension(obj gdc.ObjectPtr) *MultiplayerAPIExtension {
-  return &MultiplayerAPIExtension{
-    obj: obj,
-  }
+func (me *MultiplayerAPIExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MultiplayerAPIExtension) BaseClass() string {

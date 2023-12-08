@@ -9,10 +9,8 @@ type TextureLayered struct {
   obj gdc.ObjectPtr
 }
 
-func createTextureLayered(obj gdc.ObjectPtr) *TextureLayered {
-  return &TextureLayered{
-    obj: obj,
-  }
+func (me *TextureLayered) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextureLayered) BaseClass() string {

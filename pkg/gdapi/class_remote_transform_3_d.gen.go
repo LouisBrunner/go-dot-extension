@@ -9,10 +9,8 @@ type RemoteTransform3D struct {
   obj gdc.ObjectPtr
 }
 
-func createRemoteTransform3D(obj gdc.ObjectPtr) *RemoteTransform3D {
-  return &RemoteTransform3D{
-    obj: obj,
-  }
+func (me *RemoteTransform3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RemoteTransform3D) BaseClass() string {

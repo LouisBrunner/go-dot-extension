@@ -9,10 +9,8 @@ type EditorExportPlatformAndroid struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorExportPlatformAndroid(obj gdc.ObjectPtr) *EditorExportPlatformAndroid {
-  return &EditorExportPlatformAndroid{
-    obj: obj,
-  }
+func (me *EditorExportPlatformAndroid) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorExportPlatformAndroid) BaseClass() string {

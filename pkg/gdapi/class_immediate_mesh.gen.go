@@ -9,10 +9,8 @@ type ImmediateMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createImmediateMesh(obj gdc.ObjectPtr) *ImmediateMesh {
-  return &ImmediateMesh{
-    obj: obj,
-  }
+func (me *ImmediateMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ImmediateMesh) BaseClass() string {

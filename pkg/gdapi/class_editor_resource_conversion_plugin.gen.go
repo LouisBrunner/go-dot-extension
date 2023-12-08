@@ -9,10 +9,8 @@ type EditorResourceConversionPlugin struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorResourceConversionPlugin(obj gdc.ObjectPtr) *EditorResourceConversionPlugin {
-  return &EditorResourceConversionPlugin{
-    obj: obj,
-  }
+func (me *EditorResourceConversionPlugin) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorResourceConversionPlugin) BaseClass() string {

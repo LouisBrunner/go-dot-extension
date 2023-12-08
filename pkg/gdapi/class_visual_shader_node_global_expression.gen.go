@@ -9,10 +9,8 @@ type VisualShaderNodeGlobalExpression struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeGlobalExpression(obj gdc.ObjectPtr) *VisualShaderNodeGlobalExpression {
-  return &VisualShaderNodeGlobalExpression{
-    obj: obj,
-  }
+func (me *VisualShaderNodeGlobalExpression) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeGlobalExpression) BaseClass() string {

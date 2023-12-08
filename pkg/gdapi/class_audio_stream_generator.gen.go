@@ -9,10 +9,8 @@ type AudioStreamGenerator struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioStreamGenerator(obj gdc.ObjectPtr) *AudioStreamGenerator {
-  return &AudioStreamGenerator{
-    obj: obj,
-  }
+func (me *AudioStreamGenerator) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioStreamGenerator) BaseClass() string {

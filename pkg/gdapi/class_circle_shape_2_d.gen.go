@@ -9,10 +9,8 @@ type CircleShape2D struct {
   obj gdc.ObjectPtr
 }
 
-func createCircleShape2D(obj gdc.ObjectPtr) *CircleShape2D {
-  return &CircleShape2D{
-    obj: obj,
-  }
+func (me *CircleShape2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CircleShape2D) BaseClass() string {

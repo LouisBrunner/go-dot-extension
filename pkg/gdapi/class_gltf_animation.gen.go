@@ -9,10 +9,8 @@ type GLTFAnimation struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFAnimation(obj gdc.ObjectPtr) *GLTFAnimation {
-  return &GLTFAnimation{
-    obj: obj,
-  }
+func (me *GLTFAnimation) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFAnimation) BaseClass() string {

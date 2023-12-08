@@ -9,10 +9,8 @@ type AudioStreamRandomizer struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioStreamRandomizer(obj gdc.ObjectPtr) *AudioStreamRandomizer {
-  return &AudioStreamRandomizer{
-    obj: obj,
-  }
+func (me *AudioStreamRandomizer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioStreamRandomizer) BaseClass() string {

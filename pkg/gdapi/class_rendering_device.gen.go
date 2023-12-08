@@ -9,10 +9,8 @@ type RenderingDevice struct {
   obj gdc.ObjectPtr
 }
 
-func createRenderingDevice(obj gdc.ObjectPtr) *RenderingDevice {
-  return &RenderingDevice{
-    obj: obj,
-  }
+func (me *RenderingDevice) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RenderingDevice) BaseClass() string {

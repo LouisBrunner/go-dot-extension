@@ -9,10 +9,8 @@ type MultiMeshInstance2D struct {
   obj gdc.ObjectPtr
 }
 
-func createMultiMeshInstance2D(obj gdc.ObjectPtr) *MultiMeshInstance2D {
-  return &MultiMeshInstance2D{
-    obj: obj,
-  }
+func (me *MultiMeshInstance2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MultiMeshInstance2D) BaseClass() string {

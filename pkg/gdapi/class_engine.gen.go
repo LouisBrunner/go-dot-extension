@@ -9,10 +9,8 @@ type Engine struct {
   obj gdc.ObjectPtr
 }
 
-func createEngine(obj gdc.ObjectPtr) *Engine {
-  return &Engine{
-    obj: obj,
-  }
+func (me *Engine) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Engine) BaseClass() string {

@@ -9,10 +9,8 @@ type EditorFeatureProfile struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorFeatureProfile(obj gdc.ObjectPtr) *EditorFeatureProfile {
-  return &EditorFeatureProfile{
-    obj: obj,
-  }
+func (me *EditorFeatureProfile) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorFeatureProfile) BaseClass() string {

@@ -9,10 +9,8 @@ type ProgressBar struct {
   obj gdc.ObjectPtr
 }
 
-func createProgressBar(obj gdc.ObjectPtr) *ProgressBar {
-  return &ProgressBar{
-    obj: obj,
-  }
+func (me *ProgressBar) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ProgressBar) BaseClass() string {

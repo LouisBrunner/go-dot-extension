@@ -9,10 +9,8 @@ type PhysicsTestMotionResult3D struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsTestMotionResult3D(obj gdc.ObjectPtr) *PhysicsTestMotionResult3D {
-  return &PhysicsTestMotionResult3D{
-    obj: obj,
-  }
+func (me *PhysicsTestMotionResult3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsTestMotionResult3D) BaseClass() string {

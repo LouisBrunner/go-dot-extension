@@ -9,10 +9,8 @@ type JavaClass struct {
   obj gdc.ObjectPtr
 }
 
-func createJavaClass(obj gdc.ObjectPtr) *JavaClass {
-  return &JavaClass{
-    obj: obj,
-  }
+func (me *JavaClass) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *JavaClass) BaseClass() string {

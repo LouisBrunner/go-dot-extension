@@ -9,10 +9,8 @@ type SphereShape3D struct {
   obj gdc.ObjectPtr
 }
 
-func createSphereShape3D(obj gdc.ObjectPtr) *SphereShape3D {
-  return &SphereShape3D{
-    obj: obj,
-  }
+func (me *SphereShape3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SphereShape3D) BaseClass() string {

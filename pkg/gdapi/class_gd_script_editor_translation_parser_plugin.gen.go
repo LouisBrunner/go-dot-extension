@@ -9,10 +9,8 @@ type GDScriptEditorTranslationParserPlugin struct {
   obj gdc.ObjectPtr
 }
 
-func createGDScriptEditorTranslationParserPlugin(obj gdc.ObjectPtr) *GDScriptEditorTranslationParserPlugin {
-  return &GDScriptEditorTranslationParserPlugin{
-    obj: obj,
-  }
+func (me *GDScriptEditorTranslationParserPlugin) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GDScriptEditorTranslationParserPlugin) BaseClass() string {

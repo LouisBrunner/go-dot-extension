@@ -9,10 +9,8 @@ type MeshDataTool struct {
   obj gdc.ObjectPtr
 }
 
-func createMeshDataTool(obj gdc.ObjectPtr) *MeshDataTool {
-  return &MeshDataTool{
-    obj: obj,
-  }
+func (me *MeshDataTool) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MeshDataTool) BaseClass() string {

@@ -9,10 +9,8 @@ type Slider struct {
   obj gdc.ObjectPtr
 }
 
-func createSlider(obj gdc.ObjectPtr) *Slider {
-  return &Slider{
-    obj: obj,
-  }
+func (me *Slider) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Slider) BaseClass() string {

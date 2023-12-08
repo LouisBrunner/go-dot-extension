@@ -9,10 +9,8 @@ type HTTPRequest struct {
   obj gdc.ObjectPtr
 }
 
-func createHTTPRequest(obj gdc.ObjectPtr) *HTTPRequest {
-  return &HTTPRequest{
-    obj: obj,
-  }
+func (me *HTTPRequest) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *HTTPRequest) BaseClass() string {

@@ -9,10 +9,8 @@ type VisualShaderNodeParticleRandomness struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeParticleRandomness(obj gdc.ObjectPtr) *VisualShaderNodeParticleRandomness {
-  return &VisualShaderNodeParticleRandomness{
-    obj: obj,
-  }
+func (me *VisualShaderNodeParticleRandomness) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeParticleRandomness) BaseClass() string {

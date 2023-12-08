@@ -9,10 +9,8 @@ type CSGCylinder3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCSGCylinder3D(obj gdc.ObjectPtr) *CSGCylinder3D {
-  return &CSGCylinder3D{
-    obj: obj,
-  }
+func (me *CSGCylinder3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CSGCylinder3D) BaseClass() string {

@@ -9,10 +9,8 @@ type GLTFState struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFState(obj gdc.ObjectPtr) *GLTFState {
-  return &GLTFState{
-    obj: obj,
-  }
+func (me *GLTFState) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFState) BaseClass() string {

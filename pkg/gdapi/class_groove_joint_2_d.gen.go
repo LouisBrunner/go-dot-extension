@@ -9,10 +9,8 @@ type GrooveJoint2D struct {
   obj gdc.ObjectPtr
 }
 
-func createGrooveJoint2D(obj gdc.ObjectPtr) *GrooveJoint2D {
-  return &GrooveJoint2D{
-    obj: obj,
-  }
+func (me *GrooveJoint2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GrooveJoint2D) BaseClass() string {

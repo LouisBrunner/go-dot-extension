@@ -9,10 +9,8 @@ type GLTFPhysicsBody struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFPhysicsBody(obj gdc.ObjectPtr) *GLTFPhysicsBody {
-  return &GLTFPhysicsBody{
-    obj: obj,
-  }
+func (me *GLTFPhysicsBody) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFPhysicsBody) BaseClass() string {

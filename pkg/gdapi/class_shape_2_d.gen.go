@@ -9,10 +9,8 @@ type Shape2D struct {
   obj gdc.ObjectPtr
 }
 
-func createShape2D(obj gdc.ObjectPtr) *Shape2D {
-  return &Shape2D{
-    obj: obj,
-  }
+func (me *Shape2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Shape2D) BaseClass() string {

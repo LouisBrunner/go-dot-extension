@@ -9,10 +9,8 @@ type RegEx struct {
   obj gdc.ObjectPtr
 }
 
-func createRegEx(obj gdc.ObjectPtr) *RegEx {
-  return &RegEx{
-    obj: obj,
-  }
+func (me *RegEx) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RegEx) BaseClass() string {

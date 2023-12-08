@@ -9,10 +9,8 @@ type StreamPeerBuffer struct {
   obj gdc.ObjectPtr
 }
 
-func createStreamPeerBuffer(obj gdc.ObjectPtr) *StreamPeerBuffer {
-  return &StreamPeerBuffer{
-    obj: obj,
-  }
+func (me *StreamPeerBuffer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *StreamPeerBuffer) BaseClass() string {

@@ -9,10 +9,8 @@ type AudioBusLayout struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioBusLayout(obj gdc.ObjectPtr) *AudioBusLayout {
-  return &AudioBusLayout{
-    obj: obj,
-  }
+func (me *AudioBusLayout) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioBusLayout) BaseClass() string {

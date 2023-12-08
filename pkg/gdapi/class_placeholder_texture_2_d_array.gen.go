@@ -9,10 +9,8 @@ type PlaceholderTexture2DArray struct {
   obj gdc.ObjectPtr
 }
 
-func createPlaceholderTexture2DArray(obj gdc.ObjectPtr) *PlaceholderTexture2DArray {
-  return &PlaceholderTexture2DArray{
-    obj: obj,
-  }
+func (me *PlaceholderTexture2DArray) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PlaceholderTexture2DArray) BaseClass() string {

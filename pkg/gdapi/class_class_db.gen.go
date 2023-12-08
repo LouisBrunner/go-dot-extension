@@ -9,10 +9,8 @@ type ClassDB struct {
   obj gdc.ObjectPtr
 }
 
-func createClassDB(obj gdc.ObjectPtr) *ClassDB {
-  return &ClassDB{
-    obj: obj,
-  }
+func (me *ClassDB) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ClassDB) BaseClass() string {

@@ -9,10 +9,8 @@ type GLTFDocumentExtensionConvertImporterMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFDocumentExtensionConvertImporterMesh(obj gdc.ObjectPtr) *GLTFDocumentExtensionConvertImporterMesh {
-  return &GLTFDocumentExtensionConvertImporterMesh{
-    obj: obj,
-  }
+func (me *GLTFDocumentExtensionConvertImporterMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFDocumentExtensionConvertImporterMesh) BaseClass() string {

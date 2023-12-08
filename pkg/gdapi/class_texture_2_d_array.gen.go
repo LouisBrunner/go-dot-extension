@@ -9,10 +9,8 @@ type Texture2DArray struct {
   obj gdc.ObjectPtr
 }
 
-func createTexture2DArray(obj gdc.ObjectPtr) *Texture2DArray {
-  return &Texture2DArray{
-    obj: obj,
-  }
+func (me *Texture2DArray) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Texture2DArray) BaseClass() string {

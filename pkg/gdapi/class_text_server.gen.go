@@ -9,10 +9,8 @@ type TextServer struct {
   obj gdc.ObjectPtr
 }
 
-func createTextServer(obj gdc.ObjectPtr) *TextServer {
-  return &TextServer{
-    obj: obj,
-  }
+func (me *TextServer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextServer) BaseClass() string {

@@ -9,10 +9,8 @@ type PhysicsServer3DManager struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsServer3DManager(obj gdc.ObjectPtr) *PhysicsServer3DManager {
-  return &PhysicsServer3DManager{
-    obj: obj,
-  }
+func (me *PhysicsServer3DManager) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsServer3DManager) BaseClass() string {

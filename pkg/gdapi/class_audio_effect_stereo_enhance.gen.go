@@ -9,10 +9,8 @@ type AudioEffectStereoEnhance struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectStereoEnhance(obj gdc.ObjectPtr) *AudioEffectStereoEnhance {
-  return &AudioEffectStereoEnhance{
-    obj: obj,
-  }
+func (me *AudioEffectStereoEnhance) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectStereoEnhance) BaseClass() string {

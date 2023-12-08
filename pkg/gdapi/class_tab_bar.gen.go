@@ -9,10 +9,8 @@ type TabBar struct {
   obj gdc.ObjectPtr
 }
 
-func createTabBar(obj gdc.ObjectPtr) *TabBar {
-  return &TabBar{
-    obj: obj,
-  }
+func (me *TabBar) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TabBar) BaseClass() string {

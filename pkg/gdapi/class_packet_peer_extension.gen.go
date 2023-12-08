@@ -9,10 +9,8 @@ type PacketPeerExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createPacketPeerExtension(obj gdc.ObjectPtr) *PacketPeerExtension {
-  return &PacketPeerExtension{
-    obj: obj,
-  }
+func (me *PacketPeerExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PacketPeerExtension) BaseClass() string {

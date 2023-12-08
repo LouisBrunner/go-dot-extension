@@ -9,10 +9,8 @@ type PCKPacker struct {
   obj gdc.ObjectPtr
 }
 
-func createPCKPacker(obj gdc.ObjectPtr) *PCKPacker {
-  return &PCKPacker{
-    obj: obj,
-  }
+func (me *PCKPacker) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PCKPacker) BaseClass() string {

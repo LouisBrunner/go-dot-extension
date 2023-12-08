@@ -9,10 +9,8 @@ type RenderingServer struct {
   obj gdc.ObjectPtr
 }
 
-func createRenderingServer(obj gdc.ObjectPtr) *RenderingServer {
-  return &RenderingServer{
-    obj: obj,
-  }
+func (me *RenderingServer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RenderingServer) BaseClass() string {

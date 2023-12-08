@@ -9,10 +9,8 @@ type RootMotionView struct {
   obj gdc.ObjectPtr
 }
 
-func createRootMotionView(obj gdc.ObjectPtr) *RootMotionView {
-  return &RootMotionView{
-    obj: obj,
-  }
+func (me *RootMotionView) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RootMotionView) BaseClass() string {

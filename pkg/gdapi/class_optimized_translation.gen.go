@@ -9,10 +9,8 @@ type OptimizedTranslation struct {
   obj gdc.ObjectPtr
 }
 
-func createOptimizedTranslation(obj gdc.ObjectPtr) *OptimizedTranslation {
-  return &OptimizedTranslation{
-    obj: obj,
-  }
+func (me *OptimizedTranslation) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *OptimizedTranslation) BaseClass() string {

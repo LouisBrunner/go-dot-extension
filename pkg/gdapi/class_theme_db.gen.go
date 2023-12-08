@@ -9,10 +9,8 @@ type ThemeDB struct {
   obj gdc.ObjectPtr
 }
 
-func createThemeDB(obj gdc.ObjectPtr) *ThemeDB {
-  return &ThemeDB{
-    obj: obj,
-  }
+func (me *ThemeDB) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ThemeDB) BaseClass() string {

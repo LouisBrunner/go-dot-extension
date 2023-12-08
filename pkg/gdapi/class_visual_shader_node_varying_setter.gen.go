@@ -9,10 +9,8 @@ type VisualShaderNodeVaryingSetter struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeVaryingSetter(obj gdc.ObjectPtr) *VisualShaderNodeVaryingSetter {
-  return &VisualShaderNodeVaryingSetter{
-    obj: obj,
-  }
+func (me *VisualShaderNodeVaryingSetter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeVaryingSetter) BaseClass() string {

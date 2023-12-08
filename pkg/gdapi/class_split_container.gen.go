@@ -9,10 +9,8 @@ type SplitContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createSplitContainer(obj gdc.ObjectPtr) *SplitContainer {
-  return &SplitContainer{
-    obj: obj,
-  }
+func (me *SplitContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SplitContainer) BaseClass() string {

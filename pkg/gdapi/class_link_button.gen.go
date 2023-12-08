@@ -9,10 +9,8 @@ type LinkButton struct {
   obj gdc.ObjectPtr
 }
 
-func createLinkButton(obj gdc.ObjectPtr) *LinkButton {
-  return &LinkButton{
-    obj: obj,
-  }
+func (me *LinkButton) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *LinkButton) BaseClass() string {

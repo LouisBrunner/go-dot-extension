@@ -9,10 +9,8 @@ type Cubemap struct {
   obj gdc.ObjectPtr
 }
 
-func createCubemap(obj gdc.ObjectPtr) *Cubemap {
-  return &Cubemap{
-    obj: obj,
-  }
+func (me *Cubemap) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Cubemap) BaseClass() string {

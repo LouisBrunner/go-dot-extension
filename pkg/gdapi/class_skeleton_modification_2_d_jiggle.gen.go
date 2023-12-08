@@ -9,10 +9,8 @@ type SkeletonModification2DJiggle struct {
   obj gdc.ObjectPtr
 }
 
-func createSkeletonModification2DJiggle(obj gdc.ObjectPtr) *SkeletonModification2DJiggle {
-  return &SkeletonModification2DJiggle{
-    obj: obj,
-  }
+func (me *SkeletonModification2DJiggle) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SkeletonModification2DJiggle) BaseClass() string {

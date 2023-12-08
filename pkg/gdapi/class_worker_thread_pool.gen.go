@@ -9,10 +9,8 @@ type WorkerThreadPool struct {
   obj gdc.ObjectPtr
 }
 
-func createWorkerThreadPool(obj gdc.ObjectPtr) *WorkerThreadPool {
-  return &WorkerThreadPool{
-    obj: obj,
-  }
+func (me *WorkerThreadPool) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *WorkerThreadPool) BaseClass() string {

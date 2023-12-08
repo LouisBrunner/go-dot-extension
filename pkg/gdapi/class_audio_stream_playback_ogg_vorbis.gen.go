@@ -9,10 +9,8 @@ type AudioStreamPlaybackOggVorbis struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioStreamPlaybackOggVorbis(obj gdc.ObjectPtr) *AudioStreamPlaybackOggVorbis {
-  return &AudioStreamPlaybackOggVorbis{
-    obj: obj,
-  }
+func (me *AudioStreamPlaybackOggVorbis) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioStreamPlaybackOggVorbis) BaseClass() string {

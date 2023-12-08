@@ -9,10 +9,8 @@ type Image struct {
   obj gdc.ObjectPtr
 }
 
-func createImage(obj gdc.ObjectPtr) *Image {
-  return &Image{
-    obj: obj,
-  }
+func (me *Image) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Image) BaseClass() string {

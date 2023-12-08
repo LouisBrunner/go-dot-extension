@@ -9,10 +9,8 @@ type CompressedCubemap struct {
   obj gdc.ObjectPtr
 }
 
-func createCompressedCubemap(obj gdc.ObjectPtr) *CompressedCubemap {
-  return &CompressedCubemap{
-    obj: obj,
-  }
+func (me *CompressedCubemap) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CompressedCubemap) BaseClass() string {

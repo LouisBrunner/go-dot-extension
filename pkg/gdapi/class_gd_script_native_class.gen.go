@@ -9,10 +9,8 @@ type GDScriptNativeClass struct {
   obj gdc.ObjectPtr
 }
 
-func createGDScriptNativeClass(obj gdc.ObjectPtr) *GDScriptNativeClass {
-  return &GDScriptNativeClass{
-    obj: obj,
-  }
+func (me *GDScriptNativeClass) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GDScriptNativeClass) BaseClass() string {

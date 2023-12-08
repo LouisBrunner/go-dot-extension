@@ -9,10 +9,8 @@ type NavigationMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createNavigationMesh(obj gdc.ObjectPtr) *NavigationMesh {
-  return &NavigationMesh{
-    obj: obj,
-  }
+func (me *NavigationMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NavigationMesh) BaseClass() string {

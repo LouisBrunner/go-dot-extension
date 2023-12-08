@@ -9,10 +9,8 @@ type StyleBox struct {
   obj gdc.ObjectPtr
 }
 
-func createStyleBox(obj gdc.ObjectPtr) *StyleBox {
-  return &StyleBox{
-    obj: obj,
-  }
+func (me *StyleBox) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *StyleBox) BaseClass() string {

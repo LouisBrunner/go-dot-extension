@@ -9,10 +9,8 @@ type TileMap struct {
   obj gdc.ObjectPtr
 }
 
-func createTileMap(obj gdc.ObjectPtr) *TileMap {
-  return &TileMap{
-    obj: obj,
-  }
+func (me *TileMap) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TileMap) BaseClass() string {

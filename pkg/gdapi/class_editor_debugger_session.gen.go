@@ -9,10 +9,8 @@ type EditorDebuggerSession struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorDebuggerSession(obj gdc.ObjectPtr) *EditorDebuggerSession {
-  return &EditorDebuggerSession{
-    obj: obj,
-  }
+func (me *EditorDebuggerSession) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorDebuggerSession) BaseClass() string {

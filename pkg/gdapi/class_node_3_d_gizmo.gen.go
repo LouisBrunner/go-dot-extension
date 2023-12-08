@@ -9,10 +9,8 @@ type Node3DGizmo struct {
   obj gdc.ObjectPtr
 }
 
-func createNode3DGizmo(obj gdc.ObjectPtr) *Node3DGizmo {
-  return &Node3DGizmo{
-    obj: obj,
-  }
+func (me *Node3DGizmo) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Node3DGizmo) BaseClass() string {

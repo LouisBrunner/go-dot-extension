@@ -9,10 +9,8 @@ type AnimationNodeTransition struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationNodeTransition(obj gdc.ObjectPtr) *AnimationNodeTransition {
-  return &AnimationNodeTransition{
-    obj: obj,
-  }
+func (me *AnimationNodeTransition) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationNodeTransition) BaseClass() string {

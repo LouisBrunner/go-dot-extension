@@ -9,10 +9,8 @@ type UDPServer struct {
   obj gdc.ObjectPtr
 }
 
-func createUDPServer(obj gdc.ObjectPtr) *UDPServer {
-  return &UDPServer{
-    obj: obj,
-  }
+func (me *UDPServer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *UDPServer) BaseClass() string {

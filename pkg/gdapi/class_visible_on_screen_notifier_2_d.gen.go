@@ -9,10 +9,8 @@ type VisibleOnScreenNotifier2D struct {
   obj gdc.ObjectPtr
 }
 
-func createVisibleOnScreenNotifier2D(obj gdc.ObjectPtr) *VisibleOnScreenNotifier2D {
-  return &VisibleOnScreenNotifier2D{
-    obj: obj,
-  }
+func (me *VisibleOnScreenNotifier2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisibleOnScreenNotifier2D) BaseClass() string {

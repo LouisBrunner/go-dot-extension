@@ -9,10 +9,8 @@ type PinJoint3D struct {
   obj gdc.ObjectPtr
 }
 
-func createPinJoint3D(obj gdc.ObjectPtr) *PinJoint3D {
-  return &PinJoint3D{
-    obj: obj,
-  }
+func (me *PinJoint3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PinJoint3D) BaseClass() string {

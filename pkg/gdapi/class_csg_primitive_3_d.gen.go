@@ -9,10 +9,8 @@ type CSGPrimitive3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCSGPrimitive3D(obj gdc.ObjectPtr) *CSGPrimitive3D {
-  return &CSGPrimitive3D{
-    obj: obj,
-  }
+func (me *CSGPrimitive3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CSGPrimitive3D) BaseClass() string {

@@ -9,10 +9,8 @@ type MeshConvexDecompositionSettings struct {
   obj gdc.ObjectPtr
 }
 
-func createMeshConvexDecompositionSettings(obj gdc.ObjectPtr) *MeshConvexDecompositionSettings {
-  return &MeshConvexDecompositionSettings{
-    obj: obj,
-  }
+func (me *MeshConvexDecompositionSettings) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MeshConvexDecompositionSettings) BaseClass() string {

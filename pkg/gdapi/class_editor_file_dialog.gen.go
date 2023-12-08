@@ -9,10 +9,8 @@ type EditorFileDialog struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorFileDialog(obj gdc.ObjectPtr) *EditorFileDialog {
-  return &EditorFileDialog{
-    obj: obj,
-  }
+func (me *EditorFileDialog) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorFileDialog) BaseClass() string {

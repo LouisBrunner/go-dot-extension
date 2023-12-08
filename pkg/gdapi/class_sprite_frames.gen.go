@@ -9,10 +9,8 @@ type SpriteFrames struct {
   obj gdc.ObjectPtr
 }
 
-func createSpriteFrames(obj gdc.ObjectPtr) *SpriteFrames {
-  return &SpriteFrames{
-    obj: obj,
-  }
+func (me *SpriteFrames) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SpriteFrames) BaseClass() string {

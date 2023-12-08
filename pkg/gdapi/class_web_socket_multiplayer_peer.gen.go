@@ -9,10 +9,8 @@ type WebSocketMultiplayerPeer struct {
   obj gdc.ObjectPtr
 }
 
-func createWebSocketMultiplayerPeer(obj gdc.ObjectPtr) *WebSocketMultiplayerPeer {
-  return &WebSocketMultiplayerPeer{
-    obj: obj,
-  }
+func (me *WebSocketMultiplayerPeer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *WebSocketMultiplayerPeer) BaseClass() string {

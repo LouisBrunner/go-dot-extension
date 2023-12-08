@@ -9,10 +9,8 @@ type CenterContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createCenterContainer(obj gdc.ObjectPtr) *CenterContainer {
-  return &CenterContainer{
-    obj: obj,
-  }
+func (me *CenterContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CenterContainer) BaseClass() string {

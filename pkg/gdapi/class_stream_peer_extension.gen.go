@@ -9,10 +9,8 @@ type StreamPeerExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createStreamPeerExtension(obj gdc.ObjectPtr) *StreamPeerExtension {
-  return &StreamPeerExtension{
-    obj: obj,
-  }
+func (me *StreamPeerExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *StreamPeerExtension) BaseClass() string {

@@ -9,10 +9,8 @@ type AudioListener3D struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioListener3D(obj gdc.ObjectPtr) *AudioListener3D {
-  return &AudioListener3D{
-    obj: obj,
-  }
+func (me *AudioListener3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioListener3D) BaseClass() string {

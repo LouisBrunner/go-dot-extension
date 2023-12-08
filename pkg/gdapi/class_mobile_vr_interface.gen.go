@@ -9,10 +9,8 @@ type MobileVRInterface struct {
   obj gdc.ObjectPtr
 }
 
-func createMobileVRInterface(obj gdc.ObjectPtr) *MobileVRInterface {
-  return &MobileVRInterface{
-    obj: obj,
-  }
+func (me *MobileVRInterface) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MobileVRInterface) BaseClass() string {

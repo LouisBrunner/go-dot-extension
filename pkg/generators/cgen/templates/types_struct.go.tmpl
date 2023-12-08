@@ -11,6 +11,19 @@ type {{.Name}} struct {
 {{end -}}
 }
 
+func CNew{{.Name}}() *{{.Name}} {
+  return (*{{.Name}})(C.malloc(C.sizeof_{{.CType}}))
+}
+
+func CNew{{.Name}}Array(size int) []{{.Name}} {
+  ptr := (*{{.Name}})(C.malloc(C.size_t(size) * C.sizeof_{{.CType}}))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFree{{.Name}}(p *{{.Name}}) {
+  C.free(unsafe.Pointer(p))
+}
+
 // ToRaw converts {{.Name}} to a {{.Name}}Raw
 func (me *{{.Name}}) ToRaw() ({{.Name}}Raw, func()) {
 {{range .Members}}{{if ne .GoToCGo.Def ""}}  {{.GoToCGo.Def}}

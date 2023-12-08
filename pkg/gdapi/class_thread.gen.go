@@ -9,10 +9,8 @@ type Thread struct {
   obj gdc.ObjectPtr
 }
 
-func createThread(obj gdc.ObjectPtr) *Thread {
-  return &Thread{
-    obj: obj,
-  }
+func (me *Thread) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Thread) BaseClass() string {

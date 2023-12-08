@@ -9,10 +9,8 @@ type SceneTree struct {
   obj gdc.ObjectPtr
 }
 
-func createSceneTree(obj gdc.ObjectPtr) *SceneTree {
-  return &SceneTree{
-    obj: obj,
-  }
+func (me *SceneTree) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SceneTree) BaseClass() string {

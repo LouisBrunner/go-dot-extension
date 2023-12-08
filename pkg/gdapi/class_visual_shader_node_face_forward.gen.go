@@ -9,10 +9,8 @@ type VisualShaderNodeFaceForward struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeFaceForward(obj gdc.ObjectPtr) *VisualShaderNodeFaceForward {
-  return &VisualShaderNodeFaceForward{
-    obj: obj,
-  }
+func (me *VisualShaderNodeFaceForward) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeFaceForward) BaseClass() string {

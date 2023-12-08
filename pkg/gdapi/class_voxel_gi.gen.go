@@ -9,10 +9,8 @@ type VoxelGI struct {
   obj gdc.ObjectPtr
 }
 
-func createVoxelGI(obj gdc.ObjectPtr) *VoxelGI {
-  return &VoxelGI{
-    obj: obj,
-  }
+func (me *VoxelGI) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VoxelGI) BaseClass() string {

@@ -9,10 +9,8 @@ type VisualShaderNodeSample3D struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeSample3D(obj gdc.ObjectPtr) *VisualShaderNodeSample3D {
-  return &VisualShaderNodeSample3D{
-    obj: obj,
-  }
+func (me *VisualShaderNodeSample3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeSample3D) BaseClass() string {

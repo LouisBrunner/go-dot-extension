@@ -9,10 +9,8 @@ type CapsuleMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createCapsuleMesh(obj gdc.ObjectPtr) *CapsuleMesh {
-  return &CapsuleMesh{
-    obj: obj,
-  }
+func (me *CapsuleMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CapsuleMesh) BaseClass() string {

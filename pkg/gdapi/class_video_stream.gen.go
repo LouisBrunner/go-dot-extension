@@ -9,10 +9,8 @@ type VideoStream struct {
   obj gdc.ObjectPtr
 }
 
-func createVideoStream(obj gdc.ObjectPtr) *VideoStream {
-  return &VideoStream{
-    obj: obj,
-  }
+func (me *VideoStream) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VideoStream) BaseClass() string {

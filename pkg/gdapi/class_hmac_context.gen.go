@@ -9,10 +9,8 @@ type HMACContext struct {
   obj gdc.ObjectPtr
 }
 
-func createHMACContext(obj gdc.ObjectPtr) *HMACContext {
-  return &HMACContext{
-    obj: obj,
-  }
+func (me *HMACContext) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *HMACContext) BaseClass() string {

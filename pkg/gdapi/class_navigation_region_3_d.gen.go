@@ -9,10 +9,8 @@ type NavigationRegion3D struct {
   obj gdc.ObjectPtr
 }
 
-func createNavigationRegion3D(obj gdc.ObjectPtr) *NavigationRegion3D {
-  return &NavigationRegion3D{
-    obj: obj,
-  }
+func (me *NavigationRegion3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NavigationRegion3D) BaseClass() string {

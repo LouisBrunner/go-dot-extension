@@ -9,10 +9,8 @@ type GDScript struct {
   obj gdc.ObjectPtr
 }
 
-func createGDScript(obj gdc.ObjectPtr) *GDScript {
-  return &GDScript{
-    obj: obj,
-  }
+func (me *GDScript) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GDScript) BaseClass() string {

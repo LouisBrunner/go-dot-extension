@@ -9,10 +9,8 @@ type AudioServer struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioServer(obj gdc.ObjectPtr) *AudioServer {
-  return &AudioServer{
-    obj: obj,
-  }
+func (me *AudioServer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioServer) BaseClass() string {

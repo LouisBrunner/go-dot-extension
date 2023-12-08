@@ -9,10 +9,8 @@ type MeshInstance3D struct {
   obj gdc.ObjectPtr
 }
 
-func createMeshInstance3D(obj gdc.ObjectPtr) *MeshInstance3D {
-  return &MeshInstance3D{
-    obj: obj,
-  }
+func (me *MeshInstance3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MeshInstance3D) BaseClass() string {

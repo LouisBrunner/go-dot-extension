@@ -9,10 +9,8 @@ type AnimationNodeBlendSpace1D struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationNodeBlendSpace1D(obj gdc.ObjectPtr) *AnimationNodeBlendSpace1D {
-  return &AnimationNodeBlendSpace1D{
-    obj: obj,
-  }
+func (me *AnimationNodeBlendSpace1D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationNodeBlendSpace1D) BaseClass() string {

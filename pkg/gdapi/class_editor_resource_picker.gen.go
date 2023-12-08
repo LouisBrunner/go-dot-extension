@@ -9,10 +9,8 @@ type EditorResourcePicker struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorResourcePicker(obj gdc.ObjectPtr) *EditorResourcePicker {
-  return &EditorResourcePicker{
-    obj: obj,
-  }
+func (me *EditorResourcePicker) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorResourcePicker) BaseClass() string {

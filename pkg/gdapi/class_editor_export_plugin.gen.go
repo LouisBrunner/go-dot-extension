@@ -9,10 +9,8 @@ type EditorExportPlugin struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorExportPlugin(obj gdc.ObjectPtr) *EditorExportPlugin {
-  return &EditorExportPlugin{
-    obj: obj,
-  }
+func (me *EditorExportPlugin) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorExportPlugin) BaseClass() string {

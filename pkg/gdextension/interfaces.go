@@ -4,6 +4,7 @@ import "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 
 type Class interface {
 	BaseClass() string
+	SetBaseObject(obj gdc.ObjectPtr)
 }
 
 type ClassConstructor func() Class

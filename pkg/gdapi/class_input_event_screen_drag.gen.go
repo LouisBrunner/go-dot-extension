@@ -9,10 +9,8 @@ type InputEventScreenDrag struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventScreenDrag(obj gdc.ObjectPtr) *InputEventScreenDrag {
-  return &InputEventScreenDrag{
-    obj: obj,
-  }
+func (me *InputEventScreenDrag) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventScreenDrag) BaseClass() string {

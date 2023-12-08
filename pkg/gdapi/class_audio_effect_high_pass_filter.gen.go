@@ -9,10 +9,8 @@ type AudioEffectHighPassFilter struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectHighPassFilter(obj gdc.ObjectPtr) *AudioEffectHighPassFilter {
-  return &AudioEffectHighPassFilter{
-    obj: obj,
-  }
+func (me *AudioEffectHighPassFilter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectHighPassFilter) BaseClass() string {

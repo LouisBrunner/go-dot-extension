@@ -9,10 +9,8 @@ type MainLoop struct {
   obj gdc.ObjectPtr
 }
 
-func createMainLoop(obj gdc.ObjectPtr) *MainLoop {
-  return &MainLoop{
-    obj: obj,
-  }
+func (me *MainLoop) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MainLoop) BaseClass() string {

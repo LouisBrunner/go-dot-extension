@@ -9,10 +9,8 @@ type VisualShaderNodeTransformVecMult struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeTransformVecMult(obj gdc.ObjectPtr) *VisualShaderNodeTransformVecMult {
-  return &VisualShaderNodeTransformVecMult{
-    obj: obj,
-  }
+func (me *VisualShaderNodeTransformVecMult) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeTransformVecMult) BaseClass() string {

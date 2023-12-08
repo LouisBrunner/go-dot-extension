@@ -9,10 +9,8 @@ type CanvasLayer struct {
   obj gdc.ObjectPtr
 }
 
-func createCanvasLayer(obj gdc.ObjectPtr) *CanvasLayer {
-  return &CanvasLayer{
-    obj: obj,
-  }
+func (me *CanvasLayer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CanvasLayer) BaseClass() string {

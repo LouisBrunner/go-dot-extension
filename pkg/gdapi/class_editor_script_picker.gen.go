@@ -9,10 +9,8 @@ type EditorScriptPicker struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorScriptPicker(obj gdc.ObjectPtr) *EditorScriptPicker {
-  return &EditorScriptPicker{
-    obj: obj,
-  }
+func (me *EditorScriptPicker) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorScriptPicker) BaseClass() string {

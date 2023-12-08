@@ -9,10 +9,8 @@ type StyleBoxFlat struct {
   obj gdc.ObjectPtr
 }
 
-func createStyleBoxFlat(obj gdc.ObjectPtr) *StyleBoxFlat {
-  return &StyleBoxFlat{
-    obj: obj,
-  }
+func (me *StyleBoxFlat) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *StyleBoxFlat) BaseClass() string {

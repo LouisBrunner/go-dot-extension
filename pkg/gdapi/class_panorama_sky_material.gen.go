@@ -9,10 +9,8 @@ type PanoramaSkyMaterial struct {
   obj gdc.ObjectPtr
 }
 
-func createPanoramaSkyMaterial(obj gdc.ObjectPtr) *PanoramaSkyMaterial {
-  return &PanoramaSkyMaterial{
-    obj: obj,
-  }
+func (me *PanoramaSkyMaterial) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PanoramaSkyMaterial) BaseClass() string {

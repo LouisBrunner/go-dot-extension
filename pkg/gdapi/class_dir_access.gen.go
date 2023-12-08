@@ -9,10 +9,8 @@ type DirAccess struct {
   obj gdc.ObjectPtr
 }
 
-func createDirAccess(obj gdc.ObjectPtr) *DirAccess {
-  return &DirAccess{
-    obj: obj,
-  }
+func (me *DirAccess) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *DirAccess) BaseClass() string {

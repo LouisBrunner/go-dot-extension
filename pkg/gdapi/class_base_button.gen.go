@@ -9,10 +9,8 @@ type BaseButton struct {
   obj gdc.ObjectPtr
 }
 
-func createBaseButton(obj gdc.ObjectPtr) *BaseButton {
-  return &BaseButton{
-    obj: obj,
-  }
+func (me *BaseButton) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *BaseButton) BaseClass() string {

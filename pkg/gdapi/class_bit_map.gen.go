@@ -9,10 +9,8 @@ type BitMap struct {
   obj gdc.ObjectPtr
 }
 
-func createBitMap(obj gdc.ObjectPtr) *BitMap {
-  return &BitMap{
-    obj: obj,
-  }
+func (me *BitMap) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *BitMap) BaseClass() string {

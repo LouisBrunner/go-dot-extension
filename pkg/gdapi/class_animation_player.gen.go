@@ -9,10 +9,8 @@ type AnimationPlayer struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationPlayer(obj gdc.ObjectPtr) *AnimationPlayer {
-  return &AnimationPlayer{
-    obj: obj,
-  }
+func (me *AnimationPlayer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationPlayer) BaseClass() string {

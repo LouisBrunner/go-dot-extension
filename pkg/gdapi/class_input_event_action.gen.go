@@ -9,10 +9,8 @@ type InputEventAction struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventAction(obj gdc.ObjectPtr) *InputEventAction {
-  return &InputEventAction{
-    obj: obj,
-  }
+func (me *InputEventAction) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventAction) BaseClass() string {

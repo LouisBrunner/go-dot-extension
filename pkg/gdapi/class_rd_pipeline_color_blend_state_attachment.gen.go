@@ -9,10 +9,8 @@ type RDPipelineColorBlendStateAttachment struct {
   obj gdc.ObjectPtr
 }
 
-func createRDPipelineColorBlendStateAttachment(obj gdc.ObjectPtr) *RDPipelineColorBlendStateAttachment {
-  return &RDPipelineColorBlendStateAttachment{
-    obj: obj,
-  }
+func (me *RDPipelineColorBlendStateAttachment) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDPipelineColorBlendStateAttachment) BaseClass() string {

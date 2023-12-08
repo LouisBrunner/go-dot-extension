@@ -9,10 +9,8 @@ type EditorResourcePreviewGenerator struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorResourcePreviewGenerator(obj gdc.ObjectPtr) *EditorResourcePreviewGenerator {
-  return &EditorResourcePreviewGenerator{
-    obj: obj,
-  }
+func (me *EditorResourcePreviewGenerator) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorResourcePreviewGenerator) BaseClass() string {

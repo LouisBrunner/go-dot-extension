@@ -9,10 +9,8 @@ type AudioEffectFilter struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectFilter(obj gdc.ObjectPtr) *AudioEffectFilter {
-  return &AudioEffectFilter{
-    obj: obj,
-  }
+func (me *AudioEffectFilter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectFilter) BaseClass() string {

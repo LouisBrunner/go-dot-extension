@@ -9,10 +9,8 @@ type ORMMaterial3D struct {
   obj gdc.ObjectPtr
 }
 
-func createORMMaterial3D(obj gdc.ObjectPtr) *ORMMaterial3D {
-  return &ORMMaterial3D{
-    obj: obj,
-  }
+func (me *ORMMaterial3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ORMMaterial3D) BaseClass() string {

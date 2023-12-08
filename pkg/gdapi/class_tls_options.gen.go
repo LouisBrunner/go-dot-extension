@@ -9,10 +9,8 @@ type TLSOptions struct {
   obj gdc.ObjectPtr
 }
 
-func createTLSOptions(obj gdc.ObjectPtr) *TLSOptions {
-  return &TLSOptions{
-    obj: obj,
-  }
+func (me *TLSOptions) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TLSOptions) BaseClass() string {

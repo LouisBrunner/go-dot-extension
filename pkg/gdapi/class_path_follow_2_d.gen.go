@@ -9,10 +9,8 @@ type PathFollow2D struct {
   obj gdc.ObjectPtr
 }
 
-func createPathFollow2D(obj gdc.ObjectPtr) *PathFollow2D {
-  return &PathFollow2D{
-    obj: obj,
-  }
+func (me *PathFollow2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PathFollow2D) BaseClass() string {

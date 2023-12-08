@@ -102,10 +102,10 @@ type Interface interface {
   StringOperatorPlusEqCstr(pSelf StringPtr, pB string, ) 
   StringOperatorPlusEqString(pSelf StringPtr, pB ConstStringPtr, ) 
   StringOperatorPlusEqWcstr(pSelf StringPtr, pB *int, ) 
-  StringToLatin1Chars(pSelf ConstStringPtr, rText string, pMaxWriteLength Int, ) Int
+  StringToLatin1Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int, ) Int
   StringToUtf16Chars(pSelf ConstStringPtr, rText *uint16, pMaxWriteLength Int, ) Int
   StringToUtf32Chars(pSelf ConstStringPtr, rText *uint, pMaxWriteLength Int, ) Int
-  StringToUtf8Chars(pSelf ConstStringPtr, rText string, pMaxWriteLength Int, ) Int
+  StringToUtf8Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int, ) Int
   StringToWideChars(pSelf ConstStringPtr, rText *int, pMaxWriteLength Int, ) Int
   VariantBooleanize(pSelf ConstVariantPtr, ) Bool
   VariantCall(pSelf VariantPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError, ) 
@@ -1542,12 +1542,9 @@ func (me *interfaceImpl) StringOperatorPlusEqWcstr(pSelf StringPtr, pB *int, )  
   C.callStringOperatorPlusEqWcstr(me.ptrStringOperatorPlusEqWcstr, C.GDExtensionStringPtr(pSelf), *(**C.int)(unsafe.Pointer(&pB)),)
 }
 
-func (me *interfaceImpl) StringToLatin1Chars(pSelf ConstStringPtr, rText string, pMaxWriteLength Int, ) Int {
-  crText := C.CString(rText)
-  defer func() {
-    C.free(unsafe.Pointer(crText))
-  }()
-  ret := C.callStringToLatin1Chars(me.ptrStringToLatin1Chars, C.GDExtensionConstStringPtr(pSelf), crText, C.GDExtensionInt(pMaxWriteLength),)
+func (me *interfaceImpl) StringToLatin1Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int, ) Int {
+
+  ret := C.callStringToLatin1Chars(me.ptrStringToLatin1Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.char)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength),)
   return Int(ret)
 }
 
@@ -1563,12 +1560,9 @@ func (me *interfaceImpl) StringToUtf32Chars(pSelf ConstStringPtr, rText *uint, p
   return Int(ret)
 }
 
-func (me *interfaceImpl) StringToUtf8Chars(pSelf ConstStringPtr, rText string, pMaxWriteLength Int, ) Int {
-  crText := C.CString(rText)
-  defer func() {
-    C.free(unsafe.Pointer(crText))
-  }()
-  ret := C.callStringToUtf8Chars(me.ptrStringToUtf8Chars, C.GDExtensionConstStringPtr(pSelf), crText, C.GDExtensionInt(pMaxWriteLength),)
+func (me *interfaceImpl) StringToUtf8Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int, ) Int {
+
+  ret := C.callStringToUtf8Chars(me.ptrStringToUtf8Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.char)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength),)
   return Int(ret)
 }
 

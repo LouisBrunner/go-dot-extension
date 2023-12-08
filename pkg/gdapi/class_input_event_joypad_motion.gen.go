@@ -9,10 +9,8 @@ type InputEventJoypadMotion struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventJoypadMotion(obj gdc.ObjectPtr) *InputEventJoypadMotion {
-  return &InputEventJoypadMotion{
-    obj: obj,
-  }
+func (me *InputEventJoypadMotion) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventJoypadMotion) BaseClass() string {

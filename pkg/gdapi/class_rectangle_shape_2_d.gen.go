@@ -9,10 +9,8 @@ type RectangleShape2D struct {
   obj gdc.ObjectPtr
 }
 
-func createRectangleShape2D(obj gdc.ObjectPtr) *RectangleShape2D {
-  return &RectangleShape2D{
-    obj: obj,
-  }
+func (me *RectangleShape2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RectangleShape2D) BaseClass() string {

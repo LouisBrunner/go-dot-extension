@@ -9,10 +9,8 @@ type Range struct {
   obj gdc.ObjectPtr
 }
 
-func createRange(obj gdc.ObjectPtr) *Range {
-  return &Range{
-    obj: obj,
-  }
+func (me *Range) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Range) BaseClass() string {

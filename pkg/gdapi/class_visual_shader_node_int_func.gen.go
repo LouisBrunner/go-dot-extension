@@ -9,10 +9,8 @@ type VisualShaderNodeIntFunc struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeIntFunc(obj gdc.ObjectPtr) *VisualShaderNodeIntFunc {
-  return &VisualShaderNodeIntFunc{
-    obj: obj,
-  }
+func (me *VisualShaderNodeIntFunc) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeIntFunc) BaseClass() string {

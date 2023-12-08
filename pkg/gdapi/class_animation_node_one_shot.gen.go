@@ -9,10 +9,8 @@ type AnimationNodeOneShot struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationNodeOneShot(obj gdc.ObjectPtr) *AnimationNodeOneShot {
-  return &AnimationNodeOneShot{
-    obj: obj,
-  }
+func (me *AnimationNodeOneShot) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationNodeOneShot) BaseClass() string {

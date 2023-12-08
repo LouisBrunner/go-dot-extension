@@ -9,10 +9,8 @@ type RDUniform struct {
   obj gdc.ObjectPtr
 }
 
-func createRDUniform(obj gdc.ObjectPtr) *RDUniform {
-  return &RDUniform{
-    obj: obj,
-  }
+func (me *RDUniform) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDUniform) BaseClass() string {

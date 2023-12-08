@@ -9,10 +9,8 @@ type FileSystemDock struct {
   obj gdc.ObjectPtr
 }
 
-func createFileSystemDock(obj gdc.ObjectPtr) *FileSystemDock {
-  return &FileSystemDock{
-    obj: obj,
-  }
+func (me *FileSystemDock) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *FileSystemDock) BaseClass() string {

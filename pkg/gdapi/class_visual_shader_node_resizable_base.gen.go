@@ -9,10 +9,8 @@ type VisualShaderNodeResizableBase struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeResizableBase(obj gdc.ObjectPtr) *VisualShaderNodeResizableBase {
-  return &VisualShaderNodeResizableBase{
-    obj: obj,
-  }
+func (me *VisualShaderNodeResizableBase) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeResizableBase) BaseClass() string {

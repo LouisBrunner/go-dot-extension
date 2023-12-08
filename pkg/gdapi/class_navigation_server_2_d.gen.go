@@ -9,10 +9,8 @@ type NavigationServer2D struct {
   obj gdc.ObjectPtr
 }
 
-func createNavigationServer2D(obj gdc.ObjectPtr) *NavigationServer2D {
-  return &NavigationServer2D{
-    obj: obj,
-  }
+func (me *NavigationServer2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NavigationServer2D) BaseClass() string {

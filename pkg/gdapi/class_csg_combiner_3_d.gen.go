@@ -9,10 +9,8 @@ type CSGCombiner3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCSGCombiner3D(obj gdc.ObjectPtr) *CSGCombiner3D {
-  return &CSGCombiner3D{
-    obj: obj,
-  }
+func (me *CSGCombiner3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CSGCombiner3D) BaseClass() string {

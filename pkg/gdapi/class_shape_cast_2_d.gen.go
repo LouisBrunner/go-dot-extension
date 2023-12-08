@@ -9,10 +9,8 @@ type ShapeCast2D struct {
   obj gdc.ObjectPtr
 }
 
-func createShapeCast2D(obj gdc.ObjectPtr) *ShapeCast2D {
-  return &ShapeCast2D{
-    obj: obj,
-  }
+func (me *ShapeCast2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ShapeCast2D) BaseClass() string {

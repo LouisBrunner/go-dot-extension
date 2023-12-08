@@ -9,10 +9,8 @@ type EditorSceneFormatImporter struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorSceneFormatImporter(obj gdc.ObjectPtr) *EditorSceneFormatImporter {
-  return &EditorSceneFormatImporter{
-    obj: obj,
-  }
+func (me *EditorSceneFormatImporter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorSceneFormatImporter) BaseClass() string {

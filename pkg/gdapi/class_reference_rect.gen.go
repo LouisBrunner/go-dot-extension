@@ -9,10 +9,8 @@ type ReferenceRect struct {
   obj gdc.ObjectPtr
 }
 
-func createReferenceRect(obj gdc.ObjectPtr) *ReferenceRect {
-  return &ReferenceRect{
-    obj: obj,
-  }
+func (me *ReferenceRect) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ReferenceRect) BaseClass() string {

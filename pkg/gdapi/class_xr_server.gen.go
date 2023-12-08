@@ -9,10 +9,8 @@ type XRServer struct {
   obj gdc.ObjectPtr
 }
 
-func createXRServer(obj gdc.ObjectPtr) *XRServer {
-  return &XRServer{
-    obj: obj,
-  }
+func (me *XRServer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *XRServer) BaseClass() string {

@@ -9,10 +9,8 @@ type MovieWriter struct {
   obj gdc.ObjectPtr
 }
 
-func createMovieWriter(obj gdc.ObjectPtr) *MovieWriter {
-  return &MovieWriter{
-    obj: obj,
-  }
+func (me *MovieWriter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MovieWriter) BaseClass() string {

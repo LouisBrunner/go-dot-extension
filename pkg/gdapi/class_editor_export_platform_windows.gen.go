@@ -9,10 +9,8 @@ type EditorExportPlatformWindows struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorExportPlatformWindows(obj gdc.ObjectPtr) *EditorExportPlatformWindows {
-  return &EditorExportPlatformWindows{
-    obj: obj,
-  }
+func (me *EditorExportPlatformWindows) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorExportPlatformWindows) BaseClass() string {

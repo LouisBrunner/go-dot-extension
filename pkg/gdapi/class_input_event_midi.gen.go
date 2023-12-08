@@ -9,10 +9,8 @@ type InputEventMIDI struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventMIDI(obj gdc.ObjectPtr) *InputEventMIDI {
-  return &InputEventMIDI{
-    obj: obj,
-  }
+func (me *InputEventMIDI) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventMIDI) BaseClass() string {

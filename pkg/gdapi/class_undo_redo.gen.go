@@ -9,10 +9,8 @@ type UndoRedo struct {
   obj gdc.ObjectPtr
 }
 
-func createUndoRedo(obj gdc.ObjectPtr) *UndoRedo {
-  return &UndoRedo{
-    obj: obj,
-  }
+func (me *UndoRedo) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *UndoRedo) BaseClass() string {

@@ -9,10 +9,8 @@ type StaticBody2D struct {
   obj gdc.ObjectPtr
 }
 
-func createStaticBody2D(obj gdc.ObjectPtr) *StaticBody2D {
-  return &StaticBody2D{
-    obj: obj,
-  }
+func (me *StaticBody2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *StaticBody2D) BaseClass() string {

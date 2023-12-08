@@ -9,10 +9,8 @@ type ItemList struct {
   obj gdc.ObjectPtr
 }
 
-func createItemList(obj gdc.ObjectPtr) *ItemList {
-  return &ItemList{
-    obj: obj,
-  }
+func (me *ItemList) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ItemList) BaseClass() string {

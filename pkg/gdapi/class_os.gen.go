@@ -9,10 +9,8 @@ type OS struct {
   obj gdc.ObjectPtr
 }
 
-func createOS(obj gdc.ObjectPtr) *OS {
-  return &OS{
-    obj: obj,
-  }
+func (me *OS) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *OS) BaseClass() string {

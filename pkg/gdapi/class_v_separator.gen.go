@@ -9,10 +9,8 @@ type VSeparator struct {
   obj gdc.ObjectPtr
 }
 
-func createVSeparator(obj gdc.ObjectPtr) *VSeparator {
-  return &VSeparator{
-    obj: obj,
-  }
+func (me *VSeparator) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VSeparator) BaseClass() string {

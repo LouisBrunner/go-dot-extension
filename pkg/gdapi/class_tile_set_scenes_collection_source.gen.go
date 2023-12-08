@@ -9,10 +9,8 @@ type TileSetScenesCollectionSource struct {
   obj gdc.ObjectPtr
 }
 
-func createTileSetScenesCollectionSource(obj gdc.ObjectPtr) *TileSetScenesCollectionSource {
-  return &TileSetScenesCollectionSource{
-    obj: obj,
-  }
+func (me *TileSetScenesCollectionSource) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TileSetScenesCollectionSource) BaseClass() string {

@@ -9,10 +9,8 @@ type SpotLight3D struct {
   obj gdc.ObjectPtr
 }
 
-func createSpotLight3D(obj gdc.ObjectPtr) *SpotLight3D {
-  return &SpotLight3D{
-    obj: obj,
-  }
+func (me *SpotLight3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SpotLight3D) BaseClass() string {

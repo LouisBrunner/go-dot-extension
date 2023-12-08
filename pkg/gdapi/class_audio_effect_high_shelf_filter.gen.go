@@ -9,10 +9,8 @@ type AudioEffectHighShelfFilter struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectHighShelfFilter(obj gdc.ObjectPtr) *AudioEffectHighShelfFilter {
-  return &AudioEffectHighShelfFilter{
-    obj: obj,
-  }
+func (me *AudioEffectHighShelfFilter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectHighShelfFilter) BaseClass() string {

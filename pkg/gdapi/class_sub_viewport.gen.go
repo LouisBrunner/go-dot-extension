@@ -9,10 +9,8 @@ type SubViewport struct {
   obj gdc.ObjectPtr
 }
 
-func createSubViewport(obj gdc.ObjectPtr) *SubViewport {
-  return &SubViewport{
-    obj: obj,
-  }
+func (me *SubViewport) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SubViewport) BaseClass() string {

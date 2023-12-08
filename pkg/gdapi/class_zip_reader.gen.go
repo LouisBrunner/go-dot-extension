@@ -9,10 +9,8 @@ type ZIPReader struct {
   obj gdc.ObjectPtr
 }
 
-func createZIPReader(obj gdc.ObjectPtr) *ZIPReader {
-  return &ZIPReader{
-    obj: obj,
-  }
+func (me *ZIPReader) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ZIPReader) BaseClass() string {

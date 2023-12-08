@@ -9,10 +9,8 @@ type Marker2D struct {
   obj gdc.ObjectPtr
 }
 
-func createMarker2D(obj gdc.ObjectPtr) *Marker2D {
-  return &Marker2D{
-    obj: obj,
-  }
+func (me *Marker2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Marker2D) BaseClass() string {

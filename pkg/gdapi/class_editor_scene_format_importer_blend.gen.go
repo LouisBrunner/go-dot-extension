@@ -9,10 +9,8 @@ type EditorSceneFormatImporterBlend struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorSceneFormatImporterBlend(obj gdc.ObjectPtr) *EditorSceneFormatImporterBlend {
-  return &EditorSceneFormatImporterBlend{
-    obj: obj,
-  }
+func (me *EditorSceneFormatImporterBlend) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorSceneFormatImporterBlend) BaseClass() string {

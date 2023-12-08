@@ -9,10 +9,8 @@ type InputEventPanGesture struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventPanGesture(obj gdc.ObjectPtr) *InputEventPanGesture {
-  return &InputEventPanGesture{
-    obj: obj,
-  }
+func (me *InputEventPanGesture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventPanGesture) BaseClass() string {

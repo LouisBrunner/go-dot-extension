@@ -9,10 +9,8 @@ type ZIPPacker struct {
   obj gdc.ObjectPtr
 }
 
-func createZIPPacker(obj gdc.ObjectPtr) *ZIPPacker {
-  return &ZIPPacker{
-    obj: obj,
-  }
+func (me *ZIPPacker) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ZIPPacker) BaseClass() string {

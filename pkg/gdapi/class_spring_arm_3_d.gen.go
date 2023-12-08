@@ -9,10 +9,8 @@ type SpringArm3D struct {
   obj gdc.ObjectPtr
 }
 
-func createSpringArm3D(obj gdc.ObjectPtr) *SpringArm3D {
-  return &SpringArm3D{
-    obj: obj,
-  }
+func (me *SpringArm3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SpringArm3D) BaseClass() string {

@@ -9,10 +9,8 @@ type ImageTexture3D struct {
   obj gdc.ObjectPtr
 }
 
-func createImageTexture3D(obj gdc.ObjectPtr) *ImageTexture3D {
-  return &ImageTexture3D{
-    obj: obj,
-  }
+func (me *ImageTexture3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ImageTexture3D) BaseClass() string {

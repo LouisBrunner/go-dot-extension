@@ -9,10 +9,8 @@ type JSONRPC struct {
   obj gdc.ObjectPtr
 }
 
-func createJSONRPC(obj gdc.ObjectPtr) *JSONRPC {
-  return &JSONRPC{
-    obj: obj,
-  }
+func (me *JSONRPC) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *JSONRPC) BaseClass() string {

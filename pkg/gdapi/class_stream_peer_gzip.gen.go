@@ -9,10 +9,8 @@ type StreamPeerGZIP struct {
   obj gdc.ObjectPtr
 }
 
-func createStreamPeerGZIP(obj gdc.ObjectPtr) *StreamPeerGZIP {
-  return &StreamPeerGZIP{
-    obj: obj,
-  }
+func (me *StreamPeerGZIP) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *StreamPeerGZIP) BaseClass() string {

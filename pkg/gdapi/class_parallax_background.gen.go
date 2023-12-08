@@ -9,10 +9,8 @@ type ParallaxBackground struct {
   obj gdc.ObjectPtr
 }
 
-func createParallaxBackground(obj gdc.ObjectPtr) *ParallaxBackground {
-  return &ParallaxBackground{
-    obj: obj,
-  }
+func (me *ParallaxBackground) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ParallaxBackground) BaseClass() string {

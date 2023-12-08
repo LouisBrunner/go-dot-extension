@@ -9,10 +9,8 @@ type MovieWriterPNGWAV struct {
   obj gdc.ObjectPtr
 }
 
-func createMovieWriterPNGWAV(obj gdc.ObjectPtr) *MovieWriterPNGWAV {
-  return &MovieWriterPNGWAV{
-    obj: obj,
-  }
+func (me *MovieWriterPNGWAV) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MovieWriterPNGWAV) BaseClass() string {

@@ -9,10 +9,8 @@ type VisualShaderNodeOuterProduct struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeOuterProduct(obj gdc.ObjectPtr) *VisualShaderNodeOuterProduct {
-  return &VisualShaderNodeOuterProduct{
-    obj: obj,
-  }
+func (me *VisualShaderNodeOuterProduct) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeOuterProduct) BaseClass() string {

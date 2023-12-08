@@ -9,10 +9,8 @@ type Tree struct {
   obj gdc.ObjectPtr
 }
 
-func createTree(obj gdc.ObjectPtr) *Tree {
-  return &Tree{
-    obj: obj,
-  }
+func (me *Tree) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Tree) BaseClass() string {

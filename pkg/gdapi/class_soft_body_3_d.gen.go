@@ -9,10 +9,8 @@ type SoftBody3D struct {
   obj gdc.ObjectPtr
 }
 
-func createSoftBody3D(obj gdc.ObjectPtr) *SoftBody3D {
-  return &SoftBody3D{
-    obj: obj,
-  }
+func (me *SoftBody3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SoftBody3D) BaseClass() string {

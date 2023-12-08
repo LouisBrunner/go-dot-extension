@@ -9,10 +9,8 @@ type PlaneMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createPlaneMesh(obj gdc.ObjectPtr) *PlaneMesh {
-  return &PlaneMesh{
-    obj: obj,
-  }
+func (me *PlaneMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PlaneMesh) BaseClass() string {

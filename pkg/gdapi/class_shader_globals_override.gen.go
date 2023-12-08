@@ -9,10 +9,8 @@ type ShaderGlobalsOverride struct {
   obj gdc.ObjectPtr
 }
 
-func createShaderGlobalsOverride(obj gdc.ObjectPtr) *ShaderGlobalsOverride {
-  return &ShaderGlobalsOverride{
-    obj: obj,
-  }
+func (me *ShaderGlobalsOverride) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ShaderGlobalsOverride) BaseClass() string {

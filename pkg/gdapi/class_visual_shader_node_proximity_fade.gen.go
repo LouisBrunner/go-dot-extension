@@ -9,10 +9,8 @@ type VisualShaderNodeProximityFade struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeProximityFade(obj gdc.ObjectPtr) *VisualShaderNodeProximityFade {
-  return &VisualShaderNodeProximityFade{
-    obj: obj,
-  }
+func (me *VisualShaderNodeProximityFade) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeProximityFade) BaseClass() string {

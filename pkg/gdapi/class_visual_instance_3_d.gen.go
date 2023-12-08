@@ -9,10 +9,8 @@ type VisualInstance3D struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualInstance3D(obj gdc.ObjectPtr) *VisualInstance3D {
-  return &VisualInstance3D{
-    obj: obj,
-  }
+func (me *VisualInstance3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualInstance3D) BaseClass() string {

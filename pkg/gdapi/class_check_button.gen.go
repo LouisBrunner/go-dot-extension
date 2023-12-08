@@ -9,10 +9,8 @@ type CheckButton struct {
   obj gdc.ObjectPtr
 }
 
-func createCheckButton(obj gdc.ObjectPtr) *CheckButton {
-  return &CheckButton{
-    obj: obj,
-  }
+func (me *CheckButton) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CheckButton) BaseClass() string {

@@ -9,10 +9,8 @@ type Geometry3D struct {
   obj gdc.ObjectPtr
 }
 
-func createGeometry3D(obj gdc.ObjectPtr) *Geometry3D {
-  return &Geometry3D{
-    obj: obj,
-  }
+func (me *Geometry3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Geometry3D) BaseClass() string {

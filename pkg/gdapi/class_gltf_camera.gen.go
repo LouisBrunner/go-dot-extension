@@ -9,10 +9,8 @@ type GLTFCamera struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFCamera(obj gdc.ObjectPtr) *GLTFCamera {
-  return &GLTFCamera{
-    obj: obj,
-  }
+func (me *GLTFCamera) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFCamera) BaseClass() string {

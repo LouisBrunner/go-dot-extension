@@ -9,10 +9,8 @@ type RDPipelineDepthStencilState struct {
   obj gdc.ObjectPtr
 }
 
-func createRDPipelineDepthStencilState(obj gdc.ObjectPtr) *RDPipelineDepthStencilState {
-  return &RDPipelineDepthStencilState{
-    obj: obj,
-  }
+func (me *RDPipelineDepthStencilState) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDPipelineDepthStencilState) BaseClass() string {

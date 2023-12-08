@@ -9,10 +9,8 @@ type EditorScenePostImportPlugin struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorScenePostImportPlugin(obj gdc.ObjectPtr) *EditorScenePostImportPlugin {
-  return &EditorScenePostImportPlugin{
-    obj: obj,
-  }
+func (me *EditorScenePostImportPlugin) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorScenePostImportPlugin) BaseClass() string {

@@ -9,10 +9,8 @@ type CodeHighlighter struct {
   obj gdc.ObjectPtr
 }
 
-func createCodeHighlighter(obj gdc.ObjectPtr) *CodeHighlighter {
-  return &CodeHighlighter{
-    obj: obj,
-  }
+func (me *CodeHighlighter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CodeHighlighter) BaseClass() string {

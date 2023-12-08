@@ -9,10 +9,8 @@ type MultiMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createMultiMesh(obj gdc.ObjectPtr) *MultiMesh {
-  return &MultiMesh{
-    obj: obj,
-  }
+func (me *MultiMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MultiMesh) BaseClass() string {

@@ -9,10 +9,8 @@ type TextMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createTextMesh(obj gdc.ObjectPtr) *TextMesh {
-  return &TextMesh{
-    obj: obj,
-  }
+func (me *TextMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextMesh) BaseClass() string {

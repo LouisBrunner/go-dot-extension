@@ -9,10 +9,8 @@ type Font struct {
   obj gdc.ObjectPtr
 }
 
-func createFont(obj gdc.ObjectPtr) *Font {
-  return &Font{
-    obj: obj,
-  }
+func (me *Font) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Font) BaseClass() string {

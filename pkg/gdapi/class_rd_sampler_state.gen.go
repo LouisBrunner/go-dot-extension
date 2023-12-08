@@ -9,10 +9,8 @@ type RDSamplerState struct {
   obj gdc.ObjectPtr
 }
 
-func createRDSamplerState(obj gdc.ObjectPtr) *RDSamplerState {
-  return &RDSamplerState{
-    obj: obj,
-  }
+func (me *RDSamplerState) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDSamplerState) BaseClass() string {

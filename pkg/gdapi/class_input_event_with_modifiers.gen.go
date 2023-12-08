@@ -9,10 +9,8 @@ type InputEventWithModifiers struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventWithModifiers(obj gdc.ObjectPtr) *InputEventWithModifiers {
-  return &InputEventWithModifiers{
-    obj: obj,
-  }
+func (me *InputEventWithModifiers) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventWithModifiers) BaseClass() string {

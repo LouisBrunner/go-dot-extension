@@ -9,10 +9,8 @@ type EditorCommandPalette struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorCommandPalette(obj gdc.ObjectPtr) *EditorCommandPalette {
-  return &EditorCommandPalette{
-    obj: obj,
-  }
+func (me *EditorCommandPalette) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorCommandPalette) BaseClass() string {

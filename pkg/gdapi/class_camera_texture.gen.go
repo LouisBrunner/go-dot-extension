@@ -9,10 +9,8 @@ type CameraTexture struct {
   obj gdc.ObjectPtr
 }
 
-func createCameraTexture(obj gdc.ObjectPtr) *CameraTexture {
-  return &CameraTexture{
-    obj: obj,
-  }
+func (me *CameraTexture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CameraTexture) BaseClass() string {

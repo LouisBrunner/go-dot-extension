@@ -9,10 +9,8 @@ type Line2D struct {
   obj gdc.ObjectPtr
 }
 
-func createLine2D(obj gdc.ObjectPtr) *Line2D {
-  return &Line2D{
-    obj: obj,
-  }
+func (me *Line2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Line2D) BaseClass() string {

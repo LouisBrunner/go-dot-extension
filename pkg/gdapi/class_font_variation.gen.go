@@ -9,10 +9,8 @@ type FontVariation struct {
   obj gdc.ObjectPtr
 }
 
-func createFontVariation(obj gdc.ObjectPtr) *FontVariation {
-  return &FontVariation{
-    obj: obj,
-  }
+func (me *FontVariation) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *FontVariation) BaseClass() string {

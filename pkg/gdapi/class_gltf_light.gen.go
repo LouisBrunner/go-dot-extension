@@ -9,10 +9,8 @@ type GLTFLight struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFLight(obj gdc.ObjectPtr) *GLTFLight {
-  return &GLTFLight{
-    obj: obj,
-  }
+func (me *GLTFLight) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFLight) BaseClass() string {

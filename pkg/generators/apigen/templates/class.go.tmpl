@@ -9,10 +9,8 @@ type {{.Name}} struct {
   obj gdc.ObjectPtr
 }
 
-func create{{.Name}}(obj gdc.ObjectPtr) *{{.Name}} {
-  return &{{.Name}}{
-    obj: obj,
-  }
+func (me *{{.Name}}) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *{{.Name}}) BaseClass() string {

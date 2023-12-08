@@ -9,10 +9,8 @@ type VisualShaderNodeIntParameter struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeIntParameter(obj gdc.ObjectPtr) *VisualShaderNodeIntParameter {
-  return &VisualShaderNodeIntParameter{
-    obj: obj,
-  }
+func (me *VisualShaderNodeIntParameter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeIntParameter) BaseClass() string {

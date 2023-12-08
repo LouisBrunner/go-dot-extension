@@ -9,10 +9,8 @@ type VisualShaderNodeMultiplyAdd struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeMultiplyAdd(obj gdc.ObjectPtr) *VisualShaderNodeMultiplyAdd {
-  return &VisualShaderNodeMultiplyAdd{
-    obj: obj,
-  }
+func (me *VisualShaderNodeMultiplyAdd) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeMultiplyAdd) BaseClass() string {

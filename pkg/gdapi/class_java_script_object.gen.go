@@ -9,10 +9,8 @@ type JavaScriptObject struct {
   obj gdc.ObjectPtr
 }
 
-func createJavaScriptObject(obj gdc.ObjectPtr) *JavaScriptObject {
-  return &JavaScriptObject{
-    obj: obj,
-  }
+func (me *JavaScriptObject) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *JavaScriptObject) BaseClass() string {

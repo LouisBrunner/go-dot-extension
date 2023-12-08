@@ -9,10 +9,8 @@ type MissingResource struct {
   obj gdc.ObjectPtr
 }
 
-func createMissingResource(obj gdc.ObjectPtr) *MissingResource {
-  return &MissingResource{
-    obj: obj,
-  }
+func (me *MissingResource) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MissingResource) BaseClass() string {

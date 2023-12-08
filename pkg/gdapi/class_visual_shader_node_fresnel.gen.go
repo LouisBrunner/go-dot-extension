@@ -9,10 +9,8 @@ type VisualShaderNodeFresnel struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeFresnel(obj gdc.ObjectPtr) *VisualShaderNodeFresnel {
-  return &VisualShaderNodeFresnel{
-    obj: obj,
-  }
+func (me *VisualShaderNodeFresnel) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeFresnel) BaseClass() string {

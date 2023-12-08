@@ -9,10 +9,8 @@ type InstancePlaceholder struct {
   obj gdc.ObjectPtr
 }
 
-func createInstancePlaceholder(obj gdc.ObjectPtr) *InstancePlaceholder {
-  return &InstancePlaceholder{
-    obj: obj,
-  }
+func (me *InstancePlaceholder) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InstancePlaceholder) BaseClass() string {

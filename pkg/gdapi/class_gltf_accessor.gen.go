@@ -9,10 +9,8 @@ type GLTFAccessor struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFAccessor(obj gdc.ObjectPtr) *GLTFAccessor {
-  return &GLTFAccessor{
-    obj: obj,
-  }
+func (me *GLTFAccessor) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFAccessor) BaseClass() string {

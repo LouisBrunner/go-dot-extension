@@ -9,10 +9,8 @@ type SystemFont struct {
   obj gdc.ObjectPtr
 }
 
-func createSystemFont(obj gdc.ObjectPtr) *SystemFont {
-  return &SystemFont{
-    obj: obj,
-  }
+func (me *SystemFont) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SystemFont) BaseClass() string {

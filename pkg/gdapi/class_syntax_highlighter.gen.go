@@ -9,10 +9,8 @@ type SyntaxHighlighter struct {
   obj gdc.ObjectPtr
 }
 
-func createSyntaxHighlighter(obj gdc.ObjectPtr) *SyntaxHighlighter {
-  return &SyntaxHighlighter{
-    obj: obj,
-  }
+func (me *SyntaxHighlighter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SyntaxHighlighter) BaseClass() string {

@@ -9,10 +9,8 @@ type DirectionalLight3D struct {
   obj gdc.ObjectPtr
 }
 
-func createDirectionalLight3D(obj gdc.ObjectPtr) *DirectionalLight3D {
-  return &DirectionalLight3D{
-    obj: obj,
-  }
+func (me *DirectionalLight3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *DirectionalLight3D) BaseClass() string {

@@ -9,10 +9,8 @@ type Theme struct {
   obj gdc.ObjectPtr
 }
 
-func createTheme(obj gdc.ObjectPtr) *Theme {
-  return &Theme{
-    obj: obj,
-  }
+func (me *Theme) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Theme) BaseClass() string {

@@ -9,10 +9,8 @@ type VisualShaderNodeVectorRefract struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeVectorRefract(obj gdc.ObjectPtr) *VisualShaderNodeVectorRefract {
-  return &VisualShaderNodeVectorRefract{
-    obj: obj,
-  }
+func (me *VisualShaderNodeVectorRefract) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeVectorRefract) BaseClass() string {

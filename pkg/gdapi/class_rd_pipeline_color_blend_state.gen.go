@@ -9,10 +9,8 @@ type RDPipelineColorBlendState struct {
   obj gdc.ObjectPtr
 }
 
-func createRDPipelineColorBlendState(obj gdc.ObjectPtr) *RDPipelineColorBlendState {
-  return &RDPipelineColorBlendState{
-    obj: obj,
-  }
+func (me *RDPipelineColorBlendState) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDPipelineColorBlendState) BaseClass() string {

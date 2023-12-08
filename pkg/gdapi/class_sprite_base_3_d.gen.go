@@ -9,10 +9,8 @@ type SpriteBase3D struct {
   obj gdc.ObjectPtr
 }
 
-func createSpriteBase3D(obj gdc.ObjectPtr) *SpriteBase3D {
-  return &SpriteBase3D{
-    obj: obj,
-  }
+func (me *SpriteBase3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SpriteBase3D) BaseClass() string {

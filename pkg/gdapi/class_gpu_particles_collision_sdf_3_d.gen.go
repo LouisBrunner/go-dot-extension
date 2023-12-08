@@ -9,10 +9,8 @@ type GPUParticlesCollisionSDF3D struct {
   obj gdc.ObjectPtr
 }
 
-func createGPUParticlesCollisionSDF3D(obj gdc.ObjectPtr) *GPUParticlesCollisionSDF3D {
-  return &GPUParticlesCollisionSDF3D{
-    obj: obj,
-  }
+func (me *GPUParticlesCollisionSDF3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GPUParticlesCollisionSDF3D) BaseClass() string {

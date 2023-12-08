@@ -9,10 +9,8 @@ type SphereOccluder3D struct {
   obj gdc.ObjectPtr
 }
 
-func createSphereOccluder3D(obj gdc.ObjectPtr) *SphereOccluder3D {
-  return &SphereOccluder3D{
-    obj: obj,
-  }
+func (me *SphereOccluder3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SphereOccluder3D) BaseClass() string {

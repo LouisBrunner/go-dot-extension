@@ -9,10 +9,8 @@ type VisualShaderNodeLinearSceneDepth struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeLinearSceneDepth(obj gdc.ObjectPtr) *VisualShaderNodeLinearSceneDepth {
-  return &VisualShaderNodeLinearSceneDepth{
-    obj: obj,
-  }
+func (me *VisualShaderNodeLinearSceneDepth) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeLinearSceneDepth) BaseClass() string {

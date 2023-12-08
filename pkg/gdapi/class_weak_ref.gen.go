@@ -9,10 +9,8 @@ type WeakRef struct {
   obj gdc.ObjectPtr
 }
 
-func createWeakRef(obj gdc.ObjectPtr) *WeakRef {
-  return &WeakRef{
-    obj: obj,
-  }
+func (me *WeakRef) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *WeakRef) BaseClass() string {

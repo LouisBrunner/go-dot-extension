@@ -9,10 +9,8 @@ type BoxOccluder3D struct {
   obj gdc.ObjectPtr
 }
 
-func createBoxOccluder3D(obj gdc.ObjectPtr) *BoxOccluder3D {
-  return &BoxOccluder3D{
-    obj: obj,
-  }
+func (me *BoxOccluder3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *BoxOccluder3D) BaseClass() string {

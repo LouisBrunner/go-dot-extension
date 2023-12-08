@@ -9,10 +9,8 @@ type Popup struct {
   obj gdc.ObjectPtr
 }
 
-func createPopup(obj gdc.ObjectPtr) *Popup {
-  return &Popup{
-    obj: obj,
-  }
+func (me *Popup) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Popup) BaseClass() string {

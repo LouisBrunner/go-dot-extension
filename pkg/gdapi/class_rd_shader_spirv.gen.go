@@ -9,10 +9,8 @@ type RDShaderSPIRV struct {
   obj gdc.ObjectPtr
 }
 
-func createRDShaderSPIRV(obj gdc.ObjectPtr) *RDShaderSPIRV {
-  return &RDShaderSPIRV{
-    obj: obj,
-  }
+func (me *RDShaderSPIRV) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDShaderSPIRV) BaseClass() string {

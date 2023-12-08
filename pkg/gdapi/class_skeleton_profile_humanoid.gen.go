@@ -9,10 +9,8 @@ type SkeletonProfileHumanoid struct {
   obj gdc.ObjectPtr
 }
 
-func createSkeletonProfileHumanoid(obj gdc.ObjectPtr) *SkeletonProfileHumanoid {
-  return &SkeletonProfileHumanoid{
-    obj: obj,
-  }
+func (me *SkeletonProfileHumanoid) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SkeletonProfileHumanoid) BaseClass() string {

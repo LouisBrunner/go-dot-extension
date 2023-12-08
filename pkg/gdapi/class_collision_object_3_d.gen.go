@@ -9,10 +9,8 @@ type CollisionObject3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCollisionObject3D(obj gdc.ObjectPtr) *CollisionObject3D {
-  return &CollisionObject3D{
-    obj: obj,
-  }
+func (me *CollisionObject3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CollisionObject3D) BaseClass() string {

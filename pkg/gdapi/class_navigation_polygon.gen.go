@@ -9,10 +9,8 @@ type NavigationPolygon struct {
   obj gdc.ObjectPtr
 }
 
-func createNavigationPolygon(obj gdc.ObjectPtr) *NavigationPolygon {
-  return &NavigationPolygon{
-    obj: obj,
-  }
+func (me *NavigationPolygon) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NavigationPolygon) BaseClass() string {

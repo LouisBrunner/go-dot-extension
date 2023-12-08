@@ -9,10 +9,8 @@ type MultiplayerPeerExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createMultiplayerPeerExtension(obj gdc.ObjectPtr) *MultiplayerPeerExtension {
-  return &MultiplayerPeerExtension{
-    obj: obj,
-  }
+func (me *MultiplayerPeerExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MultiplayerPeerExtension) BaseClass() string {

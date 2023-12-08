@@ -9,10 +9,8 @@ type SegmentShape2D struct {
   obj gdc.ObjectPtr
 }
 
-func createSegmentShape2D(obj gdc.ObjectPtr) *SegmentShape2D {
-  return &SegmentShape2D{
-    obj: obj,
-  }
+func (me *SegmentShape2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SegmentShape2D) BaseClass() string {

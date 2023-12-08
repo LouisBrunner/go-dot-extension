@@ -9,10 +9,8 @@ type XRController3D struct {
   obj gdc.ObjectPtr
 }
 
-func createXRController3D(obj gdc.ObjectPtr) *XRController3D {
-  return &XRController3D{
-    obj: obj,
-  }
+func (me *XRController3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *XRController3D) BaseClass() string {

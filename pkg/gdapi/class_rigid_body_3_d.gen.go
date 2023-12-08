@@ -9,10 +9,8 @@ type RigidBody3D struct {
   obj gdc.ObjectPtr
 }
 
-func createRigidBody3D(obj gdc.ObjectPtr) *RigidBody3D {
-  return &RigidBody3D{
-    obj: obj,
-  }
+func (me *RigidBody3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RigidBody3D) BaseClass() string {

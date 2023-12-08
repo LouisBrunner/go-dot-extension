@@ -9,10 +9,8 @@ type FileAccess struct {
   obj gdc.ObjectPtr
 }
 
-func createFileAccess(obj gdc.ObjectPtr) *FileAccess {
-  return &FileAccess{
-    obj: obj,
-  }
+func (me *FileAccess) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *FileAccess) BaseClass() string {

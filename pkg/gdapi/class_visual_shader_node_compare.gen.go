@@ -9,10 +9,8 @@ type VisualShaderNodeCompare struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeCompare(obj gdc.ObjectPtr) *VisualShaderNodeCompare {
-  return &VisualShaderNodeCompare{
-    obj: obj,
-  }
+func (me *VisualShaderNodeCompare) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeCompare) BaseClass() string {

@@ -9,10 +9,8 @@ type RDAttachmentFormat struct {
   obj gdc.ObjectPtr
 }
 
-func createRDAttachmentFormat(obj gdc.ObjectPtr) *RDAttachmentFormat {
-  return &RDAttachmentFormat{
-    obj: obj,
-  }
+func (me *RDAttachmentFormat) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDAttachmentFormat) BaseClass() string {

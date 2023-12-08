@@ -9,10 +9,8 @@ type RDPipelineRasterizationState struct {
   obj gdc.ObjectPtr
 }
 
-func createRDPipelineRasterizationState(obj gdc.ObjectPtr) *RDPipelineRasterizationState {
-  return &RDPipelineRasterizationState{
-    obj: obj,
-  }
+func (me *RDPipelineRasterizationState) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDPipelineRasterizationState) BaseClass() string {

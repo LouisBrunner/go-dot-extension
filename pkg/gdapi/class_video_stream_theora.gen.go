@@ -9,10 +9,8 @@ type VideoStreamTheora struct {
   obj gdc.ObjectPtr
 }
 
-func createVideoStreamTheora(obj gdc.ObjectPtr) *VideoStreamTheora {
-  return &VideoStreamTheora{
-    obj: obj,
-  }
+func (me *VideoStreamTheora) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VideoStreamTheora) BaseClass() string {

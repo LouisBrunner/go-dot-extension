@@ -9,10 +9,8 @@ type HTTPClient struct {
   obj gdc.ObjectPtr
 }
 
-func createHTTPClient(obj gdc.ObjectPtr) *HTTPClient {
-  return &HTTPClient{
-    obj: obj,
-  }
+func (me *HTTPClient) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *HTTPClient) BaseClass() string {

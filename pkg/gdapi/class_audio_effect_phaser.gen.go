@@ -9,10 +9,8 @@ type AudioEffectPhaser struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectPhaser(obj gdc.ObjectPtr) *AudioEffectPhaser {
-  return &AudioEffectPhaser{
-    obj: obj,
-  }
+func (me *AudioEffectPhaser) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectPhaser) BaseClass() string {

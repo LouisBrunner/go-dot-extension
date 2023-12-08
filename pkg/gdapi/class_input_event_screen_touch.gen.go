@@ -9,10 +9,8 @@ type InputEventScreenTouch struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventScreenTouch(obj gdc.ObjectPtr) *InputEventScreenTouch {
-  return &InputEventScreenTouch{
-    obj: obj,
-  }
+func (me *InputEventScreenTouch) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventScreenTouch) BaseClass() string {

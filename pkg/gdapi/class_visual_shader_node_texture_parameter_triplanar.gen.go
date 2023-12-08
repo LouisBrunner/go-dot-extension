@@ -9,10 +9,8 @@ type VisualShaderNodeTextureParameterTriplanar struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeTextureParameterTriplanar(obj gdc.ObjectPtr) *VisualShaderNodeTextureParameterTriplanar {
-  return &VisualShaderNodeTextureParameterTriplanar{
-    obj: obj,
-  }
+func (me *VisualShaderNodeTextureParameterTriplanar) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeTextureParameterTriplanar) BaseClass() string {

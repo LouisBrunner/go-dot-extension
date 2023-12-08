@@ -9,10 +9,8 @@ type WebRTCMultiplayerPeer struct {
   obj gdc.ObjectPtr
 }
 
-func createWebRTCMultiplayerPeer(obj gdc.ObjectPtr) *WebRTCMultiplayerPeer {
-  return &WebRTCMultiplayerPeer{
-    obj: obj,
-  }
+func (me *WebRTCMultiplayerPeer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *WebRTCMultiplayerPeer) BaseClass() string {

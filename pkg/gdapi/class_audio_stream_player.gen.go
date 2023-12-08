@@ -9,10 +9,8 @@ type AudioStreamPlayer struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioStreamPlayer(obj gdc.ObjectPtr) *AudioStreamPlayer {
-  return &AudioStreamPlayer{
-    obj: obj,
-  }
+func (me *AudioStreamPlayer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioStreamPlayer) BaseClass() string {

@@ -9,10 +9,8 @@ type NinePatchRect struct {
   obj gdc.ObjectPtr
 }
 
-func createNinePatchRect(obj gdc.ObjectPtr) *NinePatchRect {
-  return &NinePatchRect{
-    obj: obj,
-  }
+func (me *NinePatchRect) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NinePatchRect) BaseClass() string {

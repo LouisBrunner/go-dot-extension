@@ -9,10 +9,8 @@ type EditorSelection struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorSelection(obj gdc.ObjectPtr) *EditorSelection {
-  return &EditorSelection{
-    obj: obj,
-  }
+func (me *EditorSelection) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorSelection) BaseClass() string {

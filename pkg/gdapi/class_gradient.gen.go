@@ -9,10 +9,8 @@ type Gradient struct {
   obj gdc.ObjectPtr
 }
 
-func createGradient(obj gdc.ObjectPtr) *Gradient {
-  return &Gradient{
-    obj: obj,
-  }
+func (me *Gradient) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Gradient) BaseClass() string {

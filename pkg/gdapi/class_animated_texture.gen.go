@@ -9,10 +9,8 @@ type AnimatedTexture struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimatedTexture(obj gdc.ObjectPtr) *AnimatedTexture {
-  return &AnimatedTexture{
-    obj: obj,
-  }
+func (me *AnimatedTexture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimatedTexture) BaseClass() string {

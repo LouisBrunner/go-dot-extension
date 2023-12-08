@@ -9,10 +9,8 @@ type CanvasItem struct {
   obj gdc.ObjectPtr
 }
 
-func createCanvasItem(obj gdc.ObjectPtr) *CanvasItem {
-  return &CanvasItem{
-    obj: obj,
-  }
+func (me *CanvasItem) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CanvasItem) BaseClass() string {

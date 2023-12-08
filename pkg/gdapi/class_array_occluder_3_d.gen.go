@@ -9,10 +9,8 @@ type ArrayOccluder3D struct {
   obj gdc.ObjectPtr
 }
 
-func createArrayOccluder3D(obj gdc.ObjectPtr) *ArrayOccluder3D {
-  return &ArrayOccluder3D{
-    obj: obj,
-  }
+func (me *ArrayOccluder3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ArrayOccluder3D) BaseClass() string {

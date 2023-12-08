@@ -9,10 +9,8 @@ type AnimationNodeBlendTree struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationNodeBlendTree(obj gdc.ObjectPtr) *AnimationNodeBlendTree {
-  return &AnimationNodeBlendTree{
-    obj: obj,
-  }
+func (me *AnimationNodeBlendTree) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationNodeBlendTree) BaseClass() string {

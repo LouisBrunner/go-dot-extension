@@ -9,10 +9,8 @@ type CharacterBody2D struct {
   obj gdc.ObjectPtr
 }
 
-func createCharacterBody2D(obj gdc.ObjectPtr) *CharacterBody2D {
-  return &CharacterBody2D{
-    obj: obj,
-  }
+func (me *CharacterBody2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CharacterBody2D) BaseClass() string {

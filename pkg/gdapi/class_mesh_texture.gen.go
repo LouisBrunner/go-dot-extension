@@ -9,10 +9,8 @@ type MeshTexture struct {
   obj gdc.ObjectPtr
 }
 
-func createMeshTexture(obj gdc.ObjectPtr) *MeshTexture {
-  return &MeshTexture{
-    obj: obj,
-  }
+func (me *MeshTexture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MeshTexture) BaseClass() string {

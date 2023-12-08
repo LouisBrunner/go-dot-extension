@@ -9,10 +9,8 @@ type EngineProfiler struct {
   obj gdc.ObjectPtr
 }
 
-func createEngineProfiler(obj gdc.ObjectPtr) *EngineProfiler {
-  return &EngineProfiler{
-    obj: obj,
-  }
+func (me *EngineProfiler) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EngineProfiler) BaseClass() string {

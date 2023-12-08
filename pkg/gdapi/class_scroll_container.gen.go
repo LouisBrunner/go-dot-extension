@@ -9,10 +9,8 @@ type ScrollContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createScrollContainer(obj gdc.ObjectPtr) *ScrollContainer {
-  return &ScrollContainer{
-    obj: obj,
-  }
+func (me *ScrollContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ScrollContainer) BaseClass() string {

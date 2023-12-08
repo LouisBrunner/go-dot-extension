@@ -9,10 +9,8 @@ type Shape3D struct {
   obj gdc.ObjectPtr
 }
 
-func createShape3D(obj gdc.ObjectPtr) *Shape3D {
-  return &Shape3D{
-    obj: obj,
-  }
+func (me *Shape3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Shape3D) BaseClass() string {

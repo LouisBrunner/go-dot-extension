@@ -9,10 +9,8 @@ type VisualShaderNodeColorConstant struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeColorConstant(obj gdc.ObjectPtr) *VisualShaderNodeColorConstant {
-  return &VisualShaderNodeColorConstant{
-    obj: obj,
-  }
+func (me *VisualShaderNodeColorConstant) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeColorConstant) BaseClass() string {

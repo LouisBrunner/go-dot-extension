@@ -9,10 +9,8 @@ type ImporterMeshInstance3D struct {
   obj gdc.ObjectPtr
 }
 
-func createImporterMeshInstance3D(obj gdc.ObjectPtr) *ImporterMeshInstance3D {
-  return &ImporterMeshInstance3D{
-    obj: obj,
-  }
+func (me *ImporterMeshInstance3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ImporterMeshInstance3D) BaseClass() string {

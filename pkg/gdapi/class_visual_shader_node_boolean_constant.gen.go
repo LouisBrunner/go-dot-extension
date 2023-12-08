@@ -9,10 +9,8 @@ type VisualShaderNodeBooleanConstant struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeBooleanConstant(obj gdc.ObjectPtr) *VisualShaderNodeBooleanConstant {
-  return &VisualShaderNodeBooleanConstant{
-    obj: obj,
-  }
+func (me *VisualShaderNodeBooleanConstant) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeBooleanConstant) BaseClass() string {

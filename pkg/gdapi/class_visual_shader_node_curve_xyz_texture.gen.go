@@ -9,10 +9,8 @@ type VisualShaderNodeCurveXYZTexture struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeCurveXYZTexture(obj gdc.ObjectPtr) *VisualShaderNodeCurveXYZTexture {
-  return &VisualShaderNodeCurveXYZTexture{
-    obj: obj,
-  }
+func (me *VisualShaderNodeCurveXYZTexture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeCurveXYZTexture) BaseClass() string {

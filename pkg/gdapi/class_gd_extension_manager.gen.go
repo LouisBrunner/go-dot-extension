@@ -9,10 +9,8 @@ type GDExtensionManager struct {
   obj gdc.ObjectPtr
 }
 
-func createGDExtensionManager(obj gdc.ObjectPtr) *GDExtensionManager {
-  return &GDExtensionManager{
-    obj: obj,
-  }
+func (me *GDExtensionManager) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GDExtensionManager) BaseClass() string {

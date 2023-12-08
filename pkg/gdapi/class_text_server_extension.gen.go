@@ -9,10 +9,8 @@ type TextServerExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createTextServerExtension(obj gdc.ObjectPtr) *TextServerExtension {
-  return &TextServerExtension{
-    obj: obj,
-  }
+func (me *TextServerExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextServerExtension) BaseClass() string {

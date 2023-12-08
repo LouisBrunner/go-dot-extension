@@ -9,10 +9,8 @@ type HingeJoint3D struct {
   obj gdc.ObjectPtr
 }
 
-func createHingeJoint3D(obj gdc.ObjectPtr) *HingeJoint3D {
-  return &HingeJoint3D{
-    obj: obj,
-  }
+func (me *HingeJoint3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *HingeJoint3D) BaseClass() string {

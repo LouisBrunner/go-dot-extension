@@ -9,10 +9,8 @@ type Label3D struct {
   obj gdc.ObjectPtr
 }
 
-func createLabel3D(obj gdc.ObjectPtr) *Label3D {
-  return &Label3D{
-    obj: obj,
-  }
+func (me *Label3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Label3D) BaseClass() string {

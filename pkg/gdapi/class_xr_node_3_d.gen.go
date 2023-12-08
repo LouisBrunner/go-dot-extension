@@ -9,10 +9,8 @@ type XRNode3D struct {
   obj gdc.ObjectPtr
 }
 
-func createXRNode3D(obj gdc.ObjectPtr) *XRNode3D {
-  return &XRNode3D{
-    obj: obj,
-  }
+func (me *XRNode3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *XRNode3D) BaseClass() string {

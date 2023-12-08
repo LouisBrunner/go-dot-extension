@@ -9,10 +9,8 @@ type VisualShaderNodeDerivativeFunc struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeDerivativeFunc(obj gdc.ObjectPtr) *VisualShaderNodeDerivativeFunc {
-  return &VisualShaderNodeDerivativeFunc{
-    obj: obj,
-  }
+func (me *VisualShaderNodeDerivativeFunc) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeDerivativeFunc) BaseClass() string {

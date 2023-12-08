@@ -9,10 +9,8 @@ type EditorSettings struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorSettings(obj gdc.ObjectPtr) *EditorSettings {
-  return &EditorSettings{
-    obj: obj,
-  }
+func (me *EditorSettings) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorSettings) BaseClass() string {

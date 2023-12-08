@@ -158,6 +158,19 @@ type CallError struct {
 	Expected int
 }
 
+func CNewCallError() *CallError {
+  return (*CallError)(C.malloc(C.sizeof_GDExtensionCallError))
+}
+
+func CNewCallErrorArray(size int) []CallError {
+  ptr := (*CallError)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionCallError))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreeCallError(p *CallError) {
+  C.free(unsafe.Pointer(p))
+}
+
 // ToRaw converts CallError to a CallErrorRaw
 func (me *CallError) ToRaw() (CallErrorRaw, func()) {
 
@@ -219,6 +232,19 @@ type InstanceBindingCallbacks struct {
 	ReferenceCallback InstanceBindingReferenceCallback
 }
 
+func CNewInstanceBindingCallbacks() *InstanceBindingCallbacks {
+  return (*InstanceBindingCallbacks)(C.malloc(C.sizeof_GDExtensionInstanceBindingCallbacks))
+}
+
+func CNewInstanceBindingCallbacksArray(size int) []InstanceBindingCallbacks {
+  ptr := (*InstanceBindingCallbacks)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionInstanceBindingCallbacks))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreeInstanceBindingCallbacks(p *InstanceBindingCallbacks) {
+  C.free(unsafe.Pointer(p))
+}
+
 // ToRaw converts InstanceBindingCallbacks to a InstanceBindingCallbacksRaw
 func (me *InstanceBindingCallbacks) ToRaw() (InstanceBindingCallbacksRaw, func()) {
 
@@ -255,6 +281,19 @@ type PropertyInfo struct {
 	Usage uint
 }
 
+func CNewPropertyInfo() *PropertyInfo {
+  return (*PropertyInfo)(C.malloc(C.sizeof_GDExtensionPropertyInfo))
+}
+
+func CNewPropertyInfoArray(size int) []PropertyInfo {
+  ptr := (*PropertyInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionPropertyInfo))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreePropertyInfo(p *PropertyInfo) {
+  C.free(unsafe.Pointer(p))
+}
+
 // ToRaw converts PropertyInfo to a PropertyInfoRaw
 func (me *PropertyInfo) ToRaw() (PropertyInfoRaw, func()) {
 
@@ -286,6 +325,19 @@ type MethodInfo struct {
 	Arguments *PropertyInfo
 	DefaultArgumentCount uint
 	DefaultArguments *VariantPtr
+}
+
+func CNewMethodInfo() *MethodInfo {
+  return (*MethodInfo)(C.malloc(C.sizeof_GDExtensionMethodInfo))
+}
+
+func CNewMethodInfoArray(size int) []MethodInfo {
+  ptr := (*MethodInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionMethodInfo))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreeMethodInfo(p *MethodInfo) {
+  C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts MethodInfo to a MethodInfoRaw
@@ -354,6 +406,19 @@ type ClassCreationInfo struct {
 	GetVirtualFunc ClassGetVirtual
 	GetRidFunc ClassGetRID
 	ClassUserdata unsafe.Pointer
+}
+
+func CNewClassCreationInfo() *ClassCreationInfo {
+  return (*ClassCreationInfo)(C.malloc(C.sizeof_GDExtensionClassCreationInfo))
+}
+
+func CNewClassCreationInfoArray(size int) []ClassCreationInfo {
+  ptr := (*ClassCreationInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionClassCreationInfo))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreeClassCreationInfo(p *ClassCreationInfo) {
+  C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts ClassCreationInfo to a ClassCreationInfoRaw
@@ -441,6 +506,19 @@ type ClassMethodInfo struct {
 	ArgumentsMetadata *ClassMethodArgumentMetadata
 	DefaultArgumentCount uint
 	DefaultArguments *VariantPtr
+}
+
+func CNewClassMethodInfo() *ClassMethodInfo {
+  return (*ClassMethodInfo)(C.malloc(C.sizeof_GDExtensionClassMethodInfo))
+}
+
+func CNewClassMethodInfoArray(size int) []ClassMethodInfo {
+  ptr := (*ClassMethodInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionClassMethodInfo))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreeClassMethodInfo(p *ClassMethodInfo) {
+  C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts ClassMethodInfo to a ClassMethodInfoRaw
@@ -548,6 +626,19 @@ type ScriptInstanceInfo struct {
 	FreeFunc ScriptInstanceFree
 }
 
+func CNewScriptInstanceInfo() *ScriptInstanceInfo {
+  return (*ScriptInstanceInfo)(C.malloc(C.sizeof_GDExtensionScriptInstanceInfo))
+}
+
+func CNewScriptInstanceInfoArray(size int) []ScriptInstanceInfo {
+  ptr := (*ScriptInstanceInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionScriptInstanceInfo))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreeScriptInstanceInfo(p *ScriptInstanceInfo) {
+  C.free(unsafe.Pointer(p))
+}
+
 // ToRaw converts ScriptInstanceInfo to a ScriptInstanceInfoRaw
 func (me *ScriptInstanceInfo) ToRaw() (ScriptInstanceInfoRaw, func()) {
 
@@ -609,6 +700,19 @@ type Initialization struct {
 	Deinitialize InitializationDeinitializeFn
 }
 
+func CNewInitialization() *Initialization {
+  return (*Initialization)(C.malloc(C.sizeof_GDExtensionInitialization))
+}
+
+func CNewInitializationArray(size int) []Initialization {
+  ptr := (*Initialization)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionInitialization))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreeInitialization(p *Initialization) {
+  C.free(unsafe.Pointer(p))
+}
+
 // ToRaw converts Initialization to a InitializationRaw
 func (me *Initialization) ToRaw() (InitializationRaw, func()) {
 
@@ -640,6 +744,19 @@ type GodotVersion struct {
 	Minor uint
 	Patch uint
 	String string
+}
+
+func CNewGodotVersion() *GodotVersion {
+  return (*GodotVersion)(C.malloc(C.sizeof_GDExtensionGodotVersion))
+}
+
+func CNewGodotVersionArray(size int) []GodotVersion {
+  ptr := (*GodotVersion)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionGodotVersion))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreeGodotVersion(p *GodotVersion) {
+  C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts GodotVersion to a GodotVersionRaw

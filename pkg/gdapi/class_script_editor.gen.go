@@ -9,10 +9,8 @@ type ScriptEditor struct {
   obj gdc.ObjectPtr
 }
 
-func createScriptEditor(obj gdc.ObjectPtr) *ScriptEditor {
-  return &ScriptEditor{
-    obj: obj,
-  }
+func (me *ScriptEditor) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ScriptEditor) BaseClass() string {

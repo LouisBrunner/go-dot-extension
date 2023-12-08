@@ -9,10 +9,8 @@ type EditorSpinSlider struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorSpinSlider(obj gdc.ObjectPtr) *EditorSpinSlider {
-  return &EditorSpinSlider{
-    obj: obj,
-  }
+func (me *EditorSpinSlider) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorSpinSlider) BaseClass() string {

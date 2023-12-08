@@ -9,10 +9,8 @@ type ScriptLanguageExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createScriptLanguageExtension(obj gdc.ObjectPtr) *ScriptLanguageExtension {
-  return &ScriptLanguageExtension{
-    obj: obj,
-  }
+func (me *ScriptLanguageExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ScriptLanguageExtension) BaseClass() string {

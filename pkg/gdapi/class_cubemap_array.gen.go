@@ -9,10 +9,8 @@ type CubemapArray struct {
   obj gdc.ObjectPtr
 }
 
-func createCubemapArray(obj gdc.ObjectPtr) *CubemapArray {
-  return &CubemapArray{
-    obj: obj,
-  }
+func (me *CubemapArray) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CubemapArray) BaseClass() string {

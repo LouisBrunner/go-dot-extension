@@ -9,10 +9,8 @@ type DampedSpringJoint2D struct {
   obj gdc.ObjectPtr
 }
 
-func createDampedSpringJoint2D(obj gdc.ObjectPtr) *DampedSpringJoint2D {
-  return &DampedSpringJoint2D{
-    obj: obj,
-  }
+func (me *DampedSpringJoint2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *DampedSpringJoint2D) BaseClass() string {

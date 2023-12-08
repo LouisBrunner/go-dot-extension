@@ -9,10 +9,8 @@ type WorldBoundaryShape3D struct {
   obj gdc.ObjectPtr
 }
 
-func createWorldBoundaryShape3D(obj gdc.ObjectPtr) *WorldBoundaryShape3D {
-  return &WorldBoundaryShape3D{
-    obj: obj,
-  }
+func (me *WorldBoundaryShape3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *WorldBoundaryShape3D) BaseClass() string {

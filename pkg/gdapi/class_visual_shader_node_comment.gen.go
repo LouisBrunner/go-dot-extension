@@ -9,10 +9,8 @@ type VisualShaderNodeComment struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeComment(obj gdc.ObjectPtr) *VisualShaderNodeComment {
-  return &VisualShaderNodeComment{
-    obj: obj,
-  }
+func (me *VisualShaderNodeComment) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeComment) BaseClass() string {

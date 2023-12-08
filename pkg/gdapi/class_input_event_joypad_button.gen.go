@@ -9,10 +9,8 @@ type InputEventJoypadButton struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventJoypadButton(obj gdc.ObjectPtr) *InputEventJoypadButton {
-  return &InputEventJoypadButton{
-    obj: obj,
-  }
+func (me *InputEventJoypadButton) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventJoypadButton) BaseClass() string {

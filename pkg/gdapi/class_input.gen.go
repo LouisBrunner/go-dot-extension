@@ -9,10 +9,8 @@ type Input struct {
   obj gdc.ObjectPtr
 }
 
-func createInput(obj gdc.ObjectPtr) *Input {
-  return &Input{
-    obj: obj,
-  }
+func (me *Input) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Input) BaseClass() string {

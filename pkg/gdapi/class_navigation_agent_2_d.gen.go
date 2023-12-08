@@ -9,10 +9,8 @@ type NavigationAgent2D struct {
   obj gdc.ObjectPtr
 }
 
-func createNavigationAgent2D(obj gdc.ObjectPtr) *NavigationAgent2D {
-  return &NavigationAgent2D{
-    obj: obj,
-  }
+func (me *NavigationAgent2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NavigationAgent2D) BaseClass() string {

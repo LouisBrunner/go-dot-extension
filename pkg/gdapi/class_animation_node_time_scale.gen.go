@@ -9,10 +9,8 @@ type AnimationNodeTimeScale struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationNodeTimeScale(obj gdc.ObjectPtr) *AnimationNodeTimeScale {
-  return &AnimationNodeTimeScale{
-    obj: obj,
-  }
+func (me *AnimationNodeTimeScale) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationNodeTimeScale) BaseClass() string {

@@ -9,10 +9,8 @@ type VisualShaderNodeVectorOp struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeVectorOp(obj gdc.ObjectPtr) *VisualShaderNodeVectorOp {
-  return &VisualShaderNodeVectorOp{
-    obj: obj,
-  }
+func (me *VisualShaderNodeVectorOp) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeVectorOp) BaseClass() string {

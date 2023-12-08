@@ -9,10 +9,8 @@ type XRInterfaceExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createXRInterfaceExtension(obj gdc.ObjectPtr) *XRInterfaceExtension {
-  return &XRInterfaceExtension{
-    obj: obj,
-  }
+func (me *XRInterfaceExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *XRInterfaceExtension) BaseClass() string {

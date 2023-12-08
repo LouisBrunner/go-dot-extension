@@ -9,10 +9,8 @@ type IntervalTweener struct {
   obj gdc.ObjectPtr
 }
 
-func createIntervalTweener(obj gdc.ObjectPtr) *IntervalTweener {
-  return &IntervalTweener{
-    obj: obj,
-  }
+func (me *IntervalTweener) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *IntervalTweener) BaseClass() string {

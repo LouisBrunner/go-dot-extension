@@ -9,10 +9,8 @@ type PhysicsServer3DRenderingServerHandler struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsServer3DRenderingServerHandler(obj gdc.ObjectPtr) *PhysicsServer3DRenderingServerHandler {
-  return &PhysicsServer3DRenderingServerHandler{
-    obj: obj,
-  }
+func (me *PhysicsServer3DRenderingServerHandler) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsServer3DRenderingServerHandler) BaseClass() string {

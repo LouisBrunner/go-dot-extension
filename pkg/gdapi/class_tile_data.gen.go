@@ -9,10 +9,8 @@ type TileData struct {
   obj gdc.ObjectPtr
 }
 
-func createTileData(obj gdc.ObjectPtr) *TileData {
-  return &TileData{
-    obj: obj,
-  }
+func (me *TileData) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TileData) BaseClass() string {

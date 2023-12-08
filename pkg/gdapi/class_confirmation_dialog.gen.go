@@ -9,10 +9,8 @@ type ConfirmationDialog struct {
   obj gdc.ObjectPtr
 }
 
-func createConfirmationDialog(obj gdc.ObjectPtr) *ConfirmationDialog {
-  return &ConfirmationDialog{
-    obj: obj,
-  }
+func (me *ConfirmationDialog) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ConfirmationDialog) BaseClass() string {

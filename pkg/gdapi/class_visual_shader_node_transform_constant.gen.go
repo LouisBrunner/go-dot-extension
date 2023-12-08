@@ -9,10 +9,8 @@ type VisualShaderNodeTransformConstant struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeTransformConstant(obj gdc.ObjectPtr) *VisualShaderNodeTransformConstant {
-  return &VisualShaderNodeTransformConstant{
-    obj: obj,
-  }
+func (me *VisualShaderNodeTransformConstant) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeTransformConstant) BaseClass() string {

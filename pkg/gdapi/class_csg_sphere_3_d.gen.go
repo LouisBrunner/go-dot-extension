@@ -9,10 +9,8 @@ type CSGSphere3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCSGSphere3D(obj gdc.ObjectPtr) *CSGSphere3D {
-  return &CSGSphere3D{
-    obj: obj,
-  }
+func (me *CSGSphere3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CSGSphere3D) BaseClass() string {

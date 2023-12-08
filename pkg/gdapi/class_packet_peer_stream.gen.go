@@ -9,10 +9,8 @@ type PacketPeerStream struct {
   obj gdc.ObjectPtr
 }
 
-func createPacketPeerStream(obj gdc.ObjectPtr) *PacketPeerStream {
-  return &PacketPeerStream{
-    obj: obj,
-  }
+func (me *PacketPeerStream) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PacketPeerStream) BaseClass() string {

@@ -9,10 +9,8 @@ type CSGBox3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCSGBox3D(obj gdc.ObjectPtr) *CSGBox3D {
-  return &CSGBox3D{
-    obj: obj,
-  }
+func (me *CSGBox3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CSGBox3D) BaseClass() string {

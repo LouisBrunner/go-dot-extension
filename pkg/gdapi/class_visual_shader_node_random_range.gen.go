@@ -9,10 +9,8 @@ type VisualShaderNodeRandomRange struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeRandomRange(obj gdc.ObjectPtr) *VisualShaderNodeRandomRange {
-  return &VisualShaderNodeRandomRange{
-    obj: obj,
-  }
+func (me *VisualShaderNodeRandomRange) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeRandomRange) BaseClass() string {

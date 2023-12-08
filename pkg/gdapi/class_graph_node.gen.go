@@ -9,10 +9,8 @@ type GraphNode struct {
   obj gdc.ObjectPtr
 }
 
-func createGraphNode(obj gdc.ObjectPtr) *GraphNode {
-  return &GraphNode{
-    obj: obj,
-  }
+func (me *GraphNode) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GraphNode) BaseClass() string {

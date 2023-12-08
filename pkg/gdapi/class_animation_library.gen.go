@@ -9,10 +9,8 @@ type AnimationLibrary struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationLibrary(obj gdc.ObjectPtr) *AnimationLibrary {
-  return &AnimationLibrary{
-    obj: obj,
-  }
+func (me *AnimationLibrary) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationLibrary) BaseClass() string {

@@ -9,10 +9,8 @@ type GradientTexture1D struct {
   obj gdc.ObjectPtr
 }
 
-func createGradientTexture1D(obj gdc.ObjectPtr) *GradientTexture1D {
-  return &GradientTexture1D{
-    obj: obj,
-  }
+func (me *GradientTexture1D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GradientTexture1D) BaseClass() string {

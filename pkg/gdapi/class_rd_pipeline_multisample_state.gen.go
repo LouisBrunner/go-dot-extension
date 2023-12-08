@@ -9,10 +9,8 @@ type RDPipelineMultisampleState struct {
   obj gdc.ObjectPtr
 }
 
-func createRDPipelineMultisampleState(obj gdc.ObjectPtr) *RDPipelineMultisampleState {
-  return &RDPipelineMultisampleState{
-    obj: obj,
-  }
+func (me *RDPipelineMultisampleState) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDPipelineMultisampleState) BaseClass() string {

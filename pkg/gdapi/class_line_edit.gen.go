@@ -9,10 +9,8 @@ type LineEdit struct {
   obj gdc.ObjectPtr
 }
 
-func createLineEdit(obj gdc.ObjectPtr) *LineEdit {
-  return &LineEdit{
-    obj: obj,
-  }
+func (me *LineEdit) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *LineEdit) BaseClass() string {

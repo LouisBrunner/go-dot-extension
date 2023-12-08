@@ -9,10 +9,8 @@ type AudioStreamMicrophone struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioStreamMicrophone(obj gdc.ObjectPtr) *AudioStreamMicrophone {
-  return &AudioStreamMicrophone{
-    obj: obj,
-  }
+func (me *AudioStreamMicrophone) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioStreamMicrophone) BaseClass() string {

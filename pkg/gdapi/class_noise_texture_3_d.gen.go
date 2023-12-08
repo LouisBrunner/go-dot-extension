@@ -9,10 +9,8 @@ type NoiseTexture3D struct {
   obj gdc.ObjectPtr
 }
 
-func createNoiseTexture3D(obj gdc.ObjectPtr) *NoiseTexture3D {
-  return &NoiseTexture3D{
-    obj: obj,
-  }
+func (me *NoiseTexture3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NoiseTexture3D) BaseClass() string {

@@ -9,10 +9,8 @@ type VisualShaderNodeParticleSphereEmitter struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeParticleSphereEmitter(obj gdc.ObjectPtr) *VisualShaderNodeParticleSphereEmitter {
-  return &VisualShaderNodeParticleSphereEmitter{
-    obj: obj,
-  }
+func (me *VisualShaderNodeParticleSphereEmitter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeParticleSphereEmitter) BaseClass() string {

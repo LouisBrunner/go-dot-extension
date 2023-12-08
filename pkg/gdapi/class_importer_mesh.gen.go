@@ -9,10 +9,8 @@ type ImporterMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createImporterMesh(obj gdc.ObjectPtr) *ImporterMesh {
-  return &ImporterMesh{
-    obj: obj,
-  }
+func (me *ImporterMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ImporterMesh) BaseClass() string {

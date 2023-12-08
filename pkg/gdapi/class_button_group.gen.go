@@ -9,10 +9,8 @@ type ButtonGroup struct {
   obj gdc.ObjectPtr
 }
 
-func createButtonGroup(obj gdc.ObjectPtr) *ButtonGroup {
-  return &ButtonGroup{
-    obj: obj,
-  }
+func (me *ButtonGroup) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ButtonGroup) BaseClass() string {

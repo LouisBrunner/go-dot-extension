@@ -9,10 +9,8 @@ type GLTFSpecGloss struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFSpecGloss(obj gdc.ObjectPtr) *GLTFSpecGloss {
-  return &GLTFSpecGloss{
-    obj: obj,
-  }
+func (me *GLTFSpecGloss) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFSpecGloss) BaseClass() string {

@@ -9,10 +9,8 @@ type XRInterface struct {
   obj gdc.ObjectPtr
 }
 
-func createXRInterface(obj gdc.ObjectPtr) *XRInterface {
-  return &XRInterface{
-    obj: obj,
-  }
+func (me *XRInterface) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *XRInterface) BaseClass() string {

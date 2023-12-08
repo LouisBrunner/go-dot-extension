@@ -9,10 +9,8 @@ type X509Certificate struct {
   obj gdc.ObjectPtr
 }
 
-func createX509Certificate(obj gdc.ObjectPtr) *X509Certificate {
-  return &X509Certificate{
-    obj: obj,
-  }
+func (me *X509Certificate) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *X509Certificate) BaseClass() string {

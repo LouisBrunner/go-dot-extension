@@ -9,10 +9,8 @@ type Animation struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimation(obj gdc.ObjectPtr) *Animation {
-  return &Animation{
-    obj: obj,
-  }
+func (me *Animation) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Animation) BaseClass() string {

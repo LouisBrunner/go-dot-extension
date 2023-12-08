@@ -9,10 +9,8 @@ type ImageFormatLoaderExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createImageFormatLoaderExtension(obj gdc.ObjectPtr) *ImageFormatLoaderExtension {
-  return &ImageFormatLoaderExtension{
-    obj: obj,
-  }
+func (me *ImageFormatLoaderExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ImageFormatLoaderExtension) BaseClass() string {

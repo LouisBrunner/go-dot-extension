@@ -9,10 +9,8 @@ type PhysicsTestMotionResult2D struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsTestMotionResult2D(obj gdc.ObjectPtr) *PhysicsTestMotionResult2D {
-  return &PhysicsTestMotionResult2D{
-    obj: obj,
-  }
+func (me *PhysicsTestMotionResult2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsTestMotionResult2D) BaseClass() string {

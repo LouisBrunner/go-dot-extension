@@ -9,10 +9,8 @@ type GridContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createGridContainer(obj gdc.ObjectPtr) *GridContainer {
-  return &GridContainer{
-    obj: obj,
-  }
+func (me *GridContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GridContainer) BaseClass() string {

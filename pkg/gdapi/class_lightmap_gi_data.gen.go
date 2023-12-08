@@ -9,10 +9,8 @@ type LightmapGIData struct {
   obj gdc.ObjectPtr
 }
 
-func createLightmapGIData(obj gdc.ObjectPtr) *LightmapGIData {
-  return &LightmapGIData{
-    obj: obj,
-  }
+func (me *LightmapGIData) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *LightmapGIData) BaseClass() string {

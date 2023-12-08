@@ -9,10 +9,8 @@ type ColorPicker struct {
   obj gdc.ObjectPtr
 }
 
-func createColorPicker(obj gdc.ObjectPtr) *ColorPicker {
-  return &ColorPicker{
-    obj: obj,
-  }
+func (me *ColorPicker) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ColorPicker) BaseClass() string {

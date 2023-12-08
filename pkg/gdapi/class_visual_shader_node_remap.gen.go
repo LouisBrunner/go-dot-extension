@@ -9,10 +9,8 @@ type VisualShaderNodeRemap struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeRemap(obj gdc.ObjectPtr) *VisualShaderNodeRemap {
-  return &VisualShaderNodeRemap{
-    obj: obj,
-  }
+func (me *VisualShaderNodeRemap) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeRemap) BaseClass() string {

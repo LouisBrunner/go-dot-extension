@@ -9,10 +9,8 @@ type EngineDebugger struct {
   obj gdc.ObjectPtr
 }
 
-func createEngineDebugger(obj gdc.ObjectPtr) *EngineDebugger {
-  return &EngineDebugger{
-    obj: obj,
-  }
+func (me *EngineDebugger) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EngineDebugger) BaseClass() string {

@@ -9,10 +9,8 @@ type InputEventKey struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventKey(obj gdc.ObjectPtr) *InputEventKey {
-  return &InputEventKey{
-    obj: obj,
-  }
+func (me *InputEventKey) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventKey) BaseClass() string {

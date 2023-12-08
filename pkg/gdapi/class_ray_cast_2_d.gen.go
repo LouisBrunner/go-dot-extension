@@ -9,10 +9,8 @@ type RayCast2D struct {
   obj gdc.ObjectPtr
 }
 
-func createRayCast2D(obj gdc.ObjectPtr) *RayCast2D {
-  return &RayCast2D{
-    obj: obj,
-  }
+func (me *RayCast2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RayCast2D) BaseClass() string {

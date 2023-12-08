@@ -9,10 +9,8 @@ type EditorNode3DGizmoPlugin struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorNode3DGizmoPlugin(obj gdc.ObjectPtr) *EditorNode3DGizmoPlugin {
-  return &EditorNode3DGizmoPlugin{
-    obj: obj,
-  }
+func (me *EditorNode3DGizmoPlugin) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorNode3DGizmoPlugin) BaseClass() string {

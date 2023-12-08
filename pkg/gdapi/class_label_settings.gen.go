@@ -9,10 +9,8 @@ type LabelSettings struct {
   obj gdc.ObjectPtr
 }
 
-func createLabelSettings(obj gdc.ObjectPtr) *LabelSettings {
-  return &LabelSettings{
-    obj: obj,
-  }
+func (me *LabelSettings) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *LabelSettings) BaseClass() string {

@@ -9,10 +9,8 @@ type PacketPeerUDP struct {
   obj gdc.ObjectPtr
 }
 
-func createPacketPeerUDP(obj gdc.ObjectPtr) *PacketPeerUDP {
-  return &PacketPeerUDP{
-    obj: obj,
-  }
+func (me *PacketPeerUDP) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PacketPeerUDP) BaseClass() string {

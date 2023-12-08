@@ -9,10 +9,8 @@ type XRPositionalTracker struct {
   obj gdc.ObjectPtr
 }
 
-func createXRPositionalTracker(obj gdc.ObjectPtr) *XRPositionalTracker {
-  return &XRPositionalTracker{
-    obj: obj,
-  }
+func (me *XRPositionalTracker) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *XRPositionalTracker) BaseClass() string {

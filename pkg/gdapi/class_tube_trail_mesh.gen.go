@@ -9,10 +9,8 @@ type TubeTrailMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createTubeTrailMesh(obj gdc.ObjectPtr) *TubeTrailMesh {
-  return &TubeTrailMesh{
-    obj: obj,
-  }
+func (me *TubeTrailMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TubeTrailMesh) BaseClass() string {

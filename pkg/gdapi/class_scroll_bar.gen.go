@@ -9,10 +9,8 @@ type ScrollBar struct {
   obj gdc.ObjectPtr
 }
 
-func createScrollBar(obj gdc.ObjectPtr) *ScrollBar {
-  return &ScrollBar{
-    obj: obj,
-  }
+func (me *ScrollBar) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ScrollBar) BaseClass() string {

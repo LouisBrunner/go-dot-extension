@@ -9,10 +9,8 @@ type AtlasTexture struct {
   obj gdc.ObjectPtr
 }
 
-func createAtlasTexture(obj gdc.ObjectPtr) *AtlasTexture {
-  return &AtlasTexture{
-    obj: obj,
-  }
+func (me *AtlasTexture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AtlasTexture) BaseClass() string {

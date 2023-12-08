@@ -9,10 +9,8 @@ type VisualShaderNodeMix struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeMix(obj gdc.ObjectPtr) *VisualShaderNodeMix {
-  return &VisualShaderNodeMix{
-    obj: obj,
-  }
+func (me *VisualShaderNodeMix) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeMix) BaseClass() string {

@@ -9,10 +9,8 @@ type GLTFTexture struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFTexture(obj gdc.ObjectPtr) *GLTFTexture {
-  return &GLTFTexture{
-    obj: obj,
-  }
+func (me *GLTFTexture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFTexture) BaseClass() string {

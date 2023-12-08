@@ -9,10 +9,8 @@ type TriangleMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createTriangleMesh(obj gdc.ObjectPtr) *TriangleMesh {
-  return &TriangleMesh{
-    obj: obj,
-  }
+func (me *TriangleMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TriangleMesh) BaseClass() string {

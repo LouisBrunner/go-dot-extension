@@ -9,10 +9,8 @@ type GLTFSkeleton struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFSkeleton(obj gdc.ObjectPtr) *GLTFSkeleton {
-  return &GLTFSkeleton{
-    obj: obj,
-  }
+func (me *GLTFSkeleton) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFSkeleton) BaseClass() string {

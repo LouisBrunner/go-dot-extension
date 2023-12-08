@@ -9,10 +9,8 @@ type PrimitiveMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createPrimitiveMesh(obj gdc.ObjectPtr) *PrimitiveMesh {
-  return &PrimitiveMesh{
-    obj: obj,
-  }
+func (me *PrimitiveMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PrimitiveMesh) BaseClass() string {

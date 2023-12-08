@@ -9,10 +9,8 @@ type GPUParticlesCollisionHeightField3D struct {
   obj gdc.ObjectPtr
 }
 
-func createGPUParticlesCollisionHeightField3D(obj gdc.ObjectPtr) *GPUParticlesCollisionHeightField3D {
-  return &GPUParticlesCollisionHeightField3D{
-    obj: obj,
-  }
+func (me *GPUParticlesCollisionHeightField3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GPUParticlesCollisionHeightField3D) BaseClass() string {

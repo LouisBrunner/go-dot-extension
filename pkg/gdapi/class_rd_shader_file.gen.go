@@ -9,10 +9,8 @@ type RDShaderFile struct {
   obj gdc.ObjectPtr
 }
 
-func createRDShaderFile(obj gdc.ObjectPtr) *RDShaderFile {
-  return &RDShaderFile{
-    obj: obj,
-  }
+func (me *RDShaderFile) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDShaderFile) BaseClass() string {

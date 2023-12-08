@@ -9,10 +9,8 @@ type VBoxContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createVBoxContainer(obj gdc.ObjectPtr) *VBoxContainer {
-  return &VBoxContainer{
-    obj: obj,
-  }
+func (me *VBoxContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VBoxContainer) BaseClass() string {

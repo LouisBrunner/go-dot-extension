@@ -9,10 +9,8 @@ type AudioEffectPitchShift struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectPitchShift(obj gdc.ObjectPtr) *AudioEffectPitchShift {
-  return &AudioEffectPitchShift{
-    obj: obj,
-  }
+func (me *AudioEffectPitchShift) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectPitchShift) BaseClass() string {

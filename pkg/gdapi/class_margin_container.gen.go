@@ -9,10 +9,8 @@ type MarginContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createMarginContainer(obj gdc.ObjectPtr) *MarginContainer {
-  return &MarginContainer{
-    obj: obj,
-  }
+func (me *MarginContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MarginContainer) BaseClass() string {

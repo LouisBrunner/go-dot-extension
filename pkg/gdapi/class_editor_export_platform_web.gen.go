@@ -9,10 +9,8 @@ type EditorExportPlatformWeb struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorExportPlatformWeb(obj gdc.ObjectPtr) *EditorExportPlatformWeb {
-  return &EditorExportPlatformWeb{
-    obj: obj,
-  }
+func (me *EditorExportPlatformWeb) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorExportPlatformWeb) BaseClass() string {

@@ -9,10 +9,8 @@ type CPUParticles2D struct {
   obj gdc.ObjectPtr
 }
 
-func createCPUParticles2D(obj gdc.ObjectPtr) *CPUParticles2D {
-  return &CPUParticles2D{
-    obj: obj,
-  }
+func (me *CPUParticles2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CPUParticles2D) BaseClass() string {

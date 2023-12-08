@@ -9,10 +9,8 @@ type Timer struct {
   obj gdc.ObjectPtr
 }
 
-func createTimer(obj gdc.ObjectPtr) *Timer {
-  return &Timer{
-    obj: obj,
-  }
+func (me *Timer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Timer) BaseClass() string {

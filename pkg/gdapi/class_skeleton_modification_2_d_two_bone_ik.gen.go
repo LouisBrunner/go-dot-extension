@@ -9,10 +9,8 @@ type SkeletonModification2DTwoBoneIK struct {
   obj gdc.ObjectPtr
 }
 
-func createSkeletonModification2DTwoBoneIK(obj gdc.ObjectPtr) *SkeletonModification2DTwoBoneIK {
-  return &SkeletonModification2DTwoBoneIK{
-    obj: obj,
-  }
+func (me *SkeletonModification2DTwoBoneIK) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SkeletonModification2DTwoBoneIK) BaseClass() string {

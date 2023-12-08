@@ -9,10 +9,8 @@ type RDVertexAttribute struct {
   obj gdc.ObjectPtr
 }
 
-func createRDVertexAttribute(obj gdc.ObjectPtr) *RDVertexAttribute {
-  return &RDVertexAttribute{
-    obj: obj,
-  }
+func (me *RDVertexAttribute) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDVertexAttribute) BaseClass() string {

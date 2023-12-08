@@ -9,10 +9,8 @@ type CryptoKey struct {
   obj gdc.ObjectPtr
 }
 
-func createCryptoKey(obj gdc.ObjectPtr) *CryptoKey {
-  return &CryptoKey{
-    obj: obj,
-  }
+func (me *CryptoKey) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CryptoKey) BaseClass() string {

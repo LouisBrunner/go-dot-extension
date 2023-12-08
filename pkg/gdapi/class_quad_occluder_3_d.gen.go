@@ -9,10 +9,8 @@ type QuadOccluder3D struct {
   obj gdc.ObjectPtr
 }
 
-func createQuadOccluder3D(obj gdc.ObjectPtr) *QuadOccluder3D {
-  return &QuadOccluder3D{
-    obj: obj,
-  }
+func (me *QuadOccluder3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *QuadOccluder3D) BaseClass() string {

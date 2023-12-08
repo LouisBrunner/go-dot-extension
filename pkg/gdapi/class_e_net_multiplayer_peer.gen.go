@@ -9,10 +9,8 @@ type ENetMultiplayerPeer struct {
   obj gdc.ObjectPtr
 }
 
-func createENetMultiplayerPeer(obj gdc.ObjectPtr) *ENetMultiplayerPeer {
-  return &ENetMultiplayerPeer{
-    obj: obj,
-  }
+func (me *ENetMultiplayerPeer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ENetMultiplayerPeer) BaseClass() string {

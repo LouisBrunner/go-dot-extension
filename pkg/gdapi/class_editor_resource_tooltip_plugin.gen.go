@@ -9,10 +9,8 @@ type EditorResourceTooltipPlugin struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorResourceTooltipPlugin(obj gdc.ObjectPtr) *EditorResourceTooltipPlugin {
-  return &EditorResourceTooltipPlugin{
-    obj: obj,
-  }
+func (me *EditorResourceTooltipPlugin) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorResourceTooltipPlugin) BaseClass() string {

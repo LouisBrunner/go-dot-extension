@@ -9,10 +9,8 @@ type Expression struct {
   obj gdc.ObjectPtr
 }
 
-func createExpression(obj gdc.ObjectPtr) *Expression {
-  return &Expression{
-    obj: obj,
-  }
+func (me *Expression) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Expression) BaseClass() string {

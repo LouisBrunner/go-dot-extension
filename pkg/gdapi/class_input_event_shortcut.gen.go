@@ -9,10 +9,8 @@ type InputEventShortcut struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventShortcut(obj gdc.ObjectPtr) *InputEventShortcut {
-  return &InputEventShortcut{
-    obj: obj,
-  }
+func (me *InputEventShortcut) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventShortcut) BaseClass() string {

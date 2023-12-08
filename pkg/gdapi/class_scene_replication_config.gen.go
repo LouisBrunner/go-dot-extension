@@ -9,10 +9,8 @@ type SceneReplicationConfig struct {
   obj gdc.ObjectPtr
 }
 
-func createSceneReplicationConfig(obj gdc.ObjectPtr) *SceneReplicationConfig {
-  return &SceneReplicationConfig{
-    obj: obj,
-  }
+func (me *SceneReplicationConfig) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SceneReplicationConfig) BaseClass() string {

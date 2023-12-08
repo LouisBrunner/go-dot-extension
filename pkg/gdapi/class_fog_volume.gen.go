@@ -9,10 +9,8 @@ type FogVolume struct {
   obj gdc.ObjectPtr
 }
 
-func createFogVolume(obj gdc.ObjectPtr) *FogVolume {
-  return &FogVolume{
-    obj: obj,
-  }
+func (me *FogVolume) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *FogVolume) BaseClass() string {

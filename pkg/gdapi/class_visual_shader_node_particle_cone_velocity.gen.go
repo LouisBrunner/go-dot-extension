@@ -9,10 +9,8 @@ type VisualShaderNodeParticleConeVelocity struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeParticleConeVelocity(obj gdc.ObjectPtr) *VisualShaderNodeParticleConeVelocity {
-  return &VisualShaderNodeParticleConeVelocity{
-    obj: obj,
-  }
+func (me *VisualShaderNodeParticleConeVelocity) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeParticleConeVelocity) BaseClass() string {

@@ -9,10 +9,8 @@ type PackedDataContainerRef struct {
   obj gdc.ObjectPtr
 }
 
-func createPackedDataContainerRef(obj gdc.ObjectPtr) *PackedDataContainerRef {
-  return &PackedDataContainerRef{
-    obj: obj,
-  }
+func (me *PackedDataContainerRef) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PackedDataContainerRef) BaseClass() string {

@@ -9,10 +9,8 @@ type GLTFBufferView struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFBufferView(obj gdc.ObjectPtr) *GLTFBufferView {
-  return &GLTFBufferView{
-    obj: obj,
-  }
+func (me *GLTFBufferView) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFBufferView) BaseClass() string {

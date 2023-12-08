@@ -9,10 +9,8 @@ type ResourceImporter struct {
   obj gdc.ObjectPtr
 }
 
-func createResourceImporter(obj gdc.ObjectPtr) *ResourceImporter {
-  return &ResourceImporter{
-    obj: obj,
-  }
+func (me *ResourceImporter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ResourceImporter) BaseClass() string {

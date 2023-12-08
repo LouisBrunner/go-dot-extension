@@ -9,10 +9,8 @@ type WebRTCDataChannel struct {
   obj gdc.ObjectPtr
 }
 
-func createWebRTCDataChannel(obj gdc.ObjectPtr) *WebRTCDataChannel {
-  return &WebRTCDataChannel{
-    obj: obj,
-  }
+func (me *WebRTCDataChannel) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *WebRTCDataChannel) BaseClass() string {

@@ -9,10 +9,8 @@ type MultiplayerSpawner struct {
   obj gdc.ObjectPtr
 }
 
-func createMultiplayerSpawner(obj gdc.ObjectPtr) *MultiplayerSpawner {
-  return &MultiplayerSpawner{
-    obj: obj,
-  }
+func (me *MultiplayerSpawner) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MultiplayerSpawner) BaseClass() string {

@@ -9,10 +9,8 @@ type NoiseTexture2D struct {
   obj gdc.ObjectPtr
 }
 
-func createNoiseTexture2D(obj gdc.ObjectPtr) *NoiseTexture2D {
-  return &NoiseTexture2D{
-    obj: obj,
-  }
+func (me *NoiseTexture2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NoiseTexture2D) BaseClass() string {

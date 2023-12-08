@@ -9,10 +9,8 @@ type ShaderMaterial struct {
   obj gdc.ObjectPtr
 }
 
-func createShaderMaterial(obj gdc.ObjectPtr) *ShaderMaterial {
-  return &ShaderMaterial{
-    obj: obj,
-  }
+func (me *ShaderMaterial) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ShaderMaterial) BaseClass() string {

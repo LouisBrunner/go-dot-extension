@@ -9,10 +9,8 @@ type PolygonPathFinder struct {
   obj gdc.ObjectPtr
 }
 
-func createPolygonPathFinder(obj gdc.ObjectPtr) *PolygonPathFinder {
-  return &PolygonPathFinder{
-    obj: obj,
-  }
+func (me *PolygonPathFinder) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PolygonPathFinder) BaseClass() string {

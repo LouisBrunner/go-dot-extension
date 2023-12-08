@@ -9,10 +9,8 @@ type TileSet struct {
   obj gdc.ObjectPtr
 }
 
-func createTileSet(obj gdc.ObjectPtr) *TileSet {
-  return &TileSet{
-    obj: obj,
-  }
+func (me *TileSet) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TileSet) BaseClass() string {

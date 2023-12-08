@@ -9,10 +9,8 @@ type SurfaceTool struct {
   obj gdc.ObjectPtr
 }
 
-func createSurfaceTool(obj gdc.ObjectPtr) *SurfaceTool {
-  return &SurfaceTool{
-    obj: obj,
-  }
+func (me *SurfaceTool) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SurfaceTool) BaseClass() string {

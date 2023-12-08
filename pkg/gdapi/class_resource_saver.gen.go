@@ -9,10 +9,8 @@ type ResourceSaver struct {
   obj gdc.ObjectPtr
 }
 
-func createResourceSaver(obj gdc.ObjectPtr) *ResourceSaver {
-  return &ResourceSaver{
-    obj: obj,
-  }
+func (me *ResourceSaver) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ResourceSaver) BaseClass() string {

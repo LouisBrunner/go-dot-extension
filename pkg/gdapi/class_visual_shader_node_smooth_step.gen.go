@@ -9,10 +9,8 @@ type VisualShaderNodeSmoothStep struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeSmoothStep(obj gdc.ObjectPtr) *VisualShaderNodeSmoothStep {
-  return &VisualShaderNodeSmoothStep{
-    obj: obj,
-  }
+func (me *VisualShaderNodeSmoothStep) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeSmoothStep) BaseClass() string {

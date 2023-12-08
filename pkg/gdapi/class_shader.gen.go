@@ -9,10 +9,8 @@ type Shader struct {
   obj gdc.ObjectPtr
 }
 
-func createShader(obj gdc.ObjectPtr) *Shader {
-  return &Shader{
-    obj: obj,
-  }
+func (me *Shader) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Shader) BaseClass() string {

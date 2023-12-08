@@ -9,10 +9,8 @@ type MissingNode struct {
   obj gdc.ObjectPtr
 }
 
-func createMissingNode(obj gdc.ObjectPtr) *MissingNode {
-  return &MissingNode{
-    obj: obj,
-  }
+func (me *MissingNode) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MissingNode) BaseClass() string {

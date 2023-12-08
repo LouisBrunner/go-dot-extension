@@ -9,10 +9,8 @@ type StreamPeerTCP struct {
   obj gdc.ObjectPtr
 }
 
-func createStreamPeerTCP(obj gdc.ObjectPtr) *StreamPeerTCP {
-  return &StreamPeerTCP{
-    obj: obj,
-  }
+func (me *StreamPeerTCP) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *StreamPeerTCP) BaseClass() string {

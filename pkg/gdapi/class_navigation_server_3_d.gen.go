@@ -9,10 +9,8 @@ type NavigationServer3D struct {
   obj gdc.ObjectPtr
 }
 
-func createNavigationServer3D(obj gdc.ObjectPtr) *NavigationServer3D {
-  return &NavigationServer3D{
-    obj: obj,
-  }
+func (me *NavigationServer3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NavigationServer3D) BaseClass() string {

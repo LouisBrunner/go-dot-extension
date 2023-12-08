@@ -9,10 +9,8 @@ type Sky struct {
   obj gdc.ObjectPtr
 }
 
-func createSky(obj gdc.ObjectPtr) *Sky {
-  return &Sky{
-    obj: obj,
-  }
+func (me *Sky) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Sky) BaseClass() string {

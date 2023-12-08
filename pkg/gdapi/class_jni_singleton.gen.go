@@ -9,10 +9,8 @@ type JNISingleton struct {
   obj gdc.ObjectPtr
 }
 
-func createJNISingleton(obj gdc.ObjectPtr) *JNISingleton {
-  return &JNISingleton{
-    obj: obj,
-  }
+func (me *JNISingleton) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *JNISingleton) BaseClass() string {

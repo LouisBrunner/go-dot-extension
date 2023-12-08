@@ -9,10 +9,8 @@ type Tween struct {
   obj gdc.ObjectPtr
 }
 
-func createTween(obj gdc.ObjectPtr) *Tween {
-  return &Tween{
-    obj: obj,
-  }
+func (me *Tween) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Tween) BaseClass() string {

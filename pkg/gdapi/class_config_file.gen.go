@@ -9,10 +9,8 @@ type ConfigFile struct {
   obj gdc.ObjectPtr
 }
 
-func createConfigFile(obj gdc.ObjectPtr) *ConfigFile {
-  return &ConfigFile{
-    obj: obj,
-  }
+func (me *ConfigFile) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ConfigFile) BaseClass() string {

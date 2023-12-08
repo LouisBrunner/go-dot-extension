@@ -9,10 +9,8 @@ type AStar3D struct {
   obj gdc.ObjectPtr
 }
 
-func createAStar3D(obj gdc.ObjectPtr) *AStar3D {
-  return &AStar3D{
-    obj: obj,
-  }
+func (me *AStar3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AStar3D) BaseClass() string {

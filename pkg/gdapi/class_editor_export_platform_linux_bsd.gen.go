@@ -9,10 +9,8 @@ type EditorExportPlatformLinuxBSD struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorExportPlatformLinuxBSD(obj gdc.ObjectPtr) *EditorExportPlatformLinuxBSD {
-  return &EditorExportPlatformLinuxBSD{
-    obj: obj,
-  }
+func (me *EditorExportPlatformLinuxBSD) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorExportPlatformLinuxBSD) BaseClass() string {

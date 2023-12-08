@@ -9,10 +9,8 @@ type StreamPeerTLS struct {
   obj gdc.ObjectPtr
 }
 
-func createStreamPeerTLS(obj gdc.ObjectPtr) *StreamPeerTLS {
-  return &StreamPeerTLS{
-    obj: obj,
-  }
+func (me *StreamPeerTLS) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *StreamPeerTLS) BaseClass() string {

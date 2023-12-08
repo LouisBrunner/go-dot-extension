@@ -9,10 +9,8 @@ type PlaceholderCubemap struct {
   obj gdc.ObjectPtr
 }
 
-func createPlaceholderCubemap(obj gdc.ObjectPtr) *PlaceholderCubemap {
-  return &PlaceholderCubemap{
-    obj: obj,
-  }
+func (me *PlaceholderCubemap) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PlaceholderCubemap) BaseClass() string {

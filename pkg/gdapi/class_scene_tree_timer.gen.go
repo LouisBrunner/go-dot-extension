@@ -9,10 +9,8 @@ type SceneTreeTimer struct {
   obj gdc.ObjectPtr
 }
 
-func createSceneTreeTimer(obj gdc.ObjectPtr) *SceneTreeTimer {
-  return &SceneTreeTimer{
-    obj: obj,
-  }
+func (me *SceneTreeTimer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SceneTreeTimer) BaseClass() string {

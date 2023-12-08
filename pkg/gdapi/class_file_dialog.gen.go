@@ -9,10 +9,8 @@ type FileDialog struct {
   obj gdc.ObjectPtr
 }
 
-func createFileDialog(obj gdc.ObjectPtr) *FileDialog {
-  return &FileDialog{
-    obj: obj,
-  }
+func (me *FileDialog) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *FileDialog) BaseClass() string {

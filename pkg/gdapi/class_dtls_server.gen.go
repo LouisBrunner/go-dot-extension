@@ -9,10 +9,8 @@ type DTLSServer struct {
   obj gdc.ObjectPtr
 }
 
-func createDTLSServer(obj gdc.ObjectPtr) *DTLSServer {
-  return &DTLSServer{
-    obj: obj,
-  }
+func (me *DTLSServer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *DTLSServer) BaseClass() string {

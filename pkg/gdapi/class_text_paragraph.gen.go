@@ -9,10 +9,8 @@ type TextParagraph struct {
   obj gdc.ObjectPtr
 }
 
-func createTextParagraph(obj gdc.ObjectPtr) *TextParagraph {
-  return &TextParagraph{
-    obj: obj,
-  }
+func (me *TextParagraph) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextParagraph) BaseClass() string {

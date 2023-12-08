@@ -9,10 +9,8 @@ type ConeTwistJoint3D struct {
   obj gdc.ObjectPtr
 }
 
-func createConeTwistJoint3D(obj gdc.ObjectPtr) *ConeTwistJoint3D {
-  return &ConeTwistJoint3D{
-    obj: obj,
-  }
+func (me *ConeTwistJoint3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ConeTwistJoint3D) BaseClass() string {

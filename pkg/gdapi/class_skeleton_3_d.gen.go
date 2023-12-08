@@ -9,10 +9,8 @@ type Skeleton3D struct {
   obj gdc.ObjectPtr
 }
 
-func createSkeleton3D(obj gdc.ObjectPtr) *Skeleton3D {
-  return &Skeleton3D{
-    obj: obj,
-  }
+func (me *Skeleton3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Skeleton3D) BaseClass() string {

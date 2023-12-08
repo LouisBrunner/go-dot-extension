@@ -9,10 +9,8 @@ type TorusMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createTorusMesh(obj gdc.ObjectPtr) *TorusMesh {
-  return &TorusMesh{
-    obj: obj,
-  }
+func (me *TorusMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TorusMesh) BaseClass() string {

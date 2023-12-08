@@ -9,10 +9,8 @@ type TextureButton struct {
   obj gdc.ObjectPtr
 }
 
-func createTextureButton(obj gdc.ObjectPtr) *TextureButton {
-  return &TextureButton{
-    obj: obj,
-  }
+func (me *TextureButton) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextureButton) BaseClass() string {

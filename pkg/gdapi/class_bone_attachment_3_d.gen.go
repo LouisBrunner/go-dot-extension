@@ -9,10 +9,8 @@ type BoneAttachment3D struct {
   obj gdc.ObjectPtr
 }
 
-func createBoneAttachment3D(obj gdc.ObjectPtr) *BoneAttachment3D {
-  return &BoneAttachment3D{
-    obj: obj,
-  }
+func (me *BoneAttachment3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *BoneAttachment3D) BaseClass() string {

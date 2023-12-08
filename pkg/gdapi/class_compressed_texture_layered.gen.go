@@ -9,10 +9,8 @@ type CompressedTextureLayered struct {
   obj gdc.ObjectPtr
 }
 
-func createCompressedTextureLayered(obj gdc.ObjectPtr) *CompressedTextureLayered {
-  return &CompressedTextureLayered{
-    obj: obj,
-  }
+func (me *CompressedTextureLayered) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CompressedTextureLayered) BaseClass() string {

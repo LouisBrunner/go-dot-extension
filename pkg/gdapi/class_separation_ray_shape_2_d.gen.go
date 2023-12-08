@@ -9,10 +9,8 @@ type SeparationRayShape2D struct {
   obj gdc.ObjectPtr
 }
 
-func createSeparationRayShape2D(obj gdc.ObjectPtr) *SeparationRayShape2D {
-  return &SeparationRayShape2D{
-    obj: obj,
-  }
+func (me *SeparationRayShape2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SeparationRayShape2D) BaseClass() string {

@@ -9,10 +9,8 @@ type ScriptLanguage struct {
   obj gdc.ObjectPtr
 }
 
-func createScriptLanguage(obj gdc.ObjectPtr) *ScriptLanguage {
-  return &ScriptLanguage{
-    obj: obj,
-  }
+func (me *ScriptLanguage) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ScriptLanguage) BaseClass() string {

@@ -9,10 +9,8 @@ type TreeItem struct {
   obj gdc.ObjectPtr
 }
 
-func createTreeItem(obj gdc.ObjectPtr) *TreeItem {
-  return &TreeItem{
-    obj: obj,
-  }
+func (me *TreeItem) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TreeItem) BaseClass() string {

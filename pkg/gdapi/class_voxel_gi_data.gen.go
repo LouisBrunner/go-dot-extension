@@ -9,10 +9,8 @@ type VoxelGIData struct {
   obj gdc.ObjectPtr
 }
 
-func createVoxelGIData(obj gdc.ObjectPtr) *VoxelGIData {
-  return &VoxelGIData{
-    obj: obj,
-  }
+func (me *VoxelGIData) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VoxelGIData) BaseClass() string {

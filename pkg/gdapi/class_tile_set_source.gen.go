@@ -9,10 +9,8 @@ type TileSetSource struct {
   obj gdc.ObjectPtr
 }
 
-func createTileSetSource(obj gdc.ObjectPtr) *TileSetSource {
-  return &TileSetSource{
-    obj: obj,
-  }
+func (me *TileSetSource) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TileSetSource) BaseClass() string {

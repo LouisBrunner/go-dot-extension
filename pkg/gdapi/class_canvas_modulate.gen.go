@@ -9,10 +9,8 @@ type CanvasModulate struct {
   obj gdc.ObjectPtr
 }
 
-func createCanvasModulate(obj gdc.ObjectPtr) *CanvasModulate {
-  return &CanvasModulate{
-    obj: obj,
-  }
+func (me *CanvasModulate) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CanvasModulate) BaseClass() string {

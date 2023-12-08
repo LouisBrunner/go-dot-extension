@@ -9,10 +9,8 @@ type HSeparator struct {
   obj gdc.ObjectPtr
 }
 
-func createHSeparator(obj gdc.ObjectPtr) *HSeparator {
-  return &HSeparator{
-    obj: obj,
-  }
+func (me *HSeparator) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *HSeparator) BaseClass() string {

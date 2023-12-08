@@ -9,10 +9,8 @@ type ReflectionProbe struct {
   obj gdc.ObjectPtr
 }
 
-func createReflectionProbe(obj gdc.ObjectPtr) *ReflectionProbe {
-  return &ReflectionProbe{
-    obj: obj,
-  }
+func (me *ReflectionProbe) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ReflectionProbe) BaseClass() string {

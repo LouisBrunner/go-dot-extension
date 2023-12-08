@@ -9,10 +9,8 @@ type AspectRatioContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createAspectRatioContainer(obj gdc.ObjectPtr) *AspectRatioContainer {
-  return &AspectRatioContainer{
-    obj: obj,
-  }
+func (me *AspectRatioContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AspectRatioContainer) BaseClass() string {

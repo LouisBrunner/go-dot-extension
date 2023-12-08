@@ -9,10 +9,8 @@ type TextureProgressBar struct {
   obj gdc.ObjectPtr
 }
 
-func createTextureProgressBar(obj gdc.ObjectPtr) *TextureProgressBar {
-  return &TextureProgressBar{
-    obj: obj,
-  }
+func (me *TextureProgressBar) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextureProgressBar) BaseClass() string {

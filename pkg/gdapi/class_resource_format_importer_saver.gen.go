@@ -9,10 +9,8 @@ type ResourceFormatImporterSaver struct {
   obj gdc.ObjectPtr
 }
 
-func createResourceFormatImporterSaver(obj gdc.ObjectPtr) *ResourceFormatImporterSaver {
-  return &ResourceFormatImporterSaver{
-    obj: obj,
-  }
+func (me *ResourceFormatImporterSaver) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ResourceFormatImporterSaver) BaseClass() string {

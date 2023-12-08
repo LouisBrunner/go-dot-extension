@@ -9,10 +9,8 @@ type HScrollBar struct {
   obj gdc.ObjectPtr
 }
 
-func createHScrollBar(obj gdc.ObjectPtr) *HScrollBar {
-  return &HScrollBar{
-    obj: obj,
-  }
+func (me *HScrollBar) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *HScrollBar) BaseClass() string {

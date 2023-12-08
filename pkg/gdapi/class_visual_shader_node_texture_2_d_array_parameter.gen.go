@@ -9,10 +9,8 @@ type VisualShaderNodeTexture2DArrayParameter struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeTexture2DArrayParameter(obj gdc.ObjectPtr) *VisualShaderNodeTexture2DArrayParameter {
-  return &VisualShaderNodeTexture2DArrayParameter{
-    obj: obj,
-  }
+func (me *VisualShaderNodeTexture2DArrayParameter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeTexture2DArrayParameter) BaseClass() string {

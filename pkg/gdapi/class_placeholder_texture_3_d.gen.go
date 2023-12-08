@@ -9,10 +9,8 @@ type PlaceholderTexture3D struct {
   obj gdc.ObjectPtr
 }
 
-func createPlaceholderTexture3D(obj gdc.ObjectPtr) *PlaceholderTexture3D {
-  return &PlaceholderTexture3D{
-    obj: obj,
-  }
+func (me *PlaceholderTexture3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PlaceholderTexture3D) BaseClass() string {

@@ -9,10 +9,8 @@ type VisualShaderNodeVectorLen struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeVectorLen(obj gdc.ObjectPtr) *VisualShaderNodeVectorLen {
-  return &VisualShaderNodeVectorLen{
-    obj: obj,
-  }
+func (me *VisualShaderNodeVectorLen) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeVectorLen) BaseClass() string {

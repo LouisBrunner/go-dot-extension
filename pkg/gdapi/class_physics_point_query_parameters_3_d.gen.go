@@ -9,10 +9,8 @@ type PhysicsPointQueryParameters3D struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsPointQueryParameters3D(obj gdc.ObjectPtr) *PhysicsPointQueryParameters3D {
-  return &PhysicsPointQueryParameters3D{
-    obj: obj,
-  }
+func (me *PhysicsPointQueryParameters3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsPointQueryParameters3D) BaseClass() string {

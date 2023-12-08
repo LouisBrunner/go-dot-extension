@@ -9,10 +9,8 @@ type HashingContext struct {
   obj gdc.ObjectPtr
 }
 
-func createHashingContext(obj gdc.ObjectPtr) *HashingContext {
-  return &HashingContext{
-    obj: obj,
-  }
+func (me *HashingContext) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *HashingContext) BaseClass() string {

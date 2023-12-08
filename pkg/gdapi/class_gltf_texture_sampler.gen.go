@@ -9,10 +9,8 @@ type GLTFTextureSampler struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFTextureSampler(obj gdc.ObjectPtr) *GLTFTextureSampler {
-  return &GLTFTextureSampler{
-    obj: obj,
-  }
+func (me *GLTFTextureSampler) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFTextureSampler) BaseClass() string {

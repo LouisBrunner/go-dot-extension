@@ -9,10 +9,8 @@ type VisualShaderNodeParticleMultiplyByAxisAngle struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeParticleMultiplyByAxisAngle(obj gdc.ObjectPtr) *VisualShaderNodeParticleMultiplyByAxisAngle {
-  return &VisualShaderNodeParticleMultiplyByAxisAngle{
-    obj: obj,
-  }
+func (me *VisualShaderNodeParticleMultiplyByAxisAngle) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeParticleMultiplyByAxisAngle) BaseClass() string {

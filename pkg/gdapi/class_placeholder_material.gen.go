@@ -9,10 +9,8 @@ type PlaceholderMaterial struct {
   obj gdc.ObjectPtr
 }
 
-func createPlaceholderMaterial(obj gdc.ObjectPtr) *PlaceholderMaterial {
-  return &PlaceholderMaterial{
-    obj: obj,
-  }
+func (me *PlaceholderMaterial) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PlaceholderMaterial) BaseClass() string {

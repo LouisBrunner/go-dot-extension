@@ -9,10 +9,8 @@ type VisualShaderNodeColorParameter struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeColorParameter(obj gdc.ObjectPtr) *VisualShaderNodeColorParameter {
-  return &VisualShaderNodeColorParameter{
-    obj: obj,
-  }
+func (me *VisualShaderNodeColorParameter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeColorParameter) BaseClass() string {

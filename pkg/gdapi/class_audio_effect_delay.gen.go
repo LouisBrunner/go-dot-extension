@@ -9,10 +9,8 @@ type AudioEffectDelay struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectDelay(obj gdc.ObjectPtr) *AudioEffectDelay {
-  return &AudioEffectDelay{
-    obj: obj,
-  }
+func (me *AudioEffectDelay) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectDelay) BaseClass() string {

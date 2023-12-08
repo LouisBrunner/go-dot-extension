@@ -9,10 +9,8 @@ type EditorPaths struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorPaths(obj gdc.ObjectPtr) *EditorPaths {
-  return &EditorPaths{
-    obj: obj,
-  }
+func (me *EditorPaths) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorPaths) BaseClass() string {

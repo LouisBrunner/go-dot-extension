@@ -9,10 +9,8 @@ type KinematicCollision2D struct {
   obj gdc.ObjectPtr
 }
 
-func createKinematicCollision2D(obj gdc.ObjectPtr) *KinematicCollision2D {
-  return &KinematicCollision2D{
-    obj: obj,
-  }
+func (me *KinematicCollision2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *KinematicCollision2D) BaseClass() string {

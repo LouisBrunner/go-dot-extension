@@ -9,10 +9,8 @@ type Crypto struct {
   obj gdc.ObjectPtr
 }
 
-func createCrypto(obj gdc.ObjectPtr) *Crypto {
-  return &Crypto{
-    obj: obj,
-  }
+func (me *Crypto) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Crypto) BaseClass() string {

@@ -9,10 +9,8 @@ type EditorFileSystemDirectory struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorFileSystemDirectory(obj gdc.ObjectPtr) *EditorFileSystemDirectory {
-  return &EditorFileSystemDirectory{
-    obj: obj,
-  }
+func (me *EditorFileSystemDirectory) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorFileSystemDirectory) BaseClass() string {

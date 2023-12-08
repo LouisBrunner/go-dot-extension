@@ -9,10 +9,8 @@ type GLTFDocument struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFDocument(obj gdc.ObjectPtr) *GLTFDocument {
-  return &GLTFDocument{
-    obj: obj,
-  }
+func (me *GLTFDocument) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFDocument) BaseClass() string {

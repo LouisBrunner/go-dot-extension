@@ -9,10 +9,8 @@ type EncodedObjectAsID struct {
   obj gdc.ObjectPtr
 }
 
-func createEncodedObjectAsID(obj gdc.ObjectPtr) *EncodedObjectAsID {
-  return &EncodedObjectAsID{
-    obj: obj,
-  }
+func (me *EncodedObjectAsID) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EncodedObjectAsID) BaseClass() string {

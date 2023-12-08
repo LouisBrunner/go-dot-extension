@@ -9,10 +9,8 @@ type NavigationObstacle3D struct {
   obj gdc.ObjectPtr
 }
 
-func createNavigationObstacle3D(obj gdc.ObjectPtr) *NavigationObstacle3D {
-  return &NavigationObstacle3D{
-    obj: obj,
-  }
+func (me *NavigationObstacle3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NavigationObstacle3D) BaseClass() string {

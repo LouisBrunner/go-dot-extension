@@ -9,10 +9,8 @@ type Camera3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCamera3D(obj gdc.ObjectPtr) *Camera3D {
-  return &Camera3D{
-    obj: obj,
-  }
+func (me *Camera3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Camera3D) BaseClass() string {

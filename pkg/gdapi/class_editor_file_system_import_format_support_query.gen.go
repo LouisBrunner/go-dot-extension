@@ -9,10 +9,8 @@ type EditorFileSystemImportFormatSupportQuery struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorFileSystemImportFormatSupportQuery(obj gdc.ObjectPtr) *EditorFileSystemImportFormatSupportQuery {
-  return &EditorFileSystemImportFormatSupportQuery{
-    obj: obj,
-  }
+func (me *EditorFileSystemImportFormatSupportQuery) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorFileSystemImportFormatSupportQuery) BaseClass() string {

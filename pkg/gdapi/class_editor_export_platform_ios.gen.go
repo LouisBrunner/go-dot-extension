@@ -9,10 +9,8 @@ type EditorExportPlatformIOS struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorExportPlatformIOS(obj gdc.ObjectPtr) *EditorExportPlatformIOS {
-  return &EditorExportPlatformIOS{
-    obj: obj,
-  }
+func (me *EditorExportPlatformIOS) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorExportPlatformIOS) BaseClass() string {

@@ -9,10 +9,8 @@ type TileSetAtlasSource struct {
   obj gdc.ObjectPtr
 }
 
-func createTileSetAtlasSource(obj gdc.ObjectPtr) *TileSetAtlasSource {
-  return &TileSetAtlasSource{
-    obj: obj,
-  }
+func (me *TileSetAtlasSource) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TileSetAtlasSource) BaseClass() string {

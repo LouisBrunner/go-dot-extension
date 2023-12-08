@@ -9,10 +9,8 @@ type FastNoiseLite struct {
   obj gdc.ObjectPtr
 }
 
-func createFastNoiseLite(obj gdc.ObjectPtr) *FastNoiseLite {
-  return &FastNoiseLite{
-    obj: obj,
-  }
+func (me *FastNoiseLite) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *FastNoiseLite) BaseClass() string {

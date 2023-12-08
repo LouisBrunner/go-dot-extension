@@ -9,10 +9,8 @@ type Window struct {
   obj gdc.ObjectPtr
 }
 
-func createWindow(obj gdc.ObjectPtr) *Window {
-  return &Window{
-    obj: obj,
-  }
+func (me *Window) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Window) BaseClass() string {

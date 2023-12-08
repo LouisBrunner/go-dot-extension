@@ -9,10 +9,8 @@ type CSGPolygon3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCSGPolygon3D(obj gdc.ObjectPtr) *CSGPolygon3D {
-  return &CSGPolygon3D{
-    obj: obj,
-  }
+func (me *CSGPolygon3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CSGPolygon3D) BaseClass() string {

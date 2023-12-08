@@ -9,10 +9,8 @@ type Semaphore struct {
   obj gdc.ObjectPtr
 }
 
-func createSemaphore(obj gdc.ObjectPtr) *Semaphore {
-  return &Semaphore{
-    obj: obj,
-  }
+func (me *Semaphore) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Semaphore) BaseClass() string {

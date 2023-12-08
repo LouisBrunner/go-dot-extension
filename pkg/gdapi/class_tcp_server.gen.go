@@ -9,10 +9,8 @@ type TCPServer struct {
   obj gdc.ObjectPtr
 }
 
-func createTCPServer(obj gdc.ObjectPtr) *TCPServer {
-  return &TCPServer{
-    obj: obj,
-  }
+func (me *TCPServer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TCPServer) BaseClass() string {

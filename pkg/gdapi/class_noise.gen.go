@@ -9,10 +9,8 @@ type Noise struct {
   obj gdc.ObjectPtr
 }
 
-func createNoise(obj gdc.ObjectPtr) *Noise {
-  return &Noise{
-    obj: obj,
-  }
+func (me *Noise) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Noise) BaseClass() string {

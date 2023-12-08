@@ -9,10 +9,8 @@ type TouchScreenButton struct {
   obj gdc.ObjectPtr
 }
 
-func createTouchScreenButton(obj gdc.ObjectPtr) *TouchScreenButton {
-  return &TouchScreenButton{
-    obj: obj,
-  }
+func (me *TouchScreenButton) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TouchScreenButton) BaseClass() string {

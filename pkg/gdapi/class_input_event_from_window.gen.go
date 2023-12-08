@@ -9,10 +9,8 @@ type InputEventFromWindow struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventFromWindow(obj gdc.ObjectPtr) *InputEventFromWindow {
-  return &InputEventFromWindow{
-    obj: obj,
-  }
+func (me *InputEventFromWindow) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventFromWindow) BaseClass() string {

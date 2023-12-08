@@ -9,10 +9,8 @@ type IP struct {
   obj gdc.ObjectPtr
 }
 
-func createIP(obj gdc.ObjectPtr) *IP {
-  return &IP{
-    obj: obj,
-  }
+func (me *IP) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *IP) BaseClass() string {

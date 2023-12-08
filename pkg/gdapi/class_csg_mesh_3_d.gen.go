@@ -9,10 +9,8 @@ type CSGMesh3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCSGMesh3D(obj gdc.ObjectPtr) *CSGMesh3D {
-  return &CSGMesh3D{
-    obj: obj,
-  }
+func (me *CSGMesh3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CSGMesh3D) BaseClass() string {

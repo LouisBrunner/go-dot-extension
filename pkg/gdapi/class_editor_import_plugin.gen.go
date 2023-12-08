@@ -9,10 +9,8 @@ type EditorImportPlugin struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorImportPlugin(obj gdc.ObjectPtr) *EditorImportPlugin {
-  return &EditorImportPlugin{
-    obj: obj,
-  }
+func (me *EditorImportPlugin) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorImportPlugin) BaseClass() string {

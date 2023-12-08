@@ -9,10 +9,8 @@ type AcceptDialog struct {
   obj gdc.ObjectPtr
 }
 
-func createAcceptDialog(obj gdc.ObjectPtr) *AcceptDialog {
-  return &AcceptDialog{
-    obj: obj,
-  }
+func (me *AcceptDialog) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AcceptDialog) BaseClass() string {

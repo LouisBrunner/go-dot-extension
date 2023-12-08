@@ -9,10 +9,8 @@ type ShaderInclude struct {
   obj gdc.ObjectPtr
 }
 
-func createShaderInclude(obj gdc.ObjectPtr) *ShaderInclude {
-  return &ShaderInclude{
-    obj: obj,
-  }
+func (me *ShaderInclude) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ShaderInclude) BaseClass() string {

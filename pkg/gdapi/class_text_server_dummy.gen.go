@@ -9,10 +9,8 @@ type TextServerDummy struct {
   obj gdc.ObjectPtr
 }
 
-func createTextServerDummy(obj gdc.ObjectPtr) *TextServerDummy {
-  return &TextServerDummy{
-    obj: obj,
-  }
+func (me *TextServerDummy) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextServerDummy) BaseClass() string {

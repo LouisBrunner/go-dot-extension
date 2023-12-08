@@ -9,10 +9,8 @@ type CameraAttributesPhysical struct {
   obj gdc.ObjectPtr
 }
 
-func createCameraAttributesPhysical(obj gdc.ObjectPtr) *CameraAttributesPhysical {
-  return &CameraAttributesPhysical{
-    obj: obj,
-  }
+func (me *CameraAttributesPhysical) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CameraAttributesPhysical) BaseClass() string {

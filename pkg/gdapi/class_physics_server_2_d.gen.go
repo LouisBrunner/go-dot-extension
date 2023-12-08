@@ -9,10 +9,8 @@ type PhysicsServer2D struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsServer2D(obj gdc.ObjectPtr) *PhysicsServer2D {
-  return &PhysicsServer2D{
-    obj: obj,
-  }
+func (me *PhysicsServer2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsServer2D) BaseClass() string {

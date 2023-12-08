@@ -9,10 +9,8 @@ type RDFramebufferPass struct {
   obj gdc.ObjectPtr
 }
 
-func createRDFramebufferPass(obj gdc.ObjectPtr) *RDFramebufferPass {
-  return &RDFramebufferPass{
-    obj: obj,
-  }
+func (me *RDFramebufferPass) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDFramebufferPass) BaseClass() string {

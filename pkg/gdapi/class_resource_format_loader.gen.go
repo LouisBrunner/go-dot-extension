@@ -9,10 +9,8 @@ type ResourceFormatLoader struct {
   obj gdc.ObjectPtr
 }
 
-func createResourceFormatLoader(obj gdc.ObjectPtr) *ResourceFormatLoader {
-  return &ResourceFormatLoader{
-    obj: obj,
-  }
+func (me *ResourceFormatLoader) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ResourceFormatLoader) BaseClass() string {

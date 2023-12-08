@@ -9,10 +9,8 @@ type Generic6DOFJoint3D struct {
   obj gdc.ObjectPtr
 }
 
-func createGeneric6DOFJoint3D(obj gdc.ObjectPtr) *Generic6DOFJoint3D {
-  return &Generic6DOFJoint3D{
-    obj: obj,
-  }
+func (me *Generic6DOFJoint3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Generic6DOFJoint3D) BaseClass() string {

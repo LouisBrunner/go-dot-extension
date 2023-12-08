@@ -9,10 +9,8 @@ type RDTextureFormat struct {
   obj gdc.ObjectPtr
 }
 
-func createRDTextureFormat(obj gdc.ObjectPtr) *RDTextureFormat {
-  return &RDTextureFormat{
-    obj: obj,
-  }
+func (me *RDTextureFormat) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RDTextureFormat) BaseClass() string {

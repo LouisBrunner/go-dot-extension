@@ -9,10 +9,8 @@ type CurveTexture struct {
   obj gdc.ObjectPtr
 }
 
-func createCurveTexture(obj gdc.ObjectPtr) *CurveTexture {
-  return &CurveTexture{
-    obj: obj,
-  }
+func (me *CurveTexture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CurveTexture) BaseClass() string {

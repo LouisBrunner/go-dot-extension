@@ -9,10 +9,8 @@ type PropertyTweener struct {
   obj gdc.ObjectPtr
 }
 
-func createPropertyTweener(obj gdc.ObjectPtr) *PropertyTweener {
-  return &PropertyTweener{
-    obj: obj,
-  }
+func (me *PropertyTweener) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PropertyTweener) BaseClass() string {

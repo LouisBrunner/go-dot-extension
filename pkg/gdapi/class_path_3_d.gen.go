@@ -9,10 +9,8 @@ type Path3D struct {
   obj gdc.ObjectPtr
 }
 
-func createPath3D(obj gdc.ObjectPtr) *Path3D {
-  return &Path3D{
-    obj: obj,
-  }
+func (me *Path3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Path3D) BaseClass() string {

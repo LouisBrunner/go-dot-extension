@@ -9,10 +9,8 @@ type ArrayMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createArrayMesh(obj gdc.ObjectPtr) *ArrayMesh {
-  return &ArrayMesh{
-    obj: obj,
-  }
+func (me *ArrayMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ArrayMesh) BaseClass() string {

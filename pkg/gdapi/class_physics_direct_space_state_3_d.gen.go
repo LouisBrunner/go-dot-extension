@@ -9,10 +9,8 @@ type PhysicsDirectSpaceState3D struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsDirectSpaceState3D(obj gdc.ObjectPtr) *PhysicsDirectSpaceState3D {
-  return &PhysicsDirectSpaceState3D{
-    obj: obj,
-  }
+func (me *PhysicsDirectSpaceState3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsDirectSpaceState3D) BaseClass() string {

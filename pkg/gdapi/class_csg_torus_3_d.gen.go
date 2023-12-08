@@ -9,10 +9,8 @@ type CSGTorus3D struct {
   obj gdc.ObjectPtr
 }
 
-func createCSGTorus3D(obj gdc.ObjectPtr) *CSGTorus3D {
-  return &CSGTorus3D{
-    obj: obj,
-  }
+func (me *CSGTorus3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CSGTorus3D) BaseClass() string {

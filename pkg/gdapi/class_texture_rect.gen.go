@@ -9,10 +9,8 @@ type TextureRect struct {
   obj gdc.ObjectPtr
 }
 
-func createTextureRect(obj gdc.ObjectPtr) *TextureRect {
-  return &TextureRect{
-    obj: obj,
-  }
+func (me *TextureRect) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextureRect) BaseClass() string {

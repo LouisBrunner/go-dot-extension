@@ -9,10 +9,8 @@ type AnimationNodeSync struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationNodeSync(obj gdc.ObjectPtr) *AnimationNodeSync {
-  return &AnimationNodeSync{
-    obj: obj,
-  }
+func (me *AnimationNodeSync) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationNodeSync) BaseClass() string {

@@ -9,10 +9,8 @@ type RefCounted struct {
   obj gdc.ObjectPtr
 }
 
-func createRefCounted(obj gdc.ObjectPtr) *RefCounted {
-  return &RefCounted{
-    obj: obj,
-  }
+func (me *RefCounted) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RefCounted) BaseClass() string {

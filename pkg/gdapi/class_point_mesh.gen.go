@@ -9,10 +9,8 @@ type PointMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createPointMesh(obj gdc.ObjectPtr) *PointMesh {
-  return &PointMesh{
-    obj: obj,
-  }
+func (me *PointMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PointMesh) BaseClass() string {

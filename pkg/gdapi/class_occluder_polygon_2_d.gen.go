@@ -9,10 +9,8 @@ type OccluderPolygon2D struct {
   obj gdc.ObjectPtr
 }
 
-func createOccluderPolygon2D(obj gdc.ObjectPtr) *OccluderPolygon2D {
-  return &OccluderPolygon2D{
-    obj: obj,
-  }
+func (me *OccluderPolygon2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *OccluderPolygon2D) BaseClass() string {

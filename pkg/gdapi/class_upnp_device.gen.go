@@ -9,10 +9,8 @@ type UPNPDevice struct {
   obj gdc.ObjectPtr
 }
 
-func createUPNPDevice(obj gdc.ObjectPtr) *UPNPDevice {
-  return &UPNPDevice{
-    obj: obj,
-  }
+func (me *UPNPDevice) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *UPNPDevice) BaseClass() string {

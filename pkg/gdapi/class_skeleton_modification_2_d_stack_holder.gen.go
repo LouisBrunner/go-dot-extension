@@ -9,10 +9,8 @@ type SkeletonModification2DStackHolder struct {
   obj gdc.ObjectPtr
 }
 
-func createSkeletonModification2DStackHolder(obj gdc.ObjectPtr) *SkeletonModification2DStackHolder {
-  return &SkeletonModification2DStackHolder{
-    obj: obj,
-  }
+func (me *SkeletonModification2DStackHolder) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SkeletonModification2DStackHolder) BaseClass() string {

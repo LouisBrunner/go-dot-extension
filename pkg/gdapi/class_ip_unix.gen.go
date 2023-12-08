@@ -9,10 +9,8 @@ type IPUnix struct {
   obj gdc.ObjectPtr
 }
 
-func createIPUnix(obj gdc.ObjectPtr) *IPUnix {
-  return &IPUnix{
-    obj: obj,
-  }
+func (me *IPUnix) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *IPUnix) BaseClass() string {

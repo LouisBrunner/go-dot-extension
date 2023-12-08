@@ -9,10 +9,8 @@ type GLTFDocumentExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFDocumentExtension(obj gdc.ObjectPtr) *GLTFDocumentExtension {
-  return &GLTFDocumentExtension{
-    obj: obj,
-  }
+func (me *GLTFDocumentExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFDocumentExtension) BaseClass() string {

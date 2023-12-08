@@ -9,10 +9,8 @@ type InputMap struct {
   obj gdc.ObjectPtr
 }
 
-func createInputMap(obj gdc.ObjectPtr) *InputMap {
-  return &InputMap{
-    obj: obj,
-  }
+func (me *InputMap) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputMap) BaseClass() string {

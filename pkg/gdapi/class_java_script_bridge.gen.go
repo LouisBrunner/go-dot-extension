@@ -9,10 +9,8 @@ type JavaScriptBridge struct {
   obj gdc.ObjectPtr
 }
 
-func createJavaScriptBridge(obj gdc.ObjectPtr) *JavaScriptBridge {
-  return &JavaScriptBridge{
-    obj: obj,
-  }
+func (me *JavaScriptBridge) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *JavaScriptBridge) BaseClass() string {

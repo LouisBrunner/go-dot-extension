@@ -9,10 +9,8 @@ type CanvasGroup struct {
   obj gdc.ObjectPtr
 }
 
-func createCanvasGroup(obj gdc.ObjectPtr) *CanvasGroup {
-  return &CanvasGroup{
-    obj: obj,
-  }
+func (me *CanvasGroup) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CanvasGroup) BaseClass() string {

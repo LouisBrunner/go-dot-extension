@@ -9,10 +9,8 @@ type XRAnchor3D struct {
   obj gdc.ObjectPtr
 }
 
-func createXRAnchor3D(obj gdc.ObjectPtr) *XRAnchor3D {
-  return &XRAnchor3D{
-    obj: obj,
-  }
+func (me *XRAnchor3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *XRAnchor3D) BaseClass() string {

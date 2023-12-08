@@ -9,10 +9,8 @@ type OggPacketSequencePlayback struct {
   obj gdc.ObjectPtr
 }
 
-func createOggPacketSequencePlayback(obj gdc.ObjectPtr) *OggPacketSequencePlayback {
-  return &OggPacketSequencePlayback{
-    obj: obj,
-  }
+func (me *OggPacketSequencePlayback) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *OggPacketSequencePlayback) BaseClass() string {

@@ -9,10 +9,8 @@ type FlowContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createFlowContainer(obj gdc.ObjectPtr) *FlowContainer {
-  return &FlowContainer{
-    obj: obj,
-  }
+func (me *FlowContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *FlowContainer) BaseClass() string {

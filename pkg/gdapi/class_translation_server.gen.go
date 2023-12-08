@@ -9,10 +9,8 @@ type TranslationServer struct {
   obj gdc.ObjectPtr
 }
 
-func createTranslationServer(obj gdc.ObjectPtr) *TranslationServer {
-  return &TranslationServer{
-    obj: obj,
-  }
+func (me *TranslationServer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TranslationServer) BaseClass() string {

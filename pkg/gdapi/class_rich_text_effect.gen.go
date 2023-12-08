@@ -9,10 +9,8 @@ type RichTextEffect struct {
   obj gdc.ObjectPtr
 }
 
-func createRichTextEffect(obj gdc.ObjectPtr) *RichTextEffect {
-  return &RichTextEffect{
-    obj: obj,
-  }
+func (me *RichTextEffect) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RichTextEffect) BaseClass() string {

@@ -9,10 +9,8 @@ type VisualShaderNodeTransformDecompose struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeTransformDecompose(obj gdc.ObjectPtr) *VisualShaderNodeTransformDecompose {
-  return &VisualShaderNodeTransformDecompose{
-    obj: obj,
-  }
+func (me *VisualShaderNodeTransformDecompose) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeTransformDecompose) BaseClass() string {

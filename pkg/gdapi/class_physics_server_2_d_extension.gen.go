@@ -9,10 +9,8 @@ type PhysicsServer2DExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsServer2DExtension(obj gdc.ObjectPtr) *PhysicsServer2DExtension {
-  return &PhysicsServer2DExtension{
-    obj: obj,
-  }
+func (me *PhysicsServer2DExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsServer2DExtension) BaseClass() string {

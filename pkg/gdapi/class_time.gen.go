@@ -9,10 +9,8 @@ type Time struct {
   obj gdc.ObjectPtr
 }
 
-func createTime(obj gdc.ObjectPtr) *Time {
-  return &Time{
-    obj: obj,
-  }
+func (me *Time) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Time) BaseClass() string {

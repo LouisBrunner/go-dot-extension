@@ -9,10 +9,8 @@ type PhysicsDirectBodyState3D struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsDirectBodyState3D(obj gdc.ObjectPtr) *PhysicsDirectBodyState3D {
-  return &PhysicsDirectBodyState3D{
-    obj: obj,
-  }
+func (me *PhysicsDirectBodyState3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsDirectBodyState3D) BaseClass() string {

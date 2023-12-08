@@ -9,10 +9,8 @@ type TextServerManager struct {
   obj gdc.ObjectPtr
 }
 
-func createTextServerManager(obj gdc.ObjectPtr) *TextServerManager {
-  return &TextServerManager{
-    obj: obj,
-  }
+func (me *TextServerManager) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextServerManager) BaseClass() string {

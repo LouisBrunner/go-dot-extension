@@ -9,10 +9,8 @@ type PlaceholderMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createPlaceholderMesh(obj gdc.ObjectPtr) *PlaceholderMesh {
-  return &PlaceholderMesh{
-    obj: obj,
-  }
+func (me *PlaceholderMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PlaceholderMesh) BaseClass() string {

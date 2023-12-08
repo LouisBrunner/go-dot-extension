@@ -9,10 +9,8 @@ type GLTFDocumentExtensionTextureWebP struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFDocumentExtensionTextureWebP(obj gdc.ObjectPtr) *GLTFDocumentExtensionTextureWebP {
-  return &GLTFDocumentExtensionTextureWebP{
-    obj: obj,
-  }
+func (me *GLTFDocumentExtensionTextureWebP) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFDocumentExtensionTextureWebP) BaseClass() string {

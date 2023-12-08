@@ -9,10 +9,8 @@ type VisualShaderNodeSwitch struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeSwitch(obj gdc.ObjectPtr) *VisualShaderNodeSwitch {
-  return &VisualShaderNodeSwitch{
-    obj: obj,
-  }
+func (me *VisualShaderNodeSwitch) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeSwitch) BaseClass() string {

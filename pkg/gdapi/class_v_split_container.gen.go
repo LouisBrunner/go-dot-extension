@@ -9,10 +9,8 @@ type VSplitContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createVSplitContainer(obj gdc.ObjectPtr) *VSplitContainer {
-  return &VSplitContainer{
-    obj: obj,
-  }
+func (me *VSplitContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VSplitContainer) BaseClass() string {

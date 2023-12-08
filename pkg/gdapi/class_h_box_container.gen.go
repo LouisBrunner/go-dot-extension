@@ -9,10 +9,8 @@ type HBoxContainer struct {
   obj gdc.ObjectPtr
 }
 
-func createHBoxContainer(obj gdc.ObjectPtr) *HBoxContainer {
-  return &HBoxContainer{
-    obj: obj,
-  }
+func (me *HBoxContainer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *HBoxContainer) BaseClass() string {

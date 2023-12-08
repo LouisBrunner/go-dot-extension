@@ -9,10 +9,8 @@ type AudioEffectBandLimitFilter struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectBandLimitFilter(obj gdc.ObjectPtr) *AudioEffectBandLimitFilter {
-  return &AudioEffectBandLimitFilter{
-    obj: obj,
-  }
+func (me *AudioEffectBandLimitFilter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectBandLimitFilter) BaseClass() string {

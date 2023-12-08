@@ -9,10 +9,8 @@ type AESContext struct {
   obj gdc.ObjectPtr
 }
 
-func createAESContext(obj gdc.ObjectPtr) *AESContext {
-  return &AESContext{
-    obj: obj,
-  }
+func (me *AESContext) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AESContext) BaseClass() string {

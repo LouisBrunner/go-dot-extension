@@ -9,10 +9,8 @@ type Polygon2D struct {
   obj gdc.ObjectPtr
 }
 
-func createPolygon2D(obj gdc.ObjectPtr) *Polygon2D {
-  return &Polygon2D{
-    obj: obj,
-  }
+func (me *Polygon2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Polygon2D) BaseClass() string {

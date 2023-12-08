@@ -9,10 +9,8 @@ type InputEventMagnifyGesture struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventMagnifyGesture(obj gdc.ObjectPtr) *InputEventMagnifyGesture {
-  return &InputEventMagnifyGesture{
-    obj: obj,
-  }
+func (me *InputEventMagnifyGesture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventMagnifyGesture) BaseClass() string {

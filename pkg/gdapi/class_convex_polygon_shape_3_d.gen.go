@@ -9,10 +9,8 @@ type ConvexPolygonShape3D struct {
   obj gdc.ObjectPtr
 }
 
-func createConvexPolygonShape3D(obj gdc.ObjectPtr) *ConvexPolygonShape3D {
-  return &ConvexPolygonShape3D{
-    obj: obj,
-  }
+func (me *ConvexPolygonShape3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ConvexPolygonShape3D) BaseClass() string {

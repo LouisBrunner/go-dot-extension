@@ -9,10 +9,8 @@ type CameraAttributes struct {
   obj gdc.ObjectPtr
 }
 
-func createCameraAttributes(obj gdc.ObjectPtr) *CameraAttributes {
-  return &CameraAttributes{
-    obj: obj,
-  }
+func (me *CameraAttributes) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CameraAttributes) BaseClass() string {

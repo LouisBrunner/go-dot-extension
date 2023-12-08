@@ -9,10 +9,8 @@ type VisualShaderNodeVectorDistance struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeVectorDistance(obj gdc.ObjectPtr) *VisualShaderNodeVectorDistance {
-  return &VisualShaderNodeVectorDistance{
-    obj: obj,
-  }
+func (me *VisualShaderNodeVectorDistance) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeVectorDistance) BaseClass() string {

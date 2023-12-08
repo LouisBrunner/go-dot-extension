@@ -9,10 +9,8 @@ type InputEventMouseMotion struct {
   obj gdc.ObjectPtr
 }
 
-func createInputEventMouseMotion(obj gdc.ObjectPtr) *InputEventMouseMotion {
-  return &InputEventMouseMotion{
-    obj: obj,
-  }
+func (me *InputEventMouseMotion) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *InputEventMouseMotion) BaseClass() string {

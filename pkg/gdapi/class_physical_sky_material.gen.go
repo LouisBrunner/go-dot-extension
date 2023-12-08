@@ -9,10 +9,8 @@ type PhysicalSkyMaterial struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicalSkyMaterial(obj gdc.ObjectPtr) *PhysicalSkyMaterial {
-  return &PhysicalSkyMaterial{
-    obj: obj,
-  }
+func (me *PhysicalSkyMaterial) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicalSkyMaterial) BaseClass() string {

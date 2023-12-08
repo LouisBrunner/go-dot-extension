@@ -9,10 +9,8 @@ type Mutex struct {
   obj gdc.ObjectPtr
 }
 
-func createMutex(obj gdc.ObjectPtr) *Mutex {
-  return &Mutex{
-    obj: obj,
-  }
+func (me *Mutex) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Mutex) BaseClass() string {

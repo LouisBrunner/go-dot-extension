@@ -9,10 +9,8 @@ type VisualShaderNodeFloatConstant struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeFloatConstant(obj gdc.ObjectPtr) *VisualShaderNodeFloatConstant {
-  return &VisualShaderNodeFloatConstant{
-    obj: obj,
-  }
+func (me *VisualShaderNodeFloatConstant) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeFloatConstant) BaseClass() string {

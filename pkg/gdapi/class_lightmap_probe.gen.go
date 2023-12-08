@@ -9,10 +9,8 @@ type LightmapProbe struct {
   obj gdc.ObjectPtr
 }
 
-func createLightmapProbe(obj gdc.ObjectPtr) *LightmapProbe {
-  return &LightmapProbe{
-    obj: obj,
-  }
+func (me *LightmapProbe) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *LightmapProbe) BaseClass() string {

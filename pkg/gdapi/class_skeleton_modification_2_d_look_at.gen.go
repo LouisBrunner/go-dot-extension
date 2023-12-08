@@ -9,10 +9,8 @@ type SkeletonModification2DLookAt struct {
   obj gdc.ObjectPtr
 }
 
-func createSkeletonModification2DLookAt(obj gdc.ObjectPtr) *SkeletonModification2DLookAt {
-  return &SkeletonModification2DLookAt{
-    obj: obj,
-  }
+func (me *SkeletonModification2DLookAt) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SkeletonModification2DLookAt) BaseClass() string {

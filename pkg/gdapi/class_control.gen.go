@@ -9,10 +9,8 @@ type Control struct {
   obj gdc.ObjectPtr
 }
 
-func createControl(obj gdc.ObjectPtr) *Control {
-  return &Control{
-    obj: obj,
-  }
+func (me *Control) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Control) BaseClass() string {

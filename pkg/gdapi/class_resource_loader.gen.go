@@ -9,10 +9,8 @@ type ResourceLoader struct {
   obj gdc.ObjectPtr
 }
 
-func createResourceLoader(obj gdc.ObjectPtr) *ResourceLoader {
-  return &ResourceLoader{
-    obj: obj,
-  }
+func (me *ResourceLoader) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ResourceLoader) BaseClass() string {

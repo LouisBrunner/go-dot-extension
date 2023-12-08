@@ -9,10 +9,8 @@ type AnimationNodeStateMachinePlayback struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationNodeStateMachinePlayback(obj gdc.ObjectPtr) *AnimationNodeStateMachinePlayback {
-  return &AnimationNodeStateMachinePlayback{
-    obj: obj,
-  }
+func (me *AnimationNodeStateMachinePlayback) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationNodeStateMachinePlayback) BaseClass() string {

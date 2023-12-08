@@ -9,10 +9,8 @@ type TextServerAdvanced struct {
   obj gdc.ObjectPtr
 }
 
-func createTextServerAdvanced(obj gdc.ObjectPtr) *TextServerAdvanced {
-  return &TextServerAdvanced{
-    obj: obj,
-  }
+func (me *TextServerAdvanced) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TextServerAdvanced) BaseClass() string {

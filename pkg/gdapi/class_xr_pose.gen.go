@@ -9,10 +9,8 @@ type XRPose struct {
   obj gdc.ObjectPtr
 }
 
-func createXRPose(obj gdc.ObjectPtr) *XRPose {
-  return &XRPose{
-    obj: obj,
-  }
+func (me *XRPose) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *XRPose) BaseClass() string {

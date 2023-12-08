@@ -9,10 +9,8 @@ type StyleBoxTexture struct {
   obj gdc.ObjectPtr
 }
 
-func createStyleBoxTexture(obj gdc.ObjectPtr) *StyleBoxTexture {
-  return &StyleBoxTexture{
-    obj: obj,
-  }
+func (me *StyleBoxTexture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *StyleBoxTexture) BaseClass() string {

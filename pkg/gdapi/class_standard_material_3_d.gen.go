@@ -9,10 +9,8 @@ type StandardMaterial3D struct {
   obj gdc.ObjectPtr
 }
 
-func createStandardMaterial3D(obj gdc.ObjectPtr) *StandardMaterial3D {
-  return &StandardMaterial3D{
-    obj: obj,
-  }
+func (me *StandardMaterial3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *StandardMaterial3D) BaseClass() string {

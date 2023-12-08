@@ -9,10 +9,8 @@ type MultiplayerSynchronizer struct {
   obj gdc.ObjectPtr
 }
 
-func createMultiplayerSynchronizer(obj gdc.ObjectPtr) *MultiplayerSynchronizer {
-  return &MultiplayerSynchronizer{
-    obj: obj,
-  }
+func (me *MultiplayerSynchronizer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MultiplayerSynchronizer) BaseClass() string {

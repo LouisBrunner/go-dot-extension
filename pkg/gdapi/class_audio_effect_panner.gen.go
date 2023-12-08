@@ -9,10 +9,8 @@ type AudioEffectPanner struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectPanner(obj gdc.ObjectPtr) *AudioEffectPanner {
-  return &AudioEffectPanner{
-    obj: obj,
-  }
+func (me *AudioEffectPanner) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectPanner) BaseClass() string {

@@ -9,10 +9,8 @@ type PhysicsBody2D struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsBody2D(obj gdc.ObjectPtr) *PhysicsBody2D {
-  return &PhysicsBody2D{
-    obj: obj,
-  }
+func (me *PhysicsBody2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsBody2D) BaseClass() string {

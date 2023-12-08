@@ -9,10 +9,8 @@ type ProjectSettings struct {
   obj gdc.ObjectPtr
 }
 
-func createProjectSettings(obj gdc.ObjectPtr) *ProjectSettings {
-  return &ProjectSettings{
-    obj: obj,
-  }
+func (me *ProjectSettings) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ProjectSettings) BaseClass() string {

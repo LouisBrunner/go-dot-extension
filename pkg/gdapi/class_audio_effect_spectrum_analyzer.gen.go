@@ -9,10 +9,8 @@ type AudioEffectSpectrumAnalyzer struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectSpectrumAnalyzer(obj gdc.ObjectPtr) *AudioEffectSpectrumAnalyzer {
-  return &AudioEffectSpectrumAnalyzer{
-    obj: obj,
-  }
+func (me *AudioEffectSpectrumAnalyzer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectSpectrumAnalyzer) BaseClass() string {

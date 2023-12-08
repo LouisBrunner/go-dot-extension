@@ -9,10 +9,8 @@ type AudioStreamPlaybackPolyphonic struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioStreamPlaybackPolyphonic(obj gdc.ObjectPtr) *AudioStreamPlaybackPolyphonic {
-  return &AudioStreamPlaybackPolyphonic{
-    obj: obj,
-  }
+func (me *AudioStreamPlaybackPolyphonic) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioStreamPlaybackPolyphonic) BaseClass() string {

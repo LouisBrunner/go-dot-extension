@@ -9,10 +9,8 @@ type AudioStreamPlaybackResampled struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioStreamPlaybackResampled(obj gdc.ObjectPtr) *AudioStreamPlaybackResampled {
-  return &AudioStreamPlaybackResampled{
-    obj: obj,
-  }
+func (me *AudioStreamPlaybackResampled) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioStreamPlaybackResampled) BaseClass() string {

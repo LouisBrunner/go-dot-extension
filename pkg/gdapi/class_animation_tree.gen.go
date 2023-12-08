@@ -9,10 +9,8 @@ type AnimationTree struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationTree(obj gdc.ObjectPtr) *AnimationTree {
-  return &AnimationTree{
-    obj: obj,
-  }
+func (me *AnimationTree) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationTree) BaseClass() string {

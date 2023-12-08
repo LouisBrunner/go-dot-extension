@@ -50,7 +50,7 @@ func transformType(name string, typ cc.Type, isConst bool) (cType, error) {
 	switch typ.Kind() {
 	case cc.Void:
 	case cc.Char:
-		if spec.pointers == 1 {
+		if spec.pointers == 1 && spec.isConst {
 			spec.pointers = 0
 			spec.gotype = "string"
 		} else {

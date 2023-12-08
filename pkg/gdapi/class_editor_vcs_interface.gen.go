@@ -9,10 +9,8 @@ type EditorVCSInterface struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorVCSInterface(obj gdc.ObjectPtr) *EditorVCSInterface {
-  return &EditorVCSInterface{
-    obj: obj,
-  }
+func (me *EditorVCSInterface) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorVCSInterface) BaseClass() string {

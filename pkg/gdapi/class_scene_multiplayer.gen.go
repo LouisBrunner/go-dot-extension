@@ -9,10 +9,8 @@ type SceneMultiplayer struct {
   obj gdc.ObjectPtr
 }
 
-func createSceneMultiplayer(obj gdc.ObjectPtr) *SceneMultiplayer {
-  return &SceneMultiplayer{
-    obj: obj,
-  }
+func (me *SceneMultiplayer) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SceneMultiplayer) BaseClass() string {

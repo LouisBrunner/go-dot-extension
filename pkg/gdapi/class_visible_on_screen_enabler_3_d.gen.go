@@ -9,10 +9,8 @@ type VisibleOnScreenEnabler3D struct {
   obj gdc.ObjectPtr
 }
 
-func createVisibleOnScreenEnabler3D(obj gdc.ObjectPtr) *VisibleOnScreenEnabler3D {
-  return &VisibleOnScreenEnabler3D{
-    obj: obj,
-  }
+func (me *VisibleOnScreenEnabler3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisibleOnScreenEnabler3D) BaseClass() string {

@@ -9,10 +9,8 @@ type Camera2D struct {
   obj gdc.ObjectPtr
 }
 
-func createCamera2D(obj gdc.ObjectPtr) *Camera2D {
-  return &Camera2D{
-    obj: obj,
-  }
+func (me *Camera2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Camera2D) BaseClass() string {

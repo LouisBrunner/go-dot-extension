@@ -9,10 +9,8 @@ type AnimationNodeTimeSeek struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationNodeTimeSeek(obj gdc.ObjectPtr) *AnimationNodeTimeSeek {
-  return &AnimationNodeTimeSeek{
-    obj: obj,
-  }
+func (me *AnimationNodeTimeSeek) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationNodeTimeSeek) BaseClass() string {

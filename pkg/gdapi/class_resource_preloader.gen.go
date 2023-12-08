@@ -9,10 +9,8 @@ type ResourcePreloader struct {
   obj gdc.ObjectPtr
 }
 
-func createResourcePreloader(obj gdc.ObjectPtr) *ResourcePreloader {
-  return &ResourcePreloader{
-    obj: obj,
-  }
+func (me *ResourcePreloader) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ResourcePreloader) BaseClass() string {

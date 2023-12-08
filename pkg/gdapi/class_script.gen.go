@@ -9,10 +9,8 @@ type Script struct {
   obj gdc.ObjectPtr
 }
 
-func createScript(obj gdc.ObjectPtr) *Script {
-  return &Script{
-    obj: obj,
-  }
+func (me *Script) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Script) BaseClass() string {

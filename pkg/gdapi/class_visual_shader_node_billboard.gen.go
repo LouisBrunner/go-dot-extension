@@ -9,10 +9,8 @@ type VisualShaderNodeBillboard struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeBillboard(obj gdc.ObjectPtr) *VisualShaderNodeBillboard {
-  return &VisualShaderNodeBillboard{
-    obj: obj,
-  }
+func (me *VisualShaderNodeBillboard) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeBillboard) BaseClass() string {

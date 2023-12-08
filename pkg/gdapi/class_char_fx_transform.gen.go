@@ -9,10 +9,8 @@ type CharFXTransform struct {
   obj gdc.ObjectPtr
 }
 
-func createCharFXTransform(obj gdc.ObjectPtr) *CharFXTransform {
-  return &CharFXTransform{
-    obj: obj,
-  }
+func (me *CharFXTransform) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CharFXTransform) BaseClass() string {

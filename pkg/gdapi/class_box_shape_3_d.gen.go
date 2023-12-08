@@ -9,10 +9,8 @@ type BoxShape3D struct {
   obj gdc.ObjectPtr
 }
 
-func createBoxShape3D(obj gdc.ObjectPtr) *BoxShape3D {
-  return &BoxShape3D{
-    obj: obj,
-  }
+func (me *BoxShape3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *BoxShape3D) BaseClass() string {

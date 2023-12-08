@@ -9,10 +9,8 @@ type JSON struct {
   obj gdc.ObjectPtr
 }
 
-func createJSON(obj gdc.ObjectPtr) *JSON {
-  return &JSON{
-    obj: obj,
-  }
+func (me *JSON) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *JSON) BaseClass() string {

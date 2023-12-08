@@ -9,10 +9,8 @@ type AnimatableBody3D struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimatableBody3D(obj gdc.ObjectPtr) *AnimatableBody3D {
-  return &AnimatableBody3D{
-    obj: obj,
-  }
+func (me *AnimatableBody3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimatableBody3D) BaseClass() string {

@@ -9,10 +9,8 @@ type PhysicsRayQueryParameters2D struct {
   obj gdc.ObjectPtr
 }
 
-func createPhysicsRayQueryParameters2D(obj gdc.ObjectPtr) *PhysicsRayQueryParameters2D {
-  return &PhysicsRayQueryParameters2D{
-    obj: obj,
-  }
+func (me *PhysicsRayQueryParameters2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *PhysicsRayQueryParameters2D) BaseClass() string {

@@ -9,10 +9,8 @@ type UPNP struct {
   obj gdc.ObjectPtr
 }
 
-func createUPNP(obj gdc.ObjectPtr) *UPNP {
-  return &UPNP{
-    obj: obj,
-  }
+func (me *UPNP) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *UPNP) BaseClass() string {

@@ -9,10 +9,8 @@ type World2D struct {
   obj gdc.ObjectPtr
 }
 
-func createWorld2D(obj gdc.ObjectPtr) *World2D {
-  return &World2D{
-    obj: obj,
-  }
+func (me *World2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *World2D) BaseClass() string {

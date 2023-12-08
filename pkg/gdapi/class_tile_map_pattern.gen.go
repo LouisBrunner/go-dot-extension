@@ -9,10 +9,8 @@ type TileMapPattern struct {
   obj gdc.ObjectPtr
 }
 
-func createTileMapPattern(obj gdc.ObjectPtr) *TileMapPattern {
-  return &TileMapPattern{
-    obj: obj,
-  }
+func (me *TileMapPattern) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *TileMapPattern) BaseClass() string {

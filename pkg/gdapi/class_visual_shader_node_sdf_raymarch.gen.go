@@ -9,10 +9,8 @@ type VisualShaderNodeSDFRaymarch struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeSDFRaymarch(obj gdc.ObjectPtr) *VisualShaderNodeSDFRaymarch {
-  return &VisualShaderNodeSDFRaymarch{
-    obj: obj,
-  }
+func (me *VisualShaderNodeSDFRaymarch) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeSDFRaymarch) BaseClass() string {

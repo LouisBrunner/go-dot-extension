@@ -9,10 +9,8 @@ type SpinBox struct {
   obj gdc.ObjectPtr
 }
 
-func createSpinBox(obj gdc.ObjectPtr) *SpinBox {
-  return &SpinBox{
-    obj: obj,
-  }
+func (me *SpinBox) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *SpinBox) BaseClass() string {

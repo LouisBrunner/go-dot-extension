@@ -9,10 +9,8 @@ type NavigationLink2D struct {
   obj gdc.ObjectPtr
 }
 
-func createNavigationLink2D(obj gdc.ObjectPtr) *NavigationLink2D {
-  return &NavigationLink2D{
-    obj: obj,
-  }
+func (me *NavigationLink2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *NavigationLink2D) BaseClass() string {

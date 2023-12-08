@@ -9,10 +9,8 @@ type AudioEffectLimiter struct {
   obj gdc.ObjectPtr
 }
 
-func createAudioEffectLimiter(obj gdc.ObjectPtr) *AudioEffectLimiter {
-  return &AudioEffectLimiter{
-    obj: obj,
-  }
+func (me *AudioEffectLimiter) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AudioEffectLimiter) BaseClass() string {

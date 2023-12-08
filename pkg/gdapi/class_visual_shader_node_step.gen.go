@@ -9,10 +9,8 @@ type VisualShaderNodeStep struct {
   obj gdc.ObjectPtr
 }
 
-func createVisualShaderNodeStep(obj gdc.ObjectPtr) *VisualShaderNodeStep {
-  return &VisualShaderNodeStep{
-    obj: obj,
-  }
+func (me *VisualShaderNodeStep) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VisualShaderNodeStep) BaseClass() string {

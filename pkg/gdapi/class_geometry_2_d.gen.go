@@ -9,10 +9,8 @@ type Geometry2D struct {
   obj gdc.ObjectPtr
 }
 
-func createGeometry2D(obj gdc.ObjectPtr) *Geometry2D {
-  return &Geometry2D{
-    obj: obj,
-  }
+func (me *Geometry2D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Geometry2D) BaseClass() string {

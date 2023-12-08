@@ -9,10 +9,8 @@ type MenuButton struct {
   obj gdc.ObjectPtr
 }
 
-func createMenuButton(obj gdc.ObjectPtr) *MenuButton {
-  return &MenuButton{
-    obj: obj,
-  }
+func (me *MenuButton) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *MenuButton) BaseClass() string {

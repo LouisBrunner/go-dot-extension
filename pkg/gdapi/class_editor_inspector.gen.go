@@ -9,10 +9,8 @@ type EditorInspector struct {
   obj gdc.ObjectPtr
 }
 
-func createEditorInspector(obj gdc.ObjectPtr) *EditorInspector {
-  return &EditorInspector{
-    obj: obj,
-  }
+func (me *EditorInspector) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *EditorInspector) BaseClass() string {

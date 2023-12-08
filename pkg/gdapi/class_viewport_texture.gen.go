@@ -9,10 +9,8 @@ type ViewportTexture struct {
   obj gdc.ObjectPtr
 }
 
-func createViewportTexture(obj gdc.ObjectPtr) *ViewportTexture {
-  return &ViewportTexture{
-    obj: obj,
-  }
+func (me *ViewportTexture) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *ViewportTexture) BaseClass() string {

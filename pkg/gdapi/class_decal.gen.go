@@ -9,10 +9,8 @@ type Decal struct {
   obj gdc.ObjectPtr
 }
 
-func createDecal(obj gdc.ObjectPtr) *Decal {
-  return &Decal{
-    obj: obj,
-  }
+func (me *Decal) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Decal) BaseClass() string {

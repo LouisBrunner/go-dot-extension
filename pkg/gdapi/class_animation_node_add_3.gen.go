@@ -9,10 +9,8 @@ type AnimationNodeAdd3 struct {
   obj gdc.ObjectPtr
 }
 
-func createAnimationNodeAdd3(obj gdc.ObjectPtr) *AnimationNodeAdd3 {
-  return &AnimationNodeAdd3{
-    obj: obj,
-  }
+func (me *AnimationNodeAdd3) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *AnimationNodeAdd3) BaseClass() string {

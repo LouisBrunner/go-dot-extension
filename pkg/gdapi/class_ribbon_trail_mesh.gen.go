@@ -9,10 +9,8 @@ type RibbonTrailMesh struct {
   obj gdc.ObjectPtr
 }
 
-func createRibbonTrailMesh(obj gdc.ObjectPtr) *RibbonTrailMesh {
-  return &RibbonTrailMesh{
-    obj: obj,
-  }
+func (me *RibbonTrailMesh) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RibbonTrailMesh) BaseClass() string {

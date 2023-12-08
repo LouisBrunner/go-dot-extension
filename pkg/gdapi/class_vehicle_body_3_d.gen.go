@@ -9,10 +9,8 @@ type VehicleBody3D struct {
   obj gdc.ObjectPtr
 }
 
-func createVehicleBody3D(obj gdc.ObjectPtr) *VehicleBody3D {
-  return &VehicleBody3D{
-    obj: obj,
-  }
+func (me *VehicleBody3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *VehicleBody3D) BaseClass() string {

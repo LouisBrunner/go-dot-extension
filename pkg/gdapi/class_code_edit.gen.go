@@ -9,10 +9,8 @@ type CodeEdit struct {
   obj gdc.ObjectPtr
 }
 
-func createCodeEdit(obj gdc.ObjectPtr) *CodeEdit {
-  return &CodeEdit{
-    obj: obj,
-  }
+func (me *CodeEdit) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *CodeEdit) BaseClass() string {

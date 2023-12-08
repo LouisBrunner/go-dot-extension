@@ -9,10 +9,8 @@ type GLTFSkin struct {
   obj gdc.ObjectPtr
 }
 
-func createGLTFSkin(obj gdc.ObjectPtr) *GLTFSkin {
-  return &GLTFSkin{
-    obj: obj,
-  }
+func (me *GLTFSkin) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GLTFSkin) BaseClass() string {

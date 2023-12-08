@@ -9,10 +9,8 @@ type Node3D struct {
   obj gdc.ObjectPtr
 }
 
-func createNode3D(obj gdc.ObjectPtr) *Node3D {
-  return &Node3D{
-    obj: obj,
-  }
+func (me *Node3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *Node3D) BaseClass() string {

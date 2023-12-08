@@ -9,10 +9,8 @@ type HeightMapShape3D struct {
   obj gdc.ObjectPtr
 }
 
-func createHeightMapShape3D(obj gdc.ObjectPtr) *HeightMapShape3D {
-  return &HeightMapShape3D{
-    obj: obj,
-  }
+func (me *HeightMapShape3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *HeightMapShape3D) BaseClass() string {

@@ -9,10 +9,8 @@ type GDExtension struct {
   obj gdc.ObjectPtr
 }
 
-func createGDExtension(obj gdc.ObjectPtr) *GDExtension {
-  return &GDExtension{
-    obj: obj,
-  }
+func (me *GDExtension) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *GDExtension) BaseClass() string {

@@ -9,10 +9,8 @@ type RichTextLabel struct {
   obj gdc.ObjectPtr
 }
 
-func createRichTextLabel(obj gdc.ObjectPtr) *RichTextLabel {
-  return &RichTextLabel{
-    obj: obj,
-  }
+func (me *RichTextLabel) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *RichTextLabel) BaseClass() string {

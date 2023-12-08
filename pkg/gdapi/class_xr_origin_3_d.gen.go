@@ -9,10 +9,8 @@ type XROrigin3D struct {
   obj gdc.ObjectPtr
 }
 
-func createXROrigin3D(obj gdc.ObjectPtr) *XROrigin3D {
-  return &XROrigin3D{
-    obj: obj,
-  }
+func (me *XROrigin3D) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
 }
 
 func (me *XROrigin3D) BaseClass() string {
