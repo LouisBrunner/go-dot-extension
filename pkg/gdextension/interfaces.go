@@ -3,8 +3,7 @@ package gdextension
 import "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 
 type Class interface {
-	ClassName() string
-	ParentClassName() string
+	BaseClass() string
 }
 
 type ClassConstructor func() Class

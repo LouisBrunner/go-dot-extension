@@ -1,0 +1,20 @@
+{{template "preamble"}}
+package gdapi
+
+import (
+  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+)
+
+type {{.Name}} struct {
+  obj gdc.ObjectPtr
+}
+
+func create{{.Name}}(obj gdc.ObjectPtr) *{{.Name}} {
+  return &{{.Name}}{
+    obj: obj,
+  }
+}
+
+func (me *{{.Name}}) BaseClass() string {
+  return "{{.Name}}"
+}
