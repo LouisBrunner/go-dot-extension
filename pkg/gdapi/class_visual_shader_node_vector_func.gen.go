@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,38 +27,50 @@ func (me *VisualShaderNodeVectorFunc) BaseClass() string {
 
 type VisualShaderNodeVectorFuncFunction int
 const (
-  VisualShaderNodeVectorFuncFuncNormalize VisualShaderNodeVectorFuncFunction = 0
-  VisualShaderNodeVectorFuncFuncSaturate VisualShaderNodeVectorFuncFunction = 1
-  VisualShaderNodeVectorFuncFuncNegate VisualShaderNodeVectorFuncFunction = 2
-  VisualShaderNodeVectorFuncFuncReciprocal VisualShaderNodeVectorFuncFunction = 3
-  VisualShaderNodeVectorFuncFuncAbs VisualShaderNodeVectorFuncFunction = 4
-  VisualShaderNodeVectorFuncFuncAcos VisualShaderNodeVectorFuncFunction = 5
-  VisualShaderNodeVectorFuncFuncAcosh VisualShaderNodeVectorFuncFunction = 6
-  VisualShaderNodeVectorFuncFuncAsin VisualShaderNodeVectorFuncFunction = 7
-  VisualShaderNodeVectorFuncFuncAsinh VisualShaderNodeVectorFuncFunction = 8
-  VisualShaderNodeVectorFuncFuncAtan VisualShaderNodeVectorFuncFunction = 9
-  VisualShaderNodeVectorFuncFuncAtanh VisualShaderNodeVectorFuncFunction = 10
-  VisualShaderNodeVectorFuncFuncCeil VisualShaderNodeVectorFuncFunction = 11
-  VisualShaderNodeVectorFuncFuncCos VisualShaderNodeVectorFuncFunction = 12
-  VisualShaderNodeVectorFuncFuncCosh VisualShaderNodeVectorFuncFunction = 13
-  VisualShaderNodeVectorFuncFuncDegrees VisualShaderNodeVectorFuncFunction = 14
-  VisualShaderNodeVectorFuncFuncExp VisualShaderNodeVectorFuncFunction = 15
-  VisualShaderNodeVectorFuncFuncExp2 VisualShaderNodeVectorFuncFunction = 16
-  VisualShaderNodeVectorFuncFuncFloor VisualShaderNodeVectorFuncFunction = 17
-  VisualShaderNodeVectorFuncFuncFract VisualShaderNodeVectorFuncFunction = 18
-  VisualShaderNodeVectorFuncFuncInverseSqrt VisualShaderNodeVectorFuncFunction = 19
-  VisualShaderNodeVectorFuncFuncLog VisualShaderNodeVectorFuncFunction = 20
-  VisualShaderNodeVectorFuncFuncLog2 VisualShaderNodeVectorFuncFunction = 21
-  VisualShaderNodeVectorFuncFuncRadians VisualShaderNodeVectorFuncFunction = 22
-  VisualShaderNodeVectorFuncFuncRound VisualShaderNodeVectorFuncFunction = 23
-  VisualShaderNodeVectorFuncFuncRoundeven VisualShaderNodeVectorFuncFunction = 24
-  VisualShaderNodeVectorFuncFuncSign VisualShaderNodeVectorFuncFunction = 25
-  VisualShaderNodeVectorFuncFuncSin VisualShaderNodeVectorFuncFunction = 26
-  VisualShaderNodeVectorFuncFuncSinh VisualShaderNodeVectorFuncFunction = 27
-  VisualShaderNodeVectorFuncFuncSqrt VisualShaderNodeVectorFuncFunction = 28
-  VisualShaderNodeVectorFuncFuncTan VisualShaderNodeVectorFuncFunction = 29
-  VisualShaderNodeVectorFuncFuncTanh VisualShaderNodeVectorFuncFunction = 30
-  VisualShaderNodeVectorFuncFuncTrunc VisualShaderNodeVectorFuncFunction = 31
-  VisualShaderNodeVectorFuncFuncOneminus VisualShaderNodeVectorFuncFunction = 32
-  VisualShaderNodeVectorFuncFuncMax VisualShaderNodeVectorFuncFunction = 33
+  VisualShaderNodeVectorFuncFunctionFuncNormalize VisualShaderNodeVectorFuncFunction = 0
+  VisualShaderNodeVectorFuncFunctionFuncSaturate VisualShaderNodeVectorFuncFunction = 1
+  VisualShaderNodeVectorFuncFunctionFuncNegate VisualShaderNodeVectorFuncFunction = 2
+  VisualShaderNodeVectorFuncFunctionFuncReciprocal VisualShaderNodeVectorFuncFunction = 3
+  VisualShaderNodeVectorFuncFunctionFuncAbs VisualShaderNodeVectorFuncFunction = 4
+  VisualShaderNodeVectorFuncFunctionFuncAcos VisualShaderNodeVectorFuncFunction = 5
+  VisualShaderNodeVectorFuncFunctionFuncAcosh VisualShaderNodeVectorFuncFunction = 6
+  VisualShaderNodeVectorFuncFunctionFuncAsin VisualShaderNodeVectorFuncFunction = 7
+  VisualShaderNodeVectorFuncFunctionFuncAsinh VisualShaderNodeVectorFuncFunction = 8
+  VisualShaderNodeVectorFuncFunctionFuncAtan VisualShaderNodeVectorFuncFunction = 9
+  VisualShaderNodeVectorFuncFunctionFuncAtanh VisualShaderNodeVectorFuncFunction = 10
+  VisualShaderNodeVectorFuncFunctionFuncCeil VisualShaderNodeVectorFuncFunction = 11
+  VisualShaderNodeVectorFuncFunctionFuncCos VisualShaderNodeVectorFuncFunction = 12
+  VisualShaderNodeVectorFuncFunctionFuncCosh VisualShaderNodeVectorFuncFunction = 13
+  VisualShaderNodeVectorFuncFunctionFuncDegrees VisualShaderNodeVectorFuncFunction = 14
+  VisualShaderNodeVectorFuncFunctionFuncExp VisualShaderNodeVectorFuncFunction = 15
+  VisualShaderNodeVectorFuncFunctionFuncExp2 VisualShaderNodeVectorFuncFunction = 16
+  VisualShaderNodeVectorFuncFunctionFuncFloor VisualShaderNodeVectorFuncFunction = 17
+  VisualShaderNodeVectorFuncFunctionFuncFract VisualShaderNodeVectorFuncFunction = 18
+  VisualShaderNodeVectorFuncFunctionFuncInverseSqrt VisualShaderNodeVectorFuncFunction = 19
+  VisualShaderNodeVectorFuncFunctionFuncLog VisualShaderNodeVectorFuncFunction = 20
+  VisualShaderNodeVectorFuncFunctionFuncLog2 VisualShaderNodeVectorFuncFunction = 21
+  VisualShaderNodeVectorFuncFunctionFuncRadians VisualShaderNodeVectorFuncFunction = 22
+  VisualShaderNodeVectorFuncFunctionFuncRound VisualShaderNodeVectorFuncFunction = 23
+  VisualShaderNodeVectorFuncFunctionFuncRoundeven VisualShaderNodeVectorFuncFunction = 24
+  VisualShaderNodeVectorFuncFunctionFuncSign VisualShaderNodeVectorFuncFunction = 25
+  VisualShaderNodeVectorFuncFunctionFuncSin VisualShaderNodeVectorFuncFunction = 26
+  VisualShaderNodeVectorFuncFunctionFuncSinh VisualShaderNodeVectorFuncFunction = 27
+  VisualShaderNodeVectorFuncFunctionFuncSqrt VisualShaderNodeVectorFuncFunction = 28
+  VisualShaderNodeVectorFuncFunctionFuncTan VisualShaderNodeVectorFuncFunction = 29
+  VisualShaderNodeVectorFuncFunctionFuncTanh VisualShaderNodeVectorFuncFunction = 30
+  VisualShaderNodeVectorFuncFunctionFuncTrunc VisualShaderNodeVectorFuncFunction = 31
+  VisualShaderNodeVectorFuncFunctionFuncOneminus VisualShaderNodeVectorFuncFunction = 32
+  VisualShaderNodeVectorFuncFunctionFuncMax VisualShaderNodeVectorFuncFunction = 33
 )
+
+func  (me *VisualShaderNodeVectorFunc) SetFunction(func_ VisualShaderNodeVectorFuncFunction, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeVectorFunc) GetFunction() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

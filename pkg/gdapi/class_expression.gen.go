@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,23 @@ func (me *Expression) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Expression) BaseClass() string {
   return "Expression"
 }
+
+func  (me *Expression) Parse(expression String, input_names PackedStringArray, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Expression) Execute(inputs Array, base_instance Object, show_error bool, const_calls_only bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Expression) HasExecuteFailed() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Expression) GetErrorText() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

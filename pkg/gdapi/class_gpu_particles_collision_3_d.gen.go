@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *GPUParticlesCollision3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *GPUParticlesCollision3D) BaseClass() string {
   return "GPUParticlesCollision3D"
 }
+
+func  (me *GPUParticlesCollision3D) SetCullMask(mask int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GPUParticlesCollision3D) GetCullMask() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

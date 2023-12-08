@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,11 @@ func (me *RichTextEffect) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *RichTextEffect) BaseClass() string {
   return "RichTextEffect"
 }
+
+func  (me *RichTextEffect) XProcessCustomFx(char_fx CharFXTransform, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

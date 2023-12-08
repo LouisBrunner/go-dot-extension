@@ -1,5 +1,6 @@
 {{template "preamble"}}
-package gdapi
+
+type RealType float32 // TODO: should depend on a flag
 
 const (
 {{- range .Sizes}}

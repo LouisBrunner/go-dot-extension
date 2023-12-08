@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *InputEventShortcut) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *InputEventShortcut) BaseClass() string {
   return "InputEventShortcut"
 }
+
+func  (me *InputEventShortcut) SetShortcut(shortcut Shortcut, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *InputEventShortcut) GetShortcut() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,8 +27,32 @@ func (me *CameraServer) BaseClass() string {
 
 type CameraServerFeedImage int
 const (
-  CameraServerFeedRgbaImage CameraServerFeedImage = 0
-  CameraServerFeedYcbcrImage CameraServerFeedImage = 0
-  CameraServerFeedYImage CameraServerFeedImage = 0
-  CameraServerFeedCbcrImage CameraServerFeedImage = 1
+  CameraServerFeedImageFeedRgbaImage CameraServerFeedImage = 0
+  CameraServerFeedImageFeedYcbcrImage CameraServerFeedImage = 0
+  CameraServerFeedImageFeedYImage CameraServerFeedImage = 0
+  CameraServerFeedImageFeedCbcrImage CameraServerFeedImage = 1
 )
+
+func  (me *CameraServer) GetFeed(index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CameraServer) GetFeedCount() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CameraServer) Feeds() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CameraServer) AddFeed(feed CameraFeed, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CameraServer) RemoveFeed(feed CameraFeed, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

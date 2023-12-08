@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,151 @@ func (me *CollisionObject3D) BaseClass() string {
 
 type CollisionObject3DDisableMode int
 const (
-  CollisionObject3DDisableModeRemove CollisionObject3DDisableMode = 0
-  CollisionObject3DDisableModeMakeStatic CollisionObject3DDisableMode = 1
-  CollisionObject3DDisableModeKeepActive CollisionObject3DDisableMode = 2
+  CollisionObject3DDisableModeDisableModeRemove CollisionObject3DDisableMode = 0
+  CollisionObject3DDisableModeDisableModeMakeStatic CollisionObject3DDisableMode = 1
+  CollisionObject3DDisableModeDisableModeKeepActive CollisionObject3DDisableMode = 2
 )
+
+func  (me *CollisionObject3D) XInputEvent(camera Camera3D, event InputEvent, position Vector3, normal Vector3, shape_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) XMouseEnter() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) XMouseExit() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) SetCollisionLayer(layer int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) GetCollisionLayer() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) SetCollisionMask(mask int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) GetCollisionMask() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) SetCollisionLayerValue(layer_number int, value bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) GetCollisionLayerValue(layer_number int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) SetCollisionMaskValue(layer_number int, value bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) GetCollisionMaskValue(layer_number int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) SetCollisionPriority(priority float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) GetCollisionPriority() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) SetDisableMode(mode CollisionObject3DDisableMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) GetDisableMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) SetRayPickable(ray_pickable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) IsRayPickable() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) SetCaptureInputOnDrag(enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) GetCaptureInputOnDrag() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) GetRid() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) CreateShapeOwner(owner Object, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) RemoveShapeOwner(owner_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) GetShapeOwners() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) ShapeOwnerSetTransform(owner_id int, transform Transform3D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) ShapeOwnerGetTransform(owner_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) ShapeOwnerGetOwner(owner_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) ShapeOwnerSetDisabled(owner_id int, disabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) IsShapeOwnerDisabled(owner_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) ShapeOwnerAddShape(owner_id int, shape Shape3D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) ShapeOwnerGetShapeCount(owner_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) ShapeOwnerGetShape(owner_id int, shape_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) ShapeOwnerGetShapeIndex(owner_id int, shape_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) ShapeOwnerRemoveShape(owner_id int, shape_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) ShapeOwnerClearShapes(owner_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CollisionObject3D) ShapeFindOwner(shape_index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

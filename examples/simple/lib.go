@@ -15,9 +15,9 @@ type MyNode2D struct {
 	secret string
 }
 
-// func (n *MyNode2D) Move(vec gdapi.Vector2) {
-// 	n.Node2D.SetPosition(vec.MulScalar(n.Speed))
-// }
+func (n *MyNode2D) Move(vec gdapi.Vector2) {
+	n.Node2D.SetPosition(vec.MulScalar(n.Speed))
+}
 
 func (n *MyNode2D) X_Ready() {
 	n.printSecret()

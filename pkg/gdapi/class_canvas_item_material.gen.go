@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,16 +27,68 @@ func (me *CanvasItemMaterial) BaseClass() string {
 
 type CanvasItemMaterialBlendMode int
 const (
-  CanvasItemMaterialBlendModeMix CanvasItemMaterialBlendMode = 0
-  CanvasItemMaterialBlendModeAdd CanvasItemMaterialBlendMode = 1
-  CanvasItemMaterialBlendModeSub CanvasItemMaterialBlendMode = 2
-  CanvasItemMaterialBlendModeMul CanvasItemMaterialBlendMode = 3
-  CanvasItemMaterialBlendModePremultAlpha CanvasItemMaterialBlendMode = 4
+  CanvasItemMaterialBlendModeBlendModeMix CanvasItemMaterialBlendMode = 0
+  CanvasItemMaterialBlendModeBlendModeAdd CanvasItemMaterialBlendMode = 1
+  CanvasItemMaterialBlendModeBlendModeSub CanvasItemMaterialBlendMode = 2
+  CanvasItemMaterialBlendModeBlendModeMul CanvasItemMaterialBlendMode = 3
+  CanvasItemMaterialBlendModeBlendModePremultAlpha CanvasItemMaterialBlendMode = 4
 )
 
 type CanvasItemMaterialLightMode int
 const (
-  CanvasItemMaterialLightModeNormal CanvasItemMaterialLightMode = 0
-  CanvasItemMaterialLightModeUnshaded CanvasItemMaterialLightMode = 1
-  CanvasItemMaterialLightModeLightOnly CanvasItemMaterialLightMode = 2
+  CanvasItemMaterialLightModeLightModeNormal CanvasItemMaterialLightMode = 0
+  CanvasItemMaterialLightModeLightModeUnshaded CanvasItemMaterialLightMode = 1
+  CanvasItemMaterialLightModeLightModeLightOnly CanvasItemMaterialLightMode = 2
 )
+
+func  (me *CanvasItemMaterial) SetBlendMode(blend_mode CanvasItemMaterialBlendMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CanvasItemMaterial) GetBlendMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CanvasItemMaterial) SetLightMode(light_mode CanvasItemMaterialLightMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CanvasItemMaterial) GetLightMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CanvasItemMaterial) SetParticlesAnimation(particles_anim bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CanvasItemMaterial) GetParticlesAnimation() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CanvasItemMaterial) SetParticlesAnimHFrames(frames int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CanvasItemMaterial) GetParticlesAnimHFrames() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CanvasItemMaterial) SetParticlesAnimVFrames(frames int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CanvasItemMaterial) GetParticlesAnimVFrames() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CanvasItemMaterial) SetParticlesAnimLoop(loop bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CanvasItemMaterial) GetParticlesAnimLoop() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

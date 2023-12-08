@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,27 +27,115 @@ func (me *Time) BaseClass() string {
 
 type TimeMonth int
 const (
-  TimeMonthJanuary TimeMonth = 1
-  TimeMonthFebruary TimeMonth = 2
-  TimeMonthMarch TimeMonth = 3
-  TimeMonthApril TimeMonth = 4
-  TimeMonthMay TimeMonth = 5
-  TimeMonthJune TimeMonth = 6
-  TimeMonthJuly TimeMonth = 7
-  TimeMonthAugust TimeMonth = 8
-  TimeMonthSeptember TimeMonth = 9
-  TimeMonthOctober TimeMonth = 10
-  TimeMonthNovember TimeMonth = 11
-  TimeMonthDecember TimeMonth = 12
+  TimeMonthMonthJanuary TimeMonth = 1
+  TimeMonthMonthFebruary TimeMonth = 2
+  TimeMonthMonthMarch TimeMonth = 3
+  TimeMonthMonthApril TimeMonth = 4
+  TimeMonthMonthMay TimeMonth = 5
+  TimeMonthMonthJune TimeMonth = 6
+  TimeMonthMonthJuly TimeMonth = 7
+  TimeMonthMonthAugust TimeMonth = 8
+  TimeMonthMonthSeptember TimeMonth = 9
+  TimeMonthMonthOctober TimeMonth = 10
+  TimeMonthMonthNovember TimeMonth = 11
+  TimeMonthMonthDecember TimeMonth = 12
 )
 
 type TimeWeekday int
 const (
-  TimeWeekdaySunday TimeWeekday = 0
-  TimeWeekdayMonday TimeWeekday = 1
-  TimeWeekdayTuesday TimeWeekday = 2
-  TimeWeekdayWednesday TimeWeekday = 3
-  TimeWeekdayThursday TimeWeekday = 4
-  TimeWeekdayFriday TimeWeekday = 5
-  TimeWeekdaySaturday TimeWeekday = 6
+  TimeWeekdayWeekdaySunday TimeWeekday = 0
+  TimeWeekdayWeekdayMonday TimeWeekday = 1
+  TimeWeekdayWeekdayTuesday TimeWeekday = 2
+  TimeWeekdayWeekdayWednesday TimeWeekday = 3
+  TimeWeekdayWeekdayThursday TimeWeekday = 4
+  TimeWeekdayWeekdayFriday TimeWeekday = 5
+  TimeWeekdayWeekdaySaturday TimeWeekday = 6
 )
+
+func  (me *Time) GetDatetimeDictFromUnixTime(unix_time_val int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetDateDictFromUnixTime(unix_time_val int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetTimeDictFromUnixTime(unix_time_val int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetDatetimeStringFromUnixTime(unix_time_val int, use_space bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetDateStringFromUnixTime(unix_time_val int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetTimeStringFromUnixTime(unix_time_val int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetDatetimeDictFromDatetimeString(datetime String, weekday bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetDatetimeStringFromDatetimeDict(datetime Dictionary, use_space bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetUnixTimeFromDatetimeDict(datetime Dictionary, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetUnixTimeFromDatetimeString(datetime String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetOffsetStringFromOffsetMinutes(offset_minutes int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetDatetimeDictFromSystem(utc bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetDateDictFromSystem(utc bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetTimeDictFromSystem(utc bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetDatetimeStringFromSystem(utc bool, use_space bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetDateStringFromSystem(utc bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetTimeStringFromSystem(utc bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetTimeZoneFromSystem() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetUnixTimeFromSystem() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetTicksMsec() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Time) GetTicksUsec() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

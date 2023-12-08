@@ -1,0 +1,15 @@
+{{template "preamble"}}
+
+{{- range .}}
+
+type {{.Name}} struct {
+{{range .Format.Fields}}  {{pascalCased .Name}} {{mapType .Type}}
+{{end -}}
+}
+
+func Default{{.Name}}() {{.Name}} {
+  return {{.Name}}{{"{"}}{{range .Format.Fields}}{{if ne .Default ""}}
+      {{pascalCased .Name}}: {{mapLiteral .Default}},{{end}}{{end}}
+  }
+}
+{{- end}}

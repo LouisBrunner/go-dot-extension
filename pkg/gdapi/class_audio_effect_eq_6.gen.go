@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *AudioEffectEQ6) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioEffectEQ6) BaseClass() string {
   return "AudioEffectEQ6"
 }
+
+// TODO: properties
+
+// TODO: signals

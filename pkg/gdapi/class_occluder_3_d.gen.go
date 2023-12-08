@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *Occluder3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Occluder3D) BaseClass() string {
   return "Occluder3D"
 }
+
+func  (me *Occluder3D) GetVertices() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Occluder3D) GetIndices() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

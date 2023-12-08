@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -17,6 +25,54 @@ func (me *RDFramebufferPass) BaseClass() string {
   return "RDFramebufferPass"
 }
 
-const (
-  RDFramebufferPassATTACHMENT_UNUSED = -1
+// TODO: needed?
+// const (
+// // )
+
+var (
+  RDFramebufferPassAttachmentUnused = "-1" // TODO: construct correctly
 )
+
+func  (me *RDFramebufferPass) SetColorAttachments(p_member PackedInt32Array, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDFramebufferPass) GetColorAttachments() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDFramebufferPass) SetInputAttachments(p_member PackedInt32Array, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDFramebufferPass) GetInputAttachments() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDFramebufferPass) SetResolveAttachments(p_member PackedInt32Array, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDFramebufferPass) GetResolveAttachments() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDFramebufferPass) SetPreserveAttachments(p_member PackedInt32Array, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDFramebufferPass) GetPreserveAttachments() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDFramebufferPass) SetDepthAttachment(p_member int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDFramebufferPass) GetDepthAttachment() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,8 +27,28 @@ func (me *VisualShaderNodeParameter) BaseClass() string {
 
 type VisualShaderNodeParameterQualifier int
 const (
-  VisualShaderNodeParameterQualNone VisualShaderNodeParameterQualifier = 0
-  VisualShaderNodeParameterQualGlobal VisualShaderNodeParameterQualifier = 1
-  VisualShaderNodeParameterQualInstance VisualShaderNodeParameterQualifier = 2
-  VisualShaderNodeParameterQualMax VisualShaderNodeParameterQualifier = 3
+  VisualShaderNodeParameterQualifierQualNone VisualShaderNodeParameterQualifier = 0
+  VisualShaderNodeParameterQualifierQualGlobal VisualShaderNodeParameterQualifier = 1
+  VisualShaderNodeParameterQualifierQualInstance VisualShaderNodeParameterQualifier = 2
+  VisualShaderNodeParameterQualifierQualMax VisualShaderNodeParameterQualifier = 3
 )
+
+func  (me *VisualShaderNodeParameter) SetParameterName(name String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParameter) GetParameterName() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParameter) SetQualifier(qualifier VisualShaderNodeParameterQualifier, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParameter) GetQualifier() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

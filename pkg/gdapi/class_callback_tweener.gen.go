@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,11 @@ func (me *CallbackTweener) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CallbackTweener) BaseClass() string {
   return "CallbackTweener"
 }
+
+func  (me *CallbackTweener) SetDelay(delay float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

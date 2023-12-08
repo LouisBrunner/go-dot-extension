@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,27 @@ func (me *BackBufferCopy) BaseClass() string {
 
 type BackBufferCopyCopyMode int
 const (
-  BackBufferCopyCopyModeDisabled BackBufferCopyCopyMode = 0
-  BackBufferCopyCopyModeRect BackBufferCopyCopyMode = 1
-  BackBufferCopyCopyModeViewport BackBufferCopyCopyMode = 2
+  BackBufferCopyCopyModeCopyModeDisabled BackBufferCopyCopyMode = 0
+  BackBufferCopyCopyModeCopyModeRect BackBufferCopyCopyMode = 1
+  BackBufferCopyCopyModeCopyModeViewport BackBufferCopyCopyMode = 2
 )
+
+func  (me *BackBufferCopy) SetRect(rect Rect2, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *BackBufferCopy) GetRect() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *BackBufferCopy) SetCopyMode(copy_mode BackBufferCopyCopyMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *BackBufferCopy) GetCopyMode() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

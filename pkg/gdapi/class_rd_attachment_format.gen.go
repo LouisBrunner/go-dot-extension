@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,31 @@ func (me *RDAttachmentFormat) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *RDAttachmentFormat) BaseClass() string {
   return "RDAttachmentFormat"
 }
+
+func  (me *RDAttachmentFormat) SetFormat(p_member RenderingDeviceDataFormat, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDAttachmentFormat) GetFormat() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDAttachmentFormat) SetSamples(p_member RenderingDeviceTextureSamples, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDAttachmentFormat) GetSamples() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDAttachmentFormat) SetUsageFlags(p_member int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDAttachmentFormat) GetUsageFlags() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

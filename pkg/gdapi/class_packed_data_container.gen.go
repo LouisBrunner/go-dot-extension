@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *PackedDataContainer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *PackedDataContainer) BaseClass() string {
   return "PackedDataContainer"
 }
+
+func  (me *PackedDataContainer) Pack(value Variant, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *PackedDataContainer) Size() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

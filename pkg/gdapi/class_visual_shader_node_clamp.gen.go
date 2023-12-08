@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,11 +27,23 @@ func (me *VisualShaderNodeClamp) BaseClass() string {
 
 type VisualShaderNodeClampOpType int
 const (
-  VisualShaderNodeClampOpTypeFloat VisualShaderNodeClampOpType = 0
-  VisualShaderNodeClampOpTypeInt VisualShaderNodeClampOpType = 1
-  VisualShaderNodeClampOpTypeUint VisualShaderNodeClampOpType = 2
-  VisualShaderNodeClampOpTypeVector2D VisualShaderNodeClampOpType = 3
-  VisualShaderNodeClampOpTypeVector3D VisualShaderNodeClampOpType = 4
-  VisualShaderNodeClampOpTypeVector4D VisualShaderNodeClampOpType = 5
-  VisualShaderNodeClampOpTypeMax VisualShaderNodeClampOpType = 6
+  VisualShaderNodeClampOpTypeOpTypeFloat VisualShaderNodeClampOpType = 0
+  VisualShaderNodeClampOpTypeOpTypeInt VisualShaderNodeClampOpType = 1
+  VisualShaderNodeClampOpTypeOpTypeUint VisualShaderNodeClampOpType = 2
+  VisualShaderNodeClampOpTypeOpTypeVector2D VisualShaderNodeClampOpType = 3
+  VisualShaderNodeClampOpTypeOpTypeVector3D VisualShaderNodeClampOpType = 4
+  VisualShaderNodeClampOpTypeOpTypeVector4D VisualShaderNodeClampOpType = 5
+  VisualShaderNodeClampOpTypeOpTypeMax VisualShaderNodeClampOpType = 6
 )
+
+func  (me *VisualShaderNodeClamp) SetOpType(op_type VisualShaderNodeClampOpType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeClamp) GetOpType() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

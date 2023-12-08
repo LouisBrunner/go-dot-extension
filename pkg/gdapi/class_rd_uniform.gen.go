@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,35 @@ func (me *RDUniform) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *RDUniform) BaseClass() string {
   return "RDUniform"
 }
+
+func  (me *RDUniform) SetUniformType(p_member RenderingDeviceUniformType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDUniform) GetUniformType() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDUniform) SetBinding(p_member int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDUniform) GetBinding() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDUniform) AddId(id RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDUniform) ClearIds() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RDUniform) GetIds() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

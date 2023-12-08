@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,11 @@ func (me *WeakRef) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *WeakRef) BaseClass() string {
   return "WeakRef"
 }
+
+func  (me *WeakRef) GetRef() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

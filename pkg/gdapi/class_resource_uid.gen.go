@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -17,6 +25,46 @@ func (me *ResourceUID) BaseClass() string {
   return "ResourceUID"
 }
 
-const (
-  ResourceUIDINVALID_ID = -1
+// TODO: needed?
+// const (
+// // )
+
+var (
+  ResourceUIDInvalidId = "-1" // TODO: construct correctly
 )
+
+func  (me *ResourceUID) IdToText(id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceUID) TextToId(text_id String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceUID) CreateId() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceUID) HasId(id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceUID) AddId(id int, path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceUID) SetId(id int, path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceUID) GetIdPath(id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceUID) RemoveId(id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

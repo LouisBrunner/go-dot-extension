@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,23 @@ func (me *MeshInstance2D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *MeshInstance2D) BaseClass() string {
   return "MeshInstance2D"
 }
+
+func  (me *MeshInstance2D) SetMesh(mesh Mesh, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MeshInstance2D) GetMesh() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MeshInstance2D) SetTexture(texture Texture2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MeshInstance2D) GetTexture() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

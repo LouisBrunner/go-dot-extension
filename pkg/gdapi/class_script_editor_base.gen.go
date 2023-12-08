@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *ScriptEditorBase) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ScriptEditorBase) BaseClass() string {
   return "ScriptEditorBase"
 }
+
+func  (me *ScriptEditorBase) GetBaseEditor() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ScriptEditorBase) AddSyntaxHighlighter(highlighter EditorSyntaxHighlighter, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,9 +27,21 @@ func (me *VisualShaderNodeColorFunc) BaseClass() string {
 
 type VisualShaderNodeColorFuncFunction int
 const (
-  VisualShaderNodeColorFuncFuncGrayscale VisualShaderNodeColorFuncFunction = 0
-  VisualShaderNodeColorFuncFuncHsv2Rgb VisualShaderNodeColorFuncFunction = 1
-  VisualShaderNodeColorFuncFuncRgb2Hsv VisualShaderNodeColorFuncFunction = 2
-  VisualShaderNodeColorFuncFuncSepia VisualShaderNodeColorFuncFunction = 3
-  VisualShaderNodeColorFuncFuncMax VisualShaderNodeColorFuncFunction = 4
+  VisualShaderNodeColorFuncFunctionFuncGrayscale VisualShaderNodeColorFuncFunction = 0
+  VisualShaderNodeColorFuncFunctionFuncHsv2Rgb VisualShaderNodeColorFuncFunction = 1
+  VisualShaderNodeColorFuncFunctionFuncRgb2Hsv VisualShaderNodeColorFuncFunction = 2
+  VisualShaderNodeColorFuncFunctionFuncSepia VisualShaderNodeColorFuncFunction = 3
+  VisualShaderNodeColorFuncFunctionFuncMax VisualShaderNodeColorFuncFunction = 4
 )
+
+func  (me *VisualShaderNodeColorFunc) SetFunction(func_ VisualShaderNodeColorFuncFunction, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeColorFunc) GetFunction() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

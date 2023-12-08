@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,11 @@ func (me *PlaceholderMesh) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *PlaceholderMesh) BaseClass() string {
   return "PlaceholderMesh"
 }
+
+func  (me *PlaceholderMesh) SetAabb(aabb AABB, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

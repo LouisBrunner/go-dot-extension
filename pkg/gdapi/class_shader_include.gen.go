@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *ShaderInclude) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ShaderInclude) BaseClass() string {
   return "ShaderInclude"
 }
+
+func  (me *ShaderInclude) SetCode(code String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ShaderInclude) GetCode() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

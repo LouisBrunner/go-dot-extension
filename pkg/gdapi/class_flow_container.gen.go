@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,31 @@ func (me *FlowContainer) BaseClass() string {
 
 type FlowContainerAlignmentMode int
 const (
-  FlowContainerAlignmentBegin FlowContainerAlignmentMode = 0
-  FlowContainerAlignmentCenter FlowContainerAlignmentMode = 1
-  FlowContainerAlignmentEnd FlowContainerAlignmentMode = 2
+  FlowContainerAlignmentModeAlignmentBegin FlowContainerAlignmentMode = 0
+  FlowContainerAlignmentModeAlignmentCenter FlowContainerAlignmentMode = 1
+  FlowContainerAlignmentModeAlignmentEnd FlowContainerAlignmentMode = 2
 )
+
+func  (me *FlowContainer) GetLineCount() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *FlowContainer) SetAlignment(alignment FlowContainerAlignmentMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *FlowContainer) GetAlignment() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *FlowContainer) SetVertical(vertical bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *FlowContainer) IsVertical() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

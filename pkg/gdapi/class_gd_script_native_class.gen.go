@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,11 @@ func (me *GDScriptNativeClass) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *GDScriptNativeClass) BaseClass() string {
   return "GDScriptNativeClass"
 }
+
+func  (me *GDScriptNativeClass) New() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

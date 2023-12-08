@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *VisualShaderNodeBooleanConstant) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeBooleanConstant) BaseClass() string {
   return "VisualShaderNodeBooleanConstant"
 }
+
+func  (me *VisualShaderNodeBooleanConstant) SetConstant(constant bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeBooleanConstant) GetConstant() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

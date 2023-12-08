@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *GLTFDocumentExtensionConvertImporterMesh) SetBaseObject(obj gdc.Object
 func (me *GLTFDocumentExtensionConvertImporterMesh) BaseClass() string {
   return "GLTFDocumentExtensionConvertImporterMesh"
 }
+
+// TODO: properties
+
+// TODO: signals

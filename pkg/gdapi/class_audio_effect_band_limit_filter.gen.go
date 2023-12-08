@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *AudioEffectBandLimitFilter) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioEffectBandLimitFilter) BaseClass() string {
   return "AudioEffectBandLimitFilter"
 }
+
+// TODO: properties
+
+// TODO: signals

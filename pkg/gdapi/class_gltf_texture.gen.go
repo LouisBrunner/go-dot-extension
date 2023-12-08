@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,23 @@ func (me *GLTFTexture) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *GLTFTexture) BaseClass() string {
   return "GLTFTexture"
 }
+
+func  (me *GLTFTexture) GetSrcImage() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GLTFTexture) SetSrcImage(src_image int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GLTFTexture) GetSampler() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GLTFTexture) SetSampler(sampler int, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

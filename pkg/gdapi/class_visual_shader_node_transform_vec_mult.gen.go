@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,9 +27,21 @@ func (me *VisualShaderNodeTransformVecMult) BaseClass() string {
 
 type VisualShaderNodeTransformVecMultOperator int
 const (
-  VisualShaderNodeTransformVecMultOpAxb VisualShaderNodeTransformVecMultOperator = 0
-  VisualShaderNodeTransformVecMultOpBxa VisualShaderNodeTransformVecMultOperator = 1
-  VisualShaderNodeTransformVecMultOp3X3Axb VisualShaderNodeTransformVecMultOperator = 2
-  VisualShaderNodeTransformVecMultOp3X3Bxa VisualShaderNodeTransformVecMultOperator = 3
-  VisualShaderNodeTransformVecMultOpMax VisualShaderNodeTransformVecMultOperator = 4
+  VisualShaderNodeTransformVecMultOperatorOpAxb VisualShaderNodeTransformVecMultOperator = 0
+  VisualShaderNodeTransformVecMultOperatorOpBxa VisualShaderNodeTransformVecMultOperator = 1
+  VisualShaderNodeTransformVecMultOperatorOp3X3Axb VisualShaderNodeTransformVecMultOperator = 2
+  VisualShaderNodeTransformVecMultOperatorOp3X3Bxa VisualShaderNodeTransformVecMultOperator = 3
+  VisualShaderNodeTransformVecMultOperatorOpMax VisualShaderNodeTransformVecMultOperator = 4
 )
+
+func  (me *VisualShaderNodeTransformVecMult) SetOperator(op VisualShaderNodeTransformVecMultOperator, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTransformVecMult) GetOperator() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

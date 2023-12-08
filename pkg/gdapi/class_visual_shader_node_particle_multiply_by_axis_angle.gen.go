@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *VisualShaderNodeParticleMultiplyByAxisAngle) SetBaseObject(obj gdc.Obj
 func (me *VisualShaderNodeParticleMultiplyByAxisAngle) BaseClass() string {
   return "VisualShaderNodeParticleMultiplyByAxisAngle"
 }
+
+func  (me *VisualShaderNodeParticleMultiplyByAxisAngle) SetDegreesMode(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParticleMultiplyByAxisAngle) IsDegreesMode() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

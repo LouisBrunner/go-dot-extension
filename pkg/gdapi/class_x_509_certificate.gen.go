@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,23 @@ func (me *X509Certificate) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *X509Certificate) BaseClass() string {
   return "X509Certificate"
 }
+
+func  (me *X509Certificate) Save(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *X509Certificate) Load(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *X509Certificate) SaveToString() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *X509Certificate) LoadFromString(string String, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

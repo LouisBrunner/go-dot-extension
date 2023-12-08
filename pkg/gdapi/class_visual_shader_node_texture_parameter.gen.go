@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,46 +27,90 @@ func (me *VisualShaderNodeTextureParameter) BaseClass() string {
 
 type VisualShaderNodeTextureParameterTextureType int
 const (
-  VisualShaderNodeTextureParameterTypeData VisualShaderNodeTextureParameterTextureType = 0
-  VisualShaderNodeTextureParameterTypeColor VisualShaderNodeTextureParameterTextureType = 1
-  VisualShaderNodeTextureParameterTypeNormalMap VisualShaderNodeTextureParameterTextureType = 2
-  VisualShaderNodeTextureParameterTypeAnisotropy VisualShaderNodeTextureParameterTextureType = 3
-  VisualShaderNodeTextureParameterTypeMax VisualShaderNodeTextureParameterTextureType = 4
+  VisualShaderNodeTextureParameterTextureTypeTypeData VisualShaderNodeTextureParameterTextureType = 0
+  VisualShaderNodeTextureParameterTextureTypeTypeColor VisualShaderNodeTextureParameterTextureType = 1
+  VisualShaderNodeTextureParameterTextureTypeTypeNormalMap VisualShaderNodeTextureParameterTextureType = 2
+  VisualShaderNodeTextureParameterTextureTypeTypeAnisotropy VisualShaderNodeTextureParameterTextureType = 3
+  VisualShaderNodeTextureParameterTextureTypeTypeMax VisualShaderNodeTextureParameterTextureType = 4
 )
 
 type VisualShaderNodeTextureParameterColorDefault int
 const (
-  VisualShaderNodeTextureParameterColorDefaultWhite VisualShaderNodeTextureParameterColorDefault = 0
-  VisualShaderNodeTextureParameterColorDefaultBlack VisualShaderNodeTextureParameterColorDefault = 1
-  VisualShaderNodeTextureParameterColorDefaultTransparent VisualShaderNodeTextureParameterColorDefault = 2
-  VisualShaderNodeTextureParameterColorDefaultMax VisualShaderNodeTextureParameterColorDefault = 3
+  VisualShaderNodeTextureParameterColorDefaultColorDefaultWhite VisualShaderNodeTextureParameterColorDefault = 0
+  VisualShaderNodeTextureParameterColorDefaultColorDefaultBlack VisualShaderNodeTextureParameterColorDefault = 1
+  VisualShaderNodeTextureParameterColorDefaultColorDefaultTransparent VisualShaderNodeTextureParameterColorDefault = 2
+  VisualShaderNodeTextureParameterColorDefaultColorDefaultMax VisualShaderNodeTextureParameterColorDefault = 3
 )
 
 type VisualShaderNodeTextureParameterTextureFilter int
 const (
-  VisualShaderNodeTextureParameterFilterDefault VisualShaderNodeTextureParameterTextureFilter = 0
-  VisualShaderNodeTextureParameterFilterNearest VisualShaderNodeTextureParameterTextureFilter = 1
-  VisualShaderNodeTextureParameterFilterLinear VisualShaderNodeTextureParameterTextureFilter = 2
-  VisualShaderNodeTextureParameterFilterNearestMipmap VisualShaderNodeTextureParameterTextureFilter = 3
-  VisualShaderNodeTextureParameterFilterLinearMipmap VisualShaderNodeTextureParameterTextureFilter = 4
-  VisualShaderNodeTextureParameterFilterNearestMipmapAnisotropic VisualShaderNodeTextureParameterTextureFilter = 5
-  VisualShaderNodeTextureParameterFilterLinearMipmapAnisotropic VisualShaderNodeTextureParameterTextureFilter = 6
-  VisualShaderNodeTextureParameterFilterMax VisualShaderNodeTextureParameterTextureFilter = 7
+  VisualShaderNodeTextureParameterTextureFilterFilterDefault VisualShaderNodeTextureParameterTextureFilter = 0
+  VisualShaderNodeTextureParameterTextureFilterFilterNearest VisualShaderNodeTextureParameterTextureFilter = 1
+  VisualShaderNodeTextureParameterTextureFilterFilterLinear VisualShaderNodeTextureParameterTextureFilter = 2
+  VisualShaderNodeTextureParameterTextureFilterFilterNearestMipmap VisualShaderNodeTextureParameterTextureFilter = 3
+  VisualShaderNodeTextureParameterTextureFilterFilterLinearMipmap VisualShaderNodeTextureParameterTextureFilter = 4
+  VisualShaderNodeTextureParameterTextureFilterFilterNearestMipmapAnisotropic VisualShaderNodeTextureParameterTextureFilter = 5
+  VisualShaderNodeTextureParameterTextureFilterFilterLinearMipmapAnisotropic VisualShaderNodeTextureParameterTextureFilter = 6
+  VisualShaderNodeTextureParameterTextureFilterFilterMax VisualShaderNodeTextureParameterTextureFilter = 7
 )
 
 type VisualShaderNodeTextureParameterTextureRepeat int
 const (
-  VisualShaderNodeTextureParameterRepeatDefault VisualShaderNodeTextureParameterTextureRepeat = 0
-  VisualShaderNodeTextureParameterRepeatEnabled VisualShaderNodeTextureParameterTextureRepeat = 1
-  VisualShaderNodeTextureParameterRepeatDisabled VisualShaderNodeTextureParameterTextureRepeat = 2
-  VisualShaderNodeTextureParameterRepeatMax VisualShaderNodeTextureParameterTextureRepeat = 3
+  VisualShaderNodeTextureParameterTextureRepeatRepeatDefault VisualShaderNodeTextureParameterTextureRepeat = 0
+  VisualShaderNodeTextureParameterTextureRepeatRepeatEnabled VisualShaderNodeTextureParameterTextureRepeat = 1
+  VisualShaderNodeTextureParameterTextureRepeatRepeatDisabled VisualShaderNodeTextureParameterTextureRepeat = 2
+  VisualShaderNodeTextureParameterTextureRepeatRepeatMax VisualShaderNodeTextureParameterTextureRepeat = 3
 )
 
 type VisualShaderNodeTextureParameterTextureSource int
 const (
-  VisualShaderNodeTextureParameterSourceNone VisualShaderNodeTextureParameterTextureSource = 0
-  VisualShaderNodeTextureParameterSourceScreen VisualShaderNodeTextureParameterTextureSource = 1
-  VisualShaderNodeTextureParameterSourceDepth VisualShaderNodeTextureParameterTextureSource = 2
-  VisualShaderNodeTextureParameterSourceNormalRoughness VisualShaderNodeTextureParameterTextureSource = 3
-  VisualShaderNodeTextureParameterSourceMax VisualShaderNodeTextureParameterTextureSource = 4
+  VisualShaderNodeTextureParameterTextureSourceSourceNone VisualShaderNodeTextureParameterTextureSource = 0
+  VisualShaderNodeTextureParameterTextureSourceSourceScreen VisualShaderNodeTextureParameterTextureSource = 1
+  VisualShaderNodeTextureParameterTextureSourceSourceDepth VisualShaderNodeTextureParameterTextureSource = 2
+  VisualShaderNodeTextureParameterTextureSourceSourceNormalRoughness VisualShaderNodeTextureParameterTextureSource = 3
+  VisualShaderNodeTextureParameterTextureSourceSourceMax VisualShaderNodeTextureParameterTextureSource = 4
 )
+
+func  (me *VisualShaderNodeTextureParameter) SetTextureType(type_ VisualShaderNodeTextureParameterTextureType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTextureParameter) GetTextureType() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTextureParameter) SetColorDefault(color VisualShaderNodeTextureParameterColorDefault, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTextureParameter) GetColorDefault() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTextureParameter) SetTextureFilter(filter VisualShaderNodeTextureParameterTextureFilter, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTextureParameter) GetTextureFilter() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTextureParameter) SetTextureRepeat(repeat VisualShaderNodeTextureParameterTextureRepeat, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTextureParameter) GetTextureRepeat() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTextureParameter) SetTextureSource(source VisualShaderNodeTextureParameterTextureSource, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTextureParameter) GetTextureSource() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

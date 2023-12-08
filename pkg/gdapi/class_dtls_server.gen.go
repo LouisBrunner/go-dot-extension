@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *DTLSServer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *DTLSServer) BaseClass() string {
   return "DTLSServer"
 }
+
+func  (me *DTLSServer) Setup(server_options TLSOptions, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *DTLSServer) TakeConnection(udp_peer PacketPeerUDP, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

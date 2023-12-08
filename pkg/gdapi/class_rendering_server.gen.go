@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -17,738 +25,2590 @@ func (me *RenderingServer) BaseClass() string {
   return "RenderingServer"
 }
 
-const (
-  RenderingServerNO_INDEX_ARRAY = -1
-  RenderingServerARRAY_WEIGHTS_SIZE = 4
-  RenderingServerCANVAS_ITEM_Z_MIN = -4096
-  RenderingServerCANVAS_ITEM_Z_MAX = 4096
-  RenderingServerMAX_GLOW_LEVELS = 7
-  RenderingServerMAX_CURSORS = 8
-  RenderingServerMAX_2D_DIRECTIONAL_LIGHTS = 8
-  RenderingServerMATERIAL_RENDER_PRIORITY_MIN = -128
-  RenderingServerMATERIAL_RENDER_PRIORITY_MAX = 127
-  RenderingServerARRAY_CUSTOM_COUNT = 4
-  RenderingServerPARTICLES_EMIT_FLAG_POSITION = 1
-  RenderingServerPARTICLES_EMIT_FLAG_ROTATION_SCALE = 2
-  RenderingServerPARTICLES_EMIT_FLAG_VELOCITY = 4
-  RenderingServerPARTICLES_EMIT_FLAG_COLOR = 8
-  RenderingServerPARTICLES_EMIT_FLAG_CUSTOM = 16
+// TODO: needed?
+// const (
+// // )
+
+var (
+  RenderingServerNoIndexArray = "-1" // TODO: construct correctly
+  RenderingServerArrayWeightsSize = "4" // TODO: construct correctly
+  RenderingServerCanvasItemZMin = "-4096" // TODO: construct correctly
+  RenderingServerCanvasItemZMax = "4096" // TODO: construct correctly
+  RenderingServerMaxGlowLevels = "7" // TODO: construct correctly
+  RenderingServerMaxCursors = "8" // TODO: construct correctly
+  RenderingServerMax2DDirectionalLights = "8" // TODO: construct correctly
+  RenderingServerMaterialRenderPriorityMin = "-128" // TODO: construct correctly
+  RenderingServerMaterialRenderPriorityMax = "127" // TODO: construct correctly
+  RenderingServerArrayCustomCount = "4" // TODO: construct correctly
+  RenderingServerParticlesEmitFlagPosition = "1" // TODO: construct correctly
+  RenderingServerParticlesEmitFlagRotationScale = "2" // TODO: construct correctly
+  RenderingServerParticlesEmitFlagVelocity = "4" // TODO: construct correctly
+  RenderingServerParticlesEmitFlagColor = "8" // TODO: construct correctly
+  RenderingServerParticlesEmitFlagCustom = "16" // TODO: construct correctly
 )
 
 type RenderingServerTextureLayeredType int
 const (
-  RenderingServerTextureLayered2DArray RenderingServerTextureLayeredType = 0
-  RenderingServerTextureLayeredCubemap RenderingServerTextureLayeredType = 1
-  RenderingServerTextureLayeredCubemapArray RenderingServerTextureLayeredType = 2
+  RenderingServerTextureLayeredTypeTextureLayered2DArray RenderingServerTextureLayeredType = 0
+  RenderingServerTextureLayeredTypeTextureLayeredCubemap RenderingServerTextureLayeredType = 1
+  RenderingServerTextureLayeredTypeTextureLayeredCubemapArray RenderingServerTextureLayeredType = 2
 )
 
 type RenderingServerCubeMapLayer int
 const (
-  RenderingServerCubemapLayerLeft RenderingServerCubeMapLayer = 0
-  RenderingServerCubemapLayerRight RenderingServerCubeMapLayer = 1
-  RenderingServerCubemapLayerBottom RenderingServerCubeMapLayer = 2
-  RenderingServerCubemapLayerTop RenderingServerCubeMapLayer = 3
-  RenderingServerCubemapLayerFront RenderingServerCubeMapLayer = 4
-  RenderingServerCubemapLayerBack RenderingServerCubeMapLayer = 5
+  RenderingServerCubeMapLayerCubemapLayerLeft RenderingServerCubeMapLayer = 0
+  RenderingServerCubeMapLayerCubemapLayerRight RenderingServerCubeMapLayer = 1
+  RenderingServerCubeMapLayerCubemapLayerBottom RenderingServerCubeMapLayer = 2
+  RenderingServerCubeMapLayerCubemapLayerTop RenderingServerCubeMapLayer = 3
+  RenderingServerCubeMapLayerCubemapLayerFront RenderingServerCubeMapLayer = 4
+  RenderingServerCubeMapLayerCubemapLayerBack RenderingServerCubeMapLayer = 5
 )
 
 type RenderingServerShaderMode int
 const (
-  RenderingServerShaderSpatial RenderingServerShaderMode = 0
-  RenderingServerShaderCanvasItem RenderingServerShaderMode = 1
-  RenderingServerShaderParticles RenderingServerShaderMode = 2
-  RenderingServerShaderSky RenderingServerShaderMode = 3
-  RenderingServerShaderFog RenderingServerShaderMode = 4
-  RenderingServerShaderMax RenderingServerShaderMode = 5
+  RenderingServerShaderModeShaderSpatial RenderingServerShaderMode = 0
+  RenderingServerShaderModeShaderCanvasItem RenderingServerShaderMode = 1
+  RenderingServerShaderModeShaderParticles RenderingServerShaderMode = 2
+  RenderingServerShaderModeShaderSky RenderingServerShaderMode = 3
+  RenderingServerShaderModeShaderFog RenderingServerShaderMode = 4
+  RenderingServerShaderModeShaderMax RenderingServerShaderMode = 5
 )
 
 type RenderingServerArrayType int
 const (
-  RenderingServerArrayVertex RenderingServerArrayType = 0
-  RenderingServerArrayNormal RenderingServerArrayType = 1
-  RenderingServerArrayTangent RenderingServerArrayType = 2
-  RenderingServerArrayColor RenderingServerArrayType = 3
-  RenderingServerArrayTexUv RenderingServerArrayType = 4
-  RenderingServerArrayTexUv2 RenderingServerArrayType = 5
-  RenderingServerArrayCustom0 RenderingServerArrayType = 6
-  RenderingServerArrayCustom1 RenderingServerArrayType = 7
-  RenderingServerArrayCustom2 RenderingServerArrayType = 8
-  RenderingServerArrayCustom3 RenderingServerArrayType = 9
-  RenderingServerArrayBones RenderingServerArrayType = 10
-  RenderingServerArrayWeights RenderingServerArrayType = 11
-  RenderingServerArrayIndex RenderingServerArrayType = 12
-  RenderingServerArrayMax RenderingServerArrayType = 13
+  RenderingServerArrayTypeArrayVertex RenderingServerArrayType = 0
+  RenderingServerArrayTypeArrayNormal RenderingServerArrayType = 1
+  RenderingServerArrayTypeArrayTangent RenderingServerArrayType = 2
+  RenderingServerArrayTypeArrayColor RenderingServerArrayType = 3
+  RenderingServerArrayTypeArrayTexUv RenderingServerArrayType = 4
+  RenderingServerArrayTypeArrayTexUv2 RenderingServerArrayType = 5
+  RenderingServerArrayTypeArrayCustom0 RenderingServerArrayType = 6
+  RenderingServerArrayTypeArrayCustom1 RenderingServerArrayType = 7
+  RenderingServerArrayTypeArrayCustom2 RenderingServerArrayType = 8
+  RenderingServerArrayTypeArrayCustom3 RenderingServerArrayType = 9
+  RenderingServerArrayTypeArrayBones RenderingServerArrayType = 10
+  RenderingServerArrayTypeArrayWeights RenderingServerArrayType = 11
+  RenderingServerArrayTypeArrayIndex RenderingServerArrayType = 12
+  RenderingServerArrayTypeArrayMax RenderingServerArrayType = 13
 )
 
 type RenderingServerArrayCustomFormat int
 const (
-  RenderingServerArrayCustomRgba8Unorm RenderingServerArrayCustomFormat = 0
-  RenderingServerArrayCustomRgba8Snorm RenderingServerArrayCustomFormat = 1
-  RenderingServerArrayCustomRgHalf RenderingServerArrayCustomFormat = 2
-  RenderingServerArrayCustomRgbaHalf RenderingServerArrayCustomFormat = 3
-  RenderingServerArrayCustomRFloat RenderingServerArrayCustomFormat = 4
-  RenderingServerArrayCustomRgFloat RenderingServerArrayCustomFormat = 5
-  RenderingServerArrayCustomRgbFloat RenderingServerArrayCustomFormat = 6
-  RenderingServerArrayCustomRgbaFloat RenderingServerArrayCustomFormat = 7
-  RenderingServerArrayCustomMax RenderingServerArrayCustomFormat = 8
+  RenderingServerArrayCustomFormatArrayCustomRgba8Unorm RenderingServerArrayCustomFormat = 0
+  RenderingServerArrayCustomFormatArrayCustomRgba8Snorm RenderingServerArrayCustomFormat = 1
+  RenderingServerArrayCustomFormatArrayCustomRgHalf RenderingServerArrayCustomFormat = 2
+  RenderingServerArrayCustomFormatArrayCustomRgbaHalf RenderingServerArrayCustomFormat = 3
+  RenderingServerArrayCustomFormatArrayCustomRFloat RenderingServerArrayCustomFormat = 4
+  RenderingServerArrayCustomFormatArrayCustomRgFloat RenderingServerArrayCustomFormat = 5
+  RenderingServerArrayCustomFormatArrayCustomRgbFloat RenderingServerArrayCustomFormat = 6
+  RenderingServerArrayCustomFormatArrayCustomRgbaFloat RenderingServerArrayCustomFormat = 7
+  RenderingServerArrayCustomFormatArrayCustomMax RenderingServerArrayCustomFormat = 8
 )
 
 type RenderingServerArrayFormat int
 const (
-  RenderingServerArrayFormatVertex RenderingServerArrayFormat = 1
-  RenderingServerArrayFormatNormal RenderingServerArrayFormat = 2
-  RenderingServerArrayFormatTangent RenderingServerArrayFormat = 4
-  RenderingServerArrayFormatColor RenderingServerArrayFormat = 8
-  RenderingServerArrayFormatTexUv RenderingServerArrayFormat = 16
-  RenderingServerArrayFormatTexUv2 RenderingServerArrayFormat = 32
-  RenderingServerArrayFormatCustom0 RenderingServerArrayFormat = 64
-  RenderingServerArrayFormatCustom1 RenderingServerArrayFormat = 128
-  RenderingServerArrayFormatCustom2 RenderingServerArrayFormat = 256
-  RenderingServerArrayFormatCustom3 RenderingServerArrayFormat = 512
-  RenderingServerArrayFormatBones RenderingServerArrayFormat = 1024
-  RenderingServerArrayFormatWeights RenderingServerArrayFormat = 2048
-  RenderingServerArrayFormatIndex RenderingServerArrayFormat = 4096
-  RenderingServerArrayFormatBlendShapeMask RenderingServerArrayFormat = 7
-  RenderingServerArrayFormatCustomBase RenderingServerArrayFormat = 13
-  RenderingServerArrayFormatCustomBits RenderingServerArrayFormat = 3
-  RenderingServerArrayFormatCustom0Shift RenderingServerArrayFormat = 13
-  RenderingServerArrayFormatCustom1Shift RenderingServerArrayFormat = 16
-  RenderingServerArrayFormatCustom2Shift RenderingServerArrayFormat = 19
-  RenderingServerArrayFormatCustom3Shift RenderingServerArrayFormat = 22
-  RenderingServerArrayFormatCustomMask RenderingServerArrayFormat = 7
-  RenderingServerArrayCompressFlagsBase RenderingServerArrayFormat = 25
-  RenderingServerArrayFlagUse2DVertices RenderingServerArrayFormat = 33554432
-  RenderingServerArrayFlagUseDynamicUpdate RenderingServerArrayFormat = 67108864
-  RenderingServerArrayFlagUse8BoneWeights RenderingServerArrayFormat = 134217728
-  RenderingServerArrayFlagUsesEmptyVertexArray RenderingServerArrayFormat = 268435456
+  RenderingServerArrayFormatArrayFormatVertex RenderingServerArrayFormat = 1
+  RenderingServerArrayFormatArrayFormatNormal RenderingServerArrayFormat = 2
+  RenderingServerArrayFormatArrayFormatTangent RenderingServerArrayFormat = 4
+  RenderingServerArrayFormatArrayFormatColor RenderingServerArrayFormat = 8
+  RenderingServerArrayFormatArrayFormatTexUv RenderingServerArrayFormat = 16
+  RenderingServerArrayFormatArrayFormatTexUv2 RenderingServerArrayFormat = 32
+  RenderingServerArrayFormatArrayFormatCustom0 RenderingServerArrayFormat = 64
+  RenderingServerArrayFormatArrayFormatCustom1 RenderingServerArrayFormat = 128
+  RenderingServerArrayFormatArrayFormatCustom2 RenderingServerArrayFormat = 256
+  RenderingServerArrayFormatArrayFormatCustom3 RenderingServerArrayFormat = 512
+  RenderingServerArrayFormatArrayFormatBones RenderingServerArrayFormat = 1024
+  RenderingServerArrayFormatArrayFormatWeights RenderingServerArrayFormat = 2048
+  RenderingServerArrayFormatArrayFormatIndex RenderingServerArrayFormat = 4096
+  RenderingServerArrayFormatArrayFormatBlendShapeMask RenderingServerArrayFormat = 7
+  RenderingServerArrayFormatArrayFormatCustomBase RenderingServerArrayFormat = 13
+  RenderingServerArrayFormatArrayFormatCustomBits RenderingServerArrayFormat = 3
+  RenderingServerArrayFormatArrayFormatCustom0Shift RenderingServerArrayFormat = 13
+  RenderingServerArrayFormatArrayFormatCustom1Shift RenderingServerArrayFormat = 16
+  RenderingServerArrayFormatArrayFormatCustom2Shift RenderingServerArrayFormat = 19
+  RenderingServerArrayFormatArrayFormatCustom3Shift RenderingServerArrayFormat = 22
+  RenderingServerArrayFormatArrayFormatCustomMask RenderingServerArrayFormat = 7
+  RenderingServerArrayFormatArrayCompressFlagsBase RenderingServerArrayFormat = 25
+  RenderingServerArrayFormatArrayFlagUse2DVertices RenderingServerArrayFormat = 33554432
+  RenderingServerArrayFormatArrayFlagUseDynamicUpdate RenderingServerArrayFormat = 67108864
+  RenderingServerArrayFormatArrayFlagUse8BoneWeights RenderingServerArrayFormat = 134217728
+  RenderingServerArrayFormatArrayFlagUsesEmptyVertexArray RenderingServerArrayFormat = 268435456
 )
 
 type RenderingServerPrimitiveType int
 const (
-  RenderingServerPrimitivePoints RenderingServerPrimitiveType = 0
-  RenderingServerPrimitiveLines RenderingServerPrimitiveType = 1
-  RenderingServerPrimitiveLineStrip RenderingServerPrimitiveType = 2
-  RenderingServerPrimitiveTriangles RenderingServerPrimitiveType = 3
-  RenderingServerPrimitiveTriangleStrip RenderingServerPrimitiveType = 4
-  RenderingServerPrimitiveMax RenderingServerPrimitiveType = 5
+  RenderingServerPrimitiveTypePrimitivePoints RenderingServerPrimitiveType = 0
+  RenderingServerPrimitiveTypePrimitiveLines RenderingServerPrimitiveType = 1
+  RenderingServerPrimitiveTypePrimitiveLineStrip RenderingServerPrimitiveType = 2
+  RenderingServerPrimitiveTypePrimitiveTriangles RenderingServerPrimitiveType = 3
+  RenderingServerPrimitiveTypePrimitiveTriangleStrip RenderingServerPrimitiveType = 4
+  RenderingServerPrimitiveTypePrimitiveMax RenderingServerPrimitiveType = 5
 )
 
 type RenderingServerBlendShapeMode int
 const (
-  RenderingServerBlendShapeModeNormalized RenderingServerBlendShapeMode = 0
-  RenderingServerBlendShapeModeRelative RenderingServerBlendShapeMode = 1
+  RenderingServerBlendShapeModeBlendShapeModeNormalized RenderingServerBlendShapeMode = 0
+  RenderingServerBlendShapeModeBlendShapeModeRelative RenderingServerBlendShapeMode = 1
 )
 
 type RenderingServerMultimeshTransformFormat int
 const (
-  RenderingServerMultimeshTransform2D RenderingServerMultimeshTransformFormat = 0
-  RenderingServerMultimeshTransform3D RenderingServerMultimeshTransformFormat = 1
+  RenderingServerMultimeshTransformFormatMultimeshTransform2D RenderingServerMultimeshTransformFormat = 0
+  RenderingServerMultimeshTransformFormatMultimeshTransform3D RenderingServerMultimeshTransformFormat = 1
 )
 
 type RenderingServerLightProjectorFilter int
 const (
-  RenderingServerLightProjectorFilterNearest RenderingServerLightProjectorFilter = 0
-  RenderingServerLightProjectorFilterLinear RenderingServerLightProjectorFilter = 1
-  RenderingServerLightProjectorFilterNearestMipmaps RenderingServerLightProjectorFilter = 2
-  RenderingServerLightProjectorFilterLinearMipmaps RenderingServerLightProjectorFilter = 3
-  RenderingServerLightProjectorFilterNearestMipmapsAnisotropic RenderingServerLightProjectorFilter = 4
-  RenderingServerLightProjectorFilterLinearMipmapsAnisotropic RenderingServerLightProjectorFilter = 5
+  RenderingServerLightProjectorFilterLightProjectorFilterNearest RenderingServerLightProjectorFilter = 0
+  RenderingServerLightProjectorFilterLightProjectorFilterLinear RenderingServerLightProjectorFilter = 1
+  RenderingServerLightProjectorFilterLightProjectorFilterNearestMipmaps RenderingServerLightProjectorFilter = 2
+  RenderingServerLightProjectorFilterLightProjectorFilterLinearMipmaps RenderingServerLightProjectorFilter = 3
+  RenderingServerLightProjectorFilterLightProjectorFilterNearestMipmapsAnisotropic RenderingServerLightProjectorFilter = 4
+  RenderingServerLightProjectorFilterLightProjectorFilterLinearMipmapsAnisotropic RenderingServerLightProjectorFilter = 5
 )
 
 type RenderingServerLightType int
 const (
-  RenderingServerLightDirectional RenderingServerLightType = 0
-  RenderingServerLightOmni RenderingServerLightType = 1
-  RenderingServerLightSpot RenderingServerLightType = 2
+  RenderingServerLightTypeLightDirectional RenderingServerLightType = 0
+  RenderingServerLightTypeLightOmni RenderingServerLightType = 1
+  RenderingServerLightTypeLightSpot RenderingServerLightType = 2
 )
 
 type RenderingServerLightParam int
 const (
-  RenderingServerLightParamEnergy RenderingServerLightParam = 0
-  RenderingServerLightParamIndirectEnergy RenderingServerLightParam = 1
-  RenderingServerLightParamVolumetricFogEnergy RenderingServerLightParam = 2
-  RenderingServerLightParamSpecular RenderingServerLightParam = 3
-  RenderingServerLightParamRange RenderingServerLightParam = 4
-  RenderingServerLightParamSize RenderingServerLightParam = 5
-  RenderingServerLightParamAttenuation RenderingServerLightParam = 6
-  RenderingServerLightParamSpotAngle RenderingServerLightParam = 7
-  RenderingServerLightParamSpotAttenuation RenderingServerLightParam = 8
-  RenderingServerLightParamShadowMaxDistance RenderingServerLightParam = 9
-  RenderingServerLightParamShadowSplit1Offset RenderingServerLightParam = 10
-  RenderingServerLightParamShadowSplit2Offset RenderingServerLightParam = 11
-  RenderingServerLightParamShadowSplit3Offset RenderingServerLightParam = 12
-  RenderingServerLightParamShadowFadeStart RenderingServerLightParam = 13
-  RenderingServerLightParamShadowNormalBias RenderingServerLightParam = 14
-  RenderingServerLightParamShadowBias RenderingServerLightParam = 15
-  RenderingServerLightParamShadowPancakeSize RenderingServerLightParam = 16
-  RenderingServerLightParamShadowOpacity RenderingServerLightParam = 17
-  RenderingServerLightParamShadowBlur RenderingServerLightParam = 18
-  RenderingServerLightParamTransmittanceBias RenderingServerLightParam = 19
-  RenderingServerLightParamIntensity RenderingServerLightParam = 20
-  RenderingServerLightParamMax RenderingServerLightParam = 21
+  RenderingServerLightParamLightParamEnergy RenderingServerLightParam = 0
+  RenderingServerLightParamLightParamIndirectEnergy RenderingServerLightParam = 1
+  RenderingServerLightParamLightParamVolumetricFogEnergy RenderingServerLightParam = 2
+  RenderingServerLightParamLightParamSpecular RenderingServerLightParam = 3
+  RenderingServerLightParamLightParamRange RenderingServerLightParam = 4
+  RenderingServerLightParamLightParamSize RenderingServerLightParam = 5
+  RenderingServerLightParamLightParamAttenuation RenderingServerLightParam = 6
+  RenderingServerLightParamLightParamSpotAngle RenderingServerLightParam = 7
+  RenderingServerLightParamLightParamSpotAttenuation RenderingServerLightParam = 8
+  RenderingServerLightParamLightParamShadowMaxDistance RenderingServerLightParam = 9
+  RenderingServerLightParamLightParamShadowSplit1Offset RenderingServerLightParam = 10
+  RenderingServerLightParamLightParamShadowSplit2Offset RenderingServerLightParam = 11
+  RenderingServerLightParamLightParamShadowSplit3Offset RenderingServerLightParam = 12
+  RenderingServerLightParamLightParamShadowFadeStart RenderingServerLightParam = 13
+  RenderingServerLightParamLightParamShadowNormalBias RenderingServerLightParam = 14
+  RenderingServerLightParamLightParamShadowBias RenderingServerLightParam = 15
+  RenderingServerLightParamLightParamShadowPancakeSize RenderingServerLightParam = 16
+  RenderingServerLightParamLightParamShadowOpacity RenderingServerLightParam = 17
+  RenderingServerLightParamLightParamShadowBlur RenderingServerLightParam = 18
+  RenderingServerLightParamLightParamTransmittanceBias RenderingServerLightParam = 19
+  RenderingServerLightParamLightParamIntensity RenderingServerLightParam = 20
+  RenderingServerLightParamLightParamMax RenderingServerLightParam = 21
 )
 
 type RenderingServerLightBakeMode int
 const (
-  RenderingServerLightBakeDisabled RenderingServerLightBakeMode = 0
-  RenderingServerLightBakeStatic RenderingServerLightBakeMode = 1
-  RenderingServerLightBakeDynamic RenderingServerLightBakeMode = 2
+  RenderingServerLightBakeModeLightBakeDisabled RenderingServerLightBakeMode = 0
+  RenderingServerLightBakeModeLightBakeStatic RenderingServerLightBakeMode = 1
+  RenderingServerLightBakeModeLightBakeDynamic RenderingServerLightBakeMode = 2
 )
 
 type RenderingServerLightOmniShadowMode int
 const (
-  RenderingServerLightOmniShadowDualParaboloid RenderingServerLightOmniShadowMode = 0
-  RenderingServerLightOmniShadowCube RenderingServerLightOmniShadowMode = 1
+  RenderingServerLightOmniShadowModeLightOmniShadowDualParaboloid RenderingServerLightOmniShadowMode = 0
+  RenderingServerLightOmniShadowModeLightOmniShadowCube RenderingServerLightOmniShadowMode = 1
 )
 
 type RenderingServerLightDirectionalShadowMode int
 const (
-  RenderingServerLightDirectionalShadowOrthogonal RenderingServerLightDirectionalShadowMode = 0
-  RenderingServerLightDirectionalShadowParallel2Splits RenderingServerLightDirectionalShadowMode = 1
-  RenderingServerLightDirectionalShadowParallel4Splits RenderingServerLightDirectionalShadowMode = 2
+  RenderingServerLightDirectionalShadowModeLightDirectionalShadowOrthogonal RenderingServerLightDirectionalShadowMode = 0
+  RenderingServerLightDirectionalShadowModeLightDirectionalShadowParallel2Splits RenderingServerLightDirectionalShadowMode = 1
+  RenderingServerLightDirectionalShadowModeLightDirectionalShadowParallel4Splits RenderingServerLightDirectionalShadowMode = 2
 )
 
 type RenderingServerLightDirectionalSkyMode int
 const (
-  RenderingServerLightDirectionalSkyModeLightAndSky RenderingServerLightDirectionalSkyMode = 0
-  RenderingServerLightDirectionalSkyModeLightOnly RenderingServerLightDirectionalSkyMode = 1
-  RenderingServerLightDirectionalSkyModeSkyOnly RenderingServerLightDirectionalSkyMode = 2
+  RenderingServerLightDirectionalSkyModeLightDirectionalSkyModeLightAndSky RenderingServerLightDirectionalSkyMode = 0
+  RenderingServerLightDirectionalSkyModeLightDirectionalSkyModeLightOnly RenderingServerLightDirectionalSkyMode = 1
+  RenderingServerLightDirectionalSkyModeLightDirectionalSkyModeSkyOnly RenderingServerLightDirectionalSkyMode = 2
 )
 
 type RenderingServerShadowQuality int
 const (
-  RenderingServerShadowQualityHard RenderingServerShadowQuality = 0
-  RenderingServerShadowQualitySoftVeryLow RenderingServerShadowQuality = 1
-  RenderingServerShadowQualitySoftLow RenderingServerShadowQuality = 2
-  RenderingServerShadowQualitySoftMedium RenderingServerShadowQuality = 3
-  RenderingServerShadowQualitySoftHigh RenderingServerShadowQuality = 4
-  RenderingServerShadowQualitySoftUltra RenderingServerShadowQuality = 5
-  RenderingServerShadowQualityMax RenderingServerShadowQuality = 6
+  RenderingServerShadowQualityShadowQualityHard RenderingServerShadowQuality = 0
+  RenderingServerShadowQualityShadowQualitySoftVeryLow RenderingServerShadowQuality = 1
+  RenderingServerShadowQualityShadowQualitySoftLow RenderingServerShadowQuality = 2
+  RenderingServerShadowQualityShadowQualitySoftMedium RenderingServerShadowQuality = 3
+  RenderingServerShadowQualityShadowQualitySoftHigh RenderingServerShadowQuality = 4
+  RenderingServerShadowQualityShadowQualitySoftUltra RenderingServerShadowQuality = 5
+  RenderingServerShadowQualityShadowQualityMax RenderingServerShadowQuality = 6
 )
 
 type RenderingServerReflectionProbeUpdateMode int
 const (
-  RenderingServerReflectionProbeUpdateOnce RenderingServerReflectionProbeUpdateMode = 0
-  RenderingServerReflectionProbeUpdateAlways RenderingServerReflectionProbeUpdateMode = 1
+  RenderingServerReflectionProbeUpdateModeReflectionProbeUpdateOnce RenderingServerReflectionProbeUpdateMode = 0
+  RenderingServerReflectionProbeUpdateModeReflectionProbeUpdateAlways RenderingServerReflectionProbeUpdateMode = 1
 )
 
 type RenderingServerReflectionProbeAmbientMode int
 const (
-  RenderingServerReflectionProbeAmbientDisabled RenderingServerReflectionProbeAmbientMode = 0
-  RenderingServerReflectionProbeAmbientEnvironment RenderingServerReflectionProbeAmbientMode = 1
-  RenderingServerReflectionProbeAmbientColor RenderingServerReflectionProbeAmbientMode = 2
+  RenderingServerReflectionProbeAmbientModeReflectionProbeAmbientDisabled RenderingServerReflectionProbeAmbientMode = 0
+  RenderingServerReflectionProbeAmbientModeReflectionProbeAmbientEnvironment RenderingServerReflectionProbeAmbientMode = 1
+  RenderingServerReflectionProbeAmbientModeReflectionProbeAmbientColor RenderingServerReflectionProbeAmbientMode = 2
 )
 
 type RenderingServerDecalTexture int
 const (
-  RenderingServerDecalTextureAlbedo RenderingServerDecalTexture = 0
-  RenderingServerDecalTextureNormal RenderingServerDecalTexture = 1
-  RenderingServerDecalTextureOrm RenderingServerDecalTexture = 2
-  RenderingServerDecalTextureEmission RenderingServerDecalTexture = 3
-  RenderingServerDecalTextureMax RenderingServerDecalTexture = 4
+  RenderingServerDecalTextureDecalTextureAlbedo RenderingServerDecalTexture = 0
+  RenderingServerDecalTextureDecalTextureNormal RenderingServerDecalTexture = 1
+  RenderingServerDecalTextureDecalTextureOrm RenderingServerDecalTexture = 2
+  RenderingServerDecalTextureDecalTextureEmission RenderingServerDecalTexture = 3
+  RenderingServerDecalTextureDecalTextureMax RenderingServerDecalTexture = 4
 )
 
 type RenderingServerDecalFilter int
 const (
-  RenderingServerDecalFilterNearest RenderingServerDecalFilter = 0
-  RenderingServerDecalFilterLinear RenderingServerDecalFilter = 1
-  RenderingServerDecalFilterNearestMipmaps RenderingServerDecalFilter = 2
-  RenderingServerDecalFilterLinearMipmaps RenderingServerDecalFilter = 3
-  RenderingServerDecalFilterNearestMipmapsAnisotropic RenderingServerDecalFilter = 4
-  RenderingServerDecalFilterLinearMipmapsAnisotropic RenderingServerDecalFilter = 5
+  RenderingServerDecalFilterDecalFilterNearest RenderingServerDecalFilter = 0
+  RenderingServerDecalFilterDecalFilterLinear RenderingServerDecalFilter = 1
+  RenderingServerDecalFilterDecalFilterNearestMipmaps RenderingServerDecalFilter = 2
+  RenderingServerDecalFilterDecalFilterLinearMipmaps RenderingServerDecalFilter = 3
+  RenderingServerDecalFilterDecalFilterNearestMipmapsAnisotropic RenderingServerDecalFilter = 4
+  RenderingServerDecalFilterDecalFilterLinearMipmapsAnisotropic RenderingServerDecalFilter = 5
 )
 
 type RenderingServerVoxelGIQuality int
 const (
-  RenderingServerVoxelGiQualityLow RenderingServerVoxelGIQuality = 0
-  RenderingServerVoxelGiQualityHigh RenderingServerVoxelGIQuality = 1
+  RenderingServerVoxelGIQualityVoxelGiQualityLow RenderingServerVoxelGIQuality = 0
+  RenderingServerVoxelGIQualityVoxelGiQualityHigh RenderingServerVoxelGIQuality = 1
 )
 
 type RenderingServerParticlesMode int
 const (
-  RenderingServerParticlesMode2D RenderingServerParticlesMode = 0
-  RenderingServerParticlesMode3D RenderingServerParticlesMode = 1
+  RenderingServerParticlesModeParticlesMode2D RenderingServerParticlesMode = 0
+  RenderingServerParticlesModeParticlesMode3D RenderingServerParticlesMode = 1
 )
 
 type RenderingServerParticlesTransformAlign int
 const (
-  RenderingServerParticlesTransformAlignDisabled RenderingServerParticlesTransformAlign = 0
-  RenderingServerParticlesTransformAlignZBillboard RenderingServerParticlesTransformAlign = 1
-  RenderingServerParticlesTransformAlignYToVelocity RenderingServerParticlesTransformAlign = 2
-  RenderingServerParticlesTransformAlignZBillboardYToVelocity RenderingServerParticlesTransformAlign = 3
+  RenderingServerParticlesTransformAlignParticlesTransformAlignDisabled RenderingServerParticlesTransformAlign = 0
+  RenderingServerParticlesTransformAlignParticlesTransformAlignZBillboard RenderingServerParticlesTransformAlign = 1
+  RenderingServerParticlesTransformAlignParticlesTransformAlignYToVelocity RenderingServerParticlesTransformAlign = 2
+  RenderingServerParticlesTransformAlignParticlesTransformAlignZBillboardYToVelocity RenderingServerParticlesTransformAlign = 3
 )
 
 type RenderingServerParticlesDrawOrder int
 const (
-  RenderingServerParticlesDrawOrderIndex RenderingServerParticlesDrawOrder = 0
-  RenderingServerParticlesDrawOrderLifetime RenderingServerParticlesDrawOrder = 1
-  RenderingServerParticlesDrawOrderReverseLifetime RenderingServerParticlesDrawOrder = 2
-  RenderingServerParticlesDrawOrderViewDepth RenderingServerParticlesDrawOrder = 3
+  RenderingServerParticlesDrawOrderParticlesDrawOrderIndex RenderingServerParticlesDrawOrder = 0
+  RenderingServerParticlesDrawOrderParticlesDrawOrderLifetime RenderingServerParticlesDrawOrder = 1
+  RenderingServerParticlesDrawOrderParticlesDrawOrderReverseLifetime RenderingServerParticlesDrawOrder = 2
+  RenderingServerParticlesDrawOrderParticlesDrawOrderViewDepth RenderingServerParticlesDrawOrder = 3
 )
 
 type RenderingServerParticlesCollisionType int
 const (
-  RenderingServerParticlesCollisionTypeSphereAttract RenderingServerParticlesCollisionType = 0
-  RenderingServerParticlesCollisionTypeBoxAttract RenderingServerParticlesCollisionType = 1
-  RenderingServerParticlesCollisionTypeVectorFieldAttract RenderingServerParticlesCollisionType = 2
-  RenderingServerParticlesCollisionTypeSphereCollide RenderingServerParticlesCollisionType = 3
-  RenderingServerParticlesCollisionTypeBoxCollide RenderingServerParticlesCollisionType = 4
-  RenderingServerParticlesCollisionTypeSdfCollide RenderingServerParticlesCollisionType = 5
-  RenderingServerParticlesCollisionTypeHeightfieldCollide RenderingServerParticlesCollisionType = 6
+  RenderingServerParticlesCollisionTypeParticlesCollisionTypeSphereAttract RenderingServerParticlesCollisionType = 0
+  RenderingServerParticlesCollisionTypeParticlesCollisionTypeBoxAttract RenderingServerParticlesCollisionType = 1
+  RenderingServerParticlesCollisionTypeParticlesCollisionTypeVectorFieldAttract RenderingServerParticlesCollisionType = 2
+  RenderingServerParticlesCollisionTypeParticlesCollisionTypeSphereCollide RenderingServerParticlesCollisionType = 3
+  RenderingServerParticlesCollisionTypeParticlesCollisionTypeBoxCollide RenderingServerParticlesCollisionType = 4
+  RenderingServerParticlesCollisionTypeParticlesCollisionTypeSdfCollide RenderingServerParticlesCollisionType = 5
+  RenderingServerParticlesCollisionTypeParticlesCollisionTypeHeightfieldCollide RenderingServerParticlesCollisionType = 6
 )
 
 type RenderingServerParticlesCollisionHeightfieldResolution int
 const (
-  RenderingServerParticlesCollisionHeightfieldResolution256 RenderingServerParticlesCollisionHeightfieldResolution = 0
-  RenderingServerParticlesCollisionHeightfieldResolution512 RenderingServerParticlesCollisionHeightfieldResolution = 1
-  RenderingServerParticlesCollisionHeightfieldResolution1024 RenderingServerParticlesCollisionHeightfieldResolution = 2
-  RenderingServerParticlesCollisionHeightfieldResolution2048 RenderingServerParticlesCollisionHeightfieldResolution = 3
-  RenderingServerParticlesCollisionHeightfieldResolution4096 RenderingServerParticlesCollisionHeightfieldResolution = 4
-  RenderingServerParticlesCollisionHeightfieldResolution8192 RenderingServerParticlesCollisionHeightfieldResolution = 5
-  RenderingServerParticlesCollisionHeightfieldResolutionMax RenderingServerParticlesCollisionHeightfieldResolution = 6
+  RenderingServerParticlesCollisionHeightfieldResolutionParticlesCollisionHeightfieldResolution256 RenderingServerParticlesCollisionHeightfieldResolution = 0
+  RenderingServerParticlesCollisionHeightfieldResolutionParticlesCollisionHeightfieldResolution512 RenderingServerParticlesCollisionHeightfieldResolution = 1
+  RenderingServerParticlesCollisionHeightfieldResolutionParticlesCollisionHeightfieldResolution1024 RenderingServerParticlesCollisionHeightfieldResolution = 2
+  RenderingServerParticlesCollisionHeightfieldResolutionParticlesCollisionHeightfieldResolution2048 RenderingServerParticlesCollisionHeightfieldResolution = 3
+  RenderingServerParticlesCollisionHeightfieldResolutionParticlesCollisionHeightfieldResolution4096 RenderingServerParticlesCollisionHeightfieldResolution = 4
+  RenderingServerParticlesCollisionHeightfieldResolutionParticlesCollisionHeightfieldResolution8192 RenderingServerParticlesCollisionHeightfieldResolution = 5
+  RenderingServerParticlesCollisionHeightfieldResolutionParticlesCollisionHeightfieldResolutionMax RenderingServerParticlesCollisionHeightfieldResolution = 6
 )
 
 type RenderingServerFogVolumeShape int
 const (
-  RenderingServerFogVolumeShapeEllipsoid RenderingServerFogVolumeShape = 0
-  RenderingServerFogVolumeShapeCone RenderingServerFogVolumeShape = 1
-  RenderingServerFogVolumeShapeCylinder RenderingServerFogVolumeShape = 2
-  RenderingServerFogVolumeShapeBox RenderingServerFogVolumeShape = 3
-  RenderingServerFogVolumeShapeWorld RenderingServerFogVolumeShape = 4
-  RenderingServerFogVolumeShapeMax RenderingServerFogVolumeShape = 5
+  RenderingServerFogVolumeShapeFogVolumeShapeEllipsoid RenderingServerFogVolumeShape = 0
+  RenderingServerFogVolumeShapeFogVolumeShapeCone RenderingServerFogVolumeShape = 1
+  RenderingServerFogVolumeShapeFogVolumeShapeCylinder RenderingServerFogVolumeShape = 2
+  RenderingServerFogVolumeShapeFogVolumeShapeBox RenderingServerFogVolumeShape = 3
+  RenderingServerFogVolumeShapeFogVolumeShapeWorld RenderingServerFogVolumeShape = 4
+  RenderingServerFogVolumeShapeFogVolumeShapeMax RenderingServerFogVolumeShape = 5
 )
 
 type RenderingServerViewportScaling3DMode int
 const (
-  RenderingServerViewportScaling3DModeBilinear RenderingServerViewportScaling3DMode = 0
-  RenderingServerViewportScaling3DModeFsr RenderingServerViewportScaling3DMode = 1
-  RenderingServerViewportScaling3DModeMax RenderingServerViewportScaling3DMode = 2
+  RenderingServerViewportScaling3DModeViewportScaling3DModeBilinear RenderingServerViewportScaling3DMode = 0
+  RenderingServerViewportScaling3DModeViewportScaling3DModeFsr RenderingServerViewportScaling3DMode = 1
+  RenderingServerViewportScaling3DModeViewportScaling3DModeMax RenderingServerViewportScaling3DMode = 2
 )
 
 type RenderingServerViewportUpdateMode int
 const (
-  RenderingServerViewportUpdateDisabled RenderingServerViewportUpdateMode = 0
-  RenderingServerViewportUpdateOnce RenderingServerViewportUpdateMode = 1
-  RenderingServerViewportUpdateWhenVisible RenderingServerViewportUpdateMode = 2
-  RenderingServerViewportUpdateWhenParentVisible RenderingServerViewportUpdateMode = 3
-  RenderingServerViewportUpdateAlways RenderingServerViewportUpdateMode = 4
+  RenderingServerViewportUpdateModeViewportUpdateDisabled RenderingServerViewportUpdateMode = 0
+  RenderingServerViewportUpdateModeViewportUpdateOnce RenderingServerViewportUpdateMode = 1
+  RenderingServerViewportUpdateModeViewportUpdateWhenVisible RenderingServerViewportUpdateMode = 2
+  RenderingServerViewportUpdateModeViewportUpdateWhenParentVisible RenderingServerViewportUpdateMode = 3
+  RenderingServerViewportUpdateModeViewportUpdateAlways RenderingServerViewportUpdateMode = 4
 )
 
 type RenderingServerViewportClearMode int
 const (
-  RenderingServerViewportClearAlways RenderingServerViewportClearMode = 0
-  RenderingServerViewportClearNever RenderingServerViewportClearMode = 1
-  RenderingServerViewportClearOnlyNextFrame RenderingServerViewportClearMode = 2
+  RenderingServerViewportClearModeViewportClearAlways RenderingServerViewportClearMode = 0
+  RenderingServerViewportClearModeViewportClearNever RenderingServerViewportClearMode = 1
+  RenderingServerViewportClearModeViewportClearOnlyNextFrame RenderingServerViewportClearMode = 2
 )
 
 type RenderingServerViewportEnvironmentMode int
 const (
-  RenderingServerViewportEnvironmentDisabled RenderingServerViewportEnvironmentMode = 0
-  RenderingServerViewportEnvironmentEnabled RenderingServerViewportEnvironmentMode = 1
-  RenderingServerViewportEnvironmentInherit RenderingServerViewportEnvironmentMode = 2
-  RenderingServerViewportEnvironmentMax RenderingServerViewportEnvironmentMode = 3
+  RenderingServerViewportEnvironmentModeViewportEnvironmentDisabled RenderingServerViewportEnvironmentMode = 0
+  RenderingServerViewportEnvironmentModeViewportEnvironmentEnabled RenderingServerViewportEnvironmentMode = 1
+  RenderingServerViewportEnvironmentModeViewportEnvironmentInherit RenderingServerViewportEnvironmentMode = 2
+  RenderingServerViewportEnvironmentModeViewportEnvironmentMax RenderingServerViewportEnvironmentMode = 3
 )
 
 type RenderingServerViewportSDFOversize int
 const (
-  RenderingServerViewportSdfOversize100Percent RenderingServerViewportSDFOversize = 0
-  RenderingServerViewportSdfOversize120Percent RenderingServerViewportSDFOversize = 1
-  RenderingServerViewportSdfOversize150Percent RenderingServerViewportSDFOversize = 2
-  RenderingServerViewportSdfOversize200Percent RenderingServerViewportSDFOversize = 3
-  RenderingServerViewportSdfOversizeMax RenderingServerViewportSDFOversize = 4
+  RenderingServerViewportSDFOversizeViewportSdfOversize100Percent RenderingServerViewportSDFOversize = 0
+  RenderingServerViewportSDFOversizeViewportSdfOversize120Percent RenderingServerViewportSDFOversize = 1
+  RenderingServerViewportSDFOversizeViewportSdfOversize150Percent RenderingServerViewportSDFOversize = 2
+  RenderingServerViewportSDFOversizeViewportSdfOversize200Percent RenderingServerViewportSDFOversize = 3
+  RenderingServerViewportSDFOversizeViewportSdfOversizeMax RenderingServerViewportSDFOversize = 4
 )
 
 type RenderingServerViewportSDFScale int
 const (
-  RenderingServerViewportSdfScale100Percent RenderingServerViewportSDFScale = 0
-  RenderingServerViewportSdfScale50Percent RenderingServerViewportSDFScale = 1
-  RenderingServerViewportSdfScale25Percent RenderingServerViewportSDFScale = 2
-  RenderingServerViewportSdfScaleMax RenderingServerViewportSDFScale = 3
+  RenderingServerViewportSDFScaleViewportSdfScale100Percent RenderingServerViewportSDFScale = 0
+  RenderingServerViewportSDFScaleViewportSdfScale50Percent RenderingServerViewportSDFScale = 1
+  RenderingServerViewportSDFScaleViewportSdfScale25Percent RenderingServerViewportSDFScale = 2
+  RenderingServerViewportSDFScaleViewportSdfScaleMax RenderingServerViewportSDFScale = 3
 )
 
 type RenderingServerViewportMSAA int
 const (
-  RenderingServerViewportMsaaDisabled RenderingServerViewportMSAA = 0
-  RenderingServerViewportMsaa2X RenderingServerViewportMSAA = 1
-  RenderingServerViewportMsaa4X RenderingServerViewportMSAA = 2
-  RenderingServerViewportMsaa8X RenderingServerViewportMSAA = 3
-  RenderingServerViewportMsaaMax RenderingServerViewportMSAA = 4
+  RenderingServerViewportMSAAViewportMsaaDisabled RenderingServerViewportMSAA = 0
+  RenderingServerViewportMSAAViewportMsaa2X RenderingServerViewportMSAA = 1
+  RenderingServerViewportMSAAViewportMsaa4X RenderingServerViewportMSAA = 2
+  RenderingServerViewportMSAAViewportMsaa8X RenderingServerViewportMSAA = 3
+  RenderingServerViewportMSAAViewportMsaaMax RenderingServerViewportMSAA = 4
 )
 
 type RenderingServerViewportScreenSpaceAA int
 const (
-  RenderingServerViewportScreenSpaceAaDisabled RenderingServerViewportScreenSpaceAA = 0
-  RenderingServerViewportScreenSpaceAaFxaa RenderingServerViewportScreenSpaceAA = 1
-  RenderingServerViewportScreenSpaceAaMax RenderingServerViewportScreenSpaceAA = 2
+  RenderingServerViewportScreenSpaceAAViewportScreenSpaceAaDisabled RenderingServerViewportScreenSpaceAA = 0
+  RenderingServerViewportScreenSpaceAAViewportScreenSpaceAaFxaa RenderingServerViewportScreenSpaceAA = 1
+  RenderingServerViewportScreenSpaceAAViewportScreenSpaceAaMax RenderingServerViewportScreenSpaceAA = 2
 )
 
 type RenderingServerViewportOcclusionCullingBuildQuality int
 const (
-  RenderingServerViewportOcclusionBuildQualityLow RenderingServerViewportOcclusionCullingBuildQuality = 0
-  RenderingServerViewportOcclusionBuildQualityMedium RenderingServerViewportOcclusionCullingBuildQuality = 1
-  RenderingServerViewportOcclusionBuildQualityHigh RenderingServerViewportOcclusionCullingBuildQuality = 2
+  RenderingServerViewportOcclusionCullingBuildQualityViewportOcclusionBuildQualityLow RenderingServerViewportOcclusionCullingBuildQuality = 0
+  RenderingServerViewportOcclusionCullingBuildQualityViewportOcclusionBuildQualityMedium RenderingServerViewportOcclusionCullingBuildQuality = 1
+  RenderingServerViewportOcclusionCullingBuildQualityViewportOcclusionBuildQualityHigh RenderingServerViewportOcclusionCullingBuildQuality = 2
 )
 
 type RenderingServerViewportRenderInfo int
 const (
-  RenderingServerViewportRenderInfoObjectsInFrame RenderingServerViewportRenderInfo = 0
-  RenderingServerViewportRenderInfoPrimitivesInFrame RenderingServerViewportRenderInfo = 1
-  RenderingServerViewportRenderInfoDrawCallsInFrame RenderingServerViewportRenderInfo = 2
-  RenderingServerViewportRenderInfoMax RenderingServerViewportRenderInfo = 3
+  RenderingServerViewportRenderInfoViewportRenderInfoObjectsInFrame RenderingServerViewportRenderInfo = 0
+  RenderingServerViewportRenderInfoViewportRenderInfoPrimitivesInFrame RenderingServerViewportRenderInfo = 1
+  RenderingServerViewportRenderInfoViewportRenderInfoDrawCallsInFrame RenderingServerViewportRenderInfo = 2
+  RenderingServerViewportRenderInfoViewportRenderInfoMax RenderingServerViewportRenderInfo = 3
 )
 
 type RenderingServerViewportRenderInfoType int
 const (
-  RenderingServerViewportRenderInfoTypeVisible RenderingServerViewportRenderInfoType = 0
-  RenderingServerViewportRenderInfoTypeShadow RenderingServerViewportRenderInfoType = 1
-  RenderingServerViewportRenderInfoTypeMax RenderingServerViewportRenderInfoType = 2
+  RenderingServerViewportRenderInfoTypeViewportRenderInfoTypeVisible RenderingServerViewportRenderInfoType = 0
+  RenderingServerViewportRenderInfoTypeViewportRenderInfoTypeShadow RenderingServerViewportRenderInfoType = 1
+  RenderingServerViewportRenderInfoTypeViewportRenderInfoTypeMax RenderingServerViewportRenderInfoType = 2
 )
 
 type RenderingServerViewportDebugDraw int
 const (
-  RenderingServerViewportDebugDrawDisabled RenderingServerViewportDebugDraw = 0
-  RenderingServerViewportDebugDrawUnshaded RenderingServerViewportDebugDraw = 1
-  RenderingServerViewportDebugDrawLighting RenderingServerViewportDebugDraw = 2
-  RenderingServerViewportDebugDrawOverdraw RenderingServerViewportDebugDraw = 3
-  RenderingServerViewportDebugDrawWireframe RenderingServerViewportDebugDraw = 4
-  RenderingServerViewportDebugDrawNormalBuffer RenderingServerViewportDebugDraw = 5
-  RenderingServerViewportDebugDrawVoxelGiAlbedo RenderingServerViewportDebugDraw = 6
-  RenderingServerViewportDebugDrawVoxelGiLighting RenderingServerViewportDebugDraw = 7
-  RenderingServerViewportDebugDrawVoxelGiEmission RenderingServerViewportDebugDraw = 8
-  RenderingServerViewportDebugDrawShadowAtlas RenderingServerViewportDebugDraw = 9
-  RenderingServerViewportDebugDrawDirectionalShadowAtlas RenderingServerViewportDebugDraw = 10
-  RenderingServerViewportDebugDrawSceneLuminance RenderingServerViewportDebugDraw = 11
-  RenderingServerViewportDebugDrawSsao RenderingServerViewportDebugDraw = 12
-  RenderingServerViewportDebugDrawSsil RenderingServerViewportDebugDraw = 13
-  RenderingServerViewportDebugDrawPssmSplits RenderingServerViewportDebugDraw = 14
-  RenderingServerViewportDebugDrawDecalAtlas RenderingServerViewportDebugDraw = 15
-  RenderingServerViewportDebugDrawSdfgi RenderingServerViewportDebugDraw = 16
-  RenderingServerViewportDebugDrawSdfgiProbes RenderingServerViewportDebugDraw = 17
-  RenderingServerViewportDebugDrawGiBuffer RenderingServerViewportDebugDraw = 18
-  RenderingServerViewportDebugDrawDisableLod RenderingServerViewportDebugDraw = 19
-  RenderingServerViewportDebugDrawClusterOmniLights RenderingServerViewportDebugDraw = 20
-  RenderingServerViewportDebugDrawClusterSpotLights RenderingServerViewportDebugDraw = 21
-  RenderingServerViewportDebugDrawClusterDecals RenderingServerViewportDebugDraw = 22
-  RenderingServerViewportDebugDrawClusterReflectionProbes RenderingServerViewportDebugDraw = 23
-  RenderingServerViewportDebugDrawOccluders RenderingServerViewportDebugDraw = 24
-  RenderingServerViewportDebugDrawMotionVectors RenderingServerViewportDebugDraw = 25
+  RenderingServerViewportDebugDrawViewportDebugDrawDisabled RenderingServerViewportDebugDraw = 0
+  RenderingServerViewportDebugDrawViewportDebugDrawUnshaded RenderingServerViewportDebugDraw = 1
+  RenderingServerViewportDebugDrawViewportDebugDrawLighting RenderingServerViewportDebugDraw = 2
+  RenderingServerViewportDebugDrawViewportDebugDrawOverdraw RenderingServerViewportDebugDraw = 3
+  RenderingServerViewportDebugDrawViewportDebugDrawWireframe RenderingServerViewportDebugDraw = 4
+  RenderingServerViewportDebugDrawViewportDebugDrawNormalBuffer RenderingServerViewportDebugDraw = 5
+  RenderingServerViewportDebugDrawViewportDebugDrawVoxelGiAlbedo RenderingServerViewportDebugDraw = 6
+  RenderingServerViewportDebugDrawViewportDebugDrawVoxelGiLighting RenderingServerViewportDebugDraw = 7
+  RenderingServerViewportDebugDrawViewportDebugDrawVoxelGiEmission RenderingServerViewportDebugDraw = 8
+  RenderingServerViewportDebugDrawViewportDebugDrawShadowAtlas RenderingServerViewportDebugDraw = 9
+  RenderingServerViewportDebugDrawViewportDebugDrawDirectionalShadowAtlas RenderingServerViewportDebugDraw = 10
+  RenderingServerViewportDebugDrawViewportDebugDrawSceneLuminance RenderingServerViewportDebugDraw = 11
+  RenderingServerViewportDebugDrawViewportDebugDrawSsao RenderingServerViewportDebugDraw = 12
+  RenderingServerViewportDebugDrawViewportDebugDrawSsil RenderingServerViewportDebugDraw = 13
+  RenderingServerViewportDebugDrawViewportDebugDrawPssmSplits RenderingServerViewportDebugDraw = 14
+  RenderingServerViewportDebugDrawViewportDebugDrawDecalAtlas RenderingServerViewportDebugDraw = 15
+  RenderingServerViewportDebugDrawViewportDebugDrawSdfgi RenderingServerViewportDebugDraw = 16
+  RenderingServerViewportDebugDrawViewportDebugDrawSdfgiProbes RenderingServerViewportDebugDraw = 17
+  RenderingServerViewportDebugDrawViewportDebugDrawGiBuffer RenderingServerViewportDebugDraw = 18
+  RenderingServerViewportDebugDrawViewportDebugDrawDisableLod RenderingServerViewportDebugDraw = 19
+  RenderingServerViewportDebugDrawViewportDebugDrawClusterOmniLights RenderingServerViewportDebugDraw = 20
+  RenderingServerViewportDebugDrawViewportDebugDrawClusterSpotLights RenderingServerViewportDebugDraw = 21
+  RenderingServerViewportDebugDrawViewportDebugDrawClusterDecals RenderingServerViewportDebugDraw = 22
+  RenderingServerViewportDebugDrawViewportDebugDrawClusterReflectionProbes RenderingServerViewportDebugDraw = 23
+  RenderingServerViewportDebugDrawViewportDebugDrawOccluders RenderingServerViewportDebugDraw = 24
+  RenderingServerViewportDebugDrawViewportDebugDrawMotionVectors RenderingServerViewportDebugDraw = 25
 )
 
 type RenderingServerViewportVRSMode int
 const (
-  RenderingServerViewportVrsDisabled RenderingServerViewportVRSMode = 0
-  RenderingServerViewportVrsTexture RenderingServerViewportVRSMode = 1
-  RenderingServerViewportVrsXr RenderingServerViewportVRSMode = 2
-  RenderingServerViewportVrsMax RenderingServerViewportVRSMode = 3
+  RenderingServerViewportVRSModeViewportVrsDisabled RenderingServerViewportVRSMode = 0
+  RenderingServerViewportVRSModeViewportVrsTexture RenderingServerViewportVRSMode = 1
+  RenderingServerViewportVRSModeViewportVrsXr RenderingServerViewportVRSMode = 2
+  RenderingServerViewportVRSModeViewportVrsMax RenderingServerViewportVRSMode = 3
 )
 
 type RenderingServerSkyMode int
 const (
-  RenderingServerSkyModeAutomatic RenderingServerSkyMode = 0
-  RenderingServerSkyModeQuality RenderingServerSkyMode = 1
-  RenderingServerSkyModeIncremental RenderingServerSkyMode = 2
-  RenderingServerSkyModeRealtime RenderingServerSkyMode = 3
+  RenderingServerSkyModeSkyModeAutomatic RenderingServerSkyMode = 0
+  RenderingServerSkyModeSkyModeQuality RenderingServerSkyMode = 1
+  RenderingServerSkyModeSkyModeIncremental RenderingServerSkyMode = 2
+  RenderingServerSkyModeSkyModeRealtime RenderingServerSkyMode = 3
 )
 
 type RenderingServerEnvironmentBG int
 const (
-  RenderingServerEnvBgClearColor RenderingServerEnvironmentBG = 0
-  RenderingServerEnvBgColor RenderingServerEnvironmentBG = 1
-  RenderingServerEnvBgSky RenderingServerEnvironmentBG = 2
-  RenderingServerEnvBgCanvas RenderingServerEnvironmentBG = 3
-  RenderingServerEnvBgKeep RenderingServerEnvironmentBG = 4
-  RenderingServerEnvBgCameraFeed RenderingServerEnvironmentBG = 5
-  RenderingServerEnvBgMax RenderingServerEnvironmentBG = 6
+  RenderingServerEnvironmentBGEnvBgClearColor RenderingServerEnvironmentBG = 0
+  RenderingServerEnvironmentBGEnvBgColor RenderingServerEnvironmentBG = 1
+  RenderingServerEnvironmentBGEnvBgSky RenderingServerEnvironmentBG = 2
+  RenderingServerEnvironmentBGEnvBgCanvas RenderingServerEnvironmentBG = 3
+  RenderingServerEnvironmentBGEnvBgKeep RenderingServerEnvironmentBG = 4
+  RenderingServerEnvironmentBGEnvBgCameraFeed RenderingServerEnvironmentBG = 5
+  RenderingServerEnvironmentBGEnvBgMax RenderingServerEnvironmentBG = 6
 )
 
 type RenderingServerEnvironmentAmbientSource int
 const (
-  RenderingServerEnvAmbientSourceBg RenderingServerEnvironmentAmbientSource = 0
-  RenderingServerEnvAmbientSourceDisabled RenderingServerEnvironmentAmbientSource = 1
-  RenderingServerEnvAmbientSourceColor RenderingServerEnvironmentAmbientSource = 2
-  RenderingServerEnvAmbientSourceSky RenderingServerEnvironmentAmbientSource = 3
+  RenderingServerEnvironmentAmbientSourceEnvAmbientSourceBg RenderingServerEnvironmentAmbientSource = 0
+  RenderingServerEnvironmentAmbientSourceEnvAmbientSourceDisabled RenderingServerEnvironmentAmbientSource = 1
+  RenderingServerEnvironmentAmbientSourceEnvAmbientSourceColor RenderingServerEnvironmentAmbientSource = 2
+  RenderingServerEnvironmentAmbientSourceEnvAmbientSourceSky RenderingServerEnvironmentAmbientSource = 3
 )
 
 type RenderingServerEnvironmentReflectionSource int
 const (
-  RenderingServerEnvReflectionSourceBg RenderingServerEnvironmentReflectionSource = 0
-  RenderingServerEnvReflectionSourceDisabled RenderingServerEnvironmentReflectionSource = 1
-  RenderingServerEnvReflectionSourceSky RenderingServerEnvironmentReflectionSource = 2
+  RenderingServerEnvironmentReflectionSourceEnvReflectionSourceBg RenderingServerEnvironmentReflectionSource = 0
+  RenderingServerEnvironmentReflectionSourceEnvReflectionSourceDisabled RenderingServerEnvironmentReflectionSource = 1
+  RenderingServerEnvironmentReflectionSourceEnvReflectionSourceSky RenderingServerEnvironmentReflectionSource = 2
 )
 
 type RenderingServerEnvironmentGlowBlendMode int
 const (
-  RenderingServerEnvGlowBlendModeAdditive RenderingServerEnvironmentGlowBlendMode = 0
-  RenderingServerEnvGlowBlendModeScreen RenderingServerEnvironmentGlowBlendMode = 1
-  RenderingServerEnvGlowBlendModeSoftlight RenderingServerEnvironmentGlowBlendMode = 2
-  RenderingServerEnvGlowBlendModeReplace RenderingServerEnvironmentGlowBlendMode = 3
-  RenderingServerEnvGlowBlendModeMix RenderingServerEnvironmentGlowBlendMode = 4
+  RenderingServerEnvironmentGlowBlendModeEnvGlowBlendModeAdditive RenderingServerEnvironmentGlowBlendMode = 0
+  RenderingServerEnvironmentGlowBlendModeEnvGlowBlendModeScreen RenderingServerEnvironmentGlowBlendMode = 1
+  RenderingServerEnvironmentGlowBlendModeEnvGlowBlendModeSoftlight RenderingServerEnvironmentGlowBlendMode = 2
+  RenderingServerEnvironmentGlowBlendModeEnvGlowBlendModeReplace RenderingServerEnvironmentGlowBlendMode = 3
+  RenderingServerEnvironmentGlowBlendModeEnvGlowBlendModeMix RenderingServerEnvironmentGlowBlendMode = 4
 )
 
 type RenderingServerEnvironmentToneMapper int
 const (
-  RenderingServerEnvToneMapperLinear RenderingServerEnvironmentToneMapper = 0
-  RenderingServerEnvToneMapperReinhard RenderingServerEnvironmentToneMapper = 1
-  RenderingServerEnvToneMapperFilmic RenderingServerEnvironmentToneMapper = 2
-  RenderingServerEnvToneMapperAces RenderingServerEnvironmentToneMapper = 3
+  RenderingServerEnvironmentToneMapperEnvToneMapperLinear RenderingServerEnvironmentToneMapper = 0
+  RenderingServerEnvironmentToneMapperEnvToneMapperReinhard RenderingServerEnvironmentToneMapper = 1
+  RenderingServerEnvironmentToneMapperEnvToneMapperFilmic RenderingServerEnvironmentToneMapper = 2
+  RenderingServerEnvironmentToneMapperEnvToneMapperAces RenderingServerEnvironmentToneMapper = 3
 )
 
 type RenderingServerEnvironmentSSRRoughnessQuality int
 const (
-  RenderingServerEnvSsrRoughnessQualityDisabled RenderingServerEnvironmentSSRRoughnessQuality = 0
-  RenderingServerEnvSsrRoughnessQualityLow RenderingServerEnvironmentSSRRoughnessQuality = 1
-  RenderingServerEnvSsrRoughnessQualityMedium RenderingServerEnvironmentSSRRoughnessQuality = 2
-  RenderingServerEnvSsrRoughnessQualityHigh RenderingServerEnvironmentSSRRoughnessQuality = 3
+  RenderingServerEnvironmentSSRRoughnessQualityEnvSsrRoughnessQualityDisabled RenderingServerEnvironmentSSRRoughnessQuality = 0
+  RenderingServerEnvironmentSSRRoughnessQualityEnvSsrRoughnessQualityLow RenderingServerEnvironmentSSRRoughnessQuality = 1
+  RenderingServerEnvironmentSSRRoughnessQualityEnvSsrRoughnessQualityMedium RenderingServerEnvironmentSSRRoughnessQuality = 2
+  RenderingServerEnvironmentSSRRoughnessQualityEnvSsrRoughnessQualityHigh RenderingServerEnvironmentSSRRoughnessQuality = 3
 )
 
 type RenderingServerEnvironmentSSAOQuality int
 const (
-  RenderingServerEnvSsaoQualityVeryLow RenderingServerEnvironmentSSAOQuality = 0
-  RenderingServerEnvSsaoQualityLow RenderingServerEnvironmentSSAOQuality = 1
-  RenderingServerEnvSsaoQualityMedium RenderingServerEnvironmentSSAOQuality = 2
-  RenderingServerEnvSsaoQualityHigh RenderingServerEnvironmentSSAOQuality = 3
-  RenderingServerEnvSsaoQualityUltra RenderingServerEnvironmentSSAOQuality = 4
+  RenderingServerEnvironmentSSAOQualityEnvSsaoQualityVeryLow RenderingServerEnvironmentSSAOQuality = 0
+  RenderingServerEnvironmentSSAOQualityEnvSsaoQualityLow RenderingServerEnvironmentSSAOQuality = 1
+  RenderingServerEnvironmentSSAOQualityEnvSsaoQualityMedium RenderingServerEnvironmentSSAOQuality = 2
+  RenderingServerEnvironmentSSAOQualityEnvSsaoQualityHigh RenderingServerEnvironmentSSAOQuality = 3
+  RenderingServerEnvironmentSSAOQualityEnvSsaoQualityUltra RenderingServerEnvironmentSSAOQuality = 4
 )
 
 type RenderingServerEnvironmentSSILQuality int
 const (
-  RenderingServerEnvSsilQualityVeryLow RenderingServerEnvironmentSSILQuality = 0
-  RenderingServerEnvSsilQualityLow RenderingServerEnvironmentSSILQuality = 1
-  RenderingServerEnvSsilQualityMedium RenderingServerEnvironmentSSILQuality = 2
-  RenderingServerEnvSsilQualityHigh RenderingServerEnvironmentSSILQuality = 3
-  RenderingServerEnvSsilQualityUltra RenderingServerEnvironmentSSILQuality = 4
+  RenderingServerEnvironmentSSILQualityEnvSsilQualityVeryLow RenderingServerEnvironmentSSILQuality = 0
+  RenderingServerEnvironmentSSILQualityEnvSsilQualityLow RenderingServerEnvironmentSSILQuality = 1
+  RenderingServerEnvironmentSSILQualityEnvSsilQualityMedium RenderingServerEnvironmentSSILQuality = 2
+  RenderingServerEnvironmentSSILQualityEnvSsilQualityHigh RenderingServerEnvironmentSSILQuality = 3
+  RenderingServerEnvironmentSSILQualityEnvSsilQualityUltra RenderingServerEnvironmentSSILQuality = 4
 )
 
 type RenderingServerEnvironmentSDFGIYScale int
 const (
-  RenderingServerEnvSdfgiYScale50Percent RenderingServerEnvironmentSDFGIYScale = 0
-  RenderingServerEnvSdfgiYScale75Percent RenderingServerEnvironmentSDFGIYScale = 1
-  RenderingServerEnvSdfgiYScale100Percent RenderingServerEnvironmentSDFGIYScale = 2
+  RenderingServerEnvironmentSDFGIYScaleEnvSdfgiYScale50Percent RenderingServerEnvironmentSDFGIYScale = 0
+  RenderingServerEnvironmentSDFGIYScaleEnvSdfgiYScale75Percent RenderingServerEnvironmentSDFGIYScale = 1
+  RenderingServerEnvironmentSDFGIYScaleEnvSdfgiYScale100Percent RenderingServerEnvironmentSDFGIYScale = 2
 )
 
 type RenderingServerEnvironmentSDFGIRayCount int
 const (
-  RenderingServerEnvSdfgiRayCount4 RenderingServerEnvironmentSDFGIRayCount = 0
-  RenderingServerEnvSdfgiRayCount8 RenderingServerEnvironmentSDFGIRayCount = 1
-  RenderingServerEnvSdfgiRayCount16 RenderingServerEnvironmentSDFGIRayCount = 2
-  RenderingServerEnvSdfgiRayCount32 RenderingServerEnvironmentSDFGIRayCount = 3
-  RenderingServerEnvSdfgiRayCount64 RenderingServerEnvironmentSDFGIRayCount = 4
-  RenderingServerEnvSdfgiRayCount96 RenderingServerEnvironmentSDFGIRayCount = 5
-  RenderingServerEnvSdfgiRayCount128 RenderingServerEnvironmentSDFGIRayCount = 6
-  RenderingServerEnvSdfgiRayCountMax RenderingServerEnvironmentSDFGIRayCount = 7
+  RenderingServerEnvironmentSDFGIRayCountEnvSdfgiRayCount4 RenderingServerEnvironmentSDFGIRayCount = 0
+  RenderingServerEnvironmentSDFGIRayCountEnvSdfgiRayCount8 RenderingServerEnvironmentSDFGIRayCount = 1
+  RenderingServerEnvironmentSDFGIRayCountEnvSdfgiRayCount16 RenderingServerEnvironmentSDFGIRayCount = 2
+  RenderingServerEnvironmentSDFGIRayCountEnvSdfgiRayCount32 RenderingServerEnvironmentSDFGIRayCount = 3
+  RenderingServerEnvironmentSDFGIRayCountEnvSdfgiRayCount64 RenderingServerEnvironmentSDFGIRayCount = 4
+  RenderingServerEnvironmentSDFGIRayCountEnvSdfgiRayCount96 RenderingServerEnvironmentSDFGIRayCount = 5
+  RenderingServerEnvironmentSDFGIRayCountEnvSdfgiRayCount128 RenderingServerEnvironmentSDFGIRayCount = 6
+  RenderingServerEnvironmentSDFGIRayCountEnvSdfgiRayCountMax RenderingServerEnvironmentSDFGIRayCount = 7
 )
 
 type RenderingServerEnvironmentSDFGIFramesToConverge int
 const (
-  RenderingServerEnvSdfgiConvergeIn5Frames RenderingServerEnvironmentSDFGIFramesToConverge = 0
-  RenderingServerEnvSdfgiConvergeIn10Frames RenderingServerEnvironmentSDFGIFramesToConverge = 1
-  RenderingServerEnvSdfgiConvergeIn15Frames RenderingServerEnvironmentSDFGIFramesToConverge = 2
-  RenderingServerEnvSdfgiConvergeIn20Frames RenderingServerEnvironmentSDFGIFramesToConverge = 3
-  RenderingServerEnvSdfgiConvergeIn25Frames RenderingServerEnvironmentSDFGIFramesToConverge = 4
-  RenderingServerEnvSdfgiConvergeIn30Frames RenderingServerEnvironmentSDFGIFramesToConverge = 5
-  RenderingServerEnvSdfgiConvergeMax RenderingServerEnvironmentSDFGIFramesToConverge = 6
+  RenderingServerEnvironmentSDFGIFramesToConvergeEnvSdfgiConvergeIn5Frames RenderingServerEnvironmentSDFGIFramesToConverge = 0
+  RenderingServerEnvironmentSDFGIFramesToConvergeEnvSdfgiConvergeIn10Frames RenderingServerEnvironmentSDFGIFramesToConverge = 1
+  RenderingServerEnvironmentSDFGIFramesToConvergeEnvSdfgiConvergeIn15Frames RenderingServerEnvironmentSDFGIFramesToConverge = 2
+  RenderingServerEnvironmentSDFGIFramesToConvergeEnvSdfgiConvergeIn20Frames RenderingServerEnvironmentSDFGIFramesToConverge = 3
+  RenderingServerEnvironmentSDFGIFramesToConvergeEnvSdfgiConvergeIn25Frames RenderingServerEnvironmentSDFGIFramesToConverge = 4
+  RenderingServerEnvironmentSDFGIFramesToConvergeEnvSdfgiConvergeIn30Frames RenderingServerEnvironmentSDFGIFramesToConverge = 5
+  RenderingServerEnvironmentSDFGIFramesToConvergeEnvSdfgiConvergeMax RenderingServerEnvironmentSDFGIFramesToConverge = 6
 )
 
 type RenderingServerEnvironmentSDFGIFramesToUpdateLight int
 const (
-  RenderingServerEnvSdfgiUpdateLightIn1Frame RenderingServerEnvironmentSDFGIFramesToUpdateLight = 0
-  RenderingServerEnvSdfgiUpdateLightIn2Frames RenderingServerEnvironmentSDFGIFramesToUpdateLight = 1
-  RenderingServerEnvSdfgiUpdateLightIn4Frames RenderingServerEnvironmentSDFGIFramesToUpdateLight = 2
-  RenderingServerEnvSdfgiUpdateLightIn8Frames RenderingServerEnvironmentSDFGIFramesToUpdateLight = 3
-  RenderingServerEnvSdfgiUpdateLightIn16Frames RenderingServerEnvironmentSDFGIFramesToUpdateLight = 4
-  RenderingServerEnvSdfgiUpdateLightMax RenderingServerEnvironmentSDFGIFramesToUpdateLight = 5
+  RenderingServerEnvironmentSDFGIFramesToUpdateLightEnvSdfgiUpdateLightIn1Frame RenderingServerEnvironmentSDFGIFramesToUpdateLight = 0
+  RenderingServerEnvironmentSDFGIFramesToUpdateLightEnvSdfgiUpdateLightIn2Frames RenderingServerEnvironmentSDFGIFramesToUpdateLight = 1
+  RenderingServerEnvironmentSDFGIFramesToUpdateLightEnvSdfgiUpdateLightIn4Frames RenderingServerEnvironmentSDFGIFramesToUpdateLight = 2
+  RenderingServerEnvironmentSDFGIFramesToUpdateLightEnvSdfgiUpdateLightIn8Frames RenderingServerEnvironmentSDFGIFramesToUpdateLight = 3
+  RenderingServerEnvironmentSDFGIFramesToUpdateLightEnvSdfgiUpdateLightIn16Frames RenderingServerEnvironmentSDFGIFramesToUpdateLight = 4
+  RenderingServerEnvironmentSDFGIFramesToUpdateLightEnvSdfgiUpdateLightMax RenderingServerEnvironmentSDFGIFramesToUpdateLight = 5
 )
 
 type RenderingServerSubSurfaceScatteringQuality int
 const (
-  RenderingServerSubSurfaceScatteringQualityDisabled RenderingServerSubSurfaceScatteringQuality = 0
-  RenderingServerSubSurfaceScatteringQualityLow RenderingServerSubSurfaceScatteringQuality = 1
-  RenderingServerSubSurfaceScatteringQualityMedium RenderingServerSubSurfaceScatteringQuality = 2
-  RenderingServerSubSurfaceScatteringQualityHigh RenderingServerSubSurfaceScatteringQuality = 3
+  RenderingServerSubSurfaceScatteringQualitySubSurfaceScatteringQualityDisabled RenderingServerSubSurfaceScatteringQuality = 0
+  RenderingServerSubSurfaceScatteringQualitySubSurfaceScatteringQualityLow RenderingServerSubSurfaceScatteringQuality = 1
+  RenderingServerSubSurfaceScatteringQualitySubSurfaceScatteringQualityMedium RenderingServerSubSurfaceScatteringQuality = 2
+  RenderingServerSubSurfaceScatteringQualitySubSurfaceScatteringQualityHigh RenderingServerSubSurfaceScatteringQuality = 3
 )
 
 type RenderingServerDOFBokehShape int
 const (
-  RenderingServerDofBokehBox RenderingServerDOFBokehShape = 0
-  RenderingServerDofBokehHexagon RenderingServerDOFBokehShape = 1
-  RenderingServerDofBokehCircle RenderingServerDOFBokehShape = 2
+  RenderingServerDOFBokehShapeDofBokehBox RenderingServerDOFBokehShape = 0
+  RenderingServerDOFBokehShapeDofBokehHexagon RenderingServerDOFBokehShape = 1
+  RenderingServerDOFBokehShapeDofBokehCircle RenderingServerDOFBokehShape = 2
 )
 
 type RenderingServerDOFBlurQuality int
 const (
-  RenderingServerDofBlurQualityVeryLow RenderingServerDOFBlurQuality = 0
-  RenderingServerDofBlurQualityLow RenderingServerDOFBlurQuality = 1
-  RenderingServerDofBlurQualityMedium RenderingServerDOFBlurQuality = 2
-  RenderingServerDofBlurQualityHigh RenderingServerDOFBlurQuality = 3
+  RenderingServerDOFBlurQualityDofBlurQualityVeryLow RenderingServerDOFBlurQuality = 0
+  RenderingServerDOFBlurQualityDofBlurQualityLow RenderingServerDOFBlurQuality = 1
+  RenderingServerDOFBlurQualityDofBlurQualityMedium RenderingServerDOFBlurQuality = 2
+  RenderingServerDOFBlurQualityDofBlurQualityHigh RenderingServerDOFBlurQuality = 3
 )
 
 type RenderingServerInstanceType int
 const (
-  RenderingServerInstanceNone RenderingServerInstanceType = 0
-  RenderingServerInstanceMesh RenderingServerInstanceType = 1
-  RenderingServerInstanceMultimesh RenderingServerInstanceType = 2
-  RenderingServerInstanceParticles RenderingServerInstanceType = 3
-  RenderingServerInstanceParticlesCollision RenderingServerInstanceType = 4
-  RenderingServerInstanceLight RenderingServerInstanceType = 5
-  RenderingServerInstanceReflectionProbe RenderingServerInstanceType = 6
-  RenderingServerInstanceDecal RenderingServerInstanceType = 7
-  RenderingServerInstanceVoxelGi RenderingServerInstanceType = 8
-  RenderingServerInstanceLightmap RenderingServerInstanceType = 9
-  RenderingServerInstanceOccluder RenderingServerInstanceType = 10
-  RenderingServerInstanceVisiblityNotifier RenderingServerInstanceType = 11
-  RenderingServerInstanceFogVolume RenderingServerInstanceType = 12
-  RenderingServerInstanceMax RenderingServerInstanceType = 13
-  RenderingServerInstanceGeometryMask RenderingServerInstanceType = 14
+  RenderingServerInstanceTypeInstanceNone RenderingServerInstanceType = 0
+  RenderingServerInstanceTypeInstanceMesh RenderingServerInstanceType = 1
+  RenderingServerInstanceTypeInstanceMultimesh RenderingServerInstanceType = 2
+  RenderingServerInstanceTypeInstanceParticles RenderingServerInstanceType = 3
+  RenderingServerInstanceTypeInstanceParticlesCollision RenderingServerInstanceType = 4
+  RenderingServerInstanceTypeInstanceLight RenderingServerInstanceType = 5
+  RenderingServerInstanceTypeInstanceReflectionProbe RenderingServerInstanceType = 6
+  RenderingServerInstanceTypeInstanceDecal RenderingServerInstanceType = 7
+  RenderingServerInstanceTypeInstanceVoxelGi RenderingServerInstanceType = 8
+  RenderingServerInstanceTypeInstanceLightmap RenderingServerInstanceType = 9
+  RenderingServerInstanceTypeInstanceOccluder RenderingServerInstanceType = 10
+  RenderingServerInstanceTypeInstanceVisiblityNotifier RenderingServerInstanceType = 11
+  RenderingServerInstanceTypeInstanceFogVolume RenderingServerInstanceType = 12
+  RenderingServerInstanceTypeInstanceMax RenderingServerInstanceType = 13
+  RenderingServerInstanceTypeInstanceGeometryMask RenderingServerInstanceType = 14
 )
 
 type RenderingServerInstanceFlags int
 const (
-  RenderingServerInstanceFlagUseBakedLight RenderingServerInstanceFlags = 0
-  RenderingServerInstanceFlagUseDynamicGi RenderingServerInstanceFlags = 1
-  RenderingServerInstanceFlagDrawNextFrameIfVisible RenderingServerInstanceFlags = 2
-  RenderingServerInstanceFlagIgnoreOcclusionCulling RenderingServerInstanceFlags = 3
-  RenderingServerInstanceFlagMax RenderingServerInstanceFlags = 4
+  RenderingServerInstanceFlagsInstanceFlagUseBakedLight RenderingServerInstanceFlags = 0
+  RenderingServerInstanceFlagsInstanceFlagUseDynamicGi RenderingServerInstanceFlags = 1
+  RenderingServerInstanceFlagsInstanceFlagDrawNextFrameIfVisible RenderingServerInstanceFlags = 2
+  RenderingServerInstanceFlagsInstanceFlagIgnoreOcclusionCulling RenderingServerInstanceFlags = 3
+  RenderingServerInstanceFlagsInstanceFlagMax RenderingServerInstanceFlags = 4
 )
 
 type RenderingServerShadowCastingSetting int
 const (
-  RenderingServerShadowCastingSettingOff RenderingServerShadowCastingSetting = 0
-  RenderingServerShadowCastingSettingOn RenderingServerShadowCastingSetting = 1
-  RenderingServerShadowCastingSettingDoubleSided RenderingServerShadowCastingSetting = 2
-  RenderingServerShadowCastingSettingShadowsOnly RenderingServerShadowCastingSetting = 3
+  RenderingServerShadowCastingSettingShadowCastingSettingOff RenderingServerShadowCastingSetting = 0
+  RenderingServerShadowCastingSettingShadowCastingSettingOn RenderingServerShadowCastingSetting = 1
+  RenderingServerShadowCastingSettingShadowCastingSettingDoubleSided RenderingServerShadowCastingSetting = 2
+  RenderingServerShadowCastingSettingShadowCastingSettingShadowsOnly RenderingServerShadowCastingSetting = 3
 )
 
 type RenderingServerVisibilityRangeFadeMode int
 const (
-  RenderingServerVisibilityRangeFadeDisabled RenderingServerVisibilityRangeFadeMode = 0
-  RenderingServerVisibilityRangeFadeSelf RenderingServerVisibilityRangeFadeMode = 1
-  RenderingServerVisibilityRangeFadeDependencies RenderingServerVisibilityRangeFadeMode = 2
+  RenderingServerVisibilityRangeFadeModeVisibilityRangeFadeDisabled RenderingServerVisibilityRangeFadeMode = 0
+  RenderingServerVisibilityRangeFadeModeVisibilityRangeFadeSelf RenderingServerVisibilityRangeFadeMode = 1
+  RenderingServerVisibilityRangeFadeModeVisibilityRangeFadeDependencies RenderingServerVisibilityRangeFadeMode = 2
 )
 
 type RenderingServerBakeChannels int
 const (
-  RenderingServerBakeChannelAlbedoAlpha RenderingServerBakeChannels = 0
-  RenderingServerBakeChannelNormal RenderingServerBakeChannels = 1
-  RenderingServerBakeChannelOrm RenderingServerBakeChannels = 2
-  RenderingServerBakeChannelEmission RenderingServerBakeChannels = 3
+  RenderingServerBakeChannelsBakeChannelAlbedoAlpha RenderingServerBakeChannels = 0
+  RenderingServerBakeChannelsBakeChannelNormal RenderingServerBakeChannels = 1
+  RenderingServerBakeChannelsBakeChannelOrm RenderingServerBakeChannels = 2
+  RenderingServerBakeChannelsBakeChannelEmission RenderingServerBakeChannels = 3
 )
 
 type RenderingServerCanvasTextureChannel int
 const (
-  RenderingServerCanvasTextureChannelDiffuse RenderingServerCanvasTextureChannel = 0
-  RenderingServerCanvasTextureChannelNormal RenderingServerCanvasTextureChannel = 1
-  RenderingServerCanvasTextureChannelSpecular RenderingServerCanvasTextureChannel = 2
+  RenderingServerCanvasTextureChannelCanvasTextureChannelDiffuse RenderingServerCanvasTextureChannel = 0
+  RenderingServerCanvasTextureChannelCanvasTextureChannelNormal RenderingServerCanvasTextureChannel = 1
+  RenderingServerCanvasTextureChannelCanvasTextureChannelSpecular RenderingServerCanvasTextureChannel = 2
 )
 
 type RenderingServerNinePatchAxisMode int
 const (
-  RenderingServerNinePatchStretch RenderingServerNinePatchAxisMode = 0
-  RenderingServerNinePatchTile RenderingServerNinePatchAxisMode = 1
-  RenderingServerNinePatchTileFit RenderingServerNinePatchAxisMode = 2
+  RenderingServerNinePatchAxisModeNinePatchStretch RenderingServerNinePatchAxisMode = 0
+  RenderingServerNinePatchAxisModeNinePatchTile RenderingServerNinePatchAxisMode = 1
+  RenderingServerNinePatchAxisModeNinePatchTileFit RenderingServerNinePatchAxisMode = 2
 )
 
 type RenderingServerCanvasItemTextureFilter int
 const (
-  RenderingServerCanvasItemTextureFilterDefault RenderingServerCanvasItemTextureFilter = 0
-  RenderingServerCanvasItemTextureFilterNearest RenderingServerCanvasItemTextureFilter = 1
-  RenderingServerCanvasItemTextureFilterLinear RenderingServerCanvasItemTextureFilter = 2
-  RenderingServerCanvasItemTextureFilterNearestWithMipmaps RenderingServerCanvasItemTextureFilter = 3
-  RenderingServerCanvasItemTextureFilterLinearWithMipmaps RenderingServerCanvasItemTextureFilter = 4
-  RenderingServerCanvasItemTextureFilterNearestWithMipmapsAnisotropic RenderingServerCanvasItemTextureFilter = 5
-  RenderingServerCanvasItemTextureFilterLinearWithMipmapsAnisotropic RenderingServerCanvasItemTextureFilter = 6
-  RenderingServerCanvasItemTextureFilterMax RenderingServerCanvasItemTextureFilter = 7
+  RenderingServerCanvasItemTextureFilterCanvasItemTextureFilterDefault RenderingServerCanvasItemTextureFilter = 0
+  RenderingServerCanvasItemTextureFilterCanvasItemTextureFilterNearest RenderingServerCanvasItemTextureFilter = 1
+  RenderingServerCanvasItemTextureFilterCanvasItemTextureFilterLinear RenderingServerCanvasItemTextureFilter = 2
+  RenderingServerCanvasItemTextureFilterCanvasItemTextureFilterNearestWithMipmaps RenderingServerCanvasItemTextureFilter = 3
+  RenderingServerCanvasItemTextureFilterCanvasItemTextureFilterLinearWithMipmaps RenderingServerCanvasItemTextureFilter = 4
+  RenderingServerCanvasItemTextureFilterCanvasItemTextureFilterNearestWithMipmapsAnisotropic RenderingServerCanvasItemTextureFilter = 5
+  RenderingServerCanvasItemTextureFilterCanvasItemTextureFilterLinearWithMipmapsAnisotropic RenderingServerCanvasItemTextureFilter = 6
+  RenderingServerCanvasItemTextureFilterCanvasItemTextureFilterMax RenderingServerCanvasItemTextureFilter = 7
 )
 
 type RenderingServerCanvasItemTextureRepeat int
 const (
-  RenderingServerCanvasItemTextureRepeatDefault RenderingServerCanvasItemTextureRepeat = 0
-  RenderingServerCanvasItemTextureRepeatDisabled RenderingServerCanvasItemTextureRepeat = 1
-  RenderingServerCanvasItemTextureRepeatEnabled RenderingServerCanvasItemTextureRepeat = 2
-  RenderingServerCanvasItemTextureRepeatMirror RenderingServerCanvasItemTextureRepeat = 3
-  RenderingServerCanvasItemTextureRepeatMax RenderingServerCanvasItemTextureRepeat = 4
+  RenderingServerCanvasItemTextureRepeatCanvasItemTextureRepeatDefault RenderingServerCanvasItemTextureRepeat = 0
+  RenderingServerCanvasItemTextureRepeatCanvasItemTextureRepeatDisabled RenderingServerCanvasItemTextureRepeat = 1
+  RenderingServerCanvasItemTextureRepeatCanvasItemTextureRepeatEnabled RenderingServerCanvasItemTextureRepeat = 2
+  RenderingServerCanvasItemTextureRepeatCanvasItemTextureRepeatMirror RenderingServerCanvasItemTextureRepeat = 3
+  RenderingServerCanvasItemTextureRepeatCanvasItemTextureRepeatMax RenderingServerCanvasItemTextureRepeat = 4
 )
 
 type RenderingServerCanvasGroupMode int
 const (
-  RenderingServerCanvasGroupModeDisabled RenderingServerCanvasGroupMode = 0
-  RenderingServerCanvasGroupModeClipOnly RenderingServerCanvasGroupMode = 1
-  RenderingServerCanvasGroupModeClipAndDraw RenderingServerCanvasGroupMode = 2
-  RenderingServerCanvasGroupModeTransparent RenderingServerCanvasGroupMode = 3
+  RenderingServerCanvasGroupModeCanvasGroupModeDisabled RenderingServerCanvasGroupMode = 0
+  RenderingServerCanvasGroupModeCanvasGroupModeClipOnly RenderingServerCanvasGroupMode = 1
+  RenderingServerCanvasGroupModeCanvasGroupModeClipAndDraw RenderingServerCanvasGroupMode = 2
+  RenderingServerCanvasGroupModeCanvasGroupModeTransparent RenderingServerCanvasGroupMode = 3
 )
 
 type RenderingServerCanvasLightMode int
 const (
-  RenderingServerCanvasLightModePoint RenderingServerCanvasLightMode = 0
-  RenderingServerCanvasLightModeDirectional RenderingServerCanvasLightMode = 1
+  RenderingServerCanvasLightModeCanvasLightModePoint RenderingServerCanvasLightMode = 0
+  RenderingServerCanvasLightModeCanvasLightModeDirectional RenderingServerCanvasLightMode = 1
 )
 
 type RenderingServerCanvasLightBlendMode int
 const (
-  RenderingServerCanvasLightBlendModeAdd RenderingServerCanvasLightBlendMode = 0
-  RenderingServerCanvasLightBlendModeSub RenderingServerCanvasLightBlendMode = 1
-  RenderingServerCanvasLightBlendModeMix RenderingServerCanvasLightBlendMode = 2
+  RenderingServerCanvasLightBlendModeCanvasLightBlendModeAdd RenderingServerCanvasLightBlendMode = 0
+  RenderingServerCanvasLightBlendModeCanvasLightBlendModeSub RenderingServerCanvasLightBlendMode = 1
+  RenderingServerCanvasLightBlendModeCanvasLightBlendModeMix RenderingServerCanvasLightBlendMode = 2
 )
 
 type RenderingServerCanvasLightShadowFilter int
 const (
-  RenderingServerCanvasLightFilterNone RenderingServerCanvasLightShadowFilter = 0
-  RenderingServerCanvasLightFilterPcf5 RenderingServerCanvasLightShadowFilter = 1
-  RenderingServerCanvasLightFilterPcf13 RenderingServerCanvasLightShadowFilter = 2
-  RenderingServerCanvasLightFilterMax RenderingServerCanvasLightShadowFilter = 3
+  RenderingServerCanvasLightShadowFilterCanvasLightFilterNone RenderingServerCanvasLightShadowFilter = 0
+  RenderingServerCanvasLightShadowFilterCanvasLightFilterPcf5 RenderingServerCanvasLightShadowFilter = 1
+  RenderingServerCanvasLightShadowFilterCanvasLightFilterPcf13 RenderingServerCanvasLightShadowFilter = 2
+  RenderingServerCanvasLightShadowFilterCanvasLightFilterMax RenderingServerCanvasLightShadowFilter = 3
 )
 
 type RenderingServerCanvasOccluderPolygonCullMode int
 const (
-  RenderingServerCanvasOccluderPolygonCullDisabled RenderingServerCanvasOccluderPolygonCullMode = 0
-  RenderingServerCanvasOccluderPolygonCullClockwise RenderingServerCanvasOccluderPolygonCullMode = 1
-  RenderingServerCanvasOccluderPolygonCullCounterClockwise RenderingServerCanvasOccluderPolygonCullMode = 2
+  RenderingServerCanvasOccluderPolygonCullModeCanvasOccluderPolygonCullDisabled RenderingServerCanvasOccluderPolygonCullMode = 0
+  RenderingServerCanvasOccluderPolygonCullModeCanvasOccluderPolygonCullClockwise RenderingServerCanvasOccluderPolygonCullMode = 1
+  RenderingServerCanvasOccluderPolygonCullModeCanvasOccluderPolygonCullCounterClockwise RenderingServerCanvasOccluderPolygonCullMode = 2
 )
 
 type RenderingServerGlobalShaderParameterType int
 const (
-  RenderingServerGlobalVarTypeBool RenderingServerGlobalShaderParameterType = 0
-  RenderingServerGlobalVarTypeBvec2 RenderingServerGlobalShaderParameterType = 1
-  RenderingServerGlobalVarTypeBvec3 RenderingServerGlobalShaderParameterType = 2
-  RenderingServerGlobalVarTypeBvec4 RenderingServerGlobalShaderParameterType = 3
-  RenderingServerGlobalVarTypeInt RenderingServerGlobalShaderParameterType = 4
-  RenderingServerGlobalVarTypeIvec2 RenderingServerGlobalShaderParameterType = 5
-  RenderingServerGlobalVarTypeIvec3 RenderingServerGlobalShaderParameterType = 6
-  RenderingServerGlobalVarTypeIvec4 RenderingServerGlobalShaderParameterType = 7
-  RenderingServerGlobalVarTypeRect2I RenderingServerGlobalShaderParameterType = 8
-  RenderingServerGlobalVarTypeUint RenderingServerGlobalShaderParameterType = 9
-  RenderingServerGlobalVarTypeUvec2 RenderingServerGlobalShaderParameterType = 10
-  RenderingServerGlobalVarTypeUvec3 RenderingServerGlobalShaderParameterType = 11
-  RenderingServerGlobalVarTypeUvec4 RenderingServerGlobalShaderParameterType = 12
-  RenderingServerGlobalVarTypeFloat RenderingServerGlobalShaderParameterType = 13
-  RenderingServerGlobalVarTypeVec2 RenderingServerGlobalShaderParameterType = 14
-  RenderingServerGlobalVarTypeVec3 RenderingServerGlobalShaderParameterType = 15
-  RenderingServerGlobalVarTypeVec4 RenderingServerGlobalShaderParameterType = 16
-  RenderingServerGlobalVarTypeColor RenderingServerGlobalShaderParameterType = 17
-  RenderingServerGlobalVarTypeRect2 RenderingServerGlobalShaderParameterType = 18
-  RenderingServerGlobalVarTypeMat2 RenderingServerGlobalShaderParameterType = 19
-  RenderingServerGlobalVarTypeMat3 RenderingServerGlobalShaderParameterType = 20
-  RenderingServerGlobalVarTypeMat4 RenderingServerGlobalShaderParameterType = 21
-  RenderingServerGlobalVarTypeTransform2D RenderingServerGlobalShaderParameterType = 22
-  RenderingServerGlobalVarTypeTransform RenderingServerGlobalShaderParameterType = 23
-  RenderingServerGlobalVarTypeSampler2D RenderingServerGlobalShaderParameterType = 24
-  RenderingServerGlobalVarTypeSampler2Darray RenderingServerGlobalShaderParameterType = 25
-  RenderingServerGlobalVarTypeSampler3D RenderingServerGlobalShaderParameterType = 26
-  RenderingServerGlobalVarTypeSamplercube RenderingServerGlobalShaderParameterType = 27
-  RenderingServerGlobalVarTypeMax RenderingServerGlobalShaderParameterType = 28
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeBool RenderingServerGlobalShaderParameterType = 0
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeBvec2 RenderingServerGlobalShaderParameterType = 1
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeBvec3 RenderingServerGlobalShaderParameterType = 2
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeBvec4 RenderingServerGlobalShaderParameterType = 3
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeInt RenderingServerGlobalShaderParameterType = 4
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeIvec2 RenderingServerGlobalShaderParameterType = 5
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeIvec3 RenderingServerGlobalShaderParameterType = 6
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeIvec4 RenderingServerGlobalShaderParameterType = 7
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeRect2I RenderingServerGlobalShaderParameterType = 8
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeUint RenderingServerGlobalShaderParameterType = 9
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeUvec2 RenderingServerGlobalShaderParameterType = 10
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeUvec3 RenderingServerGlobalShaderParameterType = 11
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeUvec4 RenderingServerGlobalShaderParameterType = 12
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeFloat RenderingServerGlobalShaderParameterType = 13
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeVec2 RenderingServerGlobalShaderParameterType = 14
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeVec3 RenderingServerGlobalShaderParameterType = 15
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeVec4 RenderingServerGlobalShaderParameterType = 16
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeColor RenderingServerGlobalShaderParameterType = 17
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeRect2 RenderingServerGlobalShaderParameterType = 18
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeMat2 RenderingServerGlobalShaderParameterType = 19
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeMat3 RenderingServerGlobalShaderParameterType = 20
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeMat4 RenderingServerGlobalShaderParameterType = 21
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeTransform2D RenderingServerGlobalShaderParameterType = 22
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeTransform RenderingServerGlobalShaderParameterType = 23
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeSampler2D RenderingServerGlobalShaderParameterType = 24
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeSampler2Darray RenderingServerGlobalShaderParameterType = 25
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeSampler3D RenderingServerGlobalShaderParameterType = 26
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeSamplercube RenderingServerGlobalShaderParameterType = 27
+  RenderingServerGlobalShaderParameterTypeGlobalVarTypeMax RenderingServerGlobalShaderParameterType = 28
 )
 
 type RenderingServerRenderingInfo int
 const (
-  RenderingServerRenderingInfoTotalObjectsInFrame RenderingServerRenderingInfo = 0
-  RenderingServerRenderingInfoTotalPrimitivesInFrame RenderingServerRenderingInfo = 1
-  RenderingServerRenderingInfoTotalDrawCallsInFrame RenderingServerRenderingInfo = 2
-  RenderingServerRenderingInfoTextureMemUsed RenderingServerRenderingInfo = 3
-  RenderingServerRenderingInfoBufferMemUsed RenderingServerRenderingInfo = 4
-  RenderingServerRenderingInfoVideoMemUsed RenderingServerRenderingInfo = 5
+  RenderingServerRenderingInfoRenderingInfoTotalObjectsInFrame RenderingServerRenderingInfo = 0
+  RenderingServerRenderingInfoRenderingInfoTotalPrimitivesInFrame RenderingServerRenderingInfo = 1
+  RenderingServerRenderingInfoRenderingInfoTotalDrawCallsInFrame RenderingServerRenderingInfo = 2
+  RenderingServerRenderingInfoRenderingInfoTextureMemUsed RenderingServerRenderingInfo = 3
+  RenderingServerRenderingInfoRenderingInfoBufferMemUsed RenderingServerRenderingInfo = 4
+  RenderingServerRenderingInfoRenderingInfoVideoMemUsed RenderingServerRenderingInfo = 5
 )
 
 type RenderingServerFeatures int
 const (
-  RenderingServerFeatureShaders RenderingServerFeatures = 0
-  RenderingServerFeatureMultithreaded RenderingServerFeatures = 1
+  RenderingServerFeaturesFeatureShaders RenderingServerFeatures = 0
+  RenderingServerFeaturesFeatureMultithreaded RenderingServerFeatures = 1
 )
+
+func  (me *RenderingServer) Texture2DCreate(image Image, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) Texture2DLayeredCreate(layers Image, layered_type RenderingServerTextureLayeredType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) Texture3DCreate(format ImageFormat, width int, height int, depth int, mipmaps bool, data Image, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) TextureProxyCreate(base RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) Texture2DUpdate(texture RID, image Image, layer int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) Texture3DUpdate(texture RID, data Image, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) TextureProxyUpdate(texture RID, proxy_to RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) Texture2DPlaceholderCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) Texture2DLayeredPlaceholderCreate(layered_type RenderingServerTextureLayeredType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) Texture3DPlaceholderCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) Texture2DGet(texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) Texture2DLayerGet(texture RID, layer int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) Texture3DGet(texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) TextureReplace(texture RID, by_texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) TextureSetSizeOverride(texture RID, width int, height int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) TextureSetPath(texture RID, path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) TextureGetPath(texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) TextureSetForceRedrawIfVisible(texture RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) TextureGetRdTexture(texture RID, srgb bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) TextureGetNativeHandle(texture RID, srgb bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ShaderCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ShaderSetCode(shader RID, code String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ShaderSetPathHint(shader RID, path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ShaderGetCode(shader RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetShaderParameterList(shader RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ShaderGetParameterDefault(shader RID, name StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ShaderSetDefaultTextureParameter(shader RID, name StringName, texture RID, index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ShaderGetDefaultTextureParameter(shader RID, name StringName, index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MaterialCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MaterialSetShader(shader_material RID, shader RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MaterialSetParam(material RID, parameter StringName, value Variant, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MaterialGetParam(material RID, parameter StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MaterialSetRenderPriority(material RID, priority int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MaterialSetNextPass(material RID, next_material RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshCreateFromSurfaces(surfaces Dictionary, blend_shape_count int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSurfaceGetFormatOffset(format RenderingServerArrayFormat, vertex_count int, array_index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSurfaceGetFormatVertexStride(format RenderingServerArrayFormat, vertex_count int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSurfaceGetFormatAttributeStride(format RenderingServerArrayFormat, vertex_count int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSurfaceGetFormatSkinStride(format RenderingServerArrayFormat, vertex_count int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshAddSurface(mesh RID, surface Dictionary, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshAddSurfaceFromArrays(mesh RID, primitive RenderingServerPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, compress_format RenderingServerArrayFormat, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshGetBlendShapeCount(mesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSetBlendShapeMode(mesh RID, mode RenderingServerBlendShapeMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshGetBlendShapeMode(mesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSurfaceSetMaterial(mesh RID, surface int, material RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSurfaceGetMaterial(mesh RID, surface int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshGetSurface(mesh RID, surface int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSurfaceGetArrays(mesh RID, surface int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSurfaceGetBlendShapeArrays(mesh RID, surface int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshGetSurfaceCount(mesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSetCustomAabb(mesh RID, aabb AABB, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshGetCustomAabb(mesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshClear(mesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSurfaceUpdateVertexRegion(mesh RID, surface int, offset int, data PackedByteArray, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSurfaceUpdateAttributeRegion(mesh RID, surface int, offset int, data PackedByteArray, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSurfaceUpdateSkinRegion(mesh RID, surface int, offset int, data PackedByteArray, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MeshSetShadowMesh(mesh RID, shadow_mesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshAllocateData(multimesh RID, instances int, transform_format RenderingServerMultimeshTransformFormat, color_format bool, custom_data_format bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshGetInstanceCount(multimesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshSetMesh(multimesh RID, mesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshInstanceSetTransform(multimesh RID, index int, transform Transform3D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshInstanceSetTransform2D(multimesh RID, index int, transform Transform2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshInstanceSetColor(multimesh RID, index int, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshInstanceSetCustomData(multimesh RID, index int, custom_data Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshGetMesh(multimesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshGetAabb(multimesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshInstanceGetTransform(multimesh RID, index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshInstanceGetTransform2D(multimesh RID, index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshInstanceGetColor(multimesh RID, index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshInstanceGetCustomData(multimesh RID, index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshSetVisibleInstances(multimesh RID, visible int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshGetVisibleInstances(multimesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshSetBuffer(multimesh RID, buffer PackedFloat32Array, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MultimeshGetBuffer(multimesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkeletonCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkeletonAllocateData(skeleton RID, bones int, is_2d_skeleton bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkeletonGetBoneCount(skeleton RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkeletonBoneSetTransform(skeleton RID, bone int, transform Transform3D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkeletonBoneGetTransform(skeleton RID, bone int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkeletonBoneSetTransform2D(skeleton RID, bone int, transform Transform2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkeletonBoneGetTransform2D(skeleton RID, bone int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkeletonSetBaseTransform2D(skeleton RID, base_transform Transform2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DirectionalLightCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) OmniLightCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SpotLightCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightSetColor(light RID, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightSetParam(light RID, param RenderingServerLightParam, value float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightSetShadow(light RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightSetProjector(light RID, texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightSetNegative(light RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightSetCullMask(light RID, mask int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightSetDistanceFade(decal RID, enabled bool, begin float32, shadow float32, length float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightSetReverseCullFaceMode(light RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightSetBakeMode(light RID, bake_mode RenderingServerLightBakeMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightSetMaxSdfgiCascade(light RID, cascade int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightOmniSetShadowMode(light RID, mode RenderingServerLightOmniShadowMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightDirectionalSetShadowMode(light RID, mode RenderingServerLightDirectionalShadowMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightDirectionalSetBlendSplits(light RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightDirectionalSetSkyMode(light RID, mode RenderingServerLightDirectionalSkyMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightProjectorsSetFilter(filter RenderingServerLightProjectorFilter, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) PositionalSoftShadowFilterSetQuality(quality RenderingServerShadowQuality, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DirectionalSoftShadowFilterSetQuality(quality RenderingServerShadowQuality, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DirectionalShadowAtlasSetSize(size int, is_16bits bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetUpdateMode(probe RID, mode RenderingServerReflectionProbeUpdateMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetIntensity(probe RID, intensity float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetAmbientMode(probe RID, mode RenderingServerReflectionProbeAmbientMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetAmbientColor(probe RID, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetAmbientEnergy(probe RID, energy float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetMaxDistance(probe RID, distance float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetSize(probe RID, size Vector3, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetOriginOffset(probe RID, offset Vector3, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetAsInterior(probe RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetEnableBoxProjection(probe RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetEnableShadows(probe RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetCullMask(probe RID, layers int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetResolution(probe RID, resolution int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ReflectionProbeSetMeshLodThreshold(probe RID, pixels float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DecalCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DecalSetSize(decal RID, size Vector3, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DecalSetTexture(decal RID, type_ RenderingServerDecalTexture, texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DecalSetEmissionEnergy(decal RID, energy float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DecalSetAlbedoMix(decal RID, albedo_mix float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DecalSetModulate(decal RID, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DecalSetCullMask(decal RID, mask int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DecalSetDistanceFade(decal RID, enabled bool, begin float32, length float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DecalSetFade(decal RID, above float32, below float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DecalSetNormalFade(decal RID, fade float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) DecalsSetFilter(filter RenderingServerDecalFilter, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GiSetUseHalfResolution(half_resolution bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiAllocateData(voxel_gi RID, to_cell_xform Transform3D, aabb AABB, octree_size Vector3i, octree_cells PackedByteArray, data_cells PackedByteArray, distance_field PackedByteArray, level_counts PackedInt32Array, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiGetOctreeSize(voxel_gi RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiGetOctreeCells(voxel_gi RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiGetDataCells(voxel_gi RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiGetDistanceField(voxel_gi RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiGetLevelCounts(voxel_gi RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiGetToCellXform(voxel_gi RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiSetDynamicRange(voxel_gi RID, range_ float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiSetPropagation(voxel_gi RID, amount float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiSetEnergy(voxel_gi RID, energy float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiSetBakedExposureNormalization(voxel_gi RID, baked_exposure float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiSetBias(voxel_gi RID, bias float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiSetNormalBias(voxel_gi RID, bias float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiSetInterior(voxel_gi RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiSetUseTwoBounces(voxel_gi RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VoxelGiSetQuality(quality RenderingServerVoxelGIQuality, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightmapCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightmapSetTextures(lightmap RID, light RID, uses_sh bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightmapSetProbeBounds(lightmap RID, bounds AABB, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightmapSetProbeInterior(lightmap RID, interior bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightmapSetProbeCaptureData(lightmap RID, points PackedVector3Array, point_sh PackedColorArray, tetrahedra PackedInt32Array, bsp_tree PackedInt32Array, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightmapGetProbeCapturePoints(lightmap RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightmapGetProbeCaptureSh(lightmap RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightmapGetProbeCaptureTetrahedra(lightmap RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightmapGetProbeCaptureBspTree(lightmap RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightmapSetBakedExposureNormalization(lightmap RID, baked_exposure float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) LightmapSetProbeCaptureUpdateSpeed(speed float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetMode(particles RID, mode RenderingServerParticlesMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetEmitting(particles RID, emitting bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesGetEmitting(particles RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetAmount(particles RID, amount int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetLifetime(particles RID, lifetime float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetOneShot(particles RID, one_shot bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetPreProcessTime(particles RID, time float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetExplosivenessRatio(particles RID, ratio float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetRandomnessRatio(particles RID, ratio float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetCustomAabb(particles RID, aabb AABB, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetSpeedScale(particles RID, scale float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetUseLocalCoordinates(particles RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetProcessMaterial(particles RID, material RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetFixedFps(particles RID, fps int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetInterpolate(particles RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetFractionalDelta(particles RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetCollisionBaseSize(particles RID, size float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetTransformAlign(particles RID, align RenderingServerParticlesTransformAlign, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetTrails(particles RID, enable bool, length_sec float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetTrailBindPoses(particles RID, bind_poses Transform3D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesIsInactive(particles RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesRequestProcess(particles RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesRestart(particles RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetSubemitter(particles RID, subemitter_particles RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesEmit(particles RID, transform Transform3D, velocity Vector3, color Color, custom Color, emit_flags int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetDrawOrder(particles RID, order RenderingServerParticlesDrawOrder, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetDrawPasses(particles RID, count int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetDrawPassMesh(particles RID, pass int, mesh RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesGetCurrentAabb(particles RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesSetEmissionTransform(particles RID, transform Transform3D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCollisionCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCollisionSetCollisionType(particles_collision RID, type_ RenderingServerParticlesCollisionType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCollisionSetCullMask(particles_collision RID, mask int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCollisionSetSphereRadius(particles_collision RID, radius float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCollisionSetBoxExtents(particles_collision RID, extents Vector3, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCollisionSetAttractorStrength(particles_collision RID, strength float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCollisionSetAttractorDirectionality(particles_collision RID, amount float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCollisionSetAttractorAttenuation(particles_collision RID, curve float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCollisionSetFieldTexture(particles_collision RID, texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCollisionHeightFieldUpdate(particles_collision RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ParticlesCollisionSetHeightFieldResolution(particles_collision RID, resolution RenderingServerParticlesCollisionHeightfieldResolution, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) FogVolumeCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) FogVolumeSetShape(fog_volume RID, shape RenderingServerFogVolumeShape, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) FogVolumeSetSize(fog_volume RID, size Vector3, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) FogVolumeSetMaterial(fog_volume RID, material RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VisibilityNotifierCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VisibilityNotifierSetAabb(notifier RID, aabb AABB, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) VisibilityNotifierSetCallbacks(notifier RID, enter_callable Callable, exit_callable Callable, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) OccluderCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) OccluderSetMesh(occluder RID, vertices PackedVector3Array, indices PackedInt32Array, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraSetPerspective(camera RID, fovy_degrees float32, z_near float32, z_far float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraSetOrthogonal(camera RID, size float32, z_near float32, z_far float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraSetFrustum(camera RID, size float32, offset Vector2, z_near float32, z_far float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraSetTransform(camera RID, transform Transform3D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraSetCullMask(camera RID, layers int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraSetEnvironment(camera RID, env RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraSetCameraAttributes(camera RID, effects RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraSetUseVerticalAspect(camera RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetUseXr(viewport RID, use_xr bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetSize(viewport RID, width int, height int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetActive(viewport RID, active bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetParentViewport(viewport RID, parent_viewport RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportAttachToScreen(viewport RID, rect Rect2, screen int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetRenderDirectToScreen(viewport RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetCanvasCullMask(viewport RID, canvas_cull_mask int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetScaling3DMode(viewport RID, scaling_3d_mode RenderingServerViewportScaling3DMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetScaling3DScale(viewport RID, scale float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetFsrSharpness(viewport RID, sharpness float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetTextureMipmapBias(viewport RID, mipmap_bias float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetUpdateMode(viewport RID, update_mode RenderingServerViewportUpdateMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetClearMode(viewport RID, clear_mode RenderingServerViewportClearMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportGetRenderTarget(viewport RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportGetTexture(viewport RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetDisable3D(viewport RID, disable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetDisable2D(viewport RID, disable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetEnvironmentMode(viewport RID, mode RenderingServerViewportEnvironmentMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportAttachCamera(viewport RID, camera RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetScenario(viewport RID, scenario RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportAttachCanvas(viewport RID, canvas RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportRemoveCanvas(viewport RID, canvas RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetSnap2DTransformsToPixel(viewport RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetSnap2DVerticesToPixel(viewport RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetDefaultCanvasItemTextureFilter(viewport RID, filter RenderingServerCanvasItemTextureFilter, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetDefaultCanvasItemTextureRepeat(viewport RID, repeat RenderingServerCanvasItemTextureRepeat, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetCanvasTransform(viewport RID, canvas RID, offset Transform2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetCanvasStacking(viewport RID, canvas RID, layer int, sublayer int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetTransparentBackground(viewport RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetGlobalCanvasTransform(viewport RID, transform Transform2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetSdfOversizeAndScale(viewport RID, oversize RenderingServerViewportSDFOversize, scale RenderingServerViewportSDFScale, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetPositionalShadowAtlasSize(viewport RID, size int, use_16_bits bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetPositionalShadowAtlasQuadrantSubdivision(viewport RID, quadrant int, subdivision int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetMsaa3D(viewport RID, msaa RenderingServerViewportMSAA, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetMsaa2D(viewport RID, msaa RenderingServerViewportMSAA, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetScreenSpaceAa(viewport RID, mode RenderingServerViewportScreenSpaceAA, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetUseTaa(viewport RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetUseDebanding(viewport RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetUseOcclusionCulling(viewport RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetOcclusionRaysPerThread(rays_per_thread int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetOcclusionCullingBuildQuality(quality RenderingServerViewportOcclusionCullingBuildQuality, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportGetRenderInfo(viewport RID, type_ RenderingServerViewportRenderInfoType, info RenderingServerViewportRenderInfo, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetDebugDraw(viewport RID, draw RenderingServerViewportDebugDraw, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetMeasureRenderTime(viewport RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportGetMeasuredRenderTimeCpu(viewport RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportGetMeasuredRenderTimeGpu(viewport RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetVrsMode(viewport RID, mode RenderingServerViewportVRSMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ViewportSetVrsTexture(viewport RID, texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkyCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkySetRadianceSize(sky RID, radiance_size int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkySetMode(sky RID, mode RenderingServerSkyMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkySetMaterial(sky RID, material RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SkyBakePanorama(sky RID, energy float32, bake_irradiance bool, size Vector2i, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetBackground(env RID, bg RenderingServerEnvironmentBG, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSky(env RID, sky RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSkyCustomFov(env RID, scale float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSkyOrientation(env RID, orientation Basis, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetBgColor(env RID, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetBgEnergy(env RID, multiplier float32, exposure_value float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetCanvasMaxLayer(env RID, max_layer int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetAmbientLight(env RID, color Color, ambient RenderingServerEnvironmentAmbientSource, energy float32, sky_contibution float32, reflection_source RenderingServerEnvironmentReflectionSource, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetGlow(env RID, enable bool, levels PackedFloat32Array, intensity float32, strength float32, mix float32, bloom_threshold float32, blend_mode RenderingServerEnvironmentGlowBlendMode, hdr_bleed_threshold float32, hdr_bleed_scale float32, hdr_luminance_cap float32, glow_map_strength float32, glow_map RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetTonemap(env RID, tone_mapper RenderingServerEnvironmentToneMapper, exposure float32, white float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetAdjustment(env RID, enable bool, brightness float32, contrast float32, saturation float32, use_1d_color_correction bool, color_correction RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSsr(env RID, enable bool, max_steps int, fade_in float32, fade_out float32, depth_tolerance float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSsao(env RID, enable bool, radius float32, intensity float32, power float32, detail float32, horizon float32, sharpness float32, light_affect float32, ao_channel_affect float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetFog(env RID, enable bool, light_color Color, light_energy float32, sun_scatter float32, density float32, height float32, height_density float32, aerial_perspective float32, sky_affect float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSdfgi(env RID, enable bool, cascades int, min_cell_size float32, y_scale RenderingServerEnvironmentSDFGIYScale, use_occlusion bool, bounce_feedback float32, read_sky bool, energy float32, normal_bias float32, probe_bias float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetVolumetricFog(env RID, enable bool, density float32, albedo Color, emission Color, emission_energy float32, anisotropy float32, length float32, p_detail_spread float32, gi_inject float32, temporal_reprojection bool, temporal_reprojection_amount float32, ambient_inject float32, sky_affect float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentGlowSetUseBicubicUpscale(enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSsrRoughnessQuality(quality RenderingServerEnvironmentSSRRoughnessQuality, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSsaoQuality(quality RenderingServerEnvironmentSSAOQuality, half_size bool, adaptive_target float32, blur_passes int, fadeout_from float32, fadeout_to float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSsilQuality(quality RenderingServerEnvironmentSSILQuality, half_size bool, adaptive_target float32, blur_passes int, fadeout_from float32, fadeout_to float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSdfgiRayCount(ray_count RenderingServerEnvironmentSDFGIRayCount, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSdfgiFramesToConverge(frames RenderingServerEnvironmentSDFGIFramesToConverge, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetSdfgiFramesToUpdateLight(frames RenderingServerEnvironmentSDFGIFramesToUpdateLight, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetVolumetricFogVolumeSize(size int, depth int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentSetVolumetricFogFilterActive(active bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) EnvironmentBakePanorama(environment RID, bake_irradiance bool, size Vector2i, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ScreenSpaceRoughnessLimiterSetActive(enable bool, amount float32, limit float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SubSurfaceScatteringSetQuality(quality RenderingServerSubSurfaceScatteringQuality, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SubSurfaceScatteringSetScale(scale float32, depth_scale float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraAttributesCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraAttributesSetDofBlurQuality(quality RenderingServerDOFBlurQuality, use_jitter bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraAttributesSetDofBlurBokehShape(shape RenderingServerDOFBokehShape, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraAttributesSetDofBlur(camera_attributes RID, far_enable bool, far_distance float32, far_transition float32, near_enable bool, near_distance float32, near_transition float32, amount float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraAttributesSetExposure(camera_attributes RID, multiplier float32, normalization float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CameraAttributesSetAutoExposure(camera_attributes RID, enable bool, min_sensitivity float32, max_sensitivity float32, speed float32, scale float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ScenarioCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ScenarioSetEnvironment(scenario RID, environment RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ScenarioSetFallbackEnvironment(scenario RID, environment RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ScenarioSetCameraAttributes(scenario RID, effects RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceCreate2(base RID, scenario RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetBase(instance RID, base RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetScenario(instance RID, scenario RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetLayerMask(instance RID, mask int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetPivotData(instance RID, sorting_offset float32, use_aabb_center bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetTransform(instance RID, transform Transform3D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceAttachObjectInstanceId(instance RID, id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetBlendShapeWeight(instance RID, shape int, weight float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetSurfaceOverrideMaterial(instance RID, surface int, material RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetVisible(instance RID, visible bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometrySetTransparency(instance RID, transparency float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetCustomAabb(instance RID, aabb AABB, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceAttachSkeleton(instance RID, skeleton RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetExtraVisibilityMargin(instance RID, margin float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetVisibilityParent(instance RID, parent RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceSetIgnoreCulling(instance RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometrySetFlag(instance RID, flag RenderingServerInstanceFlags, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometrySetCastShadowsSetting(instance RID, shadow_casting_setting RenderingServerShadowCastingSetting, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometrySetMaterialOverride(instance RID, material RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometrySetMaterialOverlay(instance RID, material RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometrySetVisibilityRange(instance RID, min float32, max float32, min_margin float32, max_margin float32, fade_mode RenderingServerVisibilityRangeFadeMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometrySetLightmap(instance RID, lightmap RID, lightmap_uv_scale Rect2, lightmap_slice int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometrySetLodBias(instance RID, lod_bias float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometrySetShaderParameter(instance RID, parameter StringName, value Variant, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometryGetShaderParameter(instance RID, parameter StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometryGetShaderParameterDefaultValue(instance RID, parameter StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstanceGeometryGetShaderParameterList(instance RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstancesCullAabb(aabb AABB, scenario RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstancesCullRay(from Vector3, to Vector3, scenario RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) InstancesCullConvex(convex Plane, scenario RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) BakeRenderUv2(base RID, material_overrides RID, image_size Vector2i, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasSetItemMirroring(canvas RID, item RID, mirroring Vector2, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasSetModulate(canvas RID, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasSetDisableScale(disable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasTextureCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasTextureSetChannel(canvas_texture RID, channel RenderingServerCanvasTextureChannel, texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasTextureSetShadingParameters(canvas_texture RID, base_color Color, shininess float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasTextureSetTextureFilter(canvas_texture RID, filter RenderingServerCanvasItemTextureFilter, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasTextureSetTextureRepeat(canvas_texture RID, repeat RenderingServerCanvasItemTextureRepeat, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetParent(item RID, parent RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetDefaultTextureFilter(item RID, filter RenderingServerCanvasItemTextureFilter, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetDefaultTextureRepeat(item RID, repeat RenderingServerCanvasItemTextureRepeat, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetVisible(item RID, visible bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetLightMask(item RID, mask int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetVisibilityLayer(item RID, visibility_layer int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetTransform(item RID, transform Transform2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetClip(item RID, clip bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetDistanceFieldMode(item RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetCustomRect(item RID, use_custom_rect bool, rect Rect2, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetModulate(item RID, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetSelfModulate(item RID, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetDrawBehindParent(item RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddLine(item RID, from Vector2, to Vector2, color Color, width float32, antialiased bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddPolyline(item RID, points PackedVector2Array, colors PackedColorArray, width float32, antialiased bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddMultiline(item RID, points PackedVector2Array, colors PackedColorArray, width float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddRect(item RID, rect Rect2, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddCircle(item RID, pos Vector2, radius float32, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddTextureRect(item RID, rect Rect2, texture RID, tile bool, modulate Color, transpose bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddMsdfTextureRectRegion(item RID, rect Rect2, texture RID, src_rect Rect2, modulate Color, outline_size int, px_range float32, scale float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddLcdTextureRectRegion(item RID, rect Rect2, texture RID, src_rect Rect2, modulate Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddTextureRectRegion(item RID, rect Rect2, texture RID, src_rect Rect2, modulate Color, transpose bool, clip_uv bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddNinePatch(item RID, rect Rect2, source Rect2, texture RID, topleft Vector2, bottomright Vector2, x_axis_mode RenderingServerNinePatchAxisMode, y_axis_mode RenderingServerNinePatchAxisMode, draw_center bool, modulate Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddPrimitive(item RID, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddPolygon(item RID, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddTriangleArray(item RID, indices PackedInt32Array, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, bones PackedInt32Array, weights PackedFloat32Array, texture RID, count int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddMesh(item RID, mesh RID, transform Transform2D, modulate Color, texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddMultimesh(item RID, mesh RID, texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddParticles(item RID, particles RID, texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddSetTransform(item RID, transform Transform2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddClipIgnore(item RID, ignore bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemAddAnimationSlice(item RID, animation_length float32, slice_begin float32, slice_end float32, offset float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetSortChildrenByY(item RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetZIndex(item RID, z_index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetZAsRelativeToParent(item RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetCopyToBackbuffer(item RID, enabled bool, rect Rect2, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemClear(item RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetDrawIndex(item RID, index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetMaterial(item RID, material RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetUseParentMaterial(item RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetVisibilityNotifier(item RID, enable bool, area Rect2, enter_callable Callable, exit_callable Callable, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasItemSetCanvasGroupMode(item RID, mode RenderingServerCanvasGroupMode, clear_margin float32, fit_empty bool, fit_margin float32, blur_mipmaps bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightAttachToCanvas(light RID, canvas RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetEnabled(light RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetTextureScale(light RID, scale float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetTransform(light RID, transform Transform2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetTexture(light RID, texture RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetTextureOffset(light RID, offset Vector2, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetColor(light RID, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetHeight(light RID, height float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetEnergy(light RID, energy float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetZRange(light RID, min_z int, max_z int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetLayerRange(light RID, min_layer int, max_layer int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetItemCullMask(light RID, mask int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetItemShadowCullMask(light RID, mask int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetMode(light RID, mode RenderingServerCanvasLightMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetShadowEnabled(light RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetShadowFilter(light RID, filter RenderingServerCanvasLightShadowFilter, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetShadowColor(light RID, color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetShadowSmooth(light RID, smooth float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightSetBlendMode(light RID, mode RenderingServerCanvasLightBlendMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightOccluderCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightOccluderAttachToCanvas(occluder RID, canvas RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightOccluderSetEnabled(occluder RID, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightOccluderSetPolygon(occluder RID, polygon RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightOccluderSetAsSdfCollision(occluder RID, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightOccluderSetTransform(occluder RID, transform Transform2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasLightOccluderSetLightMask(occluder RID, mask int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasOccluderPolygonCreate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasOccluderPolygonSetShape(occluder_polygon RID, shape PackedVector2Array, closed bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasOccluderPolygonSetCullMode(occluder_polygon RID, mode RenderingServerCanvasOccluderPolygonCullMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CanvasSetShadowTextureSize(size int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GlobalShaderParameterAdd(name StringName, type_ RenderingServerGlobalShaderParameterType, default_value Variant, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GlobalShaderParameterRemove(name StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GlobalShaderParameterGetList() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GlobalShaderParameterSet(name StringName, value Variant, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GlobalShaderParameterSetOverride(name StringName, value Variant, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GlobalShaderParameterGet(name StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GlobalShaderParameterGetType(name StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) FreeRid(rid RID, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) RequestFrameDrawnCallback(callable Callable, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) HasChanged() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetRenderingInfo(info RenderingServerRenderingInfo, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetVideoAdapterName() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetVideoAdapterVendor() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetVideoAdapterType() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetVideoAdapterApiVersion() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) MakeSphereMesh(latitudes int, longitudes int, radius float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetTestCube() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetTestTexture() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetWhiteTexture() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SetBootImage(image Image, color Color, scale bool, use_filter bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetDefaultClearColor() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SetDefaultClearColor(color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) HasFeature(feature RenderingServerFeatures, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) HasOsFeature(feature String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SetDebugGenerateWireframes(generate bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) IsRenderLoopEnabled() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) SetRenderLoopEnabled(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetFrameSetupTimeCpu() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ForceSync() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) ForceDraw(swap_buffers bool, frame_step float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) GetRenderingDevice() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RenderingServer) CreateLocalRenderingDevice() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

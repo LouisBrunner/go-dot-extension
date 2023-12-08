@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,15 +27,27 @@ func (me *VisualShaderNodeFloatOp) BaseClass() string {
 
 type VisualShaderNodeFloatOpOperator int
 const (
-  VisualShaderNodeFloatOpOpAdd VisualShaderNodeFloatOpOperator = 0
-  VisualShaderNodeFloatOpOpSub VisualShaderNodeFloatOpOperator = 1
-  VisualShaderNodeFloatOpOpMul VisualShaderNodeFloatOpOperator = 2
-  VisualShaderNodeFloatOpOpDiv VisualShaderNodeFloatOpOperator = 3
-  VisualShaderNodeFloatOpOpMod VisualShaderNodeFloatOpOperator = 4
-  VisualShaderNodeFloatOpOpPow VisualShaderNodeFloatOpOperator = 5
-  VisualShaderNodeFloatOpOpMax VisualShaderNodeFloatOpOperator = 6
-  VisualShaderNodeFloatOpOpMin VisualShaderNodeFloatOpOperator = 7
-  VisualShaderNodeFloatOpOpAtan2 VisualShaderNodeFloatOpOperator = 8
-  VisualShaderNodeFloatOpOpStep VisualShaderNodeFloatOpOperator = 9
-  VisualShaderNodeFloatOpOpEnumSize VisualShaderNodeFloatOpOperator = 10
+  VisualShaderNodeFloatOpOperatorOpAdd VisualShaderNodeFloatOpOperator = 0
+  VisualShaderNodeFloatOpOperatorOpSub VisualShaderNodeFloatOpOperator = 1
+  VisualShaderNodeFloatOpOperatorOpMul VisualShaderNodeFloatOpOperator = 2
+  VisualShaderNodeFloatOpOperatorOpDiv VisualShaderNodeFloatOpOperator = 3
+  VisualShaderNodeFloatOpOperatorOpMod VisualShaderNodeFloatOpOperator = 4
+  VisualShaderNodeFloatOpOperatorOpPow VisualShaderNodeFloatOpOperator = 5
+  VisualShaderNodeFloatOpOperatorOpMax VisualShaderNodeFloatOpOperator = 6
+  VisualShaderNodeFloatOpOperatorOpMin VisualShaderNodeFloatOpOperator = 7
+  VisualShaderNodeFloatOpOperatorOpAtan2 VisualShaderNodeFloatOpOperator = 8
+  VisualShaderNodeFloatOpOperatorOpStep VisualShaderNodeFloatOpOperator = 9
+  VisualShaderNodeFloatOpOperatorOpEnumSize VisualShaderNodeFloatOpOperator = 10
 )
+
+func  (me *VisualShaderNodeFloatOp) SetOperator(op VisualShaderNodeFloatOpOperator, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatOp) GetOperator() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

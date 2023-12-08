@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,35 @@ func (me *Thread) BaseClass() string {
 
 type ThreadPriority int
 const (
-  ThreadPriorityLow ThreadPriority = 0
-  ThreadPriorityNormal ThreadPriority = 1
-  ThreadPriorityHigh ThreadPriority = 2
+  ThreadPriorityPriorityLow ThreadPriority = 0
+  ThreadPriorityPriorityNormal ThreadPriority = 1
+  ThreadPriorityPriorityHigh ThreadPriority = 2
 )
+
+func  (me *Thread) Start(callable Callable, priority ThreadPriority, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Thread) GetId() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Thread) IsStarted() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Thread) IsAlive() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Thread) WaitToFinish() { // TODO: return value
+  // TODO: implement
+}
+
+func  ThreadSetThreadSafetyChecksEnabled(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

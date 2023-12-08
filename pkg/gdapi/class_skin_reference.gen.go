@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *SkinReference) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *SkinReference) BaseClass() string {
   return "SkinReference"
 }
+
+func  (me *SkinReference) GetSkeleton() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SkinReference) GetSkin() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

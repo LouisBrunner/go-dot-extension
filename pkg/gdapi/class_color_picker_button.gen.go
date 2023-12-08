@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,31 @@ func (me *ColorPickerButton) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ColorPickerButton) BaseClass() string {
   return "ColorPickerButton"
 }
+
+func  (me *ColorPickerButton) SetPickColor(color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ColorPickerButton) GetPickColor() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ColorPickerButton) GetPicker() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ColorPickerButton) GetPopup() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ColorPickerButton) SetEditAlpha(show bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ColorPickerButton) IsEditingAlpha() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

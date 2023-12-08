@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,31 @@ func (me *EditorPaths) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *EditorPaths) BaseClass() string {
   return "EditorPaths"
 }
+
+func  (me *EditorPaths) GetDataDir() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorPaths) GetConfigDir() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorPaths) GetCacheDir() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorPaths) IsSelfContained() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorPaths) GetSelfContainedFile() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorPaths) GetProjectSettingsDir() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

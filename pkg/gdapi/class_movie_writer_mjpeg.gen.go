@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *MovieWriterMJPEG) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *MovieWriterMJPEG) BaseClass() string {
   return "MovieWriterMJPEG"
 }
+
+// TODO: properties
+
+// TODO: signals

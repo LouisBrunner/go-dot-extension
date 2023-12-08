@@ -1,0 +1,11 @@
+{{template "preamble"}}
+
+{{- range .}}
+
+{{$name := replace .Name "." ""}}type {{$name}} int
+const (
+{{range .Values}}  {{$name2 := pascalCased (lowerCased .Name)}}{{pascalCased (lowerCased .Name)}}
+{{- if eq $name2 $name}}_{{end }} {{$name}} = {{.Value}}
+{{end -}}
+)
+{{- end}}

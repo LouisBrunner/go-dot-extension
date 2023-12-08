@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,6 +27,26 @@ func (me *AnimationNodeAnimation) BaseClass() string {
 
 type AnimationNodeAnimationPlayMode int
 const (
-  AnimationNodeAnimationPlayModeForward AnimationNodeAnimationPlayMode = 0
-  AnimationNodeAnimationPlayModeBackward AnimationNodeAnimationPlayMode = 1
+  AnimationNodeAnimationPlayModePlayModeForward AnimationNodeAnimationPlayMode = 0
+  AnimationNodeAnimationPlayModePlayModeBackward AnimationNodeAnimationPlayMode = 1
 )
+
+func  (me *AnimationNodeAnimation) SetAnimation(name StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeAnimation) GetAnimation() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeAnimation) SetPlayMode(mode AnimationNodeAnimationPlayMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeAnimation) GetPlayMode() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

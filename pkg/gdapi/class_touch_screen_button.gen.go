@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,6 +27,86 @@ func (me *TouchScreenButton) BaseClass() string {
 
 type TouchScreenButtonVisibilityMode int
 const (
-  TouchScreenButtonVisibilityAlways TouchScreenButtonVisibilityMode = 0
-  TouchScreenButtonVisibilityTouchscreenOnly TouchScreenButtonVisibilityMode = 1
+  TouchScreenButtonVisibilityModeVisibilityAlways TouchScreenButtonVisibilityMode = 0
+  TouchScreenButtonVisibilityModeVisibilityTouchscreenOnly TouchScreenButtonVisibilityMode = 1
 )
+
+func  (me *TouchScreenButton) SetTextureNormal(texture Texture2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) GetTextureNormal() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) SetTexturePressed(texture Texture2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) GetTexturePressed() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) SetBitmask(bitmask BitMap, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) GetBitmask() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) SetShape(shape Shape2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) GetShape() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) SetShapeCentered(bool bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) IsShapeCentered() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) SetShapeVisible(bool bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) IsShapeVisible() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) SetAction(action String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) GetAction() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) SetVisibilityMode(mode TouchScreenButtonVisibilityMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) GetVisibilityMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) SetPassbyPress(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) IsPassbyPressEnabled() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TouchScreenButton) IsPressed() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

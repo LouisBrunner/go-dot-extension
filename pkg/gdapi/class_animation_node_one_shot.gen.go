@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,14 +27,82 @@ func (me *AnimationNodeOneShot) BaseClass() string {
 
 type AnimationNodeOneShotOneShotRequest int
 const (
-  AnimationNodeOneShotOneShotRequestNone AnimationNodeOneShotOneShotRequest = 0
-  AnimationNodeOneShotOneShotRequestFire AnimationNodeOneShotOneShotRequest = 1
-  AnimationNodeOneShotOneShotRequestAbort AnimationNodeOneShotOneShotRequest = 2
-  AnimationNodeOneShotOneShotRequestFadeOut AnimationNodeOneShotOneShotRequest = 3
+  AnimationNodeOneShotOneShotRequestOneShotRequestNone AnimationNodeOneShotOneShotRequest = 0
+  AnimationNodeOneShotOneShotRequestOneShotRequestFire AnimationNodeOneShotOneShotRequest = 1
+  AnimationNodeOneShotOneShotRequestOneShotRequestAbort AnimationNodeOneShotOneShotRequest = 2
+  AnimationNodeOneShotOneShotRequestOneShotRequestFadeOut AnimationNodeOneShotOneShotRequest = 3
 )
 
 type AnimationNodeOneShotMixMode int
 const (
-  AnimationNodeOneShotMixModeBlend AnimationNodeOneShotMixMode = 0
-  AnimationNodeOneShotMixModeAdd AnimationNodeOneShotMixMode = 1
+  AnimationNodeOneShotMixModeMixModeBlend AnimationNodeOneShotMixMode = 0
+  AnimationNodeOneShotMixModeMixModeAdd AnimationNodeOneShotMixMode = 1
 )
+
+func  (me *AnimationNodeOneShot) SetFadeinTime(time float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) GetFadeinTime() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) SetFadeinCurve(curve Curve, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) GetFadeinCurve() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) SetFadeoutTime(time float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) GetFadeoutTime() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) SetFadeoutCurve(curve Curve, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) GetFadeoutCurve() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) SetAutorestart(active bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) HasAutorestart() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) SetAutorestartDelay(time float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) GetAutorestartDelay() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) SetAutorestartRandomDelay(time float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) GetAutorestartRandomDelay() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) SetMixMode(mode AnimationNodeOneShotMixMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeOneShot) GetMixMode() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

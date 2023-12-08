@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *VisualShaderNodeParameterRef) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeParameterRef) BaseClass() string {
   return "VisualShaderNodeParameterRef"
 }
+
+func  (me *VisualShaderNodeParameterRef) SetParameterName(name String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParameterRef) GetParameterName() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

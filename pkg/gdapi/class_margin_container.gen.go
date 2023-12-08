@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *MarginContainer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *MarginContainer) BaseClass() string {
   return "MarginContainer"
 }
+
+// TODO: properties
+
+// TODO: signals

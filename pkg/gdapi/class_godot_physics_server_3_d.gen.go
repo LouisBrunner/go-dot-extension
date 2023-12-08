@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *GodotPhysicsServer3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *GodotPhysicsServer3D) BaseClass() string {
   return "GodotPhysicsServer3D"
 }
+
+// TODO: properties
+
+// TODO: signals

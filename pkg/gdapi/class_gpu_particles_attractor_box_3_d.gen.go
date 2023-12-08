@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *GPUParticlesAttractorBox3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *GPUParticlesAttractorBox3D) BaseClass() string {
   return "GPUParticlesAttractorBox3D"
 }
+
+func  (me *GPUParticlesAttractorBox3D) SetSize(size Vector3, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GPUParticlesAttractorBox3D) GetSize() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *SphereOccluder3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *SphereOccluder3D) BaseClass() string {
   return "SphereOccluder3D"
 }
+
+func  (me *SphereOccluder3D) SetRadius(radius float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SphereOccluder3D) GetRadius() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

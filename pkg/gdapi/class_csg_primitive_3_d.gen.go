@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *CSGPrimitive3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CSGPrimitive3D) BaseClass() string {
   return "CSGPrimitive3D"
 }
+
+func  (me *CSGPrimitive3D) SetFlipFaces(flip_faces bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CSGPrimitive3D) GetFlipFaces() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

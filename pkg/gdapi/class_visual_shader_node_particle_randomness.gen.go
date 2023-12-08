@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,9 +27,21 @@ func (me *VisualShaderNodeParticleRandomness) BaseClass() string {
 
 type VisualShaderNodeParticleRandomnessOpType int
 const (
-  VisualShaderNodeParticleRandomnessOpTypeScalar VisualShaderNodeParticleRandomnessOpType = 0
-  VisualShaderNodeParticleRandomnessOpTypeVector2D VisualShaderNodeParticleRandomnessOpType = 1
-  VisualShaderNodeParticleRandomnessOpTypeVector3D VisualShaderNodeParticleRandomnessOpType = 2
-  VisualShaderNodeParticleRandomnessOpTypeVector4D VisualShaderNodeParticleRandomnessOpType = 3
-  VisualShaderNodeParticleRandomnessOpTypeMax VisualShaderNodeParticleRandomnessOpType = 4
+  VisualShaderNodeParticleRandomnessOpTypeOpTypeScalar VisualShaderNodeParticleRandomnessOpType = 0
+  VisualShaderNodeParticleRandomnessOpTypeOpTypeVector2D VisualShaderNodeParticleRandomnessOpType = 1
+  VisualShaderNodeParticleRandomnessOpTypeOpTypeVector3D VisualShaderNodeParticleRandomnessOpType = 2
+  VisualShaderNodeParticleRandomnessOpTypeOpTypeVector4D VisualShaderNodeParticleRandomnessOpType = 3
+  VisualShaderNodeParticleRandomnessOpTypeOpTypeMax VisualShaderNodeParticleRandomnessOpType = 4
 )
+
+func  (me *VisualShaderNodeParticleRandomness) SetOpType(type_ VisualShaderNodeParticleRandomnessOpType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParticleRandomness) GetOpType() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,11 @@ func (me *EditorInspector) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *EditorInspector) BaseClass() string {
   return "EditorInspector"
 }
+
+func  (me *EditorInspector) GetSelectedPath() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

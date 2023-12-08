@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,27 +27,79 @@ func (me *WebRTCPeerConnection) BaseClass() string {
 
 type WebRTCPeerConnectionConnectionState int
 const (
-  WebRTCPeerConnectionStateNew WebRTCPeerConnectionConnectionState = 0
-  WebRTCPeerConnectionStateConnecting WebRTCPeerConnectionConnectionState = 1
-  WebRTCPeerConnectionStateConnected WebRTCPeerConnectionConnectionState = 2
-  WebRTCPeerConnectionStateDisconnected WebRTCPeerConnectionConnectionState = 3
-  WebRTCPeerConnectionStateFailed WebRTCPeerConnectionConnectionState = 4
-  WebRTCPeerConnectionStateClosed WebRTCPeerConnectionConnectionState = 5
+  WebRTCPeerConnectionConnectionStateStateNew WebRTCPeerConnectionConnectionState = 0
+  WebRTCPeerConnectionConnectionStateStateConnecting WebRTCPeerConnectionConnectionState = 1
+  WebRTCPeerConnectionConnectionStateStateConnected WebRTCPeerConnectionConnectionState = 2
+  WebRTCPeerConnectionConnectionStateStateDisconnected WebRTCPeerConnectionConnectionState = 3
+  WebRTCPeerConnectionConnectionStateStateFailed WebRTCPeerConnectionConnectionState = 4
+  WebRTCPeerConnectionConnectionStateStateClosed WebRTCPeerConnectionConnectionState = 5
 )
 
 type WebRTCPeerConnectionGatheringState int
 const (
-  WebRTCPeerConnectionGatheringStateNew WebRTCPeerConnectionGatheringState = 0
-  WebRTCPeerConnectionGatheringStateGathering WebRTCPeerConnectionGatheringState = 1
-  WebRTCPeerConnectionGatheringStateComplete WebRTCPeerConnectionGatheringState = 2
+  WebRTCPeerConnectionGatheringStateGatheringStateNew WebRTCPeerConnectionGatheringState = 0
+  WebRTCPeerConnectionGatheringStateGatheringStateGathering WebRTCPeerConnectionGatheringState = 1
+  WebRTCPeerConnectionGatheringStateGatheringStateComplete WebRTCPeerConnectionGatheringState = 2
 )
 
 type WebRTCPeerConnectionSignalingState int
 const (
-  WebRTCPeerConnectionSignalingStateStable WebRTCPeerConnectionSignalingState = 0
-  WebRTCPeerConnectionSignalingStateHaveLocalOffer WebRTCPeerConnectionSignalingState = 1
-  WebRTCPeerConnectionSignalingStateHaveRemoteOffer WebRTCPeerConnectionSignalingState = 2
-  WebRTCPeerConnectionSignalingStateHaveLocalPranswer WebRTCPeerConnectionSignalingState = 3
-  WebRTCPeerConnectionSignalingStateHaveRemotePranswer WebRTCPeerConnectionSignalingState = 4
-  WebRTCPeerConnectionSignalingStateClosed WebRTCPeerConnectionSignalingState = 5
+  WebRTCPeerConnectionSignalingStateSignalingStateStable WebRTCPeerConnectionSignalingState = 0
+  WebRTCPeerConnectionSignalingStateSignalingStateHaveLocalOffer WebRTCPeerConnectionSignalingState = 1
+  WebRTCPeerConnectionSignalingStateSignalingStateHaveRemoteOffer WebRTCPeerConnectionSignalingState = 2
+  WebRTCPeerConnectionSignalingStateSignalingStateHaveLocalPranswer WebRTCPeerConnectionSignalingState = 3
+  WebRTCPeerConnectionSignalingStateSignalingStateHaveRemotePranswer WebRTCPeerConnectionSignalingState = 4
+  WebRTCPeerConnectionSignalingStateSignalingStateClosed WebRTCPeerConnectionSignalingState = 5
 )
+
+func  WebRTCPeerConnectionSetDefaultExtension(extension_class StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WebRTCPeerConnection) Initialize(configuration Dictionary, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WebRTCPeerConnection) CreateDataChannel(label String, options Dictionary, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WebRTCPeerConnection) CreateOffer() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WebRTCPeerConnection) SetLocalDescription(type_ String, sdp String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WebRTCPeerConnection) SetRemoteDescription(type_ String, sdp String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WebRTCPeerConnection) AddIceCandidate(media String, index int, name String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WebRTCPeerConnection) Poll() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WebRTCPeerConnection) Close() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WebRTCPeerConnection) GetConnectionState() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WebRTCPeerConnection) GetGatheringState() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WebRTCPeerConnection) GetSignalingState() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

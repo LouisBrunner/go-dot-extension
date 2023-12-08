@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,9 +27,37 @@ func (me *GDExtensionManager) BaseClass() string {
 
 type GDExtensionManagerLoadStatus int
 const (
-  GDExtensionManagerLoadStatusOk GDExtensionManagerLoadStatus = 0
-  GDExtensionManagerLoadStatusFailed GDExtensionManagerLoadStatus = 1
-  GDExtensionManagerLoadStatusAlreadyLoaded GDExtensionManagerLoadStatus = 2
-  GDExtensionManagerLoadStatusNotLoaded GDExtensionManagerLoadStatus = 3
-  GDExtensionManagerLoadStatusNeedsRestart GDExtensionManagerLoadStatus = 4
+  GDExtensionManagerLoadStatusLoadStatusOk GDExtensionManagerLoadStatus = 0
+  GDExtensionManagerLoadStatusLoadStatusFailed GDExtensionManagerLoadStatus = 1
+  GDExtensionManagerLoadStatusLoadStatusAlreadyLoaded GDExtensionManagerLoadStatus = 2
+  GDExtensionManagerLoadStatusLoadStatusNotLoaded GDExtensionManagerLoadStatus = 3
+  GDExtensionManagerLoadStatusLoadStatusNeedsRestart GDExtensionManagerLoadStatus = 4
 )
+
+func  (me *GDExtensionManager) LoadExtension(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GDExtensionManager) ReloadExtension(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GDExtensionManager) UnloadExtension(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GDExtensionManager) IsExtensionLoaded(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GDExtensionManager) GetLoadedExtensions() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GDExtensionManager) GetExtension(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

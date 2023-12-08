@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *EncodedObjectAsID) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *EncodedObjectAsID) BaseClass() string {
   return "EncodedObjectAsID"
 }
+
+func  (me *EncodedObjectAsID) SetObjectId(id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EncodedObjectAsID) GetObjectId() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,31 @@ func (me *AudioEffectStereoEnhance) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioEffectStereoEnhance) BaseClass() string {
   return "AudioEffectStereoEnhance"
 }
+
+func  (me *AudioEffectStereoEnhance) SetPanPullout(amount float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectStereoEnhance) GetPanPullout() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectStereoEnhance) SetTimePullout(amount float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectStereoEnhance) GetTimePullout() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectStereoEnhance) SetSurround(amount float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectStereoEnhance) GetSurround() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

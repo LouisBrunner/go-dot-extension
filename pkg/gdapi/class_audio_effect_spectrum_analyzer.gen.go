@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,10 +27,38 @@ func (me *AudioEffectSpectrumAnalyzer) BaseClass() string {
 
 type AudioEffectSpectrumAnalyzerFFTSize int
 const (
-  AudioEffectSpectrumAnalyzerFftSize256 AudioEffectSpectrumAnalyzerFFTSize = 0
-  AudioEffectSpectrumAnalyzerFftSize512 AudioEffectSpectrumAnalyzerFFTSize = 1
-  AudioEffectSpectrumAnalyzerFftSize1024 AudioEffectSpectrumAnalyzerFFTSize = 2
-  AudioEffectSpectrumAnalyzerFftSize2048 AudioEffectSpectrumAnalyzerFFTSize = 3
-  AudioEffectSpectrumAnalyzerFftSize4096 AudioEffectSpectrumAnalyzerFFTSize = 4
-  AudioEffectSpectrumAnalyzerFftSizeMax AudioEffectSpectrumAnalyzerFFTSize = 5
+  AudioEffectSpectrumAnalyzerFFTSizeFftSize256 AudioEffectSpectrumAnalyzerFFTSize = 0
+  AudioEffectSpectrumAnalyzerFFTSizeFftSize512 AudioEffectSpectrumAnalyzerFFTSize = 1
+  AudioEffectSpectrumAnalyzerFFTSizeFftSize1024 AudioEffectSpectrumAnalyzerFFTSize = 2
+  AudioEffectSpectrumAnalyzerFFTSizeFftSize2048 AudioEffectSpectrumAnalyzerFFTSize = 3
+  AudioEffectSpectrumAnalyzerFFTSizeFftSize4096 AudioEffectSpectrumAnalyzerFFTSize = 4
+  AudioEffectSpectrumAnalyzerFFTSizeFftSizeMax AudioEffectSpectrumAnalyzerFFTSize = 5
 )
+
+func  (me *AudioEffectSpectrumAnalyzer) SetBufferLength(seconds float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectSpectrumAnalyzer) GetBufferLength() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectSpectrumAnalyzer) SetTapBackPos(seconds float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectSpectrumAnalyzer) GetTapBackPos() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectSpectrumAnalyzer) SetFftSize(size AudioEffectSpectrumAnalyzerFFTSize, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectSpectrumAnalyzer) GetFftSize() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

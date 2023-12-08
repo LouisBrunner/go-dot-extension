@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,191 @@ func (me *TileData) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *TileData) BaseClass() string {
   return "TileData"
 }
+
+func  (me *TileData) SetFlipH(flip_h bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetFlipH() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetFlipV(flip_v bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetFlipV() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetTranspose(transpose bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetTranspose() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetMaterial(material Material, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetMaterial() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetTextureOrigin(texture_origin Vector2i, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetTextureOrigin() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetModulate(modulate Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetModulate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetZIndex(z_index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetZIndex() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetYSortOrigin(y_sort_origin int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetYSortOrigin() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetOccluder(layer_id int, occluder_polygon OccluderPolygon2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetOccluder(layer_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetConstantLinearVelocity(layer_id int, velocity Vector2, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetConstantLinearVelocity(layer_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetConstantAngularVelocity(layer_id int, velocity float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetConstantAngularVelocity(layer_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetCollisionPolygonsCount(layer_id int, polygons_count int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetCollisionPolygonsCount(layer_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) AddCollisionPolygon(layer_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) RemoveCollisionPolygon(layer_id int, polygon_index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetCollisionPolygonPoints(layer_id int, polygon_index int, polygon PackedVector2Array, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetCollisionPolygonPoints(layer_id int, polygon_index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetCollisionPolygonOneWay(layer_id int, polygon_index int, one_way bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) IsCollisionPolygonOneWay(layer_id int, polygon_index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetCollisionPolygonOneWayMargin(layer_id int, polygon_index int, one_way_margin float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetCollisionPolygonOneWayMargin(layer_id int, polygon_index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetTerrainSet(terrain_set int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetTerrainSet() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetTerrain(terrain int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetTerrain() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetTerrainPeeringBit(peering_bit TileSetCellNeighbor, terrain int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetTerrainPeeringBit(peering_bit TileSetCellNeighbor, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetNavigationPolygon(layer_id int, navigation_polygon NavigationPolygon, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetNavigationPolygon(layer_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetProbability(probability float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetProbability() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetCustomData(layer_name String, value Variant, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetCustomData(layer_name String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) SetCustomDataByLayerId(layer_id int, value Variant, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TileData) GetCustomDataByLayerId(layer_id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

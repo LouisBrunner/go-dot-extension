@@ -165,8 +165,8 @@ func (f *ExtensionNativeFormat) UnmarshalJSON(data []byte) error {
 		if matches == nil {
 			return fmt.Errorf("invalid native format: %s", part)
 		}
-		name := matches[1]
-		typ := strings.TrimSpace(matches[2])
+		name := strings.TrimSpace(matches[2])
+		typ := strings.TrimSpace(matches[1])
 		defaultValue := ""
 		if len(matches) > 3 {
 			typ += matches[3]

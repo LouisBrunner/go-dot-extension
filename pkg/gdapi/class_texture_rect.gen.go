@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,21 +27,65 @@ func (me *TextureRect) BaseClass() string {
 
 type TextureRectExpandMode int
 const (
-  TextureRectExpandKeepSize TextureRectExpandMode = 0
-  TextureRectExpandIgnoreSize TextureRectExpandMode = 1
-  TextureRectExpandFitWidth TextureRectExpandMode = 2
-  TextureRectExpandFitWidthProportional TextureRectExpandMode = 3
-  TextureRectExpandFitHeight TextureRectExpandMode = 4
-  TextureRectExpandFitHeightProportional TextureRectExpandMode = 5
+  TextureRectExpandModeExpandKeepSize TextureRectExpandMode = 0
+  TextureRectExpandModeExpandIgnoreSize TextureRectExpandMode = 1
+  TextureRectExpandModeExpandFitWidth TextureRectExpandMode = 2
+  TextureRectExpandModeExpandFitWidthProportional TextureRectExpandMode = 3
+  TextureRectExpandModeExpandFitHeight TextureRectExpandMode = 4
+  TextureRectExpandModeExpandFitHeightProportional TextureRectExpandMode = 5
 )
 
 type TextureRectStretchMode int
 const (
-  TextureRectStretchScale TextureRectStretchMode = 0
-  TextureRectStretchTile TextureRectStretchMode = 1
-  TextureRectStretchKeep TextureRectStretchMode = 2
-  TextureRectStretchKeepCentered TextureRectStretchMode = 3
-  TextureRectStretchKeepAspect TextureRectStretchMode = 4
-  TextureRectStretchKeepAspectCentered TextureRectStretchMode = 5
-  TextureRectStretchKeepAspectCovered TextureRectStretchMode = 6
+  TextureRectStretchModeStretchScale TextureRectStretchMode = 0
+  TextureRectStretchModeStretchTile TextureRectStretchMode = 1
+  TextureRectStretchModeStretchKeep TextureRectStretchMode = 2
+  TextureRectStretchModeStretchKeepCentered TextureRectStretchMode = 3
+  TextureRectStretchModeStretchKeepAspect TextureRectStretchMode = 4
+  TextureRectStretchModeStretchKeepAspectCentered TextureRectStretchMode = 5
+  TextureRectStretchModeStretchKeepAspectCovered TextureRectStretchMode = 6
 )
+
+func  (me *TextureRect) SetTexture(texture Texture2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TextureRect) GetTexture() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TextureRect) SetExpandMode(expand_mode TextureRectExpandMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TextureRect) GetExpandMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TextureRect) SetFlipH(enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TextureRect) IsFlippedH() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TextureRect) SetFlipV(enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TextureRect) IsFlippedV() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TextureRect) SetStretchMode(stretch_mode TextureRectStretchMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *TextureRect) GetStretchMode() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

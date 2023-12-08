@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *SceneTreeTimer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *SceneTreeTimer) BaseClass() string {
   return "SceneTreeTimer"
 }
+
+func  (me *SceneTreeTimer) SetTimeLeft(time float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SceneTreeTimer) GetTimeLeft() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

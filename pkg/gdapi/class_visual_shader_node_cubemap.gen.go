@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,15 +27,43 @@ func (me *VisualShaderNodeCubemap) BaseClass() string {
 
 type VisualShaderNodeCubemapSource int
 const (
-  VisualShaderNodeCubemapSourceTexture VisualShaderNodeCubemapSource = 0
-  VisualShaderNodeCubemapSourcePort VisualShaderNodeCubemapSource = 1
-  VisualShaderNodeCubemapSourceMax VisualShaderNodeCubemapSource = 2
+  VisualShaderNodeCubemapSourceSourceTexture VisualShaderNodeCubemapSource = 0
+  VisualShaderNodeCubemapSourceSourcePort VisualShaderNodeCubemapSource = 1
+  VisualShaderNodeCubemapSourceSourceMax VisualShaderNodeCubemapSource = 2
 )
 
 type VisualShaderNodeCubemapTextureType int
 const (
-  VisualShaderNodeCubemapTypeData VisualShaderNodeCubemapTextureType = 0
-  VisualShaderNodeCubemapTypeColor VisualShaderNodeCubemapTextureType = 1
-  VisualShaderNodeCubemapTypeNormalMap VisualShaderNodeCubemapTextureType = 2
-  VisualShaderNodeCubemapTypeMax VisualShaderNodeCubemapTextureType = 3
+  VisualShaderNodeCubemapTextureTypeTypeData VisualShaderNodeCubemapTextureType = 0
+  VisualShaderNodeCubemapTextureTypeTypeColor VisualShaderNodeCubemapTextureType = 1
+  VisualShaderNodeCubemapTextureTypeTypeNormalMap VisualShaderNodeCubemapTextureType = 2
+  VisualShaderNodeCubemapTextureTypeTypeMax VisualShaderNodeCubemapTextureType = 3
 )
+
+func  (me *VisualShaderNodeCubemap) SetSource(value VisualShaderNodeCubemapSource, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeCubemap) GetSource() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeCubemap) SetCubeMap(value Cubemap, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeCubemap) GetCubeMap() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeCubemap) SetTextureType(value VisualShaderNodeCubemapTextureType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeCubemap) GetTextureType() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

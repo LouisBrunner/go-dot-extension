@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *AudioStreamMicrophone) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioStreamMicrophone) BaseClass() string {
   return "AudioStreamMicrophone"
 }
+
+// TODO: properties
+
+// TODO: signals

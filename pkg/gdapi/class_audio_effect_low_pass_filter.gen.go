@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *AudioEffectLowPassFilter) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioEffectLowPassFilter) BaseClass() string {
   return "AudioEffectLowPassFilter"
 }
+
+// TODO: properties
+
+// TODO: signals

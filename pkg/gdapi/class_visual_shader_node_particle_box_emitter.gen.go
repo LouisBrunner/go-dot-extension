@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *VisualShaderNodeParticleBoxEmitter) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeParticleBoxEmitter) BaseClass() string {
   return "VisualShaderNodeParticleBoxEmitter"
 }
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,10 +27,38 @@ func (me *AudioEffectPitchShift) BaseClass() string {
 
 type AudioEffectPitchShiftFFTSize int
 const (
-  AudioEffectPitchShiftFftSize256 AudioEffectPitchShiftFFTSize = 0
-  AudioEffectPitchShiftFftSize512 AudioEffectPitchShiftFFTSize = 1
-  AudioEffectPitchShiftFftSize1024 AudioEffectPitchShiftFFTSize = 2
-  AudioEffectPitchShiftFftSize2048 AudioEffectPitchShiftFFTSize = 3
-  AudioEffectPitchShiftFftSize4096 AudioEffectPitchShiftFFTSize = 4
-  AudioEffectPitchShiftFftSizeMax AudioEffectPitchShiftFFTSize = 5
+  AudioEffectPitchShiftFFTSizeFftSize256 AudioEffectPitchShiftFFTSize = 0
+  AudioEffectPitchShiftFFTSizeFftSize512 AudioEffectPitchShiftFFTSize = 1
+  AudioEffectPitchShiftFFTSizeFftSize1024 AudioEffectPitchShiftFFTSize = 2
+  AudioEffectPitchShiftFFTSizeFftSize2048 AudioEffectPitchShiftFFTSize = 3
+  AudioEffectPitchShiftFFTSizeFftSize4096 AudioEffectPitchShiftFFTSize = 4
+  AudioEffectPitchShiftFFTSizeFftSizeMax AudioEffectPitchShiftFFTSize = 5
 )
+
+func  (me *AudioEffectPitchShift) SetPitchScale(rate float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectPitchShift) GetPitchScale() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectPitchShift) SetOversampling(amount int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectPitchShift) GetOversampling() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectPitchShift) SetFftSize(size AudioEffectPitchShiftFFTSize, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioEffectPitchShift) GetFftSize() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,27 @@ func (me *VisibleOnScreenEnabler3D) BaseClass() string {
 
 type VisibleOnScreenEnabler3DEnableMode int
 const (
-  VisibleOnScreenEnabler3DEnableModeInherit VisibleOnScreenEnabler3DEnableMode = 0
-  VisibleOnScreenEnabler3DEnableModeAlways VisibleOnScreenEnabler3DEnableMode = 1
-  VisibleOnScreenEnabler3DEnableModeWhenPaused VisibleOnScreenEnabler3DEnableMode = 2
+  VisibleOnScreenEnabler3DEnableModeEnableModeInherit VisibleOnScreenEnabler3DEnableMode = 0
+  VisibleOnScreenEnabler3DEnableModeEnableModeAlways VisibleOnScreenEnabler3DEnableMode = 1
+  VisibleOnScreenEnabler3DEnableModeEnableModeWhenPaused VisibleOnScreenEnabler3DEnableMode = 2
 )
+
+func  (me *VisibleOnScreenEnabler3D) SetEnableMode(mode VisibleOnScreenEnabler3DEnableMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisibleOnScreenEnabler3D) GetEnableMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisibleOnScreenEnabler3D) SetEnableNodePath(path NodePath, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisibleOnScreenEnabler3D) GetEnableNodePath() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,21 +27,49 @@ func (me *VisualShaderNodeTexture) BaseClass() string {
 
 type VisualShaderNodeTextureSource int
 const (
-  VisualShaderNodeTextureSourceTexture VisualShaderNodeTextureSource = 0
-  VisualShaderNodeTextureSourceScreen VisualShaderNodeTextureSource = 1
-  VisualShaderNodeTextureSource2DTexture VisualShaderNodeTextureSource = 2
-  VisualShaderNodeTextureSource2DNormal VisualShaderNodeTextureSource = 3
-  VisualShaderNodeTextureSourceDepth VisualShaderNodeTextureSource = 4
-  VisualShaderNodeTextureSourcePort VisualShaderNodeTextureSource = 5
-  VisualShaderNodeTextureSource3DNormal VisualShaderNodeTextureSource = 6
-  VisualShaderNodeTextureSourceRoughness VisualShaderNodeTextureSource = 7
-  VisualShaderNodeTextureSourceMax VisualShaderNodeTextureSource = 8
+  VisualShaderNodeTextureSourceSourceTexture VisualShaderNodeTextureSource = 0
+  VisualShaderNodeTextureSourceSourceScreen VisualShaderNodeTextureSource = 1
+  VisualShaderNodeTextureSourceSource2DTexture VisualShaderNodeTextureSource = 2
+  VisualShaderNodeTextureSourceSource2DNormal VisualShaderNodeTextureSource = 3
+  VisualShaderNodeTextureSourceSourceDepth VisualShaderNodeTextureSource = 4
+  VisualShaderNodeTextureSourceSourcePort VisualShaderNodeTextureSource = 5
+  VisualShaderNodeTextureSourceSource3DNormal VisualShaderNodeTextureSource = 6
+  VisualShaderNodeTextureSourceSourceRoughness VisualShaderNodeTextureSource = 7
+  VisualShaderNodeTextureSourceSourceMax VisualShaderNodeTextureSource = 8
 )
 
 type VisualShaderNodeTextureTextureType int
 const (
-  VisualShaderNodeTextureTypeData VisualShaderNodeTextureTextureType = 0
-  VisualShaderNodeTextureTypeColor VisualShaderNodeTextureTextureType = 1
-  VisualShaderNodeTextureTypeNormalMap VisualShaderNodeTextureTextureType = 2
-  VisualShaderNodeTextureTypeMax VisualShaderNodeTextureTextureType = 3
+  VisualShaderNodeTextureTextureTypeTypeData VisualShaderNodeTextureTextureType = 0
+  VisualShaderNodeTextureTextureTypeTypeColor VisualShaderNodeTextureTextureType = 1
+  VisualShaderNodeTextureTextureTypeTypeNormalMap VisualShaderNodeTextureTextureType = 2
+  VisualShaderNodeTextureTextureTypeTypeMax VisualShaderNodeTextureTextureType = 3
 )
+
+func  (me *VisualShaderNodeTexture) SetSource(value VisualShaderNodeTextureSource, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTexture) GetSource() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTexture) SetTexture(value Texture2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTexture) GetTexture() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTexture) SetTextureType(value VisualShaderNodeTextureTextureType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTexture) GetTextureType() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

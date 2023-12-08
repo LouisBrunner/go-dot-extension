@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -17,11 +25,39 @@ func (me *EditorSceneFormatImporter) BaseClass() string {
   return "EditorSceneFormatImporter"
 }
 
-const (
-  EditorSceneFormatImporterIMPORT_SCENE = 1
-  EditorSceneFormatImporterIMPORT_ANIMATION = 2
-  EditorSceneFormatImporterIMPORT_FAIL_ON_MISSING_DEPENDENCIES = 4
-  EditorSceneFormatImporterIMPORT_GENERATE_TANGENT_ARRAYS = 8
-  EditorSceneFormatImporterIMPORT_USE_NAMED_SKIN_BINDS = 16
-  EditorSceneFormatImporterIMPORT_DISCARD_MESHES_AND_MATERIALS = 32
+// TODO: needed?
+// const (
+// // )
+
+var (
+  EditorSceneFormatImporterImportScene = "1" // TODO: construct correctly
+  EditorSceneFormatImporterImportAnimation = "2" // TODO: construct correctly
+  EditorSceneFormatImporterImportFailOnMissingDependencies = "4" // TODO: construct correctly
+  EditorSceneFormatImporterImportGenerateTangentArrays = "8" // TODO: construct correctly
+  EditorSceneFormatImporterImportUseNamedSkinBinds = "16" // TODO: construct correctly
+  EditorSceneFormatImporterImportDiscardMeshesAndMaterials = "32" // TODO: construct correctly
 )
+
+func  (me *EditorSceneFormatImporter) XGetImportFlags() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorSceneFormatImporter) XGetExtensions() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorSceneFormatImporter) XImportScene(path String, flags int, options Dictionary, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorSceneFormatImporter) XGetImportOptions(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorSceneFormatImporter) XGetOptionVisibility(path String, for_animation bool, option String, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

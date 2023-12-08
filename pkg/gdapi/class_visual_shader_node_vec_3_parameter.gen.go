@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,23 @@ func (me *VisualShaderNodeVec3Parameter) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeVec3Parameter) BaseClass() string {
   return "VisualShaderNodeVec3Parameter"
 }
+
+func  (me *VisualShaderNodeVec3Parameter) SetDefaultValueEnabled(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeVec3Parameter) IsDefaultValueEnabled() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeVec3Parameter) SetDefaultValue(value Vector3, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeVec3Parameter) GetDefaultValue() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *AudioStreamPolyphonic) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioStreamPolyphonic) BaseClass() string {
   return "AudioStreamPolyphonic"
 }
+
+func  (me *AudioStreamPolyphonic) SetPolyphony(voices int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioStreamPolyphonic) GetPolyphony() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

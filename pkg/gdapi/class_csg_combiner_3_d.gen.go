@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *CSGCombiner3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CSGCombiner3D) BaseClass() string {
   return "CSGCombiner3D"
 }
+
+// TODO: properties
+
+// TODO: signals

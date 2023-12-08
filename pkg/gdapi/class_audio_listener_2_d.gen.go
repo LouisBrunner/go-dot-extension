@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,19 @@ func (me *AudioListener2D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioListener2D) BaseClass() string {
   return "AudioListener2D"
 }
+
+func  (me *AudioListener2D) MakeCurrent() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioListener2D) ClearCurrent() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioListener2D) IsCurrent() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

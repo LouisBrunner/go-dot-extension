@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,19 @@ func (me *VisualShaderNodeSample3D) BaseClass() string {
 
 type VisualShaderNodeSample3DSource int
 const (
-  VisualShaderNodeSample3DSourceTexture VisualShaderNodeSample3DSource = 0
-  VisualShaderNodeSample3DSourcePort VisualShaderNodeSample3DSource = 1
-  VisualShaderNodeSample3DSourceMax VisualShaderNodeSample3DSource = 2
+  VisualShaderNodeSample3DSourceSourceTexture VisualShaderNodeSample3DSource = 0
+  VisualShaderNodeSample3DSourceSourcePort VisualShaderNodeSample3DSource = 1
+  VisualShaderNodeSample3DSourceSourceMax VisualShaderNodeSample3DSource = 2
 )
+
+func  (me *VisualShaderNodeSample3D) SetSource(value VisualShaderNodeSample3DSource, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeSample3D) GetSource() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

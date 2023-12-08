@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,11 @@ func (me *ImageFormatLoader) BaseClass() string {
 
 type ImageFormatLoaderLoaderFlags int
 const (
-  ImageFormatLoaderFlagNone ImageFormatLoaderLoaderFlags = 0
-  ImageFormatLoaderFlagForceLinear ImageFormatLoaderLoaderFlags = 1
-  ImageFormatLoaderFlagConvertColors ImageFormatLoaderLoaderFlags = 2
+  ImageFormatLoaderLoaderFlagsFlagNone ImageFormatLoaderLoaderFlags = 0
+  ImageFormatLoaderLoaderFlagsFlagForceLinear ImageFormatLoaderLoaderFlags = 1
+  ImageFormatLoaderLoaderFlagsFlagConvertColors ImageFormatLoaderLoaderFlags = 2
 )
+
+// TODO: properties
+
+// TODO: signals

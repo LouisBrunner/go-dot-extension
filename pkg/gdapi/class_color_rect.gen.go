@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *ColorRect) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ColorRect) BaseClass() string {
   return "ColorRect"
 }
+
+func  (me *ColorRect) SetColor(color Color, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ColorRect) GetColor() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

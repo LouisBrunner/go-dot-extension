@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,23 @@ func (me *RefCounted) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *RefCounted) BaseClass() string {
   return "RefCounted"
 }
+
+func  (me *RefCounted) InitRef() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RefCounted) Reference() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RefCounted) Unreference() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *RefCounted) GetReferenceCount() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

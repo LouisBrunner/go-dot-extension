@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *PlaceholderTexture2DArray) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *PlaceholderTexture2DArray) BaseClass() string {
   return "PlaceholderTexture2DArray"
 }
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *StandardMaterial3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *StandardMaterial3D) BaseClass() string {
   return "StandardMaterial3D"
 }
+
+// TODO: properties
+
+// TODO: signals

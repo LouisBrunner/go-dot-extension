@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,23 @@ func (me *HashingContext) BaseClass() string {
 
 type HashingContextHashType int
 const (
-  HashingContextHashMd5 HashingContextHashType = 0
-  HashingContextHashSha1 HashingContextHashType = 1
-  HashingContextHashSha256 HashingContextHashType = 2
+  HashingContextHashTypeHashMd5 HashingContextHashType = 0
+  HashingContextHashTypeHashSha1 HashingContextHashType = 1
+  HashingContextHashTypeHashSha256 HashingContextHashType = 2
 )
+
+func  (me *HashingContext) Start(type_ HashingContextHashType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HashingContext) Update(chunk PackedByteArray, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HashingContext) Finish() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

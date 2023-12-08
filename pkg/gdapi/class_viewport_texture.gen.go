@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *ViewportTexture) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ViewportTexture) BaseClass() string {
   return "ViewportTexture"
 }
+
+func  (me *ViewportTexture) SetViewportPathInScene(path NodePath, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ViewportTexture) GetViewportPathInScene() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

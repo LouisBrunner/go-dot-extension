@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,19 @@ func (me *PinJoint3D) BaseClass() string {
 
 type PinJoint3DParam int
 const (
-  PinJoint3DParamBias PinJoint3DParam = 0
-  PinJoint3DParamDamping PinJoint3DParam = 1
-  PinJoint3DParamImpulseClamp PinJoint3DParam = 2
+  PinJoint3DParamParamBias PinJoint3DParam = 0
+  PinJoint3DParamParamDamping PinJoint3DParam = 1
+  PinJoint3DParamParamImpulseClamp PinJoint3DParam = 2
 )
+
+func  (me *PinJoint3D) SetParam(param PinJoint3DParam, value float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *PinJoint3D) GetParam(param PinJoint3DParam, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

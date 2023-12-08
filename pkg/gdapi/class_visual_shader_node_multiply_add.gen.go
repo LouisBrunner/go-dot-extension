@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,9 +27,21 @@ func (me *VisualShaderNodeMultiplyAdd) BaseClass() string {
 
 type VisualShaderNodeMultiplyAddOpType int
 const (
-  VisualShaderNodeMultiplyAddOpTypeScalar VisualShaderNodeMultiplyAddOpType = 0
-  VisualShaderNodeMultiplyAddOpTypeVector2D VisualShaderNodeMultiplyAddOpType = 1
-  VisualShaderNodeMultiplyAddOpTypeVector3D VisualShaderNodeMultiplyAddOpType = 2
-  VisualShaderNodeMultiplyAddOpTypeVector4D VisualShaderNodeMultiplyAddOpType = 3
-  VisualShaderNodeMultiplyAddOpTypeMax VisualShaderNodeMultiplyAddOpType = 4
+  VisualShaderNodeMultiplyAddOpTypeOpTypeScalar VisualShaderNodeMultiplyAddOpType = 0
+  VisualShaderNodeMultiplyAddOpTypeOpTypeVector2D VisualShaderNodeMultiplyAddOpType = 1
+  VisualShaderNodeMultiplyAddOpTypeOpTypeVector3D VisualShaderNodeMultiplyAddOpType = 2
+  VisualShaderNodeMultiplyAddOpTypeOpTypeVector4D VisualShaderNodeMultiplyAddOpType = 3
+  VisualShaderNodeMultiplyAddOpTypeOpTypeMax VisualShaderNodeMultiplyAddOpType = 4
 )
+
+func  (me *VisualShaderNodeMultiplyAdd) SetOpType(type_ VisualShaderNodeMultiplyAddOpType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeMultiplyAdd) GetOpType() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

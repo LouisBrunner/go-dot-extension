@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,23 @@ func (me *WorldEnvironment) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *WorldEnvironment) BaseClass() string {
   return "WorldEnvironment"
 }
+
+func  (me *WorldEnvironment) SetEnvironment(env Environment, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WorldEnvironment) GetEnvironment() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WorldEnvironment) SetCameraAttributes(camera_attributes CameraAttributes, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *WorldEnvironment) GetCameraAttributes() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

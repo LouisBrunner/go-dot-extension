@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *CenterContainer) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CenterContainer) BaseClass() string {
   return "CenterContainer"
 }
+
+func  (me *CenterContainer) SetUseTopLeft(enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CenterContainer) IsUsingTopLeft() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

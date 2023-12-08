@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,8 +27,32 @@ func (me *GDExtension) BaseClass() string {
 
 type GDExtensionInitializationLevel int
 const (
-  GDExtensionInitializationLevelCore GDExtensionInitializationLevel = 0
-  GDExtensionInitializationLevelServers GDExtensionInitializationLevel = 1
-  GDExtensionInitializationLevelScene GDExtensionInitializationLevel = 2
-  GDExtensionInitializationLevelEditor GDExtensionInitializationLevel = 3
+  GDExtensionInitializationLevelInitializationLevelCore GDExtensionInitializationLevel = 0
+  GDExtensionInitializationLevelInitializationLevelServers GDExtensionInitializationLevel = 1
+  GDExtensionInitializationLevelInitializationLevelScene GDExtensionInitializationLevel = 2
+  GDExtensionInitializationLevelInitializationLevelEditor GDExtensionInitializationLevel = 3
 )
+
+func  (me *GDExtension) OpenLibrary(path String, entry_symbol String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GDExtension) CloseLibrary() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GDExtension) IsLibraryOpen() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GDExtension) GetMinimumLibraryInitializationLevel() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *GDExtension) InitializeLibrary(level GDExtensionInitializationLevel, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

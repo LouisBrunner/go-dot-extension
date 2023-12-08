@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,19 @@ func (me *ConfirmationDialog) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ConfirmationDialog) BaseClass() string {
   return "ConfirmationDialog"
 }
+
+func  (me *ConfirmationDialog) GetCancelButton() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ConfirmationDialog) SetCancelButtonText(text String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ConfirmationDialog) GetCancelButtonText() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

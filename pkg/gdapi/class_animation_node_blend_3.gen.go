@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *AnimationNodeBlend3) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AnimationNodeBlend3) BaseClass() string {
   return "AnimationNodeBlend3"
 }
+
+// TODO: properties
+
+// TODO: signals

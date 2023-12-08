@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *QuadOccluder3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *QuadOccluder3D) BaseClass() string {
   return "QuadOccluder3D"
 }
+
+func  (me *QuadOccluder3D) SetSize(size Vector2, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *QuadOccluder3D) GetSize() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

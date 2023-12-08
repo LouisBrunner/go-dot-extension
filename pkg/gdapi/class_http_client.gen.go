@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,93 +27,185 @@ func (me *HTTPClient) BaseClass() string {
 
 type HTTPClientMethod int
 const (
-  HTTPClientMethodGet HTTPClientMethod = 0
-  HTTPClientMethodHead HTTPClientMethod = 1
-  HTTPClientMethodPost HTTPClientMethod = 2
-  HTTPClientMethodPut HTTPClientMethod = 3
-  HTTPClientMethodDelete HTTPClientMethod = 4
-  HTTPClientMethodOptions HTTPClientMethod = 5
-  HTTPClientMethodTrace HTTPClientMethod = 6
-  HTTPClientMethodConnect HTTPClientMethod = 7
-  HTTPClientMethodPatch HTTPClientMethod = 8
-  HTTPClientMethodMax HTTPClientMethod = 9
+  HTTPClientMethodMethodGet HTTPClientMethod = 0
+  HTTPClientMethodMethodHead HTTPClientMethod = 1
+  HTTPClientMethodMethodPost HTTPClientMethod = 2
+  HTTPClientMethodMethodPut HTTPClientMethod = 3
+  HTTPClientMethodMethodDelete HTTPClientMethod = 4
+  HTTPClientMethodMethodOptions HTTPClientMethod = 5
+  HTTPClientMethodMethodTrace HTTPClientMethod = 6
+  HTTPClientMethodMethodConnect HTTPClientMethod = 7
+  HTTPClientMethodMethodPatch HTTPClientMethod = 8
+  HTTPClientMethodMethodMax HTTPClientMethod = 9
 )
 
 type HTTPClientStatus int
 const (
-  HTTPClientStatusDisconnected HTTPClientStatus = 0
-  HTTPClientStatusResolving HTTPClientStatus = 1
-  HTTPClientStatusCantResolve HTTPClientStatus = 2
-  HTTPClientStatusConnecting HTTPClientStatus = 3
-  HTTPClientStatusCantConnect HTTPClientStatus = 4
-  HTTPClientStatusConnected HTTPClientStatus = 5
-  HTTPClientStatusRequesting HTTPClientStatus = 6
-  HTTPClientStatusBody HTTPClientStatus = 7
-  HTTPClientStatusConnectionError HTTPClientStatus = 8
-  HTTPClientStatusTlsHandshakeError HTTPClientStatus = 9
+  HTTPClientStatusStatusDisconnected HTTPClientStatus = 0
+  HTTPClientStatusStatusResolving HTTPClientStatus = 1
+  HTTPClientStatusStatusCantResolve HTTPClientStatus = 2
+  HTTPClientStatusStatusConnecting HTTPClientStatus = 3
+  HTTPClientStatusStatusCantConnect HTTPClientStatus = 4
+  HTTPClientStatusStatusConnected HTTPClientStatus = 5
+  HTTPClientStatusStatusRequesting HTTPClientStatus = 6
+  HTTPClientStatusStatusBody HTTPClientStatus = 7
+  HTTPClientStatusStatusConnectionError HTTPClientStatus = 8
+  HTTPClientStatusStatusTlsHandshakeError HTTPClientStatus = 9
 )
 
 type HTTPClientResponseCode int
 const (
-  HTTPClientResponseContinue HTTPClientResponseCode = 100
-  HTTPClientResponseSwitchingProtocols HTTPClientResponseCode = 101
-  HTTPClientResponseProcessing HTTPClientResponseCode = 102
-  HTTPClientResponseOk HTTPClientResponseCode = 200
-  HTTPClientResponseCreated HTTPClientResponseCode = 201
-  HTTPClientResponseAccepted HTTPClientResponseCode = 202
-  HTTPClientResponseNonAuthoritativeInformation HTTPClientResponseCode = 203
-  HTTPClientResponseNoContent HTTPClientResponseCode = 204
-  HTTPClientResponseResetContent HTTPClientResponseCode = 205
-  HTTPClientResponsePartialContent HTTPClientResponseCode = 206
-  HTTPClientResponseMultiStatus HTTPClientResponseCode = 207
-  HTTPClientResponseAlreadyReported HTTPClientResponseCode = 208
-  HTTPClientResponseImUsed HTTPClientResponseCode = 226
-  HTTPClientResponseMultipleChoices HTTPClientResponseCode = 300
-  HTTPClientResponseMovedPermanently HTTPClientResponseCode = 301
-  HTTPClientResponseFound HTTPClientResponseCode = 302
-  HTTPClientResponseSeeOther HTTPClientResponseCode = 303
-  HTTPClientResponseNotModified HTTPClientResponseCode = 304
-  HTTPClientResponseUseProxy HTTPClientResponseCode = 305
-  HTTPClientResponseSwitchProxy HTTPClientResponseCode = 306
-  HTTPClientResponseTemporaryRedirect HTTPClientResponseCode = 307
-  HTTPClientResponsePermanentRedirect HTTPClientResponseCode = 308
-  HTTPClientResponseBadRequest HTTPClientResponseCode = 400
-  HTTPClientResponseUnauthorized HTTPClientResponseCode = 401
-  HTTPClientResponsePaymentRequired HTTPClientResponseCode = 402
-  HTTPClientResponseForbidden HTTPClientResponseCode = 403
-  HTTPClientResponseNotFound HTTPClientResponseCode = 404
-  HTTPClientResponseMethodNotAllowed HTTPClientResponseCode = 405
-  HTTPClientResponseNotAcceptable HTTPClientResponseCode = 406
-  HTTPClientResponseProxyAuthenticationRequired HTTPClientResponseCode = 407
-  HTTPClientResponseRequestTimeout HTTPClientResponseCode = 408
-  HTTPClientResponseConflict HTTPClientResponseCode = 409
-  HTTPClientResponseGone HTTPClientResponseCode = 410
-  HTTPClientResponseLengthRequired HTTPClientResponseCode = 411
-  HTTPClientResponsePreconditionFailed HTTPClientResponseCode = 412
-  HTTPClientResponseRequestEntityTooLarge HTTPClientResponseCode = 413
-  HTTPClientResponseRequestUriTooLong HTTPClientResponseCode = 414
-  HTTPClientResponseUnsupportedMediaType HTTPClientResponseCode = 415
-  HTTPClientResponseRequestedRangeNotSatisfiable HTTPClientResponseCode = 416
-  HTTPClientResponseExpectationFailed HTTPClientResponseCode = 417
-  HTTPClientResponseImATeapot HTTPClientResponseCode = 418
-  HTTPClientResponseMisdirectedRequest HTTPClientResponseCode = 421
-  HTTPClientResponseUnprocessableEntity HTTPClientResponseCode = 422
-  HTTPClientResponseLocked HTTPClientResponseCode = 423
-  HTTPClientResponseFailedDependency HTTPClientResponseCode = 424
-  HTTPClientResponseUpgradeRequired HTTPClientResponseCode = 426
-  HTTPClientResponsePreconditionRequired HTTPClientResponseCode = 428
-  HTTPClientResponseTooManyRequests HTTPClientResponseCode = 429
-  HTTPClientResponseRequestHeaderFieldsTooLarge HTTPClientResponseCode = 431
-  HTTPClientResponseUnavailableForLegalReasons HTTPClientResponseCode = 451
-  HTTPClientResponseInternalServerError HTTPClientResponseCode = 500
-  HTTPClientResponseNotImplemented HTTPClientResponseCode = 501
-  HTTPClientResponseBadGateway HTTPClientResponseCode = 502
-  HTTPClientResponseServiceUnavailable HTTPClientResponseCode = 503
-  HTTPClientResponseGatewayTimeout HTTPClientResponseCode = 504
-  HTTPClientResponseHttpVersionNotSupported HTTPClientResponseCode = 505
-  HTTPClientResponseVariantAlsoNegotiates HTTPClientResponseCode = 506
-  HTTPClientResponseInsufficientStorage HTTPClientResponseCode = 507
-  HTTPClientResponseLoopDetected HTTPClientResponseCode = 508
-  HTTPClientResponseNotExtended HTTPClientResponseCode = 510
-  HTTPClientResponseNetworkAuthRequired HTTPClientResponseCode = 511
+  HTTPClientResponseCodeResponseContinue HTTPClientResponseCode = 100
+  HTTPClientResponseCodeResponseSwitchingProtocols HTTPClientResponseCode = 101
+  HTTPClientResponseCodeResponseProcessing HTTPClientResponseCode = 102
+  HTTPClientResponseCodeResponseOk HTTPClientResponseCode = 200
+  HTTPClientResponseCodeResponseCreated HTTPClientResponseCode = 201
+  HTTPClientResponseCodeResponseAccepted HTTPClientResponseCode = 202
+  HTTPClientResponseCodeResponseNonAuthoritativeInformation HTTPClientResponseCode = 203
+  HTTPClientResponseCodeResponseNoContent HTTPClientResponseCode = 204
+  HTTPClientResponseCodeResponseResetContent HTTPClientResponseCode = 205
+  HTTPClientResponseCodeResponsePartialContent HTTPClientResponseCode = 206
+  HTTPClientResponseCodeResponseMultiStatus HTTPClientResponseCode = 207
+  HTTPClientResponseCodeResponseAlreadyReported HTTPClientResponseCode = 208
+  HTTPClientResponseCodeResponseImUsed HTTPClientResponseCode = 226
+  HTTPClientResponseCodeResponseMultipleChoices HTTPClientResponseCode = 300
+  HTTPClientResponseCodeResponseMovedPermanently HTTPClientResponseCode = 301
+  HTTPClientResponseCodeResponseFound HTTPClientResponseCode = 302
+  HTTPClientResponseCodeResponseSeeOther HTTPClientResponseCode = 303
+  HTTPClientResponseCodeResponseNotModified HTTPClientResponseCode = 304
+  HTTPClientResponseCodeResponseUseProxy HTTPClientResponseCode = 305
+  HTTPClientResponseCodeResponseSwitchProxy HTTPClientResponseCode = 306
+  HTTPClientResponseCodeResponseTemporaryRedirect HTTPClientResponseCode = 307
+  HTTPClientResponseCodeResponsePermanentRedirect HTTPClientResponseCode = 308
+  HTTPClientResponseCodeResponseBadRequest HTTPClientResponseCode = 400
+  HTTPClientResponseCodeResponseUnauthorized HTTPClientResponseCode = 401
+  HTTPClientResponseCodeResponsePaymentRequired HTTPClientResponseCode = 402
+  HTTPClientResponseCodeResponseForbidden HTTPClientResponseCode = 403
+  HTTPClientResponseCodeResponseNotFound HTTPClientResponseCode = 404
+  HTTPClientResponseCodeResponseMethodNotAllowed HTTPClientResponseCode = 405
+  HTTPClientResponseCodeResponseNotAcceptable HTTPClientResponseCode = 406
+  HTTPClientResponseCodeResponseProxyAuthenticationRequired HTTPClientResponseCode = 407
+  HTTPClientResponseCodeResponseRequestTimeout HTTPClientResponseCode = 408
+  HTTPClientResponseCodeResponseConflict HTTPClientResponseCode = 409
+  HTTPClientResponseCodeResponseGone HTTPClientResponseCode = 410
+  HTTPClientResponseCodeResponseLengthRequired HTTPClientResponseCode = 411
+  HTTPClientResponseCodeResponsePreconditionFailed HTTPClientResponseCode = 412
+  HTTPClientResponseCodeResponseRequestEntityTooLarge HTTPClientResponseCode = 413
+  HTTPClientResponseCodeResponseRequestUriTooLong HTTPClientResponseCode = 414
+  HTTPClientResponseCodeResponseUnsupportedMediaType HTTPClientResponseCode = 415
+  HTTPClientResponseCodeResponseRequestedRangeNotSatisfiable HTTPClientResponseCode = 416
+  HTTPClientResponseCodeResponseExpectationFailed HTTPClientResponseCode = 417
+  HTTPClientResponseCodeResponseImATeapot HTTPClientResponseCode = 418
+  HTTPClientResponseCodeResponseMisdirectedRequest HTTPClientResponseCode = 421
+  HTTPClientResponseCodeResponseUnprocessableEntity HTTPClientResponseCode = 422
+  HTTPClientResponseCodeResponseLocked HTTPClientResponseCode = 423
+  HTTPClientResponseCodeResponseFailedDependency HTTPClientResponseCode = 424
+  HTTPClientResponseCodeResponseUpgradeRequired HTTPClientResponseCode = 426
+  HTTPClientResponseCodeResponsePreconditionRequired HTTPClientResponseCode = 428
+  HTTPClientResponseCodeResponseTooManyRequests HTTPClientResponseCode = 429
+  HTTPClientResponseCodeResponseRequestHeaderFieldsTooLarge HTTPClientResponseCode = 431
+  HTTPClientResponseCodeResponseUnavailableForLegalReasons HTTPClientResponseCode = 451
+  HTTPClientResponseCodeResponseInternalServerError HTTPClientResponseCode = 500
+  HTTPClientResponseCodeResponseNotImplemented HTTPClientResponseCode = 501
+  HTTPClientResponseCodeResponseBadGateway HTTPClientResponseCode = 502
+  HTTPClientResponseCodeResponseServiceUnavailable HTTPClientResponseCode = 503
+  HTTPClientResponseCodeResponseGatewayTimeout HTTPClientResponseCode = 504
+  HTTPClientResponseCodeResponseHttpVersionNotSupported HTTPClientResponseCode = 505
+  HTTPClientResponseCodeResponseVariantAlsoNegotiates HTTPClientResponseCode = 506
+  HTTPClientResponseCodeResponseInsufficientStorage HTTPClientResponseCode = 507
+  HTTPClientResponseCodeResponseLoopDetected HTTPClientResponseCode = 508
+  HTTPClientResponseCodeResponseNotExtended HTTPClientResponseCode = 510
+  HTTPClientResponseCodeResponseNetworkAuthRequired HTTPClientResponseCode = 511
 )
+
+func  (me *HTTPClient) ConnectToHost(host String, port int, tls_options TLSOptions, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) SetConnection(connection StreamPeer, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) GetConnection() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) RequestRaw(method HTTPClientMethod, url String, headers PackedStringArray, body PackedByteArray, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) Request(method HTTPClientMethod, url String, headers PackedStringArray, body String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) Close() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) HasResponse() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) IsResponseChunked() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) GetResponseCode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) GetResponseHeaders() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) GetResponseHeadersAsDictionary() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) GetResponseBodyLength() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) ReadResponseBodyChunk() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) SetReadChunkSize(bytes int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) GetReadChunkSize() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) SetBlockingMode(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) IsBlockingModeEnabled() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) GetStatus() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) Poll() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) SetHttpProxy(host String, port int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) SetHttpsProxy(host String, port int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *HTTPClient) QueryStringFromDict(fields Dictionary, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

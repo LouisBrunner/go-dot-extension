@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,8 +27,28 @@ func (me *ProgressBar) BaseClass() string {
 
 type ProgressBarFillMode int
 const (
-  ProgressBarFillBeginToEnd ProgressBarFillMode = 0
-  ProgressBarFillEndToBegin ProgressBarFillMode = 1
-  ProgressBarFillTopToBottom ProgressBarFillMode = 2
-  ProgressBarFillBottomToTop ProgressBarFillMode = 3
+  ProgressBarFillModeFillBeginToEnd ProgressBarFillMode = 0
+  ProgressBarFillModeFillEndToBegin ProgressBarFillMode = 1
+  ProgressBarFillModeFillTopToBottom ProgressBarFillMode = 2
+  ProgressBarFillModeFillBottomToTop ProgressBarFillMode = 3
 )
+
+func  (me *ProgressBar) SetFillMode(mode int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ProgressBar) GetFillMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ProgressBar) SetShowPercentage(visible bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ProgressBar) IsPercentageShown() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

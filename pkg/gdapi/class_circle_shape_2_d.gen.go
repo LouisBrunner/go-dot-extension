@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *CircleShape2D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CircleShape2D) BaseClass() string {
   return "CircleShape2D"
 }
+
+func  (me *CircleShape2D) SetRadius(radius float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CircleShape2D) GetRadius() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

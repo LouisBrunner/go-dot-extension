@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,26 +27,102 @@ func (me *ENetConnection) BaseClass() string {
 
 type ENetConnectionCompressionMode int
 const (
-  ENetConnectionCompressNone ENetConnectionCompressionMode = 0
-  ENetConnectionCompressRangeCoder ENetConnectionCompressionMode = 1
-  ENetConnectionCompressFastlz ENetConnectionCompressionMode = 2
-  ENetConnectionCompressZlib ENetConnectionCompressionMode = 3
-  ENetConnectionCompressZstd ENetConnectionCompressionMode = 4
+  ENetConnectionCompressionModeCompressNone ENetConnectionCompressionMode = 0
+  ENetConnectionCompressionModeCompressRangeCoder ENetConnectionCompressionMode = 1
+  ENetConnectionCompressionModeCompressFastlz ENetConnectionCompressionMode = 2
+  ENetConnectionCompressionModeCompressZlib ENetConnectionCompressionMode = 3
+  ENetConnectionCompressionModeCompressZstd ENetConnectionCompressionMode = 4
 )
 
 type ENetConnectionEventType int
 const (
-  ENetConnectionEventError ENetConnectionEventType = -1
-  ENetConnectionEventNone ENetConnectionEventType = 0
-  ENetConnectionEventConnect ENetConnectionEventType = 1
-  ENetConnectionEventDisconnect ENetConnectionEventType = 2
-  ENetConnectionEventReceive ENetConnectionEventType = 3
+  ENetConnectionEventTypeEventError ENetConnectionEventType = -1
+  ENetConnectionEventTypeEventNone ENetConnectionEventType = 0
+  ENetConnectionEventTypeEventConnect ENetConnectionEventType = 1
+  ENetConnectionEventTypeEventDisconnect ENetConnectionEventType = 2
+  ENetConnectionEventTypeEventReceive ENetConnectionEventType = 3
 )
 
 type ENetConnectionHostStatistic int
 const (
-  ENetConnectionHostTotalSentData ENetConnectionHostStatistic = 0
-  ENetConnectionHostTotalSentPackets ENetConnectionHostStatistic = 1
-  ENetConnectionHostTotalReceivedData ENetConnectionHostStatistic = 2
-  ENetConnectionHostTotalReceivedPackets ENetConnectionHostStatistic = 3
+  ENetConnectionHostStatisticHostTotalSentData ENetConnectionHostStatistic = 0
+  ENetConnectionHostStatisticHostTotalSentPackets ENetConnectionHostStatistic = 1
+  ENetConnectionHostStatisticHostTotalReceivedData ENetConnectionHostStatistic = 2
+  ENetConnectionHostStatisticHostTotalReceivedPackets ENetConnectionHostStatistic = 3
 )
+
+func  (me *ENetConnection) CreateHostBound(bind_address String, bind_port int, max_peers int, max_channels int, in_bandwidth int, out_bandwidth int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) CreateHost(max_peers int, max_channels int, in_bandwidth int, out_bandwidth int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) Destroy() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) ConnectToHost(address String, port int, channels int, data int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) Service(timeout int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) Flush() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) BandwidthLimit(in_bandwidth int, out_bandwidth int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) ChannelLimit(limit int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) Broadcast(channel int, packet PackedByteArray, flags int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) Compress(mode ENetConnectionCompressionMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) DtlsServerSetup(server_options TLSOptions, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) DtlsClientSetup(hostname String, client_options TLSOptions, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) RefuseNewConnections(refuse bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) PopStatistic(statistic ENetConnectionHostStatistic, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) GetMaxChannels() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) GetLocalPort() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) GetPeers() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ENetConnection) SocketSend(destination_address String, destination_port int, packet PackedByteArray, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

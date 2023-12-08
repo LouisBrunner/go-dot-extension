@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,23 @@ func (me *MissingNode) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *MissingNode) BaseClass() string {
   return "MissingNode"
 }
+
+func  (me *MissingNode) SetOriginalClass(name String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MissingNode) GetOriginalClass() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MissingNode) SetRecordingProperties(enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MissingNode) IsRecordingProperties() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

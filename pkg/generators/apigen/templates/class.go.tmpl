@@ -1,26 +1,40 @@
 {{template "preamble"}}
-package gdapi
 
 import (
+// TODO: disgusting imports
+{{if eq .Name "AudioEffectInstance"}}  "unsafe"{{end}}
+{{if eq .Name "MovieWriter"}}  "unsafe"{{end}}
+{{if eq .Name "PhysicsServer2DExtension"}}  "unsafe"{{end}}
+{{if eq .Name "PhysicsDirectSpaceState2DExtension"}}  "unsafe"{{end}}
+{{if eq .Name "PhysicsDirectSpaceState3DExtension"}}  "unsafe"{{end}}
+{{if eq .Name "PhysicsServer3DRenderingServerHandler"}}  "unsafe"{{end}}
+{{if eq .Name "ScriptExtension"}}  "unsafe"{{end}}
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-type {{.Name}} struct {
+{{$Class := mapClass .Name -}}
+type {{$Class}} struct {
   obj gdc.ObjectPtr
 }
 
-func (me *{{.Name}}) SetBaseObject(obj gdc.ObjectPtr) {
+func (me *{{$Class}}) SetBaseObject(obj gdc.ObjectPtr) {
   me.obj = obj
 }
 
-func (me *{{.Name}}) BaseClass() string {
+func (me *{{$Class}}) BaseClass() string {
   return "{{.Name}}"
 }
 {{- if .Constants}}
 
-const (
-{{range .Constants}}  {{$.Name}}{{.Name}} = {{.Value}}
-{{end -}}
+// TODO: needed?
+// const (
+// {{range .Constants}}{{if eq .Type "int"}}  {{$.Name}}{{pascalCased (lowerCased .Name)}} = {{.Value}}
+// {{end}}{{end -}}
+// )
+
+var (
+{{range .Constants}}{{if ne .Type "int"}}  {{$.Name}}{{pascalCased (lowerCased .Name)}} = "{{.Value}}" // TODO: construct correctly
+{{end}}{{end -}}
 )
 {{- end}}
 
@@ -28,12 +42,19 @@ const (
 
 type {{$.Name}}{{.Name}} int
 const ({{$name := .Name}}
-{{range .Values}}  {{$.Name}}
-{{- $name2 := pascalCased (lowerCased .Name) -}}
-{{- $name2 -}}
-{{- if eq $name2 $name -}}
-_
-{{- end}} {{$.Name}}{{$name}} = {{.Value}}
+{{range .Values}}  {{$.Name}}{{$name}}{{pascalCased (lowerCased .Name)}} {{$.Name}}{{$name}} = {{.Value}}
 {{end -}}
 )
 {{- end}}
+
+{{- range .Methods}}
+
+func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .Name -}}
+({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}) { // TODO: return value
+  // TODO: implement
+}
+{{- end}}
+
+// TODO: properties
+
+// TODO: signals

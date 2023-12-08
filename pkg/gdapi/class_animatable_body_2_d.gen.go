@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *AnimatableBody2D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AnimatableBody2D) BaseClass() string {
   return "AnimatableBody2D"
 }
+
+func  (me *AnimatableBody2D) SetSyncToPhysics(enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimatableBody2D) IsSyncToPhysicsEnabled() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

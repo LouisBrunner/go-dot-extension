@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,8 +27,60 @@ func (me *VisualShaderNodeFloatParameter) BaseClass() string {
 
 type VisualShaderNodeFloatParameterHint int
 const (
-  VisualShaderNodeFloatParameterHintNone VisualShaderNodeFloatParameterHint = 0
-  VisualShaderNodeFloatParameterHintRange VisualShaderNodeFloatParameterHint = 1
-  VisualShaderNodeFloatParameterHintRangeStep VisualShaderNodeFloatParameterHint = 2
-  VisualShaderNodeFloatParameterHintMax VisualShaderNodeFloatParameterHint = 3
+  VisualShaderNodeFloatParameterHintHintNone VisualShaderNodeFloatParameterHint = 0
+  VisualShaderNodeFloatParameterHintHintRange VisualShaderNodeFloatParameterHint = 1
+  VisualShaderNodeFloatParameterHintHintRangeStep VisualShaderNodeFloatParameterHint = 2
+  VisualShaderNodeFloatParameterHintHintMax VisualShaderNodeFloatParameterHint = 3
 )
+
+func  (me *VisualShaderNodeFloatParameter) SetHint(hint VisualShaderNodeFloatParameterHint, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatParameter) GetHint() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatParameter) SetMin(value float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatParameter) GetMin() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatParameter) SetMax(value float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatParameter) GetMax() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatParameter) SetStep(value float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatParameter) GetStep() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatParameter) SetDefaultValueEnabled(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatParameter) IsDefaultValueEnabled() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatParameter) SetDefaultValue(value float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeFloatParameter) GetDefaultValue() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

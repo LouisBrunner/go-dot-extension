@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,10 +27,22 @@ func (me *ConeTwistJoint3D) BaseClass() string {
 
 type ConeTwistJoint3DParam int
 const (
-  ConeTwistJoint3DParamSwingSpan ConeTwistJoint3DParam = 0
-  ConeTwistJoint3DParamTwistSpan ConeTwistJoint3DParam = 1
-  ConeTwistJoint3DParamBias ConeTwistJoint3DParam = 2
-  ConeTwistJoint3DParamSoftness ConeTwistJoint3DParam = 3
-  ConeTwistJoint3DParamRelaxation ConeTwistJoint3DParam = 4
-  ConeTwistJoint3DParamMax ConeTwistJoint3DParam = 5
+  ConeTwistJoint3DParamParamSwingSpan ConeTwistJoint3DParam = 0
+  ConeTwistJoint3DParamParamTwistSpan ConeTwistJoint3DParam = 1
+  ConeTwistJoint3DParamParamBias ConeTwistJoint3DParam = 2
+  ConeTwistJoint3DParamParamSoftness ConeTwistJoint3DParam = 3
+  ConeTwistJoint3DParamParamRelaxation ConeTwistJoint3DParam = 4
+  ConeTwistJoint3DParamParamMax ConeTwistJoint3DParam = 5
 )
+
+func  (me *ConeTwistJoint3D) SetParam(param ConeTwistJoint3DParam, value float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ConeTwistJoint3D) GetParam(param ConeTwistJoint3DParam, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

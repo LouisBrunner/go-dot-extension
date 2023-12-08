@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *VisibleOnScreenNotifier3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisibleOnScreenNotifier3D) BaseClass() string {
   return "VisibleOnScreenNotifier3D"
 }
+
+func  (me *VisibleOnScreenNotifier3D) SetAabb(rect AABB, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisibleOnScreenNotifier3D) IsOnScreen() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,8 +27,28 @@ func (me *PackedScene) BaseClass() string {
 
 type PackedSceneGenEditState int
 const (
-  PackedSceneGenEditStateDisabled PackedSceneGenEditState = 0
-  PackedSceneGenEditStateInstance PackedSceneGenEditState = 1
-  PackedSceneGenEditStateMain PackedSceneGenEditState = 2
-  PackedSceneGenEditStateMainInherited PackedSceneGenEditState = 3
+  PackedSceneGenEditStateGenEditStateDisabled PackedSceneGenEditState = 0
+  PackedSceneGenEditStateGenEditStateInstance PackedSceneGenEditState = 1
+  PackedSceneGenEditStateGenEditStateMain PackedSceneGenEditState = 2
+  PackedSceneGenEditStateGenEditStateMainInherited PackedSceneGenEditState = 3
 )
+
+func  (me *PackedScene) Pack(path Node, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *PackedScene) Instantiate(edit_state PackedSceneGenEditState, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *PackedScene) CanInstantiate() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *PackedScene) GetState() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

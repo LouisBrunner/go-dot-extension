@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,15 +27,67 @@ func (me *ResourceLoader) BaseClass() string {
 
 type ResourceLoaderThreadLoadStatus int
 const (
-  ResourceLoaderThreadLoadInvalidResource ResourceLoaderThreadLoadStatus = 0
-  ResourceLoaderThreadLoadInProgress ResourceLoaderThreadLoadStatus = 1
-  ResourceLoaderThreadLoadFailed ResourceLoaderThreadLoadStatus = 2
-  ResourceLoaderThreadLoadLoaded ResourceLoaderThreadLoadStatus = 3
+  ResourceLoaderThreadLoadStatusThreadLoadInvalidResource ResourceLoaderThreadLoadStatus = 0
+  ResourceLoaderThreadLoadStatusThreadLoadInProgress ResourceLoaderThreadLoadStatus = 1
+  ResourceLoaderThreadLoadStatusThreadLoadFailed ResourceLoaderThreadLoadStatus = 2
+  ResourceLoaderThreadLoadStatusThreadLoadLoaded ResourceLoaderThreadLoadStatus = 3
 )
 
 type ResourceLoaderCacheMode int
 const (
-  ResourceLoaderCacheModeIgnore ResourceLoaderCacheMode = 0
-  ResourceLoaderCacheModeReuse ResourceLoaderCacheMode = 1
-  ResourceLoaderCacheModeReplace ResourceLoaderCacheMode = 2
+  ResourceLoaderCacheModeCacheModeIgnore ResourceLoaderCacheMode = 0
+  ResourceLoaderCacheModeCacheModeReuse ResourceLoaderCacheMode = 1
+  ResourceLoaderCacheModeCacheModeReplace ResourceLoaderCacheMode = 2
 )
+
+func  (me *ResourceLoader) LoadThreadedRequest(path String, type_hint String, use_sub_threads bool, cache_mode ResourceLoaderCacheMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceLoader) LoadThreadedGetStatus(path String, progress Array, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceLoader) LoadThreadedGet(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceLoader) Load(path String, type_hint String, cache_mode ResourceLoaderCacheMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceLoader) GetRecognizedExtensionsForType(type_ String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceLoader) AddResourceFormatLoader(format_loader ResourceFormatLoader, at_front bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceLoader) RemoveResourceFormatLoader(format_loader ResourceFormatLoader, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceLoader) SetAbortOnMissingResources(abort bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceLoader) GetDependencies(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceLoader) HasCached(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceLoader) Exists(path String, type_hint String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ResourceLoader) GetResourceUid(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

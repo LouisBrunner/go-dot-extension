@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *StyleBoxEmpty) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *StyleBoxEmpty) BaseClass() string {
   return "StyleBoxEmpty"
 }
+
+// TODO: properties
+
+// TODO: signals

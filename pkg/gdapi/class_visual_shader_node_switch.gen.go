@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,13 +27,25 @@ func (me *VisualShaderNodeSwitch) BaseClass() string {
 
 type VisualShaderNodeSwitchOpType int
 const (
-  VisualShaderNodeSwitchOpTypeFloat VisualShaderNodeSwitchOpType = 0
-  VisualShaderNodeSwitchOpTypeInt VisualShaderNodeSwitchOpType = 1
-  VisualShaderNodeSwitchOpTypeUint VisualShaderNodeSwitchOpType = 2
-  VisualShaderNodeSwitchOpTypeVector2D VisualShaderNodeSwitchOpType = 3
-  VisualShaderNodeSwitchOpTypeVector3D VisualShaderNodeSwitchOpType = 4
-  VisualShaderNodeSwitchOpTypeVector4D VisualShaderNodeSwitchOpType = 5
-  VisualShaderNodeSwitchOpTypeBoolean VisualShaderNodeSwitchOpType = 6
-  VisualShaderNodeSwitchOpTypeTransform VisualShaderNodeSwitchOpType = 7
-  VisualShaderNodeSwitchOpTypeMax VisualShaderNodeSwitchOpType = 8
+  VisualShaderNodeSwitchOpTypeOpTypeFloat VisualShaderNodeSwitchOpType = 0
+  VisualShaderNodeSwitchOpTypeOpTypeInt VisualShaderNodeSwitchOpType = 1
+  VisualShaderNodeSwitchOpTypeOpTypeUint VisualShaderNodeSwitchOpType = 2
+  VisualShaderNodeSwitchOpTypeOpTypeVector2D VisualShaderNodeSwitchOpType = 3
+  VisualShaderNodeSwitchOpTypeOpTypeVector3D VisualShaderNodeSwitchOpType = 4
+  VisualShaderNodeSwitchOpTypeOpTypeVector4D VisualShaderNodeSwitchOpType = 5
+  VisualShaderNodeSwitchOpTypeOpTypeBoolean VisualShaderNodeSwitchOpType = 6
+  VisualShaderNodeSwitchOpTypeOpTypeTransform VisualShaderNodeSwitchOpType = 7
+  VisualShaderNodeSwitchOpTypeOpTypeMax VisualShaderNodeSwitchOpType = 8
 )
+
+func  (me *VisualShaderNodeSwitch) SetOpType(type_ VisualShaderNodeSwitchOpType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeSwitch) GetOpType() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

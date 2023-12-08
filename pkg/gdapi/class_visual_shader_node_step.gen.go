@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,12 +27,24 @@ func (me *VisualShaderNodeStep) BaseClass() string {
 
 type VisualShaderNodeStepOpType int
 const (
-  VisualShaderNodeStepOpTypeScalar VisualShaderNodeStepOpType = 0
-  VisualShaderNodeStepOpTypeVector2D VisualShaderNodeStepOpType = 1
-  VisualShaderNodeStepOpTypeVector2DScalar VisualShaderNodeStepOpType = 2
-  VisualShaderNodeStepOpTypeVector3D VisualShaderNodeStepOpType = 3
-  VisualShaderNodeStepOpTypeVector3DScalar VisualShaderNodeStepOpType = 4
-  VisualShaderNodeStepOpTypeVector4D VisualShaderNodeStepOpType = 5
-  VisualShaderNodeStepOpTypeVector4DScalar VisualShaderNodeStepOpType = 6
-  VisualShaderNodeStepOpTypeMax VisualShaderNodeStepOpType = 7
+  VisualShaderNodeStepOpTypeOpTypeScalar VisualShaderNodeStepOpType = 0
+  VisualShaderNodeStepOpTypeOpTypeVector2D VisualShaderNodeStepOpType = 1
+  VisualShaderNodeStepOpTypeOpTypeVector2DScalar VisualShaderNodeStepOpType = 2
+  VisualShaderNodeStepOpTypeOpTypeVector3D VisualShaderNodeStepOpType = 3
+  VisualShaderNodeStepOpTypeOpTypeVector3DScalar VisualShaderNodeStepOpType = 4
+  VisualShaderNodeStepOpTypeOpTypeVector4D VisualShaderNodeStepOpType = 5
+  VisualShaderNodeStepOpTypeOpTypeVector4DScalar VisualShaderNodeStepOpType = 6
+  VisualShaderNodeStepOpTypeOpTypeMax VisualShaderNodeStepOpType = 7
 )
+
+func  (me *VisualShaderNodeStep) SetOpType(op_type VisualShaderNodeStepOpType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeStep) GetOpType() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

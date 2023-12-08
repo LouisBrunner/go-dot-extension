@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *EditorScriptPicker) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *EditorScriptPicker) BaseClass() string {
   return "EditorScriptPicker"
 }
+
+func  (me *EditorScriptPicker) SetScriptOwner(owner_node Node, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorScriptPicker) GetScriptOwner() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *ImageTextureLayered) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ImageTextureLayered) BaseClass() string {
   return "ImageTextureLayered"
 }
+
+func  (me *ImageTextureLayered) CreateFromImages(images Image, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ImageTextureLayered) UpdateLayer(image Image, layer int, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

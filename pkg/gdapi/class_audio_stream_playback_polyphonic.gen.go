@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -17,6 +25,34 @@ func (me *AudioStreamPlaybackPolyphonic) BaseClass() string {
   return "AudioStreamPlaybackPolyphonic"
 }
 
-const (
-  AudioStreamPlaybackPolyphonicINVALID_ID = -1
+// TODO: needed?
+// const (
+// // )
+
+var (
+  AudioStreamPlaybackPolyphonicInvalidId = "-1" // TODO: construct correctly
 )
+
+func  (me *AudioStreamPlaybackPolyphonic) PlayStream(stream AudioStream, from_offset float32, volume_db float32, pitch_scale float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioStreamPlaybackPolyphonic) SetStreamVolume(stream int, volume_db float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioStreamPlaybackPolyphonic) SetStreamPitchScale(stream int, pitch_scale float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioStreamPlaybackPolyphonic) IsStreamPlaying(stream int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AudioStreamPlaybackPolyphonic) StopStream(stream int, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

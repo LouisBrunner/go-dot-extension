@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -17,7 +25,31 @@ func (me *Container) BaseClass() string {
   return "Container"
 }
 
-const (
-  ContainerNOTIFICATION_PRE_SORT_CHILDREN = 50
-  ContainerNOTIFICATION_SORT_CHILDREN = 51
+// TODO: needed?
+// const (
+// // )
+
+var (
+  ContainerNotificationPreSortChildren = "50" // TODO: construct correctly
+  ContainerNotificationSortChildren = "51" // TODO: construct correctly
 )
+
+func  (me *Container) XGetAllowedSizeFlagsHorizontal() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Container) XGetAllowedSizeFlagsVertical() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Container) QueueSort() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Container) FitChildInRect(child Control, rect Rect2, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

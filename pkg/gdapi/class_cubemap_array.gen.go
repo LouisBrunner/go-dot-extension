@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,11 @@ func (me *CubemapArray) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CubemapArray) BaseClass() string {
   return "CubemapArray"
 }
+
+func  (me *CubemapArray) CreatePlaceholder() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

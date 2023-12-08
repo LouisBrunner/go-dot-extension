@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *Path3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Path3D) BaseClass() string {
   return "Path3D"
 }
+
+func  (me *Path3D) SetCurve(curve Curve3D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Path3D) GetCurve() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

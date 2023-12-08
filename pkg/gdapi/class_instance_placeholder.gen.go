@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,19 @@ func (me *InstancePlaceholder) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *InstancePlaceholder) BaseClass() string {
   return "InstancePlaceholder"
 }
+
+func  (me *InstancePlaceholder) GetStoredValues(with_order bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *InstancePlaceholder) CreateInstance(replace bool, custom_scene PackedScene, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *InstancePlaceholder) GetInstancePath() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,27 @@ func (me *ImageTexture) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ImageTexture) BaseClass() string {
   return "ImageTexture"
 }
+
+func  ImageTextureCreateFromImage(image Image, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ImageTexture) GetFormat() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ImageTexture) SetImage(image Image, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ImageTexture) Update(image Image, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ImageTexture) SetSizeOverride(size Vector2i, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

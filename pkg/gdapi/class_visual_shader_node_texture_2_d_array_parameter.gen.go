@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *VisualShaderNodeTexture2DArrayParameter) SetBaseObject(obj gdc.ObjectP
 func (me *VisualShaderNodeTexture2DArrayParameter) BaseClass() string {
   return "VisualShaderNodeTexture2DArrayParameter"
 }
+
+// TODO: properties
+
+// TODO: signals

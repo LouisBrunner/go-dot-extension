@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,12 +27,24 @@ func (me *VisualShaderNodeMix) BaseClass() string {
 
 type VisualShaderNodeMixOpType int
 const (
-  VisualShaderNodeMixOpTypeScalar VisualShaderNodeMixOpType = 0
-  VisualShaderNodeMixOpTypeVector2D VisualShaderNodeMixOpType = 1
-  VisualShaderNodeMixOpTypeVector2DScalar VisualShaderNodeMixOpType = 2
-  VisualShaderNodeMixOpTypeVector3D VisualShaderNodeMixOpType = 3
-  VisualShaderNodeMixOpTypeVector3DScalar VisualShaderNodeMixOpType = 4
-  VisualShaderNodeMixOpTypeVector4D VisualShaderNodeMixOpType = 5
-  VisualShaderNodeMixOpTypeVector4DScalar VisualShaderNodeMixOpType = 6
-  VisualShaderNodeMixOpTypeMax VisualShaderNodeMixOpType = 7
+  VisualShaderNodeMixOpTypeOpTypeScalar VisualShaderNodeMixOpType = 0
+  VisualShaderNodeMixOpTypeOpTypeVector2D VisualShaderNodeMixOpType = 1
+  VisualShaderNodeMixOpTypeOpTypeVector2DScalar VisualShaderNodeMixOpType = 2
+  VisualShaderNodeMixOpTypeOpTypeVector3D VisualShaderNodeMixOpType = 3
+  VisualShaderNodeMixOpTypeOpTypeVector3DScalar VisualShaderNodeMixOpType = 4
+  VisualShaderNodeMixOpTypeOpTypeVector4D VisualShaderNodeMixOpType = 5
+  VisualShaderNodeMixOpTypeOpTypeVector4DScalar VisualShaderNodeMixOpType = 6
+  VisualShaderNodeMixOpTypeOpTypeMax VisualShaderNodeMixOpType = 7
 )
+
+func  (me *VisualShaderNodeMix) SetOpType(op_type VisualShaderNodeMixOpType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeMix) GetOpType() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

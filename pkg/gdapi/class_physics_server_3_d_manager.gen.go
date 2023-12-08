@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *PhysicsServer3DManager) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *PhysicsServer3DManager) BaseClass() string {
   return "PhysicsServer3DManager"
 }
+
+func  (me *PhysicsServer3DManager) RegisterServer(name String, create_callback Callable, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *PhysicsServer3DManager) SetDefaultServer(name String, priority int, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

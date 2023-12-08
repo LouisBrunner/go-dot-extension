@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,6 +27,14 @@ func (me *AudioEffectSpectrumAnalyzerInstance) BaseClass() string {
 
 type AudioEffectSpectrumAnalyzerInstanceMagnitudeMode int
 const (
-  AudioEffectSpectrumAnalyzerInstanceMagnitudeAverage AudioEffectSpectrumAnalyzerInstanceMagnitudeMode = 0
-  AudioEffectSpectrumAnalyzerInstanceMagnitudeMax AudioEffectSpectrumAnalyzerInstanceMagnitudeMode = 1
+  AudioEffectSpectrumAnalyzerInstanceMagnitudeModeMagnitudeAverage AudioEffectSpectrumAnalyzerInstanceMagnitudeMode = 0
+  AudioEffectSpectrumAnalyzerInstanceMagnitudeModeMagnitudeMax AudioEffectSpectrumAnalyzerInstanceMagnitudeMode = 1
 )
+
+func  (me *AudioEffectSpectrumAnalyzerInstance) GetMagnitudeForFrequencyRange(from_hz float32, to_hz float32, mode AudioEffectSpectrumAnalyzerInstanceMagnitudeMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

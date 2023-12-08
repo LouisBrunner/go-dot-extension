@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,8 +27,60 @@ func (me *VisualShaderNodeIntParameter) BaseClass() string {
 
 type VisualShaderNodeIntParameterHint int
 const (
-  VisualShaderNodeIntParameterHintNone VisualShaderNodeIntParameterHint = 0
-  VisualShaderNodeIntParameterHintRange VisualShaderNodeIntParameterHint = 1
-  VisualShaderNodeIntParameterHintRangeStep VisualShaderNodeIntParameterHint = 2
-  VisualShaderNodeIntParameterHintMax VisualShaderNodeIntParameterHint = 3
+  VisualShaderNodeIntParameterHintHintNone VisualShaderNodeIntParameterHint = 0
+  VisualShaderNodeIntParameterHintHintRange VisualShaderNodeIntParameterHint = 1
+  VisualShaderNodeIntParameterHintHintRangeStep VisualShaderNodeIntParameterHint = 2
+  VisualShaderNodeIntParameterHintHintMax VisualShaderNodeIntParameterHint = 3
 )
+
+func  (me *VisualShaderNodeIntParameter) SetHint(hint VisualShaderNodeIntParameterHint, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeIntParameter) GetHint() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeIntParameter) SetMin(value int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeIntParameter) GetMin() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeIntParameter) SetMax(value int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeIntParameter) GetMax() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeIntParameter) SetStep(value int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeIntParameter) GetStep() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeIntParameter) SetDefaultValueEnabled(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeIntParameter) IsDefaultValueEnabled() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeIntParameter) SetDefaultValue(value int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeIntParameter) GetDefaultValue() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

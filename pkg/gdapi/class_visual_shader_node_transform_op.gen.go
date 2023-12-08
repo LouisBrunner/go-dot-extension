@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,14 +27,26 @@ func (me *VisualShaderNodeTransformOp) BaseClass() string {
 
 type VisualShaderNodeTransformOpOperator int
 const (
-  VisualShaderNodeTransformOpOpAxb VisualShaderNodeTransformOpOperator = 0
-  VisualShaderNodeTransformOpOpBxa VisualShaderNodeTransformOpOperator = 1
-  VisualShaderNodeTransformOpOpAxbComp VisualShaderNodeTransformOpOperator = 2
-  VisualShaderNodeTransformOpOpBxaComp VisualShaderNodeTransformOpOperator = 3
-  VisualShaderNodeTransformOpOpAdd VisualShaderNodeTransformOpOperator = 4
-  VisualShaderNodeTransformOpOpAMinusB VisualShaderNodeTransformOpOperator = 5
-  VisualShaderNodeTransformOpOpBMinusA VisualShaderNodeTransformOpOperator = 6
-  VisualShaderNodeTransformOpOpADivB VisualShaderNodeTransformOpOperator = 7
-  VisualShaderNodeTransformOpOpBDivA VisualShaderNodeTransformOpOperator = 8
-  VisualShaderNodeTransformOpOpMax VisualShaderNodeTransformOpOperator = 9
+  VisualShaderNodeTransformOpOperatorOpAxb VisualShaderNodeTransformOpOperator = 0
+  VisualShaderNodeTransformOpOperatorOpBxa VisualShaderNodeTransformOpOperator = 1
+  VisualShaderNodeTransformOpOperatorOpAxbComp VisualShaderNodeTransformOpOperator = 2
+  VisualShaderNodeTransformOpOperatorOpBxaComp VisualShaderNodeTransformOpOperator = 3
+  VisualShaderNodeTransformOpOperatorOpAdd VisualShaderNodeTransformOpOperator = 4
+  VisualShaderNodeTransformOpOperatorOpAMinusB VisualShaderNodeTransformOpOperator = 5
+  VisualShaderNodeTransformOpOperatorOpBMinusA VisualShaderNodeTransformOpOperator = 6
+  VisualShaderNodeTransformOpOperatorOpADivB VisualShaderNodeTransformOpOperator = 7
+  VisualShaderNodeTransformOpOperatorOpBDivA VisualShaderNodeTransformOpOperator = 8
+  VisualShaderNodeTransformOpOperatorOpMax VisualShaderNodeTransformOpOperator = 9
 )
+
+func  (me *VisualShaderNodeTransformOp) SetOperator(op VisualShaderNodeTransformOpOperator, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTransformOp) GetOperator() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

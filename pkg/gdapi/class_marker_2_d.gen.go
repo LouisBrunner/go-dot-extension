@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *Marker2D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Marker2D) BaseClass() string {
   return "Marker2D"
 }
+
+func  (me *Marker2D) SetGizmoExtents(extents float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Marker2D) GetGizmoExtents() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

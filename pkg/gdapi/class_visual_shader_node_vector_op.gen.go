@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,17 +27,29 @@ func (me *VisualShaderNodeVectorOp) BaseClass() string {
 
 type VisualShaderNodeVectorOpOperator int
 const (
-  VisualShaderNodeVectorOpOpAdd VisualShaderNodeVectorOpOperator = 0
-  VisualShaderNodeVectorOpOpSub VisualShaderNodeVectorOpOperator = 1
-  VisualShaderNodeVectorOpOpMul VisualShaderNodeVectorOpOperator = 2
-  VisualShaderNodeVectorOpOpDiv VisualShaderNodeVectorOpOperator = 3
-  VisualShaderNodeVectorOpOpMod VisualShaderNodeVectorOpOperator = 4
-  VisualShaderNodeVectorOpOpPow VisualShaderNodeVectorOpOperator = 5
-  VisualShaderNodeVectorOpOpMax VisualShaderNodeVectorOpOperator = 6
-  VisualShaderNodeVectorOpOpMin VisualShaderNodeVectorOpOperator = 7
-  VisualShaderNodeVectorOpOpCross VisualShaderNodeVectorOpOperator = 8
-  VisualShaderNodeVectorOpOpAtan2 VisualShaderNodeVectorOpOperator = 9
-  VisualShaderNodeVectorOpOpReflect VisualShaderNodeVectorOpOperator = 10
-  VisualShaderNodeVectorOpOpStep VisualShaderNodeVectorOpOperator = 11
-  VisualShaderNodeVectorOpOpEnumSize VisualShaderNodeVectorOpOperator = 12
+  VisualShaderNodeVectorOpOperatorOpAdd VisualShaderNodeVectorOpOperator = 0
+  VisualShaderNodeVectorOpOperatorOpSub VisualShaderNodeVectorOpOperator = 1
+  VisualShaderNodeVectorOpOperatorOpMul VisualShaderNodeVectorOpOperator = 2
+  VisualShaderNodeVectorOpOperatorOpDiv VisualShaderNodeVectorOpOperator = 3
+  VisualShaderNodeVectorOpOperatorOpMod VisualShaderNodeVectorOpOperator = 4
+  VisualShaderNodeVectorOpOperatorOpPow VisualShaderNodeVectorOpOperator = 5
+  VisualShaderNodeVectorOpOperatorOpMax VisualShaderNodeVectorOpOperator = 6
+  VisualShaderNodeVectorOpOperatorOpMin VisualShaderNodeVectorOpOperator = 7
+  VisualShaderNodeVectorOpOperatorOpCross VisualShaderNodeVectorOpOperator = 8
+  VisualShaderNodeVectorOpOperatorOpAtan2 VisualShaderNodeVectorOpOperator = 9
+  VisualShaderNodeVectorOpOperatorOpReflect VisualShaderNodeVectorOpOperator = 10
+  VisualShaderNodeVectorOpOperatorOpStep VisualShaderNodeVectorOpOperator = 11
+  VisualShaderNodeVectorOpOperatorOpEnumSize VisualShaderNodeVectorOpOperator = 12
 )
+
+func  (me *VisualShaderNodeVectorOp) SetOperator(op VisualShaderNodeVectorOpOperator, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeVectorOp) GetOperator() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

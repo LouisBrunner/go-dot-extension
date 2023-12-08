@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,17 +27,29 @@ func (me *VisualShaderNodeUIntOp) BaseClass() string {
 
 type VisualShaderNodeUIntOpOperator int
 const (
-  VisualShaderNodeUIntOpOpAdd VisualShaderNodeUIntOpOperator = 0
-  VisualShaderNodeUIntOpOpSub VisualShaderNodeUIntOpOperator = 1
-  VisualShaderNodeUIntOpOpMul VisualShaderNodeUIntOpOperator = 2
-  VisualShaderNodeUIntOpOpDiv VisualShaderNodeUIntOpOperator = 3
-  VisualShaderNodeUIntOpOpMod VisualShaderNodeUIntOpOperator = 4
-  VisualShaderNodeUIntOpOpMax VisualShaderNodeUIntOpOperator = 5
-  VisualShaderNodeUIntOpOpMin VisualShaderNodeUIntOpOperator = 6
-  VisualShaderNodeUIntOpOpBitwiseAnd VisualShaderNodeUIntOpOperator = 7
-  VisualShaderNodeUIntOpOpBitwiseOr VisualShaderNodeUIntOpOperator = 8
-  VisualShaderNodeUIntOpOpBitwiseXor VisualShaderNodeUIntOpOperator = 9
-  VisualShaderNodeUIntOpOpBitwiseLeftShift VisualShaderNodeUIntOpOperator = 10
-  VisualShaderNodeUIntOpOpBitwiseRightShift VisualShaderNodeUIntOpOperator = 11
-  VisualShaderNodeUIntOpOpEnumSize VisualShaderNodeUIntOpOperator = 12
+  VisualShaderNodeUIntOpOperatorOpAdd VisualShaderNodeUIntOpOperator = 0
+  VisualShaderNodeUIntOpOperatorOpSub VisualShaderNodeUIntOpOperator = 1
+  VisualShaderNodeUIntOpOperatorOpMul VisualShaderNodeUIntOpOperator = 2
+  VisualShaderNodeUIntOpOperatorOpDiv VisualShaderNodeUIntOpOperator = 3
+  VisualShaderNodeUIntOpOperatorOpMod VisualShaderNodeUIntOpOperator = 4
+  VisualShaderNodeUIntOpOperatorOpMax VisualShaderNodeUIntOpOperator = 5
+  VisualShaderNodeUIntOpOperatorOpMin VisualShaderNodeUIntOpOperator = 6
+  VisualShaderNodeUIntOpOperatorOpBitwiseAnd VisualShaderNodeUIntOpOperator = 7
+  VisualShaderNodeUIntOpOperatorOpBitwiseOr VisualShaderNodeUIntOpOperator = 8
+  VisualShaderNodeUIntOpOperatorOpBitwiseXor VisualShaderNodeUIntOpOperator = 9
+  VisualShaderNodeUIntOpOperatorOpBitwiseLeftShift VisualShaderNodeUIntOpOperator = 10
+  VisualShaderNodeUIntOpOperatorOpBitwiseRightShift VisualShaderNodeUIntOpOperator = 11
+  VisualShaderNodeUIntOpOperatorOpEnumSize VisualShaderNodeUIntOpOperator = 12
 )
+
+func  (me *VisualShaderNodeUIntOp) SetOperator(op VisualShaderNodeUIntOpOperator, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeUIntOp) GetOperator() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

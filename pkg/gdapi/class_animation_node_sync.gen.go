@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *AnimationNodeSync) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AnimationNodeSync) BaseClass() string {
   return "AnimationNodeSync"
 }
+
+func  (me *AnimationNodeSync) SetUseSync(enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *AnimationNodeSync) IsUsingSync() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

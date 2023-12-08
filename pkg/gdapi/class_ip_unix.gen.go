@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *IPUnix) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *IPUnix) BaseClass() string {
   return "IPUnix"
 }
+
+// TODO: properties
+
+// TODO: signals

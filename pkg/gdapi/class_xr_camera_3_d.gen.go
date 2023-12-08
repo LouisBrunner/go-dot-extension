@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *XRCamera3D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *XRCamera3D) BaseClass() string {
   return "XRCamera3D"
 }
+
+// TODO: properties
+
+// TODO: signals

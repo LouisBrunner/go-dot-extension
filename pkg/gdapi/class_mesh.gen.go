@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,76 +27,192 @@ func (me *Mesh) BaseClass() string {
 
 type MeshPrimitiveType int
 const (
-  MeshPrimitivePoints MeshPrimitiveType = 0
-  MeshPrimitiveLines MeshPrimitiveType = 1
-  MeshPrimitiveLineStrip MeshPrimitiveType = 2
-  MeshPrimitiveTriangles MeshPrimitiveType = 3
-  MeshPrimitiveTriangleStrip MeshPrimitiveType = 4
+  MeshPrimitiveTypePrimitivePoints MeshPrimitiveType = 0
+  MeshPrimitiveTypePrimitiveLines MeshPrimitiveType = 1
+  MeshPrimitiveTypePrimitiveLineStrip MeshPrimitiveType = 2
+  MeshPrimitiveTypePrimitiveTriangles MeshPrimitiveType = 3
+  MeshPrimitiveTypePrimitiveTriangleStrip MeshPrimitiveType = 4
 )
 
 type MeshArrayType int
 const (
-  MeshArrayVertex MeshArrayType = 0
-  MeshArrayNormal MeshArrayType = 1
-  MeshArrayTangent MeshArrayType = 2
-  MeshArrayColor MeshArrayType = 3
-  MeshArrayTexUv MeshArrayType = 4
-  MeshArrayTexUv2 MeshArrayType = 5
-  MeshArrayCustom0 MeshArrayType = 6
-  MeshArrayCustom1 MeshArrayType = 7
-  MeshArrayCustom2 MeshArrayType = 8
-  MeshArrayCustom3 MeshArrayType = 9
-  MeshArrayBones MeshArrayType = 10
-  MeshArrayWeights MeshArrayType = 11
-  MeshArrayIndex MeshArrayType = 12
-  MeshArrayMax MeshArrayType = 13
+  MeshArrayTypeArrayVertex MeshArrayType = 0
+  MeshArrayTypeArrayNormal MeshArrayType = 1
+  MeshArrayTypeArrayTangent MeshArrayType = 2
+  MeshArrayTypeArrayColor MeshArrayType = 3
+  MeshArrayTypeArrayTexUv MeshArrayType = 4
+  MeshArrayTypeArrayTexUv2 MeshArrayType = 5
+  MeshArrayTypeArrayCustom0 MeshArrayType = 6
+  MeshArrayTypeArrayCustom1 MeshArrayType = 7
+  MeshArrayTypeArrayCustom2 MeshArrayType = 8
+  MeshArrayTypeArrayCustom3 MeshArrayType = 9
+  MeshArrayTypeArrayBones MeshArrayType = 10
+  MeshArrayTypeArrayWeights MeshArrayType = 11
+  MeshArrayTypeArrayIndex MeshArrayType = 12
+  MeshArrayTypeArrayMax MeshArrayType = 13
 )
 
 type MeshArrayCustomFormat int
 const (
-  MeshArrayCustomRgba8Unorm MeshArrayCustomFormat = 0
-  MeshArrayCustomRgba8Snorm MeshArrayCustomFormat = 1
-  MeshArrayCustomRgHalf MeshArrayCustomFormat = 2
-  MeshArrayCustomRgbaHalf MeshArrayCustomFormat = 3
-  MeshArrayCustomRFloat MeshArrayCustomFormat = 4
-  MeshArrayCustomRgFloat MeshArrayCustomFormat = 5
-  MeshArrayCustomRgbFloat MeshArrayCustomFormat = 6
-  MeshArrayCustomRgbaFloat MeshArrayCustomFormat = 7
-  MeshArrayCustomMax MeshArrayCustomFormat = 8
+  MeshArrayCustomFormatArrayCustomRgba8Unorm MeshArrayCustomFormat = 0
+  MeshArrayCustomFormatArrayCustomRgba8Snorm MeshArrayCustomFormat = 1
+  MeshArrayCustomFormatArrayCustomRgHalf MeshArrayCustomFormat = 2
+  MeshArrayCustomFormatArrayCustomRgbaHalf MeshArrayCustomFormat = 3
+  MeshArrayCustomFormatArrayCustomRFloat MeshArrayCustomFormat = 4
+  MeshArrayCustomFormatArrayCustomRgFloat MeshArrayCustomFormat = 5
+  MeshArrayCustomFormatArrayCustomRgbFloat MeshArrayCustomFormat = 6
+  MeshArrayCustomFormatArrayCustomRgbaFloat MeshArrayCustomFormat = 7
+  MeshArrayCustomFormatArrayCustomMax MeshArrayCustomFormat = 8
 )
 
 type MeshArrayFormat int
 const (
-  MeshArrayFormatVertex MeshArrayFormat = 1
-  MeshArrayFormatNormal MeshArrayFormat = 2
-  MeshArrayFormatTangent MeshArrayFormat = 4
-  MeshArrayFormatColor MeshArrayFormat = 8
-  MeshArrayFormatTexUv MeshArrayFormat = 16
-  MeshArrayFormatTexUv2 MeshArrayFormat = 32
-  MeshArrayFormatCustom0 MeshArrayFormat = 64
-  MeshArrayFormatCustom1 MeshArrayFormat = 128
-  MeshArrayFormatCustom2 MeshArrayFormat = 256
-  MeshArrayFormatCustom3 MeshArrayFormat = 512
-  MeshArrayFormatBones MeshArrayFormat = 1024
-  MeshArrayFormatWeights MeshArrayFormat = 2048
-  MeshArrayFormatIndex MeshArrayFormat = 4096
-  MeshArrayFormatBlendShapeMask MeshArrayFormat = 7
-  MeshArrayFormatCustomBase MeshArrayFormat = 13
-  MeshArrayFormatCustomBits MeshArrayFormat = 3
-  MeshArrayFormatCustom0Shift MeshArrayFormat = 13
-  MeshArrayFormatCustom1Shift MeshArrayFormat = 16
-  MeshArrayFormatCustom2Shift MeshArrayFormat = 19
-  MeshArrayFormatCustom3Shift MeshArrayFormat = 22
-  MeshArrayFormatCustomMask MeshArrayFormat = 7
-  MeshArrayCompressFlagsBase MeshArrayFormat = 25
-  MeshArrayFlagUse2DVertices MeshArrayFormat = 33554432
-  MeshArrayFlagUseDynamicUpdate MeshArrayFormat = 67108864
-  MeshArrayFlagUse8BoneWeights MeshArrayFormat = 134217728
-  MeshArrayFlagUsesEmptyVertexArray MeshArrayFormat = 268435456
+  MeshArrayFormatArrayFormatVertex MeshArrayFormat = 1
+  MeshArrayFormatArrayFormatNormal MeshArrayFormat = 2
+  MeshArrayFormatArrayFormatTangent MeshArrayFormat = 4
+  MeshArrayFormatArrayFormatColor MeshArrayFormat = 8
+  MeshArrayFormatArrayFormatTexUv MeshArrayFormat = 16
+  MeshArrayFormatArrayFormatTexUv2 MeshArrayFormat = 32
+  MeshArrayFormatArrayFormatCustom0 MeshArrayFormat = 64
+  MeshArrayFormatArrayFormatCustom1 MeshArrayFormat = 128
+  MeshArrayFormatArrayFormatCustom2 MeshArrayFormat = 256
+  MeshArrayFormatArrayFormatCustom3 MeshArrayFormat = 512
+  MeshArrayFormatArrayFormatBones MeshArrayFormat = 1024
+  MeshArrayFormatArrayFormatWeights MeshArrayFormat = 2048
+  MeshArrayFormatArrayFormatIndex MeshArrayFormat = 4096
+  MeshArrayFormatArrayFormatBlendShapeMask MeshArrayFormat = 7
+  MeshArrayFormatArrayFormatCustomBase MeshArrayFormat = 13
+  MeshArrayFormatArrayFormatCustomBits MeshArrayFormat = 3
+  MeshArrayFormatArrayFormatCustom0Shift MeshArrayFormat = 13
+  MeshArrayFormatArrayFormatCustom1Shift MeshArrayFormat = 16
+  MeshArrayFormatArrayFormatCustom2Shift MeshArrayFormat = 19
+  MeshArrayFormatArrayFormatCustom3Shift MeshArrayFormat = 22
+  MeshArrayFormatArrayFormatCustomMask MeshArrayFormat = 7
+  MeshArrayFormatArrayCompressFlagsBase MeshArrayFormat = 25
+  MeshArrayFormatArrayFlagUse2DVertices MeshArrayFormat = 33554432
+  MeshArrayFormatArrayFlagUseDynamicUpdate MeshArrayFormat = 67108864
+  MeshArrayFormatArrayFlagUse8BoneWeights MeshArrayFormat = 134217728
+  MeshArrayFormatArrayFlagUsesEmptyVertexArray MeshArrayFormat = 268435456
 )
 
 type MeshBlendShapeMode int
 const (
-  MeshBlendShapeModeNormalized MeshBlendShapeMode = 0
-  MeshBlendShapeModeRelative MeshBlendShapeMode = 1
+  MeshBlendShapeModeBlendShapeModeNormalized MeshBlendShapeMode = 0
+  MeshBlendShapeModeBlendShapeModeRelative MeshBlendShapeMode = 1
 )
+
+func  (me *Mesh) XGetSurfaceCount() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XSurfaceGetArrayLen(index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XSurfaceGetArrayIndexLen(index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XSurfaceGetArrays(index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XSurfaceGetBlendShapeArrays(index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XSurfaceGetLods(index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XSurfaceGetFormat(index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XSurfaceGetPrimitiveType(index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XSurfaceSetMaterial(index int, material Material, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XSurfaceGetMaterial(index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XGetBlendShapeCount() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XGetBlendShapeName(index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XSetBlendShapeName(index int, name StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) XGetAabb() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) SetLightmapSizeHint(size Vector2i, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) GetLightmapSizeHint() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) GetAabb() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) GetFaces() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) GetSurfaceCount() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) SurfaceGetArrays(surf_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) SurfaceGetBlendShapeArrays(surf_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) SurfaceSetMaterial(surf_idx int, material Material, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) SurfaceGetMaterial(surf_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) CreatePlaceholder() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) CreateTrimeshShape() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) CreateConvexShape(clean bool, simplify bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) CreateOutline(margin float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Mesh) GenerateTriangleMesh() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

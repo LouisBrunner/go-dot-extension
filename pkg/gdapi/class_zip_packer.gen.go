@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,31 @@ func (me *ZIPPacker) BaseClass() string {
 
 type ZIPPackerZipAppend int
 const (
-  ZIPPackerAppendCreate ZIPPackerZipAppend = 0
-  ZIPPackerAppendCreateafter ZIPPackerZipAppend = 1
-  ZIPPackerAppendAddinzip ZIPPackerZipAppend = 2
+  ZIPPackerZipAppendAppendCreate ZIPPackerZipAppend = 0
+  ZIPPackerZipAppendAppendCreateafter ZIPPackerZipAppend = 1
+  ZIPPackerZipAppendAppendAddinzip ZIPPackerZipAppend = 2
 )
+
+func  (me *ZIPPacker) Open(path String, append ZIPPackerZipAppend, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ZIPPacker) StartFile(path String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ZIPPacker) WriteFile(data PackedByteArray, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ZIPPacker) CloseFile() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ZIPPacker) Close() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

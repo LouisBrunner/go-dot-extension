@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,16 +27,60 @@ func (me *SubViewport) BaseClass() string {
 
 type SubViewportClearMode int
 const (
-  SubViewportClearModeAlways SubViewportClearMode = 0
-  SubViewportClearModeNever SubViewportClearMode = 1
-  SubViewportClearModeOnce SubViewportClearMode = 2
+  SubViewportClearModeClearModeAlways SubViewportClearMode = 0
+  SubViewportClearModeClearModeNever SubViewportClearMode = 1
+  SubViewportClearModeClearModeOnce SubViewportClearMode = 2
 )
 
 type SubViewportUpdateMode int
 const (
-  SubViewportUpdateDisabled SubViewportUpdateMode = 0
-  SubViewportUpdateOnce SubViewportUpdateMode = 1
-  SubViewportUpdateWhenVisible SubViewportUpdateMode = 2
-  SubViewportUpdateWhenParentVisible SubViewportUpdateMode = 3
-  SubViewportUpdateAlways SubViewportUpdateMode = 4
+  SubViewportUpdateModeUpdateDisabled SubViewportUpdateMode = 0
+  SubViewportUpdateModeUpdateOnce SubViewportUpdateMode = 1
+  SubViewportUpdateModeUpdateWhenVisible SubViewportUpdateMode = 2
+  SubViewportUpdateModeUpdateWhenParentVisible SubViewportUpdateMode = 3
+  SubViewportUpdateModeUpdateAlways SubViewportUpdateMode = 4
 )
+
+func  (me *SubViewport) SetSize(size Vector2i, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SubViewport) GetSize() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SubViewport) SetSize2DOverride(size Vector2i, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SubViewport) GetSize2DOverride() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SubViewport) SetSize2DOverrideStretch(enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SubViewport) IsSize2DOverrideStretchEnabled() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SubViewport) SetUpdateMode(mode SubViewportUpdateMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SubViewport) GetUpdateMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SubViewport) SetClearMode(mode SubViewportClearMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *SubViewport) GetClearMode() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

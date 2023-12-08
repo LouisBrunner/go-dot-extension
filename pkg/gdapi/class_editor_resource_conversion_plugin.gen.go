@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,19 @@ func (me *EditorResourceConversionPlugin) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *EditorResourceConversionPlugin) BaseClass() string {
   return "EditorResourceConversionPlugin"
 }
+
+func  (me *EditorResourceConversionPlugin) XConvertsTo() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorResourceConversionPlugin) XHandles(resource Resource, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *EditorResourceConversionPlugin) XConvert(resource Resource, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,23 @@ func (me *ButtonGroup) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ButtonGroup) BaseClass() string {
   return "ButtonGroup"
 }
+
+func  (me *ButtonGroup) GetPressedButton() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ButtonGroup) GetButtons() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ButtonGroup) SetAllowUnpress(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ButtonGroup) IsAllowUnpress() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

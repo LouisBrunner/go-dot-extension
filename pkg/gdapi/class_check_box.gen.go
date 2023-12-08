@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *CheckBox) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CheckBox) BaseClass() string {
   return "CheckBox"
 }
+
+// TODO: properties
+
+// TODO: signals

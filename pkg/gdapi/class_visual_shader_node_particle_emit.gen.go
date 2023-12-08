@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,9 +27,21 @@ func (me *VisualShaderNodeParticleEmit) BaseClass() string {
 
 type VisualShaderNodeParticleEmitEmitFlags int
 const (
-  VisualShaderNodeParticleEmitEmitFlagPosition VisualShaderNodeParticleEmitEmitFlags = 1
-  VisualShaderNodeParticleEmitEmitFlagRotScale VisualShaderNodeParticleEmitEmitFlags = 2
-  VisualShaderNodeParticleEmitEmitFlagVelocity VisualShaderNodeParticleEmitEmitFlags = 4
-  VisualShaderNodeParticleEmitEmitFlagColor VisualShaderNodeParticleEmitEmitFlags = 8
-  VisualShaderNodeParticleEmitEmitFlagCustom VisualShaderNodeParticleEmitEmitFlags = 16
+  VisualShaderNodeParticleEmitEmitFlagsEmitFlagPosition VisualShaderNodeParticleEmitEmitFlags = 1
+  VisualShaderNodeParticleEmitEmitFlagsEmitFlagRotScale VisualShaderNodeParticleEmitEmitFlags = 2
+  VisualShaderNodeParticleEmitEmitFlagsEmitFlagVelocity VisualShaderNodeParticleEmitEmitFlags = 4
+  VisualShaderNodeParticleEmitEmitFlagsEmitFlagColor VisualShaderNodeParticleEmitEmitFlags = 8
+  VisualShaderNodeParticleEmitEmitFlagsEmitFlagCustom VisualShaderNodeParticleEmitEmitFlags = 16
 )
+
+func  (me *VisualShaderNodeParticleEmit) SetFlags(flags VisualShaderNodeParticleEmitEmitFlags, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParticleEmit) GetFlags() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

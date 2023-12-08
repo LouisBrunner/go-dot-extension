@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *Node3DGizmo) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Node3DGizmo) BaseClass() string {
   return "Node3DGizmo"
 }
+
+// TODO: properties
+
+// TODO: signals

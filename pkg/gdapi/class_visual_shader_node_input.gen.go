@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,19 @@ func (me *VisualShaderNodeInput) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeInput) BaseClass() string {
   return "VisualShaderNodeInput"
 }
+
+func  (me *VisualShaderNodeInput) SetInputName(name String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeInput) GetInputName() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeInput) GetInputRealName() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -17,21 +25,97 @@ func (me *MultiplayerPeer) BaseClass() string {
   return "MultiplayerPeer"
 }
 
-const (
-  MultiplayerPeerTARGET_PEER_BROADCAST = 0
-  MultiplayerPeerTARGET_PEER_SERVER = 1
+// TODO: needed?
+// const (
+// // )
+
+var (
+  MultiplayerPeerTargetPeerBroadcast = "0" // TODO: construct correctly
+  MultiplayerPeerTargetPeerServer = "1" // TODO: construct correctly
 )
 
 type MultiplayerPeerConnectionStatus int
 const (
-  MultiplayerPeerConnectionDisconnected MultiplayerPeerConnectionStatus = 0
-  MultiplayerPeerConnectionConnecting MultiplayerPeerConnectionStatus = 1
-  MultiplayerPeerConnectionConnected MultiplayerPeerConnectionStatus = 2
+  MultiplayerPeerConnectionStatusConnectionDisconnected MultiplayerPeerConnectionStatus = 0
+  MultiplayerPeerConnectionStatusConnectionConnecting MultiplayerPeerConnectionStatus = 1
+  MultiplayerPeerConnectionStatusConnectionConnected MultiplayerPeerConnectionStatus = 2
 )
 
 type MultiplayerPeerTransferMode int
 const (
-  MultiplayerPeerTransferModeUnreliable MultiplayerPeerTransferMode = 0
-  MultiplayerPeerTransferModeUnreliableOrdered MultiplayerPeerTransferMode = 1
-  MultiplayerPeerTransferModeReliable MultiplayerPeerTransferMode = 2
+  MultiplayerPeerTransferModeTransferModeUnreliable MultiplayerPeerTransferMode = 0
+  MultiplayerPeerTransferModeTransferModeUnreliableOrdered MultiplayerPeerTransferMode = 1
+  MultiplayerPeerTransferModeTransferModeReliable MultiplayerPeerTransferMode = 2
 )
+
+func  (me *MultiplayerPeer) SetTransferChannel(channel int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) GetTransferChannel() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) SetTransferMode(mode MultiplayerPeerTransferMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) GetTransferMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) SetTargetPeer(id int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) GetPacketPeer() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) GetPacketChannel() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) GetPacketMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) Poll() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) Close() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) DisconnectPeer(peer int, force bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) GetConnectionStatus() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) GetUniqueId() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) GenerateUniqueId() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) SetRefuseNewConnections(enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) IsRefusingNewConnections() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *MultiplayerPeer) IsServerRelaySupported() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

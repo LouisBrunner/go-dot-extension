@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *ResourceFormatImporterSaver) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ResourceFormatImporterSaver) BaseClass() string {
   return "ResourceFormatImporterSaver"
 }
+
+// TODO: properties
+
+// TODO: signals

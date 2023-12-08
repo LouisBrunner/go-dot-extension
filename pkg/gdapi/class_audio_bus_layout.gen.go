@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *AudioBusLayout) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *AudioBusLayout) BaseClass() string {
   return "AudioBusLayout"
 }
+
+// TODO: properties
+
+// TODO: signals

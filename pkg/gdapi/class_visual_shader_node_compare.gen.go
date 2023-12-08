@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,31 +27,59 @@ func (me *VisualShaderNodeCompare) BaseClass() string {
 
 type VisualShaderNodeCompareComparisonType int
 const (
-  VisualShaderNodeCompareCtypeScalar VisualShaderNodeCompareComparisonType = 0
-  VisualShaderNodeCompareCtypeScalarInt VisualShaderNodeCompareComparisonType = 1
-  VisualShaderNodeCompareCtypeScalarUint VisualShaderNodeCompareComparisonType = 2
-  VisualShaderNodeCompareCtypeVector2D VisualShaderNodeCompareComparisonType = 3
-  VisualShaderNodeCompareCtypeVector3D VisualShaderNodeCompareComparisonType = 4
-  VisualShaderNodeCompareCtypeVector4D VisualShaderNodeCompareComparisonType = 5
-  VisualShaderNodeCompareCtypeBoolean VisualShaderNodeCompareComparisonType = 6
-  VisualShaderNodeCompareCtypeTransform VisualShaderNodeCompareComparisonType = 7
-  VisualShaderNodeCompareCtypeMax VisualShaderNodeCompareComparisonType = 8
+  VisualShaderNodeCompareComparisonTypeCtypeScalar VisualShaderNodeCompareComparisonType = 0
+  VisualShaderNodeCompareComparisonTypeCtypeScalarInt VisualShaderNodeCompareComparisonType = 1
+  VisualShaderNodeCompareComparisonTypeCtypeScalarUint VisualShaderNodeCompareComparisonType = 2
+  VisualShaderNodeCompareComparisonTypeCtypeVector2D VisualShaderNodeCompareComparisonType = 3
+  VisualShaderNodeCompareComparisonTypeCtypeVector3D VisualShaderNodeCompareComparisonType = 4
+  VisualShaderNodeCompareComparisonTypeCtypeVector4D VisualShaderNodeCompareComparisonType = 5
+  VisualShaderNodeCompareComparisonTypeCtypeBoolean VisualShaderNodeCompareComparisonType = 6
+  VisualShaderNodeCompareComparisonTypeCtypeTransform VisualShaderNodeCompareComparisonType = 7
+  VisualShaderNodeCompareComparisonTypeCtypeMax VisualShaderNodeCompareComparisonType = 8
 )
 
 type VisualShaderNodeCompareFunction int
 const (
-  VisualShaderNodeCompareFuncEqual VisualShaderNodeCompareFunction = 0
-  VisualShaderNodeCompareFuncNotEqual VisualShaderNodeCompareFunction = 1
-  VisualShaderNodeCompareFuncGreaterThan VisualShaderNodeCompareFunction = 2
-  VisualShaderNodeCompareFuncGreaterThanEqual VisualShaderNodeCompareFunction = 3
-  VisualShaderNodeCompareFuncLessThan VisualShaderNodeCompareFunction = 4
-  VisualShaderNodeCompareFuncLessThanEqual VisualShaderNodeCompareFunction = 5
-  VisualShaderNodeCompareFuncMax VisualShaderNodeCompareFunction = 6
+  VisualShaderNodeCompareFunctionFuncEqual VisualShaderNodeCompareFunction = 0
+  VisualShaderNodeCompareFunctionFuncNotEqual VisualShaderNodeCompareFunction = 1
+  VisualShaderNodeCompareFunctionFuncGreaterThan VisualShaderNodeCompareFunction = 2
+  VisualShaderNodeCompareFunctionFuncGreaterThanEqual VisualShaderNodeCompareFunction = 3
+  VisualShaderNodeCompareFunctionFuncLessThan VisualShaderNodeCompareFunction = 4
+  VisualShaderNodeCompareFunctionFuncLessThanEqual VisualShaderNodeCompareFunction = 5
+  VisualShaderNodeCompareFunctionFuncMax VisualShaderNodeCompareFunction = 6
 )
 
 type VisualShaderNodeCompareCondition int
 const (
-  VisualShaderNodeCompareCondAll VisualShaderNodeCompareCondition = 0
-  VisualShaderNodeCompareCondAny VisualShaderNodeCompareCondition = 1
-  VisualShaderNodeCompareCondMax VisualShaderNodeCompareCondition = 2
+  VisualShaderNodeCompareConditionCondAll VisualShaderNodeCompareCondition = 0
+  VisualShaderNodeCompareConditionCondAny VisualShaderNodeCompareCondition = 1
+  VisualShaderNodeCompareConditionCondMax VisualShaderNodeCompareCondition = 2
 )
+
+func  (me *VisualShaderNodeCompare) SetComparisonType(type_ VisualShaderNodeCompareComparisonType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeCompare) GetComparisonType() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeCompare) SetFunction(func_ VisualShaderNodeCompareFunction, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeCompare) GetFunction() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeCompare) SetCondition(condition VisualShaderNodeCompareCondition, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeCompare) GetCondition() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

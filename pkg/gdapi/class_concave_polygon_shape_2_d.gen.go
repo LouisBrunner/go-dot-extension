@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *ConcavePolygonShape2D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ConcavePolygonShape2D) BaseClass() string {
   return "ConcavePolygonShape2D"
 }
+
+func  (me *ConcavePolygonShape2D) SetSegments(segments PackedVector2Array, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *ConcavePolygonShape2D) GetSegments() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

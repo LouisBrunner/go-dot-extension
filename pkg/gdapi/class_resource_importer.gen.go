@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,6 +27,10 @@ func (me *ResourceImporter) BaseClass() string {
 
 type ResourceImporterImportOrder int
 const (
-  ResourceImporterImportOrderDefault ResourceImporterImportOrder = 0
-  ResourceImporterImportOrderScene ResourceImporterImportOrder = 100
+  ResourceImporterImportOrderImportOrderDefault ResourceImporterImportOrder = 0
+  ResourceImporterImportOrderImportOrderScene ResourceImporterImportOrder = 100
 )
+
+// TODO: properties
+
+// TODO: signals

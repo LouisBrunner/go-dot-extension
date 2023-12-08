@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *IntervalTweener) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *IntervalTweener) BaseClass() string {
   return "IntervalTweener"
 }
+
+// TODO: properties
+
+// TODO: signals

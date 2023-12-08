@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,15 +27,51 @@ func (me *CameraFeed) BaseClass() string {
 
 type CameraFeedFeedDataType int
 const (
-  CameraFeedFeedNoimage CameraFeedFeedDataType = 0
-  CameraFeedFeedRgb CameraFeedFeedDataType = 1
-  CameraFeedFeedYcbcr CameraFeedFeedDataType = 2
-  CameraFeedFeedYcbcrSep CameraFeedFeedDataType = 3
+  CameraFeedFeedDataTypeFeedNoimage CameraFeedFeedDataType = 0
+  CameraFeedFeedDataTypeFeedRgb CameraFeedFeedDataType = 1
+  CameraFeedFeedDataTypeFeedYcbcr CameraFeedFeedDataType = 2
+  CameraFeedFeedDataTypeFeedYcbcrSep CameraFeedFeedDataType = 3
 )
 
 type CameraFeedFeedPosition int
 const (
-  CameraFeedFeedUnspecified CameraFeedFeedPosition = 0
-  CameraFeedFeedFront CameraFeedFeedPosition = 1
-  CameraFeedFeedBack CameraFeedFeedPosition = 2
+  CameraFeedFeedPositionFeedUnspecified CameraFeedFeedPosition = 0
+  CameraFeedFeedPositionFeedFront CameraFeedFeedPosition = 1
+  CameraFeedFeedPositionFeedBack CameraFeedFeedPosition = 2
 )
+
+func  (me *CameraFeed) GetId() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CameraFeed) IsActive() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CameraFeed) SetActive(active bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CameraFeed) GetName() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CameraFeed) GetPosition() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CameraFeed) GetTransform() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CameraFeed) SetTransform(transform Transform2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CameraFeed) GetDatatype() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

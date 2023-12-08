@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,19 @@ func (me *VisualShaderNodeTransformFunc) BaseClass() string {
 
 type VisualShaderNodeTransformFuncFunction int
 const (
-  VisualShaderNodeTransformFuncFuncInverse VisualShaderNodeTransformFuncFunction = 0
-  VisualShaderNodeTransformFuncFuncTranspose VisualShaderNodeTransformFuncFunction = 1
-  VisualShaderNodeTransformFuncFuncMax VisualShaderNodeTransformFuncFunction = 2
+  VisualShaderNodeTransformFuncFunctionFuncInverse VisualShaderNodeTransformFuncFunction = 0
+  VisualShaderNodeTransformFuncFunctionFuncTranspose VisualShaderNodeTransformFuncFunction = 1
+  VisualShaderNodeTransformFuncFunctionFuncMax VisualShaderNodeTransformFuncFunction = 2
 )
+
+func  (me *VisualShaderNodeTransformFunc) SetFunction(func_ VisualShaderNodeTransformFuncFunction, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeTransformFunc) GetFunction() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,14 +27,42 @@ func (me *DirectionalLight3D) BaseClass() string {
 
 type DirectionalLight3DShadowMode int
 const (
-  DirectionalLight3DShadowOrthogonal DirectionalLight3DShadowMode = 0
-  DirectionalLight3DShadowParallel2Splits DirectionalLight3DShadowMode = 1
-  DirectionalLight3DShadowParallel4Splits DirectionalLight3DShadowMode = 2
+  DirectionalLight3DShadowModeShadowOrthogonal DirectionalLight3DShadowMode = 0
+  DirectionalLight3DShadowModeShadowParallel2Splits DirectionalLight3DShadowMode = 1
+  DirectionalLight3DShadowModeShadowParallel4Splits DirectionalLight3DShadowMode = 2
 )
 
 type DirectionalLight3DSkyMode int
 const (
-  DirectionalLight3DSkyModeLightAndSky DirectionalLight3DSkyMode = 0
-  DirectionalLight3DSkyModeLightOnly DirectionalLight3DSkyMode = 1
-  DirectionalLight3DSkyModeSkyOnly DirectionalLight3DSkyMode = 2
+  DirectionalLight3DSkyModeSkyModeLightAndSky DirectionalLight3DSkyMode = 0
+  DirectionalLight3DSkyModeSkyModeLightOnly DirectionalLight3DSkyMode = 1
+  DirectionalLight3DSkyModeSkyModeSkyOnly DirectionalLight3DSkyMode = 2
 )
+
+func  (me *DirectionalLight3D) SetShadowMode(mode DirectionalLight3DShadowMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *DirectionalLight3D) GetShadowMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *DirectionalLight3D) SetBlendSplits(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *DirectionalLight3D) IsBlendSplitsEnabled() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *DirectionalLight3D) SetSkyMode(mode DirectionalLight3DSkyMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *DirectionalLight3D) GetSkyMode() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

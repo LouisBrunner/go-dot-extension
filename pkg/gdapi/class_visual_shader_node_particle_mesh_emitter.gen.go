@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,31 @@ func (me *VisualShaderNodeParticleMeshEmitter) SetBaseObject(obj gdc.ObjectPtr) 
 func (me *VisualShaderNodeParticleMeshEmitter) BaseClass() string {
   return "VisualShaderNodeParticleMeshEmitter"
 }
+
+func  (me *VisualShaderNodeParticleMeshEmitter) SetMesh(mesh Mesh, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParticleMeshEmitter) GetMesh() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParticleMeshEmitter) SetUseAllSurfaces(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParticleMeshEmitter) IsUseAllSurfaces() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParticleMeshEmitter) SetSurfaceIndex(surface_index int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParticleMeshEmitter) GetSurfaceIndex() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

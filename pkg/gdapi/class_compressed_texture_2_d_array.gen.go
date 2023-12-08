@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *CompressedTexture2DArray) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CompressedTexture2DArray) BaseClass() string {
   return "CompressedTexture2DArray"
 }
+
+// TODO: properties
+
+// TODO: signals

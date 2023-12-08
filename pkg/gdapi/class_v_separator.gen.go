@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *VSeparator) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VSeparator) BaseClass() string {
   return "VSeparator"
 }
+
+// TODO: properties
+
+// TODO: signals

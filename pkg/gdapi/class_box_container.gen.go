@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,7 +27,31 @@ func (me *BoxContainer) BaseClass() string {
 
 type BoxContainerAlignmentMode int
 const (
-  BoxContainerAlignmentBegin BoxContainerAlignmentMode = 0
-  BoxContainerAlignmentCenter BoxContainerAlignmentMode = 1
-  BoxContainerAlignmentEnd BoxContainerAlignmentMode = 2
+  BoxContainerAlignmentModeAlignmentBegin BoxContainerAlignmentMode = 0
+  BoxContainerAlignmentModeAlignmentCenter BoxContainerAlignmentMode = 1
+  BoxContainerAlignmentModeAlignmentEnd BoxContainerAlignmentMode = 2
 )
+
+func  (me *BoxContainer) AddSpacer(begin bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *BoxContainer) SetAlignment(alignment BoxContainerAlignmentMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *BoxContainer) GetAlignment() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *BoxContainer) SetVertical(vertical bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *BoxContainer) IsVertical() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

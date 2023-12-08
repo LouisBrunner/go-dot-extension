@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,23 @@ func (me *PanoramaSkyMaterial) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *PanoramaSkyMaterial) BaseClass() string {
   return "PanoramaSkyMaterial"
 }
+
+func  (me *PanoramaSkyMaterial) SetPanorama(texture Texture2D, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *PanoramaSkyMaterial) GetPanorama() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *PanoramaSkyMaterial) SetFilteringEnabled(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *PanoramaSkyMaterial) IsFilteringEnabled() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

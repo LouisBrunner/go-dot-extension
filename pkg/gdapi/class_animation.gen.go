@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,50 +27,346 @@ func (me *Animation) BaseClass() string {
 
 type AnimationTrackType int
 const (
-  AnimationTypeValue AnimationTrackType = 0
-  AnimationTypePosition3D AnimationTrackType = 1
-  AnimationTypeRotation3D AnimationTrackType = 2
-  AnimationTypeScale3D AnimationTrackType = 3
-  AnimationTypeBlendShape AnimationTrackType = 4
-  AnimationTypeMethod AnimationTrackType = 5
-  AnimationTypeBezier AnimationTrackType = 6
-  AnimationTypeAudio AnimationTrackType = 7
-  AnimationTypeAnimation AnimationTrackType = 8
+  AnimationTrackTypeTypeValue AnimationTrackType = 0
+  AnimationTrackTypeTypePosition3D AnimationTrackType = 1
+  AnimationTrackTypeTypeRotation3D AnimationTrackType = 2
+  AnimationTrackTypeTypeScale3D AnimationTrackType = 3
+  AnimationTrackTypeTypeBlendShape AnimationTrackType = 4
+  AnimationTrackTypeTypeMethod AnimationTrackType = 5
+  AnimationTrackTypeTypeBezier AnimationTrackType = 6
+  AnimationTrackTypeTypeAudio AnimationTrackType = 7
+  AnimationTrackTypeTypeAnimation AnimationTrackType = 8
 )
 
 type AnimationInterpolationType int
 const (
-  AnimationInterpolationNearest AnimationInterpolationType = 0
-  AnimationInterpolationLinear AnimationInterpolationType = 1
-  AnimationInterpolationCubic AnimationInterpolationType = 2
-  AnimationInterpolationLinearAngle AnimationInterpolationType = 3
-  AnimationInterpolationCubicAngle AnimationInterpolationType = 4
+  AnimationInterpolationTypeInterpolationNearest AnimationInterpolationType = 0
+  AnimationInterpolationTypeInterpolationLinear AnimationInterpolationType = 1
+  AnimationInterpolationTypeInterpolationCubic AnimationInterpolationType = 2
+  AnimationInterpolationTypeInterpolationLinearAngle AnimationInterpolationType = 3
+  AnimationInterpolationTypeInterpolationCubicAngle AnimationInterpolationType = 4
 )
 
 type AnimationUpdateMode int
 const (
-  AnimationUpdateContinuous AnimationUpdateMode = 0
-  AnimationUpdateDiscrete AnimationUpdateMode = 1
-  AnimationUpdateCapture AnimationUpdateMode = 2
+  AnimationUpdateModeUpdateContinuous AnimationUpdateMode = 0
+  AnimationUpdateModeUpdateDiscrete AnimationUpdateMode = 1
+  AnimationUpdateModeUpdateCapture AnimationUpdateMode = 2
 )
 
 type AnimationLoopMode int
 const (
-  AnimationLoopNone AnimationLoopMode = 0
-  AnimationLoopLinear AnimationLoopMode = 1
-  AnimationLoopPingpong AnimationLoopMode = 2
+  AnimationLoopModeLoopNone AnimationLoopMode = 0
+  AnimationLoopModeLoopLinear AnimationLoopMode = 1
+  AnimationLoopModeLoopPingpong AnimationLoopMode = 2
 )
 
 type AnimationLoopedFlag int
 const (
-  AnimationLoopedFlagNone AnimationLoopedFlag = 0
-  AnimationLoopedFlagEnd AnimationLoopedFlag = 1
-  AnimationLoopedFlagStart AnimationLoopedFlag = 2
+  AnimationLoopedFlagLoopedFlagNone AnimationLoopedFlag = 0
+  AnimationLoopedFlagLoopedFlagEnd AnimationLoopedFlag = 1
+  AnimationLoopedFlagLoopedFlagStart AnimationLoopedFlag = 2
 )
 
 type AnimationFindMode int
 const (
-  AnimationFindModeNearest AnimationFindMode = 0
-  AnimationFindModeApprox AnimationFindMode = 1
-  AnimationFindModeExact AnimationFindMode = 2
+  AnimationFindModeFindModeNearest AnimationFindMode = 0
+  AnimationFindModeFindModeApprox AnimationFindMode = 1
+  AnimationFindModeFindModeExact AnimationFindMode = 2
 )
+
+func  (me *Animation) AddTrack(type_ AnimationTrackType, at_position int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) RemoveTrack(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) GetTrackCount() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackGetType(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackGetPath(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackSetPath(track_idx int, path NodePath, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) FindTrack(path NodePath, type_ AnimationTrackType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackMoveUp(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackMoveDown(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackMoveTo(track_idx int, to_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackSwap(track_idx int, with_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackSetImported(track_idx int, imported bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackIsImported(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackSetEnabled(track_idx int, enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackIsEnabled(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) PositionTrackInsertKey(track_idx int, time float32, position Vector3, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) RotationTrackInsertKey(track_idx int, time float32, rotation Quaternion, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) ScaleTrackInsertKey(track_idx int, time float32, scale Vector3, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) BlendShapeTrackInsertKey(track_idx int, time float32, amount float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) PositionTrackInterpolate(track_idx int, time_sec float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) RotationTrackInterpolate(track_idx int, time_sec float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) ScaleTrackInterpolate(track_idx int, time_sec float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) BlendShapeTrackInterpolate(track_idx int, time_sec float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackInsertKey(track_idx int, time float32, key Variant, transition float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackRemoveKey(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackRemoveKeyAtTime(track_idx int, time float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackSetKeyValue(track_idx int, key int, value Variant, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackSetKeyTransition(track_idx int, key_idx int, transition float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackSetKeyTime(track_idx int, key_idx int, time float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackGetKeyTransition(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackGetKeyCount(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackGetKeyValue(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackGetKeyTime(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackFindKey(track_idx int, time float32, find_mode AnimationFindMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackSetInterpolationType(track_idx int, interpolation AnimationInterpolationType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackGetInterpolationType(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackSetInterpolationLoopWrap(track_idx int, interpolation bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackGetInterpolationLoopWrap(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) TrackIsCompressed(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) ValueTrackSetUpdateMode(track_idx int, mode AnimationUpdateMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) ValueTrackGetUpdateMode(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) ValueTrackInterpolate(track_idx int, time_sec float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) MethodTrackGetName(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) MethodTrackGetParams(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) BezierTrackInsertKey(track_idx int, time float32, value float32, in_handle Vector2, out_handle Vector2, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) BezierTrackSetKeyValue(track_idx int, key_idx int, value float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) BezierTrackSetKeyInHandle(track_idx int, key_idx int, in_handle Vector2, balanced_value_time_ratio float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) BezierTrackSetKeyOutHandle(track_idx int, key_idx int, out_handle Vector2, balanced_value_time_ratio float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) BezierTrackGetKeyValue(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) BezierTrackGetKeyInHandle(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) BezierTrackGetKeyOutHandle(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) BezierTrackInterpolate(track_idx int, time float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AudioTrackInsertKey(track_idx int, time float32, stream Resource, start_offset float32, end_offset float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AudioTrackSetKeyStream(track_idx int, key_idx int, stream Resource, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AudioTrackSetKeyStartOffset(track_idx int, key_idx int, offset float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AudioTrackSetKeyEndOffset(track_idx int, key_idx int, offset float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AudioTrackGetKeyStream(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AudioTrackGetKeyStartOffset(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AudioTrackGetKeyEndOffset(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AudioTrackSetUseBlend(track_idx int, enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AudioTrackIsUseBlend(track_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AnimationTrackInsertKey(track_idx int, time float32, animation StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AnimationTrackSetKeyAnimation(track_idx int, key_idx int, animation StringName, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) AnimationTrackGetKeyAnimation(track_idx int, key_idx int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) SetLength(time_sec float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) GetLength() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) SetLoopMode(loop_mode AnimationLoopMode, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) GetLoopMode() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) SetStep(size_sec float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) GetStep() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) Clear() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) CopyTrack(track_idx int, to_animation Animation, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Animation) Compress(page_size int, fps int, split_tolerance float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

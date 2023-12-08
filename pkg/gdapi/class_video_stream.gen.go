@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,19 @@ func (me *VideoStream) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VideoStream) BaseClass() string {
   return "VideoStream"
 }
+
+func  (me *VideoStream) XInstantiatePlayback() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VideoStream) SetFile(file String, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VideoStream) GetFile() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

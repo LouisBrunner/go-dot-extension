@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -19,8 +27,20 @@ func (me *VisualShaderNodeVectorBase) BaseClass() string {
 
 type VisualShaderNodeVectorBaseOpType int
 const (
-  VisualShaderNodeVectorBaseOpTypeVector2D VisualShaderNodeVectorBaseOpType = 0
-  VisualShaderNodeVectorBaseOpTypeVector3D VisualShaderNodeVectorBaseOpType = 1
-  VisualShaderNodeVectorBaseOpTypeVector4D VisualShaderNodeVectorBaseOpType = 2
-  VisualShaderNodeVectorBaseOpTypeMax VisualShaderNodeVectorBaseOpType = 3
+  VisualShaderNodeVectorBaseOpTypeOpTypeVector2D VisualShaderNodeVectorBaseOpType = 0
+  VisualShaderNodeVectorBaseOpTypeOpTypeVector3D VisualShaderNodeVectorBaseOpType = 1
+  VisualShaderNodeVectorBaseOpTypeOpTypeVector4D VisualShaderNodeVectorBaseOpType = 2
+  VisualShaderNodeVectorBaseOpTypeOpTypeMax VisualShaderNodeVectorBaseOpType = 3
 )
+
+func  (me *VisualShaderNodeVectorBase) SetOpType(type_ VisualShaderNodeVectorBaseOpType, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeVectorBase) GetOpType() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

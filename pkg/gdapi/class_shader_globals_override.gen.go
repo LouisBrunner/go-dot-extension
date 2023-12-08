@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *ShaderGlobalsOverride) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ShaderGlobalsOverride) BaseClass() string {
   return "ShaderGlobalsOverride"
 }
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,39 @@ func (me *CapsuleMesh) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *CapsuleMesh) BaseClass() string {
   return "CapsuleMesh"
 }
+
+func  (me *CapsuleMesh) SetRadius(radius float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CapsuleMesh) GetRadius() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CapsuleMesh) SetHeight(height float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CapsuleMesh) GetHeight() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CapsuleMesh) SetRadialSegments(segments int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CapsuleMesh) GetRadialSegments() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CapsuleMesh) SetRings(rings int, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *CapsuleMesh) GetRings() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,15 @@ func (me *VisualShaderNodeParticleEmitter) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *VisualShaderNodeParticleEmitter) BaseClass() string {
   return "VisualShaderNodeParticleEmitter"
 }
+
+func  (me *VisualShaderNodeParticleEmitter) SetMode2D(enabled bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *VisualShaderNodeParticleEmitter) IsMode2D() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals

@@ -1,6 +1,8 @@
 // Code generated automatically by `go-dot-extension/pkg/gdapi/apigenerator`. DO NOT EDIT.
 package gdapi
 
+type RealType float32 // TODO: should depend on a flag
+
 const (
   ClassSizeNil = 0
   ClassSizeBool = 1

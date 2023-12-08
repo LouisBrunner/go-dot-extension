@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *PointMesh) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *PointMesh) BaseClass() string {
   return "PointMesh"
 }
+
+// TODO: properties
+
+// TODO: signals

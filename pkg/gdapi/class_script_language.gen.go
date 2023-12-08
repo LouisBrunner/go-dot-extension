@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,7 @@ func (me *ScriptLanguage) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *ScriptLanguage) BaseClass() string {
   return "ScriptLanguage"
 }
+
+// TODO: properties
+
+// TODO: signals

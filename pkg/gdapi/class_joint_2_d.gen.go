@@ -2,6 +2,14 @@
 package gdapi
 
 import (
+// TODO: disgusting imports
+
+
+
+
+
+
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,3 +24,39 @@ func (me *Joint2D) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *Joint2D) BaseClass() string {
   return "Joint2D"
 }
+
+func  (me *Joint2D) SetNodeA(node NodePath, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Joint2D) GetNodeA() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Joint2D) SetNodeB(node NodePath, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Joint2D) GetNodeB() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Joint2D) SetBias(bias float32, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Joint2D) GetBias() { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Joint2D) SetExcludeNodesFromCollision(enable bool, ) { // TODO: return value
+  // TODO: implement
+}
+
+func  (me *Joint2D) GetExcludeNodesFromCollision() { // TODO: return value
+  // TODO: implement
+}
+
+// TODO: properties
+
+// TODO: signals
