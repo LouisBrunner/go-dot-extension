@@ -25,6 +25,10 @@ func (me *LinkButton) BaseClass() string {
   return "LinkButton"
 }
 
+
+
+// Enums
+
 type LinkButtonUnderlineMode int
 const (
   LinkButtonUnderlineModeUnderlineModeAlways LinkButtonUnderlineMode = 0
@@ -32,62 +36,73 @@ const (
   LinkButtonUnderlineModeUnderlineModeNever LinkButtonUnderlineMode = 2
 )
 
-func  (me *LinkButton) SetText(text String, ) { // TODO: return value
-  // TODO: implement
+func (me *LinkButton) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *LinkButton) GetText() { // TODO: return value
-  // TODO: implement
+func (me *LinkButton) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *LinkButton) SetTextDirection(direction ControlTextDirection, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *LinkButton) SetText(text String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LinkButton) GetTextDirection() { // TODO: return value
-  // TODO: implement
+func  (me *LinkButton) GetText()  {
+  panic("TODO: implement")
 }
 
-func  (me *LinkButton) SetLanguage(language String, ) { // TODO: return value
-  // TODO: implement
+func  (me *LinkButton) SetTextDirection(direction ControlTextDirection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LinkButton) GetLanguage() { // TODO: return value
-  // TODO: implement
+func  (me *LinkButton) GetTextDirection()  {
+  panic("TODO: implement")
 }
 
-func  (me *LinkButton) SetUri(uri String, ) { // TODO: return value
-  // TODO: implement
+func  (me *LinkButton) SetLanguage(language String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LinkButton) GetUri() { // TODO: return value
-  // TODO: implement
+func  (me *LinkButton) GetLanguage()  {
+  panic("TODO: implement")
 }
 
-func  (me *LinkButton) SetUnderlineMode(underline_mode LinkButtonUnderlineMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *LinkButton) SetUri(uri String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LinkButton) GetUnderlineMode() { // TODO: return value
-  // TODO: implement
+func  (me *LinkButton) GetUri()  {
+  panic("TODO: implement")
 }
 
-func  (me *LinkButton) SetStructuredTextBidiOverride(parser TextServerStructuredTextParser, ) { // TODO: return value
-  // TODO: implement
+func  (me *LinkButton) SetUnderlineMode(underline_mode LinkButtonUnderlineMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LinkButton) GetStructuredTextBidiOverride() { // TODO: return value
-  // TODO: implement
+func  (me *LinkButton) GetUnderlineMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *LinkButton) SetStructuredTextBidiOverrideOptions(args Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *LinkButton) SetStructuredTextBidiOverride(parser TextServerStructuredTextParser, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LinkButton) GetStructuredTextBidiOverrideOptions() { // TODO: return value
-  // TODO: implement
+func  (me *LinkButton) GetStructuredTextBidiOverride()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *LinkButton) SetStructuredTextBidiOverrideOptions(args Array, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *LinkButton) GetStructuredTextBidiOverrideOptions()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

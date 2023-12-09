@@ -25,30 +25,45 @@ func (me *ParallaxLayer) BaseClass() string {
   return "ParallaxLayer"
 }
 
-func  (me *ParallaxLayer) SetMotionScale(scale Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ParallaxLayer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ParallaxLayer) GetMotionScale() { // TODO: return value
-  // TODO: implement
+func (me *ParallaxLayer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ParallaxLayer) SetMotionOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ParallaxLayer) SetMotionScale(scale Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxLayer) GetMotionOffset() { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxLayer) GetMotionScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxLayer) SetMirroring(mirror Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxLayer) SetMotionOffset(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxLayer) GetMirroring() { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxLayer) GetMotionOffset()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ParallaxLayer) SetMirroring(mirror Vector2, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ParallaxLayer) GetMirroring()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

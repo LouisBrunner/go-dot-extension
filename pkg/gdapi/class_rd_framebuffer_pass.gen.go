@@ -25,54 +25,67 @@ func (me *RDFramebufferPass) BaseClass() string {
   return "RDFramebufferPass"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   RDFramebufferPassAttachmentUnused = "-1" // TODO: construct correctly
 )
 
-func  (me *RDFramebufferPass) SetColorAttachments(p_member PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+// Enums
+
+func (me *RDFramebufferPass) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDFramebufferPass) GetColorAttachments() { // TODO: return value
-  // TODO: implement
+func (me *RDFramebufferPass) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDFramebufferPass) SetInputAttachments(p_member PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDFramebufferPass) SetColorAttachments(p_member PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDFramebufferPass) GetInputAttachments() { // TODO: return value
-  // TODO: implement
+func  (me *RDFramebufferPass) GetColorAttachments()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDFramebufferPass) SetResolveAttachments(p_member PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDFramebufferPass) SetInputAttachments(p_member PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDFramebufferPass) GetResolveAttachments() { // TODO: return value
-  // TODO: implement
+func  (me *RDFramebufferPass) GetInputAttachments()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDFramebufferPass) SetPreserveAttachments(p_member PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDFramebufferPass) SetResolveAttachments(p_member PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDFramebufferPass) GetPreserveAttachments() { // TODO: return value
-  // TODO: implement
+func  (me *RDFramebufferPass) GetResolveAttachments()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDFramebufferPass) SetDepthAttachment(p_member int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDFramebufferPass) SetPreserveAttachments(p_member PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDFramebufferPass) GetDepthAttachment() { // TODO: return value
-  // TODO: implement
+func  (me *RDFramebufferPass) GetPreserveAttachments()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDFramebufferPass) SetDepthAttachment(p_member int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDFramebufferPass) GetDepthAttachment()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

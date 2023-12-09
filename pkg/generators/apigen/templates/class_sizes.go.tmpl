@@ -1,9 +1,9 @@
 {{template "preamble"}}
 
-type RealType float32 // TODO: should depend on a flag
+type RealType {{replace .BuildConfiguration "_" ""}}
 
 const (
 {{- range .Sizes}}
-  ClassSize{{pascalCased .Name}} = {{.Size}}
+  classSize{{mapClass .Name}} = {{.Size}}
 {{- end }}
 )

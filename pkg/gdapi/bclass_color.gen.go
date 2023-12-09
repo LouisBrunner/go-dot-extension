@@ -2,32 +2,17 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Color struct {
-  obj gdc.ObjectPtr
+  iface gdc.Interface
+  ptr gdc.TypePtr
 }
 
-func (me *Color) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
-}
-
-func (me *Color) BaseClass() string {
-  return "Color"
-}
-
-// TODO: needed?
-// const (
-// // )
+// Constants
 
 var (
   ColorAliceBlue = "Color(0.941176, 0.972549, 1, 1)" // TODO: construct correctly
@@ -178,106 +163,275 @@ var (
   ColorYellowGreen = "Color(0.603922, 0.803922, 0.196078, 1)" // TODO: construct correctly
 )
 
-func  (me *Color) ToArgb32() { // TODO: return value
-  // TODO: implement
+// Enums
+
+// Constructors
+
+func NewColor() Color {
+  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
+  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 0) // FIXME: should cache?
+  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return Color{
+    iface: giface,
+    ptr: gdc.TypePtr(ptr),
+  }
 }
 
-func  (me *Color) ToAbgr32() { // TODO: return value
-  // TODO: implement
+func NewColorFromColor(from Color, ) Color {
+  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
+  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 1) // FIXME: should cache?
+  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return Color{
+    iface: giface,
+    ptr: gdc.TypePtr(ptr),
+  }
 }
 
-func  (me *Color) ToRgba32() { // TODO: return value
-  // TODO: implement
+func NewColorFromColorFloat32(from Color, alpha float32, ) Color {
+  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
+  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 2) // FIXME: should cache?
+  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), gdc.ConstTypePtr(&alpha), }))
+  return Color{
+    iface: giface,
+    ptr: gdc.TypePtr(ptr),
+  }
 }
 
-func  (me *Color) ToArgb64() { // TODO: return value
-  // TODO: implement
+func NewColorFromFloat32Float32Float32(r float32, g float32, b float32, ) Color {
+  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
+  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 3) // FIXME: should cache?
+  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&r), gdc.ConstTypePtr(&g), gdc.ConstTypePtr(&b), }))
+  return Color{
+    iface: giface,
+    ptr: gdc.TypePtr(ptr),
+  }
 }
 
-func  (me *Color) ToAbgr64() { // TODO: return value
-  // TODO: implement
+func NewColorFromFloat32Float32Float32Float32(r float32, g float32, b float32, a float32, ) Color {
+  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
+  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 4) // FIXME: should cache?
+  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&r), gdc.ConstTypePtr(&g), gdc.ConstTypePtr(&b), gdc.ConstTypePtr(&a), }))
+  return Color{
+    iface: giface,
+    ptr: gdc.TypePtr(ptr),
+  }
 }
 
-func  (me *Color) ToRgba64() { // TODO: return value
-  // TODO: implement
+func NewColorFromString(code String, ) Color {
+  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
+  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 5) // FIXME: should cache?
+  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{code.AsCTypePtr(), }))
+  return Color{
+    iface: giface,
+    ptr: gdc.TypePtr(ptr),
+  }
 }
 
-func  (me *Color) ToHtml(with_alpha bool, ) { // TODO: return value
-  // TODO: implement
+func NewColorFromStringFloat32(code String, alpha float32, ) Color {
+  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
+  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 6) // FIXME: should cache?
+  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{code.AsCTypePtr(), gdc.ConstTypePtr(&alpha), }))
+  return Color{
+    iface: giface,
+    ptr: gdc.TypePtr(ptr),
+  }
 }
 
-func  (me *Color) Clamp(min Color, max Color, ) { // TODO: return value
-  // TODO: implement
+// Destructor
+func (me *Color) Destroy() {
+  if me.ptr == nil {
+    return
+  }
+	cfree(unsafe.Pointer(me.ptr))
+  me.ptr = nil
 }
 
-func  (me *Color) Inverted() { // TODO: return value
-  // TODO: implement
+func (me *Color) Type() gdc.VariantType {
+  return gdc.VariantTypeColor
 }
 
-func  (me *Color) Lerp(to Color, weight float32, ) { // TODO: return value
-  // TODO: implement
+func (me *Color) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.ptr)
 }
 
-func  (me *Color) Lightened(amount float32, ) { // TODO: return value
-  // TODO: implement
+func (me *Color) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.ptr)
 }
 
-func  (me *Color) Darkened(amount float32, ) { // TODO: return value
-  // TODO: implement
+// Methods
+
+func  (me *Color) ToArgb32() int {
+  panic("TODO: implement")
 }
 
-func  (me *Color) Blend(over Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Color) ToAbgr32() int {
+  panic("TODO: implement")
 }
 
-func  (me *Color) GetLuminance() { // TODO: return value
-  // TODO: implement
+func  (me *Color) ToRgba32() int {
+  panic("TODO: implement")
 }
 
-func  (me *Color) SrgbToLinear() { // TODO: return value
-  // TODO: implement
+func  (me *Color) ToArgb64() int {
+  panic("TODO: implement")
 }
 
-func  (me *Color) LinearToSrgb() { // TODO: return value
-  // TODO: implement
+func  (me *Color) ToAbgr64() int {
+  panic("TODO: implement")
 }
 
-func  (me *Color) IsEqualApprox(to Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Color) ToRgba64() int {
+  panic("TODO: implement")
 }
 
-func  ColorHex(hex int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Color) ToHtml(with_alpha bool, ) String {
+  panic("TODO: implement")
 }
 
-func  ColorHex64(hex int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Color) Clamp(min Color, max Color, ) Color {
+  panic("TODO: implement")
 }
 
-func  ColorHtml(rgba String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Color) Inverted() Color {
+  panic("TODO: implement")
 }
 
-func  ColorHtmlIsValid(color String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Color) Lerp(to Color, weight float32, ) Color {
+  panic("TODO: implement")
 }
 
-func  ColorFromString(str String, default_ Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Color) Lightened(amount float32, ) Color {
+  panic("TODO: implement")
 }
 
-func  ColorFromHsv(h float32, s float32, v float32, alpha float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Color) Darkened(amount float32, ) Color {
+  panic("TODO: implement")
 }
 
-func  ColorFromOkHsl(h float32, s float32, l float32, alpha float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Color) Blend(over Color, ) Color {
+  panic("TODO: implement")
 }
 
-func  ColorFromRgbe9995(rgbe int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Color) GetLuminance() float32 {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Color) SrgbToLinear() Color {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Color) LinearToSrgb() Color {
+  panic("TODO: implement")
+}
+
+func  (me *Color) IsEqualApprox(to Color, ) bool {
+  panic("TODO: implement")
+}
+
+func  ColorHex(hex int, ) Color {
+  panic("TODO: implement")
+}
+
+func  ColorHex64(hex int, ) Color {
+  panic("TODO: implement")
+}
+
+func  ColorHtml(rgba String, ) Color {
+  panic("TODO: implement")
+}
+
+func  ColorHtmlIsValid(color String, ) bool {
+  panic("TODO: implement")
+}
+
+func  ColorFromString(str String, default_ Color, ) Color {
+  panic("TODO: implement")
+}
+
+func  ColorFromHsv(h float32, s float32, v float32, alpha float32, ) Color {
+  panic("TODO: implement")
+}
+
+func  ColorFromOkHsl(h float32, s float32, l float32, alpha float32, ) Color {
+  panic("TODO: implement")
+}
+
+func  ColorFromRgbe9995(rgbe int, ) Color {
+  panic("TODO: implement")
+}
+
+// Operators
+
+func (me *Color) EqualsVariant(right Variant) bool {
+  panic("TODO: implement")
+}
+
+func (me *Color) NotEqualsVariant(right Variant) bool {
+  panic("TODO: implement")
+}
+
+func (me *Color) UnaryMinus() Color {
+  panic("TODO: implement")
+}
+
+func (me *Color) UnaryPlus() Color {
+  panic("TODO: implement")
+}
+
+func (me *Color) Not() bool {
+  panic("TODO: implement")
+}
+
+func (me *Color) MultiplyInt(right int) Color {
+  panic("TODO: implement")
+}
+
+func (me *Color) DivideInt(right int) Color {
+  panic("TODO: implement")
+}
+
+func (me *Color) MultiplyFloat32(right float32) Color {
+  panic("TODO: implement")
+}
+
+func (me *Color) DivideFloat32(right float32) Color {
+  panic("TODO: implement")
+}
+
+func (me *Color) EqualsColor(right Color) bool {
+  panic("TODO: implement")
+}
+
+func (me *Color) NotEqualsColor(right Color) bool {
+  panic("TODO: implement")
+}
+
+func (me *Color) AddColor(right Color) Color {
+  panic("TODO: implement")
+}
+
+func (me *Color) SubtractColor(right Color) Color {
+  panic("TODO: implement")
+}
+
+func (me *Color) MultiplyColor(right Color) Color {
+  panic("TODO: implement")
+}
+
+func (me *Color) DivideColor(right Color) Color {
+  panic("TODO: implement")
+}
+
+func (me *Color) InDictionary(right Dictionary) bool {
+  panic("TODO: implement")
+}
+
+func (me *Color) InArray(right Array) bool {
+  panic("TODO: implement")
+}
+
+func (me *Color) InPackedColorArray(right PackedColorArray) bool {
+  panic("TODO: implement")
+}
+
+// TODO: members (bclass)

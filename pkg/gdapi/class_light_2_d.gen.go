@@ -25,6 +25,10 @@ func (me *Light2D) BaseClass() string {
   return "Light2D"
 }
 
+
+
+// Enums
+
 type Light2DShadowFilter int
 const (
   Light2DShadowFilterShadowFilterNone Light2DShadowFilter = 0
@@ -39,134 +43,145 @@ const (
   Light2DBlendModeBlendModeMix Light2DBlendMode = 2
 )
 
-func  (me *Light2D) SetEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func (me *Light2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Light2D) IsEnabled() { // TODO: return value
-  // TODO: implement
+func (me *Light2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Light2D) SetEditorOnly(editor_only bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Light2D) SetEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) IsEditorOnly() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) IsEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetEditorOnly(editor_only bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetColor() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) IsEditorOnly()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetEnergy(energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetEnergy() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetZRangeMin(z int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetEnergy(energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetZRangeMin() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetEnergy()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetZRangeMax(z int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetZRangeMin(z int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetZRangeMax() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetZRangeMin()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetLayerRangeMin(layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetZRangeMax(z int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetLayerRangeMin() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetZRangeMax()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetLayerRangeMax(layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetLayerRangeMin(layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetLayerRangeMax() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetLayerRangeMin()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetItemCullMask(item_cull_mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetLayerRangeMax(layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetItemCullMask() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetLayerRangeMax()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetItemShadowCullMask(item_shadow_cull_mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetItemCullMask(item_cull_mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetItemShadowCullMask() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetItemCullMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetShadowEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetItemShadowCullMask(item_shadow_cull_mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) IsShadowEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetItemShadowCullMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetShadowSmooth(smooth float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetShadowEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetShadowSmooth() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) IsShadowEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetShadowFilter(filter Light2DShadowFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetShadowSmooth(smooth float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetShadowFilter() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetShadowSmooth()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetShadowColor(shadow_color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetShadowFilter(filter Light2DShadowFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetShadowColor() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetShadowFilter()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetBlendMode(mode Light2DBlendMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetShadowColor(shadow_color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetBlendMode() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetShadowColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) SetHeight(height float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) SetBlendMode(mode Light2DBlendMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light2D) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *Light2D) GetBlendMode()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Light2D) SetHeight(height float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Light2D) GetHeight()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

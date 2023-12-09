@@ -25,6 +25,21 @@ func (me *PlaceholderCubemapArray) BaseClass() string {
   return "PlaceholderCubemapArray"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *PlaceholderCubemapArray) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *PlaceholderCubemapArray) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

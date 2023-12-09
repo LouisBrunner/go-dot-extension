@@ -25,55 +25,68 @@ func (me *Material) BaseClass() string {
   return "Material"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   MaterialRenderPriorityMax = "127" // TODO: construct correctly
   MaterialRenderPriorityMin = "-128" // TODO: construct correctly
 )
 
-func  (me *Material) XGetShaderRid() { // TODO: return value
-  // TODO: implement
+// Enums
+
+func (me *Material) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Material) XGetShaderMode() { // TODO: return value
-  // TODO: implement
+func (me *Material) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Material) XCanDoNextPass() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Material) XGetShaderRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *Material) XCanUseRenderPriority() { // TODO: return value
-  // TODO: implement
+func  (me *Material) XGetShaderMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Material) SetNextPass(next_pass Material, ) { // TODO: return value
-  // TODO: implement
+func  (me *Material) XCanDoNextPass()  {
+  panic("TODO: implement")
 }
 
-func  (me *Material) GetNextPass() { // TODO: return value
-  // TODO: implement
+func  (me *Material) XCanUseRenderPriority()  {
+  panic("TODO: implement")
 }
 
-func  (me *Material) SetRenderPriority(priority int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Material) SetNextPass(next_pass Material, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Material) GetRenderPriority() { // TODO: return value
-  // TODO: implement
+func  (me *Material) GetNextPass()  {
+  panic("TODO: implement")
 }
 
-func  (me *Material) InspectNativeShaderCode() { // TODO: return value
-  // TODO: implement
+func  (me *Material) SetRenderPriority(priority int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Material) CreatePlaceholder() { // TODO: return value
-  // TODO: implement
+func  (me *Material) GetRenderPriority()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Material) InspectNativeShaderCode()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Material) CreatePlaceholder()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

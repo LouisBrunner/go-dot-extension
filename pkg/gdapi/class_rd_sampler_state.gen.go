@@ -25,126 +25,141 @@ func (me *RDSamplerState) BaseClass() string {
   return "RDSamplerState"
 }
 
-func  (me *RDSamplerState) SetMagFilter(p_member RenderingDeviceSamplerFilter, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDSamplerState) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDSamplerState) GetMagFilter() { // TODO: return value
-  // TODO: implement
+func (me *RDSamplerState) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDSamplerState) SetMinFilter(p_member RenderingDeviceSamplerFilter, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDSamplerState) SetMagFilter(p_member RenderingDeviceSamplerFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetMinFilter() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetMagFilter()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetMipFilter(p_member RenderingDeviceSamplerFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetMinFilter(p_member RenderingDeviceSamplerFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetMipFilter() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetMinFilter()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetRepeatU(p_member RenderingDeviceSamplerRepeatMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetMipFilter(p_member RenderingDeviceSamplerFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetRepeatU() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetMipFilter()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetRepeatV(p_member RenderingDeviceSamplerRepeatMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetRepeatU(p_member RenderingDeviceSamplerRepeatMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetRepeatV() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetRepeatU()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetRepeatW(p_member RenderingDeviceSamplerRepeatMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetRepeatV(p_member RenderingDeviceSamplerRepeatMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetRepeatW() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetRepeatV()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetLodBias(p_member float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetRepeatW(p_member RenderingDeviceSamplerRepeatMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetLodBias() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetRepeatW()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetUseAnisotropy(p_member bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetLodBias(p_member float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetUseAnisotropy() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetLodBias()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetAnisotropyMax(p_member float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetUseAnisotropy(p_member bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetAnisotropyMax() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetUseAnisotropy()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetEnableCompare(p_member bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetAnisotropyMax(p_member float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetEnableCompare() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetAnisotropyMax()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetCompareOp(p_member RenderingDeviceCompareOperator, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetEnableCompare(p_member bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetCompareOp() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetEnableCompare()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetMinLod(p_member float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetCompareOp(p_member RenderingDeviceCompareOperator, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetMinLod() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetCompareOp()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetMaxLod(p_member float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetMinLod(p_member float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetMaxLod() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetMinLod()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetBorderColor(p_member RenderingDeviceSamplerBorderColor, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetMaxLod(p_member float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetBorderColor() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetMaxLod()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) SetUnnormalizedUvw(p_member bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) SetBorderColor(p_member RenderingDeviceSamplerBorderColor, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDSamplerState) GetUnnormalizedUvw() { // TODO: return value
-  // TODO: implement
+func  (me *RDSamplerState) GetBorderColor()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDSamplerState) SetUnnormalizedUvw(p_member bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDSamplerState) GetUnnormalizedUvw()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

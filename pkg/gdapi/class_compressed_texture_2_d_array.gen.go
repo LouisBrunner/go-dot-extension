@@ -25,6 +25,21 @@ func (me *CompressedTexture2DArray) BaseClass() string {
   return "CompressedTexture2DArray"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *CompressedTexture2DArray) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *CompressedTexture2DArray) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

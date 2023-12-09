@@ -25,62 +25,77 @@ func (me *CanvasTexture) BaseClass() string {
   return "CanvasTexture"
 }
 
-func  (me *CanvasTexture) SetDiffuseTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CanvasTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CanvasTexture) GetDiffuseTexture() { // TODO: return value
-  // TODO: implement
+func (me *CanvasTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CanvasTexture) SetNormalTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CanvasTexture) SetDiffuseTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasTexture) GetNormalTexture() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasTexture) GetDiffuseTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasTexture) SetSpecularTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *CanvasTexture) SetNormalTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasTexture) GetSpecularTexture() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasTexture) GetNormalTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasTexture) SetSpecularColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *CanvasTexture) SetSpecularTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasTexture) GetSpecularColor() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasTexture) GetSpecularTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasTexture) SetSpecularShininess(shininess float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CanvasTexture) SetSpecularColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasTexture) GetSpecularShininess() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasTexture) GetSpecularColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasTexture) SetTextureFilter(filter CanvasItemTextureFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *CanvasTexture) SetSpecularShininess(shininess float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasTexture) GetTextureFilter() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasTexture) GetSpecularShininess()  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasTexture) SetTextureRepeat(repeat CanvasItemTextureRepeat, ) { // TODO: return value
-  // TODO: implement
+func  (me *CanvasTexture) SetTextureFilter(filter CanvasItemTextureFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasTexture) GetTextureRepeat() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasTexture) GetTextureFilter()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CanvasTexture) SetTextureRepeat(repeat CanvasItemTextureRepeat, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CanvasTexture) GetTextureRepeat()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,14 +25,29 @@ func (me *ConcavePolygonShape2D) BaseClass() string {
   return "ConcavePolygonShape2D"
 }
 
-func  (me *ConcavePolygonShape2D) SetSegments(segments PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ConcavePolygonShape2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ConcavePolygonShape2D) GetSegments() { // TODO: return value
-  // TODO: implement
+func (me *ConcavePolygonShape2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *ConcavePolygonShape2D) SetSegments(segments PackedVector2Array, )  {
+  panic("TODO: implement")
+}
+
+func  (me *ConcavePolygonShape2D) GetSegments()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,28 +25,43 @@ func (me *AnimationNodeAnimation) BaseClass() string {
   return "AnimationNodeAnimation"
 }
 
+
+
+// Enums
+
 type AnimationNodeAnimationPlayMode int
 const (
   AnimationNodeAnimationPlayModePlayModeForward AnimationNodeAnimationPlayMode = 0
   AnimationNodeAnimationPlayModePlayModeBackward AnimationNodeAnimationPlayMode = 1
 )
 
-func  (me *AnimationNodeAnimation) SetAnimation(name StringName, ) { // TODO: return value
-  // TODO: implement
+func (me *AnimationNodeAnimation) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AnimationNodeAnimation) GetAnimation() { // TODO: return value
-  // TODO: implement
+func (me *AnimationNodeAnimation) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AnimationNodeAnimation) SetPlayMode(mode AnimationNodeAnimationPlayMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AnimationNodeAnimation) SetAnimation(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeAnimation) GetPlayMode() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeAnimation) GetAnimation()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AnimationNodeAnimation) SetPlayMode(mode AnimationNodeAnimationPlayMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AnimationNodeAnimation) GetPlayMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

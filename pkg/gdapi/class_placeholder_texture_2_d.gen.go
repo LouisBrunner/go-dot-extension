@@ -25,10 +25,25 @@ func (me *PlaceholderTexture2D) BaseClass() string {
   return "PlaceholderTexture2D"
 }
 
-func  (me *PlaceholderTexture2D) SetSize(size Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PlaceholderTexture2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *PlaceholderTexture2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *PlaceholderTexture2D) SetSize(size Vector2, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

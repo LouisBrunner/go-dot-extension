@@ -25,94 +25,109 @@ func (me *NoiseTexture2D) BaseClass() string {
   return "NoiseTexture2D"
 }
 
-func  (me *NoiseTexture2D) SetWidth(width int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *NoiseTexture2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *NoiseTexture2D) SetHeight(height int, ) { // TODO: return value
-  // TODO: implement
+func (me *NoiseTexture2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *NoiseTexture2D) SetInvert(invert bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *NoiseTexture2D) SetWidth(width int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) GetInvert() { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) SetHeight(height int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) SetIn3DSpace(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) SetInvert(invert bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) IsIn3DSpace() { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) GetInvert()  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) SetGenerateMipmaps(invert bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) SetIn3DSpace(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) IsGeneratingMipmaps() { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) IsIn3DSpace()  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) SetSeamless(seamless bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) SetGenerateMipmaps(invert bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) GetSeamless() { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) IsGeneratingMipmaps()  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) SetSeamlessBlendSkirt(seamless_blend_skirt float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) SetSeamless(seamless bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) GetSeamlessBlendSkirt() { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) GetSeamless()  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) SetAsNormalMap(as_normal_map bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) SetSeamlessBlendSkirt(seamless_blend_skirt float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) IsNormalMap() { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) GetSeamlessBlendSkirt()  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) SetBumpStrength(bump_strength float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) SetAsNormalMap(as_normal_map bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) GetBumpStrength() { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) IsNormalMap()  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) SetNormalize(normalize bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) SetBumpStrength(bump_strength float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) IsNormalized() { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) GetBumpStrength()  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) SetColorRamp(gradient Gradient, ) { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) SetNormalize(normalize bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) GetColorRamp() { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) IsNormalized()  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) SetNoise(noise Noise, ) { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) SetColorRamp(gradient Gradient, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NoiseTexture2D) GetNoise() { // TODO: return value
-  // TODO: implement
+func  (me *NoiseTexture2D) GetColorRamp()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *NoiseTexture2D) SetNoise(noise Noise, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *NoiseTexture2D) GetNoise()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,30 +25,45 @@ func (me *PacketPeerStream) BaseClass() string {
   return "PacketPeerStream"
 }
 
-func  (me *PacketPeerStream) SetStreamPeer(peer StreamPeer, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PacketPeerStream) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PacketPeerStream) GetStreamPeer() { // TODO: return value
-  // TODO: implement
+func (me *PacketPeerStream) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PacketPeerStream) SetInputBufferMaxSize(max_size_bytes int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PacketPeerStream) SetStreamPeer(peer StreamPeer, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerStream) SetOutputBufferMaxSize(max_size_bytes int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerStream) GetStreamPeer()  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerStream) GetInputBufferMaxSize() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerStream) SetInputBufferMaxSize(max_size_bytes int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerStream) GetOutputBufferMaxSize() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerStream) SetOutputBufferMaxSize(max_size_bytes int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PacketPeerStream) GetInputBufferMaxSize()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PacketPeerStream) GetOutputBufferMaxSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

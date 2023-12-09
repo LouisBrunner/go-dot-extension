@@ -25,14 +25,29 @@ func (me *SphereShape3D) BaseClass() string {
   return "SphereShape3D"
 }
 
-func  (me *SphereShape3D) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SphereShape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SphereShape3D) GetRadius() { // TODO: return value
-  // TODO: implement
+func (me *SphereShape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *SphereShape3D) SetRadius(radius float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *SphereShape3D) GetRadius()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

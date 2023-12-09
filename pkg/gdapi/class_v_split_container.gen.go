@@ -25,6 +25,21 @@ func (me *VSplitContainer) BaseClass() string {
   return "VSplitContainer"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *VSplitContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *VSplitContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

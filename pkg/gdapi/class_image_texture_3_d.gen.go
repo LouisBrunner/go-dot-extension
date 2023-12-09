@@ -25,14 +25,29 @@ func (me *ImageTexture3D) BaseClass() string {
   return "ImageTexture3D"
 }
 
-func  (me *ImageTexture3D) Create(format ImageFormat, width int, height int, depth int, use_mipmaps bool, data Image, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ImageTexture3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ImageTexture3D) Update(data Image, ) { // TODO: return value
-  // TODO: implement
+func (me *ImageTexture3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *ImageTexture3D) Create(format ImageFormat, width int, height int, depth int, use_mipmaps bool, data Image, )  {
+  panic("TODO: implement")
+}
+
+func  (me *ImageTexture3D) Update(data Image, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

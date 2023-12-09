@@ -25,6 +25,21 @@ func (me *ShaderGlobalsOverride) BaseClass() string {
   return "ShaderGlobalsOverride"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *ShaderGlobalsOverride) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *ShaderGlobalsOverride) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

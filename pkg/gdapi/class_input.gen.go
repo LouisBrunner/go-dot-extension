@@ -25,6 +25,10 @@ func (me *Input) BaseClass() string {
   return "Input"
 }
 
+
+
+// Enums
+
 type InputMouseMode int
 const (
   InputMouseModeMouseModeVisible InputMouseMode = 0
@@ -55,198 +59,209 @@ const (
   InputCursorShapeCursorHelp InputCursorShape = 16
 )
 
-func  (me *Input) IsAnythingPressed() { // TODO: return value
-  // TODO: implement
+func (me *Input) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Input) IsKeyPressed(keycode Key, ) { // TODO: return value
-  // TODO: implement
+func (me *Input) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Input) IsPhysicalKeyPressed(keycode Key, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Input) IsAnythingPressed()  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) IsKeyLabelPressed(keycode Key, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) IsKeyPressed(keycode Key, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) IsMouseButtonPressed(button MouseButton, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) IsPhysicalKeyPressed(keycode Key, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) IsJoyButtonPressed(device int, button JoyButton, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) IsKeyLabelPressed(keycode Key, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) IsActionPressed(action StringName, exact_match bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) IsMouseButtonPressed(button MouseButton, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) IsActionJustPressed(action StringName, exact_match bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) IsJoyButtonPressed(device int, button JoyButton, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) IsActionJustReleased(action StringName, exact_match bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) IsActionPressed(action StringName, exact_match bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetActionStrength(action StringName, exact_match bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) IsActionJustPressed(action StringName, exact_match bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetActionRawStrength(action StringName, exact_match bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) IsActionJustReleased(action StringName, exact_match bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetAxis(negative_action StringName, positive_action StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetActionStrength(action StringName, exact_match bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetVector(negative_x StringName, positive_x StringName, negative_y StringName, positive_y StringName, deadzone float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetActionRawStrength(action StringName, exact_match bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) AddJoyMapping(mapping String, update_existing bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetAxis(negative_action StringName, positive_action StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) RemoveJoyMapping(guid String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetVector(negative_x StringName, positive_x StringName, negative_y StringName, positive_y StringName, deadzone float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) IsJoyKnown(device int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) AddJoyMapping(mapping String, update_existing bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetJoyAxis(device int, axis JoyAxis, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) RemoveJoyMapping(guid String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetJoyName(device int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) IsJoyKnown(device int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetJoyGuid(device int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetJoyAxis(device int, axis JoyAxis, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) ShouldIgnoreDevice(vendor_id int, product_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetJoyName(device int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetConnectedJoypads() { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetJoyGuid(device int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetJoyVibrationStrength(device int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) ShouldIgnoreDevice(vendor_id int, product_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetJoyVibrationDuration(device int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetConnectedJoypads()  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) StartJoyVibration(device int, weak_magnitude float32, strong_magnitude float32, duration float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetJoyVibrationStrength(device int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) StopJoyVibration(device int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetJoyVibrationDuration(device int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) VibrateHandheld(duration_ms int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) StartJoyVibration(device int, weak_magnitude float32, strong_magnitude float32, duration float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetGravity() { // TODO: return value
-  // TODO: implement
+func  (me *Input) StopJoyVibration(device int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetAccelerometer() { // TODO: return value
-  // TODO: implement
+func  (me *Input) VibrateHandheld(duration_ms int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetMagnetometer() { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetGravity()  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetGyroscope() { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetAccelerometer()  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) SetGravity(value Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetMagnetometer()  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) SetAccelerometer(value Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetGyroscope()  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) SetMagnetometer(value Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) SetGravity(value Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) SetGyroscope(value Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) SetAccelerometer(value Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetLastMouseVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *Input) SetMagnetometer(value Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetMouseButtonMask() { // TODO: return value
-  // TODO: implement
+func  (me *Input) SetGyroscope(value Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) SetMouseMode(mode InputMouseMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetLastMouseVelocity()  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetMouseMode() { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetMouseButtonMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) WarpMouse(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) SetMouseMode(mode InputMouseMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) ActionPress(action StringName, strength float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetMouseMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) ActionRelease(action StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) WarpMouse(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) SetDefaultCursorShape(shape InputCursorShape, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) ActionPress(action StringName, strength float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) GetCurrentCursorShape() { // TODO: return value
-  // TODO: implement
+func  (me *Input) ActionRelease(action StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) SetCustomMouseCursor(image Resource, shape InputCursorShape, hotspot Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) SetDefaultCursorShape(shape InputCursorShape, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) ParseInputEvent(event InputEvent, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) GetCurrentCursorShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) SetUseAccumulatedInput(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Input) SetCustomMouseCursor(image Resource, shape InputCursorShape, hotspot Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) IsUsingAccumulatedInput() { // TODO: return value
-  // TODO: implement
+func  (me *Input) ParseInputEvent(event InputEvent, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Input) FlushBufferedEvents() { // TODO: return value
-  // TODO: implement
+func  (me *Input) SetUseAccumulatedInput(enable bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Input) IsUsingAccumulatedInput()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Input) FlushBufferedEvents()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

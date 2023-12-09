@@ -25,6 +25,10 @@ func (me *Gradient) BaseClass() string {
   return "Gradient"
 }
 
+
+
+// Enums
+
 type GradientInterpolationMode int
 const (
   GradientInterpolationModeGradientInterpolateLinear GradientInterpolationMode = 0
@@ -39,74 +43,85 @@ const (
   GradientColorSpaceGradientColorSpaceOklab GradientColorSpace = 2
 )
 
-func  (me *Gradient) AddPoint(offset float32, color Color, ) { // TODO: return value
-  // TODO: implement
+func (me *Gradient) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Gradient) RemovePoint(point int, ) { // TODO: return value
-  // TODO: implement
+func (me *Gradient) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Gradient) SetOffset(point int, offset float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Gradient) AddPoint(offset float32, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) GetOffset(point int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) RemovePoint(point int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) Reverse() { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) SetOffset(point int, offset float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) SetColor(point int, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) GetOffset(point int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) GetColor(point int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) Reverse()  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) Sample(offset float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) SetColor(point int, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) GetPointCount() { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) GetColor(point int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) SetOffsets(offsets PackedFloat32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) Sample(offset float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) GetOffsets() { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) GetPointCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) SetColors(colors PackedColorArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) SetOffsets(offsets PackedFloat32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) GetColors() { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) GetOffsets()  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) SetInterpolationMode(interpolation_mode GradientInterpolationMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) SetColors(colors PackedColorArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) GetInterpolationMode() { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) GetColors()  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) SetInterpolationColorSpace(interpolation_color_space GradientColorSpace, ) { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) SetInterpolationMode(interpolation_mode GradientInterpolationMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Gradient) GetInterpolationColorSpace() { // TODO: return value
-  // TODO: implement
+func  (me *Gradient) GetInterpolationMode()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Gradient) SetInterpolationColorSpace(interpolation_color_space GradientColorSpace, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Gradient) GetInterpolationColorSpace()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

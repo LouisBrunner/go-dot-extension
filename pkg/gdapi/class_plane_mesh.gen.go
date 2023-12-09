@@ -25,6 +25,10 @@ func (me *PlaneMesh) BaseClass() string {
   return "PlaneMesh"
 }
 
+
+
+// Enums
+
 type PlaneMeshOrientation int
 const (
   PlaneMeshOrientationFaceX PlaneMeshOrientation = 0
@@ -32,46 +36,57 @@ const (
   PlaneMeshOrientationFaceZ PlaneMeshOrientation = 2
 )
 
-func  (me *PlaneMesh) SetSize(size Vector2, ) { // TODO: return value
-  // TODO: implement
+func (me *PlaneMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PlaneMesh) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *PlaneMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PlaneMesh) SetSubdivideWidth(subdivide int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PlaneMesh) SetSize(size Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PlaneMesh) GetSubdivideWidth() { // TODO: return value
-  // TODO: implement
+func  (me *PlaneMesh) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *PlaneMesh) SetSubdivideDepth(subdivide int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PlaneMesh) SetSubdivideWidth(subdivide int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PlaneMesh) GetSubdivideDepth() { // TODO: return value
-  // TODO: implement
+func  (me *PlaneMesh) GetSubdivideWidth()  {
+  panic("TODO: implement")
 }
 
-func  (me *PlaneMesh) SetCenterOffset(offset Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *PlaneMesh) SetSubdivideDepth(subdivide int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PlaneMesh) GetCenterOffset() { // TODO: return value
-  // TODO: implement
+func  (me *PlaneMesh) GetSubdivideDepth()  {
+  panic("TODO: implement")
 }
 
-func  (me *PlaneMesh) SetOrientation(orientation PlaneMeshOrientation, ) { // TODO: return value
-  // TODO: implement
+func  (me *PlaneMesh) SetCenterOffset(offset Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PlaneMesh) GetOrientation() { // TODO: return value
-  // TODO: implement
+func  (me *PlaneMesh) GetCenterOffset()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PlaneMesh) SetOrientation(orientation PlaneMeshOrientation, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PlaneMesh) GetOrientation()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

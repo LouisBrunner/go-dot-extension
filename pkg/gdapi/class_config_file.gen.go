@@ -25,74 +25,89 @@ func (me *ConfigFile) BaseClass() string {
   return "ConfigFile"
 }
 
-func  (me *ConfigFile) SetValue(section String, key String, value Variant, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ConfigFile) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ConfigFile) GetValue(section String, key String, default_ Variant, ) { // TODO: return value
-  // TODO: implement
+func (me *ConfigFile) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ConfigFile) HasSection(section String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ConfigFile) SetValue(section String, key String, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) HasSectionKey(section String, key String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) GetValue(section String, key String, default_ Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) GetSections() { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) HasSection(section String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) GetSectionKeys(section String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) HasSectionKey(section String, key String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) EraseSection(section String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) GetSections()  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) EraseSectionKey(section String, key String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) GetSectionKeys(section String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) Load(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) EraseSection(section String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) Parse(data String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) EraseSectionKey(section String, key String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) Save(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) Load(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) EncodeToText() { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) Parse(data String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) LoadEncrypted(path String, key PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) Save(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) LoadEncryptedPass(path String, password String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) EncodeToText()  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) SaveEncrypted(path String, key PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) LoadEncrypted(path String, key PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) SaveEncryptedPass(path String, password String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) LoadEncryptedPass(path String, password String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConfigFile) Clear() { // TODO: return value
-  // TODO: implement
+func  (me *ConfigFile) SaveEncrypted(path String, key PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ConfigFile) SaveEncryptedPass(path String, password String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ConfigFile) Clear()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

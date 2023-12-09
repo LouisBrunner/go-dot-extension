@@ -25,14 +25,16 @@ func (me *VisualShader) BaseClass() string {
   return "VisualShader"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   VisualShaderNodeIdInvalid = "-1" // TODO: construct correctly
   VisualShaderNodeIdOutput = "0" // TODO: construct correctly
 )
+
+// Enums
 
 type VisualShaderType int
 const (
@@ -69,86 +71,97 @@ const (
   VisualShaderVaryingTypeVaryingTypeMax VisualShaderVaryingType = 8
 )
 
-func  (me *VisualShader) SetMode(mode ShaderMode, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShader) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShader) AddNode(type_ VisualShaderType, node VisualShaderNode, position Vector2, id int, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShader) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShader) GetNode(type_ VisualShaderType, id int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShader) SetMode(mode ShaderMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) SetNodePosition(type_ VisualShaderType, id int, position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) AddNode(type_ VisualShaderType, node VisualShaderNode, position Vector2, id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) GetNodePosition(type_ VisualShaderType, id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) GetNode(type_ VisualShaderType, id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) GetNodeList(type_ VisualShaderType, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) SetNodePosition(type_ VisualShaderType, id int, position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) GetValidNodeId(type_ VisualShaderType, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) GetNodePosition(type_ VisualShaderType, id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) RemoveNode(type_ VisualShaderType, id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) GetNodeList(type_ VisualShaderType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) ReplaceNode(type_ VisualShaderType, id int, new_class StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) GetValidNodeId(type_ VisualShaderType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) IsNodeConnection(type_ VisualShaderType, from_node int, from_port int, to_node int, to_port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) RemoveNode(type_ VisualShaderType, id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) CanConnectNodes(type_ VisualShaderType, from_node int, from_port int, to_node int, to_port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) ReplaceNode(type_ VisualShaderType, id int, new_class StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) ConnectNodes(type_ VisualShaderType, from_node int, from_port int, to_node int, to_port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) IsNodeConnection(type_ VisualShaderType, from_node int, from_port int, to_node int, to_port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) DisconnectNodes(type_ VisualShaderType, from_node int, from_port int, to_node int, to_port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) CanConnectNodes(type_ VisualShaderType, from_node int, from_port int, to_node int, to_port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) ConnectNodesForced(type_ VisualShaderType, from_node int, from_port int, to_node int, to_port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) ConnectNodes(type_ VisualShaderType, from_node int, from_port int, to_node int, to_port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) GetNodeConnections(type_ VisualShaderType, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) DisconnectNodes(type_ VisualShaderType, from_node int, from_port int, to_node int, to_port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) SetGraphOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) ConnectNodesForced(type_ VisualShaderType, from_node int, from_port int, to_node int, to_port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) GetGraphOffset() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) GetNodeConnections(type_ VisualShaderType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) AddVarying(name String, mode VisualShaderVaryingMode, type_ VisualShaderVaryingType, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) SetGraphOffset(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) RemoveVarying(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) GetGraphOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShader) HasVarying(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShader) AddVarying(name String, mode VisualShaderVaryingMode, type_ VisualShaderVaryingType, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShader) RemoveVarying(name String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShader) HasVarying(name String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

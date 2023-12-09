@@ -25,70 +25,83 @@ func (me *AnimatedTexture) BaseClass() string {
   return "AnimatedTexture"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   AnimatedTextureMaxFrames = "256" // TODO: construct correctly
 )
 
-func  (me *AnimatedTexture) SetFrames(frames int, ) { // TODO: return value
-  // TODO: implement
+// Enums
+
+func (me *AnimatedTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AnimatedTexture) GetFrames() { // TODO: return value
-  // TODO: implement
+func (me *AnimatedTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AnimatedTexture) SetCurrentFrame(frame int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AnimatedTexture) SetFrames(frames int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimatedTexture) GetCurrentFrame() { // TODO: return value
-  // TODO: implement
+func  (me *AnimatedTexture) GetFrames()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimatedTexture) SetPause(pause bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimatedTexture) SetCurrentFrame(frame int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimatedTexture) GetPause() { // TODO: return value
-  // TODO: implement
+func  (me *AnimatedTexture) GetCurrentFrame()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimatedTexture) SetOneShot(one_shot bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimatedTexture) SetPause(pause bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimatedTexture) GetOneShot() { // TODO: return value
-  // TODO: implement
+func  (me *AnimatedTexture) GetPause()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimatedTexture) SetSpeedScale(scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimatedTexture) SetOneShot(one_shot bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimatedTexture) GetSpeedScale() { // TODO: return value
-  // TODO: implement
+func  (me *AnimatedTexture) GetOneShot()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimatedTexture) SetFrameTexture(frame int, texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimatedTexture) SetSpeedScale(scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimatedTexture) GetFrameTexture(frame int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimatedTexture) GetSpeedScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimatedTexture) SetFrameDuration(frame int, duration float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimatedTexture) SetFrameTexture(frame int, texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimatedTexture) GetFrameDuration(frame int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimatedTexture) GetFrameTexture(frame int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AnimatedTexture) SetFrameDuration(frame int, duration float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AnimatedTexture) GetFrameDuration(frame int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

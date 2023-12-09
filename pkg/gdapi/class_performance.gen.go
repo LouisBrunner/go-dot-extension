@@ -25,6 +25,10 @@ func (me *Performance) BaseClass() string {
   return "Performance"
 }
 
+
+
+// Enums
+
 type PerformanceMonitor int
 const (
   PerformanceMonitorTimeFps PerformanceMonitor = 0
@@ -63,34 +67,45 @@ const (
   PerformanceMonitorMonitorMax PerformanceMonitor = 33
 )
 
-func  (me *Performance) GetMonitor(monitor PerformanceMonitor, ) { // TODO: return value
-  // TODO: implement
+func (me *Performance) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Performance) AddCustomMonitor(id StringName, callable Callable, arguments Array, ) { // TODO: return value
-  // TODO: implement
+func (me *Performance) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Performance) RemoveCustomMonitor(id StringName, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Performance) GetMonitor(monitor PerformanceMonitor, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Performance) HasCustomMonitor(id StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Performance) AddCustomMonitor(id StringName, callable Callable, arguments Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Performance) GetCustomMonitor(id StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Performance) RemoveCustomMonitor(id StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Performance) GetMonitorModificationTime() { // TODO: return value
-  // TODO: implement
+func  (me *Performance) HasCustomMonitor(id StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Performance) GetCustomMonitorNames() { // TODO: return value
-  // TODO: implement
+func  (me *Performance) GetCustomMonitor(id StringName, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Performance) GetMonitorModificationTime()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Performance) GetCustomMonitorNames()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

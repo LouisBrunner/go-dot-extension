@@ -25,30 +25,45 @@ func (me *CanvasGroup) BaseClass() string {
   return "CanvasGroup"
 }
 
-func  (me *CanvasGroup) SetFitMargin(fit_margin float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CanvasGroup) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CanvasGroup) GetFitMargin() { // TODO: return value
-  // TODO: implement
+func (me *CanvasGroup) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CanvasGroup) SetClearMargin(clear_margin float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CanvasGroup) SetFitMargin(fit_margin float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasGroup) GetClearMargin() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasGroup) GetFitMargin()  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasGroup) SetUseMipmaps(use_mipmaps bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CanvasGroup) SetClearMargin(clear_margin float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasGroup) IsUsingMipmaps() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasGroup) GetClearMargin()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CanvasGroup) SetUseMipmaps(use_mipmaps bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CanvasGroup) IsUsingMipmaps()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

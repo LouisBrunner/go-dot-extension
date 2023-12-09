@@ -25,6 +25,10 @@ func (me *ReflectionProbe) BaseClass() string {
   return "ReflectionProbe"
 }
 
+
+
+// Enums
+
 type ReflectionProbeUpdateMode int
 const (
   ReflectionProbeUpdateModeUpdateOnce ReflectionProbeUpdateMode = 0
@@ -38,110 +42,121 @@ const (
   ReflectionProbeAmbientModeAmbientColor ReflectionProbeAmbientMode = 2
 )
 
-func  (me *ReflectionProbe) SetIntensity(intensity float32, ) { // TODO: return value
-  // TODO: implement
+func (me *ReflectionProbe) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ReflectionProbe) GetIntensity() { // TODO: return value
-  // TODO: implement
+func (me *ReflectionProbe) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ReflectionProbe) SetAmbientMode(ambient ReflectionProbeAmbientMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ReflectionProbe) SetIntensity(intensity float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) GetAmbientMode() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) GetIntensity()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) SetAmbientColor(ambient Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) SetAmbientMode(ambient ReflectionProbeAmbientMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) GetAmbientColor() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) GetAmbientMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) SetAmbientColorEnergy(ambient_energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) SetAmbientColor(ambient Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) GetAmbientColorEnergy() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) GetAmbientColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) SetMaxDistance(max_distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) SetAmbientColorEnergy(ambient_energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) GetMaxDistance() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) GetAmbientColorEnergy()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) SetMeshLodThreshold(ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) SetMaxDistance(max_distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) GetMeshLodThreshold() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) GetMaxDistance()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) SetMeshLodThreshold(ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) GetSize() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) GetMeshLodThreshold()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) SetOriginOffset(origin_offset Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) SetSize(size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) GetOriginOffset() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) SetAsInterior(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) SetOriginOffset(origin_offset Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) IsSetAsInterior() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) GetOriginOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) SetEnableBoxProjection(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) SetAsInterior(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) IsBoxProjectionEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) IsSetAsInterior()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) SetEnableShadows(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) SetEnableBoxProjection(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) AreShadowsEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) IsBoxProjectionEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) SetCullMask(layers int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) SetEnableShadows(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) GetCullMask() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) AreShadowsEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) SetUpdateMode(mode ReflectionProbeUpdateMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) SetCullMask(layers int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReflectionProbe) GetUpdateMode() { // TODO: return value
-  // TODO: implement
+func  (me *ReflectionProbe) GetCullMask()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ReflectionProbe) SetUpdateMode(mode ReflectionProbeUpdateMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ReflectionProbe) GetUpdateMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,110 +25,125 @@ func (me *AudioEffectDelay) BaseClass() string {
   return "AudioEffectDelay"
 }
 
-func  (me *AudioEffectDelay) SetDry(amount float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffectDelay) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectDelay) GetDry() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectDelay) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectDelay) SetTap1Active(amount bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectDelay) SetDry(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) IsTap1Active() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) GetDry()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) SetTap1DelayMs(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) SetTap1Active(amount bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) GetTap1DelayMs() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) IsTap1Active()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) SetTap1LevelDb(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) SetTap1DelayMs(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) GetTap1LevelDb() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) GetTap1DelayMs()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) SetTap1Pan(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) SetTap1LevelDb(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) GetTap1Pan() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) GetTap1LevelDb()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) SetTap2Active(amount bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) SetTap1Pan(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) IsTap2Active() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) GetTap1Pan()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) SetTap2DelayMs(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) SetTap2Active(amount bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) GetTap2DelayMs() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) IsTap2Active()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) SetTap2LevelDb(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) SetTap2DelayMs(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) GetTap2LevelDb() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) GetTap2DelayMs()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) SetTap2Pan(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) SetTap2LevelDb(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) GetTap2Pan() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) GetTap2LevelDb()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) SetFeedbackActive(amount bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) SetTap2Pan(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) IsFeedbackActive() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) GetTap2Pan()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) SetFeedbackDelayMs(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) SetFeedbackActive(amount bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) GetFeedbackDelayMs() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) IsFeedbackActive()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) SetFeedbackLevelDb(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) SetFeedbackDelayMs(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) GetFeedbackLevelDb() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) GetFeedbackDelayMs()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) SetFeedbackLowpass(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) SetFeedbackLevelDb(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDelay) GetFeedbackLowpass() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDelay) GetFeedbackLevelDb()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectDelay) SetFeedbackLowpass(amount float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectDelay) GetFeedbackLowpass()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

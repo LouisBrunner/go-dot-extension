@@ -25,54 +25,69 @@ func (me *FontVariation) BaseClass() string {
   return "FontVariation"
 }
 
-func  (me *FontVariation) SetBaseFont(font Font, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *FontVariation) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *FontVariation) GetBaseFont() { // TODO: return value
-  // TODO: implement
+func (me *FontVariation) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *FontVariation) SetVariationOpentype(coords Dictionary, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *FontVariation) SetBaseFont(font Font, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FontVariation) GetVariationOpentype() { // TODO: return value
-  // TODO: implement
+func  (me *FontVariation) GetBaseFont()  {
+  panic("TODO: implement")
 }
 
-func  (me *FontVariation) SetVariationEmbolden(strength float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FontVariation) SetVariationOpentype(coords Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FontVariation) GetVariationEmbolden() { // TODO: return value
-  // TODO: implement
+func  (me *FontVariation) GetVariationOpentype()  {
+  panic("TODO: implement")
 }
 
-func  (me *FontVariation) SetVariationFaceIndex(face_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *FontVariation) SetVariationEmbolden(strength float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FontVariation) GetVariationFaceIndex() { // TODO: return value
-  // TODO: implement
+func  (me *FontVariation) GetVariationEmbolden()  {
+  panic("TODO: implement")
 }
 
-func  (me *FontVariation) SetVariationTransform(transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *FontVariation) SetVariationFaceIndex(face_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FontVariation) GetVariationTransform() { // TODO: return value
-  // TODO: implement
+func  (me *FontVariation) GetVariationFaceIndex()  {
+  panic("TODO: implement")
 }
 
-func  (me *FontVariation) SetOpentypeFeatures(features Dictionary, ) { // TODO: return value
-  // TODO: implement
+func  (me *FontVariation) SetVariationTransform(transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FontVariation) SetSpacing(spacing TextServerSpacingType, value int, ) { // TODO: return value
-  // TODO: implement
+func  (me *FontVariation) GetVariationTransform()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *FontVariation) SetOpentypeFeatures(features Dictionary, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *FontVariation) SetSpacing(spacing TextServerSpacingType, value int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

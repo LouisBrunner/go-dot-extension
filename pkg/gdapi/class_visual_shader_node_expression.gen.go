@@ -25,14 +25,29 @@ func (me *VisualShaderNodeExpression) BaseClass() string {
   return "VisualShaderNodeExpression"
 }
 
-func  (me *VisualShaderNodeExpression) SetExpression(expression String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeExpression) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeExpression) GetExpression() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeExpression) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeExpression) SetExpression(expression String, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeExpression) GetExpression()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

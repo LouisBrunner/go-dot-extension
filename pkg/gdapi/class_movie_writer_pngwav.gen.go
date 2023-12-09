@@ -25,6 +25,21 @@ func (me *MovieWriterPNGWAV) BaseClass() string {
   return "MovieWriterPNGWAV"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *MovieWriterPNGWAV) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *MovieWriterPNGWAV) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

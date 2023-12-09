@@ -25,38 +25,53 @@ func (me *Slider) BaseClass() string {
   return "Slider"
 }
 
-func  (me *Slider) SetTicks(count int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Slider) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Slider) GetTicks() { // TODO: return value
-  // TODO: implement
+func (me *Slider) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Slider) GetTicksOnBorders() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Slider) SetTicks(count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Slider) SetTicksOnBorders(ticks_on_border bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Slider) GetTicks()  {
+  panic("TODO: implement")
 }
 
-func  (me *Slider) SetEditable(editable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Slider) GetTicksOnBorders()  {
+  panic("TODO: implement")
 }
 
-func  (me *Slider) IsEditable() { // TODO: return value
-  // TODO: implement
+func  (me *Slider) SetTicksOnBorders(ticks_on_border bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Slider) SetScrollable(scrollable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Slider) SetEditable(editable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Slider) IsScrollable() { // TODO: return value
-  // TODO: implement
+func  (me *Slider) IsEditable()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Slider) SetScrollable(scrollable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Slider) IsScrollable()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

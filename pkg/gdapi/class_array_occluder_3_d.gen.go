@@ -25,18 +25,33 @@ func (me *ArrayOccluder3D) BaseClass() string {
   return "ArrayOccluder3D"
 }
 
-func  (me *ArrayOccluder3D) SetArrays(vertices PackedVector3Array, indices PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ArrayOccluder3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ArrayOccluder3D) SetVertices(vertices PackedVector3Array, ) { // TODO: return value
-  // TODO: implement
+func (me *ArrayOccluder3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ArrayOccluder3D) SetIndices(indices PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ArrayOccluder3D) SetArrays(vertices PackedVector3Array, indices PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ArrayOccluder3D) SetVertices(vertices PackedVector3Array, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ArrayOccluder3D) SetIndices(indices PackedInt32Array, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

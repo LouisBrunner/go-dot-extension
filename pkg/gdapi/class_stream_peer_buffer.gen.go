@@ -25,38 +25,53 @@ func (me *StreamPeerBuffer) BaseClass() string {
   return "StreamPeerBuffer"
 }
 
-func  (me *StreamPeerBuffer) Seek(position int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *StreamPeerBuffer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *StreamPeerBuffer) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *StreamPeerBuffer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *StreamPeerBuffer) GetPosition() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *StreamPeerBuffer) Seek(position int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerBuffer) Resize(size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerBuffer) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerBuffer) SetDataArray(data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerBuffer) GetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerBuffer) GetDataArray() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerBuffer) Resize(size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerBuffer) Clear() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerBuffer) SetDataArray(data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerBuffer) Duplicate() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerBuffer) GetDataArray()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *StreamPeerBuffer) Clear()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *StreamPeerBuffer) Duplicate()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,18 +25,33 @@ func (me *Semaphore) BaseClass() string {
   return "Semaphore"
 }
 
-func  (me *Semaphore) Wait() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Semaphore) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Semaphore) TryWait() { // TODO: return value
-  // TODO: implement
+func (me *Semaphore) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Semaphore) Post() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Semaphore) Wait()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Semaphore) TryWait()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Semaphore) Post()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

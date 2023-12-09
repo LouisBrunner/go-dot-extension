@@ -25,10 +25,25 @@ func (me *JavaClassWrapper) BaseClass() string {
   return "JavaClassWrapper"
 }
 
-func  (me *JavaClassWrapper) Wrap(name String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *JavaClassWrapper) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *JavaClassWrapper) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *JavaClassWrapper) Wrap(name String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,21 @@ func (me *CheckBox) BaseClass() string {
   return "CheckBox"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *CheckBox) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *CheckBox) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

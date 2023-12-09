@@ -25,46 +25,61 @@ func (me *GLTFBufferView) BaseClass() string {
   return "GLTFBufferView"
 }
 
-func  (me *GLTFBufferView) GetBuffer() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFBufferView) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFBufferView) SetBuffer(buffer int, ) { // TODO: return value
-  // TODO: implement
+func (me *GLTFBufferView) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GLTFBufferView) GetByteOffset() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GLTFBufferView) GetBuffer()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFBufferView) SetByteOffset(byte_offset int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFBufferView) SetBuffer(buffer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFBufferView) GetByteLength() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFBufferView) GetByteOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFBufferView) SetByteLength(byte_length int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFBufferView) SetByteOffset(byte_offset int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFBufferView) GetByteStride() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFBufferView) GetByteLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFBufferView) SetByteStride(byte_stride int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFBufferView) SetByteLength(byte_length int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFBufferView) GetIndices() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFBufferView) GetByteStride()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFBufferView) SetIndices(indices bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFBufferView) SetByteStride(byte_stride int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFBufferView) GetIndices()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFBufferView) SetIndices(indices bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

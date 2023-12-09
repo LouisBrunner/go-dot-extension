@@ -25,6 +25,21 @@ func (me *VisualShaderNodeSDFToScreenUV) BaseClass() string {
   return "VisualShaderNodeSDFToScreenUV"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *VisualShaderNodeSDFToScreenUV) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *VisualShaderNodeSDFToScreenUV) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

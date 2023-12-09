@@ -25,6 +25,10 @@ func (me *Line2D) BaseClass() string {
   return "Line2D"
 }
 
+
+
+// Enums
+
 type Line2DLineJointMode int
 const (
   Line2DLineJointModeLineJointSharp Line2DLineJointMode = 0
@@ -46,134 +50,145 @@ const (
   Line2DLineTextureModeLineTextureStretch Line2DLineTextureMode = 2
 )
 
-func  (me *Line2D) SetPoints(points PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+func (me *Line2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Line2D) GetPoints() { // TODO: return value
-  // TODO: implement
+func (me *Line2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Line2D) SetPointPosition(index int, position Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Line2D) SetPoints(points PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetPointPosition(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetPoints()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetPointCount() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetPointPosition(index int, position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) AddPoint(position Vector2, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetPointPosition(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) RemovePoint(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetPointCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) ClearPoints() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) AddPoint(position Vector2, index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetWidth(width float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) RemovePoint(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetWidth() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) ClearPoints()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetCurve(curve Curve, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetWidth(width float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetCurve() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetWidth()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetDefaultColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetCurve(curve Curve, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetDefaultColor() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetCurve()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetGradient(color Gradient, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetDefaultColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetGradient() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetDefaultColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetGradient(color Gradient, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetTexture() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetGradient()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetTextureMode(mode Line2DLineTextureMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetTextureMode() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetJointMode(mode Line2DLineJointMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetTextureMode(mode Line2DLineTextureMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetJointMode() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetTextureMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetBeginCapMode(mode Line2DLineCapMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetJointMode(mode Line2DLineJointMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetBeginCapMode() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetJointMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetEndCapMode(mode Line2DLineCapMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetBeginCapMode(mode Line2DLineCapMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetEndCapMode() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetBeginCapMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetSharpLimit(limit float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetEndCapMode(mode Line2DLineCapMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetSharpLimit() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetEndCapMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetRoundPrecision(precision int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetSharpLimit(limit float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetRoundPrecision() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetSharpLimit()  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) SetAntialiased(antialiased bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) SetRoundPrecision(precision int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Line2D) GetAntialiased() { // TODO: return value
-  // TODO: implement
+func  (me *Line2D) GetRoundPrecision()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Line2D) SetAntialiased(antialiased bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Line2D) GetAntialiased()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

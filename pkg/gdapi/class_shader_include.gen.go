@@ -25,14 +25,29 @@ func (me *ShaderInclude) BaseClass() string {
   return "ShaderInclude"
 }
 
-func  (me *ShaderInclude) SetCode(code String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ShaderInclude) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ShaderInclude) GetCode() { // TODO: return value
-  // TODO: implement
+func (me *ShaderInclude) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *ShaderInclude) SetCode(code String, )  {
+  panic("TODO: implement")
+}
+
+func  (me *ShaderInclude) GetCode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

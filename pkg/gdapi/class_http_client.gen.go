@@ -25,6 +25,10 @@ func (me *HTTPClient) BaseClass() string {
   return "HTTPClient"
 }
 
+
+
+// Enums
+
 type HTTPClientMethod int
 const (
   HTTPClientMethodMethodGet HTTPClientMethod = 0
@@ -118,94 +122,105 @@ const (
   HTTPClientResponseCodeResponseNetworkAuthRequired HTTPClientResponseCode = 511
 )
 
-func  (me *HTTPClient) ConnectToHost(host String, port int, tls_options TLSOptions, ) { // TODO: return value
-  // TODO: implement
+func (me *HTTPClient) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *HTTPClient) SetConnection(connection StreamPeer, ) { // TODO: return value
-  // TODO: implement
+func (me *HTTPClient) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *HTTPClient) GetConnection() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *HTTPClient) ConnectToHost(host String, port int, tls_options TLSOptions, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) RequestRaw(method HTTPClientMethod, url String, headers PackedStringArray, body PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) SetConnection(connection StreamPeer, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) Request(method HTTPClientMethod, url String, headers PackedStringArray, body String, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) GetConnection()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) Close() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) RequestRaw(method HTTPClientMethod, url String, headers PackedStringArray, body PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) HasResponse() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) Request(method HTTPClientMethod, url String, headers PackedStringArray, body String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) IsResponseChunked() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) Close()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) GetResponseCode() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) HasResponse()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) GetResponseHeaders() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) IsResponseChunked()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) GetResponseHeadersAsDictionary() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) GetResponseCode()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) GetResponseBodyLength() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) GetResponseHeaders()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) ReadResponseBodyChunk() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) GetResponseHeadersAsDictionary()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) SetReadChunkSize(bytes int, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) GetResponseBodyLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) GetReadChunkSize() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) ReadResponseBodyChunk()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) SetBlockingMode(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) SetReadChunkSize(bytes int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) IsBlockingModeEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) GetReadChunkSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) GetStatus() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) SetBlockingMode(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) Poll() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) IsBlockingModeEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) SetHttpProxy(host String, port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) GetStatus()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) SetHttpsProxy(host String, port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) Poll()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPClient) QueryStringFromDict(fields Dictionary, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPClient) SetHttpProxy(host String, port int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *HTTPClient) SetHttpsProxy(host String, port int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *HTTPClient) QueryStringFromDict(fields Dictionary, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

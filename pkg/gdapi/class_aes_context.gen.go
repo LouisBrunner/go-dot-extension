@@ -25,6 +25,10 @@ func (me *AESContext) BaseClass() string {
   return "AESContext"
 }
 
+
+
+// Enums
+
 type AESContextMode int
 const (
   AESContextModeModeEcbEncrypt AESContextMode = 0
@@ -34,22 +38,33 @@ const (
   AESContextModeModeMax AESContextMode = 4
 )
 
-func  (me *AESContext) Start(mode AESContextMode, key PackedByteArray, iv PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func (me *AESContext) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AESContext) Update(src PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func (me *AESContext) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AESContext) GetIvState() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AESContext) Start(mode AESContextMode, key PackedByteArray, iv PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AESContext) Finish() { // TODO: return value
-  // TODO: implement
+func  (me *AESContext) Update(src PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AESContext) GetIvState()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AESContext) Finish()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

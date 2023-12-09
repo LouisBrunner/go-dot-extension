@@ -25,6 +25,10 @@ func (me *Tree) BaseClass() string {
   return "Tree"
 }
 
+
+
+// Enums
+
 type TreeSelectMode int
 const (
   TreeSelectModeSelectSingle TreeSelectMode = 0
@@ -39,250 +43,261 @@ const (
   TreeDropModeFlagsDropModeInbetween TreeDropModeFlags = 2
 )
 
-func  (me *Tree) Clear() { // TODO: return value
-  // TODO: implement
+func (me *Tree) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Tree) CreateItem(parent TreeItem, index int, ) { // TODO: return value
-  // TODO: implement
+func (me *Tree) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Tree) GetRoot() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Tree) Clear()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetColumnCustomMinimumWidth(column int, min_width int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) CreateItem(parent TreeItem, index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetColumnExpand(column int, expand bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetRoot()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetColumnExpandRatio(column int, ratio int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetColumnCustomMinimumWidth(column int, min_width int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetColumnClipContent(column int, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetColumnExpand(column int, expand bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) IsColumnExpanding(column int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetColumnExpandRatio(column int, ratio int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) IsColumnClippingContent(column int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetColumnClipContent(column int, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetColumnExpandRatio(column int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) IsColumnExpanding(column int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetColumnWidth(column int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) IsColumnClippingContent(column int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetHideRoot(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetColumnExpandRatio(column int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) IsRootHidden() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetColumnWidth(column int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetNextSelected(from TreeItem, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetHideRoot(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetSelected() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) IsRootHidden()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetSelected(item TreeItem, column int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetNextSelected(from TreeItem, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetSelectedColumn() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetSelected()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetPressedButton() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetSelected(item TreeItem, column int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetSelectMode(mode TreeSelectMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetSelectedColumn()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetSelectMode() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetPressedButton()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) DeselectAll() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetSelectMode(mode TreeSelectMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetColumns(amount int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetSelectMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetColumns() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) DeselectAll()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetEdited() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetColumns(amount int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetEditedColumn() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetColumns()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) EditSelected(force_edit bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetEdited()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetCustomPopupRect() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetEditedColumn()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetItemAreaRect(item TreeItem, column int, button_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) EditSelected(force_edit bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetItemAtPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetCustomPopupRect()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetColumnAtPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetItemAreaRect(item TreeItem, column int, button_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetDropSectionAtPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetItemAtPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetButtonIdAtPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetColumnAtPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) EnsureCursorIsVisible() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetDropSectionAtPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetColumnTitlesVisible(visible bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetButtonIdAtPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) AreColumnTitlesVisible() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) EnsureCursorIsVisible()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetColumnTitle(column int, title String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetColumnTitlesVisible(visible bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetColumnTitle(column int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) AreColumnTitlesVisible()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetColumnTitleAlignment(column int, title_alignment HorizontalAlignment, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetColumnTitle(column int, title String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetColumnTitleAlignment(column int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetColumnTitle(column int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetColumnTitleDirection(column int, direction ControlTextDirection, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetColumnTitleAlignment(column int, title_alignment HorizontalAlignment, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetColumnTitleDirection(column int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetColumnTitleAlignment(column int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetColumnTitleLanguage(column int, language String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetColumnTitleDirection(column int, direction ControlTextDirection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetColumnTitleLanguage(column int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetColumnTitleDirection(column int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetScroll() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetColumnTitleLanguage(column int, language String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) ScrollToItem(item TreeItem, center_on_item bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetColumnTitleLanguage(column int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetHScrollEnabled(h_scroll bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetScroll()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) IsHScrollEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) ScrollToItem(item TreeItem, center_on_item bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetVScrollEnabled(h_scroll bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetHScrollEnabled(h_scroll bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) IsVScrollEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) IsHScrollEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetHideFolding(hide bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetVScrollEnabled(h_scroll bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) IsFoldingHidden() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) IsVScrollEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetEnableRecursiveFolding(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetHideFolding(hide bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) IsRecursiveFoldingEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) IsFoldingHidden()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetDropModeFlags(flags int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetEnableRecursiveFolding(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetDropModeFlags() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) IsRecursiveFoldingEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetAllowRmbSelect(allow bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetDropModeFlags(flags int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetAllowRmbSelect() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetDropModeFlags()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetAllowReselect(allow bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetAllowRmbSelect(allow bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetAllowReselect() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetAllowRmbSelect()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) SetAllowSearch(allow bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tree) SetAllowReselect(allow bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tree) GetAllowSearch() { // TODO: return value
-  // TODO: implement
+func  (me *Tree) GetAllowReselect()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Tree) SetAllowSearch(allow bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Tree) GetAllowSearch()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

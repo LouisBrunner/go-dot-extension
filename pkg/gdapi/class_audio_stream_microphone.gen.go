@@ -25,6 +25,21 @@ func (me *AudioStreamMicrophone) BaseClass() string {
   return "AudioStreamMicrophone"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *AudioStreamMicrophone) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *AudioStreamMicrophone) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

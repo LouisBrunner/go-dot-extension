@@ -25,22 +25,37 @@ func (me *NavigationMeshGenerator) BaseClass() string {
   return "NavigationMeshGenerator"
 }
 
-func  (me *NavigationMeshGenerator) Bake(navigation_mesh NavigationMesh, root_node Node, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *NavigationMeshGenerator) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *NavigationMeshGenerator) Clear(navigation_mesh NavigationMesh, ) { // TODO: return value
-  // TODO: implement
+func (me *NavigationMeshGenerator) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *NavigationMeshGenerator) ParseSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, root_node Node, callback Callable, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *NavigationMeshGenerator) Bake(navigation_mesh NavigationMesh, root_node Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationMeshGenerator) BakeFromSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, callback Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationMeshGenerator) Clear(navigation_mesh NavigationMesh, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *NavigationMeshGenerator) ParseSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, root_node Node, callback Callable, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *NavigationMeshGenerator) BakeFromSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, callback Callable, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

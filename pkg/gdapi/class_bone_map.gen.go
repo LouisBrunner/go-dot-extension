@@ -25,26 +25,41 @@ func (me *BoneMap) BaseClass() string {
   return "BoneMap"
 }
 
-func  (me *BoneMap) GetProfile() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *BoneMap) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *BoneMap) SetProfile(profile SkeletonProfile, ) { // TODO: return value
-  // TODO: implement
+func (me *BoneMap) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *BoneMap) GetSkeletonBoneName(profile_bone_name StringName, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *BoneMap) GetProfile()  {
+  panic("TODO: implement")
 }
 
-func  (me *BoneMap) SetSkeletonBoneName(profile_bone_name StringName, skeleton_bone_name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *BoneMap) SetProfile(profile SkeletonProfile, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BoneMap) FindProfileBoneName(skeleton_bone_name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *BoneMap) GetSkeletonBoneName(profile_bone_name StringName, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *BoneMap) SetSkeletonBoneName(profile_bone_name StringName, skeleton_bone_name StringName, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *BoneMap) FindProfileBoneName(skeleton_bone_name StringName, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

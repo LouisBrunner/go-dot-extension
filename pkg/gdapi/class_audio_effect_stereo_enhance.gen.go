@@ -25,30 +25,45 @@ func (me *AudioEffectStereoEnhance) BaseClass() string {
   return "AudioEffectStereoEnhance"
 }
 
-func  (me *AudioEffectStereoEnhance) SetPanPullout(amount float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffectStereoEnhance) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectStereoEnhance) GetPanPullout() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectStereoEnhance) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectStereoEnhance) SetTimePullout(amount float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectStereoEnhance) SetPanPullout(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectStereoEnhance) GetTimePullout() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectStereoEnhance) GetPanPullout()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectStereoEnhance) SetSurround(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectStereoEnhance) SetTimePullout(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectStereoEnhance) GetSurround() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectStereoEnhance) GetTimePullout()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectStereoEnhance) SetSurround(amount float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectStereoEnhance) GetSurround()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,38 +25,53 @@ func (me *InputEventScreenTouch) BaseClass() string {
   return "InputEventScreenTouch"
 }
 
-func  (me *InputEventScreenTouch) SetIndex(index int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventScreenTouch) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventScreenTouch) GetIndex() { // TODO: return value
-  // TODO: implement
+func (me *InputEventScreenTouch) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *InputEventScreenTouch) SetPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *InputEventScreenTouch) SetIndex(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenTouch) GetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenTouch) GetIndex()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenTouch) SetPressed(pressed bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenTouch) SetPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenTouch) SetCanceled(canceled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenTouch) GetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenTouch) SetDoubleTap(double_tap bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenTouch) SetPressed(pressed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenTouch) IsDoubleTap() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenTouch) SetCanceled(canceled bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *InputEventScreenTouch) SetDoubleTap(double_tap bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *InputEventScreenTouch) IsDoubleTap()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

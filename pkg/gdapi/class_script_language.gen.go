@@ -25,6 +25,21 @@ func (me *ScriptLanguage) BaseClass() string {
   return "ScriptLanguage"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *ScriptLanguage) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *ScriptLanguage) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

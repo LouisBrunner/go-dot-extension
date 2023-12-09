@@ -25,22 +25,37 @@ func (me *InputEventJoypadMotion) BaseClass() string {
   return "InputEventJoypadMotion"
 }
 
-func  (me *InputEventJoypadMotion) SetAxis(axis JoyAxis, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventJoypadMotion) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventJoypadMotion) GetAxis() { // TODO: return value
-  // TODO: implement
+func (me *InputEventJoypadMotion) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *InputEventJoypadMotion) SetAxisValue(axis_value float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *InputEventJoypadMotion) SetAxis(axis JoyAxis, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventJoypadMotion) GetAxisValue() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventJoypadMotion) GetAxis()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *InputEventJoypadMotion) SetAxisValue(axis_value float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *InputEventJoypadMotion) GetAxisValue()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

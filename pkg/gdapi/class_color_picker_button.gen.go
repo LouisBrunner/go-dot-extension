@@ -25,30 +25,45 @@ func (me *ColorPickerButton) BaseClass() string {
   return "ColorPickerButton"
 }
 
-func  (me *ColorPickerButton) SetPickColor(color Color, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ColorPickerButton) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ColorPickerButton) GetPickColor() { // TODO: return value
-  // TODO: implement
+func (me *ColorPickerButton) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ColorPickerButton) GetPicker() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ColorPickerButton) SetPickColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ColorPickerButton) GetPopup() { // TODO: return value
-  // TODO: implement
+func  (me *ColorPickerButton) GetPickColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *ColorPickerButton) SetEditAlpha(show bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ColorPickerButton) GetPicker()  {
+  panic("TODO: implement")
 }
 
-func  (me *ColorPickerButton) IsEditingAlpha() { // TODO: return value
-  // TODO: implement
+func  (me *ColorPickerButton) GetPopup()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ColorPickerButton) SetEditAlpha(show bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ColorPickerButton) IsEditingAlpha()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

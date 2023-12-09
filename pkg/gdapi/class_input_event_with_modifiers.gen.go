@@ -25,54 +25,69 @@ func (me *InputEventWithModifiers) BaseClass() string {
   return "InputEventWithModifiers"
 }
 
-func  (me *InputEventWithModifiers) SetCommandOrControlAutoremap(enable bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventWithModifiers) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventWithModifiers) IsCommandOrControlAutoremap() { // TODO: return value
-  // TODO: implement
+func (me *InputEventWithModifiers) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *InputEventWithModifiers) IsCommandOrControlPressed() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *InputEventWithModifiers) SetCommandOrControlAutoremap(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventWithModifiers) SetAltPressed(pressed bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventWithModifiers) IsCommandOrControlAutoremap()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventWithModifiers) IsAltPressed() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventWithModifiers) IsCommandOrControlPressed()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventWithModifiers) SetShiftPressed(pressed bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventWithModifiers) SetAltPressed(pressed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventWithModifiers) IsShiftPressed() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventWithModifiers) IsAltPressed()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventWithModifiers) SetCtrlPressed(pressed bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventWithModifiers) SetShiftPressed(pressed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventWithModifiers) IsCtrlPressed() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventWithModifiers) IsShiftPressed()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventWithModifiers) SetMetaPressed(pressed bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventWithModifiers) SetCtrlPressed(pressed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventWithModifiers) IsMetaPressed() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventWithModifiers) IsCtrlPressed()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventWithModifiers) GetModifiersMask() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventWithModifiers) SetMetaPressed(pressed bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *InputEventWithModifiers) IsMetaPressed()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *InputEventWithModifiers) GetModifiersMask()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

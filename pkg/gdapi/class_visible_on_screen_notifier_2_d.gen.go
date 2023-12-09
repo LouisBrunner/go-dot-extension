@@ -25,18 +25,33 @@ func (me *VisibleOnScreenNotifier2D) BaseClass() string {
   return "VisibleOnScreenNotifier2D"
 }
 
-func  (me *VisibleOnScreenNotifier2D) SetRect(rect Rect2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisibleOnScreenNotifier2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisibleOnScreenNotifier2D) GetRect() { // TODO: return value
-  // TODO: implement
+func (me *VisibleOnScreenNotifier2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisibleOnScreenNotifier2D) IsOnScreen() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisibleOnScreenNotifier2D) SetRect(rect Rect2, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisibleOnScreenNotifier2D) GetRect()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisibleOnScreenNotifier2D) IsOnScreen()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

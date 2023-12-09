@@ -25,6 +25,10 @@ func (me *AspectRatioContainer) BaseClass() string {
   return "AspectRatioContainer"
 }
 
+
+
+// Enums
+
 type AspectRatioContainerStretchMode int
 const (
   AspectRatioContainerStretchModeStretchWidthControlsHeight AspectRatioContainerStretchMode = 0
@@ -40,38 +44,49 @@ const (
   AspectRatioContainerAlignmentModeAlignmentEnd AspectRatioContainerAlignmentMode = 2
 )
 
-func  (me *AspectRatioContainer) SetRatio(ratio float32, ) { // TODO: return value
-  // TODO: implement
+func (me *AspectRatioContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AspectRatioContainer) GetRatio() { // TODO: return value
-  // TODO: implement
+func (me *AspectRatioContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AspectRatioContainer) SetStretchMode(stretch_mode AspectRatioContainerStretchMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AspectRatioContainer) SetRatio(ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AspectRatioContainer) GetStretchMode() { // TODO: return value
-  // TODO: implement
+func  (me *AspectRatioContainer) GetRatio()  {
+  panic("TODO: implement")
 }
 
-func  (me *AspectRatioContainer) SetAlignmentHorizontal(alignment_horizontal AspectRatioContainerAlignmentMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *AspectRatioContainer) SetStretchMode(stretch_mode AspectRatioContainerStretchMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AspectRatioContainer) GetAlignmentHorizontal() { // TODO: return value
-  // TODO: implement
+func  (me *AspectRatioContainer) GetStretchMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *AspectRatioContainer) SetAlignmentVertical(alignment_vertical AspectRatioContainerAlignmentMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *AspectRatioContainer) SetAlignmentHorizontal(alignment_horizontal AspectRatioContainerAlignmentMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AspectRatioContainer) GetAlignmentVertical() { // TODO: return value
-  // TODO: implement
+func  (me *AspectRatioContainer) GetAlignmentHorizontal()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AspectRatioContainer) SetAlignmentVertical(alignment_vertical AspectRatioContainerAlignmentMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AspectRatioContainer) GetAlignmentVertical()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,21 @@ func (me *VisualShaderNodeVectorRefract) BaseClass() string {
   return "VisualShaderNodeVectorRefract"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *VisualShaderNodeVectorRefract) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *VisualShaderNodeVectorRefract) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

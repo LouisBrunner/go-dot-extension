@@ -13,7 +13,11 @@ func improveTypename(typename string) string {
 }
 
 func improveEnumValueName(name string) string {
-	return strcase.ToCamel(strings.ToLower(strings.TrimPrefix(name, prefixEnum)))
+	newName := strcase.ToCamel(strings.ToLower(strings.TrimPrefix(name, prefixEnum)))
+	// FIXME: wonky
+	newName = strings.ReplaceAll(newName, "Aabb", "AABB")
+	newName = strings.ReplaceAll(newName, "Rid", "RID")
+	return newName
 }
 
 func makeGoTypeName(name string) string {

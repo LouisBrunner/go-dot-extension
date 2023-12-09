@@ -25,46 +25,61 @@ func (me *SphereMesh) BaseClass() string {
   return "SphereMesh"
 }
 
-func  (me *SphereMesh) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SphereMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SphereMesh) GetRadius() { // TODO: return value
-  // TODO: implement
+func (me *SphereMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SphereMesh) SetHeight(height float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SphereMesh) SetRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SphereMesh) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *SphereMesh) GetRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *SphereMesh) SetRadialSegments(radial_segments int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SphereMesh) SetHeight(height float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SphereMesh) GetRadialSegments() { // TODO: return value
-  // TODO: implement
+func  (me *SphereMesh) GetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *SphereMesh) SetRings(rings int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SphereMesh) SetRadialSegments(radial_segments int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SphereMesh) GetRings() { // TODO: return value
-  // TODO: implement
+func  (me *SphereMesh) GetRadialSegments()  {
+  panic("TODO: implement")
 }
 
-func  (me *SphereMesh) SetIsHemisphere(is_hemisphere bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SphereMesh) SetRings(rings int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SphereMesh) GetIsHemisphere() { // TODO: return value
-  // TODO: implement
+func  (me *SphereMesh) GetRings()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SphereMesh) SetIsHemisphere(is_hemisphere bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SphereMesh) GetIsHemisphere()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

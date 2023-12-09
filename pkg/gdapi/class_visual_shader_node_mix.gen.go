@@ -25,6 +25,10 @@ func (me *VisualShaderNodeMix) BaseClass() string {
   return "VisualShaderNodeMix"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeMixOpType int
 const (
   VisualShaderNodeMixOpTypeOpTypeScalar VisualShaderNodeMixOpType = 0
@@ -37,14 +41,25 @@ const (
   VisualShaderNodeMixOpTypeOpTypeMax VisualShaderNodeMixOpType = 7
 )
 
-func  (me *VisualShaderNodeMix) SetOpType(op_type VisualShaderNodeMixOpType, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeMix) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeMix) GetOpType() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeMix) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeMix) SetOpType(op_type VisualShaderNodeMixOpType, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeMix) GetOpType()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

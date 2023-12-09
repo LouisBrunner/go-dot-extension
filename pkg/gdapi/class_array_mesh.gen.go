@@ -25,106 +25,121 @@ func (me *ArrayMesh) BaseClass() string {
   return "ArrayMesh"
 }
 
-func  (me *ArrayMesh) AddBlendShape(name StringName, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ArrayMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ArrayMesh) GetBlendShapeCount() { // TODO: return value
-  // TODO: implement
+func (me *ArrayMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ArrayMesh) GetBlendShapeName(index int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ArrayMesh) AddBlendShape(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SetBlendShapeName(index int, name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) GetBlendShapeCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) ClearBlendShapes() { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) GetBlendShapeName(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SetBlendShapeMode(mode MeshBlendShapeMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SetBlendShapeName(index int, name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) GetBlendShapeMode() { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) ClearBlendShapes()  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) AddSurfaceFromArrays(primitive MeshPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, flags MeshArrayFormat, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SetBlendShapeMode(mode MeshBlendShapeMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) ClearSurfaces() { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) GetBlendShapeMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SurfaceUpdateVertexRegion(surf_idx int, offset int, data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) AddSurfaceFromArrays(primitive MeshPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, flags MeshArrayFormat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SurfaceUpdateAttributeRegion(surf_idx int, offset int, data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) ClearSurfaces()  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SurfaceUpdateSkinRegion(surf_idx int, offset int, data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SurfaceUpdateVertexRegion(surf_idx int, offset int, data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SurfaceGetArrayLen(surf_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SurfaceUpdateAttributeRegion(surf_idx int, offset int, data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SurfaceGetArrayIndexLen(surf_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SurfaceUpdateSkinRegion(surf_idx int, offset int, data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SurfaceGetFormat(surf_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SurfaceGetArrayLen(surf_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SurfaceGetPrimitiveType(surf_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SurfaceGetArrayIndexLen(surf_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SurfaceFindByName(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SurfaceGetFormat(surf_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SurfaceSetName(surf_idx int, name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SurfaceGetPrimitiveType(surf_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SurfaceGetName(surf_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SurfaceFindByName(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) RegenNormalMaps() { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SurfaceSetName(surf_idx int, name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) LightmapUnwrap(transform Transform3D, texel_size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SurfaceGetName(surf_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SetCustomAabb(aabb AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) RegenNormalMaps()  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) GetCustomAabb() { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) LightmapUnwrap(transform Transform3D, texel_size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) SetShadowMesh(mesh ArrayMesh, ) { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) SetCustomAabb(aabb AABB, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ArrayMesh) GetShadowMesh() { // TODO: return value
-  // TODO: implement
+func  (me *ArrayMesh) GetCustomAabb()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ArrayMesh) SetShadowMesh(mesh ArrayMesh, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ArrayMesh) GetShadowMesh()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

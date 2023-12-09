@@ -25,34 +25,49 @@ func (me *EditorDebuggerSession) BaseClass() string {
   return "EditorDebuggerSession"
 }
 
-func  (me *EditorDebuggerSession) SendMessage(message String, data Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorDebuggerSession) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorDebuggerSession) ToggleProfiler(profiler String, enable bool, data Array, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorDebuggerSession) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorDebuggerSession) IsBreaked() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorDebuggerSession) SendMessage(message String, data Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorDebuggerSession) IsDebuggable() { // TODO: return value
-  // TODO: implement
+func  (me *EditorDebuggerSession) ToggleProfiler(profiler String, enable bool, data Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorDebuggerSession) IsActive() { // TODO: return value
-  // TODO: implement
+func  (me *EditorDebuggerSession) IsBreaked()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorDebuggerSession) AddSessionTab(control Control, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorDebuggerSession) IsDebuggable()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorDebuggerSession) RemoveSessionTab(control Control, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorDebuggerSession) IsActive()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorDebuggerSession) AddSessionTab(control Control, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorDebuggerSession) RemoveSessionTab(control Control, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

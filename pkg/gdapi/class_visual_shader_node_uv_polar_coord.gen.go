@@ -25,6 +25,21 @@ func (me *VisualShaderNodeUVPolarCoord) BaseClass() string {
   return "VisualShaderNodeUVPolarCoord"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *VisualShaderNodeUVPolarCoord) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *VisualShaderNodeUVPolarCoord) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

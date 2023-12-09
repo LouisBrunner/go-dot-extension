@@ -25,30 +25,45 @@ func (me *InputEventMouse) BaseClass() string {
   return "InputEventMouse"
 }
 
-func  (me *InputEventMouse) SetButtonMask(button_mask MouseButtonMask, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventMouse) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventMouse) GetButtonMask() { // TODO: return value
-  // TODO: implement
+func (me *InputEventMouse) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *InputEventMouse) SetPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *InputEventMouse) SetButtonMask(button_mask MouseButtonMask, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMouse) GetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMouse) GetButtonMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMouse) SetGlobalPosition(global_position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMouse) SetPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMouse) GetGlobalPosition() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMouse) GetPosition()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *InputEventMouse) SetGlobalPosition(global_position Vector2, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *InputEventMouse) GetGlobalPosition()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

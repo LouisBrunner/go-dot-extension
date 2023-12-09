@@ -25,6 +25,21 @@ func (me *VisualShaderNodeProximityFade) BaseClass() string {
   return "VisualShaderNodeProximityFade"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *VisualShaderNodeProximityFade) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *VisualShaderNodeProximityFade) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

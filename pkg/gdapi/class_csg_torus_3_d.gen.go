@@ -25,54 +25,69 @@ func (me *CSGTorus3D) BaseClass() string {
   return "CSGTorus3D"
 }
 
-func  (me *CSGTorus3D) SetInnerRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CSGTorus3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CSGTorus3D) GetInnerRadius() { // TODO: return value
-  // TODO: implement
+func (me *CSGTorus3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CSGTorus3D) SetOuterRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CSGTorus3D) SetInnerRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGTorus3D) GetOuterRadius() { // TODO: return value
-  // TODO: implement
+func  (me *CSGTorus3D) GetInnerRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGTorus3D) SetSides(sides int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGTorus3D) SetOuterRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGTorus3D) GetSides() { // TODO: return value
-  // TODO: implement
+func  (me *CSGTorus3D) GetOuterRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGTorus3D) SetRingSides(sides int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGTorus3D) SetSides(sides int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGTorus3D) GetRingSides() { // TODO: return value
-  // TODO: implement
+func  (me *CSGTorus3D) GetSides()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGTorus3D) SetMaterial(material Material, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGTorus3D) SetRingSides(sides int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGTorus3D) GetMaterial() { // TODO: return value
-  // TODO: implement
+func  (me *CSGTorus3D) GetRingSides()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGTorus3D) SetSmoothFaces(smooth_faces bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGTorus3D) SetMaterial(material Material, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGTorus3D) GetSmoothFaces() { // TODO: return value
-  // TODO: implement
+func  (me *CSGTorus3D) GetMaterial()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CSGTorus3D) SetSmoothFaces(smooth_faces bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CSGTorus3D) GetSmoothFaces()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

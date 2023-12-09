@@ -25,14 +25,29 @@ func (me *WorldBoundaryShape3D) BaseClass() string {
   return "WorldBoundaryShape3D"
 }
 
-func  (me *WorldBoundaryShape3D) SetPlane(plane Plane, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *WorldBoundaryShape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *WorldBoundaryShape3D) GetPlane() { // TODO: return value
-  // TODO: implement
+func (me *WorldBoundaryShape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *WorldBoundaryShape3D) SetPlane(plane Plane, )  {
+  panic("TODO: implement")
+}
+
+func  (me *WorldBoundaryShape3D) GetPlane()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,34 +25,49 @@ func (me *SyntaxHighlighter) BaseClass() string {
   return "SyntaxHighlighter"
 }
 
-func  (me *SyntaxHighlighter) XGetLineSyntaxHighlighting(line int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SyntaxHighlighter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SyntaxHighlighter) XClearHighlightingCache() { // TODO: return value
-  // TODO: implement
+func (me *SyntaxHighlighter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SyntaxHighlighter) XUpdateCache() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SyntaxHighlighter) XGetLineSyntaxHighlighting(line int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SyntaxHighlighter) GetLineSyntaxHighlighting(line int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SyntaxHighlighter) XClearHighlightingCache()  {
+  panic("TODO: implement")
 }
 
-func  (me *SyntaxHighlighter) UpdateCache() { // TODO: return value
-  // TODO: implement
+func  (me *SyntaxHighlighter) XUpdateCache()  {
+  panic("TODO: implement")
 }
 
-func  (me *SyntaxHighlighter) ClearHighlightingCache() { // TODO: return value
-  // TODO: implement
+func  (me *SyntaxHighlighter) GetLineSyntaxHighlighting(line int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SyntaxHighlighter) GetTextEdit() { // TODO: return value
-  // TODO: implement
+func  (me *SyntaxHighlighter) UpdateCache()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SyntaxHighlighter) ClearHighlightingCache()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SyntaxHighlighter) GetTextEdit()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

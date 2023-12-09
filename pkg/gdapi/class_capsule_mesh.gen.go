@@ -25,38 +25,53 @@ func (me *CapsuleMesh) BaseClass() string {
   return "CapsuleMesh"
 }
 
-func  (me *CapsuleMesh) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CapsuleMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CapsuleMesh) GetRadius() { // TODO: return value
-  // TODO: implement
+func (me *CapsuleMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CapsuleMesh) SetHeight(height float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CapsuleMesh) SetRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CapsuleMesh) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *CapsuleMesh) GetRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *CapsuleMesh) SetRadialSegments(segments int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CapsuleMesh) SetHeight(height float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CapsuleMesh) GetRadialSegments() { // TODO: return value
-  // TODO: implement
+func  (me *CapsuleMesh) GetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *CapsuleMesh) SetRings(rings int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CapsuleMesh) SetRadialSegments(segments int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CapsuleMesh) GetRings() { // TODO: return value
-  // TODO: implement
+func  (me *CapsuleMesh) GetRadialSegments()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CapsuleMesh) SetRings(rings int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CapsuleMesh) GetRings()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

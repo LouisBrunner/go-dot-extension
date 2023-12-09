@@ -25,26 +25,41 @@ func (me *PhysicsBody2D) BaseClass() string {
   return "PhysicsBody2D"
 }
 
-func  (me *PhysicsBody2D) MoveAndCollide(motion Vector2, test_only bool, safe_margin float32, recovery_as_collision bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsBody2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsBody2D) TestMove(from Transform2D, motion Vector2, collision KinematicCollision2D, safe_margin float32, recovery_as_collision bool, ) { // TODO: return value
-  // TODO: implement
+func (me *PhysicsBody2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsBody2D) GetCollisionExceptions() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicsBody2D) MoveAndCollide(motion Vector2, test_only bool, safe_margin float32, recovery_as_collision bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsBody2D) AddCollisionExceptionWith(body Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsBody2D) TestMove(from Transform2D, motion Vector2, collision KinematicCollision2D, safe_margin float32, recovery_as_collision bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsBody2D) RemoveCollisionExceptionWith(body Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsBody2D) GetCollisionExceptions()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsBody2D) AddCollisionExceptionWith(body Node, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsBody2D) RemoveCollisionExceptionWith(body Node, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

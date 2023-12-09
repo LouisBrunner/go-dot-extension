@@ -25,54 +25,69 @@ func (me *ParallaxBackground) BaseClass() string {
   return "ParallaxBackground"
 }
 
-func  (me *ParallaxBackground) SetScrollOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ParallaxBackground) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ParallaxBackground) GetScrollOffset() { // TODO: return value
-  // TODO: implement
+func (me *ParallaxBackground) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ParallaxBackground) SetScrollBaseOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ParallaxBackground) SetScrollOffset(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxBackground) GetScrollBaseOffset() { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxBackground) GetScrollOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxBackground) SetScrollBaseScale(scale Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxBackground) SetScrollBaseOffset(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxBackground) GetScrollBaseScale() { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxBackground) GetScrollBaseOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxBackground) SetLimitBegin(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxBackground) SetScrollBaseScale(scale Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxBackground) GetLimitBegin() { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxBackground) GetScrollBaseScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxBackground) SetLimitEnd(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxBackground) SetLimitBegin(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxBackground) GetLimitEnd() { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxBackground) GetLimitBegin()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxBackground) SetIgnoreCameraZoom(ignore bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxBackground) SetLimitEnd(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParallaxBackground) IsIgnoreCameraZoom() { // TODO: return value
-  // TODO: implement
+func  (me *ParallaxBackground) GetLimitEnd()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ParallaxBackground) SetIgnoreCameraZoom(ignore bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ParallaxBackground) IsIgnoreCameraZoom()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

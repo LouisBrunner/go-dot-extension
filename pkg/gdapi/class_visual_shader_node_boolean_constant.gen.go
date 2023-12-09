@@ -25,14 +25,29 @@ func (me *VisualShaderNodeBooleanConstant) BaseClass() string {
   return "VisualShaderNodeBooleanConstant"
 }
 
-func  (me *VisualShaderNodeBooleanConstant) SetConstant(constant bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeBooleanConstant) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeBooleanConstant) GetConstant() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeBooleanConstant) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeBooleanConstant) SetConstant(constant bool, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeBooleanConstant) GetConstant()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

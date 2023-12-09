@@ -25,6 +25,21 @@ func (me *HSplitContainer) BaseClass() string {
   return "HSplitContainer"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *HSplitContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *HSplitContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

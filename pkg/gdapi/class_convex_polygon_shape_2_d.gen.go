@@ -25,18 +25,33 @@ func (me *ConvexPolygonShape2D) BaseClass() string {
   return "ConvexPolygonShape2D"
 }
 
-func  (me *ConvexPolygonShape2D) SetPointCloud(point_cloud PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ConvexPolygonShape2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ConvexPolygonShape2D) SetPoints(points PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+func (me *ConvexPolygonShape2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ConvexPolygonShape2D) GetPoints() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ConvexPolygonShape2D) SetPointCloud(point_cloud PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ConvexPolygonShape2D) SetPoints(points PackedVector2Array, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ConvexPolygonShape2D) GetPoints()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

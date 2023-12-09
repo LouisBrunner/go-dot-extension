@@ -25,6 +25,10 @@ func (me *VisualShaderNodeTexture) BaseClass() string {
   return "VisualShaderNodeTexture"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeTextureSource int
 const (
   VisualShaderNodeTextureSourceSourceTexture VisualShaderNodeTextureSource = 0
@@ -46,30 +50,41 @@ const (
   VisualShaderNodeTextureTextureTypeTypeMax VisualShaderNodeTextureTextureType = 3
 )
 
-func  (me *VisualShaderNodeTexture) SetSource(value VisualShaderNodeTextureSource, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeTexture) GetSource() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeTexture) SetTexture(value Texture2D, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeTexture) SetSource(value VisualShaderNodeTextureSource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTexture) GetTexture() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeTexture) GetSource()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTexture) SetTextureType(value VisualShaderNodeTextureTextureType, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeTexture) SetTexture(value Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTexture) GetTextureType() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeTexture) GetTexture()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeTexture) SetTextureType(value VisualShaderNodeTextureTextureType, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeTexture) GetTextureType()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,14 +25,29 @@ func (me *MultiMeshInstance3D) BaseClass() string {
   return "MultiMeshInstance3D"
 }
 
-func  (me *MultiMeshInstance3D) SetMultimesh(multimesh MultiMesh, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MultiMeshInstance3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MultiMeshInstance3D) GetMultimesh() { // TODO: return value
-  // TODO: implement
+func (me *MultiMeshInstance3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *MultiMeshInstance3D) SetMultimesh(multimesh MultiMesh, )  {
+  panic("TODO: implement")
+}
+
+func  (me *MultiMeshInstance3D) GetMultimesh()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

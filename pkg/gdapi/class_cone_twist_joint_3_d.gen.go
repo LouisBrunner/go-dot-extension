@@ -25,6 +25,10 @@ func (me *ConeTwistJoint3D) BaseClass() string {
   return "ConeTwistJoint3D"
 }
 
+
+
+// Enums
+
 type ConeTwistJoint3DParam int
 const (
   ConeTwistJoint3DParamParamSwingSpan ConeTwistJoint3DParam = 0
@@ -35,14 +39,25 @@ const (
   ConeTwistJoint3DParamParamMax ConeTwistJoint3DParam = 5
 )
 
-func  (me *ConeTwistJoint3D) SetParam(param ConeTwistJoint3DParam, value float32, ) { // TODO: return value
-  // TODO: implement
+func (me *ConeTwistJoint3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ConeTwistJoint3D) GetParam(param ConeTwistJoint3DParam, ) { // TODO: return value
-  // TODO: implement
+func (me *ConeTwistJoint3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *ConeTwistJoint3D) SetParam(param ConeTwistJoint3DParam, value float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *ConeTwistJoint3D) GetParam(param ConeTwistJoint3DParam, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

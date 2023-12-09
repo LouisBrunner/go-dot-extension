@@ -25,6 +25,10 @@ func (me *JSONRPC) BaseClass() string {
   return "JSONRPC"
 }
 
+
+
+// Enums
+
 type JSONRPCErrorCode int
 const (
   JSONRPCErrorCodeParseError JSONRPCErrorCode = -32700
@@ -34,34 +38,45 @@ const (
   JSONRPCErrorCodeInternalError JSONRPCErrorCode = -32603
 )
 
-func  (me *JSONRPC) SetScope(scope String, target Object, ) { // TODO: return value
-  // TODO: implement
+func (me *JSONRPC) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *JSONRPC) ProcessAction(action Variant, recurse bool, ) { // TODO: return value
-  // TODO: implement
+func (me *JSONRPC) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *JSONRPC) ProcessString(action String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *JSONRPC) SetScope(scope String, target Object, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JSONRPC) MakeRequest(method String, params Variant, id Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *JSONRPC) ProcessAction(action Variant, recurse bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JSONRPC) MakeResponse(result Variant, id Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *JSONRPC) ProcessString(action String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JSONRPC) MakeNotification(method String, params Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *JSONRPC) MakeRequest(method String, params Variant, id Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JSONRPC) MakeResponseError(code int, message String, id Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *JSONRPC) MakeResponse(result Variant, id Variant, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *JSONRPC) MakeNotification(method String, params Variant, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *JSONRPC) MakeResponseError(code int, message String, id Variant, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

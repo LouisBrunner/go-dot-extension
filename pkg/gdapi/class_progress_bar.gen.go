@@ -25,6 +25,10 @@ func (me *ProgressBar) BaseClass() string {
   return "ProgressBar"
 }
 
+
+
+// Enums
+
 type ProgressBarFillMode int
 const (
   ProgressBarFillModeFillBeginToEnd ProgressBarFillMode = 0
@@ -33,22 +37,33 @@ const (
   ProgressBarFillModeFillBottomToTop ProgressBarFillMode = 3
 )
 
-func  (me *ProgressBar) SetFillMode(mode int, ) { // TODO: return value
-  // TODO: implement
+func (me *ProgressBar) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ProgressBar) GetFillMode() { // TODO: return value
-  // TODO: implement
+func (me *ProgressBar) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ProgressBar) SetShowPercentage(visible bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ProgressBar) SetFillMode(mode int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ProgressBar) IsPercentageShown() { // TODO: return value
-  // TODO: implement
+func  (me *ProgressBar) GetFillMode()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ProgressBar) SetShowPercentage(visible bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ProgressBar) IsPercentageShown()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

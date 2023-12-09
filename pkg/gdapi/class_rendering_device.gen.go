@@ -25,14 +25,16 @@ func (me *RenderingDevice) BaseClass() string {
   return "RenderingDevice"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   RenderingDeviceInvalidId = "-1" // TODO: construct correctly
   RenderingDeviceInvalidFormatId = "-1" // TODO: construct correctly
 )
+
+// Enums
 
 type RenderingDeviceDeviceType int
 const (
@@ -625,378 +627,389 @@ const (
   RenderingDeviceMemoryTypeMemoryTotal RenderingDeviceMemoryType = 2
 )
 
-func  (me *RenderingDevice) TextureCreate(format RDTextureFormat, view RDTextureView, data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func (me *RenderingDevice) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RenderingDevice) TextureCreateShared(view RDTextureView, with_texture RID, ) { // TODO: return value
-  // TODO: implement
+func (me *RenderingDevice) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RenderingDevice) TextureCreateSharedFromSlice(view RDTextureView, with_texture RID, layer int, mipmap int, mipmaps int, slice_type RenderingDeviceTextureSliceType, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RenderingDevice) TextureCreate(format RDTextureFormat, view RDTextureView, data PackedByteArray, )  {
+  panic("TODO: implement")
+}
+
+func  (me *RenderingDevice) TextureCreateShared(view RDTextureView, with_texture RID, )  {
+  panic("TODO: implement")
+}
+
+func  (me *RenderingDevice) TextureCreateSharedFromSlice(view RDTextureView, with_texture RID, layer int, mipmap int, mipmaps int, slice_type RenderingDeviceTextureSliceType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) TextureUpdate(texture RID, layer int, data PackedByteArray, post_barrier RenderingDeviceBarrierMask, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) TextureUpdate(texture RID, layer int, data PackedByteArray, post_barrier RenderingDeviceBarrierMask, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) TextureGetData(texture RID, layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) TextureGetData(texture RID, layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) TextureIsFormatSupportedForUsage(format RenderingDeviceDataFormat, usage_flags RenderingDeviceTextureUsageBits, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) TextureIsFormatSupportedForUsage(format RenderingDeviceDataFormat, usage_flags RenderingDeviceTextureUsageBits, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) TextureIsShared(texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) TextureIsShared(texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) TextureIsValid(texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) TextureIsValid(texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) TextureCopy(from_texture RID, to_texture RID, from_pos Vector3, to_pos Vector3, size Vector3, src_mipmap int, dst_mipmap int, src_layer int, dst_layer int, post_barrier RenderingDeviceBarrierMask, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) TextureCopy(from_texture RID, to_texture RID, from_pos Vector3, to_pos Vector3, size Vector3, src_mipmap int, dst_mipmap int, src_layer int, dst_layer int, post_barrier RenderingDeviceBarrierMask, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) TextureClear(texture RID, color Color, base_mipmap int, mipmap_count int, base_layer int, layer_count int, post_barrier RenderingDeviceBarrierMask, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) TextureClear(texture RID, color Color, base_mipmap int, mipmap_count int, base_layer int, layer_count int, post_barrier RenderingDeviceBarrierMask, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) TextureResolveMultisample(from_texture RID, to_texture RID, post_barrier RenderingDeviceBarrierMask, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) TextureResolveMultisample(from_texture RID, to_texture RID, post_barrier RenderingDeviceBarrierMask, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) TextureGetNativeHandle(texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) TextureGetNativeHandle(texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) FramebufferFormatCreate(attachments RDAttachmentFormat, view_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) FramebufferFormatCreate(attachments RDAttachmentFormat, view_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) FramebufferFormatCreateMultipass(attachments RDAttachmentFormat, passes RDFramebufferPass, view_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) FramebufferFormatCreateMultipass(attachments RDAttachmentFormat, passes RDFramebufferPass, view_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) FramebufferFormatCreateEmpty(samples RenderingDeviceTextureSamples, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) FramebufferFormatCreateEmpty(samples RenderingDeviceTextureSamples, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) FramebufferFormatGetTextureSamples(format int, render_pass int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) FramebufferFormatGetTextureSamples(format int, render_pass int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) FramebufferCreate(textures RID, validate_with_format int, view_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) FramebufferCreate(textures RID, validate_with_format int, view_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) FramebufferCreateMultipass(textures RID, passes RDFramebufferPass, validate_with_format int, view_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) FramebufferCreateMultipass(textures RID, passes RDFramebufferPass, validate_with_format int, view_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) FramebufferCreateEmpty(size Vector2i, samples RenderingDeviceTextureSamples, validate_with_format int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) FramebufferCreateEmpty(size Vector2i, samples RenderingDeviceTextureSamples, validate_with_format int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) FramebufferGetFormat(framebuffer RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) FramebufferGetFormat(framebuffer RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) FramebufferIsValid(framebuffer RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) FramebufferIsValid(framebuffer RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) SamplerCreate(state RDSamplerState, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) SamplerCreate(state RDSamplerState, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) SamplerIsFormatSupportedForFilter(format RenderingDeviceDataFormat, sampler_filter RenderingDeviceSamplerFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) SamplerIsFormatSupportedForFilter(format RenderingDeviceDataFormat, sampler_filter RenderingDeviceSamplerFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) VertexBufferCreate(size_bytes int, data PackedByteArray, use_as_storage bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) VertexBufferCreate(size_bytes int, data PackedByteArray, use_as_storage bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) VertexFormatCreate(vertex_descriptions RDVertexAttribute, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) VertexFormatCreate(vertex_descriptions RDVertexAttribute, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) VertexArrayCreate(vertex_count int, vertex_format int, src_buffers RID, offsets PackedInt64Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) VertexArrayCreate(vertex_count int, vertex_format int, src_buffers RID, offsets PackedInt64Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) IndexBufferCreate(size_indices int, format RenderingDeviceIndexBufferFormat, data PackedByteArray, use_restart_indices bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) IndexBufferCreate(size_indices int, format RenderingDeviceIndexBufferFormat, data PackedByteArray, use_restart_indices bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) IndexArrayCreate(index_buffer RID, index_offset int, index_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) IndexArrayCreate(index_buffer RID, index_offset int, index_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ShaderCompileSpirvFromSource(shader_source RDShaderSource, allow_cache bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ShaderCompileSpirvFromSource(shader_source RDShaderSource, allow_cache bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ShaderCompileBinaryFromSpirv(spirv_data RDShaderSPIRV, name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ShaderCompileBinaryFromSpirv(spirv_data RDShaderSPIRV, name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ShaderCreateFromSpirv(spirv_data RDShaderSPIRV, name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ShaderCreateFromSpirv(spirv_data RDShaderSPIRV, name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ShaderCreateFromBytecode(binary_data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ShaderCreateFromBytecode(binary_data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ShaderGetVertexInputAttributeMask(shader RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ShaderGetVertexInputAttributeMask(shader RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) UniformBufferCreate(size_bytes int, data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) UniformBufferCreate(size_bytes int, data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) StorageBufferCreate(size_bytes int, data PackedByteArray, usage RenderingDeviceStorageBufferUsage, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) StorageBufferCreate(size_bytes int, data PackedByteArray, usage RenderingDeviceStorageBufferUsage, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) TextureBufferCreate(size_bytes int, format RenderingDeviceDataFormat, data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) TextureBufferCreate(size_bytes int, format RenderingDeviceDataFormat, data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) UniformSetCreate(uniforms RDUniform, shader RID, shader_set int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) UniformSetCreate(uniforms RDUniform, shader RID, shader_set int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) UniformSetIsValid(uniform_set RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) UniformSetIsValid(uniform_set RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) BufferUpdate(buffer RID, offset int, size_bytes int, data PackedByteArray, post_barrier RenderingDeviceBarrierMask, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) BufferUpdate(buffer RID, offset int, size_bytes int, data PackedByteArray, post_barrier RenderingDeviceBarrierMask, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) BufferClear(buffer RID, offset int, size_bytes int, post_barrier RenderingDeviceBarrierMask, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) BufferClear(buffer RID, offset int, size_bytes int, post_barrier RenderingDeviceBarrierMask, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) BufferGetData(buffer RID, offset_bytes int, size_bytes int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) BufferGetData(buffer RID, offset_bytes int, size_bytes int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) RenderPipelineCreate(shader RID, framebuffer_format int, vertex_format int, primitive RenderingDeviceRenderPrimitive, rasterization_state RDPipelineRasterizationState, multisample_state RDPipelineMultisampleState, stencil_state RDPipelineDepthStencilState, color_blend_state RDPipelineColorBlendState, dynamic_state_flags RenderingDevicePipelineDynamicStateFlags, for_render_pass int, specialization_constants RDPipelineSpecializationConstant, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) RenderPipelineCreate(shader RID, framebuffer_format int, vertex_format int, primitive RenderingDeviceRenderPrimitive, rasterization_state RDPipelineRasterizationState, multisample_state RDPipelineMultisampleState, stencil_state RDPipelineDepthStencilState, color_blend_state RDPipelineColorBlendState, dynamic_state_flags RenderingDevicePipelineDynamicStateFlags, for_render_pass int, specialization_constants RDPipelineSpecializationConstant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) RenderPipelineIsValid(render_pipeline RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) RenderPipelineIsValid(render_pipeline RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ComputePipelineCreate(shader RID, specialization_constants RDPipelineSpecializationConstant, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ComputePipelineCreate(shader RID, specialization_constants RDPipelineSpecializationConstant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ComputePipelineIsValid(compute_pipeline RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ComputePipelineIsValid(compute_pipeline RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ScreenGetWidth(screen int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ScreenGetWidth(screen int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ScreenGetHeight(screen int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ScreenGetHeight(screen int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ScreenGetFramebufferFormat() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ScreenGetFramebufferFormat()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListBeginForScreen(screen int, clear_color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListBeginForScreen(screen int, clear_color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListBegin(framebuffer RID, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float32, clear_stencil int, region Rect2, storage_textures RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListBegin(framebuffer RID, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float32, clear_stencil int, region Rect2, storage_textures RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListBeginSplit(framebuffer RID, splits int, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float32, clear_stencil int, region Rect2, storage_textures RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListBeginSplit(framebuffer RID, splits int, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float32, clear_stencil int, region Rect2, storage_textures RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListSetBlendConstants(draw_list int, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListSetBlendConstants(draw_list int, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListBindRenderPipeline(draw_list int, render_pipeline RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListBindRenderPipeline(draw_list int, render_pipeline RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListBindUniformSet(draw_list int, uniform_set RID, set_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListBindUniformSet(draw_list int, uniform_set RID, set_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListBindVertexArray(draw_list int, vertex_array RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListBindVertexArray(draw_list int, vertex_array RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListBindIndexArray(draw_list int, index_array RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListBindIndexArray(draw_list int, index_array RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListSetPushConstant(draw_list int, buffer PackedByteArray, size_bytes int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListSetPushConstant(draw_list int, buffer PackedByteArray, size_bytes int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListDraw(draw_list int, use_indices bool, instances int, procedural_vertex_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListDraw(draw_list int, use_indices bool, instances int, procedural_vertex_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListEnableScissor(draw_list int, rect Rect2, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListEnableScissor(draw_list int, rect Rect2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListDisableScissor(draw_list int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListDisableScissor(draw_list int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListSwitchToNextPass() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListSwitchToNextPass()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListSwitchToNextPassSplit(splits int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListSwitchToNextPassSplit(splits int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawListEnd(post_barrier RenderingDeviceBarrierMask, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawListEnd(post_barrier RenderingDeviceBarrierMask, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ComputeListBegin(allow_draw_overlap bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ComputeListBegin(allow_draw_overlap bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ComputeListBindComputePipeline(compute_list int, compute_pipeline RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ComputeListBindComputePipeline(compute_list int, compute_pipeline RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ComputeListSetPushConstant(compute_list int, buffer PackedByteArray, size_bytes int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ComputeListSetPushConstant(compute_list int, buffer PackedByteArray, size_bytes int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ComputeListBindUniformSet(compute_list int, uniform_set RID, set_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ComputeListBindUniformSet(compute_list int, uniform_set RID, set_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ComputeListDispatch(compute_list int, x_groups int, y_groups int, z_groups int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ComputeListDispatch(compute_list int, x_groups int, y_groups int, z_groups int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ComputeListAddBarrier(compute_list int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ComputeListAddBarrier(compute_list int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) ComputeListEnd(post_barrier RenderingDeviceBarrierMask, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) ComputeListEnd(post_barrier RenderingDeviceBarrierMask, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) FreeRid(rid RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) FreeRid(rid RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) CaptureTimestamp(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) CaptureTimestamp(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) GetCapturedTimestampsCount() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) GetCapturedTimestampsCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) GetCapturedTimestampsFrame() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) GetCapturedTimestampsFrame()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) GetCapturedTimestampGpuTime(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) GetCapturedTimestampGpuTime(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) GetCapturedTimestampCpuTime(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) GetCapturedTimestampCpuTime(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) GetCapturedTimestampName(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) GetCapturedTimestampName(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) LimitGet(limit RenderingDeviceLimit, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) LimitGet(limit RenderingDeviceLimit, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) GetFrameDelay() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) GetFrameDelay()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) Submit() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) Submit()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) Sync() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) Sync()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) Barrier(from RenderingDeviceBarrierMask, to RenderingDeviceBarrierMask, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) Barrier(from RenderingDeviceBarrierMask, to RenderingDeviceBarrierMask, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) FullBarrier() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) FullBarrier()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) CreateLocalDevice() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) CreateLocalDevice()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) SetResourceName(id RID, name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) SetResourceName(id RID, name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawCommandBeginLabel(name String, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawCommandBeginLabel(name String, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawCommandInsertLabel(name String, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawCommandInsertLabel(name String, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) DrawCommandEndLabel() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) DrawCommandEndLabel()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) GetDeviceVendorName() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) GetDeviceVendorName()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) GetDeviceName() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) GetDeviceName()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) GetDevicePipelineCacheUuid() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) GetDevicePipelineCacheUuid()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) GetMemoryUsage(type_ RenderingDeviceMemoryType, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) GetMemoryUsage(type_ RenderingDeviceMemoryType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingDevice) GetDriverResource(resource RenderingDeviceDriverResource, rid RID, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingDevice) GetDriverResource(resource RenderingDeviceDriverResource, rid RID, index int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

@@ -25,50 +25,65 @@ func (me *AnimationNodeTransition) BaseClass() string {
   return "AnimationNodeTransition"
 }
 
-func  (me *AnimationNodeTransition) SetInputCount(input_count int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AnimationNodeTransition) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AnimationNodeTransition) SetInputAsAutoAdvance(input int, enable bool, ) { // TODO: return value
-  // TODO: implement
+func (me *AnimationNodeTransition) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AnimationNodeTransition) IsInputSetAsAutoAdvance(input int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AnimationNodeTransition) SetInputCount(input_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeTransition) SetInputReset(input int, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeTransition) SetInputAsAutoAdvance(input int, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeTransition) IsInputReset(input int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeTransition) IsInputSetAsAutoAdvance(input int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeTransition) SetXfadeTime(time float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeTransition) SetInputReset(input int, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeTransition) GetXfadeTime() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeTransition) IsInputReset(input int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeTransition) SetXfadeCurve(curve Curve, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeTransition) SetXfadeTime(time float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeTransition) GetXfadeCurve() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeTransition) GetXfadeTime()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeTransition) SetAllowTransitionToSelf(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeTransition) SetXfadeCurve(curve Curve, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeTransition) IsAllowTransitionToSelf() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeTransition) GetXfadeCurve()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AnimationNodeTransition) SetAllowTransitionToSelf(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AnimationNodeTransition) IsAllowTransitionToSelf()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

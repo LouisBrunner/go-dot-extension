@@ -25,22 +25,37 @@ func (me *CylinderShape3D) BaseClass() string {
   return "CylinderShape3D"
 }
 
-func  (me *CylinderShape3D) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CylinderShape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CylinderShape3D) GetRadius() { // TODO: return value
-  // TODO: implement
+func (me *CylinderShape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CylinderShape3D) SetHeight(height float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CylinderShape3D) SetRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderShape3D) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *CylinderShape3D) GetRadius()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CylinderShape3D) SetHeight(height float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CylinderShape3D) GetHeight()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

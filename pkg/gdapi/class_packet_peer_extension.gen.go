@@ -25,22 +25,37 @@ func (me *PacketPeerExtension) BaseClass() string {
   return "PacketPeerExtension"
 }
 
-func  (me *PacketPeerExtension) XGetPacket(r_buffer **uint8, r_buffer_size *int32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PacketPeerExtension) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PacketPeerExtension) XPutPacket(p_buffer *uint8, p_buffer_size int, ) { // TODO: return value
-  // TODO: implement
+func (me *PacketPeerExtension) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PacketPeerExtension) XGetAvailablePacketCount() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PacketPeerExtension) XGetPacket(r_buffer **uint8, r_buffer_size *int32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerExtension) XGetMaxPacketSize() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerExtension) XPutPacket(p_buffer *uint8, p_buffer_size int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PacketPeerExtension) XGetAvailablePacketCount()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PacketPeerExtension) XGetMaxPacketSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,14 +25,29 @@ func (me *ColorRect) BaseClass() string {
   return "ColorRect"
 }
 
-func  (me *ColorRect) SetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ColorRect) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ColorRect) GetColor() { // TODO: return value
-  // TODO: implement
+func (me *ColorRect) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *ColorRect) SetColor(color Color, )  {
+  panic("TODO: implement")
+}
+
+func  (me *ColorRect) GetColor()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

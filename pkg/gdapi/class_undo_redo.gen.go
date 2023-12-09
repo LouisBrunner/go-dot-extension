@@ -25,6 +25,10 @@ func (me *UndoRedo) BaseClass() string {
   return "UndoRedo"
 }
 
+
+
+// Enums
+
 type UndoRedoMergeMode int
 const (
   UndoRedoMergeModeMergeDisable UndoRedoMergeMode = 0
@@ -32,90 +36,101 @@ const (
   UndoRedoMergeModeMergeAll UndoRedoMergeMode = 2
 )
 
-func  (me *UndoRedo) CreateAction(name String, merge_mode UndoRedoMergeMode, backward_undo_ops bool, ) { // TODO: return value
-  // TODO: implement
+func (me *UndoRedo) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *UndoRedo) CommitAction(execute bool, ) { // TODO: return value
-  // TODO: implement
+func (me *UndoRedo) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *UndoRedo) IsCommittingAction() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *UndoRedo) CreateAction(name String, merge_mode UndoRedoMergeMode, backward_undo_ops bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) AddDoMethod(callable Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) CommitAction(execute bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) AddUndoMethod(callable Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) IsCommittingAction()  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) AddDoProperty(object Object, property StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) AddDoMethod(callable Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) AddUndoProperty(object Object, property StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) AddUndoMethod(callable Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) AddDoReference(object Object, ) { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) AddDoProperty(object Object, property StringName, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) AddUndoReference(object Object, ) { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) AddUndoProperty(object Object, property StringName, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) StartForceKeepInMergeEnds() { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) AddDoReference(object Object, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) EndForceKeepInMergeEnds() { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) AddUndoReference(object Object, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) GetHistoryCount() { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) StartForceKeepInMergeEnds()  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) GetCurrentAction() { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) EndForceKeepInMergeEnds()  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) GetActionName(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) GetHistoryCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) ClearHistory(increase_version bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) GetCurrentAction()  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) GetCurrentActionName() { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) GetActionName(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) HasUndo() { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) ClearHistory(increase_version bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) HasRedo() { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) GetCurrentActionName()  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) GetVersion() { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) HasUndo()  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) Redo() { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) HasRedo()  {
+  panic("TODO: implement")
 }
 
-func  (me *UndoRedo) Undo() { // TODO: return value
-  // TODO: implement
+func  (me *UndoRedo) GetVersion()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *UndoRedo) Redo()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *UndoRedo) Undo()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

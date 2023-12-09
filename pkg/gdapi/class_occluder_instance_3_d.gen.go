@@ -25,38 +25,53 @@ func (me *OccluderInstance3D) BaseClass() string {
   return "OccluderInstance3D"
 }
 
-func  (me *OccluderInstance3D) SetBakeMask(mask int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *OccluderInstance3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *OccluderInstance3D) GetBakeMask() { // TODO: return value
-  // TODO: implement
+func (me *OccluderInstance3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *OccluderInstance3D) SetBakeMaskValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *OccluderInstance3D) SetBakeMask(mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *OccluderInstance3D) GetBakeMaskValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *OccluderInstance3D) GetBakeMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *OccluderInstance3D) SetBakeSimplificationDistance(simplification_distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *OccluderInstance3D) SetBakeMaskValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *OccluderInstance3D) GetBakeSimplificationDistance() { // TODO: return value
-  // TODO: implement
+func  (me *OccluderInstance3D) GetBakeMaskValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *OccluderInstance3D) SetOccluder(occluder Occluder3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *OccluderInstance3D) SetBakeSimplificationDistance(simplification_distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *OccluderInstance3D) GetOccluder() { // TODO: return value
-  // TODO: implement
+func  (me *OccluderInstance3D) GetBakeSimplificationDistance()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *OccluderInstance3D) SetOccluder(occluder Occluder3D, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *OccluderInstance3D) GetOccluder()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

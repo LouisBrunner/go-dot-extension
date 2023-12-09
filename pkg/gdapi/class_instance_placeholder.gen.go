@@ -25,18 +25,33 @@ func (me *InstancePlaceholder) BaseClass() string {
   return "InstancePlaceholder"
 }
 
-func  (me *InstancePlaceholder) GetStoredValues(with_order bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InstancePlaceholder) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InstancePlaceholder) CreateInstance(replace bool, custom_scene PackedScene, ) { // TODO: return value
-  // TODO: implement
+func (me *InstancePlaceholder) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *InstancePlaceholder) GetInstancePath() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *InstancePlaceholder) GetStoredValues(with_order bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *InstancePlaceholder) CreateInstance(replace bool, custom_scene PackedScene, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *InstancePlaceholder) GetInstancePath()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

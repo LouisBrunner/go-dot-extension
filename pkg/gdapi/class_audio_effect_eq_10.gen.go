@@ -25,6 +25,21 @@ func (me *AudioEffectEQ10) BaseClass() string {
   return "AudioEffectEQ10"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *AudioEffectEQ10) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *AudioEffectEQ10) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

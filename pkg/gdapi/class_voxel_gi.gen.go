@@ -25,6 +25,10 @@ func (me *VoxelGI) BaseClass() string {
   return "VoxelGI"
 }
 
+
+
+// Enums
+
 type VoxelGISubdiv int
 const (
   VoxelGISubdivSubdiv64 VoxelGISubdiv = 0
@@ -34,46 +38,57 @@ const (
   VoxelGISubdivSubdivMax VoxelGISubdiv = 4
 )
 
-func  (me *VoxelGI) SetProbeData(data VoxelGIData, ) { // TODO: return value
-  // TODO: implement
+func (me *VoxelGI) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VoxelGI) GetProbeData() { // TODO: return value
-  // TODO: implement
+func (me *VoxelGI) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VoxelGI) SetSubdiv(subdiv VoxelGISubdiv, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VoxelGI) SetProbeData(data VoxelGIData, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGI) GetSubdiv() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGI) GetProbeData()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGI) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGI) SetSubdiv(subdiv VoxelGISubdiv, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGI) GetSize() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGI) GetSubdiv()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGI) SetCameraAttributes(camera_attributes CameraAttributes, ) { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGI) SetSize(size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGI) GetCameraAttributes() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGI) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGI) Bake(from_node Node, create_visual_debug bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGI) SetCameraAttributes(camera_attributes CameraAttributes, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGI) DebugBake() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGI) GetCameraAttributes()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VoxelGI) Bake(from_node Node, create_visual_debug bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VoxelGI) DebugBake()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,26 +25,41 @@ func (me *EditorResourcePreviewGenerator) BaseClass() string {
   return "EditorResourcePreviewGenerator"
 }
 
-func  (me *EditorResourcePreviewGenerator) XHandles(type_ String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorResourcePreviewGenerator) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorResourcePreviewGenerator) XGenerate(resource Resource, size Vector2i, metadata Dictionary, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorResourcePreviewGenerator) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorResourcePreviewGenerator) XGenerateFromPath(path String, size Vector2i, metadata Dictionary, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorResourcePreviewGenerator) XHandles(type_ String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePreviewGenerator) XGenerateSmallPreviewAutomatically() { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePreviewGenerator) XGenerate(resource Resource, size Vector2i, metadata Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePreviewGenerator) XCanGenerateSmallPreview() { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePreviewGenerator) XGenerateFromPath(path String, size Vector2i, metadata Dictionary, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorResourcePreviewGenerator) XGenerateSmallPreviewAutomatically()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorResourcePreviewGenerator) XCanGenerateSmallPreview()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

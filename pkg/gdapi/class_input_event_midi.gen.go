@@ -25,70 +25,85 @@ func (me *InputEventMIDI) BaseClass() string {
   return "InputEventMIDI"
 }
 
-func  (me *InputEventMIDI) SetChannel(channel int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventMIDI) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventMIDI) GetChannel() { // TODO: return value
-  // TODO: implement
+func (me *InputEventMIDI) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *InputEventMIDI) SetMessage(message MIDIMessage, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *InputEventMIDI) SetChannel(channel int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) GetMessage() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) GetChannel()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) SetPitch(pitch int, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) SetMessage(message MIDIMessage, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) GetPitch() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) GetMessage()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) SetVelocity(velocity int, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) SetPitch(pitch int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) GetVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) GetPitch()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) SetInstrument(instrument int, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) SetVelocity(velocity int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) GetInstrument() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) GetVelocity()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) SetPressure(pressure int, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) SetInstrument(instrument int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) GetPressure() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) GetInstrument()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) SetControllerNumber(controller_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) SetPressure(pressure int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) GetControllerNumber() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) GetPressure()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) SetControllerValue(controller_value int, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) SetControllerNumber(controller_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMIDI) GetControllerValue() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMIDI) GetControllerNumber()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *InputEventMIDI) SetControllerValue(controller_value int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *InputEventMIDI) GetControllerValue()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

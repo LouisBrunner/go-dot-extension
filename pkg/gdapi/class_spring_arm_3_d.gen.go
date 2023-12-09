@@ -25,54 +25,69 @@ func (me *SpringArm3D) BaseClass() string {
   return "SpringArm3D"
 }
 
-func  (me *SpringArm3D) GetHitLength() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SpringArm3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SpringArm3D) SetLength(length float32, ) { // TODO: return value
-  // TODO: implement
+func (me *SpringArm3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SpringArm3D) GetLength() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SpringArm3D) GetHitLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpringArm3D) SetShape(shape Shape3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpringArm3D) SetLength(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpringArm3D) GetShape() { // TODO: return value
-  // TODO: implement
+func  (me *SpringArm3D) GetLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpringArm3D) AddExcludedObject(RID RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpringArm3D) SetShape(shape Shape3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpringArm3D) RemoveExcludedObject(RID RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpringArm3D) GetShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpringArm3D) ClearExcludedObjects() { // TODO: return value
-  // TODO: implement
+func  (me *SpringArm3D) AddExcludedObject(RID RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpringArm3D) SetCollisionMask(mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpringArm3D) RemoveExcludedObject(RID RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpringArm3D) GetCollisionMask() { // TODO: return value
-  // TODO: implement
+func  (me *SpringArm3D) ClearExcludedObjects()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpringArm3D) SetMargin(margin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpringArm3D) SetCollisionMask(mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpringArm3D) GetMargin() { // TODO: return value
-  // TODO: implement
+func  (me *SpringArm3D) GetCollisionMask()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SpringArm3D) SetMargin(margin float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SpringArm3D) GetMargin()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

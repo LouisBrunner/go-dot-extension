@@ -25,6 +25,10 @@ func (me *Shader) BaseClass() string {
   return "Shader"
 }
 
+
+
+// Enums
+
 type ShaderMode int
 const (
   ShaderModeModeSpatial ShaderMode = 0
@@ -34,30 +38,41 @@ const (
   ShaderModeModeFog ShaderMode = 4
 )
 
-func  (me *Shader) GetMode() { // TODO: return value
-  // TODO: implement
+func (me *Shader) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Shader) SetCode(code String, ) { // TODO: return value
-  // TODO: implement
+func (me *Shader) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Shader) GetCode() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Shader) GetMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Shader) SetDefaultTextureParameter(name StringName, texture Texture2D, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Shader) SetCode(code String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Shader) GetDefaultTextureParameter(name StringName, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Shader) GetCode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Shader) GetShaderUniformList(get_groups bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Shader) SetDefaultTextureParameter(name StringName, texture Texture2D, index int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Shader) GetDefaultTextureParameter(name StringName, index int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Shader) GetShaderUniformList(get_groups bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

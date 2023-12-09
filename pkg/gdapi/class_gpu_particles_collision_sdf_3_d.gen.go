@@ -25,6 +25,10 @@ func (me *GPUParticlesCollisionSDF3D) BaseClass() string {
   return "GPUParticlesCollisionSDF3D"
 }
 
+
+
+// Enums
+
 type GPUParticlesCollisionSDF3DResolution int
 const (
   GPUParticlesCollisionSDF3DResolutionResolution16 GPUParticlesCollisionSDF3DResolution = 0
@@ -36,54 +40,65 @@ const (
   GPUParticlesCollisionSDF3DResolutionResolutionMax GPUParticlesCollisionSDF3DResolution = 6
 )
 
-func  (me *GPUParticlesCollisionSDF3D) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+func (me *GPUParticlesCollisionSDF3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GPUParticlesCollisionSDF3D) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *GPUParticlesCollisionSDF3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GPUParticlesCollisionSDF3D) SetResolution(resolution GPUParticlesCollisionSDF3DResolution, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GPUParticlesCollisionSDF3D) SetSize(size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionSDF3D) GetResolution() { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionSDF3D) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionSDF3D) SetTexture(texture Texture3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionSDF3D) SetResolution(resolution GPUParticlesCollisionSDF3DResolution, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionSDF3D) GetTexture() { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionSDF3D) GetResolution()  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionSDF3D) SetThickness(thickness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionSDF3D) SetTexture(texture Texture3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionSDF3D) GetThickness() { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionSDF3D) GetTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionSDF3D) SetBakeMask(mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionSDF3D) SetThickness(thickness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionSDF3D) GetBakeMask() { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionSDF3D) GetThickness()  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionSDF3D) SetBakeMaskValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionSDF3D) SetBakeMask(mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionSDF3D) GetBakeMaskValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionSDF3D) GetBakeMask()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GPUParticlesCollisionSDF3D) SetBakeMaskValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GPUParticlesCollisionSDF3D) GetBakeMaskValue(layer_number int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

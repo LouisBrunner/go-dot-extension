@@ -25,22 +25,37 @@ func (me *RDPipelineSpecializationConstant) BaseClass() string {
   return "RDPipelineSpecializationConstant"
 }
 
-func  (me *RDPipelineSpecializationConstant) SetValue(value Variant, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDPipelineSpecializationConstant) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDPipelineSpecializationConstant) GetValue() { // TODO: return value
-  // TODO: implement
+func (me *RDPipelineSpecializationConstant) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDPipelineSpecializationConstant) SetConstantId(constant_id int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDPipelineSpecializationConstant) SetValue(value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineSpecializationConstant) GetConstantId() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineSpecializationConstant) GetValue()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDPipelineSpecializationConstant) SetConstantId(constant_id int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDPipelineSpecializationConstant) GetConstantId()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

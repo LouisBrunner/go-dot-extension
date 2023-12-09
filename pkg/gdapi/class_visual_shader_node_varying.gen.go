@@ -25,22 +25,37 @@ func (me *VisualShaderNodeVarying) BaseClass() string {
   return "VisualShaderNodeVarying"
 }
 
-func  (me *VisualShaderNodeVarying) SetVaryingName(name String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeVarying) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeVarying) GetVaryingName() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeVarying) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeVarying) SetVaryingType(type_ VisualShaderVaryingType, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeVarying) SetVaryingName(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeVarying) GetVaryingType() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeVarying) GetVaryingName()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeVarying) SetVaryingType(type_ VisualShaderVaryingType, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeVarying) GetVaryingType()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

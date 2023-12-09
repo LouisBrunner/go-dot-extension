@@ -25,14 +25,29 @@ func (me *GridContainer) BaseClass() string {
   return "GridContainer"
 }
 
-func  (me *GridContainer) SetColumns(columns int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GridContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GridContainer) GetColumns() { // TODO: return value
-  // TODO: implement
+func (me *GridContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *GridContainer) SetColumns(columns int, )  {
+  panic("TODO: implement")
+}
+
+func  (me *GridContainer) GetColumns()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

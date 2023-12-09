@@ -25,6 +25,10 @@ func (me *StreamPeerTCP) BaseClass() string {
   return "StreamPeerTCP"
 }
 
+
+
+// Enums
+
 type StreamPeerTCPStatus int
 const (
   StreamPeerTCPStatusStatusNone StreamPeerTCPStatus = 0
@@ -33,42 +37,53 @@ const (
   StreamPeerTCPStatusStatusError StreamPeerTCPStatus = 3
 )
 
-func  (me *StreamPeerTCP) Bind(port int, host String, ) { // TODO: return value
-  // TODO: implement
+func (me *StreamPeerTCP) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *StreamPeerTCP) ConnectToHost(host String, port int, ) { // TODO: return value
-  // TODO: implement
+func (me *StreamPeerTCP) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *StreamPeerTCP) Poll() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *StreamPeerTCP) Bind(port int, host String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerTCP) GetStatus() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerTCP) ConnectToHost(host String, port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerTCP) GetConnectedHost() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerTCP) Poll()  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerTCP) GetConnectedPort() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerTCP) GetStatus()  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerTCP) GetLocalPort() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerTCP) GetConnectedHost()  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerTCP) DisconnectFromHost() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerTCP) GetConnectedPort()  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerTCP) SetNoDelay(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerTCP) GetLocalPort()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *StreamPeerTCP) DisconnectFromHost()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *StreamPeerTCP) SetNoDelay(enabled bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

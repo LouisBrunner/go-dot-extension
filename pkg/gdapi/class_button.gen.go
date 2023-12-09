@@ -25,94 +25,109 @@ func (me *Button) BaseClass() string {
   return "Button"
 }
 
-func  (me *Button) SetText(text String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Button) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Button) GetText() { // TODO: return value
-  // TODO: implement
+func (me *Button) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Button) SetTextOverrunBehavior(overrun_behavior TextServerOverrunBehavior, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Button) SetText(text String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) GetTextOverrunBehavior() { // TODO: return value
-  // TODO: implement
+func  (me *Button) GetText()  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) SetTextDirection(direction ControlTextDirection, ) { // TODO: return value
-  // TODO: implement
+func  (me *Button) SetTextOverrunBehavior(overrun_behavior TextServerOverrunBehavior, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) GetTextDirection() { // TODO: return value
-  // TODO: implement
+func  (me *Button) GetTextOverrunBehavior()  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) SetLanguage(language String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Button) SetTextDirection(direction ControlTextDirection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) GetLanguage() { // TODO: return value
-  // TODO: implement
+func  (me *Button) GetTextDirection()  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) SetButtonIcon(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *Button) SetLanguage(language String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) GetButtonIcon() { // TODO: return value
-  // TODO: implement
+func  (me *Button) GetLanguage()  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) SetFlat(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Button) SetButtonIcon(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) IsFlat() { // TODO: return value
-  // TODO: implement
+func  (me *Button) GetButtonIcon()  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) SetClipText(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Button) SetFlat(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) GetClipText() { // TODO: return value
-  // TODO: implement
+func  (me *Button) IsFlat()  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) SetTextAlignment(alignment HorizontalAlignment, ) { // TODO: return value
-  // TODO: implement
+func  (me *Button) SetClipText(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) GetTextAlignment() { // TODO: return value
-  // TODO: implement
+func  (me *Button) GetClipText()  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) SetIconAlignment(icon_alignment HorizontalAlignment, ) { // TODO: return value
-  // TODO: implement
+func  (me *Button) SetTextAlignment(alignment HorizontalAlignment, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) GetIconAlignment() { // TODO: return value
-  // TODO: implement
+func  (me *Button) GetTextAlignment()  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) SetVerticalIconAlignment(vertical_icon_alignment VerticalAlignment, ) { // TODO: return value
-  // TODO: implement
+func  (me *Button) SetIconAlignment(icon_alignment HorizontalAlignment, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) GetVerticalIconAlignment() { // TODO: return value
-  // TODO: implement
+func  (me *Button) GetIconAlignment()  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) SetExpandIcon(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Button) SetVerticalIconAlignment(vertical_icon_alignment VerticalAlignment, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Button) IsExpandIcon() { // TODO: return value
-  // TODO: implement
+func  (me *Button) GetVerticalIconAlignment()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Button) SetExpandIcon(enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Button) IsExpandIcon()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

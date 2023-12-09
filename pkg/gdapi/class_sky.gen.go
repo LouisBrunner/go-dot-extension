@@ -25,6 +25,10 @@ func (me *Sky) BaseClass() string {
   return "Sky"
 }
 
+
+
+// Enums
+
 type SkyRadianceSize int
 const (
   SkyRadianceSizeRadianceSize32 SkyRadianceSize = 0
@@ -45,30 +49,41 @@ const (
   SkyProcessModeProcessModeRealtime SkyProcessMode = 3
 )
 
-func  (me *Sky) SetRadianceSize(size SkyRadianceSize, ) { // TODO: return value
-  // TODO: implement
+func (me *Sky) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Sky) GetRadianceSize() { // TODO: return value
-  // TODO: implement
+func (me *Sky) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Sky) SetProcessMode(mode SkyProcessMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Sky) SetRadianceSize(size SkyRadianceSize, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Sky) GetProcessMode() { // TODO: return value
-  // TODO: implement
+func  (me *Sky) GetRadianceSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Sky) SetMaterial(material Material, ) { // TODO: return value
-  // TODO: implement
+func  (me *Sky) SetProcessMode(mode SkyProcessMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Sky) GetMaterial() { // TODO: return value
-  // TODO: implement
+func  (me *Sky) GetProcessMode()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Sky) SetMaterial(material Material, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Sky) GetMaterial()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

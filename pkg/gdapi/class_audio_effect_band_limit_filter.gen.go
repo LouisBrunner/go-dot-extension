@@ -25,6 +25,21 @@ func (me *AudioEffectBandLimitFilter) BaseClass() string {
   return "AudioEffectBandLimitFilter"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *AudioEffectBandLimitFilter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *AudioEffectBandLimitFilter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

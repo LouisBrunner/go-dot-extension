@@ -25,38 +25,53 @@ func (me *DampedSpringJoint2D) BaseClass() string {
   return "DampedSpringJoint2D"
 }
 
-func  (me *DampedSpringJoint2D) SetLength(length float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *DampedSpringJoint2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *DampedSpringJoint2D) GetLength() { // TODO: return value
-  // TODO: implement
+func (me *DampedSpringJoint2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *DampedSpringJoint2D) SetRestLength(rest_length float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *DampedSpringJoint2D) SetLength(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DampedSpringJoint2D) GetRestLength() { // TODO: return value
-  // TODO: implement
+func  (me *DampedSpringJoint2D) GetLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *DampedSpringJoint2D) SetStiffness(stiffness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *DampedSpringJoint2D) SetRestLength(rest_length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DampedSpringJoint2D) GetStiffness() { // TODO: return value
-  // TODO: implement
+func  (me *DampedSpringJoint2D) GetRestLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *DampedSpringJoint2D) SetDamping(damping float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *DampedSpringJoint2D) SetStiffness(stiffness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DampedSpringJoint2D) GetDamping() { // TODO: return value
-  // TODO: implement
+func  (me *DampedSpringJoint2D) GetStiffness()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *DampedSpringJoint2D) SetDamping(damping float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *DampedSpringJoint2D) GetDamping()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

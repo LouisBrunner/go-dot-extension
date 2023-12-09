@@ -25,38 +25,53 @@ func (me *GPUParticlesAttractor3D) BaseClass() string {
   return "GPUParticlesAttractor3D"
 }
 
-func  (me *GPUParticlesAttractor3D) SetCullMask(mask int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GPUParticlesAttractor3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GPUParticlesAttractor3D) GetCullMask() { // TODO: return value
-  // TODO: implement
+func (me *GPUParticlesAttractor3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GPUParticlesAttractor3D) SetStrength(strength float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GPUParticlesAttractor3D) SetCullMask(mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesAttractor3D) GetStrength() { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesAttractor3D) GetCullMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesAttractor3D) SetAttenuation(attenuation float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesAttractor3D) SetStrength(strength float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesAttractor3D) GetAttenuation() { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesAttractor3D) GetStrength()  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesAttractor3D) SetDirectionality(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesAttractor3D) SetAttenuation(attenuation float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesAttractor3D) GetDirectionality() { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesAttractor3D) GetAttenuation()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GPUParticlesAttractor3D) SetDirectionality(amount float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GPUParticlesAttractor3D) GetDirectionality()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,21 @@ func (me *Texture) BaseClass() string {
   return "Texture"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *Texture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *Texture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

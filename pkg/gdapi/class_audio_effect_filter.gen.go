@@ -25,6 +25,10 @@ func (me *AudioEffectFilter) BaseClass() string {
   return "AudioEffectFilter"
 }
 
+
+
+// Enums
+
 type AudioEffectFilterFilterDB int
 const (
   AudioEffectFilterFilterDBFilter6Db AudioEffectFilterFilterDB = 0
@@ -33,38 +37,49 @@ const (
   AudioEffectFilterFilterDBFilter24Db AudioEffectFilterFilterDB = 3
 )
 
-func  (me *AudioEffectFilter) SetCutoff(freq float32, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectFilter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectFilter) GetCutoff() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectFilter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectFilter) SetResonance(amount float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectFilter) SetCutoff(freq float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectFilter) GetResonance() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectFilter) GetCutoff()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectFilter) SetGain(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectFilter) SetResonance(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectFilter) GetGain() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectFilter) GetResonance()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectFilter) SetDb(amount AudioEffectFilterFilterDB, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectFilter) SetGain(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectFilter) GetDb() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectFilter) GetGain()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectFilter) SetDb(amount AudioEffectFilterFilterDB, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectFilter) GetDb()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

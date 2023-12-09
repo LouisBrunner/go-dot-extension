@@ -25,54 +25,69 @@ func (me *Resource) BaseClass() string {
   return "Resource"
 }
 
-func  (me *Resource) SetPath(path String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Resource) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Resource) TakeOverPath(path String, ) { // TODO: return value
-  // TODO: implement
+func (me *Resource) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Resource) GetPath() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Resource) SetPath(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Resource) SetName(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Resource) TakeOverPath(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Resource) GetName() { // TODO: return value
-  // TODO: implement
+func  (me *Resource) GetPath()  {
+  panic("TODO: implement")
 }
 
-func  (me *Resource) GetRid() { // TODO: return value
-  // TODO: implement
+func  (me *Resource) SetName(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Resource) SetLocalToScene(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Resource) GetName()  {
+  panic("TODO: implement")
 }
 
-func  (me *Resource) IsLocalToScene() { // TODO: return value
-  // TODO: implement
+func  (me *Resource) GetRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *Resource) GetLocalScene() { // TODO: return value
-  // TODO: implement
+func  (me *Resource) SetLocalToScene(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Resource) SetupLocalToScene() { // TODO: return value
-  // TODO: implement
+func  (me *Resource) IsLocalToScene()  {
+  panic("TODO: implement")
 }
 
-func  (me *Resource) EmitChanged() { // TODO: return value
-  // TODO: implement
+func  (me *Resource) GetLocalScene()  {
+  panic("TODO: implement")
 }
 
-func  (me *Resource) Duplicate(subresources bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Resource) SetupLocalToScene()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Resource) EmitChanged()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Resource) Duplicate(subresources bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

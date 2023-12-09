@@ -25,38 +25,53 @@ func (me *GLTFTextureSampler) BaseClass() string {
   return "GLTFTextureSampler"
 }
 
-func  (me *GLTFTextureSampler) GetMagFilter() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFTextureSampler) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFTextureSampler) SetMagFilter(filter_mode int, ) { // TODO: return value
-  // TODO: implement
+func (me *GLTFTextureSampler) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GLTFTextureSampler) GetMinFilter() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GLTFTextureSampler) GetMagFilter()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFTextureSampler) SetMinFilter(filter_mode int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFTextureSampler) SetMagFilter(filter_mode int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFTextureSampler) GetWrapS() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFTextureSampler) GetMinFilter()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFTextureSampler) SetWrapS(wrap_mode int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFTextureSampler) SetMinFilter(filter_mode int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFTextureSampler) GetWrapT() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFTextureSampler) GetWrapS()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFTextureSampler) SetWrapT(wrap_mode int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFTextureSampler) SetWrapS(wrap_mode int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFTextureSampler) GetWrapT()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFTextureSampler) SetWrapT(wrap_mode int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

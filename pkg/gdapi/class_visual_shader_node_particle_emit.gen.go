@@ -25,6 +25,10 @@ func (me *VisualShaderNodeParticleEmit) BaseClass() string {
   return "VisualShaderNodeParticleEmit"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeParticleEmitEmitFlags int
 const (
   VisualShaderNodeParticleEmitEmitFlagsEmitFlagPosition VisualShaderNodeParticleEmitEmitFlags = 1
@@ -34,14 +38,25 @@ const (
   VisualShaderNodeParticleEmitEmitFlagsEmitFlagCustom VisualShaderNodeParticleEmitEmitFlags = 16
 )
 
-func  (me *VisualShaderNodeParticleEmit) SetFlags(flags VisualShaderNodeParticleEmitEmitFlags, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParticleEmit) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeParticleEmit) GetFlags() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParticleEmit) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeParticleEmit) SetFlags(flags VisualShaderNodeParticleEmitEmitFlags, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeParticleEmit) GetFlags()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

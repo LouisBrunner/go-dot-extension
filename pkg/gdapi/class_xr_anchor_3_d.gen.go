@@ -25,14 +25,29 @@ func (me *XRAnchor3D) BaseClass() string {
   return "XRAnchor3D"
 }
 
-func  (me *XRAnchor3D) GetSize() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *XRAnchor3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *XRAnchor3D) GetPlane() { // TODO: return value
-  // TODO: implement
+func (me *XRAnchor3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *XRAnchor3D) GetSize()  {
+  panic("TODO: implement")
+}
+
+func  (me *XRAnchor3D) GetPlane()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

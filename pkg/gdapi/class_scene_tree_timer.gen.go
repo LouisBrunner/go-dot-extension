@@ -25,14 +25,29 @@ func (me *SceneTreeTimer) BaseClass() string {
   return "SceneTreeTimer"
 }
 
-func  (me *SceneTreeTimer) SetTimeLeft(time float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SceneTreeTimer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SceneTreeTimer) GetTimeLeft() { // TODO: return value
-  // TODO: implement
+func (me *SceneTreeTimer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *SceneTreeTimer) SetTimeLeft(time float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *SceneTreeTimer) GetTimeLeft()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

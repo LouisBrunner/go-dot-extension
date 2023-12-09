@@ -25,6 +25,10 @@ func (me *XMLParser) BaseClass() string {
   return "XMLParser"
 }
 
+
+
+// Enums
+
 type XMLParserNodeType int
 const (
   XMLParserNodeTypeNodeNone XMLParserNodeType = 0
@@ -36,74 +40,85 @@ const (
   XMLParserNodeTypeNodeUnknown XMLParserNodeType = 6
 )
 
-func  (me *XMLParser) Read() { // TODO: return value
-  // TODO: implement
+func (me *XMLParser) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *XMLParser) GetNodeType() { // TODO: return value
-  // TODO: implement
+func (me *XMLParser) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *XMLParser) GetNodeName() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *XMLParser) Read()  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) GetNodeData() { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) GetNodeType()  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) GetNodeOffset() { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) GetNodeName()  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) GetAttributeCount() { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) GetNodeData()  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) GetAttributeName(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) GetNodeOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) GetAttributeValue(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) GetAttributeCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) HasAttribute(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) GetAttributeName(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) GetNamedAttributeValue(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) GetAttributeValue(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) GetNamedAttributeValueSafe(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) HasAttribute(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) IsEmpty() { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) GetNamedAttributeValue(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) GetCurrentLine() { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) GetNamedAttributeValueSafe(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) SkipSection() { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) IsEmpty()  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) Seek(position int, ) { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) GetCurrentLine()  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) Open(file String, ) { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) SkipSection()  {
+  panic("TODO: implement")
 }
 
-func  (me *XMLParser) OpenBuffer(buffer PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *XMLParser) Seek(position int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *XMLParser) Open(file String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *XMLParser) OpenBuffer(buffer PackedByteArray, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

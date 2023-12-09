@@ -25,6 +25,10 @@ func (me *VisualShaderNodeCubemap) BaseClass() string {
   return "VisualShaderNodeCubemap"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeCubemapSource int
 const (
   VisualShaderNodeCubemapSourceSourceTexture VisualShaderNodeCubemapSource = 0
@@ -40,30 +44,41 @@ const (
   VisualShaderNodeCubemapTextureTypeTypeMax VisualShaderNodeCubemapTextureType = 3
 )
 
-func  (me *VisualShaderNodeCubemap) SetSource(value VisualShaderNodeCubemapSource, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeCubemap) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeCubemap) GetSource() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeCubemap) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeCubemap) SetCubeMap(value Cubemap, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeCubemap) SetSource(value VisualShaderNodeCubemapSource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCubemap) GetCubeMap() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCubemap) GetSource()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCubemap) SetTextureType(value VisualShaderNodeCubemapTextureType, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCubemap) SetCubeMap(value Cubemap, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCubemap) GetTextureType() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCubemap) GetCubeMap()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeCubemap) SetTextureType(value VisualShaderNodeCubemapTextureType, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeCubemap) GetTextureType()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

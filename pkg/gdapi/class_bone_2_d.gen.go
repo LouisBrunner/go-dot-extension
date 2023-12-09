@@ -25,50 +25,65 @@ func (me *Bone2D) BaseClass() string {
   return "Bone2D"
 }
 
-func  (me *Bone2D) SetRest(rest Transform2D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Bone2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Bone2D) GetRest() { // TODO: return value
-  // TODO: implement
+func (me *Bone2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Bone2D) ApplyRest() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Bone2D) SetRest(rest Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Bone2D) GetSkeletonRest() { // TODO: return value
-  // TODO: implement
+func  (me *Bone2D) GetRest()  {
+  panic("TODO: implement")
 }
 
-func  (me *Bone2D) GetIndexInSkeleton() { // TODO: return value
-  // TODO: implement
+func  (me *Bone2D) ApplyRest()  {
+  panic("TODO: implement")
 }
 
-func  (me *Bone2D) SetAutocalculateLengthAndAngle(auto_calculate bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Bone2D) GetSkeletonRest()  {
+  panic("TODO: implement")
 }
 
-func  (me *Bone2D) GetAutocalculateLengthAndAngle() { // TODO: return value
-  // TODO: implement
+func  (me *Bone2D) GetIndexInSkeleton()  {
+  panic("TODO: implement")
 }
 
-func  (me *Bone2D) SetLength(length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Bone2D) SetAutocalculateLengthAndAngle(auto_calculate bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Bone2D) GetLength() { // TODO: return value
-  // TODO: implement
+func  (me *Bone2D) GetAutocalculateLengthAndAngle()  {
+  panic("TODO: implement")
 }
 
-func  (me *Bone2D) SetBoneAngle(angle float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Bone2D) SetLength(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Bone2D) GetBoneAngle() { // TODO: return value
-  // TODO: implement
+func  (me *Bone2D) GetLength()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Bone2D) SetBoneAngle(angle float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Bone2D) GetBoneAngle()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

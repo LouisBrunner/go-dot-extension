@@ -25,9 +25,9 @@ func (me *EditorSceneFormatImporter) BaseClass() string {
   return "EditorSceneFormatImporter"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   EditorSceneFormatImporterImportScene = "1" // TODO: construct correctly
@@ -38,26 +38,39 @@ var (
   EditorSceneFormatImporterImportDiscardMeshesAndMaterials = "32" // TODO: construct correctly
 )
 
-func  (me *EditorSceneFormatImporter) XGetImportFlags() { // TODO: return value
-  // TODO: implement
+// Enums
+
+func (me *EditorSceneFormatImporter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorSceneFormatImporter) XGetExtensions() { // TODO: return value
-  // TODO: implement
+func (me *EditorSceneFormatImporter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorSceneFormatImporter) XImportScene(path String, flags int, options Dictionary, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorSceneFormatImporter) XGetImportFlags()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSceneFormatImporter) XGetImportOptions(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSceneFormatImporter) XGetExtensions()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSceneFormatImporter) XGetOptionVisibility(path String, for_animation bool, option String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSceneFormatImporter) XImportScene(path String, flags int, options Dictionary, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorSceneFormatImporter) XGetImportOptions(path String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorSceneFormatImporter) XGetOptionVisibility(path String, for_animation bool, option String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

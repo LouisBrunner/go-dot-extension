@@ -25,42 +25,57 @@ func (me *UDPServer) BaseClass() string {
   return "UDPServer"
 }
 
-func  (me *UDPServer) Listen(port int, bind_address String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *UDPServer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *UDPServer) Poll() { // TODO: return value
-  // TODO: implement
+func (me *UDPServer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *UDPServer) IsConnectionAvailable() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *UDPServer) Listen(port int, bind_address String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UDPServer) GetLocalPort() { // TODO: return value
-  // TODO: implement
+func  (me *UDPServer) Poll()  {
+  panic("TODO: implement")
 }
 
-func  (me *UDPServer) IsListening() { // TODO: return value
-  // TODO: implement
+func  (me *UDPServer) IsConnectionAvailable()  {
+  panic("TODO: implement")
 }
 
-func  (me *UDPServer) TakeConnection() { // TODO: return value
-  // TODO: implement
+func  (me *UDPServer) GetLocalPort()  {
+  panic("TODO: implement")
 }
 
-func  (me *UDPServer) Stop() { // TODO: return value
-  // TODO: implement
+func  (me *UDPServer) IsListening()  {
+  panic("TODO: implement")
 }
 
-func  (me *UDPServer) SetMaxPendingConnections(max_pending_connections int, ) { // TODO: return value
-  // TODO: implement
+func  (me *UDPServer) TakeConnection()  {
+  panic("TODO: implement")
 }
 
-func  (me *UDPServer) GetMaxPendingConnections() { // TODO: return value
-  // TODO: implement
+func  (me *UDPServer) Stop()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *UDPServer) SetMaxPendingConnections(max_pending_connections int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *UDPServer) GetMaxPendingConnections()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

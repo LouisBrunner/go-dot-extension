@@ -25,6 +25,21 @@ func (me *OfflineMultiplayerPeer) BaseClass() string {
   return "OfflineMultiplayerPeer"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *OfflineMultiplayerPeer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *OfflineMultiplayerPeer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

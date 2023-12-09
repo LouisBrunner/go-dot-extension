@@ -25,146 +25,161 @@ func (me *ShapeCast2D) BaseClass() string {
   return "ShapeCast2D"
 }
 
-func  (me *ShapeCast2D) SetEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ShapeCast2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ShapeCast2D) IsEnabled() { // TODO: return value
-  // TODO: implement
+func (me *ShapeCast2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ShapeCast2D) SetShape(shape Shape2D, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ShapeCast2D) SetEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetShape() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) IsEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) SetTargetPosition(local_point Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) SetShape(shape Shape2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetTargetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) SetMargin(margin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) SetTargetPosition(local_point Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetMargin() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetTargetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) SetMaxResults(max_results int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) SetMargin(margin float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetMaxResults() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetMargin()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) IsColliding() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) SetMaxResults(max_results int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetCollisionCount() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetMaxResults()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) ForceShapecastUpdate() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) IsColliding()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetCollider(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetCollisionCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetColliderRid(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) ForceShapecastUpdate()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetColliderShape(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetCollider(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetCollisionPoint(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetColliderRid(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetCollisionNormal(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetColliderShape(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetClosestCollisionSafeFraction() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetCollisionPoint(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetClosestCollisionUnsafeFraction() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetCollisionNormal(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) AddExceptionRid(rid RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetClosestCollisionSafeFraction()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) AddException(node CollisionObject2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetClosestCollisionUnsafeFraction()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) RemoveExceptionRid(rid RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) AddExceptionRid(rid RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) RemoveException(node CollisionObject2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) AddException(node CollisionObject2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) ClearExceptions() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) RemoveExceptionRid(rid RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) SetCollisionMask(mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) RemoveException(node CollisionObject2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetCollisionMask() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) ClearExceptions()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) SetCollisionMaskValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) SetCollisionMask(mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetCollisionMaskValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetCollisionMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) SetExcludeParentBody(mask bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) SetCollisionMaskValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) GetExcludeParentBody() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetCollisionMaskValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) SetCollideWithAreas(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) SetExcludeParentBody(mask bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) IsCollideWithAreasEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) GetExcludeParentBody()  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) SetCollideWithBodies(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) SetCollideWithAreas(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShapeCast2D) IsCollideWithBodiesEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *ShapeCast2D) IsCollideWithAreasEnabled()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ShapeCast2D) SetCollideWithBodies(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ShapeCast2D) IsCollideWithBodiesEnabled()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

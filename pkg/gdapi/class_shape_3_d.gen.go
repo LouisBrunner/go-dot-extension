@@ -25,26 +25,41 @@ func (me *Shape3D) BaseClass() string {
   return "Shape3D"
 }
 
-func  (me *Shape3D) SetCustomSolverBias(bias float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Shape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Shape3D) GetCustomSolverBias() { // TODO: return value
-  // TODO: implement
+func (me *Shape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Shape3D) SetMargin(margin float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Shape3D) SetCustomSolverBias(bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Shape3D) GetMargin() { // TODO: return value
-  // TODO: implement
+func  (me *Shape3D) GetCustomSolverBias()  {
+  panic("TODO: implement")
 }
 
-func  (me *Shape3D) GetDebugMesh() { // TODO: return value
-  // TODO: implement
+func  (me *Shape3D) SetMargin(margin float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Shape3D) GetMargin()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Shape3D) GetDebugMesh()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

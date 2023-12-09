@@ -25,22 +25,37 @@ func (me *SubViewportContainer) BaseClass() string {
   return "SubViewportContainer"
 }
 
-func  (me *SubViewportContainer) SetStretch(enable bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SubViewportContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SubViewportContainer) IsStretchEnabled() { // TODO: return value
-  // TODO: implement
+func (me *SubViewportContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SubViewportContainer) SetStretchShrink(amount int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SubViewportContainer) SetStretch(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SubViewportContainer) GetStretchShrink() { // TODO: return value
-  // TODO: implement
+func  (me *SubViewportContainer) IsStretchEnabled()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SubViewportContainer) SetStretchShrink(amount int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SubViewportContainer) GetStretchShrink()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

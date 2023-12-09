@@ -25,14 +25,29 @@ func (me *CanvasModulate) BaseClass() string {
   return "CanvasModulate"
 }
 
-func  (me *CanvasModulate) SetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CanvasModulate) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CanvasModulate) GetColor() { // TODO: return value
-  // TODO: implement
+func (me *CanvasModulate) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *CanvasModulate) SetColor(color Color, )  {
+  panic("TODO: implement")
+}
+
+func  (me *CanvasModulate) GetColor()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

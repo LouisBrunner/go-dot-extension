@@ -25,14 +25,29 @@ func (me *AnimationNodeSync) BaseClass() string {
   return "AnimationNodeSync"
 }
 
-func  (me *AnimationNodeSync) SetUseSync(enable bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AnimationNodeSync) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AnimationNodeSync) IsUsingSync() { // TODO: return value
-  // TODO: implement
+func (me *AnimationNodeSync) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *AnimationNodeSync) SetUseSync(enable bool, )  {
+  panic("TODO: implement")
+}
+
+func  (me *AnimationNodeSync) IsUsingSync()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

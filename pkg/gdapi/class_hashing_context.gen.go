@@ -25,6 +25,10 @@ func (me *HashingContext) BaseClass() string {
   return "HashingContext"
 }
 
+
+
+// Enums
+
 type HashingContextHashType int
 const (
   HashingContextHashTypeHashMd5 HashingContextHashType = 0
@@ -32,18 +36,29 @@ const (
   HashingContextHashTypeHashSha256 HashingContextHashType = 2
 )
 
-func  (me *HashingContext) Start(type_ HashingContextHashType, ) { // TODO: return value
-  // TODO: implement
+func (me *HashingContext) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *HashingContext) Update(chunk PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func (me *HashingContext) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *HashingContext) Finish() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *HashingContext) Start(type_ HashingContextHashType, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *HashingContext) Update(chunk PackedByteArray, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *HashingContext) Finish()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,14 +25,29 @@ func (me *ImageTextureLayered) BaseClass() string {
   return "ImageTextureLayered"
 }
 
-func  (me *ImageTextureLayered) CreateFromImages(images Image, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ImageTextureLayered) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ImageTextureLayered) UpdateLayer(image Image, layer int, ) { // TODO: return value
-  // TODO: implement
+func (me *ImageTextureLayered) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *ImageTextureLayered) CreateFromImages(images Image, )  {
+  panic("TODO: implement")
+}
+
+func  (me *ImageTextureLayered) UpdateLayer(image Image, layer int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

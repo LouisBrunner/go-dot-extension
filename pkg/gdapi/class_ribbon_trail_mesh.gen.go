@@ -25,60 +25,75 @@ func (me *RibbonTrailMesh) BaseClass() string {
   return "RibbonTrailMesh"
 }
 
+
+
+// Enums
+
 type RibbonTrailMeshShape int
 const (
   RibbonTrailMeshShapeShapeFlat RibbonTrailMeshShape = 0
   RibbonTrailMeshShapeShapeCross RibbonTrailMeshShape = 1
 )
 
-func  (me *RibbonTrailMesh) SetSize(size float32, ) { // TODO: return value
-  // TODO: implement
+func (me *RibbonTrailMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RibbonTrailMesh) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *RibbonTrailMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RibbonTrailMesh) SetSections(sections int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RibbonTrailMesh) SetSize(size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RibbonTrailMesh) GetSections() { // TODO: return value
-  // TODO: implement
+func  (me *RibbonTrailMesh) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *RibbonTrailMesh) SetSectionLength(section_length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RibbonTrailMesh) SetSections(sections int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RibbonTrailMesh) GetSectionLength() { // TODO: return value
-  // TODO: implement
+func  (me *RibbonTrailMesh) GetSections()  {
+  panic("TODO: implement")
 }
 
-func  (me *RibbonTrailMesh) SetSectionSegments(section_segments int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RibbonTrailMesh) SetSectionLength(section_length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RibbonTrailMesh) GetSectionSegments() { // TODO: return value
-  // TODO: implement
+func  (me *RibbonTrailMesh) GetSectionLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *RibbonTrailMesh) SetCurve(curve Curve, ) { // TODO: return value
-  // TODO: implement
+func  (me *RibbonTrailMesh) SetSectionSegments(section_segments int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RibbonTrailMesh) GetCurve() { // TODO: return value
-  // TODO: implement
+func  (me *RibbonTrailMesh) GetSectionSegments()  {
+  panic("TODO: implement")
 }
 
-func  (me *RibbonTrailMesh) SetShape(shape RibbonTrailMeshShape, ) { // TODO: return value
-  // TODO: implement
+func  (me *RibbonTrailMesh) SetCurve(curve Curve, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RibbonTrailMesh) GetShape() { // TODO: return value
-  // TODO: implement
+func  (me *RibbonTrailMesh) GetCurve()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RibbonTrailMesh) SetShape(shape RibbonTrailMeshShape, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RibbonTrailMesh) GetShape()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

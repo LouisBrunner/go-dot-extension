@@ -25,6 +25,10 @@ func (me *VisualShaderNodeBillboard) BaseClass() string {
   return "VisualShaderNodeBillboard"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeBillboardBillboardType int
 const (
   VisualShaderNodeBillboardBillboardTypeBillboardTypeDisabled VisualShaderNodeBillboardBillboardType = 0
@@ -34,22 +38,33 @@ const (
   VisualShaderNodeBillboardBillboardTypeBillboardTypeMax VisualShaderNodeBillboardBillboardType = 4
 )
 
-func  (me *VisualShaderNodeBillboard) SetBillboardType(billboard_type VisualShaderNodeBillboardBillboardType, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeBillboard) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeBillboard) GetBillboardType() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeBillboard) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeBillboard) SetKeepScaleEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeBillboard) SetBillboardType(billboard_type VisualShaderNodeBillboardBillboardType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeBillboard) IsKeepScaleEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeBillboard) GetBillboardType()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeBillboard) SetKeepScaleEnabled(enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeBillboard) IsKeepScaleEnabled()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

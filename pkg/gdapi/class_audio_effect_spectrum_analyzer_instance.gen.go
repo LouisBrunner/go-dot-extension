@@ -25,16 +25,31 @@ func (me *AudioEffectSpectrumAnalyzerInstance) BaseClass() string {
   return "AudioEffectSpectrumAnalyzerInstance"
 }
 
+
+
+// Enums
+
 type AudioEffectSpectrumAnalyzerInstanceMagnitudeMode int
 const (
   AudioEffectSpectrumAnalyzerInstanceMagnitudeModeMagnitudeAverage AudioEffectSpectrumAnalyzerInstanceMagnitudeMode = 0
   AudioEffectSpectrumAnalyzerInstanceMagnitudeModeMagnitudeMax AudioEffectSpectrumAnalyzerInstanceMagnitudeMode = 1
 )
 
-func  (me *AudioEffectSpectrumAnalyzerInstance) GetMagnitudeForFrequencyRange(from_hz float32, to_hz float32, mode AudioEffectSpectrumAnalyzerInstanceMagnitudeMode, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectSpectrumAnalyzerInstance) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *AudioEffectSpectrumAnalyzerInstance) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *AudioEffectSpectrumAnalyzerInstance) GetMagnitudeForFrequencyRange(from_hz float32, to_hz float32, mode AudioEffectSpectrumAnalyzerInstanceMagnitudeMode, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

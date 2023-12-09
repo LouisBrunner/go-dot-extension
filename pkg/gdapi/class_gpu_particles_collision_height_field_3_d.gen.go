@@ -25,6 +25,10 @@ func (me *GPUParticlesCollisionHeightField3D) BaseClass() string {
   return "GPUParticlesCollisionHeightField3D"
 }
 
+
+
+// Enums
+
 type GPUParticlesCollisionHeightField3DResolution int
 const (
   GPUParticlesCollisionHeightField3DResolutionResolution256 GPUParticlesCollisionHeightField3DResolution = 0
@@ -42,38 +46,49 @@ const (
   GPUParticlesCollisionHeightField3DUpdateModeUpdateModeAlways GPUParticlesCollisionHeightField3DUpdateMode = 1
 )
 
-func  (me *GPUParticlesCollisionHeightField3D) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+func (me *GPUParticlesCollisionHeightField3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GPUParticlesCollisionHeightField3D) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *GPUParticlesCollisionHeightField3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GPUParticlesCollisionHeightField3D) SetResolution(resolution GPUParticlesCollisionHeightField3DResolution, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GPUParticlesCollisionHeightField3D) SetSize(size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionHeightField3D) GetResolution() { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionHeightField3D) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionHeightField3D) SetUpdateMode(update_mode GPUParticlesCollisionHeightField3DUpdateMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionHeightField3D) SetResolution(resolution GPUParticlesCollisionHeightField3DResolution, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionHeightField3D) GetUpdateMode() { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionHeightField3D) GetResolution()  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionHeightField3D) SetFollowCameraEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionHeightField3D) SetUpdateMode(update_mode GPUParticlesCollisionHeightField3DUpdateMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollisionHeightField3D) IsFollowCameraEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesCollisionHeightField3D) GetUpdateMode()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GPUParticlesCollisionHeightField3D) SetFollowCameraEnabled(enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GPUParticlesCollisionHeightField3D) IsFollowCameraEnabled()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

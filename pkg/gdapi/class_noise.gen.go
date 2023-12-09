@@ -25,42 +25,57 @@ func (me *Noise) BaseClass() string {
   return "Noise"
 }
 
-func  (me *Noise) GetNoise1D(x float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Noise) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Noise) GetNoise2D(x float32, y float32, ) { // TODO: return value
-  // TODO: implement
+func (me *Noise) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Noise) GetNoise2Dv(v Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Noise) GetNoise1D(x float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Noise) GetNoise3D(x float32, y float32, z float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Noise) GetNoise2D(x float32, y float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Noise) GetNoise3Dv(v Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *Noise) GetNoise2Dv(v Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Noise) GetImage(width int, height int, invert bool, in_3d_space bool, normalize bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Noise) GetNoise3D(x float32, y float32, z float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Noise) GetSeamlessImage(width int, height int, invert bool, in_3d_space bool, skirt float32, normalize bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Noise) GetNoise3Dv(v Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Noise) GetImage3D(width int, height int, depth int, invert bool, normalize bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Noise) GetImage(width int, height int, invert bool, in_3d_space bool, normalize bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Noise) GetSeamlessImage3D(width int, height int, depth int, invert bool, skirt float32, normalize bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Noise) GetSeamlessImage(width int, height int, invert bool, in_3d_space bool, skirt float32, normalize bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Noise) GetImage3D(width int, height int, depth int, invert bool, normalize bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Noise) GetSeamlessImage3D(width int, height int, depth int, invert bool, skirt float32, normalize bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

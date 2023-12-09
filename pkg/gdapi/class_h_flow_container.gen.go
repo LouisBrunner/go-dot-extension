@@ -25,6 +25,21 @@ func (me *HFlowContainer) BaseClass() string {
   return "HFlowContainer"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *HFlowContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *HFlowContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

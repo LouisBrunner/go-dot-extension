@@ -25,18 +25,33 @@ func (me *EngineProfiler) BaseClass() string {
   return "EngineProfiler"
 }
 
-func  (me *EngineProfiler) XToggle(enable bool, options Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EngineProfiler) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EngineProfiler) XAddFrame(data Array, ) { // TODO: return value
-  // TODO: implement
+func (me *EngineProfiler) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EngineProfiler) XTick(frame_time float32, process_time float32, physics_time float32, physics_frame_time float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EngineProfiler) XToggle(enable bool, options Array, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EngineProfiler) XAddFrame(data Array, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EngineProfiler) XTick(frame_time float32, process_time float32, physics_time float32, physics_frame_time float32, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

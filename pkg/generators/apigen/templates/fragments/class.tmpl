@@ -1,0 +1,34 @@
+{{- define "class_enums"}}
+{{- $Class := mapClass .Name -}}
+{{- if .Constants}}
+
+// Constants
+
+var (
+{{range .Constants}}{{if ne .Type "int"}}  {{$.Name}}{{pascalCased (lowerCased .Name)}} = "{{.Value}}" // TODO: construct correctly
+{{end}}{{end -}}
+)
+{{- end}}
+
+// Enums
+{{- range .Enums}}
+
+type {{$.Name}}{{.Name}} int
+const ({{$name := .Name}}
+{{range .Values}}  {{$.Name}}{{$name}}{{pascalCased (lowerCased .Name)}} {{$.Name}}{{$name}} = {{.Value}}
+{{end -}}
+)
+{{- end}}
+{{- end}}
+
+{{- define "class_methods"}}
+{{- $Class := mapClass .Name}}
+// Methods
+{{- range .Methods}}
+
+func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .Name -}}
+({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}) {{if (presents . "ReturnValue")}}{{mapType .ReturnValue.Type}}{{else}}{{mapType .ReturnType}}{{end}} {
+  panic("TODO: implement")
+}
+{{- end}}
+{{- end}}

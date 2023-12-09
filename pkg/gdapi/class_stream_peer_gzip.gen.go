@@ -25,22 +25,37 @@ func (me *StreamPeerGZIP) BaseClass() string {
   return "StreamPeerGZIP"
 }
 
-func  (me *StreamPeerGZIP) StartCompression(use_deflate bool, buffer_size int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *StreamPeerGZIP) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *StreamPeerGZIP) StartDecompression(use_deflate bool, buffer_size int, ) { // TODO: return value
-  // TODO: implement
+func (me *StreamPeerGZIP) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *StreamPeerGZIP) Finish() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *StreamPeerGZIP) StartCompression(use_deflate bool, buffer_size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerGZIP) Clear() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerGZIP) StartDecompression(use_deflate bool, buffer_size int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *StreamPeerGZIP) Finish()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *StreamPeerGZIP) Clear()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

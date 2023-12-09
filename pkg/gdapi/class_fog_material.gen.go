@@ -25,54 +25,69 @@ func (me *FogMaterial) BaseClass() string {
   return "FogMaterial"
 }
 
-func  (me *FogMaterial) SetDensity(density float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *FogMaterial) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *FogMaterial) GetDensity() { // TODO: return value
-  // TODO: implement
+func (me *FogMaterial) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *FogMaterial) SetAlbedo(albedo Color, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *FogMaterial) SetDensity(density float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FogMaterial) GetAlbedo() { // TODO: return value
-  // TODO: implement
+func  (me *FogMaterial) GetDensity()  {
+  panic("TODO: implement")
 }
 
-func  (me *FogMaterial) SetEmission(emission Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *FogMaterial) SetAlbedo(albedo Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FogMaterial) GetEmission() { // TODO: return value
-  // TODO: implement
+func  (me *FogMaterial) GetAlbedo()  {
+  panic("TODO: implement")
 }
 
-func  (me *FogMaterial) SetHeightFalloff(height_falloff float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FogMaterial) SetEmission(emission Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FogMaterial) GetHeightFalloff() { // TODO: return value
-  // TODO: implement
+func  (me *FogMaterial) GetEmission()  {
+  panic("TODO: implement")
 }
 
-func  (me *FogMaterial) SetEdgeFade(edge_fade float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FogMaterial) SetHeightFalloff(height_falloff float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FogMaterial) GetEdgeFade() { // TODO: return value
-  // TODO: implement
+func  (me *FogMaterial) GetHeightFalloff()  {
+  panic("TODO: implement")
 }
 
-func  (me *FogMaterial) SetDensityTexture(density_texture Texture3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *FogMaterial) SetEdgeFade(edge_fade float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FogMaterial) GetDensityTexture() { // TODO: return value
-  // TODO: implement
+func  (me *FogMaterial) GetEdgeFade()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *FogMaterial) SetDensityTexture(density_texture Texture3D, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *FogMaterial) GetDensityTexture()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

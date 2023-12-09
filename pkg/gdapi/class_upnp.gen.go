@@ -25,6 +25,10 @@ func (me *UPNP) BaseClass() string {
   return "UPNP"
 }
 
+
+
+// Enums
+
 type UPNPUPNPResult int
 const (
   UPNPUPNPResultUpnpResultSuccess UPNPUPNPResult = 0
@@ -58,74 +62,85 @@ const (
   UPNPUPNPResultUpnpResultUnknownError UPNPUPNPResult = 28
 )
 
-func  (me *UPNP) GetDeviceCount() { // TODO: return value
-  // TODO: implement
+func (me *UPNP) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *UPNP) GetDevice(index int, ) { // TODO: return value
-  // TODO: implement
+func (me *UPNP) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *UPNP) AddDevice(device UPNPDevice, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *UPNP) GetDeviceCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) SetDevice(index int, device UPNPDevice, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) GetDevice(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) RemoveDevice(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) AddDevice(device UPNPDevice, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) ClearDevices() { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) SetDevice(index int, device UPNPDevice, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) GetGateway() { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) RemoveDevice(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) Discover(timeout int, ttl int, device_filter String, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) ClearDevices()  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) QueryExternalAddress() { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) GetGateway()  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) AddPortMapping(port int, port_internal int, desc String, proto String, duration int, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) Discover(timeout int, ttl int, device_filter String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) DeletePortMapping(port int, proto String, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) QueryExternalAddress()  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) SetDiscoverMulticastIf(m_if String, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) AddPortMapping(port int, port_internal int, desc String, proto String, duration int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) GetDiscoverMulticastIf() { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) DeletePortMapping(port int, proto String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) SetDiscoverLocalPort(port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) SetDiscoverMulticastIf(m_if String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) GetDiscoverLocalPort() { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) GetDiscoverMulticastIf()  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) SetDiscoverIpv6(ipv6 bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) SetDiscoverLocalPort(port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNP) IsDiscoverIpv6() { // TODO: return value
-  // TODO: implement
+func  (me *UPNP) GetDiscoverLocalPort()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *UPNP) SetDiscoverIpv6(ipv6 bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *UPNP) IsDiscoverIpv6()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,9 +25,9 @@ func (me *Node) BaseClass() string {
   return "Node"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   NodeNotificationEnterTree = "10" // TODO: construct correctly
@@ -75,6 +75,8 @@ var (
   NodeNotificationTextServerChanged = "2018" // TODO: construct correctly
 )
 
+// Enums
+
 type NodeProcessMode int
 const (
   NodeProcessModeProcessModeInherit NodeProcessMode = 0
@@ -113,458 +115,469 @@ const (
   NodeInternalModeInternalModeBack NodeInternalMode = 2
 )
 
-func  (me *Node) XProcess(delta float32, ) { // TODO: return value
-  // TODO: implement
+func (me *Node) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Node) XPhysicsProcess(delta float32, ) { // TODO: return value
-  // TODO: implement
+func (me *Node) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Node) XEnterTree() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Node) XProcess(delta float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *Node) XPhysicsProcess(delta float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *Node) XEnterTree()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) XExitTree() { // TODO: return value
-  // TODO: implement
+func  (me *Node) XExitTree()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) XReady() { // TODO: return value
-  // TODO: implement
+func  (me *Node) XReady()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) XGetConfigurationWarnings() { // TODO: return value
-  // TODO: implement
+func  (me *Node) XGetConfigurationWarnings()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) XInput(event InputEvent, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) XInput(event InputEvent, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) XShortcutInput(event InputEvent, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) XShortcutInput(event InputEvent, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) XUnhandledInput(event InputEvent, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) XUnhandledInput(event InputEvent, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) XUnhandledKeyInput(event InputEvent, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) XUnhandledKeyInput(event InputEvent, )  {
+  panic("TODO: implement")
 }
 
-func  NodePrintOrphanNodes() { // TODO: return value
-  // TODO: implement
+func  NodePrintOrphanNodes()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) AddSibling(sibling Node, force_readable_name bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) AddSibling(sibling Node, force_readable_name bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetName(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetName(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetName() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetName()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) AddChild(node Node, force_readable_name bool, internal NodeInternalMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) AddChild(node Node, force_readable_name bool, internal NodeInternalMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) RemoveChild(node Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) RemoveChild(node Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) Reparent(new_parent Node, keep_global_transform bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) Reparent(new_parent Node, keep_global_transform bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetChildCount(include_internal bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetChildCount(include_internal bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetChildren(include_internal bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetChildren(include_internal bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetChild(idx int, include_internal bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetChild(idx int, include_internal bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) HasNode(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) HasNode(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetNode(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetNode(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetNodeOrNull(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetNodeOrNull(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetParent() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetParent()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) FindChild(pattern String, recursive bool, owned bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) FindChild(pattern String, recursive bool, owned bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) FindChildren(pattern String, type_ String, recursive bool, owned bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) FindChildren(pattern String, type_ String, recursive bool, owned bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) FindParent(pattern String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) FindParent(pattern String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) HasNodeAndResource(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) HasNodeAndResource(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetNodeAndResource(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetNodeAndResource(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsInsideTree() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsInsideTree()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsAncestorOf(node Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsAncestorOf(node Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsGreaterThan(node Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsGreaterThan(node Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetPath() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetPath()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetPathTo(node Node, use_unique_path bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetPathTo(node Node, use_unique_path bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) AddToGroup(group StringName, persistent bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) AddToGroup(group StringName, persistent bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) RemoveFromGroup(group StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) RemoveFromGroup(group StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsInGroup(group StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsInGroup(group StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) MoveChild(child_node Node, to_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) MoveChild(child_node Node, to_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetGroups() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetGroups()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetOwner(owner Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetOwner(owner Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetOwner() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetOwner()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetIndex(include_internal bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetIndex(include_internal bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) PrintTree() { // TODO: return value
-  // TODO: implement
+func  (me *Node) PrintTree()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) PrintTreePretty() { // TODO: return value
-  // TODO: implement
+func  (me *Node) PrintTreePretty()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetSceneFilePath(scene_file_path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetSceneFilePath(scene_file_path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetSceneFilePath() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetSceneFilePath()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) PropagateNotification(what int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) PropagateNotification(what int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) PropagateCall(method StringName, args Array, parent_first bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) PropagateCall(method StringName, args Array, parent_first bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetPhysicsProcess(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetPhysicsProcess(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetPhysicsProcessDeltaTime() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetPhysicsProcessDeltaTime()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsPhysicsProcessing() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsPhysicsProcessing()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetProcessDeltaTime() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetProcessDeltaTime()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetProcess(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetProcess(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetProcessPriority(priority int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetProcessPriority(priority int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetProcessPriority() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetProcessPriority()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetPhysicsProcessPriority(priority int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetPhysicsProcessPriority(priority int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetPhysicsProcessPriority() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetPhysicsProcessPriority()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsProcessing() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsProcessing()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetProcessInput(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetProcessInput(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsProcessingInput() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsProcessingInput()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetProcessShortcutInput(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetProcessShortcutInput(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsProcessingShortcutInput() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsProcessingShortcutInput()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetProcessUnhandledInput(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetProcessUnhandledInput(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsProcessingUnhandledInput() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsProcessingUnhandledInput()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetProcessUnhandledKeyInput(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetProcessUnhandledKeyInput(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsProcessingUnhandledKeyInput() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsProcessingUnhandledKeyInput()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetProcessMode(mode NodeProcessMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetProcessMode(mode NodeProcessMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetProcessMode() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetProcessMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) CanProcess() { // TODO: return value
-  // TODO: implement
+func  (me *Node) CanProcess()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetProcessThreadGroup(mode NodeProcessThreadGroup, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetProcessThreadGroup(mode NodeProcessThreadGroup, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetProcessThreadGroup() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetProcessThreadGroup()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetProcessThreadMessages(flags NodeProcessThreadMessages, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetProcessThreadMessages(flags NodeProcessThreadMessages, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetProcessThreadMessages() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetProcessThreadMessages()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetProcessThreadGroupOrder(order int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetProcessThreadGroupOrder(order int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetProcessThreadGroupOrder() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetProcessThreadGroupOrder()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetDisplayFolded(fold bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetDisplayFolded(fold bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsDisplayedFolded() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsDisplayedFolded()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetProcessInternal(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetProcessInternal(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsProcessingInternal() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsProcessingInternal()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetPhysicsProcessInternal(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetPhysicsProcessInternal(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsPhysicsProcessingInternal() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsPhysicsProcessingInternal()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetWindow() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetWindow()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetLastExclusiveWindow() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetLastExclusiveWindow()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetTree() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetTree()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) CreateTween() { // TODO: return value
-  // TODO: implement
+func  (me *Node) CreateTween()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) Duplicate(flags int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) Duplicate(flags int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) ReplaceBy(node Node, keep_groups bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) ReplaceBy(node Node, keep_groups bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetSceneInstanceLoadPlaceholder(load_placeholder bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetSceneInstanceLoadPlaceholder(load_placeholder bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetSceneInstanceLoadPlaceholder() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetSceneInstanceLoadPlaceholder()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetEditableInstance(node Node, is_editable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetEditableInstance(node Node, is_editable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsEditableInstance(node Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsEditableInstance(node Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetViewport() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetViewport()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) QueueFree() { // TODO: return value
-  // TODO: implement
+func  (me *Node) QueueFree()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) RequestReady() { // TODO: return value
-  // TODO: implement
+func  (me *Node) RequestReady()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsNodeReady() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsNodeReady()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetMultiplayerAuthority(id int, recursive bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetMultiplayerAuthority(id int, recursive bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetMultiplayerAuthority() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetMultiplayerAuthority()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsMultiplayerAuthority() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsMultiplayerAuthority()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetMultiplayer() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetMultiplayer()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) RpcConfig(method StringName, config Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) RpcConfig(method StringName, config Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetEditorDescription(editor_description String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetEditorDescription(editor_description String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) GetEditorDescription() { // TODO: return value
-  // TODO: implement
+func  (me *Node) GetEditorDescription()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetUniqueNameInOwner(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetUniqueNameInOwner(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) IsUniqueNameInOwner() { // TODO: return value
-  // TODO: implement
+func  (me *Node) IsUniqueNameInOwner()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) Rpc(method StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) Rpc(method StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) RpcId(peer_id int, method StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) RpcId(peer_id int, method StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) UpdateConfigurationWarnings() { // TODO: return value
-  // TODO: implement
+func  (me *Node) UpdateConfigurationWarnings()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) CallDeferredThreadGroup(method StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) CallDeferredThreadGroup(method StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetDeferredThreadGroup(property StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetDeferredThreadGroup(property StringName, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) NotifyDeferredThreadGroup(what int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) NotifyDeferredThreadGroup(what int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) CallThreadSafe(method StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) CallThreadSafe(method StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) SetThreadSafe(property StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) SetThreadSafe(property StringName, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node) NotifyThreadSafe(what int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node) NotifyThreadSafe(what int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

@@ -25,34 +25,49 @@ func (me *MenuButton) BaseClass() string {
   return "MenuButton"
 }
 
-func  (me *MenuButton) GetPopup() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MenuButton) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MenuButton) ShowPopup() { // TODO: return value
-  // TODO: implement
+func (me *MenuButton) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MenuButton) SetSwitchOnHover(enable bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MenuButton) GetPopup()  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuButton) IsSwitchOnHover() { // TODO: return value
-  // TODO: implement
+func  (me *MenuButton) ShowPopup()  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuButton) SetDisableShortcuts(disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuButton) SetSwitchOnHover(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuButton) SetItemCount(count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuButton) IsSwitchOnHover()  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuButton) GetItemCount() { // TODO: return value
-  // TODO: implement
+func  (me *MenuButton) SetDisableShortcuts(disabled bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MenuButton) SetItemCount(count int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MenuButton) GetItemCount()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

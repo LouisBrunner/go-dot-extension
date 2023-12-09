@@ -25,30 +25,45 @@ func (me *FogVolume) BaseClass() string {
   return "FogVolume"
 }
 
-func  (me *FogVolume) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *FogVolume) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *FogVolume) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *FogVolume) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *FogVolume) SetShape(shape RenderingServerFogVolumeShape, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *FogVolume) SetSize(size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FogVolume) GetShape() { // TODO: return value
-  // TODO: implement
+func  (me *FogVolume) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *FogVolume) SetMaterial(material Material, ) { // TODO: return value
-  // TODO: implement
+func  (me *FogVolume) SetShape(shape RenderingServerFogVolumeShape, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FogVolume) GetMaterial() { // TODO: return value
-  // TODO: implement
+func  (me *FogVolume) GetShape()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *FogVolume) SetMaterial(material Material, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *FogVolume) GetMaterial()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

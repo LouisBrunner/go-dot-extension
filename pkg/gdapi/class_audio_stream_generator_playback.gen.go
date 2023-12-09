@@ -25,30 +25,45 @@ func (me *AudioStreamGeneratorPlayback) BaseClass() string {
   return "AudioStreamGeneratorPlayback"
 }
 
-func  (me *AudioStreamGeneratorPlayback) PushFrame(frame Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioStreamGeneratorPlayback) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioStreamGeneratorPlayback) CanPushBuffer(amount int, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamGeneratorPlayback) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioStreamGeneratorPlayback) PushBuffer(frames PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioStreamGeneratorPlayback) PushFrame(frame Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamGeneratorPlayback) GetFramesAvailable() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamGeneratorPlayback) CanPushBuffer(amount int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamGeneratorPlayback) GetSkips() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamGeneratorPlayback) PushBuffer(frames PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamGeneratorPlayback) ClearBuffer() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamGeneratorPlayback) GetFramesAvailable()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioStreamGeneratorPlayback) GetSkips()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioStreamGeneratorPlayback) ClearBuffer()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

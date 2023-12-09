@@ -25,6 +25,10 @@ func (me *EditorFeatureProfile) BaseClass() string {
   return "EditorFeatureProfile"
 }
 
+
+
+// Enums
+
 type EditorFeatureProfileFeature int
 const (
   EditorFeatureProfileFeatureFeature3D EditorFeatureProfileFeature = 0
@@ -38,50 +42,61 @@ const (
   EditorFeatureProfileFeatureFeatureMax EditorFeatureProfileFeature = 8
 )
 
-func  (me *EditorFeatureProfile) SetDisableClass(class_name StringName, disable bool, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorFeatureProfile) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorFeatureProfile) IsClassDisabled(class_name StringName, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorFeatureProfile) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorFeatureProfile) SetDisableClassEditor(class_name StringName, disable bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorFeatureProfile) SetDisableClass(class_name StringName, disable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFeatureProfile) IsClassEditorDisabled(class_name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFeatureProfile) IsClassDisabled(class_name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFeatureProfile) SetDisableClassProperty(class_name StringName, property StringName, disable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFeatureProfile) SetDisableClassEditor(class_name StringName, disable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFeatureProfile) IsClassPropertyDisabled(class_name StringName, property StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFeatureProfile) IsClassEditorDisabled(class_name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFeatureProfile) SetDisableFeature(feature EditorFeatureProfileFeature, disable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFeatureProfile) SetDisableClassProperty(class_name StringName, property StringName, disable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFeatureProfile) IsFeatureDisabled(feature EditorFeatureProfileFeature, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFeatureProfile) IsClassPropertyDisabled(class_name StringName, property StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFeatureProfile) GetFeatureName(feature EditorFeatureProfileFeature, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFeatureProfile) SetDisableFeature(feature EditorFeatureProfileFeature, disable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFeatureProfile) SaveToFile(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFeatureProfile) IsFeatureDisabled(feature EditorFeatureProfileFeature, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFeatureProfile) LoadFromFile(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFeatureProfile) GetFeatureName(feature EditorFeatureProfileFeature, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorFeatureProfile) SaveToFile(path String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorFeatureProfile) LoadFromFile(path String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

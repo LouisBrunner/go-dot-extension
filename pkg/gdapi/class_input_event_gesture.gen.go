@@ -25,14 +25,29 @@ func (me *InputEventGesture) BaseClass() string {
   return "InputEventGesture"
 }
 
-func  (me *InputEventGesture) SetPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventGesture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventGesture) GetPosition() { // TODO: return value
-  // TODO: implement
+func (me *InputEventGesture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *InputEventGesture) SetPosition(position Vector2, )  {
+  panic("TODO: implement")
+}
+
+func  (me *InputEventGesture) GetPosition()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

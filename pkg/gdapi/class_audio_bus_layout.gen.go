@@ -25,6 +25,21 @@ func (me *AudioBusLayout) BaseClass() string {
   return "AudioBusLayout"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *AudioBusLayout) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *AudioBusLayout) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

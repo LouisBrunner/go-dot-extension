@@ -25,6 +25,10 @@ func (me *GeometryInstance3D) BaseClass() string {
   return "GeometryInstance3D"
 }
 
+
+
+// Enums
+
 type GeometryInstance3DShadowCastingSetting int
 const (
   GeometryInstance3DShadowCastingSettingShadowCastingSettingOff GeometryInstance3DShadowCastingSetting = 0
@@ -56,134 +60,145 @@ const (
   GeometryInstance3DVisibilityRangeFadeModeVisibilityRangeFadeDependencies GeometryInstance3DVisibilityRangeFadeMode = 2
 )
 
-func  (me *GeometryInstance3D) SetMaterialOverride(material Material, ) { // TODO: return value
-  // TODO: implement
+func (me *GeometryInstance3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GeometryInstance3D) GetMaterialOverride() { // TODO: return value
-  // TODO: implement
+func (me *GeometryInstance3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GeometryInstance3D) SetMaterialOverlay(material Material, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GeometryInstance3D) SetMaterialOverride(material Material, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetMaterialOverlay() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetMaterialOverride()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetCastShadowsSetting(shadow_casting_setting GeometryInstance3DShadowCastingSetting, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetMaterialOverlay(material Material, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetCastShadowsSetting() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetMaterialOverlay()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetLodBias(bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetCastShadowsSetting(shadow_casting_setting GeometryInstance3DShadowCastingSetting, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetLodBias() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetCastShadowsSetting()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetTransparency(transparency float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetLodBias(bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetTransparency() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetLodBias()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetVisibilityRangeEndMargin(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetTransparency(transparency float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetVisibilityRangeEndMargin() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetTransparency()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetVisibilityRangeEnd(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetVisibilityRangeEndMargin(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetVisibilityRangeEnd() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetVisibilityRangeEndMargin()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetVisibilityRangeBeginMargin(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetVisibilityRangeEnd(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetVisibilityRangeBeginMargin() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetVisibilityRangeEnd()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetVisibilityRangeBegin(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetVisibilityRangeBeginMargin(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetVisibilityRangeBegin() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetVisibilityRangeBeginMargin()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetVisibilityRangeFadeMode(mode GeometryInstance3DVisibilityRangeFadeMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetVisibilityRangeBegin(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetVisibilityRangeFadeMode() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetVisibilityRangeBegin()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetInstanceShaderParameter(name StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetVisibilityRangeFadeMode(mode GeometryInstance3DVisibilityRangeFadeMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetInstanceShaderParameter(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetVisibilityRangeFadeMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetExtraCullMargin(margin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetInstanceShaderParameter(name StringName, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetExtraCullMargin() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetInstanceShaderParameter(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetLightmapScale(scale GeometryInstance3DLightmapScale, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetExtraCullMargin(margin float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetLightmapScale() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetExtraCullMargin()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetGiMode(mode GeometryInstance3DGIMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetLightmapScale(scale GeometryInstance3DLightmapScale, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetGiMode() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetLightmapScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetIgnoreOcclusionCulling(ignore_culling bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetGiMode(mode GeometryInstance3DGIMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) IsIgnoringOcclusionCulling() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) GetGiMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) SetCustomAabb(aabb AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) SetIgnoreOcclusionCulling(ignore_culling bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GeometryInstance3D) GetCustomAabb() { // TODO: return value
-  // TODO: implement
+func  (me *GeometryInstance3D) IsIgnoringOcclusionCulling()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GeometryInstance3D) SetCustomAabb(aabb AABB, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GeometryInstance3D) GetCustomAabb()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

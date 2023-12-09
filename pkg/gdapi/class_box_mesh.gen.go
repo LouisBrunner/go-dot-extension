@@ -25,38 +25,53 @@ func (me *BoxMesh) BaseClass() string {
   return "BoxMesh"
 }
 
-func  (me *BoxMesh) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *BoxMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *BoxMesh) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *BoxMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *BoxMesh) SetSubdivideWidth(subdivide int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *BoxMesh) SetSize(size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BoxMesh) GetSubdivideWidth() { // TODO: return value
-  // TODO: implement
+func  (me *BoxMesh) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *BoxMesh) SetSubdivideHeight(divisions int, ) { // TODO: return value
-  // TODO: implement
+func  (me *BoxMesh) SetSubdivideWidth(subdivide int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BoxMesh) GetSubdivideHeight() { // TODO: return value
-  // TODO: implement
+func  (me *BoxMesh) GetSubdivideWidth()  {
+  panic("TODO: implement")
 }
 
-func  (me *BoxMesh) SetSubdivideDepth(divisions int, ) { // TODO: return value
-  // TODO: implement
+func  (me *BoxMesh) SetSubdivideHeight(divisions int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BoxMesh) GetSubdivideDepth() { // TODO: return value
-  // TODO: implement
+func  (me *BoxMesh) GetSubdivideHeight()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *BoxMesh) SetSubdivideDepth(divisions int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *BoxMesh) GetSubdivideDepth()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

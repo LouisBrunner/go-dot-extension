@@ -25,6 +25,21 @@ func (me *MovieWriterMJPEG) BaseClass() string {
   return "MovieWriterMJPEG"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *MovieWriterMJPEG) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *MovieWriterMJPEG) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

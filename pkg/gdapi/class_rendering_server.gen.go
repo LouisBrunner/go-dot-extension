@@ -25,9 +25,9 @@ func (me *RenderingServer) BaseClass() string {
   return "RenderingServer"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   RenderingServerNoIndexArray = "-1" // TODO: construct correctly
@@ -46,6 +46,8 @@ var (
   RenderingServerParticlesEmitFlagColor = "8" // TODO: construct correctly
   RenderingServerParticlesEmitFlagCustom = "16" // TODO: construct correctly
 )
+
+// Enums
 
 type RenderingServerTextureLayeredType int
 const (
@@ -765,1850 +767,1861 @@ const (
   RenderingServerFeaturesFeatureMultithreaded RenderingServerFeatures = 1
 )
 
-func  (me *RenderingServer) Texture2DCreate(image Image, ) { // TODO: return value
-  // TODO: implement
+func (me *RenderingServer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RenderingServer) Texture2DLayeredCreate(layers Image, layered_type RenderingServerTextureLayeredType, ) { // TODO: return value
-  // TODO: implement
+func (me *RenderingServer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RenderingServer) Texture3DCreate(format ImageFormat, width int, height int, depth int, mipmaps bool, data Image, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RenderingServer) Texture2DCreate(image Image, )  {
+  panic("TODO: implement")
+}
+
+func  (me *RenderingServer) Texture2DLayeredCreate(layers Image, layered_type RenderingServerTextureLayeredType, )  {
+  panic("TODO: implement")
+}
+
+func  (me *RenderingServer) Texture3DCreate(format ImageFormat, width int, height int, depth int, mipmaps bool, data Image, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) TextureProxyCreate(base RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) TextureProxyCreate(base RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) Texture2DUpdate(texture RID, image Image, layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) Texture2DUpdate(texture RID, image Image, layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) Texture3DUpdate(texture RID, data Image, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) Texture3DUpdate(texture RID, data Image, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) TextureProxyUpdate(texture RID, proxy_to RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) TextureProxyUpdate(texture RID, proxy_to RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) Texture2DPlaceholderCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) Texture2DPlaceholderCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) Texture2DLayeredPlaceholderCreate(layered_type RenderingServerTextureLayeredType, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) Texture2DLayeredPlaceholderCreate(layered_type RenderingServerTextureLayeredType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) Texture3DPlaceholderCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) Texture3DPlaceholderCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) Texture2DGet(texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) Texture2DGet(texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) Texture2DLayerGet(texture RID, layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) Texture2DLayerGet(texture RID, layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) Texture3DGet(texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) Texture3DGet(texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) TextureReplace(texture RID, by_texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) TextureReplace(texture RID, by_texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) TextureSetSizeOverride(texture RID, width int, height int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) TextureSetSizeOverride(texture RID, width int, height int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) TextureSetPath(texture RID, path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) TextureSetPath(texture RID, path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) TextureGetPath(texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) TextureGetPath(texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) TextureSetForceRedrawIfVisible(texture RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) TextureSetForceRedrawIfVisible(texture RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) TextureGetRdTexture(texture RID, srgb bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) TextureGetRdTexture(texture RID, srgb bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) TextureGetNativeHandle(texture RID, srgb bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) TextureGetNativeHandle(texture RID, srgb bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ShaderCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ShaderCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ShaderSetCode(shader RID, code String, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ShaderSetCode(shader RID, code String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ShaderSetPathHint(shader RID, path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ShaderSetPathHint(shader RID, path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ShaderGetCode(shader RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ShaderGetCode(shader RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetShaderParameterList(shader RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetShaderParameterList(shader RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ShaderGetParameterDefault(shader RID, name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ShaderGetParameterDefault(shader RID, name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ShaderSetDefaultTextureParameter(shader RID, name StringName, texture RID, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ShaderSetDefaultTextureParameter(shader RID, name StringName, texture RID, index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ShaderGetDefaultTextureParameter(shader RID, name StringName, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ShaderGetDefaultTextureParameter(shader RID, name StringName, index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MaterialCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MaterialCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MaterialSetShader(shader_material RID, shader RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MaterialSetShader(shader_material RID, shader RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MaterialSetParam(material RID, parameter StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MaterialSetParam(material RID, parameter StringName, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MaterialGetParam(material RID, parameter StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MaterialGetParam(material RID, parameter StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MaterialSetRenderPriority(material RID, priority int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MaterialSetRenderPriority(material RID, priority int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MaterialSetNextPass(material RID, next_material RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MaterialSetNextPass(material RID, next_material RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshCreateFromSurfaces(surfaces Dictionary, blend_shape_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshCreateFromSurfaces(surfaces Dictionary, blend_shape_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSurfaceGetFormatOffset(format RenderingServerArrayFormat, vertex_count int, array_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSurfaceGetFormatOffset(format RenderingServerArrayFormat, vertex_count int, array_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSurfaceGetFormatVertexStride(format RenderingServerArrayFormat, vertex_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSurfaceGetFormatVertexStride(format RenderingServerArrayFormat, vertex_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSurfaceGetFormatAttributeStride(format RenderingServerArrayFormat, vertex_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSurfaceGetFormatAttributeStride(format RenderingServerArrayFormat, vertex_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSurfaceGetFormatSkinStride(format RenderingServerArrayFormat, vertex_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSurfaceGetFormatSkinStride(format RenderingServerArrayFormat, vertex_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshAddSurface(mesh RID, surface Dictionary, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshAddSurface(mesh RID, surface Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshAddSurfaceFromArrays(mesh RID, primitive RenderingServerPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, compress_format RenderingServerArrayFormat, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshAddSurfaceFromArrays(mesh RID, primitive RenderingServerPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, compress_format RenderingServerArrayFormat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshGetBlendShapeCount(mesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshGetBlendShapeCount(mesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSetBlendShapeMode(mesh RID, mode RenderingServerBlendShapeMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSetBlendShapeMode(mesh RID, mode RenderingServerBlendShapeMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshGetBlendShapeMode(mesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshGetBlendShapeMode(mesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSurfaceSetMaterial(mesh RID, surface int, material RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSurfaceSetMaterial(mesh RID, surface int, material RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSurfaceGetMaterial(mesh RID, surface int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSurfaceGetMaterial(mesh RID, surface int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshGetSurface(mesh RID, surface int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshGetSurface(mesh RID, surface int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSurfaceGetArrays(mesh RID, surface int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSurfaceGetArrays(mesh RID, surface int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSurfaceGetBlendShapeArrays(mesh RID, surface int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSurfaceGetBlendShapeArrays(mesh RID, surface int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshGetSurfaceCount(mesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshGetSurfaceCount(mesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSetCustomAabb(mesh RID, aabb AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSetCustomAabb(mesh RID, aabb AABB, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshGetCustomAabb(mesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshGetCustomAabb(mesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshClear(mesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshClear(mesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSurfaceUpdateVertexRegion(mesh RID, surface int, offset int, data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSurfaceUpdateVertexRegion(mesh RID, surface int, offset int, data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSurfaceUpdateAttributeRegion(mesh RID, surface int, offset int, data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSurfaceUpdateAttributeRegion(mesh RID, surface int, offset int, data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSurfaceUpdateSkinRegion(mesh RID, surface int, offset int, data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSurfaceUpdateSkinRegion(mesh RID, surface int, offset int, data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MeshSetShadowMesh(mesh RID, shadow_mesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MeshSetShadowMesh(mesh RID, shadow_mesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshAllocateData(multimesh RID, instances int, transform_format RenderingServerMultimeshTransformFormat, color_format bool, custom_data_format bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshAllocateData(multimesh RID, instances int, transform_format RenderingServerMultimeshTransformFormat, color_format bool, custom_data_format bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshGetInstanceCount(multimesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshGetInstanceCount(multimesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshSetMesh(multimesh RID, mesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshSetMesh(multimesh RID, mesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshInstanceSetTransform(multimesh RID, index int, transform Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshInstanceSetTransform(multimesh RID, index int, transform Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshInstanceSetTransform2D(multimesh RID, index int, transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshInstanceSetTransform2D(multimesh RID, index int, transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshInstanceSetColor(multimesh RID, index int, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshInstanceSetColor(multimesh RID, index int, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshInstanceSetCustomData(multimesh RID, index int, custom_data Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshInstanceSetCustomData(multimesh RID, index int, custom_data Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshGetMesh(multimesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshGetMesh(multimesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshGetAabb(multimesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshGetAabb(multimesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshInstanceGetTransform(multimesh RID, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshInstanceGetTransform(multimesh RID, index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshInstanceGetTransform2D(multimesh RID, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshInstanceGetTransform2D(multimesh RID, index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshInstanceGetColor(multimesh RID, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshInstanceGetColor(multimesh RID, index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshInstanceGetCustomData(multimesh RID, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshInstanceGetCustomData(multimesh RID, index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshSetVisibleInstances(multimesh RID, visible int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshSetVisibleInstances(multimesh RID, visible int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshGetVisibleInstances(multimesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshGetVisibleInstances(multimesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshSetBuffer(multimesh RID, buffer PackedFloat32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshSetBuffer(multimesh RID, buffer PackedFloat32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MultimeshGetBuffer(multimesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MultimeshGetBuffer(multimesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkeletonCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkeletonCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkeletonAllocateData(skeleton RID, bones int, is_2d_skeleton bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkeletonAllocateData(skeleton RID, bones int, is_2d_skeleton bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkeletonGetBoneCount(skeleton RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkeletonGetBoneCount(skeleton RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkeletonBoneSetTransform(skeleton RID, bone int, transform Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkeletonBoneSetTransform(skeleton RID, bone int, transform Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkeletonBoneGetTransform(skeleton RID, bone int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkeletonBoneGetTransform(skeleton RID, bone int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkeletonBoneSetTransform2D(skeleton RID, bone int, transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkeletonBoneSetTransform2D(skeleton RID, bone int, transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkeletonBoneGetTransform2D(skeleton RID, bone int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkeletonBoneGetTransform2D(skeleton RID, bone int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkeletonSetBaseTransform2D(skeleton RID, base_transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkeletonSetBaseTransform2D(skeleton RID, base_transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DirectionalLightCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DirectionalLightCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) OmniLightCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) OmniLightCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SpotLightCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SpotLightCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightSetColor(light RID, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightSetColor(light RID, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightSetParam(light RID, param RenderingServerLightParam, value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightSetParam(light RID, param RenderingServerLightParam, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightSetShadow(light RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightSetShadow(light RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightSetProjector(light RID, texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightSetProjector(light RID, texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightSetNegative(light RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightSetNegative(light RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightSetCullMask(light RID, mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightSetCullMask(light RID, mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightSetDistanceFade(decal RID, enabled bool, begin float32, shadow float32, length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightSetDistanceFade(decal RID, enabled bool, begin float32, shadow float32, length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightSetReverseCullFaceMode(light RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightSetReverseCullFaceMode(light RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightSetBakeMode(light RID, bake_mode RenderingServerLightBakeMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightSetBakeMode(light RID, bake_mode RenderingServerLightBakeMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightSetMaxSdfgiCascade(light RID, cascade int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightSetMaxSdfgiCascade(light RID, cascade int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightOmniSetShadowMode(light RID, mode RenderingServerLightOmniShadowMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightOmniSetShadowMode(light RID, mode RenderingServerLightOmniShadowMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightDirectionalSetShadowMode(light RID, mode RenderingServerLightDirectionalShadowMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightDirectionalSetShadowMode(light RID, mode RenderingServerLightDirectionalShadowMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightDirectionalSetBlendSplits(light RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightDirectionalSetBlendSplits(light RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightDirectionalSetSkyMode(light RID, mode RenderingServerLightDirectionalSkyMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightDirectionalSetSkyMode(light RID, mode RenderingServerLightDirectionalSkyMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightProjectorsSetFilter(filter RenderingServerLightProjectorFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightProjectorsSetFilter(filter RenderingServerLightProjectorFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) PositionalSoftShadowFilterSetQuality(quality RenderingServerShadowQuality, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) PositionalSoftShadowFilterSetQuality(quality RenderingServerShadowQuality, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DirectionalSoftShadowFilterSetQuality(quality RenderingServerShadowQuality, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DirectionalSoftShadowFilterSetQuality(quality RenderingServerShadowQuality, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DirectionalShadowAtlasSetSize(size int, is_16bits bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DirectionalShadowAtlasSetSize(size int, is_16bits bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetUpdateMode(probe RID, mode RenderingServerReflectionProbeUpdateMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetUpdateMode(probe RID, mode RenderingServerReflectionProbeUpdateMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetIntensity(probe RID, intensity float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetIntensity(probe RID, intensity float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetAmbientMode(probe RID, mode RenderingServerReflectionProbeAmbientMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetAmbientMode(probe RID, mode RenderingServerReflectionProbeAmbientMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetAmbientColor(probe RID, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetAmbientColor(probe RID, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetAmbientEnergy(probe RID, energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetAmbientEnergy(probe RID, energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetMaxDistance(probe RID, distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetMaxDistance(probe RID, distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetSize(probe RID, size Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetSize(probe RID, size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetOriginOffset(probe RID, offset Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetOriginOffset(probe RID, offset Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetAsInterior(probe RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetAsInterior(probe RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetEnableBoxProjection(probe RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetEnableBoxProjection(probe RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetEnableShadows(probe RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetEnableShadows(probe RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetCullMask(probe RID, layers int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetCullMask(probe RID, layers int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetResolution(probe RID, resolution int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetResolution(probe RID, resolution int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ReflectionProbeSetMeshLodThreshold(probe RID, pixels float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ReflectionProbeSetMeshLodThreshold(probe RID, pixels float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DecalCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DecalCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DecalSetSize(decal RID, size Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DecalSetSize(decal RID, size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DecalSetTexture(decal RID, type_ RenderingServerDecalTexture, texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DecalSetTexture(decal RID, type_ RenderingServerDecalTexture, texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DecalSetEmissionEnergy(decal RID, energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DecalSetEmissionEnergy(decal RID, energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DecalSetAlbedoMix(decal RID, albedo_mix float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DecalSetAlbedoMix(decal RID, albedo_mix float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DecalSetModulate(decal RID, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DecalSetModulate(decal RID, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DecalSetCullMask(decal RID, mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DecalSetCullMask(decal RID, mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DecalSetDistanceFade(decal RID, enabled bool, begin float32, length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DecalSetDistanceFade(decal RID, enabled bool, begin float32, length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DecalSetFade(decal RID, above float32, below float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DecalSetFade(decal RID, above float32, below float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DecalSetNormalFade(decal RID, fade float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DecalSetNormalFade(decal RID, fade float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) DecalsSetFilter(filter RenderingServerDecalFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) DecalsSetFilter(filter RenderingServerDecalFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GiSetUseHalfResolution(half_resolution bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GiSetUseHalfResolution(half_resolution bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiAllocateData(voxel_gi RID, to_cell_xform Transform3D, aabb AABB, octree_size Vector3i, octree_cells PackedByteArray, data_cells PackedByteArray, distance_field PackedByteArray, level_counts PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiAllocateData(voxel_gi RID, to_cell_xform Transform3D, aabb AABB, octree_size Vector3i, octree_cells PackedByteArray, data_cells PackedByteArray, distance_field PackedByteArray, level_counts PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiGetOctreeSize(voxel_gi RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiGetOctreeSize(voxel_gi RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiGetOctreeCells(voxel_gi RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiGetOctreeCells(voxel_gi RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiGetDataCells(voxel_gi RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiGetDataCells(voxel_gi RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiGetDistanceField(voxel_gi RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiGetDistanceField(voxel_gi RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiGetLevelCounts(voxel_gi RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiGetLevelCounts(voxel_gi RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiGetToCellXform(voxel_gi RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiGetToCellXform(voxel_gi RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiSetDynamicRange(voxel_gi RID, range_ float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiSetDynamicRange(voxel_gi RID, range_ float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiSetPropagation(voxel_gi RID, amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiSetPropagation(voxel_gi RID, amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiSetEnergy(voxel_gi RID, energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiSetEnergy(voxel_gi RID, energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiSetBakedExposureNormalization(voxel_gi RID, baked_exposure float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiSetBakedExposureNormalization(voxel_gi RID, baked_exposure float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiSetBias(voxel_gi RID, bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiSetBias(voxel_gi RID, bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiSetNormalBias(voxel_gi RID, bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiSetNormalBias(voxel_gi RID, bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiSetInterior(voxel_gi RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiSetInterior(voxel_gi RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiSetUseTwoBounces(voxel_gi RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiSetUseTwoBounces(voxel_gi RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VoxelGiSetQuality(quality RenderingServerVoxelGIQuality, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VoxelGiSetQuality(quality RenderingServerVoxelGIQuality, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightmapCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightmapCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightmapSetTextures(lightmap RID, light RID, uses_sh bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightmapSetTextures(lightmap RID, light RID, uses_sh bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightmapSetProbeBounds(lightmap RID, bounds AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightmapSetProbeBounds(lightmap RID, bounds AABB, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightmapSetProbeInterior(lightmap RID, interior bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightmapSetProbeInterior(lightmap RID, interior bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightmapSetProbeCaptureData(lightmap RID, points PackedVector3Array, point_sh PackedColorArray, tetrahedra PackedInt32Array, bsp_tree PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightmapSetProbeCaptureData(lightmap RID, points PackedVector3Array, point_sh PackedColorArray, tetrahedra PackedInt32Array, bsp_tree PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightmapGetProbeCapturePoints(lightmap RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightmapGetProbeCapturePoints(lightmap RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightmapGetProbeCaptureSh(lightmap RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightmapGetProbeCaptureSh(lightmap RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightmapGetProbeCaptureTetrahedra(lightmap RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightmapGetProbeCaptureTetrahedra(lightmap RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightmapGetProbeCaptureBspTree(lightmap RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightmapGetProbeCaptureBspTree(lightmap RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightmapSetBakedExposureNormalization(lightmap RID, baked_exposure float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightmapSetBakedExposureNormalization(lightmap RID, baked_exposure float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) LightmapSetProbeCaptureUpdateSpeed(speed float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) LightmapSetProbeCaptureUpdateSpeed(speed float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetMode(particles RID, mode RenderingServerParticlesMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetMode(particles RID, mode RenderingServerParticlesMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetEmitting(particles RID, emitting bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetEmitting(particles RID, emitting bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesGetEmitting(particles RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesGetEmitting(particles RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetAmount(particles RID, amount int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetAmount(particles RID, amount int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetLifetime(particles RID, lifetime float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetLifetime(particles RID, lifetime float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetOneShot(particles RID, one_shot bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetOneShot(particles RID, one_shot bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetPreProcessTime(particles RID, time float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetPreProcessTime(particles RID, time float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetExplosivenessRatio(particles RID, ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetExplosivenessRatio(particles RID, ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetRandomnessRatio(particles RID, ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetRandomnessRatio(particles RID, ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetCustomAabb(particles RID, aabb AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetCustomAabb(particles RID, aabb AABB, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetSpeedScale(particles RID, scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetSpeedScale(particles RID, scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetUseLocalCoordinates(particles RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetUseLocalCoordinates(particles RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetProcessMaterial(particles RID, material RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetProcessMaterial(particles RID, material RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetFixedFps(particles RID, fps int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetFixedFps(particles RID, fps int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetInterpolate(particles RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetInterpolate(particles RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetFractionalDelta(particles RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetFractionalDelta(particles RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetCollisionBaseSize(particles RID, size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetCollisionBaseSize(particles RID, size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetTransformAlign(particles RID, align RenderingServerParticlesTransformAlign, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetTransformAlign(particles RID, align RenderingServerParticlesTransformAlign, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetTrails(particles RID, enable bool, length_sec float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetTrails(particles RID, enable bool, length_sec float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetTrailBindPoses(particles RID, bind_poses Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetTrailBindPoses(particles RID, bind_poses Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesIsInactive(particles RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesIsInactive(particles RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesRequestProcess(particles RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesRequestProcess(particles RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesRestart(particles RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesRestart(particles RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetSubemitter(particles RID, subemitter_particles RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetSubemitter(particles RID, subemitter_particles RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesEmit(particles RID, transform Transform3D, velocity Vector3, color Color, custom Color, emit_flags int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesEmit(particles RID, transform Transform3D, velocity Vector3, color Color, custom Color, emit_flags int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetDrawOrder(particles RID, order RenderingServerParticlesDrawOrder, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetDrawOrder(particles RID, order RenderingServerParticlesDrawOrder, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetDrawPasses(particles RID, count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetDrawPasses(particles RID, count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetDrawPassMesh(particles RID, pass int, mesh RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetDrawPassMesh(particles RID, pass int, mesh RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesGetCurrentAabb(particles RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesGetCurrentAabb(particles RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesSetEmissionTransform(particles RID, transform Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesSetEmissionTransform(particles RID, transform Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCollisionCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCollisionCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCollisionSetCollisionType(particles_collision RID, type_ RenderingServerParticlesCollisionType, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCollisionSetCollisionType(particles_collision RID, type_ RenderingServerParticlesCollisionType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCollisionSetCullMask(particles_collision RID, mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCollisionSetCullMask(particles_collision RID, mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCollisionSetSphereRadius(particles_collision RID, radius float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCollisionSetSphereRadius(particles_collision RID, radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCollisionSetBoxExtents(particles_collision RID, extents Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCollisionSetBoxExtents(particles_collision RID, extents Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCollisionSetAttractorStrength(particles_collision RID, strength float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCollisionSetAttractorStrength(particles_collision RID, strength float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCollisionSetAttractorDirectionality(particles_collision RID, amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCollisionSetAttractorDirectionality(particles_collision RID, amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCollisionSetAttractorAttenuation(particles_collision RID, curve float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCollisionSetAttractorAttenuation(particles_collision RID, curve float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCollisionSetFieldTexture(particles_collision RID, texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCollisionSetFieldTexture(particles_collision RID, texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCollisionHeightFieldUpdate(particles_collision RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCollisionHeightFieldUpdate(particles_collision RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ParticlesCollisionSetHeightFieldResolution(particles_collision RID, resolution RenderingServerParticlesCollisionHeightfieldResolution, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ParticlesCollisionSetHeightFieldResolution(particles_collision RID, resolution RenderingServerParticlesCollisionHeightfieldResolution, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) FogVolumeCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) FogVolumeCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) FogVolumeSetShape(fog_volume RID, shape RenderingServerFogVolumeShape, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) FogVolumeSetShape(fog_volume RID, shape RenderingServerFogVolumeShape, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) FogVolumeSetSize(fog_volume RID, size Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) FogVolumeSetSize(fog_volume RID, size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) FogVolumeSetMaterial(fog_volume RID, material RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) FogVolumeSetMaterial(fog_volume RID, material RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VisibilityNotifierCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VisibilityNotifierCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VisibilityNotifierSetAabb(notifier RID, aabb AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VisibilityNotifierSetAabb(notifier RID, aabb AABB, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) VisibilityNotifierSetCallbacks(notifier RID, enter_callable Callable, exit_callable Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) VisibilityNotifierSetCallbacks(notifier RID, enter_callable Callable, exit_callable Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) OccluderCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) OccluderCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) OccluderSetMesh(occluder RID, vertices PackedVector3Array, indices PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) OccluderSetMesh(occluder RID, vertices PackedVector3Array, indices PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraSetPerspective(camera RID, fovy_degrees float32, z_near float32, z_far float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraSetPerspective(camera RID, fovy_degrees float32, z_near float32, z_far float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraSetOrthogonal(camera RID, size float32, z_near float32, z_far float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraSetOrthogonal(camera RID, size float32, z_near float32, z_far float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraSetFrustum(camera RID, size float32, offset Vector2, z_near float32, z_far float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraSetFrustum(camera RID, size float32, offset Vector2, z_near float32, z_far float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraSetTransform(camera RID, transform Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraSetTransform(camera RID, transform Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraSetCullMask(camera RID, layers int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraSetCullMask(camera RID, layers int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraSetEnvironment(camera RID, env RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraSetEnvironment(camera RID, env RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraSetCameraAttributes(camera RID, effects RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraSetCameraAttributes(camera RID, effects RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraSetUseVerticalAspect(camera RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraSetUseVerticalAspect(camera RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetUseXr(viewport RID, use_xr bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetUseXr(viewport RID, use_xr bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetSize(viewport RID, width int, height int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetSize(viewport RID, width int, height int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetActive(viewport RID, active bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetActive(viewport RID, active bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetParentViewport(viewport RID, parent_viewport RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetParentViewport(viewport RID, parent_viewport RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportAttachToScreen(viewport RID, rect Rect2, screen int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportAttachToScreen(viewport RID, rect Rect2, screen int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetRenderDirectToScreen(viewport RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetRenderDirectToScreen(viewport RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetCanvasCullMask(viewport RID, canvas_cull_mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetCanvasCullMask(viewport RID, canvas_cull_mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetScaling3DMode(viewport RID, scaling_3d_mode RenderingServerViewportScaling3DMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetScaling3DMode(viewport RID, scaling_3d_mode RenderingServerViewportScaling3DMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetScaling3DScale(viewport RID, scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetScaling3DScale(viewport RID, scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetFsrSharpness(viewport RID, sharpness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetFsrSharpness(viewport RID, sharpness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetTextureMipmapBias(viewport RID, mipmap_bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetTextureMipmapBias(viewport RID, mipmap_bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetUpdateMode(viewport RID, update_mode RenderingServerViewportUpdateMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetUpdateMode(viewport RID, update_mode RenderingServerViewportUpdateMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetClearMode(viewport RID, clear_mode RenderingServerViewportClearMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetClearMode(viewport RID, clear_mode RenderingServerViewportClearMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportGetRenderTarget(viewport RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportGetRenderTarget(viewport RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportGetTexture(viewport RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportGetTexture(viewport RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetDisable3D(viewport RID, disable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetDisable3D(viewport RID, disable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetDisable2D(viewport RID, disable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetDisable2D(viewport RID, disable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetEnvironmentMode(viewport RID, mode RenderingServerViewportEnvironmentMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetEnvironmentMode(viewport RID, mode RenderingServerViewportEnvironmentMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportAttachCamera(viewport RID, camera RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportAttachCamera(viewport RID, camera RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetScenario(viewport RID, scenario RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetScenario(viewport RID, scenario RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportAttachCanvas(viewport RID, canvas RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportAttachCanvas(viewport RID, canvas RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportRemoveCanvas(viewport RID, canvas RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportRemoveCanvas(viewport RID, canvas RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetSnap2DTransformsToPixel(viewport RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetSnap2DTransformsToPixel(viewport RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetSnap2DVerticesToPixel(viewport RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetSnap2DVerticesToPixel(viewport RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetDefaultCanvasItemTextureFilter(viewport RID, filter RenderingServerCanvasItemTextureFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetDefaultCanvasItemTextureFilter(viewport RID, filter RenderingServerCanvasItemTextureFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetDefaultCanvasItemTextureRepeat(viewport RID, repeat RenderingServerCanvasItemTextureRepeat, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetDefaultCanvasItemTextureRepeat(viewport RID, repeat RenderingServerCanvasItemTextureRepeat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetCanvasTransform(viewport RID, canvas RID, offset Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetCanvasTransform(viewport RID, canvas RID, offset Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetCanvasStacking(viewport RID, canvas RID, layer int, sublayer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetCanvasStacking(viewport RID, canvas RID, layer int, sublayer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetTransparentBackground(viewport RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetTransparentBackground(viewport RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetGlobalCanvasTransform(viewport RID, transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetGlobalCanvasTransform(viewport RID, transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetSdfOversizeAndScale(viewport RID, oversize RenderingServerViewportSDFOversize, scale RenderingServerViewportSDFScale, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetSdfOversizeAndScale(viewport RID, oversize RenderingServerViewportSDFOversize, scale RenderingServerViewportSDFScale, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetPositionalShadowAtlasSize(viewport RID, size int, use_16_bits bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetPositionalShadowAtlasSize(viewport RID, size int, use_16_bits bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetPositionalShadowAtlasQuadrantSubdivision(viewport RID, quadrant int, subdivision int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetPositionalShadowAtlasQuadrantSubdivision(viewport RID, quadrant int, subdivision int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetMsaa3D(viewport RID, msaa RenderingServerViewportMSAA, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetMsaa3D(viewport RID, msaa RenderingServerViewportMSAA, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetMsaa2D(viewport RID, msaa RenderingServerViewportMSAA, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetMsaa2D(viewport RID, msaa RenderingServerViewportMSAA, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetScreenSpaceAa(viewport RID, mode RenderingServerViewportScreenSpaceAA, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetScreenSpaceAa(viewport RID, mode RenderingServerViewportScreenSpaceAA, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetUseTaa(viewport RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetUseTaa(viewport RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetUseDebanding(viewport RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetUseDebanding(viewport RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetUseOcclusionCulling(viewport RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetUseOcclusionCulling(viewport RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetOcclusionRaysPerThread(rays_per_thread int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetOcclusionRaysPerThread(rays_per_thread int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetOcclusionCullingBuildQuality(quality RenderingServerViewportOcclusionCullingBuildQuality, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetOcclusionCullingBuildQuality(quality RenderingServerViewportOcclusionCullingBuildQuality, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportGetRenderInfo(viewport RID, type_ RenderingServerViewportRenderInfoType, info RenderingServerViewportRenderInfo, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportGetRenderInfo(viewport RID, type_ RenderingServerViewportRenderInfoType, info RenderingServerViewportRenderInfo, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetDebugDraw(viewport RID, draw RenderingServerViewportDebugDraw, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetDebugDraw(viewport RID, draw RenderingServerViewportDebugDraw, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetMeasureRenderTime(viewport RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetMeasureRenderTime(viewport RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportGetMeasuredRenderTimeCpu(viewport RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportGetMeasuredRenderTimeCpu(viewport RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportGetMeasuredRenderTimeGpu(viewport RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportGetMeasuredRenderTimeGpu(viewport RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetVrsMode(viewport RID, mode RenderingServerViewportVRSMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetVrsMode(viewport RID, mode RenderingServerViewportVRSMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ViewportSetVrsTexture(viewport RID, texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ViewportSetVrsTexture(viewport RID, texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkyCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkyCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkySetRadianceSize(sky RID, radiance_size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkySetRadianceSize(sky RID, radiance_size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkySetMode(sky RID, mode RenderingServerSkyMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkySetMode(sky RID, mode RenderingServerSkyMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkySetMaterial(sky RID, material RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkySetMaterial(sky RID, material RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SkyBakePanorama(sky RID, energy float32, bake_irradiance bool, size Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SkyBakePanorama(sky RID, energy float32, bake_irradiance bool, size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetBackground(env RID, bg RenderingServerEnvironmentBG, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetBackground(env RID, bg RenderingServerEnvironmentBG, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSky(env RID, sky RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSky(env RID, sky RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSkyCustomFov(env RID, scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSkyCustomFov(env RID, scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSkyOrientation(env RID, orientation Basis, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSkyOrientation(env RID, orientation Basis, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetBgColor(env RID, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetBgColor(env RID, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetBgEnergy(env RID, multiplier float32, exposure_value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetBgEnergy(env RID, multiplier float32, exposure_value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetCanvasMaxLayer(env RID, max_layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetCanvasMaxLayer(env RID, max_layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetAmbientLight(env RID, color Color, ambient RenderingServerEnvironmentAmbientSource, energy float32, sky_contibution float32, reflection_source RenderingServerEnvironmentReflectionSource, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetAmbientLight(env RID, color Color, ambient RenderingServerEnvironmentAmbientSource, energy float32, sky_contibution float32, reflection_source RenderingServerEnvironmentReflectionSource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetGlow(env RID, enable bool, levels PackedFloat32Array, intensity float32, strength float32, mix float32, bloom_threshold float32, blend_mode RenderingServerEnvironmentGlowBlendMode, hdr_bleed_threshold float32, hdr_bleed_scale float32, hdr_luminance_cap float32, glow_map_strength float32, glow_map RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetGlow(env RID, enable bool, levels PackedFloat32Array, intensity float32, strength float32, mix float32, bloom_threshold float32, blend_mode RenderingServerEnvironmentGlowBlendMode, hdr_bleed_threshold float32, hdr_bleed_scale float32, hdr_luminance_cap float32, glow_map_strength float32, glow_map RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetTonemap(env RID, tone_mapper RenderingServerEnvironmentToneMapper, exposure float32, white float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetTonemap(env RID, tone_mapper RenderingServerEnvironmentToneMapper, exposure float32, white float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetAdjustment(env RID, enable bool, brightness float32, contrast float32, saturation float32, use_1d_color_correction bool, color_correction RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetAdjustment(env RID, enable bool, brightness float32, contrast float32, saturation float32, use_1d_color_correction bool, color_correction RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSsr(env RID, enable bool, max_steps int, fade_in float32, fade_out float32, depth_tolerance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSsr(env RID, enable bool, max_steps int, fade_in float32, fade_out float32, depth_tolerance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSsao(env RID, enable bool, radius float32, intensity float32, power float32, detail float32, horizon float32, sharpness float32, light_affect float32, ao_channel_affect float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSsao(env RID, enable bool, radius float32, intensity float32, power float32, detail float32, horizon float32, sharpness float32, light_affect float32, ao_channel_affect float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetFog(env RID, enable bool, light_color Color, light_energy float32, sun_scatter float32, density float32, height float32, height_density float32, aerial_perspective float32, sky_affect float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetFog(env RID, enable bool, light_color Color, light_energy float32, sun_scatter float32, density float32, height float32, height_density float32, aerial_perspective float32, sky_affect float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSdfgi(env RID, enable bool, cascades int, min_cell_size float32, y_scale RenderingServerEnvironmentSDFGIYScale, use_occlusion bool, bounce_feedback float32, read_sky bool, energy float32, normal_bias float32, probe_bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSdfgi(env RID, enable bool, cascades int, min_cell_size float32, y_scale RenderingServerEnvironmentSDFGIYScale, use_occlusion bool, bounce_feedback float32, read_sky bool, energy float32, normal_bias float32, probe_bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetVolumetricFog(env RID, enable bool, density float32, albedo Color, emission Color, emission_energy float32, anisotropy float32, length float32, p_detail_spread float32, gi_inject float32, temporal_reprojection bool, temporal_reprojection_amount float32, ambient_inject float32, sky_affect float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetVolumetricFog(env RID, enable bool, density float32, albedo Color, emission Color, emission_energy float32, anisotropy float32, length float32, p_detail_spread float32, gi_inject float32, temporal_reprojection bool, temporal_reprojection_amount float32, ambient_inject float32, sky_affect float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentGlowSetUseBicubicUpscale(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentGlowSetUseBicubicUpscale(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSsrRoughnessQuality(quality RenderingServerEnvironmentSSRRoughnessQuality, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSsrRoughnessQuality(quality RenderingServerEnvironmentSSRRoughnessQuality, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSsaoQuality(quality RenderingServerEnvironmentSSAOQuality, half_size bool, adaptive_target float32, blur_passes int, fadeout_from float32, fadeout_to float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSsaoQuality(quality RenderingServerEnvironmentSSAOQuality, half_size bool, adaptive_target float32, blur_passes int, fadeout_from float32, fadeout_to float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSsilQuality(quality RenderingServerEnvironmentSSILQuality, half_size bool, adaptive_target float32, blur_passes int, fadeout_from float32, fadeout_to float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSsilQuality(quality RenderingServerEnvironmentSSILQuality, half_size bool, adaptive_target float32, blur_passes int, fadeout_from float32, fadeout_to float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSdfgiRayCount(ray_count RenderingServerEnvironmentSDFGIRayCount, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSdfgiRayCount(ray_count RenderingServerEnvironmentSDFGIRayCount, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSdfgiFramesToConverge(frames RenderingServerEnvironmentSDFGIFramesToConverge, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSdfgiFramesToConverge(frames RenderingServerEnvironmentSDFGIFramesToConverge, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetSdfgiFramesToUpdateLight(frames RenderingServerEnvironmentSDFGIFramesToUpdateLight, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetSdfgiFramesToUpdateLight(frames RenderingServerEnvironmentSDFGIFramesToUpdateLight, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetVolumetricFogVolumeSize(size int, depth int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetVolumetricFogVolumeSize(size int, depth int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentSetVolumetricFogFilterActive(active bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentSetVolumetricFogFilterActive(active bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) EnvironmentBakePanorama(environment RID, bake_irradiance bool, size Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) EnvironmentBakePanorama(environment RID, bake_irradiance bool, size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ScreenSpaceRoughnessLimiterSetActive(enable bool, amount float32, limit float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ScreenSpaceRoughnessLimiterSetActive(enable bool, amount float32, limit float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SubSurfaceScatteringSetQuality(quality RenderingServerSubSurfaceScatteringQuality, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SubSurfaceScatteringSetQuality(quality RenderingServerSubSurfaceScatteringQuality, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SubSurfaceScatteringSetScale(scale float32, depth_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SubSurfaceScatteringSetScale(scale float32, depth_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraAttributesCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraAttributesCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraAttributesSetDofBlurQuality(quality RenderingServerDOFBlurQuality, use_jitter bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraAttributesSetDofBlurQuality(quality RenderingServerDOFBlurQuality, use_jitter bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraAttributesSetDofBlurBokehShape(shape RenderingServerDOFBokehShape, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraAttributesSetDofBlurBokehShape(shape RenderingServerDOFBokehShape, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraAttributesSetDofBlur(camera_attributes RID, far_enable bool, far_distance float32, far_transition float32, near_enable bool, near_distance float32, near_transition float32, amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraAttributesSetDofBlur(camera_attributes RID, far_enable bool, far_distance float32, far_transition float32, near_enable bool, near_distance float32, near_transition float32, amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraAttributesSetExposure(camera_attributes RID, multiplier float32, normalization float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraAttributesSetExposure(camera_attributes RID, multiplier float32, normalization float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CameraAttributesSetAutoExposure(camera_attributes RID, enable bool, min_sensitivity float32, max_sensitivity float32, speed float32, scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CameraAttributesSetAutoExposure(camera_attributes RID, enable bool, min_sensitivity float32, max_sensitivity float32, speed float32, scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ScenarioCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ScenarioCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ScenarioSetEnvironment(scenario RID, environment RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ScenarioSetEnvironment(scenario RID, environment RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ScenarioSetFallbackEnvironment(scenario RID, environment RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ScenarioSetFallbackEnvironment(scenario RID, environment RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ScenarioSetCameraAttributes(scenario RID, effects RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ScenarioSetCameraAttributes(scenario RID, effects RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceCreate2(base RID, scenario RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceCreate2(base RID, scenario RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetBase(instance RID, base RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetBase(instance RID, base RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetScenario(instance RID, scenario RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetScenario(instance RID, scenario RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetLayerMask(instance RID, mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetLayerMask(instance RID, mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetPivotData(instance RID, sorting_offset float32, use_aabb_center bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetPivotData(instance RID, sorting_offset float32, use_aabb_center bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetTransform(instance RID, transform Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetTransform(instance RID, transform Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceAttachObjectInstanceId(instance RID, id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceAttachObjectInstanceId(instance RID, id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetBlendShapeWeight(instance RID, shape int, weight float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetBlendShapeWeight(instance RID, shape int, weight float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetSurfaceOverrideMaterial(instance RID, surface int, material RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetSurfaceOverrideMaterial(instance RID, surface int, material RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetVisible(instance RID, visible bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetVisible(instance RID, visible bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometrySetTransparency(instance RID, transparency float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometrySetTransparency(instance RID, transparency float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetCustomAabb(instance RID, aabb AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetCustomAabb(instance RID, aabb AABB, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceAttachSkeleton(instance RID, skeleton RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceAttachSkeleton(instance RID, skeleton RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetExtraVisibilityMargin(instance RID, margin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetExtraVisibilityMargin(instance RID, margin float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetVisibilityParent(instance RID, parent RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetVisibilityParent(instance RID, parent RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceSetIgnoreCulling(instance RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceSetIgnoreCulling(instance RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometrySetFlag(instance RID, flag RenderingServerInstanceFlags, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometrySetFlag(instance RID, flag RenderingServerInstanceFlags, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometrySetCastShadowsSetting(instance RID, shadow_casting_setting RenderingServerShadowCastingSetting, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometrySetCastShadowsSetting(instance RID, shadow_casting_setting RenderingServerShadowCastingSetting, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometrySetMaterialOverride(instance RID, material RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometrySetMaterialOverride(instance RID, material RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometrySetMaterialOverlay(instance RID, material RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometrySetMaterialOverlay(instance RID, material RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometrySetVisibilityRange(instance RID, min float32, max float32, min_margin float32, max_margin float32, fade_mode RenderingServerVisibilityRangeFadeMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometrySetVisibilityRange(instance RID, min float32, max float32, min_margin float32, max_margin float32, fade_mode RenderingServerVisibilityRangeFadeMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometrySetLightmap(instance RID, lightmap RID, lightmap_uv_scale Rect2, lightmap_slice int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometrySetLightmap(instance RID, lightmap RID, lightmap_uv_scale Rect2, lightmap_slice int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometrySetLodBias(instance RID, lod_bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometrySetLodBias(instance RID, lod_bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometrySetShaderParameter(instance RID, parameter StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometrySetShaderParameter(instance RID, parameter StringName, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometryGetShaderParameter(instance RID, parameter StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometryGetShaderParameter(instance RID, parameter StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometryGetShaderParameterDefaultValue(instance RID, parameter StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometryGetShaderParameterDefaultValue(instance RID, parameter StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstanceGeometryGetShaderParameterList(instance RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstanceGeometryGetShaderParameterList(instance RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstancesCullAabb(aabb AABB, scenario RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstancesCullAabb(aabb AABB, scenario RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstancesCullRay(from Vector3, to Vector3, scenario RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstancesCullRay(from Vector3, to Vector3, scenario RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) InstancesCullConvex(convex Plane, scenario RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) InstancesCullConvex(convex Plane, scenario RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) BakeRenderUv2(base RID, material_overrides RID, image_size Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) BakeRenderUv2(base RID, material_overrides RID, image_size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasSetItemMirroring(canvas RID, item RID, mirroring Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasSetItemMirroring(canvas RID, item RID, mirroring Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasSetModulate(canvas RID, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasSetModulate(canvas RID, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasSetDisableScale(disable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasSetDisableScale(disable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasTextureCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasTextureCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasTextureSetChannel(canvas_texture RID, channel RenderingServerCanvasTextureChannel, texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasTextureSetChannel(canvas_texture RID, channel RenderingServerCanvasTextureChannel, texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasTextureSetShadingParameters(canvas_texture RID, base_color Color, shininess float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasTextureSetShadingParameters(canvas_texture RID, base_color Color, shininess float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasTextureSetTextureFilter(canvas_texture RID, filter RenderingServerCanvasItemTextureFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasTextureSetTextureFilter(canvas_texture RID, filter RenderingServerCanvasItemTextureFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasTextureSetTextureRepeat(canvas_texture RID, repeat RenderingServerCanvasItemTextureRepeat, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasTextureSetTextureRepeat(canvas_texture RID, repeat RenderingServerCanvasItemTextureRepeat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetParent(item RID, parent RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetParent(item RID, parent RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetDefaultTextureFilter(item RID, filter RenderingServerCanvasItemTextureFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetDefaultTextureFilter(item RID, filter RenderingServerCanvasItemTextureFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetDefaultTextureRepeat(item RID, repeat RenderingServerCanvasItemTextureRepeat, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetDefaultTextureRepeat(item RID, repeat RenderingServerCanvasItemTextureRepeat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetVisible(item RID, visible bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetVisible(item RID, visible bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetLightMask(item RID, mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetLightMask(item RID, mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetVisibilityLayer(item RID, visibility_layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetVisibilityLayer(item RID, visibility_layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetTransform(item RID, transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetTransform(item RID, transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetClip(item RID, clip bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetClip(item RID, clip bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetDistanceFieldMode(item RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetDistanceFieldMode(item RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetCustomRect(item RID, use_custom_rect bool, rect Rect2, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetCustomRect(item RID, use_custom_rect bool, rect Rect2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetModulate(item RID, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetModulate(item RID, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetSelfModulate(item RID, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetSelfModulate(item RID, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetDrawBehindParent(item RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetDrawBehindParent(item RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddLine(item RID, from Vector2, to Vector2, color Color, width float32, antialiased bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddLine(item RID, from Vector2, to Vector2, color Color, width float32, antialiased bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddPolyline(item RID, points PackedVector2Array, colors PackedColorArray, width float32, antialiased bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddPolyline(item RID, points PackedVector2Array, colors PackedColorArray, width float32, antialiased bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddMultiline(item RID, points PackedVector2Array, colors PackedColorArray, width float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddMultiline(item RID, points PackedVector2Array, colors PackedColorArray, width float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddRect(item RID, rect Rect2, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddRect(item RID, rect Rect2, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddCircle(item RID, pos Vector2, radius float32, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddCircle(item RID, pos Vector2, radius float32, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddTextureRect(item RID, rect Rect2, texture RID, tile bool, modulate Color, transpose bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddTextureRect(item RID, rect Rect2, texture RID, tile bool, modulate Color, transpose bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddMsdfTextureRectRegion(item RID, rect Rect2, texture RID, src_rect Rect2, modulate Color, outline_size int, px_range float32, scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddMsdfTextureRectRegion(item RID, rect Rect2, texture RID, src_rect Rect2, modulate Color, outline_size int, px_range float32, scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddLcdTextureRectRegion(item RID, rect Rect2, texture RID, src_rect Rect2, modulate Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddLcdTextureRectRegion(item RID, rect Rect2, texture RID, src_rect Rect2, modulate Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddTextureRectRegion(item RID, rect Rect2, texture RID, src_rect Rect2, modulate Color, transpose bool, clip_uv bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddTextureRectRegion(item RID, rect Rect2, texture RID, src_rect Rect2, modulate Color, transpose bool, clip_uv bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddNinePatch(item RID, rect Rect2, source Rect2, texture RID, topleft Vector2, bottomright Vector2, x_axis_mode RenderingServerNinePatchAxisMode, y_axis_mode RenderingServerNinePatchAxisMode, draw_center bool, modulate Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddNinePatch(item RID, rect Rect2, source Rect2, texture RID, topleft Vector2, bottomright Vector2, x_axis_mode RenderingServerNinePatchAxisMode, y_axis_mode RenderingServerNinePatchAxisMode, draw_center bool, modulate Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddPrimitive(item RID, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddPrimitive(item RID, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddPolygon(item RID, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddPolygon(item RID, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddTriangleArray(item RID, indices PackedInt32Array, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, bones PackedInt32Array, weights PackedFloat32Array, texture RID, count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddTriangleArray(item RID, indices PackedInt32Array, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, bones PackedInt32Array, weights PackedFloat32Array, texture RID, count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddMesh(item RID, mesh RID, transform Transform2D, modulate Color, texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddMesh(item RID, mesh RID, transform Transform2D, modulate Color, texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddMultimesh(item RID, mesh RID, texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddMultimesh(item RID, mesh RID, texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddParticles(item RID, particles RID, texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddParticles(item RID, particles RID, texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddSetTransform(item RID, transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddSetTransform(item RID, transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddClipIgnore(item RID, ignore bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddClipIgnore(item RID, ignore bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemAddAnimationSlice(item RID, animation_length float32, slice_begin float32, slice_end float32, offset float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemAddAnimationSlice(item RID, animation_length float32, slice_begin float32, slice_end float32, offset float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetSortChildrenByY(item RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetSortChildrenByY(item RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetZIndex(item RID, z_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetZIndex(item RID, z_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetZAsRelativeToParent(item RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetZAsRelativeToParent(item RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetCopyToBackbuffer(item RID, enabled bool, rect Rect2, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetCopyToBackbuffer(item RID, enabled bool, rect Rect2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemClear(item RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemClear(item RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetDrawIndex(item RID, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetDrawIndex(item RID, index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetMaterial(item RID, material RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetMaterial(item RID, material RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetUseParentMaterial(item RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetUseParentMaterial(item RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetVisibilityNotifier(item RID, enable bool, area Rect2, enter_callable Callable, exit_callable Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetVisibilityNotifier(item RID, enable bool, area Rect2, enter_callable Callable, exit_callable Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasItemSetCanvasGroupMode(item RID, mode RenderingServerCanvasGroupMode, clear_margin float32, fit_empty bool, fit_margin float32, blur_mipmaps bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasItemSetCanvasGroupMode(item RID, mode RenderingServerCanvasGroupMode, clear_margin float32, fit_empty bool, fit_margin float32, blur_mipmaps bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightAttachToCanvas(light RID, canvas RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightAttachToCanvas(light RID, canvas RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetEnabled(light RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetEnabled(light RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetTextureScale(light RID, scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetTextureScale(light RID, scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetTransform(light RID, transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetTransform(light RID, transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetTexture(light RID, texture RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetTexture(light RID, texture RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetTextureOffset(light RID, offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetTextureOffset(light RID, offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetColor(light RID, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetColor(light RID, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetHeight(light RID, height float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetHeight(light RID, height float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetEnergy(light RID, energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetEnergy(light RID, energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetZRange(light RID, min_z int, max_z int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetZRange(light RID, min_z int, max_z int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetLayerRange(light RID, min_layer int, max_layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetLayerRange(light RID, min_layer int, max_layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetItemCullMask(light RID, mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetItemCullMask(light RID, mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetItemShadowCullMask(light RID, mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetItemShadowCullMask(light RID, mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetMode(light RID, mode RenderingServerCanvasLightMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetMode(light RID, mode RenderingServerCanvasLightMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetShadowEnabled(light RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetShadowEnabled(light RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetShadowFilter(light RID, filter RenderingServerCanvasLightShadowFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetShadowFilter(light RID, filter RenderingServerCanvasLightShadowFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetShadowColor(light RID, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetShadowColor(light RID, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetShadowSmooth(light RID, smooth float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetShadowSmooth(light RID, smooth float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightSetBlendMode(light RID, mode RenderingServerCanvasLightBlendMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightSetBlendMode(light RID, mode RenderingServerCanvasLightBlendMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightOccluderCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightOccluderCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightOccluderAttachToCanvas(occluder RID, canvas RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightOccluderAttachToCanvas(occluder RID, canvas RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightOccluderSetEnabled(occluder RID, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightOccluderSetEnabled(occluder RID, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightOccluderSetPolygon(occluder RID, polygon RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightOccluderSetPolygon(occluder RID, polygon RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightOccluderSetAsSdfCollision(occluder RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightOccluderSetAsSdfCollision(occluder RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightOccluderSetTransform(occluder RID, transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightOccluderSetTransform(occluder RID, transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasLightOccluderSetLightMask(occluder RID, mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasLightOccluderSetLightMask(occluder RID, mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasOccluderPolygonCreate() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasOccluderPolygonCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasOccluderPolygonSetShape(occluder_polygon RID, shape PackedVector2Array, closed bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasOccluderPolygonSetShape(occluder_polygon RID, shape PackedVector2Array, closed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasOccluderPolygonSetCullMode(occluder_polygon RID, mode RenderingServerCanvasOccluderPolygonCullMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasOccluderPolygonSetCullMode(occluder_polygon RID, mode RenderingServerCanvasOccluderPolygonCullMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CanvasSetShadowTextureSize(size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CanvasSetShadowTextureSize(size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GlobalShaderParameterAdd(name StringName, type_ RenderingServerGlobalShaderParameterType, default_value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GlobalShaderParameterAdd(name StringName, type_ RenderingServerGlobalShaderParameterType, default_value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GlobalShaderParameterRemove(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GlobalShaderParameterRemove(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GlobalShaderParameterGetList() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GlobalShaderParameterGetList()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GlobalShaderParameterSet(name StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GlobalShaderParameterSet(name StringName, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GlobalShaderParameterSetOverride(name StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GlobalShaderParameterSetOverride(name StringName, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GlobalShaderParameterGet(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GlobalShaderParameterGet(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GlobalShaderParameterGetType(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GlobalShaderParameterGetType(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) FreeRid(rid RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) FreeRid(rid RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) RequestFrameDrawnCallback(callable Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) RequestFrameDrawnCallback(callable Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) HasChanged() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) HasChanged()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetRenderingInfo(info RenderingServerRenderingInfo, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetRenderingInfo(info RenderingServerRenderingInfo, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetVideoAdapterName() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetVideoAdapterName()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetVideoAdapterVendor() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetVideoAdapterVendor()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetVideoAdapterType() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetVideoAdapterType()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetVideoAdapterApiVersion() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetVideoAdapterApiVersion()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) MakeSphereMesh(latitudes int, longitudes int, radius float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) MakeSphereMesh(latitudes int, longitudes int, radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetTestCube() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetTestCube()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetTestTexture() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetTestTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetWhiteTexture() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetWhiteTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SetBootImage(image Image, color Color, scale bool, use_filter bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SetBootImage(image Image, color Color, scale bool, use_filter bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetDefaultClearColor() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetDefaultClearColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SetDefaultClearColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SetDefaultClearColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) HasFeature(feature RenderingServerFeatures, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) HasFeature(feature RenderingServerFeatures, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) HasOsFeature(feature String, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) HasOsFeature(feature String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SetDebugGenerateWireframes(generate bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SetDebugGenerateWireframes(generate bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) IsRenderLoopEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) IsRenderLoopEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) SetRenderLoopEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) SetRenderLoopEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetFrameSetupTimeCpu() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetFrameSetupTimeCpu()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ForceSync() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ForceSync()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) ForceDraw(swap_buffers bool, frame_step float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) ForceDraw(swap_buffers bool, frame_step float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) GetRenderingDevice() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) GetRenderingDevice()  {
+  panic("TODO: implement")
 }
 
-func  (me *RenderingServer) CreateLocalRenderingDevice() { // TODO: return value
-  // TODO: implement
+func  (me *RenderingServer) CreateLocalRenderingDevice()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

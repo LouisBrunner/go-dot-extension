@@ -25,6 +25,10 @@ func (me *BoxContainer) BaseClass() string {
   return "BoxContainer"
 }
 
+
+
+// Enums
+
 type BoxContainerAlignmentMode int
 const (
   BoxContainerAlignmentModeAlignmentBegin BoxContainerAlignmentMode = 0
@@ -32,26 +36,37 @@ const (
   BoxContainerAlignmentModeAlignmentEnd BoxContainerAlignmentMode = 2
 )
 
-func  (me *BoxContainer) AddSpacer(begin bool, ) { // TODO: return value
-  // TODO: implement
+func (me *BoxContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *BoxContainer) SetAlignment(alignment BoxContainerAlignmentMode, ) { // TODO: return value
-  // TODO: implement
+func (me *BoxContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *BoxContainer) GetAlignment() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *BoxContainer) AddSpacer(begin bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BoxContainer) SetVertical(vertical bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BoxContainer) SetAlignment(alignment BoxContainerAlignmentMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BoxContainer) IsVertical() { // TODO: return value
-  // TODO: implement
+func  (me *BoxContainer) GetAlignment()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *BoxContainer) SetVertical(vertical bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *BoxContainer) IsVertical()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

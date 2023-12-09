@@ -25,10 +25,25 @@ func (me *ScriptCreateDialog) BaseClass() string {
   return "ScriptCreateDialog"
 }
 
-func  (me *ScriptCreateDialog) Config(inherits String, path String, built_in_enabled bool, load_enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ScriptCreateDialog) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *ScriptCreateDialog) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *ScriptCreateDialog) Config(inherits String, path String, built_in_enabled bool, load_enabled bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

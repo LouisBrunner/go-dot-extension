@@ -25,18 +25,33 @@ func (me *AudioEffectEQ) BaseClass() string {
   return "AudioEffectEQ"
 }
 
-func  (me *AudioEffectEQ) SetBandGainDb(band_idx int, volume_db float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffectEQ) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectEQ) GetBandGainDb(band_idx int, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectEQ) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectEQ) GetBandCount() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectEQ) SetBandGainDb(band_idx int, volume_db float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectEQ) GetBandGainDb(band_idx int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectEQ) GetBandCount()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

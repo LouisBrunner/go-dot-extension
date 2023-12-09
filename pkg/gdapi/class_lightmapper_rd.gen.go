@@ -25,6 +25,21 @@ func (me *LightmapperRD) BaseClass() string {
   return "LightmapperRD"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *LightmapperRD) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *LightmapperRD) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

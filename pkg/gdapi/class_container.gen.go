@@ -25,31 +25,44 @@ func (me *Container) BaseClass() string {
   return "Container"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   ContainerNotificationPreSortChildren = "50" // TODO: construct correctly
   ContainerNotificationSortChildren = "51" // TODO: construct correctly
 )
 
-func  (me *Container) XGetAllowedSizeFlagsHorizontal() { // TODO: return value
-  // TODO: implement
+// Enums
+
+func (me *Container) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Container) XGetAllowedSizeFlagsVertical() { // TODO: return value
-  // TODO: implement
+func (me *Container) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Container) QueueSort() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Container) XGetAllowedSizeFlagsHorizontal()  {
+  panic("TODO: implement")
 }
 
-func  (me *Container) FitChildInRect(child Control, rect Rect2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Container) XGetAllowedSizeFlagsVertical()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Container) QueueSort()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Container) FitChildInRect(child Control, rect Rect2, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,22 +25,37 @@ func (me *PanoramaSkyMaterial) BaseClass() string {
   return "PanoramaSkyMaterial"
 }
 
-func  (me *PanoramaSkyMaterial) SetPanorama(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PanoramaSkyMaterial) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PanoramaSkyMaterial) GetPanorama() { // TODO: return value
-  // TODO: implement
+func (me *PanoramaSkyMaterial) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PanoramaSkyMaterial) SetFilteringEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PanoramaSkyMaterial) SetPanorama(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PanoramaSkyMaterial) IsFilteringEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PanoramaSkyMaterial) GetPanorama()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PanoramaSkyMaterial) SetFilteringEnabled(enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PanoramaSkyMaterial) IsFilteringEnabled()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

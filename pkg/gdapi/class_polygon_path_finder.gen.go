@@ -25,38 +25,53 @@ func (me *PolygonPathFinder) BaseClass() string {
   return "PolygonPathFinder"
 }
 
-func  (me *PolygonPathFinder) Setup(points PackedVector2Array, connections PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PolygonPathFinder) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PolygonPathFinder) FindPath(from Vector2, to Vector2, ) { // TODO: return value
-  // TODO: implement
+func (me *PolygonPathFinder) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PolygonPathFinder) GetIntersections(from Vector2, to Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PolygonPathFinder) Setup(points PackedVector2Array, connections PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PolygonPathFinder) GetClosestPoint(point Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PolygonPathFinder) FindPath(from Vector2, to Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PolygonPathFinder) IsPointInside(point Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PolygonPathFinder) GetIntersections(from Vector2, to Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PolygonPathFinder) SetPointPenalty(idx int, penalty float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PolygonPathFinder) GetClosestPoint(point Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PolygonPathFinder) GetPointPenalty(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PolygonPathFinder) IsPointInside(point Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PolygonPathFinder) GetBounds() { // TODO: return value
-  // TODO: implement
+func  (me *PolygonPathFinder) SetPointPenalty(idx int, penalty float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PolygonPathFinder) GetPointPenalty(idx int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PolygonPathFinder) GetBounds()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

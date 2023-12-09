@@ -25,6 +25,21 @@ func (me *Node3DGizmo) BaseClass() string {
   return "Node3DGizmo"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *Node3DGizmo) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *Node3DGizmo) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

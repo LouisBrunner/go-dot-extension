@@ -25,42 +25,57 @@ func (me *MultiplayerAPIExtension) BaseClass() string {
   return "MultiplayerAPIExtension"
 }
 
-func  (me *MultiplayerAPIExtension) XPoll() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MultiplayerAPIExtension) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MultiplayerAPIExtension) XSetMultiplayerPeer(multiplayer_peer MultiplayerPeer, ) { // TODO: return value
-  // TODO: implement
+func (me *MultiplayerAPIExtension) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MultiplayerAPIExtension) XGetMultiplayerPeer() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MultiplayerAPIExtension) XPoll()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPIExtension) XGetUniqueId() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPIExtension) XSetMultiplayerPeer(multiplayer_peer MultiplayerPeer, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPIExtension) XGetPeerIds() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPIExtension) XGetMultiplayerPeer()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPIExtension) XRpc(peer int, object Object, method StringName, args Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPIExtension) XGetUniqueId()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPIExtension) XGetRemoteSenderId() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPIExtension) XGetPeerIds()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPIExtension) XObjectConfigurationAdd(object Object, configuration Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPIExtension) XRpc(peer int, object Object, method StringName, args Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPIExtension) XObjectConfigurationRemove(object Object, configuration Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPIExtension) XGetRemoteSenderId()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MultiplayerAPIExtension) XObjectConfigurationAdd(object Object, configuration Variant, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MultiplayerAPIExtension) XObjectConfigurationRemove(object Object, configuration Variant, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

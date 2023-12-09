@@ -25,14 +25,29 @@ func (me *PinJoint2D) BaseClass() string {
   return "PinJoint2D"
 }
 
-func  (me *PinJoint2D) SetSoftness(softness float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PinJoint2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PinJoint2D) GetSoftness() { // TODO: return value
-  // TODO: implement
+func (me *PinJoint2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *PinJoint2D) SetSoftness(softness float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *PinJoint2D) GetSoftness()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

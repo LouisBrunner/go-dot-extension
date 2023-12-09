@@ -25,134 +25,149 @@ func (me *RayCast3D) BaseClass() string {
   return "RayCast3D"
 }
 
-func  (me *RayCast3D) SetEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RayCast3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RayCast3D) IsEnabled() { // TODO: return value
-  // TODO: implement
+func (me *RayCast3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RayCast3D) SetTargetPosition(local_point Vector3, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RayCast3D) SetEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) GetTargetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) IsEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) IsColliding() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) SetTargetPosition(local_point Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) ForceRaycastUpdate() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) GetTargetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) GetCollider() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) IsColliding()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) GetColliderRid() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) ForceRaycastUpdate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) GetColliderShape() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) GetCollider()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) GetCollisionPoint() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) GetColliderRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) GetCollisionNormal() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) GetColliderShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) AddExceptionRid(rid RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) GetCollisionPoint()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) AddException(node CollisionObject3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) GetCollisionNormal()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) RemoveExceptionRid(rid RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) AddExceptionRid(rid RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) RemoveException(node CollisionObject3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) AddException(node CollisionObject3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) ClearExceptions() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) RemoveExceptionRid(rid RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) SetCollisionMask(mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) RemoveException(node CollisionObject3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) GetCollisionMask() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) ClearExceptions()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) SetCollisionMaskValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) SetCollisionMask(mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) GetCollisionMaskValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) GetCollisionMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) SetExcludeParentBody(mask bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) SetCollisionMaskValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) GetExcludeParentBody() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) GetCollisionMaskValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) SetCollideWithAreas(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) SetExcludeParentBody(mask bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) IsCollideWithAreasEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) GetExcludeParentBody()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) SetCollideWithBodies(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) SetCollideWithAreas(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) IsCollideWithBodiesEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) IsCollideWithAreasEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) SetHitFromInside(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) SetCollideWithBodies(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) IsHitFromInsideEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) IsCollideWithBodiesEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) SetDebugShapeCustomColor(debug_shape_custom_color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) SetHitFromInside(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) GetDebugShapeCustomColor() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) IsHitFromInsideEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) SetDebugShapeThickness(debug_shape_thickness int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) SetDebugShapeCustomColor(debug_shape_custom_color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast3D) GetDebugShapeThickness() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast3D) GetDebugShapeCustomColor()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RayCast3D) SetDebugShapeThickness(debug_shape_thickness int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RayCast3D) GetDebugShapeThickness()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

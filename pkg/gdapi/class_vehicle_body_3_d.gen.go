@@ -25,30 +25,45 @@ func (me *VehicleBody3D) BaseClass() string {
   return "VehicleBody3D"
 }
 
-func  (me *VehicleBody3D) SetEngineForce(engine_force float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VehicleBody3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VehicleBody3D) GetEngineForce() { // TODO: return value
-  // TODO: implement
+func (me *VehicleBody3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VehicleBody3D) SetBrake(brake float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VehicleBody3D) SetEngineForce(engine_force float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleBody3D) GetBrake() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleBody3D) GetEngineForce()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleBody3D) SetSteering(steering float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleBody3D) SetBrake(brake float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleBody3D) GetSteering() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleBody3D) GetBrake()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VehicleBody3D) SetSteering(steering float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VehicleBody3D) GetSteering()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

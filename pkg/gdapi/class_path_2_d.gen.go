@@ -25,14 +25,29 @@ func (me *Path2D) BaseClass() string {
   return "Path2D"
 }
 
-func  (me *Path2D) SetCurve(curve Curve2D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Path2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Path2D) GetCurve() { // TODO: return value
-  // TODO: implement
+func (me *Path2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *Path2D) SetCurve(curve Curve2D, )  {
+  panic("TODO: implement")
+}
+
+func  (me *Path2D) GetCurve()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

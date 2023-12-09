@@ -25,22 +25,37 @@ func (me *CSGMesh3D) BaseClass() string {
   return "CSGMesh3D"
 }
 
-func  (me *CSGMesh3D) SetMesh(mesh Mesh, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CSGMesh3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CSGMesh3D) GetMesh() { // TODO: return value
-  // TODO: implement
+func (me *CSGMesh3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CSGMesh3D) SetMaterial(material Material, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CSGMesh3D) SetMesh(mesh Mesh, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGMesh3D) GetMaterial() { // TODO: return value
-  // TODO: implement
+func  (me *CSGMesh3D) GetMesh()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CSGMesh3D) SetMaterial(material Material, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CSGMesh3D) GetMaterial()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

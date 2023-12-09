@@ -25,30 +25,45 @@ func (me *ImporterMeshInstance3D) BaseClass() string {
   return "ImporterMeshInstance3D"
 }
 
-func  (me *ImporterMeshInstance3D) SetMesh(mesh ImporterMesh, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ImporterMeshInstance3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ImporterMeshInstance3D) GetMesh() { // TODO: return value
-  // TODO: implement
+func (me *ImporterMeshInstance3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ImporterMeshInstance3D) SetSkin(skin Skin, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ImporterMeshInstance3D) SetMesh(mesh ImporterMesh, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ImporterMeshInstance3D) GetSkin() { // TODO: return value
-  // TODO: implement
+func  (me *ImporterMeshInstance3D) GetMesh()  {
+  panic("TODO: implement")
 }
 
-func  (me *ImporterMeshInstance3D) SetSkeletonPath(skeleton_path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *ImporterMeshInstance3D) SetSkin(skin Skin, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ImporterMeshInstance3D) GetSkeletonPath() { // TODO: return value
-  // TODO: implement
+func  (me *ImporterMeshInstance3D) GetSkin()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ImporterMeshInstance3D) SetSkeletonPath(skeleton_path NodePath, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ImporterMeshInstance3D) GetSkeletonPath()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,34 +25,49 @@ func (me *SkeletonModification2DPhysicalBones) BaseClass() string {
   return "SkeletonModification2DPhysicalBones"
 }
 
-func  (me *SkeletonModification2DPhysicalBones) SetPhysicalBoneChainLength(length int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SkeletonModification2DPhysicalBones) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SkeletonModification2DPhysicalBones) GetPhysicalBoneChainLength() { // TODO: return value
-  // TODO: implement
+func (me *SkeletonModification2DPhysicalBones) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SkeletonModification2DPhysicalBones) SetPhysicalBoneNode(joint_idx int, physicalbone2d_node NodePath, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SkeletonModification2DPhysicalBones) SetPhysicalBoneChainLength(length int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DPhysicalBones) GetPhysicalBoneNode(joint_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DPhysicalBones) GetPhysicalBoneChainLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DPhysicalBones) FetchPhysicalBones() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DPhysicalBones) SetPhysicalBoneNode(joint_idx int, physicalbone2d_node NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DPhysicalBones) StartSimulation(bones StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DPhysicalBones) GetPhysicalBoneNode(joint_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DPhysicalBones) StopSimulation(bones StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DPhysicalBones) FetchPhysicalBones()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SkeletonModification2DPhysicalBones) StartSimulation(bones StringName, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SkeletonModification2DPhysicalBones) StopSimulation(bones StringName, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

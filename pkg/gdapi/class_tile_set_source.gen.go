@@ -25,30 +25,45 @@ func (me *TileSetSource) BaseClass() string {
   return "TileSetSource"
 }
 
-func  (me *TileSetSource) GetTilesCount() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *TileSetSource) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TileSetSource) GetTileId(index int, ) { // TODO: return value
-  // TODO: implement
+func (me *TileSetSource) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TileSetSource) HasTile(atlas_coords Vector2i, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TileSetSource) GetTilesCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *TileSetSource) GetAlternativeTilesCount(atlas_coords Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *TileSetSource) GetTileId(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TileSetSource) GetAlternativeTileId(atlas_coords Vector2i, index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TileSetSource) HasTile(atlas_coords Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TileSetSource) HasAlternativeTile(atlas_coords Vector2i, alternative_tile int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TileSetSource) GetAlternativeTilesCount(atlas_coords Vector2i, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TileSetSource) GetAlternativeTileId(atlas_coords Vector2i, index int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TileSetSource) HasAlternativeTile(atlas_coords Vector2i, alternative_tile int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,88 +25,103 @@ func (me *TouchScreenButton) BaseClass() string {
   return "TouchScreenButton"
 }
 
+
+
+// Enums
+
 type TouchScreenButtonVisibilityMode int
 const (
   TouchScreenButtonVisibilityModeVisibilityAlways TouchScreenButtonVisibilityMode = 0
   TouchScreenButtonVisibilityModeVisibilityTouchscreenOnly TouchScreenButtonVisibilityMode = 1
 )
 
-func  (me *TouchScreenButton) SetTextureNormal(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func (me *TouchScreenButton) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TouchScreenButton) GetTextureNormal() { // TODO: return value
-  // TODO: implement
+func (me *TouchScreenButton) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TouchScreenButton) SetTexturePressed(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TouchScreenButton) SetTextureNormal(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) GetTexturePressed() { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) GetTextureNormal()  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) SetBitmask(bitmask BitMap, ) { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) SetTexturePressed(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) GetBitmask() { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) GetTexturePressed()  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) SetShape(shape Shape2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) SetBitmask(bitmask BitMap, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) GetShape() { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) GetBitmask()  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) SetShapeCentered(bool bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) SetShape(shape Shape2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) IsShapeCentered() { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) GetShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) SetShapeVisible(bool bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) SetShapeCentered(bool bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) IsShapeVisible() { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) IsShapeCentered()  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) SetAction(action String, ) { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) SetShapeVisible(bool bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) GetAction() { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) IsShapeVisible()  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) SetVisibilityMode(mode TouchScreenButtonVisibilityMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) SetAction(action String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) GetVisibilityMode() { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) GetAction()  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) SetPassbyPress(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) SetVisibilityMode(mode TouchScreenButtonVisibilityMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) IsPassbyPressEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) GetVisibilityMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) IsPressed() { // TODO: return value
-  // TODO: implement
+func  (me *TouchScreenButton) SetPassbyPress(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TouchScreenButton) IsPassbyPressEnabled()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TouchScreenButton) IsPressed()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

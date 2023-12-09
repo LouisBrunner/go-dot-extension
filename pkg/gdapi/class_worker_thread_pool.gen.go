@@ -25,34 +25,49 @@ func (me *WorkerThreadPool) BaseClass() string {
   return "WorkerThreadPool"
 }
 
-func  (me *WorkerThreadPool) AddTask(action Callable, high_priority bool, description String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *WorkerThreadPool) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *WorkerThreadPool) IsTaskCompleted(task_id int, ) { // TODO: return value
-  // TODO: implement
+func (me *WorkerThreadPool) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *WorkerThreadPool) WaitForTaskCompletion(task_id int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *WorkerThreadPool) AddTask(action Callable, high_priority bool, description String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WorkerThreadPool) AddGroupTask(action Callable, elements int, tasks_needed int, high_priority bool, description String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WorkerThreadPool) IsTaskCompleted(task_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WorkerThreadPool) IsGroupTaskCompleted(group_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *WorkerThreadPool) WaitForTaskCompletion(task_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WorkerThreadPool) GetGroupProcessedElementCount(group_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *WorkerThreadPool) AddGroupTask(action Callable, elements int, tasks_needed int, high_priority bool, description String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WorkerThreadPool) WaitForGroupTaskCompletion(group_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *WorkerThreadPool) IsGroupTaskCompleted(group_id int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *WorkerThreadPool) GetGroupProcessedElementCount(group_id int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *WorkerThreadPool) WaitForGroupTaskCompletion(group_id int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

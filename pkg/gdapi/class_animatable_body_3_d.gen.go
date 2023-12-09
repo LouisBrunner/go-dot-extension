@@ -25,14 +25,29 @@ func (me *AnimatableBody3D) BaseClass() string {
   return "AnimatableBody3D"
 }
 
-func  (me *AnimatableBody3D) SetSyncToPhysics(enable bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AnimatableBody3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AnimatableBody3D) IsSyncToPhysicsEnabled() { // TODO: return value
-  // TODO: implement
+func (me *AnimatableBody3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *AnimatableBody3D) SetSyncToPhysics(enable bool, )  {
+  panic("TODO: implement")
+}
+
+func  (me *AnimatableBody3D) IsSyncToPhysicsEnabled()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

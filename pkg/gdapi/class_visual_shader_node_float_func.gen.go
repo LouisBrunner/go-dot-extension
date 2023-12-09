@@ -25,6 +25,10 @@ func (me *VisualShaderNodeFloatFunc) BaseClass() string {
   return "VisualShaderNodeFloatFunc"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeFloatFuncFunction int
 const (
   VisualShaderNodeFloatFuncFunctionFuncSin VisualShaderNodeFloatFuncFunction = 0
@@ -62,14 +66,25 @@ const (
   VisualShaderNodeFloatFuncFunctionFuncMax VisualShaderNodeFloatFuncFunction = 32
 )
 
-func  (me *VisualShaderNodeFloatFunc) SetFunction(func_ VisualShaderNodeFloatFuncFunction, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeFloatFunc) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeFloatFunc) GetFunction() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeFloatFunc) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeFloatFunc) SetFunction(func_ VisualShaderNodeFloatFuncFunction, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeFloatFunc) GetFunction()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

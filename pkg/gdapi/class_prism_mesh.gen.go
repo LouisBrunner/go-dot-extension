@@ -25,46 +25,61 @@ func (me *PrismMesh) BaseClass() string {
   return "PrismMesh"
 }
 
-func  (me *PrismMesh) SetLeftToRight(left_to_right float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PrismMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PrismMesh) GetLeftToRight() { // TODO: return value
-  // TODO: implement
+func (me *PrismMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PrismMesh) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PrismMesh) SetLeftToRight(left_to_right float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PrismMesh) GetSize() { // TODO: return value
-  // TODO: implement
+func  (me *PrismMesh) GetLeftToRight()  {
+  panic("TODO: implement")
 }
 
-func  (me *PrismMesh) SetSubdivideWidth(segments int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PrismMesh) SetSize(size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PrismMesh) GetSubdivideWidth() { // TODO: return value
-  // TODO: implement
+func  (me *PrismMesh) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *PrismMesh) SetSubdivideHeight(segments int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PrismMesh) SetSubdivideWidth(segments int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PrismMesh) GetSubdivideHeight() { // TODO: return value
-  // TODO: implement
+func  (me *PrismMesh) GetSubdivideWidth()  {
+  panic("TODO: implement")
 }
 
-func  (me *PrismMesh) SetSubdivideDepth(segments int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PrismMesh) SetSubdivideHeight(segments int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PrismMesh) GetSubdivideDepth() { // TODO: return value
-  // TODO: implement
+func  (me *PrismMesh) GetSubdivideHeight()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PrismMesh) SetSubdivideDepth(segments int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PrismMesh) GetSubdivideDepth()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

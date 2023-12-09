@@ -25,6 +25,10 @@ func (me *ZIPPacker) BaseClass() string {
   return "ZIPPacker"
 }
 
+
+
+// Enums
+
 type ZIPPackerZipAppend int
 const (
   ZIPPackerZipAppendAppendCreate ZIPPackerZipAppend = 0
@@ -32,26 +36,37 @@ const (
   ZIPPackerZipAppendAppendAddinzip ZIPPackerZipAppend = 2
 )
 
-func  (me *ZIPPacker) Open(path String, append ZIPPackerZipAppend, ) { // TODO: return value
-  // TODO: implement
+func (me *ZIPPacker) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ZIPPacker) StartFile(path String, ) { // TODO: return value
-  // TODO: implement
+func (me *ZIPPacker) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ZIPPacker) WriteFile(data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ZIPPacker) Open(path String, append ZIPPackerZipAppend, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ZIPPacker) CloseFile() { // TODO: return value
-  // TODO: implement
+func  (me *ZIPPacker) StartFile(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ZIPPacker) Close() { // TODO: return value
-  // TODO: implement
+func  (me *ZIPPacker) WriteFile(data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ZIPPacker) CloseFile()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ZIPPacker) Close()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

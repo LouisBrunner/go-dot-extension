@@ -25,6 +25,10 @@ func (me *ParticleProcessMaterial) BaseClass() string {
   return "ParticleProcessMaterial"
 }
 
+
+
+// Enums
+
 type ParticleProcessMaterialParameter int
 const (
   ParticleProcessMaterialParameterParamInitialLinearVelocity ParticleProcessMaterialParameter = 0
@@ -82,310 +86,321 @@ const (
   ParticleProcessMaterialCollisionModeCollisionMax ParticleProcessMaterialCollisionMode = 3
 )
 
-func  (me *ParticleProcessMaterial) SetDirection(degrees Vector3, ) { // TODO: return value
-  // TODO: implement
+func (me *ParticleProcessMaterial) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ParticleProcessMaterial) GetDirection() { // TODO: return value
-  // TODO: implement
+func (me *ParticleProcessMaterial) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ParticleProcessMaterial) SetSpread(degrees float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ParticleProcessMaterial) SetDirection(degrees Vector3, )  {
+  panic("TODO: implement")
+}
+
+func  (me *ParticleProcessMaterial) GetDirection()  {
+  panic("TODO: implement")
+}
+
+func  (me *ParticleProcessMaterial) SetSpread(degrees float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetSpread() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetSpread()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetFlatness(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetFlatness(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetFlatness() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetFlatness()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetParamMin(param ParticleProcessMaterialParameter, value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetParamMin(param ParticleProcessMaterialParameter, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetParamMin(param ParticleProcessMaterialParameter, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetParamMin(param ParticleProcessMaterialParameter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetParamMax(param ParticleProcessMaterialParameter, value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetParamMax(param ParticleProcessMaterialParameter, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetParamMax(param ParticleProcessMaterialParameter, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetParamMax(param ParticleProcessMaterialParameter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetParamTexture(param ParticleProcessMaterialParameter, texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetParamTexture(param ParticleProcessMaterialParameter, texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetParamTexture(param ParticleProcessMaterialParameter, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetParamTexture(param ParticleProcessMaterialParameter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetColor() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetColorRamp(ramp Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetColorRamp(ramp Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetColorRamp() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetColorRamp()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetColorInitialRamp(ramp Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetColorInitialRamp(ramp Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetColorInitialRamp() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetColorInitialRamp()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetParticleFlag(particle_flag ParticleProcessMaterialParticleFlags, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetParticleFlag(particle_flag ParticleProcessMaterialParticleFlags, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetParticleFlag(particle_flag ParticleProcessMaterialParticleFlags, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetParticleFlag(particle_flag ParticleProcessMaterialParticleFlags, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetEmissionShape(shape ParticleProcessMaterialEmissionShape, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetEmissionShape(shape ParticleProcessMaterialEmissionShape, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetEmissionShape() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetEmissionShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetEmissionSphereRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetEmissionSphereRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetEmissionSphereRadius() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetEmissionSphereRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetEmissionBoxExtents(extents Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetEmissionBoxExtents(extents Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetEmissionBoxExtents() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetEmissionBoxExtents()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetEmissionPointTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetEmissionPointTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetEmissionPointTexture() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetEmissionPointTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetEmissionNormalTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetEmissionNormalTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetEmissionNormalTexture() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetEmissionNormalTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetEmissionColorTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetEmissionColorTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetEmissionColorTexture() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetEmissionColorTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetEmissionPointCount(point_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetEmissionPointCount(point_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetEmissionPointCount() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetEmissionPointCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetEmissionRingAxis(axis Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetEmissionRingAxis(axis Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetEmissionRingAxis() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetEmissionRingAxis()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetEmissionRingHeight(height float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetEmissionRingHeight(height float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetEmissionRingHeight() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetEmissionRingHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetEmissionRingRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetEmissionRingRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetEmissionRingRadius() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetEmissionRingRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetEmissionRingInnerRadius(inner_radius float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetEmissionRingInnerRadius(inner_radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetEmissionRingInnerRadius() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetEmissionRingInnerRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetTurbulenceEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetTurbulenceEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetTurbulenceEnabled(turbulence_enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetTurbulenceEnabled(turbulence_enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetTurbulenceNoiseStrength() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetTurbulenceNoiseStrength()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetTurbulenceNoiseStrength(turbulence_noise_strength float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetTurbulenceNoiseStrength(turbulence_noise_strength float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetTurbulenceNoiseScale() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetTurbulenceNoiseScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetTurbulenceNoiseScale(turbulence_noise_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetTurbulenceNoiseScale(turbulence_noise_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetTurbulenceNoiseSpeedRandom() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetTurbulenceNoiseSpeedRandom()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetTurbulenceNoiseSpeedRandom(turbulence_noise_speed_random float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetTurbulenceNoiseSpeedRandom(turbulence_noise_speed_random float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetTurbulenceNoiseSpeed() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetTurbulenceNoiseSpeed()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetTurbulenceNoiseSpeed(turbulence_noise_speed Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetTurbulenceNoiseSpeed(turbulence_noise_speed Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetGravity() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetGravity()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetGravity(accel_vec Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetGravity(accel_vec Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetLifetimeRandomness(randomness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetLifetimeRandomness(randomness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetLifetimeRandomness() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetLifetimeRandomness()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetSubEmitterMode() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetSubEmitterMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetSubEmitterMode(mode ParticleProcessMaterialSubEmitterMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetSubEmitterMode(mode ParticleProcessMaterialSubEmitterMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetSubEmitterFrequency() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetSubEmitterFrequency()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetSubEmitterFrequency(hz float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetSubEmitterFrequency(hz float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetSubEmitterAmountAtEnd() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetSubEmitterAmountAtEnd()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetSubEmitterAmountAtEnd(amount int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetSubEmitterAmountAtEnd(amount int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetSubEmitterAmountAtCollision() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetSubEmitterAmountAtCollision()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetSubEmitterAmountAtCollision(amount int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetSubEmitterAmountAtCollision(amount int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetSubEmitterKeepVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetSubEmitterKeepVelocity()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetSubEmitterKeepVelocity(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetSubEmitterKeepVelocity(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetAttractorInteractionEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetAttractorInteractionEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) IsAttractorInteractionEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) IsAttractorInteractionEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetCollisionMode(mode ParticleProcessMaterialCollisionMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetCollisionMode(mode ParticleProcessMaterialCollisionMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetCollisionMode() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetCollisionMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetCollisionUseScale(radius bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetCollisionUseScale(radius bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) IsCollisionUsingScale() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) IsCollisionUsingScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetCollisionFriction(friction float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetCollisionFriction(friction float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetCollisionFriction() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetCollisionFriction()  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) SetCollisionBounce(bounce float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) SetCollisionBounce(bounce float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ParticleProcessMaterial) GetCollisionBounce() { // TODO: return value
-  // TODO: implement
+func  (me *ParticleProcessMaterial) GetCollisionBounce()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

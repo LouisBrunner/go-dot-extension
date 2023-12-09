@@ -25,26 +25,41 @@ func (me *RDShaderFile) BaseClass() string {
   return "RDShaderFile"
 }
 
-func  (me *RDShaderFile) SetBytecode(bytecode RDShaderSPIRV, version StringName, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDShaderFile) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDShaderFile) GetSpirv(version StringName, ) { // TODO: return value
-  // TODO: implement
+func (me *RDShaderFile) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDShaderFile) GetVersionList() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDShaderFile) SetBytecode(bytecode RDShaderSPIRV, version StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDShaderFile) SetBaseError(error String, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDShaderFile) GetSpirv(version StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDShaderFile) GetBaseError() { // TODO: return value
-  // TODO: implement
+func  (me *RDShaderFile) GetVersionList()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDShaderFile) SetBaseError(error String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDShaderFile) GetBaseError()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

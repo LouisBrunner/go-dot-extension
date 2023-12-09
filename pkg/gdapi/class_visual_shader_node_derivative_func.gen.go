@@ -25,6 +25,10 @@ func (me *VisualShaderNodeDerivativeFunc) BaseClass() string {
   return "VisualShaderNodeDerivativeFunc"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeDerivativeFuncOpType int
 const (
   VisualShaderNodeDerivativeFuncOpTypeOpTypeScalar VisualShaderNodeDerivativeFuncOpType = 0
@@ -50,30 +54,41 @@ const (
   VisualShaderNodeDerivativeFuncPrecisionPrecisionMax VisualShaderNodeDerivativeFuncPrecision = 3
 )
 
-func  (me *VisualShaderNodeDerivativeFunc) SetOpType(type_ VisualShaderNodeDerivativeFuncOpType, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeDerivativeFunc) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeDerivativeFunc) GetOpType() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeDerivativeFunc) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeDerivativeFunc) SetFunction(func_ VisualShaderNodeDerivativeFuncFunction, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeDerivativeFunc) SetOpType(type_ VisualShaderNodeDerivativeFuncOpType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeDerivativeFunc) GetFunction() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeDerivativeFunc) GetOpType()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeDerivativeFunc) SetPrecision(precision VisualShaderNodeDerivativeFuncPrecision, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeDerivativeFunc) SetFunction(func_ VisualShaderNodeDerivativeFuncFunction, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeDerivativeFunc) GetPrecision() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeDerivativeFunc) GetFunction()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeDerivativeFunc) SetPrecision(precision VisualShaderNodeDerivativeFuncPrecision, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeDerivativeFunc) GetPrecision()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

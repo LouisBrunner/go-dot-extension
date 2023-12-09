@@ -1,0 +1,78 @@
+{{template "preamble"}}
+
+import (
+  "unsafe"
+
+  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+)
+
+{{$Class := mapClass .Name -}}
+type {{$Class}} struct {
+  iface gdc.Interface
+  ptr gdc.TypePtr
+}
+
+{{- template "class_enums" .}}
+
+{{- define "function_name"}}
+{{- if .Arguments}}From{{- range .Arguments}}{{pascalCased (mapType .Type)}}{{end}}{{else}}{{end}}
+{{- end}}
+
+// Constructors
+{{- range .Constructors}}
+
+func New{{$Class}}{{template "function_name" .}}({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}) {{$Class}} {
+  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSize{{$Class}}))
+  ctr := giface.VariantGetPtrConstructor(gdc.VariantType{{pascalCased $.Name}}, {{.Index}}) // FIXME: should cache?
+  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{
+    {{- range .Arguments}}
+{{- if isExported (mapType .Type) -}}
+  {{mapName .Name}}.AsCTypePtr()
+{{- else -}}
+  gdc.ConstTypePtr(&{{mapName .Name}})
+{{- end -}}
+    , {{ end -}}
+  }))
+  return {{$Class}}{
+    iface: giface,
+    ptr: gdc.TypePtr(ptr),
+  }
+}
+{{- end}}
+
+// Destructor
+func (me *{{$Class}}) Destroy() {
+  if me.ptr == nil {
+    return
+  }
+{{- if .HasDestructor}}
+  dtr := me.iface.VariantGetPtrDestructor(gdc.VariantType{{$Class}})
+	me.iface.CallPtrDestructor(dtr, gdc.TypePtr(me.ptr))
+{{- end}}
+	cfree(unsafe.Pointer(me.ptr))
+  me.ptr = nil
+}
+
+func (me *{{$Class}}) Type() gdc.VariantType {
+  return gdc.VariantType{{pascalCased $.Name}}
+}
+
+func (me *{{$Class}}) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.ptr)
+}
+
+func (me *{{$Class}}) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.ptr)
+}
+{{template "class_methods" .}}
+
+// Operators
+{{- range .Operators}}
+
+func (me *{{$Class}}) {{mapMethod (mapOperator .Name)}}{{if ne .RightType ""}}{{pascalCased (mapType .RightType)}}{{end -}}
+({{if ne .RightType ""}}right {{mapType .RightType}}{{end}}) {{mapType .ReturnType}} {
+  panic("TODO: implement")
+}
+{{- end}}
+
+// TODO: members (bclass)

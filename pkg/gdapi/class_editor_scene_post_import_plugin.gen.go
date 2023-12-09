@@ -25,6 +25,10 @@ func (me *EditorScenePostImportPlugin) BaseClass() string {
   return "EditorScenePostImportPlugin"
 }
 
+
+
+// Enums
+
 type EditorScenePostImportPluginInternalImportCategory int
 const (
   EditorScenePostImportPluginInternalImportCategoryInternalImportCategoryNode EditorScenePostImportPluginInternalImportCategory = 0
@@ -37,50 +41,61 @@ const (
   EditorScenePostImportPluginInternalImportCategoryInternalImportCategoryMax EditorScenePostImportPluginInternalImportCategory = 7
 )
 
-func  (me *EditorScenePostImportPlugin) XGetInternalImportOptions(category int, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorScenePostImportPlugin) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorScenePostImportPlugin) XGetInternalOptionVisibility(category int, for_animation bool, option String, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorScenePostImportPlugin) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorScenePostImportPlugin) XGetInternalOptionUpdateViewRequired(category int, option String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorScenePostImportPlugin) XGetInternalImportOptions(category int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorScenePostImportPlugin) XInternalProcess(category int, base_node Node, node Node, resource Resource, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorScenePostImportPlugin) XGetInternalOptionVisibility(category int, for_animation bool, option String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorScenePostImportPlugin) XGetImportOptions(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorScenePostImportPlugin) XGetInternalOptionUpdateViewRequired(category int, option String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorScenePostImportPlugin) XGetOptionVisibility(path String, for_animation bool, option String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorScenePostImportPlugin) XInternalProcess(category int, base_node Node, node Node, resource Resource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorScenePostImportPlugin) XPreProcess(scene Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorScenePostImportPlugin) XGetImportOptions(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorScenePostImportPlugin) XPostProcess(scene Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorScenePostImportPlugin) XGetOptionVisibility(path String, for_animation bool, option String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorScenePostImportPlugin) GetOptionValue(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorScenePostImportPlugin) XPreProcess(scene Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorScenePostImportPlugin) AddImportOption(name String, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorScenePostImportPlugin) XPostProcess(scene Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorScenePostImportPlugin) AddImportOptionAdvanced(type_ VariantType, name String, default_value Variant, hint PropertyHint, hint_string String, usage_flags int, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorScenePostImportPlugin) GetOptionValue(name StringName, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorScenePostImportPlugin) AddImportOption(name String, value Variant, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorScenePostImportPlugin) AddImportOptionAdvanced(type_ VariantType, name String, default_value Variant, hint PropertyHint, hint_string String, usage_flags int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

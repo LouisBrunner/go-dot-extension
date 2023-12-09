@@ -25,22 +25,37 @@ func (me *VisualShaderNodeVec2Parameter) BaseClass() string {
   return "VisualShaderNodeVec2Parameter"
 }
 
-func  (me *VisualShaderNodeVec2Parameter) SetDefaultValueEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeVec2Parameter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeVec2Parameter) IsDefaultValueEnabled() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeVec2Parameter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeVec2Parameter) SetDefaultValue(value Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeVec2Parameter) SetDefaultValueEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeVec2Parameter) GetDefaultValue() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeVec2Parameter) IsDefaultValueEnabled()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeVec2Parameter) SetDefaultValue(value Vector2, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeVec2Parameter) GetDefaultValue()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

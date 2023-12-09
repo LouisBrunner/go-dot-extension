@@ -1,0 +1,10 @@
+{{template "preamble"}}
+
+const (
+{{- range .Classes}}
+{{$name := .Name}}
+{{- range .Members}}
+  classMember{{$name}}{{.Member}} = {{.Offset}}
+{{- end }}
+{{- end }}
+)

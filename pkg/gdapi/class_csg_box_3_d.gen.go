@@ -25,22 +25,37 @@ func (me *CSGBox3D) BaseClass() string {
   return "CSGBox3D"
 }
 
-func  (me *CSGBox3D) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CSGBox3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CSGBox3D) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *CSGBox3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CSGBox3D) SetMaterial(material Material, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CSGBox3D) SetSize(size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGBox3D) GetMaterial() { // TODO: return value
-  // TODO: implement
+func  (me *CSGBox3D) GetSize()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CSGBox3D) SetMaterial(material Material, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CSGBox3D) GetMaterial()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

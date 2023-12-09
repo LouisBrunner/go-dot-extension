@@ -25,14 +25,29 @@ func (me *EditorScenePostImport) BaseClass() string {
   return "EditorScenePostImport"
 }
 
-func  (me *EditorScenePostImport) XPostImport(scene Node, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorScenePostImport) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorScenePostImport) GetSourceFile() { // TODO: return value
-  // TODO: implement
+func (me *EditorScenePostImport) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *EditorScenePostImport) XPostImport(scene Node, )  {
+  panic("TODO: implement")
+}
+
+func  (me *EditorScenePostImport) GetSourceFile()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

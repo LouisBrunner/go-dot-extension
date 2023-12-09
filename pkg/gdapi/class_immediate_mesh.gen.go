@@ -25,46 +25,61 @@ func (me *ImmediateMesh) BaseClass() string {
   return "ImmediateMesh"
 }
 
-func  (me *ImmediateMesh) SurfaceBegin(primitive MeshPrimitiveType, material Material, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ImmediateMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ImmediateMesh) SurfaceSetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func (me *ImmediateMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ImmediateMesh) SurfaceSetNormal(normal Vector3, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ImmediateMesh) SurfaceBegin(primitive MeshPrimitiveType, material Material, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ImmediateMesh) SurfaceSetTangent(tangent Plane, ) { // TODO: return value
-  // TODO: implement
+func  (me *ImmediateMesh) SurfaceSetColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ImmediateMesh) SurfaceSetUv(uv Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *ImmediateMesh) SurfaceSetNormal(normal Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ImmediateMesh) SurfaceSetUv2(uv2 Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *ImmediateMesh) SurfaceSetTangent(tangent Plane, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ImmediateMesh) SurfaceAddVertex(vertex Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *ImmediateMesh) SurfaceSetUv(uv Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ImmediateMesh) SurfaceAddVertex2D(vertex Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *ImmediateMesh) SurfaceSetUv2(uv2 Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ImmediateMesh) SurfaceEnd() { // TODO: return value
-  // TODO: implement
+func  (me *ImmediateMesh) SurfaceAddVertex(vertex Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ImmediateMesh) ClearSurfaces() { // TODO: return value
-  // TODO: implement
+func  (me *ImmediateMesh) SurfaceAddVertex2D(vertex Vector2, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ImmediateMesh) SurfaceEnd()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ImmediateMesh) ClearSurfaces()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

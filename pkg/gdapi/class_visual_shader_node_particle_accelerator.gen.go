@@ -25,6 +25,10 @@ func (me *VisualShaderNodeParticleAccelerator) BaseClass() string {
   return "VisualShaderNodeParticleAccelerator"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeParticleAcceleratorMode int
 const (
   VisualShaderNodeParticleAcceleratorModeModeLinear VisualShaderNodeParticleAcceleratorMode = 0
@@ -33,14 +37,25 @@ const (
   VisualShaderNodeParticleAcceleratorModeModeMax VisualShaderNodeParticleAcceleratorMode = 3
 )
 
-func  (me *VisualShaderNodeParticleAccelerator) SetMode(mode VisualShaderNodeParticleAcceleratorMode, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParticleAccelerator) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeParticleAccelerator) GetMode() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParticleAccelerator) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeParticleAccelerator) SetMode(mode VisualShaderNodeParticleAcceleratorMode, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeParticleAccelerator) GetMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

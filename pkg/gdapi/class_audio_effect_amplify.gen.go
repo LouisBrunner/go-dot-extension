@@ -25,14 +25,29 @@ func (me *AudioEffectAmplify) BaseClass() string {
   return "AudioEffectAmplify"
 }
 
-func  (me *AudioEffectAmplify) SetVolumeDb(volume float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffectAmplify) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectAmplify) GetVolumeDb() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectAmplify) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *AudioEffectAmplify) SetVolumeDb(volume float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *AudioEffectAmplify) GetVolumeDb()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

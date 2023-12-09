@@ -25,102 +25,117 @@ func (me *CharFXTransform) BaseClass() string {
   return "CharFXTransform"
 }
 
-func  (me *CharFXTransform) GetRange() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CharFXTransform) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CharFXTransform) SetRange(range_ Vector2i, ) { // TODO: return value
-  // TODO: implement
+func (me *CharFXTransform) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CharFXTransform) GetElapsedTime() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CharFXTransform) GetRange()  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) SetElapsedTime(time float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) SetRange(range_ Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) IsVisible() { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) GetElapsedTime()  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) SetVisibility(visibility bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) SetElapsedTime(time float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) IsOutline() { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) IsVisible()  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) SetOutline(outline bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) SetVisibility(visibility bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) GetOffset() { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) IsOutline()  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) SetOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) SetOutline(outline bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) GetColor() { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) GetOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) SetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) SetOffset(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) GetEnvironment() { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) GetColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) SetEnvironment(environment Dictionary, ) { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) SetColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) GetGlyphIndex() { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) GetEnvironment()  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) SetGlyphIndex(glyph_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) SetEnvironment(environment Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) GetRelativeIndex() { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) GetGlyphIndex()  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) SetRelativeIndex(relative_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) SetGlyphIndex(glyph_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) GetGlyphCount() { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) GetRelativeIndex()  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) SetGlyphCount(glyph_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) SetRelativeIndex(relative_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) GetGlyphFlags() { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) GetGlyphCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) SetGlyphFlags(glyph_flags int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) SetGlyphCount(glyph_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) GetFont() { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) GetGlyphFlags()  {
+  panic("TODO: implement")
 }
 
-func  (me *CharFXTransform) SetFont(font RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *CharFXTransform) SetGlyphFlags(glyph_flags int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CharFXTransform) GetFont()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CharFXTransform) SetFont(font RID, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

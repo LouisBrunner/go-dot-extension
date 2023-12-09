@@ -25,6 +25,10 @@ func (me *MultiplayerSynchronizer) BaseClass() string {
   return "MultiplayerSynchronizer"
 }
 
+
+
+// Enums
+
 type MultiplayerSynchronizerVisibilityUpdateMode int
 const (
   MultiplayerSynchronizerVisibilityUpdateModeVisibilityProcessIdle MultiplayerSynchronizerVisibilityUpdateMode = 0
@@ -32,74 +36,85 @@ const (
   MultiplayerSynchronizerVisibilityUpdateModeVisibilityProcessNone MultiplayerSynchronizerVisibilityUpdateMode = 2
 )
 
-func  (me *MultiplayerSynchronizer) SetRootPath(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func (me *MultiplayerSynchronizer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MultiplayerSynchronizer) GetRootPath() { // TODO: return value
-  // TODO: implement
+func (me *MultiplayerSynchronizer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MultiplayerSynchronizer) SetReplicationInterval(milliseconds float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MultiplayerSynchronizer) SetRootPath(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) GetReplicationInterval() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) GetRootPath()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) SetDeltaInterval(milliseconds float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) SetReplicationInterval(milliseconds float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) GetDeltaInterval() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) GetReplicationInterval()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) SetReplicationConfig(config SceneReplicationConfig, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) SetDeltaInterval(milliseconds float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) GetReplicationConfig() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) GetDeltaInterval()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) SetVisibilityUpdateMode(mode MultiplayerSynchronizerVisibilityUpdateMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) SetReplicationConfig(config SceneReplicationConfig, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) GetVisibilityUpdateMode() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) GetReplicationConfig()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) UpdateVisibility(for_peer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) SetVisibilityUpdateMode(mode MultiplayerSynchronizerVisibilityUpdateMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) SetVisibilityPublic(visible bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) GetVisibilityUpdateMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) IsVisibilityPublic() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) UpdateVisibility(for_peer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) AddVisibilityFilter(filter Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) SetVisibilityPublic(visible bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) RemoveVisibilityFilter(filter Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) IsVisibilityPublic()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) SetVisibilityFor(peer int, visible bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) AddVisibilityFilter(filter Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSynchronizer) GetVisibilityFor(peer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSynchronizer) RemoveVisibilityFilter(filter Callable, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MultiplayerSynchronizer) SetVisibilityFor(peer int, visible bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MultiplayerSynchronizer) GetVisibilityFor(peer int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

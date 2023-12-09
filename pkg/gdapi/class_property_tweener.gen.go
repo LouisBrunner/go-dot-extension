@@ -25,30 +25,45 @@ func (me *PropertyTweener) BaseClass() string {
   return "PropertyTweener"
 }
 
-func  (me *PropertyTweener) From(value Variant, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PropertyTweener) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PropertyTweener) FromCurrent() { // TODO: return value
-  // TODO: implement
+func (me *PropertyTweener) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PropertyTweener) AsRelative() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PropertyTweener) From(value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PropertyTweener) SetTrans(trans TweenTransitionType, ) { // TODO: return value
-  // TODO: implement
+func  (me *PropertyTweener) FromCurrent()  {
+  panic("TODO: implement")
 }
 
-func  (me *PropertyTweener) SetEase(ease TweenEaseType, ) { // TODO: return value
-  // TODO: implement
+func  (me *PropertyTweener) AsRelative()  {
+  panic("TODO: implement")
 }
 
-func  (me *PropertyTweener) SetDelay(delay float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PropertyTweener) SetTrans(trans TweenTransitionType, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PropertyTweener) SetEase(ease TweenEaseType, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PropertyTweener) SetDelay(delay float32, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

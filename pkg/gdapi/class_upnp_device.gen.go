@@ -25,6 +25,10 @@ func (me *UPNPDevice) BaseClass() string {
   return "UPNPDevice"
 }
 
+
+
+// Enums
+
 type UPNPDeviceIGDStatus int
 const (
   UPNPDeviceIGDStatusIgdStatusOk UPNPDeviceIGDStatus = 0
@@ -39,70 +43,81 @@ const (
   UPNPDeviceIGDStatusIgdStatusUnknownError UPNPDeviceIGDStatus = 9
 )
 
-func  (me *UPNPDevice) IsValidGateway() { // TODO: return value
-  // TODO: implement
+func (me *UPNPDevice) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *UPNPDevice) QueryExternalAddress() { // TODO: return value
-  // TODO: implement
+func (me *UPNPDevice) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *UPNPDevice) AddPortMapping(port int, port_internal int, desc String, proto String, duration int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *UPNPDevice) IsValidGateway()  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) DeletePortMapping(port int, proto String, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) QueryExternalAddress()  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) SetDescriptionUrl(url String, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) AddPortMapping(port int, port_internal int, desc String, proto String, duration int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) GetDescriptionUrl() { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) DeletePortMapping(port int, proto String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) SetServiceType(type_ String, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) SetDescriptionUrl(url String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) GetServiceType() { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) GetDescriptionUrl()  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) SetIgdControlUrl(url String, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) SetServiceType(type_ String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) GetIgdControlUrl() { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) GetServiceType()  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) SetIgdServiceType(type_ String, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) SetIgdControlUrl(url String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) GetIgdServiceType() { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) GetIgdControlUrl()  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) SetIgdOurAddr(addr String, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) SetIgdServiceType(type_ String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) GetIgdOurAddr() { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) GetIgdServiceType()  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) SetIgdStatus(status UPNPDeviceIGDStatus, ) { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) SetIgdOurAddr(addr String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *UPNPDevice) GetIgdStatus() { // TODO: return value
-  // TODO: implement
+func  (me *UPNPDevice) GetIgdOurAddr()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *UPNPDevice) SetIgdStatus(status UPNPDeviceIGDStatus, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *UPNPDevice) GetIgdStatus()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

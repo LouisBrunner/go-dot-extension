@@ -25,10 +25,25 @@ func (me *PackedDataContainerRef) BaseClass() string {
   return "PackedDataContainerRef"
 }
 
-func  (me *PackedDataContainerRef) Size() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PackedDataContainerRef) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *PackedDataContainerRef) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *PackedDataContainerRef) Size()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

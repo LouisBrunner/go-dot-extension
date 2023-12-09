@@ -25,46 +25,61 @@ func (me *StyleBoxLine) BaseClass() string {
   return "StyleBoxLine"
 }
 
-func  (me *StyleBoxLine) SetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *StyleBoxLine) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *StyleBoxLine) GetColor() { // TODO: return value
-  // TODO: implement
+func (me *StyleBoxLine) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *StyleBoxLine) SetThickness(thickness int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *StyleBoxLine) SetColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxLine) GetThickness() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxLine) GetColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxLine) SetGrowBegin(offset float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxLine) SetThickness(thickness int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxLine) GetGrowBegin() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxLine) GetThickness()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxLine) SetGrowEnd(offset float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxLine) SetGrowBegin(offset float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxLine) GetGrowEnd() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxLine) GetGrowBegin()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxLine) SetVertical(vertical bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxLine) SetGrowEnd(offset float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxLine) IsVertical() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxLine) GetGrowEnd()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *StyleBoxLine) SetVertical(vertical bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *StyleBoxLine) IsVertical()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

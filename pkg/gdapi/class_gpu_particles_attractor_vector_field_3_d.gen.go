@@ -25,22 +25,37 @@ func (me *GPUParticlesAttractorVectorField3D) BaseClass() string {
   return "GPUParticlesAttractorVectorField3D"
 }
 
-func  (me *GPUParticlesAttractorVectorField3D) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GPUParticlesAttractorVectorField3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GPUParticlesAttractorVectorField3D) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *GPUParticlesAttractorVectorField3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GPUParticlesAttractorVectorField3D) SetTexture(texture Texture3D, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GPUParticlesAttractorVectorField3D) SetSize(size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GPUParticlesAttractorVectorField3D) GetTexture() { // TODO: return value
-  // TODO: implement
+func  (me *GPUParticlesAttractorVectorField3D) GetSize()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GPUParticlesAttractorVectorField3D) SetTexture(texture Texture3D, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GPUParticlesAttractorVectorField3D) GetTexture()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

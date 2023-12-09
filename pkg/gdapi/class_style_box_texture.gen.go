@@ -25,6 +25,10 @@ func (me *StyleBoxTexture) BaseClass() string {
   return "StyleBoxTexture"
 }
 
+
+
+// Enums
+
 type StyleBoxTextureAxisStretchMode int
 const (
   StyleBoxTextureAxisStretchModeAxisStretchModeStretch StyleBoxTextureAxisStretchMode = 0
@@ -32,78 +36,89 @@ const (
   StyleBoxTextureAxisStretchModeAxisStretchModeTileFit StyleBoxTextureAxisStretchMode = 2
 )
 
-func  (me *StyleBoxTexture) SetTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func (me *StyleBoxTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *StyleBoxTexture) GetTexture() { // TODO: return value
-  // TODO: implement
+func (me *StyleBoxTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *StyleBoxTexture) SetTextureMargin(margin Side, size float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *StyleBoxTexture) SetTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) SetTextureMarginAll(size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) GetTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) GetTextureMargin(margin Side, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) SetTextureMargin(margin Side, size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) SetExpandMargin(margin Side, size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) SetTextureMarginAll(size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) SetExpandMarginAll(size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) GetTextureMargin(margin Side, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) GetExpandMargin(margin Side, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) SetExpandMargin(margin Side, size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) SetRegionRect(region Rect2, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) SetExpandMarginAll(size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) GetRegionRect() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) GetExpandMargin(margin Side, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) SetDrawCenter(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) SetRegionRect(region Rect2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) IsDrawCenterEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) GetRegionRect()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) SetModulate(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) SetDrawCenter(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) GetModulate() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) IsDrawCenterEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) SetHAxisStretchMode(mode StyleBoxTextureAxisStretchMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) SetModulate(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) GetHAxisStretchMode() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) GetModulate()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) SetVAxisStretchMode(mode StyleBoxTextureAxisStretchMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) SetHAxisStretchMode(mode StyleBoxTextureAxisStretchMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxTexture) GetVAxisStretchMode() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxTexture) GetHAxisStretchMode()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *StyleBoxTexture) SetVAxisStretchMode(mode StyleBoxTextureAxisStretchMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *StyleBoxTexture) GetVAxisStretchMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

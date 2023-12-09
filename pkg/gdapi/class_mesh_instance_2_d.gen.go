@@ -25,22 +25,37 @@ func (me *MeshInstance2D) BaseClass() string {
   return "MeshInstance2D"
 }
 
-func  (me *MeshInstance2D) SetMesh(mesh Mesh, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MeshInstance2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MeshInstance2D) GetMesh() { // TODO: return value
-  // TODO: implement
+func (me *MeshInstance2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MeshInstance2D) SetTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MeshInstance2D) SetMesh(mesh Mesh, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshInstance2D) GetTexture() { // TODO: return value
-  // TODO: implement
+func  (me *MeshInstance2D) GetMesh()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MeshInstance2D) SetTexture(texture Texture2D, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MeshInstance2D) GetTexture()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

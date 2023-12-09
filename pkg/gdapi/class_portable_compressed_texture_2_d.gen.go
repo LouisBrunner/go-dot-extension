@@ -25,6 +25,10 @@ func (me *PortableCompressedTexture2D) BaseClass() string {
   return "PortableCompressedTexture2D"
 }
 
+
+
+// Enums
+
 type PortableCompressedTexture2DCompressionMode int
 const (
   PortableCompressedTexture2DCompressionModeCompressionModeLossless PortableCompressedTexture2DCompressionMode = 0
@@ -35,42 +39,53 @@ const (
   PortableCompressedTexture2DCompressionModeCompressionModeBptc PortableCompressedTexture2DCompressionMode = 5
 )
 
-func  (me *PortableCompressedTexture2D) CreateFromImage(image Image, compression_mode PortableCompressedTexture2DCompressionMode, normal_map bool, lossy_quality float32, ) { // TODO: return value
-  // TODO: implement
+func (me *PortableCompressedTexture2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PortableCompressedTexture2D) GetFormat() { // TODO: return value
-  // TODO: implement
+func (me *PortableCompressedTexture2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PortableCompressedTexture2D) GetCompressionMode() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PortableCompressedTexture2D) CreateFromImage(image Image, compression_mode PortableCompressedTexture2DCompressionMode, normal_map bool, lossy_quality float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PortableCompressedTexture2D) SetSizeOverride(size Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PortableCompressedTexture2D) GetFormat()  {
+  panic("TODO: implement")
 }
 
-func  (me *PortableCompressedTexture2D) GetSizeOverride() { // TODO: return value
-  // TODO: implement
+func  (me *PortableCompressedTexture2D) GetCompressionMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *PortableCompressedTexture2D) SetKeepCompressedBuffer(keep bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PortableCompressedTexture2D) SetSizeOverride(size Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PortableCompressedTexture2D) IsKeepingCompressedBuffer() { // TODO: return value
-  // TODO: implement
+func  (me *PortableCompressedTexture2D) GetSizeOverride()  {
+  panic("TODO: implement")
 }
 
-func  PortableCompressedTexture2DSetKeepAllCompressedBuffers(keep bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PortableCompressedTexture2D) SetKeepCompressedBuffer(keep bool, )  {
+  panic("TODO: implement")
 }
 
-func  PortableCompressedTexture2DIsKeepingAllCompressedBuffers() { // TODO: return value
-  // TODO: implement
+func  (me *PortableCompressedTexture2D) IsKeepingCompressedBuffer()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  PortableCompressedTexture2DSetKeepAllCompressedBuffers(keep bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  PortableCompressedTexture2DIsKeepingAllCompressedBuffers()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

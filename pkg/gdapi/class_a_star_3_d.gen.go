@@ -25,106 +25,121 @@ func (me *AStar3D) BaseClass() string {
   return "AStar3D"
 }
 
-func  (me *AStar3D) XEstimateCost(from_id int, to_id int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AStar3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AStar3D) XComputeCost(from_id int, to_id int, ) { // TODO: return value
-  // TODO: implement
+func (me *AStar3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AStar3D) GetAvailablePointId() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AStar3D) XEstimateCost(from_id int, to_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) AddPoint(id int, position Vector3, weight_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) XComputeCost(from_id int, to_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) GetPointPosition(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) GetAvailablePointId()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) SetPointPosition(id int, position Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) AddPoint(id int, position Vector3, weight_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) GetPointWeightScale(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) GetPointPosition(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) SetPointWeightScale(id int, weight_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) SetPointPosition(id int, position Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) RemovePoint(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) GetPointWeightScale(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) HasPoint(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) SetPointWeightScale(id int, weight_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) GetPointConnections(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) RemovePoint(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) GetPointIds() { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) HasPoint(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) SetPointDisabled(id int, disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) GetPointConnections(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) IsPointDisabled(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) GetPointIds()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) ConnectPoints(id int, to_id int, bidirectional bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) SetPointDisabled(id int, disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) DisconnectPoints(id int, to_id int, bidirectional bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) IsPointDisabled(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) ArePointsConnected(id int, to_id int, bidirectional bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) ConnectPoints(id int, to_id int, bidirectional bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) GetPointCount() { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) DisconnectPoints(id int, to_id int, bidirectional bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) GetPointCapacity() { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) ArePointsConnected(id int, to_id int, bidirectional bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) ReserveSpace(num_nodes int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) GetPointCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) Clear() { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) GetPointCapacity()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) GetClosestPoint(to_position Vector3, include_disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) ReserveSpace(num_nodes int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) GetClosestPositionInSegment(to_position Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) Clear()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) GetPointPath(from_id int, to_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) GetClosestPoint(to_position Vector3, include_disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStar3D) GetIdPath(from_id int, to_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStar3D) GetClosestPositionInSegment(to_position Vector3, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AStar3D) GetPointPath(from_id int, to_id int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AStar3D) GetIdPath(from_id int, to_id int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

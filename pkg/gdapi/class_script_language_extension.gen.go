@@ -25,6 +25,10 @@ func (me *ScriptLanguageExtension) BaseClass() string {
   return "ScriptLanguageExtension"
 }
 
+
+
+// Enums
+
 type ScriptLanguageExtensionLookupResultType int
 const (
   ScriptLanguageExtensionLookupResultTypeLookupResultScriptLocation ScriptLanguageExtensionLookupResultType = 0
@@ -62,222 +66,233 @@ const (
   ScriptLanguageExtensionCodeCompletionKindCodeCompletionKindMax ScriptLanguageExtensionCodeCompletionKind = 10
 )
 
-func  (me *ScriptLanguageExtension) XGetName() { // TODO: return value
-  // TODO: implement
+func (me *ScriptLanguageExtension) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ScriptLanguageExtension) XInit() { // TODO: return value
-  // TODO: implement
+func (me *ScriptLanguageExtension) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ScriptLanguageExtension) XGetType() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ScriptLanguageExtension) XGetName()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XGetExtension() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XInit()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XFinish() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XGetType()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XGetReservedWords() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XGetExtension()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XIsControlFlowKeyword(keyword String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XFinish()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XGetCommentDelimiters() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XGetReservedWords()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XGetStringDelimiters() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XIsControlFlowKeyword(keyword String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XMakeTemplate(template String, class_name String, base_class_name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XGetCommentDelimiters()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XGetBuiltInTemplates(object StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XGetStringDelimiters()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XIsUsingTemplates() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XMakeTemplate(template String, class_name String, base_class_name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XValidate(script String, path String, validate_functions bool, validate_errors bool, validate_warnings bool, validate_safe_lines bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XGetBuiltInTemplates(object StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XValidatePath(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XIsUsingTemplates()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XCreateScript() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XValidate(script String, path String, validate_functions bool, validate_errors bool, validate_warnings bool, validate_safe_lines bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XHasNamedClasses() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XValidatePath(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XSupportsBuiltinMode() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XCreateScript()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XSupportsDocumentation() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XHasNamedClasses()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XCanInheritFromFile() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XSupportsBuiltinMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XFindFunction(class_name String, function_name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XSupportsDocumentation()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XMakeFunction(class_name String, function_name String, function_args PackedStringArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XCanInheritFromFile()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XOpenInExternalEditor(script Script, line int, column int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XFindFunction(class_name String, function_name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XOverridesExternalEditor() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XMakeFunction(class_name String, function_name String, function_args PackedStringArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XCompleteCode(code String, path String, owner Object, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XOpenInExternalEditor(script Script, line int, column int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XLookupCode(code String, symbol String, path String, owner Object, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XOverridesExternalEditor()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XAutoIndentCode(code String, from_line int, to_line int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XCompleteCode(code String, path String, owner Object, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XAddGlobalConstant(name StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XLookupCode(code String, symbol String, path String, owner Object, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XAddNamedGlobalConstant(name StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XAutoIndentCode(code String, from_line int, to_line int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XRemoveNamedGlobalConstant(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XAddGlobalConstant(name StringName, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XThreadEnter() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XAddNamedGlobalConstant(name StringName, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XThreadExit() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XRemoveNamedGlobalConstant(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XDebugGetError() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XThreadEnter()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XDebugGetStackLevelCount() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XThreadExit()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XDebugGetStackLevelLine(level int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XDebugGetError()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XDebugGetStackLevelFunction(level int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XDebugGetStackLevelCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XDebugGetStackLevelLocals(level int, max_subitems int, max_depth int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XDebugGetStackLevelLine(level int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XDebugGetStackLevelMembers(level int, max_subitems int, max_depth int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XDebugGetStackLevelFunction(level int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XDebugGetStackLevelInstance(level int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XDebugGetStackLevelLocals(level int, max_subitems int, max_depth int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XDebugGetGlobals(max_subitems int, max_depth int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XDebugGetStackLevelMembers(level int, max_subitems int, max_depth int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XDebugParseStackLevelExpression(level int, expression String, max_subitems int, max_depth int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XDebugGetStackLevelInstance(level int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XDebugGetCurrentStackInfo() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XDebugGetGlobals(max_subitems int, max_depth int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XReloadAllScripts() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XDebugParseStackLevelExpression(level int, expression String, max_subitems int, max_depth int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XReloadToolScript(script Script, soft_reload bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XDebugGetCurrentStackInfo()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XGetRecognizedExtensions() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XReloadAllScripts()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XGetPublicFunctions() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XReloadToolScript(script Script, soft_reload bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XGetPublicConstants() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XGetRecognizedExtensions()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XGetPublicAnnotations() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XGetPublicFunctions()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XProfilingStart() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XGetPublicConstants()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XProfilingStop() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XGetPublicAnnotations()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XProfilingGetAccumulatedData(info_array *ScriptLanguageExtensionProfilingInfo, info_max int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XProfilingStart()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XProfilingGetFrameData(info_array *ScriptLanguageExtensionProfilingInfo, info_max int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XProfilingStop()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XFrame() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XProfilingGetAccumulatedData(info_array *ScriptLanguageExtensionProfilingInfo, info_max int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XHandlesGlobalClassType(type_ String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XProfilingGetFrameData(info_array *ScriptLanguageExtensionProfilingInfo, info_max int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptLanguageExtension) XGetGlobalClassName(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptLanguageExtension) XFrame()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ScriptLanguageExtension) XHandlesGlobalClassType(type_ String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ScriptLanguageExtension) XGetGlobalClassName(path String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

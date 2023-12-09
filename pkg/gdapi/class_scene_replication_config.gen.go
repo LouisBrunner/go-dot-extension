@@ -25,50 +25,65 @@ func (me *SceneReplicationConfig) BaseClass() string {
   return "SceneReplicationConfig"
 }
 
-func  (me *SceneReplicationConfig) GetProperties() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SceneReplicationConfig) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SceneReplicationConfig) AddProperty(path NodePath, index int, ) { // TODO: return value
-  // TODO: implement
+func (me *SceneReplicationConfig) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SceneReplicationConfig) HasProperty(path NodePath, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SceneReplicationConfig) GetProperties()  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneReplicationConfig) RemoveProperty(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneReplicationConfig) AddProperty(path NodePath, index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneReplicationConfig) PropertyGetIndex(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneReplicationConfig) HasProperty(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneReplicationConfig) PropertyGetSpawn(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneReplicationConfig) RemoveProperty(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneReplicationConfig) PropertySetSpawn(path NodePath, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneReplicationConfig) PropertyGetIndex(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneReplicationConfig) PropertyGetSync(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneReplicationConfig) PropertyGetSpawn(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneReplicationConfig) PropertySetSync(path NodePath, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneReplicationConfig) PropertySetSpawn(path NodePath, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneReplicationConfig) PropertyGetWatch(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneReplicationConfig) PropertyGetSync(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneReplicationConfig) PropertySetWatch(path NodePath, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneReplicationConfig) PropertySetSync(path NodePath, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SceneReplicationConfig) PropertyGetWatch(path NodePath, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SceneReplicationConfig) PropertySetWatch(path NodePath, enabled bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

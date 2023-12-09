@@ -25,50 +25,65 @@ func (me *BoneAttachment3D) BaseClass() string {
   return "BoneAttachment3D"
 }
 
-func  (me *BoneAttachment3D) SetBoneName(bone_name String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *BoneAttachment3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *BoneAttachment3D) GetBoneName() { // TODO: return value
-  // TODO: implement
+func (me *BoneAttachment3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *BoneAttachment3D) SetBoneIdx(bone_idx int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *BoneAttachment3D) SetBoneName(bone_name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BoneAttachment3D) GetBoneIdx() { // TODO: return value
-  // TODO: implement
+func  (me *BoneAttachment3D) GetBoneName()  {
+  panic("TODO: implement")
 }
 
-func  (me *BoneAttachment3D) OnBonePoseUpdate(bone_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *BoneAttachment3D) SetBoneIdx(bone_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BoneAttachment3D) SetOverridePose(override_pose bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BoneAttachment3D) GetBoneIdx()  {
+  panic("TODO: implement")
 }
 
-func  (me *BoneAttachment3D) GetOverridePose() { // TODO: return value
-  // TODO: implement
+func  (me *BoneAttachment3D) OnBonePoseUpdate(bone_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BoneAttachment3D) SetUseExternalSkeleton(use_external_skeleton bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BoneAttachment3D) SetOverridePose(override_pose bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BoneAttachment3D) GetUseExternalSkeleton() { // TODO: return value
-  // TODO: implement
+func  (me *BoneAttachment3D) GetOverridePose()  {
+  panic("TODO: implement")
 }
 
-func  (me *BoneAttachment3D) SetExternalSkeleton(external_skeleton NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *BoneAttachment3D) SetUseExternalSkeleton(use_external_skeleton bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BoneAttachment3D) GetExternalSkeleton() { // TODO: return value
-  // TODO: implement
+func  (me *BoneAttachment3D) GetUseExternalSkeleton()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *BoneAttachment3D) SetExternalSkeleton(external_skeleton NodePath, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *BoneAttachment3D) GetExternalSkeleton()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

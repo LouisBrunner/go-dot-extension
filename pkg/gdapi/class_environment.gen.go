@@ -25,6 +25,10 @@ func (me *Environment) BaseClass() string {
   return "Environment"
 }
 
+
+
+// Enums
+
 type EnvironmentBGMode int
 const (
   EnvironmentBGModeBgClearColor EnvironmentBGMode = 0
@@ -75,710 +79,721 @@ const (
   EnvironmentSDFGIYScaleSdfgiYScale100Percent EnvironmentSDFGIYScale = 2
 )
 
-func  (me *Environment) SetBackground(mode EnvironmentBGMode, ) { // TODO: return value
-  // TODO: implement
+func (me *Environment) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Environment) GetBackground() { // TODO: return value
-  // TODO: implement
+func (me *Environment) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Environment) SetSky(sky Sky, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Environment) SetBackground(mode EnvironmentBGMode, )  {
+  panic("TODO: implement")
+}
+
+func  (me *Environment) GetBackground()  {
+  panic("TODO: implement")
+}
+
+func  (me *Environment) SetSky(sky Sky, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSky() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSky()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSkyCustomFov(scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSkyCustomFov(scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSkyCustomFov() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSkyCustomFov()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSkyRotation(euler_radians Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSkyRotation(euler_radians Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSkyRotation() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSkyRotation()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetBgColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetBgColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetBgColor() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetBgColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetBgEnergyMultiplier(energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetBgEnergyMultiplier(energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetBgEnergyMultiplier() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetBgEnergyMultiplier()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetBgIntensity(energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetBgIntensity(energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetBgIntensity() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetBgIntensity()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetCanvasMaxLayer(layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetCanvasMaxLayer(layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetCanvasMaxLayer() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetCanvasMaxLayer()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetCameraFeedId(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetCameraFeedId(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetCameraFeedId() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetCameraFeedId()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetAmbientLightColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetAmbientLightColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetAmbientLightColor() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetAmbientLightColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetAmbientSource(source EnvironmentAmbientSource, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetAmbientSource(source EnvironmentAmbientSource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetAmbientSource() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetAmbientSource()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetAmbientLightEnergy(energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetAmbientLightEnergy(energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetAmbientLightEnergy() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetAmbientLightEnergy()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetAmbientLightSkyContribution(ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetAmbientLightSkyContribution(ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetAmbientLightSkyContribution() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetAmbientLightSkyContribution()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetReflectionSource(source EnvironmentReflectionSource, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetReflectionSource(source EnvironmentReflectionSource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetReflectionSource() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetReflectionSource()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetTonemapper(mode EnvironmentToneMapper, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetTonemapper(mode EnvironmentToneMapper, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetTonemapper() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetTonemapper()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetTonemapExposure(exposure float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetTonemapExposure(exposure float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetTonemapExposure() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetTonemapExposure()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetTonemapWhite(white float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetTonemapWhite(white float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetTonemapWhite() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetTonemapWhite()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsrEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsrEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsSsrEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsSsrEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsrMaxSteps(max_steps int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsrMaxSteps(max_steps int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsrMaxSteps() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsrMaxSteps()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsrFadeIn(fade_in float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsrFadeIn(fade_in float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsrFadeIn() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsrFadeIn()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsrFadeOut(fade_out float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsrFadeOut(fade_out float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsrFadeOut() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsrFadeOut()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsrDepthTolerance(depth_tolerance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsrDepthTolerance(depth_tolerance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsrDepthTolerance() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsrDepthTolerance()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsaoEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsaoEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsSsaoEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsSsaoEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsaoRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsaoRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsaoRadius() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsaoRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsaoIntensity(intensity float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsaoIntensity(intensity float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsaoIntensity() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsaoIntensity()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsaoPower(power float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsaoPower(power float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsaoPower() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsaoPower()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsaoDetail(detail float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsaoDetail(detail float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsaoDetail() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsaoDetail()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsaoHorizon(horizon float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsaoHorizon(horizon float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsaoHorizon() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsaoHorizon()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsaoSharpness(sharpness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsaoSharpness(sharpness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsaoSharpness() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsaoSharpness()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsaoDirectLightAffect(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsaoDirectLightAffect(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsaoDirectLightAffect() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsaoDirectLightAffect()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsaoAoChannelAffect(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsaoAoChannelAffect(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsaoAoChannelAffect() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsaoAoChannelAffect()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsilEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsilEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsSsilEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsSsilEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsilRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsilRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsilRadius() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsilRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsilIntensity(intensity float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsilIntensity(intensity float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsilIntensity() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsilIntensity()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsilSharpness(sharpness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsilSharpness(sharpness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsilSharpness() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsilSharpness()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSsilNormalRejection(normal_rejection float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSsilNormalRejection(normal_rejection float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSsilNormalRejection() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSsilNormalRejection()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsSdfgiEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsSdfgiEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiCascades(amount int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiCascades(amount int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSdfgiCascades() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSdfgiCascades()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiMinCellSize(size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiMinCellSize(size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSdfgiMinCellSize() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSdfgiMinCellSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiMaxDistance(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiMaxDistance(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSdfgiMaxDistance() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSdfgiMaxDistance()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiCascade0Distance(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiCascade0Distance(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSdfgiCascade0Distance() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSdfgiCascade0Distance()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiYScale(scale EnvironmentSDFGIYScale, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiYScale(scale EnvironmentSDFGIYScale, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSdfgiYScale() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSdfgiYScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiUseOcclusion(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiUseOcclusion(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsSdfgiUsingOcclusion() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsSdfgiUsingOcclusion()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiBounceFeedback(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiBounceFeedback(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSdfgiBounceFeedback() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSdfgiBounceFeedback()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiReadSkyLight(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiReadSkyLight(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsSdfgiReadingSkyLight() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsSdfgiReadingSkyLight()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiEnergy(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiEnergy(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSdfgiEnergy() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSdfgiEnergy()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiNormalBias(bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiNormalBias(bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSdfgiNormalBias() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSdfgiNormalBias()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetSdfgiProbeBias(bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetSdfgiProbeBias(bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetSdfgiProbeBias() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetSdfgiProbeBias()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsGlowEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsGlowEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowLevel(idx int, intensity float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowLevel(idx int, intensity float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetGlowLevel(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetGlowLevel(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowNormalized(normalize bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowNormalized(normalize bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsGlowNormalized() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsGlowNormalized()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowIntensity(intensity float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowIntensity(intensity float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetGlowIntensity() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetGlowIntensity()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowStrength(strength float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowStrength(strength float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetGlowStrength() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetGlowStrength()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowMix(mix float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowMix(mix float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetGlowMix() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetGlowMix()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowBloom(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowBloom(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetGlowBloom() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetGlowBloom()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowBlendMode(mode EnvironmentGlowBlendMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowBlendMode(mode EnvironmentGlowBlendMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetGlowBlendMode() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetGlowBlendMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowHdrBleedThreshold(threshold float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowHdrBleedThreshold(threshold float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetGlowHdrBleedThreshold() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetGlowHdrBleedThreshold()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowHdrBleedScale(scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowHdrBleedScale(scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetGlowHdrBleedScale() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetGlowHdrBleedScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowHdrLuminanceCap(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowHdrLuminanceCap(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetGlowHdrLuminanceCap() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetGlowHdrLuminanceCap()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowMapStrength(strength float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowMapStrength(strength float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetGlowMapStrength() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetGlowMapStrength()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetGlowMap(mode Texture, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetGlowMap(mode Texture, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetGlowMap() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetGlowMap()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetFogEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetFogEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsFogEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsFogEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetFogLightColor(light_color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetFogLightColor(light_color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetFogLightColor() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetFogLightColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetFogLightEnergy(light_energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetFogLightEnergy(light_energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetFogLightEnergy() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetFogLightEnergy()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetFogSunScatter(sun_scatter float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetFogSunScatter(sun_scatter float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetFogSunScatter() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetFogSunScatter()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetFogDensity(density float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetFogDensity(density float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetFogDensity() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetFogDensity()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetFogHeight(height float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetFogHeight(height float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetFogHeight() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetFogHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetFogHeightDensity(height_density float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetFogHeightDensity(height_density float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetFogHeightDensity() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetFogHeightDensity()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetFogAerialPerspective(aerial_perspective float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetFogAerialPerspective(aerial_perspective float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetFogAerialPerspective() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetFogAerialPerspective()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetFogSkyAffect(sky_affect float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetFogSkyAffect(sky_affect float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetFogSkyAffect() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetFogSkyAffect()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsVolumetricFogEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsVolumetricFogEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogEmission(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogEmission(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetVolumetricFogEmission() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetVolumetricFogEmission()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogAlbedo(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogAlbedo(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetVolumetricFogAlbedo() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetVolumetricFogAlbedo()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogDensity(density float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogDensity(density float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetVolumetricFogDensity() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetVolumetricFogDensity()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogEmissionEnergy(begin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogEmissionEnergy(begin float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetVolumetricFogEmissionEnergy() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetVolumetricFogEmissionEnergy()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogAnisotropy(anisotropy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogAnisotropy(anisotropy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetVolumetricFogAnisotropy() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetVolumetricFogAnisotropy()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogLength(length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogLength(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetVolumetricFogLength() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetVolumetricFogLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogDetailSpread(detail_spread float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogDetailSpread(detail_spread float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetVolumetricFogDetailSpread() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetVolumetricFogDetailSpread()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogGiInject(gi_inject float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogGiInject(gi_inject float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetVolumetricFogGiInject() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetVolumetricFogGiInject()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogAmbientInject(enabled float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogAmbientInject(enabled float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetVolumetricFogAmbientInject() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetVolumetricFogAmbientInject()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogSkyAffect(sky_affect float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogSkyAffect(sky_affect float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetVolumetricFogSkyAffect() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetVolumetricFogSkyAffect()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogTemporalReprojectionEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogTemporalReprojectionEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsVolumetricFogTemporalReprojectionEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsVolumetricFogTemporalReprojectionEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetVolumetricFogTemporalReprojectionAmount(temporal_reprojection_amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetVolumetricFogTemporalReprojectionAmount(temporal_reprojection_amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetVolumetricFogTemporalReprojectionAmount() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetVolumetricFogTemporalReprojectionAmount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetAdjustmentEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetAdjustmentEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) IsAdjustmentEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) IsAdjustmentEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetAdjustmentBrightness(brightness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetAdjustmentBrightness(brightness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetAdjustmentBrightness() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetAdjustmentBrightness()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetAdjustmentContrast(contrast float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetAdjustmentContrast(contrast float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetAdjustmentContrast() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetAdjustmentContrast()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetAdjustmentSaturation(saturation float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetAdjustmentSaturation(saturation float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetAdjustmentSaturation() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetAdjustmentSaturation()  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) SetAdjustmentColorCorrection(color_correction Texture, ) { // TODO: return value
-  // TODO: implement
+func  (me *Environment) SetAdjustmentColorCorrection(color_correction Texture, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Environment) GetAdjustmentColorCorrection() { // TODO: return value
-  // TODO: implement
+func  (me *Environment) GetAdjustmentColorCorrection()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

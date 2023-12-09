@@ -25,18 +25,33 @@ func (me *MethodTweener) BaseClass() string {
   return "MethodTweener"
 }
 
-func  (me *MethodTweener) SetDelay(delay float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MethodTweener) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MethodTweener) SetTrans(trans TweenTransitionType, ) { // TODO: return value
-  // TODO: implement
+func (me *MethodTweener) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MethodTweener) SetEase(ease TweenEaseType, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MethodTweener) SetDelay(delay float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MethodTweener) SetTrans(trans TweenTransitionType, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MethodTweener) SetEase(ease TweenEaseType, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

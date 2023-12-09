@@ -1,3 +1,48 @@
 {{template "preamble"}}
 
-// TODO: missing
+import (
+  "unsafe"
+
+  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+)
+
+type UtilityFunctions interface {
+{{range .}}  {{mapMethod .Name}}({{if .IsVarArg}}args ...Variant{{else}}{{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}{{end}}) {{mapType .ReturnType}}
+{{end -}}
+}
+
+type utilities struct {
+  iface gdc.Interface
+{{range .}}  ptr{{.Name}} gdc.PtrUtilityFunction
+{{end -}}
+}
+
+func newUtilities(iface gdc.Interface) UtilityFunctions {
+{{range .}}  str{{.Name}} := StringNameFromStr("{{.Name}}")
+  defer str{{.Name}}.Destroy()
+{{end}}  return &utilities{
+{{range .}}    ptr{{.Name}}: iface.VariantGetPtrUtilityFunction(str{{.Name}}.AsCPtr(), {{.Hash}}),
+{{end}}  }
+}
+
+{{- define "mapUtilityArg" -}}
+{{- if eq (mapType .Type) "Variant"}}{{mapName .Name}}.AsCTypePtr(){{else}}gdc.ConstTypePtr(&{{mapName .Name}}){{end -}}
+{{- end -}}
+
+{{- range .}}
+
+func (me *utilities) {{mapMethod .Name}}({{if .IsVarArg}}vargs ...Variant{{else}}{{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}{{end}}) {{mapType .ReturnType}} {
+{{if .IsVarArg}}  args := make([]gdc.ConstTypePtr, len(vargs))
+  for i, arg := range vargs {
+    args[i] = arg.AsCTypePtr()
+  }
+{{else}}  args := []gdc.ConstTypePtr{
+{{range .Arguments}}    {{template "mapUtilityArg" .}},
+{{end}}  }
+{{- end}}
+{{if ne .ReturnType ""}}  var ret {{mapType .ReturnType}}
+  retPtr := gdc.TypePtr(&ret){{end}}
+  me.iface.CallPtrUtilityFunction(me.ptr{{.Name}}, {{if eq .ReturnType ""}}nil{{else}}retPtr{{end}}, unsafe.SliceData(args), len(args))
+{{if ne .ReturnType ""}}  return ret{{end}}
+}
+{{- end -}}

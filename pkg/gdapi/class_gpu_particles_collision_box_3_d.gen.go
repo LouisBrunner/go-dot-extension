@@ -25,14 +25,29 @@ func (me *GPUParticlesCollisionBox3D) BaseClass() string {
   return "GPUParticlesCollisionBox3D"
 }
 
-func  (me *GPUParticlesCollisionBox3D) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GPUParticlesCollisionBox3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GPUParticlesCollisionBox3D) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *GPUParticlesCollisionBox3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *GPUParticlesCollisionBox3D) SetSize(size Vector3, )  {
+  panic("TODO: implement")
+}
+
+func  (me *GPUParticlesCollisionBox3D) GetSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

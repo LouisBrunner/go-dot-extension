@@ -25,14 +25,29 @@ func (me *InputEventFromWindow) BaseClass() string {
   return "InputEventFromWindow"
 }
 
-func  (me *InputEventFromWindow) SetWindowId(id int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventFromWindow) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventFromWindow) GetWindowId() { // TODO: return value
-  // TODO: implement
+func (me *InputEventFromWindow) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *InputEventFromWindow) SetWindowId(id int, )  {
+  panic("TODO: implement")
+}
+
+func  (me *InputEventFromWindow) GetWindowId()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

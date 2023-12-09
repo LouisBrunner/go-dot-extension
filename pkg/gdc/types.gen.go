@@ -35,14 +35,14 @@ const (
   VariantTypeVector4I VariantType = 13
   VariantTypePlane VariantType = 14
   VariantTypeQuaternion VariantType = 15
-  VariantTypeAabb VariantType = 16
+  VariantTypeAABB VariantType = 16
   VariantTypeBasis VariantType = 17
   VariantTypeTransform3D VariantType = 18
   VariantTypeProjection VariantType = 19
   VariantTypeColor VariantType = 20
   VariantTypeStringName VariantType = 21
   VariantTypeNodePath VariantType = 22
-  VariantTypeRid VariantType = 23
+  VariantTypeRID VariantType = 23
   VariantTypeObject VariantType = 24
   VariantTypeCallable VariantType = 25
   VariantTypeSignal VariantType = 26

@@ -25,22 +25,37 @@ func (me *ShaderMaterial) BaseClass() string {
   return "ShaderMaterial"
 }
 
-func  (me *ShaderMaterial) SetShader(shader Shader, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ShaderMaterial) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ShaderMaterial) GetShader() { // TODO: return value
-  // TODO: implement
+func (me *ShaderMaterial) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ShaderMaterial) SetShaderParameter(param StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ShaderMaterial) SetShader(shader Shader, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ShaderMaterial) GetShaderParameter(param StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ShaderMaterial) GetShader()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ShaderMaterial) SetShaderParameter(param StringName, value Variant, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ShaderMaterial) GetShaderParameter(param StringName, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

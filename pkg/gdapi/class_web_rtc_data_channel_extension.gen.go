@@ -25,78 +25,93 @@ func (me *WebRTCDataChannelExtension) BaseClass() string {
   return "WebRTCDataChannelExtension"
 }
 
-func  (me *WebRTCDataChannelExtension) XGetPacket(r_buffer **uint8, r_buffer_size *int32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *WebRTCDataChannelExtension) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *WebRTCDataChannelExtension) XPutPacket(p_buffer *uint8, p_buffer_size int, ) { // TODO: return value
-  // TODO: implement
+func (me *WebRTCDataChannelExtension) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *WebRTCDataChannelExtension) XGetAvailablePacketCount() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *WebRTCDataChannelExtension) XGetPacket(r_buffer **uint8, r_buffer_size *int32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XGetMaxPacketSize() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XPutPacket(p_buffer *uint8, p_buffer_size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XPoll() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XGetAvailablePacketCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XClose() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XGetMaxPacketSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XSetWriteMode(p_write_mode WebRTCDataChannelWriteMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XPoll()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XGetWriteMode() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XClose()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XWasStringPacket() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XSetWriteMode(p_write_mode WebRTCDataChannelWriteMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XGetReadyState() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XGetWriteMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XGetLabel() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XWasStringPacket()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XIsOrdered() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XGetReadyState()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XGetId() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XGetLabel()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XGetMaxPacketLifeTime() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XIsOrdered()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XGetMaxRetransmits() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XGetId()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XGetProtocol() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XGetMaxPacketLifeTime()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XIsNegotiated() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XGetMaxRetransmits()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannelExtension) XGetBufferedAmount() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannelExtension) XGetProtocol()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *WebRTCDataChannelExtension) XIsNegotiated()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *WebRTCDataChannelExtension) XGetBufferedAmount()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

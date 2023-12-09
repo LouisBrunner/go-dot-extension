@@ -25,6 +25,21 @@ func (me *JNISingleton) BaseClass() string {
   return "JNISingleton"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *JNISingleton) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *JNISingleton) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

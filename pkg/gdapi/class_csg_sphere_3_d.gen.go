@@ -25,46 +25,61 @@ func (me *CSGSphere3D) BaseClass() string {
   return "CSGSphere3D"
 }
 
-func  (me *CSGSphere3D) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CSGSphere3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CSGSphere3D) GetRadius() { // TODO: return value
-  // TODO: implement
+func (me *CSGSphere3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CSGSphere3D) SetRadialSegments(radial_segments int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CSGSphere3D) SetRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGSphere3D) GetRadialSegments() { // TODO: return value
-  // TODO: implement
+func  (me *CSGSphere3D) GetRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGSphere3D) SetRings(rings int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGSphere3D) SetRadialSegments(radial_segments int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGSphere3D) GetRings() { // TODO: return value
-  // TODO: implement
+func  (me *CSGSphere3D) GetRadialSegments()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGSphere3D) SetSmoothFaces(smooth_faces bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGSphere3D) SetRings(rings int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGSphere3D) GetSmoothFaces() { // TODO: return value
-  // TODO: implement
+func  (me *CSGSphere3D) GetRings()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGSphere3D) SetMaterial(material Material, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGSphere3D) SetSmoothFaces(smooth_faces bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGSphere3D) GetMaterial() { // TODO: return value
-  // TODO: implement
+func  (me *CSGSphere3D) GetSmoothFaces()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CSGSphere3D) SetMaterial(material Material, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CSGSphere3D) GetMaterial()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

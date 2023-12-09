@@ -25,78 +25,91 @@ func (me *EditorSettings) BaseClass() string {
   return "EditorSettings"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   EditorSettingsNotificationEditorSettingsChanged = "10000" // TODO: construct correctly
 )
 
-func  (me *EditorSettings) HasSetting(name String, ) { // TODO: return value
-  // TODO: implement
+// Enums
+
+func (me *EditorSettings) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorSettings) SetSetting(name String, value Variant, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorSettings) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorSettings) GetSetting(name String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorSettings) HasSetting(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) Erase(property String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) SetSetting(name String, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) SetInitialValue(name StringName, value Variant, update_current bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) GetSetting(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) AddPropertyInfo(info Dictionary, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) Erase(property String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) SetProjectMetadata(section String, key String, data Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) SetInitialValue(name StringName, value Variant, update_current bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) GetProjectMetadata(section String, key String, default_ Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) AddPropertyInfo(info Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) SetFavorites(dirs PackedStringArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) SetProjectMetadata(section String, key String, data Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) GetFavorites() { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) GetProjectMetadata(section String, key String, default_ Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) SetRecentDirs(dirs PackedStringArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) SetFavorites(dirs PackedStringArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) GetRecentDirs() { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) GetFavorites()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) SetBuiltinActionOverride(name String, actions_list InputEvent, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) SetRecentDirs(dirs PackedStringArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) CheckChangedSettingsInGroup(setting_prefix String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) GetRecentDirs()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) GetChangedSettings() { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) SetBuiltinActionOverride(name String, actions_list InputEvent, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSettings) MarkSettingChanged(setting String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSettings) CheckChangedSettingsInGroup(setting_prefix String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorSettings) GetChangedSettings()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorSettings) MarkSettingChanged(setting String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

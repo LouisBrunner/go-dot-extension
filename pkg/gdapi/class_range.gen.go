@@ -25,102 +25,117 @@ func (me *Range) BaseClass() string {
   return "Range"
 }
 
-func  (me *Range) XValueChanged(new_value float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Range) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Range) GetValue() { // TODO: return value
-  // TODO: implement
+func (me *Range) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Range) GetMin() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Range) XValueChanged(new_value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) GetMax() { // TODO: return value
-  // TODO: implement
+func  (me *Range) GetValue()  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) GetStep() { // TODO: return value
-  // TODO: implement
+func  (me *Range) GetMin()  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) GetPage() { // TODO: return value
-  // TODO: implement
+func  (me *Range) GetMax()  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) GetAsRatio() { // TODO: return value
-  // TODO: implement
+func  (me *Range) GetStep()  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) SetValue(value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) GetPage()  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) SetValueNoSignal(value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) GetAsRatio()  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) SetMin(minimum float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) SetValue(value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) SetMax(maximum float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) SetValueNoSignal(value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) SetStep(step float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) SetMin(minimum float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) SetPage(pagesize float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) SetMax(maximum float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) SetAsRatio(value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) SetStep(step float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) SetUseRoundedValues(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) SetPage(pagesize float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) IsUsingRoundedValues() { // TODO: return value
-  // TODO: implement
+func  (me *Range) SetAsRatio(value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) SetExpRatio(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) SetUseRoundedValues(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) IsRatioExp() { // TODO: return value
-  // TODO: implement
+func  (me *Range) IsUsingRoundedValues()  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) SetAllowGreater(allow bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) SetExpRatio(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) IsGreaterAllowed() { // TODO: return value
-  // TODO: implement
+func  (me *Range) IsRatioExp()  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) SetAllowLesser(allow bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) SetAllowGreater(allow bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) IsLesserAllowed() { // TODO: return value
-  // TODO: implement
+func  (me *Range) IsGreaterAllowed()  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) Share(with Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *Range) SetAllowLesser(allow bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Range) Unshare() { // TODO: return value
-  // TODO: implement
+func  (me *Range) IsLesserAllowed()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Range) Share(with Node, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Range) Unshare()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

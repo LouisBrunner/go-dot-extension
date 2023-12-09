@@ -25,6 +25,10 @@ func (me *LightmapGI) BaseClass() string {
   return "LightmapGI"
 }
 
+
+
+// Enums
+
 type LightmapGIBakeQuality int
 const (
   LightmapGIBakeQualityBakeQualityLow LightmapGIBakeQuality = 0
@@ -64,118 +68,129 @@ const (
   LightmapGIEnvironmentModeEnvironmentModeCustomColor LightmapGIEnvironmentMode = 3
 )
 
-func  (me *LightmapGI) SetLightData(data LightmapGIData, ) { // TODO: return value
-  // TODO: implement
+func (me *LightmapGI) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *LightmapGI) GetLightData() { // TODO: return value
-  // TODO: implement
+func (me *LightmapGI) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *LightmapGI) SetBakeQuality(bake_quality LightmapGIBakeQuality, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *LightmapGI) SetLightData(data LightmapGIData, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) GetBakeQuality() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) GetLightData()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetBounces(bounces int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetBakeQuality(bake_quality LightmapGIBakeQuality, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) GetBounces() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) GetBakeQuality()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetGenerateProbes(subdivision LightmapGIGenerateProbes, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetBounces(bounces int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) GetGenerateProbes() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) GetBounces()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetBias(bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetGenerateProbes(subdivision LightmapGIGenerateProbes, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) GetBias() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) GetGenerateProbes()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetEnvironmentMode(mode LightmapGIEnvironmentMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetBias(bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) GetEnvironmentMode() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) GetBias()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetEnvironmentCustomSky(sky Sky, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetEnvironmentMode(mode LightmapGIEnvironmentMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) GetEnvironmentCustomSky() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) GetEnvironmentMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetEnvironmentCustomColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetEnvironmentCustomSky(sky Sky, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) GetEnvironmentCustomColor() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) GetEnvironmentCustomSky()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetEnvironmentCustomEnergy(energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetEnvironmentCustomColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) GetEnvironmentCustomEnergy() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) GetEnvironmentCustomColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetMaxTextureSize(max_texture_size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetEnvironmentCustomEnergy(energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) GetMaxTextureSize() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) GetEnvironmentCustomEnergy()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetUseDenoiser(use_denoiser bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetMaxTextureSize(max_texture_size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) IsUsingDenoiser() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) GetMaxTextureSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetInterior(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetUseDenoiser(use_denoiser bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) IsInterior() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) IsUsingDenoiser()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetDirectional(directional bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetInterior(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) IsDirectional() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) IsInterior()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) SetCameraAttributes(camera_attributes CameraAttributes, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) SetDirectional(directional bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGI) GetCameraAttributes() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGI) IsDirectional()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *LightmapGI) SetCameraAttributes(camera_attributes CameraAttributes, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *LightmapGI) GetCameraAttributes()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

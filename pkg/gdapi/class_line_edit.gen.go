@@ -25,6 +25,10 @@ func (me *LineEdit) BaseClass() string {
   return "LineEdit"
 }
 
+
+
+// Enums
+
 type LineEditMenuItems int
 const (
   LineEditMenuItemsMenuCut LineEditMenuItems = 0
@@ -72,298 +76,309 @@ const (
   LineEditVirtualKeyboardTypeKeyboardTypeUrl LineEditVirtualKeyboardType = 7
 )
 
-func  (me *LineEdit) SetHorizontalAlignment(alignment HorizontalAlignment, ) { // TODO: return value
-  // TODO: implement
+func (me *LineEdit) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *LineEdit) GetHorizontalAlignment() { // TODO: return value
-  // TODO: implement
+func (me *LineEdit) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *LineEdit) Clear() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *LineEdit) SetHorizontalAlignment(alignment HorizontalAlignment, )  {
+  panic("TODO: implement")
+}
+
+func  (me *LineEdit) GetHorizontalAlignment()  {
+  panic("TODO: implement")
+}
+
+func  (me *LineEdit) Clear()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) Select(from int, to int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) Select(from int, to int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SelectAll() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SelectAll()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) Deselect() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) Deselect()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) HasSelection() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) HasSelection()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetSelectedText() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetSelectedText()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetSelectionFromColumn() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetSelectionFromColumn()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetSelectionToColumn() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetSelectionToColumn()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetText(text String, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetText(text String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetText() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetText()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetDrawControlChars() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetDrawControlChars()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetDrawControlChars(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetDrawControlChars(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetTextDirection(direction ControlTextDirection, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetTextDirection(direction ControlTextDirection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetTextDirection() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetTextDirection()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetLanguage(language String, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetLanguage(language String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetLanguage() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetLanguage()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetStructuredTextBidiOverride(parser TextServerStructuredTextParser, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetStructuredTextBidiOverride(parser TextServerStructuredTextParser, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetStructuredTextBidiOverride() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetStructuredTextBidiOverride()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetStructuredTextBidiOverrideOptions(args Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetStructuredTextBidiOverrideOptions(args Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetStructuredTextBidiOverrideOptions() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetStructuredTextBidiOverrideOptions()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetPlaceholder(text String, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetPlaceholder(text String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetPlaceholder() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetPlaceholder()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetCaretColumn(position int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetCaretColumn(position int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetCaretColumn() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetCaretColumn()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetScrollOffset() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetScrollOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetExpandToTextLengthEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetExpandToTextLengthEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsExpandToTextLengthEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsExpandToTextLengthEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetCaretBlinkEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetCaretBlinkEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsCaretBlinkEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsCaretBlinkEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetCaretMidGraphemeEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetCaretMidGraphemeEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsCaretMidGraphemeEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsCaretMidGraphemeEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetCaretForceDisplayed(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetCaretForceDisplayed(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsCaretForceDisplayed() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsCaretForceDisplayed()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetCaretBlinkInterval(interval float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetCaretBlinkInterval(interval float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetCaretBlinkInterval() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetCaretBlinkInterval()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetMaxLength(chars int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetMaxLength(chars int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetMaxLength() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetMaxLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) InsertTextAtCaret(text String, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) InsertTextAtCaret(text String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) DeleteCharAtCaret() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) DeleteCharAtCaret()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) DeleteText(from_column int, to_column int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) DeleteText(from_column int, to_column int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetEditable(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetEditable(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsEditable() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsEditable()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetSecret(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetSecret(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsSecret() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsSecret()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetSecretCharacter(character String, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetSecretCharacter(character String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetSecretCharacter() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetSecretCharacter()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) MenuOption(option int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) MenuOption(option int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetMenu() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetMenu()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsMenuVisible() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsMenuVisible()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetContextMenuEnabled(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetContextMenuEnabled(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsContextMenuEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsContextMenuEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetVirtualKeyboardEnabled(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetVirtualKeyboardEnabled(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsVirtualKeyboardEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsVirtualKeyboardEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetVirtualKeyboardType(type_ LineEditVirtualKeyboardType, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetVirtualKeyboardType(type_ LineEditVirtualKeyboardType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetVirtualKeyboardType() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetVirtualKeyboardType()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetClearButtonEnabled(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetClearButtonEnabled(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsClearButtonEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsClearButtonEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetShortcutKeysEnabled(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetShortcutKeysEnabled(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsShortcutKeysEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsShortcutKeysEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetMiddleMousePasteEnabled(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetMiddleMousePasteEnabled(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsMiddleMousePasteEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsMiddleMousePasteEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetSelectingEnabled(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetSelectingEnabled(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsSelectingEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsSelectingEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetDeselectOnFocusLossEnabled(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetDeselectOnFocusLossEnabled(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsDeselectOnFocusLossEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsDeselectOnFocusLossEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetRightIcon(icon Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetRightIcon(icon Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) GetRightIcon() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) GetRightIcon()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetFlat(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetFlat(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsFlat() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsFlat()  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) SetSelectAllOnFocus(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) SetSelectAllOnFocus(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LineEdit) IsSelectAllOnFocus() { // TODO: return value
-  // TODO: implement
+func  (me *LineEdit) IsSelectAllOnFocus()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

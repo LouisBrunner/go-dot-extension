@@ -25,38 +25,53 @@ func (me *AudioEffectLimiter) BaseClass() string {
   return "AudioEffectLimiter"
 }
 
-func  (me *AudioEffectLimiter) SetCeilingDb(ceiling float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffectLimiter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectLimiter) GetCeilingDb() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectLimiter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectLimiter) SetThresholdDb(threshold float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectLimiter) SetCeilingDb(ceiling float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectLimiter) GetThresholdDb() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectLimiter) GetCeilingDb()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectLimiter) SetSoftClipDb(soft_clip float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectLimiter) SetThresholdDb(threshold float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectLimiter) GetSoftClipDb() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectLimiter) GetThresholdDb()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectLimiter) SetSoftClipRatio(soft_clip float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectLimiter) SetSoftClipDb(soft_clip float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectLimiter) GetSoftClipRatio() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectLimiter) GetSoftClipDb()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectLimiter) SetSoftClipRatio(soft_clip float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectLimiter) GetSoftClipRatio()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

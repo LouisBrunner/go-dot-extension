@@ -25,6 +25,21 @@ func (me *StyleBoxEmpty) BaseClass() string {
   return "StyleBoxEmpty"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *StyleBoxEmpty) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *StyleBoxEmpty) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

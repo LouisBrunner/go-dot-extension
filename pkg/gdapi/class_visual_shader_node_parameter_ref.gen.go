@@ -25,14 +25,29 @@ func (me *VisualShaderNodeParameterRef) BaseClass() string {
   return "VisualShaderNodeParameterRef"
 }
 
-func  (me *VisualShaderNodeParameterRef) SetParameterName(name String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeParameterRef) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeParameterRef) GetParameterName() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParameterRef) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeParameterRef) SetParameterName(name String, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeParameterRef) GetParameterName()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

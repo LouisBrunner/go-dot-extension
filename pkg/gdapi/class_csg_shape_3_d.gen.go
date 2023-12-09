@@ -25,6 +25,10 @@ func (me *CSGShape3D) BaseClass() string {
   return "CSGShape3D"
 }
 
+
+
+// Enums
+
 type CSGShape3DOperation int
 const (
   CSGShape3DOperationOperationUnion CSGShape3DOperation = 0
@@ -32,86 +36,97 @@ const (
   CSGShape3DOperationOperationSubtraction CSGShape3DOperation = 2
 )
 
-func  (me *CSGShape3D) IsRootShape() { // TODO: return value
-  // TODO: implement
+func (me *CSGShape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CSGShape3D) SetOperation(operation CSGShape3DOperation, ) { // TODO: return value
-  // TODO: implement
+func (me *CSGShape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CSGShape3D) GetOperation() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CSGShape3D) IsRootShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) SetSnap(snap float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) SetOperation(operation CSGShape3DOperation, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) GetSnap() { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) GetOperation()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) SetUseCollision(operation bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) SetSnap(snap float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) IsUsingCollision() { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) GetSnap()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) SetCollisionLayer(layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) SetUseCollision(operation bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) GetCollisionLayer() { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) IsUsingCollision()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) SetCollisionMask(mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) SetCollisionLayer(layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) GetCollisionMask() { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) GetCollisionLayer()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) SetCollisionMaskValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) SetCollisionMask(mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) GetCollisionMaskValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) GetCollisionMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) SetCollisionLayerValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) SetCollisionMaskValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) GetCollisionLayerValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) GetCollisionMaskValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) SetCollisionPriority(priority float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) SetCollisionLayerValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) GetCollisionPriority() { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) GetCollisionLayerValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) SetCalculateTangents(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) SetCollisionPriority(priority float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) IsCalculatingTangents() { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) GetCollisionPriority()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGShape3D) GetMeshes() { // TODO: return value
-  // TODO: implement
+func  (me *CSGShape3D) SetCalculateTangents(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CSGShape3D) IsCalculatingTangents()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CSGShape3D) GetMeshes()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

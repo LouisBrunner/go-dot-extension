@@ -25,6 +25,10 @@ func (me *StreamPeerTLS) BaseClass() string {
   return "StreamPeerTLS"
 }
 
+
+
+// Enums
+
 type StreamPeerTLSStatus int
 const (
   StreamPeerTLSStatusStatusDisconnected StreamPeerTLSStatus = 0
@@ -34,30 +38,41 @@ const (
   StreamPeerTLSStatusStatusErrorHostnameMismatch StreamPeerTLSStatus = 4
 )
 
-func  (me *StreamPeerTLS) Poll() { // TODO: return value
-  // TODO: implement
+func (me *StreamPeerTLS) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *StreamPeerTLS) AcceptStream(stream StreamPeer, server_options TLSOptions, ) { // TODO: return value
-  // TODO: implement
+func (me *StreamPeerTLS) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *StreamPeerTLS) ConnectToStream(stream StreamPeer, common_name String, client_options TLSOptions, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *StreamPeerTLS) Poll()  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerTLS) GetStatus() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerTLS) AcceptStream(stream StreamPeer, server_options TLSOptions, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerTLS) GetStream() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerTLS) ConnectToStream(stream StreamPeer, common_name String, client_options TLSOptions, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StreamPeerTLS) DisconnectFromStream() { // TODO: return value
-  // TODO: implement
+func  (me *StreamPeerTLS) GetStatus()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *StreamPeerTLS) GetStream()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *StreamPeerTLS) DisconnectFromStream()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

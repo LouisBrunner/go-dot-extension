@@ -25,6 +25,21 @@ func (me *TextServerDummy) BaseClass() string {
   return "TextServerDummy"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *TextServerDummy) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *TextServerDummy) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

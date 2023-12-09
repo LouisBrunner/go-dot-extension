@@ -25,6 +25,10 @@ func (me *ImageFormatLoader) BaseClass() string {
   return "ImageFormatLoader"
 }
 
+
+
+// Enums
+
 type ImageFormatLoaderLoaderFlags int
 const (
   ImageFormatLoaderLoaderFlagsFlagNone ImageFormatLoaderLoaderFlags = 0
@@ -32,6 +36,17 @@ const (
   ImageFormatLoaderLoaderFlagsFlagConvertColors ImageFormatLoaderLoaderFlags = 2
 )
 
-// TODO: properties
+func (me *ImageFormatLoader) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
 
-// TODO: signals
+func (me *ImageFormatLoader) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

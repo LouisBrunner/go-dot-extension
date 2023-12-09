@@ -25,32 +25,47 @@ func (me *CurveTexture) BaseClass() string {
   return "CurveTexture"
 }
 
+
+
+// Enums
+
 type CurveTextureTextureMode int
 const (
   CurveTextureTextureModeTextureModeRgb CurveTextureTextureMode = 0
   CurveTextureTextureModeTextureModeRed CurveTextureTextureMode = 1
 )
 
-func  (me *CurveTexture) SetWidth(width int, ) { // TODO: return value
-  // TODO: implement
+func (me *CurveTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CurveTexture) SetCurve(curve Curve, ) { // TODO: return value
-  // TODO: implement
+func (me *CurveTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CurveTexture) GetCurve() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CurveTexture) SetWidth(width int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CurveTexture) SetTextureMode(texture_mode CurveTextureTextureMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *CurveTexture) SetCurve(curve Curve, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CurveTexture) GetTextureMode() { // TODO: return value
-  // TODO: implement
+func  (me *CurveTexture) GetCurve()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CurveTexture) SetTextureMode(texture_mode CurveTextureTextureMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CurveTexture) GetTextureMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

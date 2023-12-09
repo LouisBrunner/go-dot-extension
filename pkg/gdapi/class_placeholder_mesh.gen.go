@@ -25,10 +25,25 @@ func (me *PlaceholderMesh) BaseClass() string {
   return "PlaceholderMesh"
 }
 
-func  (me *PlaceholderMesh) SetAabb(aabb AABB, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PlaceholderMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *PlaceholderMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *PlaceholderMesh) SetAabb(aabb AABB, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,10 @@ func (me *Animation) BaseClass() string {
   return "Animation"
 }
 
+
+
+// Enums
+
 type AnimationTrackType int
 const (
   AnimationTrackTypeTypeValue AnimationTrackType = 0
@@ -75,298 +79,309 @@ const (
   AnimationFindModeFindModeExact AnimationFindMode = 2
 )
 
-func  (me *Animation) AddTrack(type_ AnimationTrackType, at_position int, ) { // TODO: return value
-  // TODO: implement
+func (me *Animation) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Animation) RemoveTrack(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func (me *Animation) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Animation) GetTrackCount() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Animation) AddTrack(type_ AnimationTrackType, at_position int, )  {
+  panic("TODO: implement")
+}
+
+func  (me *Animation) RemoveTrack(track_idx int, )  {
+  panic("TODO: implement")
+}
+
+func  (me *Animation) GetTrackCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackGetType(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackGetType(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackGetPath(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackGetPath(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackSetPath(track_idx int, path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackSetPath(track_idx int, path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) FindTrack(path NodePath, type_ AnimationTrackType, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) FindTrack(path NodePath, type_ AnimationTrackType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackMoveUp(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackMoveUp(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackMoveDown(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackMoveDown(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackMoveTo(track_idx int, to_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackMoveTo(track_idx int, to_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackSwap(track_idx int, with_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackSwap(track_idx int, with_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackSetImported(track_idx int, imported bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackSetImported(track_idx int, imported bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackIsImported(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackIsImported(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackSetEnabled(track_idx int, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackSetEnabled(track_idx int, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackIsEnabled(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackIsEnabled(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) PositionTrackInsertKey(track_idx int, time float32, position Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) PositionTrackInsertKey(track_idx int, time float32, position Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) RotationTrackInsertKey(track_idx int, time float32, rotation Quaternion, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) RotationTrackInsertKey(track_idx int, time float32, rotation Quaternion, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) ScaleTrackInsertKey(track_idx int, time float32, scale Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) ScaleTrackInsertKey(track_idx int, time float32, scale Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) BlendShapeTrackInsertKey(track_idx int, time float32, amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) BlendShapeTrackInsertKey(track_idx int, time float32, amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) PositionTrackInterpolate(track_idx int, time_sec float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) PositionTrackInterpolate(track_idx int, time_sec float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) RotationTrackInterpolate(track_idx int, time_sec float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) RotationTrackInterpolate(track_idx int, time_sec float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) ScaleTrackInterpolate(track_idx int, time_sec float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) ScaleTrackInterpolate(track_idx int, time_sec float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) BlendShapeTrackInterpolate(track_idx int, time_sec float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) BlendShapeTrackInterpolate(track_idx int, time_sec float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackInsertKey(track_idx int, time float32, key Variant, transition float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackInsertKey(track_idx int, time float32, key Variant, transition float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackRemoveKey(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackRemoveKey(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackRemoveKeyAtTime(track_idx int, time float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackRemoveKeyAtTime(track_idx int, time float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackSetKeyValue(track_idx int, key int, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackSetKeyValue(track_idx int, key int, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackSetKeyTransition(track_idx int, key_idx int, transition float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackSetKeyTransition(track_idx int, key_idx int, transition float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackSetKeyTime(track_idx int, key_idx int, time float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackSetKeyTime(track_idx int, key_idx int, time float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackGetKeyTransition(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackGetKeyTransition(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackGetKeyCount(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackGetKeyCount(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackGetKeyValue(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackGetKeyValue(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackGetKeyTime(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackGetKeyTime(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackFindKey(track_idx int, time float32, find_mode AnimationFindMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackFindKey(track_idx int, time float32, find_mode AnimationFindMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackSetInterpolationType(track_idx int, interpolation AnimationInterpolationType, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackSetInterpolationType(track_idx int, interpolation AnimationInterpolationType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackGetInterpolationType(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackGetInterpolationType(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackSetInterpolationLoopWrap(track_idx int, interpolation bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackSetInterpolationLoopWrap(track_idx int, interpolation bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackGetInterpolationLoopWrap(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackGetInterpolationLoopWrap(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) TrackIsCompressed(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) TrackIsCompressed(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) ValueTrackSetUpdateMode(track_idx int, mode AnimationUpdateMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) ValueTrackSetUpdateMode(track_idx int, mode AnimationUpdateMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) ValueTrackGetUpdateMode(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) ValueTrackGetUpdateMode(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) ValueTrackInterpolate(track_idx int, time_sec float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) ValueTrackInterpolate(track_idx int, time_sec float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) MethodTrackGetName(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) MethodTrackGetName(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) MethodTrackGetParams(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) MethodTrackGetParams(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) BezierTrackInsertKey(track_idx int, time float32, value float32, in_handle Vector2, out_handle Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) BezierTrackInsertKey(track_idx int, time float32, value float32, in_handle Vector2, out_handle Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) BezierTrackSetKeyValue(track_idx int, key_idx int, value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) BezierTrackSetKeyValue(track_idx int, key_idx int, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) BezierTrackSetKeyInHandle(track_idx int, key_idx int, in_handle Vector2, balanced_value_time_ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) BezierTrackSetKeyInHandle(track_idx int, key_idx int, in_handle Vector2, balanced_value_time_ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) BezierTrackSetKeyOutHandle(track_idx int, key_idx int, out_handle Vector2, balanced_value_time_ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) BezierTrackSetKeyOutHandle(track_idx int, key_idx int, out_handle Vector2, balanced_value_time_ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) BezierTrackGetKeyValue(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) BezierTrackGetKeyValue(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) BezierTrackGetKeyInHandle(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) BezierTrackGetKeyInHandle(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) BezierTrackGetKeyOutHandle(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) BezierTrackGetKeyOutHandle(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) BezierTrackInterpolate(track_idx int, time float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) BezierTrackInterpolate(track_idx int, time float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AudioTrackInsertKey(track_idx int, time float32, stream Resource, start_offset float32, end_offset float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AudioTrackInsertKey(track_idx int, time float32, stream Resource, start_offset float32, end_offset float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AudioTrackSetKeyStream(track_idx int, key_idx int, stream Resource, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AudioTrackSetKeyStream(track_idx int, key_idx int, stream Resource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AudioTrackSetKeyStartOffset(track_idx int, key_idx int, offset float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AudioTrackSetKeyStartOffset(track_idx int, key_idx int, offset float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AudioTrackSetKeyEndOffset(track_idx int, key_idx int, offset float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AudioTrackSetKeyEndOffset(track_idx int, key_idx int, offset float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AudioTrackGetKeyStream(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AudioTrackGetKeyStream(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AudioTrackGetKeyStartOffset(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AudioTrackGetKeyStartOffset(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AudioTrackGetKeyEndOffset(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AudioTrackGetKeyEndOffset(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AudioTrackSetUseBlend(track_idx int, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AudioTrackSetUseBlend(track_idx int, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AudioTrackIsUseBlend(track_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AudioTrackIsUseBlend(track_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AnimationTrackInsertKey(track_idx int, time float32, animation StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AnimationTrackInsertKey(track_idx int, time float32, animation StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AnimationTrackSetKeyAnimation(track_idx int, key_idx int, animation StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AnimationTrackSetKeyAnimation(track_idx int, key_idx int, animation StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) AnimationTrackGetKeyAnimation(track_idx int, key_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) AnimationTrackGetKeyAnimation(track_idx int, key_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) SetLength(time_sec float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) SetLength(time_sec float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) GetLength() { // TODO: return value
-  // TODO: implement
+func  (me *Animation) GetLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) SetLoopMode(loop_mode AnimationLoopMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) SetLoopMode(loop_mode AnimationLoopMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) GetLoopMode() { // TODO: return value
-  // TODO: implement
+func  (me *Animation) GetLoopMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) SetStep(size_sec float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) SetStep(size_sec float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) GetStep() { // TODO: return value
-  // TODO: implement
+func  (me *Animation) GetStep()  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) Clear() { // TODO: return value
-  // TODO: implement
+func  (me *Animation) Clear()  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) CopyTrack(track_idx int, to_animation Animation, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) CopyTrack(track_idx int, to_animation Animation, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Animation) Compress(page_size int, fps int, split_tolerance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Animation) Compress(page_size int, fps int, split_tolerance float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

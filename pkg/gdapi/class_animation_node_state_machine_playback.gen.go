@@ -25,46 +25,61 @@ func (me *AnimationNodeStateMachinePlayback) BaseClass() string {
   return "AnimationNodeStateMachinePlayback"
 }
 
-func  (me *AnimationNodeStateMachinePlayback) Travel(to_node StringName, reset_on_teleport bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AnimationNodeStateMachinePlayback) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AnimationNodeStateMachinePlayback) Start(node StringName, reset bool, ) { // TODO: return value
-  // TODO: implement
+func (me *AnimationNodeStateMachinePlayback) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AnimationNodeStateMachinePlayback) Next() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AnimationNodeStateMachinePlayback) Travel(to_node StringName, reset_on_teleport bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeStateMachinePlayback) Stop() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeStateMachinePlayback) Start(node StringName, reset bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeStateMachinePlayback) IsPlaying() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeStateMachinePlayback) Next()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeStateMachinePlayback) GetCurrentNode() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeStateMachinePlayback) Stop()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeStateMachinePlayback) GetCurrentPlayPosition() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeStateMachinePlayback) IsPlaying()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeStateMachinePlayback) GetCurrentLength() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeStateMachinePlayback) GetCurrentNode()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeStateMachinePlayback) GetFadingFromNode() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeStateMachinePlayback) GetCurrentPlayPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeStateMachinePlayback) GetTravelPath() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeStateMachinePlayback) GetCurrentLength()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AnimationNodeStateMachinePlayback) GetFadingFromNode()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AnimationNodeStateMachinePlayback) GetTravelPath()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

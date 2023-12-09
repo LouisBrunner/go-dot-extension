@@ -25,22 +25,37 @@ func (me *WorldBoundaryShape2D) BaseClass() string {
   return "WorldBoundaryShape2D"
 }
 
-func  (me *WorldBoundaryShape2D) SetNormal(normal Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *WorldBoundaryShape2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *WorldBoundaryShape2D) GetNormal() { // TODO: return value
-  // TODO: implement
+func (me *WorldBoundaryShape2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *WorldBoundaryShape2D) SetDistance(distance float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *WorldBoundaryShape2D) SetNormal(normal Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WorldBoundaryShape2D) GetDistance() { // TODO: return value
-  // TODO: implement
+func  (me *WorldBoundaryShape2D) GetNormal()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *WorldBoundaryShape2D) SetDistance(distance float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *WorldBoundaryShape2D) GetDistance()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

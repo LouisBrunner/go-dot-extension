@@ -25,12 +25,27 @@ func (me *ResourceImporter) BaseClass() string {
   return "ResourceImporter"
 }
 
+
+
+// Enums
+
 type ResourceImporterImportOrder int
 const (
   ResourceImporterImportOrderImportOrderDefault ResourceImporterImportOrder = 0
   ResourceImporterImportOrderImportOrderScene ResourceImporterImportOrder = 100
 )
 
-// TODO: properties
+func (me *ResourceImporter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
 
-// TODO: signals
+func (me *ResourceImporter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

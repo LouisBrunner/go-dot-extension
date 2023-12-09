@@ -25,9 +25,9 @@ func (me *ENetPacketPeer) BaseClass() string {
   return "ENetPacketPeer"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   ENetPacketPeerPacketLossScale = "65536" // TODO: construct correctly
@@ -36,6 +36,8 @@ var (
   ENetPacketPeerFlagUnsequenced = "2" // TODO: construct correctly
   ENetPacketPeerFlagUnreliableFragment = "8" // TODO: construct correctly
 )
+
+// Enums
 
 type ENetPacketPeerPeerState int
 const (
@@ -69,66 +71,77 @@ const (
   ENetPacketPeerPeerStatisticPeerPacketThrottleInterval ENetPacketPeerPeerStatistic = 13
 )
 
-func  (me *ENetPacketPeer) PeerDisconnect(data int, ) { // TODO: return value
-  // TODO: implement
+func (me *ENetPacketPeer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ENetPacketPeer) PeerDisconnectLater(data int, ) { // TODO: return value
-  // TODO: implement
+func (me *ENetPacketPeer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ENetPacketPeer) PeerDisconnectNow(data int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ENetPacketPeer) PeerDisconnect(data int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) Ping() { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) PeerDisconnectLater(data int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) PingInterval(ping_interval int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) PeerDisconnectNow(data int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) Reset() { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) Ping()  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) Send(channel int, packet PackedByteArray, flags int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) PingInterval(ping_interval int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) ThrottleConfigure(interval int, acceleration int, deceleration int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) Reset()  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) SetTimeout(timeout int, timeout_min int, timeout_max int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) Send(channel int, packet PackedByteArray, flags int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) GetRemoteAddress() { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) ThrottleConfigure(interval int, acceleration int, deceleration int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) GetRemotePort() { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) SetTimeout(timeout int, timeout_min int, timeout_max int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) GetStatistic(statistic ENetPacketPeerPeerStatistic, ) { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) GetRemoteAddress()  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) GetState() { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) GetRemotePort()  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) GetChannels() { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) GetStatistic(statistic ENetPacketPeerPeerStatistic, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetPacketPeer) IsActive() { // TODO: return value
-  // TODO: implement
+func  (me *ENetPacketPeer) GetState()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ENetPacketPeer) GetChannels()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ENetPacketPeer) IsActive()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

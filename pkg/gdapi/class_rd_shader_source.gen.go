@@ -25,22 +25,37 @@ func (me *RDShaderSource) BaseClass() string {
   return "RDShaderSource"
 }
 
-func  (me *RDShaderSource) SetStageSource(stage RenderingDeviceShaderStage, source String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDShaderSource) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDShaderSource) GetStageSource(stage RenderingDeviceShaderStage, ) { // TODO: return value
-  // TODO: implement
+func (me *RDShaderSource) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDShaderSource) SetLanguage(language RenderingDeviceShaderLanguage, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDShaderSource) SetStageSource(stage RenderingDeviceShaderStage, source String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDShaderSource) GetLanguage() { // TODO: return value
-  // TODO: implement
+func  (me *RDShaderSource) GetStageSource(stage RenderingDeviceShaderStage, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDShaderSource) SetLanguage(language RenderingDeviceShaderLanguage, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDShaderSource) GetLanguage()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

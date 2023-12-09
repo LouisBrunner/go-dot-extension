@@ -25,6 +25,10 @@ func (me *TextureRect) BaseClass() string {
   return "TextureRect"
 }
 
+
+
+// Enums
+
 type TextureRectExpandMode int
 const (
   TextureRectExpandModeExpandKeepSize TextureRectExpandMode = 0
@@ -46,46 +50,57 @@ const (
   TextureRectStretchModeStretchKeepAspectCovered TextureRectStretchMode = 6
 )
 
-func  (me *TextureRect) SetTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func (me *TextureRect) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TextureRect) GetTexture() { // TODO: return value
-  // TODO: implement
+func (me *TextureRect) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TextureRect) SetExpandMode(expand_mode TextureRectExpandMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TextureRect) SetTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureRect) GetExpandMode() { // TODO: return value
-  // TODO: implement
+func  (me *TextureRect) GetTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureRect) SetFlipH(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureRect) SetExpandMode(expand_mode TextureRectExpandMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureRect) IsFlippedH() { // TODO: return value
-  // TODO: implement
+func  (me *TextureRect) GetExpandMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureRect) SetFlipV(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureRect) SetFlipH(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureRect) IsFlippedV() { // TODO: return value
-  // TODO: implement
+func  (me *TextureRect) IsFlippedH()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureRect) SetStretchMode(stretch_mode TextureRectStretchMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureRect) SetFlipV(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureRect) GetStretchMode() { // TODO: return value
-  // TODO: implement
+func  (me *TextureRect) IsFlippedV()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TextureRect) SetStretchMode(stretch_mode TextureRectStretchMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TextureRect) GetStretchMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

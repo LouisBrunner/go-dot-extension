@@ -25,6 +25,10 @@ func (me *WebSocketPeer) BaseClass() string {
   return "WebSocketPeer"
 }
 
+
+
+// Enums
+
 type WebSocketPeerWriteMode int
 const (
   WebSocketPeerWriteModeWriteModeText WebSocketPeerWriteMode = 0
@@ -39,110 +43,121 @@ const (
   WebSocketPeerStateStateClosed WebSocketPeerState = 3
 )
 
-func  (me *WebSocketPeer) ConnectToUrl(url String, tls_client_options TLSOptions, ) { // TODO: return value
-  // TODO: implement
+func (me *WebSocketPeer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *WebSocketPeer) AcceptStream(stream StreamPeer, ) { // TODO: return value
-  // TODO: implement
+func (me *WebSocketPeer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *WebSocketPeer) Send(message PackedByteArray, write_mode WebSocketPeerWriteMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *WebSocketPeer) ConnectToUrl(url String, tls_client_options TLSOptions, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) SendText(message String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) AcceptStream(stream StreamPeer, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) WasStringPacket() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) Send(message PackedByteArray, write_mode WebSocketPeerWriteMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) Poll() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) SendText(message String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) Close(code int, reason String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) WasStringPacket()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetConnectedHost() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) Poll()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetConnectedPort() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) Close(code int, reason String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetSelectedProtocol() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetConnectedHost()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetRequestedUrl() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetConnectedPort()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) SetNoDelay(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetSelectedProtocol()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetCurrentOutboundBufferedAmount() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetRequestedUrl()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetReadyState() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) SetNoDelay(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetCloseCode() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetCurrentOutboundBufferedAmount()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetCloseReason() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetReadyState()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetSupportedProtocols() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetCloseCode()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) SetSupportedProtocols(protocols PackedStringArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetCloseReason()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetHandshakeHeaders() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetSupportedProtocols()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) SetHandshakeHeaders(protocols PackedStringArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) SetSupportedProtocols(protocols PackedStringArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetInboundBufferSize() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetHandshakeHeaders()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) SetInboundBufferSize(buffer_size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) SetHandshakeHeaders(protocols PackedStringArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetOutboundBufferSize() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetInboundBufferSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) SetOutboundBufferSize(buffer_size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) SetInboundBufferSize(buffer_size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) SetMaxQueuedPackets(buffer_size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) GetOutboundBufferSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebSocketPeer) GetMaxQueuedPackets() { // TODO: return value
-  // TODO: implement
+func  (me *WebSocketPeer) SetOutboundBufferSize(buffer_size int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *WebSocketPeer) SetMaxQueuedPackets(buffer_size int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *WebSocketPeer) GetMaxQueuedPackets()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

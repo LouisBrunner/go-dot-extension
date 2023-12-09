@@ -25,26 +25,41 @@ func (me *GradientTexture1D) BaseClass() string {
   return "GradientTexture1D"
 }
 
-func  (me *GradientTexture1D) SetGradient(gradient Gradient, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GradientTexture1D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GradientTexture1D) GetGradient() { // TODO: return value
-  // TODO: implement
+func (me *GradientTexture1D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GradientTexture1D) SetWidth(width int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GradientTexture1D) SetGradient(gradient Gradient, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture1D) SetUseHdr(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture1D) GetGradient()  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture1D) IsUsingHdr() { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture1D) SetWidth(width int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GradientTexture1D) SetUseHdr(enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GradientTexture1D) IsUsingHdr()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

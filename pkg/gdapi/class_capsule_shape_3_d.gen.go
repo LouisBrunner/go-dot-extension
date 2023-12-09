@@ -25,22 +25,37 @@ func (me *CapsuleShape3D) BaseClass() string {
   return "CapsuleShape3D"
 }
 
-func  (me *CapsuleShape3D) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CapsuleShape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CapsuleShape3D) GetRadius() { // TODO: return value
-  // TODO: implement
+func (me *CapsuleShape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CapsuleShape3D) SetHeight(height float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CapsuleShape3D) SetRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CapsuleShape3D) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *CapsuleShape3D) GetRadius()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CapsuleShape3D) SetHeight(height float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CapsuleShape3D) GetHeight()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

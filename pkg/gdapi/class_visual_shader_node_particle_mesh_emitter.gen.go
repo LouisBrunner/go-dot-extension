@@ -25,30 +25,45 @@ func (me *VisualShaderNodeParticleMeshEmitter) BaseClass() string {
   return "VisualShaderNodeParticleMeshEmitter"
 }
 
-func  (me *VisualShaderNodeParticleMeshEmitter) SetMesh(mesh Mesh, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeParticleMeshEmitter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeParticleMeshEmitter) GetMesh() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParticleMeshEmitter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeParticleMeshEmitter) SetUseAllSurfaces(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeParticleMeshEmitter) SetMesh(mesh Mesh, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeParticleMeshEmitter) IsUseAllSurfaces() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeParticleMeshEmitter) GetMesh()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeParticleMeshEmitter) SetSurfaceIndex(surface_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeParticleMeshEmitter) SetUseAllSurfaces(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeParticleMeshEmitter) GetSurfaceIndex() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeParticleMeshEmitter) IsUseAllSurfaces()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeParticleMeshEmitter) SetSurfaceIndex(surface_index int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeParticleMeshEmitter) GetSurfaceIndex()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

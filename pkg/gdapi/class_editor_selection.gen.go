@@ -25,26 +25,41 @@ func (me *EditorSelection) BaseClass() string {
   return "EditorSelection"
 }
 
-func  (me *EditorSelection) Clear() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorSelection) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorSelection) AddNode(node Node, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorSelection) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorSelection) RemoveNode(node Node, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorSelection) Clear()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSelection) GetSelectedNodes() { // TODO: return value
-  // TODO: implement
+func  (me *EditorSelection) AddNode(node Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSelection) GetTransformableSelectedNodes() { // TODO: return value
-  // TODO: implement
+func  (me *EditorSelection) RemoveNode(node Node, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorSelection) GetSelectedNodes()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorSelection) GetTransformableSelectedNodes()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

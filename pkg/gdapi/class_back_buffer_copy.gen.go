@@ -25,6 +25,10 @@ func (me *BackBufferCopy) BaseClass() string {
   return "BackBufferCopy"
 }
 
+
+
+// Enums
+
 type BackBufferCopyCopyMode int
 const (
   BackBufferCopyCopyModeCopyModeDisabled BackBufferCopyCopyMode = 0
@@ -32,22 +36,33 @@ const (
   BackBufferCopyCopyModeCopyModeViewport BackBufferCopyCopyMode = 2
 )
 
-func  (me *BackBufferCopy) SetRect(rect Rect2, ) { // TODO: return value
-  // TODO: implement
+func (me *BackBufferCopy) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *BackBufferCopy) GetRect() { // TODO: return value
-  // TODO: implement
+func (me *BackBufferCopy) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *BackBufferCopy) SetCopyMode(copy_mode BackBufferCopyCopyMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *BackBufferCopy) SetRect(rect Rect2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BackBufferCopy) GetCopyMode() { // TODO: return value
-  // TODO: implement
+func  (me *BackBufferCopy) GetRect()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *BackBufferCopy) SetCopyMode(copy_mode BackBufferCopyCopyMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *BackBufferCopy) GetCopyMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

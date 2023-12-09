@@ -25,6 +25,10 @@ func (me *VisualShaderNodeSmoothStep) BaseClass() string {
   return "VisualShaderNodeSmoothStep"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeSmoothStepOpType int
 const (
   VisualShaderNodeSmoothStepOpTypeOpTypeScalar VisualShaderNodeSmoothStepOpType = 0
@@ -37,14 +41,25 @@ const (
   VisualShaderNodeSmoothStepOpTypeOpTypeMax VisualShaderNodeSmoothStepOpType = 7
 )
 
-func  (me *VisualShaderNodeSmoothStep) SetOpType(op_type VisualShaderNodeSmoothStepOpType, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeSmoothStep) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeSmoothStep) GetOpType() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeSmoothStep) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeSmoothStep) SetOpType(op_type VisualShaderNodeSmoothStepOpType, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeSmoothStep) GetOpType()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

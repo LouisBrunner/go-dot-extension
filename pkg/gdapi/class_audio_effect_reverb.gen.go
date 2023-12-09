@@ -25,70 +25,85 @@ func (me *AudioEffectReverb) BaseClass() string {
   return "AudioEffectReverb"
 }
 
-func  (me *AudioEffectReverb) SetPredelayMsec(msec float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffectReverb) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectReverb) GetPredelayMsec() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectReverb) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectReverb) SetPredelayFeedback(feedback float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectReverb) SetPredelayMsec(msec float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) GetPredelayFeedback() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) GetPredelayMsec()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) SetRoomSize(size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) SetPredelayFeedback(feedback float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) GetRoomSize() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) GetPredelayFeedback()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) SetDamping(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) SetRoomSize(size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) GetDamping() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) GetRoomSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) SetSpread(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) SetDamping(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) GetSpread() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) GetDamping()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) SetDry(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) SetSpread(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) GetDry() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) GetSpread()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) SetWet(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) SetDry(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) GetWet() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) GetDry()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) SetHpf(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) SetWet(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) GetHpf() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectReverb) GetWet()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectReverb) SetHpf(amount float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectReverb) GetHpf()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

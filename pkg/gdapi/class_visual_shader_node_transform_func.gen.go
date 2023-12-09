@@ -25,6 +25,10 @@ func (me *VisualShaderNodeTransformFunc) BaseClass() string {
   return "VisualShaderNodeTransformFunc"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeTransformFuncFunction int
 const (
   VisualShaderNodeTransformFuncFunctionFuncInverse VisualShaderNodeTransformFuncFunction = 0
@@ -32,14 +36,25 @@ const (
   VisualShaderNodeTransformFuncFunctionFuncMax VisualShaderNodeTransformFuncFunction = 2
 )
 
-func  (me *VisualShaderNodeTransformFunc) SetFunction(func_ VisualShaderNodeTransformFuncFunction, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeTransformFunc) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeTransformFunc) GetFunction() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeTransformFunc) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeTransformFunc) SetFunction(func_ VisualShaderNodeTransformFuncFunction, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeTransformFunc) GetFunction()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

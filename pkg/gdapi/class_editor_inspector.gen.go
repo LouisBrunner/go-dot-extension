@@ -25,10 +25,25 @@ func (me *EditorInspector) BaseClass() string {
   return "EditorInspector"
 }
 
-func  (me *EditorInspector) GetSelectedPath() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorInspector) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *EditorInspector) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *EditorInspector) GetSelectedPath()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,66 +25,81 @@ func (me *PhysicsRayQueryParameters2D) BaseClass() string {
   return "PhysicsRayQueryParameters2D"
 }
 
-func  PhysicsRayQueryParameters2DCreate(from Vector2, to Vector2, collision_mask int, exclude RID, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsRayQueryParameters2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsRayQueryParameters2D) SetFrom(from Vector2, ) { // TODO: return value
-  // TODO: implement
+func (me *PhysicsRayQueryParameters2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsRayQueryParameters2D) GetFrom() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  PhysicsRayQueryParameters2DCreate(from Vector2, to Vector2, collision_mask int, exclude RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) SetTo(to Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) SetFrom(from Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) GetTo() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) GetFrom()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) SetCollisionMask(collision_mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) SetTo(to Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) GetCollisionMask() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) GetTo()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) SetExclude(exclude RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) SetCollisionMask(collision_mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) GetExclude() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) GetCollisionMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) SetCollideWithBodies(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) SetExclude(exclude RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) IsCollideWithBodiesEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) GetExclude()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) SetCollideWithAreas(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) SetCollideWithBodies(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) IsCollideWithAreasEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) IsCollideWithBodiesEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) SetHitFromInside(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) SetCollideWithAreas(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters2D) IsHitFromInsideEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters2D) IsCollideWithAreasEnabled()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsRayQueryParameters2D) SetHitFromInside(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsRayQueryParameters2D) IsHitFromInsideEnabled()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

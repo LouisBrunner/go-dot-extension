@@ -25,9 +25,9 @@ func (me *AnimationNodeBlendTree) BaseClass() string {
   return "AnimationNodeBlendTree"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   AnimationNodeBlendTreeConnectionOk = "0" // TODO: construct correctly
@@ -38,50 +38,63 @@ var (
   AnimationNodeBlendTreeConnectionErrorConnectionExists = "5" // TODO: construct correctly
 )
 
-func  (me *AnimationNodeBlendTree) AddNode(name StringName, node AnimationNode, position Vector2, ) { // TODO: return value
-  // TODO: implement
+// Enums
+
+func (me *AnimationNodeBlendTree) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AnimationNodeBlendTree) GetNode(name StringName, ) { // TODO: return value
-  // TODO: implement
+func (me *AnimationNodeBlendTree) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AnimationNodeBlendTree) RemoveNode(name StringName, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AnimationNodeBlendTree) AddNode(name StringName, node AnimationNode, position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeBlendTree) RenameNode(name StringName, new_name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeBlendTree) GetNode(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeBlendTree) HasNode(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeBlendTree) RemoveNode(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeBlendTree) ConnectNode(input_node StringName, input_index int, output_node StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeBlendTree) RenameNode(name StringName, new_name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeBlendTree) DisconnectNode(input_node StringName, input_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeBlendTree) HasNode(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeBlendTree) SetNodePosition(name StringName, position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeBlendTree) ConnectNode(input_node StringName, input_index int, output_node StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeBlendTree) GetNodePosition(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeBlendTree) DisconnectNode(input_node StringName, input_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeBlendTree) SetGraphOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeBlendTree) SetNodePosition(name StringName, position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeBlendTree) GetGraphOffset() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeBlendTree) GetNodePosition(name StringName, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AnimationNodeBlendTree) SetGraphOffset(offset Vector2, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AnimationNodeBlendTree) GetGraphOffset()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

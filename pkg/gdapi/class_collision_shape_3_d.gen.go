@@ -25,30 +25,45 @@ func (me *CollisionShape3D) BaseClass() string {
   return "CollisionShape3D"
 }
 
-func  (me *CollisionShape3D) ResourceChanged(resource Resource, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CollisionShape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CollisionShape3D) SetShape(shape Shape3D, ) { // TODO: return value
-  // TODO: implement
+func (me *CollisionShape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CollisionShape3D) GetShape() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CollisionShape3D) ResourceChanged(resource Resource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionShape3D) SetDisabled(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionShape3D) SetShape(shape Shape3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionShape3D) IsDisabled() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionShape3D) GetShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionShape3D) MakeConvexFromSiblings() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionShape3D) SetDisabled(enable bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CollisionShape3D) IsDisabled()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CollisionShape3D) MakeConvexFromSiblings()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

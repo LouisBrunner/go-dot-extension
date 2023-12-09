@@ -25,14 +25,29 @@ func (me *InputEventMagnifyGesture) BaseClass() string {
   return "InputEventMagnifyGesture"
 }
 
-func  (me *InputEventMagnifyGesture) SetFactor(factor float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventMagnifyGesture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventMagnifyGesture) GetFactor() { // TODO: return value
-  // TODO: implement
+func (me *InputEventMagnifyGesture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *InputEventMagnifyGesture) SetFactor(factor float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *InputEventMagnifyGesture) GetFactor()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

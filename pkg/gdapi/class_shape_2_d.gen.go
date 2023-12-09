@@ -25,38 +25,53 @@ func (me *Shape2D) BaseClass() string {
   return "Shape2D"
 }
 
-func  (me *Shape2D) SetCustomSolverBias(bias float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Shape2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Shape2D) GetCustomSolverBias() { // TODO: return value
-  // TODO: implement
+func (me *Shape2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Shape2D) Collide(local_xform Transform2D, with_shape Shape2D, shape_xform Transform2D, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Shape2D) SetCustomSolverBias(bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Shape2D) CollideWithMotion(local_xform Transform2D, local_motion Vector2, with_shape Shape2D, shape_xform Transform2D, shape_motion Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Shape2D) GetCustomSolverBias()  {
+  panic("TODO: implement")
 }
 
-func  (me *Shape2D) CollideAndGetContacts(local_xform Transform2D, with_shape Shape2D, shape_xform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *Shape2D) Collide(local_xform Transform2D, with_shape Shape2D, shape_xform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Shape2D) CollideWithMotionAndGetContacts(local_xform Transform2D, local_motion Vector2, with_shape Shape2D, shape_xform Transform2D, shape_motion Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Shape2D) CollideWithMotion(local_xform Transform2D, local_motion Vector2, with_shape Shape2D, shape_xform Transform2D, shape_motion Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Shape2D) Draw(canvas_item RID, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Shape2D) CollideAndGetContacts(local_xform Transform2D, with_shape Shape2D, shape_xform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Shape2D) GetRect() { // TODO: return value
-  // TODO: implement
+func  (me *Shape2D) CollideWithMotionAndGetContacts(local_xform Transform2D, local_motion Vector2, with_shape Shape2D, shape_xform Transform2D, shape_motion Vector2, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Shape2D) Draw(canvas_item RID, color Color, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Shape2D) GetRect()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

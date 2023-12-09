@@ -25,6 +25,10 @@ func (me *VisualShaderNodeVectorOp) BaseClass() string {
   return "VisualShaderNodeVectorOp"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeVectorOpOperator int
 const (
   VisualShaderNodeVectorOpOperatorOpAdd VisualShaderNodeVectorOpOperator = 0
@@ -42,14 +46,25 @@ const (
   VisualShaderNodeVectorOpOperatorOpEnumSize VisualShaderNodeVectorOpOperator = 12
 )
 
-func  (me *VisualShaderNodeVectorOp) SetOperator(op VisualShaderNodeVectorOpOperator, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeVectorOp) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeVectorOp) GetOperator() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeVectorOp) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeVectorOp) SetOperator(op VisualShaderNodeVectorOpOperator, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeVectorOp) GetOperator()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

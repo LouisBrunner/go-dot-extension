@@ -25,6 +25,10 @@ func (me *SliderJoint3D) BaseClass() string {
   return "SliderJoint3D"
 }
 
+
+
+// Enums
+
 type SliderJoint3DParam int
 const (
   SliderJoint3DParamParamLinearLimitUpper SliderJoint3DParam = 0
@@ -52,14 +56,25 @@ const (
   SliderJoint3DParamParamMax SliderJoint3DParam = 22
 )
 
-func  (me *SliderJoint3D) SetParam(param SliderJoint3DParam, value float32, ) { // TODO: return value
-  // TODO: implement
+func (me *SliderJoint3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SliderJoint3D) GetParam(param SliderJoint3DParam, ) { // TODO: return value
-  // TODO: implement
+func (me *SliderJoint3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *SliderJoint3D) SetParam(param SliderJoint3DParam, value float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *SliderJoint3D) GetParam(param SliderJoint3DParam, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

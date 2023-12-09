@@ -25,86 +25,101 @@ func (me *NavigationLink2D) BaseClass() string {
   return "NavigationLink2D"
 }
 
-func  (me *NavigationLink2D) SetEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *NavigationLink2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *NavigationLink2D) IsEnabled() { // TODO: return value
-  // TODO: implement
+func (me *NavigationLink2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *NavigationLink2D) SetBidirectional(bidirectional bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *NavigationLink2D) SetEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) IsBidirectional() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) IsEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) SetNavigationLayers(navigation_layers int, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) SetBidirectional(bidirectional bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) GetNavigationLayers() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) IsBidirectional()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) SetNavigationLayerValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) SetNavigationLayers(navigation_layers int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) GetNavigationLayerValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) GetNavigationLayers()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) SetStartPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) SetNavigationLayerValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) GetStartPosition() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) GetNavigationLayerValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) SetEndPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) SetStartPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) GetEndPosition() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) GetStartPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) SetGlobalStartPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) SetEndPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) GetGlobalStartPosition() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) GetEndPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) SetGlobalEndPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) SetGlobalStartPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) GetGlobalEndPosition() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) GetGlobalStartPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) SetEnterCost(enter_cost float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) SetGlobalEndPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) GetEnterCost() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) GetGlobalEndPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) SetTravelCost(travel_cost float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) SetEnterCost(enter_cost float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) GetTravelCost() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationLink2D) GetEnterCost()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *NavigationLink2D) SetTravelCost(travel_cost float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *NavigationLink2D) GetTravelCost()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

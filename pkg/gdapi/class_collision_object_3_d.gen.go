@@ -25,6 +25,10 @@ func (me *CollisionObject3D) BaseClass() string {
   return "CollisionObject3D"
 }
 
+
+
+// Enums
+
 type CollisionObject3DDisableMode int
 const (
   CollisionObject3DDisableModeDisableModeRemove CollisionObject3DDisableMode = 0
@@ -32,146 +36,157 @@ const (
   CollisionObject3DDisableModeDisableModeKeepActive CollisionObject3DDisableMode = 2
 )
 
-func  (me *CollisionObject3D) XInputEvent(camera Camera3D, event InputEvent, position Vector3, normal Vector3, shape_idx int, ) { // TODO: return value
-  // TODO: implement
+func (me *CollisionObject3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CollisionObject3D) XMouseEnter() { // TODO: return value
-  // TODO: implement
+func (me *CollisionObject3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CollisionObject3D) XMouseExit() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CollisionObject3D) XInputEvent(camera Camera3D, event InputEvent, position Vector3, normal Vector3, shape_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) SetCollisionLayer(layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) XMouseEnter()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) GetCollisionLayer() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) XMouseExit()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) SetCollisionMask(mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) SetCollisionLayer(layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) GetCollisionMask() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) GetCollisionLayer()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) SetCollisionLayerValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) SetCollisionMask(mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) GetCollisionLayerValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) GetCollisionMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) SetCollisionMaskValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) SetCollisionLayerValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) GetCollisionMaskValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) GetCollisionLayerValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) SetCollisionPriority(priority float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) SetCollisionMaskValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) GetCollisionPriority() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) GetCollisionMaskValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) SetDisableMode(mode CollisionObject3DDisableMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) SetCollisionPriority(priority float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) GetDisableMode() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) GetCollisionPriority()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) SetRayPickable(ray_pickable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) SetDisableMode(mode CollisionObject3DDisableMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) IsRayPickable() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) GetDisableMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) SetCaptureInputOnDrag(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) SetRayPickable(ray_pickable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) GetCaptureInputOnDrag() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) IsRayPickable()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) GetRid() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) SetCaptureInputOnDrag(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) CreateShapeOwner(owner Object, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) GetCaptureInputOnDrag()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) RemoveShapeOwner(owner_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) GetRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) GetShapeOwners() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) CreateShapeOwner(owner Object, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) ShapeOwnerSetTransform(owner_id int, transform Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) RemoveShapeOwner(owner_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) ShapeOwnerGetTransform(owner_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) GetShapeOwners()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) ShapeOwnerGetOwner(owner_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) ShapeOwnerSetTransform(owner_id int, transform Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) ShapeOwnerSetDisabled(owner_id int, disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) ShapeOwnerGetTransform(owner_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) IsShapeOwnerDisabled(owner_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) ShapeOwnerGetOwner(owner_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) ShapeOwnerAddShape(owner_id int, shape Shape3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) ShapeOwnerSetDisabled(owner_id int, disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) ShapeOwnerGetShapeCount(owner_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) IsShapeOwnerDisabled(owner_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) ShapeOwnerGetShape(owner_id int, shape_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) ShapeOwnerAddShape(owner_id int, shape Shape3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) ShapeOwnerGetShapeIndex(owner_id int, shape_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) ShapeOwnerGetShapeCount(owner_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) ShapeOwnerRemoveShape(owner_id int, shape_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) ShapeOwnerGetShape(owner_id int, shape_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) ShapeOwnerClearShapes(owner_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) ShapeOwnerGetShapeIndex(owner_id int, shape_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionObject3D) ShapeFindOwner(shape_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionObject3D) ShapeOwnerRemoveShape(owner_id int, shape_id int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CollisionObject3D) ShapeOwnerClearShapes(owner_id int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CollisionObject3D) ShapeFindOwner(shape_index int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,70 +25,85 @@ func (me *GLTFLight) BaseClass() string {
   return "GLTFLight"
 }
 
-func  GLTFLightFromNode(light_node Light3D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFLight) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFLight) ToNode() { // TODO: return value
-  // TODO: implement
+func (me *GLTFLight) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  GLTFLightFromDictionary(dictionary Dictionary, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  GLTFLightFromNode(light_node Light3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) ToDictionary() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) ToNode()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) GetColor() { // TODO: return value
-  // TODO: implement
+func  GLTFLightFromDictionary(dictionary Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) SetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) ToDictionary()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) GetIntensity() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) GetColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) SetIntensity(intensity float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) SetColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) GetLightType() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) GetIntensity()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) SetLightType(light_type String, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) SetIntensity(intensity float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) GetRange() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) GetLightType()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) SetRange(range_ float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) SetLightType(light_type String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) GetInnerConeAngle() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) GetRange()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) SetInnerConeAngle(inner_cone_angle float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) SetRange(range_ float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) GetOuterConeAngle() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) GetInnerConeAngle()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFLight) SetOuterConeAngle(outer_cone_angle float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFLight) SetInnerConeAngle(inner_cone_angle float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFLight) GetOuterConeAngle()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFLight) SetOuterConeAngle(outer_cone_angle float32, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -2,129 +2,205 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type AABB struct {
-  obj gdc.ObjectPtr
+  iface gdc.Interface
+  ptr gdc.TypePtr
 }
 
-func (me *AABB) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+// Enums
+
+// Constructors
+
+func NewAABB() AABB {
+  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeAABB))
+  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 0) // FIXME: should cache?
+  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return AABB{
+    iface: giface,
+    ptr: gdc.TypePtr(ptr),
+  }
 }
 
-func (me *AABB) BaseClass() string {
-  return "AABB"
+func NewAABBFromAABB(from AABB, ) AABB {
+  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeAABB))
+  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 1) // FIXME: should cache?
+  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return AABB{
+    iface: giface,
+    ptr: gdc.TypePtr(ptr),
+  }
 }
 
-func  (me *AABB) Abs() { // TODO: return value
-  // TODO: implement
+func NewAABBFromVector3Vector3(position Vector3, size Vector3, ) AABB {
+  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeAABB))
+  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 2) // FIXME: should cache?
+  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{position.AsCTypePtr(), size.AsCTypePtr(), }))
+  return AABB{
+    iface: giface,
+    ptr: gdc.TypePtr(ptr),
+  }
 }
 
-func  (me *AABB) GetCenter() { // TODO: return value
-  // TODO: implement
+// Destructor
+func (me *AABB) Destroy() {
+  if me.ptr == nil {
+    return
+  }
+	cfree(unsafe.Pointer(me.ptr))
+  me.ptr = nil
 }
 
-func  (me *AABB) GetVolume() { // TODO: return value
-  // TODO: implement
+func (me *AABB) Type() gdc.VariantType {
+  return gdc.VariantTypeAABB
 }
 
-func  (me *AABB) HasVolume() { // TODO: return value
-  // TODO: implement
+func (me *AABB) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.ptr)
 }
 
-func  (me *AABB) HasSurface() { // TODO: return value
-  // TODO: implement
+func (me *AABB) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.ptr)
 }
 
-func  (me *AABB) HasPoint(point Vector3, ) { // TODO: return value
-  // TODO: implement
+// Methods
+
+func  (me *AABB) Abs() AABB {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) IsEqualApprox(aabb AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) GetCenter() Vector3 {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) IsFinite() { // TODO: return value
-  // TODO: implement
+func  (me *AABB) GetVolume() float32 {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) Intersects(with AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) HasVolume() bool {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) Encloses(with AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) HasSurface() bool {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) IntersectsPlane(plane Plane, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) HasPoint(point Vector3, ) bool {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) Intersection(with AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) IsEqualApprox(aabb AABB, ) bool {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) Merge(with AABB, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) IsFinite() bool {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) Expand(to_point Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) Intersects(with AABB, ) bool {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) Grow(by float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) Encloses(with AABB, ) bool {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) GetSupport(dir Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) IntersectsPlane(plane Plane, ) bool {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) GetLongestAxis() { // TODO: return value
-  // TODO: implement
+func  (me *AABB) Intersection(with AABB, ) AABB {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) GetLongestAxisIndex() { // TODO: return value
-  // TODO: implement
+func  (me *AABB) Merge(with AABB, ) AABB {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) GetLongestAxisSize() { // TODO: return value
-  // TODO: implement
+func  (me *AABB) Expand(to_point Vector3, ) AABB {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) GetShortestAxis() { // TODO: return value
-  // TODO: implement
+func  (me *AABB) Grow(by float32, ) AABB {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) GetShortestAxisIndex() { // TODO: return value
-  // TODO: implement
+func  (me *AABB) GetSupport(dir Vector3, ) Vector3 {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) GetShortestAxisSize() { // TODO: return value
-  // TODO: implement
+func  (me *AABB) GetLongestAxis() Vector3 {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) GetEndpoint(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) GetLongestAxisIndex() int {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) IntersectsSegment(from Vector3, to Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) GetLongestAxisSize() float32 {
+  panic("TODO: implement")
 }
 
-func  (me *AABB) IntersectsRay(from Vector3, dir Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *AABB) GetShortestAxis() Vector3 {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AABB) GetShortestAxisIndex() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AABB) GetShortestAxisSize() float32 {
+  panic("TODO: implement")
+}
+
+func  (me *AABB) GetEndpoint(idx int, ) Vector3 {
+  panic("TODO: implement")
+}
+
+func  (me *AABB) IntersectsSegment(from Vector3, to Vector3, ) Variant {
+  panic("TODO: implement")
+}
+
+func  (me *AABB) IntersectsRay(from Vector3, dir Vector3, ) Variant {
+  panic("TODO: implement")
+}
+
+// Operators
+
+func (me *AABB) EqualsVariant(right Variant) bool {
+  panic("TODO: implement")
+}
+
+func (me *AABB) NotEqualsVariant(right Variant) bool {
+  panic("TODO: implement")
+}
+
+func (me *AABB) Not() bool {
+  panic("TODO: implement")
+}
+
+func (me *AABB) EqualsAABB(right AABB) bool {
+  panic("TODO: implement")
+}
+
+func (me *AABB) NotEqualsAABB(right AABB) bool {
+  panic("TODO: implement")
+}
+
+func (me *AABB) MultiplyTransform3D(right Transform3D) AABB {
+  panic("TODO: implement")
+}
+
+func (me *AABB) InDictionary(right Dictionary) bool {
+  panic("TODO: implement")
+}
+
+func (me *AABB) InArray(right Array) bool {
+  panic("TODO: implement")
+}
+
+// TODO: members (bclass)

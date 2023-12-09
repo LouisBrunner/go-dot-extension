@@ -25,6 +25,10 @@ func (me *GDExtension) BaseClass() string {
   return "GDExtension"
 }
 
+
+
+// Enums
+
 type GDExtensionInitializationLevel int
 const (
   GDExtensionInitializationLevelInitializationLevelCore GDExtensionInitializationLevel = 0
@@ -33,26 +37,37 @@ const (
   GDExtensionInitializationLevelInitializationLevelEditor GDExtensionInitializationLevel = 3
 )
 
-func  (me *GDExtension) OpenLibrary(path String, entry_symbol String, ) { // TODO: return value
-  // TODO: implement
+func (me *GDExtension) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GDExtension) CloseLibrary() { // TODO: return value
-  // TODO: implement
+func (me *GDExtension) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GDExtension) IsLibraryOpen() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GDExtension) OpenLibrary(path String, entry_symbol String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GDExtension) GetMinimumLibraryInitializationLevel() { // TODO: return value
-  // TODO: implement
+func  (me *GDExtension) CloseLibrary()  {
+  panic("TODO: implement")
 }
 
-func  (me *GDExtension) InitializeLibrary(level GDExtensionInitializationLevel, ) { // TODO: return value
-  // TODO: implement
+func  (me *GDExtension) IsLibraryOpen()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GDExtension) GetMinimumLibraryInitializationLevel()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GDExtension) InitializeLibrary(level GDExtensionInitializationLevel, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,10 @@ func (me *BaseMaterial3D) BaseClass() string {
   return "BaseMaterial3D"
 }
 
+
+
+// Enums
+
 type BaseMaterial3DTextureParam int
 const (
   BaseMaterial3DTextureParamTextureAlbedo BaseMaterial3DTextureParam = 0
@@ -201,550 +205,561 @@ const (
   BaseMaterial3DDistanceFadeModeDistanceFadeObjectDither BaseMaterial3DDistanceFadeMode = 3
 )
 
-func  (me *BaseMaterial3D) SetAlbedo(albedo Color, ) { // TODO: return value
-  // TODO: implement
+func (me *BaseMaterial3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *BaseMaterial3D) GetAlbedo() { // TODO: return value
-  // TODO: implement
+func (me *BaseMaterial3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *BaseMaterial3D) SetTransparency(transparency BaseMaterial3DTransparency, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *BaseMaterial3D) SetAlbedo(albedo Color, )  {
+  panic("TODO: implement")
+}
+
+func  (me *BaseMaterial3D) GetAlbedo()  {
+  panic("TODO: implement")
+}
+
+func  (me *BaseMaterial3D) SetTransparency(transparency BaseMaterial3DTransparency, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetTransparency() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetTransparency()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetAlphaAntialiasing(alpha_aa BaseMaterial3DAlphaAntiAliasing, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetAlphaAntialiasing(alpha_aa BaseMaterial3DAlphaAntiAliasing, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetAlphaAntialiasing() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetAlphaAntialiasing()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetAlphaAntialiasingEdge(edge float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetAlphaAntialiasingEdge(edge float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetAlphaAntialiasingEdge() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetAlphaAntialiasingEdge()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetShadingMode(shading_mode BaseMaterial3DShadingMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetShadingMode(shading_mode BaseMaterial3DShadingMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetShadingMode() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetShadingMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetSpecular(specular float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetSpecular(specular float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetSpecular() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetSpecular()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetMetallic(metallic float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetMetallic(metallic float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetMetallic() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetMetallic()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetRoughness(roughness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetRoughness(roughness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetRoughness() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetRoughness()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetEmission(emission Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetEmission(emission Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetEmission() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetEmission()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetEmissionEnergyMultiplier(emission_energy_multiplier float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetEmissionEnergyMultiplier(emission_energy_multiplier float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetEmissionEnergyMultiplier() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetEmissionEnergyMultiplier()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetEmissionIntensity(emission_energy_multiplier float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetEmissionIntensity(emission_energy_multiplier float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetEmissionIntensity() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetEmissionIntensity()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetNormalScale(normal_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetNormalScale(normal_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetNormalScale() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetNormalScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetRim(rim float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetRim(rim float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetRim() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetRim()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetRimTint(rim_tint float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetRimTint(rim_tint float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetRimTint() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetRimTint()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetClearcoat(clearcoat float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetClearcoat(clearcoat float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetClearcoat() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetClearcoat()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetClearcoatRoughness(clearcoat_roughness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetClearcoatRoughness(clearcoat_roughness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetClearcoatRoughness() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetClearcoatRoughness()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetAnisotropy(anisotropy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetAnisotropy(anisotropy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetAnisotropy() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetAnisotropy()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetHeightmapScale(heightmap_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetHeightmapScale(heightmap_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetHeightmapScale() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetHeightmapScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetSubsurfaceScatteringStrength(strength float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetSubsurfaceScatteringStrength(strength float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetSubsurfaceScatteringStrength() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetSubsurfaceScatteringStrength()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetTransmittanceColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetTransmittanceColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetTransmittanceColor() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetTransmittanceColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetTransmittanceDepth(depth float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetTransmittanceDepth(depth float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetTransmittanceDepth() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetTransmittanceDepth()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetTransmittanceBoost(boost float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetTransmittanceBoost(boost float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetTransmittanceBoost() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetTransmittanceBoost()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetBacklight(backlight Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetBacklight(backlight Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetBacklight() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetBacklight()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetRefraction(refraction float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetRefraction(refraction float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetRefraction() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetRefraction()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetPointSize(point_size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetPointSize(point_size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetPointSize() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetPointSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetDetailUv(detail_uv BaseMaterial3DDetailUV, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetDetailUv(detail_uv BaseMaterial3DDetailUV, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetDetailUv() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetDetailUv()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetBlendMode(blend_mode BaseMaterial3DBlendMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetBlendMode(blend_mode BaseMaterial3DBlendMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetBlendMode() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetBlendMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetDepthDrawMode(depth_draw_mode BaseMaterial3DDepthDrawMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetDepthDrawMode(depth_draw_mode BaseMaterial3DDepthDrawMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetDepthDrawMode() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetDepthDrawMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetCullMode(cull_mode BaseMaterial3DCullMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetCullMode(cull_mode BaseMaterial3DCullMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetCullMode() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetCullMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetDiffuseMode(diffuse_mode BaseMaterial3DDiffuseMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetDiffuseMode(diffuse_mode BaseMaterial3DDiffuseMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetDiffuseMode() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetDiffuseMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetSpecularMode(specular_mode BaseMaterial3DSpecularMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetSpecularMode(specular_mode BaseMaterial3DSpecularMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetSpecularMode() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetSpecularMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetFlag(flag BaseMaterial3DFlags, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetFlag(flag BaseMaterial3DFlags, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetFlag(flag BaseMaterial3DFlags, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetFlag(flag BaseMaterial3DFlags, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetTextureFilter(mode BaseMaterial3DTextureFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetTextureFilter(mode BaseMaterial3DTextureFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetTextureFilter() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetTextureFilter()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetFeature(feature BaseMaterial3DFeature, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetFeature(feature BaseMaterial3DFeature, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetFeature(feature BaseMaterial3DFeature, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetFeature(feature BaseMaterial3DFeature, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetTexture(param BaseMaterial3DTextureParam, texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetTexture(param BaseMaterial3DTextureParam, texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetTexture(param BaseMaterial3DTextureParam, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetTexture(param BaseMaterial3DTextureParam, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetDetailBlendMode(detail_blend_mode BaseMaterial3DBlendMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetDetailBlendMode(detail_blend_mode BaseMaterial3DBlendMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetDetailBlendMode() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetDetailBlendMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetUv1Scale(scale Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetUv1Scale(scale Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetUv1Scale() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetUv1Scale()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetUv1Offset(offset Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetUv1Offset(offset Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetUv1Offset() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetUv1Offset()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetUv1TriplanarBlendSharpness(sharpness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetUv1TriplanarBlendSharpness(sharpness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetUv1TriplanarBlendSharpness() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetUv1TriplanarBlendSharpness()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetUv2Scale(scale Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetUv2Scale(scale Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetUv2Scale() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetUv2Scale()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetUv2Offset(offset Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetUv2Offset(offset Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetUv2Offset() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetUv2Offset()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetUv2TriplanarBlendSharpness(sharpness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetUv2TriplanarBlendSharpness(sharpness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetUv2TriplanarBlendSharpness() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetUv2TriplanarBlendSharpness()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetBillboardMode(mode BaseMaterial3DBillboardMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetBillboardMode(mode BaseMaterial3DBillboardMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetBillboardMode() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetBillboardMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetParticlesAnimHFrames(frames int, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetParticlesAnimHFrames(frames int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetParticlesAnimHFrames() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetParticlesAnimHFrames()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetParticlesAnimVFrames(frames int, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetParticlesAnimVFrames(frames int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetParticlesAnimVFrames() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetParticlesAnimVFrames()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetParticlesAnimLoop(loop bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetParticlesAnimLoop(loop bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetParticlesAnimLoop() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetParticlesAnimLoop()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetHeightmapDeepParallax(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetHeightmapDeepParallax(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) IsHeightmapDeepParallaxEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) IsHeightmapDeepParallaxEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetHeightmapDeepParallaxMinLayers(layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetHeightmapDeepParallaxMinLayers(layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetHeightmapDeepParallaxMinLayers() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetHeightmapDeepParallaxMinLayers()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetHeightmapDeepParallaxMaxLayers(layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetHeightmapDeepParallaxMaxLayers(layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetHeightmapDeepParallaxMaxLayers() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetHeightmapDeepParallaxMaxLayers()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetHeightmapDeepParallaxFlipTangent(flip bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetHeightmapDeepParallaxFlipTangent(flip bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetHeightmapDeepParallaxFlipTangent() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetHeightmapDeepParallaxFlipTangent()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetHeightmapDeepParallaxFlipBinormal(flip bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetHeightmapDeepParallaxFlipBinormal(flip bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetHeightmapDeepParallaxFlipBinormal() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetHeightmapDeepParallaxFlipBinormal()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetGrow(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetGrow(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetGrow() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetGrow()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetEmissionOperator(operator BaseMaterial3DEmissionOperator, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetEmissionOperator(operator BaseMaterial3DEmissionOperator, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetEmissionOperator() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetEmissionOperator()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetAoLightAffect(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetAoLightAffect(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetAoLightAffect() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetAoLightAffect()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetAlphaScissorThreshold(threshold float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetAlphaScissorThreshold(threshold float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetAlphaScissorThreshold() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetAlphaScissorThreshold()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetAlphaHashScale(threshold float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetAlphaHashScale(threshold float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetAlphaHashScale() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetAlphaHashScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetGrowEnabled(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetGrowEnabled(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) IsGrowEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) IsGrowEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetMetallicTextureChannel(channel BaseMaterial3DTextureChannel, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetMetallicTextureChannel(channel BaseMaterial3DTextureChannel, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetMetallicTextureChannel() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetMetallicTextureChannel()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetRoughnessTextureChannel(channel BaseMaterial3DTextureChannel, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetRoughnessTextureChannel(channel BaseMaterial3DTextureChannel, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetRoughnessTextureChannel() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetRoughnessTextureChannel()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetAoTextureChannel(channel BaseMaterial3DTextureChannel, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetAoTextureChannel(channel BaseMaterial3DTextureChannel, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetAoTextureChannel() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetAoTextureChannel()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetRefractionTextureChannel(channel BaseMaterial3DTextureChannel, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetRefractionTextureChannel(channel BaseMaterial3DTextureChannel, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetRefractionTextureChannel() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetRefractionTextureChannel()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetProximityFadeEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetProximityFadeEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) IsProximityFadeEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) IsProximityFadeEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetProximityFadeDistance(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetProximityFadeDistance(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetProximityFadeDistance() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetProximityFadeDistance()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetMsdfPixelRange(range_ float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetMsdfPixelRange(range_ float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetMsdfPixelRange() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetMsdfPixelRange()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetMsdfOutlineSize(size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetMsdfOutlineSize(size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetMsdfOutlineSize() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetMsdfOutlineSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetDistanceFade(mode BaseMaterial3DDistanceFadeMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetDistanceFade(mode BaseMaterial3DDistanceFadeMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetDistanceFade() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetDistanceFade()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetDistanceFadeMaxDistance(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetDistanceFadeMaxDistance(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetDistanceFadeMaxDistance() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetDistanceFadeMaxDistance()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) SetDistanceFadeMinDistance(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) SetDistanceFadeMinDistance(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetDistanceFadeMinDistance() { // TODO: return value
-  // TODO: implement
+func  (me *BaseMaterial3D) GetDistanceFadeMinDistance()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

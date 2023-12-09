@@ -16,7 +16,7 @@ type MyNode2D struct {
 }
 
 func (n *MyNode2D) Move(vec gdapi.Vector2) {
-	n.Node2D.SetPosition(vec.MulScalar(n.Speed))
+	n.Node2D.SetPosition(vec.MultiplyInt(n.Speed))
 }
 
 func (n *MyNode2D) X_Ready() {

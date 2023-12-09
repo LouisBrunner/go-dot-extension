@@ -25,14 +25,29 @@ func (me *Occluder3D) BaseClass() string {
   return "Occluder3D"
 }
 
-func  (me *Occluder3D) GetVertices() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Occluder3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Occluder3D) GetIndices() { // TODO: return value
-  // TODO: implement
+func (me *Occluder3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *Occluder3D) GetVertices()  {
+  panic("TODO: implement")
+}
+
+func  (me *Occluder3D) GetIndices()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

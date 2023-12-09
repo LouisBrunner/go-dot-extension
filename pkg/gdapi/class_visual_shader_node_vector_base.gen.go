@@ -25,6 +25,10 @@ func (me *VisualShaderNodeVectorBase) BaseClass() string {
   return "VisualShaderNodeVectorBase"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeVectorBaseOpType int
 const (
   VisualShaderNodeVectorBaseOpTypeOpTypeVector2D VisualShaderNodeVectorBaseOpType = 0
@@ -33,14 +37,25 @@ const (
   VisualShaderNodeVectorBaseOpTypeOpTypeMax VisualShaderNodeVectorBaseOpType = 3
 )
 
-func  (me *VisualShaderNodeVectorBase) SetOpType(type_ VisualShaderNodeVectorBaseOpType, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeVectorBase) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeVectorBase) GetOpType() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeVectorBase) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeVectorBase) SetOpType(type_ VisualShaderNodeVectorBaseOpType, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeVectorBase) GetOpType()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

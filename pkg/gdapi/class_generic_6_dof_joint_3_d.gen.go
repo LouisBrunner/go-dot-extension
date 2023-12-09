@@ -25,6 +25,10 @@ func (me *Generic6DOFJoint3D) BaseClass() string {
   return "Generic6DOFJoint3D"
 }
 
+
+
+// Enums
+
 type Generic6DOFJoint3DParam int
 const (
   Generic6DOFJoint3DParamParamLinearLowerLimit Generic6DOFJoint3DParam = 0
@@ -63,54 +67,65 @@ const (
   Generic6DOFJoint3DFlagFlagMax Generic6DOFJoint3DFlag = 6
 )
 
-func  (me *Generic6DOFJoint3D) SetParamX(param Generic6DOFJoint3DParam, value float32, ) { // TODO: return value
-  // TODO: implement
+func (me *Generic6DOFJoint3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Generic6DOFJoint3D) GetParamX(param Generic6DOFJoint3DParam, ) { // TODO: return value
-  // TODO: implement
+func (me *Generic6DOFJoint3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Generic6DOFJoint3D) SetParamY(param Generic6DOFJoint3DParam, value float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Generic6DOFJoint3D) SetParamX(param Generic6DOFJoint3DParam, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Generic6DOFJoint3D) GetParamY(param Generic6DOFJoint3DParam, ) { // TODO: return value
-  // TODO: implement
+func  (me *Generic6DOFJoint3D) GetParamX(param Generic6DOFJoint3DParam, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Generic6DOFJoint3D) SetParamZ(param Generic6DOFJoint3DParam, value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Generic6DOFJoint3D) SetParamY(param Generic6DOFJoint3DParam, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Generic6DOFJoint3D) GetParamZ(param Generic6DOFJoint3DParam, ) { // TODO: return value
-  // TODO: implement
+func  (me *Generic6DOFJoint3D) GetParamY(param Generic6DOFJoint3DParam, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Generic6DOFJoint3D) SetFlagX(flag Generic6DOFJoint3DFlag, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Generic6DOFJoint3D) SetParamZ(param Generic6DOFJoint3DParam, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Generic6DOFJoint3D) GetFlagX(flag Generic6DOFJoint3DFlag, ) { // TODO: return value
-  // TODO: implement
+func  (me *Generic6DOFJoint3D) GetParamZ(param Generic6DOFJoint3DParam, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Generic6DOFJoint3D) SetFlagY(flag Generic6DOFJoint3DFlag, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Generic6DOFJoint3D) SetFlagX(flag Generic6DOFJoint3DFlag, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Generic6DOFJoint3D) GetFlagY(flag Generic6DOFJoint3DFlag, ) { // TODO: return value
-  // TODO: implement
+func  (me *Generic6DOFJoint3D) GetFlagX(flag Generic6DOFJoint3DFlag, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Generic6DOFJoint3D) SetFlagZ(flag Generic6DOFJoint3DFlag, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Generic6DOFJoint3D) SetFlagY(flag Generic6DOFJoint3DFlag, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Generic6DOFJoint3D) GetFlagZ(flag Generic6DOFJoint3DFlag, ) { // TODO: return value
-  // TODO: implement
+func  (me *Generic6DOFJoint3D) GetFlagY(flag Generic6DOFJoint3DFlag, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Generic6DOFJoint3D) SetFlagZ(flag Generic6DOFJoint3DFlag, value bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Generic6DOFJoint3D) GetFlagZ(flag Generic6DOFJoint3DFlag, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

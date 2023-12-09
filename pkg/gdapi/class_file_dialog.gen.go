@@ -25,6 +25,10 @@ func (me *FileDialog) BaseClass() string {
   return "FileDialog"
 }
 
+
+
+// Enums
+
 type FileDialogFileMode int
 const (
   FileDialogFileModeFileModeOpenFile FileDialogFileMode = 0
@@ -41,102 +45,113 @@ const (
   FileDialogAccessAccessFilesystem FileDialogAccess = 2
 )
 
-func  (me *FileDialog) ClearFilters() { // TODO: return value
-  // TODO: implement
+func (me *FileDialog) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *FileDialog) AddFilter(filter String, description String, ) { // TODO: return value
-  // TODO: implement
+func (me *FileDialog) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *FileDialog) SetFilters(filters PackedStringArray, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *FileDialog) ClearFilters()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) GetFilters() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) AddFilter(filter String, description String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) GetCurrentDir() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) SetFilters(filters PackedStringArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) GetCurrentFile() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) GetFilters()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) GetCurrentPath() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) GetCurrentDir()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) SetCurrentDir(dir String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) GetCurrentFile()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) SetCurrentFile(file String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) GetCurrentPath()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) SetCurrentPath(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) SetCurrentDir(dir String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) SetModeOverridesTitle(override bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) SetCurrentFile(file String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) IsModeOverridingTitle() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) SetCurrentPath(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) SetFileMode(mode FileDialogFileMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) SetModeOverridesTitle(override bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) GetFileMode() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) IsModeOverridingTitle()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) GetVbox() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) SetFileMode(mode FileDialogFileMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) GetLineEdit() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) GetFileMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) SetAccess(access FileDialogAccess, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) GetVbox()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) GetAccess() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) GetLineEdit()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) SetRootSubfolder(dir String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) SetAccess(access FileDialogAccess, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) GetRootSubfolder() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) GetAccess()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) SetShowHiddenFiles(show bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) SetRootSubfolder(dir String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) IsShowingHiddenFiles() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) GetRootSubfolder()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) DeselectAll() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) SetShowHiddenFiles(show bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileDialog) Invalidate() { // TODO: return value
-  // TODO: implement
+func  (me *FileDialog) IsShowingHiddenFiles()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *FileDialog) DeselectAll()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *FileDialog) Invalidate()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

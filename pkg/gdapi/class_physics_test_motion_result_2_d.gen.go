@@ -25,58 +25,73 @@ func (me *PhysicsTestMotionResult2D) BaseClass() string {
   return "PhysicsTestMotionResult2D"
 }
 
-func  (me *PhysicsTestMotionResult2D) GetTravel() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsTestMotionResult2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsTestMotionResult2D) GetRemainder() { // TODO: return value
-  // TODO: implement
+func (me *PhysicsTestMotionResult2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsTestMotionResult2D) GetCollisionPoint() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicsTestMotionResult2D) GetTravel()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult2D) GetCollisionNormal() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult2D) GetRemainder()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult2D) GetColliderVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult2D) GetCollisionPoint()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult2D) GetColliderId() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult2D) GetCollisionNormal()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult2D) GetColliderRid() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult2D) GetColliderVelocity()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult2D) GetCollider() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult2D) GetColliderId()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult2D) GetColliderShape() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult2D) GetColliderRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult2D) GetCollisionLocalShape() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult2D) GetCollider()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult2D) GetCollisionDepth() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult2D) GetColliderShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult2D) GetCollisionSafeFraction() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult2D) GetCollisionLocalShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult2D) GetCollisionUnsafeFraction() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult2D) GetCollisionDepth()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsTestMotionResult2D) GetCollisionSafeFraction()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsTestMotionResult2D) GetCollisionUnsafeFraction()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,34 +25,49 @@ func (me *RegExMatch) BaseClass() string {
   return "RegExMatch"
 }
 
-func  (me *RegExMatch) GetSubject() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RegExMatch) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RegExMatch) GetGroupCount() { // TODO: return value
-  // TODO: implement
+func (me *RegExMatch) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RegExMatch) GetNames() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RegExMatch) GetSubject()  {
+  panic("TODO: implement")
 }
 
-func  (me *RegExMatch) GetStrings() { // TODO: return value
-  // TODO: implement
+func  (me *RegExMatch) GetGroupCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *RegExMatch) GetString(name Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *RegExMatch) GetNames()  {
+  panic("TODO: implement")
 }
 
-func  (me *RegExMatch) GetStart(name Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *RegExMatch) GetStrings()  {
+  panic("TODO: implement")
 }
 
-func  (me *RegExMatch) GetEnd(name Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *RegExMatch) GetString(name Variant, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RegExMatch) GetStart(name Variant, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RegExMatch) GetEnd(name Variant, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

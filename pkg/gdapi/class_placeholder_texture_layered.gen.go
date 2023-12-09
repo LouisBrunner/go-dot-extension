@@ -25,18 +25,33 @@ func (me *PlaceholderTextureLayered) BaseClass() string {
   return "PlaceholderTextureLayered"
 }
 
-func  (me *PlaceholderTextureLayered) SetSize(size Vector2i, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PlaceholderTextureLayered) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PlaceholderTextureLayered) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *PlaceholderTextureLayered) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PlaceholderTextureLayered) SetLayers(layers int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PlaceholderTextureLayered) SetSize(size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PlaceholderTextureLayered) GetSize()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PlaceholderTextureLayered) SetLayers(layers int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,21 @@ func (me *GodotPhysicsServer3D) BaseClass() string {
   return "GodotPhysicsServer3D"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *GodotPhysicsServer3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *GodotPhysicsServer3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

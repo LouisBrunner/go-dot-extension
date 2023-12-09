@@ -25,38 +25,53 @@ func (me *Skeleton2D) BaseClass() string {
   return "Skeleton2D"
 }
 
-func  (me *Skeleton2D) GetBoneCount() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Skeleton2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Skeleton2D) GetBone(idx int, ) { // TODO: return value
-  // TODO: implement
+func (me *Skeleton2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Skeleton2D) GetSkeleton() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Skeleton2D) GetBoneCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Skeleton2D) SetModificationStack(modification_stack SkeletonModificationStack2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *Skeleton2D) GetBone(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Skeleton2D) GetModificationStack() { // TODO: return value
-  // TODO: implement
+func  (me *Skeleton2D) GetSkeleton()  {
+  panic("TODO: implement")
 }
 
-func  (me *Skeleton2D) ExecuteModifications(delta float32, execution_mode int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Skeleton2D) SetModificationStack(modification_stack SkeletonModificationStack2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Skeleton2D) SetBoneLocalPoseOverride(bone_idx int, override_pose Transform2D, strength float32, persistent bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Skeleton2D) GetModificationStack()  {
+  panic("TODO: implement")
 }
 
-func  (me *Skeleton2D) GetBoneLocalPoseOverride(bone_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Skeleton2D) ExecuteModifications(delta float32, execution_mode int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Skeleton2D) SetBoneLocalPoseOverride(bone_idx int, override_pose Transform2D, strength float32, persistent bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Skeleton2D) GetBoneLocalPoseOverride(bone_idx int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

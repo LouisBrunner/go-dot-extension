@@ -25,26 +25,41 @@ func (me *CryptoKey) BaseClass() string {
   return "CryptoKey"
 }
 
-func  (me *CryptoKey) Save(path String, public_only bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CryptoKey) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CryptoKey) Load(path String, public_only bool, ) { // TODO: return value
-  // TODO: implement
+func (me *CryptoKey) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CryptoKey) IsPublicOnly() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CryptoKey) Save(path String, public_only bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CryptoKey) SaveToString(public_only bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CryptoKey) Load(path String, public_only bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CryptoKey) LoadFromString(string_key String, public_only bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CryptoKey) IsPublicOnly()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CryptoKey) SaveToString(public_only bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CryptoKey) LoadFromString(string_key String, public_only bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

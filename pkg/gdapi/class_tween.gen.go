@@ -25,6 +25,10 @@ func (me *Tween) BaseClass() string {
   return "Tween"
 }
 
+
+
+// Enums
+
 type TweenTweenProcessMode int
 const (
   TweenTweenProcessModeTweenProcessPhysics TweenTweenProcessMode = 0
@@ -62,102 +66,113 @@ const (
   TweenEaseTypeEaseOutIn TweenEaseType = 3
 )
 
-func  (me *Tween) TweenProperty(object Object, property NodePath, final_val Variant, duration float32, ) { // TODO: return value
-  // TODO: implement
+func (me *Tween) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Tween) TweenInterval(time float32, ) { // TODO: return value
-  // TODO: implement
+func (me *Tween) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Tween) TweenCallback(callback Callable, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Tween) TweenProperty(object Object, property NodePath, final_val Variant, duration float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) TweenMethod(method Callable, from Variant, to Variant, duration float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tween) TweenInterval(time float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) CustomStep(delta float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tween) TweenCallback(callback Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) Stop() { // TODO: return value
-  // TODO: implement
+func  (me *Tween) TweenMethod(method Callable, from Variant, to Variant, duration float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) Pause() { // TODO: return value
-  // TODO: implement
+func  (me *Tween) CustomStep(delta float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) Play() { // TODO: return value
-  // TODO: implement
+func  (me *Tween) Stop()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) Kill() { // TODO: return value
-  // TODO: implement
+func  (me *Tween) Pause()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) GetTotalElapsedTime() { // TODO: return value
-  // TODO: implement
+func  (me *Tween) Play()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) IsRunning() { // TODO: return value
-  // TODO: implement
+func  (me *Tween) Kill()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) IsValid() { // TODO: return value
-  // TODO: implement
+func  (me *Tween) GetTotalElapsedTime()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) BindNode(node Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tween) IsRunning()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) SetProcessMode(mode TweenTweenProcessMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tween) IsValid()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) SetPauseMode(mode TweenTweenPauseMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tween) BindNode(node Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) SetParallel(parallel bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tween) SetProcessMode(mode TweenTweenProcessMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) SetLoops(loops int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tween) SetPauseMode(mode TweenTweenPauseMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) GetLoopsLeft() { // TODO: return value
-  // TODO: implement
+func  (me *Tween) SetParallel(parallel bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) SetSpeedScale(speed float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tween) SetLoops(loops int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) SetTrans(trans TweenTransitionType, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tween) GetLoopsLeft()  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) SetEase(ease TweenEaseType, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tween) SetSpeedScale(speed float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) Parallel() { // TODO: return value
-  // TODO: implement
+func  (me *Tween) SetTrans(trans TweenTransitionType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Tween) Chain() { // TODO: return value
-  // TODO: implement
+func  (me *Tween) SetEase(ease TweenEaseType, )  {
+  panic("TODO: implement")
 }
 
-func  TweenInterpolateValue(initial_value Variant, delta_value Variant, elapsed_time float32, duration float32, trans_type TweenTransitionType, ease_type TweenEaseType, ) { // TODO: return value
-  // TODO: implement
+func  (me *Tween) Parallel()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Tween) Chain()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  TweenInterpolateValue(initial_value Variant, delta_value Variant, elapsed_time float32, duration float32, trans_type TweenTransitionType, ease_type TweenEaseType, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

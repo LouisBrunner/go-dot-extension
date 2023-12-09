@@ -25,46 +25,59 @@ func (me *ResourceUID) BaseClass() string {
   return "ResourceUID"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   ResourceUIDInvalidId = "-1" // TODO: construct correctly
 )
 
-func  (me *ResourceUID) IdToText(id int, ) { // TODO: return value
-  // TODO: implement
+// Enums
+
+func (me *ResourceUID) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ResourceUID) TextToId(text_id String, ) { // TODO: return value
-  // TODO: implement
+func (me *ResourceUID) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ResourceUID) CreateId() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ResourceUID) IdToText(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceUID) HasId(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceUID) TextToId(text_id String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceUID) AddId(id int, path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceUID) CreateId()  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceUID) SetId(id int, path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceUID) HasId(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceUID) GetIdPath(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceUID) AddId(id int, path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceUID) RemoveId(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceUID) SetId(id int, path String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ResourceUID) GetIdPath(id int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ResourceUID) RemoveId(id int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

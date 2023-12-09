@@ -25,10 +25,25 @@ func (me *Texture2DArray) BaseClass() string {
   return "Texture2DArray"
 }
 
-func  (me *Texture2DArray) CreatePlaceholder() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Texture2DArray) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *Texture2DArray) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *Texture2DArray) CreatePlaceholder()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

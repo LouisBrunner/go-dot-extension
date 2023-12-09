@@ -25,6 +25,21 @@ func (me *GDScriptEditorTranslationParserPlugin) BaseClass() string {
   return "GDScriptEditorTranslationParserPlugin"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *GDScriptEditorTranslationParserPlugin) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *GDScriptEditorTranslationParserPlugin) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

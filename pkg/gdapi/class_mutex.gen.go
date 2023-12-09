@@ -25,18 +25,33 @@ func (me *Mutex) BaseClass() string {
   return "Mutex"
 }
 
-func  (me *Mutex) Lock() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Mutex) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Mutex) TryLock() { // TODO: return value
-  // TODO: implement
+func (me *Mutex) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Mutex) Unlock() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Mutex) Lock()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Mutex) TryLock()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Mutex) Unlock()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

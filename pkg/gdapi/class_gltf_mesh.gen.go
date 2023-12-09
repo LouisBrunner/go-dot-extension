@@ -25,30 +25,45 @@ func (me *GLTFMesh) BaseClass() string {
   return "GLTFMesh"
 }
 
-func  (me *GLTFMesh) GetMesh() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFMesh) SetMesh(mesh ImporterMesh, ) { // TODO: return value
-  // TODO: implement
+func (me *GLTFMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GLTFMesh) GetBlendWeights() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GLTFMesh) GetMesh()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFMesh) SetBlendWeights(blend_weights PackedFloat32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFMesh) SetMesh(mesh ImporterMesh, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFMesh) GetInstanceMaterials() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFMesh) GetBlendWeights()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFMesh) SetInstanceMaterials(instance_materials Material, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFMesh) SetBlendWeights(blend_weights PackedFloat32Array, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFMesh) GetInstanceMaterials()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFMesh) SetInstanceMaterials(instance_materials Material, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

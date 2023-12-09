@@ -25,6 +25,21 @@ func (me *EditorExportPlatformMacOS) BaseClass() string {
   return "EditorExportPlatformMacOS"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *EditorExportPlatformMacOS) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *EditorExportPlatformMacOS) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,62 +25,77 @@ func (me *GLTFPhysicsBody) BaseClass() string {
   return "GLTFPhysicsBody"
 }
 
-func  GLTFPhysicsBodyFromNode(body_node CollisionObject3D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFPhysicsBody) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFPhysicsBody) ToNode() { // TODO: return value
-  // TODO: implement
+func (me *GLTFPhysicsBody) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  GLTFPhysicsBodyFromDictionary(dictionary Dictionary, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  GLTFPhysicsBodyFromNode(body_node CollisionObject3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsBody) ToDictionary() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsBody) ToNode()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsBody) GetBodyType() { // TODO: return value
-  // TODO: implement
+func  GLTFPhysicsBodyFromDictionary(dictionary Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsBody) SetBodyType(body_type String, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsBody) ToDictionary()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsBody) GetMass() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsBody) GetBodyType()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsBody) SetMass(mass float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsBody) SetBodyType(body_type String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsBody) GetLinearVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsBody) GetMass()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsBody) SetLinearVelocity(linear_velocity Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsBody) SetMass(mass float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsBody) GetAngularVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsBody) GetLinearVelocity()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsBody) SetAngularVelocity(angular_velocity Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsBody) SetLinearVelocity(linear_velocity Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsBody) GetInertiaTensor() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsBody) GetAngularVelocity()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsBody) SetInertiaTensor(inertia_tensor Basis, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsBody) SetAngularVelocity(angular_velocity Vector3, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFPhysicsBody) GetInertiaTensor()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFPhysicsBody) SetInertiaTensor(inertia_tensor Basis, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

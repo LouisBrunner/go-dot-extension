@@ -25,18 +25,33 @@ func (me *EditorResourceConversionPlugin) BaseClass() string {
   return "EditorResourceConversionPlugin"
 }
 
-func  (me *EditorResourceConversionPlugin) XConvertsTo() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorResourceConversionPlugin) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorResourceConversionPlugin) XHandles(resource Resource, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorResourceConversionPlugin) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorResourceConversionPlugin) XConvert(resource Resource, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorResourceConversionPlugin) XConvertsTo()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorResourceConversionPlugin) XHandles(resource Resource, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorResourceConversionPlugin) XConvert(resource Resource, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

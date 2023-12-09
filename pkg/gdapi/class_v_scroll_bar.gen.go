@@ -25,6 +25,21 @@ func (me *VScrollBar) BaseClass() string {
   return "VScrollBar"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *VScrollBar) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *VScrollBar) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

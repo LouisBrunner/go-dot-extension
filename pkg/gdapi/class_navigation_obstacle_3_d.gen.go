@@ -25,82 +25,97 @@ func (me *NavigationObstacle3D) BaseClass() string {
   return "NavigationObstacle3D"
 }
 
-func  (me *NavigationObstacle3D) GetRid() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *NavigationObstacle3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *NavigationObstacle3D) SetAvoidanceEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func (me *NavigationObstacle3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *NavigationObstacle3D) GetAvoidanceEnabled() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *NavigationObstacle3D) GetRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) SetNavigationMap(navigation_map RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) SetAvoidanceEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) GetNavigationMap() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) GetAvoidanceEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) SetNavigationMap(navigation_map RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) GetRadius() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) GetNavigationMap()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) SetHeight(height float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) SetRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) GetRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) SetVelocity(velocity Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) SetHeight(height float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) GetVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) GetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) SetVertices(vertices PackedVector3Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) SetVelocity(velocity Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) GetVertices() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) GetVelocity()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) SetAvoidanceLayers(layers int, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) SetVertices(vertices PackedVector3Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) GetAvoidanceLayers() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) GetVertices()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) SetAvoidanceLayerValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) SetAvoidanceLayers(layers int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) GetAvoidanceLayerValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) GetAvoidanceLayers()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) SetUse3DAvoidance(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) SetAvoidanceLayerValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle3D) GetUse3DAvoidance() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle3D) GetAvoidanceLayerValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *NavigationObstacle3D) SetUse3DAvoidance(enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *NavigationObstacle3D) GetUse3DAvoidance()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

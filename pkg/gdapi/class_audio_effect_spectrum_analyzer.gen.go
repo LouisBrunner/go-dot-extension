@@ -25,6 +25,10 @@ func (me *AudioEffectSpectrumAnalyzer) BaseClass() string {
   return "AudioEffectSpectrumAnalyzer"
 }
 
+
+
+// Enums
+
 type AudioEffectSpectrumAnalyzerFFTSize int
 const (
   AudioEffectSpectrumAnalyzerFFTSizeFftSize256 AudioEffectSpectrumAnalyzerFFTSize = 0
@@ -35,30 +39,41 @@ const (
   AudioEffectSpectrumAnalyzerFFTSizeFftSizeMax AudioEffectSpectrumAnalyzerFFTSize = 5
 )
 
-func  (me *AudioEffectSpectrumAnalyzer) SetBufferLength(seconds float32, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectSpectrumAnalyzer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectSpectrumAnalyzer) GetBufferLength() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectSpectrumAnalyzer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectSpectrumAnalyzer) SetTapBackPos(seconds float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectSpectrumAnalyzer) SetBufferLength(seconds float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectSpectrumAnalyzer) GetTapBackPos() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectSpectrumAnalyzer) GetBufferLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectSpectrumAnalyzer) SetFftSize(size AudioEffectSpectrumAnalyzerFFTSize, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectSpectrumAnalyzer) SetTapBackPos(seconds float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectSpectrumAnalyzer) GetFftSize() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectSpectrumAnalyzer) GetTapBackPos()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectSpectrumAnalyzer) SetFftSize(size AudioEffectSpectrumAnalyzerFFTSize, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectSpectrumAnalyzer) GetFftSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

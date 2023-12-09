@@ -25,78 +25,93 @@ func (me *AudioEffectChorus) BaseClass() string {
   return "AudioEffectChorus"
 }
 
-func  (me *AudioEffectChorus) SetVoiceCount(voices int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffectChorus) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectChorus) GetVoiceCount() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectChorus) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectChorus) SetVoiceDelayMs(voice_idx int, delay_ms float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectChorus) SetVoiceCount(voices int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) GetVoiceDelayMs(voice_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) GetVoiceCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) SetVoiceRateHz(voice_idx int, rate_hz float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) SetVoiceDelayMs(voice_idx int, delay_ms float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) GetVoiceRateHz(voice_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) GetVoiceDelayMs(voice_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) SetVoiceDepthMs(voice_idx int, depth_ms float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) SetVoiceRateHz(voice_idx int, rate_hz float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) GetVoiceDepthMs(voice_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) GetVoiceRateHz(voice_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) SetVoiceLevelDb(voice_idx int, level_db float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) SetVoiceDepthMs(voice_idx int, depth_ms float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) GetVoiceLevelDb(voice_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) GetVoiceDepthMs(voice_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) SetVoiceCutoffHz(voice_idx int, cutoff_hz float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) SetVoiceLevelDb(voice_idx int, level_db float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) GetVoiceCutoffHz(voice_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) GetVoiceLevelDb(voice_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) SetVoicePan(voice_idx int, pan float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) SetVoiceCutoffHz(voice_idx int, cutoff_hz float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) GetVoicePan(voice_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) GetVoiceCutoffHz(voice_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) SetWet(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) SetVoicePan(voice_idx int, pan float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) GetWet() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) GetVoicePan(voice_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) SetDry(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) SetWet(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectChorus) GetDry() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectChorus) GetWet()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectChorus) SetDry(amount float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectChorus) GetDry()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

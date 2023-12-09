@@ -25,150 +25,165 @@ func (me *TabContainer) BaseClass() string {
   return "TabContainer"
 }
 
-func  (me *TabContainer) GetTabCount() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *TabContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TabContainer) SetCurrentTab(tab_idx int, ) { // TODO: return value
-  // TODO: implement
+func (me *TabContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TabContainer) GetCurrentTab() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TabContainer) GetTabCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetPreviousTab() { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetCurrentTab(tab_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetCurrentTabControl() { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetCurrentTab()  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetTabControl(tab_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetPreviousTab()  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetTabAlignment(alignment TabBarAlignmentMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetCurrentTabControl()  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetTabAlignment() { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetTabControl(tab_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetClipTabs(clip_tabs bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetTabAlignment(alignment TabBarAlignmentMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetClipTabs() { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetTabAlignment()  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetTabsVisible(visible bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetClipTabs(clip_tabs bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) AreTabsVisible() { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetClipTabs()  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetAllTabsInFront(is_front bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetTabsVisible(visible bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) IsAllTabsInFront() { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) AreTabsVisible()  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetTabTitle(tab_idx int, title String, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetAllTabsInFront(is_front bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetTabTitle(tab_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) IsAllTabsInFront()  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetTabIcon(tab_idx int, icon Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetTabTitle(tab_idx int, title String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetTabIcon(tab_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetTabTitle(tab_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetTabDisabled(tab_idx int, disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetTabIcon(tab_idx int, icon Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) IsTabDisabled(tab_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetTabIcon(tab_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetTabHidden(tab_idx int, hidden bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetTabDisabled(tab_idx int, disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) IsTabHidden(tab_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) IsTabDisabled(tab_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetTabMetadata(tab_idx int, metadata Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetTabHidden(tab_idx int, hidden bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetTabMetadata(tab_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) IsTabHidden(tab_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetTabButtonIcon(tab_idx int, icon Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetTabMetadata(tab_idx int, metadata Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetTabButtonIcon(tab_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetTabMetadata(tab_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetTabIdxAtPoint(point Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetTabButtonIcon(tab_idx int, icon Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetTabIdxFromControl(control Control, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetTabButtonIcon(tab_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetPopup(popup Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetTabIdxAtPoint(point Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetPopup() { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetTabIdxFromControl(control Control, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetDragToRearrangeEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetPopup(popup Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetDragToRearrangeEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetPopup()  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetTabsRearrangeGroup(group_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetDragToRearrangeEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetTabsRearrangeGroup() { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetDragToRearrangeEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) SetUseHiddenTabsForMinSize(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) SetTabsRearrangeGroup(group_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TabContainer) GetUseHiddenTabsForMinSize() { // TODO: return value
-  // TODO: implement
+func  (me *TabContainer) GetTabsRearrangeGroup()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TabContainer) SetUseHiddenTabsForMinSize(enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TabContainer) GetUseHiddenTabsForMinSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

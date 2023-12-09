@@ -25,14 +25,29 @@ func (me *EditorCommandPalette) BaseClass() string {
   return "EditorCommandPalette"
 }
 
-func  (me *EditorCommandPalette) AddCommand(command_name String, key_name String, binded_callable Callable, shortcut_text String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorCommandPalette) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorCommandPalette) RemoveCommand(key_name String, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorCommandPalette) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *EditorCommandPalette) AddCommand(command_name String, key_name String, binded_callable Callable, shortcut_text String, )  {
+  panic("TODO: implement")
+}
+
+func  (me *EditorCommandPalette) RemoveCommand(key_name String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

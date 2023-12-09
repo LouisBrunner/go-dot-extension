@@ -25,6 +25,10 @@ func (me *TextureLayered) BaseClass() string {
   return "TextureLayered"
 }
 
+
+
+// Enums
+
 type TextureLayeredLayeredType int
 const (
   TextureLayeredLayeredTypeLayeredType2DArray TextureLayeredLayeredType = 0
@@ -32,62 +36,73 @@ const (
   TextureLayeredLayeredTypeLayeredTypeCubemapArray TextureLayeredLayeredType = 2
 )
 
-func  (me *TextureLayered) XGetFormat() { // TODO: return value
-  // TODO: implement
+func (me *TextureLayered) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TextureLayered) XGetLayeredType() { // TODO: return value
-  // TODO: implement
+func (me *TextureLayered) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TextureLayered) XGetWidth() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TextureLayered) XGetFormat()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureLayered) XGetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *TextureLayered) XGetLayeredType()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureLayered) XGetLayers() { // TODO: return value
-  // TODO: implement
+func  (me *TextureLayered) XGetWidth()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureLayered) XHasMipmaps() { // TODO: return value
-  // TODO: implement
+func  (me *TextureLayered) XGetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureLayered) XGetLayerData(layer_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureLayered) XGetLayers()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureLayered) GetFormat() { // TODO: return value
-  // TODO: implement
+func  (me *TextureLayered) XHasMipmaps()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureLayered) GetLayeredType() { // TODO: return value
-  // TODO: implement
+func  (me *TextureLayered) XGetLayerData(layer_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureLayered) GetWidth() { // TODO: return value
-  // TODO: implement
+func  (me *TextureLayered) GetFormat()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureLayered) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *TextureLayered) GetLayeredType()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureLayered) GetLayers() { // TODO: return value
-  // TODO: implement
+func  (me *TextureLayered) GetWidth()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureLayered) HasMipmaps() { // TODO: return value
-  // TODO: implement
+func  (me *TextureLayered) GetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureLayered) GetLayerData(layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureLayered) GetLayers()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TextureLayered) HasMipmaps()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TextureLayered) GetLayerData(layer int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

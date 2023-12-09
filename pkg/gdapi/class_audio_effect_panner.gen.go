@@ -25,14 +25,29 @@ func (me *AudioEffectPanner) BaseClass() string {
   return "AudioEffectPanner"
 }
 
-func  (me *AudioEffectPanner) SetPan(cpanume float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffectPanner) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectPanner) GetPan() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectPanner) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *AudioEffectPanner) SetPan(cpanume float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *AudioEffectPanner) GetPan()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

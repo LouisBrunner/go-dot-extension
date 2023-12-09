@@ -25,22 +25,37 @@ func (me *RefCounted) BaseClass() string {
   return "RefCounted"
 }
 
-func  (me *RefCounted) InitRef() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RefCounted) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RefCounted) Reference() { // TODO: return value
-  // TODO: implement
+func (me *RefCounted) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RefCounted) Unreference() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RefCounted) InitRef()  {
+  panic("TODO: implement")
 }
 
-func  (me *RefCounted) GetReferenceCount() { // TODO: return value
-  // TODO: implement
+func  (me *RefCounted) Reference()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RefCounted) Unreference()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RefCounted) GetReferenceCount()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

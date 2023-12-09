@@ -25,30 +25,45 @@ func (me *ReferenceRect) BaseClass() string {
   return "ReferenceRect"
 }
 
-func  (me *ReferenceRect) GetBorderColor() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ReferenceRect) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ReferenceRect) SetBorderColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func (me *ReferenceRect) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ReferenceRect) GetBorderWidth() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ReferenceRect) GetBorderColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReferenceRect) SetBorderWidth(width float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReferenceRect) SetBorderColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ReferenceRect) GetEditorOnly() { // TODO: return value
-  // TODO: implement
+func  (me *ReferenceRect) GetBorderWidth()  {
+  panic("TODO: implement")
 }
 
-func  (me *ReferenceRect) SetEditorOnly(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ReferenceRect) SetBorderWidth(width float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ReferenceRect) GetEditorOnly()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ReferenceRect) SetEditorOnly(enabled bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

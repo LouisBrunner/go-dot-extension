@@ -6,6 +6,7 @@ import (
 	"sync"
 	"unsafe"
 
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdapi"
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -27,12 +28,12 @@ func (me *extension) addClassCallbacks() {
 		me.freeClass(instance)
 	})
 	gdc.Callbacks.SetClassCreationInfoSetFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, pValue gdc.ConstVariantPtr) gdc.Bool {
-		me.Logf(LogLevelDebug, "SetClassCreationInfoSetFuncHandler: %s=%s", me.stringifyVariant(gdc.ConstVariantPtr(pName), 1024), me.stringifyVariant(gdc.ConstVariantPtr(pValue), 1024))
+		me.Logf(LogLevelDebug, "SetClassCreationInfoSetFuncHandler: %s=%s", gdapi.NewVariantWithC(gdc.ConstVariantPtr(pName)), gdapi.NewVariantWithC(pValue))
 		// TODO: implement
 		return gdc.Bool(0)
 	})
 	gdc.Callbacks.SetClassCreationInfoGetFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, rRet gdc.VariantPtr) gdc.Bool {
-		me.Logf(LogLevelDebug, "SetClassCreationInfoGetFuncHandler: %s", me.stringifyVariant(gdc.ConstVariantPtr(pName), 1024))
+		me.Logf(LogLevelDebug, "SetClassCreationInfoGetFuncHandler: %s", gdapi.NewVariantWithC(gdc.ConstVariantPtr(pName)))
 		// TODO: implement
 		return gdc.Bool(0)
 	})
@@ -56,17 +57,18 @@ func (me *extension) addClassCallbacks() {
 			return
 		}
 		for _, entry := range unsafe.Slice(pList, len(instance.class.properties)) {
-			me.freeStringName(entry.Name)
+			ptr := gdapi.StringNameFromPtr(entry.Name)
+			ptr.Destroy()
 		}
 		gdc.CFreePropertyInfo(pList)
 	})
 	gdc.Callbacks.SetClassCreationInfoPropertyCanRevertFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr) gdc.Bool {
-		me.Logf(LogLevelDebug, "SetClassCreationInfoPropertyCanRevertFuncHandler: %s", me.stringifyVariant(gdc.ConstVariantPtr(pName), 1024))
+		me.Logf(LogLevelDebug, "SetClassCreationInfoPropertyCanRevertFuncHandler: %s", gdapi.NewVariantWithC(gdc.ConstVariantPtr(pName)))
 		// TODO: implement
 		return gdc.Bool(0)
 	})
 	gdc.Callbacks.SetClassCreationInfoPropertyGetRevertFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, rRet gdc.VariantPtr) gdc.Bool {
-		me.Logf(LogLevelDebug, "SetClassCreationInfoPropertyGetRevertFuncHandler: %s", me.stringifyVariant(gdc.ConstVariantPtr(pName), 1024))
+		me.Logf(LogLevelDebug, "SetClassCreationInfoPropertyGetRevertFuncHandler: %s", gdapi.NewVariantWithC(gdc.ConstVariantPtr(pName)))
 		// TODO: implement
 		return gdc.Bool(0)
 	})
@@ -87,10 +89,8 @@ type classEntry struct {
 	constructor ClassConstructor
 	properties  []string
 
-	parentNamePtr  gdc.StringNamePtr
-	parentNameFree func()
-	namePtr        gdc.StringNamePtr
-	nameFree       func()
+	parentNamePtr gdapi.StringName
+	namePtr       gdapi.StringName
 
 	mutex     sync.Mutex
 	instances map[uint64]*classInstance
@@ -99,9 +99,9 @@ type classEntry struct {
 func (me *extension) makeProperties(class *classEntry) []gdc.PropertyInfo {
 	properties := gdc.CNewPropertyInfoArray(len(class.properties))
 	for i, name := range class.properties {
-		name, _ := me.makeStringName(name)
+		name := gdapi.StringNameFromStr(name)
 		properties[i] = gdc.PropertyInfo{
-			Name: name,
+			Name: name.AsPtr(),
 			Type: gdc.VariantTypeBool, // TODO: wrong
 			// TODO: missing loads of fields
 		}
@@ -145,23 +145,21 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 		properties = append(properties, field.Name)
 	}
 
-	namePtr, clean := me.makeStringName(name)
-	parentPtr, cleanParent := me.makeStringName(instance.BaseClass())
+	namePtr := gdapi.StringNameFromStr(name)
+	parentPtr := gdapi.StringNameFromStr(instance.BaseClass())
 
 	return &classEntry{
-		name:           name,
-		constructor:    ctr,
-		properties:     properties,
-		parentNamePtr:  parentPtr,
-		parentNameFree: cleanParent,
-		namePtr:        namePtr,
-		nameFree:       clean,
-		instances:      make(map[uint64]*classInstance),
+		name:          name,
+		constructor:   ctr,
+		properties:    properties,
+		parentNamePtr: parentPtr,
+		namePtr:       namePtr,
+		instances:     make(map[uint64]*classInstance),
 	}, nil
 }
 
 func (me *extension) registerClass(class *classEntry) {
-	me.iface.ClassdbRegisterExtensionClass(me.pLibrary, gdc.ConstStringNamePtr(class.namePtr), gdc.ConstStringNamePtr(class.parentNamePtr), &gdc.ClassCreationInfo{
+	me.iface.ClassdbRegisterExtensionClass(me.pLibrary, class.namePtr.AsCPtr(), class.parentNamePtr.AsCPtr(), &gdc.ClassCreationInfo{
 		ClassUserdata:      store(class),
 		CreateInstanceFunc: gdc.Callbacks.GetClassCreationInfoCreateInstanceFuncCallback(),
 		FreeInstanceFunc:   gdc.Callbacks.GetClassCreationInfoFreeInstanceFuncCallback(),
@@ -177,14 +175,14 @@ func (me *extension) registerClass(class *classEntry) {
 }
 
 func (me *extension) createClass(class *classEntry) gdc.ObjectPtr {
-	obj := me.iface.ClassdbConstructObject(gdc.ConstStringNamePtr(class.parentNamePtr))
+	obj := me.iface.ClassdbConstructObject(class.parentNamePtr.AsCPtr())
 	id := me.iface.ObjectGetInstanceId(gdc.ConstObjectPtr(obj))
 	instance := &classInstance{
 		class:    class,
 		instance: class.constructor(),
 		id:       id,
 	}
-	me.iface.ObjectSetInstance(obj, gdc.ConstStringNamePtr(class.namePtr), gdc.ClassInstancePtr(store(instance)))
+	me.iface.ObjectSetInstance(obj, class.namePtr.AsCPtr(), gdc.ClassInstancePtr(store(instance)))
 	instance.instance.SetBaseObject(obj)
 
 	// TODO: call constructor?
@@ -202,9 +200,7 @@ func (me *extension) freeClass(instance *classInstance) {
 }
 
 func (me *extension) unregisterClass(class *classEntry) {
-	defer func() {
-		class.parentNameFree()
-		class.nameFree()
-	}()
-	me.iface.ClassdbUnregisterExtensionClass(me.pLibrary, gdc.ConstStringNamePtr(class.namePtr))
+	defer class.namePtr.Destroy()
+	defer class.parentNamePtr.Destroy()
+	me.iface.ClassdbUnregisterExtensionClass(me.pLibrary, class.namePtr.AsCPtr())
 }

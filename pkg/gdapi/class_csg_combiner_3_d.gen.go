@@ -25,6 +25,21 @@ func (me *CSGCombiner3D) BaseClass() string {
   return "CSGCombiner3D"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *CSGCombiner3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *CSGCombiner3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

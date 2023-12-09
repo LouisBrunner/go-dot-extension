@@ -25,14 +25,29 @@ func (me *AudioEffectInstance) BaseClass() string {
   return "AudioEffectInstance"
 }
 
-func  (me *AudioEffectInstance) XProcess(src_buffer unsafe.Pointer, dst_buffer *AudioFrame, frame_count int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffectInstance) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectInstance) XProcessSilence() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectInstance) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *AudioEffectInstance) XProcess(src_buffer unsafe.Pointer, dst_buffer *AudioFrame, frame_count int, )  {
+  panic("TODO: implement")
+}
+
+func  (me *AudioEffectInstance) XProcessSilence()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

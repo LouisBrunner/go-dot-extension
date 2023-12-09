@@ -25,6 +25,10 @@ func (me *ResourceLoader) BaseClass() string {
   return "ResourceLoader"
 }
 
+
+
+// Enums
+
 type ResourceLoaderThreadLoadStatus int
 const (
   ResourceLoaderThreadLoadStatusThreadLoadInvalidResource ResourceLoaderThreadLoadStatus = 0
@@ -40,54 +44,65 @@ const (
   ResourceLoaderCacheModeCacheModeReplace ResourceLoaderCacheMode = 2
 )
 
-func  (me *ResourceLoader) LoadThreadedRequest(path String, type_hint String, use_sub_threads bool, cache_mode ResourceLoaderCacheMode, ) { // TODO: return value
-  // TODO: implement
+func (me *ResourceLoader) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ResourceLoader) LoadThreadedGetStatus(path String, progress Array, ) { // TODO: return value
-  // TODO: implement
+func (me *ResourceLoader) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ResourceLoader) LoadThreadedGet(path String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ResourceLoader) LoadThreadedRequest(path String, type_hint String, use_sub_threads bool, cache_mode ResourceLoaderCacheMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceLoader) Load(path String, type_hint String, cache_mode ResourceLoaderCacheMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceLoader) LoadThreadedGetStatus(path String, progress Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceLoader) GetRecognizedExtensionsForType(type_ String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceLoader) LoadThreadedGet(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceLoader) AddResourceFormatLoader(format_loader ResourceFormatLoader, at_front bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceLoader) Load(path String, type_hint String, cache_mode ResourceLoaderCacheMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceLoader) RemoveResourceFormatLoader(format_loader ResourceFormatLoader, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceLoader) GetRecognizedExtensionsForType(type_ String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceLoader) SetAbortOnMissingResources(abort bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceLoader) AddResourceFormatLoader(format_loader ResourceFormatLoader, at_front bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceLoader) GetDependencies(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceLoader) RemoveResourceFormatLoader(format_loader ResourceFormatLoader, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceLoader) HasCached(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceLoader) SetAbortOnMissingResources(abort bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceLoader) Exists(path String, type_hint String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceLoader) GetDependencies(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceLoader) GetResourceUid(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceLoader) HasCached(path String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ResourceLoader) Exists(path String, type_hint String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ResourceLoader) GetResourceUid(path String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

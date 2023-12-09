@@ -25,6 +25,10 @@ func (me *WebXRInterface) BaseClass() string {
   return "WebXRInterface"
 }
 
+
+
+// Enums
+
 type WebXRInterfaceTargetRayMode int
 const (
   WebXRInterfaceTargetRayModeTargetRayModeUnknown WebXRInterfaceTargetRayMode = 0
@@ -33,74 +37,85 @@ const (
   WebXRInterfaceTargetRayModeTargetRayModeScreen WebXRInterfaceTargetRayMode = 3
 )
 
-func  (me *WebXRInterface) IsSessionSupported(session_mode String, ) { // TODO: return value
-  // TODO: implement
+func (me *WebXRInterface) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *WebXRInterface) SetSessionMode(session_mode String, ) { // TODO: return value
-  // TODO: implement
+func (me *WebXRInterface) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *WebXRInterface) GetSessionMode() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *WebXRInterface) IsSessionSupported(session_mode String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) SetRequiredFeatures(required_features String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) SetSessionMode(session_mode String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) GetRequiredFeatures() { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) GetSessionMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) SetOptionalFeatures(optional_features String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) SetRequiredFeatures(required_features String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) GetOptionalFeatures() { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) GetRequiredFeatures()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) GetReferenceSpaceType() { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) SetOptionalFeatures(optional_features String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) SetRequestedReferenceSpaceTypes(requested_reference_space_types String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) GetOptionalFeatures()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) GetRequestedReferenceSpaceTypes() { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) GetReferenceSpaceType()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) IsInputSourceActive(input_source_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) SetRequestedReferenceSpaceTypes(requested_reference_space_types String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) GetInputSourceTracker(input_source_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) GetRequestedReferenceSpaceTypes()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) GetInputSourceTargetRayMode(input_source_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) IsInputSourceActive(input_source_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) GetVisibilityState() { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) GetInputSourceTracker(input_source_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) GetDisplayRefreshRate() { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) GetInputSourceTargetRayMode(input_source_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) SetDisplayRefreshRate(refresh_rate float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) GetVisibilityState()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) GetAvailableDisplayRefreshRates() { // TODO: return value
-  // TODO: implement
+func  (me *WebXRInterface) GetDisplayRefreshRate()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *WebXRInterface) SetDisplayRefreshRate(refresh_rate float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *WebXRInterface) GetAvailableDisplayRefreshRates()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

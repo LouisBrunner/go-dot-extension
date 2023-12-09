@@ -25,14 +25,29 @@ func (me *EditorSyntaxHighlighter) BaseClass() string {
   return "EditorSyntaxHighlighter"
 }
 
-func  (me *EditorSyntaxHighlighter) XGetName() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorSyntaxHighlighter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorSyntaxHighlighter) XGetSupportedLanguages() { // TODO: return value
-  // TODO: implement
+func (me *EditorSyntaxHighlighter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *EditorSyntaxHighlighter) XGetName()  {
+  panic("TODO: implement")
+}
+
+func  (me *EditorSyntaxHighlighter) XGetSupportedLanguages()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

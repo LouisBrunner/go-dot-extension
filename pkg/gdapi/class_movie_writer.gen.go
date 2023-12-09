@@ -25,34 +25,49 @@ func (me *MovieWriter) BaseClass() string {
   return "MovieWriter"
 }
 
-func  (me *MovieWriter) XGetAudioMixRate() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MovieWriter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MovieWriter) XGetAudioSpeakerMode() { // TODO: return value
-  // TODO: implement
+func (me *MovieWriter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MovieWriter) XHandlesFile(path String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MovieWriter) XGetAudioMixRate()  {
+  panic("TODO: implement")
 }
 
-func  (me *MovieWriter) XWriteBegin(movie_size Vector2i, fps int, base_path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *MovieWriter) XGetAudioSpeakerMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *MovieWriter) XWriteFrame(frame_image Image, audio_frame_block unsafe.Pointer, ) { // TODO: return value
-  // TODO: implement
+func  (me *MovieWriter) XHandlesFile(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MovieWriter) XWriteEnd() { // TODO: return value
-  // TODO: implement
+func  (me *MovieWriter) XWriteBegin(movie_size Vector2i, fps int, base_path String, )  {
+  panic("TODO: implement")
 }
 
-func  MovieWriterAddWriter(writer MovieWriter, ) { // TODO: return value
-  // TODO: implement
+func  (me *MovieWriter) XWriteFrame(frame_image Image, audio_frame_block unsafe.Pointer, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MovieWriter) XWriteEnd()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  MovieWriterAddWriter(writer MovieWriter, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,10 @@ func (me *SceneState) BaseClass() string {
   return "SceneState"
 }
 
+
+
+// Enums
+
 type SceneStateGenEditState int
 const (
   SceneStateGenEditStateGenEditStateDisabled SceneStateGenEditState = 0
@@ -33,90 +37,101 @@ const (
   SceneStateGenEditStateGenEditStateMainInherited SceneStateGenEditState = 3
 )
 
-func  (me *SceneState) GetNodeCount() { // TODO: return value
-  // TODO: implement
+func (me *SceneState) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SceneState) GetNodeType(idx int, ) { // TODO: return value
-  // TODO: implement
+func (me *SceneState) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SceneState) GetNodeName(idx int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SceneState) GetNodeCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetNodePath(idx int, for_parent bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetNodeType(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetNodeOwnerPath(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetNodeName(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) IsNodeInstancePlaceholder(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetNodePath(idx int, for_parent bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetNodeInstancePlaceholder(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetNodeOwnerPath(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetNodeInstance(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) IsNodeInstancePlaceholder(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetNodeGroups(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetNodeInstancePlaceholder(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetNodeIndex(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetNodeInstance(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetNodePropertyCount(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetNodeGroups(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetNodePropertyName(idx int, prop_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetNodeIndex(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetNodePropertyValue(idx int, prop_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetNodePropertyCount(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetConnectionCount() { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetNodePropertyName(idx int, prop_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetConnectionSource(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetNodePropertyValue(idx int, prop_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetConnectionSignal(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetConnectionCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetConnectionTarget(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetConnectionSource(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetConnectionMethod(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetConnectionSignal(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetConnectionFlags(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetConnectionTarget(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetConnectionBinds(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetConnectionMethod(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SceneState) GetConnectionUnbinds(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SceneState) GetConnectionFlags(idx int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SceneState) GetConnectionBinds(idx int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SceneState) GetConnectionUnbinds(idx int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

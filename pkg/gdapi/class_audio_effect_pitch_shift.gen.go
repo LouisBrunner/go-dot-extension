@@ -25,6 +25,10 @@ func (me *AudioEffectPitchShift) BaseClass() string {
   return "AudioEffectPitchShift"
 }
 
+
+
+// Enums
+
 type AudioEffectPitchShiftFFTSize int
 const (
   AudioEffectPitchShiftFFTSizeFftSize256 AudioEffectPitchShiftFFTSize = 0
@@ -35,30 +39,41 @@ const (
   AudioEffectPitchShiftFFTSizeFftSizeMax AudioEffectPitchShiftFFTSize = 5
 )
 
-func  (me *AudioEffectPitchShift) SetPitchScale(rate float32, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectPitchShift) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectPitchShift) GetPitchScale() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectPitchShift) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectPitchShift) SetOversampling(amount int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectPitchShift) SetPitchScale(rate float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectPitchShift) GetOversampling() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectPitchShift) GetPitchScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectPitchShift) SetFftSize(size AudioEffectPitchShiftFFTSize, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectPitchShift) SetOversampling(amount int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectPitchShift) GetFftSize() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectPitchShift) GetOversampling()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectPitchShift) SetFftSize(size AudioEffectPitchShiftFFTSize, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectPitchShift) GetFftSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,30 +25,45 @@ func (me *RDAttachmentFormat) BaseClass() string {
   return "RDAttachmentFormat"
 }
 
-func  (me *RDAttachmentFormat) SetFormat(p_member RenderingDeviceDataFormat, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDAttachmentFormat) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDAttachmentFormat) GetFormat() { // TODO: return value
-  // TODO: implement
+func (me *RDAttachmentFormat) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDAttachmentFormat) SetSamples(p_member RenderingDeviceTextureSamples, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDAttachmentFormat) SetFormat(p_member RenderingDeviceDataFormat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDAttachmentFormat) GetSamples() { // TODO: return value
-  // TODO: implement
+func  (me *RDAttachmentFormat) GetFormat()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDAttachmentFormat) SetUsageFlags(p_member int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDAttachmentFormat) SetSamples(p_member RenderingDeviceTextureSamples, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDAttachmentFormat) GetUsageFlags() { // TODO: return value
-  // TODO: implement
+func  (me *RDAttachmentFormat) GetSamples()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDAttachmentFormat) SetUsageFlags(p_member int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDAttachmentFormat) GetUsageFlags()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

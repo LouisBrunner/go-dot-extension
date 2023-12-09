@@ -25,18 +25,33 @@ func (me *EditorFileSystemImportFormatSupportQuery) BaseClass() string {
   return "EditorFileSystemImportFormatSupportQuery"
 }
 
-func  (me *EditorFileSystemImportFormatSupportQuery) XIsActive() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorFileSystemImportFormatSupportQuery) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorFileSystemImportFormatSupportQuery) XGetFileExtensions() { // TODO: return value
-  // TODO: implement
+func (me *EditorFileSystemImportFormatSupportQuery) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorFileSystemImportFormatSupportQuery) XQuery() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorFileSystemImportFormatSupportQuery) XIsActive()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorFileSystemImportFormatSupportQuery) XGetFileExtensions()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorFileSystemImportFormatSupportQuery) XQuery()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

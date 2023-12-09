@@ -25,18 +25,33 @@ func (me *VideoStream) BaseClass() string {
   return "VideoStream"
 }
 
-func  (me *VideoStream) XInstantiatePlayback() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VideoStream) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VideoStream) SetFile(file String, ) { // TODO: return value
-  // TODO: implement
+func (me *VideoStream) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VideoStream) GetFile() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VideoStream) XInstantiatePlayback()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VideoStream) SetFile(file String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VideoStream) GetFile()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

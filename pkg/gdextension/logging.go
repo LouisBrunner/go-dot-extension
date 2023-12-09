@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdapi"
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -35,7 +36,7 @@ func (me *extension) LogDetailedf(level LogLevel, description, function, file st
 	case LogLevelWarning:
 		me.iface.PrintWarningWithMessage(description, msg, function, file, lineC, notifyEditorC)
 	case LogLevelInfo:
-		me.callPrint(fmt.Sprintf("%s: %s", description, msg))
+		gdapi.Utilities.Print(gdapi.NewVariantFrom(gdapi.StringFromStr(fmt.Sprintf("%s: %s", description, msg))))
 	case LogLevelDebug:
 	default:
 		log.Printf("unknown log level %q for %q", level, msg)

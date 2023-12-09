@@ -25,6 +25,21 @@ func (me *EditorExportPlatformAndroid) BaseClass() string {
   return "EditorExportPlatformAndroid"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *EditorExportPlatformAndroid) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *EditorExportPlatformAndroid) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

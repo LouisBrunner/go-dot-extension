@@ -25,14 +25,29 @@ func (me *GLTFAnimation) BaseClass() string {
   return "GLTFAnimation"
 }
 
-func  (me *GLTFAnimation) GetLoop() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFAnimation) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFAnimation) SetLoop(loop bool, ) { // TODO: return value
-  // TODO: implement
+func (me *GLTFAnimation) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *GLTFAnimation) GetLoop()  {
+  panic("TODO: implement")
+}
+
+func  (me *GLTFAnimation) SetLoop(loop bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

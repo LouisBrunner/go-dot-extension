@@ -25,26 +25,41 @@ func (me *AudioEffectRecord) BaseClass() string {
   return "AudioEffectRecord"
 }
 
-func  (me *AudioEffectRecord) SetRecordingActive(record bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffectRecord) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectRecord) IsRecordingActive() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectRecord) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectRecord) SetFormat(format AudioStreamWAVFormat, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectRecord) SetRecordingActive(record bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectRecord) GetFormat() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectRecord) IsRecordingActive()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectRecord) GetRecording() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectRecord) SetFormat(format AudioStreamWAVFormat, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectRecord) GetFormat()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectRecord) GetRecording()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,78 +25,93 @@ func (me *LabelSettings) BaseClass() string {
   return "LabelSettings"
 }
 
-func  (me *LabelSettings) SetLineSpacing(spacing float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *LabelSettings) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *LabelSettings) GetLineSpacing() { // TODO: return value
-  // TODO: implement
+func (me *LabelSettings) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *LabelSettings) SetFont(font Font, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *LabelSettings) SetLineSpacing(spacing float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) GetFont() { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) GetLineSpacing()  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) SetFontSize(size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) SetFont(font Font, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) GetFontSize() { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) GetFont()  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) SetFontColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) SetFontSize(size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) GetFontColor() { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) GetFontSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) SetOutlineSize(size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) SetFontColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) GetOutlineSize() { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) GetFontColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) SetOutlineColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) SetOutlineSize(size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) GetOutlineColor() { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) GetOutlineSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) SetShadowSize(size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) SetOutlineColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) GetShadowSize() { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) GetOutlineColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) SetShadowColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) SetShadowSize(size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) GetShadowColor() { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) GetShadowSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) SetShadowOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) SetShadowColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LabelSettings) GetShadowOffset() { // TODO: return value
-  // TODO: implement
+func  (me *LabelSettings) GetShadowColor()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *LabelSettings) SetShadowOffset(offset Vector2, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *LabelSettings) GetShadowOffset()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

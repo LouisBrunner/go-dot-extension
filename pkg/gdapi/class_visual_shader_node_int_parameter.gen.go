@@ -25,6 +25,10 @@ func (me *VisualShaderNodeIntParameter) BaseClass() string {
   return "VisualShaderNodeIntParameter"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeIntParameterHint int
 const (
   VisualShaderNodeIntParameterHintHintNone VisualShaderNodeIntParameterHint = 0
@@ -33,54 +37,65 @@ const (
   VisualShaderNodeIntParameterHintHintMax VisualShaderNodeIntParameterHint = 3
 )
 
-func  (me *VisualShaderNodeIntParameter) SetHint(hint VisualShaderNodeIntParameterHint, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeIntParameter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeIntParameter) GetHint() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeIntParameter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeIntParameter) SetMin(value int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeIntParameter) SetHint(hint VisualShaderNodeIntParameterHint, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeIntParameter) GetMin() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeIntParameter) GetHint()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeIntParameter) SetMax(value int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeIntParameter) SetMin(value int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeIntParameter) GetMax() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeIntParameter) GetMin()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeIntParameter) SetStep(value int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeIntParameter) SetMax(value int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeIntParameter) GetStep() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeIntParameter) GetMax()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeIntParameter) SetDefaultValueEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeIntParameter) SetStep(value int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeIntParameter) IsDefaultValueEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeIntParameter) GetStep()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeIntParameter) SetDefaultValue(value int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeIntParameter) SetDefaultValueEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeIntParameter) GetDefaultValue() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeIntParameter) IsDefaultValueEnabled()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeIntParameter) SetDefaultValue(value int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeIntParameter) GetDefaultValue()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

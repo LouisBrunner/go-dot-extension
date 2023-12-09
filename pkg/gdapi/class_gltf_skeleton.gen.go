@@ -25,50 +25,65 @@ func (me *GLTFSkeleton) BaseClass() string {
   return "GLTFSkeleton"
 }
 
-func  (me *GLTFSkeleton) GetJoints() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFSkeleton) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFSkeleton) SetJoints(joints PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+func (me *GLTFSkeleton) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GLTFSkeleton) GetRoots() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GLTFSkeleton) GetJoints()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSkeleton) SetRoots(roots PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSkeleton) SetJoints(joints PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSkeleton) GetGodotSkeleton() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSkeleton) GetRoots()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSkeleton) GetUniqueNames() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSkeleton) SetRoots(roots PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSkeleton) SetUniqueNames(unique_names String, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSkeleton) GetGodotSkeleton()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSkeleton) GetGodotBoneNode() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSkeleton) GetUniqueNames()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSkeleton) SetGodotBoneNode(godot_bone_node Dictionary, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSkeleton) SetUniqueNames(unique_names String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSkeleton) GetBoneAttachmentCount() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSkeleton) GetGodotBoneNode()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSkeleton) GetBoneAttachment(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSkeleton) SetGodotBoneNode(godot_bone_node Dictionary, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFSkeleton) GetBoneAttachmentCount()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFSkeleton) GetBoneAttachment(idx int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

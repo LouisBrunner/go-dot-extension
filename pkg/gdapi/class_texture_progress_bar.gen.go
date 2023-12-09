@@ -25,6 +25,10 @@ func (me *TextureProgressBar) BaseClass() string {
   return "TextureProgressBar"
 }
 
+
+
+// Enums
+
 type TextureProgressBarFillMode int
 const (
   TextureProgressBarFillModeFillLeftToRight TextureProgressBarFillMode = 0
@@ -38,110 +42,121 @@ const (
   TextureProgressBarFillModeFillClockwiseAndCounterClockwise TextureProgressBarFillMode = 8
 )
 
-func  (me *TextureProgressBar) SetUnderTexture(tex Texture2D, ) { // TODO: return value
-  // TODO: implement
+func (me *TextureProgressBar) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TextureProgressBar) GetUnderTexture() { // TODO: return value
-  // TODO: implement
+func (me *TextureProgressBar) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TextureProgressBar) SetProgressTexture(tex Texture2D, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TextureProgressBar) SetUnderTexture(tex Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetProgressTexture() { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetUnderTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) SetOverTexture(tex Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) SetProgressTexture(tex Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetOverTexture() { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetProgressTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) SetFillMode(mode int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) SetOverTexture(tex Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetFillMode() { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetOverTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) SetTintUnder(tint Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) SetFillMode(mode int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetTintUnder() { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetFillMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) SetTintProgress(tint Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) SetTintUnder(tint Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetTintProgress() { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetTintUnder()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) SetTintOver(tint Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) SetTintProgress(tint Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetTintOver() { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetTintProgress()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) SetTextureProgressOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) SetTintOver(tint Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetTextureProgressOffset() { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetTintOver()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) SetRadialInitialAngle(mode float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) SetTextureProgressOffset(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetRadialInitialAngle() { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetTextureProgressOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) SetRadialCenterOffset(mode Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) SetRadialInitialAngle(mode float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetRadialCenterOffset() { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetRadialInitialAngle()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) SetFillDegrees(mode float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) SetRadialCenterOffset(mode Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetFillDegrees() { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetRadialCenterOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) SetStretchMargin(margin Side, value int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) SetFillDegrees(mode float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetStretchMargin(margin Side, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetFillDegrees()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) SetNinePatchStretch(stretch bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) SetStretchMargin(margin Side, value int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextureProgressBar) GetNinePatchStretch() { // TODO: return value
-  // TODO: implement
+func  (me *TextureProgressBar) GetStretchMargin(margin Side, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TextureProgressBar) SetNinePatchStretch(stretch bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TextureProgressBar) GetNinePatchStretch()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

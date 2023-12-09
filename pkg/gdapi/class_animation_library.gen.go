@@ -25,30 +25,45 @@ func (me *AnimationLibrary) BaseClass() string {
   return "AnimationLibrary"
 }
 
-func  (me *AnimationLibrary) AddAnimation(name StringName, animation Animation, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AnimationLibrary) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AnimationLibrary) RemoveAnimation(name StringName, ) { // TODO: return value
-  // TODO: implement
+func (me *AnimationLibrary) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AnimationLibrary) RenameAnimation(name StringName, newname StringName, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AnimationLibrary) AddAnimation(name StringName, animation Animation, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationLibrary) HasAnimation(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationLibrary) RemoveAnimation(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationLibrary) GetAnimation(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationLibrary) RenameAnimation(name StringName, newname StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationLibrary) GetAnimationList() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationLibrary) HasAnimation(name StringName, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AnimationLibrary) GetAnimation(name StringName, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AnimationLibrary) GetAnimationList()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

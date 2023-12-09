@@ -25,62 +25,77 @@ func (me *PhysicsTestMotionParameters2D) BaseClass() string {
   return "PhysicsTestMotionParameters2D"
 }
 
-func  (me *PhysicsTestMotionParameters2D) GetFrom() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsTestMotionParameters2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsTestMotionParameters2D) SetFrom(from Transform2D, ) { // TODO: return value
-  // TODO: implement
+func (me *PhysicsTestMotionParameters2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsTestMotionParameters2D) GetMotion() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicsTestMotionParameters2D) GetFrom()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters2D) SetMotion(motion Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters2D) SetFrom(from Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters2D) GetMargin() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters2D) GetMotion()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters2D) SetMargin(margin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters2D) SetMotion(motion Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters2D) IsCollideSeparationRayEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters2D) GetMargin()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters2D) SetCollideSeparationRayEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters2D) SetMargin(margin float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters2D) GetExcludeBodies() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters2D) IsCollideSeparationRayEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters2D) SetExcludeBodies(exclude_list RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters2D) SetCollideSeparationRayEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters2D) GetExcludeObjects() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters2D) GetExcludeBodies()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters2D) SetExcludeObjects(exclude_list int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters2D) SetExcludeBodies(exclude_list RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters2D) IsRecoveryAsCollisionEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters2D) GetExcludeObjects()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters2D) SetRecoveryAsCollisionEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters2D) SetExcludeObjects(exclude_list int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsTestMotionParameters2D) IsRecoveryAsCollisionEnabled()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsTestMotionParameters2D) SetRecoveryAsCollisionEnabled(enabled bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

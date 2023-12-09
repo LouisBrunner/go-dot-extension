@@ -25,6 +25,21 @@ func (me *PointMesh) BaseClass() string {
   return "PointMesh"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *PointMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *PointMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

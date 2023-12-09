@@ -25,22 +25,37 @@ func (me *GLTFTexture) BaseClass() string {
   return "GLTFTexture"
 }
 
-func  (me *GLTFTexture) GetSrcImage() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFTexture) SetSrcImage(src_image int, ) { // TODO: return value
-  // TODO: implement
+func (me *GLTFTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GLTFTexture) GetSampler() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GLTFTexture) GetSrcImage()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFTexture) SetSampler(sampler int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFTexture) SetSrcImage(src_image int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFTexture) GetSampler()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFTexture) SetSampler(sampler int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

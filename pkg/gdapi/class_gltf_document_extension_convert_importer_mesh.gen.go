@@ -25,6 +25,21 @@ func (me *GLTFDocumentExtensionConvertImporterMesh) BaseClass() string {
   return "GLTFDocumentExtensionConvertImporterMesh"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *GLTFDocumentExtensionConvertImporterMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *GLTFDocumentExtensionConvertImporterMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,10 +25,25 @@ func (me *OptimizedTranslation) BaseClass() string {
   return "OptimizedTranslation"
 }
 
-func  (me *OptimizedTranslation) Generate(from Translation, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *OptimizedTranslation) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *OptimizedTranslation) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *OptimizedTranslation) Generate(from Translation, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

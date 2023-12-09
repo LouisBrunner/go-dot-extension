@@ -25,18 +25,33 @@ func (me *PhysicsServer3DRenderingServerHandler) BaseClass() string {
   return "PhysicsServer3DRenderingServerHandler"
 }
 
-func  (me *PhysicsServer3DRenderingServerHandler) XSetVertex(vertex_id int, vertices unsafe.Pointer, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsServer3DRenderingServerHandler) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsServer3DRenderingServerHandler) XSetNormal(vertex_id int, normals unsafe.Pointer, ) { // TODO: return value
-  // TODO: implement
+func (me *PhysicsServer3DRenderingServerHandler) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsServer3DRenderingServerHandler) XSetAabb(aabb AABB, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicsServer3DRenderingServerHandler) XSetVertex(vertex_id int, vertices unsafe.Pointer, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsServer3DRenderingServerHandler) XSetNormal(vertex_id int, normals unsafe.Pointer, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsServer3DRenderingServerHandler) XSetAabb(aabb AABB, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

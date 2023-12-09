@@ -25,66 +25,81 @@ func (me *NavigationObstacle2D) BaseClass() string {
   return "NavigationObstacle2D"
 }
 
-func  (me *NavigationObstacle2D) GetRid() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *NavigationObstacle2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *NavigationObstacle2D) SetAvoidanceEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func (me *NavigationObstacle2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *NavigationObstacle2D) GetAvoidanceEnabled() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *NavigationObstacle2D) GetRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) SetNavigationMap(navigation_map RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) SetAvoidanceEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) GetNavigationMap() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) GetAvoidanceEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) SetNavigationMap(navigation_map RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) GetRadius() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) GetNavigationMap()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) SetVelocity(velocity Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) SetRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) GetVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) GetRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) SetVertices(vertices PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) SetVelocity(velocity Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) GetVertices() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) GetVelocity()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) SetAvoidanceLayers(layers int, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) SetVertices(vertices PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) GetAvoidanceLayers() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) GetVertices()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) SetAvoidanceLayerValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) SetAvoidanceLayers(layers int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationObstacle2D) GetAvoidanceLayerValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationObstacle2D) GetAvoidanceLayers()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *NavigationObstacle2D) SetAvoidanceLayerValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *NavigationObstacle2D) GetAvoidanceLayerValue(layer_number int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

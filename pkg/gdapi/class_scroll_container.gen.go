@@ -25,6 +25,10 @@ func (me *ScrollContainer) BaseClass() string {
   return "ScrollContainer"
 }
 
+
+
+// Enums
+
 type ScrollContainerScrollMode int
 const (
   ScrollContainerScrollModeScrollModeDisabled ScrollContainerScrollMode = 0
@@ -33,82 +37,93 @@ const (
   ScrollContainerScrollModeScrollModeShowNever ScrollContainerScrollMode = 3
 )
 
-func  (me *ScrollContainer) SetHScroll(value int, ) { // TODO: return value
-  // TODO: implement
+func (me *ScrollContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ScrollContainer) GetHScroll() { // TODO: return value
-  // TODO: implement
+func (me *ScrollContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ScrollContainer) SetVScroll(value int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ScrollContainer) SetHScroll(value int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) GetVScroll() { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) GetHScroll()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) SetHorizontalCustomStep(value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) SetVScroll(value int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) GetHorizontalCustomStep() { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) GetVScroll()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) SetVerticalCustomStep(value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) SetHorizontalCustomStep(value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) GetVerticalCustomStep() { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) GetHorizontalCustomStep()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) SetHorizontalScrollMode(enable ScrollContainerScrollMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) SetVerticalCustomStep(value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) GetHorizontalScrollMode() { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) GetVerticalCustomStep()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) SetVerticalScrollMode(enable ScrollContainerScrollMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) SetHorizontalScrollMode(enable ScrollContainerScrollMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) GetVerticalScrollMode() { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) GetHorizontalScrollMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) SetDeadzone(deadzone int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) SetVerticalScrollMode(enable ScrollContainerScrollMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) GetDeadzone() { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) GetVerticalScrollMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) SetFollowFocus(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) SetDeadzone(deadzone int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) IsFollowingFocus() { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) GetDeadzone()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) GetHScrollBar() { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) SetFollowFocus(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) GetVScrollBar() { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) IsFollowingFocus()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScrollContainer) EnsureControlVisible(control Control, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScrollContainer) GetHScrollBar()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ScrollContainer) GetVScrollBar()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ScrollContainer) EnsureControlVisible(control Control, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

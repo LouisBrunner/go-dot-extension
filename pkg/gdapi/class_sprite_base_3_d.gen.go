@@ -25,6 +25,10 @@ func (me *SpriteBase3D) BaseClass() string {
   return "SpriteBase3D"
 }
 
+
+
+// Enums
+
 type SpriteBase3DDrawFlags int
 const (
   SpriteBase3DDrawFlagsFlagTransparent SpriteBase3DDrawFlags = 0
@@ -43,142 +47,153 @@ const (
   SpriteBase3DAlphaCutModeAlphaCutHash SpriteBase3DAlphaCutMode = 3
 )
 
-func  (me *SpriteBase3D) SetCentered(centered bool, ) { // TODO: return value
-  // TODO: implement
+func (me *SpriteBase3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SpriteBase3D) IsCentered() { // TODO: return value
-  // TODO: implement
+func (me *SpriteBase3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SpriteBase3D) SetOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SpriteBase3D) SetCentered(centered bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetOffset() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) IsCentered()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetFlipH(flip_h bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetOffset(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) IsFlippedH() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetFlipV(flip_v bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetFlipH(flip_h bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) IsFlippedV() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) IsFlippedH()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetModulate(modulate Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetFlipV(flip_v bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetModulate() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) IsFlippedV()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetRenderPriority(priority int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetModulate(modulate Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetRenderPriority() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetModulate()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetPixelSize(pixel_size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetRenderPriority(priority int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetPixelSize() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetRenderPriority()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetAxis(axis Vector3Axis, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetPixelSize(pixel_size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetAxis() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetPixelSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetDrawFlag(flag SpriteBase3DDrawFlags, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetAxis(axis Vector3Axis, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetDrawFlag(flag SpriteBase3DDrawFlags, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetAxis()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetAlphaCutMode(mode SpriteBase3DAlphaCutMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetDrawFlag(flag SpriteBase3DDrawFlags, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetAlphaCutMode() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetDrawFlag(flag SpriteBase3DDrawFlags, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetAlphaScissorThreshold(threshold float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetAlphaCutMode(mode SpriteBase3DAlphaCutMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetAlphaScissorThreshold() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetAlphaCutMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetAlphaHashScale(threshold float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetAlphaScissorThreshold(threshold float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetAlphaHashScale() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetAlphaScissorThreshold()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetAlphaAntialiasing(alpha_aa BaseMaterial3DAlphaAntiAliasing, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetAlphaHashScale(threshold float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetAlphaAntialiasing() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetAlphaHashScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetAlphaAntialiasingEdge(edge float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetAlphaAntialiasing(alpha_aa BaseMaterial3DAlphaAntiAliasing, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetAlphaAntialiasingEdge() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetAlphaAntialiasing()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetBillboardMode(mode BaseMaterial3DBillboardMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetAlphaAntialiasingEdge(edge float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetBillboardMode() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetAlphaAntialiasingEdge()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) SetTextureFilter(mode BaseMaterial3DTextureFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetBillboardMode(mode BaseMaterial3DBillboardMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetTextureFilter() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetBillboardMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GetItemRect() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) SetTextureFilter(mode BaseMaterial3DTextureFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteBase3D) GenerateTriangleMesh() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteBase3D) GetTextureFilter()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SpriteBase3D) GetItemRect()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SpriteBase3D) GenerateTriangleMesh()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,48 +25,63 @@ func (me *NavigationPathQueryResult3D) BaseClass() string {
   return "NavigationPathQueryResult3D"
 }
 
+
+
+// Enums
+
 type NavigationPathQueryResult3DPathSegmentType int
 const (
   NavigationPathQueryResult3DPathSegmentTypePathSegmentTypeRegion NavigationPathQueryResult3DPathSegmentType = 0
   NavigationPathQueryResult3DPathSegmentTypePathSegmentTypeLink NavigationPathQueryResult3DPathSegmentType = 1
 )
 
-func  (me *NavigationPathQueryResult3D) SetPath(path PackedVector3Array, ) { // TODO: return value
-  // TODO: implement
+func (me *NavigationPathQueryResult3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *NavigationPathQueryResult3D) GetPath() { // TODO: return value
-  // TODO: implement
+func (me *NavigationPathQueryResult3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *NavigationPathQueryResult3D) SetPathTypes(path_types PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *NavigationPathQueryResult3D) SetPath(path PackedVector3Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryResult3D) GetPathTypes() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryResult3D) GetPath()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryResult3D) SetPathRids(path_rids RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryResult3D) SetPathTypes(path_types PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryResult3D) GetPathRids() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryResult3D) GetPathTypes()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryResult3D) SetPathOwnerIds(path_owner_ids PackedInt64Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryResult3D) SetPathRids(path_rids RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryResult3D) GetPathOwnerIds() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryResult3D) GetPathRids()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryResult3D) Reset() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryResult3D) SetPathOwnerIds(path_owner_ids PackedInt64Array, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *NavigationPathQueryResult3D) GetPathOwnerIds()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *NavigationPathQueryResult3D) Reset()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,21 @@ func (me *QuadMesh) BaseClass() string {
   return "QuadMesh"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *QuadMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *QuadMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

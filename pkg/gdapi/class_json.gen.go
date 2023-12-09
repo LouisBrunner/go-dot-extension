@@ -25,38 +25,53 @@ func (me *JSON) BaseClass() string {
   return "JSON"
 }
 
-func  JSONStringify(data Variant, indent String, sort_keys bool, full_precision bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *JSON) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  JSONParseString(json_string String, ) { // TODO: return value
-  // TODO: implement
+func (me *JSON) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *JSON) Parse(json_text String, keep_text bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  JSONStringify(data Variant, indent String, sort_keys bool, full_precision bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JSON) GetData() { // TODO: return value
-  // TODO: implement
+func  JSONParseString(json_string String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JSON) SetData(data Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *JSON) Parse(json_text String, keep_text bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JSON) GetParsedText() { // TODO: return value
-  // TODO: implement
+func  (me *JSON) GetData()  {
+  panic("TODO: implement")
 }
 
-func  (me *JSON) GetErrorLine() { // TODO: return value
-  // TODO: implement
+func  (me *JSON) SetData(data Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JSON) GetErrorMessage() { // TODO: return value
-  // TODO: implement
+func  (me *JSON) GetParsedText()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *JSON) GetErrorLine()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *JSON) GetErrorMessage()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

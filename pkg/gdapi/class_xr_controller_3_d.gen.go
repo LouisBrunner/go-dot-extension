@@ -25,26 +25,41 @@ func (me *XRController3D) BaseClass() string {
   return "XRController3D"
 }
 
-func  (me *XRController3D) IsButtonPressed(name StringName, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *XRController3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *XRController3D) GetInput(name StringName, ) { // TODO: return value
-  // TODO: implement
+func (me *XRController3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *XRController3D) GetFloat(name StringName, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *XRController3D) IsButtonPressed(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRController3D) GetVector2(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRController3D) GetInput(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRController3D) GetTrackerHand() { // TODO: return value
-  // TODO: implement
+func  (me *XRController3D) GetFloat(name StringName, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *XRController3D) GetVector2(name StringName, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *XRController3D) GetTrackerHand()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

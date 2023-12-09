@@ -25,18 +25,33 @@ func (me *VisualShaderNodeInput) BaseClass() string {
   return "VisualShaderNodeInput"
 }
 
-func  (me *VisualShaderNodeInput) SetInputName(name String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeInput) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeInput) GetInputName() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeInput) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeInput) GetInputRealName() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeInput) SetInputName(name String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeInput) GetInputName()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeInput) GetInputRealName()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

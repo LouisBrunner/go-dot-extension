@@ -25,98 +25,113 @@ func (me *TranslationServer) BaseClass() string {
   return "TranslationServer"
 }
 
-func  (me *TranslationServer) SetLocale(locale String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *TranslationServer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TranslationServer) GetLocale() { // TODO: return value
-  // TODO: implement
+func (me *TranslationServer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TranslationServer) GetToolLocale() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TranslationServer) SetLocale(locale String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) CompareLocales(locale_a String, locale_b String, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) GetLocale()  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) StandardizeLocale(locale String, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) GetToolLocale()  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) GetAllLanguages() { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) CompareLocales(locale_a String, locale_b String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) GetLanguageName(language String, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) StandardizeLocale(locale String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) GetAllScripts() { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) GetAllLanguages()  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) GetScriptName(script String, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) GetLanguageName(language String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) GetAllCountries() { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) GetAllScripts()  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) GetCountryName(country String, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) GetScriptName(script String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) GetLocaleName(locale String, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) GetAllCountries()  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) Translate(message StringName, context StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) GetCountryName(country String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) TranslatePlural(message StringName, plural_message StringName, n int, context StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) GetLocaleName(locale String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) AddTranslation(translation Translation, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) Translate(message StringName, context StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) RemoveTranslation(translation Translation, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) TranslatePlural(message StringName, plural_message StringName, n int, context StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) GetTranslationObject(locale String, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) AddTranslation(translation Translation, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) Clear() { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) RemoveTranslation(translation Translation, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) GetLoadedLocales() { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) GetTranslationObject(locale String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) IsPseudolocalizationEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) Clear()  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) SetPseudolocalizationEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) GetLoadedLocales()  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) ReloadPseudolocalization() { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) IsPseudolocalizationEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *TranslationServer) Pseudolocalize(message StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *TranslationServer) SetPseudolocalizationEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TranslationServer) ReloadPseudolocalization()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TranslationServer) Pseudolocalize(message StringName, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

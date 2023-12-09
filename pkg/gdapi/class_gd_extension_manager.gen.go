@@ -25,6 +25,10 @@ func (me *GDExtensionManager) BaseClass() string {
   return "GDExtensionManager"
 }
 
+
+
+// Enums
+
 type GDExtensionManagerLoadStatus int
 const (
   GDExtensionManagerLoadStatusLoadStatusOk GDExtensionManagerLoadStatus = 0
@@ -34,30 +38,41 @@ const (
   GDExtensionManagerLoadStatusLoadStatusNeedsRestart GDExtensionManagerLoadStatus = 4
 )
 
-func  (me *GDExtensionManager) LoadExtension(path String, ) { // TODO: return value
-  // TODO: implement
+func (me *GDExtensionManager) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GDExtensionManager) ReloadExtension(path String, ) { // TODO: return value
-  // TODO: implement
+func (me *GDExtensionManager) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GDExtensionManager) UnloadExtension(path String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GDExtensionManager) LoadExtension(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GDExtensionManager) IsExtensionLoaded(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *GDExtensionManager) ReloadExtension(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GDExtensionManager) GetLoadedExtensions() { // TODO: return value
-  // TODO: implement
+func  (me *GDExtensionManager) UnloadExtension(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GDExtensionManager) GetExtension(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *GDExtensionManager) IsExtensionLoaded(path String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GDExtensionManager) GetLoadedExtensions()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GDExtensionManager) GetExtension(path String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

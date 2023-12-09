@@ -25,46 +25,61 @@ func (me *CameraAttributes) BaseClass() string {
   return "CameraAttributes"
 }
 
-func  (me *CameraAttributes) SetExposureMultiplier(multiplier float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CameraAttributes) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CameraAttributes) GetExposureMultiplier() { // TODO: return value
-  // TODO: implement
+func (me *CameraAttributes) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CameraAttributes) SetExposureSensitivity(sensitivity float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CameraAttributes) SetExposureMultiplier(multiplier float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributes) GetExposureSensitivity() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributes) GetExposureMultiplier()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributes) SetAutoExposureEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributes) SetExposureSensitivity(sensitivity float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributes) IsAutoExposureEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributes) GetExposureSensitivity()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributes) SetAutoExposureSpeed(exposure_speed float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributes) SetAutoExposureEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributes) GetAutoExposureSpeed() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributes) IsAutoExposureEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributes) SetAutoExposureScale(exposure_grey float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributes) SetAutoExposureSpeed(exposure_speed float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributes) GetAutoExposureScale() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributes) GetAutoExposureSpeed()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CameraAttributes) SetAutoExposureScale(exposure_grey float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CameraAttributes) GetAutoExposureScale()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

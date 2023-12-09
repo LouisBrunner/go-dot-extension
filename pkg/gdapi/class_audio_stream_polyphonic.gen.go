@@ -25,14 +25,29 @@ func (me *AudioStreamPolyphonic) BaseClass() string {
   return "AudioStreamPolyphonic"
 }
 
-func  (me *AudioStreamPolyphonic) SetPolyphony(voices int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioStreamPolyphonic) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioStreamPolyphonic) GetPolyphony() { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamPolyphonic) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *AudioStreamPolyphonic) SetPolyphony(voices int, )  {
+  panic("TODO: implement")
+}
+
+func  (me *AudioStreamPolyphonic) GetPolyphony()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,10 @@ func (me *VisualShaderNode) BaseClass() string {
   return "VisualShaderNode"
 }
 
+
+
+// Enums
+
 type VisualShaderNodePortType int
 const (
   VisualShaderNodePortTypePortTypeScalar VisualShaderNodePortType = 0
@@ -39,38 +43,49 @@ const (
   VisualShaderNodePortTypePortTypeMax VisualShaderNodePortType = 9
 )
 
-func  (me *VisualShaderNode) SetOutputPortForPreview(port int, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNode) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNode) GetOutputPortForPreview() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNode) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNode) SetInputPortDefaultValue(port int, value Variant, prev_value Variant, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNode) SetOutputPortForPreview(port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNode) GetInputPortDefaultValue(port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNode) GetOutputPortForPreview()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNode) RemoveInputPortDefaultValue(port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNode) SetInputPortDefaultValue(port int, value Variant, prev_value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNode) ClearDefaultInputValues() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNode) GetInputPortDefaultValue(port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNode) SetDefaultInputValues(values Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNode) RemoveInputPortDefaultValue(port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNode) GetDefaultInputValues() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNode) ClearDefaultInputValues()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNode) SetDefaultInputValues(values Array, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNode) GetDefaultInputValues()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

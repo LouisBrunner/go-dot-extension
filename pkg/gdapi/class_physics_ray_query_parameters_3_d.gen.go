@@ -25,74 +25,89 @@ func (me *PhysicsRayQueryParameters3D) BaseClass() string {
   return "PhysicsRayQueryParameters3D"
 }
 
-func  PhysicsRayQueryParameters3DCreate(from Vector3, to Vector3, collision_mask int, exclude RID, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsRayQueryParameters3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsRayQueryParameters3D) SetFrom(from Vector3, ) { // TODO: return value
-  // TODO: implement
+func (me *PhysicsRayQueryParameters3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsRayQueryParameters3D) GetFrom() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  PhysicsRayQueryParameters3DCreate(from Vector3, to Vector3, collision_mask int, exclude RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) SetTo(to Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) SetFrom(from Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) GetTo() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) GetFrom()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) SetCollisionMask(collision_mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) SetTo(to Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) GetCollisionMask() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) GetTo()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) SetExclude(exclude RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) SetCollisionMask(collision_mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) GetExclude() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) GetCollisionMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) SetCollideWithBodies(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) SetExclude(exclude RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) IsCollideWithBodiesEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) GetExclude()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) SetCollideWithAreas(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) SetCollideWithBodies(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) IsCollideWithAreasEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) IsCollideWithBodiesEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) SetHitFromInside(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) SetCollideWithAreas(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) IsHitFromInsideEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) IsCollideWithAreasEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) SetHitBackFaces(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) SetHitFromInside(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsRayQueryParameters3D) IsHitBackFacesEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsRayQueryParameters3D) IsHitFromInsideEnabled()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsRayQueryParameters3D) SetHitBackFaces(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsRayQueryParameters3D) IsHitBackFacesEnabled()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

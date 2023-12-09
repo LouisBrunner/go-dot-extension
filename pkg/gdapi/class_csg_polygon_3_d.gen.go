@@ -25,6 +25,10 @@ func (me *CSGPolygon3D) BaseClass() string {
   return "CSGPolygon3D"
 }
 
+
+
+// Enums
+
 type CSGPolygon3DMode int
 const (
   CSGPolygon3DModeModeDepth CSGPolygon3DMode = 0
@@ -45,134 +49,145 @@ const (
   CSGPolygon3DPathIntervalTypePathIntervalSubdivide CSGPolygon3DPathIntervalType = 1
 )
 
-func  (me *CSGPolygon3D) SetPolygon(polygon PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+func (me *CSGPolygon3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CSGPolygon3D) GetPolygon() { // TODO: return value
-  // TODO: implement
+func (me *CSGPolygon3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CSGPolygon3D) SetMode(mode CSGPolygon3DMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CSGPolygon3D) SetPolygon(polygon PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetMode() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetPolygon()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetDepth(depth float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetMode(mode CSGPolygon3DMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetDepth() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetSpinDegrees(degrees float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetDepth(depth float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetSpinDegrees() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetDepth()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetSpinSides(spin_sides int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetSpinDegrees(degrees float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetSpinSides() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetSpinDegrees()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetPathNode(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetSpinSides(spin_sides int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetPathNode() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetSpinSides()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetPathIntervalType(interval_type CSGPolygon3DPathIntervalType, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetPathNode(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetPathIntervalType() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetPathNode()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetPathInterval(interval float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetPathIntervalType(interval_type CSGPolygon3DPathIntervalType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetPathInterval() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetPathIntervalType()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetPathSimplifyAngle(degrees float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetPathInterval(interval float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetPathSimplifyAngle() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetPathInterval()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetPathRotation(path_rotation CSGPolygon3DPathRotation, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetPathSimplifyAngle(degrees float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetPathRotation() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetPathSimplifyAngle()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetPathLocal(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetPathRotation(path_rotation CSGPolygon3DPathRotation, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) IsPathLocal() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetPathRotation()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetPathContinuousU(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetPathLocal(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) IsPathContinuousU() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) IsPathLocal()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetPathUDistance(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetPathContinuousU(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetPathUDistance() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) IsPathContinuousU()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetPathJoined(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetPathUDistance(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) IsPathJoined() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetPathUDistance()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetMaterial(material Material, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetPathJoined(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetMaterial() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) IsPathJoined()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) SetSmoothFaces(smooth_faces bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) SetMaterial(material Material, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGPolygon3D) GetSmoothFaces() { // TODO: return value
-  // TODO: implement
+func  (me *CSGPolygon3D) GetMaterial()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CSGPolygon3D) SetSmoothFaces(smooth_faces bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CSGPolygon3D) GetSmoothFaces()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

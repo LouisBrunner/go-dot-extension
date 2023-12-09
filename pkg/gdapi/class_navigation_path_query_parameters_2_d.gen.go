@@ -25,6 +25,10 @@ func (me *NavigationPathQueryParameters2D) BaseClass() string {
   return "NavigationPathQueryParameters2D"
 }
 
+
+
+// Enums
+
 type NavigationPathQueryParameters2DPathfindingAlgorithm int
 const (
   NavigationPathQueryParameters2DPathfindingAlgorithmPathfindingAlgorithmAstar NavigationPathQueryParameters2DPathfindingAlgorithm = 0
@@ -45,62 +49,73 @@ const (
   NavigationPathQueryParameters2DPathMetadataFlagsPathMetadataIncludeAll NavigationPathQueryParameters2DPathMetadataFlags = 7
 )
 
-func  (me *NavigationPathQueryParameters2D) SetPathfindingAlgorithm(pathfinding_algorithm NavigationPathQueryParameters2DPathfindingAlgorithm, ) { // TODO: return value
-  // TODO: implement
+func (me *NavigationPathQueryParameters2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *NavigationPathQueryParameters2D) GetPathfindingAlgorithm() { // TODO: return value
-  // TODO: implement
+func (me *NavigationPathQueryParameters2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *NavigationPathQueryParameters2D) SetPathPostprocessing(path_postprocessing NavigationPathQueryParameters2DPathPostProcessing, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *NavigationPathQueryParameters2D) SetPathfindingAlgorithm(pathfinding_algorithm NavigationPathQueryParameters2DPathfindingAlgorithm, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) GetPathPostprocessing() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryParameters2D) GetPathfindingAlgorithm()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) SetMap(map_ RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryParameters2D) SetPathPostprocessing(path_postprocessing NavigationPathQueryParameters2DPathPostProcessing, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) GetMap() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryParameters2D) GetPathPostprocessing()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) SetStartPosition(start_position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryParameters2D) SetMap(map_ RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) GetStartPosition() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryParameters2D) GetMap()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) SetTargetPosition(target_position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryParameters2D) SetStartPosition(start_position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) GetTargetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryParameters2D) GetStartPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) SetNavigationLayers(navigation_layers int, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryParameters2D) SetTargetPosition(target_position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) GetNavigationLayers() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryParameters2D) GetTargetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) SetMetadataFlags(flags NavigationPathQueryParameters2DPathMetadataFlags, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryParameters2D) SetNavigationLayers(navigation_layers int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) GetMetadataFlags() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationPathQueryParameters2D) GetNavigationLayers()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *NavigationPathQueryParameters2D) SetMetadataFlags(flags NavigationPathQueryParameters2DPathMetadataFlags, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *NavigationPathQueryParameters2D) GetMetadataFlags()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

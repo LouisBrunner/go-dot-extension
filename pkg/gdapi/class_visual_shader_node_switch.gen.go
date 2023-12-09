@@ -25,6 +25,10 @@ func (me *VisualShaderNodeSwitch) BaseClass() string {
   return "VisualShaderNodeSwitch"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeSwitchOpType int
 const (
   VisualShaderNodeSwitchOpTypeOpTypeFloat VisualShaderNodeSwitchOpType = 0
@@ -38,14 +42,25 @@ const (
   VisualShaderNodeSwitchOpTypeOpTypeMax VisualShaderNodeSwitchOpType = 8
 )
 
-func  (me *VisualShaderNodeSwitch) SetOpType(type_ VisualShaderNodeSwitchOpType, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeSwitch) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeSwitch) GetOpType() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeSwitch) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeSwitch) SetOpType(type_ VisualShaderNodeSwitchOpType, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeSwitch) GetOpType()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

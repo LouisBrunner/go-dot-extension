@@ -25,6 +25,21 @@ func (me *IPUnix) BaseClass() string {
   return "IPUnix"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *IPUnix) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *IPUnix) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,90 +25,105 @@ func (me *VisualShaderNodeGroupBase) BaseClass() string {
   return "VisualShaderNodeGroupBase"
 }
 
-func  (me *VisualShaderNodeGroupBase) SetInputs(inputs String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeGroupBase) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeGroupBase) GetInputs() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeGroupBase) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeGroupBase) SetOutputs(outputs String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeGroupBase) SetInputs(inputs String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) GetOutputs() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) GetInputs()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) IsValidPortName(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) SetOutputs(outputs String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) AddInputPort(id int, type_ int, name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) GetOutputs()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) RemoveInputPort(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) IsValidPortName(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) GetInputPortCount() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) AddInputPort(id int, type_ int, name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) HasInputPort(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) RemoveInputPort(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) ClearInputPorts() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) GetInputPortCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) AddOutputPort(id int, type_ int, name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) HasInputPort(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) RemoveOutputPort(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) ClearInputPorts()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) GetOutputPortCount() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) AddOutputPort(id int, type_ int, name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) HasOutputPort(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) RemoveOutputPort(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) ClearOutputPorts() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) GetOutputPortCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) SetInputPortName(id int, name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) HasOutputPort(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) SetInputPortType(id int, type_ int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) ClearOutputPorts()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) SetOutputPortName(id int, name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) SetInputPortName(id int, name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) SetOutputPortType(id int, type_ int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) SetInputPortType(id int, type_ int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) GetFreeInputPortId() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) SetOutputPortName(id int, name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeGroupBase) GetFreeOutputPortId() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeGroupBase) SetOutputPortType(id int, type_ int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeGroupBase) GetFreeInputPortId()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeGroupBase) GetFreeOutputPortId()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

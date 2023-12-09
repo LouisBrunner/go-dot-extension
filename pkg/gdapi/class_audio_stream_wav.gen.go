@@ -25,6 +25,10 @@ func (me *AudioStreamWAV) BaseClass() string {
   return "AudioStreamWAV"
 }
 
+
+
+// Enums
+
 type AudioStreamWAVFormat int
 const (
   AudioStreamWAVFormatFormat8Bits AudioStreamWAVFormat = 0
@@ -40,66 +44,77 @@ const (
   AudioStreamWAVLoopModeLoopBackward AudioStreamWAVLoopMode = 3
 )
 
-func  (me *AudioStreamWAV) SetData(data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamWAV) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioStreamWAV) GetData() { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamWAV) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioStreamWAV) SetFormat(format AudioStreamWAVFormat, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioStreamWAV) SetData(data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) GetFormat() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) GetData()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) SetLoopMode(loop_mode AudioStreamWAVLoopMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) SetFormat(format AudioStreamWAVFormat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) GetLoopMode() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) GetFormat()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) SetLoopBegin(loop_begin int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) SetLoopMode(loop_mode AudioStreamWAVLoopMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) GetLoopBegin() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) GetLoopMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) SetLoopEnd(loop_end int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) SetLoopBegin(loop_begin int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) GetLoopEnd() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) GetLoopBegin()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) SetMixRate(mix_rate int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) SetLoopEnd(loop_end int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) GetMixRate() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) GetLoopEnd()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) SetStereo(stereo bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) SetMixRate(mix_rate int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) IsStereo() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) GetMixRate()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamWAV) SaveToWav(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamWAV) SetStereo(stereo bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioStreamWAV) IsStereo()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioStreamWAV) SaveToWav(path String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

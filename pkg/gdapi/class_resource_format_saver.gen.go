@@ -25,26 +25,41 @@ func (me *ResourceFormatSaver) BaseClass() string {
   return "ResourceFormatSaver"
 }
 
-func  (me *ResourceFormatSaver) XSave(resource Resource, path String, flags int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ResourceFormatSaver) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ResourceFormatSaver) XSetUid(path String, uid int, ) { // TODO: return value
-  // TODO: implement
+func (me *ResourceFormatSaver) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ResourceFormatSaver) XRecognize(resource Resource, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ResourceFormatSaver) XSave(resource Resource, path String, flags int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceFormatSaver) XGetRecognizedExtensions(resource Resource, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceFormatSaver) XSetUid(path String, uid int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceFormatSaver) XRecognizePath(resource Resource, path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceFormatSaver) XRecognize(resource Resource, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ResourceFormatSaver) XGetRecognizedExtensions(resource Resource, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ResourceFormatSaver) XRecognizePath(resource Resource, path String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

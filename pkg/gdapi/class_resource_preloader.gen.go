@@ -25,30 +25,45 @@ func (me *ResourcePreloader) BaseClass() string {
   return "ResourcePreloader"
 }
 
-func  (me *ResourcePreloader) AddResource(name StringName, resource Resource, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ResourcePreloader) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ResourcePreloader) RemoveResource(name StringName, ) { // TODO: return value
-  // TODO: implement
+func (me *ResourcePreloader) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ResourcePreloader) RenameResource(name StringName, newname StringName, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ResourcePreloader) AddResource(name StringName, resource Resource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourcePreloader) HasResource(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourcePreloader) RemoveResource(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourcePreloader) GetResource(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourcePreloader) RenameResource(name StringName, newname StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourcePreloader) GetResourceList() { // TODO: return value
-  // TODO: implement
+func  (me *ResourcePreloader) HasResource(name StringName, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ResourcePreloader) GetResource(name StringName, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ResourcePreloader) GetResourceList()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

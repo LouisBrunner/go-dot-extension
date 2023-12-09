@@ -25,54 +25,69 @@ func (me *PhysicalBone2D) BaseClass() string {
   return "PhysicalBone2D"
 }
 
-func  (me *PhysicalBone2D) GetJoint() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicalBone2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicalBone2D) GetAutoConfigureJoint() { // TODO: return value
-  // TODO: implement
+func (me *PhysicalBone2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicalBone2D) SetAutoConfigureJoint(auto_configure_joint bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicalBone2D) GetJoint()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone2D) SetSimulatePhysics(simulate_physics bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone2D) GetAutoConfigureJoint()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone2D) GetSimulatePhysics() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone2D) SetAutoConfigureJoint(auto_configure_joint bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone2D) IsSimulatingPhysics() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone2D) SetSimulatePhysics(simulate_physics bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone2D) SetBone2DNodepath(nodepath NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone2D) GetSimulatePhysics()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone2D) GetBone2DNodepath() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone2D) IsSimulatingPhysics()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone2D) SetBone2DIndex(bone_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone2D) SetBone2DNodepath(nodepath NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone2D) GetBone2DIndex() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone2D) GetBone2DNodepath()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone2D) SetFollowBoneWhenSimulating(follow_bone bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone2D) SetBone2DIndex(bone_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone2D) GetFollowBoneWhenSimulating() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone2D) GetBone2DIndex()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicalBone2D) SetFollowBoneWhenSimulating(follow_bone bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicalBone2D) GetFollowBoneWhenSimulating()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,14 +25,16 @@ func (me *Image) BaseClass() string {
   return "Image"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   ImageMaxWidth = "16777216" // TODO: construct correctly
   ImageMaxHeight = "16777216" // TODO: construct correctly
 )
+
+// Enums
 
 type ImageFormat int
 const (
@@ -127,266 +129,277 @@ const (
   ImageASTCFormatAstcFormat8X8 ImageASTCFormat = 1
 )
 
-func  (me *Image) GetWidth() { // TODO: return value
-  // TODO: implement
+func (me *Image) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Image) GetHeight() { // TODO: return value
-  // TODO: implement
+func (me *Image) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Image) GetSize() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Image) GetWidth()  {
+  panic("TODO: implement")
+}
+
+func  (me *Image) GetHeight()  {
+  panic("TODO: implement")
+}
+
+func  (me *Image) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) HasMipmaps() { // TODO: return value
-  // TODO: implement
+func  (me *Image) HasMipmaps()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) GetFormat() { // TODO: return value
-  // TODO: implement
+func  (me *Image) GetFormat()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) GetData() { // TODO: return value
-  // TODO: implement
+func  (me *Image) GetData()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) Convert(format ImageFormat, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) Convert(format ImageFormat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) GetMipmapOffset(mipmap int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) GetMipmapOffset(mipmap int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) ResizeToPo2(square bool, interpolation ImageInterpolation, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) ResizeToPo2(square bool, interpolation ImageInterpolation, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) Resize(width int, height int, interpolation ImageInterpolation, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) Resize(width int, height int, interpolation ImageInterpolation, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) ShrinkX2() { // TODO: return value
-  // TODO: implement
+func  (me *Image) ShrinkX2()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) Crop(width int, height int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) Crop(width int, height int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) FlipX() { // TODO: return value
-  // TODO: implement
+func  (me *Image) FlipX()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) FlipY() { // TODO: return value
-  // TODO: implement
+func  (me *Image) FlipY()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) GenerateMipmaps(renormalize bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) GenerateMipmaps(renormalize bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) ClearMipmaps() { // TODO: return value
-  // TODO: implement
+func  (me *Image) ClearMipmaps()  {
+  panic("TODO: implement")
 }
 
-func  ImageCreate(width int, height int, use_mipmaps bool, format ImageFormat, ) { // TODO: return value
-  // TODO: implement
+func  ImageCreate(width int, height int, use_mipmaps bool, format ImageFormat, )  {
+  panic("TODO: implement")
 }
 
-func  ImageCreateFromData(width int, height int, use_mipmaps bool, format ImageFormat, data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  ImageCreateFromData(width int, height int, use_mipmaps bool, format ImageFormat, data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SetData(width int, height int, use_mipmaps bool, format ImageFormat, data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) SetData(width int, height int, use_mipmaps bool, format ImageFormat, data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) IsEmpty() { // TODO: return value
-  // TODO: implement
+func  (me *Image) IsEmpty()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) Load(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) Load(path String, )  {
+  panic("TODO: implement")
 }
 
-func  ImageLoadFromFile(path String, ) { // TODO: return value
-  // TODO: implement
+func  ImageLoadFromFile(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SavePng(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) SavePng(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SavePngToBuffer() { // TODO: return value
-  // TODO: implement
+func  (me *Image) SavePngToBuffer()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SaveJpg(path String, quality float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) SaveJpg(path String, quality float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SaveJpgToBuffer(quality float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) SaveJpgToBuffer(quality float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SaveExr(path String, grayscale bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) SaveExr(path String, grayscale bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SaveExrToBuffer(grayscale bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) SaveExrToBuffer(grayscale bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SaveWebp(path String, lossy bool, quality float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) SaveWebp(path String, lossy bool, quality float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SaveWebpToBuffer(lossy bool, quality float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) SaveWebpToBuffer(lossy bool, quality float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) DetectAlpha() { // TODO: return value
-  // TODO: implement
+func  (me *Image) DetectAlpha()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) IsInvisible() { // TODO: return value
-  // TODO: implement
+func  (me *Image) IsInvisible()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) DetectUsedChannels(source ImageCompressSource, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) DetectUsedChannels(source ImageCompressSource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) Compress(mode ImageCompressMode, source ImageCompressSource, astc_format ImageASTCFormat, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) Compress(mode ImageCompressMode, source ImageCompressSource, astc_format ImageASTCFormat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) CompressFromChannels(mode ImageCompressMode, channels ImageUsedChannels, astc_format ImageASTCFormat, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) CompressFromChannels(mode ImageCompressMode, channels ImageUsedChannels, astc_format ImageASTCFormat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) Decompress() { // TODO: return value
-  // TODO: implement
+func  (me *Image) Decompress()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) IsCompressed() { // TODO: return value
-  // TODO: implement
+func  (me *Image) IsCompressed()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) Rotate90(direction ClockDirection, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) Rotate90(direction ClockDirection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) Rotate180() { // TODO: return value
-  // TODO: implement
+func  (me *Image) Rotate180()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) FixAlphaEdges() { // TODO: return value
-  // TODO: implement
+func  (me *Image) FixAlphaEdges()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) PremultiplyAlpha() { // TODO: return value
-  // TODO: implement
+func  (me *Image) PremultiplyAlpha()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SrgbToLinear() { // TODO: return value
-  // TODO: implement
+func  (me *Image) SrgbToLinear()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) NormalMapToXy() { // TODO: return value
-  // TODO: implement
+func  (me *Image) NormalMapToXy()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) RgbeToSrgb() { // TODO: return value
-  // TODO: implement
+func  (me *Image) RgbeToSrgb()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) BumpMapToNormalMap(bump_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) BumpMapToNormalMap(bump_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) ComputeImageMetrics(compared_image Image, use_luma bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) ComputeImageMetrics(compared_image Image, use_luma bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) BlitRect(src Image, src_rect Rect2i, dst Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) BlitRect(src Image, src_rect Rect2i, dst Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) BlitRectMask(src Image, mask Image, src_rect Rect2i, dst Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) BlitRectMask(src Image, mask Image, src_rect Rect2i, dst Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) BlendRect(src Image, src_rect Rect2i, dst Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) BlendRect(src Image, src_rect Rect2i, dst Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) BlendRectMask(src Image, mask Image, src_rect Rect2i, dst Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) BlendRectMask(src Image, mask Image, src_rect Rect2i, dst Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) Fill(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) Fill(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) FillRect(rect Rect2i, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) FillRect(rect Rect2i, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) GetUsedRect() { // TODO: return value
-  // TODO: implement
+func  (me *Image) GetUsedRect()  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) GetRegion(region Rect2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) GetRegion(region Rect2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) CopyFrom(src Image, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) CopyFrom(src Image, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) GetPixelv(point Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) GetPixelv(point Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) GetPixel(x int, y int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) GetPixel(x int, y int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SetPixelv(point Vector2i, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) SetPixelv(point Vector2i, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) SetPixel(x int, y int, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) SetPixel(x int, y int, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) AdjustBcs(brightness float32, contrast float32, saturation float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) AdjustBcs(brightness float32, contrast float32, saturation float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) LoadPngFromBuffer(buffer PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) LoadPngFromBuffer(buffer PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) LoadJpgFromBuffer(buffer PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) LoadJpgFromBuffer(buffer PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) LoadWebpFromBuffer(buffer PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) LoadWebpFromBuffer(buffer PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) LoadTgaFromBuffer(buffer PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) LoadTgaFromBuffer(buffer PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Image) LoadBmpFromBuffer(buffer PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *Image) LoadBmpFromBuffer(buffer PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

@@ -25,10 +25,25 @@ func (me *CallbackTweener) BaseClass() string {
   return "CallbackTweener"
 }
 
-func  (me *CallbackTweener) SetDelay(delay float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CallbackTweener) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *CallbackTweener) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *CallbackTweener) SetDelay(delay float32, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

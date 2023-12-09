@@ -25,14 +25,29 @@ func (me *VisualShaderNodeVec4Constant) BaseClass() string {
   return "VisualShaderNodeVec4Constant"
 }
 
-func  (me *VisualShaderNodeVec4Constant) SetConstant(constant Quaternion, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeVec4Constant) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeVec4Constant) GetConstant() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeVec4Constant) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeVec4Constant) SetConstant(constant Quaternion, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeVec4Constant) GetConstant()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

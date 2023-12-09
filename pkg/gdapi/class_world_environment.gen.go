@@ -25,22 +25,37 @@ func (me *WorldEnvironment) BaseClass() string {
   return "WorldEnvironment"
 }
 
-func  (me *WorldEnvironment) SetEnvironment(env Environment, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *WorldEnvironment) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *WorldEnvironment) GetEnvironment() { // TODO: return value
-  // TODO: implement
+func (me *WorldEnvironment) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *WorldEnvironment) SetCameraAttributes(camera_attributes CameraAttributes, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *WorldEnvironment) SetEnvironment(env Environment, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WorldEnvironment) GetCameraAttributes() { // TODO: return value
-  // TODO: implement
+func  (me *WorldEnvironment) GetEnvironment()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *WorldEnvironment) SetCameraAttributes(camera_attributes CameraAttributes, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *WorldEnvironment) GetCameraAttributes()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

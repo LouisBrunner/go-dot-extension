@@ -25,6 +25,10 @@ func (me *VisualShaderNodeTextureParameter) BaseClass() string {
   return "VisualShaderNodeTextureParameter"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeTextureParameterTextureType int
 const (
   VisualShaderNodeTextureParameterTextureTypeTypeData VisualShaderNodeTextureParameterTextureType = 0
@@ -71,46 +75,57 @@ const (
   VisualShaderNodeTextureParameterTextureSourceSourceMax VisualShaderNodeTextureParameterTextureSource = 4
 )
 
-func  (me *VisualShaderNodeTextureParameter) SetTextureType(type_ VisualShaderNodeTextureParameterTextureType, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeTextureParameter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeTextureParameter) GetTextureType() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeTextureParameter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeTextureParameter) SetColorDefault(color VisualShaderNodeTextureParameterColorDefault, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeTextureParameter) SetTextureType(type_ VisualShaderNodeTextureParameterTextureType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTextureParameter) GetColorDefault() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeTextureParameter) GetTextureType()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTextureParameter) SetTextureFilter(filter VisualShaderNodeTextureParameterTextureFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeTextureParameter) SetColorDefault(color VisualShaderNodeTextureParameterColorDefault, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTextureParameter) GetTextureFilter() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeTextureParameter) GetColorDefault()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTextureParameter) SetTextureRepeat(repeat VisualShaderNodeTextureParameterTextureRepeat, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeTextureParameter) SetTextureFilter(filter VisualShaderNodeTextureParameterTextureFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTextureParameter) GetTextureRepeat() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeTextureParameter) GetTextureFilter()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTextureParameter) SetTextureSource(source VisualShaderNodeTextureParameterTextureSource, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeTextureParameter) SetTextureRepeat(repeat VisualShaderNodeTextureParameterTextureRepeat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTextureParameter) GetTextureSource() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeTextureParameter) GetTextureRepeat()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeTextureParameter) SetTextureSource(source VisualShaderNodeTextureParameterTextureSource, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeTextureParameter) GetTextureSource()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

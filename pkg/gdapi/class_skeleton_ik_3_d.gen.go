@@ -25,102 +25,117 @@ func (me *SkeletonIK3D) BaseClass() string {
   return "SkeletonIK3D"
 }
 
-func  (me *SkeletonIK3D) SetRootBone(root_bone StringName, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SkeletonIK3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SkeletonIK3D) GetRootBone() { // TODO: return value
-  // TODO: implement
+func (me *SkeletonIK3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SkeletonIK3D) SetTipBone(tip_bone StringName, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SkeletonIK3D) SetRootBone(root_bone StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) GetTipBone() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) GetRootBone()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) SetInterpolation(interpolation float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) SetTipBone(tip_bone StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) GetInterpolation() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) GetTipBone()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) SetTargetTransform(target Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) SetInterpolation(interpolation float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) GetTargetTransform() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) GetInterpolation()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) SetTargetNode(node NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) SetTargetTransform(target Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) GetTargetNode() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) GetTargetTransform()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) SetOverrideTipBasis(override bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) SetTargetNode(node NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) IsOverrideTipBasis() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) GetTargetNode()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) SetUseMagnet(use bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) SetOverrideTipBasis(override bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) IsUsingMagnet() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) IsOverrideTipBasis()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) SetMagnetPosition(local_position Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) SetUseMagnet(use bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) GetMagnetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) IsUsingMagnet()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) GetParentSkeleton() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) SetMagnetPosition(local_position Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) IsRunning() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) GetMagnetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) SetMinDistance(min_distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) GetParentSkeleton()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) GetMinDistance() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) IsRunning()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) SetMaxIterations(iterations int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) SetMinDistance(min_distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) GetMaxIterations() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) GetMinDistance()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) Start(one_time bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) SetMaxIterations(iterations int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonIK3D) Stop() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonIK3D) GetMaxIterations()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SkeletonIK3D) Start(one_time bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SkeletonIK3D) Stop()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

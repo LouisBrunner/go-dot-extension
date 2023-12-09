@@ -25,14 +25,29 @@ func (me *VisualShaderNodeResizableBase) BaseClass() string {
   return "VisualShaderNodeResizableBase"
 }
 
-func  (me *VisualShaderNodeResizableBase) SetSize(size Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeResizableBase) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeResizableBase) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeResizableBase) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeResizableBase) SetSize(size Vector2, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeResizableBase) GetSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

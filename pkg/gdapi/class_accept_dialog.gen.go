@@ -25,70 +25,85 @@ func (me *AcceptDialog) BaseClass() string {
   return "AcceptDialog"
 }
 
-func  (me *AcceptDialog) GetOkButton() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AcceptDialog) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AcceptDialog) GetLabel() { // TODO: return value
-  // TODO: implement
+func (me *AcceptDialog) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AcceptDialog) SetHideOnOk(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AcceptDialog) GetOkButton()  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) GetHideOnOk() { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) GetLabel()  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) SetCloseOnEscape(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) SetHideOnOk(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) GetCloseOnEscape() { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) GetHideOnOk()  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) AddButton(text String, right bool, action String, ) { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) SetCloseOnEscape(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) AddCancelButton(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) GetCloseOnEscape()  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) RemoveButton(button Control, ) { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) AddButton(text String, right bool, action String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) RegisterTextEnter(line_edit Control, ) { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) AddCancelButton(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) SetText(text String, ) { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) RemoveButton(button Control, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) GetText() { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) RegisterTextEnter(line_edit Control, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) SetAutowrap(autowrap bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) SetText(text String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) HasAutowrap() { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) GetText()  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) SetOkButtonText(text String, ) { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) SetAutowrap(autowrap bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AcceptDialog) GetOkButtonText() { // TODO: return value
-  // TODO: implement
+func  (me *AcceptDialog) HasAutowrap()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AcceptDialog) SetOkButtonText(text String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AcceptDialog) GetOkButtonText()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

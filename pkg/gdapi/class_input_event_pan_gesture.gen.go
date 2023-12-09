@@ -25,14 +25,29 @@ func (me *InputEventPanGesture) BaseClass() string {
   return "InputEventPanGesture"
 }
 
-func  (me *InputEventPanGesture) SetDelta(delta Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventPanGesture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventPanGesture) GetDelta() { // TODO: return value
-  // TODO: implement
+func (me *InputEventPanGesture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *InputEventPanGesture) SetDelta(delta Vector2, )  {
+  panic("TODO: implement")
+}
+
+func  (me *InputEventPanGesture) GetDelta()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

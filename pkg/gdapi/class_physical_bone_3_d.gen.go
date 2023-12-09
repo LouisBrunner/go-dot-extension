@@ -25,6 +25,10 @@ func (me *PhysicalBone3D) BaseClass() string {
   return "PhysicalBone3D"
 }
 
+
+
+// Enums
+
 type PhysicalBone3DDampMode int
 const (
   PhysicalBone3DDampModeDampModeCombine PhysicalBone3DDampMode = 0
@@ -41,158 +45,169 @@ const (
   PhysicalBone3DJointTypeJointType6Dof PhysicalBone3DJointType = 5
 )
 
-func  (me *PhysicalBone3D) XIntegrateForces(state PhysicsDirectBodyState3D, ) { // TODO: return value
-  // TODO: implement
+func (me *PhysicalBone3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicalBone3D) ApplyCentralImpulse(impulse Vector3, ) { // TODO: return value
-  // TODO: implement
+func (me *PhysicalBone3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicalBone3D) ApplyImpulse(impulse Vector3, position Vector3, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicalBone3D) XIntegrateForces(state PhysicsDirectBodyState3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetJointType(joint_type PhysicalBone3DJointType, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) ApplyCentralImpulse(impulse Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetJointType() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) ApplyImpulse(impulse Vector3, position Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetJointOffset(offset Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetJointType(joint_type PhysicalBone3DJointType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetJointOffset() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetJointType()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetJointRotation(euler Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetJointOffset(offset Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetJointRotation() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetJointOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetBodyOffset(offset Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetJointRotation(euler Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetBodyOffset() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetJointRotation()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetSimulatePhysics() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetBodyOffset(offset Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) IsSimulatingPhysics() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetBodyOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetBoneId() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetSimulatePhysics()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetMass(mass float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) IsSimulatingPhysics()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetMass() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetBoneId()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetFriction(friction float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetMass(mass float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetFriction() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetMass()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetBounce(bounce float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetFriction(friction float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetBounce() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetFriction()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetGravityScale(gravity_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetBounce(bounce float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetGravityScale() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetBounce()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetLinearDampMode(linear_damp_mode PhysicalBone3DDampMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetGravityScale(gravity_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetLinearDampMode() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetGravityScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetAngularDampMode(angular_damp_mode PhysicalBone3DDampMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetLinearDampMode(linear_damp_mode PhysicalBone3DDampMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetAngularDampMode() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetLinearDampMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetLinearDamp(linear_damp float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetAngularDampMode(angular_damp_mode PhysicalBone3DDampMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetLinearDamp() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetAngularDampMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetAngularDamp(angular_damp float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetLinearDamp(linear_damp float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetAngularDamp() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetLinearDamp()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetLinearVelocity(linear_velocity Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetAngularDamp(angular_damp float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetLinearVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetAngularDamp()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetAngularVelocity(angular_velocity Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetLinearVelocity(linear_velocity Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) GetAngularVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetLinearVelocity()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetUseCustomIntegrator(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetAngularVelocity(angular_velocity Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) IsUsingCustomIntegrator() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) GetAngularVelocity()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) SetCanSleep(able_to_sleep bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) SetUseCustomIntegrator(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicalBone3D) IsAbleToSleep() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicalBone3D) IsUsingCustomIntegrator()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicalBone3D) SetCanSleep(able_to_sleep bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicalBone3D) IsAbleToSleep()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

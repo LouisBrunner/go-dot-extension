@@ -25,38 +25,53 @@ func (me *TextServerManager) BaseClass() string {
   return "TextServerManager"
 }
 
-func  (me *TextServerManager) AddInterface(interface_ TextServer, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *TextServerManager) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TextServerManager) GetInterfaceCount() { // TODO: return value
-  // TODO: implement
+func (me *TextServerManager) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TextServerManager) RemoveInterface(interface_ TextServer, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TextServerManager) AddInterface(interface_ TextServer, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextServerManager) GetInterface(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextServerManager) GetInterfaceCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextServerManager) GetInterfaces() { // TODO: return value
-  // TODO: implement
+func  (me *TextServerManager) RemoveInterface(interface_ TextServer, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextServerManager) FindInterface(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextServerManager) GetInterface(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TextServerManager) SetPrimaryInterface(index TextServer, ) { // TODO: return value
-  // TODO: implement
+func  (me *TextServerManager) GetInterfaces()  {
+  panic("TODO: implement")
 }
 
-func  (me *TextServerManager) GetPrimaryInterface() { // TODO: return value
-  // TODO: implement
+func  (me *TextServerManager) FindInterface(name String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TextServerManager) SetPrimaryInterface(index TextServer, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TextServerManager) GetPrimaryInterface()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,10 +25,25 @@ func (me *GDScript) BaseClass() string {
   return "GDScript"
 }
 
-func  (me *GDScript) New() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GDScript) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *GDScript) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *GDScript) New()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

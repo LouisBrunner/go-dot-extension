@@ -24,37 +24,19 @@ func (me *{{$Class}}) SetBaseObject(obj gdc.ObjectPtr) {
 func (me *{{$Class}}) BaseClass() string {
   return "{{.Name}}"
 }
-{{- if .Constants}}
 
-// TODO: needed?
-// const (
-// {{range .Constants}}{{if eq .Type "int"}}  {{$.Name}}{{pascalCased (lowerCased .Name)}} = {{.Value}}
-// {{end}}{{end -}}
-// )
+{{template "class_enums" .}}
 
-var (
-{{range .Constants}}{{if ne .Type "int"}}  {{$.Name}}{{pascalCased (lowerCased .Name)}} = "{{.Value}}" // TODO: construct correctly
-{{end}}{{end -}}
-)
-{{- end}}
-
-{{- range .Enums}}
-
-type {{$.Name}}{{.Name}} int
-const ({{$name := .Name}}
-{{range .Values}}  {{$.Name}}{{$name}}{{pascalCased (lowerCased .Name)}} {{$.Name}}{{$name}} = {{.Value}}
-{{end -}}
-)
-{{- end}}
-
-{{- range .Methods}}
-
-func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .Name -}}
-({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}) { // TODO: return value
-  // TODO: implement
+func (me *{{$Class}}) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
-{{- end}}
 
-// TODO: properties
+func (me *{{$Class}}) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+{{template "class_methods" .}}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

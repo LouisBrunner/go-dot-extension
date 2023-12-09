@@ -25,50 +25,65 @@ func (me *MultiplayerSpawner) BaseClass() string {
   return "MultiplayerSpawner"
 }
 
-func  (me *MultiplayerSpawner) AddSpawnableScene(path String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MultiplayerSpawner) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MultiplayerSpawner) GetSpawnableSceneCount() { // TODO: return value
-  // TODO: implement
+func (me *MultiplayerSpawner) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MultiplayerSpawner) GetSpawnableScene(index int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MultiplayerSpawner) AddSpawnableScene(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSpawner) ClearSpawnableScenes() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSpawner) GetSpawnableSceneCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSpawner) Spawn(data Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSpawner) GetSpawnableScene(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSpawner) GetSpawnPath() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSpawner) ClearSpawnableScenes()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSpawner) SetSpawnPath(path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSpawner) Spawn(data Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSpawner) GetSpawnLimit() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSpawner) GetSpawnPath()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSpawner) SetSpawnLimit(limit int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSpawner) SetSpawnPath(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSpawner) GetSpawnFunction() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSpawner) GetSpawnLimit()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerSpawner) SetSpawnFunction(spawn_function Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerSpawner) SetSpawnLimit(limit int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MultiplayerSpawner) GetSpawnFunction()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MultiplayerSpawner) SetSpawnFunction(spawn_function Callable, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

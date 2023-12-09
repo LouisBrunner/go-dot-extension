@@ -25,6 +25,10 @@ func (me *Light3D) BaseClass() string {
   return "Light3D"
 }
 
+
+
+// Enums
+
 type Light3DParam int
 const (
   Light3DParamParamEnergy Light3DParam = 0
@@ -58,122 +62,133 @@ const (
   Light3DBakeModeBakeDynamic Light3DBakeMode = 2
 )
 
-func  (me *Light3D) SetEditorOnly(editor_only bool, ) { // TODO: return value
-  // TODO: implement
+func (me *Light3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Light3D) IsEditorOnly() { // TODO: return value
-  // TODO: implement
+func (me *Light3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Light3D) SetParam(param Light3DParam, value float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Light3D) SetEditorOnly(editor_only bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) GetParam(param Light3DParam, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) IsEditorOnly()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetShadow(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetParam(param Light3DParam, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) HasShadow() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) GetParam(param Light3DParam, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetNegative(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetShadow(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) IsNegative() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) HasShadow()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetCullMask(cull_mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetNegative(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) GetCullMask() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) IsNegative()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetEnableDistanceFade(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetCullMask(cull_mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) IsDistanceFadeEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) GetCullMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetDistanceFadeBegin(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetEnableDistanceFade(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) GetDistanceFadeBegin() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) IsDistanceFadeEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetDistanceFadeShadow(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetDistanceFadeBegin(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) GetDistanceFadeShadow() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) GetDistanceFadeBegin()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetDistanceFadeLength(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetDistanceFadeShadow(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) GetDistanceFadeLength() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) GetDistanceFadeShadow()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetDistanceFadeLength(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) GetColor() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) GetDistanceFadeLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetShadowReverseCullFace(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) GetShadowReverseCullFace() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) GetColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetBakeMode(bake_mode Light3DBakeMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetShadowReverseCullFace(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) GetBakeMode() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) GetShadowReverseCullFace()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetProjector(projector Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetBakeMode(bake_mode Light3DBakeMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) GetProjector() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) GetBakeMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) SetTemperature(temperature float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetProjector(projector Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) GetTemperature() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) GetProjector()  {
+  panic("TODO: implement")
 }
 
-func  (me *Light3D) GetCorrelatedColor() { // TODO: return value
-  // TODO: implement
+func  (me *Light3D) SetTemperature(temperature float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Light3D) GetTemperature()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Light3D) GetCorrelatedColor()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

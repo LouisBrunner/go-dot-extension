@@ -25,14 +25,16 @@ func (me *Window) BaseClass() string {
   return "Window"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   WindowNotificationVisibilityChanged = "30" // TODO: construct correctly
   WindowNotificationThemeChanged = "32" // TODO: construct correctly
 )
+
+// Enums
 
 type WindowMode int
 const (
@@ -90,446 +92,457 @@ const (
   WindowWindowInitialPositionWindowInitialPositionCenterScreenWithKeyboardFocus WindowWindowInitialPosition = 5
 )
 
-func  (me *Window) SetTitle(title String, ) { // TODO: return value
-  // TODO: implement
+func (me *Window) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Window) GetTitle() { // TODO: return value
-  // TODO: implement
+func (me *Window) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Window) GetWindowId() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Window) SetTitle(title String, )  {
+  panic("TODO: implement")
+}
+
+func  (me *Window) GetTitle()  {
+  panic("TODO: implement")
+}
+
+func  (me *Window) GetWindowId()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetInitialPosition(initial_position WindowWindowInitialPosition, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetInitialPosition(initial_position WindowWindowInitialPosition, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetInitialPosition() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetInitialPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetCurrentScreen(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetCurrentScreen(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetCurrentScreen() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetCurrentScreen()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetPosition(position Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetPosition(position Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetSize(size Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetSize(size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetSize() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) ResetSize() { // TODO: return value
-  // TODO: implement
+func  (me *Window) ResetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetPositionWithDecorations() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetPositionWithDecorations()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetSizeWithDecorations() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetSizeWithDecorations()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetMaxSize(max_size Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetMaxSize(max_size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetMaxSize() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetMaxSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetMinSize(min_size Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetMinSize(min_size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetMinSize() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetMinSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetMode(mode WindowMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetMode(mode WindowMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetMode() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetFlag(flag WindowFlags, enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetFlag(flag WindowFlags, enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetFlag(flag WindowFlags, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetFlag(flag WindowFlags, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) IsMaximizeAllowed() { // TODO: return value
-  // TODO: implement
+func  (me *Window) IsMaximizeAllowed()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) RequestAttention() { // TODO: return value
-  // TODO: implement
+func  (me *Window) RequestAttention()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) MoveToForeground() { // TODO: return value
-  // TODO: implement
+func  (me *Window) MoveToForeground()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetVisible(visible bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetVisible(visible bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) IsVisible() { // TODO: return value
-  // TODO: implement
+func  (me *Window) IsVisible()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) Hide() { // TODO: return value
-  // TODO: implement
+func  (me *Window) Hide()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) Show() { // TODO: return value
-  // TODO: implement
+func  (me *Window) Show()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetTransient(transient bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetTransient(transient bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) IsTransient() { // TODO: return value
-  // TODO: implement
+func  (me *Window) IsTransient()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetExclusive(exclusive bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetExclusive(exclusive bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) IsExclusive() { // TODO: return value
-  // TODO: implement
+func  (me *Window) IsExclusive()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetUnparentWhenInvisible(unparent bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetUnparentWhenInvisible(unparent bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) CanDraw() { // TODO: return value
-  // TODO: implement
+func  (me *Window) CanDraw()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasFocus() { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasFocus()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GrabFocus() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GrabFocus()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetImeActive(active bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetImeActive(active bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetImePosition(position Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetImePosition(position Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) IsEmbedded() { // TODO: return value
-  // TODO: implement
+func  (me *Window) IsEmbedded()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetContentsMinimumSize() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetContentsMinimumSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetContentScaleSize(size Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetContentScaleSize(size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetContentScaleSize() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetContentScaleSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetContentScaleMode(mode WindowContentScaleMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetContentScaleMode(mode WindowContentScaleMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetContentScaleMode() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetContentScaleMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetContentScaleAspect(aspect WindowContentScaleAspect, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetContentScaleAspect(aspect WindowContentScaleAspect, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetContentScaleAspect() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetContentScaleAspect()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetContentScaleFactor(factor float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetContentScaleFactor(factor float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetContentScaleFactor() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetContentScaleFactor()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetUseFontOversampling(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetUseFontOversampling(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) IsUsingFontOversampling() { // TODO: return value
-  // TODO: implement
+func  (me *Window) IsUsingFontOversampling()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetMousePassthroughPolygon(polygon PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetMousePassthroughPolygon(polygon PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetMousePassthroughPolygon() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetMousePassthroughPolygon()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetWrapControls(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetWrapControls(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) IsWrappingControls() { // TODO: return value
-  // TODO: implement
+func  (me *Window) IsWrappingControls()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) ChildControlsChanged() { // TODO: return value
-  // TODO: implement
+func  (me *Window) ChildControlsChanged()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetTheme(theme Theme, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetTheme(theme Theme, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetTheme() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetTheme()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetThemeTypeVariation(theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetThemeTypeVariation(theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetThemeTypeVariation() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetThemeTypeVariation()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) BeginBulkThemeOverride() { // TODO: return value
-  // TODO: implement
+func  (me *Window) BeginBulkThemeOverride()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) EndBulkThemeOverride() { // TODO: return value
-  // TODO: implement
+func  (me *Window) EndBulkThemeOverride()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) AddThemeIconOverride(name StringName, texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) AddThemeIconOverride(name StringName, texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) AddThemeStyleboxOverride(name StringName, stylebox StyleBox, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) AddThemeStyleboxOverride(name StringName, stylebox StyleBox, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) AddThemeFontOverride(name StringName, font Font, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) AddThemeFontOverride(name StringName, font Font, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) AddThemeFontSizeOverride(name StringName, font_size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) AddThemeFontSizeOverride(name StringName, font_size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) AddThemeColorOverride(name StringName, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) AddThemeColorOverride(name StringName, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) AddThemeConstantOverride(name StringName, constant int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) AddThemeConstantOverride(name StringName, constant int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) RemoveThemeIconOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) RemoveThemeIconOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) RemoveThemeStyleboxOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) RemoveThemeStyleboxOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) RemoveThemeFontOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) RemoveThemeFontOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) RemoveThemeFontSizeOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) RemoveThemeFontSizeOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) RemoveThemeColorOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) RemoveThemeColorOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) RemoveThemeConstantOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) RemoveThemeConstantOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetThemeIcon(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetThemeIcon(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetThemeStylebox(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetThemeStylebox(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetThemeFont(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetThemeFont(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetThemeFontSize(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetThemeFontSize(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetThemeColor(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetThemeColor(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetThemeConstant(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetThemeConstant(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeIconOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeIconOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeStyleboxOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeStyleboxOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeFontOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeFontOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeFontSizeOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeFontSizeOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeColorOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeColorOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeConstantOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeConstantOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeIcon(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeIcon(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeStylebox(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeStylebox(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeFont(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeFont(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeFontSize(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeFontSize(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeColor(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeColor(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) HasThemeConstant(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) HasThemeConstant(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetThemeDefaultBaseScale() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetThemeDefaultBaseScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetThemeDefaultFont() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetThemeDefaultFont()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetThemeDefaultFontSize() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetThemeDefaultFontSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetLayoutDirection(direction WindowLayoutDirection, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetLayoutDirection(direction WindowLayoutDirection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) GetLayoutDirection() { // TODO: return value
-  // TODO: implement
+func  (me *Window) GetLayoutDirection()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) IsLayoutRtl() { // TODO: return value
-  // TODO: implement
+func  (me *Window) IsLayoutRtl()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) SetAutoTranslate(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) SetAutoTranslate(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) IsAutoTranslating() { // TODO: return value
-  // TODO: implement
+func  (me *Window) IsAutoTranslating()  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) Popup(rect Rect2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) Popup(rect Rect2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) PopupOnParent(parent_rect Rect2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) PopupOnParent(parent_rect Rect2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) PopupCentered(minsize Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) PopupCentered(minsize Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) PopupCenteredRatio(ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) PopupCenteredRatio(ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) PopupCenteredClamped(minsize Vector2i, fallback_ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) PopupCenteredClamped(minsize Vector2i, fallback_ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) PopupExclusive(from_node Node, rect Rect2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) PopupExclusive(from_node Node, rect Rect2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) PopupExclusiveOnParent(from_node Node, parent_rect Rect2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) PopupExclusiveOnParent(from_node Node, parent_rect Rect2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) PopupExclusiveCentered(from_node Node, minsize Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) PopupExclusiveCentered(from_node Node, minsize Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) PopupExclusiveCenteredRatio(from_node Node, ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) PopupExclusiveCenteredRatio(from_node Node, ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Window) PopupExclusiveCenteredClamped(from_node Node, minsize Vector2i, fallback_ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Window) PopupExclusiveCenteredClamped(from_node Node, minsize Vector2i, fallback_ratio float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

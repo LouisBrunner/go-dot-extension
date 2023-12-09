@@ -25,6 +25,21 @@ func (me *AnimationNodeTimeScale) BaseClass() string {
   return "AnimationNodeTimeScale"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *AnimationNodeTimeScale) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *AnimationNodeTimeScale) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

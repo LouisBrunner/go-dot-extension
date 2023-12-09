@@ -25,18 +25,33 @@ func (me *PCKPacker) BaseClass() string {
   return "PCKPacker"
 }
 
-func  (me *PCKPacker) PckStart(pck_name String, alignment int, key String, encrypt_directory bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PCKPacker) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PCKPacker) AddFile(pck_path String, source_path String, encrypt bool, ) { // TODO: return value
-  // TODO: implement
+func (me *PCKPacker) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PCKPacker) Flush(verbose bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PCKPacker) PckStart(pck_name String, alignment int, key String, encrypt_directory bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PCKPacker) AddFile(pck_path String, source_path String, encrypt bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PCKPacker) Flush(verbose bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

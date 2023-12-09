@@ -25,30 +25,45 @@ func (me *MeshTexture) BaseClass() string {
   return "MeshTexture"
 }
 
-func  (me *MeshTexture) SetMesh(mesh Mesh, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MeshTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MeshTexture) GetMesh() { // TODO: return value
-  // TODO: implement
+func (me *MeshTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MeshTexture) SetImageSize(size Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MeshTexture) SetMesh(mesh Mesh, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshTexture) GetImageSize() { // TODO: return value
-  // TODO: implement
+func  (me *MeshTexture) GetMesh()  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshTexture) SetBaseTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshTexture) SetImageSize(size Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshTexture) GetBaseTexture() { // TODO: return value
-  // TODO: implement
+func  (me *MeshTexture) GetImageSize()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MeshTexture) SetBaseTexture(texture Texture2D, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MeshTexture) GetBaseTexture()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

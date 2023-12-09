@@ -25,22 +25,37 @@ func (me *EditorScript) BaseClass() string {
   return "EditorScript"
 }
 
-func  (me *EditorScript) XRun() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorScript) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorScript) AddRootNode(node Node, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorScript) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorScript) GetScene() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorScript) XRun()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorScript) GetEditorInterface() { // TODO: return value
-  // TODO: implement
+func  (me *EditorScript) AddRootNode(node Node, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorScript) GetScene()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorScript) GetEditorInterface()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

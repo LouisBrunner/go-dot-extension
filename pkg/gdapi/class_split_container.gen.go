@@ -25,6 +25,10 @@ func (me *SplitContainer) BaseClass() string {
   return "SplitContainer"
 }
 
+
+
+// Enums
+
 type SplitContainerDraggerVisibility int
 const (
   SplitContainerDraggerVisibilityDraggerVisible SplitContainerDraggerVisibility = 0
@@ -32,42 +36,53 @@ const (
   SplitContainerDraggerVisibilityDraggerHiddenCollapsed SplitContainerDraggerVisibility = 2
 )
 
-func  (me *SplitContainer) SetSplitOffset(offset int, ) { // TODO: return value
-  // TODO: implement
+func (me *SplitContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SplitContainer) GetSplitOffset() { // TODO: return value
-  // TODO: implement
+func (me *SplitContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SplitContainer) ClampSplitOffset() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SplitContainer) SetSplitOffset(offset int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SplitContainer) SetCollapsed(collapsed bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SplitContainer) GetSplitOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *SplitContainer) IsCollapsed() { // TODO: return value
-  // TODO: implement
+func  (me *SplitContainer) ClampSplitOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *SplitContainer) SetDraggerVisibility(mode SplitContainerDraggerVisibility, ) { // TODO: return value
-  // TODO: implement
+func  (me *SplitContainer) SetCollapsed(collapsed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SplitContainer) GetDraggerVisibility() { // TODO: return value
-  // TODO: implement
+func  (me *SplitContainer) IsCollapsed()  {
+  panic("TODO: implement")
 }
 
-func  (me *SplitContainer) SetVertical(vertical bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SplitContainer) SetDraggerVisibility(mode SplitContainerDraggerVisibility, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SplitContainer) IsVertical() { // TODO: return value
-  // TODO: implement
+func  (me *SplitContainer) GetDraggerVisibility()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SplitContainer) SetVertical(vertical bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SplitContainer) IsVertical()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

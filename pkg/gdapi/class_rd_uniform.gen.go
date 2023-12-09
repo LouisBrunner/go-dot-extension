@@ -25,34 +25,49 @@ func (me *RDUniform) BaseClass() string {
   return "RDUniform"
 }
 
-func  (me *RDUniform) SetUniformType(p_member RenderingDeviceUniformType, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDUniform) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDUniform) GetUniformType() { // TODO: return value
-  // TODO: implement
+func (me *RDUniform) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDUniform) SetBinding(p_member int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDUniform) SetUniformType(p_member RenderingDeviceUniformType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDUniform) GetBinding() { // TODO: return value
-  // TODO: implement
+func  (me *RDUniform) GetUniformType()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDUniform) AddId(id RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDUniform) SetBinding(p_member int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDUniform) ClearIds() { // TODO: return value
-  // TODO: implement
+func  (me *RDUniform) GetBinding()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDUniform) GetIds() { // TODO: return value
-  // TODO: implement
+func  (me *RDUniform) AddId(id RID, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDUniform) ClearIds()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDUniform) GetIds()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

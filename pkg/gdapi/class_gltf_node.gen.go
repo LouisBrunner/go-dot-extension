@@ -25,110 +25,125 @@ func (me *GLTFNode) BaseClass() string {
   return "GLTFNode"
 }
 
-func  (me *GLTFNode) GetParent() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFNode) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFNode) SetParent(parent int, ) { // TODO: return value
-  // TODO: implement
+func (me *GLTFNode) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GLTFNode) GetHeight() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GLTFNode) GetParent()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetHeight(height int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetParent(parent int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) GetXform() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) GetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetXform(xform Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetHeight(height int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) GetMesh() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) GetXform()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetMesh(mesh int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetXform(xform Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) GetCamera() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) GetMesh()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetCamera(camera int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetMesh(mesh int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) GetSkin() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) GetCamera()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetSkin(skin int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetCamera(camera int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) GetSkeleton() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) GetSkin()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetSkeleton(skeleton int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetSkin(skin int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) GetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) GetSkeleton()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetPosition(position Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetSkeleton(skeleton int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) GetRotation() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) GetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetRotation(rotation Quaternion, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetPosition(position Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) GetScale() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) GetRotation()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetScale(scale Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetRotation(rotation Quaternion, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) GetChildren() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) GetScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetChildren(children PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetScale(scale Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) GetLight() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) GetChildren()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetLight(light int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetChildren(children PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) GetAdditionalData(extension_name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) GetLight()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFNode) SetAdditionalData(extension_name StringName, additional_data Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFNode) SetLight(light int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFNode) GetAdditionalData(extension_name StringName, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFNode) SetAdditionalData(extension_name StringName, additional_data Variant, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

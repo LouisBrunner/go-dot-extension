@@ -25,6 +25,10 @@ func (me *HingeJoint3D) BaseClass() string {
   return "HingeJoint3D"
 }
 
+
+
+// Enums
+
 type HingeJoint3DParam int
 const (
   HingeJoint3DParamParamBias HingeJoint3DParam = 0
@@ -45,22 +49,33 @@ const (
   HingeJoint3DFlagFlagMax HingeJoint3DFlag = 2
 )
 
-func  (me *HingeJoint3D) SetParam(param HingeJoint3DParam, value float32, ) { // TODO: return value
-  // TODO: implement
+func (me *HingeJoint3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *HingeJoint3D) GetParam(param HingeJoint3DParam, ) { // TODO: return value
-  // TODO: implement
+func (me *HingeJoint3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *HingeJoint3D) SetFlag(flag HingeJoint3DFlag, enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *HingeJoint3D) SetParam(param HingeJoint3DParam, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HingeJoint3D) GetFlag(flag HingeJoint3DFlag, ) { // TODO: return value
-  // TODO: implement
+func  (me *HingeJoint3D) GetParam(param HingeJoint3DParam, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *HingeJoint3D) SetFlag(flag HingeJoint3DFlag, enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *HingeJoint3D) GetFlag(flag HingeJoint3DFlag, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

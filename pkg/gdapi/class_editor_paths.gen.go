@@ -25,30 +25,45 @@ func (me *EditorPaths) BaseClass() string {
   return "EditorPaths"
 }
 
-func  (me *EditorPaths) GetDataDir() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorPaths) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorPaths) GetConfigDir() { // TODO: return value
-  // TODO: implement
+func (me *EditorPaths) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorPaths) GetCacheDir() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorPaths) GetDataDir()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorPaths) IsSelfContained() { // TODO: return value
-  // TODO: implement
+func  (me *EditorPaths) GetConfigDir()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorPaths) GetSelfContainedFile() { // TODO: return value
-  // TODO: implement
+func  (me *EditorPaths) GetCacheDir()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorPaths) GetProjectSettingsDir() { // TODO: return value
-  // TODO: implement
+func  (me *EditorPaths) IsSelfContained()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorPaths) GetSelfContainedFile()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorPaths) GetProjectSettingsDir()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

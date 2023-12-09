@@ -25,30 +25,45 @@ func (me *TCPServer) BaseClass() string {
   return "TCPServer"
 }
 
-func  (me *TCPServer) Listen(port int, bind_address String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *TCPServer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TCPServer) IsConnectionAvailable() { // TODO: return value
-  // TODO: implement
+func (me *TCPServer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TCPServer) IsListening() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TCPServer) Listen(port int, bind_address String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TCPServer) GetLocalPort() { // TODO: return value
-  // TODO: implement
+func  (me *TCPServer) IsConnectionAvailable()  {
+  panic("TODO: implement")
 }
 
-func  (me *TCPServer) TakeConnection() { // TODO: return value
-  // TODO: implement
+func  (me *TCPServer) IsListening()  {
+  panic("TODO: implement")
 }
 
-func  (me *TCPServer) Stop() { // TODO: return value
-  // TODO: implement
+func  (me *TCPServer) GetLocalPort()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TCPServer) TakeConnection()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TCPServer) Stop()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

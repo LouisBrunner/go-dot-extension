@@ -25,6 +25,10 @@ func (me *CameraFeed) BaseClass() string {
   return "CameraFeed"
 }
 
+
+
+// Enums
+
 type CameraFeedFeedDataType int
 const (
   CameraFeedFeedDataTypeFeedNoimage CameraFeedFeedDataType = 0
@@ -40,38 +44,49 @@ const (
   CameraFeedFeedPositionFeedBack CameraFeedFeedPosition = 2
 )
 
-func  (me *CameraFeed) GetId() { // TODO: return value
-  // TODO: implement
+func (me *CameraFeed) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CameraFeed) IsActive() { // TODO: return value
-  // TODO: implement
+func (me *CameraFeed) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CameraFeed) SetActive(active bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CameraFeed) GetId()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraFeed) GetName() { // TODO: return value
-  // TODO: implement
+func  (me *CameraFeed) IsActive()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraFeed) GetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *CameraFeed) SetActive(active bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraFeed) GetTransform() { // TODO: return value
-  // TODO: implement
+func  (me *CameraFeed) GetName()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraFeed) SetTransform(transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraFeed) GetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraFeed) GetDatatype() { // TODO: return value
-  // TODO: implement
+func  (me *CameraFeed) GetTransform()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CameraFeed) SetTransform(transform Transform2D, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CameraFeed) GetDatatype()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,70 +25,85 @@ func (me *Texture2D) BaseClass() string {
   return "Texture2D"
 }
 
-func  (me *Texture2D) XGetWidth() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Texture2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Texture2D) XGetHeight() { // TODO: return value
-  // TODO: implement
+func (me *Texture2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Texture2D) XIsPixelOpaque(x int, y int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Texture2D) XGetWidth()  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) XHasAlpha() { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) XGetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) XDraw(to_canvas_item RID, pos Vector2, modulate Color, transpose bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) XIsPixelOpaque(x int, y int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) XDrawRect(to_canvas_item RID, rect Rect2, tile bool, modulate Color, transpose bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) XHasAlpha()  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) XDrawRectRegion(to_canvas_item RID, rect Rect2, src_rect Rect2, modulate Color, transpose bool, clip_uv bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) XDraw(to_canvas_item RID, pos Vector2, modulate Color, transpose bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) GetWidth() { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) XDrawRect(to_canvas_item RID, rect Rect2, tile bool, modulate Color, transpose bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) XDrawRectRegion(to_canvas_item RID, rect Rect2, src_rect Rect2, modulate Color, transpose bool, clip_uv bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) GetSize() { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) GetWidth()  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) HasAlpha() { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) GetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) Draw(canvas_item RID, position Vector2, modulate Color, transpose bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) DrawRect(canvas_item RID, rect Rect2, tile bool, modulate Color, transpose bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) HasAlpha()  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) DrawRectRegion(canvas_item RID, rect Rect2, src_rect Rect2, modulate Color, transpose bool, clip_uv bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) Draw(canvas_item RID, position Vector2, modulate Color, transpose bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) GetImage() { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) DrawRect(canvas_item RID, rect Rect2, tile bool, modulate Color, transpose bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Texture2D) CreatePlaceholder() { // TODO: return value
-  // TODO: implement
+func  (me *Texture2D) DrawRectRegion(canvas_item RID, rect Rect2, src_rect Rect2, modulate Color, transpose bool, clip_uv bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Texture2D) GetImage()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Texture2D) CreatePlaceholder()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

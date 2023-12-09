@@ -25,14 +25,29 @@ func (me *EncodedObjectAsID) BaseClass() string {
   return "EncodedObjectAsID"
 }
 
-func  (me *EncodedObjectAsID) SetObjectId(id int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EncodedObjectAsID) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EncodedObjectAsID) GetObjectId() { // TODO: return value
-  // TODO: implement
+func (me *EncodedObjectAsID) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *EncodedObjectAsID) SetObjectId(id int, )  {
+  panic("TODO: implement")
+}
+
+func  (me *EncodedObjectAsID) GetObjectId()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

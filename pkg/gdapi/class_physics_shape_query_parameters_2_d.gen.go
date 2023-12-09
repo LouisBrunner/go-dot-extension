@@ -25,78 +25,93 @@ func (me *PhysicsShapeQueryParameters2D) BaseClass() string {
   return "PhysicsShapeQueryParameters2D"
 }
 
-func  (me *PhysicsShapeQueryParameters2D) SetShape(shape Resource, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsShapeQueryParameters2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsShapeQueryParameters2D) GetShape() { // TODO: return value
-  // TODO: implement
+func (me *PhysicsShapeQueryParameters2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsShapeQueryParameters2D) SetShapeRid(shape RID, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicsShapeQueryParameters2D) SetShape(shape Resource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) GetShapeRid() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) GetShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) SetTransform(transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) SetShapeRid(shape RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) GetTransform() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) GetShapeRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) SetMotion(motion Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) SetTransform(transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) GetMotion() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) GetTransform()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) SetMargin(margin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) SetMotion(motion Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) GetMargin() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) GetMotion()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) SetCollisionMask(collision_mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) SetMargin(margin float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) GetCollisionMask() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) GetMargin()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) SetExclude(exclude RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) SetCollisionMask(collision_mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) GetExclude() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) GetCollisionMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) SetCollideWithBodies(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) SetExclude(exclude RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) IsCollideWithBodiesEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) GetExclude()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) SetCollideWithAreas(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) SetCollideWithBodies(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsShapeQueryParameters2D) IsCollideWithAreasEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsShapeQueryParameters2D) IsCollideWithBodiesEnabled()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsShapeQueryParameters2D) SetCollideWithAreas(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsShapeQueryParameters2D) IsCollideWithAreasEnabled()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

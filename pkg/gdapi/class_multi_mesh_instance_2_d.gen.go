@@ -25,22 +25,37 @@ func (me *MultiMeshInstance2D) BaseClass() string {
   return "MultiMeshInstance2D"
 }
 
-func  (me *MultiMeshInstance2D) SetMultimesh(multimesh MultiMesh, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MultiMeshInstance2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MultiMeshInstance2D) GetMultimesh() { // TODO: return value
-  // TODO: implement
+func (me *MultiMeshInstance2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MultiMeshInstance2D) SetTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MultiMeshInstance2D) SetMultimesh(multimesh MultiMesh, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiMeshInstance2D) GetTexture() { // TODO: return value
-  // TODO: implement
+func  (me *MultiMeshInstance2D) GetMultimesh()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MultiMeshInstance2D) SetTexture(texture Texture2D, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MultiMeshInstance2D) GetTexture()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

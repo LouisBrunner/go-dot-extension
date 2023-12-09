@@ -25,62 +25,77 @@ func (me *PhysicsTestMotionResult3D) BaseClass() string {
   return "PhysicsTestMotionResult3D"
 }
 
-func  (me *PhysicsTestMotionResult3D) GetTravel() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsTestMotionResult3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsTestMotionResult3D) GetRemainder() { // TODO: return value
-  // TODO: implement
+func (me *PhysicsTestMotionResult3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsTestMotionResult3D) GetCollisionSafeFraction() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicsTestMotionResult3D) GetTravel()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult3D) GetCollisionUnsafeFraction() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult3D) GetRemainder()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult3D) GetCollisionCount() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult3D) GetCollisionSafeFraction()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult3D) GetCollisionPoint(collision_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult3D) GetCollisionUnsafeFraction()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult3D) GetCollisionNormal(collision_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult3D) GetCollisionCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult3D) GetColliderVelocity(collision_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult3D) GetCollisionPoint(collision_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult3D) GetColliderId(collision_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult3D) GetCollisionNormal(collision_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult3D) GetColliderRid(collision_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult3D) GetColliderVelocity(collision_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult3D) GetCollider(collision_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult3D) GetColliderId(collision_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult3D) GetColliderShape(collision_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult3D) GetColliderRid(collision_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult3D) GetCollisionLocalShape(collision_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult3D) GetCollider(collision_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionResult3D) GetCollisionDepth(collision_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionResult3D) GetColliderShape(collision_index int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsTestMotionResult3D) GetCollisionLocalShape(collision_index int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsTestMotionResult3D) GetCollisionDepth(collision_index int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

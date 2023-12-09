@@ -25,14 +25,29 @@ func (me *VisualShaderNodeParticleEmitter) BaseClass() string {
   return "VisualShaderNodeParticleEmitter"
 }
 
-func  (me *VisualShaderNodeParticleEmitter) SetMode2D(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeParticleEmitter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeParticleEmitter) IsMode2D() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParticleEmitter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeParticleEmitter) SetMode2D(enabled bool, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeParticleEmitter) IsMode2D()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

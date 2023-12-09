@@ -25,18 +25,33 @@ func (me *TLSOptions) BaseClass() string {
   return "TLSOptions"
 }
 
-func  TLSOptionsClient(trusted_chain X509Certificate, common_name_override String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *TLSOptions) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  TLSOptionsClientUnsafe(trusted_chain X509Certificate, ) { // TODO: return value
-  // TODO: implement
+func (me *TLSOptions) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  TLSOptionsServer(key CryptoKey, certificate X509Certificate, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  TLSOptionsClient(trusted_chain X509Certificate, common_name_override String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  TLSOptionsClientUnsafe(trusted_chain X509Certificate, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  TLSOptionsServer(key CryptoKey, certificate X509Certificate, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

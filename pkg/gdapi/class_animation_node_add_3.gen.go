@@ -25,6 +25,21 @@ func (me *AnimationNodeAdd3) BaseClass() string {
   return "AnimationNodeAdd3"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *AnimationNodeAdd3) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *AnimationNodeAdd3) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

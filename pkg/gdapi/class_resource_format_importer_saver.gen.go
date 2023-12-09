@@ -25,6 +25,21 @@ func (me *ResourceFormatImporterSaver) BaseClass() string {
   return "ResourceFormatImporterSaver"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *ResourceFormatImporterSaver) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *ResourceFormatImporterSaver) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

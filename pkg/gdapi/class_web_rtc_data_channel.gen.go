@@ -25,6 +25,10 @@ func (me *WebRTCDataChannel) BaseClass() string {
   return "WebRTCDataChannel"
 }
 
+
+
+// Enums
+
 type WebRTCDataChannelWriteMode int
 const (
   WebRTCDataChannelWriteModeWriteModeText WebRTCDataChannelWriteMode = 0
@@ -39,62 +43,73 @@ const (
   WebRTCDataChannelChannelStateStateClosed WebRTCDataChannelChannelState = 3
 )
 
-func  (me *WebRTCDataChannel) Poll() { // TODO: return value
-  // TODO: implement
+func (me *WebRTCDataChannel) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *WebRTCDataChannel) Close() { // TODO: return value
-  // TODO: implement
+func (me *WebRTCDataChannel) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *WebRTCDataChannel) WasStringPacket() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *WebRTCDataChannel) Poll()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannel) SetWriteMode(write_mode WebRTCDataChannelWriteMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannel) Close()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannel) GetWriteMode() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannel) WasStringPacket()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannel) GetReadyState() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannel) SetWriteMode(write_mode WebRTCDataChannelWriteMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannel) GetLabel() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannel) GetWriteMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannel) IsOrdered() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannel) GetReadyState()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannel) GetId() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannel) GetLabel()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannel) GetMaxPacketLifeTime() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannel) IsOrdered()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannel) GetMaxRetransmits() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannel) GetId()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannel) GetProtocol() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannel) GetMaxPacketLifeTime()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannel) IsNegotiated() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannel) GetMaxRetransmits()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCDataChannel) GetBufferedAmount() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCDataChannel) GetProtocol()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *WebRTCDataChannel) IsNegotiated()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *WebRTCDataChannel) GetBufferedAmount()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

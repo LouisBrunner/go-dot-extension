@@ -25,6 +25,10 @@ func (me *NinePatchRect) BaseClass() string {
   return "NinePatchRect"
 }
 
+
+
+// Enums
+
 type NinePatchRectAxisStretchMode int
 const (
   NinePatchRectAxisStretchModeAxisStretchModeStretch NinePatchRectAxisStretchMode = 0
@@ -32,54 +36,65 @@ const (
   NinePatchRectAxisStretchModeAxisStretchModeTileFit NinePatchRectAxisStretchMode = 2
 )
 
-func  (me *NinePatchRect) SetTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func (me *NinePatchRect) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *NinePatchRect) GetTexture() { // TODO: return value
-  // TODO: implement
+func (me *NinePatchRect) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *NinePatchRect) SetPatchMargin(margin Side, value int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *NinePatchRect) SetTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NinePatchRect) GetPatchMargin(margin Side, ) { // TODO: return value
-  // TODO: implement
+func  (me *NinePatchRect) GetTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *NinePatchRect) SetRegionRect(rect Rect2, ) { // TODO: return value
-  // TODO: implement
+func  (me *NinePatchRect) SetPatchMargin(margin Side, value int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NinePatchRect) GetRegionRect() { // TODO: return value
-  // TODO: implement
+func  (me *NinePatchRect) GetPatchMargin(margin Side, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NinePatchRect) SetDrawCenter(draw_center bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NinePatchRect) SetRegionRect(rect Rect2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NinePatchRect) IsDrawCenterEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *NinePatchRect) GetRegionRect()  {
+  panic("TODO: implement")
 }
 
-func  (me *NinePatchRect) SetHAxisStretchMode(mode NinePatchRectAxisStretchMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *NinePatchRect) SetDrawCenter(draw_center bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NinePatchRect) GetHAxisStretchMode() { // TODO: return value
-  // TODO: implement
+func  (me *NinePatchRect) IsDrawCenterEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *NinePatchRect) SetVAxisStretchMode(mode NinePatchRectAxisStretchMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *NinePatchRect) SetHAxisStretchMode(mode NinePatchRectAxisStretchMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NinePatchRect) GetVAxisStretchMode() { // TODO: return value
-  // TODO: implement
+func  (me *NinePatchRect) GetHAxisStretchMode()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *NinePatchRect) SetVAxisStretchMode(mode NinePatchRectAxisStretchMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *NinePatchRect) GetVAxisStretchMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

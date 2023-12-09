@@ -25,6 +25,21 @@ func (me *EditorSceneFormatImporterBlend) BaseClass() string {
   return "EditorSceneFormatImporterBlend"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *EditorSceneFormatImporterBlend) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *EditorSceneFormatImporterBlend) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

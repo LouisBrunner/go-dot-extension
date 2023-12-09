@@ -25,6 +25,21 @@ func (me *MarginContainer) BaseClass() string {
   return "MarginContainer"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *MarginContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *MarginContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

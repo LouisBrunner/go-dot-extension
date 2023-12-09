@@ -25,6 +25,10 @@ func (me *FlowContainer) BaseClass() string {
   return "FlowContainer"
 }
 
+
+
+// Enums
+
 type FlowContainerAlignmentMode int
 const (
   FlowContainerAlignmentModeAlignmentBegin FlowContainerAlignmentMode = 0
@@ -32,26 +36,37 @@ const (
   FlowContainerAlignmentModeAlignmentEnd FlowContainerAlignmentMode = 2
 )
 
-func  (me *FlowContainer) GetLineCount() { // TODO: return value
-  // TODO: implement
+func (me *FlowContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *FlowContainer) SetAlignment(alignment FlowContainerAlignmentMode, ) { // TODO: return value
-  // TODO: implement
+func (me *FlowContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *FlowContainer) GetAlignment() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *FlowContainer) GetLineCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *FlowContainer) SetVertical(vertical bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *FlowContainer) SetAlignment(alignment FlowContainerAlignmentMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FlowContainer) IsVertical() { // TODO: return value
-  // TODO: implement
+func  (me *FlowContainer) GetAlignment()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *FlowContainer) SetVertical(vertical bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *FlowContainer) IsVertical()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

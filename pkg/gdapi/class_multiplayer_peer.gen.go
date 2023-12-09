@@ -25,14 +25,16 @@ func (me *MultiplayerPeer) BaseClass() string {
   return "MultiplayerPeer"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   MultiplayerPeerTargetPeerBroadcast = "0" // TODO: construct correctly
   MultiplayerPeerTargetPeerServer = "1" // TODO: construct correctly
 )
+
+// Enums
 
 type MultiplayerPeerConnectionStatus int
 const (
@@ -48,74 +50,85 @@ const (
   MultiplayerPeerTransferModeTransferModeReliable MultiplayerPeerTransferMode = 2
 )
 
-func  (me *MultiplayerPeer) SetTransferChannel(channel int, ) { // TODO: return value
-  // TODO: implement
+func (me *MultiplayerPeer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MultiplayerPeer) GetTransferChannel() { // TODO: return value
-  // TODO: implement
+func (me *MultiplayerPeer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MultiplayerPeer) SetTransferMode(mode MultiplayerPeerTransferMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MultiplayerPeer) SetTransferChannel(channel int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) GetTransferMode() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) GetTransferChannel()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) SetTargetPeer(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) SetTransferMode(mode MultiplayerPeerTransferMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) GetPacketPeer() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) GetTransferMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) GetPacketChannel() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) SetTargetPeer(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) GetPacketMode() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) GetPacketPeer()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) Poll() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) GetPacketChannel()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) Close() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) GetPacketMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) DisconnectPeer(peer int, force bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) Poll()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) GetConnectionStatus() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) Close()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) GetUniqueId() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) DisconnectPeer(peer int, force bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) GenerateUniqueId() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) GetConnectionStatus()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) SetRefuseNewConnections(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) GetUniqueId()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) IsRefusingNewConnections() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) GenerateUniqueId()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) IsServerRelaySupported() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeer) SetRefuseNewConnections(enable bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MultiplayerPeer) IsRefusingNewConnections()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MultiplayerPeer) IsServerRelaySupported()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

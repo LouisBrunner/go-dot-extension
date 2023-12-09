@@ -25,102 +25,117 @@ func (me *MenuBar) BaseClass() string {
   return "MenuBar"
 }
 
-func  (me *MenuBar) SetSwitchOnHover(enable bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MenuBar) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MenuBar) IsSwitchOnHover() { // TODO: return value
-  // TODO: implement
+func (me *MenuBar) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MenuBar) SetDisableShortcuts(disabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MenuBar) SetSwitchOnHover(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) SetPreferGlobalMenu(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) IsSwitchOnHover()  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) IsPreferGlobalMenu() { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) SetDisableShortcuts(disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) IsNativeMenu() { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) SetPreferGlobalMenu(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) GetMenuCount() { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) IsPreferGlobalMenu()  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) SetTextDirection(direction ControlTextDirection, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) IsNativeMenu()  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) GetTextDirection() { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) GetMenuCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) SetLanguage(language String, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) SetTextDirection(direction ControlTextDirection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) GetLanguage() { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) GetTextDirection()  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) SetFlat(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) SetLanguage(language String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) IsFlat() { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) GetLanguage()  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) SetStartIndex(enabled int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) SetFlat(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) GetStartIndex() { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) IsFlat()  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) SetMenuTitle(menu int, title String, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) SetStartIndex(enabled int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) GetMenuTitle(menu int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) GetStartIndex()  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) SetMenuTooltip(menu int, tooltip String, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) SetMenuTitle(menu int, title String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) GetMenuTooltip(menu int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) GetMenuTitle(menu int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) SetMenuDisabled(menu int, disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) SetMenuTooltip(menu int, tooltip String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) IsMenuDisabled(menu int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) GetMenuTooltip(menu int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) SetMenuHidden(menu int, hidden bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) SetMenuDisabled(menu int, disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) IsMenuHidden(menu int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) IsMenuDisabled(menu int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MenuBar) GetMenuPopup(menu int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MenuBar) SetMenuHidden(menu int, hidden bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MenuBar) IsMenuHidden(menu int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MenuBar) GetMenuPopup(menu int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

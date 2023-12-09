@@ -25,14 +25,29 @@ func (me *VisualShaderNodeParticleMultiplyByAxisAngle) BaseClass() string {
   return "VisualShaderNodeParticleMultiplyByAxisAngle"
 }
 
-func  (me *VisualShaderNodeParticleMultiplyByAxisAngle) SetDegreesMode(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeParticleMultiplyByAxisAngle) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeParticleMultiplyByAxisAngle) IsDegreesMode() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParticleMultiplyByAxisAngle) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeParticleMultiplyByAxisAngle) SetDegreesMode(enabled bool, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeParticleMultiplyByAxisAngle) IsDegreesMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

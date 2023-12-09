@@ -25,106 +25,121 @@ func (me *VideoStreamPlayer) BaseClass() string {
   return "VideoStreamPlayer"
 }
 
-func  (me *VideoStreamPlayer) SetStream(stream VideoStream, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VideoStreamPlayer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VideoStreamPlayer) GetStream() { // TODO: return value
-  // TODO: implement
+func (me *VideoStreamPlayer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VideoStreamPlayer) Play() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VideoStreamPlayer) SetStream(stream VideoStream, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) Stop() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) GetStream()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) IsPlaying() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) Play()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) SetPaused(paused bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) Stop()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) IsPaused() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) IsPlaying()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) SetVolume(volume float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) SetPaused(paused bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) GetVolume() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) IsPaused()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) SetVolumeDb(db float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) SetVolume(volume float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) GetVolumeDb() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) GetVolume()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) SetAudioTrack(track int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) SetVolumeDb(db float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) GetAudioTrack() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) GetVolumeDb()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) GetStreamName() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) SetAudioTrack(track int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) SetStreamPosition(position float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) GetAudioTrack()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) GetStreamPosition() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) GetStreamName()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) SetAutoplay(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) SetStreamPosition(position float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) HasAutoplay() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) GetStreamPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) SetExpand(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) SetAutoplay(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) HasExpand() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) HasAutoplay()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) SetBufferingMsec(msec int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) SetExpand(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) GetBufferingMsec() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) HasExpand()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) SetBus(bus StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) SetBufferingMsec(msec int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) GetBus() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) GetBufferingMsec()  {
+  panic("TODO: implement")
 }
 
-func  (me *VideoStreamPlayer) GetVideoTexture() { // TODO: return value
-  // TODO: implement
+func  (me *VideoStreamPlayer) SetBus(bus StringName, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VideoStreamPlayer) GetBus()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VideoStreamPlayer) GetVideoTexture()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

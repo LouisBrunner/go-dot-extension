@@ -25,14 +25,29 @@ func (me *ScriptEditorBase) BaseClass() string {
   return "ScriptEditorBase"
 }
 
-func  (me *ScriptEditorBase) GetBaseEditor() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ScriptEditorBase) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ScriptEditorBase) AddSyntaxHighlighter(highlighter EditorSyntaxHighlighter, ) { // TODO: return value
-  // TODO: implement
+func (me *ScriptEditorBase) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *ScriptEditorBase) GetBaseEditor()  {
+  panic("TODO: implement")
+}
+
+func  (me *ScriptEditorBase) AddSyntaxHighlighter(highlighter EditorSyntaxHighlighter, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,58 +25,73 @@ func (me *SkeletonModification2D) BaseClass() string {
   return "SkeletonModification2D"
 }
 
-func  (me *SkeletonModification2D) XExecute(delta float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SkeletonModification2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SkeletonModification2D) XSetupModification(modification_stack SkeletonModificationStack2D, ) { // TODO: return value
-  // TODO: implement
+func (me *SkeletonModification2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SkeletonModification2D) XDrawEditorGizmo() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SkeletonModification2D) XExecute(delta float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2D) SetEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2D) XSetupModification(modification_stack SkeletonModificationStack2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2D) GetEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2D) XDrawEditorGizmo()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2D) GetModificationStack() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2D) SetEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2D) SetIsSetup(is_setup bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2D) GetEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2D) GetIsSetup() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2D) GetModificationStack()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2D) SetExecutionMode(execution_mode int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2D) SetIsSetup(is_setup bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2D) GetExecutionMode() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2D) GetIsSetup()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2D) ClampAngle(angle float32, min float32, max float32, invert bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2D) SetExecutionMode(execution_mode int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2D) SetEditorDrawGizmo(draw_gizmo bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2D) GetExecutionMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2D) GetEditorDrawGizmo() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2D) ClampAngle(angle float32, min float32, max float32, invert bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SkeletonModification2D) SetEditorDrawGizmo(draw_gizmo bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SkeletonModification2D) GetEditorDrawGizmo()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

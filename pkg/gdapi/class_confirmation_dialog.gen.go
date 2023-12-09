@@ -25,18 +25,33 @@ func (me *ConfirmationDialog) BaseClass() string {
   return "ConfirmationDialog"
 }
 
-func  (me *ConfirmationDialog) GetCancelButton() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ConfirmationDialog) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ConfirmationDialog) SetCancelButtonText(text String, ) { // TODO: return value
-  // TODO: implement
+func (me *ConfirmationDialog) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ConfirmationDialog) GetCancelButtonText() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ConfirmationDialog) GetCancelButton()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ConfirmationDialog) SetCancelButtonText(text String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ConfirmationDialog) GetCancelButtonText()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

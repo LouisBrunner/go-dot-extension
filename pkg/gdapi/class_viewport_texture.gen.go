@@ -25,14 +25,29 @@ func (me *ViewportTexture) BaseClass() string {
   return "ViewportTexture"
 }
 
-func  (me *ViewportTexture) SetViewportPathInScene(path NodePath, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ViewportTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ViewportTexture) GetViewportPathInScene() { // TODO: return value
-  // TODO: implement
+func (me *ViewportTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *ViewportTexture) SetViewportPathInScene(path NodePath, )  {
+  panic("TODO: implement")
+}
+
+func  (me *ViewportTexture) GetViewportPathInScene()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

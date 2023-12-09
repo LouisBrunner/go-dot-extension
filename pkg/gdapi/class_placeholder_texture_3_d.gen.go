@@ -25,14 +25,29 @@ func (me *PlaceholderTexture3D) BaseClass() string {
   return "PlaceholderTexture3D"
 }
 
-func  (me *PlaceholderTexture3D) SetSize(size Vector3i, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PlaceholderTexture3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PlaceholderTexture3D) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *PlaceholderTexture3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *PlaceholderTexture3D) SetSize(size Vector3i, )  {
+  panic("TODO: implement")
+}
+
+func  (me *PlaceholderTexture3D) GetSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

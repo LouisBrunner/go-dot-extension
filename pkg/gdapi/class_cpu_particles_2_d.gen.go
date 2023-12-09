@@ -25,6 +25,10 @@ func (me *CPUParticles2D) BaseClass() string {
   return "CPUParticles2D"
 }
 
+
+
+// Enums
+
 type CPUParticles2DDrawOrder int
 const (
   CPUParticles2DDrawOrderDrawOrderIndex CPUParticles2DDrawOrder = 0
@@ -67,278 +71,289 @@ const (
   CPUParticles2DEmissionShapeEmissionShapeMax CPUParticles2DEmissionShape = 6
 )
 
-func  (me *CPUParticles2D) SetEmitting(emitting bool, ) { // TODO: return value
-  // TODO: implement
+func (me *CPUParticles2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CPUParticles2D) SetAmount(amount int, ) { // TODO: return value
-  // TODO: implement
+func (me *CPUParticles2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CPUParticles2D) SetLifetime(secs float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CPUParticles2D) SetEmitting(emitting bool, )  {
+  panic("TODO: implement")
+}
+
+func  (me *CPUParticles2D) SetAmount(amount int, )  {
+  panic("TODO: implement")
+}
+
+func  (me *CPUParticles2D) SetLifetime(secs float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetOneShot(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetOneShot(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetPreProcessTime(secs float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetPreProcessTime(secs float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetExplosivenessRatio(ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetExplosivenessRatio(ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetRandomnessRatio(ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetRandomnessRatio(ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetLifetimeRandomness(random float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetLifetimeRandomness(random float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetUseLocalCoordinates(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetUseLocalCoordinates(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetFixedFps(fps int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetFixedFps(fps int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetFractionalDelta(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetFractionalDelta(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetSpeedScale(scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetSpeedScale(scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) IsEmitting() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) IsEmitting()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetAmount() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetAmount()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetLifetime() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetLifetime()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetOneShot() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetOneShot()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetPreProcessTime() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetPreProcessTime()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetExplosivenessRatio() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetExplosivenessRatio()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetRandomnessRatio() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetRandomnessRatio()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetLifetimeRandomness() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetLifetimeRandomness()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetUseLocalCoordinates() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetUseLocalCoordinates()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetFixedFps() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetFixedFps()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetFractionalDelta() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetFractionalDelta()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetSpeedScale() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetSpeedScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetDrawOrder(order CPUParticles2DDrawOrder, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetDrawOrder(order CPUParticles2DDrawOrder, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetDrawOrder() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetDrawOrder()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetTexture() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) Restart() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) Restart()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetDirection(direction Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetDirection(direction Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetDirection() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetDirection()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetSpread(spread float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetSpread(spread float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetSpread() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetSpread()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetParamMin(param CPUParticles2DParameter, value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetParamMin(param CPUParticles2DParameter, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetParamMin(param CPUParticles2DParameter, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetParamMin(param CPUParticles2DParameter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetParamMax(param CPUParticles2DParameter, value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetParamMax(param CPUParticles2DParameter, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetParamMax(param CPUParticles2DParameter, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetParamMax(param CPUParticles2DParameter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetParamCurve(param CPUParticles2DParameter, curve Curve, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetParamCurve(param CPUParticles2DParameter, curve Curve, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetParamCurve(param CPUParticles2DParameter, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetParamCurve(param CPUParticles2DParameter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetColor() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetColorRamp(ramp Gradient, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetColorRamp(ramp Gradient, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetColorRamp() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetColorRamp()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetColorInitialRamp(ramp Gradient, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetColorInitialRamp(ramp Gradient, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetColorInitialRamp() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetColorInitialRamp()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetParticleFlag(particle_flag CPUParticles2DParticleFlags, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetParticleFlag(particle_flag CPUParticles2DParticleFlags, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetParticleFlag(particle_flag CPUParticles2DParticleFlags, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetParticleFlag(particle_flag CPUParticles2DParticleFlags, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetEmissionShape(shape CPUParticles2DEmissionShape, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetEmissionShape(shape CPUParticles2DEmissionShape, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetEmissionShape() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetEmissionShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetEmissionSphereRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetEmissionSphereRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetEmissionSphereRadius() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetEmissionSphereRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetEmissionRectExtents(extents Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetEmissionRectExtents(extents Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetEmissionRectExtents() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetEmissionRectExtents()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetEmissionPoints(array PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetEmissionPoints(array PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetEmissionPoints() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetEmissionPoints()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetEmissionNormals(array PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetEmissionNormals(array PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetEmissionNormals() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetEmissionNormals()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetEmissionColors(array PackedColorArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetEmissionColors(array PackedColorArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetEmissionColors() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetEmissionColors()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetGravity() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetGravity()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetGravity(accel_vec Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetGravity(accel_vec Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetSplitScale() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetSplitScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetSplitScale(split_scale bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetSplitScale(split_scale bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetScaleCurveX() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetScaleCurveX()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetScaleCurveX(scale_curve Curve, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetScaleCurveX(scale_curve Curve, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) GetScaleCurveY() { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) GetScaleCurveY()  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) SetScaleCurveY(scale_curve Curve, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) SetScaleCurveY(scale_curve Curve, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CPUParticles2D) ConvertFromParticles(particles Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *CPUParticles2D) ConvertFromParticles(particles Node, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

@@ -25,6 +25,10 @@ func (me *VisualShaderNodeUVFunc) BaseClass() string {
   return "VisualShaderNodeUVFunc"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeUVFuncFunction int
 const (
   VisualShaderNodeUVFuncFunctionFuncPanning VisualShaderNodeUVFuncFunction = 0
@@ -32,14 +36,25 @@ const (
   VisualShaderNodeUVFuncFunctionFuncMax VisualShaderNodeUVFuncFunction = 2
 )
 
-func  (me *VisualShaderNodeUVFunc) SetFunction(func_ VisualShaderNodeUVFuncFunction, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeUVFunc) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeUVFunc) GetFunction() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeUVFunc) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeUVFunc) SetFunction(func_ VisualShaderNodeUVFuncFunction, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeUVFunc) GetFunction()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

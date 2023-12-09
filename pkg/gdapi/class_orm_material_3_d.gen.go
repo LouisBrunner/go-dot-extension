@@ -25,6 +25,21 @@ func (me *ORMMaterial3D) BaseClass() string {
   return "ORMMaterial3D"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *ORMMaterial3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *ORMMaterial3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

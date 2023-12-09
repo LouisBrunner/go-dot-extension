@@ -25,58 +25,73 @@ func (me *EditorImportPlugin) BaseClass() string {
   return "EditorImportPlugin"
 }
 
-func  (me *EditorImportPlugin) XGetImporterName() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorImportPlugin) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorImportPlugin) XGetVisibleName() { // TODO: return value
-  // TODO: implement
+func (me *EditorImportPlugin) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorImportPlugin) XGetPresetCount() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorImportPlugin) XGetImporterName()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorImportPlugin) XGetPresetName(preset_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorImportPlugin) XGetVisibleName()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorImportPlugin) XGetRecognizedExtensions() { // TODO: return value
-  // TODO: implement
+func  (me *EditorImportPlugin) XGetPresetCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorImportPlugin) XGetImportOptions(path String, preset_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorImportPlugin) XGetPresetName(preset_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorImportPlugin) XGetSaveExtension() { // TODO: return value
-  // TODO: implement
+func  (me *EditorImportPlugin) XGetRecognizedExtensions()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorImportPlugin) XGetResourceType() { // TODO: return value
-  // TODO: implement
+func  (me *EditorImportPlugin) XGetImportOptions(path String, preset_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorImportPlugin) XGetPriority() { // TODO: return value
-  // TODO: implement
+func  (me *EditorImportPlugin) XGetSaveExtension()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorImportPlugin) XGetImportOrder() { // TODO: return value
-  // TODO: implement
+func  (me *EditorImportPlugin) XGetResourceType()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorImportPlugin) XGetOptionVisibility(path String, option_name StringName, options Dictionary, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorImportPlugin) XGetPriority()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorImportPlugin) XImport(source_file String, save_path String, options Dictionary, platform_variants String, gen_files String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorImportPlugin) XGetImportOrder()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorImportPlugin) AppendImportExternalResource(path String, custom_options Dictionary, custom_importer String, generator_parameters Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorImportPlugin) XGetOptionVisibility(path String, option_name StringName, options Dictionary, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorImportPlugin) XImport(source_file String, save_path String, options Dictionary, platform_variants String, gen_files String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorImportPlugin) AppendImportExternalResource(path String, custom_options Dictionary, custom_importer String, generator_parameters Variant, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

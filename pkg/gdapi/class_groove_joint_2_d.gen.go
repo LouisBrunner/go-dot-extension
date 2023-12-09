@@ -25,22 +25,37 @@ func (me *GrooveJoint2D) BaseClass() string {
   return "GrooveJoint2D"
 }
 
-func  (me *GrooveJoint2D) SetLength(length float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GrooveJoint2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GrooveJoint2D) GetLength() { // TODO: return value
-  // TODO: implement
+func (me *GrooveJoint2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GrooveJoint2D) SetInitialOffset(offset float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GrooveJoint2D) SetLength(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GrooveJoint2D) GetInitialOffset() { // TODO: return value
-  // TODO: implement
+func  (me *GrooveJoint2D) GetLength()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GrooveJoint2D) SetInitialOffset(offset float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GrooveJoint2D) GetInitialOffset()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

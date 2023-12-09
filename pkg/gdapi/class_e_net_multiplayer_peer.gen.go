@@ -25,34 +25,49 @@ func (me *ENetMultiplayerPeer) BaseClass() string {
   return "ENetMultiplayerPeer"
 }
 
-func  (me *ENetMultiplayerPeer) CreateServer(port int, max_clients int, max_channels int, in_bandwidth int, out_bandwidth int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ENetMultiplayerPeer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ENetMultiplayerPeer) CreateClient(address String, port int, channel_count int, in_bandwidth int, out_bandwidth int, local_port int, ) { // TODO: return value
-  // TODO: implement
+func (me *ENetMultiplayerPeer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ENetMultiplayerPeer) CreateMesh(unique_id int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ENetMultiplayerPeer) CreateServer(port int, max_clients int, max_channels int, in_bandwidth int, out_bandwidth int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetMultiplayerPeer) AddMeshPeer(peer_id int, host ENetConnection, ) { // TODO: return value
-  // TODO: implement
+func  (me *ENetMultiplayerPeer) CreateClient(address String, port int, channel_count int, in_bandwidth int, out_bandwidth int, local_port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetMultiplayerPeer) SetBindIp(ip String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ENetMultiplayerPeer) CreateMesh(unique_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetMultiplayerPeer) GetHost() { // TODO: return value
-  // TODO: implement
+func  (me *ENetMultiplayerPeer) AddMeshPeer(peer_id int, host ENetConnection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ENetMultiplayerPeer) GetPeer(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ENetMultiplayerPeer) SetBindIp(ip String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ENetMultiplayerPeer) GetHost()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ENetMultiplayerPeer) GetPeer(id int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

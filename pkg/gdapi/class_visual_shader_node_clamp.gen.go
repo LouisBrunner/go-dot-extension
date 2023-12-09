@@ -25,6 +25,10 @@ func (me *VisualShaderNodeClamp) BaseClass() string {
   return "VisualShaderNodeClamp"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeClampOpType int
 const (
   VisualShaderNodeClampOpTypeOpTypeFloat VisualShaderNodeClampOpType = 0
@@ -36,14 +40,25 @@ const (
   VisualShaderNodeClampOpTypeOpTypeMax VisualShaderNodeClampOpType = 6
 )
 
-func  (me *VisualShaderNodeClamp) SetOpType(op_type VisualShaderNodeClampOpType, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeClamp) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeClamp) GetOpType() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeClamp) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeClamp) SetOpType(op_type VisualShaderNodeClampOpType, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeClamp) GetOpType()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

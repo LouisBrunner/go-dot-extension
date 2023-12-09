@@ -25,38 +25,53 @@ func (me *ScriptEditor) BaseClass() string {
   return "ScriptEditor"
 }
 
-func  (me *ScriptEditor) GetCurrentEditor() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ScriptEditor) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ScriptEditor) GetOpenScriptEditors() { // TODO: return value
-  // TODO: implement
+func (me *ScriptEditor) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ScriptEditor) RegisterSyntaxHighlighter(syntax_highlighter EditorSyntaxHighlighter, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ScriptEditor) GetCurrentEditor()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptEditor) UnregisterSyntaxHighlighter(syntax_highlighter EditorSyntaxHighlighter, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptEditor) GetOpenScriptEditors()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptEditor) GotoLine(line_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptEditor) RegisterSyntaxHighlighter(syntax_highlighter EditorSyntaxHighlighter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptEditor) GetCurrentScript() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptEditor) UnregisterSyntaxHighlighter(syntax_highlighter EditorSyntaxHighlighter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptEditor) GetOpenScripts() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptEditor) GotoLine(line_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptEditor) OpenScriptCreateDialog(base_name String, base_path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptEditor) GetCurrentScript()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ScriptEditor) GetOpenScripts()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ScriptEditor) OpenScriptCreateDialog(base_name String, base_path String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

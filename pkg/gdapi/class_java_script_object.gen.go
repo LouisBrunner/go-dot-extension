@@ -25,6 +25,21 @@ func (me *JavaScriptObject) BaseClass() string {
   return "JavaScriptObject"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *JavaScriptObject) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *JavaScriptObject) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

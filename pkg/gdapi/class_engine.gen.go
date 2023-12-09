@@ -25,154 +25,169 @@ func (me *Engine) BaseClass() string {
   return "Engine"
 }
 
-func  (me *Engine) SetPhysicsTicksPerSecond(physics_ticks_per_second int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Engine) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Engine) GetPhysicsTicksPerSecond() { // TODO: return value
-  // TODO: implement
+func (me *Engine) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Engine) SetMaxPhysicsStepsPerFrame(max_physics_steps int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Engine) SetPhysicsTicksPerSecond(physics_ticks_per_second int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetMaxPhysicsStepsPerFrame() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetPhysicsTicksPerSecond()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) SetPhysicsJitterFix(physics_jitter_fix float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Engine) SetMaxPhysicsStepsPerFrame(max_physics_steps int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetPhysicsJitterFix() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetMaxPhysicsStepsPerFrame()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetPhysicsInterpolationFraction() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) SetPhysicsJitterFix(physics_jitter_fix float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) SetMaxFps(max_fps int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetPhysicsJitterFix()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetMaxFps() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetPhysicsInterpolationFraction()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) SetTimeScale(time_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Engine) SetMaxFps(max_fps int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetTimeScale() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetMaxFps()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetFramesDrawn() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) SetTimeScale(time_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetFramesPerSecond() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetTimeScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetPhysicsFrames() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetFramesDrawn()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetProcessFrames() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetFramesPerSecond()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetMainLoop() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetPhysicsFrames()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetVersionInfo() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetProcessFrames()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetAuthorInfo() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetMainLoop()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetCopyrightInfo() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetVersionInfo()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetDonorInfo() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetAuthorInfo()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetLicenseInfo() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetCopyrightInfo()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetLicenseText() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetDonorInfo()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetArchitectureName() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetLicenseInfo()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) IsInPhysicsFrame() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetLicenseText()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) HasSingleton(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetArchitectureName()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetSingleton(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Engine) IsInPhysicsFrame()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) RegisterSingleton(name StringName, instance Object, ) { // TODO: return value
-  // TODO: implement
+func  (me *Engine) HasSingleton(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) UnregisterSingleton(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetSingleton(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetSingletonList() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) RegisterSingleton(name StringName, instance Object, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) RegisterScriptLanguage(language ScriptLanguage, ) { // TODO: return value
-  // TODO: implement
+func  (me *Engine) UnregisterSingleton(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) UnregisterScriptLanguage(language ScriptLanguage, ) { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetSingletonList()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetScriptLanguageCount() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) RegisterScriptLanguage(language ScriptLanguage, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetScriptLanguage(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Engine) UnregisterScriptLanguage(language ScriptLanguage, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) IsEditorHint() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetScriptLanguageCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) GetWriteMoviePath() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetScriptLanguage(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) SetPrintErrorMessages(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Engine) IsEditorHint()  {
+  panic("TODO: implement")
 }
 
-func  (me *Engine) IsPrintingErrorMessages() { // TODO: return value
-  // TODO: implement
+func  (me *Engine) GetWriteMoviePath()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Engine) SetPrintErrorMessages(enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Engine) IsPrintingErrorMessages()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

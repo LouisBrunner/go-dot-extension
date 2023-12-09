@@ -25,22 +25,37 @@ func (me *X509Certificate) BaseClass() string {
   return "X509Certificate"
 }
 
-func  (me *X509Certificate) Save(path String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *X509Certificate) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *X509Certificate) Load(path String, ) { // TODO: return value
-  // TODO: implement
+func (me *X509Certificate) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *X509Certificate) SaveToString() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *X509Certificate) Save(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *X509Certificate) LoadFromString(string String, ) { // TODO: return value
-  // TODO: implement
+func  (me *X509Certificate) Load(path String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *X509Certificate) SaveToString()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *X509Certificate) LoadFromString(string_ String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

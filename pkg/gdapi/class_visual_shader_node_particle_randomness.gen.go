@@ -25,6 +25,10 @@ func (me *VisualShaderNodeParticleRandomness) BaseClass() string {
   return "VisualShaderNodeParticleRandomness"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeParticleRandomnessOpType int
 const (
   VisualShaderNodeParticleRandomnessOpTypeOpTypeScalar VisualShaderNodeParticleRandomnessOpType = 0
@@ -34,14 +38,25 @@ const (
   VisualShaderNodeParticleRandomnessOpTypeOpTypeMax VisualShaderNodeParticleRandomnessOpType = 4
 )
 
-func  (me *VisualShaderNodeParticleRandomness) SetOpType(type_ VisualShaderNodeParticleRandomnessOpType, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParticleRandomness) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeParticleRandomness) GetOpType() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParticleRandomness) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeParticleRandomness) SetOpType(type_ VisualShaderNodeParticleRandomnessOpType, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeParticleRandomness) GetOpType()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

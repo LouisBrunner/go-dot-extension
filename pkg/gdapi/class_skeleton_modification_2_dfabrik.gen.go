@@ -25,54 +25,69 @@ func (me *SkeletonModification2DFABRIK) BaseClass() string {
   return "SkeletonModification2DFABRIK"
 }
 
-func  (me *SkeletonModification2DFABRIK) SetTargetNode(target_nodepath NodePath, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SkeletonModification2DFABRIK) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SkeletonModification2DFABRIK) GetTargetNode() { // TODO: return value
-  // TODO: implement
+func (me *SkeletonModification2DFABRIK) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SkeletonModification2DFABRIK) SetFabrikDataChainLength(length int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SkeletonModification2DFABRIK) SetTargetNode(target_nodepath NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DFABRIK) GetFabrikDataChainLength() { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DFABRIK) GetTargetNode()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DFABRIK) SetFabrikJointBone2DNode(joint_idx int, bone2d_nodepath NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DFABRIK) SetFabrikDataChainLength(length int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DFABRIK) GetFabrikJointBone2DNode(joint_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DFABRIK) GetFabrikDataChainLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DFABRIK) SetFabrikJointBoneIndex(joint_idx int, bone_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DFABRIK) SetFabrikJointBone2DNode(joint_idx int, bone2d_nodepath NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DFABRIK) GetFabrikJointBoneIndex(joint_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DFABRIK) GetFabrikJointBone2DNode(joint_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DFABRIK) SetFabrikJointMagnetPosition(joint_idx int, magnet_position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DFABRIK) SetFabrikJointBoneIndex(joint_idx int, bone_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DFABRIK) GetFabrikJointMagnetPosition(joint_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DFABRIK) GetFabrikJointBoneIndex(joint_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DFABRIK) SetFabrikJointUseTargetRotation(joint_idx int, use_target_rotation bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DFABRIK) SetFabrikJointMagnetPosition(joint_idx int, magnet_position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SkeletonModification2DFABRIK) GetFabrikJointUseTargetRotation(joint_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SkeletonModification2DFABRIK) GetFabrikJointMagnetPosition(joint_idx int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SkeletonModification2DFABRIK) SetFabrikJointUseTargetRotation(joint_idx int, use_target_rotation bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SkeletonModification2DFABRIK) GetFabrikJointUseTargetRotation(joint_idx int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,10 @@ func (me *PacketPeerDTLS) BaseClass() string {
   return "PacketPeerDTLS"
 }
 
+
+
+// Enums
+
 type PacketPeerDTLSStatus int
 const (
   PacketPeerDTLSStatusStatusDisconnected PacketPeerDTLSStatus = 0
@@ -34,22 +38,33 @@ const (
   PacketPeerDTLSStatusStatusErrorHostnameMismatch PacketPeerDTLSStatus = 4
 )
 
-func  (me *PacketPeerDTLS) Poll() { // TODO: return value
-  // TODO: implement
+func (me *PacketPeerDTLS) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PacketPeerDTLS) ConnectToPeer(packet_peer PacketPeerUDP, hostname String, client_options TLSOptions, ) { // TODO: return value
-  // TODO: implement
+func (me *PacketPeerDTLS) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PacketPeerDTLS) GetStatus() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PacketPeerDTLS) Poll()  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerDTLS) DisconnectFromPeer() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerDTLS) ConnectToPeer(packet_peer PacketPeerUDP, hostname String, client_options TLSOptions, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PacketPeerDTLS) GetStatus()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PacketPeerDTLS) DisconnectFromPeer()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

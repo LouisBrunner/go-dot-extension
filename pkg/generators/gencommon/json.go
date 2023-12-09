@@ -21,9 +21,17 @@ type ExtensionClassSizeEntry struct {
 	Size uint   `json:"size"`
 }
 
+type ExtensionWithBuildConfiguration struct {
+	BuildConfiguration string `json:"build_configuration"`
+}
+
+func (me *ExtensionWithBuildConfiguration) GetBuildConfiguration() string {
+	return me.BuildConfiguration
+}
+
 type ExtensionClassSize struct {
-	BuildConfiguration string                    `json:"build_configuration"`
-	Sizes              []ExtensionClassSizeEntry `json:"sizes"`
+	ExtensionWithBuildConfiguration
+	Sizes []ExtensionClassSizeEntry `json:"sizes"`
 }
 
 type ExtensionClassMemberOffsetEntry struct {
@@ -38,8 +46,8 @@ type ExtensionClassMemberOffset struct {
 }
 
 type ExtensionClassMemberOffsetConfig struct {
-	BuildConfiguration string                       `json:"build_configuration"`
-	Classes            []ExtensionClassMemberOffset `json:"classes"`
+	ExtensionWithBuildConfiguration
+	Classes []ExtensionClassMemberOffset `json:"classes"`
 }
 
 type ExtensionEnumValue struct {
@@ -197,7 +205,7 @@ type ExtensionAPI struct {
 	Header                    ExtensionHeader                    `json:"header"`
 	BuiltinClassSizes         []ExtensionClassSize               `json:"builtin_class_sizes"`
 	BuiltinClassMemberOffsets []ExtensionClassMemberOffsetConfig `json:"builtin_class_member_offsets"`
-	GlobalConstants           []struct{}                         `json:"global_constants"` // TODO: global_constants, ignored because empty
+	GlobalConstants           []struct{}                         `json:"global_constants"` // FIXME: global_constants, ignored because empty
 	GlobalEnums               []ExtensionEnum                    `json:"global_enums"`
 	UtilityFunctions          []ExtensionFunction                `json:"utility_functions"`
 	BuiltinClasses            []ExtensionBuiltinClass            `json:"builtin_classes"`

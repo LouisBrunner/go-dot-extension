@@ -25,58 +25,73 @@ func (me *KinematicCollision2D) BaseClass() string {
   return "KinematicCollision2D"
 }
 
-func  (me *KinematicCollision2D) GetPosition() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *KinematicCollision2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *KinematicCollision2D) GetNormal() { // TODO: return value
-  // TODO: implement
+func (me *KinematicCollision2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *KinematicCollision2D) GetTravel() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *KinematicCollision2D) GetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *KinematicCollision2D) GetRemainder() { // TODO: return value
-  // TODO: implement
+func  (me *KinematicCollision2D) GetNormal()  {
+  panic("TODO: implement")
 }
 
-func  (me *KinematicCollision2D) GetAngle(up_direction Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *KinematicCollision2D) GetTravel()  {
+  panic("TODO: implement")
 }
 
-func  (me *KinematicCollision2D) GetDepth() { // TODO: return value
-  // TODO: implement
+func  (me *KinematicCollision2D) GetRemainder()  {
+  panic("TODO: implement")
 }
 
-func  (me *KinematicCollision2D) GetLocalShape() { // TODO: return value
-  // TODO: implement
+func  (me *KinematicCollision2D) GetAngle(up_direction Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *KinematicCollision2D) GetCollider() { // TODO: return value
-  // TODO: implement
+func  (me *KinematicCollision2D) GetDepth()  {
+  panic("TODO: implement")
 }
 
-func  (me *KinematicCollision2D) GetColliderId() { // TODO: return value
-  // TODO: implement
+func  (me *KinematicCollision2D) GetLocalShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *KinematicCollision2D) GetColliderRid() { // TODO: return value
-  // TODO: implement
+func  (me *KinematicCollision2D) GetCollider()  {
+  panic("TODO: implement")
 }
 
-func  (me *KinematicCollision2D) GetColliderShape() { // TODO: return value
-  // TODO: implement
+func  (me *KinematicCollision2D) GetColliderId()  {
+  panic("TODO: implement")
 }
 
-func  (me *KinematicCollision2D) GetColliderShapeIndex() { // TODO: return value
-  // TODO: implement
+func  (me *KinematicCollision2D) GetColliderRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *KinematicCollision2D) GetColliderVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *KinematicCollision2D) GetColliderShape()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *KinematicCollision2D) GetColliderShapeIndex()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *KinematicCollision2D) GetColliderVelocity()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

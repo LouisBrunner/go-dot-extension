@@ -25,58 +25,73 @@ func (me *PacketPeerUDP) BaseClass() string {
   return "PacketPeerUDP"
 }
 
-func  (me *PacketPeerUDP) Bind(port int, bind_address String, recv_buf_size int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PacketPeerUDP) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PacketPeerUDP) Close() { // TODO: return value
-  // TODO: implement
+func (me *PacketPeerUDP) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PacketPeerUDP) Wait() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PacketPeerUDP) Bind(port int, bind_address String, recv_buf_size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerUDP) IsBound() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerUDP) Close()  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerUDP) ConnectToHost(host String, port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerUDP) Wait()  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerUDP) IsSocketConnected() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerUDP) IsBound()  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerUDP) GetPacketIp() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerUDP) ConnectToHost(host String, port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerUDP) GetPacketPort() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerUDP) IsSocketConnected()  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerUDP) GetLocalPort() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerUDP) GetPacketIp()  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerUDP) SetDestAddress(host String, port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerUDP) GetPacketPort()  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerUDP) SetBroadcastEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerUDP) GetLocalPort()  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerUDP) JoinMulticastGroup(multicast_address String, interface_name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerUDP) SetDestAddress(host String, port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeerUDP) LeaveMulticastGroup(multicast_address String, interface_name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeerUDP) SetBroadcastEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PacketPeerUDP) JoinMulticastGroup(multicast_address String, interface_name String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PacketPeerUDP) LeaveMulticastGroup(multicast_address String, interface_name String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

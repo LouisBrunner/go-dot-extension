@@ -25,6 +25,21 @@ func (me *IntervalTweener) BaseClass() string {
   return "IntervalTweener"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *IntervalTweener) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *IntervalTweener) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

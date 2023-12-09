@@ -25,14 +25,29 @@ func (me *InputEventShortcut) BaseClass() string {
   return "InputEventShortcut"
 }
 
-func  (me *InputEventShortcut) SetShortcut(shortcut Shortcut, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventShortcut) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventShortcut) GetShortcut() { // TODO: return value
-  // TODO: implement
+func (me *InputEventShortcut) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *InputEventShortcut) SetShortcut(shortcut Shortcut, )  {
+  panic("TODO: implement")
+}
+
+func  (me *InputEventShortcut) GetShortcut()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

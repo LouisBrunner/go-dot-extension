@@ -25,70 +25,85 @@ func (me *SpinBox) BaseClass() string {
   return "SpinBox"
 }
 
-func  (me *SpinBox) SetHorizontalAlignment(alignment HorizontalAlignment, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SpinBox) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SpinBox) GetHorizontalAlignment() { // TODO: return value
-  // TODO: implement
+func (me *SpinBox) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SpinBox) SetSuffix(suffix String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SpinBox) SetHorizontalAlignment(alignment HorizontalAlignment, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) GetSuffix() { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) GetHorizontalAlignment()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) SetPrefix(prefix String, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) SetSuffix(suffix String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) GetPrefix() { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) GetSuffix()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) SetEditable(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) SetPrefix(prefix String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) SetCustomArrowStep(arrow_step float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) GetPrefix()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) GetCustomArrowStep() { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) SetEditable(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) IsEditable() { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) SetCustomArrowStep(arrow_step float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) SetUpdateOnTextChanged(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) GetCustomArrowStep()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) GetUpdateOnTextChanged() { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) IsEditable()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) SetSelectAllOnFocus(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) SetUpdateOnTextChanged(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) IsSelectAllOnFocus() { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) GetUpdateOnTextChanged()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) Apply() { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) SetSelectAllOnFocus(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpinBox) GetLineEdit() { // TODO: return value
-  // TODO: implement
+func  (me *SpinBox) IsSelectAllOnFocus()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SpinBox) Apply()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SpinBox) GetLineEdit()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,54 +25,69 @@ func (me *AudioStreamOggVorbis) BaseClass() string {
   return "AudioStreamOggVorbis"
 }
 
-func  (me *AudioStreamOggVorbis) SetPacketSequence(packet_sequence OggPacketSequence, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioStreamOggVorbis) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioStreamOggVorbis) GetPacketSequence() { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamOggVorbis) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioStreamOggVorbis) SetLoop(enable bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioStreamOggVorbis) SetPacketSequence(packet_sequence OggPacketSequence, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamOggVorbis) HasLoop() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamOggVorbis) GetPacketSequence()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamOggVorbis) SetLoopOffset(seconds float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamOggVorbis) SetLoop(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamOggVorbis) GetLoopOffset() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamOggVorbis) HasLoop()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamOggVorbis) SetBpm(bpm float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamOggVorbis) SetLoopOffset(seconds float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamOggVorbis) GetBpm() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamOggVorbis) GetLoopOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamOggVorbis) SetBeatCount(count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamOggVorbis) SetBpm(bpm float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamOggVorbis) GetBeatCount() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamOggVorbis) GetBpm()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamOggVorbis) SetBarBeats(count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamOggVorbis) SetBeatCount(count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamOggVorbis) GetBarBeats() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamOggVorbis) GetBeatCount()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioStreamOggVorbis) SetBarBeats(count int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioStreamOggVorbis) GetBarBeats()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

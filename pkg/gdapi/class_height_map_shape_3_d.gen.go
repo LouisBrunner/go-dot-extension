@@ -25,30 +25,45 @@ func (me *HeightMapShape3D) BaseClass() string {
   return "HeightMapShape3D"
 }
 
-func  (me *HeightMapShape3D) SetMapWidth(width int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *HeightMapShape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *HeightMapShape3D) GetMapWidth() { // TODO: return value
-  // TODO: implement
+func (me *HeightMapShape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *HeightMapShape3D) SetMapDepth(height int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *HeightMapShape3D) SetMapWidth(width int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HeightMapShape3D) GetMapDepth() { // TODO: return value
-  // TODO: implement
+func  (me *HeightMapShape3D) GetMapWidth()  {
+  panic("TODO: implement")
 }
 
-func  (me *HeightMapShape3D) SetMapData(data PackedFloat32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *HeightMapShape3D) SetMapDepth(height int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HeightMapShape3D) GetMapData() { // TODO: return value
-  // TODO: implement
+func  (me *HeightMapShape3D) GetMapDepth()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *HeightMapShape3D) SetMapData(data PackedFloat32Array, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *HeightMapShape3D) GetMapData()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

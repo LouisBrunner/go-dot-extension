@@ -25,6 +25,10 @@ func (me *PinJoint3D) BaseClass() string {
   return "PinJoint3D"
 }
 
+
+
+// Enums
+
 type PinJoint3DParam int
 const (
   PinJoint3DParamParamBias PinJoint3DParam = 0
@@ -32,14 +36,25 @@ const (
   PinJoint3DParamParamImpulseClamp PinJoint3DParam = 2
 )
 
-func  (me *PinJoint3D) SetParam(param PinJoint3DParam, value float32, ) { // TODO: return value
-  // TODO: implement
+func (me *PinJoint3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PinJoint3D) GetParam(param PinJoint3DParam, ) { // TODO: return value
-  // TODO: implement
+func (me *PinJoint3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *PinJoint3D) SetParam(param PinJoint3DParam, value float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *PinJoint3D) GetParam(param PinJoint3DParam, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

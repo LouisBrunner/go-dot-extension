@@ -25,30 +25,45 @@ func (me *CameraTexture) BaseClass() string {
   return "CameraTexture"
 }
 
-func  (me *CameraTexture) SetCameraFeedId(feed_id int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CameraTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CameraTexture) GetCameraFeedId() { // TODO: return value
-  // TODO: implement
+func (me *CameraTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CameraTexture) SetWhichFeed(which_feed CameraServerFeedImage, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CameraTexture) SetCameraFeedId(feed_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraTexture) GetWhichFeed() { // TODO: return value
-  // TODO: implement
+func  (me *CameraTexture) GetCameraFeedId()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraTexture) SetCameraActive(active bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraTexture) SetWhichFeed(which_feed CameraServerFeedImage, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraTexture) GetCameraActive() { // TODO: return value
-  // TODO: implement
+func  (me *CameraTexture) GetWhichFeed()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CameraTexture) SetCameraActive(active bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CameraTexture) GetCameraActive()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

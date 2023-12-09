@@ -25,54 +25,69 @@ func (me *Translation) BaseClass() string {
   return "Translation"
 }
 
-func  (me *Translation) XGetPluralMessage(src_message StringName, src_plural_message StringName, n int, context StringName, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Translation) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Translation) XGetMessage(src_message StringName, context StringName, ) { // TODO: return value
-  // TODO: implement
+func (me *Translation) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Translation) SetLocale(locale String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Translation) XGetPluralMessage(src_message StringName, src_plural_message StringName, n int, context StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Translation) GetLocale() { // TODO: return value
-  // TODO: implement
+func  (me *Translation) XGetMessage(src_message StringName, context StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Translation) AddMessage(src_message StringName, xlated_message StringName, context StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Translation) SetLocale(locale String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Translation) AddPluralMessage(src_message StringName, xlated_messages PackedStringArray, context StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Translation) GetLocale()  {
+  panic("TODO: implement")
 }
 
-func  (me *Translation) GetMessage(src_message StringName, context StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Translation) AddMessage(src_message StringName, xlated_message StringName, context StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Translation) GetPluralMessage(src_message StringName, src_plural_message StringName, n int, context StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Translation) AddPluralMessage(src_message StringName, xlated_messages PackedStringArray, context StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Translation) EraseMessage(src_message StringName, context StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Translation) GetMessage(src_message StringName, context StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Translation) GetMessageList() { // TODO: return value
-  // TODO: implement
+func  (me *Translation) GetPluralMessage(src_message StringName, src_plural_message StringName, n int, context StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Translation) GetTranslatedMessageList() { // TODO: return value
-  // TODO: implement
+func  (me *Translation) EraseMessage(src_message StringName, context StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Translation) GetMessageCount() { // TODO: return value
-  // TODO: implement
+func  (me *Translation) GetMessageList()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Translation) GetTranslatedMessageList()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Translation) GetMessageCount()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

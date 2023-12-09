@@ -25,6 +25,10 @@ func (me *XRServer) BaseClass() string {
   return "XRServer"
 }
 
+
+
+// Enums
+
 type XRServerTrackerType int
 const (
   XRServerTrackerTypeTrackerHead XRServerTrackerType = 1
@@ -43,82 +47,93 @@ const (
   XRServerRotationModeDontResetRotation XRServerRotationMode = 2
 )
 
-func  (me *XRServer) GetWorldScale() { // TODO: return value
-  // TODO: implement
+func (me *XRServer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *XRServer) SetWorldScale(scale float32, ) { // TODO: return value
-  // TODO: implement
+func (me *XRServer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *XRServer) GetWorldOrigin() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *XRServer) GetWorldScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) SetWorldOrigin(world_origin Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) SetWorldScale(scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) GetReferenceFrame() { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) GetWorldOrigin()  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) CenterOnHmd(rotation_mode XRServerRotationMode, keep_height bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) SetWorldOrigin(world_origin Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) GetHmdTransform() { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) GetReferenceFrame()  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) AddInterface(interface_ XRInterface, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) CenterOnHmd(rotation_mode XRServerRotationMode, keep_height bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) GetInterfaceCount() { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) GetHmdTransform()  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) RemoveInterface(interface_ XRInterface, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) AddInterface(interface_ XRInterface, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) GetInterface(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) GetInterfaceCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) GetInterfaces() { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) RemoveInterface(interface_ XRInterface, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) FindInterface(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) GetInterface(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) AddTracker(tracker XRPositionalTracker, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) GetInterfaces()  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) RemoveTracker(tracker XRPositionalTracker, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) FindInterface(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) GetTrackers(tracker_types int, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) AddTracker(tracker XRPositionalTracker, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) GetTracker(tracker_name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) RemoveTracker(tracker XRPositionalTracker, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) GetPrimaryInterface() { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) GetTrackers(tracker_types int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRServer) SetPrimaryInterface(interface_ XRInterface, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRServer) GetTracker(tracker_name StringName, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *XRServer) GetPrimaryInterface()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *XRServer) SetPrimaryInterface(interface_ XRInterface, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

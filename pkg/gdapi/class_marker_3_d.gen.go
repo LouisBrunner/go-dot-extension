@@ -25,14 +25,29 @@ func (me *Marker3D) BaseClass() string {
   return "Marker3D"
 }
 
-func  (me *Marker3D) SetGizmoExtents(extents float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Marker3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Marker3D) GetGizmoExtents() { // TODO: return value
-  // TODO: implement
+func (me *Marker3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *Marker3D) SetGizmoExtents(extents float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *Marker3D) GetGizmoExtents()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

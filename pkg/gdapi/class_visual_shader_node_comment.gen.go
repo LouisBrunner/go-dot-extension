@@ -25,22 +25,37 @@ func (me *VisualShaderNodeComment) BaseClass() string {
   return "VisualShaderNodeComment"
 }
 
-func  (me *VisualShaderNodeComment) SetTitle(title String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeComment) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeComment) GetTitle() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeComment) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeComment) SetDescription(description String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeComment) SetTitle(title String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeComment) GetDescription() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeComment) GetTitle()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeComment) SetDescription(description String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeComment) GetDescription()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

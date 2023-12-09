@@ -25,6 +25,10 @@ func (me *PackedScene) BaseClass() string {
   return "PackedScene"
 }
 
+
+
+// Enums
+
 type PackedSceneGenEditState int
 const (
   PackedSceneGenEditStateGenEditStateDisabled PackedSceneGenEditState = 0
@@ -33,22 +37,33 @@ const (
   PackedSceneGenEditStateGenEditStateMainInherited PackedSceneGenEditState = 3
 )
 
-func  (me *PackedScene) Pack(path Node, ) { // TODO: return value
-  // TODO: implement
+func (me *PackedScene) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PackedScene) Instantiate(edit_state PackedSceneGenEditState, ) { // TODO: return value
-  // TODO: implement
+func (me *PackedScene) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PackedScene) CanInstantiate() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PackedScene) Pack(path Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PackedScene) GetState() { // TODO: return value
-  // TODO: implement
+func  (me *PackedScene) Instantiate(edit_state PackedSceneGenEditState, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PackedScene) CanInstantiate()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PackedScene) GetState()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

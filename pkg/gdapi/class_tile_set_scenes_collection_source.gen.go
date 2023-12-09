@@ -25,50 +25,65 @@ func (me *TileSetScenesCollectionSource) BaseClass() string {
   return "TileSetScenesCollectionSource"
 }
 
-func  (me *TileSetScenesCollectionSource) GetSceneTilesCount() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *TileSetScenesCollectionSource) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TileSetScenesCollectionSource) GetSceneTileId(index int, ) { // TODO: return value
-  // TODO: implement
+func (me *TileSetScenesCollectionSource) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TileSetScenesCollectionSource) HasSceneTileId(id int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TileSetScenesCollectionSource) GetSceneTilesCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *TileSetScenesCollectionSource) CreateSceneTile(packed_scene PackedScene, id_override int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TileSetScenesCollectionSource) GetSceneTileId(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TileSetScenesCollectionSource) SetSceneTileId(id int, new_id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TileSetScenesCollectionSource) HasSceneTileId(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TileSetScenesCollectionSource) SetSceneTileScene(id int, packed_scene PackedScene, ) { // TODO: return value
-  // TODO: implement
+func  (me *TileSetScenesCollectionSource) CreateSceneTile(packed_scene PackedScene, id_override int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TileSetScenesCollectionSource) GetSceneTileScene(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TileSetScenesCollectionSource) SetSceneTileId(id int, new_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TileSetScenesCollectionSource) SetSceneTileDisplayPlaceholder(id int, display_placeholder bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TileSetScenesCollectionSource) SetSceneTileScene(id int, packed_scene PackedScene, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TileSetScenesCollectionSource) GetSceneTileDisplayPlaceholder(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TileSetScenesCollectionSource) GetSceneTileScene(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TileSetScenesCollectionSource) RemoveSceneTile(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TileSetScenesCollectionSource) SetSceneTileDisplayPlaceholder(id int, display_placeholder bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TileSetScenesCollectionSource) GetNextSceneTileId() { // TODO: return value
-  // TODO: implement
+func  (me *TileSetScenesCollectionSource) GetSceneTileDisplayPlaceholder(id int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TileSetScenesCollectionSource) RemoveSceneTile(id int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TileSetScenesCollectionSource) GetNextSceneTileId()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

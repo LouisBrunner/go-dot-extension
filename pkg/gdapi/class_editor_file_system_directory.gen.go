@@ -25,62 +25,77 @@ func (me *EditorFileSystemDirectory) BaseClass() string {
   return "EditorFileSystemDirectory"
 }
 
-func  (me *EditorFileSystemDirectory) GetSubdirCount() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorFileSystemDirectory) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorFileSystemDirectory) GetSubdir(idx int, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorFileSystemDirectory) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorFileSystemDirectory) GetFileCount() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorFileSystemDirectory) GetSubdirCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystemDirectory) GetFile(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystemDirectory) GetSubdir(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystemDirectory) GetFilePath(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystemDirectory) GetFileCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystemDirectory) GetFileType(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystemDirectory) GetFile(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystemDirectory) GetFileScriptClassName(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystemDirectory) GetFilePath(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystemDirectory) GetFileScriptClassExtends(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystemDirectory) GetFileType(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystemDirectory) GetFileImportIsValid(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystemDirectory) GetFileScriptClassName(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystemDirectory) GetName() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystemDirectory) GetFileScriptClassExtends(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystemDirectory) GetPath() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystemDirectory) GetFileImportIsValid(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystemDirectory) GetParent() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystemDirectory) GetName()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystemDirectory) FindFileIndex(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystemDirectory) GetPath()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystemDirectory) FindDirIndex(name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystemDirectory) GetParent()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorFileSystemDirectory) FindFileIndex(name String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorFileSystemDirectory) FindDirIndex(name String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

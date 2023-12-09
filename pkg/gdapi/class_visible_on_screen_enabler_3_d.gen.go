@@ -25,6 +25,10 @@ func (me *VisibleOnScreenEnabler3D) BaseClass() string {
   return "VisibleOnScreenEnabler3D"
 }
 
+
+
+// Enums
+
 type VisibleOnScreenEnabler3DEnableMode int
 const (
   VisibleOnScreenEnabler3DEnableModeEnableModeInherit VisibleOnScreenEnabler3DEnableMode = 0
@@ -32,22 +36,33 @@ const (
   VisibleOnScreenEnabler3DEnableModeEnableModeWhenPaused VisibleOnScreenEnabler3DEnableMode = 2
 )
 
-func  (me *VisibleOnScreenEnabler3D) SetEnableMode(mode VisibleOnScreenEnabler3DEnableMode, ) { // TODO: return value
-  // TODO: implement
+func (me *VisibleOnScreenEnabler3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisibleOnScreenEnabler3D) GetEnableMode() { // TODO: return value
-  // TODO: implement
+func (me *VisibleOnScreenEnabler3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisibleOnScreenEnabler3D) SetEnableNodePath(path NodePath, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisibleOnScreenEnabler3D) SetEnableMode(mode VisibleOnScreenEnabler3DEnableMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisibleOnScreenEnabler3D) GetEnableNodePath() { // TODO: return value
-  // TODO: implement
+func  (me *VisibleOnScreenEnabler3D) GetEnableMode()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisibleOnScreenEnabler3D) SetEnableNodePath(path NodePath, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisibleOnScreenEnabler3D) GetEnableNodePath()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

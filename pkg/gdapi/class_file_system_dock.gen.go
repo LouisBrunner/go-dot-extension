@@ -25,18 +25,33 @@ func (me *FileSystemDock) BaseClass() string {
   return "FileSystemDock"
 }
 
-func  (me *FileSystemDock) NavigateToPath(path String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *FileSystemDock) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *FileSystemDock) AddResourceTooltipPlugin(plugin EditorResourceTooltipPlugin, ) { // TODO: return value
-  // TODO: implement
+func (me *FileSystemDock) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *FileSystemDock) RemoveResourceTooltipPlugin(plugin EditorResourceTooltipPlugin, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *FileSystemDock) NavigateToPath(path String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *FileSystemDock) AddResourceTooltipPlugin(plugin EditorResourceTooltipPlugin, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *FileSystemDock) RemoveResourceTooltipPlugin(plugin EditorResourceTooltipPlugin, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

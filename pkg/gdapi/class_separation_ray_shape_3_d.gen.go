@@ -25,22 +25,37 @@ func (me *SeparationRayShape3D) BaseClass() string {
   return "SeparationRayShape3D"
 }
 
-func  (me *SeparationRayShape3D) SetLength(length float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SeparationRayShape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SeparationRayShape3D) GetLength() { // TODO: return value
-  // TODO: implement
+func (me *SeparationRayShape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SeparationRayShape3D) SetSlideOnSlope(active bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SeparationRayShape3D) SetLength(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SeparationRayShape3D) GetSlideOnSlope() { // TODO: return value
-  // TODO: implement
+func  (me *SeparationRayShape3D) GetLength()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SeparationRayShape3D) SetSlideOnSlope(active bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SeparationRayShape3D) GetSlideOnSlope()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

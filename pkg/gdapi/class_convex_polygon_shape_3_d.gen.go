@@ -25,14 +25,29 @@ func (me *ConvexPolygonShape3D) BaseClass() string {
   return "ConvexPolygonShape3D"
 }
 
-func  (me *ConvexPolygonShape3D) SetPoints(points PackedVector3Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ConvexPolygonShape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ConvexPolygonShape3D) GetPoints() { // TODO: return value
-  // TODO: implement
+func (me *ConvexPolygonShape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *ConvexPolygonShape3D) SetPoints(points PackedVector3Array, )  {
+  panic("TODO: implement")
+}
+
+func  (me *ConvexPolygonShape3D) GetPoints()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

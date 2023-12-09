@@ -25,78 +25,93 @@ func (me *GLTFPhysicsShape) BaseClass() string {
   return "GLTFPhysicsShape"
 }
 
-func  GLTFPhysicsShapeFromNode(shape_node CollisionShape3D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFPhysicsShape) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFPhysicsShape) ToNode(cache_shapes bool, ) { // TODO: return value
-  // TODO: implement
+func (me *GLTFPhysicsShape) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  GLTFPhysicsShapeFromDictionary(dictionary Dictionary, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  GLTFPhysicsShapeFromNode(shape_node CollisionShape3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) ToDictionary() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) ToNode(cache_shapes bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) GetShapeType() { // TODO: return value
-  // TODO: implement
+func  GLTFPhysicsShapeFromDictionary(dictionary Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) SetShapeType(shape_type String, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) ToDictionary()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) GetSize() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) GetShapeType()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) SetShapeType(shape_type String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) GetRadius() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) SetSize(size Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) GetRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) SetHeight(height float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) SetRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) GetIsTrigger() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) GetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) SetIsTrigger(is_trigger bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) SetHeight(height float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) GetMeshIndex() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) GetIsTrigger()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) SetMeshIndex(mesh_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) SetIsTrigger(is_trigger bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) GetImporterMesh() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) GetMeshIndex()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFPhysicsShape) SetImporterMesh(importer_mesh ImporterMesh, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFPhysicsShape) SetMeshIndex(mesh_index int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFPhysicsShape) GetImporterMesh()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFPhysicsShape) SetImporterMesh(importer_mesh ImporterMesh, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,14 +25,29 @@ func (me *GPUParticlesAttractorSphere3D) BaseClass() string {
   return "GPUParticlesAttractorSphere3D"
 }
 
-func  (me *GPUParticlesAttractorSphere3D) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GPUParticlesAttractorSphere3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GPUParticlesAttractorSphere3D) GetRadius() { // TODO: return value
-  // TODO: implement
+func (me *GPUParticlesAttractorSphere3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *GPUParticlesAttractorSphere3D) SetRadius(radius float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *GPUParticlesAttractorSphere3D) GetRadius()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

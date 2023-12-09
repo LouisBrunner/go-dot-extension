@@ -25,14 +25,29 @@ func (me *GPUParticlesAttractorBox3D) BaseClass() string {
   return "GPUParticlesAttractorBox3D"
 }
 
-func  (me *GPUParticlesAttractorBox3D) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GPUParticlesAttractorBox3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GPUParticlesAttractorBox3D) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *GPUParticlesAttractorBox3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *GPUParticlesAttractorBox3D) SetSize(size Vector3, )  {
+  panic("TODO: implement")
+}
+
+func  (me *GPUParticlesAttractorBox3D) GetSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

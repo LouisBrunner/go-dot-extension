@@ -25,62 +25,77 @@ func (me *GLTFCamera) BaseClass() string {
   return "GLTFCamera"
 }
 
-func  GLTFCameraFromNode(camera_node Camera3D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFCamera) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFCamera) ToNode() { // TODO: return value
-  // TODO: implement
+func (me *GLTFCamera) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  GLTFCameraFromDictionary(dictionary Dictionary, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  GLTFCameraFromNode(camera_node Camera3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFCamera) ToDictionary() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFCamera) ToNode()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFCamera) GetPerspective() { // TODO: return value
-  // TODO: implement
+func  GLTFCameraFromDictionary(dictionary Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFCamera) SetPerspective(perspective bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFCamera) ToDictionary()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFCamera) GetFov() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFCamera) GetPerspective()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFCamera) SetFov(fov float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFCamera) SetPerspective(perspective bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFCamera) GetSizeMag() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFCamera) GetFov()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFCamera) SetSizeMag(size_mag float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFCamera) SetFov(fov float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFCamera) GetDepthFar() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFCamera) GetSizeMag()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFCamera) SetDepthFar(zdepth_far float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFCamera) SetSizeMag(size_mag float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFCamera) GetDepthNear() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFCamera) GetDepthFar()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFCamera) SetDepthNear(zdepth_near float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFCamera) SetDepthFar(zdepth_far float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFCamera) GetDepthNear()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFCamera) SetDepthNear(zdepth_near float32, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

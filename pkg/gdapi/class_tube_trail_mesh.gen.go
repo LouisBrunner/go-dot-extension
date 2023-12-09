@@ -25,70 +25,85 @@ func (me *TubeTrailMesh) BaseClass() string {
   return "TubeTrailMesh"
 }
 
-func  (me *TubeTrailMesh) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *TubeTrailMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TubeTrailMesh) GetRadius() { // TODO: return value
-  // TODO: implement
+func (me *TubeTrailMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TubeTrailMesh) SetRadialSteps(radial_steps int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TubeTrailMesh) SetRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) GetRadialSteps() { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) GetRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) SetSections(sections int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) SetRadialSteps(radial_steps int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) GetSections() { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) GetRadialSteps()  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) SetSectionLength(section_length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) SetSections(sections int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) GetSectionLength() { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) GetSections()  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) SetSectionRings(section_rings int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) SetSectionLength(section_length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) GetSectionRings() { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) GetSectionLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) SetCapTop(cap_top bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) SetSectionRings(section_rings int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) IsCapTop() { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) GetSectionRings()  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) SetCapBottom(cap_bottom bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) SetCapTop(cap_top bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) IsCapBottom() { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) IsCapTop()  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) SetCurve(curve Curve, ) { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) SetCapBottom(cap_bottom bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TubeTrailMesh) GetCurve() { // TODO: return value
-  // TODO: implement
+func  (me *TubeTrailMesh) IsCapBottom()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TubeTrailMesh) SetCurve(curve Curve, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TubeTrailMesh) GetCurve()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

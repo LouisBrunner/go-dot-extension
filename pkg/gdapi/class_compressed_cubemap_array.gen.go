@@ -25,6 +25,21 @@ func (me *CompressedCubemapArray) BaseClass() string {
   return "CompressedCubemapArray"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *CompressedCubemapArray) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *CompressedCubemapArray) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,14 +25,29 @@ func (me *CSGPrimitive3D) BaseClass() string {
   return "CSGPrimitive3D"
 }
 
-func  (me *CSGPrimitive3D) SetFlipFaces(flip_faces bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CSGPrimitive3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CSGPrimitive3D) GetFlipFaces() { // TODO: return value
-  // TODO: implement
+func (me *CSGPrimitive3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *CSGPrimitive3D) SetFlipFaces(flip_faces bool, )  {
+  panic("TODO: implement")
+}
+
+func  (me *CSGPrimitive3D) GetFlipFaces()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

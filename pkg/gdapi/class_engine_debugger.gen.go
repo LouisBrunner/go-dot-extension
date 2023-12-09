@@ -25,50 +25,65 @@ func (me *EngineDebugger) BaseClass() string {
   return "EngineDebugger"
 }
 
-func  (me *EngineDebugger) IsActive() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EngineDebugger) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EngineDebugger) RegisterProfiler(name StringName, profiler EngineProfiler, ) { // TODO: return value
-  // TODO: implement
+func (me *EngineDebugger) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EngineDebugger) UnregisterProfiler(name StringName, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EngineDebugger) IsActive()  {
+  panic("TODO: implement")
 }
 
-func  (me *EngineDebugger) IsProfiling(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *EngineDebugger) RegisterProfiler(name StringName, profiler EngineProfiler, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EngineDebugger) HasProfiler(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *EngineDebugger) UnregisterProfiler(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EngineDebugger) ProfilerAddFrameData(name StringName, data Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *EngineDebugger) IsProfiling(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EngineDebugger) ProfilerEnable(name StringName, enable bool, arguments Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *EngineDebugger) HasProfiler(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EngineDebugger) RegisterMessageCapture(name StringName, callable Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *EngineDebugger) ProfilerAddFrameData(name StringName, data Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EngineDebugger) UnregisterMessageCapture(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *EngineDebugger) ProfilerEnable(name StringName, enable bool, arguments Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EngineDebugger) HasCapture(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *EngineDebugger) RegisterMessageCapture(name StringName, callable Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EngineDebugger) SendMessage(message String, data Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *EngineDebugger) UnregisterMessageCapture(name StringName, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EngineDebugger) HasCapture(name StringName, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EngineDebugger) SendMessage(message String, data Array, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

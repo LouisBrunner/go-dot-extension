@@ -25,6 +25,10 @@ func (me *HTTPRequest) BaseClass() string {
   return "HTTPRequest"
 }
 
+
+
+// Enums
+
 type HTTPRequestResult int
 const (
   HTTPRequestResultResultSuccess HTTPRequestResult = 0
@@ -43,98 +47,109 @@ const (
   HTTPRequestResultResultTimeout HTTPRequestResult = 13
 )
 
-func  (me *HTTPRequest) Request(url String, custom_headers PackedStringArray, method HTTPClientMethod, request_data String, ) { // TODO: return value
-  // TODO: implement
+func (me *HTTPRequest) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *HTTPRequest) RequestRaw(url String, custom_headers PackedStringArray, method HTTPClientMethod, request_data_raw PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func (me *HTTPRequest) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *HTTPRequest) CancelRequest() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *HTTPRequest) Request(url String, custom_headers PackedStringArray, method HTTPClientMethod, request_data String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) SetTlsOptions(client_options TLSOptions, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) RequestRaw(url String, custom_headers PackedStringArray, method HTTPClientMethod, request_data_raw PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) GetHttpClientStatus() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) CancelRequest()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) SetUseThreads(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) SetTlsOptions(client_options TLSOptions, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) IsUsingThreads() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) GetHttpClientStatus()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) SetAcceptGzip(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) SetUseThreads(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) IsAcceptingGzip() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) IsUsingThreads()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) SetBodySizeLimit(bytes int, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) SetAcceptGzip(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) GetBodySizeLimit() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) IsAcceptingGzip()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) SetMaxRedirects(amount int, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) SetBodySizeLimit(bytes int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) GetMaxRedirects() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) GetBodySizeLimit()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) SetDownloadFile(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) SetMaxRedirects(amount int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) GetDownloadFile() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) GetMaxRedirects()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) GetDownloadedBytes() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) SetDownloadFile(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) GetBodySize() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) GetDownloadFile()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) SetTimeout(timeout float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) GetDownloadedBytes()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) GetTimeout() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) GetBodySize()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) SetDownloadChunkSize(chunk_size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) SetTimeout(timeout float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) GetDownloadChunkSize() { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) GetTimeout()  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) SetHttpProxy(host String, port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) SetDownloadChunkSize(chunk_size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *HTTPRequest) SetHttpsProxy(host String, port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *HTTPRequest) GetDownloadChunkSize()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *HTTPRequest) SetHttpProxy(host String, port int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *HTTPRequest) SetHttpsProxy(host String, port int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

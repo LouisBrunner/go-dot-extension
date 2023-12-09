@@ -25,14 +25,16 @@ func (me *IP) BaseClass() string {
   return "IP"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   IPResolverMaxQueries = "256" // TODO: construct correctly
   IPResolverInvalidId = "-1" // TODO: construct correctly
 )
+
+// Enums
 
 type IPResolverStatus int
 const (
@@ -50,46 +52,57 @@ const (
   IPTypeTypeAny IPType = 3
 )
 
-func  (me *IP) ResolveHostname(host String, ip_type IPType, ) { // TODO: return value
-  // TODO: implement
+func (me *IP) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *IP) ResolveHostnameAddresses(host String, ip_type IPType, ) { // TODO: return value
-  // TODO: implement
+func (me *IP) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *IP) ResolveHostnameQueueItem(host String, ip_type IPType, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *IP) ResolveHostname(host String, ip_type IPType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *IP) GetResolveItemStatus(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *IP) ResolveHostnameAddresses(host String, ip_type IPType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *IP) GetResolveItemAddress(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *IP) ResolveHostnameQueueItem(host String, ip_type IPType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *IP) GetResolveItemAddresses(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *IP) GetResolveItemStatus(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *IP) EraseResolveItem(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *IP) GetResolveItemAddress(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *IP) GetLocalAddresses() { // TODO: return value
-  // TODO: implement
+func  (me *IP) GetResolveItemAddresses(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *IP) GetLocalInterfaces() { // TODO: return value
-  // TODO: implement
+func  (me *IP) EraseResolveItem(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *IP) ClearCache(hostname String, ) { // TODO: return value
-  // TODO: implement
+func  (me *IP) GetLocalAddresses()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *IP) GetLocalInterfaces()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *IP) ClearCache(hostname String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

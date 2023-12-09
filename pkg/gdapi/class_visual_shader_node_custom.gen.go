@@ -25,66 +25,81 @@ func (me *VisualShaderNodeCustom) BaseClass() string {
   return "VisualShaderNodeCustom"
 }
 
-func  (me *VisualShaderNodeCustom) XGetName() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeCustom) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeCustom) XGetDescription() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeCustom) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeCustom) XGetCategory() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeCustom) XGetName()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XGetReturnIconType() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetDescription()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XGetInputPortCount() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetCategory()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XGetInputPortType(port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetReturnIconType()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XGetInputPortName(port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetInputPortCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XGetOutputPortCount() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetInputPortType(port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XGetOutputPortType(port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetInputPortName(port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XGetOutputPortName(port int, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetOutputPortCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XGetCode(input_vars String, output_vars String, mode ShaderMode, type_ VisualShaderType, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetOutputPortType(port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XGetFuncCode(mode ShaderMode, type_ VisualShaderType, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetOutputPortName(port int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XGetGlobalCode(mode ShaderMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetCode(input_vars String, output_vars String, mode ShaderMode, type_ VisualShaderType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XIsHighend() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetFuncCode(mode ShaderMode, type_ VisualShaderType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XIsAvailable(mode ShaderMode, type_ VisualShaderType, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCustom) XGetGlobalCode(mode ShaderMode, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeCustom) XIsHighend()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeCustom) XIsAvailable(mode ShaderMode, type_ VisualShaderType, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,21 @@ func (me *Tweener) BaseClass() string {
   return "Tweener"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *Tweener) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *Tweener) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

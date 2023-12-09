@@ -25,14 +25,29 @@ func (me *VisibleOnScreenNotifier3D) BaseClass() string {
   return "VisibleOnScreenNotifier3D"
 }
 
-func  (me *VisibleOnScreenNotifier3D) SetAabb(rect AABB, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisibleOnScreenNotifier3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisibleOnScreenNotifier3D) IsOnScreen() { // TODO: return value
-  // TODO: implement
+func (me *VisibleOnScreenNotifier3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisibleOnScreenNotifier3D) SetAabb(rect AABB, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisibleOnScreenNotifier3D) IsOnScreen()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

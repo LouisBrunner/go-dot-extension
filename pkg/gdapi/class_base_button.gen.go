@@ -25,6 +25,10 @@ func (me *BaseButton) BaseClass() string {
   return "BaseButton"
 }
 
+
+
+// Enums
+
 type BaseButtonDrawMode int
 const (
   BaseButtonDrawModeDrawNormal BaseButtonDrawMode = 0
@@ -40,106 +44,117 @@ const (
   BaseButtonActionModeActionModeButtonRelease BaseButtonActionMode = 1
 )
 
-func  (me *BaseButton) XPressed() { // TODO: return value
-  // TODO: implement
+func (me *BaseButton) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *BaseButton) XToggled(button_pressed bool, ) { // TODO: return value
-  // TODO: implement
+func (me *BaseButton) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *BaseButton) SetPressed(pressed bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *BaseButton) XPressed()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) IsPressed() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) XToggled(button_pressed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) SetPressedNoSignal(pressed bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) SetPressed(pressed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) IsHovered() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) IsPressed()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) SetToggleMode(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) SetPressedNoSignal(pressed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) IsToggleMode() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) IsHovered()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) SetShortcutInTooltip(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) SetToggleMode(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) IsShortcutInTooltipEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) IsToggleMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) SetDisabled(disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) SetShortcutInTooltip(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) IsDisabled() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) IsShortcutInTooltipEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) SetActionMode(mode BaseButtonActionMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) SetDisabled(disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) GetActionMode() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) IsDisabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) SetButtonMask(mask MouseButtonMask, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) SetActionMode(mode BaseButtonActionMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) GetButtonMask() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) GetActionMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) GetDrawMode() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) SetButtonMask(mask MouseButtonMask, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) SetKeepPressedOutside(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) GetButtonMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) IsKeepPressedOutside() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) GetDrawMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) SetShortcutFeedback(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) SetKeepPressedOutside(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) IsShortcutFeedback() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) IsKeepPressedOutside()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) SetShortcut(shortcut Shortcut, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) SetShortcutFeedback(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) GetShortcut() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) IsShortcutFeedback()  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) SetButtonGroup(button_group ButtonGroup, ) { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) SetShortcut(shortcut Shortcut, )  {
+  panic("TODO: implement")
 }
 
-func  (me *BaseButton) GetButtonGroup() { // TODO: return value
-  // TODO: implement
+func  (me *BaseButton) GetShortcut()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *BaseButton) SetButtonGroup(button_group ButtonGroup, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *BaseButton) GetButtonGroup()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,10 @@ func (me *Mesh) BaseClass() string {
   return "Mesh"
 }
 
+
+
+// Enums
+
 type MeshPrimitiveType int
 const (
   MeshPrimitiveTypePrimitivePoints MeshPrimitiveType = 0
@@ -101,118 +105,129 @@ const (
   MeshBlendShapeModeBlendShapeModeRelative MeshBlendShapeMode = 1
 )
 
-func  (me *Mesh) XGetSurfaceCount() { // TODO: return value
-  // TODO: implement
+func (me *Mesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Mesh) XSurfaceGetArrayLen(index int, ) { // TODO: return value
-  // TODO: implement
+func (me *Mesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Mesh) XSurfaceGetArrayIndexLen(index int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Mesh) XGetSurfaceCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) XSurfaceGetArrays(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XSurfaceGetArrayLen(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) XSurfaceGetBlendShapeArrays(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XSurfaceGetArrayIndexLen(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) XSurfaceGetLods(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XSurfaceGetArrays(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) XSurfaceGetFormat(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XSurfaceGetBlendShapeArrays(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) XSurfaceGetPrimitiveType(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XSurfaceGetLods(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) XSurfaceSetMaterial(index int, material Material, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XSurfaceGetFormat(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) XSurfaceGetMaterial(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XSurfaceGetPrimitiveType(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) XGetBlendShapeCount() { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XSurfaceSetMaterial(index int, material Material, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) XGetBlendShapeName(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XSurfaceGetMaterial(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) XSetBlendShapeName(index int, name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XGetBlendShapeCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) XGetAabb() { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XGetBlendShapeName(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) SetLightmapSizeHint(size Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XSetBlendShapeName(index int, name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) GetLightmapSizeHint() { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) XGetAabb()  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) GetAabb() { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) SetLightmapSizeHint(size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) GetFaces() { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) GetLightmapSizeHint()  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) GetSurfaceCount() { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) GetAabb()  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) SurfaceGetArrays(surf_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) GetFaces()  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) SurfaceGetBlendShapeArrays(surf_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) GetSurfaceCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) SurfaceSetMaterial(surf_idx int, material Material, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) SurfaceGetArrays(surf_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) SurfaceGetMaterial(surf_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) SurfaceGetBlendShapeArrays(surf_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) CreatePlaceholder() { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) SurfaceSetMaterial(surf_idx int, material Material, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) CreateTrimeshShape() { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) SurfaceGetMaterial(surf_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) CreateConvexShape(clean bool, simplify bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) CreatePlaceholder()  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) CreateOutline(margin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) CreateTrimeshShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *Mesh) GenerateTriangleMesh() { // TODO: return value
-  // TODO: implement
+func  (me *Mesh) CreateConvexShape(clean bool, simplify bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Mesh) CreateOutline(margin float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Mesh) GenerateTriangleMesh()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,174 +25,189 @@ func (me *Label) BaseClass() string {
   return "Label"
 }
 
-func  (me *Label) SetHorizontalAlignment(alignment HorizontalAlignment, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Label) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Label) GetHorizontalAlignment() { // TODO: return value
-  // TODO: implement
+func (me *Label) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Label) SetVerticalAlignment(alignment VerticalAlignment, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Label) SetHorizontalAlignment(alignment HorizontalAlignment, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetVerticalAlignment() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetHorizontalAlignment()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetText(text String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetVerticalAlignment(alignment VerticalAlignment, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetText() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetVerticalAlignment()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetLabelSettings(settings LabelSettings, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetText(text String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetLabelSettings() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetText()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetTextDirection(direction ControlTextDirection, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetLabelSettings(settings LabelSettings, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetTextDirection() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetLabelSettings()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetLanguage(language String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetTextDirection(direction ControlTextDirection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetLanguage() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetTextDirection()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetAutowrapMode(autowrap_mode TextServerAutowrapMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetLanguage(language String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetAutowrapMode() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetLanguage()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetJustificationFlags(justification_flags TextServerJustificationFlag, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetAutowrapMode(autowrap_mode TextServerAutowrapMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetJustificationFlags() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetAutowrapMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetClipText(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetJustificationFlags(justification_flags TextServerJustificationFlag, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) IsClippingText() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetJustificationFlags()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetTabStops(tab_stops PackedFloat32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetClipText(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetTabStops() { // TODO: return value
-  // TODO: implement
+func  (me *Label) IsClippingText()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetTextOverrunBehavior(overrun_behavior TextServerOverrunBehavior, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetTabStops(tab_stops PackedFloat32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetTextOverrunBehavior() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetTabStops()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetUppercase(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetTextOverrunBehavior(overrun_behavior TextServerOverrunBehavior, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) IsUppercase() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetTextOverrunBehavior()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetLineHeight(line int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetUppercase(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetLineCount() { // TODO: return value
-  // TODO: implement
+func  (me *Label) IsUppercase()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetVisibleLineCount() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetLineHeight(line int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetTotalCharacterCount() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetLineCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetVisibleCharacters(amount int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetVisibleLineCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetVisibleCharacters() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetTotalCharacterCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetVisibleCharactersBehavior() { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetVisibleCharacters(amount int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetVisibleCharactersBehavior(behavior TextServerVisibleCharactersBehavior, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetVisibleCharacters()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetVisibleRatio(ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetVisibleCharactersBehavior()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetVisibleRatio() { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetVisibleCharactersBehavior(behavior TextServerVisibleCharactersBehavior, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetLinesSkipped(lines_skipped int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetVisibleRatio(ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetLinesSkipped() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetVisibleRatio()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetMaxLinesVisible(lines_visible int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetLinesSkipped(lines_skipped int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetMaxLinesVisible() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetLinesSkipped()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetStructuredTextBidiOverride(parser TextServerStructuredTextParser, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetMaxLinesVisible(lines_visible int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetStructuredTextBidiOverride() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetMaxLinesVisible()  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) SetStructuredTextBidiOverrideOptions(args Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *Label) SetStructuredTextBidiOverride(parser TextServerStructuredTextParser, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Label) GetStructuredTextBidiOverrideOptions() { // TODO: return value
-  // TODO: implement
+func  (me *Label) GetStructuredTextBidiOverride()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Label) SetStructuredTextBidiOverrideOptions(args Array, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Label) GetStructuredTextBidiOverrideOptions()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,54 +25,69 @@ func (me *RDPipelineMultisampleState) BaseClass() string {
   return "RDPipelineMultisampleState"
 }
 
-func  (me *RDPipelineMultisampleState) SetSampleCount(p_member RenderingDeviceTextureSamples, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDPipelineMultisampleState) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDPipelineMultisampleState) GetSampleCount() { // TODO: return value
-  // TODO: implement
+func (me *RDPipelineMultisampleState) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDPipelineMultisampleState) SetEnableSampleShading(p_member bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDPipelineMultisampleState) SetSampleCount(p_member RenderingDeviceTextureSamples, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineMultisampleState) GetEnableSampleShading() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineMultisampleState) GetSampleCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineMultisampleState) SetMinSampleShading(p_member float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineMultisampleState) SetEnableSampleShading(p_member bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineMultisampleState) GetMinSampleShading() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineMultisampleState) GetEnableSampleShading()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineMultisampleState) SetEnableAlphaToCoverage(p_member bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineMultisampleState) SetMinSampleShading(p_member float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineMultisampleState) GetEnableAlphaToCoverage() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineMultisampleState) GetMinSampleShading()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineMultisampleState) SetEnableAlphaToOne(p_member bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineMultisampleState) SetEnableAlphaToCoverage(p_member bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineMultisampleState) GetEnableAlphaToOne() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineMultisampleState) GetEnableAlphaToCoverage()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineMultisampleState) SetSampleMasks(masks int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineMultisampleState) SetEnableAlphaToOne(p_member bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineMultisampleState) GetSampleMasks() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineMultisampleState) GetEnableAlphaToOne()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDPipelineMultisampleState) SetSampleMasks(masks int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDPipelineMultisampleState) GetSampleMasks()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,50 +25,65 @@ func (me *RemoteTransform3D) BaseClass() string {
   return "RemoteTransform3D"
 }
 
-func  (me *RemoteTransform3D) SetRemoteNode(path NodePath, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RemoteTransform3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RemoteTransform3D) GetRemoteNode() { // TODO: return value
-  // TODO: implement
+func (me *RemoteTransform3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RemoteTransform3D) ForceUpdateCache() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RemoteTransform3D) SetRemoteNode(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RemoteTransform3D) SetUseGlobalCoordinates(use_global_coordinates bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RemoteTransform3D) GetRemoteNode()  {
+  panic("TODO: implement")
 }
 
-func  (me *RemoteTransform3D) GetUseGlobalCoordinates() { // TODO: return value
-  // TODO: implement
+func  (me *RemoteTransform3D) ForceUpdateCache()  {
+  panic("TODO: implement")
 }
 
-func  (me *RemoteTransform3D) SetUpdatePosition(update_remote_position bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RemoteTransform3D) SetUseGlobalCoordinates(use_global_coordinates bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RemoteTransform3D) GetUpdatePosition() { // TODO: return value
-  // TODO: implement
+func  (me *RemoteTransform3D) GetUseGlobalCoordinates()  {
+  panic("TODO: implement")
 }
 
-func  (me *RemoteTransform3D) SetUpdateRotation(update_remote_rotation bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RemoteTransform3D) SetUpdatePosition(update_remote_position bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RemoteTransform3D) GetUpdateRotation() { // TODO: return value
-  // TODO: implement
+func  (me *RemoteTransform3D) GetUpdatePosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *RemoteTransform3D) SetUpdateScale(update_remote_scale bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RemoteTransform3D) SetUpdateRotation(update_remote_rotation bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RemoteTransform3D) GetUpdateScale() { // TODO: return value
-  // TODO: implement
+func  (me *RemoteTransform3D) GetUpdateRotation()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RemoteTransform3D) SetUpdateScale(update_remote_scale bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RemoteTransform3D) GetUpdateScale()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

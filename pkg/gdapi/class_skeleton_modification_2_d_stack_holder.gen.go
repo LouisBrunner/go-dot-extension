@@ -25,14 +25,29 @@ func (me *SkeletonModification2DStackHolder) BaseClass() string {
   return "SkeletonModification2DStackHolder"
 }
 
-func  (me *SkeletonModification2DStackHolder) SetHeldModificationStack(held_modification_stack SkeletonModificationStack2D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SkeletonModification2DStackHolder) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SkeletonModification2DStackHolder) GetHeldModificationStack() { // TODO: return value
-  // TODO: implement
+func (me *SkeletonModification2DStackHolder) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *SkeletonModification2DStackHolder) SetHeldModificationStack(held_modification_stack SkeletonModificationStack2D, )  {
+  panic("TODO: implement")
+}
+
+func  (me *SkeletonModification2DStackHolder) GetHeldModificationStack()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

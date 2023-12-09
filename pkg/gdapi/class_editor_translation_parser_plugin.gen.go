@@ -25,14 +25,29 @@ func (me *EditorTranslationParserPlugin) BaseClass() string {
   return "EditorTranslationParserPlugin"
 }
 
-func  (me *EditorTranslationParserPlugin) XParseFile(path String, msgids String, msgids_context_plural Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorTranslationParserPlugin) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorTranslationParserPlugin) XGetRecognizedExtensions() { // TODO: return value
-  // TODO: implement
+func (me *EditorTranslationParserPlugin) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *EditorTranslationParserPlugin) XParseFile(path String, msgids String, msgids_context_plural Array, )  {
+  panic("TODO: implement")
+}
+
+func  (me *EditorTranslationParserPlugin) XGetRecognizedExtensions()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

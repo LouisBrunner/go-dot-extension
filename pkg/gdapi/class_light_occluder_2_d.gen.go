@@ -25,30 +25,45 @@ func (me *LightOccluder2D) BaseClass() string {
   return "LightOccluder2D"
 }
 
-func  (me *LightOccluder2D) SetOccluderPolygon(polygon OccluderPolygon2D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *LightOccluder2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *LightOccluder2D) GetOccluderPolygon() { // TODO: return value
-  // TODO: implement
+func (me *LightOccluder2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *LightOccluder2D) SetOccluderLightMask(mask int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *LightOccluder2D) SetOccluderPolygon(polygon OccluderPolygon2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightOccluder2D) GetOccluderLightMask() { // TODO: return value
-  // TODO: implement
+func  (me *LightOccluder2D) GetOccluderPolygon()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightOccluder2D) SetAsSdfCollision(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightOccluder2D) SetOccluderLightMask(mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightOccluder2D) IsSetAsSdfCollision() { // TODO: return value
-  // TODO: implement
+func  (me *LightOccluder2D) GetOccluderLightMask()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *LightOccluder2D) SetAsSdfCollision(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *LightOccluder2D) IsSetAsSdfCollision()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

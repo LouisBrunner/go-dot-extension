@@ -25,6 +25,21 @@ func (me *VSeparator) BaseClass() string {
   return "VSeparator"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *VSeparator) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *VSeparator) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

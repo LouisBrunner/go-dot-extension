@@ -25,54 +25,69 @@ func (me *CSGCylinder3D) BaseClass() string {
   return "CSGCylinder3D"
 }
 
-func  (me *CSGCylinder3D) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CSGCylinder3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CSGCylinder3D) GetRadius() { // TODO: return value
-  // TODO: implement
+func (me *CSGCylinder3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CSGCylinder3D) SetHeight(height float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CSGCylinder3D) SetRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGCylinder3D) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *CSGCylinder3D) GetRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGCylinder3D) SetSides(sides int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGCylinder3D) SetHeight(height float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGCylinder3D) GetSides() { // TODO: return value
-  // TODO: implement
+func  (me *CSGCylinder3D) GetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGCylinder3D) SetCone(cone bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGCylinder3D) SetSides(sides int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGCylinder3D) IsCone() { // TODO: return value
-  // TODO: implement
+func  (me *CSGCylinder3D) GetSides()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGCylinder3D) SetMaterial(material Material, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGCylinder3D) SetCone(cone bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGCylinder3D) GetMaterial() { // TODO: return value
-  // TODO: implement
+func  (me *CSGCylinder3D) IsCone()  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGCylinder3D) SetSmoothFaces(smooth_faces bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CSGCylinder3D) SetMaterial(material Material, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CSGCylinder3D) GetSmoothFaces() { // TODO: return value
-  // TODO: implement
+func  (me *CSGCylinder3D) GetMaterial()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CSGCylinder3D) SetSmoothFaces(smooth_faces bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CSGCylinder3D) GetSmoothFaces()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

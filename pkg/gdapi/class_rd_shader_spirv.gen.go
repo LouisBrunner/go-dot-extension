@@ -25,22 +25,37 @@ func (me *RDShaderSPIRV) BaseClass() string {
   return "RDShaderSPIRV"
 }
 
-func  (me *RDShaderSPIRV) SetStageBytecode(stage RenderingDeviceShaderStage, bytecode PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDShaderSPIRV) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDShaderSPIRV) GetStageBytecode(stage RenderingDeviceShaderStage, ) { // TODO: return value
-  // TODO: implement
+func (me *RDShaderSPIRV) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDShaderSPIRV) SetStageCompileError(stage RenderingDeviceShaderStage, compile_error String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDShaderSPIRV) SetStageBytecode(stage RenderingDeviceShaderStage, bytecode PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDShaderSPIRV) GetStageCompileError(stage RenderingDeviceShaderStage, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDShaderSPIRV) GetStageBytecode(stage RenderingDeviceShaderStage, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDShaderSPIRV) SetStageCompileError(stage RenderingDeviceShaderStage, compile_error String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDShaderSPIRV) GetStageCompileError(stage RenderingDeviceShaderStage, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

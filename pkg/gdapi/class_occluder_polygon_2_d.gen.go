@@ -25,6 +25,10 @@ func (me *OccluderPolygon2D) BaseClass() string {
   return "OccluderPolygon2D"
 }
 
+
+
+// Enums
+
 type OccluderPolygon2DCullMode int
 const (
   OccluderPolygon2DCullModeCullDisabled OccluderPolygon2DCullMode = 0
@@ -32,30 +36,41 @@ const (
   OccluderPolygon2DCullModeCullCounterClockwise OccluderPolygon2DCullMode = 2
 )
 
-func  (me *OccluderPolygon2D) SetClosed(closed bool, ) { // TODO: return value
-  // TODO: implement
+func (me *OccluderPolygon2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *OccluderPolygon2D) IsClosed() { // TODO: return value
-  // TODO: implement
+func (me *OccluderPolygon2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *OccluderPolygon2D) SetCullMode(cull_mode OccluderPolygon2DCullMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *OccluderPolygon2D) SetClosed(closed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *OccluderPolygon2D) GetCullMode() { // TODO: return value
-  // TODO: implement
+func  (me *OccluderPolygon2D) IsClosed()  {
+  panic("TODO: implement")
 }
 
-func  (me *OccluderPolygon2D) SetPolygon(polygon PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *OccluderPolygon2D) SetCullMode(cull_mode OccluderPolygon2DCullMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *OccluderPolygon2D) GetPolygon() { // TODO: return value
-  // TODO: implement
+func  (me *OccluderPolygon2D) GetCullMode()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *OccluderPolygon2D) SetPolygon(polygon PackedVector2Array, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *OccluderPolygon2D) GetPolygon()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

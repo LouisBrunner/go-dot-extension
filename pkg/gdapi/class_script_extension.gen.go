@@ -25,134 +25,149 @@ func (me *ScriptExtension) BaseClass() string {
   return "ScriptExtension"
 }
 
-func  (me *ScriptExtension) XEditorCanReloadFromFile() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ScriptExtension) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ScriptExtension) XPlaceholderErased(placeholder unsafe.Pointer, ) { // TODO: return value
-  // TODO: implement
+func (me *ScriptExtension) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ScriptExtension) XCanInstantiate() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ScriptExtension) XEditorCanReloadFromFile()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetBaseScript() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XPlaceholderErased(placeholder unsafe.Pointer, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetGlobalName() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XCanInstantiate()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XInheritsScript(script Script, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetBaseScript()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetInstanceBaseType() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetGlobalName()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XInstanceCreate(for_object Object, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XInheritsScript(script Script, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XPlaceholderInstanceCreate(for_object Object, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetInstanceBaseType()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XInstanceHas(object Object, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XInstanceCreate(for_object Object, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XHasSourceCode() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XPlaceholderInstanceCreate(for_object Object, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetSourceCode() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XInstanceHas(object Object, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XSetSourceCode(code String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XHasSourceCode()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XReload(keep_state bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetSourceCode()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetDocumentation() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XSetSourceCode(code String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XHasMethod(method StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XReload(keep_state bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetMethodInfo(method StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetDocumentation()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XIsTool() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XHasMethod(method StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XIsValid() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetMethodInfo(method StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetLanguage() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XIsTool()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XHasScriptSignal(signal StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XIsValid()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetScriptSignalList() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetLanguage()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XHasPropertyDefaultValue(property StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XHasScriptSignal(signal StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetPropertyDefaultValue(property StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetScriptSignalList()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XUpdateExports() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XHasPropertyDefaultValue(property StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetScriptMethodList() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetPropertyDefaultValue(property StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetScriptPropertyList() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XUpdateExports()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetMemberLine(member StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetScriptMethodList()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetConstants() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetScriptPropertyList()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetMembers() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetMemberLine(member StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XIsPlaceholderFallbackEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetConstants()  {
+  panic("TODO: implement")
 }
 
-func  (me *ScriptExtension) XGetRpcConfig() { // TODO: return value
-  // TODO: implement
+func  (me *ScriptExtension) XGetMembers()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ScriptExtension) XIsPlaceholderFallbackEnabled()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ScriptExtension) XGetRpcConfig()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

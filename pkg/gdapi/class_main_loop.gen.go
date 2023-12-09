@@ -25,9 +25,9 @@ func (me *MainLoop) BaseClass() string {
   return "MainLoop"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   MainLoopNotificationOsMemoryWarning = "2009" // TODO: construct correctly
@@ -42,22 +42,35 @@ var (
   MainLoopNotificationTextServerChanged = "2018" // TODO: construct correctly
 )
 
-func  (me *MainLoop) XInitialize() { // TODO: return value
-  // TODO: implement
+// Enums
+
+func (me *MainLoop) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MainLoop) XPhysicsProcess(delta float32, ) { // TODO: return value
-  // TODO: implement
+func (me *MainLoop) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MainLoop) XProcess(delta float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MainLoop) XInitialize()  {
+  panic("TODO: implement")
 }
 
-func  (me *MainLoop) XFinalize() { // TODO: return value
-  // TODO: implement
+func  (me *MainLoop) XPhysicsProcess(delta float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MainLoop) XProcess(delta float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MainLoop) XFinalize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

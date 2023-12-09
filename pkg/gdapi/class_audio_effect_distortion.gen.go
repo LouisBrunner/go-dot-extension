@@ -25,6 +25,10 @@ func (me *AudioEffectDistortion) BaseClass() string {
   return "AudioEffectDistortion"
 }
 
+
+
+// Enums
+
 type AudioEffectDistortionMode int
 const (
   AudioEffectDistortionModeModeClip AudioEffectDistortionMode = 0
@@ -34,46 +38,57 @@ const (
   AudioEffectDistortionModeModeWaveshape AudioEffectDistortionMode = 4
 )
 
-func  (me *AudioEffectDistortion) SetMode(mode AudioEffectDistortionMode, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectDistortion) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectDistortion) GetMode() { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectDistortion) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectDistortion) SetPreGain(pre_gain float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectDistortion) SetMode(mode AudioEffectDistortionMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDistortion) GetPreGain() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDistortion) GetMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDistortion) SetKeepHfHz(keep_hf_hz float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDistortion) SetPreGain(pre_gain float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDistortion) GetKeepHfHz() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDistortion) GetPreGain()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDistortion) SetDrive(drive float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDistortion) SetKeepHfHz(keep_hf_hz float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDistortion) GetDrive() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDistortion) GetKeepHfHz()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDistortion) SetPostGain(post_gain float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDistortion) SetDrive(drive float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectDistortion) GetPostGain() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectDistortion) GetDrive()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectDistortion) SetPostGain(post_gain float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectDistortion) GetPostGain()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,26 +25,41 @@ func (me *EditorDebuggerPlugin) BaseClass() string {
   return "EditorDebuggerPlugin"
 }
 
-func  (me *EditorDebuggerPlugin) XSetupSession(session_id int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorDebuggerPlugin) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorDebuggerPlugin) XHasCapture(capture String, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorDebuggerPlugin) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorDebuggerPlugin) XCapture(message String, data Array, session_id int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorDebuggerPlugin) XSetupSession(session_id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorDebuggerPlugin) GetSession(id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorDebuggerPlugin) XHasCapture(capture String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorDebuggerPlugin) GetSessions() { // TODO: return value
-  // TODO: implement
+func  (me *EditorDebuggerPlugin) XCapture(message String, data Array, session_id int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorDebuggerPlugin) GetSession(id int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorDebuggerPlugin) GetSessions()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

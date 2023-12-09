@@ -25,14 +25,29 @@ func (me *BoxShape3D) BaseClass() string {
   return "BoxShape3D"
 }
 
-func  (me *BoxShape3D) SetSize(size Vector3, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *BoxShape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *BoxShape3D) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *BoxShape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *BoxShape3D) SetSize(size Vector3, )  {
+  panic("TODO: implement")
+}
+
+func  (me *BoxShape3D) GetSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

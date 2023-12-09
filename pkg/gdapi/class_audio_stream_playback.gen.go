@@ -25,38 +25,53 @@ func (me *AudioStreamPlayback) BaseClass() string {
   return "AudioStreamPlayback"
 }
 
-func  (me *AudioStreamPlayback) XStart(from_pos float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioStreamPlayback) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioStreamPlayback) XStop() { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamPlayback) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioStreamPlayback) XIsPlaying() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioStreamPlayback) XStart(from_pos float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayback) XGetLoopCount() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayback) XStop()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayback) XGetPlaybackPosition() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayback) XIsPlaying()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayback) XSeek(position float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayback) XGetLoopCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayback) XMix(buffer *AudioFrame, rate_scale float32, frames int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayback) XGetPlaybackPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayback) XTagUsedStreams() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayback) XSeek(position float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioStreamPlayback) XMix(buffer *AudioFrame, rate_scale float32, frames int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioStreamPlayback) XTagUsedStreams()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

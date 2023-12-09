@@ -25,118 +25,133 @@ func (me *RayCast2D) BaseClass() string {
   return "RayCast2D"
 }
 
-func  (me *RayCast2D) SetEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RayCast2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RayCast2D) IsEnabled() { // TODO: return value
-  // TODO: implement
+func (me *RayCast2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RayCast2D) SetTargetPosition(local_point Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RayCast2D) SetEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) GetTargetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) IsEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) IsColliding() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) SetTargetPosition(local_point Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) ForceRaycastUpdate() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) GetTargetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) GetCollider() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) IsColliding()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) GetColliderRid() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) ForceRaycastUpdate()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) GetColliderShape() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) GetCollider()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) GetCollisionPoint() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) GetColliderRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) GetCollisionNormal() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) GetColliderShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) AddExceptionRid(rid RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) GetCollisionPoint()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) AddException(node CollisionObject2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) GetCollisionNormal()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) RemoveExceptionRid(rid RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) AddExceptionRid(rid RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) RemoveException(node CollisionObject2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) AddException(node CollisionObject2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) ClearExceptions() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) RemoveExceptionRid(rid RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) SetCollisionMask(mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) RemoveException(node CollisionObject2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) GetCollisionMask() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) ClearExceptions()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) SetCollisionMaskValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) SetCollisionMask(mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) GetCollisionMaskValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) GetCollisionMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) SetExcludeParentBody(mask bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) SetCollisionMaskValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) GetExcludeParentBody() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) GetCollisionMaskValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) SetCollideWithAreas(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) SetExcludeParentBody(mask bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) IsCollideWithAreasEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) GetExcludeParentBody()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) SetCollideWithBodies(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) SetCollideWithAreas(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) IsCollideWithBodiesEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) IsCollideWithAreasEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) SetHitFromInside(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) SetCollideWithBodies(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RayCast2D) IsHitFromInsideEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *RayCast2D) IsCollideWithBodiesEnabled()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RayCast2D) SetHitFromInside(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RayCast2D) IsHitFromInsideEnabled()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

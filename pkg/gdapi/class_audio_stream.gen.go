@@ -25,42 +25,57 @@ func (me *AudioStream) BaseClass() string {
   return "AudioStream"
 }
 
-func  (me *AudioStream) XInstantiatePlayback() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioStream) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioStream) XGetStreamName() { // TODO: return value
-  // TODO: implement
+func (me *AudioStream) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioStream) XGetLength() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioStream) XInstantiatePlayback()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStream) XIsMonophonic() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStream) XGetStreamName()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStream) XGetBpm() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStream) XGetLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStream) XGetBeatCount() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStream) XIsMonophonic()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStream) GetLength() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStream) XGetBpm()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStream) IsMonophonic() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStream) XGetBeatCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStream) InstantiatePlayback() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStream) GetLength()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioStream) IsMonophonic()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioStream) InstantiatePlayback()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

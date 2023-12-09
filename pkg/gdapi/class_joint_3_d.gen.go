@@ -25,38 +25,53 @@ func (me *Joint3D) BaseClass() string {
   return "Joint3D"
 }
 
-func  (me *Joint3D) SetNodeA(node NodePath, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Joint3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Joint3D) GetNodeA() { // TODO: return value
-  // TODO: implement
+func (me *Joint3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Joint3D) SetNodeB(node NodePath, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Joint3D) SetNodeA(node NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Joint3D) GetNodeB() { // TODO: return value
-  // TODO: implement
+func  (me *Joint3D) GetNodeA()  {
+  panic("TODO: implement")
 }
 
-func  (me *Joint3D) SetSolverPriority(priority int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Joint3D) SetNodeB(node NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Joint3D) GetSolverPriority() { // TODO: return value
-  // TODO: implement
+func  (me *Joint3D) GetNodeB()  {
+  panic("TODO: implement")
 }
 
-func  (me *Joint3D) SetExcludeNodesFromCollision(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Joint3D) SetSolverPriority(priority int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Joint3D) GetExcludeNodesFromCollision() { // TODO: return value
-  // TODO: implement
+func  (me *Joint3D) GetSolverPriority()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Joint3D) SetExcludeNodesFromCollision(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Joint3D) GetExcludeNodesFromCollision()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

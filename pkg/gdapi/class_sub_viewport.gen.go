@@ -25,6 +25,10 @@ func (me *SubViewport) BaseClass() string {
   return "SubViewport"
 }
 
+
+
+// Enums
+
 type SubViewportClearMode int
 const (
   SubViewportClearModeClearModeAlways SubViewportClearMode = 0
@@ -41,46 +45,57 @@ const (
   SubViewportUpdateModeUpdateAlways SubViewportUpdateMode = 4
 )
 
-func  (me *SubViewport) SetSize(size Vector2i, ) { // TODO: return value
-  // TODO: implement
+func (me *SubViewport) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SubViewport) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *SubViewport) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SubViewport) SetSize2DOverride(size Vector2i, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SubViewport) SetSize(size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SubViewport) GetSize2DOverride() { // TODO: return value
-  // TODO: implement
+func  (me *SubViewport) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *SubViewport) SetSize2DOverrideStretch(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SubViewport) SetSize2DOverride(size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SubViewport) IsSize2DOverrideStretchEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *SubViewport) GetSize2DOverride()  {
+  panic("TODO: implement")
 }
 
-func  (me *SubViewport) SetUpdateMode(mode SubViewportUpdateMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *SubViewport) SetSize2DOverrideStretch(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SubViewport) GetUpdateMode() { // TODO: return value
-  // TODO: implement
+func  (me *SubViewport) IsSize2DOverrideStretchEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *SubViewport) SetClearMode(mode SubViewportClearMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *SubViewport) SetUpdateMode(mode SubViewportUpdateMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SubViewport) GetClearMode() { // TODO: return value
-  // TODO: implement
+func  (me *SubViewport) GetUpdateMode()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SubViewport) SetClearMode(mode SubViewportClearMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SubViewport) GetClearMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

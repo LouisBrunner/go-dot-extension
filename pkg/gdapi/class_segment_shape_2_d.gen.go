@@ -25,22 +25,37 @@ func (me *SegmentShape2D) BaseClass() string {
   return "SegmentShape2D"
 }
 
-func  (me *SegmentShape2D) SetA(a Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SegmentShape2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SegmentShape2D) GetA() { // TODO: return value
-  // TODO: implement
+func (me *SegmentShape2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SegmentShape2D) SetB(b Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SegmentShape2D) SetA(a Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SegmentShape2D) GetB() { // TODO: return value
-  // TODO: implement
+func  (me *SegmentShape2D) GetA()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SegmentShape2D) SetB(b Vector2, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SegmentShape2D) GetB()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

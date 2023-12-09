@@ -25,138 +25,153 @@ func (me *Node2D) BaseClass() string {
   return "Node2D"
 }
 
-func  (me *Node2D) SetPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Node2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Node2D) SetRotation(radians float32, ) { // TODO: return value
-  // TODO: implement
+func (me *Node2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Node2D) SetRotationDegrees(degrees float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Node2D) SetPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) SetSkew(radians float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) SetRotation(radians float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) SetScale(scale Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) SetRotationDegrees(degrees float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) SetSkew(radians float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetRotation() { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) SetScale(scale Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetRotationDegrees() { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetSkew() { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GetRotation()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetScale() { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GetRotationDegrees()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) Rotate(radians float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GetSkew()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) MoveLocalX(delta float32, scaled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GetScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) MoveLocalY(delta float32, scaled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) Rotate(radians float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) Translate(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) MoveLocalX(delta float32, scaled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GlobalTranslate(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) MoveLocalY(delta float32, scaled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) ApplyScale(ratio Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) Translate(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) SetGlobalPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GlobalTranslate(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetGlobalPosition() { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) ApplyScale(ratio Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) SetGlobalRotation(radians float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) SetGlobalPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) SetGlobalRotationDegrees(degrees float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GetGlobalPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetGlobalRotation() { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) SetGlobalRotation(radians float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetGlobalRotationDegrees() { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) SetGlobalRotationDegrees(degrees float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) SetGlobalSkew(radians float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GetGlobalRotation()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetGlobalSkew() { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GetGlobalRotationDegrees()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) SetGlobalScale(scale Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) SetGlobalSkew(radians float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetGlobalScale() { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GetGlobalSkew()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) SetTransform(xform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) SetGlobalScale(scale Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) SetGlobalTransform(xform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GetGlobalScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) LookAt(point Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) SetTransform(xform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetAngleTo(point Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) SetGlobalTransform(xform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) ToLocal(global_point Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) LookAt(point Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) ToGlobal(local_point Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) GetAngleTo(point Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Node2D) GetRelativeTransformToParent(parent Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *Node2D) ToLocal(global_point Vector2, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Node2D) ToGlobal(local_point Vector2, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Node2D) GetRelativeTransformToParent(parent Node, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

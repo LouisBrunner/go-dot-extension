@@ -25,46 +25,61 @@ func (me *RootMotionView) BaseClass() string {
   return "RootMotionView"
 }
 
-func  (me *RootMotionView) SetAnimationPath(path NodePath, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RootMotionView) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RootMotionView) GetAnimationPath() { // TODO: return value
-  // TODO: implement
+func (me *RootMotionView) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RootMotionView) SetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RootMotionView) SetAnimationPath(path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RootMotionView) GetColor() { // TODO: return value
-  // TODO: implement
+func  (me *RootMotionView) GetAnimationPath()  {
+  panic("TODO: implement")
 }
 
-func  (me *RootMotionView) SetCellSize(size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RootMotionView) SetColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RootMotionView) GetCellSize() { // TODO: return value
-  // TODO: implement
+func  (me *RootMotionView) GetColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *RootMotionView) SetRadius(size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RootMotionView) SetCellSize(size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RootMotionView) GetRadius() { // TODO: return value
-  // TODO: implement
+func  (me *RootMotionView) GetCellSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *RootMotionView) SetZeroY(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RootMotionView) SetRadius(size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RootMotionView) GetZeroY() { // TODO: return value
-  // TODO: implement
+func  (me *RootMotionView) GetRadius()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RootMotionView) SetZeroY(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RootMotionView) GetZeroY()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

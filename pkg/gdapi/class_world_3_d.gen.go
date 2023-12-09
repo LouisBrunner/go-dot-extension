@@ -25,46 +25,61 @@ func (me *World3D) BaseClass() string {
   return "World3D"
 }
 
-func  (me *World3D) GetSpace() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *World3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *World3D) GetNavigationMap() { // TODO: return value
-  // TODO: implement
+func (me *World3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *World3D) GetScenario() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *World3D) GetSpace()  {
+  panic("TODO: implement")
 }
 
-func  (me *World3D) SetEnvironment(env Environment, ) { // TODO: return value
-  // TODO: implement
+func  (me *World3D) GetNavigationMap()  {
+  panic("TODO: implement")
 }
 
-func  (me *World3D) GetEnvironment() { // TODO: return value
-  // TODO: implement
+func  (me *World3D) GetScenario()  {
+  panic("TODO: implement")
 }
 
-func  (me *World3D) SetFallbackEnvironment(env Environment, ) { // TODO: return value
-  // TODO: implement
+func  (me *World3D) SetEnvironment(env Environment, )  {
+  panic("TODO: implement")
 }
 
-func  (me *World3D) GetFallbackEnvironment() { // TODO: return value
-  // TODO: implement
+func  (me *World3D) GetEnvironment()  {
+  panic("TODO: implement")
 }
 
-func  (me *World3D) SetCameraAttributes(attributes CameraAttributes, ) { // TODO: return value
-  // TODO: implement
+func  (me *World3D) SetFallbackEnvironment(env Environment, )  {
+  panic("TODO: implement")
 }
 
-func  (me *World3D) GetCameraAttributes() { // TODO: return value
-  // TODO: implement
+func  (me *World3D) GetFallbackEnvironment()  {
+  panic("TODO: implement")
 }
 
-func  (me *World3D) GetDirectSpaceState() { // TODO: return value
-  // TODO: implement
+func  (me *World3D) SetCameraAttributes(attributes CameraAttributes, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *World3D) GetCameraAttributes()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *World3D) GetDirectSpaceState()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,70 +25,85 @@ func (me *PhysicsTestMotionParameters3D) BaseClass() string {
   return "PhysicsTestMotionParameters3D"
 }
 
-func  (me *PhysicsTestMotionParameters3D) GetFrom() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsTestMotionParameters3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsTestMotionParameters3D) SetFrom(from Transform3D, ) { // TODO: return value
-  // TODO: implement
+func (me *PhysicsTestMotionParameters3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsTestMotionParameters3D) GetMotion() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicsTestMotionParameters3D) GetFrom()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) SetMotion(motion Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) SetFrom(from Transform3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) GetMargin() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) GetMotion()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) SetMargin(margin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) SetMotion(motion Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) GetMaxCollisions() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) GetMargin()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) SetMaxCollisions(max_collisions int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) SetMargin(margin float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) IsCollideSeparationRayEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) GetMaxCollisions()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) SetCollideSeparationRayEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) SetMaxCollisions(max_collisions int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) GetExcludeBodies() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) IsCollideSeparationRayEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) SetExcludeBodies(exclude_list RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) SetCollideSeparationRayEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) GetExcludeObjects() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) GetExcludeBodies()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) SetExcludeObjects(exclude_list int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) SetExcludeBodies(exclude_list RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) IsRecoveryAsCollisionEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) GetExcludeObjects()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsTestMotionParameters3D) SetRecoveryAsCollisionEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsTestMotionParameters3D) SetExcludeObjects(exclude_list int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsTestMotionParameters3D) IsRecoveryAsCollisionEnabled()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsTestMotionParameters3D) SetRecoveryAsCollisionEnabled(enabled bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

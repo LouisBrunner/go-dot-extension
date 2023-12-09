@@ -25,22 +25,37 @@ func (me *Expression) BaseClass() string {
   return "Expression"
 }
 
-func  (me *Expression) Parse(expression String, input_names PackedStringArray, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Expression) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Expression) Execute(inputs Array, base_instance Object, show_error bool, const_calls_only bool, ) { // TODO: return value
-  // TODO: implement
+func (me *Expression) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Expression) HasExecuteFailed() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Expression) Parse(expression String, input_names PackedStringArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Expression) GetErrorText() { // TODO: return value
-  // TODO: implement
+func  (me *Expression) Execute(inputs Array, base_instance Object, show_error bool, const_calls_only bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Expression) HasExecuteFailed()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Expression) GetErrorText()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

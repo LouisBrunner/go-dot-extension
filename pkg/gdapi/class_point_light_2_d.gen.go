@@ -25,30 +25,45 @@ func (me *PointLight2D) BaseClass() string {
   return "PointLight2D"
 }
 
-func  (me *PointLight2D) SetTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PointLight2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PointLight2D) GetTexture() { // TODO: return value
-  // TODO: implement
+func (me *PointLight2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PointLight2D) SetTextureOffset(texture_offset Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PointLight2D) SetTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PointLight2D) GetTextureOffset() { // TODO: return value
-  // TODO: implement
+func  (me *PointLight2D) GetTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *PointLight2D) SetTextureScale(texture_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PointLight2D) SetTextureOffset(texture_offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PointLight2D) GetTextureScale() { // TODO: return value
-  // TODO: implement
+func  (me *PointLight2D) GetTextureOffset()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PointLight2D) SetTextureScale(texture_scale float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PointLight2D) GetTextureScale()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

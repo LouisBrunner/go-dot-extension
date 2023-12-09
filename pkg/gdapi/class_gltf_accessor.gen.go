@@ -25,118 +25,133 @@ func (me *GLTFAccessor) BaseClass() string {
   return "GLTFAccessor"
 }
 
-func  (me *GLTFAccessor) GetBufferView() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFAccessor) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFAccessor) SetBufferView(buffer_view int, ) { // TODO: return value
-  // TODO: implement
+func (me *GLTFAccessor) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GLTFAccessor) GetByteOffset() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GLTFAccessor) GetBufferView()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetByteOffset(byte_offset int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetBufferView(buffer_view int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetComponentType() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetByteOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetComponentType(component_type int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetByteOffset(byte_offset int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetNormalized() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetComponentType()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetNormalized(normalized bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetComponentType(component_type int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetCount() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetNormalized()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetCount(count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetNormalized(normalized bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetType() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetType(type_ int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetCount(count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetMin() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetType()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetMin(min PackedFloat64Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetType(type_ int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetMax() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetMin()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetMax(max PackedFloat64Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetMin(min PackedFloat64Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetSparseCount() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetMax()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetSparseCount(sparse_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetMax(max PackedFloat64Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetSparseIndicesBufferView() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetSparseCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetSparseIndicesBufferView(sparse_indices_buffer_view int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetSparseCount(sparse_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetSparseIndicesByteOffset() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetSparseIndicesBufferView()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetSparseIndicesByteOffset(sparse_indices_byte_offset int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetSparseIndicesBufferView(sparse_indices_buffer_view int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetSparseIndicesComponentType() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetSparseIndicesByteOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetSparseIndicesComponentType(sparse_indices_component_type int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetSparseIndicesByteOffset(sparse_indices_byte_offset int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetSparseValuesBufferView() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetSparseIndicesComponentType()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetSparseValuesBufferView(sparse_values_buffer_view int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetSparseIndicesComponentType(sparse_indices_component_type int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) GetSparseValuesByteOffset() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) GetSparseValuesBufferView()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFAccessor) SetSparseValuesByteOffset(sparse_values_byte_offset int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFAccessor) SetSparseValuesBufferView(sparse_values_buffer_view int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFAccessor) GetSparseValuesByteOffset()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFAccessor) SetSparseValuesByteOffset(sparse_values_byte_offset int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,10 @@ func (me *AudioStreamRandomizer) BaseClass() string {
   return "AudioStreamRandomizer"
 }
 
+
+
+// Enums
+
 type AudioStreamRandomizerPlaybackMode int
 const (
   AudioStreamRandomizerPlaybackModePlaybackRandomNoRepeats AudioStreamRandomizerPlaybackMode = 0
@@ -32,66 +36,77 @@ const (
   AudioStreamRandomizerPlaybackModePlaybackSequential AudioStreamRandomizerPlaybackMode = 2
 )
 
-func  (me *AudioStreamRandomizer) AddStream(index int, stream AudioStream, weight float32, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamRandomizer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioStreamRandomizer) MoveStream(index_from int, index_to int, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamRandomizer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioStreamRandomizer) RemoveStream(index int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioStreamRandomizer) AddStream(index int, stream AudioStream, weight float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) SetStream(index int, stream AudioStream, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) MoveStream(index_from int, index_to int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) GetStream(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) RemoveStream(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) SetStreamProbabilityWeight(index int, weight float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) SetStream(index int, stream AudioStream, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) GetStreamProbabilityWeight(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) GetStream(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) SetStreamsCount(count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) SetStreamProbabilityWeight(index int, weight float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) GetStreamsCount() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) GetStreamProbabilityWeight(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) SetRandomPitch(scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) SetStreamsCount(count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) GetRandomPitch() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) GetStreamsCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) SetRandomVolumeOffsetDb(db_offset float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) SetRandomPitch(scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) GetRandomVolumeOffsetDb() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) GetRandomPitch()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) SetPlaybackMode(mode AudioStreamRandomizerPlaybackMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) SetRandomVolumeOffsetDb(db_offset float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamRandomizer) GetPlaybackMode() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamRandomizer) GetRandomVolumeOffsetDb()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioStreamRandomizer) SetPlaybackMode(mode AudioStreamRandomizerPlaybackMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioStreamRandomizer) GetPlaybackMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,62 +25,77 @@ func (me *Sprite3D) BaseClass() string {
   return "Sprite3D"
 }
 
-func  (me *Sprite3D) SetTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Sprite3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Sprite3D) GetTexture() { // TODO: return value
-  // TODO: implement
+func (me *Sprite3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Sprite3D) SetRegionEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Sprite3D) SetTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Sprite3D) IsRegionEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Sprite3D) GetTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *Sprite3D) SetRegionRect(rect Rect2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Sprite3D) SetRegionEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Sprite3D) GetRegionRect() { // TODO: return value
-  // TODO: implement
+func  (me *Sprite3D) IsRegionEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Sprite3D) SetFrame(frame int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Sprite3D) SetRegionRect(rect Rect2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Sprite3D) GetFrame() { // TODO: return value
-  // TODO: implement
+func  (me *Sprite3D) GetRegionRect()  {
+  panic("TODO: implement")
 }
 
-func  (me *Sprite3D) SetFrameCoords(coords Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *Sprite3D) SetFrame(frame int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Sprite3D) GetFrameCoords() { // TODO: return value
-  // TODO: implement
+func  (me *Sprite3D) GetFrame()  {
+  panic("TODO: implement")
 }
 
-func  (me *Sprite3D) SetVframes(vframes int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Sprite3D) SetFrameCoords(coords Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Sprite3D) GetVframes() { // TODO: return value
-  // TODO: implement
+func  (me *Sprite3D) GetFrameCoords()  {
+  panic("TODO: implement")
 }
 
-func  (me *Sprite3D) SetHframes(hframes int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Sprite3D) SetVframes(vframes int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Sprite3D) GetHframes() { // TODO: return value
-  // TODO: implement
+func  (me *Sprite3D) GetVframes()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Sprite3D) SetHframes(hframes int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Sprite3D) GetHframes()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

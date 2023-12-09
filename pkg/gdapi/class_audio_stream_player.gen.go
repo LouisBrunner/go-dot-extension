@@ -25,6 +25,10 @@ func (me *AudioStreamPlayer) BaseClass() string {
   return "AudioStreamPlayer"
 }
 
+
+
+// Enums
+
 type AudioStreamPlayerMixTarget int
 const (
   AudioStreamPlayerMixTargetMixTargetStereo AudioStreamPlayerMixTarget = 0
@@ -32,98 +36,109 @@ const (
   AudioStreamPlayerMixTargetMixTargetCenter AudioStreamPlayerMixTarget = 2
 )
 
-func  (me *AudioStreamPlayer) SetStream(stream AudioStream, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamPlayer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioStreamPlayer) GetStream() { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamPlayer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioStreamPlayer) SetVolumeDb(volume_db float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioStreamPlayer) SetStream(stream AudioStream, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) GetVolumeDb() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) GetStream()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) SetPitchScale(pitch_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) SetVolumeDb(volume_db float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) GetPitchScale() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) GetVolumeDb()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) Play(from_position float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) SetPitchScale(pitch_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) Seek(to_position float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) GetPitchScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) Stop() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) Play(from_position float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) IsPlaying() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) Seek(to_position float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) GetPlaybackPosition() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) Stop()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) SetBus(bus StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) IsPlaying()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) GetBus() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) GetPlaybackPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) SetAutoplay(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) SetBus(bus StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) IsAutoplayEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) GetBus()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) SetMixTarget(mix_target AudioStreamPlayerMixTarget, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) SetAutoplay(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) GetMixTarget() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) IsAutoplayEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) SetStreamPaused(pause bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) SetMixTarget(mix_target AudioStreamPlayerMixTarget, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) GetStreamPaused() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) GetMixTarget()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) SetMaxPolyphony(max_polyphony int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) SetStreamPaused(pause bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) GetMaxPolyphony() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) GetStreamPaused()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) HasStreamPlayback() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) SetMaxPolyphony(max_polyphony int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamPlayer) GetStreamPlayback() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamPlayer) GetMaxPolyphony()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioStreamPlayer) HasStreamPlayback()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioStreamPlayer) GetStreamPlayback()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

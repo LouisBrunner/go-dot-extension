@@ -25,50 +25,65 @@ func (me *WebRTCPeerConnectionExtension) BaseClass() string {
   return "WebRTCPeerConnectionExtension"
 }
 
-func  (me *WebRTCPeerConnectionExtension) XGetConnectionState() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *WebRTCPeerConnectionExtension) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *WebRTCPeerConnectionExtension) XGetGatheringState() { // TODO: return value
-  // TODO: implement
+func (me *WebRTCPeerConnectionExtension) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *WebRTCPeerConnectionExtension) XGetSignalingState() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *WebRTCPeerConnectionExtension) XGetConnectionState()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnectionExtension) XInitialize(p_config Dictionary, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnectionExtension) XGetGatheringState()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnectionExtension) XCreateDataChannel(p_label String, p_config Dictionary, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnectionExtension) XGetSignalingState()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnectionExtension) XCreateOffer() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnectionExtension) XInitialize(p_config Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnectionExtension) XSetRemoteDescription(p_type String, p_sdp String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnectionExtension) XCreateDataChannel(p_label String, p_config Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnectionExtension) XSetLocalDescription(p_type String, p_sdp String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnectionExtension) XCreateOffer()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnectionExtension) XAddIceCandidate(p_sdp_mid_name String, p_sdp_mline_index int, p_sdp_name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnectionExtension) XSetRemoteDescription(p_type String, p_sdp String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnectionExtension) XPoll() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnectionExtension) XSetLocalDescription(p_type String, p_sdp String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnectionExtension) XClose() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnectionExtension) XAddIceCandidate(p_sdp_mid_name String, p_sdp_mline_index int, p_sdp_name String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *WebRTCPeerConnectionExtension) XPoll()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *WebRTCPeerConnectionExtension) XClose()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,14 +25,29 @@ func (me *EditorScriptPicker) BaseClass() string {
   return "EditorScriptPicker"
 }
 
-func  (me *EditorScriptPicker) SetScriptOwner(owner_node Node, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorScriptPicker) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorScriptPicker) GetScriptOwner() { // TODO: return value
-  // TODO: implement
+func (me *EditorScriptPicker) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *EditorScriptPicker) SetScriptOwner(owner_node Node, )  {
+  panic("TODO: implement")
+}
+
+func  (me *EditorScriptPicker) GetScriptOwner()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

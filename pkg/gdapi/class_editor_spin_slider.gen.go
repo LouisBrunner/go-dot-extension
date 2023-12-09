@@ -25,46 +25,61 @@ func (me *EditorSpinSlider) BaseClass() string {
   return "EditorSpinSlider"
 }
 
-func  (me *EditorSpinSlider) SetLabel(label String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorSpinSlider) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorSpinSlider) GetLabel() { // TODO: return value
-  // TODO: implement
+func (me *EditorSpinSlider) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorSpinSlider) SetSuffix(suffix String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorSpinSlider) SetLabel(label String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSpinSlider) GetSuffix() { // TODO: return value
-  // TODO: implement
+func  (me *EditorSpinSlider) GetLabel()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSpinSlider) SetReadOnly(read_only bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSpinSlider) SetSuffix(suffix String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSpinSlider) IsReadOnly() { // TODO: return value
-  // TODO: implement
+func  (me *EditorSpinSlider) GetSuffix()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSpinSlider) SetFlat(flat bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSpinSlider) SetReadOnly(read_only bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSpinSlider) IsFlat() { // TODO: return value
-  // TODO: implement
+func  (me *EditorSpinSlider) IsReadOnly()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSpinSlider) SetHideSlider(hide_slider bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorSpinSlider) SetFlat(flat bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorSpinSlider) IsHidingSlider() { // TODO: return value
-  // TODO: implement
+func  (me *EditorSpinSlider) IsFlat()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorSpinSlider) SetHideSlider(hide_slider bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorSpinSlider) IsHidingSlider()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

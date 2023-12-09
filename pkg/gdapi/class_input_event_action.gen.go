@@ -25,26 +25,41 @@ func (me *InputEventAction) BaseClass() string {
   return "InputEventAction"
 }
 
-func  (me *InputEventAction) SetAction(action StringName, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventAction) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventAction) GetAction() { // TODO: return value
-  // TODO: implement
+func (me *InputEventAction) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *InputEventAction) SetPressed(pressed bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *InputEventAction) SetAction(action StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventAction) SetStrength(strength float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventAction) GetAction()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventAction) GetStrength() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventAction) SetPressed(pressed bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *InputEventAction) SetStrength(strength float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *InputEventAction) GetStrength()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

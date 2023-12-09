@@ -25,20 +25,35 @@ func (me *OmniLight3D) BaseClass() string {
   return "OmniLight3D"
 }
 
+
+
+// Enums
+
 type OmniLight3DShadowMode int
 const (
   OmniLight3DShadowModeShadowDualParaboloid OmniLight3DShadowMode = 0
   OmniLight3DShadowModeShadowCube OmniLight3DShadowMode = 1
 )
 
-func  (me *OmniLight3D) SetShadowMode(mode OmniLight3DShadowMode, ) { // TODO: return value
-  // TODO: implement
+func (me *OmniLight3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *OmniLight3D) GetShadowMode() { // TODO: return value
-  // TODO: implement
+func (me *OmniLight3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *OmniLight3D) SetShadowMode(mode OmniLight3DShadowMode, )  {
+  panic("TODO: implement")
+}
+
+func  (me *OmniLight3D) GetShadowMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

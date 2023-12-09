@@ -25,10 +25,25 @@ func (me *AudioEffect) BaseClass() string {
   return "AudioEffect"
 }
 
-func  (me *AudioEffect) XInstantiate() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffect) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *AudioEffect) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *AudioEffect) XInstantiate()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

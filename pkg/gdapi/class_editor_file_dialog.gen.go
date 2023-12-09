@@ -25,6 +25,10 @@ func (me *EditorFileDialog) BaseClass() string {
   return "EditorFileDialog"
 }
 
+
+
+// Enums
+
 type EditorFileDialogFileMode int
 const (
   EditorFileDialogFileModeFileModeOpenFile EditorFileDialogFileMode = 0
@@ -47,98 +51,109 @@ const (
   EditorFileDialogDisplayModeDisplayList EditorFileDialogDisplayMode = 1
 )
 
-func  (me *EditorFileDialog) ClearFilters() { // TODO: return value
-  // TODO: implement
+func (me *EditorFileDialog) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorFileDialog) AddFilter(filter String, description String, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorFileDialog) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorFileDialog) SetFilters(filters PackedStringArray, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorFileDialog) ClearFilters()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) GetFilters() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) AddFilter(filter String, description String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) GetCurrentDir() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) SetFilters(filters PackedStringArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) GetCurrentFile() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) GetFilters()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) GetCurrentPath() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) GetCurrentDir()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) SetCurrentDir(dir String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) GetCurrentFile()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) SetCurrentFile(file String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) GetCurrentPath()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) SetCurrentPath(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) SetCurrentDir(dir String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) SetFileMode(mode EditorFileDialogFileMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) SetCurrentFile(file String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) GetFileMode() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) SetCurrentPath(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) GetVbox() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) SetFileMode(mode EditorFileDialogFileMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) GetLineEdit() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) GetFileMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) SetAccess(access EditorFileDialogAccess, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) GetVbox()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) GetAccess() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) GetLineEdit()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) SetShowHiddenFiles(show bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) SetAccess(access EditorFileDialogAccess, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) IsShowingHiddenFiles() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) GetAccess()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) SetDisplayMode(mode EditorFileDialogDisplayMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) SetShowHiddenFiles(show bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) GetDisplayMode() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) IsShowingHiddenFiles()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) SetDisableOverwriteWarning(disable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) SetDisplayMode(mode EditorFileDialogDisplayMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) IsOverwriteWarningDisabled() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) GetDisplayMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileDialog) Invalidate() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileDialog) SetDisableOverwriteWarning(disable bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorFileDialog) IsOverwriteWarningDisabled()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorFileDialog) Invalidate()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

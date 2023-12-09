@@ -25,6 +25,10 @@ func (me *DirectionalLight3D) BaseClass() string {
   return "DirectionalLight3D"
 }
 
+
+
+// Enums
+
 type DirectionalLight3DShadowMode int
 const (
   DirectionalLight3DShadowModeShadowOrthogonal DirectionalLight3DShadowMode = 0
@@ -39,30 +43,41 @@ const (
   DirectionalLight3DSkyModeSkyModeSkyOnly DirectionalLight3DSkyMode = 2
 )
 
-func  (me *DirectionalLight3D) SetShadowMode(mode DirectionalLight3DShadowMode, ) { // TODO: return value
-  // TODO: implement
+func (me *DirectionalLight3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *DirectionalLight3D) GetShadowMode() { // TODO: return value
-  // TODO: implement
+func (me *DirectionalLight3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *DirectionalLight3D) SetBlendSplits(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *DirectionalLight3D) SetShadowMode(mode DirectionalLight3DShadowMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirectionalLight3D) IsBlendSplitsEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *DirectionalLight3D) GetShadowMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *DirectionalLight3D) SetSkyMode(mode DirectionalLight3DSkyMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirectionalLight3D) SetBlendSplits(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirectionalLight3D) GetSkyMode() { // TODO: return value
-  // TODO: implement
+func  (me *DirectionalLight3D) IsBlendSplitsEnabled()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *DirectionalLight3D) SetSkyMode(mode DirectionalLight3DSkyMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *DirectionalLight3D) GetSkyMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

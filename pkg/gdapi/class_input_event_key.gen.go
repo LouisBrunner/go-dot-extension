@@ -25,70 +25,85 @@ func (me *InputEventKey) BaseClass() string {
   return "InputEventKey"
 }
 
-func  (me *InputEventKey) SetPressed(pressed bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventKey) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventKey) SetKeycode(keycode Key, ) { // TODO: return value
-  // TODO: implement
+func (me *InputEventKey) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *InputEventKey) GetKeycode() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *InputEventKey) SetPressed(pressed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) SetPhysicalKeycode(physical_keycode Key, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) SetKeycode(keycode Key, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) GetPhysicalKeycode() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) GetKeycode()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) SetKeyLabel(key_label Key, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) SetPhysicalKeycode(physical_keycode Key, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) GetKeyLabel() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) GetPhysicalKeycode()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) SetUnicode(unicode int, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) SetKeyLabel(key_label Key, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) GetUnicode() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) GetKeyLabel()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) SetEcho(echo bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) SetUnicode(unicode int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) GetKeycodeWithModifiers() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) GetUnicode()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) GetPhysicalKeycodeWithModifiers() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) SetEcho(echo bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) GetKeyLabelWithModifiers() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) GetKeycodeWithModifiers()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) AsTextKeycode() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) GetPhysicalKeycodeWithModifiers()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) AsTextPhysicalKeycode() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) GetKeyLabelWithModifiers()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventKey) AsTextKeyLabel() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventKey) AsTextKeycode()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *InputEventKey) AsTextPhysicalKeycode()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *InputEventKey) AsTextKeyLabel()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

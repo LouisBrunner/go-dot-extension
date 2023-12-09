@@ -25,38 +25,53 @@ func (me *TorusMesh) BaseClass() string {
   return "TorusMesh"
 }
 
-func  (me *TorusMesh) SetInnerRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *TorusMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *TorusMesh) GetInnerRadius() { // TODO: return value
-  // TODO: implement
+func (me *TorusMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *TorusMesh) SetOuterRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *TorusMesh) SetInnerRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TorusMesh) GetOuterRadius() { // TODO: return value
-  // TODO: implement
+func  (me *TorusMesh) GetInnerRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *TorusMesh) SetRings(rings int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TorusMesh) SetOuterRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TorusMesh) GetRings() { // TODO: return value
-  // TODO: implement
+func  (me *TorusMesh) GetOuterRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *TorusMesh) SetRingSegments(rings int, ) { // TODO: return value
-  // TODO: implement
+func  (me *TorusMesh) SetRings(rings int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *TorusMesh) GetRingSegments() { // TODO: return value
-  // TODO: implement
+func  (me *TorusMesh) GetRings()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *TorusMesh) SetRingSegments(rings int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *TorusMesh) GetRingSegments()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

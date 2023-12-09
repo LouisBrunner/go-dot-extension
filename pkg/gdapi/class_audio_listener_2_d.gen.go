@@ -25,18 +25,33 @@ func (me *AudioListener2D) BaseClass() string {
   return "AudioListener2D"
 }
 
-func  (me *AudioListener2D) MakeCurrent() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioListener2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioListener2D) ClearCurrent() { // TODO: return value
-  // TODO: implement
+func (me *AudioListener2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioListener2D) IsCurrent() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioListener2D) MakeCurrent()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioListener2D) ClearCurrent()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioListener2D) IsCurrent()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

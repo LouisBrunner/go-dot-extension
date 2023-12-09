@@ -25,158 +25,173 @@ func (me *MeshDataTool) BaseClass() string {
   return "MeshDataTool"
 }
 
-func  (me *MeshDataTool) Clear() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MeshDataTool) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MeshDataTool) CreateFromSurface(mesh ArrayMesh, surface int, ) { // TODO: return value
-  // TODO: implement
+func (me *MeshDataTool) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MeshDataTool) CommitToSurface(mesh ArrayMesh, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MeshDataTool) Clear()  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetFormat() { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) CreateFromSurface(mesh ArrayMesh, surface int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertexCount() { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) CommitToSurface(mesh ArrayMesh, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetEdgeCount() { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetFormat()  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetFaceCount() { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertexCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetVertex(idx int, vertex Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetEdgeCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertex(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetFaceCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetVertexNormal(idx int, normal Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) SetVertex(idx int, vertex Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertexNormal(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertex(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetVertexTangent(idx int, tangent Plane, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) SetVertexNormal(idx int, normal Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertexTangent(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertexNormal(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetVertexUv(idx int, uv Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) SetVertexTangent(idx int, tangent Plane, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertexUv(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertexTangent(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetVertexUv2(idx int, uv2 Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) SetVertexUv(idx int, uv Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertexUv2(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertexUv(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetVertexColor(idx int, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) SetVertexUv2(idx int, uv2 Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertexColor(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertexUv2(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetVertexBones(idx int, bones PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) SetVertexColor(idx int, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertexBones(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertexColor(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetVertexWeights(idx int, weights PackedFloat32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) SetVertexBones(idx int, bones PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertexWeights(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertexBones(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetVertexMeta(idx int, meta Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) SetVertexWeights(idx int, weights PackedFloat32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertexMeta(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertexWeights(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertexEdges(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) SetVertexMeta(idx int, meta Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetVertexFaces(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertexMeta(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetEdgeVertex(idx int, vertex int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertexEdges(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetEdgeFaces(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetVertexFaces(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetEdgeMeta(idx int, meta Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetEdgeVertex(idx int, vertex int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetEdgeMeta(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetEdgeFaces(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetFaceVertex(idx int, vertex int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) SetEdgeMeta(idx int, meta Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetFaceEdge(idx int, edge int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetEdgeMeta(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetFaceMeta(idx int, meta Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetFaceVertex(idx int, vertex int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetFaceMeta(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetFaceEdge(idx int, edge int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetFaceNormal(idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) SetFaceMeta(idx int, meta Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) SetMaterial(material Material, ) { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetFaceMeta(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MeshDataTool) GetMaterial() { // TODO: return value
-  // TODO: implement
+func  (me *MeshDataTool) GetFaceNormal(idx int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MeshDataTool) SetMaterial(material Material, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MeshDataTool) GetMaterial()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,62 +25,77 @@ func (me *CylinderMesh) BaseClass() string {
   return "CylinderMesh"
 }
 
-func  (me *CylinderMesh) SetTopRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CylinderMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CylinderMesh) GetTopRadius() { // TODO: return value
-  // TODO: implement
+func (me *CylinderMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CylinderMesh) SetBottomRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CylinderMesh) SetTopRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderMesh) GetBottomRadius() { // TODO: return value
-  // TODO: implement
+func  (me *CylinderMesh) GetTopRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderMesh) SetHeight(height float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CylinderMesh) SetBottomRadius(radius float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderMesh) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *CylinderMesh) GetBottomRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderMesh) SetRadialSegments(segments int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CylinderMesh) SetHeight(height float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderMesh) GetRadialSegments() { // TODO: return value
-  // TODO: implement
+func  (me *CylinderMesh) GetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderMesh) SetRings(rings int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CylinderMesh) SetRadialSegments(segments int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderMesh) GetRings() { // TODO: return value
-  // TODO: implement
+func  (me *CylinderMesh) GetRadialSegments()  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderMesh) SetCapTop(cap_top bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CylinderMesh) SetRings(rings int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderMesh) IsCapTop() { // TODO: return value
-  // TODO: implement
+func  (me *CylinderMesh) GetRings()  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderMesh) SetCapBottom(cap_bottom bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CylinderMesh) SetCapTop(cap_top bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CylinderMesh) IsCapBottom() { // TODO: return value
-  // TODO: implement
+func  (me *CylinderMesh) IsCapTop()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CylinderMesh) SetCapBottom(cap_bottom bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CylinderMesh) IsCapBottom()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

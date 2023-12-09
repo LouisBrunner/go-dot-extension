@@ -25,6 +25,10 @@ func (me *AStarGrid2D) BaseClass() string {
   return "AStarGrid2D"
 }
 
+
+
+// Enums
+
 type AStarGrid2DHeuristic int
 const (
   AStarGrid2DHeuristicHeuristicEuclidean AStarGrid2DHeuristic = 0
@@ -43,126 +47,137 @@ const (
   AStarGrid2DDiagonalModeDiagonalModeMax AStarGrid2DDiagonalMode = 4
 )
 
-func  (me *AStarGrid2D) XEstimateCost(from_id Vector2i, to_id Vector2i, ) { // TODO: return value
-  // TODO: implement
+func (me *AStarGrid2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AStarGrid2D) XComputeCost(from_id Vector2i, to_id Vector2i, ) { // TODO: return value
-  // TODO: implement
+func (me *AStarGrid2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AStarGrid2D) SetRegion(region Rect2i, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AStarGrid2D) XEstimateCost(from_id Vector2i, to_id Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) GetRegion() { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) XComputeCost(from_id Vector2i, to_id Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) SetSize(size Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) SetRegion(region Rect2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) GetSize() { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) GetRegion()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) SetOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) SetSize(size Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) GetOffset() { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) SetCellSize(cell_size Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) SetOffset(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) GetCellSize() { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) GetOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) IsInBounds(x int, y int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) SetCellSize(cell_size Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) IsInBoundsv(id Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) GetCellSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) IsDirty() { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) IsInBounds(x int, y int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) Update() { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) IsInBoundsv(id Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) SetJumpingEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) IsDirty()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) IsJumpingEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) Update()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) SetDiagonalMode(mode AStarGrid2DDiagonalMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) SetJumpingEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) GetDiagonalMode() { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) IsJumpingEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) SetDefaultComputeHeuristic(heuristic AStarGrid2DHeuristic, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) SetDiagonalMode(mode AStarGrid2DDiagonalMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) GetDefaultComputeHeuristic() { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) GetDiagonalMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) SetDefaultEstimateHeuristic(heuristic AStarGrid2DHeuristic, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) SetDefaultComputeHeuristic(heuristic AStarGrid2DHeuristic, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) GetDefaultEstimateHeuristic() { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) GetDefaultComputeHeuristic()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) SetPointSolid(id Vector2i, solid bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) SetDefaultEstimateHeuristic(heuristic AStarGrid2DHeuristic, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) IsPointSolid(id Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) GetDefaultEstimateHeuristic()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) SetPointWeightScale(id Vector2i, weight_scale float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) SetPointSolid(id Vector2i, solid bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) GetPointWeightScale(id Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) IsPointSolid(id Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) Clear() { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) SetPointWeightScale(id Vector2i, weight_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) GetPointPosition(id Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) GetPointWeightScale(id Vector2i, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) GetPointPath(from_id Vector2i, to_id Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) Clear()  {
+  panic("TODO: implement")
 }
 
-func  (me *AStarGrid2D) GetIdPath(from_id Vector2i, to_id Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *AStarGrid2D) GetPointPosition(id Vector2i, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AStarGrid2D) GetPointPath(from_id Vector2i, to_id Vector2i, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AStarGrid2D) GetIdPath(from_id Vector2i, to_id Vector2i, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

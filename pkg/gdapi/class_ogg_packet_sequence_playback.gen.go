@@ -25,6 +25,21 @@ func (me *OggPacketSequencePlayback) BaseClass() string {
   return "OggPacketSequencePlayback"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *OggPacketSequencePlayback) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *OggPacketSequencePlayback) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

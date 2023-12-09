@@ -25,98 +25,113 @@ func (me *MultiplayerPeerExtension) BaseClass() string {
   return "MultiplayerPeerExtension"
 }
 
-func  (me *MultiplayerPeerExtension) XGetPacket(r_buffer **uint8, r_buffer_size *int32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MultiplayerPeerExtension) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MultiplayerPeerExtension) XPutPacket(p_buffer *uint8, p_buffer_size int, ) { // TODO: return value
-  // TODO: implement
+func (me *MultiplayerPeerExtension) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MultiplayerPeerExtension) XGetAvailablePacketCount() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MultiplayerPeerExtension) XGetPacket(r_buffer **uint8, r_buffer_size *int32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XGetMaxPacketSize() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XPutPacket(p_buffer *uint8, p_buffer_size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XGetPacketScript() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XGetAvailablePacketCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XPutPacketScript(p_buffer PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XGetMaxPacketSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XGetPacketChannel() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XGetPacketScript()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XGetPacketMode() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XPutPacketScript(p_buffer PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XSetTransferChannel(p_channel int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XGetPacketChannel()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XGetTransferChannel() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XGetPacketMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XSetTransferMode(p_mode MultiplayerPeerTransferMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XSetTransferChannel(p_channel int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XGetTransferMode() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XGetTransferChannel()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XSetTargetPeer(p_peer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XSetTransferMode(p_mode MultiplayerPeerTransferMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XGetPacketPeer() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XGetTransferMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XIsServer() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XSetTargetPeer(p_peer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XPoll() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XGetPacketPeer()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XClose() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XIsServer()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XDisconnectPeer(p_peer int, p_force bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XPoll()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XGetUniqueId() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XClose()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XSetRefuseNewConnections(p_enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XDisconnectPeer(p_peer int, p_force bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XIsRefusingNewConnections() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XGetUniqueId()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XIsServerRelaySupported() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XSetRefuseNewConnections(p_enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeerExtension) XGetConnectionStatus() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerPeerExtension) XIsRefusingNewConnections()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MultiplayerPeerExtension) XIsServerRelaySupported()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MultiplayerPeerExtension) XGetConnectionStatus()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

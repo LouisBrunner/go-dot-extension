@@ -25,6 +25,21 @@ func (me *PopupPanel) BaseClass() string {
   return "PopupPanel"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *PopupPanel) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *PopupPanel) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

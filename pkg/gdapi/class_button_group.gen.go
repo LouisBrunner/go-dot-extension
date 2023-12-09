@@ -25,22 +25,37 @@ func (me *ButtonGroup) BaseClass() string {
   return "ButtonGroup"
 }
 
-func  (me *ButtonGroup) GetPressedButton() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ButtonGroup) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ButtonGroup) GetButtons() { // TODO: return value
-  // TODO: implement
+func (me *ButtonGroup) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ButtonGroup) SetAllowUnpress(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ButtonGroup) GetPressedButton()  {
+  panic("TODO: implement")
 }
 
-func  (me *ButtonGroup) IsAllowUnpress() { // TODO: return value
-  // TODO: implement
+func  (me *ButtonGroup) GetButtons()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ButtonGroup) SetAllowUnpress(enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ButtonGroup) IsAllowUnpress()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

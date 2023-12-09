@@ -25,144 +25,159 @@ func (me *SoftBody3D) BaseClass() string {
   return "SoftBody3D"
 }
 
+
+
+// Enums
+
 type SoftBody3DDisableMode int
 const (
   SoftBody3DDisableModeDisableModeRemove SoftBody3DDisableMode = 0
   SoftBody3DDisableModeDisableModeKeepActive SoftBody3DDisableMode = 1
 )
 
-func  (me *SoftBody3D) GetPhysicsRid() { // TODO: return value
-  // TODO: implement
+func (me *SoftBody3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SoftBody3D) SetCollisionMask(collision_mask int, ) { // TODO: return value
-  // TODO: implement
+func (me *SoftBody3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SoftBody3D) GetCollisionMask() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SoftBody3D) GetPhysicsRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetCollisionLayer(collision_layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetCollisionMask(collision_mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetCollisionLayer() { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetCollisionMask()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetCollisionMaskValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetCollisionLayer(collision_layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetCollisionMaskValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetCollisionLayer()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetCollisionLayerValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetCollisionMaskValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetCollisionLayerValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetCollisionMaskValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetParentCollisionIgnore(parent_collision_ignore NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetCollisionLayerValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetParentCollisionIgnore() { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetCollisionLayerValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetDisableMode(mode SoftBody3DDisableMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetParentCollisionIgnore(parent_collision_ignore NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetDisableMode() { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetParentCollisionIgnore()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetCollisionExceptions() { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetDisableMode(mode SoftBody3DDisableMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) AddCollisionExceptionWith(body Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetDisableMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) RemoveCollisionExceptionWith(body Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetCollisionExceptions()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetSimulationPrecision(simulation_precision int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) AddCollisionExceptionWith(body Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetSimulationPrecision() { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) RemoveCollisionExceptionWith(body Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetTotalMass(mass float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetSimulationPrecision(simulation_precision int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetTotalMass() { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetSimulationPrecision()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetLinearStiffness(linear_stiffness float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetTotalMass(mass float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetLinearStiffness() { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetTotalMass()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetPressureCoefficient(pressure_coefficient float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetLinearStiffness(linear_stiffness float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetPressureCoefficient() { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetLinearStiffness()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetDampingCoefficient(damping_coefficient float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetPressureCoefficient(pressure_coefficient float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetDampingCoefficient() { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetPressureCoefficient()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetDragCoefficient(drag_coefficient float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetDampingCoefficient(damping_coefficient float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetDragCoefficient() { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetDampingCoefficient()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) GetPointTransform(point_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetDragCoefficient(drag_coefficient float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetPointPinned(point_index int, pinned bool, attachment_path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetDragCoefficient()  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) IsPointPinned(point_index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) GetPointTransform(point_index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) SetRayPickable(ray_pickable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) SetPointPinned(point_index int, pinned bool, attachment_path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SoftBody3D) IsRayPickable() { // TODO: return value
-  // TODO: implement
+func  (me *SoftBody3D) IsPointPinned(point_index int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SoftBody3D) SetRayPickable(ray_pickable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SoftBody3D) IsRayPickable()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,86 +25,101 @@ func (me *RDTextureFormat) BaseClass() string {
   return "RDTextureFormat"
 }
 
-func  (me *RDTextureFormat) SetFormat(p_member RenderingDeviceDataFormat, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDTextureFormat) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDTextureFormat) GetFormat() { // TODO: return value
-  // TODO: implement
+func (me *RDTextureFormat) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDTextureFormat) SetWidth(p_member int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDTextureFormat) SetFormat(p_member RenderingDeviceDataFormat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) GetWidth() { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) GetFormat()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) SetHeight(p_member int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) SetWidth(p_member int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) GetHeight() { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) GetWidth()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) SetDepth(p_member int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) SetHeight(p_member int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) GetDepth() { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) GetHeight()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) SetArrayLayers(p_member int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) SetDepth(p_member int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) GetArrayLayers() { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) GetDepth()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) SetMipmaps(p_member int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) SetArrayLayers(p_member int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) GetMipmaps() { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) GetArrayLayers()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) SetTextureType(p_member RenderingDeviceTextureType, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) SetMipmaps(p_member int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) GetTextureType() { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) GetMipmaps()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) SetSamples(p_member RenderingDeviceTextureSamples, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) SetTextureType(p_member RenderingDeviceTextureType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) GetSamples() { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) GetTextureType()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) SetUsageBits(p_member RenderingDeviceTextureUsageBits, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) SetSamples(p_member RenderingDeviceTextureSamples, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) GetUsageBits() { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) GetSamples()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) AddShareableFormat(format RenderingDeviceDataFormat, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) SetUsageBits(p_member RenderingDeviceTextureUsageBits, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDTextureFormat) RemoveShareableFormat(format RenderingDeviceDataFormat, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDTextureFormat) GetUsageBits()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDTextureFormat) AddShareableFormat(format RenderingDeviceDataFormat, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDTextureFormat) RemoveShareableFormat(format RenderingDeviceDataFormat, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

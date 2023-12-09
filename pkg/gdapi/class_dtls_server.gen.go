@@ -25,14 +25,29 @@ func (me *DTLSServer) BaseClass() string {
   return "DTLSServer"
 }
 
-func  (me *DTLSServer) Setup(server_options TLSOptions, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *DTLSServer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *DTLSServer) TakeConnection(udp_peer PacketPeerUDP, ) { // TODO: return value
-  // TODO: implement
+func (me *DTLSServer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *DTLSServer) Setup(server_options TLSOptions, )  {
+  panic("TODO: implement")
+}
+
+func  (me *DTLSServer) TakeConnection(udp_peer PacketPeerUDP, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

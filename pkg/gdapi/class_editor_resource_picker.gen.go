@@ -25,54 +25,69 @@ func (me *EditorResourcePicker) BaseClass() string {
   return "EditorResourcePicker"
 }
 
-func  (me *EditorResourcePicker) XSetCreateOptions(menu_node Object, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorResourcePicker) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorResourcePicker) XHandleMenuSelected(id int, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorResourcePicker) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorResourcePicker) SetBaseType(base_type String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorResourcePicker) XSetCreateOptions(menu_node Object, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePicker) GetBaseType() { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePicker) XHandleMenuSelected(id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePicker) GetAllowedTypes() { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePicker) SetBaseType(base_type String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePicker) SetEditedResource(resource Resource, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePicker) GetBaseType()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePicker) GetEditedResource() { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePicker) GetAllowedTypes()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePicker) SetToggleMode(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePicker) SetEditedResource(resource Resource, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePicker) IsToggleMode() { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePicker) GetEditedResource()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePicker) SetTogglePressed(pressed bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePicker) SetToggleMode(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePicker) SetEditable(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePicker) IsToggleMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePicker) IsEditable() { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePicker) SetTogglePressed(pressed bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorResourcePicker) SetEditable(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorResourcePicker) IsEditable()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

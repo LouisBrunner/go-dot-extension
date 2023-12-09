@@ -25,46 +25,61 @@ func (me *RegEx) BaseClass() string {
   return "RegEx"
 }
 
-func  RegExCreateFromString(pattern String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RegEx) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RegEx) Clear() { // TODO: return value
-  // TODO: implement
+func (me *RegEx) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RegEx) Compile(pattern String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  RegExCreateFromString(pattern String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RegEx) Search(subject String, offset int, end int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RegEx) Clear()  {
+  panic("TODO: implement")
 }
 
-func  (me *RegEx) SearchAll(subject String, offset int, end int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RegEx) Compile(pattern String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RegEx) Sub(subject String, replacement String, all bool, offset int, end int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RegEx) Search(subject String, offset int, end int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RegEx) IsValid() { // TODO: return value
-  // TODO: implement
+func  (me *RegEx) SearchAll(subject String, offset int, end int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RegEx) GetPattern() { // TODO: return value
-  // TODO: implement
+func  (me *RegEx) Sub(subject String, replacement String, all bool, offset int, end int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RegEx) GetGroupCount() { // TODO: return value
-  // TODO: implement
+func  (me *RegEx) IsValid()  {
+  panic("TODO: implement")
 }
 
-func  (me *RegEx) GetNames() { // TODO: return value
-  // TODO: implement
+func  (me *RegEx) GetPattern()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RegEx) GetGroupCount()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RegEx) GetNames()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,54 +25,69 @@ func (me *ThemeDB) BaseClass() string {
   return "ThemeDB"
 }
 
-func  (me *ThemeDB) GetDefaultTheme() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ThemeDB) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ThemeDB) GetProjectTheme() { // TODO: return value
-  // TODO: implement
+func (me *ThemeDB) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ThemeDB) SetFallbackBaseScale(base_scale float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ThemeDB) GetDefaultTheme()  {
+  panic("TODO: implement")
 }
 
-func  (me *ThemeDB) GetFallbackBaseScale() { // TODO: return value
-  // TODO: implement
+func  (me *ThemeDB) GetProjectTheme()  {
+  panic("TODO: implement")
 }
 
-func  (me *ThemeDB) SetFallbackFont(font Font, ) { // TODO: return value
-  // TODO: implement
+func  (me *ThemeDB) SetFallbackBaseScale(base_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ThemeDB) GetFallbackFont() { // TODO: return value
-  // TODO: implement
+func  (me *ThemeDB) GetFallbackBaseScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *ThemeDB) SetFallbackFontSize(font_size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ThemeDB) SetFallbackFont(font Font, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ThemeDB) GetFallbackFontSize() { // TODO: return value
-  // TODO: implement
+func  (me *ThemeDB) GetFallbackFont()  {
+  panic("TODO: implement")
 }
 
-func  (me *ThemeDB) SetFallbackIcon(icon Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *ThemeDB) SetFallbackFontSize(font_size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ThemeDB) GetFallbackIcon() { // TODO: return value
-  // TODO: implement
+func  (me *ThemeDB) GetFallbackFontSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *ThemeDB) SetFallbackStylebox(stylebox StyleBox, ) { // TODO: return value
-  // TODO: implement
+func  (me *ThemeDB) SetFallbackIcon(icon Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ThemeDB) GetFallbackStylebox() { // TODO: return value
-  // TODO: implement
+func  (me *ThemeDB) GetFallbackIcon()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ThemeDB) SetFallbackStylebox(stylebox StyleBox, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ThemeDB) GetFallbackStylebox()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

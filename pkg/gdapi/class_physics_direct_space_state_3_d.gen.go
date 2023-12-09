@@ -25,30 +25,45 @@ func (me *PhysicsDirectSpaceState3D) BaseClass() string {
   return "PhysicsDirectSpaceState3D"
 }
 
-func  (me *PhysicsDirectSpaceState3D) IntersectPoint(parameters PhysicsPointQueryParameters3D, max_results int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsDirectSpaceState3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsDirectSpaceState3D) IntersectRay(parameters PhysicsRayQueryParameters3D, ) { // TODO: return value
-  // TODO: implement
+func (me *PhysicsDirectSpaceState3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsDirectSpaceState3D) IntersectShape(parameters PhysicsShapeQueryParameters3D, max_results int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicsDirectSpaceState3D) IntersectPoint(parameters PhysicsPointQueryParameters3D, max_results int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsDirectSpaceState3D) CastMotion(parameters PhysicsShapeQueryParameters3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsDirectSpaceState3D) IntersectRay(parameters PhysicsRayQueryParameters3D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsDirectSpaceState3D) CollideShape(parameters PhysicsShapeQueryParameters3D, max_results int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsDirectSpaceState3D) IntersectShape(parameters PhysicsShapeQueryParameters3D, max_results int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsDirectSpaceState3D) GetRestInfo(parameters PhysicsShapeQueryParameters3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsDirectSpaceState3D) CastMotion(parameters PhysicsShapeQueryParameters3D, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsDirectSpaceState3D) CollideShape(parameters PhysicsShapeQueryParameters3D, max_results int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsDirectSpaceState3D) GetRestInfo(parameters PhysicsShapeQueryParameters3D, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

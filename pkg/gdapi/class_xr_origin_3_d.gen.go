@@ -25,22 +25,37 @@ func (me *XROrigin3D) BaseClass() string {
   return "XROrigin3D"
 }
 
-func  (me *XROrigin3D) SetWorldScale(world_scale float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *XROrigin3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *XROrigin3D) GetWorldScale() { // TODO: return value
-  // TODO: implement
+func (me *XROrigin3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *XROrigin3D) SetCurrent(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *XROrigin3D) SetWorldScale(world_scale float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XROrigin3D) IsCurrent() { // TODO: return value
-  // TODO: implement
+func  (me *XROrigin3D) GetWorldScale()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *XROrigin3D) SetCurrent(enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *XROrigin3D) IsCurrent()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,30 +25,45 @@ func (me *Marshalls) BaseClass() string {
   return "Marshalls"
 }
 
-func  (me *Marshalls) VariantToBase64(variant Variant, full_objects bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Marshalls) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Marshalls) Base64ToVariant(base64_str String, allow_objects bool, ) { // TODO: return value
-  // TODO: implement
+func (me *Marshalls) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Marshalls) RawToBase64(array PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Marshalls) VariantToBase64(variant Variant, full_objects bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Marshalls) Base64ToRaw(base64_str String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Marshalls) Base64ToVariant(base64_str String, allow_objects bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Marshalls) Utf8ToBase64(utf8_str String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Marshalls) RawToBase64(array PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Marshalls) Base64ToUtf8(base64_str String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Marshalls) Base64ToRaw(base64_str String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Marshalls) Utf8ToBase64(utf8_str String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Marshalls) Base64ToUtf8(base64_str String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

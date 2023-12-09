@@ -25,6 +25,10 @@ func (me *PhysicsServer2D) BaseClass() string {
   return "PhysicsServer2D"
 }
 
+
+
+// Enums
+
 type PhysicsServer2DSpaceParameter int
 const (
   PhysicsServer2DSpaceParameterSpaceParamContactRecycleRadius PhysicsServer2DSpaceParameter = 0
@@ -159,470 +163,481 @@ const (
   PhysicsServer2DProcessInfoInfoIslandCount PhysicsServer2DProcessInfo = 2
 )
 
-func  (me *PhysicsServer2D) WorldBoundaryShapeCreate() { // TODO: return value
-  // TODO: implement
+func (me *PhysicsServer2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsServer2D) SeparationRayShapeCreate() { // TODO: return value
-  // TODO: implement
+func (me *PhysicsServer2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsServer2D) SegmentShapeCreate() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicsServer2D) WorldBoundaryShapeCreate()  {
+  panic("TODO: implement")
+}
+
+func  (me *PhysicsServer2D) SeparationRayShapeCreate()  {
+  panic("TODO: implement")
+}
+
+func  (me *PhysicsServer2D) SegmentShapeCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) CircleShapeCreate() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) CircleShapeCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) RectangleShapeCreate() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) RectangleShapeCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) CapsuleShapeCreate() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) CapsuleShapeCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) ConvexPolygonShapeCreate() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) ConvexPolygonShapeCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) ConcavePolygonShapeCreate() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) ConcavePolygonShapeCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) ShapeSetData(shape RID, data Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) ShapeSetData(shape RID, data Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) ShapeGetType(shape RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) ShapeGetType(shape RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) ShapeGetData(shape RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) ShapeGetData(shape RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) SpaceCreate() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) SpaceCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) SpaceSetActive(space RID, active bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) SpaceSetActive(space RID, active bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) SpaceIsActive(space RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) SpaceIsActive(space RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) SpaceSetParam(space RID, param PhysicsServer2DSpaceParameter, value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) SpaceSetParam(space RID, param PhysicsServer2DSpaceParameter, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) SpaceGetParam(space RID, param PhysicsServer2DSpaceParameter, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) SpaceGetParam(space RID, param PhysicsServer2DSpaceParameter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) SpaceGetDirectState(space RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) SpaceGetDirectState(space RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaCreate() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaSetSpace(area RID, space RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaSetSpace(area RID, space RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaGetSpace(area RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaGetSpace(area RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaAddShape(area RID, shape RID, transform Transform2D, disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaAddShape(area RID, shape RID, transform Transform2D, disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaSetShape(area RID, shape_idx int, shape RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaSetShape(area RID, shape_idx int, shape RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaSetShapeTransform(area RID, shape_idx int, transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaSetShapeTransform(area RID, shape_idx int, transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaSetShapeDisabled(area RID, shape_idx int, disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaSetShapeDisabled(area RID, shape_idx int, disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaGetShapeCount(area RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaGetShapeCount(area RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaGetShape(area RID, shape_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaGetShape(area RID, shape_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaGetShapeTransform(area RID, shape_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaGetShapeTransform(area RID, shape_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaRemoveShape(area RID, shape_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaRemoveShape(area RID, shape_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaClearShapes(area RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaClearShapes(area RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaSetCollisionLayer(area RID, layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaSetCollisionLayer(area RID, layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaGetCollisionLayer(area RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaGetCollisionLayer(area RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaSetCollisionMask(area RID, mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaSetCollisionMask(area RID, mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaGetCollisionMask(area RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaGetCollisionMask(area RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaSetParam(area RID, param PhysicsServer2DAreaParameter, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaSetParam(area RID, param PhysicsServer2DAreaParameter, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaSetTransform(area RID, transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaSetTransform(area RID, transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaGetParam(area RID, param PhysicsServer2DAreaParameter, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaGetParam(area RID, param PhysicsServer2DAreaParameter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaGetTransform(area RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaGetTransform(area RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaAttachObjectInstanceId(area RID, id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaAttachObjectInstanceId(area RID, id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaGetObjectInstanceId(area RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaGetObjectInstanceId(area RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaAttachCanvasInstanceId(area RID, id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaAttachCanvasInstanceId(area RID, id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaGetCanvasInstanceId(area RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaGetCanvasInstanceId(area RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaSetMonitorCallback(area RID, callback Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaSetMonitorCallback(area RID, callback Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaSetAreaMonitorCallback(area RID, callback Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaSetAreaMonitorCallback(area RID, callback Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) AreaSetMonitorable(area RID, monitorable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) AreaSetMonitorable(area RID, monitorable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyCreate() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetSpace(body RID, space RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetSpace(body RID, space RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetSpace(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetSpace(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetMode(body RID, mode PhysicsServer2DBodyMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetMode(body RID, mode PhysicsServer2DBodyMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetMode(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetMode(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyAddShape(body RID, shape RID, transform Transform2D, disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyAddShape(body RID, shape RID, transform Transform2D, disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetShape(body RID, shape_idx int, shape RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetShape(body RID, shape_idx int, shape RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetShapeTransform(body RID, shape_idx int, transform Transform2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetShapeTransform(body RID, shape_idx int, transform Transform2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetShapeCount(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetShapeCount(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetShape(body RID, shape_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetShape(body RID, shape_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetShapeTransform(body RID, shape_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetShapeTransform(body RID, shape_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyRemoveShape(body RID, shape_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyRemoveShape(body RID, shape_idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyClearShapes(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyClearShapes(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetShapeDisabled(body RID, shape_idx int, disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetShapeDisabled(body RID, shape_idx int, disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetShapeAsOneWayCollision(body RID, shape_idx int, enable bool, margin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetShapeAsOneWayCollision(body RID, shape_idx int, enable bool, margin float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyAttachObjectInstanceId(body RID, id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyAttachObjectInstanceId(body RID, id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetObjectInstanceId(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetObjectInstanceId(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyAttachCanvasInstanceId(body RID, id int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyAttachCanvasInstanceId(body RID, id int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetCanvasInstanceId(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetCanvasInstanceId(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetContinuousCollisionDetectionMode(body RID, mode PhysicsServer2DCCDMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetContinuousCollisionDetectionMode(body RID, mode PhysicsServer2DCCDMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetContinuousCollisionDetectionMode(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetContinuousCollisionDetectionMode(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetCollisionLayer(body RID, layer int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetCollisionLayer(body RID, layer int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetCollisionLayer(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetCollisionLayer(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetCollisionMask(body RID, mask int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetCollisionMask(body RID, mask int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetCollisionMask(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetCollisionMask(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetCollisionPriority(body RID, priority float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetCollisionPriority(body RID, priority float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetCollisionPriority(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetCollisionPriority(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetParam(body RID, param PhysicsServer2DBodyParameter, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetParam(body RID, param PhysicsServer2DBodyParameter, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetParam(body RID, param PhysicsServer2DBodyParameter, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetParam(body RID, param PhysicsServer2DBodyParameter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyResetMassProperties(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyResetMassProperties(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetState(body RID, state PhysicsServer2DBodyState, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetState(body RID, state PhysicsServer2DBodyState, value Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetState(body RID, state PhysicsServer2DBodyState, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetState(body RID, state PhysicsServer2DBodyState, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyApplyCentralImpulse(body RID, impulse Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyApplyCentralImpulse(body RID, impulse Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyApplyTorqueImpulse(body RID, impulse float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyApplyTorqueImpulse(body RID, impulse float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyApplyImpulse(body RID, impulse Vector2, position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyApplyImpulse(body RID, impulse Vector2, position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyApplyCentralForce(body RID, force Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyApplyCentralForce(body RID, force Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyApplyForce(body RID, force Vector2, position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyApplyForce(body RID, force Vector2, position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyApplyTorque(body RID, torque float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyApplyTorque(body RID, torque float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyAddConstantCentralForce(body RID, force Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyAddConstantCentralForce(body RID, force Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyAddConstantForce(body RID, force Vector2, position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyAddConstantForce(body RID, force Vector2, position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyAddConstantTorque(body RID, torque float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyAddConstantTorque(body RID, torque float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetConstantForce(body RID, force Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetConstantForce(body RID, force Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetConstantForce(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetConstantForce(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetConstantTorque(body RID, torque float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetConstantTorque(body RID, torque float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetConstantTorque(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetConstantTorque(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetAxisVelocity(body RID, axis_velocity Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetAxisVelocity(body RID, axis_velocity Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyAddCollisionException(body RID, excepted_body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyAddCollisionException(body RID, excepted_body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyRemoveCollisionException(body RID, excepted_body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyRemoveCollisionException(body RID, excepted_body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetMaxContactsReported(body RID, amount int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetMaxContactsReported(body RID, amount int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetMaxContactsReported(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetMaxContactsReported(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetOmitForceIntegration(body RID, enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetOmitForceIntegration(body RID, enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyIsOmittingForceIntegration(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyIsOmittingForceIntegration(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodySetForceIntegrationCallback(body RID, callable Callable, userdata Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodySetForceIntegrationCallback(body RID, callable Callable, userdata Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyTestMotion(body RID, parameters PhysicsTestMotionParameters2D, result PhysicsTestMotionResult2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyTestMotion(body RID, parameters PhysicsTestMotionParameters2D, result PhysicsTestMotionResult2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) BodyGetDirectState(body RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) BodyGetDirectState(body RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) JointCreate() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) JointCreate()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) JointClear(joint RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) JointClear(joint RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) JointSetParam(joint RID, param PhysicsServer2DJointParam, value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) JointSetParam(joint RID, param PhysicsServer2DJointParam, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) JointGetParam(joint RID, param PhysicsServer2DJointParam, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) JointGetParam(joint RID, param PhysicsServer2DJointParam, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) JointDisableCollisionsBetweenBodies(joint RID, disable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) JointDisableCollisionsBetweenBodies(joint RID, disable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) JointIsDisabledCollisionsBetweenBodies(joint RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) JointIsDisabledCollisionsBetweenBodies(joint RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) JointMakePin(joint RID, anchor Vector2, body_a RID, body_b RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) JointMakePin(joint RID, anchor Vector2, body_a RID, body_b RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) JointMakeGroove(joint RID, groove1_a Vector2, groove2_a Vector2, anchor_b Vector2, body_a RID, body_b RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) JointMakeGroove(joint RID, groove1_a Vector2, groove2_a Vector2, anchor_b Vector2, body_a RID, body_b RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) JointMakeDampedSpring(joint RID, anchor_a Vector2, anchor_b Vector2, body_a RID, body_b RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) JointMakeDampedSpring(joint RID, anchor_a Vector2, anchor_b Vector2, body_a RID, body_b RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) PinJointSetParam(joint RID, param PhysicsServer2DPinJointParam, value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) PinJointSetParam(joint RID, param PhysicsServer2DPinJointParam, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) PinJointGetParam(joint RID, param PhysicsServer2DPinJointParam, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) PinJointGetParam(joint RID, param PhysicsServer2DPinJointParam, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) DampedSpringJointSetParam(joint RID, param PhysicsServer2DDampedSpringParam, value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) DampedSpringJointSetParam(joint RID, param PhysicsServer2DDampedSpringParam, value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) DampedSpringJointGetParam(joint RID, param PhysicsServer2DDampedSpringParam, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) DampedSpringJointGetParam(joint RID, param PhysicsServer2DDampedSpringParam, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) JointGetType(joint RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) JointGetType(joint RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) FreeRid(rid RID, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) FreeRid(rid RID, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) SetActive(active bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) SetActive(active bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsServer2D) GetProcessInfo(process_info PhysicsServer2DProcessInfo, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsServer2D) GetProcessInfo(process_info PhysicsServer2DProcessInfo, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

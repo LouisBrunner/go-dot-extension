@@ -25,62 +25,77 @@ func (me *InputEventScreenDrag) BaseClass() string {
   return "InputEventScreenDrag"
 }
 
-func  (me *InputEventScreenDrag) SetIndex(index int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventScreenDrag) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventScreenDrag) GetIndex() { // TODO: return value
-  // TODO: implement
+func (me *InputEventScreenDrag) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *InputEventScreenDrag) SetTilt(tilt Vector2, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *InputEventScreenDrag) SetIndex(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenDrag) GetTilt() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenDrag) GetIndex()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenDrag) SetPressure(pressure float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenDrag) SetTilt(tilt Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenDrag) GetPressure() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenDrag) GetTilt()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenDrag) SetPenInverted(pen_inverted bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenDrag) SetPressure(pressure float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenDrag) GetPenInverted() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenDrag) GetPressure()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenDrag) SetPosition(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenDrag) SetPenInverted(pen_inverted bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenDrag) GetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenDrag) GetPenInverted()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenDrag) SetRelative(relative Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenDrag) SetPosition(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenDrag) GetRelative() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenDrag) GetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenDrag) SetVelocity(velocity Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenDrag) SetRelative(relative Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventScreenDrag) GetVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventScreenDrag) GetRelative()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *InputEventScreenDrag) SetVelocity(velocity Vector2, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *InputEventScreenDrag) GetVelocity()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

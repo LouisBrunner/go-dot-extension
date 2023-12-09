@@ -25,9 +25,9 @@ func (me *Control) BaseClass() string {
   return "Control"
 }
 
-// TODO: needed?
-// const (
-// // )
+
+
+// Constants
 
 var (
   ControlNotificationResized = "40" // TODO: construct correctly
@@ -40,6 +40,8 @@ var (
   ControlNotificationScrollEnd = "48" // TODO: construct correctly
   ControlNotificationLayoutDirectionChanged = "49" // TODO: construct correctly
 )
+
+// Enums
 
 type ControlFocusMode int
 const (
@@ -143,550 +145,561 @@ const (
   ControlTextDirectionTextDirectionRtl ControlTextDirection = 2
 )
 
-func  (me *Control) XHasPoint(point Vector2, ) { // TODO: return value
-  // TODO: implement
+func (me *Control) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Control) XStructuredTextParser(args Array, text String, ) { // TODO: return value
-  // TODO: implement
+func (me *Control) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Control) XGetMinimumSize() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Control) XHasPoint(point Vector2, )  {
+  panic("TODO: implement")
+}
+
+func  (me *Control) XStructuredTextParser(args Array, text String, )  {
+  panic("TODO: implement")
+}
+
+func  (me *Control) XGetMinimumSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) XGetTooltip(at_position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) XGetTooltip(at_position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) XGetDragData(at_position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) XGetDragData(at_position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) XCanDropData(at_position Vector2, data Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) XCanDropData(at_position Vector2, data Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) XDropData(at_position Vector2, data Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) XDropData(at_position Vector2, data Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) XMakeCustomTooltip(for_text String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) XMakeCustomTooltip(for_text String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) XGuiInput(event InputEvent, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) XGuiInput(event InputEvent, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) AcceptEvent() { // TODO: return value
-  // TODO: implement
+func  (me *Control) AcceptEvent()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetMinimumSize() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetMinimumSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetCombinedMinimumSize() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetCombinedMinimumSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetAnchorsPreset(preset ControlLayoutPreset, keep_offsets bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetAnchorsPreset(preset ControlLayoutPreset, keep_offsets bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetOffsetsPreset(preset ControlLayoutPreset, resize_mode ControlLayoutPresetMode, margin int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetOffsetsPreset(preset ControlLayoutPreset, resize_mode ControlLayoutPresetMode, margin int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetAnchorsAndOffsetsPreset(preset ControlLayoutPreset, resize_mode ControlLayoutPresetMode, margin int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetAnchorsAndOffsetsPreset(preset ControlLayoutPreset, resize_mode ControlLayoutPresetMode, margin int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetAnchor(side Side, anchor float32, keep_offset bool, push_opposite_anchor bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetAnchor(side Side, anchor float32, keep_offset bool, push_opposite_anchor bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetAnchor(side Side, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetAnchor(side Side, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetOffset(side Side, offset float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetOffset(side Side, offset float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetOffset(offset Side, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetOffset(offset Side, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetAnchorAndOffset(side Side, anchor float32, offset float32, push_opposite_anchor bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetAnchorAndOffset(side Side, anchor float32, offset float32, push_opposite_anchor bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetBegin(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetBegin(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetEnd(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetEnd(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetPosition(position Vector2, keep_offsets bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetPosition(position Vector2, keep_offsets bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetSize(size Vector2, keep_offsets bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetSize(size Vector2, keep_offsets bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) ResetSize() { // TODO: return value
-  // TODO: implement
+func  (me *Control) ResetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetCustomMinimumSize(size Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetCustomMinimumSize(size Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetGlobalPosition(position Vector2, keep_offsets bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetGlobalPosition(position Vector2, keep_offsets bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetRotation(radians float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetRotation(radians float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetRotationDegrees(degrees float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetRotationDegrees(degrees float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetScale(scale Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetScale(scale Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetPivotOffset(pivot_offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetPivotOffset(pivot_offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetBegin() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetBegin()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetEnd() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetEnd()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetSize() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetRotation() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetRotation()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetRotationDegrees() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetRotationDegrees()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetScale() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetPivotOffset() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetPivotOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetCustomMinimumSize() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetCustomMinimumSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetParentAreaSize() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetParentAreaSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetGlobalPosition() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetGlobalPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetScreenPosition() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetScreenPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetRect() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetRect()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetGlobalRect() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetGlobalRect()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetFocusMode(mode ControlFocusMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetFocusMode(mode ControlFocusMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetFocusMode() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetFocusMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasFocus() { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasFocus()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GrabFocus() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GrabFocus()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) ReleaseFocus() { // TODO: return value
-  // TODO: implement
+func  (me *Control) ReleaseFocus()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) FindPrevValidFocus() { // TODO: return value
-  // TODO: implement
+func  (me *Control) FindPrevValidFocus()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) FindNextValidFocus() { // TODO: return value
-  // TODO: implement
+func  (me *Control) FindNextValidFocus()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetHSizeFlags(flags ControlSizeFlags, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetHSizeFlags(flags ControlSizeFlags, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetHSizeFlags() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetHSizeFlags()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetStretchRatio(ratio float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetStretchRatio(ratio float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetStretchRatio() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetStretchRatio()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetVSizeFlags(flags ControlSizeFlags, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetVSizeFlags(flags ControlSizeFlags, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetVSizeFlags() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetVSizeFlags()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetTheme(theme Theme, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetTheme(theme Theme, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetTheme() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetTheme()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetThemeTypeVariation(theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetThemeTypeVariation(theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetThemeTypeVariation() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetThemeTypeVariation()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) BeginBulkThemeOverride() { // TODO: return value
-  // TODO: implement
+func  (me *Control) BeginBulkThemeOverride()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) EndBulkThemeOverride() { // TODO: return value
-  // TODO: implement
+func  (me *Control) EndBulkThemeOverride()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) AddThemeIconOverride(name StringName, texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) AddThemeIconOverride(name StringName, texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) AddThemeStyleboxOverride(name StringName, stylebox StyleBox, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) AddThemeStyleboxOverride(name StringName, stylebox StyleBox, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) AddThemeFontOverride(name StringName, font Font, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) AddThemeFontOverride(name StringName, font Font, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) AddThemeFontSizeOverride(name StringName, font_size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) AddThemeFontSizeOverride(name StringName, font_size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) AddThemeColorOverride(name StringName, color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) AddThemeColorOverride(name StringName, color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) AddThemeConstantOverride(name StringName, constant int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) AddThemeConstantOverride(name StringName, constant int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) RemoveThemeIconOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) RemoveThemeIconOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) RemoveThemeStyleboxOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) RemoveThemeStyleboxOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) RemoveThemeFontOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) RemoveThemeFontOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) RemoveThemeFontSizeOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) RemoveThemeFontSizeOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) RemoveThemeColorOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) RemoveThemeColorOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) RemoveThemeConstantOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) RemoveThemeConstantOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetThemeIcon(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetThemeIcon(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetThemeStylebox(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetThemeStylebox(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetThemeFont(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetThemeFont(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetThemeFontSize(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetThemeFontSize(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetThemeColor(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetThemeColor(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetThemeConstant(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetThemeConstant(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeIconOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeIconOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeStyleboxOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeStyleboxOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeFontOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeFontOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeFontSizeOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeFontSizeOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeColorOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeColorOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeConstantOverride(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeConstantOverride(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeIcon(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeIcon(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeStylebox(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeStylebox(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeFont(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeFont(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeFontSize(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeFontSize(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeColor(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeColor(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) HasThemeConstant(name StringName, theme_type StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) HasThemeConstant(name StringName, theme_type StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetThemeDefaultBaseScale() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetThemeDefaultBaseScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetThemeDefaultFont() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetThemeDefaultFont()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetThemeDefaultFontSize() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetThemeDefaultFontSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetParentControl() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetParentControl()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetHGrowDirection(direction ControlGrowDirection, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetHGrowDirection(direction ControlGrowDirection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetHGrowDirection() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetHGrowDirection()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetVGrowDirection(direction ControlGrowDirection, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetVGrowDirection(direction ControlGrowDirection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetVGrowDirection() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetVGrowDirection()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetTooltipText(hint String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetTooltipText(hint String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetTooltipText() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetTooltipText()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetTooltip(at_position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetTooltip(at_position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetDefaultCursorShape(shape ControlCursorShape, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetDefaultCursorShape(shape ControlCursorShape, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetDefaultCursorShape() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetDefaultCursorShape()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetCursorShape(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetCursorShape(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetFocusNeighbor(side Side, neighbor NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetFocusNeighbor(side Side, neighbor NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetFocusNeighbor(side Side, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetFocusNeighbor(side Side, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetFocusNext(next NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetFocusNext(next NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetFocusNext() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetFocusNext()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetFocusPrevious(previous NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetFocusPrevious(previous NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetFocusPrevious() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetFocusPrevious()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) ForceDrag(data Variant, preview Control, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) ForceDrag(data Variant, preview Control, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetMouseFilter(filter ControlMouseFilter, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetMouseFilter(filter ControlMouseFilter, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetMouseFilter() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetMouseFilter()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetForcePassScrollEvents(force_pass_scroll_events bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetForcePassScrollEvents(force_pass_scroll_events bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) IsForcePassScrollEvents() { // TODO: return value
-  // TODO: implement
+func  (me *Control) IsForcePassScrollEvents()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetClipContents(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetClipContents(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) IsClippingContents() { // TODO: return value
-  // TODO: implement
+func  (me *Control) IsClippingContents()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GrabClickFocus() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GrabClickFocus()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetDragForwarding(drag_func Callable, can_drop_func Callable, drop_func Callable, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetDragForwarding(drag_func Callable, can_drop_func Callable, drop_func Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetDragPreview(control Control, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetDragPreview(control Control, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) IsDragSuccessful() { // TODO: return value
-  // TODO: implement
+func  (me *Control) IsDragSuccessful()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) WarpMouse(position Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) WarpMouse(position Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetShortcutContext(node Node, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetShortcutContext(node Node, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetShortcutContext() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetShortcutContext()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) UpdateMinimumSize() { // TODO: return value
-  // TODO: implement
+func  (me *Control) UpdateMinimumSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetLayoutDirection(direction ControlLayoutDirection, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetLayoutDirection(direction ControlLayoutDirection, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) GetLayoutDirection() { // TODO: return value
-  // TODO: implement
+func  (me *Control) GetLayoutDirection()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) IsLayoutRtl() { // TODO: return value
-  // TODO: implement
+func  (me *Control) IsLayoutRtl()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetAutoTranslate(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetAutoTranslate(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) IsAutoTranslating() { // TODO: return value
-  // TODO: implement
+func  (me *Control) IsAutoTranslating()  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) SetLocalizeNumeralSystem(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Control) SetLocalizeNumeralSystem(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Control) IsLocalizingNumeralSystem() { // TODO: return value
-  // TODO: implement
+func  (me *Control) IsLocalizingNumeralSystem()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+// TODO: properties (class)
 
-// TODO: signals
+// TODO: signals (class)

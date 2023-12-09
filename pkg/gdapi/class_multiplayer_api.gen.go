@@ -25,6 +25,10 @@ func (me *MultiplayerAPI) BaseClass() string {
   return "MultiplayerAPI"
 }
 
+
+
+// Enums
+
 type MultiplayerAPIRPCMode int
 const (
   MultiplayerAPIRPCModeRpcModeDisabled MultiplayerAPIRPCMode = 0
@@ -32,62 +36,73 @@ const (
   MultiplayerAPIRPCModeRpcModeAuthority MultiplayerAPIRPCMode = 2
 )
 
-func  (me *MultiplayerAPI) HasMultiplayerPeer() { // TODO: return value
-  // TODO: implement
+func (me *MultiplayerAPI) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MultiplayerAPI) GetMultiplayerPeer() { // TODO: return value
-  // TODO: implement
+func (me *MultiplayerAPI) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MultiplayerAPI) SetMultiplayerPeer(peer MultiplayerPeer, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MultiplayerAPI) HasMultiplayerPeer()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPI) GetUniqueId() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPI) GetMultiplayerPeer()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPI) IsServer() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPI) SetMultiplayerPeer(peer MultiplayerPeer, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPI) GetRemoteSenderId() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPI) GetUniqueId()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPI) Poll() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPI) IsServer()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPI) Rpc(peer int, object Object, method StringName, arguments Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPI) GetRemoteSenderId()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPI) ObjectConfigurationAdd(object Object, configuration Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPI) Poll()  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPI) ObjectConfigurationRemove(object Object, configuration Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPI) Rpc(peer int, object Object, method StringName, arguments Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MultiplayerAPI) GetPeers() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPI) ObjectConfigurationAdd(object Object, configuration Variant, )  {
+  panic("TODO: implement")
 }
 
-func  MultiplayerAPISetDefaultInterface(interface_name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPI) ObjectConfigurationRemove(object Object, configuration Variant, )  {
+  panic("TODO: implement")
 }
 
-func  MultiplayerAPIGetDefaultInterface() { // TODO: return value
-  // TODO: implement
+func  (me *MultiplayerAPI) GetPeers()  {
+  panic("TODO: implement")
 }
 
-func  MultiplayerAPICreateDefaultInterface() { // TODO: return value
-  // TODO: implement
+func  MultiplayerAPISetDefaultInterface(interface_name StringName, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  MultiplayerAPIGetDefaultInterface()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  MultiplayerAPICreateDefaultInterface()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

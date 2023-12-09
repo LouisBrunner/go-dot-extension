@@ -25,26 +25,41 @@ func (me *InputEventJoypadButton) BaseClass() string {
   return "InputEventJoypadButton"
 }
 
-func  (me *InputEventJoypadButton) SetButtonIndex(button_index JoyButton, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventJoypadButton) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventJoypadButton) GetButtonIndex() { // TODO: return value
-  // TODO: implement
+func (me *InputEventJoypadButton) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *InputEventJoypadButton) SetPressure(pressure float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *InputEventJoypadButton) SetButtonIndex(button_index JoyButton, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventJoypadButton) GetPressure() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventJoypadButton) GetButtonIndex()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventJoypadButton) SetPressed(pressed bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventJoypadButton) SetPressure(pressure float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *InputEventJoypadButton) GetPressure()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *InputEventJoypadButton) SetPressed(pressed bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

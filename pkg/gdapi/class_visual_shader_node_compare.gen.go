@@ -25,6 +25,10 @@ func (me *VisualShaderNodeCompare) BaseClass() string {
   return "VisualShaderNodeCompare"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeCompareComparisonType int
 const (
   VisualShaderNodeCompareComparisonTypeCtypeScalar VisualShaderNodeCompareComparisonType = 0
@@ -56,30 +60,41 @@ const (
   VisualShaderNodeCompareConditionCondMax VisualShaderNodeCompareCondition = 2
 )
 
-func  (me *VisualShaderNodeCompare) SetComparisonType(type_ VisualShaderNodeCompareComparisonType, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeCompare) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeCompare) GetComparisonType() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeCompare) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeCompare) SetFunction(func_ VisualShaderNodeCompareFunction, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeCompare) SetComparisonType(type_ VisualShaderNodeCompareComparisonType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCompare) GetFunction() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCompare) GetComparisonType()  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCompare) SetCondition(condition VisualShaderNodeCompareCondition, ) { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCompare) SetFunction(func_ VisualShaderNodeCompareFunction, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCompare) GetCondition() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeCompare) GetFunction()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeCompare) SetCondition(condition VisualShaderNodeCompareCondition, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeCompare) GetCondition()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

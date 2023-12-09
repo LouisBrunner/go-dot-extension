@@ -25,10 +25,25 @@ func (me *Cubemap) BaseClass() string {
   return "Cubemap"
 }
 
-func  (me *Cubemap) CreatePlaceholder() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Cubemap) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-// TODO: properties
+func (me *Cubemap) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
 
-// TODO: signals
+
+// Methods
+
+func  (me *Cubemap) CreatePlaceholder()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

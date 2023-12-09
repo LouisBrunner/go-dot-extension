@@ -25,34 +25,49 @@ func (me *CurveXYZTexture) BaseClass() string {
   return "CurveXYZTexture"
 }
 
-func  (me *CurveXYZTexture) SetWidth(width int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CurveXYZTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CurveXYZTexture) SetCurveX(curve Curve, ) { // TODO: return value
-  // TODO: implement
+func (me *CurveXYZTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CurveXYZTexture) GetCurveX() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CurveXYZTexture) SetWidth(width int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CurveXYZTexture) SetCurveY(curve Curve, ) { // TODO: return value
-  // TODO: implement
+func  (me *CurveXYZTexture) SetCurveX(curve Curve, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CurveXYZTexture) GetCurveY() { // TODO: return value
-  // TODO: implement
+func  (me *CurveXYZTexture) GetCurveX()  {
+  panic("TODO: implement")
 }
 
-func  (me *CurveXYZTexture) SetCurveZ(curve Curve, ) { // TODO: return value
-  // TODO: implement
+func  (me *CurveXYZTexture) SetCurveY(curve Curve, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CurveXYZTexture) GetCurveZ() { // TODO: return value
-  // TODO: implement
+func  (me *CurveXYZTexture) GetCurveY()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CurveXYZTexture) SetCurveZ(curve Curve, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CurveXYZTexture) GetCurveZ()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

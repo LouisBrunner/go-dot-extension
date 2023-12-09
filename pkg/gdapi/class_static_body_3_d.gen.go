@@ -25,30 +25,45 @@ func (me *StaticBody3D) BaseClass() string {
   return "StaticBody3D"
 }
 
-func  (me *StaticBody3D) SetConstantLinearVelocity(vel Vector3, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *StaticBody3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *StaticBody3D) SetConstantAngularVelocity(vel Vector3, ) { // TODO: return value
-  // TODO: implement
+func (me *StaticBody3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *StaticBody3D) GetConstantLinearVelocity() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *StaticBody3D) SetConstantLinearVelocity(vel Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StaticBody3D) GetConstantAngularVelocity() { // TODO: return value
-  // TODO: implement
+func  (me *StaticBody3D) SetConstantAngularVelocity(vel Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StaticBody3D) SetPhysicsMaterialOverride(physics_material_override PhysicsMaterial, ) { // TODO: return value
-  // TODO: implement
+func  (me *StaticBody3D) GetConstantLinearVelocity()  {
+  panic("TODO: implement")
 }
 
-func  (me *StaticBody3D) GetPhysicsMaterialOverride() { // TODO: return value
-  // TODO: implement
+func  (me *StaticBody3D) GetConstantAngularVelocity()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *StaticBody3D) SetPhysicsMaterialOverride(physics_material_override PhysicsMaterial, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *StaticBody3D) GetPhysicsMaterialOverride()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

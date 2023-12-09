@@ -25,46 +25,61 @@ func (me *RDVertexAttribute) BaseClass() string {
   return "RDVertexAttribute"
 }
 
-func  (me *RDVertexAttribute) SetLocation(p_member int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDVertexAttribute) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDVertexAttribute) GetLocation() { // TODO: return value
-  // TODO: implement
+func (me *RDVertexAttribute) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDVertexAttribute) SetOffset(p_member int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDVertexAttribute) SetLocation(p_member int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDVertexAttribute) GetOffset() { // TODO: return value
-  // TODO: implement
+func  (me *RDVertexAttribute) GetLocation()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDVertexAttribute) SetFormat(p_member RenderingDeviceDataFormat, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDVertexAttribute) SetOffset(p_member int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDVertexAttribute) GetFormat() { // TODO: return value
-  // TODO: implement
+func  (me *RDVertexAttribute) GetOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDVertexAttribute) SetStride(p_member int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDVertexAttribute) SetFormat(p_member RenderingDeviceDataFormat, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDVertexAttribute) GetStride() { // TODO: return value
-  // TODO: implement
+func  (me *RDVertexAttribute) GetFormat()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDVertexAttribute) SetFrequency(p_member RenderingDeviceVertexFrequency, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDVertexAttribute) SetStride(p_member int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDVertexAttribute) GetFrequency() { // TODO: return value
-  // TODO: implement
+func  (me *RDVertexAttribute) GetStride()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDVertexAttribute) SetFrequency(p_member RenderingDeviceVertexFrequency, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDVertexAttribute) GetFrequency()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

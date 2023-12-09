@@ -25,42 +25,57 @@ func (me *AudioEffectCapture) BaseClass() string {
   return "AudioEffectCapture"
 }
 
-func  (me *AudioEffectCapture) CanGetBuffer(frames int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioEffectCapture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioEffectCapture) GetBuffer(frames int, ) { // TODO: return value
-  // TODO: implement
+func (me *AudioEffectCapture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioEffectCapture) ClearBuffer() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioEffectCapture) CanGetBuffer(frames int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectCapture) SetBufferLength(buffer_length_seconds float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectCapture) GetBuffer(frames int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectCapture) GetBufferLength() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectCapture) ClearBuffer()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectCapture) GetFramesAvailable() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectCapture) SetBufferLength(buffer_length_seconds float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectCapture) GetDiscardedFrames() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectCapture) GetBufferLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectCapture) GetBufferLengthFrames() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectCapture) GetFramesAvailable()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioEffectCapture) GetPushedFrames() { // TODO: return value
-  // TODO: implement
+func  (me *AudioEffectCapture) GetDiscardedFrames()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioEffectCapture) GetBufferLengthFrames()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioEffectCapture) GetPushedFrames()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

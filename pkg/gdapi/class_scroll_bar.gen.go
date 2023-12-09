@@ -25,14 +25,29 @@ func (me *ScrollBar) BaseClass() string {
   return "ScrollBar"
 }
 
-func  (me *ScrollBar) SetCustomStep(step float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ScrollBar) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ScrollBar) GetCustomStep() { // TODO: return value
-  // TODO: implement
+func (me *ScrollBar) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *ScrollBar) SetCustomStep(step float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *ScrollBar) GetCustomStep()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

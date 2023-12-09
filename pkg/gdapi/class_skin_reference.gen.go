@@ -25,14 +25,29 @@ func (me *SkinReference) BaseClass() string {
   return "SkinReference"
 }
 
-func  (me *SkinReference) GetSkeleton() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SkinReference) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SkinReference) GetSkin() { // TODO: return value
-  // TODO: implement
+func (me *SkinReference) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *SkinReference) GetSkeleton()  {
+  panic("TODO: implement")
+}
+
+func  (me *SkinReference) GetSkin()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

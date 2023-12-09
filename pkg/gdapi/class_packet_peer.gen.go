@@ -25,38 +25,53 @@ func (me *PacketPeer) BaseClass() string {
   return "PacketPeer"
 }
 
-func  (me *PacketPeer) GetVar(allow_objects bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PacketPeer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PacketPeer) PutVar(var_ Variant, full_objects bool, ) { // TODO: return value
-  // TODO: implement
+func (me *PacketPeer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PacketPeer) GetPacket() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PacketPeer) GetVar(allow_objects bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeer) PutPacket(buffer PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeer) PutVar(var_ Variant, full_objects bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeer) GetPacketError() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeer) GetPacket()  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeer) GetAvailablePacketCount() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeer) PutPacket(buffer PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeer) GetEncodeBufferMaxSize() { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeer) GetPacketError()  {
+  panic("TODO: implement")
 }
 
-func  (me *PacketPeer) SetEncodeBufferMaxSize(max_size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PacketPeer) GetAvailablePacketCount()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PacketPeer) GetEncodeBufferMaxSize()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PacketPeer) SetEncodeBufferMaxSize(max_size int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

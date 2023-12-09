@@ -25,38 +25,53 @@ func (me *JavaScriptBridge) BaseClass() string {
   return "JavaScriptBridge"
 }
 
-func  (me *JavaScriptBridge) Eval(code String, use_global_execution_context bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *JavaScriptBridge) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *JavaScriptBridge) GetInterface(interface_ String, ) { // TODO: return value
-  // TODO: implement
+func (me *JavaScriptBridge) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *JavaScriptBridge) CreateCallback(callable Callable, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *JavaScriptBridge) Eval(code String, use_global_execution_context bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JavaScriptBridge) CreateObject(object String, ) { // TODO: return value
-  // TODO: implement
+func  (me *JavaScriptBridge) GetInterface(interface_ String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JavaScriptBridge) DownloadBuffer(buffer PackedByteArray, name String, mime String, ) { // TODO: return value
-  // TODO: implement
+func  (me *JavaScriptBridge) CreateCallback(callable Callable, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JavaScriptBridge) PwaNeedsUpdate() { // TODO: return value
-  // TODO: implement
+func  (me *JavaScriptBridge) CreateObject(object String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JavaScriptBridge) PwaUpdate() { // TODO: return value
-  // TODO: implement
+func  (me *JavaScriptBridge) DownloadBuffer(buffer PackedByteArray, name String, mime String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *JavaScriptBridge) ForceFsSync() { // TODO: return value
-  // TODO: implement
+func  (me *JavaScriptBridge) PwaNeedsUpdate()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *JavaScriptBridge) PwaUpdate()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *JavaScriptBridge) ForceFsSync()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

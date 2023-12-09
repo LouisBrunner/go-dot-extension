@@ -25,38 +25,53 @@ func (me *RDPipelineColorBlendState) BaseClass() string {
   return "RDPipelineColorBlendState"
 }
 
-func  (me *RDPipelineColorBlendState) SetEnableLogicOp(p_member bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDPipelineColorBlendState) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDPipelineColorBlendState) GetEnableLogicOp() { // TODO: return value
-  // TODO: implement
+func (me *RDPipelineColorBlendState) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDPipelineColorBlendState) SetLogicOp(p_member RenderingDeviceLogicOperation, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDPipelineColorBlendState) SetEnableLogicOp(p_member bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineColorBlendState) GetLogicOp() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineColorBlendState) GetEnableLogicOp()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineColorBlendState) SetBlendConstant(p_member Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineColorBlendState) SetLogicOp(p_member RenderingDeviceLogicOperation, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineColorBlendState) GetBlendConstant() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineColorBlendState) GetLogicOp()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineColorBlendState) SetAttachments(attachments RDPipelineColorBlendStateAttachment, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineColorBlendState) SetBlendConstant(p_member Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineColorBlendState) GetAttachments() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineColorBlendState) GetBlendConstant()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDPipelineColorBlendState) SetAttachments(attachments RDPipelineColorBlendStateAttachment, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDPipelineColorBlendState) GetAttachments()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

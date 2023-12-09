@@ -25,158 +25,173 @@ func (me *Polygon2D) BaseClass() string {
   return "Polygon2D"
 }
 
-func  (me *Polygon2D) SetPolygon(polygon PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Polygon2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Polygon2D) GetPolygon() { // TODO: return value
-  // TODO: implement
+func (me *Polygon2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Polygon2D) SetUv(uv PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Polygon2D) SetPolygon(polygon PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetUv() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetPolygon()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetUv(uv PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetColor() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetUv()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetPolygons(polygons Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetPolygons() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetVertexColors(vertex_colors PackedColorArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetPolygons(polygons Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetVertexColors() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetPolygons()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetTexture(texture Texture2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetVertexColors(vertex_colors PackedColorArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetTexture() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetVertexColors()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetTextureOffset(texture_offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetTexture(texture Texture2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetTextureOffset() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetTextureRotation(texture_rotation float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetTextureOffset(texture_offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetTextureRotation() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetTextureOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetTextureScale(texture_scale Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetTextureRotation(texture_rotation float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetTextureScale() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetTextureRotation()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetInvertEnabled(invert bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetTextureScale(texture_scale Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetInvertEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetTextureScale()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetAntialiased(antialiased bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetInvertEnabled(invert bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetAntialiased() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetInvertEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetInvertBorder(invert_border float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetAntialiased(antialiased bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetInvertBorder() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetAntialiased()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetInvertBorder(invert_border float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetOffset() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetInvertBorder()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) AddBone(path NodePath, weights PackedFloat32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetOffset(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetBoneCount() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetBonePath(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) AddBone(path NodePath, weights PackedFloat32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetBoneWeights(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetBoneCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) EraseBone(index int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetBonePath(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) ClearBones() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetBoneWeights(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetBonePath(index int, path NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) EraseBone(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetBoneWeights(index int, weights PackedFloat32Array, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) ClearBones()  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetSkeleton(skeleton NodePath, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetBonePath(index int, path NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetSkeleton() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetBoneWeights(index int, weights PackedFloat32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) SetInternalVertexCount(internal_vertex_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) SetSkeleton(skeleton NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Polygon2D) GetInternalVertexCount() { // TODO: return value
-  // TODO: implement
+func  (me *Polygon2D) GetSkeleton()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Polygon2D) SetInternalVertexCount(internal_vertex_count int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Polygon2D) GetInternalVertexCount()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

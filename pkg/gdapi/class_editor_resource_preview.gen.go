@@ -25,26 +25,41 @@ func (me *EditorResourcePreview) BaseClass() string {
   return "EditorResourcePreview"
 }
 
-func  (me *EditorResourcePreview) QueueResourcePreview(path String, receiver Object, receiver_func StringName, userdata Variant, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorResourcePreview) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorResourcePreview) QueueEditedResourcePreview(resource Resource, receiver Object, receiver_func StringName, userdata Variant, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorResourcePreview) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorResourcePreview) AddPreviewGenerator(generator EditorResourcePreviewGenerator, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorResourcePreview) QueueResourcePreview(path String, receiver Object, receiver_func StringName, userdata Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePreview) RemovePreviewGenerator(generator EditorResourcePreviewGenerator, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePreview) QueueEditedResourcePreview(resource Resource, receiver Object, receiver_func StringName, userdata Variant, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorResourcePreview) CheckForInvalidation(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorResourcePreview) AddPreviewGenerator(generator EditorResourcePreviewGenerator, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorResourcePreview) RemovePreviewGenerator(generator EditorResourcePreviewGenerator, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorResourcePreview) CheckForInvalidation(path String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

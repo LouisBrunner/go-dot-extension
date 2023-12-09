@@ -25,14 +25,29 @@ func (me *RectangleShape2D) BaseClass() string {
   return "RectangleShape2D"
 }
 
-func  (me *RectangleShape2D) SetSize(size Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RectangleShape2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RectangleShape2D) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *RectangleShape2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *RectangleShape2D) SetSize(size Vector2, )  {
+  panic("TODO: implement")
+}
+
+func  (me *RectangleShape2D) GetSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

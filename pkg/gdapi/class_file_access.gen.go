@@ -25,6 +25,10 @@ func (me *FileAccess) BaseClass() string {
   return "FileAccess"
 }
 
+
+
+// Enums
+
 type FileAccessModeFlags int
 const (
   FileAccessModeFlagsRead FileAccessModeFlags = 1
@@ -42,206 +46,217 @@ const (
   FileAccessCompressionModeCompressionBrotli FileAccessCompressionMode = 4
 )
 
-func  FileAccessOpen(path String, flags FileAccessModeFlags, ) { // TODO: return value
-  // TODO: implement
+func (me *FileAccess) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  FileAccessOpenEncrypted(path String, mode_flags FileAccessModeFlags, key PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func (me *FileAccess) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  FileAccessOpenEncryptedWithPass(path String, mode_flags FileAccessModeFlags, pass String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  FileAccessOpen(path String, flags FileAccessModeFlags, )  {
+  panic("TODO: implement")
 }
 
-func  FileAccessOpenCompressed(path String, mode_flags FileAccessModeFlags, compression_mode FileAccessCompressionMode, ) { // TODO: return value
-  // TODO: implement
+func  FileAccessOpenEncrypted(path String, mode_flags FileAccessModeFlags, key PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  FileAccessGetOpenError() { // TODO: return value
-  // TODO: implement
+func  FileAccessOpenEncryptedWithPass(path String, mode_flags FileAccessModeFlags, pass String, )  {
+  panic("TODO: implement")
 }
 
-func  FileAccessGetFileAsBytes(path String, ) { // TODO: return value
-  // TODO: implement
+func  FileAccessOpenCompressed(path String, mode_flags FileAccessModeFlags, compression_mode FileAccessCompressionMode, )  {
+  panic("TODO: implement")
 }
 
-func  FileAccessGetFileAsString(path String, ) { // TODO: return value
-  // TODO: implement
+func  FileAccessGetOpenError()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) Flush() { // TODO: return value
-  // TODO: implement
+func  FileAccessGetFileAsBytes(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetPath() { // TODO: return value
-  // TODO: implement
+func  FileAccessGetFileAsString(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetPathAbsolute() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) Flush()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) IsOpen() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetPath()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) Seek(position int, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetPathAbsolute()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) SeekEnd(position int, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) IsOpen()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetPosition() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) Seek(position int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetLength() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) SeekEnd(position int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) EofReached() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetPosition()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) Get8() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) Get16() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) EofReached()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) Get32() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) Get8()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) Get64() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) Get16()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetFloat() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) Get32()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetDouble() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) Get64()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetReal() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetFloat()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetBuffer(length int, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetDouble()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetLine() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetReal()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetCsvLine(delim String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetBuffer(length int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetAsText(skip_cr bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetLine()  {
+  panic("TODO: implement")
 }
 
-func  FileAccessGetMd5(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetCsvLine(delim String, )  {
+  panic("TODO: implement")
 }
 
-func  FileAccessGetSha256(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetAsText(skip_cr bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) IsBigEndian() { // TODO: return value
-  // TODO: implement
+func  FileAccessGetMd5(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) SetBigEndian(big_endian bool, ) { // TODO: return value
-  // TODO: implement
+func  FileAccessGetSha256(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetError() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) IsBigEndian()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetVar(allow_objects bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) SetBigEndian(big_endian bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) Store8(value int, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetError()  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) Store16(value int, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetVar(allow_objects bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) Store32(value int, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) Store8(value int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) Store64(value int, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) Store16(value int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) StoreFloat(value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) Store32(value int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) StoreDouble(value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) Store64(value int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) StoreReal(value float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) StoreFloat(value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) StoreBuffer(buffer PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) StoreDouble(value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) StoreLine(line String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) StoreReal(value float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) StoreCsvLine(values PackedStringArray, delim String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) StoreBuffer(buffer PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) StoreString(string String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) StoreLine(line String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) StoreVar(value Variant, full_objects bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) StoreCsvLine(values PackedStringArray, delim String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) StorePascalString(string String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) StoreString(string_ String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) GetPascalString() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) StoreVar(value Variant, full_objects bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FileAccess) Close() { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) StorePascalString(string_ String, )  {
+  panic("TODO: implement")
 }
 
-func  FileAccessFileExists(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) GetPascalString()  {
+  panic("TODO: implement")
 }
 
-func  FileAccessGetModifiedTime(file String, ) { // TODO: return value
-  // TODO: implement
+func  (me *FileAccess) Close()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  FileAccessFileExists(path String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  FileAccessGetModifiedTime(file String, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

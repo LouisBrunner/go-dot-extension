@@ -25,6 +25,21 @@ func (me *PlaceholderMaterial) BaseClass() string {
   return "PlaceholderMaterial"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *PlaceholderMaterial) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *PlaceholderMaterial) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

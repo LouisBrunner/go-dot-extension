@@ -25,6 +25,10 @@ func (me *GradientTexture2D) BaseClass() string {
   return "GradientTexture2D"
 }
 
+
+
+// Enums
+
 type GradientTexture2DFill int
 const (
   GradientTexture2DFillFillLinear GradientTexture2DFill = 0
@@ -39,62 +43,73 @@ const (
   GradientTexture2DRepeatRepeatMirror GradientTexture2DRepeat = 2
 )
 
-func  (me *GradientTexture2D) SetGradient(gradient Gradient, ) { // TODO: return value
-  // TODO: implement
+func (me *GradientTexture2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GradientTexture2D) GetGradient() { // TODO: return value
-  // TODO: implement
+func (me *GradientTexture2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GradientTexture2D) SetWidth(width int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GradientTexture2D) SetGradient(gradient Gradient, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture2D) SetHeight(height int, ) { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture2D) GetGradient()  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture2D) SetUseHdr(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture2D) SetWidth(width int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture2D) IsUsingHdr() { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture2D) SetHeight(height int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture2D) SetFill(fill GradientTexture2DFill, ) { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture2D) SetUseHdr(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture2D) GetFill() { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture2D) IsUsingHdr()  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture2D) SetFillFrom(fill_from Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture2D) SetFill(fill GradientTexture2DFill, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture2D) GetFillFrom() { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture2D) GetFill()  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture2D) SetFillTo(fill_to Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture2D) SetFillFrom(fill_from Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture2D) GetFillTo() { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture2D) GetFillFrom()  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture2D) SetRepeat(repeat GradientTexture2DRepeat, ) { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture2D) SetFillTo(fill_to Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GradientTexture2D) GetRepeat() { // TODO: return value
-  // TODO: implement
+func  (me *GradientTexture2D) GetFillTo()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GradientTexture2D) SetRepeat(repeat GradientTexture2DRepeat, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GradientTexture2D) GetRepeat()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

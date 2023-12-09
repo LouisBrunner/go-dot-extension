@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"unsafe"
 
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdapi"
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -23,6 +24,8 @@ func New(pGetProcAddr gdc.InterfaceGetProcAddress, pLibrary gdc.ClassLibraryPtr,
 	if err != nil {
 		return nil, fmt.Errorf("could not get GDExtension class: %s", err.Error())
 	}
+	gdapi.Initialize(iface)
+
 	ext := &extension{
 		iface:     iface,
 		pLibrary:  pLibrary,
@@ -84,9 +87,10 @@ func (me *extension) Initialize(rInitialization *gdc.InitializationRaw, init gdc
 }
 
 func (me *extension) onInit(level gdc.InitializationLevel) error {
-	if level != gdc.InitializationLevel(gdc.InitializationScene) {
+	if level != gdc.InitializationScene {
 		return nil
 	}
+	gdapi.InitializeGlobals(me.iface)
 	for name, entry := range me.registered {
 		me.Logf(LogLevelDebug, "registering class %q", name)
 		me.registerClass(entry)
@@ -95,7 +99,7 @@ func (me *extension) onInit(level gdc.InitializationLevel) error {
 }
 
 func (me *extension) onFini(level gdc.InitializationLevel) error {
-	if level != gdc.InitializationLevel(gdc.InitializationScene) {
+	if level != gdc.InitializationScene {
 		return nil
 	}
 	for name, entry := range me.registered {

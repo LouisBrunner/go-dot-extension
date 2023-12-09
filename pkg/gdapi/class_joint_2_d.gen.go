@@ -25,38 +25,53 @@ func (me *Joint2D) BaseClass() string {
   return "Joint2D"
 }
 
-func  (me *Joint2D) SetNodeA(node NodePath, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Joint2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Joint2D) GetNodeA() { // TODO: return value
-  // TODO: implement
+func (me *Joint2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Joint2D) SetNodeB(node NodePath, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Joint2D) SetNodeA(node NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Joint2D) GetNodeB() { // TODO: return value
-  // TODO: implement
+func  (me *Joint2D) GetNodeA()  {
+  panic("TODO: implement")
 }
 
-func  (me *Joint2D) SetBias(bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *Joint2D) SetNodeB(node NodePath, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Joint2D) GetBias() { // TODO: return value
-  // TODO: implement
+func  (me *Joint2D) GetNodeB()  {
+  panic("TODO: implement")
 }
 
-func  (me *Joint2D) SetExcludeNodesFromCollision(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Joint2D) SetBias(bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Joint2D) GetExcludeNodesFromCollision() { // TODO: return value
-  // TODO: implement
+func  (me *Joint2D) GetBias()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Joint2D) SetExcludeNodesFromCollision(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Joint2D) GetExcludeNodesFromCollision()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

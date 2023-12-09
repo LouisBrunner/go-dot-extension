@@ -25,18 +25,33 @@ func (me *HMACContext) BaseClass() string {
   return "HMACContext"
 }
 
-func  (me *HMACContext) Start(hash_type HashingContextHashType, key PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *HMACContext) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *HMACContext) Update(data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+func (me *HMACContext) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *HMACContext) Finish() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *HMACContext) Start(hash_type HashingContextHashType, key PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *HMACContext) Update(data PackedByteArray, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *HMACContext) Finish()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,22 +25,37 @@ func (me *ImageFormatLoaderExtension) BaseClass() string {
   return "ImageFormatLoaderExtension"
 }
 
-func  (me *ImageFormatLoaderExtension) XGetRecognizedExtensions() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ImageFormatLoaderExtension) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ImageFormatLoaderExtension) XLoadImage(image Image, fileaccess FileAccess, flags ImageFormatLoaderLoaderFlags, scale float32, ) { // TODO: return value
-  // TODO: implement
+func (me *ImageFormatLoaderExtension) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ImageFormatLoaderExtension) AddFormatLoader() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ImageFormatLoaderExtension) XGetRecognizedExtensions()  {
+  panic("TODO: implement")
 }
 
-func  (me *ImageFormatLoaderExtension) RemoveFormatLoader() { // TODO: return value
-  // TODO: implement
+func  (me *ImageFormatLoaderExtension) XLoadImage(image Image, fileaccess FileAccess, flags ImageFormatLoaderLoaderFlags, scale float32, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ImageFormatLoaderExtension) AddFormatLoader()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ImageFormatLoaderExtension) RemoveFormatLoader()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

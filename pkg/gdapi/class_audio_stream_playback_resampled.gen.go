@@ -25,18 +25,33 @@ func (me *AudioStreamPlaybackResampled) BaseClass() string {
   return "AudioStreamPlaybackResampled"
 }
 
-func  (me *AudioStreamPlaybackResampled) XMixResampled(dst_buffer *AudioFrame, frame_count int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioStreamPlaybackResampled) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioStreamPlaybackResampled) XGetStreamSamplingRate() { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamPlaybackResampled) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioStreamPlaybackResampled) BeginResample() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioStreamPlaybackResampled) XMixResampled(dst_buffer *AudioFrame, frame_count int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioStreamPlaybackResampled) XGetStreamSamplingRate()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioStreamPlaybackResampled) BeginResample()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,6 +25,10 @@ func (me *ResourceSaver) BaseClass() string {
   return "ResourceSaver"
 }
 
+
+
+// Enums
+
 type ResourceSaverSaverFlags int
 const (
   ResourceSaverSaverFlagsFlagNone ResourceSaverSaverFlags = 0
@@ -37,22 +41,33 @@ const (
   ResourceSaverSaverFlagsFlagReplaceSubresourcePaths ResourceSaverSaverFlags = 64
 )
 
-func  (me *ResourceSaver) Save(resource Resource, path String, flags ResourceSaverSaverFlags, ) { // TODO: return value
-  // TODO: implement
+func (me *ResourceSaver) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ResourceSaver) GetRecognizedExtensions(type_ Resource, ) { // TODO: return value
-  // TODO: implement
+func (me *ResourceSaver) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ResourceSaver) AddResourceFormatSaver(format_saver ResourceFormatSaver, at_front bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ResourceSaver) Save(resource Resource, path String, flags ResourceSaverSaverFlags, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceSaver) RemoveResourceFormatSaver(format_saver ResourceFormatSaver, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceSaver) GetRecognizedExtensions(type_ Resource, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ResourceSaver) AddResourceFormatSaver(format_saver ResourceFormatSaver, at_front bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ResourceSaver) RemoveResourceFormatSaver(format_saver ResourceFormatSaver, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

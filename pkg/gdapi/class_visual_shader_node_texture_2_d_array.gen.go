@@ -25,14 +25,29 @@ func (me *VisualShaderNodeTexture2DArray) BaseClass() string {
   return "VisualShaderNodeTexture2DArray"
 }
 
-func  (me *VisualShaderNodeTexture2DArray) SetTextureArray(value Texture2DArray, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeTexture2DArray) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeTexture2DArray) GetTextureArray() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeTexture2DArray) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeTexture2DArray) SetTextureArray(value Texture2DArray, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeTexture2DArray) GetTextureArray()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

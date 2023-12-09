@@ -25,14 +25,29 @@ func (me *SphereOccluder3D) BaseClass() string {
   return "SphereOccluder3D"
 }
 
-func  (me *SphereOccluder3D) SetRadius(radius float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SphereOccluder3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SphereOccluder3D) GetRadius() { // TODO: return value
-  // TODO: implement
+func (me *SphereOccluder3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *SphereOccluder3D) SetRadius(radius float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *SphereOccluder3D) GetRadius()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

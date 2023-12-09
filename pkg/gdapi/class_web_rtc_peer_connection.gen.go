@@ -25,6 +25,10 @@ func (me *WebRTCPeerConnection) BaseClass() string {
   return "WebRTCPeerConnection"
 }
 
+
+
+// Enums
+
 type WebRTCPeerConnectionConnectionState int
 const (
   WebRTCPeerConnectionConnectionStateStateNew WebRTCPeerConnectionConnectionState = 0
@@ -52,54 +56,65 @@ const (
   WebRTCPeerConnectionSignalingStateSignalingStateClosed WebRTCPeerConnectionSignalingState = 5
 )
 
-func  WebRTCPeerConnectionSetDefaultExtension(extension_class StringName, ) { // TODO: return value
-  // TODO: implement
+func (me *WebRTCPeerConnection) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *WebRTCPeerConnection) Initialize(configuration Dictionary, ) { // TODO: return value
-  // TODO: implement
+func (me *WebRTCPeerConnection) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *WebRTCPeerConnection) CreateDataChannel(label String, options Dictionary, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  WebRTCPeerConnectionSetDefaultExtension(extension_class StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnection) CreateOffer() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnection) Initialize(configuration Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnection) SetLocalDescription(type_ String, sdp String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnection) CreateDataChannel(label String, options Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnection) SetRemoteDescription(type_ String, sdp String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnection) CreateOffer()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnection) AddIceCandidate(media String, index int, name String, ) { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnection) SetLocalDescription(type_ String, sdp String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnection) Poll() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnection) SetRemoteDescription(type_ String, sdp String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnection) Close() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnection) AddIceCandidate(media String, index int, name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnection) GetConnectionState() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnection) Poll()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnection) GetGatheringState() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnection) Close()  {
+  panic("TODO: implement")
 }
 
-func  (me *WebRTCPeerConnection) GetSignalingState() { // TODO: return value
-  // TODO: implement
+func  (me *WebRTCPeerConnection) GetConnectionState()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *WebRTCPeerConnection) GetGatheringState()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *WebRTCPeerConnection) GetSignalingState()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

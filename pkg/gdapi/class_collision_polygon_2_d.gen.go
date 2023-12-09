@@ -25,52 +25,67 @@ func (me *CollisionPolygon2D) BaseClass() string {
   return "CollisionPolygon2D"
 }
 
+
+
+// Enums
+
 type CollisionPolygon2DBuildMode int
 const (
   CollisionPolygon2DBuildModeBuildSolids CollisionPolygon2DBuildMode = 0
   CollisionPolygon2DBuildModeBuildSegments CollisionPolygon2DBuildMode = 1
 )
 
-func  (me *CollisionPolygon2D) SetPolygon(polygon PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+func (me *CollisionPolygon2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CollisionPolygon2D) GetPolygon() { // TODO: return value
-  // TODO: implement
+func (me *CollisionPolygon2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CollisionPolygon2D) SetBuildMode(build_mode CollisionPolygon2DBuildMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CollisionPolygon2D) SetPolygon(polygon PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon2D) GetBuildMode() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon2D) GetPolygon()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon2D) SetDisabled(disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon2D) SetBuildMode(build_mode CollisionPolygon2DBuildMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon2D) IsDisabled() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon2D) GetBuildMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon2D) SetOneWayCollision(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon2D) SetDisabled(disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon2D) IsOneWayCollisionEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon2D) IsDisabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon2D) SetOneWayCollisionMargin(margin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon2D) SetOneWayCollision(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon2D) GetOneWayCollisionMargin() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon2D) IsOneWayCollisionEnabled()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CollisionPolygon2D) SetOneWayCollisionMargin(margin float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CollisionPolygon2D) GetOneWayCollisionMargin()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

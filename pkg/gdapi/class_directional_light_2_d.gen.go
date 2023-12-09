@@ -25,14 +25,29 @@ func (me *DirectionalLight2D) BaseClass() string {
   return "DirectionalLight2D"
 }
 
-func  (me *DirectionalLight2D) SetMaxDistance(pixels float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *DirectionalLight2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *DirectionalLight2D) GetMaxDistance() { // TODO: return value
-  // TODO: implement
+func (me *DirectionalLight2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *DirectionalLight2D) SetMaxDistance(pixels float32, )  {
+  panic("TODO: implement")
+}
+
+func  (me *DirectionalLight2D) GetMaxDistance()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

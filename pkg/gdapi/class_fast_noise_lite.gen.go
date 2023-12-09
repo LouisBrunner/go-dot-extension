@@ -25,6 +25,10 @@ func (me *FastNoiseLite) BaseClass() string {
   return "FastNoiseLite"
 }
 
+
+
+// Enums
+
 type FastNoiseLiteNoiseType int
 const (
   FastNoiseLiteNoiseTypeTypeValue FastNoiseLiteNoiseType = 5
@@ -76,174 +80,185 @@ const (
   FastNoiseLiteDomainWarpFractalTypeDomainWarpFractalIndependent FastNoiseLiteDomainWarpFractalType = 2
 )
 
-func  (me *FastNoiseLite) SetNoiseType(type_ FastNoiseLiteNoiseType, ) { // TODO: return value
-  // TODO: implement
+func (me *FastNoiseLite) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *FastNoiseLite) GetNoiseType() { // TODO: return value
-  // TODO: implement
+func (me *FastNoiseLite) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *FastNoiseLite) SetSeed(seed int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *FastNoiseLite) SetNoiseType(type_ FastNoiseLiteNoiseType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetSeed() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetNoiseType()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetFrequency(freq float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetSeed(seed int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetFrequency() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetSeed()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetOffset(offset Vector3, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetFrequency(freq float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetOffset() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetFrequency()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetFractalType(type_ FastNoiseLiteFractalType, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetOffset(offset Vector3, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetFractalType() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetFractalOctaves(octave_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetFractalType(type_ FastNoiseLiteFractalType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetFractalOctaves() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetFractalType()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetFractalLacunarity(lacunarity float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetFractalOctaves(octave_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetFractalLacunarity() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetFractalOctaves()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetFractalGain(gain float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetFractalLacunarity(lacunarity float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetFractalGain() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetFractalLacunarity()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetFractalWeightedStrength(weighted_strength float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetFractalGain(gain float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetFractalWeightedStrength() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetFractalGain()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetFractalPingPongStrength(ping_pong_strength float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetFractalWeightedStrength(weighted_strength float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetFractalPingPongStrength() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetFractalWeightedStrength()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetCellularDistanceFunction(func_ FastNoiseLiteCellularDistanceFunction, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetFractalPingPongStrength(ping_pong_strength float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetCellularDistanceFunction() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetFractalPingPongStrength()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetCellularJitter(jitter float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetCellularDistanceFunction(func_ FastNoiseLiteCellularDistanceFunction, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetCellularJitter() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetCellularDistanceFunction()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetCellularReturnType(ret FastNoiseLiteCellularReturnType, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetCellularJitter(jitter float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetCellularReturnType() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetCellularJitter()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetDomainWarpEnabled(domain_warp_enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetCellularReturnType(ret FastNoiseLiteCellularReturnType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) IsDomainWarpEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetCellularReturnType()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetDomainWarpType(domain_warp_type FastNoiseLiteDomainWarpType, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetDomainWarpEnabled(domain_warp_enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetDomainWarpType() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) IsDomainWarpEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetDomainWarpAmplitude(domain_warp_amplitude float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetDomainWarpType(domain_warp_type FastNoiseLiteDomainWarpType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetDomainWarpAmplitude() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetDomainWarpType()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetDomainWarpFrequency(domain_warp_frequency float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetDomainWarpAmplitude(domain_warp_amplitude float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetDomainWarpFrequency() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetDomainWarpAmplitude()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetDomainWarpFractalType(domain_warp_fractal_type FastNoiseLiteDomainWarpFractalType, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetDomainWarpFrequency(domain_warp_frequency float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetDomainWarpFractalType() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetDomainWarpFrequency()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetDomainWarpFractalOctaves(domain_warp_octave_count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetDomainWarpFractalType(domain_warp_fractal_type FastNoiseLiteDomainWarpFractalType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetDomainWarpFractalOctaves() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetDomainWarpFractalType()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetDomainWarpFractalLacunarity(domain_warp_lacunarity float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetDomainWarpFractalOctaves(domain_warp_octave_count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetDomainWarpFractalLacunarity() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetDomainWarpFractalOctaves()  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) SetDomainWarpFractalGain(domain_warp_gain float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) SetDomainWarpFractalLacunarity(domain_warp_lacunarity float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *FastNoiseLite) GetDomainWarpFractalGain() { // TODO: return value
-  // TODO: implement
+func  (me *FastNoiseLite) GetDomainWarpFractalLacunarity()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *FastNoiseLite) SetDomainWarpFractalGain(domain_warp_gain float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *FastNoiseLite) GetDomainWarpFractalGain()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

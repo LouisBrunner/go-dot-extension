@@ -25,30 +25,45 @@ func (me *PhysicsDirectSpaceState2D) BaseClass() string {
   return "PhysicsDirectSpaceState2D"
 }
 
-func  (me *PhysicsDirectSpaceState2D) IntersectPoint(parameters PhysicsPointQueryParameters2D, max_results int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsDirectSpaceState2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsDirectSpaceState2D) IntersectRay(parameters PhysicsRayQueryParameters2D, ) { // TODO: return value
-  // TODO: implement
+func (me *PhysicsDirectSpaceState2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsDirectSpaceState2D) IntersectShape(parameters PhysicsShapeQueryParameters2D, max_results int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicsDirectSpaceState2D) IntersectPoint(parameters PhysicsPointQueryParameters2D, max_results int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsDirectSpaceState2D) CastMotion(parameters PhysicsShapeQueryParameters2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsDirectSpaceState2D) IntersectRay(parameters PhysicsRayQueryParameters2D, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsDirectSpaceState2D) CollideShape(parameters PhysicsShapeQueryParameters2D, max_results int, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsDirectSpaceState2D) IntersectShape(parameters PhysicsShapeQueryParameters2D, max_results int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsDirectSpaceState2D) GetRestInfo(parameters PhysicsShapeQueryParameters2D, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsDirectSpaceState2D) CastMotion(parameters PhysicsShapeQueryParameters2D, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsDirectSpaceState2D) CollideShape(parameters PhysicsShapeQueryParameters2D, max_results int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsDirectSpaceState2D) GetRestInfo(parameters PhysicsShapeQueryParameters2D, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

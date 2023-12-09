@@ -25,6 +25,10 @@ func (me *Time) BaseClass() string {
   return "Time"
 }
 
+
+
+// Enums
+
 type TimeMonth int
 const (
   TimeMonthMonthJanuary TimeMonth = 1
@@ -52,90 +56,101 @@ const (
   TimeWeekdayWeekdaySaturday TimeWeekday = 6
 )
 
-func  (me *Time) GetDatetimeDictFromUnixTime(unix_time_val int, ) { // TODO: return value
-  // TODO: implement
+func (me *Time) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Time) GetDateDictFromUnixTime(unix_time_val int, ) { // TODO: return value
-  // TODO: implement
+func (me *Time) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Time) GetTimeDictFromUnixTime(unix_time_val int, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Time) GetDatetimeDictFromUnixTime(unix_time_val int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetDatetimeStringFromUnixTime(unix_time_val int, use_space bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetDateDictFromUnixTime(unix_time_val int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetDateStringFromUnixTime(unix_time_val int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetTimeDictFromUnixTime(unix_time_val int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetTimeStringFromUnixTime(unix_time_val int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetDatetimeStringFromUnixTime(unix_time_val int, use_space bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetDatetimeDictFromDatetimeString(datetime String, weekday bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetDateStringFromUnixTime(unix_time_val int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetDatetimeStringFromDatetimeDict(datetime Dictionary, use_space bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetTimeStringFromUnixTime(unix_time_val int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetUnixTimeFromDatetimeDict(datetime Dictionary, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetDatetimeDictFromDatetimeString(datetime String, weekday bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetUnixTimeFromDatetimeString(datetime String, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetDatetimeStringFromDatetimeDict(datetime Dictionary, use_space bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetOffsetStringFromOffsetMinutes(offset_minutes int, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetUnixTimeFromDatetimeDict(datetime Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetDatetimeDictFromSystem(utc bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetUnixTimeFromDatetimeString(datetime String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetDateDictFromSystem(utc bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetOffsetStringFromOffsetMinutes(offset_minutes int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetTimeDictFromSystem(utc bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetDatetimeDictFromSystem(utc bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetDatetimeStringFromSystem(utc bool, use_space bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetDateDictFromSystem(utc bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetDateStringFromSystem(utc bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetTimeDictFromSystem(utc bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetTimeStringFromSystem(utc bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetDatetimeStringFromSystem(utc bool, use_space bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetTimeZoneFromSystem() { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetDateStringFromSystem(utc bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetUnixTimeFromSystem() { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetTimeStringFromSystem(utc bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetTicksMsec() { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetTimeZoneFromSystem()  {
+  panic("TODO: implement")
 }
 
-func  (me *Time) GetTicksUsec() { // TODO: return value
-  // TODO: implement
+func  (me *Time) GetUnixTimeFromSystem()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Time) GetTicksMsec()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Time) GetTicksUsec()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,18 +25,33 @@ func (me *EditorResourceTooltipPlugin) BaseClass() string {
   return "EditorResourceTooltipPlugin"
 }
 
-func  (me *EditorResourceTooltipPlugin) XHandles(type_ String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorResourceTooltipPlugin) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorResourceTooltipPlugin) XMakeTooltipForPath(path String, metadata Dictionary, base Control, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorResourceTooltipPlugin) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorResourceTooltipPlugin) RequestThumbnail(path String, control TextureRect, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorResourceTooltipPlugin) XHandles(type_ String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorResourceTooltipPlugin) XMakeTooltipForPath(path String, metadata Dictionary, base Control, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorResourceTooltipPlugin) RequestThumbnail(path String, control TextureRect, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

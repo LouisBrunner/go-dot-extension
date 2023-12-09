@@ -25,94 +25,109 @@ func (me *RDPipelineRasterizationState) BaseClass() string {
   return "RDPipelineRasterizationState"
 }
 
-func  (me *RDPipelineRasterizationState) SetEnableDepthClamp(p_member bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *RDPipelineRasterizationState) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *RDPipelineRasterizationState) GetEnableDepthClamp() { // TODO: return value
-  // TODO: implement
+func (me *RDPipelineRasterizationState) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *RDPipelineRasterizationState) SetDiscardPrimitives(p_member bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *RDPipelineRasterizationState) SetEnableDepthClamp(p_member bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) GetDiscardPrimitives() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) GetEnableDepthClamp()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) SetWireframe(p_member bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) SetDiscardPrimitives(p_member bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) GetWireframe() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) GetDiscardPrimitives()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) SetCullMode(p_member RenderingDevicePolygonCullMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) SetWireframe(p_member bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) GetCullMode() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) GetWireframe()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) SetFrontFace(p_member RenderingDevicePolygonFrontFace, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) SetCullMode(p_member RenderingDevicePolygonCullMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) GetFrontFace() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) GetCullMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) SetDepthBiasEnabled(p_member bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) SetFrontFace(p_member RenderingDevicePolygonFrontFace, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) GetDepthBiasEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) GetFrontFace()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) SetDepthBiasConstantFactor(p_member float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) SetDepthBiasEnabled(p_member bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) GetDepthBiasConstantFactor() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) GetDepthBiasEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) SetDepthBiasClamp(p_member float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) SetDepthBiasConstantFactor(p_member float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) GetDepthBiasClamp() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) GetDepthBiasConstantFactor()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) SetDepthBiasSlopeFactor(p_member float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) SetDepthBiasClamp(p_member float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) GetDepthBiasSlopeFactor() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) GetDepthBiasClamp()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) SetLineWidth(p_member float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) SetDepthBiasSlopeFactor(p_member float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) GetLineWidth() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) GetDepthBiasSlopeFactor()  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) SetPatchControlPoints(p_member int, ) { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) SetLineWidth(p_member float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) GetPatchControlPoints() { // TODO: return value
-  // TODO: implement
+func  (me *RDPipelineRasterizationState) GetLineWidth()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *RDPipelineRasterizationState) SetPatchControlPoints(p_member int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *RDPipelineRasterizationState) GetPatchControlPoints()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

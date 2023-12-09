@@ -25,6 +25,21 @@ func (me *GLTFDocumentExtensionTextureWebP) BaseClass() string {
   return "GLTFDocumentExtensionTextureWebP"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *GLTFDocumentExtensionTextureWebP) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *GLTFDocumentExtensionTextureWebP) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

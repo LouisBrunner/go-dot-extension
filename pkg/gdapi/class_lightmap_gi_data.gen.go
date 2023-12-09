@@ -25,38 +25,53 @@ func (me *LightmapGIData) BaseClass() string {
   return "LightmapGIData"
 }
 
-func  (me *LightmapGIData) SetLightTexture(light_texture TextureLayered, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *LightmapGIData) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *LightmapGIData) GetLightTexture() { // TODO: return value
-  // TODO: implement
+func (me *LightmapGIData) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *LightmapGIData) SetUsesSphericalHarmonics(uses_spherical_harmonics bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *LightmapGIData) SetLightTexture(light_texture TextureLayered, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGIData) IsUsingSphericalHarmonics() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGIData) GetLightTexture()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGIData) AddUser(path NodePath, uv_scale Rect2, slice_index int, sub_instance int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGIData) SetUsesSphericalHarmonics(uses_spherical_harmonics bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGIData) GetUserCount() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGIData) IsUsingSphericalHarmonics()  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGIData) GetUserPath(user_idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGIData) AddUser(path NodePath, uv_scale Rect2, slice_index int, sub_instance int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *LightmapGIData) ClearUsers() { // TODO: return value
-  // TODO: implement
+func  (me *LightmapGIData) GetUserCount()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *LightmapGIData) GetUserPath(user_idx int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *LightmapGIData) ClearUsers()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

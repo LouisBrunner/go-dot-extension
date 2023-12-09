@@ -25,6 +25,10 @@ func (me *CanvasItemMaterial) BaseClass() string {
   return "CanvasItemMaterial"
 }
 
+
+
+// Enums
+
 type CanvasItemMaterialBlendMode int
 const (
   CanvasItemMaterialBlendModeBlendModeMix CanvasItemMaterialBlendMode = 0
@@ -41,54 +45,65 @@ const (
   CanvasItemMaterialLightModeLightModeLightOnly CanvasItemMaterialLightMode = 2
 )
 
-func  (me *CanvasItemMaterial) SetBlendMode(blend_mode CanvasItemMaterialBlendMode, ) { // TODO: return value
-  // TODO: implement
+func (me *CanvasItemMaterial) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CanvasItemMaterial) GetBlendMode() { // TODO: return value
-  // TODO: implement
+func (me *CanvasItemMaterial) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CanvasItemMaterial) SetLightMode(light_mode CanvasItemMaterialLightMode, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CanvasItemMaterial) SetBlendMode(blend_mode CanvasItemMaterialBlendMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasItemMaterial) GetLightMode() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasItemMaterial) GetBlendMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasItemMaterial) SetParticlesAnimation(particles_anim bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CanvasItemMaterial) SetLightMode(light_mode CanvasItemMaterialLightMode, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasItemMaterial) GetParticlesAnimation() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasItemMaterial) GetLightMode()  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasItemMaterial) SetParticlesAnimHFrames(frames int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CanvasItemMaterial) SetParticlesAnimation(particles_anim bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasItemMaterial) GetParticlesAnimHFrames() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasItemMaterial) GetParticlesAnimation()  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasItemMaterial) SetParticlesAnimVFrames(frames int, ) { // TODO: return value
-  // TODO: implement
+func  (me *CanvasItemMaterial) SetParticlesAnimHFrames(frames int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasItemMaterial) GetParticlesAnimVFrames() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasItemMaterial) GetParticlesAnimHFrames()  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasItemMaterial) SetParticlesAnimLoop(loop bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CanvasItemMaterial) SetParticlesAnimVFrames(frames int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CanvasItemMaterial) GetParticlesAnimLoop() { // TODO: return value
-  // TODO: implement
+func  (me *CanvasItemMaterial) GetParticlesAnimVFrames()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CanvasItemMaterial) SetParticlesAnimLoop(loop bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CanvasItemMaterial) GetParticlesAnimLoop()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

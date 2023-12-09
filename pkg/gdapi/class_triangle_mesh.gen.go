@@ -25,6 +25,21 @@ func (me *TriangleMesh) BaseClass() string {
   return "TriangleMesh"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *TriangleMesh) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *TriangleMesh) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

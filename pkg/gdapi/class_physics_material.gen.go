@@ -25,38 +25,53 @@ func (me *PhysicsMaterial) BaseClass() string {
   return "PhysicsMaterial"
 }
 
-func  (me *PhysicsMaterial) SetFriction(friction float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *PhysicsMaterial) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *PhysicsMaterial) GetFriction() { // TODO: return value
-  // TODO: implement
+func (me *PhysicsMaterial) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *PhysicsMaterial) SetRough(rough bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *PhysicsMaterial) SetFriction(friction float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsMaterial) IsRough() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsMaterial) GetFriction()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsMaterial) SetBounce(bounce float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsMaterial) SetRough(rough bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsMaterial) GetBounce() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsMaterial) IsRough()  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsMaterial) SetAbsorbent(absorbent bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsMaterial) SetBounce(bounce float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *PhysicsMaterial) IsAbsorbent() { // TODO: return value
-  // TODO: implement
+func  (me *PhysicsMaterial) GetBounce()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *PhysicsMaterial) SetAbsorbent(absorbent bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *PhysicsMaterial) IsAbsorbent()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

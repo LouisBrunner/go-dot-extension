@@ -25,42 +25,57 @@ func (me *NavigationMeshSourceGeometryData3D) BaseClass() string {
   return "NavigationMeshSourceGeometryData3D"
 }
 
-func  (me *NavigationMeshSourceGeometryData3D) SetVertices(vertices PackedFloat32Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *NavigationMeshSourceGeometryData3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *NavigationMeshSourceGeometryData3D) GetVertices() { // TODO: return value
-  // TODO: implement
+func (me *NavigationMeshSourceGeometryData3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *NavigationMeshSourceGeometryData3D) SetIndices(indices PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *NavigationMeshSourceGeometryData3D) SetVertices(vertices PackedFloat32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationMeshSourceGeometryData3D) GetIndices() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationMeshSourceGeometryData3D) GetVertices()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationMeshSourceGeometryData3D) Clear() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationMeshSourceGeometryData3D) SetIndices(indices PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationMeshSourceGeometryData3D) HasData() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationMeshSourceGeometryData3D) GetIndices()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationMeshSourceGeometryData3D) AddMesh(mesh Mesh, xform Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationMeshSourceGeometryData3D) Clear()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationMeshSourceGeometryData3D) AddMeshArray(mesh_array Array, xform Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationMeshSourceGeometryData3D) HasData()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationMeshSourceGeometryData3D) AddFaces(faces PackedVector3Array, xform Transform3D, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationMeshSourceGeometryData3D) AddMesh(mesh Mesh, xform Transform3D, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *NavigationMeshSourceGeometryData3D) AddMeshArray(mesh_array Array, xform Transform3D, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *NavigationMeshSourceGeometryData3D) AddFaces(faces PackedVector3Array, xform Transform3D, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

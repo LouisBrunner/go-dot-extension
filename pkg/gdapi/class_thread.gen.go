@@ -25,6 +25,10 @@ func (me *Thread) BaseClass() string {
   return "Thread"
 }
 
+
+
+// Enums
+
 type ThreadPriority int
 const (
   ThreadPriorityPriorityLow ThreadPriority = 0
@@ -32,30 +36,41 @@ const (
   ThreadPriorityPriorityHigh ThreadPriority = 2
 )
 
-func  (me *Thread) Start(callable Callable, priority ThreadPriority, ) { // TODO: return value
-  // TODO: implement
+func (me *Thread) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Thread) GetId() { // TODO: return value
-  // TODO: implement
+func (me *Thread) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Thread) IsStarted() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Thread) Start(callable Callable, priority ThreadPriority, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Thread) IsAlive() { // TODO: return value
-  // TODO: implement
+func  (me *Thread) GetId()  {
+  panic("TODO: implement")
 }
 
-func  (me *Thread) WaitToFinish() { // TODO: return value
-  // TODO: implement
+func  (me *Thread) IsStarted()  {
+  panic("TODO: implement")
 }
 
-func  ThreadSetThreadSafetyChecksEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *Thread) IsAlive()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Thread) WaitToFinish()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  ThreadSetThreadSafetyChecksEnabled(enabled bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

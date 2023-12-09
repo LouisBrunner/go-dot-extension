@@ -25,6 +25,10 @@ func (me *AnimationNodeOneShot) BaseClass() string {
   return "AnimationNodeOneShot"
 }
 
+
+
+// Enums
+
 type AnimationNodeOneShotOneShotRequest int
 const (
   AnimationNodeOneShotOneShotRequestOneShotRequestNone AnimationNodeOneShotOneShotRequest = 0
@@ -39,70 +43,81 @@ const (
   AnimationNodeOneShotMixModeMixModeAdd AnimationNodeOneShotMixMode = 1
 )
 
-func  (me *AnimationNodeOneShot) SetFadeinTime(time float32, ) { // TODO: return value
-  // TODO: implement
+func (me *AnimationNodeOneShot) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AnimationNodeOneShot) GetFadeinTime() { // TODO: return value
-  // TODO: implement
+func (me *AnimationNodeOneShot) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AnimationNodeOneShot) SetFadeinCurve(curve Curve, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AnimationNodeOneShot) SetFadeinTime(time float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) GetFadeinCurve() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) GetFadeinTime()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) SetFadeoutTime(time float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) SetFadeinCurve(curve Curve, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) GetFadeoutTime() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) GetFadeinCurve()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) SetFadeoutCurve(curve Curve, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) SetFadeoutTime(time float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) GetFadeoutCurve() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) GetFadeoutTime()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) SetAutorestart(active bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) SetFadeoutCurve(curve Curve, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) HasAutorestart() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) GetFadeoutCurve()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) SetAutorestartDelay(time float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) SetAutorestart(active bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) GetAutorestartDelay() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) HasAutorestart()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) SetAutorestartRandomDelay(time float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) SetAutorestartDelay(time float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) GetAutorestartRandomDelay() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) GetAutorestartDelay()  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) SetMixMode(mode AnimationNodeOneShotMixMode, ) { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) SetAutorestartRandomDelay(time float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) GetMixMode() { // TODO: return value
-  // TODO: implement
+func  (me *AnimationNodeOneShot) GetAutorestartRandomDelay()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AnimationNodeOneShot) SetMixMode(mode AnimationNodeOneShotMixMode, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AnimationNodeOneShot) GetMixMode()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

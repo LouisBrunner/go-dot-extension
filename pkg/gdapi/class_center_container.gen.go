@@ -25,14 +25,29 @@ func (me *CenterContainer) BaseClass() string {
   return "CenterContainer"
 }
 
-func  (me *CenterContainer) SetUseTopLeft(enable bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CenterContainer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CenterContainer) IsUsingTopLeft() { // TODO: return value
-  // TODO: implement
+func (me *CenterContainer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *CenterContainer) SetUseTopLeft(enable bool, )  {
+  panic("TODO: implement")
+}
+
+func  (me *CenterContainer) IsUsingTopLeft()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

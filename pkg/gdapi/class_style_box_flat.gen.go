@@ -25,134 +25,149 @@ func (me *StyleBoxFlat) BaseClass() string {
   return "StyleBoxFlat"
 }
 
-func  (me *StyleBoxFlat) SetBgColor(color Color, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *StyleBoxFlat) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *StyleBoxFlat) GetBgColor() { // TODO: return value
-  // TODO: implement
+func (me *StyleBoxFlat) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *StyleBoxFlat) SetBorderColor(color Color, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *StyleBoxFlat) SetBgColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetBorderColor() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetBgColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetBorderWidthAll(width int, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetBorderColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetBorderWidthMin() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetBorderColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetBorderWidth(margin Side, width int, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetBorderWidthAll(width int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetBorderWidth(margin Side, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetBorderWidthMin()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetBorderBlend(blend bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetBorderWidth(margin Side, width int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetBorderBlend() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetBorderWidth(margin Side, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetCornerRadiusAll(radius int, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetBorderBlend(blend bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetCornerRadius(corner Corner, radius int, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetBorderBlend()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetCornerRadius(corner Corner, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetCornerRadiusAll(radius int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetExpandMargin(margin Side, size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetCornerRadius(corner Corner, radius int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetExpandMarginAll(size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetCornerRadius(corner Corner, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetExpandMargin(margin Side, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetExpandMargin(margin Side, size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetDrawCenter(draw_center bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetExpandMarginAll(size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) IsDrawCenterEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetExpandMargin(margin Side, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetSkew(skew Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetDrawCenter(draw_center bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetSkew() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) IsDrawCenterEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetShadowColor(color Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetSkew(skew Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetShadowColor() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetSkew()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetShadowSize(size int, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetShadowColor(color Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetShadowSize() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetShadowColor()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetShadowOffset(offset Vector2, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetShadowSize(size int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetShadowOffset() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetShadowSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetAntiAliased(anti_aliased bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetShadowOffset(offset Vector2, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) IsAntiAliased() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetShadowOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetAaSize(size float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetAntiAliased(anti_aliased bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetAaSize() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) IsAntiAliased()  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) SetCornerDetail(detail int, ) { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) SetAaSize(size float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *StyleBoxFlat) GetCornerDetail() { // TODO: return value
-  // TODO: implement
+func  (me *StyleBoxFlat) GetAaSize()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *StyleBoxFlat) SetCornerDetail(detail int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *StyleBoxFlat) GetCornerDetail()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

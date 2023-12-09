@@ -25,38 +25,53 @@ func (me *InputEventMouseButton) BaseClass() string {
   return "InputEventMouseButton"
 }
 
-func  (me *InputEventMouseButton) SetFactor(factor float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *InputEventMouseButton) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *InputEventMouseButton) GetFactor() { // TODO: return value
-  // TODO: implement
+func (me *InputEventMouseButton) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *InputEventMouseButton) SetButtonIndex(button_index MouseButton, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *InputEventMouseButton) SetFactor(factor float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMouseButton) GetButtonIndex() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMouseButton) GetFactor()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMouseButton) SetPressed(pressed bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMouseButton) SetButtonIndex(button_index MouseButton, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMouseButton) SetCanceled(canceled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMouseButton) GetButtonIndex()  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMouseButton) SetDoubleClick(double_click bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMouseButton) SetPressed(pressed bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *InputEventMouseButton) IsDoubleClick() { // TODO: return value
-  // TODO: implement
+func  (me *InputEventMouseButton) SetCanceled(canceled bool, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *InputEventMouseButton) SetDoubleClick(double_click bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *InputEventMouseButton) IsDoubleClick()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

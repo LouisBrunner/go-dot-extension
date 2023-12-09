@@ -25,134 +25,149 @@ func (me *VehicleWheel3D) BaseClass() string {
   return "VehicleWheel3D"
 }
 
-func  (me *VehicleWheel3D) SetRadius(length float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VehicleWheel3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VehicleWheel3D) GetRadius() { // TODO: return value
-  // TODO: implement
+func (me *VehicleWheel3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VehicleWheel3D) SetSuspensionRestLength(length float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VehicleWheel3D) SetRadius(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetSuspensionRestLength() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetRadius()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetSuspensionTravel(length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetSuspensionRestLength(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetSuspensionTravel() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetSuspensionRestLength()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetSuspensionStiffness(length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetSuspensionTravel(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetSuspensionStiffness() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetSuspensionTravel()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetSuspensionMaxForce(length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetSuspensionStiffness(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetSuspensionMaxForce() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetSuspensionStiffness()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetDampingCompression(length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetSuspensionMaxForce(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetDampingCompression() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetSuspensionMaxForce()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetDampingRelaxation(length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetDampingCompression(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetDampingRelaxation() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetDampingCompression()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetUseAsTraction(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetDampingRelaxation(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) IsUsedAsTraction() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetDampingRelaxation()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetUseAsSteering(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetUseAsTraction(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) IsUsedAsSteering() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) IsUsedAsTraction()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetFrictionSlip(length float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetUseAsSteering(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetFrictionSlip() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) IsUsedAsSteering()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) IsInContact() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetFrictionSlip(length float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetContactBody() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetFrictionSlip()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetRollInfluence(roll_influence float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) IsInContact()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetRollInfluence() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetContactBody()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetSkidinfo() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetRollInfluence(roll_influence float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetRpm() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetRollInfluence()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetEngineForce(engine_force float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetSkidinfo()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetEngineForce() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetRpm()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetBrake(brake float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetEngineForce(engine_force float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetBrake() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetEngineForce()  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) SetSteering(steering float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) SetBrake(brake float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VehicleWheel3D) GetSteering() { // TODO: return value
-  // TODO: implement
+func  (me *VehicleWheel3D) GetBrake()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VehicleWheel3D) SetSteering(steering float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VehicleWheel3D) GetSteering()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

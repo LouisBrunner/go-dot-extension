@@ -25,22 +25,37 @@ func (me *AudioStreamGenerator) BaseClass() string {
   return "AudioStreamGenerator"
 }
 
-func  (me *AudioStreamGenerator) SetMixRate(hz float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioStreamGenerator) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioStreamGenerator) GetMixRate() { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamGenerator) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioStreamGenerator) SetBufferLength(seconds float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioStreamGenerator) SetMixRate(hz float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamGenerator) GetBufferLength() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamGenerator) GetMixRate()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioStreamGenerator) SetBufferLength(seconds float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioStreamGenerator) GetBufferLength()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,22 +25,37 @@ func (me *MissingNode) BaseClass() string {
   return "MissingNode"
 }
 
-func  (me *MissingNode) SetOriginalClass(name String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *MissingNode) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *MissingNode) GetOriginalClass() { // TODO: return value
-  // TODO: implement
+func (me *MissingNode) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *MissingNode) SetRecordingProperties(enable bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *MissingNode) SetOriginalClass(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *MissingNode) IsRecordingProperties() { // TODO: return value
-  // TODO: implement
+func  (me *MissingNode) GetOriginalClass()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *MissingNode) SetRecordingProperties(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *MissingNode) IsRecordingProperties()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

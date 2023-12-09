@@ -25,14 +25,29 @@ func (me *CompressedTextureLayered) BaseClass() string {
   return "CompressedTextureLayered"
 }
 
-func  (me *CompressedTextureLayered) Load(path String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CompressedTextureLayered) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CompressedTextureLayered) GetLoadPath() { // TODO: return value
-  // TODO: implement
+func (me *CompressedTextureLayered) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *CompressedTextureLayered) Load(path String, )  {
+  panic("TODO: implement")
+}
+
+func  (me *CompressedTextureLayered) GetLoadPath()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

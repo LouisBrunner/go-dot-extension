@@ -25,22 +25,37 @@ func (me *World2D) BaseClass() string {
   return "World2D"
 }
 
-func  (me *World2D) GetCanvas() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *World2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *World2D) GetSpace() { // TODO: return value
-  // TODO: implement
+func (me *World2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *World2D) GetNavigationMap() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *World2D) GetCanvas()  {
+  panic("TODO: implement")
 }
 
-func  (me *World2D) GetDirectSpaceState() { // TODO: return value
-  // TODO: implement
+func  (me *World2D) GetSpace()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *World2D) GetNavigationMap()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *World2D) GetDirectSpaceState()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

@@ -25,74 +25,89 @@ func (me *SpriteFrames) BaseClass() string {
   return "SpriteFrames"
 }
 
-func  (me *SpriteFrames) AddAnimation(anim StringName, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *SpriteFrames) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *SpriteFrames) HasAnimation(anim StringName, ) { // TODO: return value
-  // TODO: implement
+func (me *SpriteFrames) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *SpriteFrames) RemoveAnimation(anim StringName, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *SpriteFrames) AddAnimation(anim StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) RenameAnimation(anim StringName, newname StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) HasAnimation(anim StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) GetAnimationNames() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) RemoveAnimation(anim StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) SetAnimationSpeed(anim StringName, fps float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) RenameAnimation(anim StringName, newname StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) GetAnimationSpeed(anim StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) GetAnimationNames()  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) SetAnimationLoop(anim StringName, loop bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) SetAnimationSpeed(anim StringName, fps float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) GetAnimationLoop(anim StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) GetAnimationSpeed(anim StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) AddFrame(anim StringName, texture Texture2D, duration float32, at_position int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) SetAnimationLoop(anim StringName, loop bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) SetFrame(anim StringName, idx int, texture Texture2D, duration float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) GetAnimationLoop(anim StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) RemoveFrame(anim StringName, idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) AddFrame(anim StringName, texture Texture2D, duration float32, at_position int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) GetFrameCount(anim StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) SetFrame(anim StringName, idx int, texture Texture2D, duration float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) GetFrameTexture(anim StringName, idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) RemoveFrame(anim StringName, idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) GetFrameDuration(anim StringName, idx int, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) GetFrameCount(anim StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) Clear(anim StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) GetFrameTexture(anim StringName, idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *SpriteFrames) ClearAll() { // TODO: return value
-  // TODO: implement
+func  (me *SpriteFrames) GetFrameDuration(anim StringName, idx int, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *SpriteFrames) Clear(anim StringName, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *SpriteFrames) ClearAll()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

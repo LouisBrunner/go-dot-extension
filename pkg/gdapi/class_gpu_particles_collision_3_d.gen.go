@@ -25,14 +25,29 @@ func (me *GPUParticlesCollision3D) BaseClass() string {
   return "GPUParticlesCollision3D"
 }
 
-func  (me *GPUParticlesCollision3D) SetCullMask(mask int, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GPUParticlesCollision3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GPUParticlesCollision3D) GetCullMask() { // TODO: return value
-  // TODO: implement
+func (me *GPUParticlesCollision3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *GPUParticlesCollision3D) SetCullMask(mask int, )  {
+  panic("TODO: implement")
+}
+
+func  (me *GPUParticlesCollision3D) GetCullMask()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

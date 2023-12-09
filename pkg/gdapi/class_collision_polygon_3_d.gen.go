@@ -25,38 +25,53 @@ func (me *CollisionPolygon3D) BaseClass() string {
   return "CollisionPolygon3D"
 }
 
-func  (me *CollisionPolygon3D) SetDepth(depth float32, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CollisionPolygon3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CollisionPolygon3D) GetDepth() { // TODO: return value
-  // TODO: implement
+func (me *CollisionPolygon3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CollisionPolygon3D) SetPolygon(polygon PackedVector2Array, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CollisionPolygon3D) SetDepth(depth float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon3D) GetPolygon() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon3D) GetDepth()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon3D) SetDisabled(disabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon3D) SetPolygon(polygon PackedVector2Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon3D) IsDisabled() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon3D) GetPolygon()  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon3D) SetMargin(margin float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon3D) SetDisabled(disabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CollisionPolygon3D) GetMargin() { // TODO: return value
-  // TODO: implement
+func  (me *CollisionPolygon3D) IsDisabled()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CollisionPolygon3D) SetMargin(margin float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CollisionPolygon3D) GetMargin()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

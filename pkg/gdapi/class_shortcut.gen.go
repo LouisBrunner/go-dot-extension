@@ -25,26 +25,41 @@ func (me *Shortcut) BaseClass() string {
   return "Shortcut"
 }
 
-func  (me *Shortcut) SetEvents(events Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *Shortcut) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *Shortcut) GetEvents() { // TODO: return value
-  // TODO: implement
+func (me *Shortcut) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *Shortcut) HasValidEvent() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *Shortcut) SetEvents(events Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *Shortcut) MatchesEvent(event InputEvent, ) { // TODO: return value
-  // TODO: implement
+func  (me *Shortcut) GetEvents()  {
+  panic("TODO: implement")
 }
 
-func  (me *Shortcut) GetAsText() { // TODO: return value
-  // TODO: implement
+func  (me *Shortcut) HasValidEvent()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *Shortcut) MatchesEvent(event InputEvent, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *Shortcut) GetAsText()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

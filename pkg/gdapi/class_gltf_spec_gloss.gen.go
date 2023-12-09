@@ -25,46 +25,61 @@ func (me *GLTFSpecGloss) BaseClass() string {
   return "GLTFSpecGloss"
 }
 
-func  (me *GLTFSpecGloss) GetDiffuseImg() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *GLTFSpecGloss) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *GLTFSpecGloss) SetDiffuseImg(diffuse_img Image, ) { // TODO: return value
-  // TODO: implement
+func (me *GLTFSpecGloss) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *GLTFSpecGloss) GetDiffuseFactor() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *GLTFSpecGloss) GetDiffuseImg()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSpecGloss) SetDiffuseFactor(diffuse_factor Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSpecGloss) SetDiffuseImg(diffuse_img Image, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSpecGloss) GetGlossFactor() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSpecGloss) GetDiffuseFactor()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSpecGloss) SetGlossFactor(gloss_factor float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSpecGloss) SetDiffuseFactor(diffuse_factor Color, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSpecGloss) GetSpecularFactor() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSpecGloss) GetGlossFactor()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSpecGloss) SetSpecularFactor(specular_factor Color, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSpecGloss) SetGlossFactor(gloss_factor float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSpecGloss) GetSpecGlossImg() { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSpecGloss) GetSpecularFactor()  {
+  panic("TODO: implement")
 }
 
-func  (me *GLTFSpecGloss) SetSpecGlossImg(spec_gloss_img Image, ) { // TODO: return value
-  // TODO: implement
+func  (me *GLTFSpecGloss) SetSpecularFactor(specular_factor Color, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *GLTFSpecGloss) GetSpecGlossImg()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *GLTFSpecGloss) SetSpecGlossImg(spec_gloss_img Image, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

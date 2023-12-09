@@ -25,14 +25,29 @@ func (me *VisualShaderNodeCurveTexture) BaseClass() string {
   return "VisualShaderNodeCurveTexture"
 }
 
-func  (me *VisualShaderNodeCurveTexture) SetTexture(texture CurveTexture, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeCurveTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeCurveTexture) GetTexture() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeCurveTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeCurveTexture) SetTexture(texture CurveTexture, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeCurveTexture) GetTexture()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

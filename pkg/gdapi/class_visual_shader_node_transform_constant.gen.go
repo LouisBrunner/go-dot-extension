@@ -25,14 +25,29 @@ func (me *VisualShaderNodeTransformConstant) BaseClass() string {
   return "VisualShaderNodeTransformConstant"
 }
 
-func  (me *VisualShaderNodeTransformConstant) SetConstant(constant Transform3D, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VisualShaderNodeTransformConstant) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeTransformConstant) GetConstant() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeTransformConstant) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *VisualShaderNodeTransformConstant) SetConstant(constant Transform3D, )  {
+  panic("TODO: implement")
+}
+
+func  (me *VisualShaderNodeTransformConstant) GetConstant()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

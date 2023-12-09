@@ -25,22 +25,37 @@ func (me *ZIPReader) BaseClass() string {
   return "ZIPReader"
 }
 
-func  (me *ZIPReader) Open(path String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ZIPReader) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ZIPReader) Close() { // TODO: return value
-  // TODO: implement
+func (me *ZIPReader) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ZIPReader) GetFiles() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ZIPReader) Open(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ZIPReader) ReadFile(path String, case_sensitive bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ZIPReader) Close()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ZIPReader) GetFiles()  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ZIPReader) ReadFile(path String, case_sensitive bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

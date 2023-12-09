@@ -25,14 +25,29 @@ func (me *QuadOccluder3D) BaseClass() string {
   return "QuadOccluder3D"
 }
 
-func  (me *QuadOccluder3D) SetSize(size Vector2, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *QuadOccluder3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *QuadOccluder3D) GetSize() { // TODO: return value
-  // TODO: implement
+func (me *QuadOccluder3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-// TODO: properties
 
-// TODO: signals
+// Methods
+
+func  (me *QuadOccluder3D) SetSize(size Vector2, )  {
+  panic("TODO: implement")
+}
+
+func  (me *QuadOccluder3D) GetSize()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

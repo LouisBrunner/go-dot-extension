@@ -25,90 +25,105 @@ func (me *VoxelGIData) BaseClass() string {
   return "VoxelGIData"
 }
 
-func  (me *VoxelGIData) Allocate(to_cell_xform Transform3D, aabb AABB, octree_size Vector3, octree_cells PackedByteArray, data_cells PackedByteArray, distance_field PackedByteArray, level_counts PackedInt32Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *VoxelGIData) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VoxelGIData) GetBounds() { // TODO: return value
-  // TODO: implement
+func (me *VoxelGIData) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VoxelGIData) GetOctreeSize() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VoxelGIData) Allocate(to_cell_xform Transform3D, aabb AABB, octree_size Vector3, octree_cells PackedByteArray, data_cells PackedByteArray, distance_field PackedByteArray, level_counts PackedInt32Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) GetToCellXform() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) GetBounds()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) GetOctreeCells() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) GetOctreeSize()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) GetDataCells() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) GetToCellXform()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) GetLevelCounts() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) GetOctreeCells()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) SetDynamicRange(dynamic_range float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) GetDataCells()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) GetDynamicRange() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) GetLevelCounts()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) SetEnergy(energy float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) SetDynamicRange(dynamic_range float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) GetEnergy() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) GetDynamicRange()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) SetBias(bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) SetEnergy(energy float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) GetBias() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) GetEnergy()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) SetNormalBias(bias float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) SetBias(bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) GetNormalBias() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) GetBias()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) SetPropagation(propagation float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) SetNormalBias(bias float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) GetPropagation() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) GetNormalBias()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) SetInterior(interior bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) SetPropagation(propagation float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) IsInterior() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) GetPropagation()  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) SetUseTwoBounces(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) SetInterior(interior bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VoxelGIData) IsUsingTwoBounces() { // TODO: return value
-  // TODO: implement
+func  (me *VoxelGIData) IsInterior()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VoxelGIData) SetUseTwoBounces(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VoxelGIData) IsUsingTwoBounces()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

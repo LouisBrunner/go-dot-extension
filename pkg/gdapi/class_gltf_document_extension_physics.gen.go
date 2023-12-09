@@ -25,6 +25,21 @@ func (me *GLTFDocumentExtensionPhysics) BaseClass() string {
   return "GLTFDocumentExtensionPhysics"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *GLTFDocumentExtensionPhysics) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *GLTFDocumentExtensionPhysics) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

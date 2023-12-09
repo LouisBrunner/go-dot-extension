@@ -25,6 +25,10 @@ func (me *CameraServer) BaseClass() string {
   return "CameraServer"
 }
 
+
+
+// Enums
+
 type CameraServerFeedImage int
 const (
   CameraServerFeedImageFeedRgbaImage CameraServerFeedImage = 0
@@ -33,26 +37,37 @@ const (
   CameraServerFeedImageFeedCbcrImage CameraServerFeedImage = 1
 )
 
-func  (me *CameraServer) GetFeed(index int, ) { // TODO: return value
-  // TODO: implement
+func (me *CameraServer) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CameraServer) GetFeedCount() { // TODO: return value
-  // TODO: implement
+func (me *CameraServer) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CameraServer) Feeds() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CameraServer) GetFeed(index int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraServer) AddFeed(feed CameraFeed, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraServer) GetFeedCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraServer) RemoveFeed(feed CameraFeed, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraServer) Feeds()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CameraServer) AddFeed(feed CameraFeed, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CameraServer) RemoveFeed(feed CameraFeed, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

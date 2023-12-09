@@ -25,54 +25,69 @@ func (me *AudioStreamMP3) BaseClass() string {
   return "AudioStreamMP3"
 }
 
-func  (me *AudioStreamMP3) SetData(data PackedByteArray, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *AudioStreamMP3) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *AudioStreamMP3) GetData() { // TODO: return value
-  // TODO: implement
+func (me *AudioStreamMP3) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *AudioStreamMP3) SetLoop(enable bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *AudioStreamMP3) SetData(data PackedByteArray, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamMP3) HasLoop() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamMP3) GetData()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamMP3) SetLoopOffset(seconds float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamMP3) SetLoop(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamMP3) GetLoopOffset() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamMP3) HasLoop()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamMP3) SetBpm(bpm float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamMP3) SetLoopOffset(seconds float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamMP3) GetBpm() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamMP3) GetLoopOffset()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamMP3) SetBeatCount(count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamMP3) SetBpm(bpm float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamMP3) GetBeatCount() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamMP3) GetBpm()  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamMP3) SetBarBeats(count int, ) { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamMP3) SetBeatCount(count int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *AudioStreamMP3) GetBarBeats() { // TODO: return value
-  // TODO: implement
+func  (me *AudioStreamMP3) GetBeatCount()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *AudioStreamMP3) SetBarBeats(count int, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *AudioStreamMP3) GetBarBeats()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

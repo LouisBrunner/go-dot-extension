@@ -25,6 +25,10 @@ func (me *VisualShaderNodeParameter) BaseClass() string {
   return "VisualShaderNodeParameter"
 }
 
+
+
+// Enums
+
 type VisualShaderNodeParameterQualifier int
 const (
   VisualShaderNodeParameterQualifierQualNone VisualShaderNodeParameterQualifier = 0
@@ -33,22 +37,33 @@ const (
   VisualShaderNodeParameterQualifierQualMax VisualShaderNodeParameterQualifier = 3
 )
 
-func  (me *VisualShaderNodeParameter) SetParameterName(name String, ) { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParameter) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeParameter) GetParameterName() { // TODO: return value
-  // TODO: implement
+func (me *VisualShaderNodeParameter) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *VisualShaderNodeParameter) SetQualifier(qualifier VisualShaderNodeParameterQualifier, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *VisualShaderNodeParameter) SetParameterName(name String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeParameter) GetQualifier() { // TODO: return value
-  // TODO: implement
+func  (me *VisualShaderNodeParameter) GetParameterName()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *VisualShaderNodeParameter) SetQualifier(qualifier VisualShaderNodeParameterQualifier, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *VisualShaderNodeParameter) GetQualifier()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

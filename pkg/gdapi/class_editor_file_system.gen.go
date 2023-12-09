@@ -25,42 +25,57 @@ func (me *EditorFileSystem) BaseClass() string {
   return "EditorFileSystem"
 }
 
-func  (me *EditorFileSystem) GetFilesystem() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorFileSystem) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorFileSystem) IsScanning() { // TODO: return value
-  // TODO: implement
+func (me *EditorFileSystem) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorFileSystem) GetScanningProgress() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorFileSystem) GetFilesystem()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystem) Scan() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystem) IsScanning()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystem) ScanSources() { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystem) GetScanningProgress()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystem) UpdateFile(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystem) Scan()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystem) GetFilesystemPath(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystem) ScanSources()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystem) GetFileType(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystem) UpdateFile(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorFileSystem) ReimportFiles(files PackedStringArray, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorFileSystem) GetFilesystemPath(path String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorFileSystem) GetFileType(path String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorFileSystem) ReimportFiles(files PackedStringArray, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

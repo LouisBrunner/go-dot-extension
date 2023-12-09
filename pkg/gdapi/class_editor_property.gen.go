@@ -25,94 +25,109 @@ func (me *EditorProperty) BaseClass() string {
   return "EditorProperty"
 }
 
-func  (me *EditorProperty) XUpdateProperty() { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *EditorProperty) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *EditorProperty) XSetReadOnly(read_only bool, ) { // TODO: return value
-  // TODO: implement
+func (me *EditorProperty) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *EditorProperty) SetLabel(text String, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *EditorProperty) XUpdateProperty()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) GetLabel() { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) XSetReadOnly(read_only bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) SetReadOnly(read_only bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) SetLabel(text String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) IsReadOnly() { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) GetLabel()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) SetCheckable(checkable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) SetReadOnly(read_only bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) IsCheckable() { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) IsReadOnly()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) SetChecked(checked bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) SetCheckable(checkable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) IsChecked() { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) IsCheckable()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) SetDrawWarning(draw_warning bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) SetChecked(checked bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) IsDrawWarning() { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) IsChecked()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) SetKeying(keying bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) SetDrawWarning(draw_warning bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) IsKeying() { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) IsDrawWarning()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) SetDeletable(deletable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) SetKeying(keying bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) IsDeletable() { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) IsKeying()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) GetEditedProperty() { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) SetDeletable(deletable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) GetEditedObject() { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) IsDeletable()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) UpdateProperty() { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) GetEditedProperty()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) AddFocusable(control Control, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) GetEditedObject()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) SetBottomEditor(editor Control, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) UpdateProperty()  {
+  panic("TODO: implement")
 }
 
-func  (me *EditorProperty) EmitChanged(property StringName, value Variant, field StringName, changing bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *EditorProperty) AddFocusable(control Control, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *EditorProperty) SetBottomEditor(editor Control, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *EditorProperty) EmitChanged(property StringName, value Variant, field StringName, changing bool, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

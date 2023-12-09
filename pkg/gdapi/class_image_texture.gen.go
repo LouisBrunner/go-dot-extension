@@ -25,26 +25,41 @@ func (me *ImageTexture) BaseClass() string {
   return "ImageTexture"
 }
 
-func  ImageTextureCreateFromImage(image Image, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ImageTexture) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ImageTexture) GetFormat() { // TODO: return value
-  // TODO: implement
+func (me *ImageTexture) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ImageTexture) SetImage(image Image, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  ImageTextureCreateFromImage(image Image, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ImageTexture) Update(image Image, ) { // TODO: return value
-  // TODO: implement
+func  (me *ImageTexture) GetFormat()  {
+  panic("TODO: implement")
 }
 
-func  (me *ImageTexture) SetSizeOverride(size Vector2i, ) { // TODO: return value
-  // TODO: implement
+func  (me *ImageTexture) SetImage(image Image, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ImageTexture) Update(image Image, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ImageTexture) SetSizeOverride(size Vector2i, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

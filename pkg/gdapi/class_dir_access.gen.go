@@ -25,138 +25,153 @@ func (me *DirAccess) BaseClass() string {
   return "DirAccess"
 }
 
-func  DirAccessOpen(path String, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *DirAccess) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  DirAccessGetOpenError() { // TODO: return value
-  // TODO: implement
+func (me *DirAccess) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *DirAccess) ListDirBegin() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  DirAccessOpen(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) GetNext() { // TODO: return value
-  // TODO: implement
+func  DirAccessGetOpenError()  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) CurrentIsDir() { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) ListDirBegin()  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) ListDirEnd() { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) GetNext()  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) GetFiles() { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) CurrentIsDir()  {
+  panic("TODO: implement")
 }
 
-func  DirAccessGetFilesAt(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) ListDirEnd()  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) GetDirectories() { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) GetFiles()  {
+  panic("TODO: implement")
 }
 
-func  DirAccessGetDirectoriesAt(path String, ) { // TODO: return value
-  // TODO: implement
+func  DirAccessGetFilesAt(path String, )  {
+  panic("TODO: implement")
 }
 
-func  DirAccessGetDriveCount() { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) GetDirectories()  {
+  panic("TODO: implement")
 }
 
-func  DirAccessGetDriveName(idx int, ) { // TODO: return value
-  // TODO: implement
+func  DirAccessGetDirectoriesAt(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) GetCurrentDrive() { // TODO: return value
-  // TODO: implement
+func  DirAccessGetDriveCount()  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) ChangeDir(to_dir String, ) { // TODO: return value
-  // TODO: implement
+func  DirAccessGetDriveName(idx int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) GetCurrentDir(include_drive bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) GetCurrentDrive()  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) MakeDir(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) ChangeDir(to_dir String, )  {
+  panic("TODO: implement")
 }
 
-func  DirAccessMakeDirAbsolute(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) GetCurrentDir(include_drive bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) MakeDirRecursive(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) MakeDir(path String, )  {
+  panic("TODO: implement")
 }
 
-func  DirAccessMakeDirRecursiveAbsolute(path String, ) { // TODO: return value
-  // TODO: implement
+func  DirAccessMakeDirAbsolute(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) FileExists(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) MakeDirRecursive(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) DirExists(path String, ) { // TODO: return value
-  // TODO: implement
+func  DirAccessMakeDirRecursiveAbsolute(path String, )  {
+  panic("TODO: implement")
 }
 
-func  DirAccessDirExistsAbsolute(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) FileExists(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) GetSpaceLeft() { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) DirExists(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) Copy(from String, to String, chmod_flags int, ) { // TODO: return value
-  // TODO: implement
+func  DirAccessDirExistsAbsolute(path String, )  {
+  panic("TODO: implement")
 }
 
-func  DirAccessCopyAbsolute(from String, to String, chmod_flags int, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) GetSpaceLeft()  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) Rename(from String, to String, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) Copy(from String, to String, chmod_flags int, )  {
+  panic("TODO: implement")
 }
 
-func  DirAccessRenameAbsolute(from String, to String, ) { // TODO: return value
-  // TODO: implement
+func  DirAccessCopyAbsolute(from String, to String, chmod_flags int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) Remove(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) Rename(from String, to String, )  {
+  panic("TODO: implement")
 }
 
-func  DirAccessRemoveAbsolute(path String, ) { // TODO: return value
-  // TODO: implement
+func  DirAccessRenameAbsolute(from String, to String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) SetIncludeNavigational(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) Remove(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) GetIncludeNavigational() { // TODO: return value
-  // TODO: implement
+func  DirAccessRemoveAbsolute(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) SetIncludeHidden(enable bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) SetIncludeNavigational(enable bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *DirAccess) GetIncludeHidden() { // TODO: return value
-  // TODO: implement
+func  (me *DirAccess) GetIncludeNavigational()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *DirAccess) SetIncludeHidden(enable bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *DirAccess) GetIncludeHidden()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

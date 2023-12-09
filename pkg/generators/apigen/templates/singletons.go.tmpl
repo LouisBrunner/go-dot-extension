@@ -1,3 +1,21 @@
 {{template "preamble"}}
 
-// TODO: missing
+import (
+  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+)
+
+type singletons struct {
+{{range .}}  {{.Name}} {{.Type}}
+{{end -}}
+}
+
+func newSingletons(iface gdc.Interface) *singletons {
+{{range .}}  str{{.Name}} := StringNameFromStr("{{.Name}}")
+  defer str{{.Name}}.Destroy()
+{{end}}  return &singletons{
+{{range .}}    {{.Name}}: {{.Name}}{
+      obj: iface.GlobalGetSingleton(str{{.Name}}.AsCPtr()),
+    },
+{{end -}}
+  }
+}

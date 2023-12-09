@@ -25,6 +25,21 @@ func (me *HSlider) BaseClass() string {
   return "HSlider"
 }
 
-// TODO: properties
 
-// TODO: signals
+
+// Enums
+
+func (me *HSlider) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *HSlider) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+
+// Methods
+
+// TODO: properties (class)
+
+// TODO: signals (class)

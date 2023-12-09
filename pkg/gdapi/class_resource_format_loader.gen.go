@@ -25,6 +25,10 @@ func (me *ResourceFormatLoader) BaseClass() string {
   return "ResourceFormatLoader"
 }
 
+
+
+// Enums
+
 type ResourceFormatLoaderCacheMode int
 const (
   ResourceFormatLoaderCacheModeCacheModeIgnore ResourceFormatLoaderCacheMode = 0
@@ -32,50 +36,61 @@ const (
   ResourceFormatLoaderCacheModeCacheModeReplace ResourceFormatLoaderCacheMode = 2
 )
 
-func  (me *ResourceFormatLoader) XGetRecognizedExtensions() { // TODO: return value
-  // TODO: implement
+func (me *ResourceFormatLoader) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ResourceFormatLoader) XRecognizePath(path String, type_ StringName, ) { // TODO: return value
-  // TODO: implement
+func (me *ResourceFormatLoader) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ResourceFormatLoader) XHandlesType(type_ StringName, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ResourceFormatLoader) XGetRecognizedExtensions()  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceFormatLoader) XGetResourceType(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceFormatLoader) XRecognizePath(path String, type_ StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceFormatLoader) XGetResourceScriptClass(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceFormatLoader) XHandlesType(type_ StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceFormatLoader) XGetResourceUid(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceFormatLoader) XGetResourceType(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceFormatLoader) XGetDependencies(path String, add_types bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceFormatLoader) XGetResourceScriptClass(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceFormatLoader) XRenameDependencies(path String, renames Dictionary, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceFormatLoader) XGetResourceUid(path String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceFormatLoader) XExists(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceFormatLoader) XGetDependencies(path String, add_types bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceFormatLoader) XGetClassesUsed(path String, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceFormatLoader) XRenameDependencies(path String, renames Dictionary, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ResourceFormatLoader) XLoad(path String, original_path String, use_sub_threads bool, cache_mode int, ) { // TODO: return value
-  // TODO: implement
+func  (me *ResourceFormatLoader) XExists(path String, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ResourceFormatLoader) XGetClassesUsed(path String, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ResourceFormatLoader) XLoad(path String, original_path String, use_sub_threads bool, cache_mode int, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

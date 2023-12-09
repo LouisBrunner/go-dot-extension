@@ -25,6 +25,10 @@ func (me *XRPositionalTracker) BaseClass() string {
   return "XRPositionalTracker"
 }
 
+
+
+// Enums
+
 type XRPositionalTrackerTrackerHand int
 const (
   XRPositionalTrackerTrackerHandTrackerHandUnknown XRPositionalTrackerTrackerHand = 0
@@ -32,70 +36,81 @@ const (
   XRPositionalTrackerTrackerHandTrackerHandRight XRPositionalTrackerTrackerHand = 2
 )
 
-func  (me *XRPositionalTracker) GetTrackerType() { // TODO: return value
-  // TODO: implement
+func (me *XRPositionalTracker) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *XRPositionalTracker) SetTrackerType(type_ XRServerTrackerType, ) { // TODO: return value
-  // TODO: implement
+func (me *XRPositionalTracker) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *XRPositionalTracker) GetTrackerName() { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *XRPositionalTracker) GetTrackerType()  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) SetTrackerName(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) SetTrackerType(type_ XRServerTrackerType, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) GetTrackerDesc() { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) GetTrackerName()  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) SetTrackerDesc(description String, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) SetTrackerName(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) GetTrackerProfile() { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) GetTrackerDesc()  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) SetTrackerProfile(profile String, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) SetTrackerDesc(description String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) GetTrackerHand() { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) GetTrackerProfile()  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) SetTrackerHand(hand XRPositionalTrackerTrackerHand, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) SetTrackerProfile(profile String, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) HasPose(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) GetTrackerHand()  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) GetPose(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) SetTrackerHand(hand XRPositionalTrackerTrackerHand, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) InvalidatePose(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) HasPose(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) SetPose(name StringName, transform Transform3D, linear_velocity Vector3, angular_velocity Vector3, tracking_confidence XRPoseTrackingConfidence, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) GetPose(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) GetInput(name StringName, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) InvalidatePose(name StringName, )  {
+  panic("TODO: implement")
 }
 
-func  (me *XRPositionalTracker) SetInput(name StringName, value Variant, ) { // TODO: return value
-  // TODO: implement
+func  (me *XRPositionalTracker) SetPose(name StringName, transform Transform3D, linear_velocity Vector3, angular_velocity Vector3, tracking_confidence XRPoseTrackingConfidence, )  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *XRPositionalTracker) GetInput(name StringName, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *XRPositionalTracker) SetInput(name StringName, value Variant, )  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

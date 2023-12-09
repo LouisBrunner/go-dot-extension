@@ -25,22 +25,37 @@ func (me *ConcavePolygonShape3D) BaseClass() string {
   return "ConcavePolygonShape3D"
 }
 
-func  (me *ConcavePolygonShape3D) SetFaces(faces PackedVector3Array, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *ConcavePolygonShape3D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *ConcavePolygonShape3D) GetFaces() { // TODO: return value
-  // TODO: implement
+func (me *ConcavePolygonShape3D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *ConcavePolygonShape3D) SetBackfaceCollisionEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *ConcavePolygonShape3D) SetFaces(faces PackedVector3Array, )  {
+  panic("TODO: implement")
 }
 
-func  (me *ConcavePolygonShape3D) IsBackfaceCollisionEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *ConcavePolygonShape3D) GetFaces()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *ConcavePolygonShape3D) SetBackfaceCollisionEnabled(enabled bool, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *ConcavePolygonShape3D) IsBackfaceCollisionEnabled()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

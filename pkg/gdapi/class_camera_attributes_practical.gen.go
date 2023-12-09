@@ -25,78 +25,93 @@ func (me *CameraAttributesPractical) BaseClass() string {
   return "CameraAttributesPractical"
 }
 
-func  (me *CameraAttributesPractical) SetDofBlurFarEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *CameraAttributesPractical) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *CameraAttributesPractical) IsDofBlurFarEnabled() { // TODO: return value
-  // TODO: implement
+func (me *CameraAttributesPractical) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *CameraAttributesPractical) SetDofBlurFarDistance(distance float32, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *CameraAttributesPractical) SetDofBlurFarEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) GetDofBlurFarDistance() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) IsDofBlurFarEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) SetDofBlurFarTransition(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) SetDofBlurFarDistance(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) GetDofBlurFarTransition() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) GetDofBlurFarDistance()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) SetDofBlurNearEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) SetDofBlurFarTransition(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) IsDofBlurNearEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) GetDofBlurFarTransition()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) SetDofBlurNearDistance(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) SetDofBlurNearEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) GetDofBlurNearDistance() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) IsDofBlurNearEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) SetDofBlurNearTransition(distance float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) SetDofBlurNearDistance(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) GetDofBlurNearTransition() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) GetDofBlurNearDistance()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) SetDofBlurAmount(amount float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) SetDofBlurNearTransition(distance float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) GetDofBlurAmount() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) GetDofBlurNearTransition()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) SetAutoExposureMaxSensitivity(max_sensitivity float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) SetDofBlurAmount(amount float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) GetAutoExposureMaxSensitivity() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) GetDofBlurAmount()  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) SetAutoExposureMinSensitivity(min_sensitivity float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) SetAutoExposureMaxSensitivity(max_sensitivity float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *CameraAttributesPractical) GetAutoExposureMinSensitivity() { // TODO: return value
-  // TODO: implement
+func  (me *CameraAttributesPractical) GetAutoExposureMaxSensitivity()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *CameraAttributesPractical) SetAutoExposureMinSensitivity(min_sensitivity float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *CameraAttributesPractical) GetAutoExposureMinSensitivity()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)

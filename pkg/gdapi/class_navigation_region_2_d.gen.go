@@ -25,90 +25,105 @@ func (me *NavigationRegion2D) BaseClass() string {
   return "NavigationRegion2D"
 }
 
-func  (me *NavigationRegion2D) SetNavigationPolygon(navigation_polygon NavigationPolygon, ) { // TODO: return value
-  // TODO: implement
+
+
+// Enums
+
+func (me *NavigationRegion2D) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
 }
 
-func  (me *NavigationRegion2D) GetNavigationPolygon() { // TODO: return value
-  // TODO: implement
+func (me *NavigationRegion2D) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
 }
 
-func  (me *NavigationRegion2D) SetEnabled(enabled bool, ) { // TODO: return value
-  // TODO: implement
+
+// Methods
+
+func  (me *NavigationRegion2D) SetNavigationPolygon(navigation_polygon NavigationPolygon, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) IsEnabled() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) GetNavigationPolygon()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) SetUseEdgeConnections(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) SetEnabled(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) GetUseEdgeConnections() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) IsEnabled()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) SetNavigationLayers(navigation_layers int, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) SetUseEdgeConnections(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) GetNavigationLayers() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) GetUseEdgeConnections()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) SetNavigationLayerValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) SetNavigationLayers(navigation_layers int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) GetNavigationLayerValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) GetNavigationLayers()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) SetConstrainAvoidance(enabled bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) SetNavigationLayerValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) GetConstrainAvoidance() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) GetNavigationLayerValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) SetAvoidanceLayers(layers int, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) SetConstrainAvoidance(enabled bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) GetAvoidanceLayers() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) GetConstrainAvoidance()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) SetAvoidanceLayerValue(layer_number int, value bool, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) SetAvoidanceLayers(layers int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) GetAvoidanceLayerValue(layer_number int, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) GetAvoidanceLayers()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) GetRegionRid() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) SetAvoidanceLayerValue(layer_number int, value bool, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) SetEnterCost(enter_cost float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) GetAvoidanceLayerValue(layer_number int, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) GetEnterCost() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) GetRegionRid()  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) SetTravelCost(travel_cost float32, ) { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) SetEnterCost(enter_cost float32, )  {
+  panic("TODO: implement")
 }
 
-func  (me *NavigationRegion2D) GetTravelCost() { // TODO: return value
-  // TODO: implement
+func  (me *NavigationRegion2D) GetEnterCost()  {
+  panic("TODO: implement")
 }
 
-// TODO: properties
+func  (me *NavigationRegion2D) SetTravelCost(travel_cost float32, )  {
+  panic("TODO: implement")
+}
 
-// TODO: signals
+func  (me *NavigationRegion2D) GetTravelCost()  {
+  panic("TODO: implement")
+}
+
+// TODO: properties (class)
+
+// TODO: signals (class)
