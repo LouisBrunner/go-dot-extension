@@ -36,6 +36,10 @@ const (
   FlowContainerAlignmentModeAlignmentEnd FlowContainerAlignmentMode = 2
 )
 
+func (me *FlowContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *FlowContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -41,6 +41,10 @@ const (
   Camera2DCamera2DProcessCallbackCamera2DProcessIdle Camera2DCamera2DProcessCallback = 1
 )
 
+func (me *Camera2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Camera2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

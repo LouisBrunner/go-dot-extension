@@ -71,6 +71,10 @@ const (
   CPUParticles2DEmissionShapeEmissionShapeMax CPUParticles2DEmissionShape = 6
 )
 
+func (me *CPUParticles2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CPUParticles2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

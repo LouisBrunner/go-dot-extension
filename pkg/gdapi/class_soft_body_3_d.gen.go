@@ -35,6 +35,10 @@ const (
   SoftBody3DDisableModeDisableModeKeepActive SoftBody3DDisableMode = 1
 )
 
+func (me *SoftBody3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SoftBody3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

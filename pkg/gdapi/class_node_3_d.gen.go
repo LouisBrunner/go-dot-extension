@@ -46,6 +46,10 @@ const (
   Node3DRotationEditModeRotationEditModeBasis Node3DRotationEditMode = 2
 )
 
+func (me *Node3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Node3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

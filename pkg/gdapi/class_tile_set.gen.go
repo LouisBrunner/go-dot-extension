@@ -80,6 +80,10 @@ const (
   TileSetTerrainModeTerrainModeMatchSides TileSetTerrainMode = 2
 )
 
+func (me *TileSet) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TileSet) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

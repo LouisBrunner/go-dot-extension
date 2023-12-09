@@ -29,6 +29,10 @@ func (me *EditorExportPlatformAndroid) BaseClass() string {
 
 // Enums
 
+func (me *EditorExportPlatformAndroid) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorExportPlatformAndroid) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

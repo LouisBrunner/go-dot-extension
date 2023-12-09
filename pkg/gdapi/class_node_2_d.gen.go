@@ -29,6 +29,10 @@ func (me *Node2D) BaseClass() string {
 
 // Enums
 
+func (me *Node2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Node2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

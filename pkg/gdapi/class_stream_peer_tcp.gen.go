@@ -37,6 +37,10 @@ const (
   StreamPeerTCPStatusStatusError StreamPeerTCPStatus = 3
 )
 
+func (me *StreamPeerTCP) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *StreamPeerTCP) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -47,6 +47,10 @@ const (
   SpriteBase3DAlphaCutModeAlphaCutHash SpriteBase3DAlphaCutMode = 3
 )
 
+func (me *SpriteBase3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SpriteBase3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

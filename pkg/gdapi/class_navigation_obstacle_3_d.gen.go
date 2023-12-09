@@ -29,6 +29,10 @@ func (me *NavigationObstacle3D) BaseClass() string {
 
 // Enums
 
+func (me *NavigationObstacle3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NavigationObstacle3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

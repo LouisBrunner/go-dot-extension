@@ -29,6 +29,10 @@ func (me *Semaphore) BaseClass() string {
 
 // Enums
 
+func (me *Semaphore) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Semaphore) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *TextServerAdvanced) BaseClass() string {
 
 // Enums
 
+func (me *TextServerAdvanced) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TextServerAdvanced) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

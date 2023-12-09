@@ -29,6 +29,10 @@ func (me *CenterContainer) BaseClass() string {
 
 // Enums
 
+func (me *CenterContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CenterContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *InputEventJoypadMotion) BaseClass() string {
 
 // Enums
 
+func (me *InputEventJoypadMotion) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *InputEventJoypadMotion) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

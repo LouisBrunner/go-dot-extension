@@ -37,6 +37,10 @@ const (
   AudioEffectFilterFilterDBFilter24Db AudioEffectFilterFilterDB = 3
 )
 
+func (me *AudioEffectFilter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioEffectFilter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -43,6 +43,10 @@ const (
   WebSocketPeerStateStateClosed WebSocketPeerState = 3
 )
 
+func (me *WebSocketPeer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *WebSocketPeer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

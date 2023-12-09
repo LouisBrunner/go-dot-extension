@@ -29,6 +29,10 @@ func (me *ShaderGlobalsOverride) BaseClass() string {
 
 // Enums
 
+func (me *ShaderGlobalsOverride) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ShaderGlobalsOverride) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

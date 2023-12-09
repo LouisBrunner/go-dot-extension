@@ -35,6 +35,10 @@ const (
   TimerTimerProcessCallbackTimerProcessIdle TimerTimerProcessCallback = 1
 )
 
+func (me *Timer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Timer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

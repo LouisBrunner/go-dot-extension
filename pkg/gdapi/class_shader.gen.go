@@ -38,6 +38,10 @@ const (
   ShaderModeModeFog ShaderMode = 4
 )
 
+func (me *Shader) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Shader) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

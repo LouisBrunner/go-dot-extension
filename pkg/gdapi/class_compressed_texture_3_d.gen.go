@@ -29,6 +29,10 @@ func (me *CompressedTexture3D) BaseClass() string {
 
 // Enums
 
+func (me *CompressedTexture3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CompressedTexture3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *BoneAttachment3D) BaseClass() string {
 
 // Enums
 
+func (me *BoneAttachment3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *BoneAttachment3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -36,6 +36,10 @@ const (
   PinJoint3DParamParamImpulseClamp PinJoint3DParam = 2
 )
 
+func (me *PinJoint3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PinJoint3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

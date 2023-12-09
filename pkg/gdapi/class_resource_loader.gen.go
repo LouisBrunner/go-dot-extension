@@ -44,6 +44,10 @@ const (
   ResourceLoaderCacheModeCacheModeReplace ResourceLoaderCacheMode = 2
 )
 
+func (me *ResourceLoader) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ResourceLoader) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

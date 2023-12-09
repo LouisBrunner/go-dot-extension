@@ -39,6 +39,10 @@ const (
   PortableCompressedTexture2DCompressionModeCompressionModeBptc PortableCompressedTexture2DCompressionMode = 5
 )
 
+func (me *PortableCompressedTexture2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PortableCompressedTexture2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

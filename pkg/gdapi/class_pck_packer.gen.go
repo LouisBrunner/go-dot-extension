@@ -29,6 +29,10 @@ func (me *PCKPacker) BaseClass() string {
 
 // Enums
 
+func (me *PCKPacker) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PCKPacker) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

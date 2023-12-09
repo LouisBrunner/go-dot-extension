@@ -29,6 +29,10 @@ func (me *GLTFBufferView) BaseClass() string {
 
 // Enums
 
+func (me *GLTFBufferView) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GLTFBufferView) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

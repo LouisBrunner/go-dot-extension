@@ -36,6 +36,10 @@ const (
   NinePatchRectAxisStretchModeAxisStretchModeTileFit NinePatchRectAxisStretchMode = 2
 )
 
+func (me *NinePatchRect) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NinePatchRect) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *Mutex) BaseClass() string {
 
 // Enums
 
+func (me *Mutex) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Mutex) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

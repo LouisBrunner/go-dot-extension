@@ -205,6 +205,10 @@ const (
   BaseMaterial3DDistanceFadeModeDistanceFadeObjectDither BaseMaterial3DDistanceFadeMode = 3
 )
 
+func (me *BaseMaterial3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *BaseMaterial3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

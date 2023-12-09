@@ -92,6 +92,10 @@ const (
   WindowWindowInitialPositionWindowInitialPositionCenterScreenWithKeyboardFocus WindowWindowInitialPosition = 5
 )
 
+func (me *Window) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Window) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

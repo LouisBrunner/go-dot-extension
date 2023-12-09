@@ -29,6 +29,10 @@ func (me *MissingNode) BaseClass() string {
 
 // Enums
 
+func (me *MissingNode) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MissingNode) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

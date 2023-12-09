@@ -35,6 +35,10 @@ const (
   OmniLight3DShadowModeShadowCube OmniLight3DShadowMode = 1
 )
 
+func (me *OmniLight3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *OmniLight3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

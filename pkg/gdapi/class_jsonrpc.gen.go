@@ -38,6 +38,10 @@ const (
   JSONRPCErrorCodeInternalError JSONRPCErrorCode = -32603
 )
 
+func (me *JSONRPC) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *JSONRPC) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

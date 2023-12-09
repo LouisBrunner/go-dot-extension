@@ -36,6 +36,10 @@ const (
   VisualShaderNodeSample3DSourceSourceMax VisualShaderNodeSample3DSource = 2
 )
 
+func (me *VisualShaderNodeSample3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeSample3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

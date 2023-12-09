@@ -36,6 +36,10 @@ const (
   AnimationNodeBlendSpace2DBlendModeBlendModeDiscreteCarry AnimationNodeBlendSpace2DBlendMode = 2
 )
 
+func (me *AnimationNodeBlendSpace2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimationNodeBlendSpace2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *SpringArm3D) BaseClass() string {
 
 // Enums
 
+func (me *SpringArm3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SpringArm3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

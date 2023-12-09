@@ -29,6 +29,10 @@ func (me *AudioBusLayout) BaseClass() string {
 
 // Enums
 
+func (me *AudioBusLayout) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioBusLayout) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

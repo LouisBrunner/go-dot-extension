@@ -37,6 +37,10 @@ const (
   VisualShaderNodeParameterQualifierQualMax VisualShaderNodeParameterQualifier = 3
 )
 
+func (me *VisualShaderNodeParameter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeParameter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

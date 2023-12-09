@@ -41,6 +41,10 @@ const (
   ResourceSaverSaverFlagsFlagReplaceSubresourcePaths ResourceSaverSaverFlags = 64
 )
 
+func (me *ResourceSaver) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ResourceSaver) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

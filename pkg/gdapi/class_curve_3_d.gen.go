@@ -29,6 +29,10 @@ func (me *Curve3D) BaseClass() string {
 
 // Enums
 
+func (me *Curve3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Curve3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

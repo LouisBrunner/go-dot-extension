@@ -99,130 +99,309 @@ func (me *Vector3i) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *Vector3i) MinAxisIndex() int {
-  panic("TODO: implement")
+func (me *Vector3i) MinAxisIndex() int {
+  name := StringNameFromStr("min_axis_index")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 3173160232) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Vector3i) MaxAxisIndex() int {
-  panic("TODO: implement")
+func (me *Vector3i) MaxAxisIndex() int {
+  name := StringNameFromStr("max_axis_index")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 3173160232) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Vector3i) Length() float32 {
-  panic("TODO: implement")
+func (me *Vector3i) Length() float32 {
+  name := StringNameFromStr("length")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 466405837) // FIXME: should cache?
+
+  var ret float32
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Vector3i) LengthSquared() int {
-  panic("TODO: implement")
+func (me *Vector3i) LengthSquared() int {
+  name := StringNameFromStr("length_squared")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 3173160232) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Vector3i) Sign() Vector3i {
-  panic("TODO: implement")
+func (me *Vector3i) Sign() Vector3i {
+  name := StringNameFromStr("sign")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 3729604559) // FIXME: should cache?
+
+  var ret Vector3i
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Vector3i) Abs() Vector3i {
-  panic("TODO: implement")
+func (me *Vector3i) Abs() Vector3i {
+  name := StringNameFromStr("abs")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 3729604559) // FIXME: should cache?
+
+  var ret Vector3i
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Vector3i) Clamp(min Vector3i, max Vector3i, ) Vector3i {
-  panic("TODO: implement")
+func (me *Vector3i) Clamp(min Vector3i, max Vector3i, ) Vector3i {
+  name := StringNameFromStr("clamp")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 1086892323) // FIXME: should cache?
+
+  var ret Vector3i
+  args := []gdc.ConstTypePtr{min.AsCTypePtr(), max.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Vector3i) Snapped(step Vector3i, ) Vector3i {
-  panic("TODO: implement")
+func (me *Vector3i) Snapped(step Vector3i, ) Vector3i {
+  name := StringNameFromStr("snapped")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 1989319750) // FIXME: should cache?
+
+  var ret Vector3i
+  args := []gdc.ConstTypePtr{step.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
 // Operators
 
-func (me *Vector3i) EqualsVariant(right Variant) bool {
-  panic("TODO: implement")
+func (me *Vector3i) EqualVariant(right Variant) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) NotEqualsVariant(right Variant) bool {
-  panic("TODO: implement")
+func (me *Vector3i) NotEqualVariant(right Variant) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) UnaryMinus() Vector3i {
-  panic("TODO: implement")
+func (me *Vector3i) Negate() Vector3i {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNegate, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  var ret Vector3i
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) UnaryPlus() Vector3i {
-  panic("TODO: implement")
+func (me *Vector3i) Positive() Vector3i {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpPositive, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  var ret Vector3i
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Vector3i) Not() bool {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) MultiplyInt(right int) Vector3i {
-  panic("TODO: implement")
+func (me *Vector3i) MultiplyInt(right Int) Vector3i {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  var ret Vector3i
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) DivideInt(right int) Vector3i {
-  panic("TODO: implement")
+func (me *Vector3i) DivideInt(right Int) Vector3i {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
+  var ret Vector3i
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) ModuloInt(right int) Vector3i {
-  panic("TODO: implement")
+func (me *Vector3i) ModuleInt(right Int) Vector3i {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpModule, me.Type(), right.Type()) // FIXME: cache
+  var ret Vector3i
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) MultiplyFloat32(right float32) Vector3 {
-  panic("TODO: implement")
+func (me *Vector3i) MultiplyFloat32(right Float) Vector3 {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  var ret Vector3
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) DivideFloat32(right float32) Vector3 {
-  panic("TODO: implement")
+func (me *Vector3i) DivideFloat32(right Float) Vector3 {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
+  var ret Vector3
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) EqualsVector3I(right Vector3i) bool {
-  panic("TODO: implement")
+func (me *Vector3i) EqualVector3I(right Vector3i) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) NotEqualsVector3I(right Vector3i) bool {
-  panic("TODO: implement")
+func (me *Vector3i) NotEqualVector3I(right Vector3i) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) LessThanVector3I(right Vector3i) bool {
-  panic("TODO: implement")
+func (me *Vector3i) LessVector3I(right Vector3i) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLess, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) LessThanOrEqualsVector3I(right Vector3i) bool {
-  panic("TODO: implement")
+func (me *Vector3i) LessEqualVector3I(right Vector3i) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLessEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) GreaterThanVector3I(right Vector3i) bool {
-  panic("TODO: implement")
+func (me *Vector3i) GreaterVector3I(right Vector3i) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreater, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) GreaterThanOrEqualsVector3I(right Vector3i) bool {
-  panic("TODO: implement")
+func (me *Vector3i) GreaterEqualVector3I(right Vector3i) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreaterEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Vector3i) AddVector3I(right Vector3i) Vector3i {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAdd, me.Type(), right.Type()) // FIXME: cache
+  var ret Vector3i
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Vector3i) SubtractVector3I(right Vector3i) Vector3i {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpSubtract, me.Type(), right.Type()) // FIXME: cache
+  var ret Vector3i
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Vector3i) MultiplyVector3I(right Vector3i) Vector3i {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  var ret Vector3i
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Vector3i) DivideVector3I(right Vector3i) Vector3i {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
+  var ret Vector3i
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Vector3i) ModuloVector3I(right Vector3i) Vector3i {
-  panic("TODO: implement")
+func (me *Vector3i) ModuleVector3I(right Vector3i) Vector3i {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpModule, me.Type(), right.Type()) // FIXME: cache
+  var ret Vector3i
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Vector3i) InDictionary(right Dictionary) bool {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Vector3i) InArray(right Array) bool {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: members (bclass)
+// Members
+
+func (me *Vector3i) X() int {
+  name := StringNameFromStr("x")
+  defer name.Destroy()
+
+  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  var ret int
+  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
+}
+
+func (me *Vector3i) SetX(value int) {
+  name := StringNameFromStr("x")
+  defer name.Destroy()
+
+  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+}
+
+func (me *Vector3i) Y() int {
+  name := StringNameFromStr("y")
+  defer name.Destroy()
+
+  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  var ret int
+  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
+}
+
+func (me *Vector3i) SetY(value int) {
+  name := StringNameFromStr("y")
+  defer name.Destroy()
+
+  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+}
+
+func (me *Vector3i) Z() int {
+  name := StringNameFromStr("z")
+  defer name.Destroy()
+
+  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  var ret int
+  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
+}
+
+func (me *Vector3i) SetZ(value int) {
+  name := StringNameFromStr("z")
+  defer name.Destroy()
+
+  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+}

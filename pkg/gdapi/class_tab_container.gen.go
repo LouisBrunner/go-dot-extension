@@ -29,6 +29,10 @@ func (me *TabContainer) BaseClass() string {
 
 // Enums
 
+func (me *TabContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TabContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

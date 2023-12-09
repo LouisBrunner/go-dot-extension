@@ -38,6 +38,10 @@ const (
   VisualShaderNodeMultiplyAddOpTypeOpTypeMax VisualShaderNodeMultiplyAddOpType = 4
 )
 
+func (me *VisualShaderNodeMultiplyAdd) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeMultiplyAdd) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

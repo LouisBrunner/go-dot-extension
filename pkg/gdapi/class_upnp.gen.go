@@ -62,6 +62,10 @@ const (
   UPNPUPNPResultUpnpResultUnknownError UPNPUPNPResult = 28
 )
 
+func (me *UPNP) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *UPNP) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

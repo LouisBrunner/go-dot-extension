@@ -29,6 +29,10 @@ func (me *TCPServer) BaseClass() string {
 
 // Enums
 
+func (me *TCPServer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TCPServer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

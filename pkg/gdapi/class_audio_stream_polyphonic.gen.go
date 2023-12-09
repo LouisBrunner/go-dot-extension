@@ -29,6 +29,10 @@ func (me *AudioStreamPolyphonic) BaseClass() string {
 
 // Enums
 
+func (me *AudioStreamPolyphonic) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioStreamPolyphonic) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

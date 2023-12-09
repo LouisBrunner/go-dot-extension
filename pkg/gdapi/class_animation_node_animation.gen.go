@@ -35,6 +35,10 @@ const (
   AnimationNodeAnimationPlayModePlayModeBackward AnimationNodeAnimationPlayMode = 1
 )
 
+func (me *AnimationNodeAnimation) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimationNodeAnimation) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

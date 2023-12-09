@@ -36,6 +36,10 @@ const (
   AnimationNodeStateMachineStateMachineTypeStateMachineTypeGrouped AnimationNodeStateMachineStateMachineType = 2
 )
 
+func (me *AnimationNodeStateMachine) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimationNodeStateMachine) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

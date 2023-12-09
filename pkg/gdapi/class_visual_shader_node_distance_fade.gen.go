@@ -29,6 +29,10 @@ func (me *VisualShaderNodeDistanceFade) BaseClass() string {
 
 // Enums
 
+func (me *VisualShaderNodeDistanceFade) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeDistanceFade) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

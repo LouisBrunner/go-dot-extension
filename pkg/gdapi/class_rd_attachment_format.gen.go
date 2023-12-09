@@ -29,6 +29,10 @@ func (me *RDAttachmentFormat) BaseClass() string {
 
 // Enums
 
+func (me *RDAttachmentFormat) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDAttachmentFormat) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

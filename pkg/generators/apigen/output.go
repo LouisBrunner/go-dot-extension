@@ -22,15 +22,6 @@ func getBuiltinClassSize(list []gencommon.ExtensionClassSize, config string) (*g
 	return nil, false
 }
 
-func getBuiltinClassMembers(list []gencommon.ExtensionClassMemberOffsetConfig, config string) (*gencommon.ExtensionClassMemberOffsetConfig, bool) {
-	for _, class := range list {
-		if class.GetBuildConfiguration() == config {
-			return &class, true
-		}
-	}
-	return nil, false
-}
-
 func renderClass(class gencommon.ExtensionClass, outputDir string) error {
 	name := strcase.ToSnake(class.Name)
 	err := renderFile("class", fmt.Sprintf("class_%s", name), class, outputDir)
@@ -59,16 +50,6 @@ func output(api *gencommon.ExtensionAPI, outputDir string) error {
 	err := renderFile("class_sizes", "classes_sizes", classSizes, outputDir)
 	if err != nil {
 		return fmt.Errorf("error rendering class sizes: %w", err)
-	}
-
-	classMembers, ok := getBuiltinClassMembers(api.BuiltinClassMemberOffsets, config)
-	if !ok {
-		return fmt.Errorf("no class size for %s", config)
-	}
-
-	err = renderFile("class_members", "classes_members", classMembers, outputDir)
-	if err != nil {
-		return fmt.Errorf("error rendering class members: %w", err)
 	}
 
 	for _, class := range api.BuiltinClasses {

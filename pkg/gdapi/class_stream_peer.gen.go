@@ -29,6 +29,10 @@ func (me *StreamPeer) BaseClass() string {
 
 // Enums
 
+func (me *StreamPeer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *StreamPeer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -40,6 +40,10 @@ const (
   VisualShaderNodeClampOpTypeOpTypeMax VisualShaderNodeClampOpType = 6
 )
 
+func (me *VisualShaderNodeClamp) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeClamp) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -42,6 +42,10 @@ const (
   AnimationPlayerAnimationMethodCallModeAnimationMethodCallImmediate AnimationPlayerAnimationMethodCallMode = 1
 )
 
+func (me *AnimationPlayer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimationPlayer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

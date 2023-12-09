@@ -37,6 +37,10 @@ const (
   CameraServerFeedImageFeedCbcrImage CameraServerFeedImage = 1
 )
 
+func (me *CameraServer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CameraServer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

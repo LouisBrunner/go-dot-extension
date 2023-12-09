@@ -36,6 +36,10 @@ const (
   GraphNodeOverlayOverlayPosition GraphNodeOverlay = 2
 )
 
+func (me *GraphNode) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GraphNode) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

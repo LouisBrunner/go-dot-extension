@@ -29,6 +29,10 @@ func (me *EditorFileSystemImportFormatSupportQuery) BaseClass() string {
 
 // Enums
 
+func (me *EditorFileSystemImportFormatSupportQuery) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorFileSystemImportFormatSupportQuery) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

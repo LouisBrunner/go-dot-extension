@@ -29,6 +29,10 @@ func (me *PhysicsRayQueryParameters3D) BaseClass() string {
 
 // Enums
 
+func (me *PhysicsRayQueryParameters3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PhysicsRayQueryParameters3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

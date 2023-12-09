@@ -38,6 +38,10 @@ const (
   GDExtensionManagerLoadStatusLoadStatusNeedsRestart GDExtensionManagerLoadStatus = 4
 )
 
+func (me *GDExtensionManager) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GDExtensionManager) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

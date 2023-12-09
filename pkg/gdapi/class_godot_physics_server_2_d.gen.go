@@ -29,6 +29,10 @@ func (me *GodotPhysicsServer2D) BaseClass() string {
 
 // Enums
 
+func (me *GodotPhysicsServer2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GodotPhysicsServer2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *WorkerThreadPool) BaseClass() string {
 
 // Enums
 
+func (me *WorkerThreadPool) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *WorkerThreadPool) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -36,6 +36,10 @@ const (
   ThreadPriorityPriorityHigh ThreadPriority = 2
 )
 
+func (me *Thread) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Thread) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

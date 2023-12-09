@@ -29,6 +29,10 @@ func (me *World3D) BaseClass() string {
 
 // Enums
 
+func (me *World3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *World3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

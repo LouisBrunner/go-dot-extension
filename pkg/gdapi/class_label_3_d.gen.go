@@ -46,6 +46,10 @@ const (
   Label3DAlphaCutModeAlphaCutHash Label3DAlphaCutMode = 3
 )
 
+func (me *Label3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Label3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

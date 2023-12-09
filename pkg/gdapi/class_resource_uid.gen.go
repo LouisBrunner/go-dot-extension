@@ -35,6 +35,10 @@ var (
 
 // Enums
 
+func (me *ResourceUID) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ResourceUID) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

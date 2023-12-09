@@ -60,6 +60,10 @@ const (
   GPUParticles3DTransformAlignTransformAlignZBillboardYToVelocity GPUParticles3DTransformAlign = 3
 )
 
+func (me *GPUParticles3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GPUParticles3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

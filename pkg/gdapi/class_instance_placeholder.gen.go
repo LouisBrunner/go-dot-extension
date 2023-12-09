@@ -29,6 +29,10 @@ func (me *InstancePlaceholder) BaseClass() string {
 
 // Enums
 
+func (me *InstancePlaceholder) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *InstancePlaceholder) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

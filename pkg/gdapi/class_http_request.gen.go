@@ -47,6 +47,10 @@ const (
   HTTPRequestResultResultTimeout HTTPRequestResult = 13
 )
 
+func (me *HTTPRequest) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *HTTPRequest) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

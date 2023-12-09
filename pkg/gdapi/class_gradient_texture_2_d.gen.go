@@ -43,6 +43,10 @@ const (
   GradientTexture2DRepeatRepeatMirror GradientTexture2DRepeat = 2
 )
 
+func (me *GradientTexture2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GradientTexture2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

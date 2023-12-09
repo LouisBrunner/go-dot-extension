@@ -50,6 +50,10 @@ const (
   VisualShaderNodeTextureTextureTypeTypeMax VisualShaderNodeTextureTextureType = 3
 )
 
+func (me *VisualShaderNodeTexture) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeTexture) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

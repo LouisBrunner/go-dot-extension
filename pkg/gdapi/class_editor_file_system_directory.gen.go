@@ -29,6 +29,10 @@ func (me *EditorFileSystemDirectory) BaseClass() string {
 
 // Enums
 
+func (me *EditorFileSystemDirectory) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorFileSystemDirectory) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

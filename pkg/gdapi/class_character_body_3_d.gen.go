@@ -42,6 +42,10 @@ const (
   CharacterBody3DPlatformOnLeavePlatformOnLeaveDoNothing CharacterBody3DPlatformOnLeave = 2
 )
 
+func (me *CharacterBody3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CharacterBody3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

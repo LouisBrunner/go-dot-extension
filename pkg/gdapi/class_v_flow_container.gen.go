@@ -29,6 +29,10 @@ func (me *VFlowContainer) BaseClass() string {
 
 // Enums
 
+func (me *VFlowContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VFlowContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

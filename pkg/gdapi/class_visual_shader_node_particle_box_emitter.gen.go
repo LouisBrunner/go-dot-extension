@@ -29,6 +29,10 @@ func (me *VisualShaderNodeParticleBoxEmitter) BaseClass() string {
 
 // Enums
 
+func (me *VisualShaderNodeParticleBoxEmitter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeParticleBoxEmitter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

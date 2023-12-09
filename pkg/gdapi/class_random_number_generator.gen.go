@@ -29,6 +29,10 @@ func (me *RandomNumberGenerator) BaseClass() string {
 
 // Enums
 
+func (me *RandomNumberGenerator) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RandomNumberGenerator) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -71,6 +71,10 @@ const (
   VisualShaderVaryingTypeVaryingTypeMax VisualShaderVaryingType = 8
 )
 
+func (me *VisualShader) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShader) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

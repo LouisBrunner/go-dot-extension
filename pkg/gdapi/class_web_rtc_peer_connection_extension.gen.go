@@ -29,6 +29,10 @@ func (me *WebRTCPeerConnectionExtension) BaseClass() string {
 
 // Enums
 
+func (me *WebRTCPeerConnectionExtension) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *WebRTCPeerConnectionExtension) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

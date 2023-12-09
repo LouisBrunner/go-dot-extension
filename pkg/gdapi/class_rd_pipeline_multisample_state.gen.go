@@ -29,6 +29,10 @@ func (me *RDPipelineMultisampleState) BaseClass() string {
 
 // Enums
 
+func (me *RDPipelineMultisampleState) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDPipelineMultisampleState) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *SphereMesh) BaseClass() string {
 
 // Enums
 
+func (me *SphereMesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SphereMesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

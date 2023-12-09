@@ -29,6 +29,10 @@ func (me *RectangleShape2D) BaseClass() string {
 
 // Enums
 
+func (me *RectangleShape2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RectangleShape2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

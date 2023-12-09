@@ -36,6 +36,10 @@ const (
   MultiplayerAPIRPCModeRpcModeAuthority MultiplayerAPIRPCMode = 2
 )
 
+func (me *MultiplayerAPI) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MultiplayerAPI) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *RDTextureView) BaseClass() string {
 
 // Enums
 
+func (me *RDTextureView) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDTextureView) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

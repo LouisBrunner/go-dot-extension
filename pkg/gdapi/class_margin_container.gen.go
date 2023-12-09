@@ -29,6 +29,10 @@ func (me *MarginContainer) BaseClass() string {
 
 // Enums
 
+func (me *MarginContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MarginContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

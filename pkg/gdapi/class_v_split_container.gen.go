@@ -29,6 +29,10 @@ func (me *VSplitContainer) BaseClass() string {
 
 // Enums
 
+func (me *VSplitContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VSplitContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

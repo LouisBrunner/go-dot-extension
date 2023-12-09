@@ -67,6 +67,10 @@ const (
   Generic6DOFJoint3DFlagFlagMax Generic6DOFJoint3DFlag = 6
 )
 
+func (me *Generic6DOFJoint3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Generic6DOFJoint3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

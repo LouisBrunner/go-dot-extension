@@ -29,6 +29,10 @@ func (me *ViewportTexture) BaseClass() string {
 
 // Enums
 
+func (me *ViewportTexture) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ViewportTexture) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

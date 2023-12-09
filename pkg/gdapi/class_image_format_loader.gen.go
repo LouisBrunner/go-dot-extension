@@ -36,6 +36,10 @@ const (
   ImageFormatLoaderLoaderFlagsFlagConvertColors ImageFormatLoaderLoaderFlags = 2
 )
 
+func (me *ImageFormatLoader) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ImageFormatLoader) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

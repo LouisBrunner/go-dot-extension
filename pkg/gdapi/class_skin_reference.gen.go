@@ -29,6 +29,10 @@ func (me *SkinReference) BaseClass() string {
 
 // Enums
 
+func (me *SkinReference) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SkinReference) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

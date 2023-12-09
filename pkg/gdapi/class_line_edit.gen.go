@@ -76,6 +76,10 @@ const (
   LineEditVirtualKeyboardTypeKeyboardTypeUrl LineEditVirtualKeyboardType = 7
 )
 
+func (me *LineEdit) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *LineEdit) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

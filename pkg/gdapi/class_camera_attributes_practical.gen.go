@@ -29,6 +29,10 @@ func (me *CameraAttributesPractical) BaseClass() string {
 
 // Enums
 
+func (me *CameraAttributesPractical) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CameraAttributesPractical) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

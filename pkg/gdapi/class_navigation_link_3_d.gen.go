@@ -29,6 +29,10 @@ func (me *NavigationLink3D) BaseClass() string {
 
 // Enums
 
+func (me *NavigationLink3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NavigationLink3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

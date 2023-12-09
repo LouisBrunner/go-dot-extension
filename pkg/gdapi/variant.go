@@ -14,10 +14,9 @@ type bclass interface {
 }
 
 type Variant struct {
-	iface   gdc.Interface
-	inner   bclass
-	isConst bool
-	ptr     gdc.VariantPtr
+	iface gdc.Interface
+	inner bclass
+	ptr   gdc.VariantPtr
 }
 
 // From pointers
@@ -31,9 +30,8 @@ func NewVariantWith(ptr gdc.VariantPtr) Variant {
 
 func NewVariantWithC(ptr gdc.ConstVariantPtr) Variant {
 	return Variant{
-		iface:   giface,
-		ptr:     gdc.VariantPtr(ptr),
-		isConst: true,
+		iface: giface,
+		ptr:   gdc.VariantPtr(ptr),
 	}
 }
 
@@ -51,8 +49,7 @@ func NewVariantFrom(inner bclass) Variant {
 }
 
 func NewVariantFromStr(str string) Variant {
-	gdstr := StringFromStr(str)
-	return NewVariantFrom(gdstr)
+	return NewVariantFrom(StringFromStr(str))
 }
 
 // func NewVariantFromInt(val int) Variant {
@@ -90,10 +87,11 @@ func (me Variant) AsCPtr() gdc.ConstVariantPtr {
 
 // Methods
 
+func (me Variant) Type() gdc.VariantType {
+	return me.iface.VariantGetType(gdc.ConstVariantPtr(me.ptr))
+}
+
 func (me *Variant) Destroy() {
-	if me.isConst {
-		return
-	}
 	if me.ptr == nil {
 		giface.VariantDestroy(me.ptr)
 		me.ptr = nil

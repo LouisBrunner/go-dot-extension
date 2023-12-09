@@ -44,6 +44,10 @@ const (
   AudioStreamPlayer3DDopplerTrackingDopplerTrackingPhysicsStep AudioStreamPlayer3DDopplerTracking = 2
 )
 
+func (me *AudioStreamPlayer3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioStreamPlayer3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

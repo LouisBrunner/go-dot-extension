@@ -29,6 +29,10 @@ func (me *PrismMesh) BaseClass() string {
 
 // Enums
 
+func (me *PrismMesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PrismMesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -80,6 +80,10 @@ const (
   FastNoiseLiteDomainWarpFractalTypeDomainWarpFractalIndependent FastNoiseLiteDomainWarpFractalType = 2
 )
 
+func (me *FastNoiseLite) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *FastNoiseLite) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

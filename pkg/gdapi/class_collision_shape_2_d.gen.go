@@ -29,6 +29,10 @@ func (me *CollisionShape2D) BaseClass() string {
 
 // Enums
 
+func (me *CollisionShape2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CollisionShape2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

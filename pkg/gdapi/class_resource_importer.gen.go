@@ -35,6 +35,10 @@ const (
   ResourceImporterImportOrderImportOrderScene ResourceImporterImportOrder = 100
 )
 
+func (me *ResourceImporter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ResourceImporter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

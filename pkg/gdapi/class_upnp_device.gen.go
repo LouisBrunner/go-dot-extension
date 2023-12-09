@@ -43,6 +43,10 @@ const (
   UPNPDeviceIGDStatusIgdStatusUnknownError UPNPDeviceIGDStatus = 9
 )
 
+func (me *UPNPDevice) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *UPNPDevice) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -36,6 +36,10 @@ const (
   LinkButtonUnderlineModeUnderlineModeNever LinkButtonUnderlineMode = 2
 )
 
+func (me *LinkButton) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *LinkButton) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

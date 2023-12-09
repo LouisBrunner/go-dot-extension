@@ -29,6 +29,10 @@ func (me *ProjectSettings) BaseClass() string {
 
 // Enums
 
+func (me *ProjectSettings) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ProjectSettings) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

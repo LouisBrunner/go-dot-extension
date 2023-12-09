@@ -29,6 +29,10 @@ func (me *JNISingleton) BaseClass() string {
 
 // Enums
 
+func (me *JNISingleton) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *JNISingleton) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

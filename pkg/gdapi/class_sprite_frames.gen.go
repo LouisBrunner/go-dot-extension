@@ -29,6 +29,10 @@ func (me *SpriteFrames) BaseClass() string {
 
 // Enums
 
+func (me *SpriteFrames) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SpriteFrames) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

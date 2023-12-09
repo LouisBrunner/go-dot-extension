@@ -107,6 +107,10 @@ const (
   TextEditGutterTypeGutterTypeCustom TextEditGutterType = 2
 )
 
+func (me *TextEdit) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TextEdit) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

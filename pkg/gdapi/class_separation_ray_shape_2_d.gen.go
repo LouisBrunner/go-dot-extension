@@ -29,6 +29,10 @@ func (me *SeparationRayShape2D) BaseClass() string {
 
 // Enums
 
+func (me *SeparationRayShape2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SeparationRayShape2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

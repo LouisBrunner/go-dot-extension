@@ -177,6 +177,10 @@ const (
   DisplayServerTTSUtteranceEventTtsUtteranceBoundary DisplayServerTTSUtteranceEvent = 3
 )
 
+func (me *DisplayServer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *DisplayServer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

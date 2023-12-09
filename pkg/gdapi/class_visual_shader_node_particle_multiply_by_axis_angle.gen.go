@@ -29,6 +29,10 @@ func (me *VisualShaderNodeParticleMultiplyByAxisAngle) BaseClass() string {
 
 // Enums
 
+func (me *VisualShaderNodeParticleMultiplyByAxisAngle) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeParticleMultiplyByAxisAngle) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

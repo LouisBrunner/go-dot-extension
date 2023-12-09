@@ -29,6 +29,10 @@ func (me *RichTextEffect) BaseClass() string {
 
 // Enums
 
+func (me *RichTextEffect) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RichTextEffect) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

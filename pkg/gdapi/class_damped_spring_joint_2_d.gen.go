@@ -29,6 +29,10 @@ func (me *DampedSpringJoint2D) BaseClass() string {
 
 // Enums
 
+func (me *DampedSpringJoint2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *DampedSpringJoint2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

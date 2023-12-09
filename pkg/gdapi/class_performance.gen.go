@@ -67,6 +67,10 @@ const (
   PerformanceMonitorMonitorMax PerformanceMonitor = 33
 )
 
+func (me *Performance) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Performance) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

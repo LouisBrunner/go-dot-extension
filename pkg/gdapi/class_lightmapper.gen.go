@@ -29,6 +29,10 @@ func (me *Lightmapper) BaseClass() string {
 
 // Enums
 
+func (me *Lightmapper) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Lightmapper) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -122,6 +122,10 @@ const (
   HTTPClientResponseCodeResponseNetworkAuthRequired HTTPClientResponseCode = 511
 )
 
+func (me *HTTPClient) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *HTTPClient) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

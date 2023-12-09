@@ -29,6 +29,10 @@ func (me *ZIPReader) BaseClass() string {
 
 // Enums
 
+func (me *ZIPReader) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ZIPReader) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

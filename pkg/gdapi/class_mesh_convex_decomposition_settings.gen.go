@@ -35,6 +35,10 @@ const (
   MeshConvexDecompositionSettingsModeConvexDecompositionModeTetrahedron MeshConvexDecompositionSettingsMode = 1
 )
 
+func (me *MeshConvexDecompositionSettings) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MeshConvexDecompositionSettings) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

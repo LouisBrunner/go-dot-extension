@@ -37,6 +37,10 @@ const (
   GDExtensionInitializationLevelInitializationLevelEditor GDExtensionInitializationLevel = 3
 )
 
+func (me *GDExtension) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GDExtension) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

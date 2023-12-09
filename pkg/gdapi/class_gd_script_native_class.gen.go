@@ -29,6 +29,10 @@ func (me *GDScriptNativeClass) BaseClass() string {
 
 // Enums
 
+func (me *GDScriptNativeClass) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GDScriptNativeClass) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

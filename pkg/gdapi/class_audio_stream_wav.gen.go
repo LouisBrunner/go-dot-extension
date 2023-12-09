@@ -44,6 +44,10 @@ const (
   AudioStreamWAVLoopModeLoopBackward AudioStreamWAVLoopMode = 3
 )
 
+func (me *AudioStreamWAV) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioStreamWAV) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *RefCounted) BaseClass() string {
 
 // Enums
 
+func (me *RefCounted) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RefCounted) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

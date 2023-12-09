@@ -29,6 +29,10 @@ func (me *CanvasGroup) BaseClass() string {
 
 // Enums
 
+func (me *CanvasGroup) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CanvasGroup) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

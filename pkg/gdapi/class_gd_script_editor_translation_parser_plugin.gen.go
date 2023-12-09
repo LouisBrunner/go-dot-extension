@@ -29,6 +29,10 @@ func (me *GDScriptEditorTranslationParserPlugin) BaseClass() string {
 
 // Enums
 
+func (me *GDScriptEditorTranslationParserPlugin) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GDScriptEditorTranslationParserPlugin) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

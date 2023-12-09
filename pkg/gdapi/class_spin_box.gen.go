@@ -29,6 +29,10 @@ func (me *SpinBox) BaseClass() string {
 
 // Enums
 
+func (me *SpinBox) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SpinBox) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

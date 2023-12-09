@@ -39,6 +39,10 @@ const (
   ConeTwistJoint3DParamParamMax ConeTwistJoint3DParam = 5
 )
 
+func (me *ConeTwistJoint3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ConeTwistJoint3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

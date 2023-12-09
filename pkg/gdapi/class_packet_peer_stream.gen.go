@@ -29,6 +29,10 @@ func (me *PacketPeerStream) BaseClass() string {
 
 // Enums
 
+func (me *PacketPeerStream) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PacketPeerStream) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

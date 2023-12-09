@@ -49,6 +49,10 @@ const (
   HingeJoint3DFlagFlagMax HingeJoint3DFlag = 2
 )
 
+func (me *HingeJoint3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *HingeJoint3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

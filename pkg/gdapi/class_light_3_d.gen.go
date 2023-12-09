@@ -62,6 +62,10 @@ const (
   Light3DBakeModeBakeDynamic Light3DBakeMode = 2
 )
 
+func (me *Light3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Light3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -206,6 +206,10 @@ const (
   TextServerStructuredTextParserStructuredTextCustom TextServerStructuredTextParser = 6
 )
 
+func (me *TextServer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TextServer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

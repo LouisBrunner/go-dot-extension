@@ -27,6 +27,10 @@ func (me *{{$Class}}) BaseClass() string {
 
 {{template "class_enums" .}}
 
+func (me *{{$Class}}) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *{{$Class}}) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

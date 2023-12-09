@@ -29,6 +29,10 @@ func (me *SubViewportContainer) BaseClass() string {
 
 // Enums
 
+func (me *SubViewportContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SubViewportContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

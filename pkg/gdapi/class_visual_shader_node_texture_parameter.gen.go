@@ -75,6 +75,10 @@ const (
   VisualShaderNodeTextureParameterTextureSourceSourceMax VisualShaderNodeTextureParameterTextureSource = 4
 )
 
+func (me *VisualShaderNodeTextureParameter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeTextureParameter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

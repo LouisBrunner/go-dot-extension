@@ -37,6 +37,10 @@ const (
   VisualShaderNodeParticleAcceleratorModeModeMax VisualShaderNodeParticleAcceleratorMode = 3
 )
 
+func (me *VisualShaderNodeParticleAccelerator) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeParticleAccelerator) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

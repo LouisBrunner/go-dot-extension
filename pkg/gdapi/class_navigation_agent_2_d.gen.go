@@ -29,6 +29,10 @@ func (me *NavigationAgent2D) BaseClass() string {
 
 // Enums
 
+func (me *NavigationAgent2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NavigationAgent2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

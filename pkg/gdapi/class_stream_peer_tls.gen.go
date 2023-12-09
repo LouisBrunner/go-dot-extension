@@ -38,6 +38,10 @@ const (
   StreamPeerTLSStatusStatusErrorHostnameMismatch StreamPeerTLSStatus = 4
 )
 
+func (me *StreamPeerTLS) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *StreamPeerTLS) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

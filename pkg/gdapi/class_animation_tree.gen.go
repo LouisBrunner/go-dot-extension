@@ -36,6 +36,10 @@ const (
   AnimationTreeAnimationProcessCallbackAnimationProcessManual AnimationTreeAnimationProcessCallback = 2
 )
 
+func (me *AnimationTree) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimationTree) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

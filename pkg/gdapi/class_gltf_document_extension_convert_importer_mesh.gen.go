@@ -29,6 +29,10 @@ func (me *GLTFDocumentExtensionConvertImporterMesh) BaseClass() string {
 
 // Enums
 
+func (me *GLTFDocumentExtensionConvertImporterMesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GLTFDocumentExtensionConvertImporterMesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

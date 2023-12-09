@@ -41,6 +41,10 @@ const (
   EditorScenePostImportPluginInternalImportCategoryInternalImportCategoryMax EditorScenePostImportPluginInternalImportCategory = 7
 )
 
+func (me *EditorScenePostImportPlugin) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorScenePostImportPlugin) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

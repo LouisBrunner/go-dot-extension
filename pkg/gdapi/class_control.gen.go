@@ -145,6 +145,10 @@ const (
   ControlTextDirectionTextDirectionRtl ControlTextDirection = 2
 )
 
+func (me *Control) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Control) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -38,6 +38,10 @@ const (
   TreeItemTreeCellModeCellModeCustom TreeItemTreeCellMode = 4
 )
 
+func (me *TreeItem) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TreeItem) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

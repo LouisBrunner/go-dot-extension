@@ -38,6 +38,10 @@ const (
   VisualShaderNodeParticleRandomnessOpTypeOpTypeMax VisualShaderNodeParticleRandomnessOpType = 4
 )
 
+func (me *VisualShaderNodeParticleRandomness) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeParticleRandomness) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -35,6 +35,10 @@ const (
   NavigationPathQueryResult3DPathSegmentTypePathSegmentTypeLink NavigationPathQueryResult3DPathSegmentType = 1
 )
 
+func (me *NavigationPathQueryResult3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NavigationPathQueryResult3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

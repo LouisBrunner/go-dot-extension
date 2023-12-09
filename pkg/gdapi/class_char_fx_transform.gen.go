@@ -29,6 +29,10 @@ func (me *CharFXTransform) BaseClass() string {
 
 // Enums
 
+func (me *CharFXTransform) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CharFXTransform) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

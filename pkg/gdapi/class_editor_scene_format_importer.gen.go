@@ -40,6 +40,10 @@ var (
 
 // Enums
 
+func (me *EditorSceneFormatImporter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorSceneFormatImporter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

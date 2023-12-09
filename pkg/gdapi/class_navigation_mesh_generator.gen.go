@@ -29,6 +29,10 @@ func (me *NavigationMeshGenerator) BaseClass() string {
 
 // Enums
 
+func (me *NavigationMeshGenerator) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NavigationMeshGenerator) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

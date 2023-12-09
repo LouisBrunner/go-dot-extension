@@ -29,6 +29,10 @@ func (me *PlaceholderMesh) BaseClass() string {
 
 // Enums
 
+func (me *PlaceholderMesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PlaceholderMesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -47,6 +47,10 @@ const (
   AStarGrid2DDiagonalModeDiagonalModeMax AStarGrid2DDiagonalMode = 4
 )
 
+func (me *AStarGrid2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AStarGrid2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

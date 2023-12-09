@@ -1,5 +1,7 @@
 # go-dot-extension
 
+**WARNING: This project is still in early development and the API might break frequently.**
+
 This project allows you to create a Godot extension in Go.
 
 The API is heavily inspired by https://github.com/ShadowApex/godot-go.

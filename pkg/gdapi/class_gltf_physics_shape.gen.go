@@ -29,6 +29,10 @@ func (me *GLTFPhysicsShape) BaseClass() string {
 
 // Enums
 
+func (me *GLTFPhysicsShape) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GLTFPhysicsShape) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

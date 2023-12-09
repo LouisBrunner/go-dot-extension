@@ -43,6 +43,10 @@ const (
   DirectionalLight3DSkyModeSkyModeSkyOnly DirectionalLight3DSkyMode = 2
 )
 
+func (me *DirectionalLight3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *DirectionalLight3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -45,6 +45,10 @@ const (
   SubViewportUpdateModeUpdateAlways SubViewportUpdateMode = 4
 )
 
+func (me *SubViewport) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SubViewport) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

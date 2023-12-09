@@ -29,6 +29,10 @@ func (me *AudioEffectLimiter) BaseClass() string {
 
 // Enums
 
+func (me *AudioEffectLimiter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioEffectLimiter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

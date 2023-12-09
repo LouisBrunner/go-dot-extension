@@ -65,6 +65,10 @@ const (
   EditorPluginAfterGUIInputAfterGuiInputCustom EditorPluginAfterGUIInput = 2
 )
 
+func (me *EditorPlugin) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorPlugin) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *PointMesh) BaseClass() string {
 
 // Enums
 
+func (me *PointMesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PointMesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

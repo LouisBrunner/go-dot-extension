@@ -29,6 +29,10 @@ func (me *JavaScriptBridge) BaseClass() string {
 
 // Enums
 
+func (me *JavaScriptBridge) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *JavaScriptBridge) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

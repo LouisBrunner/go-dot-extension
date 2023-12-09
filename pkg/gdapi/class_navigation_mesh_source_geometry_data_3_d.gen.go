@@ -29,6 +29,10 @@ func (me *NavigationMeshSourceGeometryData3D) BaseClass() string {
 
 // Enums
 
+func (me *NavigationMeshSourceGeometryData3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NavigationMeshSourceGeometryData3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

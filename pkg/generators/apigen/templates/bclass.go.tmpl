@@ -64,15 +64,62 @@ func (me *{{$Class}}) AsTypePtr() gdc.TypePtr {
 func (me *{{$Class}}) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.ptr)
 }
-{{template "class_methods" .}}
+
+// Methods
+{{- range .Methods}}
+
+func {{if .IsStatic }}{{$Class}}{{else}}(me *{{$Class}}) {{end }}{{mapMethod .Name -}}
+({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}) {{mapType .ReturnType}} {
+  name := StringNameFromStr("{{.Name}}")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantType{{pascalCased $.Name}}, name.AsCPtr(), {{.Hash}}) // FIXME: should cache?
+
+{{if .ReturnType}}  var ret {{mapType .ReturnType}}
+{{end}}  args := []gdc.ConstTypePtr{
+    {{- range .Arguments}}
+{{- if isExported (mapType .Type) -}}
+  {{mapName .Name}}.AsCTypePtr()
+{{- else -}}
+  gdc.ConstTypePtr(&{{mapName .Name}})
+{{- end -}}
+    , {{ end -}}
+  }
+  giface.CallPtrBuiltInMethod(methodPtr, {{if .IsStatic}}nil{{else}}me.AsTypePtr(){{end}}, unsafe.SliceData(args), {{if .ReturnType}}gdc.TypePtr(&ret){{else}}nil{{end}}, len(args))
+{{if .ReturnType}}  return ret
+{{end -}}
+}
+{{- end}}
 
 // Operators
 {{- range .Operators}}
 
 func (me *{{$Class}}) {{mapMethod (mapOperator .Name)}}{{if ne .RightType ""}}{{pascalCased (mapType .RightType)}}{{end -}}
-({{if ne .RightType ""}}right {{mapType .RightType}}{{end}}) {{mapType .ReturnType}} {
-  panic("TODO: implement")
+({{if ne .RightType ""}}right {{mapClass .RightType}}{{end}}) {{mapType .ReturnType}} {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOp{{mapOperator .Name}}, me.Type(), {{if ne .RightType ""}}right.Type(){{else}}gdc.VariantTypeNil{{end}}) // FIXME: cache
+  var ret {{mapType .ReturnType}}
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), {{if ne .RightType ""}}right.AsCTypePtr(){{else}}nil{{end}}, gdc.TypePtr(&ret))
+  return ret
 }
 {{- end}}
 
-// TODO: members (bclass)
+// Members
+{{- range .Members}}
+
+func (me *{{$Class}}) {{mapMethod .Name}}() {{mapType .Type}} {
+  name := StringNameFromStr("{{.Name}}")
+  defer name.Destroy()
+
+  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  var ret {{mapType .Type}}
+  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
+}
+
+func (me *{{$Class}}) Set{{pascalCased .Name}}(value {{mapType .Type}}) {
+  name := StringNameFromStr("{{.Name}}")
+  defer name.Destroy()
+
+  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+}
+{{- end}}

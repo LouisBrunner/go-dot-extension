@@ -29,6 +29,10 @@ func (me *PlaceholderTextureLayered) BaseClass() string {
 
 // Enums
 
+func (me *PlaceholderTextureLayered) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PlaceholderTextureLayered) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

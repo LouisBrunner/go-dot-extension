@@ -29,6 +29,10 @@ func (me *Script) BaseClass() string {
 
 // Enums
 
+func (me *Script) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Script) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

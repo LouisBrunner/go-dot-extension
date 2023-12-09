@@ -60,6 +60,10 @@ const (
   VisualShaderNodeCompareConditionCondMax VisualShaderNodeCompareCondition = 2
 )
 
+func (me *VisualShaderNodeCompare) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeCompare) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

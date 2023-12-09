@@ -41,6 +41,10 @@ const (
   ItemListSelectModeSelectMulti ItemListSelectMode = 1
 )
 
+func (me *ItemList) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ItemList) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

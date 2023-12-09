@@ -29,6 +29,10 @@ func (me *WebSocketMultiplayerPeer) BaseClass() string {
 
 // Enums
 
+func (me *WebSocketMultiplayerPeer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *WebSocketMultiplayerPeer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

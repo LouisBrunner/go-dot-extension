@@ -29,6 +29,10 @@ func (me *ResourceFormatImporterSaver) BaseClass() string {
 
 // Enums
 
+func (me *ResourceFormatImporterSaver) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ResourceFormatImporterSaver) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

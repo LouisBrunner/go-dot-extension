@@ -38,6 +38,10 @@ const (
   AESContextModeModeMax AESContextMode = 4
 )
 
+func (me *AESContext) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AESContext) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

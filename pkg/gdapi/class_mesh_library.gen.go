@@ -29,6 +29,10 @@ func (me *MeshLibrary) BaseClass() string {
 
 // Enums
 
+func (me *MeshLibrary) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MeshLibrary) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

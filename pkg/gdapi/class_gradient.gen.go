@@ -43,6 +43,10 @@ const (
   GradientColorSpaceGradientColorSpaceOklab GradientColorSpace = 2
 )
 
+func (me *Gradient) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Gradient) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

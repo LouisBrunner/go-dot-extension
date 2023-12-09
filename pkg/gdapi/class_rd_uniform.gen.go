@@ -29,6 +29,10 @@ func (me *RDUniform) BaseClass() string {
 
 // Enums
 
+func (me *RDUniform) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDUniform) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -44,6 +44,10 @@ const (
   RichTextLabelMenuItemsMenuMax RichTextLabelMenuItems = 2
 )
 
+func (me *RichTextLabel) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RichTextLabel) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

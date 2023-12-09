@@ -29,6 +29,10 @@ func (me *Engine) BaseClass() string {
 
 // Enums
 
+func (me *Engine) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Engine) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

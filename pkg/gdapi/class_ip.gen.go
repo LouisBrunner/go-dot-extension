@@ -52,6 +52,10 @@ const (
   IPTypeTypeAny IPType = 3
 )
 
+func (me *IP) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *IP) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -37,6 +37,10 @@ const (
   WebXRInterfaceTargetRayModeTargetRayModeScreen WebXRInterfaceTargetRayMode = 3
 )
 
+func (me *WebXRInterface) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *WebXRInterface) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

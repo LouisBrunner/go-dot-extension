@@ -43,6 +43,10 @@ const (
   VisualShaderNodePortTypePortTypeMax VisualShaderNodePortType = 9
 )
 
+func (me *VisualShaderNode) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNode) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

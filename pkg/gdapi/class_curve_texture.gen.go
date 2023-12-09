@@ -35,6 +35,10 @@ const (
   CurveTextureTextureModeTextureModeRed CurveTextureTextureMode = 1
 )
 
+func (me *CurveTexture) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CurveTexture) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *JSON) BaseClass() string {
 
 // Enums
 
+func (me *JSON) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *JSON) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

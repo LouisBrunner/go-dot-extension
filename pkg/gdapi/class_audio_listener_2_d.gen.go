@@ -29,6 +29,10 @@ func (me *AudioListener2D) BaseClass() string {
 
 // Enums
 
+func (me *AudioListener2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioListener2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

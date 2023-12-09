@@ -66,6 +66,10 @@ const (
   ScriptLanguageExtensionCodeCompletionKindCodeCompletionKindMax ScriptLanguageExtensionCodeCompletionKind = 10
 )
 
+func (me *ScriptLanguageExtension) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ScriptLanguageExtension) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

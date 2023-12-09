@@ -29,6 +29,10 @@ func (me *ImageFormatLoaderExtension) BaseClass() string {
 
 // Enums
 
+func (me *ImageFormatLoaderExtension) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ImageFormatLoaderExtension) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

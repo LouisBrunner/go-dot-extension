@@ -46,6 +46,10 @@ const (
   ColorPickerPickerShapeTypeShapeNone ColorPickerPickerShapeType = 4
 )
 
+func (me *ColorPicker) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ColorPicker) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

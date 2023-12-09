@@ -41,6 +41,10 @@ const (
   VisualShaderNodeSmoothStepOpTypeOpTypeMax VisualShaderNodeSmoothStepOpType = 7
 )
 
+func (me *VisualShaderNodeSmoothStep) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeSmoothStep) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

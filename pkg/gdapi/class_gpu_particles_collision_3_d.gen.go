@@ -29,6 +29,10 @@ func (me *GPUParticlesCollision3D) BaseClass() string {
 
 // Enums
 
+func (me *GPUParticlesCollision3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GPUParticlesCollision3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

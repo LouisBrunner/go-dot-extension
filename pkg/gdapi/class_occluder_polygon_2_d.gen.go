@@ -36,6 +36,10 @@ const (
   OccluderPolygon2DCullModeCullCounterClockwise OccluderPolygon2DCullMode = 2
 )
 
+func (me *OccluderPolygon2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *OccluderPolygon2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

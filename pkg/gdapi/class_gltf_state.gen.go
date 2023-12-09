@@ -38,6 +38,10 @@ var (
 
 // Enums
 
+func (me *GLTFState) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GLTFState) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

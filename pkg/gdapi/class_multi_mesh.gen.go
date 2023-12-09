@@ -35,6 +35,10 @@ const (
   MultiMeshTransformFormatTransform3D MultiMeshTransformFormat = 1
 )
 
+func (me *MultiMesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MultiMesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

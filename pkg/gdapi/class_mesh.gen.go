@@ -105,6 +105,10 @@ const (
   MeshBlendShapeModeBlendShapeModeRelative MeshBlendShapeMode = 1
 )
 
+func (me *Mesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Mesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

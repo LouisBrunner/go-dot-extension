@@ -56,6 +56,10 @@ const (
   SliderJoint3DParamParamMax SliderJoint3DParam = 22
 )
 
+func (me *SliderJoint3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SliderJoint3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

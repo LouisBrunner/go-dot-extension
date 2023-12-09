@@ -79,6 +79,10 @@ const (
   EnvironmentSDFGIYScaleSdfgiYScale100Percent EnvironmentSDFGIYScale = 2
 )
 
+func (me *Environment) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Environment) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

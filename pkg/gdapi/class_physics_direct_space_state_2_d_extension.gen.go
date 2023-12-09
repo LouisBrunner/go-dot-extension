@@ -29,6 +29,10 @@ func (me *PhysicsDirectSpaceState2DExtension) BaseClass() string {
 
 // Enums
 
+func (me *PhysicsDirectSpaceState2DExtension) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PhysicsDirectSpaceState2DExtension) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

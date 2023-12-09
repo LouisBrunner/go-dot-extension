@@ -38,6 +38,10 @@ const (
   VisualShaderNodeBillboardBillboardTypeBillboardTypeMax VisualShaderNodeBillboardBillboardType = 4
 )
 
+func (me *VisualShaderNodeBillboard) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeBillboard) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

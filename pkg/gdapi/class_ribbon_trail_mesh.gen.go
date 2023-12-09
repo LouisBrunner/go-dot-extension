@@ -35,6 +35,10 @@ const (
   RibbonTrailMeshShapeShapeCross RibbonTrailMeshShape = 1
 )
 
+func (me *RibbonTrailMesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RibbonTrailMesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -37,6 +37,10 @@ const (
   ProgressBarFillModeFillBottomToTop ProgressBarFillMode = 3
 )
 
+func (me *ProgressBar) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ProgressBar) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

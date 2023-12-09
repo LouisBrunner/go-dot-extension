@@ -29,6 +29,10 @@ func (me *ShaderMaterial) BaseClass() string {
 
 // Enums
 
+func (me *ShaderMaterial) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ShaderMaterial) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

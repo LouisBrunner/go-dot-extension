@@ -49,6 +49,10 @@ const (
   NavigationPathQueryParameters2DPathMetadataFlagsPathMetadataIncludeAll NavigationPathQueryParameters2DPathMetadataFlags = 7
 )
 
+func (me *NavigationPathQueryParameters2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NavigationPathQueryParameters2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

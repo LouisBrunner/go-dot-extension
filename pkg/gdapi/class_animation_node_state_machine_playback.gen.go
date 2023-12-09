@@ -29,6 +29,10 @@ func (me *AnimationNodeStateMachinePlayback) BaseClass() string {
 
 // Enums
 
+func (me *AnimationNodeStateMachinePlayback) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimationNodeStateMachinePlayback) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

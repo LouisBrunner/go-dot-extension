@@ -47,6 +47,10 @@ const (
   XRServerRotationModeDontResetRotation XRServerRotationMode = 2
 )
 
+func (me *XRServer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *XRServer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

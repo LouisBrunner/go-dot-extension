@@ -29,6 +29,10 @@ func (me *VScrollBar) BaseClass() string {
 
 // Enums
 
+func (me *VScrollBar) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VScrollBar) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

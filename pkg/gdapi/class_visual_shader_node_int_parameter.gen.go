@@ -37,6 +37,10 @@ const (
   VisualShaderNodeIntParameterHintHintMax VisualShaderNodeIntParameterHint = 3
 )
 
+func (me *VisualShaderNodeIntParameter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeIntParameter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

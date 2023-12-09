@@ -29,6 +29,10 @@ func (me *AtlasTexture) BaseClass() string {
 
 // Enums
 
+func (me *AtlasTexture) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AtlasTexture) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -46,6 +46,10 @@ const (
   FileAccessCompressionModeCompressionBrotli FileAccessCompressionMode = 4
 )
 
+func (me *FileAccess) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *FileAccess) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

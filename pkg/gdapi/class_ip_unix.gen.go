@@ -29,6 +29,10 @@ func (me *IPUnix) BaseClass() string {
 
 // Enums
 
+func (me *IPUnix) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *IPUnix) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

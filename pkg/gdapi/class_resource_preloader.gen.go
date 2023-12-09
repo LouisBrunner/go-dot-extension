@@ -29,6 +29,10 @@ func (me *ResourcePreloader) BaseClass() string {
 
 // Enums
 
+func (me *ResourcePreloader) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ResourcePreloader) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

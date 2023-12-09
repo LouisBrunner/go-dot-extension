@@ -50,6 +50,10 @@ const (
   MultiplayerPeerTransferModeTransferModeReliable MultiplayerPeerTransferMode = 2
 )
 
+func (me *MultiplayerPeer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MultiplayerPeer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

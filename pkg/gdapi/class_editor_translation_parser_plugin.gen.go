@@ -29,6 +29,10 @@ func (me *EditorTranslationParserPlugin) BaseClass() string {
 
 // Enums
 
+func (me *EditorTranslationParserPlugin) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorTranslationParserPlugin) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

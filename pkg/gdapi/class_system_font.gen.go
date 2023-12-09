@@ -29,6 +29,10 @@ func (me *SystemFont) BaseClass() string {
 
 // Enums
 
+func (me *SystemFont) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SystemFont) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

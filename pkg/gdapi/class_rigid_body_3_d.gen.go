@@ -47,6 +47,10 @@ const (
   RigidBody3DDampModeDampModeReplace RigidBody3DDampMode = 1
 )
 
+func (me *RigidBody3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RigidBody3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

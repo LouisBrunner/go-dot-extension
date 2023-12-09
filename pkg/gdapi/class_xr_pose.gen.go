@@ -36,6 +36,10 @@ const (
   XRPoseTrackingConfidenceXrTrackingConfidenceHigh XRPoseTrackingConfidence = 2
 )
 
+func (me *XRPose) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *XRPose) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

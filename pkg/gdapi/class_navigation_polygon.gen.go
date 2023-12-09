@@ -29,6 +29,10 @@ func (me *NavigationPolygon) BaseClass() string {
 
 // Enums
 
+func (me *NavigationPolygon) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NavigationPolygon) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

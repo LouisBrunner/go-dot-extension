@@ -35,6 +35,10 @@ var (
 
 // Enums
 
+func (me *AnimatedTexture) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimatedTexture) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *MovieWriter) BaseClass() string {
 
 // Enums
 
+func (me *MovieWriter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MovieWriter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

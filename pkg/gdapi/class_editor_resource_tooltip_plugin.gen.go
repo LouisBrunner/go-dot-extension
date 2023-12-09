@@ -29,6 +29,10 @@ func (me *EditorResourceTooltipPlugin) BaseClass() string {
 
 // Enums
 
+func (me *EditorResourceTooltipPlugin) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorResourceTooltipPlugin) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

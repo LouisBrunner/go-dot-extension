@@ -13,6 +13,13 @@ func StringFromStr(str string) *String {
 	}
 }
 
+func StringFromPtr(ptr gdc.StringPtr) String {
+	return String{
+		iface: giface,
+		ptr:   gdc.TypePtr(ptr),
+	}
+}
+
 func (me *String) AsPtr() gdc.StringPtr {
 	return gdc.StringPtr(me.ptr)
 }

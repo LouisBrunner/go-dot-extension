@@ -42,6 +42,10 @@ const (
   ReflectionProbeAmbientModeAmbientColor ReflectionProbeAmbientMode = 2
 )
 
+func (me *ReflectionProbe) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ReflectionProbe) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

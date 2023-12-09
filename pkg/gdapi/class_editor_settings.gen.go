@@ -35,6 +35,10 @@ var (
 
 // Enums
 
+func (me *EditorSettings) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorSettings) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *SkeletonModification2DStackHolder) BaseClass() string {
 
 // Enums
 
+func (me *SkeletonModification2DStackHolder) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SkeletonModification2DStackHolder) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

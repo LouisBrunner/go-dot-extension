@@ -29,6 +29,10 @@ func (me *OfflineMultiplayerPeer) BaseClass() string {
 
 // Enums
 
+func (me *OfflineMultiplayerPeer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *OfflineMultiplayerPeer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

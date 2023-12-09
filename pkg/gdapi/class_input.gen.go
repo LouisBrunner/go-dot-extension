@@ -59,6 +59,10 @@ const (
   InputCursorShapeCursorHelp InputCursorShape = 16
 )
 
+func (me *Input) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Input) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

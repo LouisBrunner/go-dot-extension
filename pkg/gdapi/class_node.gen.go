@@ -115,6 +115,10 @@ const (
   NodeInternalModeInternalModeBack NodeInternalMode = 2
 )
 
+func (me *Node) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Node) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

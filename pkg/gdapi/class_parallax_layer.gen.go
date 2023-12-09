@@ -29,6 +29,10 @@ func (me *ParallaxLayer) BaseClass() string {
 
 // Enums
 
+func (me *ParallaxLayer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ParallaxLayer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

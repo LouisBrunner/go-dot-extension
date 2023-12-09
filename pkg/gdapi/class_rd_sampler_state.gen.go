@@ -29,6 +29,10 @@ func (me *RDSamplerState) BaseClass() string {
 
 // Enums
 
+func (me *RDSamplerState) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDSamplerState) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *AudioEffectReverb) BaseClass() string {
 
 // Enums
 
+func (me *AudioEffectReverb) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioEffectReverb) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

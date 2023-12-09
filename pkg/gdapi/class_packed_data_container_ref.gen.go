@@ -29,6 +29,10 @@ func (me *PackedDataContainerRef) BaseClass() string {
 
 // Enums
 
+func (me *PackedDataContainerRef) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PackedDataContainerRef) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

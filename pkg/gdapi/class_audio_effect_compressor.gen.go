@@ -29,6 +29,10 @@ func (me *AudioEffectCompressor) BaseClass() string {
 
 // Enums
 
+func (me *AudioEffectCompressor) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioEffectCompressor) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -61,6 +61,8 @@ func mapName(n string) string {
 		return "var_"
 	case "string":
 		return "string_"
+	case "len":
+		return "len_"
 	}
 	return n
 }
@@ -143,45 +145,57 @@ func mapClass(name string) string {
 func mapOperator(name string) string {
 	switch name {
 	case "==":
-		return "Equals"
+		return "Equal"
 	case "!=":
-		return "NotEquals"
+		return "NotEqual"
 	case "<":
-		return "LessThan"
+		return "Less"
 	case "<=":
-		return "LessThanOrEquals"
+		return "LessEqual"
 	case ">":
-		return "GreaterThan"
+		return "Greater"
 	case ">=":
-		return "GreaterThanOrEquals"
+		return "GreaterEqual"
 	case "+":
 		return "Add"
 	case "-":
 		return "Subtract"
 	case "unary+":
-		return "UnaryPlus"
+		return "Positive"
 	case "unary-":
-		return "UnaryMinus"
+		return "Negate"
 	case "*":
 		return "Multiply"
 	case "/":
 		return "Divide"
 	case "**":
-		return "Exponent"
+		return "Power"
 	case "%":
-		return "Modulo"
+		return "Module"
 	case "&":
-		return "BitwiseAnd"
+		return "BitAnd"
 	case "|":
-		return "BitwiseOr"
+		return "BitOr"
 	case "^":
-		return "BitwiseXor"
-	case "<<":
-		return "LeftShift"
-	case ">>":
-		return "RightShift"
+		return "BitXor"
 	case "~":
-		return "BitwiseNot"
+		return "BitNegate"
+	case "<<":
+		return "ShiftLeft"
+	case ">>":
+		return "ShiftRight"
+	case "and":
+		return "And"
+	case "or":
+		return "Or"
+	case "xor":
+		return "Xor"
+	case "not":
+		return "Not"
+	case "in":
+		return "In"
+	case "max":
+		return "Max"
 	default:
 		return name
 	}

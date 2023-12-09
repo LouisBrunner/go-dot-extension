@@ -29,6 +29,10 @@ func (me *PlaceholderTexture2DArray) BaseClass() string {
 
 // Enums
 
+func (me *PlaceholderTexture2DArray) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PlaceholderTexture2DArray) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

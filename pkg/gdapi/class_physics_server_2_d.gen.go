@@ -163,6 +163,10 @@ const (
   PhysicsServer2DProcessInfoInfoIslandCount PhysicsServer2DProcessInfo = 2
 )
 
+func (me *PhysicsServer2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PhysicsServer2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

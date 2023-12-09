@@ -29,6 +29,10 @@ func (me *CapsuleShape3D) BaseClass() string {
 
 // Enums
 
+func (me *CapsuleShape3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CapsuleShape3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

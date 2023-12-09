@@ -36,6 +36,10 @@ const (
   TextureLayeredLayeredTypeLayeredTypeCubemapArray TextureLayeredLayeredType = 2
 )
 
+func (me *TextureLayered) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TextureLayered) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

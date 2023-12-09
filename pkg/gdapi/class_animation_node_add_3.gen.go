@@ -29,6 +29,10 @@ func (me *AnimationNodeAdd3) BaseClass() string {
 
 // Enums
 
+func (me *AnimationNodeAdd3) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimationNodeAdd3) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

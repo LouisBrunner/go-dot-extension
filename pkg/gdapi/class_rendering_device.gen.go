@@ -627,6 +627,10 @@ const (
   RenderingDeviceMemoryTypeMemoryTotal RenderingDeviceMemoryType = 2
 )
 
+func (me *RenderingDevice) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RenderingDevice) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *InputEventMIDI) BaseClass() string {
 
 // Enums
 
+func (me *InputEventMIDI) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *InputEventMIDI) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

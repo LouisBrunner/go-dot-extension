@@ -50,6 +50,10 @@ const (
   TextureRectStretchModeStretchKeepAspectCovered TextureRectStretchMode = 6
 )
 
+func (me *TextureRect) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TextureRect) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

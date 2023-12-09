@@ -29,6 +29,10 @@ func (me *DirAccess) BaseClass() string {
 
 // Enums
 
+func (me *DirAccess) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *DirAccess) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

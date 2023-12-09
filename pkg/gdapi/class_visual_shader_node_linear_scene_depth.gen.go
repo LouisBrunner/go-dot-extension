@@ -29,6 +29,10 @@ func (me *VisualShaderNodeLinearSceneDepth) BaseClass() string {
 
 // Enums
 
+func (me *VisualShaderNodeLinearSceneDepth) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeLinearSceneDepth) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

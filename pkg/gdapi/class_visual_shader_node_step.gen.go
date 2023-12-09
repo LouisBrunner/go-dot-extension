@@ -41,6 +41,10 @@ const (
   VisualShaderNodeStepOpTypeOpTypeMax VisualShaderNodeStepOpType = 7
 )
 
+func (me *VisualShaderNodeStep) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeStep) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

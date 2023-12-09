@@ -40,6 +40,10 @@ const (
   GPUParticlesCollisionSDF3DResolutionResolutionMax GPUParticlesCollisionSDF3DResolution = 6
 )
 
+func (me *GPUParticlesCollisionSDF3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GPUParticlesCollisionSDF3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

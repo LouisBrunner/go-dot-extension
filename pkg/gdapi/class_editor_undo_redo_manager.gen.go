@@ -36,6 +36,10 @@ const (
   EditorUndoRedoManagerSpecialHistoryInvalidHistory EditorUndoRedoManagerSpecialHistory = -99
 )
 
+func (me *EditorUndoRedoManager) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorUndoRedoManager) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

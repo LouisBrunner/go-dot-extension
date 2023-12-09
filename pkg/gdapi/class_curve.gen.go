@@ -36,6 +36,10 @@ const (
   CurveTangentModeTangentModeCount CurveTangentMode = 2
 )
 
+func (me *Curve) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Curve) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

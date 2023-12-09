@@ -29,6 +29,10 @@ func (me *WorldBoundaryShape2D) BaseClass() string {
 
 // Enums
 
+func (me *WorldBoundaryShape2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *WorldBoundaryShape2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

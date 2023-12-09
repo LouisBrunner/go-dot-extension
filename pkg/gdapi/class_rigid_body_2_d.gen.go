@@ -54,6 +54,10 @@ const (
   RigidBody2DCCDModeCcdModeCastShape RigidBody2DCCDMode = 2
 )
 
+func (me *RigidBody2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RigidBody2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

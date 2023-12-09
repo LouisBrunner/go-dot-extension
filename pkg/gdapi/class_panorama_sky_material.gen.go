@@ -29,6 +29,10 @@ func (me *PanoramaSkyMaterial) BaseClass() string {
 
 // Enums
 
+func (me *PanoramaSkyMaterial) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PanoramaSkyMaterial) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

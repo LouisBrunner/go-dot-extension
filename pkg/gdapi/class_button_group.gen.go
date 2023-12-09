@@ -29,6 +29,10 @@ func (me *ButtonGroup) BaseClass() string {
 
 // Enums
 
+func (me *ButtonGroup) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ButtonGroup) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

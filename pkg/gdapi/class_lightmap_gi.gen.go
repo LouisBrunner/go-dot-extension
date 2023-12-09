@@ -68,6 +68,10 @@ const (
   LightmapGIEnvironmentModeEnvironmentModeCustomColor LightmapGIEnvironmentMode = 3
 )
 
+func (me *LightmapGI) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *LightmapGI) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

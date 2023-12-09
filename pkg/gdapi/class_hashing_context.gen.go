@@ -36,6 +36,10 @@ const (
   HashingContextHashTypeHashSha256 HashingContextHashType = 2
 )
 
+func (me *HashingContext) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *HashingContext) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

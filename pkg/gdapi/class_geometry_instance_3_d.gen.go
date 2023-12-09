@@ -60,6 +60,10 @@ const (
   GeometryInstance3DVisibilityRangeFadeModeVisibilityRangeFadeDependencies GeometryInstance3DVisibilityRangeFadeMode = 2
 )
 
+func (me *GeometryInstance3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GeometryInstance3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

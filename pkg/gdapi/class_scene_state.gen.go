@@ -37,6 +37,10 @@ const (
   SceneStateGenEditStateGenEditStateMainInherited SceneStateGenEditState = 3
 )
 
+func (me *SceneState) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SceneState) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

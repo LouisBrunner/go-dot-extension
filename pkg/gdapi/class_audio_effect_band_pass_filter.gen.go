@@ -29,6 +29,10 @@ func (me *AudioEffectBandPassFilter) BaseClass() string {
 
 // Enums
 
+func (me *AudioEffectBandPassFilter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioEffectBandPassFilter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *RDVertexAttribute) BaseClass() string {
 
 // Enums
 
+func (me *RDVertexAttribute) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDVertexAttribute) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

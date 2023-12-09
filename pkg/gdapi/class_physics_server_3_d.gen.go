@@ -243,6 +243,10 @@ const (
   PhysicsServer3DBodyAxisBodyAxisAngularZ PhysicsServer3DBodyAxis = 32
 )
 
+func (me *PhysicsServer3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PhysicsServer3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *AnimatableBody2D) BaseClass() string {
 
 // Enums
 
+func (me *AnimatableBody2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimatableBody2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *ParallaxBackground) BaseClass() string {
 
 // Enums
 
+func (me *ParallaxBackground) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ParallaxBackground) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

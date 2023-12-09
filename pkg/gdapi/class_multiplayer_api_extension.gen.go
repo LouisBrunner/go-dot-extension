@@ -29,6 +29,10 @@ func (me *MultiplayerAPIExtension) BaseClass() string {
 
 // Enums
 
+func (me *MultiplayerAPIExtension) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MultiplayerAPIExtension) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

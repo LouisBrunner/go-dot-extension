@@ -29,6 +29,10 @@ func (me *LabelSettings) BaseClass() string {
 
 // Enums
 
+func (me *LabelSettings) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *LabelSettings) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

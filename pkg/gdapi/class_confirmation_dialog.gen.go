@@ -29,6 +29,10 @@ func (me *ConfirmationDialog) BaseClass() string {
 
 // Enums
 
+func (me *ConfirmationDialog) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ConfirmationDialog) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

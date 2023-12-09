@@ -53,6 +53,10 @@ const (
   NavigationMeshSourceGeometryModeSourceGeometryMax NavigationMeshSourceGeometryMode = 3
 )
 
+func (me *NavigationMesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NavigationMesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *PolygonPathFinder) BaseClass() string {
 
 // Enums
 
+func (me *PolygonPathFinder) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PolygonPathFinder) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

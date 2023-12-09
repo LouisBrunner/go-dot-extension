@@ -29,6 +29,10 @@ func (me *ShapeCast2D) BaseClass() string {
 
 // Enums
 
+func (me *ShapeCast2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ShapeCast2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

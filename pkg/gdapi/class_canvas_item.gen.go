@@ -70,6 +70,10 @@ const (
   CanvasItemClipChildrenModeClipChildrenMax CanvasItemClipChildrenMode = 3
 )
 
+func (me *CanvasItem) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CanvasItem) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

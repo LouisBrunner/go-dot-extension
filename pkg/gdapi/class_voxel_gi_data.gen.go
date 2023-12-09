@@ -29,6 +29,10 @@ func (me *VoxelGIData) BaseClass() string {
 
 // Enums
 
+func (me *VoxelGIData) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VoxelGIData) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

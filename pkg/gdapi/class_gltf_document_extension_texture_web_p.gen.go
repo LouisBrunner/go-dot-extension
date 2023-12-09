@@ -29,6 +29,10 @@ func (me *GLTFDocumentExtensionTextureWebP) BaseClass() string {
 
 // Enums
 
+func (me *GLTFDocumentExtensionTextureWebP) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GLTFDocumentExtensionTextureWebP) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

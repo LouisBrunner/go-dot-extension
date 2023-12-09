@@ -29,6 +29,10 @@ func (me *PhysicsMaterial) BaseClass() string {
 
 // Enums
 
+func (me *PhysicsMaterial) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PhysicsMaterial) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -36,6 +36,10 @@ const (
   SplitContainerDraggerVisibilityDraggerHiddenCollapsed SplitContainerDraggerVisibility = 2
 )
 
+func (me *SplitContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SplitContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

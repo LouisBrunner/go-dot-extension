@@ -29,6 +29,10 @@ func (me *InputEventAction) BaseClass() string {
 
 // Enums
 
+func (me *InputEventAction) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *InputEventAction) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

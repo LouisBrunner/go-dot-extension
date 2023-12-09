@@ -29,6 +29,10 @@ func (me *StreamPeerGZIP) BaseClass() string {
 
 // Enums
 
+func (me *StreamPeerGZIP) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *StreamPeerGZIP) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *CheckBox) BaseClass() string {
 
 // Enums
 
+func (me *CheckBox) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CheckBox) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

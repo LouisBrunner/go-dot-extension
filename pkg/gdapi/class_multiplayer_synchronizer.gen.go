@@ -36,6 +36,10 @@ const (
   MultiplayerSynchronizerVisibilityUpdateModeVisibilityProcessNone MultiplayerSynchronizerVisibilityUpdateMode = 2
 )
 
+func (me *MultiplayerSynchronizer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MultiplayerSynchronizer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

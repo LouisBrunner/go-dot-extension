@@ -86,6 +86,10 @@ const (
   ParticleProcessMaterialCollisionModeCollisionMax ParticleProcessMaterialCollisionMode = 3
 )
 
+func (me *ParticleProcessMaterial) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ParticleProcessMaterial) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

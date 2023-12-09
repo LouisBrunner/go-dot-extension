@@ -29,6 +29,10 @@ func (me *GLTFAccessor) BaseClass() string {
 
 // Enums
 
+func (me *GLTFAccessor) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GLTFAccessor) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

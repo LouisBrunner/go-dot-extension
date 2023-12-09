@@ -40,6 +40,10 @@ const (
   XMLParserNodeTypeNodeUnknown XMLParserNodeType = 6
 )
 
+func (me *XMLParser) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *XMLParser) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

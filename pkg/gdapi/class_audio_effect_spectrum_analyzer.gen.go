@@ -39,6 +39,10 @@ const (
   AudioEffectSpectrumAnalyzerFFTSizeFftSizeMax AudioEffectSpectrumAnalyzerFFTSize = 5
 )
 
+func (me *AudioEffectSpectrumAnalyzer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioEffectSpectrumAnalyzer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

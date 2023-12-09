@@ -40,6 +40,10 @@ const (
   ThemeDataTypeDataTypeMax ThemeDataType = 6
 )
 
+func (me *Theme) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Theme) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

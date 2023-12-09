@@ -29,6 +29,10 @@ func (me *GrooveJoint2D) BaseClass() string {
 
 // Enums
 
+func (me *GrooveJoint2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GrooveJoint2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

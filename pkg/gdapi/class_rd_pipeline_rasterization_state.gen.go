@@ -29,6 +29,10 @@ func (me *RDPipelineRasterizationState) BaseClass() string {
 
 // Enums
 
+func (me *RDPipelineRasterizationState) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDPipelineRasterizationState) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

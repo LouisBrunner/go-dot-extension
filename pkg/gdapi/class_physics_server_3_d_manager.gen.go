@@ -29,6 +29,10 @@ func (me *PhysicsServer3DManager) BaseClass() string {
 
 // Enums
 
+func (me *PhysicsServer3DManager) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PhysicsServer3DManager) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

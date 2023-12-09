@@ -35,6 +35,10 @@ const (
   CollisionPolygon2DBuildModeBuildSegments CollisionPolygon2DBuildMode = 1
 )
 
+func (me *CollisionPolygon2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CollisionPolygon2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

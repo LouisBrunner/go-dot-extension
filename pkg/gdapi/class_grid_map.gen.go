@@ -35,6 +35,10 @@ var (
 
 // Enums
 
+func (me *GridMap) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GridMap) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

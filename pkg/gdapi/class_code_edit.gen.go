@@ -51,6 +51,10 @@ const (
   CodeEditCodeCompletionLocationLocationOther CodeEditCodeCompletionLocation = 1024
 )
 
+func (me *CodeEdit) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CodeEdit) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

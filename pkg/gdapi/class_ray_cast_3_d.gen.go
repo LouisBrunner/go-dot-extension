@@ -29,6 +29,10 @@ func (me *RayCast3D) BaseClass() string {
 
 // Enums
 
+func (me *RayCast3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RayCast3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

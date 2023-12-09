@@ -29,6 +29,10 @@ func (me *Cubemap) BaseClass() string {
 
 // Enums
 
+func (me *Cubemap) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Cubemap) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

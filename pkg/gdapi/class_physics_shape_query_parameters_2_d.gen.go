@@ -29,6 +29,10 @@ func (me *PhysicsShapeQueryParameters2D) BaseClass() string {
 
 // Enums
 
+func (me *PhysicsShapeQueryParameters2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PhysicsShapeQueryParameters2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

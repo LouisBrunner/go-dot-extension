@@ -44,6 +44,10 @@ const (
   AspectRatioContainerAlignmentModeAlignmentEnd AspectRatioContainerAlignmentMode = 2
 )
 
+func (me *AspectRatioContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AspectRatioContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

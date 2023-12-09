@@ -29,6 +29,10 @@ func (me *DirectionalLight2D) BaseClass() string {
 
 // Enums
 
+func (me *DirectionalLight2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *DirectionalLight2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

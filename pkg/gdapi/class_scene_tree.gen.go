@@ -37,6 +37,10 @@ const (
   SceneTreeGroupCallFlagsGroupCallUnique SceneTreeGroupCallFlags = 4
 )
 
+func (me *SceneTree) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SceneTree) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

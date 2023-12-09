@@ -29,6 +29,10 @@ func (me *MeshTexture) BaseClass() string {
 
 // Enums
 
+func (me *MeshTexture) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MeshTexture) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

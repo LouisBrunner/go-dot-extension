@@ -29,6 +29,10 @@ func (me *StaticBody3D) BaseClass() string {
 
 // Enums
 
+func (me *StaticBody3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *StaticBody3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

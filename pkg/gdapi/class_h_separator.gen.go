@@ -29,6 +29,10 @@ func (me *HSeparator) BaseClass() string {
 
 // Enums
 
+func (me *HSeparator) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *HSeparator) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

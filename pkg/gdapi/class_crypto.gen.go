@@ -29,6 +29,10 @@ func (me *Crypto) BaseClass() string {
 
 // Enums
 
+func (me *Crypto) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Crypto) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

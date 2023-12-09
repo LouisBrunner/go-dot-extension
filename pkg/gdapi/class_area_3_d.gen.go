@@ -38,6 +38,10 @@ const (
   Area3DSpaceOverrideSpaceOverrideReplaceCombine Area3DSpaceOverride = 4
 )
 
+func (me *Area3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Area3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -43,6 +43,10 @@ const (
   VisualShaderNodeColorOpOperatorOpMax VisualShaderNodeColorOpOperator = 9
 )
 
+func (me *VisualShaderNodeColorOp) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeColorOp) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

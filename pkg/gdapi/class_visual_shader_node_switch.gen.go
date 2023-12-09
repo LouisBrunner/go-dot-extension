@@ -42,6 +42,10 @@ const (
   VisualShaderNodeSwitchOpTypeOpTypeMax VisualShaderNodeSwitchOpType = 8
 )
 
+func (me *VisualShaderNodeSwitch) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeSwitch) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

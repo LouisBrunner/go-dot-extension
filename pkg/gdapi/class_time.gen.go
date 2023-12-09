@@ -56,6 +56,10 @@ const (
   TimeWeekdayWeekdaySaturday TimeWeekday = 6
 )
 
+func (me *Time) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Time) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *IntervalTweener) BaseClass() string {
 
 // Enums
 
+func (me *IntervalTweener) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *IntervalTweener) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

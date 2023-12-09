@@ -29,6 +29,10 @@ func (me *SkeletonModification2DLookAt) BaseClass() string {
 
 // Enums
 
+func (me *SkeletonModification2DLookAt) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SkeletonModification2DLookAt) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

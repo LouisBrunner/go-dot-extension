@@ -56,6 +56,10 @@ const (
   WebRTCPeerConnectionSignalingStateSignalingStateClosed WebRTCPeerConnectionSignalingState = 5
 )
 
+func (me *WebRTCPeerConnection) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *WebRTCPeerConnection) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

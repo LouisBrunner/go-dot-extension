@@ -29,6 +29,10 @@ func (me *GLTFCamera) BaseClass() string {
 
 // Enums
 
+func (me *GLTFCamera) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GLTFCamera) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

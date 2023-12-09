@@ -43,6 +43,10 @@ const (
   Light2DBlendModeBlendModeMix Light2DBlendMode = 2
 )
 
+func (me *Light2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Light2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -38,6 +38,10 @@ const (
   PacketPeerDTLSStatusStatusErrorHostnameMismatch PacketPeerDTLSStatus = 4
 )
 
+func (me *PacketPeerDTLS) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PacketPeerDTLS) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

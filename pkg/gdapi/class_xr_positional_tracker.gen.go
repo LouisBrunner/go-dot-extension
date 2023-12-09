@@ -36,6 +36,10 @@ const (
   XRPositionalTrackerTrackerHandTrackerHandRight XRPositionalTrackerTrackerHand = 2
 )
 
+func (me *XRPositionalTracker) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *XRPositionalTracker) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -129,6 +129,10 @@ const (
   ImageASTCFormatAstcFormat8X8 ImageASTCFormat = 1
 )
 
+func (me *Image) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Image) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

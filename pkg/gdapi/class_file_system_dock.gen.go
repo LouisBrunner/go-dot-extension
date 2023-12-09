@@ -29,6 +29,10 @@ func (me *FileSystemDock) BaseClass() string {
 
 // Enums
 
+func (me *FileSystemDock) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *FileSystemDock) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

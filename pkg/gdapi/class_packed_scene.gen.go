@@ -37,6 +37,10 @@ const (
   PackedSceneGenEditStateGenEditStateMainInherited PackedSceneGenEditState = 3
 )
 
+func (me *PackedScene) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PackedScene) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

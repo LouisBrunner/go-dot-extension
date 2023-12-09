@@ -36,6 +36,10 @@ const (
   SkeletonProfileTailDirectionTailDirectionEnd SkeletonProfileTailDirection = 2
 )
 
+func (me *SkeletonProfile) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SkeletonProfile) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

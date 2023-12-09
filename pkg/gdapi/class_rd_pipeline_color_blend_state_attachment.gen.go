@@ -29,6 +29,10 @@ func (me *RDPipelineColorBlendStateAttachment) BaseClass() string {
 
 // Enums
 
+func (me *RDPipelineColorBlendStateAttachment) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDPipelineColorBlendStateAttachment) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

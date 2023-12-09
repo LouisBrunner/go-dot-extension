@@ -29,6 +29,10 @@ func (me *ConcavePolygonShape2D) BaseClass() string {
 
 // Enums
 
+func (me *ConcavePolygonShape2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ConcavePolygonShape2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

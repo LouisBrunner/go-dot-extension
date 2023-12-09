@@ -71,6 +71,10 @@ const (
   ENetPacketPeerPeerStatisticPeerPacketThrottleInterval ENetPacketPeerPeerStatistic = 13
 )
 
+func (me *ENetPacketPeer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ENetPacketPeer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

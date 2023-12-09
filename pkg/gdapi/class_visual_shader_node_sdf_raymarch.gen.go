@@ -29,6 +29,10 @@ func (me *VisualShaderNodeSDFRaymarch) BaseClass() string {
 
 // Enums
 
+func (me *VisualShaderNodeSDFRaymarch) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeSDFRaymarch) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

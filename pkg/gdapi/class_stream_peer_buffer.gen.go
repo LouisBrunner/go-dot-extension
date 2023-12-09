@@ -29,6 +29,10 @@ func (me *StreamPeerBuffer) BaseClass() string {
 
 // Enums
 
+func (me *StreamPeerBuffer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *StreamPeerBuffer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

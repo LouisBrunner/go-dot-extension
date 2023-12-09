@@ -29,6 +29,10 @@ func (me *AudioEffectNotchFilter) BaseClass() string {
 
 // Enums
 
+func (me *AudioEffectNotchFilter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioEffectNotchFilter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

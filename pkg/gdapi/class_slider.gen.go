@@ -29,6 +29,10 @@ func (me *Slider) BaseClass() string {
 
 // Enums
 
+func (me *Slider) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Slider) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

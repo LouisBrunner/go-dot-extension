@@ -29,6 +29,10 @@ func (me *CallbackTweener) BaseClass() string {
 
 // Enums
 
+func (me *CallbackTweener) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CallbackTweener) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

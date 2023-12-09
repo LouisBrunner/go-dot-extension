@@ -29,6 +29,10 @@ func (me *VisualShaderNodeUVPolarCoord) BaseClass() string {
 
 // Enums
 
+func (me *VisualShaderNodeUVPolarCoord) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeUVPolarCoord) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

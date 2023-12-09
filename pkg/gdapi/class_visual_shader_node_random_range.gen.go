@@ -29,6 +29,10 @@ func (me *VisualShaderNodeRandomRange) BaseClass() string {
 
 // Enums
 
+func (me *VisualShaderNodeRandomRange) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeRandomRange) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

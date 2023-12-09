@@ -36,6 +36,10 @@ const (
   TileMapVisibilityModeVisibilityModeForceShow TileMapVisibilityMode = 1
 )
 
+func (me *TileMap) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TileMap) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

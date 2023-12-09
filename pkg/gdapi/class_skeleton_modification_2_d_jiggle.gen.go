@@ -29,6 +29,10 @@ func (me *SkeletonModification2DJiggle) BaseClass() string {
 
 // Enums
 
+func (me *SkeletonModification2DJiggle) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SkeletonModification2DJiggle) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -39,6 +39,10 @@ const (
   AudioEffectPitchShiftFFTSizeFftSizeMax AudioEffectPitchShiftFFTSize = 5
 )
 
+func (me *AudioEffectPitchShift) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioEffectPitchShift) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

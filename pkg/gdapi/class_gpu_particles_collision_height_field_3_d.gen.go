@@ -46,6 +46,10 @@ const (
   GPUParticlesCollisionHeightField3DUpdateModeUpdateModeAlways GPUParticlesCollisionHeightField3DUpdateMode = 1
 )
 
+func (me *GPUParticlesCollisionHeightField3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GPUParticlesCollisionHeightField3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

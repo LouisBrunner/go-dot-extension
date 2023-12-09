@@ -65,6 +65,10 @@ const (
   XRInterfaceEnvironmentBlendModeXrEnvBlendModeAlphaBlend XRInterfaceEnvironmentBlendMode = 2
 )
 
+func (me *XRInterface) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *XRInterface) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

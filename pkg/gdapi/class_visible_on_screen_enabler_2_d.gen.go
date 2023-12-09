@@ -36,6 +36,10 @@ const (
   VisibleOnScreenEnabler2DEnableModeEnableModeWhenPaused VisibleOnScreenEnabler2DEnableMode = 2
 )
 
+func (me *VisibleOnScreenEnabler2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisibleOnScreenEnabler2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

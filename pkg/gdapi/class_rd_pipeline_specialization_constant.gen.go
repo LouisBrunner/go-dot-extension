@@ -29,6 +29,10 @@ func (me *RDPipelineSpecializationConstant) BaseClass() string {
 
 // Enums
 
+func (me *RDPipelineSpecializationConstant) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDPipelineSpecializationConstant) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

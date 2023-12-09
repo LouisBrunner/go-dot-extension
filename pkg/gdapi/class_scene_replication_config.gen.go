@@ -29,6 +29,10 @@ func (me *SceneReplicationConfig) BaseClass() string {
 
 // Enums
 
+func (me *SceneReplicationConfig) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SceneReplicationConfig) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

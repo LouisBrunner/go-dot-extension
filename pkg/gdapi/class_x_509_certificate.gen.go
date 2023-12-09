@@ -29,6 +29,10 @@ func (me *X509Certificate) BaseClass() string {
 
 // Enums
 
+func (me *X509Certificate) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *X509Certificate) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

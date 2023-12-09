@@ -36,6 +36,10 @@ const (
   StyleBoxTextureAxisStretchModeAxisStretchModeTileFit StyleBoxTextureAxisStretchMode = 2
 )
 
+func (me *StyleBoxTexture) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *StyleBoxTexture) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

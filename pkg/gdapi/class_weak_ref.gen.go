@@ -29,6 +29,10 @@ func (me *WeakRef) BaseClass() string {
 
 // Enums
 
+func (me *WeakRef) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *WeakRef) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

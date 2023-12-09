@@ -29,6 +29,10 @@ func (me *Noise) BaseClass() string {
 
 // Enums
 
+func (me *Noise) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Noise) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -38,6 +38,10 @@ const (
   AudioEffectDistortionModeModeWaveshape AudioEffectDistortionMode = 4
 )
 
+func (me *AudioEffectDistortion) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioEffectDistortion) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

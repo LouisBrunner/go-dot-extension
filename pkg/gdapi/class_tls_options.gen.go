@@ -29,6 +29,10 @@ func (me *TLSOptions) BaseClass() string {
 
 // Enums
 
+func (me *TLSOptions) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TLSOptions) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

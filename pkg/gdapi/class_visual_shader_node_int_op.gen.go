@@ -46,6 +46,10 @@ const (
   VisualShaderNodeIntOpOperatorOpEnumSize VisualShaderNodeIntOpOperator = 12
 )
 
+func (me *VisualShaderNodeIntOp) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeIntOp) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -47,6 +47,10 @@ const (
   OSSystemDirSystemDirRingtones OSSystemDir = 7
 )
 
+func (me *OS) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *OS) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

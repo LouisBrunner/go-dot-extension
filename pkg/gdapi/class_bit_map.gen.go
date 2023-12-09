@@ -29,6 +29,10 @@ func (me *BitMap) BaseClass() string {
 
 // Enums
 
+func (me *BitMap) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *BitMap) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

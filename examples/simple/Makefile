@@ -35,7 +35,7 @@ build-actual:
 .PHONY: build-actual
 
 test-macos:
-	/Applications/Godot.app/Contents/MacOS/Godot project.godot --headless
+	/Applications/Godot.app/Contents/MacOS/Godot project.godot --headless -v
 .PHONY: test-macos
 
 test-macos-arm64: build-macos-arm64 test-macos

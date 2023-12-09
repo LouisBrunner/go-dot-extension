@@ -29,6 +29,10 @@ func (me *PhysicsDirectBodyState3D) BaseClass() string {
 
 // Enums
 
+func (me *PhysicsDirectBodyState3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PhysicsDirectBodyState3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

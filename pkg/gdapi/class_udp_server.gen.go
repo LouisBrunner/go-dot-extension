@@ -29,6 +29,10 @@ func (me *UDPServer) BaseClass() string {
 
 // Enums
 
+func (me *UDPServer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *UDPServer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

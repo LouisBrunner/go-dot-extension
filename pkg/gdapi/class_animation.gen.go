@@ -79,6 +79,10 @@ const (
   AnimationFindModeFindModeExact AnimationFindMode = 2
 )
 
+func (me *Animation) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Animation) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

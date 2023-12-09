@@ -29,6 +29,10 @@ func (me *SkeletonIK3D) BaseClass() string {
 
 // Enums
 
+func (me *SkeletonIK3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SkeletonIK3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

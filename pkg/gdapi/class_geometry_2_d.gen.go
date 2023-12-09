@@ -53,6 +53,10 @@ const (
   Geometry2DPolyEndTypeEndRound Geometry2DPolyEndType = 4
 )
 
+func (me *Geometry2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Geometry2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

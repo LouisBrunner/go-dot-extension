@@ -29,6 +29,10 @@ func (me *Marker3D) BaseClass() string {
 
 // Enums
 
+func (me *Marker3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Marker3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

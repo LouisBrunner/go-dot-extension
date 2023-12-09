@@ -37,6 +37,10 @@ const (
   VisualShaderNodeVectorBaseOpTypeOpTypeMax VisualShaderNodeVectorBaseOpType = 3
 )
 
+func (me *VisualShaderNodeVectorBase) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeVectorBase) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

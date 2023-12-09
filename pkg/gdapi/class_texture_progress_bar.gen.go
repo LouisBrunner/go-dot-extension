@@ -42,6 +42,10 @@ const (
   TextureProgressBarFillModeFillClockwiseAndCounterClockwise TextureProgressBarFillMode = 8
 )
 
+func (me *TextureProgressBar) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TextureProgressBar) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

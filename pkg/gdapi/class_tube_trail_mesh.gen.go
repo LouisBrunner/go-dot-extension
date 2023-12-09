@@ -29,6 +29,10 @@ func (me *TubeTrailMesh) BaseClass() string {
 
 // Enums
 
+func (me *TubeTrailMesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TubeTrailMesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

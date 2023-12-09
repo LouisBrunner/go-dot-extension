@@ -29,6 +29,10 @@ func (me *OggPacketSequence) BaseClass() string {
 
 // Enums
 
+func (me *OggPacketSequence) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *OggPacketSequence) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

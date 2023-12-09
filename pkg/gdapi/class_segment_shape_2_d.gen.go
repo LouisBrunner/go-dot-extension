@@ -29,6 +29,10 @@ func (me *SegmentShape2D) BaseClass() string {
 
 // Enums
 
+func (me *SegmentShape2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SegmentShape2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

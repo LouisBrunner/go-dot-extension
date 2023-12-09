@@ -29,6 +29,10 @@ func (me *Joint2D) BaseClass() string {
 
 // Enums
 
+func (me *Joint2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Joint2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

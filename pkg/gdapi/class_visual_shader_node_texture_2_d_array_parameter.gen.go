@@ -29,6 +29,10 @@ func (me *VisualShaderNodeTexture2DArrayParameter) BaseClass() string {
 
 // Enums
 
+func (me *VisualShaderNodeTexture2DArrayParameter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeTexture2DArrayParameter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

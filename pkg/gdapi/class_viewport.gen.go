@@ -151,6 +151,10 @@ const (
   ViewportVRSModeVrsMax ViewportVRSMode = 3
 )
 
+func (me *Viewport) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Viewport) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

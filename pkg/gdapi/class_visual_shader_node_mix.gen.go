@@ -41,6 +41,10 @@ const (
   VisualShaderNodeMixOpTypeOpTypeMax VisualShaderNodeMixOpType = 7
 )
 
+func (me *VisualShaderNodeMix) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeMix) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

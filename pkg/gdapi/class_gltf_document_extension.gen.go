@@ -29,6 +29,10 @@ func (me *GLTFDocumentExtension) BaseClass() string {
 
 // Enums
 
+func (me *GLTFDocumentExtension) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GLTFDocumentExtension) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -36,6 +36,10 @@ const (
   VisibleOnScreenEnabler3DEnableModeEnableModeWhenPaused VisibleOnScreenEnabler3DEnableMode = 2
 )
 
+func (me *VisibleOnScreenEnabler3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisibleOnScreenEnabler3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

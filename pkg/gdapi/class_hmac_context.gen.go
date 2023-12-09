@@ -29,6 +29,10 @@ func (me *HMACContext) BaseClass() string {
 
 // Enums
 
+func (me *HMACContext) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *HMACContext) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

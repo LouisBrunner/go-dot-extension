@@ -29,6 +29,10 @@ func (me *GLTFNode) BaseClass() string {
 
 // Enums
 
+func (me *GLTFNode) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GLTFNode) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *SphereShape3D) BaseClass() string {
 
 // Enums
 
+func (me *SphereShape3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SphereShape3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

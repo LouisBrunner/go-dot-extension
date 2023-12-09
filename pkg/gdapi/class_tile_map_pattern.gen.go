@@ -29,6 +29,10 @@ func (me *TileMapPattern) BaseClass() string {
 
 // Enums
 
+func (me *TileMapPattern) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TileMapPattern) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

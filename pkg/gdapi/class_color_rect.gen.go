@@ -29,6 +29,10 @@ func (me *ColorRect) BaseClass() string {
 
 // Enums
 
+func (me *ColorRect) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ColorRect) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -161,238 +161,568 @@ func (me *Array) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *Array) Size() int {
-  panic("TODO: implement")
+func (me *Array) Size() int {
+  name := StringNameFromStr("size")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3173160232) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) IsEmpty() bool {
-  panic("TODO: implement")
+func (me *Array) IsEmpty() bool {
+  name := StringNameFromStr("is_empty")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3918633141) // FIXME: should cache?
+
+  var ret bool
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Clear()  {
-  panic("TODO: implement")
+func (me *Array) Clear()  {
+  name := StringNameFromStr("clear")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) Hash() int {
-  panic("TODO: implement")
+func (me *Array) Hash() int {
+  name := StringNameFromStr("hash")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3173160232) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Assign(array Array, )  {
-  panic("TODO: implement")
+func (me *Array) Assign(array Array, )  {
+  name := StringNameFromStr("assign")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2307260970) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{array.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) PushBack(value Variant, )  {
-  panic("TODO: implement")
+func (me *Array) PushBack(value Variant, )  {
+  name := StringNameFromStr("push_back")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3316032543) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) PushFront(value Variant, )  {
-  panic("TODO: implement")
+func (me *Array) PushFront(value Variant, )  {
+  name := StringNameFromStr("push_front")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3316032543) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) Append(value Variant, )  {
-  panic("TODO: implement")
+func (me *Array) Append(value Variant, )  {
+  name := StringNameFromStr("append")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3316032543) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) AppendArray(array Array, )  {
-  panic("TODO: implement")
+func (me *Array) AppendArray(array Array, )  {
+  name := StringNameFromStr("append_array")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2307260970) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{array.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) Resize(size int, ) int {
-  panic("TODO: implement")
+func (me *Array) Resize(size int, ) int {
+  name := StringNameFromStr("resize")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 848867239) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Insert(position int, value Variant, ) int {
-  panic("TODO: implement")
+func (me *Array) Insert(position int, value Variant, ) int {
+  name := StringNameFromStr("insert")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3176316662) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), value.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) RemoveAt(position int, )  {
-  panic("TODO: implement")
+func (me *Array) RemoveAt(position int, )  {
+  name := StringNameFromStr("remove_at")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2823966027) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) Fill(value Variant, )  {
-  panic("TODO: implement")
+func (me *Array) Fill(value Variant, )  {
+  name := StringNameFromStr("fill")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3316032543) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) Erase(value Variant, )  {
-  panic("TODO: implement")
+func (me *Array) Erase(value Variant, )  {
+  name := StringNameFromStr("erase")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3316032543) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) Front() Variant {
-  panic("TODO: implement")
+func (me *Array) Front() Variant {
+  name := StringNameFromStr("front")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1460142086) // FIXME: should cache?
+
+  var ret Variant
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Back() Variant {
-  panic("TODO: implement")
+func (me *Array) Back() Variant {
+  name := StringNameFromStr("back")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1460142086) // FIXME: should cache?
+
+  var ret Variant
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) PickRandom() Variant {
-  panic("TODO: implement")
+func (me *Array) PickRandom() Variant {
+  name := StringNameFromStr("pick_random")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1460142086) // FIXME: should cache?
+
+  var ret Variant
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Find(what Variant, from int, ) int {
-  panic("TODO: implement")
+func (me *Array) Find(what Variant, from int, ) int {
+  name := StringNameFromStr("find")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2336346817) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Rfind(what Variant, from int, ) int {
-  panic("TODO: implement")
+func (me *Array) Rfind(what Variant, from int, ) int {
+  name := StringNameFromStr("rfind")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2336346817) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Count(value Variant, ) int {
-  panic("TODO: implement")
+func (me *Array) Count(value Variant, ) int {
+  name := StringNameFromStr("count")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1481661226) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Has(value Variant, ) bool {
-  panic("TODO: implement")
+func (me *Array) Has(value Variant, ) bool {
+  name := StringNameFromStr("has")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3680194679) // FIXME: should cache?
+
+  var ret bool
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) PopBack() Variant {
-  panic("TODO: implement")
+func (me *Array) PopBack() Variant {
+  name := StringNameFromStr("pop_back")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1321915136) // FIXME: should cache?
+
+  var ret Variant
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) PopFront() Variant {
-  panic("TODO: implement")
+func (me *Array) PopFront() Variant {
+  name := StringNameFromStr("pop_front")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1321915136) // FIXME: should cache?
+
+  var ret Variant
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) PopAt(position int, ) Variant {
-  panic("TODO: implement")
+func (me *Array) PopAt(position int, ) Variant {
+  name := StringNameFromStr("pop_at")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3518259424) // FIXME: should cache?
+
+  var ret Variant
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Sort()  {
-  panic("TODO: implement")
+func (me *Array) Sort()  {
+  name := StringNameFromStr("sort")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) SortCustom(func_ Callable, )  {
-  panic("TODO: implement")
+func (me *Array) SortCustom(func_ Callable, )  {
+  name := StringNameFromStr("sort_custom")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3470848906) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{func_.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) Shuffle()  {
-  panic("TODO: implement")
+func (me *Array) Shuffle()  {
+  name := StringNameFromStr("shuffle")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) Bsearch(value Variant, before bool, ) int {
-  panic("TODO: implement")
+func (me *Array) Bsearch(value Variant, before bool, ) int {
+  name := StringNameFromStr("bsearch")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3372222236) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), gdc.ConstTypePtr(&before), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) BsearchCustom(value Variant, func_ Callable, before bool, ) int {
-  panic("TODO: implement")
+func (me *Array) BsearchCustom(value Variant, func_ Callable, before bool, ) int {
+  name := StringNameFromStr("bsearch_custom")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 161317131) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), func_.AsCTypePtr(), gdc.ConstTypePtr(&before), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Reverse()  {
-  panic("TODO: implement")
+func (me *Array) Reverse()  {
+  name := StringNameFromStr("reverse")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) Duplicate(deep bool, ) Array {
-  panic("TODO: implement")
+func (me *Array) Duplicate(deep bool, ) Array {
+  name := StringNameFromStr("duplicate")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 636440122) // FIXME: should cache?
+
+  var ret Array
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&deep), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Slice(begin int, end int, step int, deep bool, ) Array {
-  panic("TODO: implement")
+func (me *Array) Slice(begin int, end int, step int, deep bool, ) Array {
+  name := StringNameFromStr("slice")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1393718243) // FIXME: should cache?
+
+  var ret Array
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&begin), gdc.ConstTypePtr(&end), gdc.ConstTypePtr(&step), gdc.ConstTypePtr(&deep), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Filter(method Callable, ) Array {
-  panic("TODO: implement")
+func (me *Array) Filter(method Callable, ) Array {
+  name := StringNameFromStr("filter")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 4075186556) // FIXME: should cache?
+
+  var ret Array
+  args := []gdc.ConstTypePtr{method.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Map(method Callable, ) Array {
-  panic("TODO: implement")
+func (me *Array) Map(method Callable, ) Array {
+  name := StringNameFromStr("map")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 4075186556) // FIXME: should cache?
+
+  var ret Array
+  args := []gdc.ConstTypePtr{method.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Reduce(method Callable, accum Variant, ) Variant {
-  panic("TODO: implement")
+func (me *Array) Reduce(method Callable, accum Variant, ) Variant {
+  name := StringNameFromStr("reduce")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 4272450342) // FIXME: should cache?
+
+  var ret Variant
+  args := []gdc.ConstTypePtr{method.AsCTypePtr(), accum.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Any(method Callable, ) bool {
-  panic("TODO: implement")
+func (me *Array) Any(method Callable, ) bool {
+  name := StringNameFromStr("any")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 4129521963) // FIXME: should cache?
+
+  var ret bool
+  args := []gdc.ConstTypePtr{method.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) All(method Callable, ) bool {
-  panic("TODO: implement")
+func (me *Array) All(method Callable, ) bool {
+  name := StringNameFromStr("all")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 4129521963) // FIXME: should cache?
+
+  var ret bool
+  args := []gdc.ConstTypePtr{method.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Max() Variant {
-  panic("TODO: implement")
+func (me *Array) Max() Variant {
+  name := StringNameFromStr("max")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1460142086) // FIXME: should cache?
+
+  var ret Variant
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) Min() Variant {
-  panic("TODO: implement")
+func (me *Array) Min() Variant {
+  name := StringNameFromStr("min")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1460142086) // FIXME: should cache?
+
+  var ret Variant
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) IsTyped() bool {
-  panic("TODO: implement")
+func (me *Array) IsTyped() bool {
+  name := StringNameFromStr("is_typed")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3918633141) // FIXME: should cache?
+
+  var ret bool
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) IsSameTyped(array Array, ) bool {
-  panic("TODO: implement")
+func (me *Array) IsSameTyped(array Array, ) bool {
+  name := StringNameFromStr("is_same_typed")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2988181878) // FIXME: should cache?
+
+  var ret bool
+  args := []gdc.ConstTypePtr{array.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) GetTypedBuiltin() int {
-  panic("TODO: implement")
+func (me *Array) GetTypedBuiltin() int {
+  name := StringNameFromStr("get_typed_builtin")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3173160232) // FIXME: should cache?
+
+  var ret int
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) GetTypedClassName() StringName {
-  panic("TODO: implement")
+func (me *Array) GetTypedClassName() StringName {
+  name := StringNameFromStr("get_typed_class_name")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1825232092) // FIXME: should cache?
+
+  var ret StringName
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) GetTypedScript() Variant {
-  panic("TODO: implement")
+func (me *Array) GetTypedScript() Variant {
+  name := StringNameFromStr("get_typed_script")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1460142086) // FIXME: should cache?
+
+  var ret Variant
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Array) MakeReadOnly()  {
-  panic("TODO: implement")
+func (me *Array) MakeReadOnly()  {
+  name := StringNameFromStr("make_read_only")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
+
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func  (me *Array) IsReadOnly() bool {
-  panic("TODO: implement")
+func (me *Array) IsReadOnly() bool {
+  name := StringNameFromStr("is_read_only")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3918633141) // FIXME: should cache?
+
+  var ret bool
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
 // Operators
 
-func (me *Array) EqualsVariant(right Variant) bool {
-  panic("TODO: implement")
+func (me *Array) EqualVariant(right Variant) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Array) NotEqualsVariant(right Variant) bool {
-  panic("TODO: implement")
+func (me *Array) NotEqualVariant(right Variant) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Array) Not() bool {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Array) InDictionary(right Dictionary) bool {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Array) EqualsArray(right Array) bool {
-  panic("TODO: implement")
+func (me *Array) EqualArray(right Array) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Array) NotEqualsArray(right Array) bool {
-  panic("TODO: implement")
+func (me *Array) NotEqualArray(right Array) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Array) LessThanArray(right Array) bool {
-  panic("TODO: implement")
+func (me *Array) LessArray(right Array) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLess, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Array) LessThanOrEqualsArray(right Array) bool {
-  panic("TODO: implement")
+func (me *Array) LessEqualArray(right Array) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLessEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Array) GreaterThanArray(right Array) bool {
-  panic("TODO: implement")
+func (me *Array) GreaterArray(right Array) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreater, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Array) GreaterThanOrEqualsArray(right Array) bool {
-  panic("TODO: implement")
+func (me *Array) GreaterEqualArray(right Array) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreaterEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Array) AddArray(right Array) Array {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAdd, me.Type(), right.Type()) // FIXME: cache
+  var ret Array
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Array) InArray(right Array) bool {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: members (bclass)
+// Members

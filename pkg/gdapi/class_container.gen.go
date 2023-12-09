@@ -36,6 +36,10 @@ var (
 
 // Enums
 
+func (me *Container) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Container) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

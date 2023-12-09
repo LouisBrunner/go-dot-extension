@@ -29,6 +29,10 @@ func (me *MobileVRInterface) BaseClass() string {
 
 // Enums
 
+func (me *MobileVRInterface) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MobileVRInterface) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

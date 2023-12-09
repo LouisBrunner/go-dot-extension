@@ -43,6 +43,10 @@ const (
   WebRTCDataChannelChannelStateStateClosed WebRTCDataChannelChannelState = 3
 )
 
+func (me *WebRTCDataChannel) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *WebRTCDataChannel) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

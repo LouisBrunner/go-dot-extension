@@ -35,6 +35,10 @@ const (
   TouchScreenButtonVisibilityModeVisibilityTouchscreenOnly TouchScreenButtonVisibilityMode = 1
 )
 
+func (me *TouchScreenButton) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TouchScreenButton) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

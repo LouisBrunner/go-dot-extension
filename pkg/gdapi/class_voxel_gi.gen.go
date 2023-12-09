@@ -38,6 +38,10 @@ const (
   VoxelGISubdivSubdivMax VoxelGISubdiv = 4
 )
 
+func (me *VoxelGI) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VoxelGI) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

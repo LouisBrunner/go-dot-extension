@@ -35,6 +35,10 @@ var (
 
 // Enums
 
+func (me *RDFramebufferPass) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDFramebufferPass) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

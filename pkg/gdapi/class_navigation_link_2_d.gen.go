@@ -29,6 +29,10 @@ func (me *NavigationLink2D) BaseClass() string {
 
 // Enums
 
+func (me *NavigationLink2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NavigationLink2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

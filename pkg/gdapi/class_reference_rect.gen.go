@@ -29,6 +29,10 @@ func (me *ReferenceRect) BaseClass() string {
 
 // Enums
 
+func (me *ReferenceRect) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ReferenceRect) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

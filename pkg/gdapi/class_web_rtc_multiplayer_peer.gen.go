@@ -29,6 +29,10 @@ func (me *WebRTCMultiplayerPeer) BaseClass() string {
 
 // Enums
 
+func (me *WebRTCMultiplayerPeer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *WebRTCMultiplayerPeer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -38,6 +38,10 @@ const (
   VisualShaderNodeTransformVecMultOperatorOpMax VisualShaderNodeTransformVecMultOperator = 4
 )
 
+func (me *VisualShaderNodeTransformVecMult) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeTransformVecMult) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -36,6 +36,10 @@ const (
   BoxContainerAlignmentModeAlignmentEnd BoxContainerAlignmentMode = 2
 )
 
+func (me *BoxContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *BoxContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

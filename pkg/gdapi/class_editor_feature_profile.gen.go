@@ -42,6 +42,10 @@ const (
   EditorFeatureProfileFeatureFeatureMax EditorFeatureProfileFeature = 8
 )
 
+func (me *EditorFeatureProfile) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorFeatureProfile) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

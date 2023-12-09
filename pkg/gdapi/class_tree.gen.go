@@ -43,6 +43,10 @@ const (
   TreeDropModeFlagsDropModeInbetween TreeDropModeFlags = 2
 )
 
+func (me *Tree) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Tree) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

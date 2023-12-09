@@ -36,6 +36,10 @@ const (
   AudioStreamPlayerMixTargetMixTargetCenter AudioStreamPlayerMixTarget = 2
 )
 
+func (me *AudioStreamPlayer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioStreamPlayer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

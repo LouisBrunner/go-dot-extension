@@ -29,6 +29,10 @@ func (me *ArrayMesh) BaseClass() string {
 
 // Enums
 
+func (me *ArrayMesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ArrayMesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

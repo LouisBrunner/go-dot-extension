@@ -29,6 +29,10 @@ func (me *ThemeDB) BaseClass() string {
 
 // Enums
 
+func (me *ThemeDB) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ThemeDB) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

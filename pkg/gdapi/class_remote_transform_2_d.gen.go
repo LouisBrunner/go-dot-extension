@@ -29,6 +29,10 @@ func (me *RemoteTransform2D) BaseClass() string {
 
 // Enums
 
+func (me *RemoteTransform2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RemoteTransform2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

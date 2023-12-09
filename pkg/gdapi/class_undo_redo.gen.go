@@ -36,6 +36,10 @@ const (
   UndoRedoMergeModeMergeAll UndoRedoMergeMode = 2
 )
 
+func (me *UndoRedo) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *UndoRedo) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

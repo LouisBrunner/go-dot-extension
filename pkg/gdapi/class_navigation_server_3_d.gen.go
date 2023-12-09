@@ -42,6 +42,10 @@ const (
   NavigationServer3DProcessInfoInfoEdgeFreeCount NavigationServer3DProcessInfo = 8
 )
 
+func (me *NavigationServer3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *NavigationServer3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

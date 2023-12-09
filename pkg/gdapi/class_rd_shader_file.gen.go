@@ -29,6 +29,10 @@ func (me *RDShaderFile) BaseClass() string {
 
 // Enums
 
+func (me *RDShaderFile) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDShaderFile) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

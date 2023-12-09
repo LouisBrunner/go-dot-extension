@@ -36,6 +36,10 @@ const (
   ZIPPackerZipAppendAppendAddinzip ZIPPackerZipAppend = 2
 )
 
+func (me *ZIPPacker) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ZIPPacker) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

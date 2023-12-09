@@ -49,6 +49,10 @@ const (
   CSGPolygon3DPathIntervalTypePathIntervalSubdivide CSGPolygon3DPathIntervalType = 1
 )
 
+func (me *CSGPolygon3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CSGPolygon3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

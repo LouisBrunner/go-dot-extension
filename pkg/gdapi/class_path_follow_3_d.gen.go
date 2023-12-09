@@ -38,6 +38,10 @@ const (
   PathFollow3DRotationModeRotationOriented PathFollow3DRotationMode = 4
 )
 
+func (me *PathFollow3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PathFollow3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

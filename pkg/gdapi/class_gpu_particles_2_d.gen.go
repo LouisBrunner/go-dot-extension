@@ -45,6 +45,10 @@ const (
   GPUParticles2DEmitFlagsEmitFlagCustom GPUParticles2DEmitFlags = 16
 )
 
+func (me *GPUParticles2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GPUParticles2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

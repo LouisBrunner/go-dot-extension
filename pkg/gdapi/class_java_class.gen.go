@@ -29,6 +29,10 @@ func (me *JavaClass) BaseClass() string {
 
 // Enums
 
+func (me *JavaClass) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *JavaClass) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

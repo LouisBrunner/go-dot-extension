@@ -29,6 +29,10 @@ func (me *GLTFTexture) BaseClass() string {
 
 // Enums
 
+func (me *GLTFTexture) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GLTFTexture) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -38,6 +38,10 @@ const (
   VisualShaderNodeParticleEmitEmitFlagsEmitFlagCustom VisualShaderNodeParticleEmitEmitFlags = 16
 )
 
+func (me *VisualShaderNodeParticleEmit) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeParticleEmit) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

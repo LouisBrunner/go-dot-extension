@@ -66,6 +66,10 @@ const (
   VisualShaderNodeFloatFuncFunctionFuncMax VisualShaderNodeFloatFuncFunction = 32
 )
 
+func (me *VisualShaderNodeFloatFunc) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeFloatFunc) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

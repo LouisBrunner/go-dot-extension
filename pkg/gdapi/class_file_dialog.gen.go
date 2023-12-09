@@ -45,6 +45,10 @@ const (
   FileDialogAccessAccessFilesystem FileDialogAccess = 2
 )
 
+func (me *FileDialog) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *FileDialog) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

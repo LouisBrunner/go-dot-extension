@@ -29,6 +29,10 @@ func (me *FogVolume) BaseClass() string {
 
 // Enums
 
+func (me *FogVolume) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *FogVolume) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

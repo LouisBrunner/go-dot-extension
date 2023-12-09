@@ -29,6 +29,10 @@ func (me *MultiMeshInstance2D) BaseClass() string {
 
 // Enums
 
+func (me *MultiMeshInstance2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MultiMeshInstance2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

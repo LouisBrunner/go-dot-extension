@@ -36,6 +36,10 @@ const (
   AudioStreamRandomizerPlaybackModePlaybackSequential AudioStreamRandomizerPlaybackMode = 2
 )
 
+func (me *AudioStreamRandomizer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioStreamRandomizer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

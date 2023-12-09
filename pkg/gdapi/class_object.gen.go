@@ -44,6 +44,10 @@ const (
   ObjectConnectFlagsConnectReferenceCounted ObjectConnectFlags = 8
 )
 
+func (me *Object) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Object) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *TileSetAtlasSource) BaseClass() string {
 
 // Enums
 
+func (me *TileSetAtlasSource) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TileSetAtlasSource) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

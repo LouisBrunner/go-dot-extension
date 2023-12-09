@@ -29,6 +29,10 @@ func (me *RegEx) BaseClass() string {
 
 // Enums
 
+func (me *RegEx) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RegEx) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *VisualShaderNodeCubemapParameter) BaseClass() string {
 
 // Enums
 
+func (me *VisualShaderNodeCubemapParameter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeCubemapParameter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

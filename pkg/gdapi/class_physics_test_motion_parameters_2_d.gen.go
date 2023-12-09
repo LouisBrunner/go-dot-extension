@@ -29,6 +29,10 @@ func (me *PhysicsTestMotionParameters2D) BaseClass() string {
 
 // Enums
 
+func (me *PhysicsTestMotionParameters2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PhysicsTestMotionParameters2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

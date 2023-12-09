@@ -46,6 +46,10 @@ const (
   EditorVCSInterfaceTreeAreaTreeAreaUnstaged EditorVCSInterfaceTreeArea = 2
 )
 
+func (me *EditorVCSInterface) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorVCSInterface) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

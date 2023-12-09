@@ -29,6 +29,10 @@ func (me *RDPipelineDepthStencilState) BaseClass() string {
 
 // Enums
 
+func (me *RDPipelineDepthStencilState) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RDPipelineDepthStencilState) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

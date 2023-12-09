@@ -29,6 +29,10 @@ func (me *HSplitContainer) BaseClass() string {
 
 // Enums
 
+func (me *HSplitContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *HSplitContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

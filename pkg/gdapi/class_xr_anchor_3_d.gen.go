@@ -29,6 +29,10 @@ func (me *XRAnchor3D) BaseClass() string {
 
 // Enums
 
+func (me *XRAnchor3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *XRAnchor3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

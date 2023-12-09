@@ -29,6 +29,10 @@ func (me *CanvasLayer) BaseClass() string {
 
 // Enums
 
+func (me *CanvasLayer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CanvasLayer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

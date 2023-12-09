@@ -44,6 +44,10 @@ const (
   CameraFeedFeedPositionFeedBack CameraFeedFeedPosition = 2
 )
 
+func (me *CameraFeed) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CameraFeed) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

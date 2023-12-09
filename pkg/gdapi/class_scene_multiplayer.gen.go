@@ -29,6 +29,10 @@ func (me *SceneMultiplayer) BaseClass() string {
 
 // Enums
 
+func (me *SceneMultiplayer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SceneMultiplayer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

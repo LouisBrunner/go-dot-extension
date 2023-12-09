@@ -29,6 +29,10 @@ func (me *ArrayOccluder3D) BaseClass() string {
 
 // Enums
 
+func (me *ArrayOccluder3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ArrayOccluder3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

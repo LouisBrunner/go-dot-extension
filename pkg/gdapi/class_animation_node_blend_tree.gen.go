@@ -40,6 +40,10 @@ var (
 
 // Enums
 
+func (me *AnimationNodeBlendTree) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimationNodeBlendTree) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

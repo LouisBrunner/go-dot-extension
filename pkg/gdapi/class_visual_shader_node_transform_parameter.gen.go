@@ -29,6 +29,10 @@ func (me *VisualShaderNodeTransformParameter) BaseClass() string {
 
 // Enums
 
+func (me *VisualShaderNodeTransformParameter) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeTransformParameter) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *SceneTreeTimer) BaseClass() string {
 
 // Enums
 
+func (me *SceneTreeTimer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SceneTreeTimer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

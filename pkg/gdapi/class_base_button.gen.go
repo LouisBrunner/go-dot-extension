@@ -44,6 +44,10 @@ const (
   BaseButtonActionModeActionModeButtonRelease BaseButtonActionMode = 1
 )
 
+func (me *BaseButton) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *BaseButton) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

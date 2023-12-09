@@ -36,6 +36,10 @@ const (
   VisualShaderNodeTransformFuncFunctionFuncMax VisualShaderNodeTransformFuncFunction = 2
 )
 
+func (me *VisualShaderNodeTransformFunc) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeTransformFunc) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

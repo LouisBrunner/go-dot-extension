@@ -29,6 +29,10 @@ func (me *CanvasModulate) BaseClass() string {
 
 // Enums
 
+func (me *CanvasModulate) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CanvasModulate) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

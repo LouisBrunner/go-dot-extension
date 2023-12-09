@@ -45,6 +45,10 @@ const (
   CanvasItemMaterialLightModeLightModeLightOnly CanvasItemMaterialLightMode = 2
 )
 
+func (me *CanvasItemMaterial) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CanvasItemMaterial) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

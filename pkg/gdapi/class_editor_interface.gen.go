@@ -29,6 +29,10 @@ func (me *EditorInterface) BaseClass() string {
 
 // Enums
 
+func (me *EditorInterface) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorInterface) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

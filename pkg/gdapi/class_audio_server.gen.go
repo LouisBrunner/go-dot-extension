@@ -37,6 +37,10 @@ const (
   AudioServerSpeakerModeSpeakerSurround71 AudioServerSpeakerMode = 3
 )
 
+func (me *AudioServer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioServer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

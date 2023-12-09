@@ -97,138 +97,371 @@ func (me *Transform2D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *Transform2D) Inverse() Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) Inverse() Transform2D {
+  name := StringNameFromStr("inverse")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 1420440541) // FIXME: should cache?
+
+  var ret Transform2D
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) AffineInverse() Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) AffineInverse() Transform2D {
+  name := StringNameFromStr("affine_inverse")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 1420440541) // FIXME: should cache?
+
+  var ret Transform2D
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) GetRotation() float32 {
-  panic("TODO: implement")
+func (me *Transform2D) GetRotation() float32 {
+  name := StringNameFromStr("get_rotation")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 466405837) // FIXME: should cache?
+
+  var ret float32
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) GetOrigin() Vector2 {
-  panic("TODO: implement")
+func (me *Transform2D) GetOrigin() Vector2 {
+  name := StringNameFromStr("get_origin")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 2428350749) // FIXME: should cache?
+
+  var ret Vector2
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) GetScale() Vector2 {
-  panic("TODO: implement")
+func (me *Transform2D) GetScale() Vector2 {
+  name := StringNameFromStr("get_scale")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 2428350749) // FIXME: should cache?
+
+  var ret Vector2
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) GetSkew() float32 {
-  panic("TODO: implement")
+func (me *Transform2D) GetSkew() float32 {
+  name := StringNameFromStr("get_skew")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 466405837) // FIXME: should cache?
+
+  var ret float32
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) Orthonormalized() Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) Orthonormalized() Transform2D {
+  name := StringNameFromStr("orthonormalized")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 1420440541) // FIXME: should cache?
+
+  var ret Transform2D
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) Rotated(angle float32, ) Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) Rotated(angle float32, ) Transform2D {
+  name := StringNameFromStr("rotated")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 729597514) // FIXME: should cache?
+
+  var ret Transform2D
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) RotatedLocal(angle float32, ) Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) RotatedLocal(angle float32, ) Transform2D {
+  name := StringNameFromStr("rotated_local")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 729597514) // FIXME: should cache?
+
+  var ret Transform2D
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) Scaled(scale Vector2, ) Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) Scaled(scale Vector2, ) Transform2D {
+  name := StringNameFromStr("scaled")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 1446323263) // FIXME: should cache?
+
+  var ret Transform2D
+  args := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) ScaledLocal(scale Vector2, ) Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) ScaledLocal(scale Vector2, ) Transform2D {
+  name := StringNameFromStr("scaled_local")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 1446323263) // FIXME: should cache?
+
+  var ret Transform2D
+  args := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) Translated(offset Vector2, ) Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) Translated(offset Vector2, ) Transform2D {
+  name := StringNameFromStr("translated")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 1446323263) // FIXME: should cache?
+
+  var ret Transform2D
+  args := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) TranslatedLocal(offset Vector2, ) Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) TranslatedLocal(offset Vector2, ) Transform2D {
+  name := StringNameFromStr("translated_local")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 1446323263) // FIXME: should cache?
+
+  var ret Transform2D
+  args := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) Determinant() float32 {
-  panic("TODO: implement")
+func (me *Transform2D) Determinant() float32 {
+  name := StringNameFromStr("determinant")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 466405837) // FIXME: should cache?
+
+  var ret float32
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) BasisXform(v Vector2, ) Vector2 {
-  panic("TODO: implement")
+func (me *Transform2D) BasisXform(v Vector2, ) Vector2 {
+  name := StringNameFromStr("basis_xform")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 2026743667) // FIXME: should cache?
+
+  var ret Vector2
+  args := []gdc.ConstTypePtr{v.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) BasisXformInv(v Vector2, ) Vector2 {
-  panic("TODO: implement")
+func (me *Transform2D) BasisXformInv(v Vector2, ) Vector2 {
+  name := StringNameFromStr("basis_xform_inv")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 2026743667) // FIXME: should cache?
+
+  var ret Vector2
+  args := []gdc.ConstTypePtr{v.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) InterpolateWith(xform Transform2D, weight float32, ) Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) InterpolateWith(xform Transform2D, weight float32, ) Transform2D {
+  name := StringNameFromStr("interpolate_with")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 359399686) // FIXME: should cache?
+
+  var ret Transform2D
+  args := []gdc.ConstTypePtr{xform.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) IsEqualApprox(xform Transform2D, ) bool {
-  panic("TODO: implement")
+func (me *Transform2D) IsEqualApprox(xform Transform2D, ) bool {
+  name := StringNameFromStr("is_equal_approx")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 3837431929) // FIXME: should cache?
+
+  var ret bool
+  args := []gdc.ConstTypePtr{xform.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) IsFinite() bool {
-  panic("TODO: implement")
+func (me *Transform2D) IsFinite() bool {
+  name := StringNameFromStr("is_finite")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 3918633141) // FIXME: should cache?
+
+  var ret bool
+  args := []gdc.ConstTypePtr{}
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
-func  (me *Transform2D) LookingAt(target Vector2, ) Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) LookingAt(target Vector2, ) Transform2D {
+  name := StringNameFromStr("looking_at")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 1446323263) // FIXME: should cache?
+
+  var ret Transform2D
+  args := []gdc.ConstTypePtr{target.AsCTypePtr(), }
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
 }
 
 // Operators
 
-func (me *Transform2D) EqualsVariant(right Variant) bool {
-  panic("TODO: implement")
+func (me *Transform2D) EqualVariant(right Variant) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Transform2D) NotEqualsVariant(right Variant) bool {
-  panic("TODO: implement")
+func (me *Transform2D) NotEqualVariant(right Variant) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Transform2D) Not() bool {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Transform2D) MultiplyInt(right int) Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) MultiplyInt(right Int) Transform2D {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  var ret Transform2D
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Transform2D) MultiplyFloat32(right float32) Transform2D {
-  panic("TODO: implement")
+func (me *Transform2D) MultiplyFloat32(right Float) Transform2D {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  var ret Transform2D
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Transform2D) MultiplyVector2(right Vector2) Vector2 {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  var ret Vector2
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Transform2D) MultiplyRect2(right Rect2) Rect2 {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  var ret Rect2
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Transform2D) EqualsTransform2D(right Transform2D) bool {
-  panic("TODO: implement")
+func (me *Transform2D) EqualTransform2D(right Transform2D) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-func (me *Transform2D) NotEqualsTransform2D(right Transform2D) bool {
-  panic("TODO: implement")
+func (me *Transform2D) NotEqualTransform2D(right Transform2D) bool {
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Transform2D) MultiplyTransform2D(right Transform2D) Transform2D {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  var ret Transform2D
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Transform2D) InDictionary(right Dictionary) bool {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Transform2D) InArray(right Array) bool {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  var ret bool
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
 func (me *Transform2D) MultiplyPackedVector2Array(right PackedVector2Array) PackedVector2Array {
-  panic("TODO: implement")
+  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  var ret PackedVector2Array
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: members (bclass)
+// Members
+
+func (me *Transform2D) X() Vector2 {
+  name := StringNameFromStr("x")
+  defer name.Destroy()
+
+  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  var ret Vector2
+  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
+}
+
+func (me *Transform2D) SetX(value Vector2) {
+  name := StringNameFromStr("x")
+  defer name.Destroy()
+
+  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+}
+
+func (me *Transform2D) Y() Vector2 {
+  name := StringNameFromStr("y")
+  defer name.Destroy()
+
+  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  var ret Vector2
+  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
+}
+
+func (me *Transform2D) SetY(value Vector2) {
+  name := StringNameFromStr("y")
+  defer name.Destroy()
+
+  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+}
+
+func (me *Transform2D) Origin() Vector2 {
+  name := StringNameFromStr("origin")
+  defer name.Destroy()
+
+  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  var ret Vector2
+  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), gdc.TypePtr(&ret))
+  return ret
+}
+
+func (me *Transform2D) SetOrigin(value Vector2) {
+  name := StringNameFromStr("origin")
+  defer name.Destroy()
+
+  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+}

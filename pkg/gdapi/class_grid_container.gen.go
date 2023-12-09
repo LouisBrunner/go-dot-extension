@@ -29,6 +29,10 @@ func (me *GridContainer) BaseClass() string {
 
 // Enums
 
+func (me *GridContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GridContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -49,6 +49,10 @@ const (
   SkyProcessModeProcessModeRealtime SkyProcessMode = 3
 )
 
+func (me *Sky) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Sky) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

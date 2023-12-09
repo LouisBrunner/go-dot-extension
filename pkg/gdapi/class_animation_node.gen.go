@@ -37,6 +37,10 @@ const (
   AnimationNodeFilterActionFilterBlend AnimationNodeFilterAction = 3
 )
 
+func (me *AnimationNode) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimationNode) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

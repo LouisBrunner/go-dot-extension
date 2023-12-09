@@ -29,6 +29,10 @@ func (me *ProceduralSkyMaterial) BaseClass() string {
 
 // Enums
 
+func (me *ProceduralSkyMaterial) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ProceduralSkyMaterial) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

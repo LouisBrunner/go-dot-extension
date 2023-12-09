@@ -35,6 +35,10 @@ const (
   AudioEffectSpectrumAnalyzerInstanceMagnitudeModeMagnitudeMax AudioEffectSpectrumAnalyzerInstanceMagnitudeMode = 1
 )
 
+func (me *AudioEffectSpectrumAnalyzerInstance) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AudioEffectSpectrumAnalyzerInstance) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

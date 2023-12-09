@@ -29,6 +29,10 @@ func (me *EditorSceneFormatImporterBlend) BaseClass() string {
 
 // Enums
 
+func (me *EditorSceneFormatImporterBlend) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *EditorSceneFormatImporterBlend) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -36,6 +36,10 @@ const (
   CollisionObject3DDisableModeDisableModeKeepActive CollisionObject3DDisableMode = 2
 )
 
+func (me *CollisionObject3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CollisionObject3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

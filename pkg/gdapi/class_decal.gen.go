@@ -38,6 +38,10 @@ const (
   DecalDecalTextureTextureMax DecalDecalTexture = 4
 )
 
+func (me *Decal) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Decal) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

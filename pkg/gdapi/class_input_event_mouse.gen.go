@@ -29,6 +29,10 @@ func (me *InputEventMouse) BaseClass() string {
 
 // Enums
 
+func (me *InputEventMouse) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *InputEventMouse) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -45,6 +45,10 @@ const (
   TabBarCloseButtonDisplayPolicyCloseButtonMax TabBarCloseButtonDisplayPolicy = 3
 )
 
+func (me *TabBar) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TabBar) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -48,6 +48,10 @@ const (
   SurfaceToolSkinWeightCountSkin8Weights SurfaceToolSkinWeightCount = 1
 )
 
+func (me *SurfaceTool) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *SurfaceTool) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

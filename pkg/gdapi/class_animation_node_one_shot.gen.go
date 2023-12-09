@@ -43,6 +43,10 @@ const (
   AnimationNodeOneShotMixModeMixModeAdd AnimationNodeOneShotMixMode = 1
 )
 
+func (me *AnimationNodeOneShot) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimationNodeOneShot) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

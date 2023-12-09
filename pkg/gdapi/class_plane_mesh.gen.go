@@ -36,6 +36,10 @@ const (
   PlaneMeshOrientationFaceZ PlaneMeshOrientation = 2
 )
 
+func (me *PlaneMesh) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PlaneMesh) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -66,6 +66,10 @@ const (
   TweenEaseTypeEaseOutIn TweenEaseType = 3
 )
 
+func (me *Tween) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Tween) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

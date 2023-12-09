@@ -36,6 +36,10 @@ const (
   BackBufferCopyCopyModeCopyModeViewport BackBufferCopyCopyMode = 2
 )
 
+func (me *BackBufferCopy) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *BackBufferCopy) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

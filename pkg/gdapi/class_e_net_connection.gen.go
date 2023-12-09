@@ -55,6 +55,10 @@ const (
   ENetConnectionHostStatisticHostTotalReceivedPackets ENetConnectionHostStatistic = 3
 )
 
+func (me *ENetConnection) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ENetConnection) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

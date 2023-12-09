@@ -29,6 +29,10 @@ func (me *CSGPrimitive3D) BaseClass() string {
 
 // Enums
 
+func (me *CSGPrimitive3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *CSGPrimitive3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

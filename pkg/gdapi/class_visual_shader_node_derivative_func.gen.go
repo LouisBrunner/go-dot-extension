@@ -54,6 +54,10 @@ const (
   VisualShaderNodeDerivativeFuncPrecisionPrecisionMax VisualShaderNodeDerivativeFuncPrecision = 3
 )
 
+func (me *VisualShaderNodeDerivativeFunc) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeDerivativeFunc) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

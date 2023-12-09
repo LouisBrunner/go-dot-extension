@@ -50,6 +50,10 @@ const (
   Line2DLineTextureModeLineTextureStretch Line2DLineTextureMode = 2
 )
 
+func (me *Line2D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *Line2D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

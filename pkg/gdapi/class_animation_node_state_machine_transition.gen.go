@@ -43,6 +43,10 @@ const (
   AnimationNodeStateMachineTransitionAdvanceModeAdvanceModeAuto AnimationNodeStateMachineTransitionAdvanceMode = 2
 )
 
+func (me *AnimationNodeStateMachineTransition) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *AnimationNodeStateMachineTransition) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

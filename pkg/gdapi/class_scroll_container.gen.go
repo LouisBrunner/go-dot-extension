@@ -37,6 +37,10 @@ const (
   ScrollContainerScrollModeScrollModeShowNever ScrollContainerScrollMode = 3
 )
 
+func (me *ScrollContainer) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *ScrollContainer) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

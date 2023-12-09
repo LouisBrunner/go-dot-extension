@@ -45,6 +45,10 @@ const (
   PhysicalBone3DJointTypeJointType6Dof PhysicalBone3DJointType = 5
 )
 
+func (me *PhysicalBone3D) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *PhysicalBone3D) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -44,6 +44,10 @@ const (
   VisualShaderNodeFloatOpOperatorOpEnumSize VisualShaderNodeFloatOpOperator = 10
 )
 
+func (me *VisualShaderNodeFloatOp) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VisualShaderNodeFloatOp) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

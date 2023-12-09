@@ -40,6 +40,10 @@ const (
   TextureButtonStretchModeStretchKeepAspectCovered TextureButtonStretchMode = 6
 )
 
+func (me *TextureButton) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *TextureButton) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

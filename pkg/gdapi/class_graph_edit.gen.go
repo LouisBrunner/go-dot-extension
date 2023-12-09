@@ -35,6 +35,10 @@ const (
   GraphEditPanningSchemeScrollPans GraphEditPanningScheme = 1
 )
 
+func (me *GraphEdit) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *GraphEdit) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

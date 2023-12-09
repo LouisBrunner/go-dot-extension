@@ -29,6 +29,10 @@ func (me *VideoStream) BaseClass() string {
 
 // Enums
 
+func (me *VideoStream) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *VideoStream) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

@@ -29,6 +29,10 @@ func (me *MultiplayerSpawner) BaseClass() string {
 
 // Enums
 
+func (me *MultiplayerSpawner) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *MultiplayerSpawner) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }

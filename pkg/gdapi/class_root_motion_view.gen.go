@@ -29,6 +29,10 @@ func (me *RootMotionView) BaseClass() string {
 
 // Enums
 
+func (me *RootMotionView) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
 func (me *RootMotionView) AsTypePtr() gdc.TypePtr {
   return gdc.TypePtr(me.obj)
 }
