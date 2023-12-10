@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
   "unsafe"
-
-
-
-
-
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioEffectInstance struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,6 @@ func (me *AudioEffectInstance) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *AudioEffectInstance) XProcess(src_buffer unsafe.Pointer, dst_buffer *AudioFrame, frame_count int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *AudioEffectInstance) XProcessSilence()  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

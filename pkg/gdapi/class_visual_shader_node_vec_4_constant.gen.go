@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeVec4Constant struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,36 @@ func (me *VisualShaderNodeVec4Constant) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeVec4Constant) SetConstant(constant Quaternion, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeVec4Constant")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_constant")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1727505552) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(constant.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeVec4Constant) GetConstant() Quaternion {
+  classNameV := StringNameFromStr("VisualShaderNodeVec4Constant")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_constant")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1222331677) // FIXME: should cache?
+  var ret Quaternion
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeVec4Constant) GetPropConstant() Quaternion {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeVec4Constant) GetConstant()  {
+func (me *VisualShaderNodeVec4Constant) SetPropConstant(value Quaternion) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

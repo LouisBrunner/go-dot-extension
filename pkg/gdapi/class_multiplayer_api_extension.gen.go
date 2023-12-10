@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MultiplayerAPIExtension struct {
   obj gdc.ObjectPtr
@@ -41,45 +37,6 @@ func (me *MultiplayerAPIExtension) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *MultiplayerAPIExtension) XPoll()  {
-  panic("TODO: implement")
-}
-
-func  (me *MultiplayerAPIExtension) XSetMultiplayerPeer(multiplayer_peer MultiplayerPeer, )  {
-  panic("TODO: implement")
-}
-
-func  (me *MultiplayerAPIExtension) XGetMultiplayerPeer()  {
-  panic("TODO: implement")
-}
-
-func  (me *MultiplayerAPIExtension) XGetUniqueId()  {
-  panic("TODO: implement")
-}
-
-func  (me *MultiplayerAPIExtension) XGetPeerIds()  {
-  panic("TODO: implement")
-}
-
-func  (me *MultiplayerAPIExtension) XRpc(peer int, object Object, method StringName, args Array, )  {
-  panic("TODO: implement")
-}
-
-func  (me *MultiplayerAPIExtension) XGetRemoteSenderId()  {
-  panic("TODO: implement")
-}
-
-func  (me *MultiplayerAPIExtension) XObjectConfigurationAdd(object Object, configuration Variant, )  {
-  panic("TODO: implement")
-}
-
-func  (me *MultiplayerAPIExtension) XObjectConfigurationRemove(object Object, configuration Variant, )  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioEffectPitchShift struct {
   obj gdc.ObjectPtr
@@ -51,33 +47,96 @@ func (me *AudioEffectPitchShift) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *AudioEffectPitchShift) SetPitchScale(rate float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectPitchShift")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_pitch_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rate), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectPitchShift) GetPitchScale()  {
-  panic("TODO: implement")
+func  (me *AudioEffectPitchShift) GetPitchScale() float32 {
+  classNameV := StringNameFromStr("AudioEffectPitchShift")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_pitch_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectPitchShift) SetOversampling(amount int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectPitchShift")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_oversampling")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectPitchShift) GetOversampling()  {
-  panic("TODO: implement")
+func  (me *AudioEffectPitchShift) GetOversampling() int {
+  classNameV := StringNameFromStr("AudioEffectPitchShift")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_oversampling")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectPitchShift) SetFftSize(size AudioEffectPitchShiftFFTSize, )  {
+  classNameV := StringNameFromStr("AudioEffectPitchShift")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_fft_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2323518741) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *AudioEffectPitchShift) GetFftSize() AudioEffectPitchShiftFFTSize {
+  classNameV := StringNameFromStr("AudioEffectPitchShift")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_fft_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2361246789) // FIXME: should cache?
+  var ret AudioEffectPitchShiftFFTSize
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *AudioEffectPitchShift) GetPropPitchScale() float32 {
   panic("TODO: implement")
 }
 
-func  (me *AudioEffectPitchShift) GetFftSize()  {
+func (me *AudioEffectPitchShift) SetPropPitchScale(value float32) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *AudioEffectPitchShift) GetPropOversampling() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *AudioEffectPitchShift) SetPropOversampling(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectPitchShift) GetPropFftSize() int {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectPitchShift) SetPropFftSize(value int) {
+  panic("TODO: implement")
+}

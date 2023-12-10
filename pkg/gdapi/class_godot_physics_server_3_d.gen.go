@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GodotPhysicsServer3D struct {
   obj gdc.ObjectPtr
@@ -41,9 +37,6 @@ func (me *GodotPhysicsServer3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

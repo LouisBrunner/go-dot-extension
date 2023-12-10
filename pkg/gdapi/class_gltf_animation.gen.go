@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFAnimation struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,36 @@ func (me *GLTFAnimation) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *GLTFAnimation) GetLoop()  {
-  panic("TODO: implement")
+func  (me *GLTFAnimation) GetLoop() bool {
+  classNameV := StringNameFromStr("GLTFAnimation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_loop")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *GLTFAnimation) SetLoop(loop bool, )  {
+  classNameV := StringNameFromStr("GLTFAnimation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_loop")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&loop), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *GLTFAnimation) GetPropLoop() bool {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+func (me *GLTFAnimation) SetPropLoop(value bool) {
+  panic("TODO: implement")
+}

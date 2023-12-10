@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioEffectSpectrumAnalyzerInstance struct {
   obj gdc.ObjectPtr
@@ -47,13 +43,18 @@ func (me *AudioEffectSpectrumAnalyzerInstance) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *AudioEffectSpectrumAnalyzerInstance) GetMagnitudeForFrequencyRange(from_hz float32, to_hz float32, mode AudioEffectSpectrumAnalyzerInstanceMagnitudeMode, )  {
-  panic("TODO: implement")
+func  (me *AudioEffectSpectrumAnalyzerInstance) GetMagnitudeForFrequencyRange(from_hz float32, to_hz float32, mode AudioEffectSpectrumAnalyzerInstanceMagnitudeMode, ) Vector2 {
+  classNameV := StringNameFromStr("AudioEffectSpectrumAnalyzerInstance")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_magnitude_for_frequency_range")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2693213071) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_hz), gdc.ConstTypePtr(&to_hz), gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

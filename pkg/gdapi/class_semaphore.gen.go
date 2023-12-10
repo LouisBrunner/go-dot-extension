@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Semaphore struct {
   obj gdc.ObjectPtr
@@ -41,21 +37,38 @@ func (me *Semaphore) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *Semaphore) Wait()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Semaphore")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("wait")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Semaphore) TryWait()  {
-  panic("TODO: implement")
+func  (me *Semaphore) TryWait() bool {
+  classNameV := StringNameFromStr("Semaphore")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("try_wait")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Semaphore) Post()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Semaphore")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("post")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

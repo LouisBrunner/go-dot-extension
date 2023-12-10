@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioStreamPolyphonic struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,36 @@ func (me *AudioStreamPolyphonic) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *AudioStreamPolyphonic) SetPolyphony(voices int, )  {
+  classNameV := StringNameFromStr("AudioStreamPolyphonic")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_polyphony")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&voices), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *AudioStreamPolyphonic) GetPolyphony() int {
+  classNameV := StringNameFromStr("AudioStreamPolyphonic")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_polyphony")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *AudioStreamPolyphonic) GetPropPolyphony() int {
   panic("TODO: implement")
 }
 
-func  (me *AudioStreamPolyphonic) GetPolyphony()  {
+func (me *AudioStreamPolyphonic) SetPropPolyphony(value int) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

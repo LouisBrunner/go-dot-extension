@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MainLoop struct {
   obj gdc.ObjectPtr
@@ -56,25 +52,8 @@ func (me *MainLoop) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *MainLoop) XInitialize()  {
-  panic("TODO: implement")
-}
-
-func  (me *MainLoop) XPhysicsProcess(delta float32, )  {
-  panic("TODO: implement")
-}
-
-func  (me *MainLoop) XProcess(delta float32, )  {
-  panic("TODO: implement")
-}
-
-func  (me *MainLoop) XFinalize()  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

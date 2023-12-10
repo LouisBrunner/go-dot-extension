@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type FontVariation struct {
   obj gdc.ObjectPtr
@@ -41,57 +37,224 @@ func (me *FontVariation) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *FontVariation) SetBaseFont(font Font, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_base_font")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1262170328) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FontVariation) GetBaseFont()  {
-  panic("TODO: implement")
+func  (me *FontVariation) GetBaseFont() Font {
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_base_font")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229501585) // FIXME: should cache?
+  var ret Font
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FontVariation) SetVariationOpentype(coords Dictionary, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_variation_opentype")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155329257) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(coords.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FontVariation) GetVariationOpentype()  {
-  panic("TODO: implement")
+func  (me *FontVariation) GetVariationOpentype() Dictionary {
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_variation_opentype")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
+  var ret Dictionary
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FontVariation) SetVariationEmbolden(strength float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_variation_embolden")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&strength), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FontVariation) GetVariationEmbolden()  {
-  panic("TODO: implement")
+func  (me *FontVariation) GetVariationEmbolden() float32 {
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_variation_embolden")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FontVariation) SetVariationFaceIndex(face_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_variation_face_index")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&face_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FontVariation) GetVariationFaceIndex()  {
-  panic("TODO: implement")
+func  (me *FontVariation) GetVariationFaceIndex() int {
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_variation_face_index")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FontVariation) SetVariationTransform(transform Transform2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_variation_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(transform.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FontVariation) GetVariationTransform()  {
-  panic("TODO: implement")
+func  (me *FontVariation) GetVariationTransform() Transform2D {
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_variation_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
+  var ret Transform2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FontVariation) SetOpentypeFeatures(features Dictionary, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_opentype_features")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155329257) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(features.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *FontVariation) SetSpacing(spacing TextServerSpacingType, value int, )  {
+  classNameV := StringNameFromStr("FontVariation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_spacing")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3122339690) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&spacing), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *FontVariation) GetPropBaseFont() Font {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *FontVariation) SetPropBaseFont(value Font) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *FontVariation) GetPropFallbacks() Font {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) SetPropFallbacks(value Font) {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) GetPropVariationOpentype() Dictionary {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) SetPropVariationOpentype(value Dictionary) {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) GetPropVariationFaceIndex() int {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) SetPropVariationFaceIndex(value int) {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) GetPropVariationEmbolden() float32 {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) SetPropVariationEmbolden(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) GetPropVariationTransform() Transform2D {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) SetPropVariationTransform(value Transform2D) {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) GetPropOpentypeFeatures() Dictionary {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) SetPropOpentypeFeatures(value Dictionary) {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) GetPropSpacingGlyph() int {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) SetPropSpacingGlyph(value int) {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) GetPropSpacingSpace() int {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) SetPropSpacingSpace(value int) {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) GetPropSpacingTop() int {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) SetPropSpacingTop(value int) {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) GetPropSpacingBottom() int {
+  panic("TODO: implement")
+}
+
+func (me *FontVariation) SetPropSpacingBottom(value int) {
+  panic("TODO: implement")
+}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NavigationLink2D struct {
   obj gdc.ObjectPtr
@@ -41,89 +37,282 @@ func (me *NavigationLink2D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *NavigationLink2D) SetEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationLink2D) IsEnabled()  {
-  panic("TODO: implement")
+func  (me *NavigationLink2D) IsEnabled() bool {
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationLink2D) SetBidirectional(bidirectional bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_bidirectional")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bidirectional), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationLink2D) IsBidirectional()  {
-  panic("TODO: implement")
+func  (me *NavigationLink2D) IsBidirectional() bool {
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_bidirectional")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationLink2D) SetNavigationLayers(navigation_layers int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_navigation_layers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&navigation_layers), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationLink2D) GetNavigationLayers()  {
-  panic("TODO: implement")
+func  (me *NavigationLink2D) GetNavigationLayers() int {
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_navigation_layers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationLink2D) SetNavigationLayerValue(layer_number int, value bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_navigation_layer_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationLink2D) GetNavigationLayerValue(layer_number int, )  {
-  panic("TODO: implement")
+func  (me *NavigationLink2D) GetNavigationLayerValue(layer_number int, ) bool {
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_navigation_layer_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationLink2D) SetStartPosition(position Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_start_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationLink2D) GetStartPosition()  {
-  panic("TODO: implement")
+func  (me *NavigationLink2D) GetStartPosition() Vector2 {
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_start_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationLink2D) SetEndPosition(position Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_end_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationLink2D) GetEndPosition()  {
-  panic("TODO: implement")
+func  (me *NavigationLink2D) GetEndPosition() Vector2 {
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_end_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationLink2D) SetGlobalStartPosition(position Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_global_start_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationLink2D) GetGlobalStartPosition()  {
-  panic("TODO: implement")
+func  (me *NavigationLink2D) GetGlobalStartPosition() Vector2 {
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_global_start_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationLink2D) SetGlobalEndPosition(position Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_global_end_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationLink2D) GetGlobalEndPosition()  {
-  panic("TODO: implement")
+func  (me *NavigationLink2D) GetGlobalEndPosition() Vector2 {
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_global_end_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationLink2D) SetEnterCost(enter_cost float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_enter_cost")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enter_cost), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationLink2D) GetEnterCost()  {
-  panic("TODO: implement")
+func  (me *NavigationLink2D) GetEnterCost() float32 {
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_enter_cost")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationLink2D) SetTravelCost(travel_cost float32, )  {
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_travel_cost")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&travel_cost), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *NavigationLink2D) GetTravelCost() float32 {
+  classNameV := StringNameFromStr("NavigationLink2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_travel_cost")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *NavigationLink2D) GetPropEnabled() bool {
   panic("TODO: implement")
 }
 
-func  (me *NavigationLink2D) GetTravelCost()  {
+func (me *NavigationLink2D) SetPropEnabled(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *NavigationLink2D) GetPropBidirectional() bool {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *NavigationLink2D) SetPropBidirectional(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationLink2D) GetPropNavigationLayers() int {
+  panic("TODO: implement")
+}
+
+func (me *NavigationLink2D) SetPropNavigationLayers(value int) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationLink2D) GetPropStartPosition() Vector2 {
+  panic("TODO: implement")
+}
+
+func (me *NavigationLink2D) SetPropStartPosition(value Vector2) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationLink2D) GetPropEndPosition() Vector2 {
+  panic("TODO: implement")
+}
+
+func (me *NavigationLink2D) SetPropEndPosition(value Vector2) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationLink2D) GetPropEnterCost() float32 {
+  panic("TODO: implement")
+}
+
+func (me *NavigationLink2D) SetPropEnterCost(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationLink2D) GetPropTravelCost() float32 {
+  panic("TODO: implement")
+}
+
+func (me *NavigationLink2D) SetPropTravelCost(value float32) {
+  panic("TODO: implement")
+}

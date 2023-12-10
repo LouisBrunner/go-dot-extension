@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PlaneMesh struct {
   obj gdc.ObjectPtr
@@ -48,49 +44,156 @@ func (me *PlaneMesh) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *PlaneMesh) SetSize(size Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("PlaneMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PlaneMesh) GetSize()  {
-  panic("TODO: implement")
+func  (me *PlaneMesh) GetSize() Vector2 {
+  classNameV := StringNameFromStr("PlaneMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PlaneMesh) SetSubdivideWidth(subdivide int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("PlaneMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_subdivide_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subdivide), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PlaneMesh) GetSubdivideWidth()  {
-  panic("TODO: implement")
+func  (me *PlaneMesh) GetSubdivideWidth() int {
+  classNameV := StringNameFromStr("PlaneMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_subdivide_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PlaneMesh) SetSubdivideDepth(subdivide int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("PlaneMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_subdivide_depth")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subdivide), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PlaneMesh) GetSubdivideDepth()  {
-  panic("TODO: implement")
+func  (me *PlaneMesh) GetSubdivideDepth() int {
+  classNameV := StringNameFromStr("PlaneMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_subdivide_depth")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PlaneMesh) SetCenterOffset(offset Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("PlaneMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_center_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PlaneMesh) GetCenterOffset()  {
-  panic("TODO: implement")
+func  (me *PlaneMesh) GetCenterOffset() Vector3 {
+  classNameV := StringNameFromStr("PlaneMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_center_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PlaneMesh) SetOrientation(orientation PlaneMeshOrientation, )  {
+  classNameV := StringNameFromStr("PlaneMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_orientation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2751399687) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&orientation), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *PlaneMesh) GetOrientation() PlaneMeshOrientation {
+  classNameV := StringNameFromStr("PlaneMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_orientation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227599250) // FIXME: should cache?
+  var ret PlaneMeshOrientation
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *PlaneMesh) GetPropSize() Vector2 {
   panic("TODO: implement")
 }
 
-func  (me *PlaneMesh) GetOrientation()  {
+func (me *PlaneMesh) SetPropSize(value Vector2) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *PlaneMesh) GetPropSubdivideWidth() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *PlaneMesh) SetPropSubdivideWidth(value int) {
+  panic("TODO: implement")
+}
+
+func (me *PlaneMesh) GetPropSubdivideDepth() int {
+  panic("TODO: implement")
+}
+
+func (me *PlaneMesh) SetPropSubdivideDepth(value int) {
+  panic("TODO: implement")
+}
+
+func (me *PlaneMesh) GetPropCenterOffset() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *PlaneMesh) SetPropCenterOffset(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *PlaneMesh) GetPropOrientation() int {
+  panic("TODO: implement")
+}
+
+func (me *PlaneMesh) SetPropOrientation(value int) {
+  panic("TODO: implement")
+}

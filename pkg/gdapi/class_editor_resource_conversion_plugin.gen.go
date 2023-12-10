@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorResourceConversionPlugin struct {
   obj gdc.ObjectPtr
@@ -41,21 +37,6 @@ func (me *EditorResourceConversionPlugin) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorResourceConversionPlugin) XConvertsTo()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorResourceConversionPlugin) XHandles(resource Resource, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorResourceConversionPlugin) XConvert(resource Resource, )  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

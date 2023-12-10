@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PhysicsTestMotionParameters3D struct {
   obj gdc.ObjectPtr
@@ -41,73 +37,246 @@ func (me *PhysicsTestMotionParameters3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *PhysicsTestMotionParameters3D) GetFrom()  {
-  panic("TODO: implement")
+func  (me *PhysicsTestMotionParameters3D) GetFrom() Transform3D {
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_from")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
+  var ret Transform3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PhysicsTestMotionParameters3D) SetFrom(from Transform3D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_from")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2952846383) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PhysicsTestMotionParameters3D) GetMotion()  {
-  panic("TODO: implement")
+func  (me *PhysicsTestMotionParameters3D) GetMotion() Vector3 {
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_motion")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PhysicsTestMotionParameters3D) SetMotion(motion Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_motion")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(motion.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PhysicsTestMotionParameters3D) GetMargin()  {
-  panic("TODO: implement")
+func  (me *PhysicsTestMotionParameters3D) GetMargin() float32 {
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_margin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PhysicsTestMotionParameters3D) SetMargin(margin float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_margin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PhysicsTestMotionParameters3D) GetMaxCollisions()  {
-  panic("TODO: implement")
+func  (me *PhysicsTestMotionParameters3D) GetMaxCollisions() int {
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_max_collisions")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PhysicsTestMotionParameters3D) SetMaxCollisions(max_collisions int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_max_collisions")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_collisions), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PhysicsTestMotionParameters3D) IsCollideSeparationRayEnabled()  {
-  panic("TODO: implement")
+func  (me *PhysicsTestMotionParameters3D) IsCollideSeparationRayEnabled() bool {
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_collide_separation_ray_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PhysicsTestMotionParameters3D) SetCollideSeparationRayEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_collide_separation_ray_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PhysicsTestMotionParameters3D) GetExcludeBodies()  {
-  panic("TODO: implement")
+func  (me *PhysicsTestMotionParameters3D) GetExcludeBodies() RID {
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_exclude_bodies")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PhysicsTestMotionParameters3D) SetExcludeBodies(exclude_list RID, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_exclude_bodies")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(exclude_list.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PhysicsTestMotionParameters3D) GetExcludeObjects()  {
-  panic("TODO: implement")
+func  (me *PhysicsTestMotionParameters3D) GetExcludeObjects() int {
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_exclude_objects")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PhysicsTestMotionParameters3D) SetExcludeObjects(exclude_list int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_exclude_objects")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&exclude_list), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PhysicsTestMotionParameters3D) IsRecoveryAsCollisionEnabled()  {
-  panic("TODO: implement")
+func  (me *PhysicsTestMotionParameters3D) IsRecoveryAsCollisionEnabled() bool {
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_recovery_as_collision_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *PhysicsTestMotionParameters3D) SetRecoveryAsCollisionEnabled(enabled bool, )  {
+  classNameV := StringNameFromStr("PhysicsTestMotionParameters3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_recovery_as_collision_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *PhysicsTestMotionParameters3D) GetPropFrom() Transform3D {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *PhysicsTestMotionParameters3D) SetPropFrom(value Transform3D) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *PhysicsTestMotionParameters3D) GetPropMotion() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) SetPropMotion(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) GetPropMargin() float32 {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) SetPropMargin(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) GetPropMaxCollisions() int {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) SetPropMaxCollisions(value int) {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) GetPropCollideSeparationRay() bool {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) SetPropCollideSeparationRay(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) GetPropExcludeBodies() RID {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) SetPropExcludeBodies(value RID) {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) GetPropExcludeObjects() Array {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) SetPropExcludeObjects(value Array) {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) GetPropRecoveryAsCollision() bool {
+  panic("TODO: implement")
+}
+
+func (me *PhysicsTestMotionParameters3D) SetPropRecoveryAsCollision(value bool) {
+  panic("TODO: implement")
+}

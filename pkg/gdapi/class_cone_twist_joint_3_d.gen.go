@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ConeTwistJoint3D struct {
   obj gdc.ObjectPtr
@@ -51,17 +47,68 @@ func (me *ConeTwistJoint3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *ConeTwistJoint3D) SetParam(param ConeTwistJoint3DParam, value float32, )  {
+  classNameV := StringNameFromStr("ConeTwistJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_param")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1062470226) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ConeTwistJoint3D) GetParam(param ConeTwistJoint3DParam, ) float32 {
+  classNameV := StringNameFromStr("ConeTwistJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_param")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2928790850) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *ConeTwistJoint3D) GetPropSwingSpan() float32 {
   panic("TODO: implement")
 }
 
-func  (me *ConeTwistJoint3D) GetParam(param ConeTwistJoint3DParam, )  {
+func (me *ConeTwistJoint3D) SetPropSwingSpan(value float32) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *ConeTwistJoint3D) GetPropTwistSpan() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *ConeTwistJoint3D) SetPropTwistSpan(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *ConeTwistJoint3D) GetPropBias() float32 {
+  panic("TODO: implement")
+}
+
+func (me *ConeTwistJoint3D) SetPropBias(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *ConeTwistJoint3D) GetPropSoftness() float32 {
+  panic("TODO: implement")
+}
+
+func (me *ConeTwistJoint3D) SetPropSoftness(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *ConeTwistJoint3D) GetPropRelaxation() float32 {
+  panic("TODO: implement")
+}
+
+func (me *ConeTwistJoint3D) SetPropRelaxation(value float32) {
+  panic("TODO: implement")
+}

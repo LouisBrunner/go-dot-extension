@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeVarying struct {
   obj gdc.ObjectPtr
@@ -41,25 +37,66 @@ func (me *VisualShaderNodeVarying) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeVarying) SetVaryingName(name String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeVarying")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_varying_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeVarying) GetVaryingName()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeVarying) GetVaryingName() String {
+  classNameV := StringNameFromStr("VisualShaderNodeVarying")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_varying_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeVarying) SetVaryingType(type_ VisualShaderVaryingType, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeVarying")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_varying_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3565867981) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeVarying) GetVaryingType() VisualShaderVaryingType {
+  classNameV := StringNameFromStr("VisualShaderNodeVarying")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_varying_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 523183580) // FIXME: should cache?
+  var ret VisualShaderVaryingType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeVarying) GetPropVaryingName() StringName {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeVarying) GetVaryingType()  {
+func (me *VisualShaderNodeVarying) SetPropVaryingName(value StringName) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *VisualShaderNodeVarying) GetPropVaryingType() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *VisualShaderNodeVarying) SetPropVaryingType(value int) {
+  panic("TODO: implement")
+}

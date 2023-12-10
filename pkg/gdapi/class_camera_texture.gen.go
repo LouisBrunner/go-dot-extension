@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CameraTexture struct {
   obj gdc.ObjectPtr
@@ -41,33 +37,96 @@ func (me *CameraTexture) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *CameraTexture) SetCameraFeedId(feed_id int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CameraTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_camera_feed_id")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feed_id), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CameraTexture) GetCameraFeedId()  {
-  panic("TODO: implement")
+func  (me *CameraTexture) GetCameraFeedId() int {
+  classNameV := StringNameFromStr("CameraTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_camera_feed_id")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CameraTexture) SetWhichFeed(which_feed CameraServerFeedImage, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CameraTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_which_feed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1595299230) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&which_feed), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CameraTexture) GetWhichFeed()  {
-  panic("TODO: implement")
+func  (me *CameraTexture) GetWhichFeed() CameraServerFeedImage {
+  classNameV := StringNameFromStr("CameraTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_which_feed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 91039457) // FIXME: should cache?
+  var ret CameraServerFeedImage
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CameraTexture) SetCameraActive(active bool, )  {
+  classNameV := StringNameFromStr("CameraTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_camera_active")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *CameraTexture) GetCameraActive() bool {
+  classNameV := StringNameFromStr("CameraTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_camera_active")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *CameraTexture) GetPropCameraFeedId() int {
   panic("TODO: implement")
 }
 
-func  (me *CameraTexture) GetCameraActive()  {
+func (me *CameraTexture) SetPropCameraFeedId(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *CameraTexture) GetPropWhichFeed() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *CameraTexture) SetPropWhichFeed(value int) {
+  panic("TODO: implement")
+}
+
+func (me *CameraTexture) GetPropCameraIsActive() bool {
+  panic("TODO: implement")
+}
+
+func (me *CameraTexture) SetPropCameraIsActive(value bool) {
+  panic("TODO: implement")
+}

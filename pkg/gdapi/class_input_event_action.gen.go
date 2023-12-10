@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type InputEventAction struct {
   obj gdc.ObjectPtr
@@ -41,29 +37,84 @@ func (me *InputEventAction) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *InputEventAction) SetAction(action StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("InputEventAction")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_action")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *InputEventAction) GetAction()  {
-  panic("TODO: implement")
+func  (me *InputEventAction) GetAction() StringName {
+  classNameV := StringNameFromStr("InputEventAction")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_action")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
+  var ret StringName
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *InputEventAction) SetPressed(pressed bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("InputEventAction")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *InputEventAction) SetStrength(strength float32, )  {
+  classNameV := StringNameFromStr("InputEventAction")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_strength")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&strength), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *InputEventAction) GetStrength() float32 {
+  classNameV := StringNameFromStr("InputEventAction")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_strength")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *InputEventAction) GetPropAction() StringName {
   panic("TODO: implement")
 }
 
-func  (me *InputEventAction) GetStrength()  {
+func (me *InputEventAction) SetPropAction(value StringName) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *InputEventAction) GetPropPressed() bool {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *InputEventAction) SetPropPressed(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *InputEventAction) GetPropStrength() float32 {
+  panic("TODO: implement")
+}
+
+func (me *InputEventAction) SetPropStrength(value float32) {
+  panic("TODO: implement")
+}

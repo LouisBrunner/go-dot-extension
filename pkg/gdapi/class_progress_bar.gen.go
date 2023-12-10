@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ProgressBar struct {
   obj gdc.ObjectPtr
@@ -49,25 +45,66 @@ func (me *ProgressBar) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *ProgressBar) SetFillMode(mode int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("ProgressBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_fill_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *ProgressBar) GetFillMode()  {
-  panic("TODO: implement")
+func  (me *ProgressBar) GetFillMode() int {
+  classNameV := StringNameFromStr("ProgressBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_fill_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *ProgressBar) SetShowPercentage(visible bool, )  {
+  classNameV := StringNameFromStr("ProgressBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_show_percentage")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&visible), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ProgressBar) IsPercentageShown() bool {
+  classNameV := StringNameFromStr("ProgressBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_percentage_shown")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *ProgressBar) GetPropFillMode() int {
   panic("TODO: implement")
 }
 
-func  (me *ProgressBar) IsPercentageShown()  {
+func (me *ProgressBar) SetPropFillMode(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *ProgressBar) GetPropShowPercentage() bool {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *ProgressBar) SetPropShowPercentage(value bool) {
+  panic("TODO: implement")
+}

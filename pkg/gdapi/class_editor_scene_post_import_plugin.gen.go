@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorScenePostImportPlugin struct {
   obj gdc.ObjectPtr
@@ -53,53 +49,38 @@ func (me *EditorScenePostImportPlugin) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorScenePostImportPlugin) XGetInternalImportOptions(category int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorScenePostImportPlugin) XGetInternalOptionVisibility(category int, for_animation bool, option String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorScenePostImportPlugin) XGetInternalOptionUpdateViewRequired(category int, option String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorScenePostImportPlugin) XInternalProcess(category int, base_node Node, node Node, resource Resource, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorScenePostImportPlugin) XGetImportOptions(path String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorScenePostImportPlugin) XGetOptionVisibility(path String, for_animation bool, option String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorScenePostImportPlugin) XPreProcess(scene Node, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorScenePostImportPlugin) XPostProcess(scene Node, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorScenePostImportPlugin) GetOptionValue(name StringName, )  {
-  panic("TODO: implement")
+func  (me *EditorScenePostImportPlugin) GetOptionValue(name StringName, ) Variant {
+  classNameV := StringNameFromStr("EditorScenePostImportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_option_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2760726917) // FIXME: should cache?
+  var ret Variant
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorScenePostImportPlugin) AddImportOption(name String, value Variant, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorScenePostImportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_import_option")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 402577236) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorScenePostImportPlugin) AddImportOptionAdvanced(type_ VariantType, name String, default_value Variant, hint PropertyHint, hint_string String, usage_flags int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorScenePostImportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_import_option_advanced")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3774155785) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(default_value.AsCTypePtr()), gdc.ConstTypePtr(&hint), gdc.ConstTypePtr(hint_string.AsCTypePtr()), gdc.ConstTypePtr(&usage_flags), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

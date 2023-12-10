@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VoxelGI struct {
   obj gdc.ObjectPtr
@@ -50,49 +46,146 @@ func (me *VoxelGI) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VoxelGI) SetProbeData(data VoxelGIData, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VoxelGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_probe_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1637849675) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(data.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VoxelGI) GetProbeData()  {
-  panic("TODO: implement")
+func  (me *VoxelGI) GetProbeData() VoxelGIData {
+  classNameV := StringNameFromStr("VoxelGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_probe_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1730645405) // FIXME: should cache?
+  var ret VoxelGIData
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VoxelGI) SetSubdiv(subdiv VoxelGISubdiv, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VoxelGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_subdiv")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240898472) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subdiv), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VoxelGI) GetSubdiv()  {
-  panic("TODO: implement")
+func  (me *VoxelGI) GetSubdiv() VoxelGISubdiv {
+  classNameV := StringNameFromStr("VoxelGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_subdiv")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4261647950) // FIXME: should cache?
+  var ret VoxelGISubdiv
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VoxelGI) SetSize(size Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VoxelGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VoxelGI) GetSize()  {
-  panic("TODO: implement")
+func  (me *VoxelGI) GetSize() Vector3 {
+  classNameV := StringNameFromStr("VoxelGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VoxelGI) SetCameraAttributes(camera_attributes CameraAttributes, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VoxelGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_camera_attributes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2817810567) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(camera_attributes.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VoxelGI) GetCameraAttributes()  {
-  panic("TODO: implement")
+func  (me *VoxelGI) GetCameraAttributes() CameraAttributes {
+  classNameV := StringNameFromStr("VoxelGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_camera_attributes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3921283215) // FIXME: should cache?
+  var ret CameraAttributes
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VoxelGI) Bake(from_node Node, create_visual_debug bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VoxelGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("bake")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2781551026) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from_node.AsCTypePtr()), gdc.ConstTypePtr(&create_visual_debug), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *VoxelGI) DebugBake()  {
+  classNameV := StringNameFromStr("VoxelGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("debug_bake")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *VoxelGI) GetPropSubdiv() int {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *VoxelGI) SetPropSubdiv(value int) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *VoxelGI) GetPropSize() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *VoxelGI) SetPropSize(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *VoxelGI) GetPropCameraAttributes() any {
+  panic("TODO: implement")
+}
+
+func (me *VoxelGI) SetPropCameraAttributes(value any) {
+  panic("TODO: implement")
+}
+
+func (me *VoxelGI) GetPropData() VoxelGIData {
+  panic("TODO: implement")
+}
+
+func (me *VoxelGI) SetPropData(value VoxelGIData) {
+  panic("TODO: implement")
+}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorNode3DGizmoPlugin struct {
   obj gdc.ObjectPtr
@@ -41,97 +37,58 @@ func (me *EditorNode3DGizmoPlugin) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorNode3DGizmoPlugin) XHasGizmo(for_node_3d Node3D, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XCreateGizmo(for_node_3d Node3D, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XGetGizmoName()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XGetPriority()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XCanBeHidden()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XIsSelectableWhenHidden()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XRedraw(gizmo EditorNode3DGizmo, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XGetHandleName(gizmo EditorNode3DGizmo, handle_id int, secondary bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XIsHandleHighlighted(gizmo EditorNode3DGizmo, handle_id int, secondary bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XGetHandleValue(gizmo EditorNode3DGizmo, handle_id int, secondary bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XSetHandle(gizmo EditorNode3DGizmo, handle_id int, secondary bool, camera Camera3D, screen_pos Vector2, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XCommitHandle(gizmo EditorNode3DGizmo, handle_id int, secondary bool, restore Variant, cancel bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XSubgizmosIntersectRay(gizmo EditorNode3DGizmo, camera Camera3D, screen_pos Vector2, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XSubgizmosIntersectFrustum(gizmo EditorNode3DGizmo, camera Camera3D, frustum_planes Plane, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XGetSubgizmoTransform(gizmo EditorNode3DGizmo, subgizmo_id int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XSetSubgizmoTransform(gizmo EditorNode3DGizmo, subgizmo_id int, transform Transform3D, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorNode3DGizmoPlugin) XCommitSubgizmos(gizmo EditorNode3DGizmo, ids PackedInt32Array, restores Transform3D, cancel bool, )  {
-  panic("TODO: implement")
-}
-
 func  (me *EditorNode3DGizmoPlugin) CreateMaterial(name String, color Color, billboard bool, on_top bool, use_vertex_color bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorNode3DGizmoPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("create_material")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3486012546) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), gdc.ConstTypePtr(&billboard), gdc.ConstTypePtr(&on_top), gdc.ConstTypePtr(&use_vertex_color), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorNode3DGizmoPlugin) CreateIconMaterial(name String, texture Texture2D, on_top bool, color Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorNode3DGizmoPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("create_icon_material")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2976007329) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(&on_top), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorNode3DGizmoPlugin) CreateHandleMaterial(name String, billboard bool, texture Texture2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorNode3DGizmoPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("create_handle_material")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2486475223) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(&billboard), gdc.ConstTypePtr(texture.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorNode3DGizmoPlugin) AddMaterial(name String, material StandardMaterial3D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorNode3DGizmoPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_material")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1374068695) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(material.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorNode3DGizmoPlugin) GetMaterial(name String, gizmo EditorNode3DGizmo, )  {
-  panic("TODO: implement")
+func  (me *EditorNode3DGizmoPlugin) GetMaterial(name String, gizmo EditorNode3DGizmo, ) StandardMaterial3D {
+  classNameV := StringNameFromStr("EditorNode3DGizmoPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_material")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3501703615) // FIXME: should cache?
+  var ret StandardMaterial3D
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(gizmo.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeCurveTexture struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,36 @@ func (me *VisualShaderNodeCurveTexture) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeCurveTexture) SetTexture(texture CurveTexture, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeCurveTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 181872837) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeCurveTexture) GetTexture() CurveTexture {
+  classNameV := StringNameFromStr("VisualShaderNodeCurveTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2800800579) // FIXME: should cache?
+  var ret CurveTexture
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeCurveTexture) GetPropTexture() CurveTexture {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCurveTexture) GetTexture()  {
+func (me *VisualShaderNodeCurveTexture) SetPropTexture(value CurveTexture) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

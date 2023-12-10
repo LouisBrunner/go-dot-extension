@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorSettings struct {
   obj gdc.ObjectPtr
@@ -47,73 +43,182 @@ func (me *EditorSettings) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorSettings) HasSetting(name String, )  {
-  panic("TODO: implement")
+func  (me *EditorSettings) HasSetting(name String, ) bool {
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_setting")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorSettings) SetSetting(name String, value Variant, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_setting")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 402577236) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorSettings) GetSetting(name String, )  {
-  panic("TODO: implement")
+func  (me *EditorSettings) GetSetting(name String, ) Variant {
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_setting")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1868160156) // FIXME: should cache?
+  var ret Variant
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorSettings) Erase(property String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("erase")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(property.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorSettings) SetInitialValue(name StringName, value Variant, update_current bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_initial_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1529169264) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), gdc.ConstTypePtr(&update_current), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorSettings) AddPropertyInfo(info Dictionary, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_property_info")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155329257) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(info.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorSettings) SetProjectMetadata(section String, key String, data Variant, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_project_metadata")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2504492430) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(section.AsCTypePtr()), gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(data.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorSettings) GetProjectMetadata(section String, key String, default_ Variant, )  {
-  panic("TODO: implement")
+func  (me *EditorSettings) GetProjectMetadata(section String, key String, default_ Variant, ) Variant {
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_project_metadata")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 89809366) // FIXME: should cache?
+  var ret Variant
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(section.AsCTypePtr()), gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(default_.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorSettings) SetFavorites(dirs PackedStringArray, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_favorites")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015028928) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(dirs.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorSettings) GetFavorites()  {
-  panic("TODO: implement")
+func  (me *EditorSettings) GetFavorites() PackedStringArray {
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_favorites")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
+  var ret PackedStringArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorSettings) SetRecentDirs(dirs PackedStringArray, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_recent_dirs")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015028928) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(dirs.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorSettings) GetRecentDirs()  {
-  panic("TODO: implement")
+func  (me *EditorSettings) GetRecentDirs() PackedStringArray {
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_recent_dirs")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
+  var ret PackedStringArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorSettings) SetBuiltinActionOverride(name String, actions_list InputEvent, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_builtin_action_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1209351045) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(actions_list.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorSettings) CheckChangedSettingsInGroup(setting_prefix String, )  {
-  panic("TODO: implement")
+func  (me *EditorSettings) CheckChangedSettingsInGroup(setting_prefix String, ) bool {
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("check_changed_settings_in_group")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(setting_prefix.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *EditorSettings) GetChangedSettings()  {
-  panic("TODO: implement")
+func  (me *EditorSettings) GetChangedSettings() PackedStringArray {
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_changed_settings")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
+  var ret PackedStringArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorSettings) MarkSettingChanged(setting String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSettings")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("mark_setting_changed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(setting.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

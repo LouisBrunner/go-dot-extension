@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SeparationRayShape3D struct {
   obj gdc.ObjectPtr
@@ -41,25 +37,66 @@ func (me *SeparationRayShape3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *SeparationRayShape3D) SetLength(length float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SeparationRayShape3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_length")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SeparationRayShape3D) GetLength()  {
-  panic("TODO: implement")
+func  (me *SeparationRayShape3D) GetLength() float32 {
+  classNameV := StringNameFromStr("SeparationRayShape3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_length")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SeparationRayShape3D) SetSlideOnSlope(active bool, )  {
+  classNameV := StringNameFromStr("SeparationRayShape3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_slide_on_slope")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *SeparationRayShape3D) GetSlideOnSlope() bool {
+  classNameV := StringNameFromStr("SeparationRayShape3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_slide_on_slope")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *SeparationRayShape3D) GetPropLength() float32 {
   panic("TODO: implement")
 }
 
-func  (me *SeparationRayShape3D) GetSlideOnSlope()  {
+func (me *SeparationRayShape3D) SetPropLength(value float32) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *SeparationRayShape3D) GetPropSlideOnSlope() bool {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *SeparationRayShape3D) SetPropSlideOnSlope(value bool) {
+  panic("TODO: implement")
+}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDAttachmentFormat struct {
   obj gdc.ObjectPtr
@@ -41,33 +37,96 @@ func (me *RDAttachmentFormat) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *RDAttachmentFormat) SetFormat(p_member RenderingDeviceDataFormat, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDAttachmentFormat")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_format")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 565531219) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDAttachmentFormat) GetFormat()  {
-  panic("TODO: implement")
+func  (me *RDAttachmentFormat) GetFormat() RenderingDeviceDataFormat {
+  classNameV := StringNameFromStr("RDAttachmentFormat")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_format")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2235804183) // FIXME: should cache?
+  var ret RenderingDeviceDataFormat
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDAttachmentFormat) SetSamples(p_member RenderingDeviceTextureSamples, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDAttachmentFormat")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_samples")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3774171498) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDAttachmentFormat) GetSamples()  {
-  panic("TODO: implement")
+func  (me *RDAttachmentFormat) GetSamples() RenderingDeviceTextureSamples {
+  classNameV := StringNameFromStr("RDAttachmentFormat")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_samples")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 407791724) // FIXME: should cache?
+  var ret RenderingDeviceTextureSamples
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDAttachmentFormat) SetUsageFlags(p_member int, )  {
+  classNameV := StringNameFromStr("RDAttachmentFormat")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_usage_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RDAttachmentFormat) GetUsageFlags() int {
+  classNameV := StringNameFromStr("RDAttachmentFormat")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_usage_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *RDAttachmentFormat) GetPropFormat() int {
   panic("TODO: implement")
 }
 
-func  (me *RDAttachmentFormat) GetUsageFlags()  {
+func (me *RDAttachmentFormat) SetPropFormat(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *RDAttachmentFormat) GetPropSamples() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *RDAttachmentFormat) SetPropSamples(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDAttachmentFormat) GetPropUsageFlags() int {
+  panic("TODO: implement")
+}
+
+func (me *RDAttachmentFormat) SetPropUsageFlags(value int) {
+  panic("TODO: implement")
+}

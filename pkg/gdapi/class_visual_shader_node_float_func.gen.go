@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeFloatFunc struct {
   obj gdc.ObjectPtr
@@ -78,17 +74,36 @@ func (me *VisualShaderNodeFloatFunc) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeFloatFunc) SetFunction(func_ VisualShaderNodeFloatFuncFunction, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeFloatFunc")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_function")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 536026177) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&func_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeFloatFunc) GetFunction() VisualShaderNodeFloatFuncFunction {
+  classNameV := StringNameFromStr("VisualShaderNodeFloatFunc")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_function")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2033948868) // FIXME: should cache?
+  var ret VisualShaderNodeFloatFuncFunction
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeFloatFunc) GetPropFunction() int {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeFloatFunc) GetFunction()  {
+func (me *VisualShaderNodeFloatFunc) SetPropFunction(value int) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

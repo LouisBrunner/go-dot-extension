@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ConvexPolygonShape3D struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,36 @@ func (me *ConvexPolygonShape3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *ConvexPolygonShape3D) SetPoints(points PackedVector3Array, )  {
+  classNameV := StringNameFromStr("ConvexPolygonShape3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_points")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334873810) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(points.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ConvexPolygonShape3D) GetPoints() PackedVector3Array {
+  classNameV := StringNameFromStr("ConvexPolygonShape3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_points")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
+  var ret PackedVector3Array
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *ConvexPolygonShape3D) GetPropPoints() Array {
   panic("TODO: implement")
 }
 
-func  (me *ConvexPolygonShape3D) GetPoints()  {
+func (me *ConvexPolygonShape3D) SetPropPoints(value Array) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

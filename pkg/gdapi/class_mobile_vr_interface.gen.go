@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MobileVRInterface struct {
   obj gdc.ObjectPtr
@@ -41,65 +37,216 @@ func (me *MobileVRInterface) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *MobileVRInterface) SetEyeHeight(eye_height float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_eye_height")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&eye_height), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *MobileVRInterface) GetEyeHeight()  {
-  panic("TODO: implement")
+func  (me *MobileVRInterface) GetEyeHeight() float32 {
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_eye_height")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *MobileVRInterface) SetIod(iod float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_iod")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&iod), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *MobileVRInterface) GetIod()  {
-  panic("TODO: implement")
+func  (me *MobileVRInterface) GetIod() float32 {
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_iod")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *MobileVRInterface) SetDisplayWidth(display_width float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_display_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&display_width), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *MobileVRInterface) GetDisplayWidth()  {
-  panic("TODO: implement")
+func  (me *MobileVRInterface) GetDisplayWidth() float32 {
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_display_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *MobileVRInterface) SetDisplayToLens(display_to_lens float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_display_to_lens")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&display_to_lens), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *MobileVRInterface) GetDisplayToLens()  {
-  panic("TODO: implement")
+func  (me *MobileVRInterface) GetDisplayToLens() float32 {
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_display_to_lens")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *MobileVRInterface) SetOversample(oversample float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_oversample")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&oversample), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *MobileVRInterface) GetOversample()  {
-  panic("TODO: implement")
+func  (me *MobileVRInterface) GetOversample() float32 {
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_oversample")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *MobileVRInterface) SetK1(k float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_k1")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&k), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *MobileVRInterface) GetK1()  {
-  panic("TODO: implement")
+func  (me *MobileVRInterface) GetK1() float32 {
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_k1")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *MobileVRInterface) SetK2(k float32, )  {
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_k2")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&k), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *MobileVRInterface) GetK2() float32 {
+  classNameV := StringNameFromStr("MobileVRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_k2")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *MobileVRInterface) GetPropEyeHeight() float32 {
   panic("TODO: implement")
 }
 
-func  (me *MobileVRInterface) GetK2()  {
+func (me *MobileVRInterface) SetPropEyeHeight(value float32) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *MobileVRInterface) GetPropIod() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *MobileVRInterface) SetPropIod(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *MobileVRInterface) GetPropDisplayWidth() float32 {
+  panic("TODO: implement")
+}
+
+func (me *MobileVRInterface) SetPropDisplayWidth(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *MobileVRInterface) GetPropDisplayToLens() float32 {
+  panic("TODO: implement")
+}
+
+func (me *MobileVRInterface) SetPropDisplayToLens(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *MobileVRInterface) GetPropOversample() float32 {
+  panic("TODO: implement")
+}
+
+func (me *MobileVRInterface) SetPropOversample(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *MobileVRInterface) GetPropK1() float32 {
+  panic("TODO: implement")
+}
+
+func (me *MobileVRInterface) SetPropK1(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *MobileVRInterface) GetPropK2() float32 {
+  panic("TODO: implement")
+}
+
+func (me *MobileVRInterface) SetPropK2(value float32) {
+  panic("TODO: implement")
+}

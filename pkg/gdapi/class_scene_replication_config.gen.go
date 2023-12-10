@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SceneReplicationConfig struct {
   obj gdc.ObjectPtr
@@ -41,53 +37,128 @@ func (me *SceneReplicationConfig) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *SceneReplicationConfig) GetProperties()  {
-  panic("TODO: implement")
+func  (me *SceneReplicationConfig) GetProperties() NodePath {
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_properties")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret NodePath
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SceneReplicationConfig) AddProperty(path NodePath, index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_property")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3818401521) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SceneReplicationConfig) HasProperty(path NodePath, )  {
-  panic("TODO: implement")
+func  (me *SceneReplicationConfig) HasProperty(path NodePath, ) bool {
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_property")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 861721659) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SceneReplicationConfig) RemoveProperty(path NodePath, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_property")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SceneReplicationConfig) PropertyGetIndex(path NodePath, )  {
-  panic("TODO: implement")
+func  (me *SceneReplicationConfig) PropertyGetIndex(path NodePath, ) int {
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("property_get_index")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1382022557) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *SceneReplicationConfig) PropertyGetSpawn(path NodePath, )  {
-  panic("TODO: implement")
+func  (me *SceneReplicationConfig) PropertyGetSpawn(path NodePath, ) bool {
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("property_get_spawn")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3456846888) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SceneReplicationConfig) PropertySetSpawn(path NodePath, enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("property_set_spawn")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3868023870) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SceneReplicationConfig) PropertyGetSync(path NodePath, )  {
-  panic("TODO: implement")
+func  (me *SceneReplicationConfig) PropertyGetSync(path NodePath, ) bool {
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("property_get_sync")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3456846888) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SceneReplicationConfig) PropertySetSync(path NodePath, enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("property_set_sync")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3868023870) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SceneReplicationConfig) PropertyGetWatch(path NodePath, )  {
-  panic("TODO: implement")
+func  (me *SceneReplicationConfig) PropertyGetWatch(path NodePath, ) bool {
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("property_get_watch")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3456846888) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SceneReplicationConfig) PropertySetWatch(path NodePath, enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("property_set_watch")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3868023870) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

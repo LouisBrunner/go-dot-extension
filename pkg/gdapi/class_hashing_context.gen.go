@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type HashingContext struct {
   obj gdc.ObjectPtr
@@ -48,21 +44,42 @@ func (me *HashingContext) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *HashingContext) Start(type_ HashingContextHashType, )  {
-  panic("TODO: implement")
+func  (me *HashingContext) Start(type_ HashingContextHashType, ) Error {
+  classNameV := StringNameFromStr("HashingContext")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("start")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3940338335) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HashingContext) Update(chunk PackedByteArray, )  {
-  panic("TODO: implement")
+func  (me *HashingContext) Update(chunk PackedByteArray, ) Error {
+  classNameV := StringNameFromStr("HashingContext")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("update")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 680677267) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(chunk.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HashingContext) Finish()  {
-  panic("TODO: implement")
+func  (me *HashingContext) Finish() PackedByteArray {
+  classNameV := StringNameFromStr("HashingContext")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("finish")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2115431945) // FIXME: should cache?
+  var ret PackedByteArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

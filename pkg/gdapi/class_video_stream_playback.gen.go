@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VideoStreamPlayback struct {
   obj gdc.ObjectPtr
@@ -41,65 +37,18 @@ func (me *VideoStreamPlayback) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *VideoStreamPlayback) XStop()  {
-  panic("TODO: implement")
+func  (me *VideoStreamPlayback) MixAudio(num_frames int, buffer PackedFloat32Array, offset int, ) int {
+  classNameV := StringNameFromStr("VideoStreamPlayback")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("mix_audio")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1369271885) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&num_frames), gdc.ConstTypePtr(buffer.AsCTypePtr()), gdc.ConstTypePtr(&offset), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *VideoStreamPlayback) XPlay()  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) XIsPlaying()  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) XSetPaused(paused bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) XIsPaused()  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) XGetLength()  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) XGetPlaybackPosition()  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) XSeek(time float32, )  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) XSetAudioTrack(idx int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) XGetTexture()  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) XUpdate(delta float32, )  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) XGetChannels()  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) XGetMixRate()  {
-  panic("TODO: implement")
-}
-
-func  (me *VideoStreamPlayback) MixAudio(num_frames int, buffer PackedFloat32Array, offset int, )  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeMultiplyAdd struct {
   obj gdc.ObjectPtr
@@ -50,17 +46,36 @@ func (me *VisualShaderNodeMultiplyAdd) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeMultiplyAdd) SetOpType(type_ VisualShaderNodeMultiplyAddOpType, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeMultiplyAdd")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_op_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1409862380) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeMultiplyAdd) GetOpType() VisualShaderNodeMultiplyAddOpType {
+  classNameV := StringNameFromStr("VisualShaderNodeMultiplyAdd")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_op_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2823201991) // FIXME: should cache?
+  var ret VisualShaderNodeMultiplyAddOpType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeMultiplyAdd) GetPropOpType() int {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeMultiplyAdd) GetOpType()  {
+func (me *VisualShaderNodeMultiplyAdd) SetPropOpType(value int) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

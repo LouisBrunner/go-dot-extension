@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioStreamGeneratorPlayback struct {
   obj gdc.ObjectPtr
@@ -41,33 +37,76 @@ func (me *AudioStreamGeneratorPlayback) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *AudioStreamGeneratorPlayback) PushFrame(frame Vector2, )  {
-  panic("TODO: implement")
+func  (me *AudioStreamGeneratorPlayback) PushFrame(frame Vector2, ) bool {
+  classNameV := StringNameFromStr("AudioStreamGeneratorPlayback")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("push_frame")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3975407249) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(frame.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *AudioStreamGeneratorPlayback) CanPushBuffer(amount int, )  {
-  panic("TODO: implement")
+func  (me *AudioStreamGeneratorPlayback) CanPushBuffer(amount int, ) bool {
+  classNameV := StringNameFromStr("AudioStreamGeneratorPlayback")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("can_push_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *AudioStreamGeneratorPlayback) PushBuffer(frames PackedVector2Array, )  {
-  panic("TODO: implement")
+func  (me *AudioStreamGeneratorPlayback) PushBuffer(frames PackedVector2Array, ) bool {
+  classNameV := StringNameFromStr("AudioStreamGeneratorPlayback")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("push_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1361156557) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(frames.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *AudioStreamGeneratorPlayback) GetFramesAvailable()  {
-  panic("TODO: implement")
+func  (me *AudioStreamGeneratorPlayback) GetFramesAvailable() int {
+  classNameV := StringNameFromStr("AudioStreamGeneratorPlayback")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_frames_available")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *AudioStreamGeneratorPlayback) GetSkips()  {
-  panic("TODO: implement")
+func  (me *AudioStreamGeneratorPlayback) GetSkips() int {
+  classNameV := StringNameFromStr("AudioStreamGeneratorPlayback")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_skips")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioStreamGeneratorPlayback) ClearBuffer()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioStreamGeneratorPlayback")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

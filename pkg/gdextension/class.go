@@ -172,6 +172,12 @@ func (me *extension) registerClass(class *classEntry) {
 		PropertyGetRevertFunc: gdc.Callbacks.GetClassCreationInfoPropertyGetRevertFuncCallback(),
 		ToStringFunc:          gdc.Callbacks.GetClassCreationInfoToStringFuncCallback(),
 	})
+	// TODO: register methods
+	// TODO: register signals
+	// TODO: register constants through tags
+	// TODO: register enums through tags
+	// TODO: register sub properties through tags
+
 }
 
 func (me *extension) createClass(class *classEntry) gdc.ObjectPtr {

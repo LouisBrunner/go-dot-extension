@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Material struct {
   obj gdc.ObjectPtr
@@ -48,49 +44,88 @@ func (me *Material) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *Material) XGetShaderRid()  {
-  panic("TODO: implement")
-}
-
-func  (me *Material) XGetShaderMode()  {
-  panic("TODO: implement")
-}
-
-func  (me *Material) XCanDoNextPass()  {
-  panic("TODO: implement")
-}
-
-func  (me *Material) XCanUseRenderPriority()  {
-  panic("TODO: implement")
-}
-
 func  (me *Material) SetNextPass(next_pass Material, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Material")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_next_pass")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757459619) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(next_pass.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Material) GetNextPass()  {
-  panic("TODO: implement")
+func  (me *Material) GetNextPass() Material {
+  classNameV := StringNameFromStr("Material")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_next_pass")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5934680) // FIXME: should cache?
+  var ret Material
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Material) SetRenderPriority(priority int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Material")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_render_priority")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&priority), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Material) GetRenderPriority()  {
-  panic("TODO: implement")
+func  (me *Material) GetRenderPriority() int {
+  classNameV := StringNameFromStr("Material")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_render_priority")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Material) InspectNativeShaderCode()  {
+  classNameV := StringNameFromStr("Material")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("inspect_native_shader_code")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *Material) CreatePlaceholder() Resource {
+  classNameV := StringNameFromStr("Material")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("create_placeholder")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 121922552) // FIXME: should cache?
+  var ret Resource
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *Material) GetPropRenderPriority() int {
   panic("TODO: implement")
 }
 
-func  (me *Material) CreatePlaceholder()  {
+func (me *Material) SetPropRenderPriority(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *Material) GetPropNextPass() Material {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *Material) SetPropNextPass(value Material) {
+  panic("TODO: implement")
+}

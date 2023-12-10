@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type JavaClassWrapper struct {
   obj gdc.ObjectPtr
@@ -41,13 +37,18 @@ func (me *JavaClassWrapper) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *JavaClassWrapper) Wrap(name String, )  {
-  panic("TODO: implement")
+func  (me *JavaClassWrapper) Wrap(name String, ) JavaClass {
+  classNameV := StringNameFromStr("JavaClassWrapper")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("wrap")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1124367868) // FIXME: should cache?
+  var ret JavaClass
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

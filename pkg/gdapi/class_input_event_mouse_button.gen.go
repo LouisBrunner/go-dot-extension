@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type InputEventMouseButton struct {
   obj gdc.ObjectPtr
@@ -41,41 +37,132 @@ func (me *InputEventMouseButton) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *InputEventMouseButton) SetFactor(factor float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("InputEventMouseButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_factor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&factor), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *InputEventMouseButton) GetFactor()  {
-  panic("TODO: implement")
+func  (me *InputEventMouseButton) GetFactor() float32 {
+  classNameV := StringNameFromStr("InputEventMouseButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_factor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *InputEventMouseButton) SetButtonIndex(button_index MouseButton, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("InputEventMouseButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_button_index")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3624991109) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&button_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *InputEventMouseButton) GetButtonIndex()  {
-  panic("TODO: implement")
+func  (me *InputEventMouseButton) GetButtonIndex() MouseButton {
+  classNameV := StringNameFromStr("InputEventMouseButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_button_index")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1132662608) // FIXME: should cache?
+  var ret MouseButton
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *InputEventMouseButton) SetPressed(pressed bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("InputEventMouseButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *InputEventMouseButton) SetCanceled(canceled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("InputEventMouseButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_canceled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&canceled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *InputEventMouseButton) SetDoubleClick(double_click bool, )  {
+  classNameV := StringNameFromStr("InputEventMouseButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_double_click")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&double_click), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *InputEventMouseButton) IsDoubleClick() bool {
+  classNameV := StringNameFromStr("InputEventMouseButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_double_click")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *InputEventMouseButton) GetPropFactor() float32 {
   panic("TODO: implement")
 }
 
-func  (me *InputEventMouseButton) IsDoubleClick()  {
+func (me *InputEventMouseButton) SetPropFactor(value float32) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *InputEventMouseButton) GetPropButtonIndex() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *InputEventMouseButton) SetPropButtonIndex(value int) {
+  panic("TODO: implement")
+}
+
+func (me *InputEventMouseButton) GetPropCanceled() bool {
+  panic("TODO: implement")
+}
+
+func (me *InputEventMouseButton) SetPropCanceled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *InputEventMouseButton) GetPropPressed() bool {
+  panic("TODO: implement")
+}
+
+func (me *InputEventMouseButton) SetPropPressed(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *InputEventMouseButton) GetPropDoubleClick() bool {
+  panic("TODO: implement")
+}
+
+func (me *InputEventMouseButton) SetPropDoubleClick(value bool) {
+  panic("TODO: implement")
+}

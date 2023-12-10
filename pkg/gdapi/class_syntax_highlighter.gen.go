@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SyntaxHighlighter struct {
   obj gdc.ObjectPtr
@@ -41,37 +37,50 @@ func (me *SyntaxHighlighter) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *SyntaxHighlighter) XGetLineSyntaxHighlighting(line int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *SyntaxHighlighter) XClearHighlightingCache()  {
-  panic("TODO: implement")
-}
-
-func  (me *SyntaxHighlighter) XUpdateCache()  {
-  panic("TODO: implement")
-}
-
-func  (me *SyntaxHighlighter) GetLineSyntaxHighlighting(line int, )  {
-  panic("TODO: implement")
+func  (me *SyntaxHighlighter) GetLineSyntaxHighlighting(line int, ) Dictionary {
+  classNameV := StringNameFromStr("SyntaxHighlighter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_syntax_highlighting")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3554694381) // FIXME: should cache?
+  var ret Dictionary
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SyntaxHighlighter) UpdateCache()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SyntaxHighlighter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("update_cache")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *SyntaxHighlighter) ClearHighlightingCache()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SyntaxHighlighter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_highlighting_cache")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SyntaxHighlighter) GetTextEdit()  {
-  panic("TODO: implement")
+func  (me *SyntaxHighlighter) GetTextEdit() TextEdit {
+  classNameV := StringNameFromStr("SyntaxHighlighter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_text_edit")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1893027089) // FIXME: should cache?
+  var ret TextEdit
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

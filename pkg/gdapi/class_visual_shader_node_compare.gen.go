@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeCompare struct {
   obj gdc.ObjectPtr
@@ -72,33 +68,96 @@ func (me *VisualShaderNodeCompare) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeCompare) SetComparisonType(type_ VisualShaderNodeCompareComparisonType, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeCompare")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_comparison_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 516558320) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeCompare) GetComparisonType()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeCompare) GetComparisonType() VisualShaderNodeCompareComparisonType {
+  classNameV := StringNameFromStr("VisualShaderNodeCompare")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_comparison_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3495315961) // FIXME: should cache?
+  var ret VisualShaderNodeCompareComparisonType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeCompare) SetFunction(func_ VisualShaderNodeCompareFunction, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeCompare")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_function")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2370951349) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&func_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeCompare) GetFunction()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeCompare) GetFunction() VisualShaderNodeCompareFunction {
+  classNameV := StringNameFromStr("VisualShaderNodeCompare")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_function")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4089164265) // FIXME: should cache?
+  var ret VisualShaderNodeCompareFunction
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeCompare) SetCondition(condition VisualShaderNodeCompareCondition, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeCompare")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_condition")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 918742392) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&condition), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeCompare) GetCondition() VisualShaderNodeCompareCondition {
+  classNameV := StringNameFromStr("VisualShaderNodeCompare")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_condition")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3281078941) // FIXME: should cache?
+  var ret VisualShaderNodeCompareCondition
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeCompare) GetPropType() int {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCompare) GetCondition()  {
+func (me *VisualShaderNodeCompare) SetPropType(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *VisualShaderNodeCompare) GetPropFunction() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *VisualShaderNodeCompare) SetPropFunction(value int) {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeCompare) GetPropCondition() int {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeCompare) SetPropCondition(value int) {
+  panic("TODO: implement")
+}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorSelection struct {
   obj gdc.ObjectPtr
@@ -41,29 +37,62 @@ func (me *EditorSelection) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *EditorSelection) Clear()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSelection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorSelection) AddNode(node Node, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSelection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_node")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorSelection) RemoveNode(node Node, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorSelection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_node")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorSelection) GetSelectedNodes()  {
-  panic("TODO: implement")
+func  (me *EditorSelection) GetSelectedNodes() Node {
+  classNameV := StringNameFromStr("EditorSelection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_selected_nodes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
+  var ret Node
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *EditorSelection) GetTransformableSelectedNodes()  {
-  panic("TODO: implement")
+func  (me *EditorSelection) GetTransformableSelectedNodes() Node {
+  classNameV := StringNameFromStr("EditorSelection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_transformable_selected_nodes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
+  var ret Node
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

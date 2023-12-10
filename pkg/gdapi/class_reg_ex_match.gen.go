@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RegExMatch struct {
   obj gdc.ObjectPtr
@@ -41,37 +37,114 @@ func (me *RegExMatch) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *RegExMatch) GetSubject()  {
+func  (me *RegExMatch) GetSubject() String {
+  classNameV := StringNameFromStr("RegExMatch")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_subject")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *RegExMatch) GetGroupCount() int {
+  classNameV := StringNameFromStr("RegExMatch")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_group_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *RegExMatch) GetNames() Dictionary {
+  classNameV := StringNameFromStr("RegExMatch")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_names")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
+  var ret Dictionary
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *RegExMatch) GetStrings() PackedStringArray {
+  classNameV := StringNameFromStr("RegExMatch")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_strings")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
+  var ret PackedStringArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *RegExMatch) GetString(name Variant, ) String {
+  classNameV := StringNameFromStr("RegExMatch")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_string")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 687115856) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *RegExMatch) GetStart(name Variant, ) int {
+  classNameV := StringNameFromStr("RegExMatch")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_start")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 490464691) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *RegExMatch) GetEnd(name Variant, ) int {
+  classNameV := StringNameFromStr("RegExMatch")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_end")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 490464691) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *RegExMatch) GetPropSubject() String {
   panic("TODO: implement")
 }
 
-func  (me *RegExMatch) GetGroupCount()  {
+func (me *RegExMatch) SetPropSubject(value String) {
   panic("TODO: implement")
 }
 
-func  (me *RegExMatch) GetNames()  {
+func (me *RegExMatch) GetPropNames() Dictionary {
   panic("TODO: implement")
 }
 
-func  (me *RegExMatch) GetStrings()  {
+func (me *RegExMatch) SetPropNames(value Dictionary) {
   panic("TODO: implement")
 }
 
-func  (me *RegExMatch) GetString(name Variant, )  {
+func (me *RegExMatch) GetPropStrings() Array {
   panic("TODO: implement")
 }
 
-func  (me *RegExMatch) GetStart(name Variant, )  {
+func (me *RegExMatch) SetPropStrings(value Array) {
   panic("TODO: implement")
 }
-
-func  (me *RegExMatch) GetEnd(name Variant, )  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)

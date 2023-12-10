@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type WorldBoundaryShape3D struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,36 @@ func (me *WorldBoundaryShape3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *WorldBoundaryShape3D) SetPlane(plane Plane, )  {
+  classNameV := StringNameFromStr("WorldBoundaryShape3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_plane")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3505987427) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plane.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *WorldBoundaryShape3D) GetPlane() Plane {
+  classNameV := StringNameFromStr("WorldBoundaryShape3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_plane")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2753500971) // FIXME: should cache?
+  var ret Plane
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *WorldBoundaryShape3D) GetPropPlane() Plane {
   panic("TODO: implement")
 }
 
-func  (me *WorldBoundaryShape3D) GetPlane()  {
+func (me *WorldBoundaryShape3D) SetPropPlane(value Plane) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

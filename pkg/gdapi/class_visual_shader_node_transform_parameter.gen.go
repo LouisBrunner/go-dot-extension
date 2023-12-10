@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeTransformParameter struct {
   obj gdc.ObjectPtr
@@ -41,25 +37,66 @@ func (me *VisualShaderNodeTransformParameter) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeTransformParameter) SetDefaultValueEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeTransformParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_default_value_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeTransformParameter) IsDefaultValueEnabled()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeTransformParameter) IsDefaultValueEnabled() bool {
+  classNameV := StringNameFromStr("VisualShaderNodeTransformParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_default_value_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeTransformParameter) SetDefaultValue(value Transform3D, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeTransformParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_default_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2952846383) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(value.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeTransformParameter) GetDefaultValue() Transform3D {
+  classNameV := StringNameFromStr("VisualShaderNodeTransformParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_default_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
+  var ret Transform3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeTransformParameter) GetPropDefaultValueEnabled() bool {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTransformParameter) GetDefaultValue()  {
+func (me *VisualShaderNodeTransformParameter) SetPropDefaultValueEnabled(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *VisualShaderNodeTransformParameter) GetPropDefaultValue() Transform3D {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *VisualShaderNodeTransformParameter) SetPropDefaultValue(value Transform3D) {
+  panic("TODO: implement")
+}

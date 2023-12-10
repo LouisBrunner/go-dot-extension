@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorPaths struct {
   obj gdc.ObjectPtr
@@ -41,33 +37,78 @@ func (me *EditorPaths) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorPaths) GetDataDir()  {
-  panic("TODO: implement")
+func  (me *EditorPaths) GetDataDir() String {
+  classNameV := StringNameFromStr("EditorPaths")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_data_dir")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *EditorPaths) GetConfigDir()  {
-  panic("TODO: implement")
+func  (me *EditorPaths) GetConfigDir() String {
+  classNameV := StringNameFromStr("EditorPaths")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_config_dir")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *EditorPaths) GetCacheDir()  {
-  panic("TODO: implement")
+func  (me *EditorPaths) GetCacheDir() String {
+  classNameV := StringNameFromStr("EditorPaths")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_cache_dir")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *EditorPaths) IsSelfContained()  {
-  panic("TODO: implement")
+func  (me *EditorPaths) IsSelfContained() bool {
+  classNameV := StringNameFromStr("EditorPaths")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_self_contained")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *EditorPaths) GetSelfContainedFile()  {
-  panic("TODO: implement")
+func  (me *EditorPaths) GetSelfContainedFile() String {
+  classNameV := StringNameFromStr("EditorPaths")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_self_contained_file")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *EditorPaths) GetProjectSettingsDir()  {
-  panic("TODO: implement")
+func  (me *EditorPaths) GetProjectSettingsDir() String {
+  classNameV := StringNameFromStr("EditorPaths")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_project_settings_dir")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

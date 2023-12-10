@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type WebRTCPeerConnectionExtension struct {
   obj gdc.ObjectPtr
@@ -41,53 +37,6 @@ func (me *WebRTCPeerConnectionExtension) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *WebRTCPeerConnectionExtension) XGetConnectionState()  {
-  panic("TODO: implement")
-}
-
-func  (me *WebRTCPeerConnectionExtension) XGetGatheringState()  {
-  panic("TODO: implement")
-}
-
-func  (me *WebRTCPeerConnectionExtension) XGetSignalingState()  {
-  panic("TODO: implement")
-}
-
-func  (me *WebRTCPeerConnectionExtension) XInitialize(p_config Dictionary, )  {
-  panic("TODO: implement")
-}
-
-func  (me *WebRTCPeerConnectionExtension) XCreateDataChannel(p_label String, p_config Dictionary, )  {
-  panic("TODO: implement")
-}
-
-func  (me *WebRTCPeerConnectionExtension) XCreateOffer()  {
-  panic("TODO: implement")
-}
-
-func  (me *WebRTCPeerConnectionExtension) XSetRemoteDescription(p_type String, p_sdp String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *WebRTCPeerConnectionExtension) XSetLocalDescription(p_type String, p_sdp String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *WebRTCPeerConnectionExtension) XAddIceCandidate(p_sdp_mid_name String, p_sdp_mline_index int, p_sdp_name String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *WebRTCPeerConnectionExtension) XPoll()  {
-  panic("TODO: implement")
-}
-
-func  (me *WebRTCPeerConnectionExtension) XClose()  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

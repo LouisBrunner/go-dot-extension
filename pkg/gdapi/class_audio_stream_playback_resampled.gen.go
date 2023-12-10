@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioStreamPlaybackResampled struct {
   obj gdc.ObjectPtr
@@ -41,21 +37,16 @@ func (me *AudioStreamPlaybackResampled) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *AudioStreamPlaybackResampled) XMixResampled(dst_buffer *AudioFrame, frame_count int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *AudioStreamPlaybackResampled) XGetStreamSamplingRate()  {
-  panic("TODO: implement")
-}
-
 func  (me *AudioStreamPlaybackResampled) BeginResample()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioStreamPlaybackResampled")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("begin_resample")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

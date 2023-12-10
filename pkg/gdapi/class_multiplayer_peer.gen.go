@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MultiplayerPeer struct {
   obj gdc.ObjectPtr
@@ -62,77 +58,222 @@ func (me *MultiplayerPeer) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *MultiplayerPeer) SetTransferChannel(channel int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_transfer_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&channel), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *MultiplayerPeer) GetTransferChannel()  {
-  panic("TODO: implement")
+func  (me *MultiplayerPeer) GetTransferChannel() int {
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_transfer_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *MultiplayerPeer) SetTransferMode(mode MultiplayerPeerTransferMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_transfer_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 950411049) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *MultiplayerPeer) GetTransferMode()  {
-  panic("TODO: implement")
+func  (me *MultiplayerPeer) GetTransferMode() MultiplayerPeerTransferMode {
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_transfer_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3369852622) // FIXME: should cache?
+  var ret MultiplayerPeerTransferMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *MultiplayerPeer) SetTargetPeer(id int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_target_peer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *MultiplayerPeer) GetPacketPeer()  {
-  panic("TODO: implement")
+func  (me *MultiplayerPeer) GetPacketPeer() int {
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_packet_peer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *MultiplayerPeer) GetPacketChannel()  {
-  panic("TODO: implement")
+func  (me *MultiplayerPeer) GetPacketChannel() int {
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_packet_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *MultiplayerPeer) GetPacketMode()  {
-  panic("TODO: implement")
+func  (me *MultiplayerPeer) GetPacketMode() MultiplayerPeerTransferMode {
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_packet_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3369852622) // FIXME: should cache?
+  var ret MultiplayerPeerTransferMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *MultiplayerPeer) Poll()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("poll")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *MultiplayerPeer) Close()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("close")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *MultiplayerPeer) DisconnectPeer(peer int, force bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("disconnect_peer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4023243586) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer), gdc.ConstTypePtr(&force), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *MultiplayerPeer) GetConnectionStatus()  {
-  panic("TODO: implement")
+func  (me *MultiplayerPeer) GetConnectionStatus() MultiplayerPeerConnectionStatus {
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_connection_status")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2147374275) // FIXME: should cache?
+  var ret MultiplayerPeerConnectionStatus
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *MultiplayerPeer) GetUniqueId()  {
-  panic("TODO: implement")
+func  (me *MultiplayerPeer) GetUniqueId() int {
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_unique_id")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *MultiplayerPeer) GenerateUniqueId()  {
-  panic("TODO: implement")
+func  (me *MultiplayerPeer) GenerateUniqueId() int {
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("generate_unique_id")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *MultiplayerPeer) SetRefuseNewConnections(enable bool, )  {
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_refuse_new_connections")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *MultiplayerPeer) IsRefusingNewConnections() bool {
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_refusing_new_connections")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *MultiplayerPeer) IsServerRelaySupported() bool {
+  classNameV := StringNameFromStr("MultiplayerPeer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_server_relay_supported")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *MultiplayerPeer) GetPropRefuseNewConnections() bool {
   panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) IsRefusingNewConnections()  {
+func (me *MultiplayerPeer) SetPropRefuseNewConnections(value bool) {
   panic("TODO: implement")
 }
 
-func  (me *MultiplayerPeer) IsServerRelaySupported()  {
+func (me *MultiplayerPeer) GetPropTransferMode() int {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *MultiplayerPeer) SetPropTransferMode(value int) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *MultiplayerPeer) GetPropTransferChannel() int {
+  panic("TODO: implement")
+}
+
+func (me *MultiplayerPeer) SetPropTransferChannel(value int) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

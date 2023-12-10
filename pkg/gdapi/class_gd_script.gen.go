@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GDScript struct {
   obj gdc.ObjectPtr
@@ -41,13 +37,23 @@ func (me *GDScript) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *GDScript) New()  {
-  panic("TODO: implement")
+func  (me *GDScript) New() Variant {
+  classNameV := StringNameFromStr("GDScript")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("new")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1545262638) // FIXME: should cache?
+  var ret Variant
+  cargs := []gdc.ConstVariantPtr{}
+  err := &gdc.CallError{}
+  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), gdc.UninitializedVariantPtr(&ret), err)
+  if err.Error != gdc.CallOk {
+    panic(err) // TODO: return `err`?
+  }
+
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Image struct {
   obj gdc.ObjectPtr
@@ -141,269 +137,742 @@ func (me *Image) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *Image) GetWidth()  {
-  panic("TODO: implement")
+func  (me *Image) GetWidth() int {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) GetHeight()  {
-  panic("TODO: implement")
+func  (me *Image) GetHeight() int {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_height")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) GetSize()  {
-  panic("TODO: implement")
+func  (me *Image) GetSize() Vector2i {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690982128) // FIXME: should cache?
+  var ret Vector2i
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) HasMipmaps()  {
-  panic("TODO: implement")
+func  (me *Image) HasMipmaps() bool {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_mipmaps")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) GetFormat()  {
-  panic("TODO: implement")
+func  (me *Image) GetFormat() ImageFormat {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_format")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3847873762) // FIXME: should cache?
+  var ret ImageFormat
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) GetData()  {
-  panic("TODO: implement")
+func  (me *Image) GetData() PackedByteArray {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2362200018) // FIXME: should cache?
+  var ret PackedByteArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Image) Convert(format ImageFormat, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("convert")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2120693146) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&format), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Image) GetMipmapOffset(mipmap int, )  {
-  panic("TODO: implement")
+func  (me *Image) GetMipmapOffset(mipmap int, ) int {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_mipmap_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mipmap), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Image) ResizeToPo2(square bool, interpolation ImageInterpolation, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("resize_to_po2")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4189212329) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&square), gdc.ConstTypePtr(&interpolation), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) Resize(width int, height int, interpolation ImageInterpolation, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("resize")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2461393748) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&interpolation), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) ShrinkX2()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("shrink_x2")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) Crop(width int, height int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("crop")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) FlipX()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("flip_x")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) FlipY()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("flip_y")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Image) GenerateMipmaps(renormalize bool, )  {
-  panic("TODO: implement")
+func  (me *Image) GenerateMipmaps(renormalize bool, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("generate_mipmaps")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1633102583) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&renormalize), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Image) ClearMipmaps()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_mipmaps")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  ImageCreate(width int, height int, use_mipmaps bool, format ImageFormat, )  {
-  panic("TODO: implement")
+func  ImageCreate(width int, height int, use_mipmaps bool, format ImageFormat, ) Image {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("create")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 986942177) // FIXME: should cache?
+  var ret Image
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&use_mipmaps), gdc.ConstTypePtr(&format), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  ImageCreateFromData(width int, height int, use_mipmaps bool, format ImageFormat, data PackedByteArray, )  {
-  panic("TODO: implement")
+func  ImageCreateFromData(width int, height int, use_mipmaps bool, format ImageFormat, data PackedByteArray, ) Image {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("create_from_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 299398494) // FIXME: should cache?
+  var ret Image
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&use_mipmaps), gdc.ConstTypePtr(&format), gdc.ConstTypePtr(data.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Image) SetData(width int, height int, use_mipmaps bool, format ImageFormat, data PackedByteArray, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2740482212) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&use_mipmaps), gdc.ConstTypePtr(&format), gdc.ConstTypePtr(data.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Image) IsEmpty()  {
-  panic("TODO: implement")
+func  (me *Image) IsEmpty() bool {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_empty")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) Load(path String, )  {
-  panic("TODO: implement")
+func  (me *Image) Load(path String, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("load")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  ImageLoadFromFile(path String, )  {
-  panic("TODO: implement")
+func  ImageLoadFromFile(path String, ) Image {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("load_from_file")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 736337515) // FIXME: should cache?
+  var ret Image
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) SavePng(path String, )  {
-  panic("TODO: implement")
+func  (me *Image) SavePng(path String, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("save_png")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2113323047) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) SavePngToBuffer()  {
-  panic("TODO: implement")
+func  (me *Image) SavePngToBuffer() PackedByteArray {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("save_png_to_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2362200018) // FIXME: should cache?
+  var ret PackedByteArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) SaveJpg(path String, quality float32, )  {
-  panic("TODO: implement")
+func  (me *Image) SaveJpg(path String, quality float32, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("save_jpg")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 578836491) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&quality), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) SaveJpgToBuffer(quality float32, )  {
-  panic("TODO: implement")
+func  (me *Image) SaveJpgToBuffer(quality float32, ) PackedByteArray {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("save_jpg_to_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 592235273) // FIXME: should cache?
+  var ret PackedByteArray
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&quality), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) SaveExr(path String, grayscale bool, )  {
-  panic("TODO: implement")
+func  (me *Image) SaveExr(path String, grayscale bool, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("save_exr")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3108122999) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&grayscale), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) SaveExrToBuffer(grayscale bool, )  {
-  panic("TODO: implement")
+func  (me *Image) SaveExrToBuffer(grayscale bool, ) PackedByteArray {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("save_exr_to_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3178917920) // FIXME: should cache?
+  var ret PackedByteArray
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&grayscale), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) SaveWebp(path String, lossy bool, quality float32, )  {
-  panic("TODO: implement")
+func  (me *Image) SaveWebp(path String, lossy bool, quality float32, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("save_webp")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3594949219) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&lossy), gdc.ConstTypePtr(&quality), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) SaveWebpToBuffer(lossy bool, quality float32, )  {
-  panic("TODO: implement")
+func  (me *Image) SaveWebpToBuffer(lossy bool, quality float32, ) PackedByteArray {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("save_webp_to_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1214628238) // FIXME: should cache?
+  var ret PackedByteArray
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&lossy), gdc.ConstTypePtr(&quality), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) DetectAlpha()  {
-  panic("TODO: implement")
+func  (me *Image) DetectAlpha() ImageAlphaMode {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("detect_alpha")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2030116505) // FIXME: should cache?
+  var ret ImageAlphaMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) IsInvisible()  {
-  panic("TODO: implement")
+func  (me *Image) IsInvisible() bool {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_invisible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) DetectUsedChannels(source ImageCompressSource, )  {
-  panic("TODO: implement")
+func  (me *Image) DetectUsedChannels(source ImageCompressSource, ) ImageUsedChannels {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("detect_used_channels")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2703139984) // FIXME: should cache?
+  var ret ImageUsedChannels
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) Compress(mode ImageCompressMode, source ImageCompressSource, astc_format ImageASTCFormat, )  {
-  panic("TODO: implement")
+func  (me *Image) Compress(mode ImageCompressMode, source ImageCompressSource, astc_format ImageASTCFormat, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("compress")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4094210332) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(&source), gdc.ConstTypePtr(&astc_format), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) CompressFromChannels(mode ImageCompressMode, channels ImageUsedChannels, astc_format ImageASTCFormat, )  {
-  panic("TODO: implement")
+func  (me *Image) CompressFromChannels(mode ImageCompressMode, channels ImageUsedChannels, astc_format ImageASTCFormat, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("compress_from_channels")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 279105990) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(&channels), gdc.ConstTypePtr(&astc_format), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) Decompress()  {
-  panic("TODO: implement")
+func  (me *Image) Decompress() Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("decompress")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) IsCompressed()  {
-  panic("TODO: implement")
+func  (me *Image) IsCompressed() bool {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_compressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Image) Rotate90(direction ClockDirection, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("rotate_90")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1901204267) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&direction), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) Rotate180()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("rotate_180")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) FixAlphaEdges()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("fix_alpha_edges")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) PremultiplyAlpha()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("premultiply_alpha")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) SrgbToLinear()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("srgb_to_linear")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) NormalMapToXy()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("normal_map_to_xy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Image) RgbeToSrgb()  {
-  panic("TODO: implement")
+func  (me *Image) RgbeToSrgb() Image {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("rgbe_to_srgb")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 564927088) // FIXME: should cache?
+  var ret Image
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Image) BumpMapToNormalMap(bump_scale float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("bump_map_to_normal_map")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3423495036) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bump_scale), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Image) ComputeImageMetrics(compared_image Image, use_luma bool, )  {
-  panic("TODO: implement")
+func  (me *Image) ComputeImageMetrics(compared_image Image, use_luma bool, ) Dictionary {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("compute_image_metrics")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3080961247) // FIXME: should cache?
+  var ret Dictionary
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(compared_image.AsCTypePtr()), gdc.ConstTypePtr(&use_luma), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Image) BlitRect(src Image, src_rect Rect2i, dst Vector2i, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("blit_rect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2903928755) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(src.AsCTypePtr()), gdc.ConstTypePtr(src_rect.AsCTypePtr()), gdc.ConstTypePtr(dst.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) BlitRectMask(src Image, mask Image, src_rect Rect2i, dst Vector2i, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("blit_rect_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3383581145) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(src.AsCTypePtr()), gdc.ConstTypePtr(mask.AsCTypePtr()), gdc.ConstTypePtr(src_rect.AsCTypePtr()), gdc.ConstTypePtr(dst.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) BlendRect(src Image, src_rect Rect2i, dst Vector2i, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("blend_rect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2903928755) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(src.AsCTypePtr()), gdc.ConstTypePtr(src_rect.AsCTypePtr()), gdc.ConstTypePtr(dst.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) BlendRectMask(src Image, mask Image, src_rect Rect2i, dst Vector2i, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("blend_rect_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3383581145) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(src.AsCTypePtr()), gdc.ConstTypePtr(mask.AsCTypePtr()), gdc.ConstTypePtr(src_rect.AsCTypePtr()), gdc.ConstTypePtr(dst.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) Fill(color Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("fill")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) FillRect(rect Rect2i, color Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("fill_rect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 514693913) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rect.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Image) GetUsedRect()  {
-  panic("TODO: implement")
+func  (me *Image) GetUsedRect() Rect2i {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_used_rect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 410525958) // FIXME: should cache?
+  var ret Rect2i
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) GetRegion(region Rect2i, )  {
-  panic("TODO: implement")
+func  (me *Image) GetRegion(region Rect2i, ) Image {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_region")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2601441065) // FIXME: should cache?
+  var ret Image
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Image) CopyFrom(src Image, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("copy_from")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 532598488) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(src.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Image) GetPixelv(point Vector2i, )  {
-  panic("TODO: implement")
+func  (me *Image) GetPixelv(point Vector2i, ) Color {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_pixelv")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1532707496) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Image) GetPixel(x int, y int, )  {
-  panic("TODO: implement")
+func  (me *Image) GetPixel(x int, y int, ) Color {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_pixel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2165839948) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Image) SetPixelv(point Vector2i, color Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_pixelv")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 287851464) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) SetPixel(x int, y int, color Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_pixel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3733378741) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Image) AdjustBcs(brightness float32, contrast float32, saturation float32, )  {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("adjust_bcs")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2385087082) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&brightness), gdc.ConstTypePtr(&contrast), gdc.ConstTypePtr(&saturation), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *Image) LoadPngFromBuffer(buffer PackedByteArray, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("load_png_from_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 680677267) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(buffer.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *Image) LoadJpgFromBuffer(buffer PackedByteArray, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("load_jpg_from_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 680677267) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(buffer.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *Image) LoadWebpFromBuffer(buffer PackedByteArray, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("load_webp_from_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 680677267) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(buffer.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *Image) LoadTgaFromBuffer(buffer PackedByteArray, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("load_tga_from_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 680677267) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(buffer.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *Image) LoadBmpFromBuffer(buffer PackedByteArray, ) Error {
+  classNameV := StringNameFromStr("Image")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("load_bmp_from_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 680677267) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(buffer.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *Image) GetPropData() Dictionary {
   panic("TODO: implement")
 }
 
-func  (me *Image) LoadPngFromBuffer(buffer PackedByteArray, )  {
+func (me *Image) SetPropData(value Dictionary) {
   panic("TODO: implement")
 }
-
-func  (me *Image) LoadJpgFromBuffer(buffer PackedByteArray, )  {
-  panic("TODO: implement")
-}
-
-func  (me *Image) LoadWebpFromBuffer(buffer PackedByteArray, )  {
-  panic("TODO: implement")
-}
-
-func  (me *Image) LoadTgaFromBuffer(buffer PackedByteArray, )  {
-  panic("TODO: implement")
-}
-
-func  (me *Image) LoadBmpFromBuffer(buffer PackedByteArray, )  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)

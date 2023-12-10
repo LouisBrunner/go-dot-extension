@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeColorFunc struct {
   obj gdc.ObjectPtr
@@ -50,17 +46,36 @@ func (me *VisualShaderNodeColorFunc) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeColorFunc) SetFunction(func_ VisualShaderNodeColorFuncFunction, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeColorFunc")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_function")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3973396138) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&func_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeColorFunc) GetFunction() VisualShaderNodeColorFuncFunction {
+  classNameV := StringNameFromStr("VisualShaderNodeColorFunc")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_function")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 554863321) // FIXME: should cache?
+  var ret VisualShaderNodeColorFuncFunction
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeColorFunc) GetPropFunction() int {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeColorFunc) GetFunction()  {
+func (me *VisualShaderNodeColorFunc) SetPropFunction(value int) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

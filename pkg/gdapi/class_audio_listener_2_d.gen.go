@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioListener2D struct {
   obj gdc.ObjectPtr
@@ -41,21 +37,38 @@ func (me *AudioListener2D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *AudioListener2D) MakeCurrent()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioListener2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("make_current")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *AudioListener2D) ClearCurrent()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioListener2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_current")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioListener2D) IsCurrent()  {
-  panic("TODO: implement")
+func  (me *AudioListener2D) IsCurrent() bool {
+  classNameV := StringNameFromStr("AudioListener2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_current")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

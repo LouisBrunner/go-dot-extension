@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CompressedTextureLayered struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,38 @@ func (me *CompressedTextureLayered) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *CompressedTextureLayered) Load(path String, )  {
+func  (me *CompressedTextureLayered) Load(path String, ) Error {
+  classNameV := StringNameFromStr("CompressedTextureLayered")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("load")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *CompressedTextureLayered) GetLoadPath() String {
+  classNameV := StringNameFromStr("CompressedTextureLayered")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_load_path")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *CompressedTextureLayered) GetPropLoadPath() String {
   panic("TODO: implement")
 }
 
-func  (me *CompressedTextureLayered) GetLoadPath()  {
+func (me *CompressedTextureLayered) SetPropLoadPath(value String) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

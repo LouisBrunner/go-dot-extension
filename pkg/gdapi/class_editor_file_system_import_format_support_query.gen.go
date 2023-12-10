@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorFileSystemImportFormatSupportQuery struct {
   obj gdc.ObjectPtr
@@ -41,21 +37,6 @@ func (me *EditorFileSystemImportFormatSupportQuery) AsCTypePtr() gdc.ConstTypePt
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorFileSystemImportFormatSupportQuery) XIsActive()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorFileSystemImportFormatSupportQuery) XGetFileExtensions()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorFileSystemImportFormatSupportQuery) XQuery()  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

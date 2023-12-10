@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDUniform struct {
   obj gdc.ObjectPtr
@@ -41,37 +37,98 @@ func (me *RDUniform) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *RDUniform) SetUniformType(p_member RenderingDeviceUniformType, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDUniform")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_uniform_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1664894931) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDUniform) GetUniformType()  {
-  panic("TODO: implement")
+func  (me *RDUniform) GetUniformType() RenderingDeviceUniformType {
+  classNameV := StringNameFromStr("RDUniform")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_uniform_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 475470040) // FIXME: should cache?
+  var ret RenderingDeviceUniformType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDUniform) SetBinding(p_member int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDUniform")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_binding")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDUniform) GetBinding()  {
-  panic("TODO: implement")
+func  (me *RDUniform) GetBinding() int {
+  classNameV := StringNameFromStr("RDUniform")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_binding")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDUniform) AddId(id RID, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDUniform")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_id")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *RDUniform) ClearIds()  {
+  classNameV := StringNameFromStr("RDUniform")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_ids")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RDUniform) GetIds() RID {
+  classNameV := StringNameFromStr("RDUniform")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_ids")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *RDUniform) GetPropUniformType() int {
   panic("TODO: implement")
 }
 
-func  (me *RDUniform) GetIds()  {
+func (me *RDUniform) SetPropUniformType(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *RDUniform) GetPropBinding() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *RDUniform) SetPropBinding(value int) {
+  panic("TODO: implement")
+}

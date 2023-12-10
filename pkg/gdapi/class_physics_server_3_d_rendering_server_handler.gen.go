@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PhysicsServer3DRenderingServerHandler struct {
   obj gdc.ObjectPtr
@@ -41,21 +37,6 @@ func (me *PhysicsServer3DRenderingServerHandler) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *PhysicsServer3DRenderingServerHandler) XSetVertex(vertex_id int, vertices unsafe.Pointer, )  {
-  panic("TODO: implement")
-}
-
-func  (me *PhysicsServer3DRenderingServerHandler) XSetNormal(vertex_id int, normals unsafe.Pointer, )  {
-  panic("TODO: implement")
-}
-
-func  (me *PhysicsServer3DRenderingServerHandler) XSetAabb(aabb AABB, )  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

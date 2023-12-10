@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GridContainer struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,36 @@ func (me *GridContainer) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *GridContainer) SetColumns(columns int, )  {
+  classNameV := StringNameFromStr("GridContainer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_columns")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&columns), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *GridContainer) GetColumns() int {
+  classNameV := StringNameFromStr("GridContainer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_columns")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *GridContainer) GetPropColumns() int {
   panic("TODO: implement")
 }
 
-func  (me *GridContainer) GetColumns()  {
+func (me *GridContainer) SetPropColumns(value int) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

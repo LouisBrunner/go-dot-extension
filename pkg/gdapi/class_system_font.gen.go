@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SystemFont struct {
   obj gdc.ObjectPtr
@@ -41,113 +37,410 @@ func (me *SystemFont) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *SystemFont) SetAntialiasing(antialiasing TextServerFontAntialiasing, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_antialiasing")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1669900) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&antialiasing), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SystemFont) GetAntialiasing()  {
-  panic("TODO: implement")
+func  (me *SystemFont) GetAntialiasing() TextServerFontAntialiasing {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_antialiasing")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4262718649) // FIXME: should cache?
+  var ret TextServerFontAntialiasing
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SystemFont) SetGenerateMipmaps(generate_mipmaps bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_generate_mipmaps")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&generate_mipmaps), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SystemFont) GetGenerateMipmaps()  {
-  panic("TODO: implement")
+func  (me *SystemFont) GetGenerateMipmaps() bool {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_generate_mipmaps")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SystemFont) SetAllowSystemFallback(allow_system_fallback bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_allow_system_fallback")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow_system_fallback), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SystemFont) IsAllowSystemFallback()  {
-  panic("TODO: implement")
+func  (me *SystemFont) IsAllowSystemFallback() bool {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_allow_system_fallback")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SystemFont) SetForceAutohinter(force_autohinter bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_force_autohinter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&force_autohinter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SystemFont) IsForceAutohinter()  {
-  panic("TODO: implement")
+func  (me *SystemFont) IsForceAutohinter() bool {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_force_autohinter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SystemFont) SetHinting(hinting TextServerHinting, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_hinting")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1827459492) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hinting), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SystemFont) GetHinting()  {
-  panic("TODO: implement")
+func  (me *SystemFont) GetHinting() TextServerHinting {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_hinting")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3683214614) // FIXME: should cache?
+  var ret TextServerHinting
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SystemFont) SetSubpixelPositioning(subpixel_positioning TextServerSubpixelPositioning, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_subpixel_positioning")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4225742182) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subpixel_positioning), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SystemFont) GetSubpixelPositioning()  {
-  panic("TODO: implement")
+func  (me *SystemFont) GetSubpixelPositioning() TextServerSubpixelPositioning {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_subpixel_positioning")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1069238588) // FIXME: should cache?
+  var ret TextServerSubpixelPositioning
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SystemFont) SetMultichannelSignedDistanceField(msdf bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_multichannel_signed_distance_field")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msdf), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SystemFont) IsMultichannelSignedDistanceField()  {
-  panic("TODO: implement")
+func  (me *SystemFont) IsMultichannelSignedDistanceField() bool {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_multichannel_signed_distance_field")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SystemFont) SetMsdfPixelRange(msdf_pixel_range int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_msdf_pixel_range")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msdf_pixel_range), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SystemFont) GetMsdfPixelRange()  {
-  panic("TODO: implement")
+func  (me *SystemFont) GetMsdfPixelRange() int {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_msdf_pixel_range")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SystemFont) SetMsdfSize(msdf_size int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_msdf_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msdf_size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SystemFont) GetMsdfSize()  {
-  panic("TODO: implement")
+func  (me *SystemFont) GetMsdfSize() int {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_msdf_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SystemFont) SetOversampling(oversampling float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_oversampling")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&oversampling), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SystemFont) GetOversampling()  {
-  panic("TODO: implement")
+func  (me *SystemFont) GetOversampling() float32 {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_oversampling")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *SystemFont) GetFontNames()  {
-  panic("TODO: implement")
+func  (me *SystemFont) GetFontNames() PackedStringArray {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_font_names")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
+  var ret PackedStringArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SystemFont) SetFontNames(names PackedStringArray, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_font_names")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015028928) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(names.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SystemFont) GetFontItalic()  {
-  panic("TODO: implement")
+func  (me *SystemFont) GetFontItalic() bool {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_font_italic")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *SystemFont) SetFontItalic(italic bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_font_italic")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&italic), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *SystemFont) SetFontWeight(weight int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_font_weight")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&weight), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *SystemFont) SetFontStretch(stretch int, )  {
+  classNameV := StringNameFromStr("SystemFont")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_font_stretch")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stretch), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *SystemFont) GetPropFontNames() PackedStringArray {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *SystemFont) SetPropFontNames(value PackedStringArray) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *SystemFont) GetPropFontItalic() bool {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropFontItalic(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropFontWeight() int {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropFontWeight(value int) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropFontStretch() int {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropFontStretch(value int) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropAntialiasing() int {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropAntialiasing(value int) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropGenerateMipmaps() bool {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropGenerateMipmaps(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropAllowSystemFallback() bool {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropAllowSystemFallback(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropForceAutohinter() bool {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropForceAutohinter(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropHinting() int {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropHinting(value int) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropSubpixelPositioning() int {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropSubpixelPositioning(value int) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropMultichannelSignedDistanceField() bool {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropMultichannelSignedDistanceField(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropMsdfPixelRange() int {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropMsdfPixelRange(value int) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropMsdfSize() int {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropMsdfSize(value int) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropOversampling() float32 {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropOversampling(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) GetPropFallbacks() Font {
+  panic("TODO: implement")
+}
+
+func (me *SystemFont) SetPropFallbacks(value Font) {
+  panic("TODO: implement")
+}

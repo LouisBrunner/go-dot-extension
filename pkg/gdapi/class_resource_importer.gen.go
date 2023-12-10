@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ResourceImporter struct {
   obj gdc.ObjectPtr
@@ -47,9 +43,6 @@ func (me *ResourceImporter) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ImageFormatLoaderExtension struct {
   obj gdc.ObjectPtr
@@ -41,25 +37,26 @@ func (me *ImageFormatLoaderExtension) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *ImageFormatLoaderExtension) XGetRecognizedExtensions()  {
-  panic("TODO: implement")
-}
-
-func  (me *ImageFormatLoaderExtension) XLoadImage(image Image, fileaccess FileAccess, flags ImageFormatLoaderLoaderFlags, scale float32, )  {
-  panic("TODO: implement")
-}
-
 func  (me *ImageFormatLoaderExtension) AddFormatLoader()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("ImageFormatLoaderExtension")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_format_loader")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *ImageFormatLoaderExtension) RemoveFormatLoader()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("ImageFormatLoaderExtension")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_format_loader")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

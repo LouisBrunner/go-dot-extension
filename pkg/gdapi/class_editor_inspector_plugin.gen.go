@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorInspectorPlugin struct {
   obj gdc.ObjectPtr
@@ -41,45 +37,36 @@ func (me *EditorInspectorPlugin) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorInspectorPlugin) XCanHandle(object Object, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorInspectorPlugin) XParseBegin(object Object, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorInspectorPlugin) XParseCategory(object Object, category String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorInspectorPlugin) XParseGroup(object Object, group String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorInspectorPlugin) XParseProperty(object Object, type_ VariantType, name String, hint_type PropertyHint, hint_string String, usage_flags PropertyUsageFlags, wide bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorInspectorPlugin) XParseEnd(object Object, )  {
-  panic("TODO: implement")
-}
-
 func  (me *EditorInspectorPlugin) AddCustomControl(control Control, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorInspectorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_custom_control")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(control.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorInspectorPlugin) AddPropertyEditor(property String, editor Control, add_to_end bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorInspectorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_property_editor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3406284123) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(property.AsCTypePtr()), gdc.ConstTypePtr(editor.AsCTypePtr()), gdc.ConstTypePtr(&add_to_end), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorInspectorPlugin) AddPropertyEditorForMultipleProperties(label String, properties PackedStringArray, editor Control, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorInspectorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_property_editor_for_multiple_properties")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 788598683) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(properties.AsCTypePtr()), gdc.ConstTypePtr(editor.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

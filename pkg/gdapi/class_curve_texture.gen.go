@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CurveTexture struct {
   obj gdc.ObjectPtr
@@ -47,29 +43,84 @@ func (me *CurveTexture) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *CurveTexture) SetWidth(width int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CurveTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CurveTexture) SetCurve(curve Curve, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CurveTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_curve")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CurveTexture) GetCurve()  {
-  panic("TODO: implement")
+func  (me *CurveTexture) GetCurve() Curve {
+  classNameV := StringNameFromStr("CurveTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_curve")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
+  var ret Curve
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CurveTexture) SetTextureMode(texture_mode CurveTextureTextureMode, )  {
+  classNameV := StringNameFromStr("CurveTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1321955367) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&texture_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *CurveTexture) GetTextureMode() CurveTextureTextureMode {
+  classNameV := StringNameFromStr("CurveTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 715756376) // FIXME: should cache?
+  var ret CurveTextureTextureMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *CurveTexture) GetPropWidth() int {
   panic("TODO: implement")
 }
 
-func  (me *CurveTexture) GetTextureMode()  {
+func (me *CurveTexture) SetPropWidth(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *CurveTexture) GetPropTextureMode() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *CurveTexture) SetPropTextureMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *CurveTexture) GetPropCurve() Curve {
+  panic("TODO: implement")
+}
+
+func (me *CurveTexture) SetPropCurve(value Curve) {
+  panic("TODO: implement")
+}

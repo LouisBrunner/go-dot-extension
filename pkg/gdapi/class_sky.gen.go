@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Sky struct {
   obj gdc.ObjectPtr
@@ -61,33 +57,96 @@ func (me *Sky) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *Sky) SetRadianceSize(size SkyRadianceSize, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Sky")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_radiance_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1512957179) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Sky) GetRadianceSize()  {
-  panic("TODO: implement")
+func  (me *Sky) GetRadianceSize() SkyRadianceSize {
+  classNameV := StringNameFromStr("Sky")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_radiance_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2708733976) // FIXME: should cache?
+  var ret SkyRadianceSize
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Sky) SetProcessMode(mode SkyProcessMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Sky")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_process_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 875986769) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Sky) GetProcessMode()  {
-  panic("TODO: implement")
+func  (me *Sky) GetProcessMode() SkyProcessMode {
+  classNameV := StringNameFromStr("Sky")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_process_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 731245043) // FIXME: should cache?
+  var ret SkyProcessMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Sky) SetMaterial(material Material, )  {
+  classNameV := StringNameFromStr("Sky")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_material")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757459619) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(material.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *Sky) GetMaterial() Material {
+  classNameV := StringNameFromStr("Sky")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_material")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5934680) // FIXME: should cache?
+  var ret Material
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *Sky) GetPropSkyMaterial() any {
   panic("TODO: implement")
 }
 
-func  (me *Sky) GetMaterial()  {
+func (me *Sky) SetPropSkyMaterial(value any) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *Sky) GetPropProcessMode() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *Sky) SetPropProcessMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Sky) GetPropRadianceSize() int {
+  panic("TODO: implement")
+}
+
+func (me *Sky) SetPropRadianceSize(value int) {
+  panic("TODO: implement")
+}

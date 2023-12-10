@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeParticleEmit struct {
   obj gdc.ObjectPtr
@@ -50,17 +46,36 @@ func (me *VisualShaderNodeParticleEmit) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeParticleEmit) SetFlags(flags VisualShaderNodeParticleEmitEmitFlags, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeParticleEmit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3960756792) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeParticleEmit) GetFlags() VisualShaderNodeParticleEmitEmitFlags {
+  classNameV := StringNameFromStr("VisualShaderNodeParticleEmit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 171277835) // FIXME: should cache?
+  var ret VisualShaderNodeParticleEmitEmitFlags
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeParticleEmit) GetPropFlags() int {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeParticleEmit) GetFlags()  {
+func (me *VisualShaderNodeParticleEmit) SetPropFlags(value int) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

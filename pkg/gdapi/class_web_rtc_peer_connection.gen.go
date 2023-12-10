@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type WebRTCPeerConnection struct {
   obj gdc.ObjectPtr
@@ -68,57 +64,148 @@ func (me *WebRTCPeerConnection) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  WebRTCPeerConnectionSetDefaultExtension(extension_class StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_default_extension")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(extension_class.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *WebRTCPeerConnection) Initialize(configuration Dictionary, )  {
-  panic("TODO: implement")
+func  (me *WebRTCPeerConnection) Initialize(configuration Dictionary, ) Error {
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("initialize")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2625064318) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(configuration.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebRTCPeerConnection) CreateDataChannel(label String, options Dictionary, )  {
-  panic("TODO: implement")
+func  (me *WebRTCPeerConnection) CreateDataChannel(label String, options Dictionary, ) WebRTCDataChannel {
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("create_data_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3997447457) // FIXME: should cache?
+  var ret WebRTCDataChannel
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(options.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebRTCPeerConnection) CreateOffer()  {
-  panic("TODO: implement")
+func  (me *WebRTCPeerConnection) CreateOffer() Error {
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("create_offer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebRTCPeerConnection) SetLocalDescription(type_ String, sdp String, )  {
-  panic("TODO: implement")
+func  (me *WebRTCPeerConnection) SetLocalDescription(type_ String, sdp String, ) Error {
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_local_description")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 852856452) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), gdc.ConstTypePtr(sdp.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebRTCPeerConnection) SetRemoteDescription(type_ String, sdp String, )  {
-  panic("TODO: implement")
+func  (me *WebRTCPeerConnection) SetRemoteDescription(type_ String, sdp String, ) Error {
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_remote_description")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 852856452) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), gdc.ConstTypePtr(sdp.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebRTCPeerConnection) AddIceCandidate(media String, index int, name String, )  {
-  panic("TODO: implement")
+func  (me *WebRTCPeerConnection) AddIceCandidate(media String, index int, name String, ) Error {
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_ice_candidate")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3958950400) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(media.AsCTypePtr()), gdc.ConstTypePtr(&index), gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebRTCPeerConnection) Poll()  {
-  panic("TODO: implement")
+func  (me *WebRTCPeerConnection) Poll() Error {
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("poll")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *WebRTCPeerConnection) Close()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("close")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *WebRTCPeerConnection) GetConnectionState()  {
-  panic("TODO: implement")
+func  (me *WebRTCPeerConnection) GetConnectionState() WebRTCPeerConnectionConnectionState {
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_connection_state")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2275710506) // FIXME: should cache?
+  var ret WebRTCPeerConnectionConnectionState
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebRTCPeerConnection) GetGatheringState()  {
-  panic("TODO: implement")
+func  (me *WebRTCPeerConnection) GetGatheringState() WebRTCPeerConnectionGatheringState {
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_gathering_state")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4262591401) // FIXME: should cache?
+  var ret WebRTCPeerConnectionGatheringState
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebRTCPeerConnection) GetSignalingState()  {
-  panic("TODO: implement")
+func  (me *WebRTCPeerConnection) GetSignalingState() WebRTCPeerConnectionSignalingState {
+  classNameV := StringNameFromStr("WebRTCPeerConnection")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_signaling_state")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3342956226) // FIXME: should cache?
+  var ret WebRTCPeerConnectionSignalingState
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeSmoothStep struct {
   obj gdc.ObjectPtr
@@ -53,17 +49,36 @@ func (me *VisualShaderNodeSmoothStep) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeSmoothStep) SetOpType(op_type VisualShaderNodeSmoothStepOpType, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeSmoothStep")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_op_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2427426148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&op_type), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeSmoothStep) GetOpType() VisualShaderNodeSmoothStepOpType {
+  classNameV := StringNameFromStr("VisualShaderNodeSmoothStep")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_op_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 359640855) // FIXME: should cache?
+  var ret VisualShaderNodeSmoothStepOpType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeSmoothStep) GetPropOpType() int {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeSmoothStep) GetOpType()  {
+func (me *VisualShaderNodeSmoothStep) SetPropOpType(value int) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

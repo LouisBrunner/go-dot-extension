@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type InputEventJoypadMotion struct {
   obj gdc.ObjectPtr
@@ -41,25 +37,66 @@ func (me *InputEventJoypadMotion) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *InputEventJoypadMotion) SetAxis(axis JoyAxis, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("InputEventJoypadMotion")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_axis")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1332685170) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&axis), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *InputEventJoypadMotion) GetAxis()  {
-  panic("TODO: implement")
+func  (me *InputEventJoypadMotion) GetAxis() JoyAxis {
+  classNameV := StringNameFromStr("InputEventJoypadMotion")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_axis")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4019121683) // FIXME: should cache?
+  var ret JoyAxis
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *InputEventJoypadMotion) SetAxisValue(axis_value float32, )  {
+  classNameV := StringNameFromStr("InputEventJoypadMotion")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_axis_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&axis_value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *InputEventJoypadMotion) GetAxisValue() float32 {
+  classNameV := StringNameFromStr("InputEventJoypadMotion")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_axis_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *InputEventJoypadMotion) GetPropAxis() int {
   panic("TODO: implement")
 }
 
-func  (me *InputEventJoypadMotion) GetAxisValue()  {
+func (me *InputEventJoypadMotion) SetPropAxis(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *InputEventJoypadMotion) GetPropAxisValue() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *InputEventJoypadMotion) SetPropAxisValue(value float32) {
+  panic("TODO: implement")
+}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type StreamPeerTLS struct {
   obj gdc.ObjectPtr
@@ -50,33 +46,74 @@ func (me *StreamPeerTLS) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *StreamPeerTLS) Poll()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("StreamPeerTLS")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("poll")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *StreamPeerTLS) AcceptStream(stream StreamPeer, server_options TLSOptions, )  {
-  panic("TODO: implement")
+func  (me *StreamPeerTLS) AcceptStream(stream StreamPeer, server_options TLSOptions, ) Error {
+  classNameV := StringNameFromStr("StreamPeerTLS")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("accept_stream")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4292689651) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(stream.AsCTypePtr()), gdc.ConstTypePtr(server_options.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *StreamPeerTLS) ConnectToStream(stream StreamPeer, common_name String, client_options TLSOptions, )  {
-  panic("TODO: implement")
+func  (me *StreamPeerTLS) ConnectToStream(stream StreamPeer, common_name String, client_options TLSOptions, ) Error {
+  classNameV := StringNameFromStr("StreamPeerTLS")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("connect_to_stream")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1325480781) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(stream.AsCTypePtr()), gdc.ConstTypePtr(common_name.AsCTypePtr()), gdc.ConstTypePtr(client_options.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *StreamPeerTLS) GetStatus()  {
-  panic("TODO: implement")
+func  (me *StreamPeerTLS) GetStatus() StreamPeerTLSStatus {
+  classNameV := StringNameFromStr("StreamPeerTLS")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_status")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1128380576) // FIXME: should cache?
+  var ret StreamPeerTLSStatus
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *StreamPeerTLS) GetStream()  {
-  panic("TODO: implement")
+func  (me *StreamPeerTLS) GetStream() StreamPeer {
+  classNameV := StringNameFromStr("StreamPeerTLS")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_stream")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2741655269) // FIXME: should cache?
+  var ret StreamPeer
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *StreamPeerTLS) DisconnectFromStream()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("StreamPeerTLS")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("disconnect_from_stream")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

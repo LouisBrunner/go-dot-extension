@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Generic6DOFJoint3D struct {
   obj gdc.ObjectPtr
@@ -79,57 +75,138 @@ func (me *Generic6DOFJoint3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *Generic6DOFJoint3D) SetParamX(param Generic6DOFJoint3DParam, value float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_param_x")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2018184242) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Generic6DOFJoint3D) GetParamX(param Generic6DOFJoint3DParam, )  {
-  panic("TODO: implement")
+func  (me *Generic6DOFJoint3D) GetParamX(param Generic6DOFJoint3DParam, ) float32 {
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_param_x")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2599835054) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Generic6DOFJoint3D) SetParamY(param Generic6DOFJoint3DParam, value float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_param_y")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2018184242) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Generic6DOFJoint3D) GetParamY(param Generic6DOFJoint3DParam, )  {
-  panic("TODO: implement")
+func  (me *Generic6DOFJoint3D) GetParamY(param Generic6DOFJoint3DParam, ) float32 {
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_param_y")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2599835054) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Generic6DOFJoint3D) SetParamZ(param Generic6DOFJoint3DParam, value float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_param_z")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2018184242) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Generic6DOFJoint3D) GetParamZ(param Generic6DOFJoint3DParam, )  {
-  panic("TODO: implement")
+func  (me *Generic6DOFJoint3D) GetParamZ(param Generic6DOFJoint3DParam, ) float32 {
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_param_z")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2599835054) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Generic6DOFJoint3D) SetFlagX(flag Generic6DOFJoint3DFlag, value bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_flag_x")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2451594564) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Generic6DOFJoint3D) GetFlagX(flag Generic6DOFJoint3DFlag, )  {
-  panic("TODO: implement")
+func  (me *Generic6DOFJoint3D) GetFlagX(flag Generic6DOFJoint3DFlag, ) bool {
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_flag_x")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2122427807) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Generic6DOFJoint3D) SetFlagY(flag Generic6DOFJoint3DFlag, value bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_flag_y")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2451594564) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Generic6DOFJoint3D) GetFlagY(flag Generic6DOFJoint3DFlag, )  {
-  panic("TODO: implement")
+func  (me *Generic6DOFJoint3D) GetFlagY(flag Generic6DOFJoint3DFlag, ) bool {
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_flag_y")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2122427807) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Generic6DOFJoint3D) SetFlagZ(flag Generic6DOFJoint3DFlag, value bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_flag_z")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2451594564) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Generic6DOFJoint3D) GetFlagZ(flag Generic6DOFJoint3DFlag, )  {
-  panic("TODO: implement")
+func  (me *Generic6DOFJoint3D) GetFlagZ(flag Generic6DOFJoint3DFlag, ) bool {
+  classNameV := StringNameFromStr("Generic6DOFJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_flag_z")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2122427807) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

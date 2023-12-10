@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GPUParticlesCollision3D struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,36 @@ func (me *GPUParticlesCollision3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *GPUParticlesCollision3D) SetCullMask(mask int, )  {
+  classNameV := StringNameFromStr("GPUParticlesCollision3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_cull_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *GPUParticlesCollision3D) GetCullMask() int {
+  classNameV := StringNameFromStr("GPUParticlesCollision3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_cull_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *GPUParticlesCollision3D) GetPropCullMask() int {
   panic("TODO: implement")
 }
 
-func  (me *GPUParticlesCollision3D) GetCullMask()  {
+func (me *GPUParticlesCollision3D) SetPropCullMask(value int) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

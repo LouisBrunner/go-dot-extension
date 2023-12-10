@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeIs struct {
   obj gdc.ObjectPtr
@@ -48,17 +44,36 @@ func (me *VisualShaderNodeIs) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeIs) SetFunction(func_ VisualShaderNodeIsFunction, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeIs")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_function")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1438374690) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&func_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeIs) GetFunction() VisualShaderNodeIsFunction {
+  classNameV := StringNameFromStr("VisualShaderNodeIs")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_function")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 580678557) // FIXME: should cache?
+  var ret VisualShaderNodeIsFunction
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeIs) GetPropFunction() int {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeIs) GetFunction()  {
+func (me *VisualShaderNodeIs) SetPropFunction(value int) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

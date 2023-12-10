@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type BackBufferCopy struct {
   obj gdc.ObjectPtr
@@ -48,25 +44,66 @@ func (me *BackBufferCopy) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *BackBufferCopy) SetRect(rect Rect2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BackBufferCopy")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_rect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2046264180) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rect.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BackBufferCopy) GetRect()  {
-  panic("TODO: implement")
+func  (me *BackBufferCopy) GetRect() Rect2 {
+  classNameV := StringNameFromStr("BackBufferCopy")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
+  var ret Rect2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BackBufferCopy) SetCopyMode(copy_mode BackBufferCopyCopyMode, )  {
+  classNameV := StringNameFromStr("BackBufferCopy")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_copy_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1713538590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&copy_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *BackBufferCopy) GetCopyMode() BackBufferCopyCopyMode {
+  classNameV := StringNameFromStr("BackBufferCopy")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_copy_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3271169440) // FIXME: should cache?
+  var ret BackBufferCopyCopyMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *BackBufferCopy) GetPropCopyMode() int {
   panic("TODO: implement")
 }
 
-func  (me *BackBufferCopy) GetCopyMode()  {
+func (me *BackBufferCopy) SetPropCopyMode(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *BackBufferCopy) GetPropRect() Rect2 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *BackBufferCopy) SetPropRect(value Rect2) {
+  panic("TODO: implement")
+}

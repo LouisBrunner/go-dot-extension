@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type BaseMaterial3D struct {
   obj gdc.ObjectPtr
@@ -217,553 +213,2430 @@ func (me *BaseMaterial3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *BaseMaterial3D) SetAlbedo(albedo Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_albedo")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(albedo.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetAlbedo()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetAlbedo() Color {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_albedo")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetTransparency(transparency BaseMaterial3DTransparency, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_transparency")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3435651667) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&transparency), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetTransparency()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetTransparency() BaseMaterial3DTransparency {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_transparency")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 990903061) // FIXME: should cache?
+  var ret BaseMaterial3DTransparency
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetAlphaAntialiasing(alpha_aa BaseMaterial3DAlphaAntiAliasing, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_alpha_antialiasing")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3212649852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alpha_aa), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetAlphaAntialiasing()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetAlphaAntialiasing() BaseMaterial3DAlphaAntiAliasing {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_alpha_antialiasing")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2889939400) // FIXME: should cache?
+  var ret BaseMaterial3DAlphaAntiAliasing
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetAlphaAntialiasingEdge(edge float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_alpha_antialiasing_edge")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&edge), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetAlphaAntialiasingEdge()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetAlphaAntialiasingEdge() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_alpha_antialiasing_edge")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetShadingMode(shading_mode BaseMaterial3DShadingMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_shading_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3368750322) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shading_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetShadingMode()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetShadingMode() BaseMaterial3DShadingMode {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_shading_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2132070559) // FIXME: should cache?
+  var ret BaseMaterial3DShadingMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetSpecular(specular float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_specular")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&specular), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetSpecular()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetSpecular() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_specular")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetMetallic(metallic float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_metallic")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&metallic), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetMetallic()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetMetallic() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_metallic")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetRoughness(roughness float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_roughness")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&roughness), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetRoughness()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetRoughness() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_roughness")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetEmission(emission Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_emission")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(emission.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetEmission()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetEmission() Color {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_emission")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetEmissionEnergyMultiplier(emission_energy_multiplier float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_emission_energy_multiplier")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&emission_energy_multiplier), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetEmissionEnergyMultiplier()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetEmissionEnergyMultiplier() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_emission_energy_multiplier")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetEmissionIntensity(emission_energy_multiplier float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_emission_intensity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&emission_energy_multiplier), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetEmissionIntensity()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetEmissionIntensity() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_emission_intensity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetNormalScale(normal_scale float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_normal_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&normal_scale), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetNormalScale()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetNormalScale() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_normal_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetRim(rim float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_rim")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rim), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetRim()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetRim() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rim")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetRimTint(rim_tint float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_rim_tint")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rim_tint), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetRimTint()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetRimTint() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rim_tint")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetClearcoat(clearcoat float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_clearcoat")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&clearcoat), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetClearcoat()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetClearcoat() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_clearcoat")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetClearcoatRoughness(clearcoat_roughness float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_clearcoat_roughness")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&clearcoat_roughness), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetClearcoatRoughness()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetClearcoatRoughness() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_clearcoat_roughness")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetAnisotropy(anisotropy float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_anisotropy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&anisotropy), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetAnisotropy()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetAnisotropy() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_anisotropy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetHeightmapScale(heightmap_scale float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_heightmap_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&heightmap_scale), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetHeightmapScale()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetHeightmapScale() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_heightmap_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetSubsurfaceScatteringStrength(strength float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_subsurface_scattering_strength")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&strength), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetSubsurfaceScatteringStrength()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetSubsurfaceScatteringStrength() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_subsurface_scattering_strength")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetTransmittanceColor(color Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_transmittance_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetTransmittanceColor()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetTransmittanceColor() Color {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_transmittance_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetTransmittanceDepth(depth float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_transmittance_depth")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&depth), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetTransmittanceDepth()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetTransmittanceDepth() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_transmittance_depth")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetTransmittanceBoost(boost float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_transmittance_boost")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&boost), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetTransmittanceBoost()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetTransmittanceBoost() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_transmittance_boost")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetBacklight(backlight Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_backlight")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(backlight.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetBacklight()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetBacklight() Color {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_backlight")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetRefraction(refraction float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_refraction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&refraction), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetRefraction()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetRefraction() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_refraction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetPointSize(point_size float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_point_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point_size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetPointSize()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetPointSize() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_point_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetDetailUv(detail_uv BaseMaterial3DDetailUV, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_detail_uv")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 456801921) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&detail_uv), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetDetailUv()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetDetailUv() BaseMaterial3DDetailUV {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_detail_uv")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2306920512) // FIXME: should cache?
+  var ret BaseMaterial3DDetailUV
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetBlendMode(blend_mode BaseMaterial3DBlendMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_blend_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2830186259) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&blend_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetBlendMode()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetBlendMode() BaseMaterial3DBlendMode {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_blend_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4022690962) // FIXME: should cache?
+  var ret BaseMaterial3DBlendMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetDepthDrawMode(depth_draw_mode BaseMaterial3DDepthDrawMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_depth_draw_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1456584748) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&depth_draw_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetDepthDrawMode()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetDepthDrawMode() BaseMaterial3DDepthDrawMode {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_depth_draw_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2578197639) // FIXME: should cache?
+  var ret BaseMaterial3DDepthDrawMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetCullMode(cull_mode BaseMaterial3DCullMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_cull_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2338909218) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cull_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetCullMode()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetCullMode() BaseMaterial3DCullMode {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_cull_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1941499586) // FIXME: should cache?
+  var ret BaseMaterial3DCullMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetDiffuseMode(diffuse_mode BaseMaterial3DDiffuseMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_diffuse_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1045299638) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&diffuse_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetDiffuseMode()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetDiffuseMode() BaseMaterial3DDiffuseMode {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_diffuse_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3973617136) // FIXME: should cache?
+  var ret BaseMaterial3DDiffuseMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetSpecularMode(specular_mode BaseMaterial3DSpecularMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_specular_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 584737147) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&specular_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetSpecularMode()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetSpecularMode() BaseMaterial3DSpecularMode {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_specular_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2569953298) // FIXME: should cache?
+  var ret BaseMaterial3DSpecularMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetFlag(flag BaseMaterial3DFlags, enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_flag")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3070159527) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetFlag(flag BaseMaterial3DFlags, )  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetFlag(flag BaseMaterial3DFlags, ) bool {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_flag")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410065) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetTextureFilter(mode BaseMaterial3DTextureFilter, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture_filter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 22904437) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetTextureFilter()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetTextureFilter() BaseMaterial3DTextureFilter {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture_filter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3289213076) // FIXME: should cache?
+  var ret BaseMaterial3DTextureFilter
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetFeature(feature BaseMaterial3DFeature, enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_feature")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2819288693) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature), gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetFeature(feature BaseMaterial3DFeature, )  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetFeature(feature BaseMaterial3DFeature, ) bool {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_feature")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965241794) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetTexture(param BaseMaterial3DTextureParam, texture Texture2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 464208135) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), gdc.ConstTypePtr(texture.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetTexture(param BaseMaterial3DTextureParam, )  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetTexture(param BaseMaterial3DTextureParam, ) Texture2D {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 329605813) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetDetailBlendMode(detail_blend_mode BaseMaterial3DBlendMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_detail_blend_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2830186259) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&detail_blend_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetDetailBlendMode()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetDetailBlendMode() BaseMaterial3DBlendMode {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_detail_blend_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4022690962) // FIXME: should cache?
+  var ret BaseMaterial3DBlendMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetUv1Scale(scale Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_uv1_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetUv1Scale()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetUv1Scale() Vector3 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_uv1_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetUv1Offset(offset Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_uv1_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetUv1Offset()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetUv1Offset() Vector3 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_uv1_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetUv1TriplanarBlendSharpness(sharpness float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_uv1_triplanar_blend_sharpness")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&sharpness), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetUv1TriplanarBlendSharpness()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetUv1TriplanarBlendSharpness() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_uv1_triplanar_blend_sharpness")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetUv2Scale(scale Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_uv2_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetUv2Scale()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetUv2Scale() Vector3 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_uv2_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetUv2Offset(offset Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_uv2_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetUv2Offset()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetUv2Offset() Vector3 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_uv2_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetUv2TriplanarBlendSharpness(sharpness float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_uv2_triplanar_blend_sharpness")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&sharpness), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetUv2TriplanarBlendSharpness()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetUv2TriplanarBlendSharpness() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_uv2_triplanar_blend_sharpness")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetBillboardMode(mode BaseMaterial3DBillboardMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_billboard_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4202036497) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetBillboardMode()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetBillboardMode() BaseMaterial3DBillboardMode {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_billboard_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1283840139) // FIXME: should cache?
+  var ret BaseMaterial3DBillboardMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetParticlesAnimHFrames(frames int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_particles_anim_h_frames")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frames), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetParticlesAnimHFrames()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetParticlesAnimHFrames() int {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_particles_anim_h_frames")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetParticlesAnimVFrames(frames int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_particles_anim_v_frames")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frames), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetParticlesAnimVFrames()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetParticlesAnimVFrames() int {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_particles_anim_v_frames")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetParticlesAnimLoop(loop bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_particles_anim_loop")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&loop), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetParticlesAnimLoop()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetParticlesAnimLoop() bool {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_particles_anim_loop")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetHeightmapDeepParallax(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_heightmap_deep_parallax")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) IsHeightmapDeepParallaxEnabled()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) IsHeightmapDeepParallaxEnabled() bool {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_heightmap_deep_parallax_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetHeightmapDeepParallaxMinLayers(layer int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_heightmap_deep_parallax_min_layers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetHeightmapDeepParallaxMinLayers()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetHeightmapDeepParallaxMinLayers() int {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_heightmap_deep_parallax_min_layers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetHeightmapDeepParallaxMaxLayers(layer int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_heightmap_deep_parallax_max_layers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetHeightmapDeepParallaxMaxLayers()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetHeightmapDeepParallaxMaxLayers() int {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_heightmap_deep_parallax_max_layers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetHeightmapDeepParallaxFlipTangent(flip bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_heightmap_deep_parallax_flip_tangent")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flip), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetHeightmapDeepParallaxFlipTangent()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetHeightmapDeepParallaxFlipTangent() bool {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_heightmap_deep_parallax_flip_tangent")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetHeightmapDeepParallaxFlipBinormal(flip bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_heightmap_deep_parallax_flip_binormal")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flip), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetHeightmapDeepParallaxFlipBinormal()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetHeightmapDeepParallaxFlipBinormal() bool {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_heightmap_deep_parallax_flip_binormal")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetGrow(amount float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_grow")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetGrow()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetGrow() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_grow")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetEmissionOperator(operator BaseMaterial3DEmissionOperator, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_emission_operator")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3825128922) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&operator), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetEmissionOperator()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetEmissionOperator() BaseMaterial3DEmissionOperator {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_emission_operator")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 974205018) // FIXME: should cache?
+  var ret BaseMaterial3DEmissionOperator
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetAoLightAffect(amount float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_ao_light_affect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetAoLightAffect()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetAoLightAffect() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_ao_light_affect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetAlphaScissorThreshold(threshold float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_alpha_scissor_threshold")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&threshold), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetAlphaScissorThreshold()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetAlphaScissorThreshold() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_alpha_scissor_threshold")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetAlphaHashScale(threshold float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_alpha_hash_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&threshold), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetAlphaHashScale()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetAlphaHashScale() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_alpha_hash_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetGrowEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_grow_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) IsGrowEnabled()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) IsGrowEnabled() bool {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_grow_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetMetallicTextureChannel(channel BaseMaterial3DTextureChannel, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_metallic_texture_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 744167988) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&channel), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetMetallicTextureChannel()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetMetallicTextureChannel() BaseMaterial3DTextureChannel {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_metallic_texture_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 568133867) // FIXME: should cache?
+  var ret BaseMaterial3DTextureChannel
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetRoughnessTextureChannel(channel BaseMaterial3DTextureChannel, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_roughness_texture_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 744167988) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&channel), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetRoughnessTextureChannel()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetRoughnessTextureChannel() BaseMaterial3DTextureChannel {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_roughness_texture_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 568133867) // FIXME: should cache?
+  var ret BaseMaterial3DTextureChannel
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetAoTextureChannel(channel BaseMaterial3DTextureChannel, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_ao_texture_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 744167988) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&channel), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetAoTextureChannel()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetAoTextureChannel() BaseMaterial3DTextureChannel {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_ao_texture_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 568133867) // FIXME: should cache?
+  var ret BaseMaterial3DTextureChannel
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetRefractionTextureChannel(channel BaseMaterial3DTextureChannel, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_refraction_texture_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 744167988) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&channel), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetRefractionTextureChannel()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetRefractionTextureChannel() BaseMaterial3DTextureChannel {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_refraction_texture_channel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 568133867) // FIXME: should cache?
+  var ret BaseMaterial3DTextureChannel
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetProximityFadeEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_proximity_fade_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) IsProximityFadeEnabled()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) IsProximityFadeEnabled() bool {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_proximity_fade_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetProximityFadeDistance(distance float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_proximity_fade_distance")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetProximityFadeDistance()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetProximityFadeDistance() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_proximity_fade_distance")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetMsdfPixelRange(range_ float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_msdf_pixel_range")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&range_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetMsdfPixelRange()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetMsdfPixelRange() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_msdf_pixel_range")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetMsdfOutlineSize(size float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_msdf_outline_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetMsdfOutlineSize()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetMsdfOutlineSize() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_msdf_outline_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetDistanceFade(mode BaseMaterial3DDistanceFadeMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_distance_fade")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1379478617) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetDistanceFade()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetDistanceFade() BaseMaterial3DDistanceFadeMode {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_distance_fade")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2694575734) // FIXME: should cache?
+  var ret BaseMaterial3DDistanceFadeMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetDistanceFadeMaxDistance(distance float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_distance_fade_max_distance")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *BaseMaterial3D) GetDistanceFadeMaxDistance()  {
-  panic("TODO: implement")
+func  (me *BaseMaterial3D) GetDistanceFadeMaxDistance() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_distance_fade_max_distance")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *BaseMaterial3D) SetDistanceFadeMinDistance(distance float32, )  {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_distance_fade_min_distance")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *BaseMaterial3D) GetDistanceFadeMinDistance() float32 {
+  classNameV := StringNameFromStr("BaseMaterial3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_distance_fade_min_distance")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *BaseMaterial3D) GetPropTransparency() int {
   panic("TODO: implement")
 }
 
-func  (me *BaseMaterial3D) GetDistanceFadeMinDistance()  {
+func (me *BaseMaterial3D) SetPropTransparency(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *BaseMaterial3D) GetPropAlphaScissorThreshold() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *BaseMaterial3D) SetPropAlphaScissorThreshold(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAlphaHashScale() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAlphaHashScale(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAlphaAntialiasingMode() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAlphaAntialiasingMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAlphaAntialiasingEdge() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAlphaAntialiasingEdge(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropBlendMode() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropBlendMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropCullMode() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropCullMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDepthDrawMode() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDepthDrawMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropNoDepthTest() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropNoDepthTest(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropShadingMode() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropShadingMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDiffuseMode() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDiffuseMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropSpecularMode() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropSpecularMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDisableAmbientLight() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDisableAmbientLight(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropVertexColorUseAsAlbedo() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropVertexColorUseAsAlbedo(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropVertexColorIsSrgb() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropVertexColorIsSrgb(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAlbedoColor() Color {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAlbedoColor(value Color) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAlbedoTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAlbedoTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAlbedoTextureForceSrgb() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAlbedoTextureForceSrgb(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAlbedoTextureMsdf() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAlbedoTextureMsdf(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropOrmTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropOrmTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropMetallic() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropMetallic(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropMetallicSpecular() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropMetallicSpecular(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropMetallicTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropMetallicTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropMetallicTextureChannel() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropMetallicTextureChannel(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropRoughness() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropRoughness(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropRoughnessTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropRoughnessTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropRoughnessTextureChannel() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropRoughnessTextureChannel(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropEmissionEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropEmissionEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropEmission() Color {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropEmission(value Color) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropEmissionEnergyMultiplier() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropEmissionEnergyMultiplier(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropEmissionIntensity() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropEmissionIntensity(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropEmissionOperator() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropEmissionOperator(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropEmissionOnUv2() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropEmissionOnUv2(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropEmissionTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropEmissionTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropNormalEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropNormalEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropNormalScale() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropNormalScale(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropNormalTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropNormalTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropRimEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropRimEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropRim() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropRim(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropRimTint() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropRimTint(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropRimTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropRimTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropClearcoatEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropClearcoatEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropClearcoat() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropClearcoat(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropClearcoatRoughness() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropClearcoatRoughness(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropClearcoatTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropClearcoatTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAnisotropyEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAnisotropyEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAnisotropy() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAnisotropy(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAnisotropyFlowmap() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAnisotropyFlowmap(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAoEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAoEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAoLightAffect() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAoLightAffect(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAoTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAoTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAoOnUv2() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAoOnUv2(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropAoTextureChannel() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropAoTextureChannel(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropHeightmapEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropHeightmapEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropHeightmapScale() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropHeightmapScale(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropHeightmapDeepParallax() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropHeightmapDeepParallax(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropHeightmapMinLayers() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropHeightmapMinLayers(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropHeightmapMaxLayers() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropHeightmapMaxLayers(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropHeightmapFlipTangent() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropHeightmapFlipTangent(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropHeightmapFlipBinormal() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropHeightmapFlipBinormal(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropHeightmapTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropHeightmapTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropHeightmapFlipTexture() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropHeightmapFlipTexture(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropSubsurfScatterEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropSubsurfScatterEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropSubsurfScatterStrength() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropSubsurfScatterStrength(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropSubsurfScatterSkinMode() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropSubsurfScatterSkinMode(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropSubsurfScatterTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropSubsurfScatterTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropSubsurfScatterTransmittanceEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropSubsurfScatterTransmittanceEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropSubsurfScatterTransmittanceColor() Color {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropSubsurfScatterTransmittanceColor(value Color) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropSubsurfScatterTransmittanceTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropSubsurfScatterTransmittanceTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropSubsurfScatterTransmittanceDepth() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropSubsurfScatterTransmittanceDepth(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropSubsurfScatterTransmittanceBoost() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropSubsurfScatterTransmittanceBoost(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropBacklightEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropBacklightEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropBacklight() Color {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropBacklight(value Color) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropBacklightTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropBacklightTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropRefractionEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropRefractionEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropRefractionScale() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropRefractionScale(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropRefractionTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropRefractionTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropRefractionTextureChannel() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropRefractionTextureChannel(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDetailEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDetailEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDetailMask() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDetailMask(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDetailBlendMode() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDetailBlendMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDetailUvLayer() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDetailUvLayer(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDetailAlbedo() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDetailAlbedo(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDetailNormal() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDetailNormal(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUv1Scale() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUv1Scale(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUv1Offset() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUv1Offset(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUv1Triplanar() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUv1Triplanar(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUv1TriplanarSharpness() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUv1TriplanarSharpness(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUv1WorldTriplanar() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUv1WorldTriplanar(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUv2Scale() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUv2Scale(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUv2Offset() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUv2Offset(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUv2Triplanar() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUv2Triplanar(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUv2TriplanarSharpness() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUv2TriplanarSharpness(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUv2WorldTriplanar() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUv2WorldTriplanar(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropTextureFilter() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropTextureFilter(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropTextureRepeat() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropTextureRepeat(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDisableReceiveShadows() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDisableReceiveShadows(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropShadowToOpacity() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropShadowToOpacity(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropBillboardMode() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropBillboardMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropBillboardKeepScale() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropBillboardKeepScale(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropParticlesAnimHFrames() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropParticlesAnimHFrames(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropParticlesAnimVFrames() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropParticlesAnimVFrames(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropParticlesAnimLoop() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropParticlesAnimLoop(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropGrow() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropGrow(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropGrowAmount() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropGrowAmount(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropFixedSize() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropFixedSize(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUsePointSize() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUsePointSize(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropPointSize() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropPointSize(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropUseParticleTrails() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropUseParticleTrails(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropProximityFadeEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropProximityFadeEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropProximityFadeDistance() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropProximityFadeDistance(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropMsdfPixelRange() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropMsdfPixelRange(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropMsdfOutlineSize() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropMsdfOutlineSize(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDistanceFadeMode() int {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDistanceFadeMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDistanceFadeMinDistance() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDistanceFadeMinDistance(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) GetPropDistanceFadeMaxDistance() float32 {
+  panic("TODO: implement")
+}
+
+func (me *BaseMaterial3D) SetPropDistanceFadeMaxDistance(value float32) {
+  panic("TODO: implement")
+}

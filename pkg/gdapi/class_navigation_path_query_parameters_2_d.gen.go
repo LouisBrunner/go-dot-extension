@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NavigationPathQueryParameters2D struct {
   obj gdc.ObjectPtr
@@ -61,65 +57,216 @@ func (me *NavigationPathQueryParameters2D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *NavigationPathQueryParameters2D) SetPathfindingAlgorithm(pathfinding_algorithm NavigationPathQueryParameters2DPathfindingAlgorithm, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_pathfinding_algorithm")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2783519915) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pathfinding_algorithm), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationPathQueryParameters2D) GetPathfindingAlgorithm()  {
-  panic("TODO: implement")
+func  (me *NavigationPathQueryParameters2D) GetPathfindingAlgorithm() NavigationPathQueryParameters2DPathfindingAlgorithm {
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_pathfinding_algorithm")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3000421146) // FIXME: should cache?
+  var ret NavigationPathQueryParameters2DPathfindingAlgorithm
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationPathQueryParameters2D) SetPathPostprocessing(path_postprocessing NavigationPathQueryParameters2DPathPostProcessing, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_path_postprocessing")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2864409082) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&path_postprocessing), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationPathQueryParameters2D) GetPathPostprocessing()  {
-  panic("TODO: implement")
+func  (me *NavigationPathQueryParameters2D) GetPathPostprocessing() NavigationPathQueryParameters2DPathPostProcessing {
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_path_postprocessing")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3798118993) // FIXME: should cache?
+  var ret NavigationPathQueryParameters2DPathPostProcessing
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationPathQueryParameters2D) SetMap(map_ RID, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_map")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationPathQueryParameters2D) GetMap()  {
-  panic("TODO: implement")
+func  (me *NavigationPathQueryParameters2D) GetMap() RID {
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_map")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationPathQueryParameters2D) SetStartPosition(start_position Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_start_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start_position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationPathQueryParameters2D) GetStartPosition()  {
-  panic("TODO: implement")
+func  (me *NavigationPathQueryParameters2D) GetStartPosition() Vector2 {
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_start_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationPathQueryParameters2D) SetTargetPosition(target_position Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_target_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(target_position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationPathQueryParameters2D) GetTargetPosition()  {
-  panic("TODO: implement")
+func  (me *NavigationPathQueryParameters2D) GetTargetPosition() Vector2 {
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_target_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationPathQueryParameters2D) SetNavigationLayers(navigation_layers int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_navigation_layers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&navigation_layers), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationPathQueryParameters2D) GetNavigationLayers()  {
-  panic("TODO: implement")
+func  (me *NavigationPathQueryParameters2D) GetNavigationLayers() int {
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_navigation_layers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationPathQueryParameters2D) SetMetadataFlags(flags NavigationPathQueryParameters2DPathMetadataFlags, )  {
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_metadata_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 24274129) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *NavigationPathQueryParameters2D) GetMetadataFlags() NavigationPathQueryParameters2DPathMetadataFlags {
+  classNameV := StringNameFromStr("NavigationPathQueryParameters2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_metadata_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 488152976) // FIXME: should cache?
+  var ret NavigationPathQueryParameters2DPathMetadataFlags
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *NavigationPathQueryParameters2D) GetPropMap() RID {
   panic("TODO: implement")
 }
 
-func  (me *NavigationPathQueryParameters2D) GetMetadataFlags()  {
+func (me *NavigationPathQueryParameters2D) SetPropMap(value RID) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *NavigationPathQueryParameters2D) GetPropStartPosition() Vector2 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *NavigationPathQueryParameters2D) SetPropStartPosition(value Vector2) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryParameters2D) GetPropTargetPosition() Vector2 {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryParameters2D) SetPropTargetPosition(value Vector2) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryParameters2D) GetPropNavigationLayers() int {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryParameters2D) SetPropNavigationLayers(value int) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryParameters2D) GetPropPathfindingAlgorithm() int {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryParameters2D) SetPropPathfindingAlgorithm(value int) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryParameters2D) GetPropPathPostprocessing() int {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryParameters2D) SetPropPathPostprocessing(value int) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryParameters2D) GetPropMetadataFlags() int {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryParameters2D) SetPropMetadataFlags(value int) {
+  panic("TODO: implement")
+}

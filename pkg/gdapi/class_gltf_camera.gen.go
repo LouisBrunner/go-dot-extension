@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFCamera struct {
   obj gdc.ObjectPtr
@@ -41,65 +37,204 @@ func (me *GLTFCamera) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  GLTFCameraFromNode(camera_node Camera3D, )  {
-  panic("TODO: implement")
+func  GLTFCameraFromNode(camera_node Camera3D, ) GLTFCamera {
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("from_node")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 237784) // FIXME: should cache?
+  var ret GLTFCamera
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(camera_node.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *GLTFCamera) ToNode()  {
-  panic("TODO: implement")
+func  (me *GLTFCamera) ToNode() Camera3D {
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("to_node")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2285090890) // FIXME: should cache?
+  var ret Camera3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  GLTFCameraFromDictionary(dictionary Dictionary, )  {
-  panic("TODO: implement")
+func  GLTFCameraFromDictionary(dictionary Dictionary, ) GLTFCamera {
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("from_dictionary")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2495512509) // FIXME: should cache?
+  var ret GLTFCamera
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(dictionary.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *GLTFCamera) ToDictionary()  {
-  panic("TODO: implement")
+func  (me *GLTFCamera) ToDictionary() Dictionary {
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("to_dictionary")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
+  var ret Dictionary
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *GLTFCamera) GetPerspective()  {
-  panic("TODO: implement")
+func  (me *GLTFCamera) GetPerspective() bool {
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_perspective")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *GLTFCamera) SetPerspective(perspective bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_perspective")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&perspective), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *GLTFCamera) GetFov()  {
-  panic("TODO: implement")
+func  (me *GLTFCamera) GetFov() float32 {
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_fov")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *GLTFCamera) SetFov(fov float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_fov")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fov), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *GLTFCamera) GetSizeMag()  {
-  panic("TODO: implement")
+func  (me *GLTFCamera) GetSizeMag() float32 {
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_size_mag")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *GLTFCamera) SetSizeMag(size_mag float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_size_mag")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size_mag), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *GLTFCamera) GetDepthFar()  {
-  panic("TODO: implement")
+func  (me *GLTFCamera) GetDepthFar() float32 {
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_depth_far")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *GLTFCamera) SetDepthFar(zdepth_far float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_depth_far")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&zdepth_far), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *GLTFCamera) GetDepthNear()  {
-  panic("TODO: implement")
+func  (me *GLTFCamera) GetDepthNear() float32 {
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_depth_near")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *GLTFCamera) SetDepthNear(zdepth_near float32, )  {
+  classNameV := StringNameFromStr("GLTFCamera")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_depth_near")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&zdepth_near), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *GLTFCamera) GetPropPerspective() bool {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *GLTFCamera) SetPropPerspective(value bool) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *GLTFCamera) GetPropFov() float32 {
+  panic("TODO: implement")
+}
+
+func (me *GLTFCamera) SetPropFov(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *GLTFCamera) GetPropSizeMag() float32 {
+  panic("TODO: implement")
+}
+
+func (me *GLTFCamera) SetPropSizeMag(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *GLTFCamera) GetPropDepthFar() float32 {
+  panic("TODO: implement")
+}
+
+func (me *GLTFCamera) SetPropDepthFar(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *GLTFCamera) GetPropDepthNear() float32 {
+  panic("TODO: implement")
+}
+
+func (me *GLTFCamera) SetPropDepthNear(value float32) {
+  panic("TODO: implement")
+}

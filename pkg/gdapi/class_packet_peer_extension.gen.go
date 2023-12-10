@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PacketPeerExtension struct {
   obj gdc.ObjectPtr
@@ -41,25 +37,6 @@ func (me *PacketPeerExtension) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *PacketPeerExtension) XGetPacket(r_buffer **uint8, r_buffer_size *int32, )  {
-  panic("TODO: implement")
-}
-
-func  (me *PacketPeerExtension) XPutPacket(p_buffer *uint8, p_buffer_size int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *PacketPeerExtension) XGetAvailablePacketCount()  {
-  panic("TODO: implement")
-}
-
-func  (me *PacketPeerExtension) XGetMaxPacketSize()  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

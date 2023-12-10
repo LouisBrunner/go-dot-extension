@@ -20,15 +20,3 @@ const ({{$name := .Name}}
 )
 {{- end}}
 {{- end}}
-
-{{- define "class_methods"}}
-{{- $Class := mapClass .Name}}
-// Methods
-{{- range .Methods}}
-
-func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .Name -}}
-({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}) {{if (presents . "ReturnValue")}}{{mapType .ReturnValue.Type}}{{else}}{{mapType .ReturnType}}{{end}} {
-  panic("TODO: implement")
-}
-{{- end}}
-{{- end}}

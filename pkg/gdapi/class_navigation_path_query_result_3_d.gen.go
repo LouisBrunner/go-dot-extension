@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NavigationPathQueryResult3D struct {
   obj gdc.ObjectPtr
@@ -47,45 +43,136 @@ func (me *NavigationPathQueryResult3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *NavigationPathQueryResult3D) SetPath(path PackedVector3Array, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationPathQueryResult3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_path")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334873810) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationPathQueryResult3D) GetPath()  {
-  panic("TODO: implement")
+func  (me *NavigationPathQueryResult3D) GetPath() PackedVector3Array {
+  classNameV := StringNameFromStr("NavigationPathQueryResult3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_path")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
+  var ret PackedVector3Array
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationPathQueryResult3D) SetPathTypes(path_types PackedInt32Array, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationPathQueryResult3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_path_types")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path_types.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationPathQueryResult3D) GetPathTypes()  {
-  panic("TODO: implement")
+func  (me *NavigationPathQueryResult3D) GetPathTypes() PackedInt32Array {
+  classNameV := StringNameFromStr("NavigationPathQueryResult3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_path_types")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
+  var ret PackedInt32Array
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationPathQueryResult3D) SetPathRids(path_rids RID, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationPathQueryResult3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_path_rids")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path_rids.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationPathQueryResult3D) GetPathRids()  {
-  panic("TODO: implement")
+func  (me *NavigationPathQueryResult3D) GetPathRids() RID {
+  classNameV := StringNameFromStr("NavigationPathQueryResult3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_path_rids")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationPathQueryResult3D) SetPathOwnerIds(path_owner_ids PackedInt64Array, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationPathQueryResult3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_path_owner_ids")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3709968205) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path_owner_ids.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationPathQueryResult3D) GetPathOwnerIds()  {
-  panic("TODO: implement")
+func  (me *NavigationPathQueryResult3D) GetPathOwnerIds() PackedInt64Array {
+  classNameV := StringNameFromStr("NavigationPathQueryResult3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_path_owner_ids")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 235988956) // FIXME: should cache?
+  var ret PackedInt64Array
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationPathQueryResult3D) Reset()  {
+  classNameV := StringNameFromStr("NavigationPathQueryResult3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("reset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *NavigationPathQueryResult3D) GetPropPath() PackedVector3Array {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *NavigationPathQueryResult3D) SetPropPath(value PackedVector3Array) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *NavigationPathQueryResult3D) GetPropPathTypes() PackedInt32Array {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryResult3D) SetPropPathTypes(value PackedInt32Array) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryResult3D) GetPropPathRids() RID {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryResult3D) SetPropPathRids(value RID) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryResult3D) GetPropPathOwnerIds() PackedInt64Array {
+  panic("TODO: implement")
+}
+
+func (me *NavigationPathQueryResult3D) SetPropPathOwnerIds(value PackedInt64Array) {
+  panic("TODO: implement")
+}

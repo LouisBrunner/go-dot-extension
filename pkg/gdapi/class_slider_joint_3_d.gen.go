@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SliderJoint3D struct {
   obj gdc.ObjectPtr
@@ -68,17 +64,28 @@ func (me *SliderJoint3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *SliderJoint3D) SetParam(param SliderJoint3DParam, value float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("SliderJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_param")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 918243683) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SliderJoint3D) GetParam(param SliderJoint3DParam, )  {
-  panic("TODO: implement")
+func  (me *SliderJoint3D) GetParam(param SliderJoint3DParam, ) float32 {
+  classNameV := StringNameFromStr("SliderJoint3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_param")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 959925627) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

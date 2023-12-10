@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NavigationRegion3D struct {
   obj gdc.ObjectPtr
@@ -41,73 +37,232 @@ func (me *NavigationRegion3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *NavigationRegion3D) SetNavigationMesh(navigation_mesh NavigationMesh, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_navigation_mesh")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2923361153) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_mesh.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationRegion3D) GetNavigationMesh()  {
-  panic("TODO: implement")
+func  (me *NavigationRegion3D) GetNavigationMesh() NavigationMesh {
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_navigation_mesh")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1468720886) // FIXME: should cache?
+  var ret NavigationMesh
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationRegion3D) SetEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationRegion3D) IsEnabled()  {
-  panic("TODO: implement")
+func  (me *NavigationRegion3D) IsEnabled() bool {
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationRegion3D) SetUseEdgeConnections(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_edge_connections")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationRegion3D) GetUseEdgeConnections()  {
-  panic("TODO: implement")
+func  (me *NavigationRegion3D) GetUseEdgeConnections() bool {
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_use_edge_connections")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationRegion3D) SetNavigationLayers(navigation_layers int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_navigation_layers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&navigation_layers), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationRegion3D) GetNavigationLayers()  {
-  panic("TODO: implement")
+func  (me *NavigationRegion3D) GetNavigationLayers() int {
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_navigation_layers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationRegion3D) SetNavigationLayerValue(layer_number int, value bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_navigation_layer_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationRegion3D) GetNavigationLayerValue(layer_number int, )  {
-  panic("TODO: implement")
+func  (me *NavigationRegion3D) GetNavigationLayerValue(layer_number int, ) bool {
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_navigation_layer_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *NavigationRegion3D) GetRegionRid()  {
-  panic("TODO: implement")
+func  (me *NavigationRegion3D) GetRegionRid() RID {
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_region_rid")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationRegion3D) SetEnterCost(enter_cost float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_enter_cost")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enter_cost), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationRegion3D) GetEnterCost()  {
-  panic("TODO: implement")
+func  (me *NavigationRegion3D) GetEnterCost() float32 {
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_enter_cost")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationRegion3D) SetTravelCost(travel_cost float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_travel_cost")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&travel_cost), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *NavigationRegion3D) GetTravelCost()  {
-  panic("TODO: implement")
+func  (me *NavigationRegion3D) GetTravelCost() float32 {
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_travel_cost")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *NavigationRegion3D) BakeNavigationMesh(on_thread bool, )  {
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("bake_navigation_mesh")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3216645846) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&on_thread), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *NavigationRegion3D) GetPropNavigationMesh() NavigationMesh {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *NavigationRegion3D) SetPropNavigationMesh(value NavigationMesh) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *NavigationRegion3D) GetPropEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *NavigationRegion3D) SetPropEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationRegion3D) GetPropUseEdgeConnections() bool {
+  panic("TODO: implement")
+}
+
+func (me *NavigationRegion3D) SetPropUseEdgeConnections(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationRegion3D) GetPropNavigationLayers() int {
+  panic("TODO: implement")
+}
+
+func (me *NavigationRegion3D) SetPropNavigationLayers(value int) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationRegion3D) GetPropEnterCost() float32 {
+  panic("TODO: implement")
+}
+
+func (me *NavigationRegion3D) SetPropEnterCost(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *NavigationRegion3D) GetPropTravelCost() float32 {
+  panic("TODO: implement")
+}
+
+func (me *NavigationRegion3D) SetPropTravelCost(value float32) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

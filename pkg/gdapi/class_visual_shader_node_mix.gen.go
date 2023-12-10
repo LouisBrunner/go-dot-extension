@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeMix struct {
   obj gdc.ObjectPtr
@@ -53,17 +49,36 @@ func (me *VisualShaderNodeMix) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeMix) SetOpType(op_type VisualShaderNodeMixOpType, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeMix")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_op_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3397501671) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&op_type), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeMix) GetOpType() VisualShaderNodeMixOpType {
+  classNameV := StringNameFromStr("VisualShaderNodeMix")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_op_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4013957297) // FIXME: should cache?
+  var ret VisualShaderNodeMixOpType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeMix) GetPropOpType() int {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeMix) GetOpType()  {
+func (me *VisualShaderNodeMix) SetPropOpType(value int) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

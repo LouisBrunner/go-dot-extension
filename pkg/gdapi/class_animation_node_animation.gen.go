@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AnimationNodeAnimation struct {
   obj gdc.ObjectPtr
@@ -47,25 +43,66 @@ func (me *AnimationNodeAnimation) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *AnimationNodeAnimation) SetAnimation(name StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNodeAnimation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_animation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNodeAnimation) GetAnimation()  {
-  panic("TODO: implement")
+func  (me *AnimationNodeAnimation) GetAnimation() StringName {
+  classNameV := StringNameFromStr("AnimationNodeAnimation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_animation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
+  var ret StringName
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNodeAnimation) SetPlayMode(mode AnimationNodeAnimationPlayMode, )  {
+  classNameV := StringNameFromStr("AnimationNodeAnimation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_play_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3347718873) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *AnimationNodeAnimation) GetPlayMode() AnimationNodeAnimationPlayMode {
+  classNameV := StringNameFromStr("AnimationNodeAnimation")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_play_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2061244637) // FIXME: should cache?
+  var ret AnimationNodeAnimationPlayMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *AnimationNodeAnimation) GetPropAnimation() StringName {
   panic("TODO: implement")
 }
 
-func  (me *AnimationNodeAnimation) GetPlayMode()  {
+func (me *AnimationNodeAnimation) SetPropAnimation(value StringName) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *AnimationNodeAnimation) GetPropPlayMode() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *AnimationNodeAnimation) SetPropPlayMode(value int) {
+  panic("TODO: implement")
+}

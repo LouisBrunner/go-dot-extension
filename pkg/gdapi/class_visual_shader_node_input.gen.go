@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeInput struct {
   obj gdc.ObjectPtr
@@ -41,21 +37,50 @@ func (me *VisualShaderNodeInput) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeInput) SetInputName(name String, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeInput")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_input_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeInput) GetInputName() String {
+  classNameV := StringNameFromStr("VisualShaderNodeInput")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_input_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *VisualShaderNodeInput) GetInputRealName() String {
+  classNameV := StringNameFromStr("VisualShaderNodeInput")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_input_real_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeInput) GetPropInputName() StringName {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeInput) GetInputName()  {
+func (me *VisualShaderNodeInput) SetPropInputName(value StringName) {
   panic("TODO: implement")
 }
-
-func  (me *VisualShaderNodeInput) GetInputRealName()  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

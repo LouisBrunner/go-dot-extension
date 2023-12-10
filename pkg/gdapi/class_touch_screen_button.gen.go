@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TouchScreenButton struct {
   obj gdc.ObjectPtr
@@ -47,85 +43,290 @@ func (me *TouchScreenButton) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *TouchScreenButton) SetTextureNormal(texture Texture2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture_normal")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TouchScreenButton) GetTextureNormal()  {
-  panic("TODO: implement")
+func  (me *TouchScreenButton) GetTextureNormal() Texture2D {
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture_normal")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TouchScreenButton) SetTexturePressed(texture Texture2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TouchScreenButton) GetTexturePressed()  {
-  panic("TODO: implement")
+func  (me *TouchScreenButton) GetTexturePressed() Texture2D {
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TouchScreenButton) SetBitmask(bitmask BitMap, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_bitmask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 698588216) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(bitmask.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TouchScreenButton) GetBitmask()  {
-  panic("TODO: implement")
+func  (me *TouchScreenButton) GetBitmask() BitMap {
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_bitmask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2459671998) // FIXME: should cache?
+  var ret BitMap
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TouchScreenButton) SetShape(shape Shape2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 771364740) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shape.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TouchScreenButton) GetShape()  {
-  panic("TODO: implement")
+func  (me *TouchScreenButton) GetShape() Shape2D {
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 522005891) // FIXME: should cache?
+  var ret Shape2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TouchScreenButton) SetShapeCentered(bool bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_shape_centered")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bool), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TouchScreenButton) IsShapeCentered()  {
-  panic("TODO: implement")
+func  (me *TouchScreenButton) IsShapeCentered() bool {
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_shape_centered")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TouchScreenButton) SetShapeVisible(bool bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_shape_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bool), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TouchScreenButton) IsShapeVisible()  {
-  panic("TODO: implement")
+func  (me *TouchScreenButton) IsShapeVisible() bool {
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_shape_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TouchScreenButton) SetAction(action String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_action")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TouchScreenButton) GetAction()  {
-  panic("TODO: implement")
+func  (me *TouchScreenButton) GetAction() String {
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_action")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TouchScreenButton) SetVisibilityMode(mode TouchScreenButtonVisibilityMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_visibility_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3031128463) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TouchScreenButton) GetVisibilityMode()  {
-  panic("TODO: implement")
+func  (me *TouchScreenButton) GetVisibilityMode() TouchScreenButtonVisibilityMode {
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_visibility_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2558996468) // FIXME: should cache?
+  var ret TouchScreenButtonVisibilityMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TouchScreenButton) SetPassbyPress(enabled bool, )  {
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_passby_press")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *TouchScreenButton) IsPassbyPressEnabled() bool {
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_passby_press_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *TouchScreenButton) IsPressed() bool {
+  classNameV := StringNameFromStr("TouchScreenButton")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *TouchScreenButton) GetPropTextureNormal() Texture2D {
   panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) IsPassbyPressEnabled()  {
+func (me *TouchScreenButton) SetPropTextureNormal(value Texture2D) {
   panic("TODO: implement")
 }
 
-func  (me *TouchScreenButton) IsPressed()  {
+func (me *TouchScreenButton) GetPropTexturePressed() Texture2D {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *TouchScreenButton) SetPropTexturePressed(value Texture2D) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *TouchScreenButton) GetPropBitmask() BitMap {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) SetPropBitmask(value BitMap) {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) GetPropShape() Shape2D {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) SetPropShape(value Shape2D) {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) GetPropShapeCentered() bool {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) SetPropShapeCentered(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) GetPropShapeVisible() bool {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) SetPropShapeVisible(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) GetPropPassbyPress() bool {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) SetPropPassbyPress(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) GetPropAction() StringName {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) SetPropAction(value StringName) {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) GetPropVisibilityMode() int {
+  panic("TODO: implement")
+}
+
+func (me *TouchScreenButton) SetPropVisibilityMode(value int) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

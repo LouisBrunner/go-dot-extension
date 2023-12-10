@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorDebuggerPlugin struct {
   obj gdc.ObjectPtr
@@ -41,29 +37,30 @@ func (me *EditorDebuggerPlugin) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorDebuggerPlugin) XSetupSession(session_id int, )  {
-  panic("TODO: implement")
+func  (me *EditorDebuggerPlugin) GetSession(id int, ) EditorDebuggerSession {
+  classNameV := StringNameFromStr("EditorDebuggerPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_session")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3061968499) // FIXME: should cache?
+  var ret EditorDebuggerSession
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *EditorDebuggerPlugin) XHasCapture(capture String, )  {
-  panic("TODO: implement")
+func  (me *EditorDebuggerPlugin) GetSessions() Array {
+  classNameV := StringNameFromStr("EditorDebuggerPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_sessions")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
+  var ret Array
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *EditorDebuggerPlugin) XCapture(message String, data Array, session_id int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorDebuggerPlugin) GetSession(id int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorDebuggerPlugin) GetSessions()  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

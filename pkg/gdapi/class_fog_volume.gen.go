@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type FogVolume struct {
   obj gdc.ObjectPtr
@@ -41,33 +37,96 @@ func (me *FogVolume) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *FogVolume) SetSize(size Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FogVolume")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FogVolume) GetSize()  {
-  panic("TODO: implement")
+func  (me *FogVolume) GetSize() Vector3 {
+  classNameV := StringNameFromStr("FogVolume")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FogVolume) SetShape(shape RenderingServerFogVolumeShape, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FogVolume")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1416323362) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shape), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FogVolume) GetShape()  {
-  panic("TODO: implement")
+func  (me *FogVolume) GetShape() RenderingServerFogVolumeShape {
+  classNameV := StringNameFromStr("FogVolume")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3920334604) // FIXME: should cache?
+  var ret RenderingServerFogVolumeShape
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FogVolume) SetMaterial(material Material, )  {
+  classNameV := StringNameFromStr("FogVolume")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_material")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757459619) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(material.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *FogVolume) GetMaterial() Material {
+  classNameV := StringNameFromStr("FogVolume")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_material")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5934680) // FIXME: should cache?
+  var ret Material
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *FogVolume) GetPropSize() Vector3 {
   panic("TODO: implement")
 }
 
-func  (me *FogVolume) GetMaterial()  {
+func (me *FogVolume) SetPropSize(value Vector3) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *FogVolume) GetPropShape() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *FogVolume) SetPropShape(value int) {
+  panic("TODO: implement")
+}
+
+func (me *FogVolume) GetPropMaterial() any {
+  panic("TODO: implement")
+}
+
+func (me *FogVolume) SetPropMaterial(value any) {
+  panic("TODO: implement")
+}

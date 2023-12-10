@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type OmniLight3D struct {
   obj gdc.ObjectPtr
@@ -47,17 +43,52 @@ func (me *OmniLight3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *OmniLight3D) SetShadowMode(mode OmniLight3DShadowMode, )  {
+  classNameV := StringNameFromStr("OmniLight3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_shadow_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 121862228) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *OmniLight3D) GetShadowMode() OmniLight3DShadowMode {
+  classNameV := StringNameFromStr("OmniLight3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_shadow_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4181586331) // FIXME: should cache?
+  var ret OmniLight3DShadowMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *OmniLight3D) GetPropOmniRange() float32 {
   panic("TODO: implement")
 }
 
-func  (me *OmniLight3D) GetShadowMode()  {
+func (me *OmniLight3D) SetPropOmniRange(value float32) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *OmniLight3D) GetPropOmniAttenuation() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *OmniLight3D) SetPropOmniAttenuation(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *OmniLight3D) GetPropOmniShadowMode() int {
+  panic("TODO: implement")
+}
+
+func (me *OmniLight3D) SetPropOmniShadowMode(value int) {
+  panic("TODO: implement")
+}

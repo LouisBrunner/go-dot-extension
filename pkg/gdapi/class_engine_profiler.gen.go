@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EngineProfiler struct {
   obj gdc.ObjectPtr
@@ -41,21 +37,6 @@ func (me *EngineProfiler) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EngineProfiler) XToggle(enable bool, options Array, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EngineProfiler) XAddFrame(data Array, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EngineProfiler) XTick(frame_time float32, process_time float32, physics_time float32, physics_frame_time float32, )  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

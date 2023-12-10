@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioEffectFilter struct {
   obj gdc.ObjectPtr
@@ -49,41 +45,126 @@ func (me *AudioEffectFilter) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *AudioEffectFilter) SetCutoff(freq float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectFilter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_cutoff")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&freq), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectFilter) GetCutoff()  {
-  panic("TODO: implement")
+func  (me *AudioEffectFilter) GetCutoff() float32 {
+  classNameV := StringNameFromStr("AudioEffectFilter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_cutoff")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectFilter) SetResonance(amount float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectFilter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_resonance")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectFilter) GetResonance()  {
-  panic("TODO: implement")
+func  (me *AudioEffectFilter) GetResonance() float32 {
+  classNameV := StringNameFromStr("AudioEffectFilter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_resonance")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectFilter) SetGain(amount float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectFilter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_gain")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectFilter) GetGain()  {
-  panic("TODO: implement")
+func  (me *AudioEffectFilter) GetGain() float32 {
+  classNameV := StringNameFromStr("AudioEffectFilter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_gain")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectFilter) SetDb(amount AudioEffectFilterFilterDB, )  {
+  classNameV := StringNameFromStr("AudioEffectFilter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_db")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 771740901) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *AudioEffectFilter) GetDb() AudioEffectFilterFilterDB {
+  classNameV := StringNameFromStr("AudioEffectFilter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_db")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3981721890) // FIXME: should cache?
+  var ret AudioEffectFilterFilterDB
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *AudioEffectFilter) GetPropCutoffHz() float32 {
   panic("TODO: implement")
 }
 
-func  (me *AudioEffectFilter) GetDb()  {
+func (me *AudioEffectFilter) SetPropCutoffHz(value float32) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *AudioEffectFilter) GetPropResonance() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *AudioEffectFilter) SetPropResonance(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectFilter) GetPropGain() float32 {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectFilter) SetPropGain(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectFilter) GetPropDb() int {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectFilter) SetPropDb(value int) {
+  panic("TODO: implement")
+}

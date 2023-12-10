@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type LightmapGI struct {
   obj gdc.ObjectPtr
@@ -80,121 +76,426 @@ func (me *LightmapGI) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *LightmapGI) SetLightData(data LightmapGIData, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_light_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1790597277) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(data.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) GetLightData()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) GetLightData() LightmapGIData {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_light_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 290354153) // FIXME: should cache?
+  var ret LightmapGIData
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetBakeQuality(bake_quality LightmapGIBakeQuality, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_bake_quality")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1192215803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bake_quality), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) GetBakeQuality()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) GetBakeQuality() LightmapGIBakeQuality {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_bake_quality")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 688832735) // FIXME: should cache?
+  var ret LightmapGIBakeQuality
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetBounces(bounces int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_bounces")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bounces), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) GetBounces()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) GetBounces() int {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_bounces")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetGenerateProbes(subdivision LightmapGIGenerateProbes, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_generate_probes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 549981046) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subdivision), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) GetGenerateProbes()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) GetGenerateProbes() LightmapGIGenerateProbes {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_generate_probes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3930596226) // FIXME: should cache?
+  var ret LightmapGIGenerateProbes
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetBias(bias float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_bias")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bias), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) GetBias()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) GetBias() float32 {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_bias")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetEnvironmentMode(mode LightmapGIEnvironmentMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_environment_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2282650285) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) GetEnvironmentMode()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) GetEnvironmentMode() LightmapGIEnvironmentMode {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_environment_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4128646479) // FIXME: should cache?
+  var ret LightmapGIEnvironmentMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetEnvironmentCustomSky(sky Sky, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_environment_custom_sky")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3336722921) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(sky.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) GetEnvironmentCustomSky()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) GetEnvironmentCustomSky() Sky {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_environment_custom_sky")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1177136966) // FIXME: should cache?
+  var ret Sky
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetEnvironmentCustomColor(color Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_environment_custom_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) GetEnvironmentCustomColor()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) GetEnvironmentCustomColor() Color {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_environment_custom_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetEnvironmentCustomEnergy(energy float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_environment_custom_energy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&energy), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) GetEnvironmentCustomEnergy()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) GetEnvironmentCustomEnergy() float32 {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_environment_custom_energy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetMaxTextureSize(max_texture_size int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_max_texture_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_texture_size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) GetMaxTextureSize()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) GetMaxTextureSize() int {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_max_texture_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetUseDenoiser(use_denoiser bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_denoiser")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&use_denoiser), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) IsUsingDenoiser()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) IsUsingDenoiser() bool {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_using_denoiser")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetInterior(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_interior")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) IsInterior()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) IsInterior() bool {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_interior")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetDirectional(directional bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_directional")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&directional), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGI) IsDirectional()  {
-  panic("TODO: implement")
+func  (me *LightmapGI) IsDirectional() bool {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_directional")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *LightmapGI) SetCameraAttributes(camera_attributes CameraAttributes, )  {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_camera_attributes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2817810567) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(camera_attributes.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *LightmapGI) GetCameraAttributes() CameraAttributes {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_camera_attributes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3921283215) // FIXME: should cache?
+  var ret CameraAttributes
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *LightmapGI) GetPropQuality() int {
   panic("TODO: implement")
 }
 
-func  (me *LightmapGI) GetCameraAttributes()  {
+func (me *LightmapGI) SetPropQuality(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *LightmapGI) GetPropBounces() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *LightmapGI) SetPropBounces(value int) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropDirectional() bool {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropDirectional(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropInterior() bool {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropInterior(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropUseDenoiser() bool {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropUseDenoiser(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropBias() float32 {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropBias(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropMaxTextureSize() int {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropMaxTextureSize(value int) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropEnvironmentMode() int {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropEnvironmentMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropEnvironmentCustomSky() Sky {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropEnvironmentCustomSky(value Sky) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropEnvironmentCustomColor() Color {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropEnvironmentCustomColor(value Color) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropEnvironmentCustomEnergy() float32 {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropEnvironmentCustomEnergy(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropCameraAttributes() any {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropCameraAttributes(value any) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropGenerateProbesSubdiv() int {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropGenerateProbesSubdiv(value int) {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) GetPropLightData() LightmapGIData {
+  panic("TODO: implement")
+}
+
+func (me *LightmapGI) SetPropLightData(value LightmapGIData) {
+  panic("TODO: implement")
+}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type FogMaterial struct {
   obj gdc.ObjectPtr
@@ -41,57 +37,186 @@ func (me *FogMaterial) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *FogMaterial) SetDensity(density float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_density")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&density), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FogMaterial) GetDensity()  {
-  panic("TODO: implement")
+func  (me *FogMaterial) GetDensity() float32 {
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_density")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FogMaterial) SetAlbedo(albedo Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_albedo")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(albedo.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FogMaterial) GetAlbedo()  {
-  panic("TODO: implement")
+func  (me *FogMaterial) GetAlbedo() Color {
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_albedo")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FogMaterial) SetEmission(emission Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_emission")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(emission.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FogMaterial) GetEmission()  {
-  panic("TODO: implement")
+func  (me *FogMaterial) GetEmission() Color {
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_emission")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FogMaterial) SetHeightFalloff(height_falloff float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_height_falloff")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&height_falloff), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FogMaterial) GetHeightFalloff()  {
-  panic("TODO: implement")
+func  (me *FogMaterial) GetHeightFalloff() float32 {
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_height_falloff")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FogMaterial) SetEdgeFade(edge_fade float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_edge_fade")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&edge_fade), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FogMaterial) GetEdgeFade()  {
-  panic("TODO: implement")
+func  (me *FogMaterial) GetEdgeFade() float32 {
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_edge_fade")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FogMaterial) SetDensityTexture(density_texture Texture3D, )  {
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_density_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1188404210) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(density_texture.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *FogMaterial) GetDensityTexture() Texture3D {
+  classNameV := StringNameFromStr("FogMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_density_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373985333) // FIXME: should cache?
+  var ret Texture3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *FogMaterial) GetPropDensity() float32 {
   panic("TODO: implement")
 }
 
-func  (me *FogMaterial) GetDensityTexture()  {
+func (me *FogMaterial) SetPropDensity(value float32) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *FogMaterial) GetPropAlbedo() Color {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *FogMaterial) SetPropAlbedo(value Color) {
+  panic("TODO: implement")
+}
+
+func (me *FogMaterial) GetPropEmission() Color {
+  panic("TODO: implement")
+}
+
+func (me *FogMaterial) SetPropEmission(value Color) {
+  panic("TODO: implement")
+}
+
+func (me *FogMaterial) GetPropHeightFalloff() float32 {
+  panic("TODO: implement")
+}
+
+func (me *FogMaterial) SetPropHeightFalloff(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *FogMaterial) GetPropEdgeFade() float32 {
+  panic("TODO: implement")
+}
+
+func (me *FogMaterial) SetPropEdgeFade(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *FogMaterial) GetPropDensityTexture() Texture3D {
+  panic("TODO: implement")
+}
+
+func (me *FogMaterial) SetPropDensityTexture(value Texture3D) {
+  panic("TODO: implement")
+}

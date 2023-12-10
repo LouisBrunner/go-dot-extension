@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeColorParameter struct {
   obj gdc.ObjectPtr
@@ -41,25 +37,66 @@ func (me *VisualShaderNodeColorParameter) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeColorParameter) SetDefaultValueEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeColorParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_default_value_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeColorParameter) IsDefaultValueEnabled()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeColorParameter) IsDefaultValueEnabled() bool {
+  classNameV := StringNameFromStr("VisualShaderNodeColorParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_default_value_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeColorParameter) SetDefaultValue(value Color, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeColorParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_default_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(value.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeColorParameter) GetDefaultValue() Color {
+  classNameV := StringNameFromStr("VisualShaderNodeColorParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_default_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeColorParameter) GetPropDefaultValueEnabled() bool {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeColorParameter) GetDefaultValue()  {
+func (me *VisualShaderNodeColorParameter) SetPropDefaultValueEnabled(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *VisualShaderNodeColorParameter) GetPropDefaultValue() Color {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *VisualShaderNodeColorParameter) SetPropDefaultValue(value Color) {
+  panic("TODO: implement")
+}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type StaticBody3D struct {
   obj gdc.ObjectPtr
@@ -41,33 +37,96 @@ func (me *StaticBody3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *StaticBody3D) SetConstantLinearVelocity(vel Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("StaticBody3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_constant_linear_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(vel.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *StaticBody3D) SetConstantAngularVelocity(vel Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("StaticBody3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_constant_angular_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(vel.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *StaticBody3D) GetConstantLinearVelocity()  {
-  panic("TODO: implement")
+func  (me *StaticBody3D) GetConstantLinearVelocity() Vector3 {
+  classNameV := StringNameFromStr("StaticBody3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_constant_linear_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *StaticBody3D) GetConstantAngularVelocity()  {
-  panic("TODO: implement")
+func  (me *StaticBody3D) GetConstantAngularVelocity() Vector3 {
+  classNameV := StringNameFromStr("StaticBody3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_constant_angular_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *StaticBody3D) SetPhysicsMaterialOverride(physics_material_override PhysicsMaterial, )  {
+  classNameV := StringNameFromStr("StaticBody3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_physics_material_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1784508650) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(physics_material_override.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *StaticBody3D) GetPhysicsMaterialOverride() PhysicsMaterial {
+  classNameV := StringNameFromStr("StaticBody3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_physics_material_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2521850424) // FIXME: should cache?
+  var ret PhysicsMaterial
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *StaticBody3D) GetPropPhysicsMaterialOverride() PhysicsMaterial {
   panic("TODO: implement")
 }
 
-func  (me *StaticBody3D) GetPhysicsMaterialOverride()  {
+func (me *StaticBody3D) SetPropPhysicsMaterialOverride(value PhysicsMaterial) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *StaticBody3D) GetPropConstantLinearVelocity() Vector3 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *StaticBody3D) SetPropConstantLinearVelocity(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *StaticBody3D) GetPropConstantAngularVelocity() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *StaticBody3D) SetPropConstantAngularVelocity(value Vector3) {
+  panic("TODO: implement")
+}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type XRInterfaceExtension struct {
   obj gdc.ObjectPtr
@@ -41,153 +37,64 @@ func (me *XRInterfaceExtension) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *XRInterfaceExtension) XGetName()  {
-  panic("TODO: implement")
+func  (me *XRInterfaceExtension) GetColorTexture() RID {
+  classNameV := StringNameFromStr("XRInterfaceExtension")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_color_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XRInterfaceExtension) XGetCapabilities()  {
-  panic("TODO: implement")
+func  (me *XRInterfaceExtension) GetDepthTexture() RID {
+  classNameV := StringNameFromStr("XRInterfaceExtension")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_depth_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XRInterfaceExtension) XIsInitialized()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XInitialize()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XUninitialize()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetSystemInfo()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XSupportsPlayAreaMode(mode XRInterfacePlayAreaMode, )  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetPlayAreaMode()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XSetPlayAreaMode(mode XRInterfacePlayAreaMode, )  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetPlayArea()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetRenderTargetSize()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetViewCount()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetCameraTransform()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetTransformForView(view int, cam_transform Transform3D, )  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetProjectionForView(view int, aspect float32, z_near float32, z_far float32, )  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetVrsTexture()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XProcess()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XPreRender()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XPreDrawViewport(render_target RID, )  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XPostDrawViewport(render_target RID, screen_rect Rect2, )  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XEndFrame()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetSuggestedTrackerNames()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetSuggestedPoseNames(tracker_name StringName, )  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetTrackingStatus()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XTriggerHapticPulse(action_name String, tracker_name StringName, frequency float32, amplitude float32, duration_sec float32, delay_sec float32, )  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetAnchorDetectionIsEnabled()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XSetAnchorDetectionIsEnabled(enabled bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetCameraFeedId()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetColorTexture()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetDepthTexture()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) XGetVelocityTexture()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) GetColorTexture()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) GetDepthTexture()  {
-  panic("TODO: implement")
-}
-
-func  (me *XRInterfaceExtension) GetVelocityTexture()  {
-  panic("TODO: implement")
+func  (me *XRInterfaceExtension) GetVelocityTexture() RID {
+  classNameV := StringNameFromStr("XRInterfaceExtension")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_velocity_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *XRInterfaceExtension) AddBlit(render_target RID, src_rect Rect2, dst_rect Rect2i, use_layer bool, layer int, apply_lens_distortion bool, eye_center Vector2, k1 float32, k2 float32, upscale float32, aspect_ratio float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("XRInterfaceExtension")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_blit")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 258596971) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(render_target.AsCTypePtr()), gdc.ConstTypePtr(src_rect.AsCTypePtr()), gdc.ConstTypePtr(dst_rect.AsCTypePtr()), gdc.ConstTypePtr(&use_layer), gdc.ConstTypePtr(&layer), gdc.ConstTypePtr(&apply_lens_distortion), gdc.ConstTypePtr(eye_center.AsCTypePtr()), gdc.ConstTypePtr(&k1), gdc.ConstTypePtr(&k2), gdc.ConstTypePtr(&upscale), gdc.ConstTypePtr(&aspect_ratio), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *XRInterfaceExtension) GetRenderTargetTexture(render_target RID, )  {
-  panic("TODO: implement")
+func  (me *XRInterfaceExtension) GetRenderTargetTexture(render_target RID, ) RID {
+  classNameV := StringNameFromStr("XRInterfaceExtension")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_render_target_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 41030802) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(render_target.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

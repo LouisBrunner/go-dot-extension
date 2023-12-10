@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type HTTPClient struct {
   obj gdc.ObjectPtr
@@ -134,97 +130,282 @@ func (me *HTTPClient) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *HTTPClient) ConnectToHost(host String, port int, tls_options TLSOptions, )  {
-  panic("TODO: implement")
+func  (me *HTTPClient) ConnectToHost(host String, port int, tls_options TLSOptions, ) Error {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("connect_to_host")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1970282951) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(host.AsCTypePtr()), gdc.ConstTypePtr(&port), gdc.ConstTypePtr(tls_options.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPClient) SetConnection(connection StreamPeer, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_connection")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3281897016) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(connection.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPClient) GetConnection()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) GetConnection() StreamPeer {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_connection")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2741655269) // FIXME: should cache?
+  var ret StreamPeer
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPClient) RequestRaw(method HTTPClientMethod, url String, headers PackedStringArray, body PackedByteArray, )  {
-  panic("TODO: implement")
+func  (me *HTTPClient) RequestRaw(method HTTPClientMethod, url String, headers PackedStringArray, body PackedByteArray, ) Error {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("request_raw")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 540161961) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&method), gdc.ConstTypePtr(url.AsCTypePtr()), gdc.ConstTypePtr(headers.AsCTypePtr()), gdc.ConstTypePtr(body.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPClient) Request(method HTTPClientMethod, url String, headers PackedStringArray, body String, )  {
-  panic("TODO: implement")
+func  (me *HTTPClient) Request(method HTTPClientMethod, url String, headers PackedStringArray, body String, ) Error {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("request")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3249905507) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&method), gdc.ConstTypePtr(url.AsCTypePtr()), gdc.ConstTypePtr(headers.AsCTypePtr()), gdc.ConstTypePtr(body.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPClient) Close()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("close")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPClient) HasResponse()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) HasResponse() bool {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_response")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPClient) IsResponseChunked()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) IsResponseChunked() bool {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_response_chunked")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPClient) GetResponseCode()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) GetResponseCode() int {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_response_code")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPClient) GetResponseHeaders()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) GetResponseHeaders() PackedStringArray {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_response_headers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2981934095) // FIXME: should cache?
+  var ret PackedStringArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPClient) GetResponseHeadersAsDictionary()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) GetResponseHeadersAsDictionary() Dictionary {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_response_headers_as_dictionary")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2382534195) // FIXME: should cache?
+  var ret Dictionary
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPClient) GetResponseBodyLength()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) GetResponseBodyLength() int {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_response_body_length")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPClient) ReadResponseBodyChunk()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) ReadResponseBodyChunk() PackedByteArray {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("read_response_body_chunk")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2115431945) // FIXME: should cache?
+  var ret PackedByteArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPClient) SetReadChunkSize(bytes int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_read_chunk_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bytes), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPClient) GetReadChunkSize()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) GetReadChunkSize() int {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_read_chunk_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPClient) SetBlockingMode(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_blocking_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPClient) IsBlockingModeEnabled()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) IsBlockingModeEnabled() bool {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_blocking_mode_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPClient) GetStatus()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) GetStatus() HTTPClientStatus {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_status")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1426656811) // FIXME: should cache?
+  var ret HTTPClientStatus
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPClient) Poll()  {
-  panic("TODO: implement")
+func  (me *HTTPClient) Poll() Error {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("poll")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPClient) SetHttpProxy(host String, port int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_http_proxy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2956805083) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(host.AsCTypePtr()), gdc.ConstTypePtr(&port), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *HTTPClient) SetHttpsProxy(host String, port int, )  {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_https_proxy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2956805083) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(host.AsCTypePtr()), gdc.ConstTypePtr(&port), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *HTTPClient) QueryStringFromDict(fields Dictionary, ) String {
+  classNameV := StringNameFromStr("HTTPClient")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("query_string_from_dict")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2538086567) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(fields.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *HTTPClient) GetPropBlockingModeEnabled() bool {
   panic("TODO: implement")
 }
 
-func  (me *HTTPClient) QueryStringFromDict(fields Dictionary, )  {
+func (me *HTTPClient) SetPropBlockingModeEnabled(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *HTTPClient) GetPropConnection() StreamPeer {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *HTTPClient) SetPropConnection(value StreamPeer) {
+  panic("TODO: implement")
+}
+
+func (me *HTTPClient) GetPropReadChunkSize() int {
+  panic("TODO: implement")
+}
+
+func (me *HTTPClient) SetPropReadChunkSize(value int) {
+  panic("TODO: implement")
+}

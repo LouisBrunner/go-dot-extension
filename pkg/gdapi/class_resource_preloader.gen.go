@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ResourcePreloader struct {
   obj gdc.ObjectPtr
@@ -41,33 +37,80 @@ func (me *ResourcePreloader) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *ResourcePreloader) AddResource(name StringName, resource Resource, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("ResourcePreloader")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_resource")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1168801743) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(resource.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *ResourcePreloader) RemoveResource(name StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("ResourcePreloader")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_resource")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *ResourcePreloader) RenameResource(name StringName, newname StringName, )  {
+  classNameV := StringNameFromStr("ResourcePreloader")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("rename_resource")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3740211285) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(newname.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ResourcePreloader) HasResource(name StringName, ) bool {
+  classNameV := StringNameFromStr("ResourcePreloader")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_resource")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ResourcePreloader) GetResource(name StringName, ) Resource {
+  classNameV := StringNameFromStr("ResourcePreloader")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_resource")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3742749261) // FIXME: should cache?
+  var ret Resource
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ResourcePreloader) GetResourceList() PackedStringArray {
+  classNameV := StringNameFromStr("ResourcePreloader")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_resource_list")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
+  var ret PackedStringArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *ResourcePreloader) GetPropResources() Array {
   panic("TODO: implement")
 }
 
-func  (me *ResourcePreloader) HasResource(name StringName, )  {
+func (me *ResourcePreloader) SetPropResources(value Array) {
   panic("TODO: implement")
 }
-
-func  (me *ResourcePreloader) GetResource(name StringName, )  {
-  panic("TODO: implement")
-}
-
-func  (me *ResourcePreloader) GetResourceList()  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)

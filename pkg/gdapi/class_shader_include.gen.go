@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ShaderInclude struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,36 @@ func (me *ShaderInclude) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *ShaderInclude) SetCode(code String, )  {
+  classNameV := StringNameFromStr("ShaderInclude")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_code")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(code.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ShaderInclude) GetCode() String {
+  classNameV := StringNameFromStr("ShaderInclude")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_code")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *ShaderInclude) GetPropCode() String {
   panic("TODO: implement")
 }
 
-func  (me *ShaderInclude) GetCode()  {
+func (me *ShaderInclude) SetPropCode(value String) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

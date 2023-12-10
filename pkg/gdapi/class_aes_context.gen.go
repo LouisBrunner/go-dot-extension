@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AESContext struct {
   obj gdc.ObjectPtr
@@ -50,25 +46,52 @@ func (me *AESContext) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *AESContext) Start(mode AESContextMode, key PackedByteArray, iv PackedByteArray, )  {
-  panic("TODO: implement")
+func  (me *AESContext) Start(mode AESContextMode, key PackedByteArray, iv PackedByteArray, ) Error {
+  classNameV := StringNameFromStr("AESContext")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("start")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3167574919) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(iv.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *AESContext) Update(src PackedByteArray, )  {
-  panic("TODO: implement")
+func  (me *AESContext) Update(src PackedByteArray, ) PackedByteArray {
+  classNameV := StringNameFromStr("AESContext")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("update")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 527836100) // FIXME: should cache?
+  var ret PackedByteArray
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(src.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *AESContext) GetIvState()  {
-  panic("TODO: implement")
+func  (me *AESContext) GetIvState() PackedByteArray {
+  classNameV := StringNameFromStr("AESContext")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_iv_state")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2115431945) // FIXME: should cache?
+  var ret PackedByteArray
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AESContext) Finish()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AESContext")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("finish")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

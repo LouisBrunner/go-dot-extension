@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type DirectionalLight3D struct {
   obj gdc.ObjectPtr
@@ -55,33 +51,144 @@ func (me *DirectionalLight3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *DirectionalLight3D) SetShadowMode(mode DirectionalLight3DShadowMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("DirectionalLight3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_shadow_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1261211726) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *DirectionalLight3D) GetShadowMode()  {
-  panic("TODO: implement")
+func  (me *DirectionalLight3D) GetShadowMode() DirectionalLight3DShadowMode {
+  classNameV := StringNameFromStr("DirectionalLight3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_shadow_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2765228544) // FIXME: should cache?
+  var ret DirectionalLight3DShadowMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *DirectionalLight3D) SetBlendSplits(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("DirectionalLight3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_blend_splits")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *DirectionalLight3D) IsBlendSplitsEnabled()  {
-  panic("TODO: implement")
+func  (me *DirectionalLight3D) IsBlendSplitsEnabled() bool {
+  classNameV := StringNameFromStr("DirectionalLight3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_blend_splits_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *DirectionalLight3D) SetSkyMode(mode DirectionalLight3DSkyMode, )  {
+  classNameV := StringNameFromStr("DirectionalLight3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_sky_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2691194817) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *DirectionalLight3D) GetSkyMode() DirectionalLight3DSkyMode {
+  classNameV := StringNameFromStr("DirectionalLight3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_sky_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3819982774) // FIXME: should cache?
+  var ret DirectionalLight3DSkyMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *DirectionalLight3D) GetPropDirectionalShadowMode() int {
   panic("TODO: implement")
 }
 
-func  (me *DirectionalLight3D) GetSkyMode()  {
+func (me *DirectionalLight3D) SetPropDirectionalShadowMode(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *DirectionalLight3D) GetPropDirectionalShadowSplit1() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *DirectionalLight3D) SetPropDirectionalShadowSplit1(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) GetPropDirectionalShadowSplit2() float32 {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) SetPropDirectionalShadowSplit2(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) GetPropDirectionalShadowSplit3() float32 {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) SetPropDirectionalShadowSplit3(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) GetPropDirectionalShadowBlendSplits() bool {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) SetPropDirectionalShadowBlendSplits(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) GetPropDirectionalShadowFadeStart() float32 {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) SetPropDirectionalShadowFadeStart(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) GetPropDirectionalShadowMaxDistance() float32 {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) SetPropDirectionalShadowMaxDistance(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) GetPropDirectionalShadowPancakeSize() float32 {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) SetPropDirectionalShadowPancakeSize(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) GetPropSkyMode() int {
+  panic("TODO: implement")
+}
+
+func (me *DirectionalLight3D) SetPropSkyMode(value int) {
+  panic("TODO: implement")
+}

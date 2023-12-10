@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TextEdit struct {
   obj gdc.ObjectPtr
@@ -119,861 +115,2594 @@ func (me *TextEdit) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *TextEdit) XHandleUnicodeInput(unicode_char int, caret_index int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *TextEdit) XBackspace(caret_index int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *TextEdit) XCut(caret_index int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *TextEdit) XCopy(caret_index int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *TextEdit) XPaste(caret_index int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *TextEdit) XPastePrimaryClipboard(caret_index int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *TextEdit) HasImeText()  {
-  panic("TODO: implement")
+func  (me *TextEdit) HasImeText() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_ime_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetEditable(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_editable")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsEditable()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsEditable() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_editable")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetTextDirection(direction ControlTextDirection, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_text_direction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 119160795) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&direction), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetTextDirection()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetTextDirection() ControlTextDirection {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_text_direction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 797257663) // FIXME: should cache?
+  var ret ControlTextDirection
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetLanguage(language String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_language")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(language.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetLanguage()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLanguage() String {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_language")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetStructuredTextBidiOverride(parser TextServerStructuredTextParser, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_structured_text_bidi_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 55961453) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&parser), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetStructuredTextBidiOverride()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetStructuredTextBidiOverride() TextServerStructuredTextParser {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_structured_text_bidi_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3385126229) // FIXME: should cache?
+  var ret TextServerStructuredTextParser
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetStructuredTextBidiOverrideOptions(args Array, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_structured_text_bidi_override_options")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(args.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetStructuredTextBidiOverrideOptions()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetStructuredTextBidiOverrideOptions() Array {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_structured_text_bidi_override_options")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret Array
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetTabSize(size int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetTabSize()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetTabSize() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetOvertypeModeEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_overtype_mode_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsOvertypeModeEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsOvertypeModeEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_overtype_mode_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetContextMenuEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_context_menu_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsContextMenuEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsContextMenuEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_context_menu_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetShortcutKeysEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_shortcut_keys_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsShortcutKeysEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsShortcutKeysEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_shortcut_keys_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetVirtualKeyboardEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_virtual_keyboard_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsVirtualKeyboardEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsVirtualKeyboardEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_virtual_keyboard_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetMiddleMousePasteEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_middle_mouse_paste_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsMiddleMousePasteEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsMiddleMousePasteEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_middle_mouse_paste_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) Clear()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) SetText(text String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetText()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetText() String {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetLineCount()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineCount() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetPlaceholder(text String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_placeholder")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetPlaceholder()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetPlaceholder() String {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_placeholder")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetLine(line int, new_text String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(new_text.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetLine(line int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLine(line int, ) String {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetLineWidth(line int, wrap_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineWidth(line int, wrap_index int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3294126239) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&wrap_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetLineHeight()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineHeight() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_height")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetIndentLevel(line int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetIndentLevel(line int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_indent_level")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetFirstNonWhitespaceColumn(line int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetFirstNonWhitespaceColumn(line int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_first_non_whitespace_column")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SwapLines(from_line int, to_line int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("swap_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_line), gdc.ConstTypePtr(&to_line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) InsertLineAt(line int, text String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("insert_line_at")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(text.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) InsertTextAtCaret(text String, caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("insert_text_at_caret")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3043792800) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) RemoveText(from_line int, from_column int, to_line int, to_column int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4275841770) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_line), gdc.ConstTypePtr(&from_column), gdc.ConstTypePtr(&to_line), gdc.ConstTypePtr(&to_column), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetLastUnhiddenLine()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLastUnhiddenLine() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_last_unhidden_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetNextVisibleLineOffsetFrom(line int, visible_amount int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetNextVisibleLineOffsetFrom(line int, visible_amount int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_next_visible_line_offset_from")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3175239445) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&visible_amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetNextVisibleLineIndexOffsetFrom(line int, wrap_index int, visible_amount int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetNextVisibleLineIndexOffsetFrom(line int, wrap_index int, visible_amount int, ) Vector2i {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_next_visible_line_index_offset_from")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3386475622) // FIXME: should cache?
+  var ret Vector2i
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&wrap_index), gdc.ConstTypePtr(&visible_amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) Backspace(caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("backspace")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) Cut(caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("cut")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) Copy(caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("copy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) Paste(caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("paste")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) PastePrimaryClipboard(caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("paste_primary_clipboard")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) StartAction(action TextEditEditAction, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("start_action")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2834827583) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&action), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) EndAction()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("end_action")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) BeginComplexOperation()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("begin_complex_operation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) EndComplexOperation()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("end_complex_operation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) HasUndo()  {
-  panic("TODO: implement")
+func  (me *TextEdit) HasUndo() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_undo")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) HasRedo()  {
-  panic("TODO: implement")
+func  (me *TextEdit) HasRedo() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_redo")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) Undo()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("undo")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) Redo()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("redo")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) ClearUndoHistory()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_undo_history")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) TagSavedVersion()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("tag_saved_version")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetVersion()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetVersion() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_version")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetSavedVersion()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetSavedVersion() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_saved_version")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetSearchText(search_text String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_search_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(search_text.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) SetSearchFlags(flags int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_search_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) Search(text String, flags int, from_line int, from_colum int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) Search(text String, flags int, from_line int, from_colum int, ) Vector2i {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("search")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1203739136) // FIXME: should cache?
+  var ret Vector2i
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(&flags), gdc.ConstTypePtr(&from_line), gdc.ConstTypePtr(&from_colum), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetTooltipRequestFunc(callback Callable, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tooltip_request_func")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1611583062) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetLocalMousePos()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLocalMousePos() Vector2 {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_local_mouse_pos")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetWordAtPos(position Vector2, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetWordAtPos(position Vector2, ) String {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_word_at_pos")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3674420000) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetLineColumnAtPos(position Vector2i, allow_out_of_bounds bool, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineColumnAtPos(position Vector2i, allow_out_of_bounds bool, ) Vector2i {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_column_at_pos")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 850652858) // FIXME: should cache?
+  var ret Vector2i
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&allow_out_of_bounds), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetPosAtLineColumn(line int, column int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetPosAtLineColumn(line int, column int, ) Vector2i {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_pos_at_line_column")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 410388347) // FIXME: should cache?
+  var ret Vector2i
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetRectAtLineColumn(line int, column int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetRectAtLineColumn(line int, column int, ) Rect2i {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rect_at_line_column")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3256618057) // FIXME: should cache?
+  var ret Rect2i
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetMinimapLineAtPos(position Vector2i, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetMinimapLineAtPos(position Vector2i, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_minimap_line_at_pos")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2485466453) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) IsDraggingCursor()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsDraggingCursor() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_dragging_cursor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) IsMouseOverSelection(edges bool, caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsMouseOverSelection(edges bool, caret_index int, ) bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_mouse_over_selection")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1099474134) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&edges), gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetCaretType(type_ TextEditCaretType, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_caret_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1211596914) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetCaretType()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetCaretType() TextEditCaretType {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_caret_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2830252959) // FIXME: should cache?
+  var ret TextEditCaretType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetCaretBlinkEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_caret_blink_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsCaretBlinkEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsCaretBlinkEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_caret_blink_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetCaretBlinkInterval(interval float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_caret_blink_interval")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&interval), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetCaretBlinkInterval()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetCaretBlinkInterval() float32 {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_caret_blink_interval")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetDrawCaretWhenEditableDisabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_draw_caret_when_editable_disabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsDrawingCaretWhenEditableDisabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsDrawingCaretWhenEditableDisabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drawing_caret_when_editable_disabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetMoveCaretOnRightClickEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_move_caret_on_right_click_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsMoveCaretOnRightClickEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsMoveCaretOnRightClickEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_move_caret_on_right_click_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetCaretMidGraphemeEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_caret_mid_grapheme_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsCaretMidGraphemeEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsCaretMidGraphemeEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_caret_mid_grapheme_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetMultipleCaretsEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_multiple_carets_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsMultipleCaretsEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsMultipleCaretsEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_multiple_carets_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) AddCaret(line int, col int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) AddCaret(line int, col int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_caret")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 50157827) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&col), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) RemoveCaret(caret int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_caret")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) RemoveSecondaryCarets()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_secondary_carets")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) MergeOverlappingCarets()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("merge_overlapping_carets")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetCaretCount()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetCaretCount() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_caret_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) AddCaretAtCarets(below bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_caret_at_carets")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&below), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetCaretIndexEditOrder()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetCaretIndexEditOrder() PackedInt32Array {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_caret_index_edit_order")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 969006518) // FIXME: should cache?
+  var ret PackedInt32Array
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) AdjustCaretsAfterEdit(caret int, from_line int, from_col int, to_line int, to_col int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("adjust_carets_after_edit")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1770277138) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret), gdc.ConstTypePtr(&from_line), gdc.ConstTypePtr(&from_col), gdc.ConstTypePtr(&to_line), gdc.ConstTypePtr(&to_col), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsCaretVisible(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsCaretVisible(caret_index int, ) bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_caret_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1051549951) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetCaretDrawPos(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetCaretDrawPos(caret_index int, ) Vector2 {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_caret_draw_pos")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 478253731) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetCaretLine(line int, adjust_viewport bool, can_be_hidden bool, wrap_index int, caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_caret_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1413195636) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&adjust_viewport), gdc.ConstTypePtr(&can_be_hidden), gdc.ConstTypePtr(&wrap_index), gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetCaretLine(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetCaretLine(caret_index int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_caret_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetCaretColumn(column int, adjust_viewport bool, caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_caret_column")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1071284433) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&adjust_viewport), gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetCaretColumn(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetCaretColumn(caret_index int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_caret_column")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetCaretWrapIndex(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetCaretWrapIndex(caret_index int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_caret_wrap_index")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetWordUnderCaret(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetWordUnderCaret(caret_index int, ) String {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_word_under_caret")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3929349208) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetSelectingEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_selecting_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsSelectingEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsSelectingEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_selecting_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetDeselectOnFocusLossEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_deselect_on_focus_loss_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsDeselectOnFocusLossEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsDeselectOnFocusLossEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_deselect_on_focus_loss_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetDragAndDropSelectionEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_drag_and_drop_selection_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsDragAndDropSelectionEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsDragAndDropSelectionEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drag_and_drop_selection_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetSelectionMode(mode TextEditSelectionMode, line int, column int, caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_selection_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920622473) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetSelectionMode()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetSelectionMode() TextEditSelectionMode {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_selection_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3750106938) // FIXME: should cache?
+  var ret TextEditSelectionMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SelectAll()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("select_all")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) SelectWordUnderCaret(caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("select_word_under_caret")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) AddSelectionForNextOccurrence()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_selection_for_next_occurrence")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) Select(from_line int, from_column int, to_line int, to_column int, caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("select")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4269665324) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_line), gdc.ConstTypePtr(&from_column), gdc.ConstTypePtr(&to_line), gdc.ConstTypePtr(&to_column), gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) HasSelection(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) HasSelection(caret_index int, ) bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_selection")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2824505868) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetSelectedText(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetSelectedText(caret_index int, ) String {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_selected_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2309358862) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetSelectionLine(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetSelectionLine(caret_index int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_selection_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetSelectionColumn(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetSelectionColumn(caret_index int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_selection_column")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetSelectionFromLine(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetSelectionFromLine(caret_index int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_selection_from_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetSelectionFromColumn(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetSelectionFromColumn(caret_index int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_selection_from_column")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetSelectionToLine(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetSelectionToLine(caret_index int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_selection_to_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetSelectionToColumn(caret_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetSelectionToColumn(caret_index int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_selection_to_column")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) Deselect(caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("deselect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) DeleteSelection(caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("delete_selection")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) SetLineWrappingMode(mode TextEditLineWrappingMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_wrapping_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2525115309) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetLineWrappingMode()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineWrappingMode() TextEditLineWrappingMode {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_wrapping_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3562716114) // FIXME: should cache?
+  var ret TextEditLineWrappingMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetAutowrapMode(autowrap_mode TextServerAutowrapMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_autowrap_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3289138044) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&autowrap_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetAutowrapMode()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetAutowrapMode() TextServerAutowrapMode {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_autowrap_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1549071663) // FIXME: should cache?
+  var ret TextServerAutowrapMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) IsLineWrapped(line int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsLineWrapped(line int, ) bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_line_wrapped")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetLineWrapCount(line int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineWrapCount(line int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_wrap_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetLineWrapIndexAtColumn(line int, column int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineWrapIndexAtColumn(line int, column int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_wrap_index_at_column")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3175239445) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetLineWrappedText(line int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineWrappedText(line int, ) PackedStringArray {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_wrapped_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 647634434) // FIXME: should cache?
+  var ret PackedStringArray
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetSmoothScrollEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_smooth_scroll_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsSmoothScrollEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsSmoothScrollEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_smooth_scroll_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetVScrollBar()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetVScrollBar() VScrollBar {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_v_scroll_bar")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3226026593) // FIXME: should cache?
+  var ret VScrollBar
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetHScrollBar()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetHScrollBar() HScrollBar {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_h_scroll_bar")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3774687988) // FIXME: should cache?
+  var ret HScrollBar
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetVScroll(value float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_v_scroll")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetVScroll()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetVScroll() float32 {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_v_scroll")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetHScroll(value int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_h_scroll")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetHScroll()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetHScroll() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_h_scroll")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetScrollPastEndOfFileEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_scroll_past_end_of_file_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsScrollPastEndOfFileEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsScrollPastEndOfFileEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_scroll_past_end_of_file_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetVScrollSpeed(speed float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_v_scroll_speed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&speed), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetVScrollSpeed()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetVScrollSpeed() float32 {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_v_scroll_speed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetFitContentHeightEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_fit_content_height_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsFitContentHeightEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsFitContentHeightEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_fit_content_height_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetScrollPosForLine(line int, wrap_index int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetScrollPosForLine(line int, wrap_index int, ) float32 {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_scroll_pos_for_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3274652423) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&wrap_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetLineAsFirstVisible(line int, wrap_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_as_first_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3023605688) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&wrap_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetFirstVisibleLine()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetFirstVisibleLine() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_first_visible_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetLineAsCenterVisible(line int, wrap_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_as_center_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3023605688) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&wrap_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) SetLineAsLastVisible(line int, wrap_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_as_last_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3023605688) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&wrap_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetLastFullVisibleLine()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLastFullVisibleLine() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_last_full_visible_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetLastFullVisibleLineWrapIndex()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLastFullVisibleLineWrapIndex() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_last_full_visible_line_wrap_index")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetVisibleLineCount()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetVisibleLineCount() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_visible_line_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetVisibleLineCountInRange(from_line int, to_line int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetVisibleLineCountInRange(from_line int, to_line int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_visible_line_count_in_range")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3175239445) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_line), gdc.ConstTypePtr(&to_line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetTotalVisibleLineCount()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetTotalVisibleLineCount() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_total_visible_line_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) AdjustViewportToCaret(caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("adjust_viewport_to_caret")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1995695955) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) CenterViewportToCaret(caret_index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("center_viewport_to_caret")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1995695955) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&caret_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) SetDrawMinimap(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_draw_minimap")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsDrawingMinimap()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsDrawingMinimap() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drawing_minimap")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetMinimapWidth(width int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_minimap_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetMinimapWidth()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetMinimapWidth() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_minimap_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetMinimapVisibleLines()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetMinimapVisibleLines() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_minimap_visible_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) AddGutter(at int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_gutter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&at), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) RemoveGutter(gutter int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_gutter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetGutterCount()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetGutterCount() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_gutter_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetGutterName(gutter int, name String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_gutter_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetGutterName(gutter int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetGutterName(gutter int, ) String {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_gutter_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetGutterType(gutter int, type_ TextEditGutterType, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_gutter_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1088959071) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), gdc.ConstTypePtr(&type_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetGutterType(gutter int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetGutterType(gutter int, ) TextEditGutterType {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_gutter_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1159699127) // FIXME: should cache?
+  var ret TextEditGutterType
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetGutterWidth(gutter int, width int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_gutter_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), gdc.ConstTypePtr(&width), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetGutterWidth(gutter int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetGutterWidth(gutter int, ) int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_gutter_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetGutterDraw(gutter int, draw bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_gutter_draw")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), gdc.ConstTypePtr(&draw), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsGutterDrawn(gutter int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsGutterDrawn(gutter int, ) bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_gutter_drawn")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetGutterClickable(gutter int, clickable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_gutter_clickable")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), gdc.ConstTypePtr(&clickable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsGutterClickable(gutter int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsGutterClickable(gutter int, ) bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_gutter_clickable")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetGutterOverwritable(gutter int, overwritable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_gutter_overwritable")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), gdc.ConstTypePtr(&overwritable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsGutterOverwritable(gutter int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsGutterOverwritable(gutter int, ) bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_gutter_overwritable")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) MergeGutters(from_line int, to_line int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("merge_gutters")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_line), gdc.ConstTypePtr(&to_line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) SetGutterCustomDraw(column int, draw_callback Callable, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_gutter_custom_draw")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 957362965) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(draw_callback.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetTotalGutterWidth()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetTotalGutterWidth() int {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_total_gutter_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetLineGutterMetadata(line int, gutter int, metadata Variant, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_gutter_metadata")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2060538656) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&gutter), gdc.ConstTypePtr(metadata.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetLineGutterMetadata(line int, gutter int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineGutterMetadata(line int, gutter int, ) Variant {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_gutter_metadata")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 678354945) // FIXME: should cache?
+  var ret Variant
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetLineGutterText(line int, gutter int, text String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_gutter_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2285447957) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&gutter), gdc.ConstTypePtr(text.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetLineGutterText(line int, gutter int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineGutterText(line int, gutter int, ) String {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_gutter_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1391810591) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetLineGutterIcon(line int, gutter int, icon Texture2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_gutter_icon")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 176101966) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&gutter), gdc.ConstTypePtr(icon.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetLineGutterIcon(line int, gutter int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineGutterIcon(line int, gutter int, ) Texture2D {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_gutter_icon")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2584904275) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetLineGutterItemColor(line int, gutter int, color Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_gutter_item_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3733378741) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&gutter), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetLineGutterItemColor(line int, gutter int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineGutterItemColor(line int, gutter int, ) Color {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_gutter_item_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2165839948) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetLineGutterClickable(line int, gutter int, clickable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_gutter_clickable")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1383440665) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&gutter), gdc.ConstTypePtr(&clickable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsLineGutterClickable(line int, gutter int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsLineGutterClickable(line int, gutter int, ) bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_line_gutter_clickable")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2522259332) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&gutter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetLineBackgroundColor(line int, color Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_background_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2878471219) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetLineBackgroundColor(line int, )  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetLineBackgroundColor(line int, ) Color {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_background_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3457211756) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetSyntaxHighlighter(syntax_highlighter SyntaxHighlighter, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_syntax_highlighter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2765644541) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(syntax_highlighter.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) GetSyntaxHighlighter()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetSyntaxHighlighter() SyntaxHighlighter {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_syntax_highlighter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2721131626) // FIXME: should cache?
+  var ret SyntaxHighlighter
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetHighlightCurrentLine(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_highlight_current_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsHighlightCurrentLineEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsHighlightCurrentLineEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_highlight_current_line_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetHighlightAllOccurrences(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_highlight_all_occurrences")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsHighlightAllOccurrencesEnabled()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsHighlightAllOccurrencesEnabled() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_highlight_all_occurrences_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetDrawControlChars()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetDrawControlChars() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_draw_control_chars")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetDrawControlChars(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_draw_control_chars")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TextEdit) SetDrawTabs(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_draw_tabs")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsDrawingTabs()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsDrawingTabs() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drawing_tabs")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) SetDrawSpaces(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_draw_spaces")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TextEdit) IsDrawingSpaces()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsDrawingSpaces() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drawing_spaces")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) GetMenu()  {
-  panic("TODO: implement")
+func  (me *TextEdit) GetMenu() PopupMenu {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_menu")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 229722558) // FIXME: should cache?
+  var ret PopupMenu
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextEdit) IsMenuVisible()  {
-  panic("TODO: implement")
+func  (me *TextEdit) IsMenuVisible() bool {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_menu_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TextEdit) MenuOption(option int, )  {
+  classNameV := StringNameFromStr("TextEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("menu_option")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *TextEdit) GetPropText() String {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *TextEdit) SetPropText(value String) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *TextEdit) GetPropPlaceholderText() String {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropPlaceholderText(value String) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropEditable() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropEditable(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropContextMenuEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropContextMenuEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropShortcutKeysEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropShortcutKeysEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropSelectingEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropSelectingEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropDeselectOnFocusLossEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropDeselectOnFocusLossEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropDragAndDropSelectionEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropDragAndDropSelectionEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropVirtualKeyboardEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropVirtualKeyboardEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropMiddleMousePasteEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropMiddleMousePasteEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropWrapMode() int {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropWrapMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropAutowrapMode() int {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropAutowrapMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropHighlightAllOccurrences() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropHighlightAllOccurrences(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropHighlightCurrentLine() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropHighlightCurrentLine(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropDrawControlChars() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropDrawControlChars(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropDrawTabs() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropDrawTabs(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropDrawSpaces() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropDrawSpaces(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropSyntaxHighlighter() SyntaxHighlighter {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropSyntaxHighlighter(value SyntaxHighlighter) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropScrollSmooth() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropScrollSmooth(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropScrollVScrollSpeed() float32 {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropScrollVScrollSpeed(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropScrollPastEndOfFile() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropScrollPastEndOfFile(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropScrollVertical() float32 {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropScrollVertical(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropScrollHorizontal() int {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropScrollHorizontal(value int) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropScrollFitContentHeight() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropScrollFitContentHeight(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropMinimapDraw() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropMinimapDraw(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropMinimapWidth() int {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropMinimapWidth(value int) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropCaretType() int {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropCaretType(value int) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropCaretBlink() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropCaretBlink(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropCaretBlinkInterval() float32 {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropCaretBlinkInterval(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropCaretDrawWhenEditableDisabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropCaretDrawWhenEditableDisabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropCaretMoveOnRightClick() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropCaretMoveOnRightClick(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropCaretMidGrapheme() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropCaretMidGrapheme(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropCaretMultiple() bool {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropCaretMultiple(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropTextDirection() int {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropTextDirection(value int) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropLanguage() String {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropLanguage(value String) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropStructuredTextBidiOverride() int {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropStructuredTextBidiOverride(value int) {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) GetPropStructuredTextBidiOverrideOptions() Array {
+  panic("TODO: implement")
+}
+
+func (me *TextEdit) SetPropStructuredTextBidiOverrideOptions(value Array) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

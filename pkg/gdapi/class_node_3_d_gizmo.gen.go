@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Node3DGizmo struct {
   obj gdc.ObjectPtr
@@ -41,9 +37,6 @@ func (me *Node3DGizmo) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

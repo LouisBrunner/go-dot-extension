@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDPipelineRasterizationState struct {
   obj gdc.ObjectPtr
@@ -41,97 +37,336 @@ func (me *RDPipelineRasterizationState) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *RDPipelineRasterizationState) SetEnableDepthClamp(p_member bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_enable_depth_clamp")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineRasterizationState) GetEnableDepthClamp()  {
-  panic("TODO: implement")
+func  (me *RDPipelineRasterizationState) GetEnableDepthClamp() bool {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_enable_depth_clamp")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineRasterizationState) SetDiscardPrimitives(p_member bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_discard_primitives")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineRasterizationState) GetDiscardPrimitives()  {
-  panic("TODO: implement")
+func  (me *RDPipelineRasterizationState) GetDiscardPrimitives() bool {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_discard_primitives")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineRasterizationState) SetWireframe(p_member bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_wireframe")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineRasterizationState) GetWireframe()  {
-  panic("TODO: implement")
+func  (me *RDPipelineRasterizationState) GetWireframe() bool {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_wireframe")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineRasterizationState) SetCullMode(p_member RenderingDevicePolygonCullMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_cull_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2662586502) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineRasterizationState) GetCullMode()  {
-  panic("TODO: implement")
+func  (me *RDPipelineRasterizationState) GetCullMode() RenderingDevicePolygonCullMode {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_cull_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2192484313) // FIXME: should cache?
+  var ret RenderingDevicePolygonCullMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineRasterizationState) SetFrontFace(p_member RenderingDevicePolygonFrontFace, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_front_face")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2637251213) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineRasterizationState) GetFrontFace()  {
-  panic("TODO: implement")
+func  (me *RDPipelineRasterizationState) GetFrontFace() RenderingDevicePolygonFrontFace {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_front_face")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 708793786) // FIXME: should cache?
+  var ret RenderingDevicePolygonFrontFace
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineRasterizationState) SetDepthBiasEnabled(p_member bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_depth_bias_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineRasterizationState) GetDepthBiasEnabled()  {
-  panic("TODO: implement")
+func  (me *RDPipelineRasterizationState) GetDepthBiasEnabled() bool {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_depth_bias_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineRasterizationState) SetDepthBiasConstantFactor(p_member float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_depth_bias_constant_factor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineRasterizationState) GetDepthBiasConstantFactor()  {
-  panic("TODO: implement")
+func  (me *RDPipelineRasterizationState) GetDepthBiasConstantFactor() float32 {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_depth_bias_constant_factor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineRasterizationState) SetDepthBiasClamp(p_member float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_depth_bias_clamp")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineRasterizationState) GetDepthBiasClamp()  {
-  panic("TODO: implement")
+func  (me *RDPipelineRasterizationState) GetDepthBiasClamp() float32 {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_depth_bias_clamp")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineRasterizationState) SetDepthBiasSlopeFactor(p_member float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_depth_bias_slope_factor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineRasterizationState) GetDepthBiasSlopeFactor()  {
-  panic("TODO: implement")
+func  (me *RDPipelineRasterizationState) GetDepthBiasSlopeFactor() float32 {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_depth_bias_slope_factor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineRasterizationState) SetLineWidth(p_member float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineRasterizationState) GetLineWidth()  {
-  panic("TODO: implement")
+func  (me *RDPipelineRasterizationState) GetLineWidth() float32 {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineRasterizationState) SetPatchControlPoints(p_member int, )  {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_patch_control_points")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RDPipelineRasterizationState) GetPatchControlPoints() int {
+  classNameV := StringNameFromStr("RDPipelineRasterizationState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_patch_control_points")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *RDPipelineRasterizationState) GetPropEnableDepthClamp() bool {
   panic("TODO: implement")
 }
 
-func  (me *RDPipelineRasterizationState) GetPatchControlPoints()  {
+func (me *RDPipelineRasterizationState) SetPropEnableDepthClamp(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *RDPipelineRasterizationState) GetPropDiscardPrimitives() bool {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *RDPipelineRasterizationState) SetPropDiscardPrimitives(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) GetPropWireframe() bool {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) SetPropWireframe(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) GetPropCullMode() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) SetPropCullMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) GetPropFrontFace() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) SetPropFrontFace(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) GetPropDepthBiasEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) SetPropDepthBiasEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) GetPropDepthBiasConstantFactor() float32 {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) SetPropDepthBiasConstantFactor(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) GetPropDepthBiasClamp() float32 {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) SetPropDepthBiasClamp(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) GetPropDepthBiasSlopeFactor() float32 {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) SetPropDepthBiasSlopeFactor(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) GetPropLineWidth() float32 {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) SetPropLineWidth(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) GetPropPatchControlPoints() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineRasterizationState) SetPropPatchControlPoints(value int) {
+  panic("TODO: implement")
+}

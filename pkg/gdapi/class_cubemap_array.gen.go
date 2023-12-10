@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CubemapArray struct {
   obj gdc.ObjectPtr
@@ -41,13 +37,18 @@ func (me *CubemapArray) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *CubemapArray) CreatePlaceholder()  {
-  panic("TODO: implement")
+func  (me *CubemapArray) CreatePlaceholder() Resource {
+  classNameV := StringNameFromStr("CubemapArray")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("create_placeholder")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 121922552) // FIXME: should cache?
+  var ret Resource
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

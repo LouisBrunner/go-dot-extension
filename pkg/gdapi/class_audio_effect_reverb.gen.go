@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioEffectReverb struct {
   obj gdc.ObjectPtr
@@ -41,73 +37,246 @@ func (me *AudioEffectReverb) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *AudioEffectReverb) SetPredelayMsec(msec float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_predelay_msec")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msec), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectReverb) GetPredelayMsec()  {
-  panic("TODO: implement")
+func  (me *AudioEffectReverb) GetPredelayMsec() float32 {
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_predelay_msec")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectReverb) SetPredelayFeedback(feedback float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_predelay_feedback")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feedback), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectReverb) GetPredelayFeedback()  {
-  panic("TODO: implement")
+func  (me *AudioEffectReverb) GetPredelayFeedback() float32 {
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_predelay_feedback")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectReverb) SetRoomSize(size float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_room_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectReverb) GetRoomSize()  {
-  panic("TODO: implement")
+func  (me *AudioEffectReverb) GetRoomSize() float32 {
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_room_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectReverb) SetDamping(amount float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_damping")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectReverb) GetDamping()  {
-  panic("TODO: implement")
+func  (me *AudioEffectReverb) GetDamping() float32 {
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_damping")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectReverb) SetSpread(amount float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_spread")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectReverb) GetSpread()  {
-  panic("TODO: implement")
+func  (me *AudioEffectReverb) GetSpread() float32 {
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_spread")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectReverb) SetDry(amount float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_dry")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectReverb) GetDry()  {
-  panic("TODO: implement")
+func  (me *AudioEffectReverb) GetDry() float32 {
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_dry")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectReverb) SetWet(amount float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_wet")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectReverb) GetWet()  {
-  panic("TODO: implement")
+func  (me *AudioEffectReverb) GetWet() float32 {
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_wet")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectReverb) SetHpf(amount float32, )  {
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_hpf")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *AudioEffectReverb) GetHpf() float32 {
+  classNameV := StringNameFromStr("AudioEffectReverb")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_hpf")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *AudioEffectReverb) GetPropPredelayMsec() float32 {
   panic("TODO: implement")
 }
 
-func  (me *AudioEffectReverb) GetHpf()  {
+func (me *AudioEffectReverb) SetPropPredelayMsec(value float32) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *AudioEffectReverb) GetPropPredelayFeedback() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *AudioEffectReverb) SetPropPredelayFeedback(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) GetPropRoomSize() float32 {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) SetPropRoomSize(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) GetPropDamping() float32 {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) SetPropDamping(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) GetPropSpread() float32 {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) SetPropSpread(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) GetPropHipass() float32 {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) SetPropHipass(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) GetPropDry() float32 {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) SetPropDry(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) GetPropWet() float32 {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectReverb) SetPropWet(value float32) {
+  panic("TODO: implement")
+}

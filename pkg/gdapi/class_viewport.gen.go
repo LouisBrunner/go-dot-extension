@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Viewport struct {
   obj gdc.ObjectPtr
@@ -163,429 +159,1516 @@ func (me *Viewport) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *Viewport) SetWorld2D(world_2d World2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_world_2d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2736080068) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(world_2d.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetWorld2D()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetWorld2D() World2D {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_world_2d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339128592) // FIXME: should cache?
+  var ret World2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) FindWorld2D()  {
-  panic("TODO: implement")
+func  (me *Viewport) FindWorld2D() World2D {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("find_world_2d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339128592) // FIXME: should cache?
+  var ret World2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetCanvasTransform(xform Transform2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_canvas_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(xform.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetCanvasTransform()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetCanvasTransform() Transform2D {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_canvas_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
+  var ret Transform2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetGlobalCanvasTransform(xform Transform2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_global_canvas_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(xform.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetGlobalCanvasTransform()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetGlobalCanvasTransform() Transform2D {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_global_canvas_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
+  var ret Transform2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) GetFinalTransform()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetFinalTransform() Transform2D {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_final_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
+  var ret Transform2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) GetScreenTransform()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetScreenTransform() Transform2D {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_screen_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
+  var ret Transform2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) GetVisibleRect()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetVisibleRect() Rect2 {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_visible_rect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
+  var ret Rect2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetTransparentBackground(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_transparent_background")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) HasTransparentBackground()  {
-  panic("TODO: implement")
+func  (me *Viewport) HasTransparentBackground() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_transparent_background")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetMsaa2D(msaa ViewportMSAA, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_msaa_2d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3330258708) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msaa), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetMsaa2D()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetMsaa2D() ViewportMSAA {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_msaa_2d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2542055527) // FIXME: should cache?
+  var ret ViewportMSAA
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetMsaa3D(msaa ViewportMSAA, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_msaa_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3330258708) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msaa), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetMsaa3D()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetMsaa3D() ViewportMSAA {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_msaa_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2542055527) // FIXME: should cache?
+  var ret ViewportMSAA
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetScreenSpaceAa(screen_space_aa ViewportScreenSpaceAA, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_screen_space_aa")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3544169389) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen_space_aa), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetScreenSpaceAa()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetScreenSpaceAa() ViewportScreenSpaceAA {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_screen_space_aa")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1390814124) // FIXME: should cache?
+  var ret ViewportScreenSpaceAA
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetUseTaa(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_taa")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsUsingTaa()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsUsingTaa() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_using_taa")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetUseDebanding(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_debanding")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsUsingDebanding()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsUsingDebanding() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_using_debanding")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetUseOcclusionCulling(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_occlusion_culling")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsUsingOcclusionCulling()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsUsingOcclusionCulling() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_using_occlusion_culling")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetDebugDraw(debug_draw ViewportDebugDraw, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_debug_draw")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1970246205) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&debug_draw), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetDebugDraw()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetDebugDraw() ViewportDebugDraw {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_debug_draw")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 579191299) // FIXME: should cache?
+  var ret ViewportDebugDraw
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) GetRenderInfo(type_ ViewportRenderInfoType, info ViewportRenderInfo, )  {
-  panic("TODO: implement")
+func  (me *Viewport) GetRenderInfo(type_ ViewportRenderInfoType, info ViewportRenderInfo, ) int {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_render_info")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 481977019) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&info), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) GetTexture()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetTexture() ViewportTexture {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1746695840) // FIXME: should cache?
+  var ret ViewportTexture
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetPhysicsObjectPicking(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_physics_object_picking")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetPhysicsObjectPicking()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetPhysicsObjectPicking() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_physics_object_picking")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetPhysicsObjectPickingSort(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_physics_object_picking_sort")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetPhysicsObjectPickingSort()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetPhysicsObjectPickingSort() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_physics_object_picking_sort")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) GetViewportRid()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetViewportRid() RID {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_viewport_rid")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) PushTextInput(text String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("push_text_input")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Viewport) PushInput(event InputEvent, in_local_coords bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("push_input")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3644664830) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(event.AsCTypePtr()), gdc.ConstTypePtr(&in_local_coords), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Viewport) PushUnhandledInput(event InputEvent, in_local_coords bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("push_unhandled_input")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3644664830) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(event.AsCTypePtr()), gdc.ConstTypePtr(&in_local_coords), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetCamera2D()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetCamera2D() Camera2D {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_camera_2d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3551466917) // FIXME: should cache?
+  var ret Camera2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetAsAudioListener2D(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_as_audio_listener_2d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsAudioListener2D()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsAudioListener2D() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_audio_listener_2d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) GetMousePosition()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetMousePosition() Vector2 {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_mouse_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) WarpMouse(position Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("warp_mouse")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Viewport) UpdateMouseCursorState()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("update_mouse_cursor_state")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GuiGetDragData()  {
-  panic("TODO: implement")
+func  (me *Viewport) GuiGetDragData() Variant {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("gui_get_drag_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1214101251) // FIXME: should cache?
+  var ret Variant
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) GuiIsDragging()  {
-  panic("TODO: implement")
+func  (me *Viewport) GuiIsDragging() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("gui_is_dragging")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) GuiIsDragSuccessful()  {
-  panic("TODO: implement")
+func  (me *Viewport) GuiIsDragSuccessful() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("gui_is_drag_successful")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) GuiReleaseFocus()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("gui_release_focus")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GuiGetFocusOwner()  {
-  panic("TODO: implement")
+func  (me *Viewport) GuiGetFocusOwner() Control {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("gui_get_focus_owner")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2783021301) // FIXME: should cache?
+  var ret Control
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetDisableInput(disable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_disable_input")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsInputDisabled()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsInputDisabled() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_input_disabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetPositionalShadowAtlasSize(size int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_positional_shadow_atlas_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetPositionalShadowAtlasSize()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetPositionalShadowAtlasSize() int {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_positional_shadow_atlas_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetPositionalShadowAtlas16Bits(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_positional_shadow_atlas_16_bits")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetPositionalShadowAtlas16Bits()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetPositionalShadowAtlas16Bits() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_positional_shadow_atlas_16_bits")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetSnapControlsToPixels(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_snap_controls_to_pixels")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsSnapControlsToPixelsEnabled()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsSnapControlsToPixelsEnabled() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_snap_controls_to_pixels_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetSnap2DTransformsToPixel(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_snap_2d_transforms_to_pixel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsSnap2DTransformsToPixelEnabled()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsSnap2DTransformsToPixelEnabled() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_snap_2d_transforms_to_pixel_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetSnap2DVerticesToPixel(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_snap_2d_vertices_to_pixel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsSnap2DVerticesToPixelEnabled()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsSnap2DVerticesToPixelEnabled() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_snap_2d_vertices_to_pixel_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetPositionalShadowAtlasQuadrantSubdiv(quadrant int, subdiv ViewportPositionalShadowAtlasQuadrantSubdiv, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_positional_shadow_atlas_quadrant_subdiv")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2596956071) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&quadrant), gdc.ConstTypePtr(&subdiv), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetPositionalShadowAtlasQuadrantSubdiv(quadrant int, )  {
-  panic("TODO: implement")
+func  (me *Viewport) GetPositionalShadowAtlasQuadrantSubdiv(quadrant int, ) ViewportPositionalShadowAtlasQuadrantSubdiv {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_positional_shadow_atlas_quadrant_subdiv")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2676778355) // FIXME: should cache?
+  var ret ViewportPositionalShadowAtlasQuadrantSubdiv
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&quadrant), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetInputAsHandled()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_input_as_handled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsInputHandled()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsInputHandled() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_input_handled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetHandleInputLocally(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_handle_input_locally")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsHandlingInputLocally()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsHandlingInputLocally() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_handling_input_locally")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetDefaultCanvasItemTextureFilter(mode ViewportDefaultCanvasItemTextureFilter, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_default_canvas_item_texture_filter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2815160100) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetDefaultCanvasItemTextureFilter()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetDefaultCanvasItemTextureFilter() ViewportDefaultCanvasItemTextureFilter {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_default_canvas_item_texture_filter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 896601198) // FIXME: should cache?
+  var ret ViewportDefaultCanvasItemTextureFilter
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetEmbeddingSubwindows(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_embedding_subwindows")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsEmbeddingSubwindows()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsEmbeddingSubwindows() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_embedding_subwindows")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetCanvasCullMask(mask int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_canvas_cull_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetCanvasCullMask()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetCanvasCullMask() int {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_canvas_cull_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetCanvasCullMaskBit(layer int, enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_canvas_cull_mask_bit")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer), gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetCanvasCullMaskBit(layer int, )  {
-  panic("TODO: implement")
+func  (me *Viewport) GetCanvasCullMaskBit(layer int, ) bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_canvas_cull_mask_bit")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetDefaultCanvasItemTextureRepeat(mode ViewportDefaultCanvasItemTextureRepeat, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_default_canvas_item_texture_repeat")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1658513413) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetDefaultCanvasItemTextureRepeat()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetDefaultCanvasItemTextureRepeat() ViewportDefaultCanvasItemTextureRepeat {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_default_canvas_item_texture_repeat")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4049774160) // FIXME: should cache?
+  var ret ViewportDefaultCanvasItemTextureRepeat
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetSdfOversize(oversize ViewportSDFOversize, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_sdf_oversize")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2574159017) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&oversize), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetSdfOversize()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetSdfOversize() ViewportSDFOversize {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_sdf_oversize")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2631427510) // FIXME: should cache?
+  var ret ViewportSDFOversize
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetSdfScale(scale ViewportSDFScale, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_sdf_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1402773951) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scale), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetSdfScale()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetSdfScale() ViewportSDFScale {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_sdf_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3162688184) // FIXME: should cache?
+  var ret ViewportSDFScale
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetMeshLodThreshold(pixels float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_mesh_lod_threshold")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pixels), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetMeshLodThreshold()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetMeshLodThreshold() float32 {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_mesh_lod_threshold")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetWorld3D(world_3d World3D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_world_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1400875337) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(world_3d.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetWorld3D()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetWorld3D() World3D {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_world_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 317588385) // FIXME: should cache?
+  var ret World3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) FindWorld3D()  {
-  panic("TODO: implement")
+func  (me *Viewport) FindWorld3D() World3D {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("find_world_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 317588385) // FIXME: should cache?
+  var ret World3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetUseOwnWorld3D(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_own_world_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsUsingOwnWorld3D()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsUsingOwnWorld3D() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_using_own_world_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Viewport) GetCamera3D()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetCamera3D() Camera3D {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_camera_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2285090890) // FIXME: should cache?
+  var ret Camera3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetAsAudioListener3D(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_as_audio_listener_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsAudioListener3D()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsAudioListener3D() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_audio_listener_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetDisable3D(disable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_disable_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) Is3DDisabled()  {
-  panic("TODO: implement")
+func  (me *Viewport) Is3DDisabled() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_3d_disabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetUseXr(use bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_xr")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&use), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) IsUsingXr()  {
-  panic("TODO: implement")
+func  (me *Viewport) IsUsingXr() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_using_xr")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetScaling3DMode(scaling_3d_mode ViewportScaling3DMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_scaling_3d_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1531597597) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scaling_3d_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetScaling3DMode()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetScaling3DMode() ViewportScaling3DMode {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_scaling_3d_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2597660574) // FIXME: should cache?
+  var ret ViewportScaling3DMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetScaling3DScale(scale float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_scaling_3d_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scale), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetScaling3DScale()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetScaling3DScale() float32 {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_scaling_3d_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetFsrSharpness(fsr_sharpness float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_fsr_sharpness")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fsr_sharpness), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetFsrSharpness()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetFsrSharpness() float32 {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_fsr_sharpness")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetTextureMipmapBias(texture_mipmap_bias float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture_mipmap_bias")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&texture_mipmap_bias), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetTextureMipmapBias()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetTextureMipmapBias() float32 {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture_mipmap_bias")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetVrsMode(mode ViewportVRSMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_vrs_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2749867817) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Viewport) GetVrsMode()  {
-  panic("TODO: implement")
+func  (me *Viewport) GetVrsMode() ViewportVRSMode {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_vrs_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 349660525) // FIXME: should cache?
+  var ret ViewportVRSMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Viewport) SetVrsTexture(texture Texture2D, )  {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_vrs_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *Viewport) GetVrsTexture() Texture2D {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_vrs_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *Viewport) GetPropDisable3D() bool {
   panic("TODO: implement")
 }
 
-func  (me *Viewport) GetVrsTexture()  {
+func (me *Viewport) SetPropDisable3D(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *Viewport) GetPropUseXr() bool {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *Viewport) SetPropUseXr(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropOwnWorld3D() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropOwnWorld3D(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropWorld3D() World3D {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropWorld3D(value World3D) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropWorld2D() World2D {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropWorld2D(value World2D) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropTransparentBg() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropTransparentBg(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropHandleInputLocally() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropHandleInputLocally(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropSnap2DTransformsToPixel() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropSnap2DTransformsToPixel(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropSnap2DVerticesToPixel() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropSnap2DVerticesToPixel(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropMsaa2D() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropMsaa2D(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropMsaa3D() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropMsaa3D(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropScreenSpaceAa() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropScreenSpaceAa(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropUseTaa() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropUseTaa(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropUseDebanding() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropUseDebanding(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropUseOcclusionCulling() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropUseOcclusionCulling(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropMeshLodThreshold() float32 {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropMeshLodThreshold(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropDebugDraw() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropDebugDraw(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropScaling3DMode() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropScaling3DMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropScaling3DScale() float32 {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropScaling3DScale(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropTextureMipmapBias() float32 {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropTextureMipmapBias(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropFsrSharpness() float32 {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropFsrSharpness(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropVrsMode() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropVrsMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropVrsTexture() Texture2D {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropVrsTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropCanvasItemDefaultTextureFilter() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropCanvasItemDefaultTextureFilter(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropCanvasItemDefaultTextureRepeat() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropCanvasItemDefaultTextureRepeat(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropAudioListenerEnable2D() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropAudioListenerEnable2D(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropAudioListenerEnable3D() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropAudioListenerEnable3D(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropPhysicsObjectPicking() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropPhysicsObjectPicking(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropPhysicsObjectPickingSort() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropPhysicsObjectPickingSort(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropGuiDisableInput() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropGuiDisableInput(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropGuiSnapControlsToPixels() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropGuiSnapControlsToPixels(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropGuiEmbedSubwindows() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropGuiEmbedSubwindows(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropSdfOversize() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropSdfOversize(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropSdfScale() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropSdfScale(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropPositionalShadowAtlasSize() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropPositionalShadowAtlasSize(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropPositionalShadowAtlas16Bits() bool {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropPositionalShadowAtlas16Bits(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropPositionalShadowAtlasQuad0() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropPositionalShadowAtlasQuad0(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropPositionalShadowAtlasQuad1() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropPositionalShadowAtlasQuad1(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropPositionalShadowAtlasQuad2() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropPositionalShadowAtlasQuad2(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropPositionalShadowAtlasQuad3() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropPositionalShadowAtlasQuad3(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropCanvasTransform() Transform2D {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropCanvasTransform(value Transform2D) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropGlobalCanvasTransform() Transform2D {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropGlobalCanvasTransform(value Transform2D) {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) GetPropCanvasCullMask() int {
+  panic("TODO: implement")
+}
+
+func (me *Viewport) SetPropCanvasCullMask(value int) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

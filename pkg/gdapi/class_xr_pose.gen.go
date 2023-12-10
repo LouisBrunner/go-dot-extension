@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type XRPose struct {
   obj gdc.ObjectPtr
@@ -48,61 +44,198 @@ func (me *XRPose) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *XRPose) SetHasTrackingData(has_tracking_data bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_has_tracking_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&has_tracking_data), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *XRPose) GetHasTrackingData()  {
-  panic("TODO: implement")
+func  (me *XRPose) GetHasTrackingData() bool {
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_has_tracking_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *XRPose) SetName(name StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *XRPose) GetName()  {
-  panic("TODO: implement")
+func  (me *XRPose) GetName() StringName {
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
+  var ret StringName
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *XRPose) SetTransform(transform Transform3D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2952846383) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(transform.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *XRPose) GetTransform()  {
-  panic("TODO: implement")
+func  (me *XRPose) GetTransform() Transform3D {
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
+  var ret Transform3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XRPose) GetAdjustedTransform()  {
-  panic("TODO: implement")
+func  (me *XRPose) GetAdjustedTransform() Transform3D {
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_adjusted_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
+  var ret Transform3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *XRPose) SetLinearVelocity(velocity Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_linear_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(velocity.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *XRPose) GetLinearVelocity()  {
-  panic("TODO: implement")
+func  (me *XRPose) GetLinearVelocity() Vector3 {
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_linear_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *XRPose) SetAngularVelocity(velocity Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_angular_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(velocity.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *XRPose) GetAngularVelocity()  {
-  panic("TODO: implement")
+func  (me *XRPose) GetAngularVelocity() Vector3 {
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_angular_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *XRPose) SetTrackingConfidence(tracking_confidence XRPoseTrackingConfidence, )  {
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tracking_confidence")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4171656666) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tracking_confidence), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *XRPose) GetTrackingConfidence() XRPoseTrackingConfidence {
+  classNameV := StringNameFromStr("XRPose")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tracking_confidence")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2064923680) // FIXME: should cache?
+  var ret XRPoseTrackingConfidence
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *XRPose) GetPropHasTrackingData() bool {
   panic("TODO: implement")
 }
 
-func  (me *XRPose) GetTrackingConfidence()  {
+func (me *XRPose) SetPropHasTrackingData(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *XRPose) GetPropName() String {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *XRPose) SetPropName(value String) {
+  panic("TODO: implement")
+}
+
+func (me *XRPose) GetPropTransform() String {
+  panic("TODO: implement")
+}
+
+func (me *XRPose) SetPropTransform(value String) {
+  panic("TODO: implement")
+}
+
+func (me *XRPose) GetPropLinearVelocity() String {
+  panic("TODO: implement")
+}
+
+func (me *XRPose) SetPropLinearVelocity(value String) {
+  panic("TODO: implement")
+}
+
+func (me *XRPose) GetPropAngularVelocity() String {
+  panic("TODO: implement")
+}
+
+func (me *XRPose) SetPropAngularVelocity(value String) {
+  panic("TODO: implement")
+}
+
+func (me *XRPose) GetPropTrackingConfidence() int {
+  panic("TODO: implement")
+}
+
+func (me *XRPose) SetPropTrackingConfidence(value int) {
+  panic("TODO: implement")
+}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type HTTPRequest struct {
   obj gdc.ObjectPtr
@@ -59,101 +55,318 @@ func (me *HTTPRequest) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *HTTPRequest) Request(url String, custom_headers PackedStringArray, method HTTPClientMethod, request_data String, )  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) Request(url String, custom_headers PackedStringArray, method HTTPClientMethod, request_data String, ) Error {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("request")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2720304520) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(url.AsCTypePtr()), gdc.ConstTypePtr(custom_headers.AsCTypePtr()), gdc.ConstTypePtr(&method), gdc.ConstTypePtr(request_data.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPRequest) RequestRaw(url String, custom_headers PackedStringArray, method HTTPClientMethod, request_data_raw PackedByteArray, )  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) RequestRaw(url String, custom_headers PackedStringArray, method HTTPClientMethod, request_data_raw PackedByteArray, ) Error {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("request_raw")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4282724657) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(url.AsCTypePtr()), gdc.ConstTypePtr(custom_headers.AsCTypePtr()), gdc.ConstTypePtr(&method), gdc.ConstTypePtr(request_data_raw.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPRequest) CancelRequest()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("cancel_request")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *HTTPRequest) SetTlsOptions(client_options TLSOptions, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tls_options")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2210231844) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(client_options.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPRequest) GetHttpClientStatus()  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) GetHttpClientStatus() HTTPClientStatus {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_http_client_status")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1426656811) // FIXME: should cache?
+  var ret HTTPClientStatus
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPRequest) SetUseThreads(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_threads")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPRequest) IsUsingThreads()  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) IsUsingThreads() bool {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_using_threads")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPRequest) SetAcceptGzip(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_accept_gzip")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPRequest) IsAcceptingGzip()  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) IsAcceptingGzip() bool {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_accepting_gzip")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPRequest) SetBodySizeLimit(bytes int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_body_size_limit")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bytes), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPRequest) GetBodySizeLimit()  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) GetBodySizeLimit() int {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_body_size_limit")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPRequest) SetMaxRedirects(amount int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_max_redirects")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPRequest) GetMaxRedirects()  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) GetMaxRedirects() int {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_max_redirects")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPRequest) SetDownloadFile(path String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_download_file")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPRequest) GetDownloadFile()  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) GetDownloadFile() String {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_download_file")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPRequest) GetDownloadedBytes()  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) GetDownloadedBytes() int {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_downloaded_bytes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *HTTPRequest) GetBodySize()  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) GetBodySize() int {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_body_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPRequest) SetTimeout(timeout float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_timeout")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&timeout), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPRequest) GetTimeout()  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) GetTimeout() float32 {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_timeout")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPRequest) SetDownloadChunkSize(chunk_size int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_download_chunk_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&chunk_size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *HTTPRequest) GetDownloadChunkSize()  {
-  panic("TODO: implement")
+func  (me *HTTPRequest) GetDownloadChunkSize() int {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_download_chunk_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *HTTPRequest) SetHttpProxy(host String, port int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_http_proxy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2956805083) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(host.AsCTypePtr()), gdc.ConstTypePtr(&port), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *HTTPRequest) SetHttpsProxy(host String, port int, )  {
+  classNameV := StringNameFromStr("HTTPRequest")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_https_proxy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2956805083) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(host.AsCTypePtr()), gdc.ConstTypePtr(&port), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *HTTPRequest) GetPropDownloadFile() String {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *HTTPRequest) SetPropDownloadFile(value String) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *HTTPRequest) GetPropDownloadChunkSize() int {
+  panic("TODO: implement")
+}
+
+func (me *HTTPRequest) SetPropDownloadChunkSize(value int) {
+  panic("TODO: implement")
+}
+
+func (me *HTTPRequest) GetPropUseThreads() bool {
+  panic("TODO: implement")
+}
+
+func (me *HTTPRequest) SetPropUseThreads(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *HTTPRequest) GetPropAcceptGzip() bool {
+  panic("TODO: implement")
+}
+
+func (me *HTTPRequest) SetPropAcceptGzip(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *HTTPRequest) GetPropBodySizeLimit() int {
+  panic("TODO: implement")
+}
+
+func (me *HTTPRequest) SetPropBodySizeLimit(value int) {
+  panic("TODO: implement")
+}
+
+func (me *HTTPRequest) GetPropMaxRedirects() int {
+  panic("TODO: implement")
+}
+
+func (me *HTTPRequest) SetPropMaxRedirects(value int) {
+  panic("TODO: implement")
+}
+
+func (me *HTTPRequest) GetPropTimeout() float32 {
+  panic("TODO: implement")
+}
+
+func (me *HTTPRequest) SetPropTimeout(value float32) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

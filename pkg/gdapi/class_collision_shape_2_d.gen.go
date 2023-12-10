@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CollisionShape2D struct {
   obj gdc.ObjectPtr
@@ -41,49 +37,156 @@ func (me *CollisionShape2D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *CollisionShape2D) SetShape(shape Shape2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CollisionShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 771364740) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shape.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CollisionShape2D) GetShape()  {
-  panic("TODO: implement")
+func  (me *CollisionShape2D) GetShape() Shape2D {
+  classNameV := StringNameFromStr("CollisionShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 522005891) // FIXME: should cache?
+  var ret Shape2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CollisionShape2D) SetDisabled(disabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CollisionShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_disabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CollisionShape2D) IsDisabled()  {
-  panic("TODO: implement")
+func  (me *CollisionShape2D) IsDisabled() bool {
+  classNameV := StringNameFromStr("CollisionShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_disabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CollisionShape2D) SetOneWayCollision(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CollisionShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_one_way_collision")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CollisionShape2D) IsOneWayCollisionEnabled()  {
-  panic("TODO: implement")
+func  (me *CollisionShape2D) IsOneWayCollisionEnabled() bool {
+  classNameV := StringNameFromStr("CollisionShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_one_way_collision_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CollisionShape2D) SetOneWayCollisionMargin(margin float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CollisionShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_one_way_collision_margin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CollisionShape2D) GetOneWayCollisionMargin()  {
-  panic("TODO: implement")
+func  (me *CollisionShape2D) GetOneWayCollisionMargin() float32 {
+  classNameV := StringNameFromStr("CollisionShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_one_way_collision_margin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CollisionShape2D) SetDebugColor(color Color, )  {
+  classNameV := StringNameFromStr("CollisionShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_debug_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *CollisionShape2D) GetDebugColor() Color {
+  classNameV := StringNameFromStr("CollisionShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_debug_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *CollisionShape2D) GetPropShape() Shape2D {
   panic("TODO: implement")
 }
 
-func  (me *CollisionShape2D) GetDebugColor()  {
+func (me *CollisionShape2D) SetPropShape(value Shape2D) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *CollisionShape2D) GetPropDisabled() bool {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *CollisionShape2D) SetPropDisabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CollisionShape2D) GetPropOneWayCollision() bool {
+  panic("TODO: implement")
+}
+
+func (me *CollisionShape2D) SetPropOneWayCollision(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CollisionShape2D) GetPropOneWayCollisionMargin() float32 {
+  panic("TODO: implement")
+}
+
+func (me *CollisionShape2D) SetPropOneWayCollisionMargin(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *CollisionShape2D) GetPropDebugColor() Color {
+  panic("TODO: implement")
+}
+
+func (me *CollisionShape2D) SetPropDebugColor(value Color) {
+  panic("TODO: implement")
+}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CircleShape2D struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,36 @@ func (me *CircleShape2D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *CircleShape2D) SetRadius(radius float32, )  {
+  classNameV := StringNameFromStr("CircleShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_radius")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *CircleShape2D) GetRadius() float32 {
+  classNameV := StringNameFromStr("CircleShape2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_radius")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *CircleShape2D) GetPropRadius() float32 {
   panic("TODO: implement")
 }
 
-func  (me *CircleShape2D) GetRadius()  {
+func (me *CircleShape2D) SetPropRadius(value float32) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

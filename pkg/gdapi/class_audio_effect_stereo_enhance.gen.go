@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioEffectStereoEnhance struct {
   obj gdc.ObjectPtr
@@ -41,33 +37,96 @@ func (me *AudioEffectStereoEnhance) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *AudioEffectStereoEnhance) SetPanPullout(amount float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_pan_pullout")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectStereoEnhance) GetPanPullout()  {
-  panic("TODO: implement")
+func  (me *AudioEffectStereoEnhance) GetPanPullout() float32 {
+  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_pan_pullout")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectStereoEnhance) SetTimePullout(amount float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_time_pullout")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AudioEffectStereoEnhance) GetTimePullout()  {
-  panic("TODO: implement")
+func  (me *AudioEffectStereoEnhance) GetTimePullout() float32 {
+  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_time_pullout")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AudioEffectStereoEnhance) SetSurround(amount float32, )  {
+  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_surround")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *AudioEffectStereoEnhance) GetSurround() float32 {
+  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_surround")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *AudioEffectStereoEnhance) GetPropPanPullout() float32 {
   panic("TODO: implement")
 }
 
-func  (me *AudioEffectStereoEnhance) GetSurround()  {
+func (me *AudioEffectStereoEnhance) SetPropPanPullout(value float32) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *AudioEffectStereoEnhance) GetPropTimePulloutMs() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *AudioEffectStereoEnhance) SetPropTimePulloutMs(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectStereoEnhance) GetPropSurround() float32 {
+  panic("TODO: implement")
+}
+
+func (me *AudioEffectStereoEnhance) SetPropSurround(value float32) {
+  panic("TODO: implement")
+}

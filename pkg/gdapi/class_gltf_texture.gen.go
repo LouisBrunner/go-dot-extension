@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFTexture struct {
   obj gdc.ObjectPtr
@@ -41,25 +37,66 @@ func (me *GLTFTexture) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *GLTFTexture) GetSrcImage()  {
-  panic("TODO: implement")
+func  (me *GLTFTexture) GetSrcImage() int {
+  classNameV := StringNameFromStr("GLTFTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_src_image")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *GLTFTexture) SetSrcImage(src_image int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("GLTFTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_src_image")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&src_image), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *GLTFTexture) GetSampler()  {
-  panic("TODO: implement")
+func  (me *GLTFTexture) GetSampler() int {
+  classNameV := StringNameFromStr("GLTFTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_sampler")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *GLTFTexture) SetSampler(sampler int, )  {
+  classNameV := StringNameFromStr("GLTFTexture")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_sampler")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&sampler), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *GLTFTexture) GetPropSrcImage() int {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *GLTFTexture) SetPropSrcImage(value int) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *GLTFTexture) GetPropSampler() int {
+  panic("TODO: implement")
+}
+
+func (me *GLTFTexture) SetPropSampler(value int) {
+  panic("TODO: implement")
+}

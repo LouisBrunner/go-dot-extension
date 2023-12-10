@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TabBar struct {
   obj gdc.ObjectPtr
@@ -57,209 +53,646 @@ func (me *TabBar) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *TabBar) SetTabCount(count int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabCount()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabCount() int {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetCurrentTab(tab_idx int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_current_tab")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetCurrentTab()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetCurrentTab() int {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_current_tab")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TabBar) GetPreviousTab()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetPreviousTab() int {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_previous_tab")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetTabTitle(tab_idx int, title String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_title")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(title.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabTitle(tab_idx int, )  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabTitle(tab_idx int, ) String {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_title")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetTabTextDirection(tab_idx int, direction ControlTextDirection, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_text_direction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1707680378) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(&direction), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabTextDirection(tab_idx int, )  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabTextDirection(tab_idx int, ) ControlTextDirection {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_text_direction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4235602388) // FIXME: should cache?
+  var ret ControlTextDirection
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetTabLanguage(tab_idx int, language String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_language")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(language.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabLanguage(tab_idx int, )  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabLanguage(tab_idx int, ) String {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_language")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetTabIcon(tab_idx int, icon Texture2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_icon")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 666127730) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(icon.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabIcon(tab_idx int, )  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabIcon(tab_idx int, ) Texture2D {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_icon")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3536238170) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetTabIconMaxWidth(tab_idx int, width int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_icon_max_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(&width), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabIconMaxWidth(tab_idx int, )  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabIconMaxWidth(tab_idx int, ) int {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_icon_max_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetTabButtonIcon(tab_idx int, icon Texture2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_button_icon")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 666127730) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(icon.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabButtonIcon(tab_idx int, )  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabButtonIcon(tab_idx int, ) Texture2D {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_button_icon")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3536238170) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetTabDisabled(tab_idx int, disabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_disabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(&disabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) IsTabDisabled(tab_idx int, )  {
-  panic("TODO: implement")
+func  (me *TabBar) IsTabDisabled(tab_idx int, ) bool {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_tab_disabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetTabHidden(tab_idx int, hidden bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_hidden")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(&hidden), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) IsTabHidden(tab_idx int, )  {
-  panic("TODO: implement")
+func  (me *TabBar) IsTabHidden(tab_idx int, ) bool {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_tab_hidden")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetTabMetadata(tab_idx int, metadata Variant, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_metadata")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2152698145) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(metadata.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabMetadata(tab_idx int, )  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabMetadata(tab_idx int, ) Variant {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_metadata")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4227898402) // FIXME: should cache?
+  var ret Variant
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) RemoveTab(tab_idx int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_tab")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TabBar) AddTab(title String, icon Texture2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_tab")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1465444425) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(title.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabIdxAtPoint(point Vector2, )  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabIdxAtPoint(point Vector2, ) int {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_idx_at_point")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3820158470) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetTabAlignment(alignment TabBarAlignmentMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_alignment")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2413632353) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabAlignment()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabAlignment() TabBarAlignmentMode {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_alignment")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2178122193) // FIXME: should cache?
+  var ret TabBarAlignmentMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetClipTabs(clip_tabs bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_clip_tabs")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&clip_tabs), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetClipTabs()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetClipTabs() bool {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_clip_tabs")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TabBar) GetTabOffset()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabOffset() int {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TabBar) GetOffsetButtonsVisible()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetOffsetButtonsVisible() bool {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_offset_buttons_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) EnsureTabVisible(idx int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("ensure_tab_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabRect(tab_idx int, )  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabRect(tab_idx int, ) Rect2 {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_rect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3327874267) // FIXME: should cache?
+  var ret Rect2
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) MoveTab(from int, to int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("move_tab")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from), gdc.ConstTypePtr(&to), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TabBar) SetTabCloseDisplayPolicy(policy TabBarCloseButtonDisplayPolicy, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tab_close_display_policy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2212906737) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&policy), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabCloseDisplayPolicy()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabCloseDisplayPolicy() TabBarCloseButtonDisplayPolicy {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tab_close_display_policy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2956568028) // FIXME: should cache?
+  var ret TabBarCloseButtonDisplayPolicy
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetMaxTabWidth(width int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_max_tab_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetMaxTabWidth()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetMaxTabWidth() int {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_max_tab_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetScrollingEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_scrolling_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetScrollingEnabled()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetScrollingEnabled() bool {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_scrolling_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetDragToRearrangeEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_drag_to_rearrange_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetDragToRearrangeEnabled()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetDragToRearrangeEnabled() bool {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_drag_to_rearrange_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetTabsRearrangeGroup(group_id int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tabs_rearrange_group")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&group_id), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetTabsRearrangeGroup()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetTabsRearrangeGroup() int {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tabs_rearrange_group")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetScrollToSelected(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_scroll_to_selected")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetScrollToSelected()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetScrollToSelected() bool {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_scroll_to_selected")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) SetSelectWithRmb(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_select_with_rmb")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TabBar) GetSelectWithRmb()  {
-  panic("TODO: implement")
+func  (me *TabBar) GetSelectWithRmb() bool {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_select_with_rmb")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *TabBar) ClearTabs()  {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_tabs")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *TabBar) GetPropCurrentTab() int {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *TabBar) SetPropCurrentTab(value int) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *TabBar) GetPropTabAlignment() int {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) SetPropTabAlignment(value int) {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) GetPropClipTabs() bool {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) SetPropClipTabs(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) GetPropTabCloseDisplayPolicy() int {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) SetPropTabCloseDisplayPolicy(value int) {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) GetPropMaxTabWidth() int {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) SetPropMaxTabWidth(value int) {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) GetPropScrollingEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) SetPropScrollingEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) GetPropDragToRearrangeEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) SetPropDragToRearrangeEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) GetPropTabsRearrangeGroup() int {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) SetPropTabsRearrangeGroup(value int) {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) GetPropScrollToSelected() bool {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) SetPropScrollToSelected(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) GetPropSelectWithRmb() bool {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) SetPropSelectWithRmb(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) GetPropTabCount() int {
+  panic("TODO: implement")
+}
+
+func (me *TabBar) SetPropTabCount(value int) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

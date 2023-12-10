@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AnimationNodeOneShot struct {
   obj gdc.ObjectPtr
@@ -55,73 +51,246 @@ func (me *AnimationNodeOneShot) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *AnimationNodeOneShot) SetFadeinTime(time float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_fadein_time")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNodeOneShot) GetFadeinTime()  {
-  panic("TODO: implement")
+func  (me *AnimationNodeOneShot) GetFadeinTime() float32 {
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_fadein_time")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNodeOneShot) SetFadeinCurve(curve Curve, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_fadein_curve")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNodeOneShot) GetFadeinCurve()  {
-  panic("TODO: implement")
+func  (me *AnimationNodeOneShot) GetFadeinCurve() Curve {
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_fadein_curve")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
+  var ret Curve
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNodeOneShot) SetFadeoutTime(time float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_fadeout_time")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNodeOneShot) GetFadeoutTime()  {
-  panic("TODO: implement")
+func  (me *AnimationNodeOneShot) GetFadeoutTime() float32 {
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_fadeout_time")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNodeOneShot) SetFadeoutCurve(curve Curve, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_fadeout_curve")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNodeOneShot) GetFadeoutCurve()  {
-  panic("TODO: implement")
+func  (me *AnimationNodeOneShot) GetFadeoutCurve() Curve {
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_fadeout_curve")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
+  var ret Curve
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNodeOneShot) SetAutorestart(active bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_autorestart")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNodeOneShot) HasAutorestart()  {
-  panic("TODO: implement")
+func  (me *AnimationNodeOneShot) HasAutorestart() bool {
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_autorestart")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNodeOneShot) SetAutorestartDelay(time float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_autorestart_delay")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNodeOneShot) GetAutorestartDelay()  {
-  panic("TODO: implement")
+func  (me *AnimationNodeOneShot) GetAutorestartDelay() float32 {
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_autorestart_delay")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNodeOneShot) SetAutorestartRandomDelay(time float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_autorestart_random_delay")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNodeOneShot) GetAutorestartRandomDelay()  {
-  panic("TODO: implement")
+func  (me *AnimationNodeOneShot) GetAutorestartRandomDelay() float32 {
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_autorestart_random_delay")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNodeOneShot) SetMixMode(mode AnimationNodeOneShotMixMode, )  {
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_mix_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1018899799) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *AnimationNodeOneShot) GetMixMode() AnimationNodeOneShotMixMode {
+  classNameV := StringNameFromStr("AnimationNodeOneShot")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_mix_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3076550526) // FIXME: should cache?
+  var ret AnimationNodeOneShotMixMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *AnimationNodeOneShot) GetPropMixMode() int {
   panic("TODO: implement")
 }
 
-func  (me *AnimationNodeOneShot) GetMixMode()  {
+func (me *AnimationNodeOneShot) SetPropMixMode(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *AnimationNodeOneShot) GetPropFadeinTime() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *AnimationNodeOneShot) SetPropFadeinTime(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) GetPropFadeinCurve() Curve {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) SetPropFadeinCurve(value Curve) {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) GetPropFadeoutTime() float32 {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) SetPropFadeoutTime(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) GetPropFadeoutCurve() Curve {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) SetPropFadeoutCurve(value Curve) {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) GetPropAutorestart() bool {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) SetPropAutorestart(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) GetPropAutorestartDelay() float32 {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) SetPropAutorestartDelay(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) GetPropAutorestartRandomDelay() float32 {
+  panic("TODO: implement")
+}
+
+func (me *AnimationNodeOneShot) SetPropAutorestartRandomDelay(value float32) {
+  panic("TODO: implement")
+}

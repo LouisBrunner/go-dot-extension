@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeCustom struct {
   obj gdc.ObjectPtr
@@ -41,69 +37,14 @@ func (me *VisualShaderNodeCustom) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *VisualShaderNodeCustom) XGetName()  {
+// Properties
+
+func (me *VisualShaderNodeCustom) GetPropInitialized() bool {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCustom) XGetDescription()  {
+func (me *VisualShaderNodeCustom) SetPropInitialized(value bool) {
   panic("TODO: implement")
 }
-
-func  (me *VisualShaderNodeCustom) XGetCategory()  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XGetReturnIconType()  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XGetInputPortCount()  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XGetInputPortType(port int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XGetInputPortName(port int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XGetOutputPortCount()  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XGetOutputPortType(port int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XGetOutputPortName(port int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XGetCode(input_vars String, output_vars String, mode ShaderMode, type_ VisualShaderType, )  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XGetFuncCode(mode ShaderMode, type_ VisualShaderType, )  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XGetGlobalCode(mode ShaderMode, )  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XIsHighend()  {
-  panic("TODO: implement")
-}
-
-func  (me *VisualShaderNodeCustom) XIsAvailable(mode ShaderMode, type_ VisualShaderType, )  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type FlowContainer struct {
   obj gdc.ObjectPtr
@@ -48,29 +44,78 @@ func (me *FlowContainer) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *FlowContainer) GetLineCount()  {
-  panic("TODO: implement")
+func  (me *FlowContainer) GetLineCount() int {
+  classNameV := StringNameFromStr("FlowContainer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FlowContainer) SetAlignment(alignment FlowContainerAlignmentMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("FlowContainer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_alignment")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 575250951) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *FlowContainer) GetAlignment()  {
-  panic("TODO: implement")
+func  (me *FlowContainer) GetAlignment() FlowContainerAlignmentMode {
+  classNameV := StringNameFromStr("FlowContainer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_alignment")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3749743559) // FIXME: should cache?
+  var ret FlowContainerAlignmentMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *FlowContainer) SetVertical(vertical bool, )  {
+  classNameV := StringNameFromStr("FlowContainer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_vertical")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vertical), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *FlowContainer) IsVertical() bool {
+  classNameV := StringNameFromStr("FlowContainer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_vertical")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *FlowContainer) GetPropAlignment() int {
   panic("TODO: implement")
 }
 
-func  (me *FlowContainer) IsVertical()  {
+func (me *FlowContainer) SetPropAlignment(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *FlowContainer) GetPropVertical() bool {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *FlowContainer) SetPropVertical(value bool) {
+  panic("TODO: implement")
+}

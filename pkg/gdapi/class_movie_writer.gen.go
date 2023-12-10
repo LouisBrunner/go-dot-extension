@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
   "unsafe"
-
-
-
-
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MovieWriter struct {
   obj gdc.ObjectPtr
@@ -41,37 +37,16 @@ func (me *MovieWriter) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *MovieWriter) XGetAudioMixRate()  {
-  panic("TODO: implement")
-}
-
-func  (me *MovieWriter) XGetAudioSpeakerMode()  {
-  panic("TODO: implement")
-}
-
-func  (me *MovieWriter) XHandlesFile(path String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *MovieWriter) XWriteBegin(movie_size Vector2i, fps int, base_path String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *MovieWriter) XWriteFrame(frame_image Image, audio_frame_block unsafe.Pointer, )  {
-  panic("TODO: implement")
-}
-
-func  (me *MovieWriter) XWriteEnd()  {
-  panic("TODO: implement")
-}
-
 func  MovieWriterAddWriter(writer MovieWriter, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MovieWriter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_writer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4023702871) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(writer.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

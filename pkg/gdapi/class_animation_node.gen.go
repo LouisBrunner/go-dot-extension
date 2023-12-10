@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AnimationNode struct {
   obj gdc.ObjectPtr
@@ -49,101 +45,194 @@ func (me *AnimationNode) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *AnimationNode) XGetChildNodes()  {
-  panic("TODO: implement")
-}
-
-func  (me *AnimationNode) XGetParameterList()  {
-  panic("TODO: implement")
-}
-
-func  (me *AnimationNode) XGetChildByName(name StringName, )  {
-  panic("TODO: implement")
-}
-
-func  (me *AnimationNode) XGetParameterDefaultValue(parameter StringName, )  {
-  panic("TODO: implement")
-}
-
-func  (me *AnimationNode) XIsParameterReadOnly(parameter StringName, )  {
-  panic("TODO: implement")
-}
-
-func  (me *AnimationNode) XProcess(time float32, seek bool, is_external_seeking bool, test_only bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *AnimationNode) XGetCaption()  {
-  panic("TODO: implement")
-}
-
-func  (me *AnimationNode) XHasFilter()  {
-  panic("TODO: implement")
-}
-
-func  (me *AnimationNode) AddInput(name String, )  {
-  panic("TODO: implement")
+func  (me *AnimationNode) AddInput(name String, ) bool {
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_input")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2323990056) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNode) RemoveInput(index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_input")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNode) SetInputName(input int, name String, )  {
-  panic("TODO: implement")
+func  (me *AnimationNode) SetInputName(input int, name String, ) bool {
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_input_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 215573526) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input), gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *AnimationNode) GetInputName(input int, )  {
-  panic("TODO: implement")
+func  (me *AnimationNode) GetInputName(input int, ) String {
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_input_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *AnimationNode) GetInputCount()  {
-  panic("TODO: implement")
+func  (me *AnimationNode) GetInputCount() int {
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_input_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *AnimationNode) FindInput(name String, )  {
-  panic("TODO: implement")
+func  (me *AnimationNode) FindInput(name String, ) int {
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("find_input")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1321353865) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNode) SetFilterPath(path NodePath, enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_filter_path")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3868023870) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNode) IsPathFiltered(path NodePath, )  {
-  panic("TODO: implement")
+func  (me *AnimationNode) IsPathFiltered(path NodePath, ) bool {
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_path_filtered")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 861721659) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNode) SetFilterEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_filter_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNode) IsFilterEnabled()  {
-  panic("TODO: implement")
+func  (me *AnimationNode) IsFilterEnabled() bool {
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_filter_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNode) BlendAnimation(animation StringName, time float32, delta float32, seeked bool, is_external_seeking bool, blend float32, looped_flag AnimationLoopedFlag, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("blend_animation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 11797022) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(animation.AsCTypePtr()), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(&delta), gdc.ConstTypePtr(&seeked), gdc.ConstTypePtr(&is_external_seeking), gdc.ConstTypePtr(&blend), gdc.ConstTypePtr(&looped_flag), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationNode) BlendNode(name StringName, node AnimationNode, time float32, seek bool, is_external_seeking bool, blend float32, filter AnimationNodeFilterAction, sync bool, test_only bool, )  {
-  panic("TODO: implement")
+func  (me *AnimationNode) BlendNode(name StringName, node AnimationNode, time float32, seek bool, is_external_seeking bool, blend float32, filter AnimationNodeFilterAction, sync bool, test_only bool, ) float32 {
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("blend_node")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 263389446) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(node.AsCTypePtr()), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(&seek), gdc.ConstTypePtr(&is_external_seeking), gdc.ConstTypePtr(&blend), gdc.ConstTypePtr(&filter), gdc.ConstTypePtr(&sync), gdc.ConstTypePtr(&test_only), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *AnimationNode) BlendInput(input_index int, time float32, seek bool, is_external_seeking bool, blend float32, filter AnimationNodeFilterAction, sync bool, test_only bool, )  {
-  panic("TODO: implement")
+func  (me *AnimationNode) BlendInput(input_index int, time float32, seek bool, is_external_seeking bool, blend float32, filter AnimationNodeFilterAction, sync bool, test_only bool, ) float32 {
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("blend_input")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2709059328) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_index), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(&seek), gdc.ConstTypePtr(&is_external_seeking), gdc.ConstTypePtr(&blend), gdc.ConstTypePtr(&filter), gdc.ConstTypePtr(&sync), gdc.ConstTypePtr(&test_only), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *AnimationNode) SetParameter(name StringName, value Variant, )  {
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_parameter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3776071444) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *AnimationNode) GetParameter(name StringName, ) Variant {
+  classNameV := StringNameFromStr("AnimationNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_parameter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2760726917) // FIXME: should cache?
+  var ret Variant
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *AnimationNode) GetPropFilterEnabled() bool {
   panic("TODO: implement")
 }
 
-func  (me *AnimationNode) GetParameter(name StringName, )  {
+func (me *AnimationNode) SetPropFilterEnabled(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *AnimationNode) GetPropFilters() Array {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *AnimationNode) SetPropFilters(value Array) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDPipelineColorBlendState struct {
   obj gdc.ObjectPtr
@@ -41,41 +37,126 @@ func (me *RDPipelineColorBlendState) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *RDPipelineColorBlendState) SetEnableLogicOp(p_member bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineColorBlendState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_enable_logic_op")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineColorBlendState) GetEnableLogicOp()  {
-  panic("TODO: implement")
+func  (me *RDPipelineColorBlendState) GetEnableLogicOp() bool {
+  classNameV := StringNameFromStr("RDPipelineColorBlendState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_enable_logic_op")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineColorBlendState) SetLogicOp(p_member RenderingDeviceLogicOperation, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineColorBlendState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_logic_op")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3610841058) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineColorBlendState) GetLogicOp()  {
-  panic("TODO: implement")
+func  (me *RDPipelineColorBlendState) GetLogicOp() RenderingDeviceLogicOperation {
+  classNameV := StringNameFromStr("RDPipelineColorBlendState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_logic_op")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 988254690) // FIXME: should cache?
+  var ret RenderingDeviceLogicOperation
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineColorBlendState) SetBlendConstant(p_member Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineColorBlendState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_blend_constant")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(p_member.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineColorBlendState) GetBlendConstant()  {
-  panic("TODO: implement")
+func  (me *RDPipelineColorBlendState) GetBlendConstant() Color {
+  classNameV := StringNameFromStr("RDPipelineColorBlendState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_blend_constant")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineColorBlendState) SetAttachments(attachments RDPipelineColorBlendStateAttachment, )  {
+  classNameV := StringNameFromStr("RDPipelineColorBlendState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_attachments")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(attachments.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RDPipelineColorBlendState) GetAttachments() RDPipelineColorBlendStateAttachment {
+  classNameV := StringNameFromStr("RDPipelineColorBlendState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_attachments")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret RDPipelineColorBlendStateAttachment
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *RDPipelineColorBlendState) GetPropEnableLogicOp() bool {
   panic("TODO: implement")
 }
 
-func  (me *RDPipelineColorBlendState) GetAttachments()  {
+func (me *RDPipelineColorBlendState) SetPropEnableLogicOp(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *RDPipelineColorBlendState) GetPropLogicOp() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *RDPipelineColorBlendState) SetPropLogicOp(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineColorBlendState) GetPropBlendConstant() Color {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineColorBlendState) SetPropBlendConstant(value Color) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineColorBlendState) GetPropAttachments() RDPipelineColorBlendStateAttachment {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineColorBlendState) SetPropAttachments(value RDPipelineColorBlendStateAttachment) {
+  panic("TODO: implement")
+}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Control struct {
   obj gdc.ObjectPtr
@@ -157,553 +153,1740 @@ func (me *Control) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *Control) XHasPoint(point Vector2, )  {
-  panic("TODO: implement")
-}
-
-func  (me *Control) XStructuredTextParser(args Array, text String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *Control) XGetMinimumSize()  {
-  panic("TODO: implement")
-}
-
-func  (me *Control) XGetTooltip(at_position Vector2, )  {
-  panic("TODO: implement")
-}
-
-func  (me *Control) XGetDragData(at_position Vector2, )  {
-  panic("TODO: implement")
-}
-
-func  (me *Control) XCanDropData(at_position Vector2, data Variant, )  {
-  panic("TODO: implement")
-}
-
-func  (me *Control) XDropData(at_position Vector2, data Variant, )  {
-  panic("TODO: implement")
-}
-
-func  (me *Control) XMakeCustomTooltip(for_text String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *Control) XGuiInput(event InputEvent, )  {
-  panic("TODO: implement")
-}
-
 func  (me *Control) AcceptEvent()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("accept_event")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetMinimumSize()  {
-  panic("TODO: implement")
+func  (me *Control) GetMinimumSize() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_minimum_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetCombinedMinimumSize()  {
-  panic("TODO: implement")
+func  (me *Control) GetCombinedMinimumSize() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_combined_minimum_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetAnchorsPreset(preset ControlLayoutPreset, keep_offsets bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_anchors_preset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 509135270) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&preset), gdc.ConstTypePtr(&keep_offsets), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetOffsetsPreset(preset ControlLayoutPreset, resize_mode ControlLayoutPresetMode, margin int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_offsets_preset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3651818904) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&preset), gdc.ConstTypePtr(&resize_mode), gdc.ConstTypePtr(&margin), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetAnchorsAndOffsetsPreset(preset ControlLayoutPreset, resize_mode ControlLayoutPresetMode, margin int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_anchors_and_offsets_preset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3651818904) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&preset), gdc.ConstTypePtr(&resize_mode), gdc.ConstTypePtr(&margin), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetAnchor(side Side, anchor float32, keep_offset bool, push_opposite_anchor bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_anchor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2589937826) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&side), gdc.ConstTypePtr(&anchor), gdc.ConstTypePtr(&keep_offset), gdc.ConstTypePtr(&push_opposite_anchor), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetAnchor(side Side, )  {
-  panic("TODO: implement")
+func  (me *Control) GetAnchor(side Side, ) float32 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_anchor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2869120046) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&side), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetOffset(side Side, offset float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4290182280) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&side), gdc.ConstTypePtr(&offset), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetOffset(offset Side, )  {
-  panic("TODO: implement")
+func  (me *Control) GetOffset(offset Side, ) float32 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2869120046) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&offset), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetAnchorAndOffset(side Side, anchor float32, offset float32, push_opposite_anchor bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_anchor_and_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4031722181) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&side), gdc.ConstTypePtr(&anchor), gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(&push_opposite_anchor), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetBegin(position Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_begin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetEnd(position Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_end")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetPosition(position Vector2, keep_offsets bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2436320129) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&keep_offsets), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetSize(size Vector2, keep_offsets bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2436320129) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&keep_offsets), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) ResetSize()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("reset_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetCustomMinimumSize(size Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_custom_minimum_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetGlobalPosition(position Vector2, keep_offsets bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_global_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2436320129) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&keep_offsets), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetRotation(radians float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_rotation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetRotationDegrees(degrees float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_rotation_degrees")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&degrees), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetScale(scale Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetPivotOffset(pivot_offset Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_pivot_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pivot_offset.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetBegin()  {
-  panic("TODO: implement")
+func  (me *Control) GetBegin() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_begin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetEnd()  {
-  panic("TODO: implement")
+func  (me *Control) GetEnd() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_end")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetPosition()  {
-  panic("TODO: implement")
+func  (me *Control) GetPosition() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetSize()  {
-  panic("TODO: implement")
+func  (me *Control) GetSize() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetRotation()  {
-  panic("TODO: implement")
+func  (me *Control) GetRotation() float32 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rotation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetRotationDegrees()  {
-  panic("TODO: implement")
+func  (me *Control) GetRotationDegrees() float32 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rotation_degrees")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetScale()  {
-  panic("TODO: implement")
+func  (me *Control) GetScale() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetPivotOffset()  {
-  panic("TODO: implement")
+func  (me *Control) GetPivotOffset() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_pivot_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetCustomMinimumSize()  {
-  panic("TODO: implement")
+func  (me *Control) GetCustomMinimumSize() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_custom_minimum_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetParentAreaSize()  {
-  panic("TODO: implement")
+func  (me *Control) GetParentAreaSize() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_parent_area_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetGlobalPosition()  {
-  panic("TODO: implement")
+func  (me *Control) GetGlobalPosition() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_global_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetScreenPosition()  {
-  panic("TODO: implement")
+func  (me *Control) GetScreenPosition() Vector2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_screen_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetRect()  {
-  panic("TODO: implement")
+func  (me *Control) GetRect() Rect2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
+  var ret Rect2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetGlobalRect()  {
-  panic("TODO: implement")
+func  (me *Control) GetGlobalRect() Rect2 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_global_rect")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
+  var ret Rect2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetFocusMode(mode ControlFocusMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_focus_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3232914922) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetFocusMode()  {
-  panic("TODO: implement")
+func  (me *Control) GetFocusMode() ControlFocusMode {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_focus_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2132829277) // FIXME: should cache?
+  var ret ControlFocusMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasFocus()  {
-  panic("TODO: implement")
+func  (me *Control) HasFocus() bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_focus")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) GrabFocus()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("grab_focus")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) ReleaseFocus()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("release_focus")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) FindPrevValidFocus()  {
-  panic("TODO: implement")
+func  (me *Control) FindPrevValidFocus() Control {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("find_prev_valid_focus")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2783021301) // FIXME: should cache?
+  var ret Control
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) FindNextValidFocus()  {
-  panic("TODO: implement")
+func  (me *Control) FindNextValidFocus() Control {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("find_next_valid_focus")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2783021301) // FIXME: should cache?
+  var ret Control
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetHSizeFlags(flags ControlSizeFlags, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_h_size_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 394851643) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetHSizeFlags()  {
-  panic("TODO: implement")
+func  (me *Control) GetHSizeFlags() ControlSizeFlags {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_h_size_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3781367401) // FIXME: should cache?
+  var ret ControlSizeFlags
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetStretchRatio(ratio float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_stretch_ratio")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ratio), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetStretchRatio()  {
-  panic("TODO: implement")
+func  (me *Control) GetStretchRatio() float32 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_stretch_ratio")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetVSizeFlags(flags ControlSizeFlags, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_v_size_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 394851643) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetVSizeFlags()  {
-  panic("TODO: implement")
+func  (me *Control) GetVSizeFlags() ControlSizeFlags {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_v_size_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3781367401) // FIXME: should cache?
+  var ret ControlSizeFlags
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetTheme(theme Theme, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_theme")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2326690814) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(theme.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetTheme()  {
-  panic("TODO: implement")
+func  (me *Control) GetTheme() Theme {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_theme")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3846893731) // FIXME: should cache?
+  var ret Theme
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetThemeTypeVariation(theme_type StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_theme_type_variation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetThemeTypeVariation()  {
-  panic("TODO: implement")
+func  (me *Control) GetThemeTypeVariation() StringName {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_theme_type_variation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
+  var ret StringName
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) BeginBulkThemeOverride()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("begin_bulk_theme_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) EndBulkThemeOverride()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("end_bulk_theme_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) AddThemeIconOverride(name StringName, texture Texture2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_theme_icon_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1373065600) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) AddThemeStyleboxOverride(name StringName, stylebox StyleBox, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_theme_stylebox_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4188838905) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(stylebox.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) AddThemeFontOverride(name StringName, font Font, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_theme_font_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3518018674) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(font.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) AddThemeFontSizeOverride(name StringName, font_size int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_theme_font_size_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2415702435) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(&font_size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) AddThemeColorOverride(name StringName, color Color, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_theme_color_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4260178595) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) AddThemeConstantOverride(name StringName, constant int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_theme_constant_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2415702435) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(&constant), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) RemoveThemeIconOverride(name StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_theme_icon_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) RemoveThemeStyleboxOverride(name StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_theme_stylebox_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) RemoveThemeFontOverride(name StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_theme_font_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) RemoveThemeFontSizeOverride(name StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_theme_font_size_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) RemoveThemeColorOverride(name StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_theme_color_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) RemoveThemeConstantOverride(name StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_theme_constant_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetThemeIcon(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) GetThemeIcon(name StringName, theme_type StringName, ) Texture2D {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_theme_icon")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2336455395) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetThemeStylebox(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) GetThemeStylebox(name StringName, theme_type StringName, ) StyleBox {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_theme_stylebox")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2759935355) // FIXME: should cache?
+  var ret StyleBox
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetThemeFont(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) GetThemeFont(name StringName, theme_type StringName, ) Font {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_theme_font")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 387378635) // FIXME: should cache?
+  var ret Font
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetThemeFontSize(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) GetThemeFontSize(name StringName, theme_type StringName, ) int {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_theme_font_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 229578101) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetThemeColor(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) GetThemeColor(name StringName, theme_type StringName, ) Color {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_theme_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2377051548) // FIXME: should cache?
+  var ret Color
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetThemeConstant(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) GetThemeConstant(name StringName, theme_type StringName, ) int {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_theme_constant")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 229578101) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeIconOverride(name StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeIconOverride(name StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_icon_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeStyleboxOverride(name StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeStyleboxOverride(name StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_stylebox_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeFontOverride(name StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeFontOverride(name StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_font_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeFontSizeOverride(name StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeFontSizeOverride(name StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_font_size_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeColorOverride(name StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeColorOverride(name StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_color_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeConstantOverride(name StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeConstantOverride(name StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_constant_override")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeIcon(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeIcon(name StringName, theme_type StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_icon")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1187511791) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeStylebox(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeStylebox(name StringName, theme_type StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_stylebox")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1187511791) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeFont(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeFont(name StringName, theme_type StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_font")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1187511791) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeFontSize(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeFontSize(name StringName, theme_type StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_font_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1187511791) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeColor(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeColor(name StringName, theme_type StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_color")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1187511791) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) HasThemeConstant(name StringName, theme_type StringName, )  {
-  panic("TODO: implement")
+func  (me *Control) HasThemeConstant(name StringName, theme_type StringName, ) bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_theme_constant")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1187511791) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(theme_type.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetThemeDefaultBaseScale()  {
-  panic("TODO: implement")
+func  (me *Control) GetThemeDefaultBaseScale() float32 {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_theme_default_base_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetThemeDefaultFont()  {
-  panic("TODO: implement")
+func  (me *Control) GetThemeDefaultFont() Font {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_theme_default_font")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229501585) // FIXME: should cache?
+  var ret Font
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetThemeDefaultFontSize()  {
-  panic("TODO: implement")
+func  (me *Control) GetThemeDefaultFontSize() int {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_theme_default_font_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetParentControl()  {
-  panic("TODO: implement")
+func  (me *Control) GetParentControl() Control {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_parent_control")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2783021301) // FIXME: should cache?
+  var ret Control
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetHGrowDirection(direction ControlGrowDirection, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_h_grow_direction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2022385301) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&direction), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetHGrowDirection()  {
-  panic("TODO: implement")
+func  (me *Control) GetHGrowDirection() ControlGrowDirection {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_h_grow_direction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635610155) // FIXME: should cache?
+  var ret ControlGrowDirection
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetVGrowDirection(direction ControlGrowDirection, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_v_grow_direction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2022385301) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&direction), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetVGrowDirection()  {
-  panic("TODO: implement")
+func  (me *Control) GetVGrowDirection() ControlGrowDirection {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_v_grow_direction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635610155) // FIXME: should cache?
+  var ret ControlGrowDirection
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetTooltipText(hint String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tooltip_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(hint.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetTooltipText()  {
-  panic("TODO: implement")
+func  (me *Control) GetTooltipText() String {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tooltip_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetTooltip(at_position Vector2, )  {
-  panic("TODO: implement")
+func  (me *Control) GetTooltip(at_position Vector2, ) String {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tooltip")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2895288280) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(at_position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetDefaultCursorShape(shape ControlCursorShape, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_default_cursor_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 217062046) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shape), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetDefaultCursorShape()  {
-  panic("TODO: implement")
+func  (me *Control) GetDefaultCursorShape() ControlCursorShape {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_default_cursor_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2359535750) // FIXME: should cache?
+  var ret ControlCursorShape
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) GetCursorShape(position Vector2, )  {
-  panic("TODO: implement")
+func  (me *Control) GetCursorShape(position Vector2, ) ControlCursorShape {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_cursor_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1395773853) // FIXME: should cache?
+  var ret ControlCursorShape
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetFocusNeighbor(side Side, neighbor NodePath, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_focus_neighbor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2024461774) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&side), gdc.ConstTypePtr(neighbor.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetFocusNeighbor(side Side, )  {
-  panic("TODO: implement")
+func  (me *Control) GetFocusNeighbor(side Side, ) NodePath {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_focus_neighbor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757935761) // FIXME: should cache?
+  var ret NodePath
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&side), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetFocusNext(next NodePath, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_focus_next")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(next.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetFocusNext()  {
-  panic("TODO: implement")
+func  (me *Control) GetFocusNext() NodePath {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_focus_next")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
+  var ret NodePath
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetFocusPrevious(previous NodePath, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_focus_previous")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(previous.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetFocusPrevious()  {
-  panic("TODO: implement")
+func  (me *Control) GetFocusPrevious() NodePath {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_focus_previous")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
+  var ret NodePath
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) ForceDrag(data Variant, preview Control, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("force_drag")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3191844692) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(data.AsCTypePtr()), gdc.ConstTypePtr(preview.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetMouseFilter(filter ControlMouseFilter, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_mouse_filter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3891156122) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&filter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetMouseFilter()  {
-  panic("TODO: implement")
+func  (me *Control) GetMouseFilter() ControlMouseFilter {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_mouse_filter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1572545674) // FIXME: should cache?
+  var ret ControlMouseFilter
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetForcePassScrollEvents(force_pass_scroll_events bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_force_pass_scroll_events")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&force_pass_scroll_events), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) IsForcePassScrollEvents()  {
-  panic("TODO: implement")
+func  (me *Control) IsForcePassScrollEvents() bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_force_pass_scroll_events")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetClipContents(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_clip_contents")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) IsClippingContents()  {
-  panic("TODO: implement")
+func  (me *Control) IsClippingContents() bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_clipping_contents")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) GrabClickFocus()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("grab_click_focus")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetDragForwarding(drag_func Callable, can_drop_func Callable, drop_func Callable, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_drag_forwarding")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1076571380) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(drag_func.AsCTypePtr()), gdc.ConstTypePtr(can_drop_func.AsCTypePtr()), gdc.ConstTypePtr(drop_func.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetDragPreview(control Control, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_drag_preview")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(control.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) IsDragSuccessful()  {
-  panic("TODO: implement")
+func  (me *Control) IsDragSuccessful() bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drag_successful")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) WarpMouse(position Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("warp_mouse")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetShortcutContext(node Node, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_shortcut_context")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetShortcutContext()  {
-  panic("TODO: implement")
+func  (me *Control) GetShortcutContext() Node {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_shortcut_context")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3160264692) // FIXME: should cache?
+  var ret Node
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) UpdateMinimumSize()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("update_minimum_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Control) SetLayoutDirection(direction ControlLayoutDirection, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_layout_direction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3310692370) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&direction), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) GetLayoutDirection()  {
-  panic("TODO: implement")
+func  (me *Control) GetLayoutDirection() ControlLayoutDirection {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_layout_direction")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1546772008) // FIXME: should cache?
+  var ret ControlLayoutDirection
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Control) IsLayoutRtl()  {
-  panic("TODO: implement")
+func  (me *Control) IsLayoutRtl() bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_layout_rtl")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetAutoTranslate(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_auto_translate")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Control) IsAutoTranslating()  {
-  panic("TODO: implement")
+func  (me *Control) IsAutoTranslating() bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_auto_translating")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Control) SetLocalizeNumeralSystem(enable bool, )  {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_localize_numeral_system")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *Control) IsLocalizingNumeralSystem() bool {
+  classNameV := StringNameFromStr("Control")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_localizing_numeral_system")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *Control) GetPropClipContents() bool {
   panic("TODO: implement")
 }
 
-func  (me *Control) IsLocalizingNumeralSystem()  {
+func (me *Control) SetPropClipContents(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *Control) GetPropCustomMinimumSize() Vector2 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *Control) SetPropCustomMinimumSize(value Vector2) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropLayoutDirection() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropLayoutDirection(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropLayoutMode() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropLayoutMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropAnchorsPreset() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropAnchorsPreset(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropAnchorLeft() float32 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropAnchorLeft(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropAnchorTop() float32 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropAnchorTop(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropAnchorRight() float32 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropAnchorRight(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropAnchorBottom() float32 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropAnchorBottom(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropOffsetLeft() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropOffsetLeft(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropOffsetTop() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropOffsetTop(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropOffsetRight() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropOffsetRight(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropOffsetBottom() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropOffsetBottom(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropGrowHorizontal() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropGrowHorizontal(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropGrowVertical() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropGrowVertical(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropSize() Vector2 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropSize(value Vector2) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropPosition() Vector2 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropPosition(value Vector2) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropGlobalPosition() Vector2 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropGlobalPosition(value Vector2) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropRotation() float32 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropRotation(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropRotationDegrees() float32 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropRotationDegrees(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropScale() Vector2 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropScale(value Vector2) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropPivotOffset() Vector2 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropPivotOffset(value Vector2) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropSizeFlagsHorizontal() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropSizeFlagsHorizontal(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropSizeFlagsVertical() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropSizeFlagsVertical(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropSizeFlagsStretchRatio() float32 {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropSizeFlagsStretchRatio(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropAutoTranslate() bool {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropAutoTranslate(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropLocalizeNumeralSystem() bool {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropLocalizeNumeralSystem(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropTooltipText() String {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropTooltipText(value String) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropFocusNeighborLeft() NodePath {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropFocusNeighborLeft(value NodePath) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropFocusNeighborTop() NodePath {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropFocusNeighborTop(value NodePath) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropFocusNeighborRight() NodePath {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropFocusNeighborRight(value NodePath) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropFocusNeighborBottom() NodePath {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropFocusNeighborBottom(value NodePath) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropFocusNext() NodePath {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropFocusNext(value NodePath) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropFocusPrevious() NodePath {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropFocusPrevious(value NodePath) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropFocusMode() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropFocusMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropMouseFilter() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropMouseFilter(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropMouseForcePassScrollEvents() bool {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropMouseForcePassScrollEvents(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropMouseDefaultCursorShape() int {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropMouseDefaultCursorShape(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropShortcutContext() Object {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropShortcutContext(value Object) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropTheme() Theme {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropTheme(value Theme) {
+  panic("TODO: implement")
+}
+
+func (me *Control) GetPropThemeTypeVariation() String {
+  panic("TODO: implement")
+}
+
+func (me *Control) SetPropThemeTypeVariation(value String) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

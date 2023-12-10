@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Resource struct {
   obj gdc.ObjectPtr
@@ -41,57 +37,164 @@ func (me *Resource) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *Resource) SetPath(path String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_path")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Resource) TakeOverPath(path String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("take_over_path")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Resource) GetPath()  {
-  panic("TODO: implement")
+func  (me *Resource) GetPath() String {
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_path")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Resource) SetName(name String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Resource) GetName()  {
-  panic("TODO: implement")
+func  (me *Resource) GetName() String {
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Resource) GetRid()  {
-  panic("TODO: implement")
+func  (me *Resource) GetRid() RID {
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rid")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Resource) SetLocalToScene(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_local_to_scene")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Resource) IsLocalToScene()  {
-  panic("TODO: implement")
+func  (me *Resource) IsLocalToScene() bool {
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_local_to_scene")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Resource) GetLocalScene()  {
-  panic("TODO: implement")
+func  (me *Resource) GetLocalScene() Node {
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_local_scene")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3160264692) // FIXME: should cache?
+  var ret Node
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Resource) SetupLocalToScene()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("setup_local_to_scene")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Resource) EmitChanged()  {
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("emit_changed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *Resource) Duplicate(subresources bool, ) Resource {
+  classNameV := StringNameFromStr("Resource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("duplicate")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 482882304) // FIXME: should cache?
+  var ret Resource
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subresources), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *Resource) GetPropResourceLocalToScene() bool {
   panic("TODO: implement")
 }
 
-func  (me *Resource) Duplicate(subresources bool, )  {
+func (me *Resource) SetPropResourceLocalToScene(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *Resource) GetPropResourcePath() String {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *Resource) SetPropResourcePath(value String) {
+  panic("TODO: implement")
+}
+
+func (me *Resource) GetPropResourceName() String {
+  panic("TODO: implement")
+}
+
+func (me *Resource) SetPropResourceName(value String) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

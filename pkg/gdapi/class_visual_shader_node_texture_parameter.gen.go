@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeTextureParameter struct {
   obj gdc.ObjectPtr
@@ -87,49 +83,156 @@ func (me *VisualShaderNodeTextureParameter) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeTextureParameter) SetTextureType(type_ VisualShaderNodeTextureParameterTextureType, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeTextureParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2227296876) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeTextureParameter) GetTextureType()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeTextureParameter) GetTextureType() VisualShaderNodeTextureParameterTextureType {
+  classNameV := StringNameFromStr("VisualShaderNodeTextureParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 367922070) // FIXME: should cache?
+  var ret VisualShaderNodeTextureParameterTextureType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeTextureParameter) SetColorDefault(color VisualShaderNodeTextureParameterColorDefault, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeTextureParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_color_default")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4217624432) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&color), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeTextureParameter) GetColorDefault()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeTextureParameter) GetColorDefault() VisualShaderNodeTextureParameterColorDefault {
+  classNameV := StringNameFromStr("VisualShaderNodeTextureParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_color_default")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3837060134) // FIXME: should cache?
+  var ret VisualShaderNodeTextureParameterColorDefault
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeTextureParameter) SetTextureFilter(filter VisualShaderNodeTextureParameterTextureFilter, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeTextureParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture_filter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2147684752) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&filter), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeTextureParameter) GetTextureFilter()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeTextureParameter) GetTextureFilter() VisualShaderNodeTextureParameterTextureFilter {
+  classNameV := StringNameFromStr("VisualShaderNodeTextureParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture_filter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4184490817) // FIXME: should cache?
+  var ret VisualShaderNodeTextureParameterTextureFilter
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeTextureParameter) SetTextureRepeat(repeat VisualShaderNodeTextureParameterTextureRepeat, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeTextureParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture_repeat")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2036143070) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&repeat), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeTextureParameter) GetTextureRepeat()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeTextureParameter) GetTextureRepeat() VisualShaderNodeTextureParameterTextureRepeat {
+  classNameV := StringNameFromStr("VisualShaderNodeTextureParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture_repeat")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1690132794) // FIXME: should cache?
+  var ret VisualShaderNodeTextureParameterTextureRepeat
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeTextureParameter) SetTextureSource(source VisualShaderNodeTextureParameterTextureSource, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeTextureParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture_source")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1212687372) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeTextureParameter) GetTextureSource() VisualShaderNodeTextureParameterTextureSource {
+  classNameV := StringNameFromStr("VisualShaderNodeTextureParameter")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture_source")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2039092262) // FIXME: should cache?
+  var ret VisualShaderNodeTextureParameterTextureSource
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeTextureParameter) GetPropTextureType() int {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeTextureParameter) GetTextureSource()  {
+func (me *VisualShaderNodeTextureParameter) SetPropTextureType(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *VisualShaderNodeTextureParameter) GetPropColorDefault() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *VisualShaderNodeTextureParameter) SetPropColorDefault(value int) {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeTextureParameter) GetPropTextureFilter() int {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeTextureParameter) SetPropTextureFilter(value int) {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeTextureParameter) GetPropTextureRepeat() int {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeTextureParameter) SetPropTextureRepeat(value int) {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeTextureParameter) GetPropTextureSource() int {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeTextureParameter) SetPropTextureSource(value int) {
+  panic("TODO: implement")
+}

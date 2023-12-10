@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CodeEdit struct {
   obj gdc.ObjectPtr
@@ -63,405 +59,1218 @@ func (me *CodeEdit) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *CodeEdit) XConfirmCodeCompletion(replace bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *CodeEdit) XRequestCodeCompletion(force bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *CodeEdit) XFilterCodeCompletionCandidates(candidates Dictionary, )  {
-  panic("TODO: implement")
-}
-
 func  (me *CodeEdit) SetIndentSize(size int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_indent_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetIndentSize()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetIndentSize() int {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_indent_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetIndentUsingSpaces(use_spaces bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_indent_using_spaces")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&use_spaces), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsIndentUsingSpaces()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsIndentUsingSpaces() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_indent_using_spaces")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetAutoIndentEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_auto_indent_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsAutoIndentEnabled()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsAutoIndentEnabled() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_auto_indent_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetAutoIndentPrefixes(prefixes String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_auto_indent_prefixes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(prefixes.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetAutoIndentPrefixes()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetAutoIndentPrefixes() String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_auto_indent_prefixes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) DoIndent()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("do_indent")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) IndentLines()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("indent_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) UnindentLines()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("unindent_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) ConvertIndent(from_line int, to_line int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("convert_indent")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 423910286) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_line), gdc.ConstTypePtr(&to_line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) SetAutoBraceCompletionEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_auto_brace_completion_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsAutoBraceCompletionEnabled()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsAutoBraceCompletionEnabled() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_auto_brace_completion_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetHighlightMatchingBracesEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_highlight_matching_braces_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsHighlightMatchingBracesEnabled()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsHighlightMatchingBracesEnabled() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_highlight_matching_braces_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) AddAutoBraceCompletionPair(start_key String, end_key String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_auto_brace_completion_pair")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3186203200) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start_key.AsCTypePtr()), gdc.ConstTypePtr(end_key.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) SetAutoBraceCompletionPairs(pairs Dictionary, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_auto_brace_completion_pairs")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155329257) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pairs.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetAutoBraceCompletionPairs()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetAutoBraceCompletionPairs() Dictionary {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_auto_brace_completion_pairs")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
+  var ret Dictionary
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) HasAutoBraceCompletionOpenKey(open_key String, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) HasAutoBraceCompletionOpenKey(open_key String, ) bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_auto_brace_completion_open_key")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(open_key.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) HasAutoBraceCompletionCloseKey(close_key String, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) HasAutoBraceCompletionCloseKey(close_key String, ) bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_auto_brace_completion_close_key")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(close_key.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) GetAutoBraceCompletionCloseKey(open_key String, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetAutoBraceCompletionCloseKey(open_key String, ) String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_auto_brace_completion_close_key")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3135753539) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(open_key.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetDrawBreakpointsGutter(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_draw_breakpoints_gutter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsDrawingBreakpointsGutter()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsDrawingBreakpointsGutter() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drawing_breakpoints_gutter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetDrawBookmarksGutter(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_draw_bookmarks_gutter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsDrawingBookmarksGutter()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsDrawingBookmarksGutter() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drawing_bookmarks_gutter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetDrawExecutingLinesGutter(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_draw_executing_lines_gutter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsDrawingExecutingLinesGutter()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsDrawingExecutingLinesGutter() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drawing_executing_lines_gutter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetLineAsBreakpoint(line int, breakpointed bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_as_breakpoint")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&breakpointed), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsLineBreakpointed(line int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsLineBreakpointed(line int, ) bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_line_breakpointed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) ClearBreakpointedLines()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_breakpointed_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetBreakpointedLines()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetBreakpointedLines() PackedInt32Array {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_breakpointed_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
+  var ret PackedInt32Array
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetLineAsBookmarked(line int, bookmarked bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_as_bookmarked")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&bookmarked), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsLineBookmarked(line int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsLineBookmarked(line int, ) bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_line_bookmarked")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) ClearBookmarkedLines()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_bookmarked_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetBookmarkedLines()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetBookmarkedLines() PackedInt32Array {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_bookmarked_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
+  var ret PackedInt32Array
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetLineAsExecuting(line int, executing bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_as_executing")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&executing), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsLineExecuting(line int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsLineExecuting(line int, ) bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_line_executing")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) ClearExecutingLines()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_executing_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetExecutingLines()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetExecutingLines() PackedInt32Array {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_executing_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
+  var ret PackedInt32Array
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetDrawLineNumbers(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_draw_line_numbers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsDrawLineNumbersEnabled()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsDrawLineNumbersEnabled() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_draw_line_numbers_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetLineNumbersZeroPadded(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_numbers_zero_padded")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsLineNumbersZeroPadded()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsLineNumbersZeroPadded() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_line_numbers_zero_padded")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetDrawFoldGutter(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_draw_fold_gutter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsDrawingFoldGutter()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsDrawingFoldGutter() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drawing_fold_gutter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetLineFoldingEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_folding_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsLineFoldingEnabled()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsLineFoldingEnabled() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_line_folding_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) CanFoldLine(line int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) CanFoldLine(line int, ) bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("can_fold_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) FoldLine(line int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("fold_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) UnfoldLine(line int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("unfold_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) FoldAllLines()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("fold_all_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) UnfoldAllLines()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("unfold_all_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) ToggleFoldableLine(line int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("toggle_foldable_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsLineFolded(line int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsLineFolded(line int, ) bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_line_folded")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) GetFoldedLines()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetFoldedLines() int {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_folded_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) AddStringDelimiter(start_key String, end_key String, line_only bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_string_delimiter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3146098955) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start_key.AsCTypePtr()), gdc.ConstTypePtr(end_key.AsCTypePtr()), gdc.ConstTypePtr(&line_only), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) RemoveStringDelimiter(start_key String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_string_delimiter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start_key.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) HasStringDelimiter(start_key String, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) HasStringDelimiter(start_key String, ) bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_string_delimiter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start_key.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetStringDelimiters(string_delimiters String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_string_delimiters")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(string_delimiters.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) ClearStringDelimiters()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_string_delimiters")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetStringDelimiters()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetStringDelimiters() String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_string_delimiters")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) IsInString(line int, column int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsInString(line int, column int, ) int {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_in_string")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3294126239) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) AddCommentDelimiter(start_key String, end_key String, line_only bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_comment_delimiter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3146098955) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start_key.AsCTypePtr()), gdc.ConstTypePtr(end_key.AsCTypePtr()), gdc.ConstTypePtr(&line_only), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) RemoveCommentDelimiter(start_key String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_comment_delimiter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start_key.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) HasCommentDelimiter(start_key String, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) HasCommentDelimiter(start_key String, ) bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_comment_delimiter")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start_key.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetCommentDelimiters(comment_delimiters String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_comment_delimiters")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(comment_delimiters.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) ClearCommentDelimiters()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_comment_delimiters")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetCommentDelimiters()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetCommentDelimiters() String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_comment_delimiters")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) IsInComment(line int, column int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsInComment(line int, column int, ) int {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_in_comment")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3294126239) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) GetDelimiterStartKey(delimiter_index int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetDelimiterStartKey(delimiter_index int, ) String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_delimiter_start_key")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delimiter_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) GetDelimiterEndKey(delimiter_index int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetDelimiterEndKey(delimiter_index int, ) String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_delimiter_end_key")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delimiter_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) GetDelimiterStartPosition(line int, column int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetDelimiterStartPosition(line int, column int, ) Vector2 {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_delimiter_start_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3016396712) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) GetDelimiterEndPosition(line int, column int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetDelimiterEndPosition(line int, column int, ) Vector2 {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_delimiter_end_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3016396712) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetCodeHint(code_hint String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_code_hint")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(code_hint.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) SetCodeHintDrawBelow(draw_below bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_code_hint_draw_below")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&draw_below), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetTextForCodeCompletion()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetTextForCodeCompletion() String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_text_for_code_completion")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) RequestCodeCompletion(force bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("request_code_completion")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 107499316) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&force), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) AddCodeCompletionOption(type_ CodeEditCodeCompletionKind, display_text String, insert_text String, text_color Color, icon Resource, value Variant, location int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_code_completion_option")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1629240608) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(display_text.AsCTypePtr()), gdc.ConstTypePtr(insert_text.AsCTypePtr()), gdc.ConstTypePtr(text_color.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), gdc.ConstTypePtr(&location), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) UpdateCodeCompletionOptions(force bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("update_code_completion_options")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&force), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetCodeCompletionOptions()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetCodeCompletionOptions() Dictionary {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_code_completion_options")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret Dictionary
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) GetCodeCompletionOption(index int, )  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetCodeCompletionOption(index int, ) Dictionary {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_code_completion_option")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3485342025) // FIXME: should cache?
+  var ret Dictionary
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) GetCodeCompletionSelectedIndex()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetCodeCompletionSelectedIndex() int {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_code_completion_selected_index")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetCodeCompletionSelectedIndex(index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_code_completion_selected_index")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) ConfirmCodeCompletion(replace bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("confirm_code_completion")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 107499316) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&replace), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) CancelCodeCompletion()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("cancel_code_completion")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *CodeEdit) SetCodeCompletionEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_code_completion_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsCodeCompletionEnabled()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsCodeCompletionEnabled() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_code_completion_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetCodeCompletionPrefixes(prefixes String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_code_completion_prefixes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(prefixes.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetCodeCompletionPrefixes()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetCodeCompletionPrefixes() String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_code_completion_prefixes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetLineLengthGuidelines(guideline_columns int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_line_length_guidelines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&guideline_columns), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) GetLineLengthGuidelines()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetLineLengthGuidelines() int {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_line_length_guidelines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetSymbolLookupOnClickEnabled(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_symbol_lookup_on_click_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CodeEdit) IsSymbolLookupOnClickEnabled()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) IsSymbolLookupOnClickEnabled() bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_symbol_lookup_on_click_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *CodeEdit) GetTextForSymbolLookup()  {
-  panic("TODO: implement")
+func  (me *CodeEdit) GetTextForSymbolLookup() String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_text_for_symbol_lookup")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2841200299) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CodeEdit) SetSymbolLookupWordAsValid(valid bool, )  {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_symbol_lookup_word_as_valid")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&valid), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *CodeEdit) GetPropSymbolLookupOnClick() bool {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *CodeEdit) SetPropSymbolLookupOnClick(value bool) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *CodeEdit) GetPropLineFolding() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropLineFolding(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropLineLengthGuidelines() PackedInt32Array {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropLineLengthGuidelines(value PackedInt32Array) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropGuttersDrawBreakpointsGutter() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropGuttersDrawBreakpointsGutter(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropGuttersDrawBookmarks() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropGuttersDrawBookmarks(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropGuttersDrawExecutingLines() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropGuttersDrawExecutingLines(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropGuttersDrawLineNumbers() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropGuttersDrawLineNumbers(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropGuttersZeroPadLineNumbers() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropGuttersZeroPadLineNumbers(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropGuttersDrawFoldGutter() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropGuttersDrawFoldGutter(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropDelimiterStrings() PackedStringArray {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropDelimiterStrings(value PackedStringArray) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropDelimiterComments() PackedStringArray {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropDelimiterComments(value PackedStringArray) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropCodeCompletionEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropCodeCompletionEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropCodeCompletionPrefixes() PackedStringArray {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropCodeCompletionPrefixes(value PackedStringArray) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropIndentSize() int {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropIndentSize(value int) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropIndentUseSpaces() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropIndentUseSpaces(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropIndentAutomatic() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropIndentAutomatic(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropIndentAutomaticPrefixes() PackedStringArray {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropIndentAutomaticPrefixes(value PackedStringArray) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropAutoBraceCompletionEnabled() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropAutoBraceCompletionEnabled(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropAutoBraceCompletionHighlightMatching() bool {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropAutoBraceCompletionHighlightMatching(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) GetPropAutoBraceCompletionPairs() Dictionary {
+  panic("TODO: implement")
+}
+
+func (me *CodeEdit) SetPropAutoBraceCompletionPairs(value Dictionary) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

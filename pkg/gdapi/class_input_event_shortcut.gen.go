@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type InputEventShortcut struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,36 @@ func (me *InputEventShortcut) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *InputEventShortcut) SetShortcut(shortcut Shortcut, )  {
+  classNameV := StringNameFromStr("InputEventShortcut")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_shortcut")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 857163497) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shortcut.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *InputEventShortcut) GetShortcut() Shortcut {
+  classNameV := StringNameFromStr("InputEventShortcut")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_shortcut")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3766804753) // FIXME: should cache?
+  var ret Shortcut
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *InputEventShortcut) GetPropShortcut() Shortcut {
   panic("TODO: implement")
 }
 
-func  (me *InputEventShortcut) GetShortcut()  {
+func (me *InputEventShortcut) SetPropShortcut(value Shortcut) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorTranslationParserPlugin struct {
   obj gdc.ObjectPtr
@@ -41,17 +37,6 @@ func (me *EditorTranslationParserPlugin) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorTranslationParserPlugin) XParseFile(path String, msgids String, msgids_context_plural Array, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorTranslationParserPlugin) XGetRecognizedExtensions()  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorPlugin struct {
   obj gdc.ObjectPtr
@@ -77,273 +73,450 @@ func (me *EditorPlugin) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorPlugin) XForwardCanvasGuiInput(event InputEvent, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XForwardCanvasDrawOverViewport(viewport_control Control, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XForwardCanvasForceDrawOverViewport(viewport_control Control, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XForward3DGuiInput(viewport_camera Camera3D, event InputEvent, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XForward3DDrawOverViewport(viewport_control Control, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XForward3DForceDrawOverViewport(viewport_control Control, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XGetPluginName()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XGetPluginIcon()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XHasMainScreen()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XMakeVisible(visible bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XEdit(object Object, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XHandles(object Object, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XGetState()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XSetState(state Dictionary, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XClear()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XSaveExternalData()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XApplyChanges()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XGetBreakpoints()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XSetWindowLayout(configuration ConfigFile, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XGetWindowLayout(configuration ConfigFile, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XBuild()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XEnablePlugin()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorPlugin) XDisablePlugin()  {
-  panic("TODO: implement")
-}
-
 func  (me *EditorPlugin) AddControlToContainer(container EditorPluginCustomControlContainer, control Control, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_control_to_container")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3092750152) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&container), gdc.ConstTypePtr(control.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorPlugin) AddControlToBottomPanel(control Control, title String, )  {
-  panic("TODO: implement")
+func  (me *EditorPlugin) AddControlToBottomPanel(control Control, title String, ) Button {
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_control_to_bottom_panel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3526039376) // FIXME: should cache?
+  var ret Button
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(control.AsCTypePtr()), gdc.ConstTypePtr(title.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorPlugin) AddControlToDock(slot EditorPluginDockSlot, control Control, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_control_to_dock")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3354871258) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot), gdc.ConstTypePtr(control.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveControlFromDocks(control Control, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_control_from_docks")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(control.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveControlFromBottomPanel(control Control, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_control_from_bottom_panel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(control.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveControlFromContainer(container EditorPluginCustomControlContainer, control Control, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_control_from_container")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3092750152) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&container), gdc.ConstTypePtr(control.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) AddToolMenuItem(name String, callable Callable, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_tool_menu_item")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2137474292) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(callable.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) AddToolSubmenuItem(name String, submenu PopupMenu, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_tool_submenu_item")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1019428915) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(submenu.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveToolMenuItem(name String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_tool_menu_item")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorPlugin) GetExportAsMenu()  {
-  panic("TODO: implement")
+func  (me *EditorPlugin) GetExportAsMenu() PopupMenu {
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_export_as_menu")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1775878644) // FIXME: should cache?
+  var ret PopupMenu
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorPlugin) AddCustomType(type_ String, base String, script Script, icon Texture2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_custom_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1986814599) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), gdc.ConstTypePtr(base.AsCTypePtr()), gdc.ConstTypePtr(script.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveCustomType(type_ String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_custom_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) AddAutoloadSingleton(name String, path String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_autoload_singleton")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3186203200) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveAutoloadSingleton(name String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_autoload_singleton")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorPlugin) UpdateOverlays()  {
-  panic("TODO: implement")
+func  (me *EditorPlugin) UpdateOverlays() int {
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("update_overlays")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorPlugin) MakeBottomPanelItemVisible(item Control, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("make_bottom_panel_item_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) HideBottomPanel()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("hide_bottom_panel")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorPlugin) GetUndoRedo()  {
-  panic("TODO: implement")
+func  (me *EditorPlugin) GetUndoRedo() EditorUndoRedoManager {
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_undo_redo")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 773492341) // FIXME: should cache?
+  var ret EditorUndoRedoManager
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorPlugin) AddUndoRedoInspectorHookCallback(callable Callable, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_undo_redo_inspector_hook_callback")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1611583062) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callable.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveUndoRedoInspectorHookCallback(callable Callable, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_undo_redo_inspector_hook_callback")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1611583062) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callable.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) QueueSaveLayout()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("queue_save_layout")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) AddTranslationParserPlugin(parser EditorTranslationParserPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_translation_parser_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3116463128) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parser.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveTranslationParserPlugin(parser EditorTranslationParserPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_translation_parser_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3116463128) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parser.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) AddImportPlugin(importer EditorImportPlugin, first_priority bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_import_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3113975762) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(importer.AsCTypePtr()), gdc.ConstTypePtr(&first_priority), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveImportPlugin(importer EditorImportPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_import_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2312482773) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(importer.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) AddSceneFormatImporterPlugin(scene_format_importer EditorSceneFormatImporter, first_priority bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_scene_format_importer_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2764104752) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scene_format_importer.AsCTypePtr()), gdc.ConstTypePtr(&first_priority), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveSceneFormatImporterPlugin(scene_format_importer EditorSceneFormatImporter, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_scene_format_importer_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2637776123) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scene_format_importer.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) AddScenePostImportPlugin(scene_import_plugin EditorScenePostImportPlugin, first_priority bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_scene_post_import_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3492436322) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scene_import_plugin.AsCTypePtr()), gdc.ConstTypePtr(&first_priority), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveScenePostImportPlugin(scene_import_plugin EditorScenePostImportPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_scene_post_import_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3045178206) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scene_import_plugin.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) AddExportPlugin(plugin EditorExportPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_export_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4095952207) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveExportPlugin(plugin EditorExportPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_export_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4095952207) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) AddNode3DGizmoPlugin(plugin EditorNode3DGizmoPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_node_3d_gizmo_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1541015022) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveNode3DGizmoPlugin(plugin EditorNode3DGizmoPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_node_3d_gizmo_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1541015022) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) AddInspectorPlugin(plugin EditorInspectorPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_inspector_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 546395733) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveInspectorPlugin(plugin EditorInspectorPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_inspector_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 546395733) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) AddResourceConversionPlugin(plugin EditorResourceConversionPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_resource_conversion_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2124849111) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveResourceConversionPlugin(plugin EditorResourceConversionPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_resource_conversion_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2124849111) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) SetInputEventForwardingAlwaysEnabled()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_input_event_forwarding_always_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) SetForceDrawOverForwardingEnabled()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_force_draw_over_forwarding_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorPlugin) GetEditorInterface()  {
-  panic("TODO: implement")
+func  (me *EditorPlugin) GetEditorInterface() EditorInterface {
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_editor_interface")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4223731786) // FIXME: should cache?
+  var ret EditorInterface
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *EditorPlugin) GetScriptCreateDialog()  {
-  panic("TODO: implement")
+func  (me *EditorPlugin) GetScriptCreateDialog() ScriptCreateDialog {
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_script_create_dialog")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3121871482) // FIXME: should cache?
+  var ret ScriptCreateDialog
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *EditorPlugin) AddDebuggerPlugin(script EditorDebuggerPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_debugger_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3749880309) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(script.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorPlugin) RemoveDebuggerPlugin(script EditorDebuggerPlugin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_debugger_plugin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3749880309) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(script.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

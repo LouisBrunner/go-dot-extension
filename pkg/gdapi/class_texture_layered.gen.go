@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TextureLayered struct {
   obj gdc.ObjectPtr
@@ -48,65 +44,90 @@ func (me *TextureLayered) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *TextureLayered) XGetFormat()  {
-  panic("TODO: implement")
+func  (me *TextureLayered) GetFormat() ImageFormat {
+  classNameV := StringNameFromStr("TextureLayered")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_format")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3847873762) // FIXME: should cache?
+  var ret ImageFormat
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextureLayered) XGetLayeredType()  {
-  panic("TODO: implement")
+func  (me *TextureLayered) GetLayeredType() TextureLayeredLayeredType {
+  classNameV := StringNameFromStr("TextureLayered")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_layered_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 518123893) // FIXME: should cache?
+  var ret TextureLayeredLayeredType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextureLayered) XGetWidth()  {
-  panic("TODO: implement")
+func  (me *TextureLayered) GetWidth() int {
+  classNameV := StringNameFromStr("TextureLayered")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_width")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextureLayered) XGetHeight()  {
-  panic("TODO: implement")
+func  (me *TextureLayered) GetHeight() int {
+  classNameV := StringNameFromStr("TextureLayered")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_height")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextureLayered) XGetLayers()  {
-  panic("TODO: implement")
+func  (me *TextureLayered) GetLayers() int {
+  classNameV := StringNameFromStr("TextureLayered")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_layers")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextureLayered) XHasMipmaps()  {
-  panic("TODO: implement")
+func  (me *TextureLayered) HasMipmaps() bool {
+  classNameV := StringNameFromStr("TextureLayered")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_mipmaps")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextureLayered) XGetLayerData(layer_index int, )  {
-  panic("TODO: implement")
+func  (me *TextureLayered) GetLayerData(layer int, ) Image {
+  classNameV := StringNameFromStr("TextureLayered")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_layer_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3655284255) // FIXME: should cache?
+  var ret Image
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *TextureLayered) GetFormat()  {
-  panic("TODO: implement")
-}
-
-func  (me *TextureLayered) GetLayeredType()  {
-  panic("TODO: implement")
-}
-
-func  (me *TextureLayered) GetWidth()  {
-  panic("TODO: implement")
-}
-
-func  (me *TextureLayered) GetHeight()  {
-  panic("TODO: implement")
-}
-
-func  (me *TextureLayered) GetLayers()  {
-  panic("TODO: implement")
-}
-
-func  (me *TextureLayered) HasMipmaps()  {
-  panic("TODO: implement")
-}
-
-func  (me *TextureLayered) GetLayerData(layer int, )  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

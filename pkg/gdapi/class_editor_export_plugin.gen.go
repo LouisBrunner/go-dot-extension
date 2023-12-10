@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorExportPlugin struct {
   obj gdc.ObjectPtr
@@ -41,113 +37,128 @@ func (me *EditorExportPlugin) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorExportPlugin) XExportFile(path String, type_ String, features PackedStringArray, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XExportBegin(features PackedStringArray, is_debug bool, path String, flags int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XExportEnd()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XBeginCustomizeResources(platform EditorExportPlatform, features PackedStringArray, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XCustomizeResource(resource Resource, path String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XBeginCustomizeScenes(platform EditorExportPlatform, features PackedStringArray, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XCustomizeScene(scene Node, path String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XGetCustomizationConfigurationHash()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XEndCustomizeScenes()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XEndCustomizeResources()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XGetExportOptions(platform EditorExportPlatform, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XShouldUpdateExportOptions(platform EditorExportPlatform, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XGetExportFeatures(platform EditorExportPlatform, debug bool, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorExportPlugin) XGetName()  {
-  panic("TODO: implement")
-}
-
 func  (me *EditorExportPlugin) AddSharedObject(path String, tags PackedStringArray, target String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_shared_object")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3098291045) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(tags.AsCTypePtr()), gdc.ConstTypePtr(target.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorExportPlugin) AddIosProjectStaticLib(path String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_ios_project_static_lib")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorExportPlugin) AddFile(path String, file PackedByteArray, remap bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_file")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 527928637) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(file.AsCTypePtr()), gdc.ConstTypePtr(&remap), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorExportPlugin) AddIosFramework(path String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_ios_framework")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorExportPlugin) AddIosEmbeddedFramework(path String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_ios_embedded_framework")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorExportPlugin) AddIosPlistContent(plist_content String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_ios_plist_content")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plist_content.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorExportPlugin) AddIosLinkerFlags(flags String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_ios_linker_flags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(flags.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorExportPlugin) AddIosBundleFile(path String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_ios_bundle_file")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorExportPlugin) AddIosCppCode(code String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_ios_cpp_code")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(code.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorExportPlugin) AddMacosPluginFile(path String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_macos_plugin_file")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorExportPlugin) Skip()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("skip")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *EditorExportPlugin) GetOption(name StringName, )  {
-  panic("TODO: implement")
+func  (me *EditorExportPlugin) GetOption(name StringName, ) Variant {
+  classNameV := StringNameFromStr("EditorExportPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_option")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2760726917) // FIXME: should cache?
+  var ret Variant
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

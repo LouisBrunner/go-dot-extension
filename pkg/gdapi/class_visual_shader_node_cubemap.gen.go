@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeCubemap struct {
   obj gdc.ObjectPtr
@@ -56,33 +52,96 @@ func (me *VisualShaderNodeCubemap) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeCubemap) SetSource(value VisualShaderNodeCubemapSource, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeCubemap")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_source")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1625400621) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeCubemap) GetSource()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeCubemap) GetSource() VisualShaderNodeCubemapSource {
+  classNameV := StringNameFromStr("VisualShaderNodeCubemap")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_source")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2222048781) // FIXME: should cache?
+  var ret VisualShaderNodeCubemapSource
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeCubemap) SetCubeMap(value Cubemap, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeCubemap")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_cube_map")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2219800736) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(value.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeCubemap) GetCubeMap()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeCubemap) GetCubeMap() Cubemap {
+  classNameV := StringNameFromStr("VisualShaderNodeCubemap")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_cube_map")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1772111058) // FIXME: should cache?
+  var ret Cubemap
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeCubemap) SetTextureType(value VisualShaderNodeCubemapTextureType, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeCubemap")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1899718876) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeCubemap) GetTextureType() VisualShaderNodeCubemapTextureType {
+  classNameV := StringNameFromStr("VisualShaderNodeCubemap")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3356498888) // FIXME: should cache?
+  var ret VisualShaderNodeCubemapTextureType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeCubemap) GetPropSource() int {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeCubemap) GetTextureType()  {
+func (me *VisualShaderNodeCubemap) SetPropSource(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *VisualShaderNodeCubemap) GetPropCubeMap() Cubemap {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *VisualShaderNodeCubemap) SetPropCubeMap(value Cubemap) {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeCubemap) GetPropTextureType() int {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeCubemap) SetPropTextureType(value int) {
+  panic("TODO: implement")
+}

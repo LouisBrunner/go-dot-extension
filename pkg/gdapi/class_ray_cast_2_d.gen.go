@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RayCast2D struct {
   obj gdc.ObjectPtr
@@ -41,121 +37,370 @@ func (me *RayCast2D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *RayCast2D) SetEnabled(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RayCast2D) IsEnabled()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) IsEnabled() bool {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RayCast2D) SetTargetPosition(local_point Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_target_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(local_point.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RayCast2D) GetTargetPosition()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) GetTargetPosition() Vector2 {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_target_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *RayCast2D) IsColliding()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) IsColliding() bool {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_colliding")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RayCast2D) ForceRaycastUpdate()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("force_raycast_update")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RayCast2D) GetCollider()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) GetCollider() Object {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_collider")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1981248198) // FIXME: should cache?
+  var ret Object
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *RayCast2D) GetColliderRid()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) GetColliderRid() RID {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_collider_rid")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *RayCast2D) GetColliderShape()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) GetColliderShape() int {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_collider_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *RayCast2D) GetCollisionPoint()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) GetCollisionPoint() Vector2 {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_collision_point")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *RayCast2D) GetCollisionNormal()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) GetCollisionNormal() Vector2 {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_collision_normal")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RayCast2D) AddExceptionRid(rid RID, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_exception_rid")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rid.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *RayCast2D) AddException(node CollisionObject2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_exception")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3090941106) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *RayCast2D) RemoveExceptionRid(rid RID, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_exception_rid")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rid.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *RayCast2D) RemoveException(node CollisionObject2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_exception")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3090941106) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *RayCast2D) ClearExceptions()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_exceptions")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *RayCast2D) SetCollisionMask(mask int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_collision_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RayCast2D) GetCollisionMask()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) GetCollisionMask() int {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_collision_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RayCast2D) SetCollisionMaskValue(layer_number int, value bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_collision_mask_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RayCast2D) GetCollisionMaskValue(layer_number int, )  {
-  panic("TODO: implement")
+func  (me *RayCast2D) GetCollisionMaskValue(layer_number int, ) bool {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_collision_mask_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RayCast2D) SetExcludeParentBody(mask bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_exclude_parent_body")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RayCast2D) GetExcludeParentBody()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) GetExcludeParentBody() bool {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_exclude_parent_body")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RayCast2D) SetCollideWithAreas(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_collide_with_areas")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RayCast2D) IsCollideWithAreasEnabled()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) IsCollideWithAreasEnabled() bool {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_collide_with_areas_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RayCast2D) SetCollideWithBodies(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_collide_with_bodies")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RayCast2D) IsCollideWithBodiesEnabled()  {
-  panic("TODO: implement")
+func  (me *RayCast2D) IsCollideWithBodiesEnabled() bool {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_collide_with_bodies_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RayCast2D) SetHitFromInside(enable bool, )  {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_hit_from_inside")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RayCast2D) IsHitFromInsideEnabled() bool {
+  classNameV := StringNameFromStr("RayCast2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_hit_from_inside_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *RayCast2D) GetPropEnabled() bool {
   panic("TODO: implement")
 }
 
-func  (me *RayCast2D) IsHitFromInsideEnabled()  {
+func (me *RayCast2D) SetPropEnabled(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *RayCast2D) GetPropExcludeParent() bool {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *RayCast2D) SetPropExcludeParent(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *RayCast2D) GetPropTargetPosition() Vector2 {
+  panic("TODO: implement")
+}
+
+func (me *RayCast2D) SetPropTargetPosition(value Vector2) {
+  panic("TODO: implement")
+}
+
+func (me *RayCast2D) GetPropCollisionMask() int {
+  panic("TODO: implement")
+}
+
+func (me *RayCast2D) SetPropCollisionMask(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RayCast2D) GetPropHitFromInside() bool {
+  panic("TODO: implement")
+}
+
+func (me *RayCast2D) SetPropHitFromInside(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *RayCast2D) GetPropCollideWithAreas() bool {
+  panic("TODO: implement")
+}
+
+func (me *RayCast2D) SetPropCollideWithAreas(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *RayCast2D) GetPropCollideWithBodies() bool {
+  panic("TODO: implement")
+}
+
+func (me *RayCast2D) SetPropCollideWithBodies(value bool) {
+  panic("TODO: implement")
+}

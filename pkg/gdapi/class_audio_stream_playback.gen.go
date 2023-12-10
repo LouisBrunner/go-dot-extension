@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioStreamPlayback struct {
   obj gdc.ObjectPtr
@@ -41,41 +37,6 @@ func (me *AudioStreamPlayback) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *AudioStreamPlayback) XStart(from_pos float32, )  {
-  panic("TODO: implement")
-}
-
-func  (me *AudioStreamPlayback) XStop()  {
-  panic("TODO: implement")
-}
-
-func  (me *AudioStreamPlayback) XIsPlaying()  {
-  panic("TODO: implement")
-}
-
-func  (me *AudioStreamPlayback) XGetLoopCount()  {
-  panic("TODO: implement")
-}
-
-func  (me *AudioStreamPlayback) XGetPlaybackPosition()  {
-  panic("TODO: implement")
-}
-
-func  (me *AudioStreamPlayback) XSeek(position float32, )  {
-  panic("TODO: implement")
-}
-
-func  (me *AudioStreamPlayback) XMix(buffer *AudioFrame, rate_scale float32, frames int, )  {
-  panic("TODO: implement")
-}
-
-func  (me *AudioStreamPlayback) XTagUsedStreams()  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

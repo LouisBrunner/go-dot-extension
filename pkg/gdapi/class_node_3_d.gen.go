@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Node3D struct {
   obj gdc.ObjectPtr
@@ -58,281 +54,866 @@ func (me *Node3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *Node3D) SetTransform(local Transform3D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2952846383) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(local.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetTransform()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetTransform() Transform3D {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
+  var ret Transform3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetPosition(position Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetPosition()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetPosition() Vector3 {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetRotation(euler_radians Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_rotation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(euler_radians.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetRotation()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetRotation() Vector3 {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rotation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetRotationDegrees(euler_degrees Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_rotation_degrees")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(euler_degrees.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetRotationDegrees()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetRotationDegrees() Vector3 {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rotation_degrees")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetRotationOrder(order EulerOrder, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_rotation_order")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1820889989) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&order), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetRotationOrder()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetRotationOrder() EulerOrder {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rotation_order")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 916939469) // FIXME: should cache?
+  var ret EulerOrder
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetRotationEditMode(edit_mode Node3DRotationEditMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_rotation_edit_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 141483330) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&edit_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetRotationEditMode()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetRotationEditMode() Node3DRotationEditMode {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rotation_edit_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1572188370) // FIXME: should cache?
+  var ret Node3DRotationEditMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetScale(scale Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetScale()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetScale() Vector3 {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetQuaternion(quaternion Quaternion, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_quaternion")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1727505552) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(quaternion.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetQuaternion()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetQuaternion() Quaternion {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_quaternion")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1222331677) // FIXME: should cache?
+  var ret Quaternion
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetBasis(basis Basis, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_basis")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1055510324) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(basis.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetBasis()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetBasis() Basis {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_basis")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2716978435) // FIXME: should cache?
+  var ret Basis
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetGlobalTransform(global Transform3D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_global_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2952846383) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(global.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetGlobalTransform()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetGlobalTransform() Transform3D {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_global_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
+  var ret Transform3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetGlobalPosition(position Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_global_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetGlobalPosition()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetGlobalPosition() Vector3 {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_global_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetGlobalRotation(euler_radians Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_global_rotation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(euler_radians.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetGlobalRotation()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetGlobalRotation() Vector3 {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_global_rotation")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetGlobalRotationDegrees(euler_degrees Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_global_rotation_degrees")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(euler_degrees.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetGlobalRotationDegrees()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetGlobalRotationDegrees() Vector3 {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_global_rotation_degrees")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Node3D) GetParentNode3D()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetParentNode3D() Node3D {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_parent_node_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 151077316) // FIXME: should cache?
+  var ret Node3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetIgnoreTransformNotification(enabled bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_ignore_transform_notification")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) SetAsTopLevel(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_as_top_level")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) IsSetAsTopLevel()  {
-  panic("TODO: implement")
+func  (me *Node3D) IsSetAsTopLevel() bool {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_set_as_top_level")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetDisableScale(disable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_disable_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) IsScaleDisabled()  {
-  panic("TODO: implement")
+func  (me *Node3D) IsScaleDisabled() bool {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_scale_disabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Node3D) GetWorld3D()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetWorld3D() World3D {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_world_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 317588385) // FIXME: should cache?
+  var ret World3D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) ForceUpdateTransform()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("force_update_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) SetVisibilityParent(path NodePath, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_visibility_parent")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetVisibilityParent()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetVisibilityParent() NodePath {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_visibility_parent")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
+  var ret NodePath
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) UpdateGizmos()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("update_gizmos")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) AddGizmo(gizmo Node3DGizmo, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_gizmo")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1544533845) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(gizmo.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) GetGizmos()  {
-  panic("TODO: implement")
+func  (me *Node3D) GetGizmos() Node3DGizmo {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_gizmos")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret Node3DGizmo
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) ClearGizmos()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_gizmos")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) SetSubgizmoSelection(gizmo Node3DGizmo, id int, transform Transform3D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_subgizmo_selection")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3317607635) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(gizmo.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(transform.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) ClearSubgizmoSelection()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_subgizmo_selection")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) SetVisible(visible bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&visible), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) IsVisible()  {
-  panic("TODO: implement")
+func  (me *Node3D) IsVisible() bool {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_visible")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Node3D) IsVisibleInTree()  {
-  panic("TODO: implement")
+func  (me *Node3D) IsVisibleInTree() bool {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_visible_in_tree")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) Show()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("show")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) Hide()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("hide")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) SetNotifyLocalTransform(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_notify_local_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) IsLocalTransformNotificationEnabled()  {
-  panic("TODO: implement")
+func  (me *Node3D) IsLocalTransformNotificationEnabled() bool {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_local_transform_notification_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) SetNotifyTransform(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_notify_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Node3D) IsTransformNotificationEnabled()  {
-  panic("TODO: implement")
+func  (me *Node3D) IsTransformNotificationEnabled() bool {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_transform_notification_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Node3D) Rotate(axis Vector3, angle float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("rotate")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3436291937) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(axis.AsCTypePtr()), gdc.ConstTypePtr(&angle), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) GlobalRotate(axis Vector3, angle float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("global_rotate")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3436291937) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(axis.AsCTypePtr()), gdc.ConstTypePtr(&angle), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) GlobalScale(scale Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("global_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) GlobalTranslate(offset Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("global_translate")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) RotateObjectLocal(axis Vector3, angle float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("rotate_object_local")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3436291937) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(axis.AsCTypePtr()), gdc.ConstTypePtr(&angle), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) ScaleObjectLocal(scale Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("scale_object_local")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) TranslateObjectLocal(offset Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("translate_object_local")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) RotateX(angle float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("rotate_x")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) RotateY(angle float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("rotate_y")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) RotateZ(angle float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("rotate_z")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) Translate(offset Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("translate")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) Orthonormalize()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("orthonormalize")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) SetIdentity()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_identity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) LookAt(target Vector3, up Vector3, use_model_front bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("look_at")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3123400617) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(target.AsCTypePtr()), gdc.ConstTypePtr(up.AsCTypePtr()), gdc.ConstTypePtr(&use_model_front), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Node3D) LookAtFromPosition(position Vector3, target Vector3, up Vector3, use_model_front bool, )  {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("look_at_from_position")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4067663783) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(target.AsCTypePtr()), gdc.ConstTypePtr(up.AsCTypePtr()), gdc.ConstTypePtr(&use_model_front), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *Node3D) ToLocal(global_point Vector3, ) Vector3 {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("to_local")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 192990374) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(global_point.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *Node3D) ToGlobal(local_point Vector3, ) Vector3 {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("to_global")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 192990374) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(local_point.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *Node3D) GetPropTransform() Transform3D {
   panic("TODO: implement")
 }
 
-func  (me *Node3D) ToLocal(global_point Vector3, )  {
+func (me *Node3D) SetPropTransform(value Transform3D) {
   panic("TODO: implement")
 }
 
-func  (me *Node3D) ToGlobal(local_point Vector3, )  {
+func (me *Node3D) GetPropGlobalTransform() Transform3D {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *Node3D) SetPropGlobalTransform(value Transform3D) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *Node3D) GetPropPosition() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropPosition(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropRotation() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropRotation(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropRotationDegrees() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropRotationDegrees(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropQuaternion() Quaternion {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropQuaternion(value Quaternion) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropBasis() Basis {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropBasis(value Basis) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropScale() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropScale(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropRotationEditMode() int {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropRotationEditMode(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropRotationOrder() int {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropRotationOrder(value int) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropTopLevel() bool {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropTopLevel(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropGlobalPosition() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropGlobalPosition(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropGlobalRotation() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropGlobalRotation(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropGlobalRotationDegrees() Vector3 {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropGlobalRotationDegrees(value Vector3) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropVisible() bool {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropVisible(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) GetPropVisibilityParent() NodePath {
+  panic("TODO: implement")
+}
+
+func (me *Node3D) SetPropVisibilityParent(value NodePath) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

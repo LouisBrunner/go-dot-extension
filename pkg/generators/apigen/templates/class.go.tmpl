@@ -1,16 +1,12 @@
 {{template "preamble"}}
 
 import (
-// TODO: disgusting imports
-{{if eq .Name "AudioEffectInstance"}}  "unsafe"{{end}}
-{{if eq .Name "MovieWriter"}}  "unsafe"{{end}}
-{{if eq .Name "PhysicsServer2DExtension"}}  "unsafe"{{end}}
-{{if eq .Name "PhysicsDirectSpaceState2DExtension"}}  "unsafe"{{end}}
-{{if eq .Name "PhysicsDirectSpaceState3DExtension"}}  "unsafe"{{end}}
-{{if eq .Name "PhysicsServer3DRenderingServerHandler"}}  "unsafe"{{end}}
-{{if eq .Name "ScriptExtension"}}  "unsafe"{{end}}
+  "unsafe"
+
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 {{$Class := mapClass .Name -}}
 type {{$Class}} struct {
@@ -39,8 +35,54 @@ func (me *{{$Class}}) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-{{template "class_methods" .}}
+// Methods
+{{- range .Methods}}
+{{- if ne .Hash 0}}
 
-// TODO: properties (class)
+func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .Name -}}
+({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}) {{if .ReturnValue}}{{mapType .ReturnValue.Type}}{{end}} {
+  classNameV := StringNameFromStr("{{$.Name}}")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("{{.Name}}")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), {{.Hash}}) // FIXME: should cache?
+{{- $vartype := ternary .IsVarArg "ConstVariantPtr" "ConstTypePtr"}}
+{{if .ReturnValue}}  var ret {{mapType .ReturnValue.Type}}
+{{end}}  cargs := []gdc.{{$vartype}}{
+    {{- range .Arguments}}
+{{- if isExported (mapType .Type) -}}
+  {{- if startsWith .Type "enum::" -}}
+    gdc.{{$vartype}}(&{{mapName .Name}})
+  {{- else if startsWith .Type "bitfield::" -}}
+    gdc.{{$vartype}}(&{{mapName .Name}})
+  {{- else -}}
+    gdc.{{$vartype}}({{mapName .Name}}.AsCTypePtr())
+  {{- end -}}
+{{- else -}}
+  gdc.{{$vartype}}(&{{mapName .Name}})
+{{- end -}}
+    , {{ end -}}
+  }
+{{- if .IsVarArg}}
+  err := &gdc.CallError{}
+  giface.ObjectMethodBindCall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), gdc.Int(len(cargs)), {{if .ReturnValue}}gdc.UninitializedVariantPtr(&ret){{else}}nil{{end}}, err)
+  if err.Error != gdc.CallOk {
+    panic(err) // TODO: return `err`?
+  }
+{{else}}
+  giface.ObjectMethodBindPtrcall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), {{if .ReturnValue}}gdc.TypePtr(&ret){{else}}nil{{end}})
+{{- end}}
+{{if .ReturnValue}}  return ret
+{{end -}}
+}
+{{- end}}{{end}}
 
-// TODO: signals (class)
+{{- if .Properties}}
+// Properties
+// FIXME: can't seem to be able to use those from this side of the API
+{{- end}}
+
+{{- if .Signals}}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API
+{{- end -}}

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeDerivativeFunc struct {
   obj gdc.ObjectPtr
@@ -66,33 +62,96 @@ func (me *VisualShaderNodeDerivativeFunc) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *VisualShaderNodeDerivativeFunc) SetOpType(type_ VisualShaderNodeDerivativeFuncOpType, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeDerivativeFunc")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_op_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 377800221) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeDerivativeFunc) GetOpType()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeDerivativeFunc) GetOpType() VisualShaderNodeDerivativeFuncOpType {
+  classNameV := StringNameFromStr("VisualShaderNodeDerivativeFunc")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_op_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3997800514) // FIXME: should cache?
+  var ret VisualShaderNodeDerivativeFuncOpType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeDerivativeFunc) SetFunction(func_ VisualShaderNodeDerivativeFuncFunction, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("VisualShaderNodeDerivativeFunc")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_function")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1944704156) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&func_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *VisualShaderNodeDerivativeFunc) GetFunction()  {
-  panic("TODO: implement")
+func  (me *VisualShaderNodeDerivativeFunc) GetFunction() VisualShaderNodeDerivativeFuncFunction {
+  classNameV := StringNameFromStr("VisualShaderNodeDerivativeFunc")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_function")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2389093396) // FIXME: should cache?
+  var ret VisualShaderNodeDerivativeFuncFunction
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *VisualShaderNodeDerivativeFunc) SetPrecision(precision VisualShaderNodeDerivativeFuncPrecision, )  {
+  classNameV := StringNameFromStr("VisualShaderNodeDerivativeFunc")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_precision")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 797270566) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&precision), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VisualShaderNodeDerivativeFunc) GetPrecision() VisualShaderNodeDerivativeFuncPrecision {
+  classNameV := StringNameFromStr("VisualShaderNodeDerivativeFunc")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_precision")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3822547323) // FIXME: should cache?
+  var ret VisualShaderNodeDerivativeFuncPrecision
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *VisualShaderNodeDerivativeFunc) GetPropOpType() int {
   panic("TODO: implement")
 }
 
-func  (me *VisualShaderNodeDerivativeFunc) GetPrecision()  {
+func (me *VisualShaderNodeDerivativeFunc) SetPropOpType(value int) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *VisualShaderNodeDerivativeFunc) GetPropFunction() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *VisualShaderNodeDerivativeFunc) SetPropFunction(value int) {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeDerivativeFunc) GetPropPrecision() int {
+  panic("TODO: implement")
+}
+
+func (me *VisualShaderNodeDerivativeFunc) SetPropPrecision(value int) {
+  panic("TODO: implement")
+}

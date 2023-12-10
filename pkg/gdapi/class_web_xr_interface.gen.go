@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type WebXRInterface struct {
   obj gdc.ObjectPtr
@@ -49,77 +45,248 @@ func (me *WebXRInterface) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *WebXRInterface) IsSessionSupported(session_mode String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_session_supported")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(session_mode.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *WebXRInterface) SetSessionMode(session_mode String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_session_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(session_mode.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *WebXRInterface) GetSessionMode()  {
-  panic("TODO: implement")
+func  (me *WebXRInterface) GetSessionMode() String {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_session_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *WebXRInterface) SetRequiredFeatures(required_features String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_required_features")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(required_features.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *WebXRInterface) GetRequiredFeatures()  {
-  panic("TODO: implement")
+func  (me *WebXRInterface) GetRequiredFeatures() String {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_required_features")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *WebXRInterface) SetOptionalFeatures(optional_features String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_optional_features")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(optional_features.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *WebXRInterface) GetOptionalFeatures()  {
-  panic("TODO: implement")
+func  (me *WebXRInterface) GetOptionalFeatures() String {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_optional_features")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebXRInterface) GetReferenceSpaceType()  {
-  panic("TODO: implement")
+func  (me *WebXRInterface) GetReferenceSpaceType() String {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_reference_space_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *WebXRInterface) SetRequestedReferenceSpaceTypes(requested_reference_space_types String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_requested_reference_space_types")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(requested_reference_space_types.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *WebXRInterface) GetRequestedReferenceSpaceTypes()  {
-  panic("TODO: implement")
+func  (me *WebXRInterface) GetRequestedReferenceSpaceTypes() String {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_requested_reference_space_types")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebXRInterface) IsInputSourceActive(input_source_id int, )  {
-  panic("TODO: implement")
+func  (me *WebXRInterface) IsInputSourceActive(input_source_id int, ) bool {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_input_source_active")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_source_id), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebXRInterface) GetInputSourceTracker(input_source_id int, )  {
-  panic("TODO: implement")
+func  (me *WebXRInterface) GetInputSourceTracker(input_source_id int, ) XRPositionalTracker {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_input_source_tracker")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 636011756) // FIXME: should cache?
+  var ret XRPositionalTracker
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_source_id), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebXRInterface) GetInputSourceTargetRayMode(input_source_id int, )  {
-  panic("TODO: implement")
+func  (me *WebXRInterface) GetInputSourceTargetRayMode(input_source_id int, ) WebXRInterfaceTargetRayMode {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_input_source_target_ray_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2852387453) // FIXME: should cache?
+  var ret WebXRInterfaceTargetRayMode
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_source_id), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebXRInterface) GetVisibilityState()  {
-  panic("TODO: implement")
+func  (me *WebXRInterface) GetVisibilityState() String {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_visibility_state")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *WebXRInterface) GetDisplayRefreshRate()  {
-  panic("TODO: implement")
+func  (me *WebXRInterface) GetDisplayRefreshRate() float32 {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_display_refresh_rate")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *WebXRInterface) SetDisplayRefreshRate(refresh_rate float32, )  {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_display_refresh_rate")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&refresh_rate), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *WebXRInterface) GetAvailableDisplayRefreshRates() Array {
+  classNameV := StringNameFromStr("WebXRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_available_display_refresh_rates")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret Array
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *WebXRInterface) GetPropSessionMode() String {
   panic("TODO: implement")
 }
 
-func  (me *WebXRInterface) GetAvailableDisplayRefreshRates()  {
+func (me *WebXRInterface) SetPropSessionMode(value String) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *WebXRInterface) GetPropRequiredFeatures() String {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *WebXRInterface) SetPropRequiredFeatures(value String) {
+  panic("TODO: implement")
+}
+
+func (me *WebXRInterface) GetPropOptionalFeatures() String {
+  panic("TODO: implement")
+}
+
+func (me *WebXRInterface) SetPropOptionalFeatures(value String) {
+  panic("TODO: implement")
+}
+
+func (me *WebXRInterface) GetPropRequestedReferenceSpaceTypes() String {
+  panic("TODO: implement")
+}
+
+func (me *WebXRInterface) SetPropRequestedReferenceSpaceTypes(value String) {
+  panic("TODO: implement")
+}
+
+func (me *WebXRInterface) GetPropReferenceSpaceType() String {
+  panic("TODO: implement")
+}
+
+func (me *WebXRInterface) SetPropReferenceSpaceType(value String) {
+  panic("TODO: implement")
+}
+
+func (me *WebXRInterface) GetPropVisibilityState() String {
+  panic("TODO: implement")
+}
+
+func (me *WebXRInterface) SetPropVisibilityState(value String) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

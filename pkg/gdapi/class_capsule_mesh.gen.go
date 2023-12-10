@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CapsuleMesh struct {
   obj gdc.ObjectPtr
@@ -41,41 +37,126 @@ func (me *CapsuleMesh) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *CapsuleMesh) SetRadius(radius float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CapsuleMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_radius")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CapsuleMesh) GetRadius()  {
-  panic("TODO: implement")
+func  (me *CapsuleMesh) GetRadius() float32 {
+  classNameV := StringNameFromStr("CapsuleMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_radius")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CapsuleMesh) SetHeight(height float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CapsuleMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_height")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&height), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CapsuleMesh) GetHeight()  {
-  panic("TODO: implement")
+func  (me *CapsuleMesh) GetHeight() float32 {
+  classNameV := StringNameFromStr("CapsuleMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_height")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CapsuleMesh) SetRadialSegments(segments int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("CapsuleMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_radial_segments")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&segments), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *CapsuleMesh) GetRadialSegments()  {
-  panic("TODO: implement")
+func  (me *CapsuleMesh) GetRadialSegments() int {
+  classNameV := StringNameFromStr("CapsuleMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_radial_segments")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *CapsuleMesh) SetRings(rings int, )  {
+  classNameV := StringNameFromStr("CapsuleMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_rings")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rings), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *CapsuleMesh) GetRings() int {
+  classNameV := StringNameFromStr("CapsuleMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rings")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *CapsuleMesh) GetPropRadius() float32 {
   panic("TODO: implement")
 }
 
-func  (me *CapsuleMesh) GetRings()  {
+func (me *CapsuleMesh) SetPropRadius(value float32) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *CapsuleMesh) GetPropHeight() float32 {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *CapsuleMesh) SetPropHeight(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *CapsuleMesh) GetPropRadialSegments() int {
+  panic("TODO: implement")
+}
+
+func (me *CapsuleMesh) SetPropRadialSegments(value int) {
+  panic("TODO: implement")
+}
+
+func (me *CapsuleMesh) GetPropRings() int {
+  panic("TODO: implement")
+}
+
+func (me *CapsuleMesh) SetPropRings(value int) {
+  panic("TODO: implement")
+}

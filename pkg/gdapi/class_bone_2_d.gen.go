@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Bone2D struct {
   obj gdc.ObjectPtr
@@ -41,53 +37,136 @@ func (me *Bone2D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *Bone2D) SetRest(rest Transform2D, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Bone2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_rest")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rest.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Bone2D) GetRest()  {
-  panic("TODO: implement")
+func  (me *Bone2D) GetRest() Transform2D {
+  classNameV := StringNameFromStr("Bone2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_rest")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
+  var ret Transform2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Bone2D) ApplyRest()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Bone2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("apply_rest")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Bone2D) GetSkeletonRest()  {
-  panic("TODO: implement")
+func  (me *Bone2D) GetSkeletonRest() Transform2D {
+  classNameV := StringNameFromStr("Bone2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_skeleton_rest")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
+  var ret Transform2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Bone2D) GetIndexInSkeleton()  {
-  panic("TODO: implement")
+func  (me *Bone2D) GetIndexInSkeleton() int {
+  classNameV := StringNameFromStr("Bone2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_index_in_skeleton")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Bone2D) SetAutocalculateLengthAndAngle(auto_calculate bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Bone2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_autocalculate_length_and_angle")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&auto_calculate), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Bone2D) GetAutocalculateLengthAndAngle()  {
-  panic("TODO: implement")
+func  (me *Bone2D) GetAutocalculateLengthAndAngle() bool {
+  classNameV := StringNameFromStr("Bone2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_autocalculate_length_and_angle")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Bone2D) SetLength(length float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Bone2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_length")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Bone2D) GetLength()  {
-  panic("TODO: implement")
+func  (me *Bone2D) GetLength() float32 {
+  classNameV := StringNameFromStr("Bone2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_length")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Bone2D) SetBoneAngle(angle float32, )  {
+  classNameV := StringNameFromStr("Bone2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_bone_angle")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *Bone2D) GetBoneAngle() float32 {
+  classNameV := StringNameFromStr("Bone2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_bone_angle")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *Bone2D) GetPropRest() Transform2D {
   panic("TODO: implement")
 }
 
-func  (me *Bone2D) GetBoneAngle()  {
+func (me *Bone2D) SetPropRest(value Transform2D) {
   panic("TODO: implement")
 }
-
-// TODO: properties (class)
-
-// TODO: signals (class)

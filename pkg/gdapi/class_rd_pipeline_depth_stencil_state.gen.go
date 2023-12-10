@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDPipelineDepthStencilState struct {
   obj gdc.ObjectPtr
@@ -41,177 +37,636 @@ func (me *RDPipelineDepthStencilState) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *RDPipelineDepthStencilState) SetEnableDepthTest(p_member bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_enable_depth_test")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetEnableDepthTest()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetEnableDepthTest() bool {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_enable_depth_test")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetEnableDepthWrite(p_member bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_enable_depth_write")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetEnableDepthWrite()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetEnableDepthWrite() bool {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_enable_depth_write")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetDepthCompareOperator(p_member RenderingDeviceCompareOperator, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_depth_compare_operator")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2573711505) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetDepthCompareOperator()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetDepthCompareOperator() RenderingDeviceCompareOperator {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_depth_compare_operator")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 269730778) // FIXME: should cache?
+  var ret RenderingDeviceCompareOperator
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetEnableDepthRange(p_member bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_enable_depth_range")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetEnableDepthRange()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetEnableDepthRange() bool {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_enable_depth_range")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetDepthRangeMin(p_member float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_depth_range_min")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetDepthRangeMin()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetDepthRangeMin() float32 {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_depth_range_min")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetDepthRangeMax(p_member float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_depth_range_max")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetDepthRangeMax()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetDepthRangeMax() float32 {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_depth_range_max")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetEnableStencil(p_member bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_enable_stencil")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetEnableStencil()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetEnableStencil() bool {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_enable_stencil")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetFrontOpFail(p_member RenderingDeviceStencilOperation, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_front_op_fail")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2092799566) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetFrontOpFail()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetFrontOpFail() RenderingDeviceStencilOperation {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_front_op_fail")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1714732389) // FIXME: should cache?
+  var ret RenderingDeviceStencilOperation
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetFrontOpPass(p_member RenderingDeviceStencilOperation, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_front_op_pass")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2092799566) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetFrontOpPass()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetFrontOpPass() RenderingDeviceStencilOperation {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_front_op_pass")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1714732389) // FIXME: should cache?
+  var ret RenderingDeviceStencilOperation
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetFrontOpDepthFail(p_member RenderingDeviceStencilOperation, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_front_op_depth_fail")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2092799566) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetFrontOpDepthFail()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetFrontOpDepthFail() RenderingDeviceStencilOperation {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_front_op_depth_fail")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1714732389) // FIXME: should cache?
+  var ret RenderingDeviceStencilOperation
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetFrontOpCompare(p_member RenderingDeviceCompareOperator, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_front_op_compare")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2573711505) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetFrontOpCompare()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetFrontOpCompare() RenderingDeviceCompareOperator {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_front_op_compare")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 269730778) // FIXME: should cache?
+  var ret RenderingDeviceCompareOperator
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetFrontOpCompareMask(p_member int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_front_op_compare_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetFrontOpCompareMask()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetFrontOpCompareMask() int {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_front_op_compare_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetFrontOpWriteMask(p_member int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_front_op_write_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetFrontOpWriteMask()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetFrontOpWriteMask() int {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_front_op_write_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetFrontOpReference(p_member int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_front_op_reference")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetFrontOpReference()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetFrontOpReference() int {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_front_op_reference")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetBackOpFail(p_member RenderingDeviceStencilOperation, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_back_op_fail")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2092799566) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetBackOpFail()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetBackOpFail() RenderingDeviceStencilOperation {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_back_op_fail")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1714732389) // FIXME: should cache?
+  var ret RenderingDeviceStencilOperation
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetBackOpPass(p_member RenderingDeviceStencilOperation, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_back_op_pass")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2092799566) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetBackOpPass()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetBackOpPass() RenderingDeviceStencilOperation {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_back_op_pass")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1714732389) // FIXME: should cache?
+  var ret RenderingDeviceStencilOperation
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetBackOpDepthFail(p_member RenderingDeviceStencilOperation, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_back_op_depth_fail")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2092799566) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetBackOpDepthFail()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetBackOpDepthFail() RenderingDeviceStencilOperation {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_back_op_depth_fail")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1714732389) // FIXME: should cache?
+  var ret RenderingDeviceStencilOperation
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetBackOpCompare(p_member RenderingDeviceCompareOperator, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_back_op_compare")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2573711505) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetBackOpCompare()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetBackOpCompare() RenderingDeviceCompareOperator {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_back_op_compare")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 269730778) // FIXME: should cache?
+  var ret RenderingDeviceCompareOperator
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetBackOpCompareMask(p_member int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_back_op_compare_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetBackOpCompareMask()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetBackOpCompareMask() int {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_back_op_compare_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetBackOpWriteMask(p_member int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_back_op_write_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RDPipelineDepthStencilState) GetBackOpWriteMask()  {
-  panic("TODO: implement")
+func  (me *RDPipelineDepthStencilState) GetBackOpWriteMask() int {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_back_op_write_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RDPipelineDepthStencilState) SetBackOpReference(p_member int, )  {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_back_op_reference")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RDPipelineDepthStencilState) GetBackOpReference() int {
+  classNameV := StringNameFromStr("RDPipelineDepthStencilState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_back_op_reference")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *RDPipelineDepthStencilState) GetPropEnableDepthTest() bool {
   panic("TODO: implement")
 }
 
-func  (me *RDPipelineDepthStencilState) GetBackOpReference()  {
+func (me *RDPipelineDepthStencilState) SetPropEnableDepthTest(value bool) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *RDPipelineDepthStencilState) GetPropEnableDepthWrite() bool {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *RDPipelineDepthStencilState) SetPropEnableDepthWrite(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropDepthCompareOperator() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropDepthCompareOperator(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropEnableDepthRange() bool {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropEnableDepthRange(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropDepthRangeMin() float32 {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropDepthRangeMin(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropDepthRangeMax() float32 {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropDepthRangeMax(value float32) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropEnableStencil() bool {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropEnableStencil(value bool) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropFrontOpFail() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropFrontOpFail(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropFrontOpPass() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropFrontOpPass(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropFrontOpDepthFail() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropFrontOpDepthFail(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropFrontOpCompare() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropFrontOpCompare(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropFrontOpCompareMask() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropFrontOpCompareMask(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropFrontOpWriteMask() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropFrontOpWriteMask(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropFrontOpReference() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropFrontOpReference(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropBackOpFail() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropBackOpFail(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropBackOpPass() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropBackOpPass(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropBackOpDepthFail() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropBackOpDepthFail(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropBackOpCompare() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropBackOpCompare(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropBackOpCompareMask() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropBackOpCompareMask(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropBackOpWriteMask() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropBackOpWriteMask(value int) {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) GetPropBackOpReference() int {
+  panic("TODO: implement")
+}
+
+func (me *RDPipelineDepthStencilState) SetPropBackOpReference(value int) {
+  panic("TODO: implement")
+}

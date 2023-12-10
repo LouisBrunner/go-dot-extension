@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MeshInstance2D struct {
   obj gdc.ObjectPtr
@@ -41,25 +37,68 @@ func (me *MeshInstance2D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *MeshInstance2D) SetMesh(mesh Mesh, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("MeshInstance2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_mesh")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 194775623) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *MeshInstance2D) GetMesh()  {
-  panic("TODO: implement")
+func  (me *MeshInstance2D) GetMesh() Mesh {
+  classNameV := StringNameFromStr("MeshInstance2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_mesh")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1808005922) // FIXME: should cache?
+  var ret Mesh
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *MeshInstance2D) SetTexture(texture Texture2D, )  {
+  classNameV := StringNameFromStr("MeshInstance2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *MeshInstance2D) GetTexture() Texture2D {
+  classNameV := StringNameFromStr("MeshInstance2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *MeshInstance2D) GetPropMesh() Mesh {
   panic("TODO: implement")
 }
 
-func  (me *MeshInstance2D) GetTexture()  {
+func (me *MeshInstance2D) SetPropMesh(value Mesh) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *MeshInstance2D) GetPropTexture() Texture2D {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *MeshInstance2D) SetPropTexture(value Texture2D) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ImporterMeshInstance3D struct {
   obj gdc.ObjectPtr
@@ -41,33 +37,96 @@ func (me *ImporterMeshInstance3D) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
 func  (me *ImporterMeshInstance3D) SetMesh(mesh ImporterMesh, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_mesh")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2255166972) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *ImporterMeshInstance3D) GetMesh()  {
-  panic("TODO: implement")
+func  (me *ImporterMeshInstance3D) GetMesh() ImporterMesh {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_mesh")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3161779525) // FIXME: should cache?
+  var ret ImporterMesh
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *ImporterMeshInstance3D) SetSkin(skin Skin, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_skin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3971435618) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(skin.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *ImporterMeshInstance3D) GetSkin()  {
-  panic("TODO: implement")
+func  (me *ImporterMeshInstance3D) GetSkin() Skin {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_skin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2074563878) // FIXME: should cache?
+  var ret Skin
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *ImporterMeshInstance3D) SetSkeletonPath(skeleton_path NodePath, )  {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_skeleton_path")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(skeleton_path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ImporterMeshInstance3D) GetSkeletonPath() NodePath {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_skeleton_path")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
+  var ret NodePath
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *ImporterMeshInstance3D) GetPropMesh() ImporterMesh {
   panic("TODO: implement")
 }
 
-func  (me *ImporterMeshInstance3D) GetSkeletonPath()  {
+func (me *ImporterMeshInstance3D) SetPropMesh(value ImporterMesh) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *ImporterMeshInstance3D) GetPropSkin() Skin {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *ImporterMeshInstance3D) SetPropSkin(value Skin) {
+  panic("TODO: implement")
+}
+
+func (me *ImporterMeshInstance3D) GetPropSkeletonPath() NodePath {
+  panic("TODO: implement")
+}
+
+func (me *ImporterMeshInstance3D) SetPropSkeletonPath(value NodePath) {
+  panic("TODO: implement")
+}

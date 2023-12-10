@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorSceneFormatImporter struct {
   obj gdc.ObjectPtr
@@ -52,29 +48,6 @@ func (me *EditorSceneFormatImporter) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *EditorSceneFormatImporter) XGetImportFlags()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorSceneFormatImporter) XGetExtensions()  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorSceneFormatImporter) XImportScene(path String, flags int, options Dictionary, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorSceneFormatImporter) XGetImportOptions(path String, )  {
-  panic("TODO: implement")
-}
-
-func  (me *EditorSceneFormatImporter) XGetOptionVisibility(path String, for_animation bool, option String, )  {
-  panic("TODO: implement")
-}
-
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

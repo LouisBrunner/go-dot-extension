@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type XMLParser struct {
   obj gdc.ObjectPtr
@@ -52,77 +48,208 @@ func (me *XMLParser) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *XMLParser) Read()  {
-  panic("TODO: implement")
+func  (me *XMLParser) Read() Error {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("read")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) GetNodeType()  {
-  panic("TODO: implement")
+func  (me *XMLParser) GetNodeType() XMLParserNodeType {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_node_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2984359541) // FIXME: should cache?
+  var ret XMLParserNodeType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) GetNodeName()  {
-  panic("TODO: implement")
+func  (me *XMLParser) GetNodeName() String {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_node_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) GetNodeData()  {
-  panic("TODO: implement")
+func  (me *XMLParser) GetNodeData() String {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_node_data")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) GetNodeOffset()  {
-  panic("TODO: implement")
+func  (me *XMLParser) GetNodeOffset() int {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_node_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) GetAttributeCount()  {
-  panic("TODO: implement")
+func  (me *XMLParser) GetAttributeCount() int {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_attribute_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) GetAttributeName(idx int, )  {
-  panic("TODO: implement")
+func  (me *XMLParser) GetAttributeName(idx int, ) String {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_attribute_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) GetAttributeValue(idx int, )  {
-  panic("TODO: implement")
+func  (me *XMLParser) GetAttributeValue(idx int, ) String {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_attribute_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) HasAttribute(name String, )  {
-  panic("TODO: implement")
+func  (me *XMLParser) HasAttribute(name String, ) bool {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_attribute")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) GetNamedAttributeValue(name String, )  {
-  panic("TODO: implement")
+func  (me *XMLParser) GetNamedAttributeValue(name String, ) String {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_named_attribute_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3135753539) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) GetNamedAttributeValueSafe(name String, )  {
-  panic("TODO: implement")
+func  (me *XMLParser) GetNamedAttributeValueSafe(name String, ) String {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_named_attribute_value_safe")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3135753539) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) IsEmpty()  {
-  panic("TODO: implement")
+func  (me *XMLParser) IsEmpty() bool {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_empty")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) GetCurrentLine()  {
-  panic("TODO: implement")
+func  (me *XMLParser) GetCurrentLine() int {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_current_line")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *XMLParser) SkipSection()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("skip_section")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *XMLParser) Seek(position int, )  {
-  panic("TODO: implement")
+func  (me *XMLParser) Seek(position int, ) Error {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("seek")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844576869) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) Open(file String, )  {
-  panic("TODO: implement")
+func  (me *XMLParser) Open(file String, ) Error {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("open")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(file.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *XMLParser) OpenBuffer(buffer PackedByteArray, )  {
-  panic("TODO: implement")
+func  (me *XMLParser) OpenBuffer(buffer PackedByteArray, ) Error {
+  classNameV := StringNameFromStr("XMLParser")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("open_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 680677267) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(buffer.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-// TODO: properties (class)
-
-// TODO: signals (class)
+// Properties

@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type UPNP struct {
   obj gdc.ObjectPtr
@@ -74,77 +70,220 @@ func (me *UPNP) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *UPNP) GetDeviceCount()  {
-  panic("TODO: implement")
+func  (me *UPNP) GetDeviceCount() int {
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_device_count")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *UPNP) GetDevice(index int, )  {
-  panic("TODO: implement")
+func  (me *UPNP) GetDevice(index int, ) UPNPDevice {
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_device")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2193290270) // FIXME: should cache?
+  var ret UPNPDevice
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *UPNP) AddDevice(device UPNPDevice, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_device")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 986715920) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(device.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *UPNP) SetDevice(index int, device UPNPDevice, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_device")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3015133723) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), gdc.ConstTypePtr(device.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *UPNP) RemoveDevice(index int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_device")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *UPNP) ClearDevices()  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_devices")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *UPNP) GetGateway()  {
-  panic("TODO: implement")
+func  (me *UPNP) GetGateway() UPNPDevice {
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_gateway")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2276800779) // FIXME: should cache?
+  var ret UPNPDevice
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *UPNP) Discover(timeout int, ttl int, device_filter String, )  {
-  panic("TODO: implement")
+func  (me *UPNP) Discover(timeout int, ttl int, device_filter String, ) int {
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("discover")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1575334765) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&timeout), gdc.ConstTypePtr(&ttl), gdc.ConstTypePtr(device_filter.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *UPNP) QueryExternalAddress()  {
-  panic("TODO: implement")
+func  (me *UPNP) QueryExternalAddress() String {
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("query_external_address")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *UPNP) AddPortMapping(port int, port_internal int, desc String, proto String, duration int, )  {
-  panic("TODO: implement")
+func  (me *UPNP) AddPortMapping(port int, port_internal int, desc String, proto String, duration int, ) int {
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_port_mapping")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3358934458) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), gdc.ConstTypePtr(&port_internal), gdc.ConstTypePtr(desc.AsCTypePtr()), gdc.ConstTypePtr(proto.AsCTypePtr()), gdc.ConstTypePtr(&duration), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *UPNP) DeletePortMapping(port int, proto String, )  {
-  panic("TODO: implement")
+func  (me *UPNP) DeletePortMapping(port int, proto String, ) int {
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("delete_port_mapping")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 760296170) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), gdc.ConstTypePtr(proto.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *UPNP) SetDiscoverMulticastIf(m_if String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_discover_multicast_if")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(m_if.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *UPNP) GetDiscoverMulticastIf()  {
-  panic("TODO: implement")
+func  (me *UPNP) GetDiscoverMulticastIf() String {
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_discover_multicast_if")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *UPNP) SetDiscoverLocalPort(port int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_discover_local_port")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *UPNP) GetDiscoverLocalPort()  {
-  panic("TODO: implement")
+func  (me *UPNP) GetDiscoverLocalPort() int {
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_discover_local_port")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *UPNP) SetDiscoverIpv6(ipv6 bool, )  {
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_discover_ipv6")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ipv6), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *UPNP) IsDiscoverIpv6() bool {
+  classNameV := StringNameFromStr("UPNP")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_discover_ipv6")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+// Properties
+
+func (me *UPNP) GetPropDiscoverMulticastIf() String {
   panic("TODO: implement")
 }
 
-func  (me *UPNP) IsDiscoverIpv6()  {
+func (me *UPNP) SetPropDiscoverMulticastIf(value String) {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *UPNP) GetPropDiscoverLocalPort() int {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *UPNP) SetPropDiscoverLocalPort(value int) {
+  panic("TODO: implement")
+}
+
+func (me *UPNP) GetPropDiscoverIpv6() bool {
+  panic("TODO: implement")
+}
+
+func (me *UPNP) SetPropDiscoverIpv6(value bool) {
+  panic("TODO: implement")
+}

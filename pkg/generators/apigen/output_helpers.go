@@ -25,6 +25,13 @@ var outputFuncs = map[string]interface{}{
 	"replace":     strings.ReplaceAll,
 	"isExported":  isExported,
 	"presents":    mapIsPresent,
+	"startsWith":  strings.HasPrefix,
+	"ternary": func(cond bool, a, b string) string {
+		if cond {
+			return a
+		}
+		return b
+	},
 }
 
 func renderFile[T any](templateName, resultFile string, data T, outputDir string) error {
@@ -72,13 +79,23 @@ var arrayMatcher = regexp.MustCompile(`\[(\d+)\]`)
 func mapType(t string) string {
 	switch {
 	case strings.HasPrefix(t, "enum::"):
-		return strings.ReplaceAll(strings.TrimPrefix(t, "enum::"), ".", "")
+		t = strings.TrimPrefix(t, "enum::")
+		return strings.ReplaceAll(t, ".", "")
 	case strings.HasPrefix(t, "bitfield::"):
-		return strings.ReplaceAll(strings.TrimPrefix(t, "bitfield::"), ".", "")
+		t = strings.TrimPrefix(t, "bitfield::")
+		return strings.ReplaceAll(t, ".", "")
 	case strings.HasPrefix(t, "typedarray::"):
-		return strings.ReplaceAll(strings.TrimPrefix(t, "typedarray::"), ".", "")
+		t = strings.TrimPrefix(t, "typedarray::")
+		first, rest, found := strings.Cut(t, ":")
+		if found {
+			return rest
+		}
+		return first
 	case strings.Contains(t, "::"):
 		return strings.ReplaceAll(t, "::", "")
+	case strings.Contains(t, ","):
+		// FIXME: technically this is a union
+		return "any"
 	case strings.Contains(t, "_t") || strings.HasPrefix(t, "const ") || strings.Contains(t, "void") || strings.Contains(t, "*"):
 		// isConst := strings.HasPrefix(t, "const ")
 		t = strings.TrimPrefix(t, "const ")

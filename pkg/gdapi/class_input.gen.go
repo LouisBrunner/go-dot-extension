@@ -2,16 +2,12 @@
 package gdapi
 
 import (
-// TODO: disgusting imports
-
-
-
-
-
-
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Input struct {
   obj gdc.ObjectPtr
@@ -71,201 +67,564 @@ func (me *Input) AsCTypePtr() gdc.ConstTypePtr {
   return gdc.ConstTypePtr(me.obj)
 }
 
-
 // Methods
 
-func  (me *Input) IsAnythingPressed()  {
-  panic("TODO: implement")
+func  (me *Input) IsAnythingPressed() bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_anything_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) IsKeyPressed(keycode Key, )  {
-  panic("TODO: implement")
+func  (me *Input) IsKeyPressed(keycode Key, ) bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_key_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1938909964) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keycode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) IsPhysicalKeyPressed(keycode Key, )  {
-  panic("TODO: implement")
+func  (me *Input) IsPhysicalKeyPressed(keycode Key, ) bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_physical_key_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1938909964) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keycode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) IsKeyLabelPressed(keycode Key, )  {
-  panic("TODO: implement")
+func  (me *Input) IsKeyLabelPressed(keycode Key, ) bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_key_label_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1938909964) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keycode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) IsMouseButtonPressed(button MouseButton, )  {
-  panic("TODO: implement")
+func  (me *Input) IsMouseButtonPressed(button MouseButton, ) bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_mouse_button_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1821097125) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&button), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) IsJoyButtonPressed(device int, button JoyButton, )  {
-  panic("TODO: implement")
+func  (me *Input) IsJoyButtonPressed(device int, button JoyButton, ) bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_joy_button_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 787208542) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&device), gdc.ConstTypePtr(&button), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) IsActionPressed(action StringName, exact_match bool, )  {
-  panic("TODO: implement")
+func  (me *Input) IsActionPressed(action StringName, exact_match bool, ) bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_action_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1558498928) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&exact_match), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) IsActionJustPressed(action StringName, exact_match bool, )  {
-  panic("TODO: implement")
+func  (me *Input) IsActionJustPressed(action StringName, exact_match bool, ) bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_action_just_pressed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1558498928) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&exact_match), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) IsActionJustReleased(action StringName, exact_match bool, )  {
-  panic("TODO: implement")
+func  (me *Input) IsActionJustReleased(action StringName, exact_match bool, ) bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_action_just_released")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1558498928) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&exact_match), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetActionStrength(action StringName, exact_match bool, )  {
-  panic("TODO: implement")
+func  (me *Input) GetActionStrength(action StringName, exact_match bool, ) float32 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_action_strength")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 801543509) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&exact_match), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetActionRawStrength(action StringName, exact_match bool, )  {
-  panic("TODO: implement")
+func  (me *Input) GetActionRawStrength(action StringName, exact_match bool, ) float32 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_action_raw_strength")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 801543509) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&exact_match), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetAxis(negative_action StringName, positive_action StringName, )  {
-  panic("TODO: implement")
+func  (me *Input) GetAxis(negative_action StringName, positive_action StringName, ) float32 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_axis")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1958752504) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(negative_action.AsCTypePtr()), gdc.ConstTypePtr(positive_action.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetVector(negative_x StringName, positive_x StringName, negative_y StringName, positive_y StringName, deadzone float32, )  {
-  panic("TODO: implement")
+func  (me *Input) GetVector(negative_x StringName, positive_x StringName, negative_y StringName, positive_y StringName, deadzone float32, ) Vector2 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_vector")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1517139831) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(negative_x.AsCTypePtr()), gdc.ConstTypePtr(positive_x.AsCTypePtr()), gdc.ConstTypePtr(negative_y.AsCTypePtr()), gdc.ConstTypePtr(positive_y.AsCTypePtr()), gdc.ConstTypePtr(&deadzone), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Input) AddJoyMapping(mapping String, update_existing bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_joy_mapping")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1168363258) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mapping.AsCTypePtr()), gdc.ConstTypePtr(&update_existing), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Input) RemoveJoyMapping(guid String, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("remove_joy_mapping")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(guid.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Input) IsJoyKnown(device int, )  {
-  panic("TODO: implement")
+func  (me *Input) IsJoyKnown(device int, ) bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_joy_known")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3067735520) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&device), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetJoyAxis(device int, axis JoyAxis, )  {
-  panic("TODO: implement")
+func  (me *Input) GetJoyAxis(device int, axis JoyAxis, ) float32 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_joy_axis")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4063175957) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&device), gdc.ConstTypePtr(&axis), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetJoyName(device int, )  {
-  panic("TODO: implement")
+func  (me *Input) GetJoyName(device int, ) String {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_joy_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 990163283) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&device), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetJoyGuid(device int, )  {
-  panic("TODO: implement")
+func  (me *Input) GetJoyGuid(device int, ) String {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_joy_guid")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&device), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) ShouldIgnoreDevice(vendor_id int, product_id int, )  {
-  panic("TODO: implement")
+func  (me *Input) ShouldIgnoreDevice(vendor_id int, product_id int, ) bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("should_ignore_device")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2522259332) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vendor_id), gdc.ConstTypePtr(&product_id), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetConnectedJoypads()  {
-  panic("TODO: implement")
+func  (me *Input) GetConnectedJoypads() int {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_connected_joypads")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetJoyVibrationStrength(device int, )  {
-  panic("TODO: implement")
+func  (me *Input) GetJoyVibrationStrength(device int, ) Vector2 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_joy_vibration_strength")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3114997196) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&device), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetJoyVibrationDuration(device int, )  {
-  panic("TODO: implement")
+func  (me *Input) GetJoyVibrationDuration(device int, ) float32 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_joy_vibration_duration")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4025615559) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&device), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Input) StartJoyVibration(device int, weak_magnitude float32, strong_magnitude float32, duration float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("start_joy_vibration")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1890603622) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&device), gdc.ConstTypePtr(&weak_magnitude), gdc.ConstTypePtr(&strong_magnitude), gdc.ConstTypePtr(&duration), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Input) StopJoyVibration(device int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("stop_joy_vibration")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&device), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Input) VibrateHandheld(duration_ms int, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("vibrate_handheld")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 955504365) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&duration_ms), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Input) GetGravity()  {
-  panic("TODO: implement")
+func  (me *Input) GetGravity() Vector3 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_gravity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetAccelerometer()  {
-  panic("TODO: implement")
+func  (me *Input) GetAccelerometer() Vector3 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_accelerometer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetMagnetometer()  {
-  panic("TODO: implement")
+func  (me *Input) GetMagnetometer() Vector3 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_magnetometer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetGyroscope()  {
-  panic("TODO: implement")
+func  (me *Input) GetGyroscope() Vector3 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_gyroscope")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Input) SetGravity(value Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_gravity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(value.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Input) SetAccelerometer(value Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_accelerometer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(value.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Input) SetMagnetometer(value Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_magnetometer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(value.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Input) SetGyroscope(value Vector3, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_gyroscope")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(value.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Input) GetLastMouseVelocity()  {
-  panic("TODO: implement")
+func  (me *Input) GetLastMouseVelocity() Vector2 {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_last_mouse_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1497962370) // FIXME: should cache?
+  var ret Vector2
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
-func  (me *Input) GetMouseButtonMask()  {
-  panic("TODO: implement")
+func  (me *Input) GetMouseButtonMask() MouseButtonMask {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_mouse_button_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2512161324) // FIXME: should cache?
+  var ret MouseButtonMask
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Input) SetMouseMode(mode InputMouseMode, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_mouse_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2228490894) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Input) GetMouseMode()  {
-  panic("TODO: implement")
+func  (me *Input) GetMouseMode() InputMouseMode {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_mouse_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 965286182) // FIXME: should cache?
+  var ret InputMouseMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Input) WarpMouse(position Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("warp_mouse")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Input) ActionPress(action StringName, strength float32, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("action_press")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 573731101) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&strength), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Input) ActionRelease(action StringName, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("action_release")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Input) SetDefaultCursorShape(shape InputCursorShape, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_default_cursor_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2124816902) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shape), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Input) GetCurrentCursorShape()  {
-  panic("TODO: implement")
+func  (me *Input) GetCurrentCursorShape() InputCursorShape {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_current_cursor_shape")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3455658929) // FIXME: should cache?
+  var ret InputCursorShape
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Input) SetCustomMouseCursor(image Resource, shape InputCursorShape, hotspot Vector2, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_custom_mouse_cursor")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3489634142) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), gdc.ConstTypePtr(&shape), gdc.ConstTypePtr(hotspot.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Input) ParseInputEvent(event InputEvent, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("parse_input_event")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3754044979) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(event.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *Input) SetUseAccumulatedInput(enable bool, )  {
-  panic("TODO: implement")
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_accumulated_input")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *Input) IsUsingAccumulatedInput()  {
-  panic("TODO: implement")
+func  (me *Input) IsUsingAccumulatedInput() bool {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_using_accumulated_input")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *Input) FlushBufferedEvents()  {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("flush_buffered_events")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+// Properties
+
+func (me *Input) GetPropMouseMode() int {
   panic("TODO: implement")
 }
 
-// TODO: properties (class)
+func (me *Input) SetPropMouseMode(value int) {
+  panic("TODO: implement")
+}
 
-// TODO: signals (class)
+func (me *Input) GetPropUseAccumulatedInput() bool {
+  panic("TODO: implement")
+}
+
+func (me *Input) SetPropUseAccumulatedInput(value bool) {
+  panic("TODO: implement")
+}
+// Signals
+// FIXME: can't seem to be able to connect them from this side of the API
