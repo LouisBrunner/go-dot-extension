@@ -111,4 +111,4 @@ func  (me *PropertyTweener) SetDelay(delay float32, ) PropertyTweener {
   return ret
 }
 
-// Properties
+// Signals

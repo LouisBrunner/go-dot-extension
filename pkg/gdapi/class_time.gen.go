@@ -318,4 +318,4 @@ func  (me *Time) GetTicksUsec() int {
   return ret
 }
 
-// Properties
+// Signals

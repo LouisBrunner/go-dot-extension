@@ -388,31 +388,23 @@ func  (me *XRInterface) SetEnvironmentBlendMode(mode XRInterfaceEnvironmentBlend
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *XRInterface) GetPropInterfaceIsPrimary() bool {
-  panic("TODO: implement")
-}
-
-func (me *XRInterface) SetPropInterfaceIsPrimary(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *XRInterface) GetPropXrPlayAreaMode() int {
-  panic("TODO: implement")
-}
-
-func (me *XRInterface) SetPropXrPlayAreaMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *XRInterface) GetPropArIsAnchorDetectionEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *XRInterface) SetPropArIsAnchorDetectionEnabled(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type XRInterfacePlayAreaChangedSignalFn func(mode int, )
+
+func (me *XRInterface) ConnectPlayAreaChanged(subs SignalSubscribers, fn XRInterfacePlayAreaChangedSignalFn) {
+  sig := StringNameFromStr("play_area_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRInterface) DisconnectPlayAreaChanged(subs SignalSubscribers, fn XRInterfacePlayAreaChangedSignalFn) {
+  sig := StringNameFromStr("play_area_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

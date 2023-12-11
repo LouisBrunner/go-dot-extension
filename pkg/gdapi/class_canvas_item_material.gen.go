@@ -186,53 +186,7 @@ func  (me *CanvasItemMaterial) GetParticlesAnimLoop() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CanvasItemMaterial) GetPropBlendMode() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItemMaterial) SetPropBlendMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItemMaterial) GetPropLightMode() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItemMaterial) SetPropLightMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItemMaterial) GetPropParticlesAnimation() bool {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItemMaterial) SetPropParticlesAnimation(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItemMaterial) GetPropParticlesAnimHFrames() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItemMaterial) SetPropParticlesAnimHFrames(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItemMaterial) GetPropParticlesAnimVFrames() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItemMaterial) SetPropParticlesAnimVFrames(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItemMaterial) GetPropParticlesAnimLoop() bool {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItemMaterial) SetPropParticlesAnimLoop(value bool) {
-  panic("TODO: implement")
-}
+// Signals

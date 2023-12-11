@@ -192,61 +192,7 @@ func  (me *PhysicsTestMotionParameters2D) SetRecoveryAsCollisionEnabled(enabled 
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PhysicsTestMotionParameters2D) GetPropFrom() Transform2D {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) SetPropFrom(value Transform2D) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) GetPropMotion() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) SetPropMotion(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) GetPropMargin() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) SetPropMargin(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) GetPropCollideSeparationRay() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) SetPropCollideSeparationRay(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) GetPropExcludeBodies() RID {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) SetPropExcludeBodies(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) GetPropExcludeObjects() Array {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) SetPropExcludeObjects(value Array) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) GetPropRecoveryAsCollision() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters2D) SetPropRecoveryAsCollision(value bool) {
-  panic("TODO: implement")
-}
+// Signals

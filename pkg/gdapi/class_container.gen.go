@@ -66,6 +66,36 @@ func  (me *Container) FitChildInRect(child Control, rect Rect2, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ContainerPreSortChildrenSignalFn func()
+
+func (me *Container) ConnectPreSortChildren(subs SignalSubscribers, fn ContainerPreSortChildrenSignalFn) {
+  sig := StringNameFromStr("pre_sort_children")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Container) DisconnectPreSortChildren(subs SignalSubscribers, fn ContainerPreSortChildrenSignalFn) {
+  sig := StringNameFromStr("pre_sort_children")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ContainerSortChildrenSignalFn func()
+
+func (me *Container) ConnectSortChildren(subs SignalSubscribers, fn ContainerSortChildrenSignalFn) {
+  sig := StringNameFromStr("sort_children")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Container) DisconnectSortChildren(subs SignalSubscribers, fn ContainerSortChildrenSignalFn) {
+  sig := StringNameFromStr("sort_children")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

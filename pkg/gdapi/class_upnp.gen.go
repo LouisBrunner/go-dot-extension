@@ -261,29 +261,7 @@ func  (me *UPNP) IsDiscoverIpv6() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *UPNP) GetPropDiscoverMulticastIf() String {
-  panic("TODO: implement")
-}
-
-func (me *UPNP) SetPropDiscoverMulticastIf(value String) {
-  panic("TODO: implement")
-}
-
-func (me *UPNP) GetPropDiscoverLocalPort() int {
-  panic("TODO: implement")
-}
-
-func (me *UPNP) SetPropDiscoverLocalPort(value int) {
-  panic("TODO: implement")
-}
-
-func (me *UPNP) GetPropDiscoverIpv6() bool {
-  panic("TODO: implement")
-}
-
-func (me *UPNP) SetPropDiscoverIpv6(value bool) {
-  panic("TODO: implement")
-}
+// Signals

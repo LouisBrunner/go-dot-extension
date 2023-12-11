@@ -95,4 +95,4 @@ func  (me *PackedScene) GetState() SceneState {
   return ret
 }
 
-// Properties
+// Signals

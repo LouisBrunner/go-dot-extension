@@ -1437,4 +1437,4 @@ func  (me *PhysicsServer2D) GetProcessInfo(process_info PhysicsServer2DProcessIn
   return ret
 }
 
-// Properties
+// Signals

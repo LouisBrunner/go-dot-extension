@@ -106,23 +106,55 @@ func  (me *ColorPickerButton) IsEditingAlpha() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ColorPickerButton) GetPropColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *ColorPickerButton) SetPropColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *ColorPickerButton) GetPropEditAlpha() bool {
-  panic("TODO: implement")
-}
-
-func (me *ColorPickerButton) SetPropEditAlpha(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ColorPickerButtonColorChangedSignalFn func(color Color, )
+
+func (me *ColorPickerButton) ConnectColorChanged(subs SignalSubscribers, fn ColorPickerButtonColorChangedSignalFn) {
+  sig := StringNameFromStr("color_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ColorPickerButton) DisconnectColorChanged(subs SignalSubscribers, fn ColorPickerButtonColorChangedSignalFn) {
+  sig := StringNameFromStr("color_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ColorPickerButtonPopupClosedSignalFn func()
+
+func (me *ColorPickerButton) ConnectPopupClosed(subs SignalSubscribers, fn ColorPickerButtonPopupClosedSignalFn) {
+  sig := StringNameFromStr("popup_closed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ColorPickerButton) DisconnectPopupClosed(subs SignalSubscribers, fn ColorPickerButtonPopupClosedSignalFn) {
+  sig := StringNameFromStr("popup_closed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ColorPickerButtonPickerCreatedSignalFn func()
+
+func (me *ColorPickerButton) ConnectPickerCreated(subs SignalSubscribers, fn ColorPickerButtonPickerCreatedSignalFn) {
+  sig := StringNameFromStr("picker_created")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ColorPickerButton) DisconnectPickerCreated(subs SignalSubscribers, fn ColorPickerButtonPickerCreatedSignalFn) {
+  sig := StringNameFromStr("picker_created")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

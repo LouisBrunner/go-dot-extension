@@ -226,69 +226,7 @@ func  (me *CameraAttributesPhysical) GetAutoExposureMinExposureValue() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CameraAttributesPhysical) GetPropFrustumFocusDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) SetPropFrustumFocusDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) GetPropFrustumFocalLength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) SetPropFrustumFocalLength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) GetPropFrustumNear() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) SetPropFrustumNear(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) GetPropFrustumFar() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) SetPropFrustumFar(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) GetPropExposureAperture() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) SetPropExposureAperture(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) GetPropExposureShutterSpeed() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) SetPropExposureShutterSpeed(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) GetPropAutoExposureMinExposureValue() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) SetPropAutoExposureMinExposureValue(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) GetPropAutoExposureMaxExposureValue() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPhysical) SetPropAutoExposureMaxExposureValue(value float32) {
-  panic("TODO: implement")
-}
+// Signals

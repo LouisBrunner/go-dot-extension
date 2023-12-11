@@ -116,53 +116,7 @@ func  (me *PhysicsBody3D) RemoveCollisionExceptionWith(body Node, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PhysicsBody3D) GetPropAxisLockLinearX() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsBody3D) SetPropAxisLockLinearX(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsBody3D) GetPropAxisLockLinearY() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsBody3D) SetPropAxisLockLinearY(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsBody3D) GetPropAxisLockLinearZ() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsBody3D) SetPropAxisLockLinearZ(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsBody3D) GetPropAxisLockAngularX() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsBody3D) SetPropAxisLockAngularX(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsBody3D) GetPropAxisLockAngularY() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsBody3D) SetPropAxisLockAngularY(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsBody3D) GetPropAxisLockAngularZ() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsBody3D) SetPropAxisLockAngularZ(value bool) {
-  panic("TODO: implement")
-}
+// Signals

@@ -39,4 +39,4 @@ func (me *ShaderGlobalsOverride) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

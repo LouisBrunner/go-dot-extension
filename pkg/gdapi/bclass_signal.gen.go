@@ -78,6 +78,7 @@ func (me *Signal) IsNull() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -89,6 +90,7 @@ func (me *Signal) GetObject() Object {
 
   var ret Object
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -100,6 +102,7 @@ func (me *Signal) GetObjectId() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -111,6 +114,7 @@ func (me *Signal) GetName() StringName {
 
   var ret StringName
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -122,6 +126,7 @@ func (me *Signal) Connect(callable Callable, flags int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{callable.AsCTypePtr(), gdc.ConstTypePtr(&flags), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -132,6 +137,7 @@ func (me *Signal) Disconnect(callable Callable, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 3470848906) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{callable.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -142,6 +148,7 @@ func (me *Signal) IsConnected(callable Callable, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{callable.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -153,16 +160,20 @@ func (me *Signal) GetConnections() Array {
 
   var ret Array
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
 
-func (me *Signal) Emit()  {
+func (me *Signal) Emit(varargs ...Variant)  {
   name := StringNameFromStr("emit")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 3286317445) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{}
+  for _, arg := range varargs {
+    args = append(args, arg.AsCTypePtr())
+  }
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 

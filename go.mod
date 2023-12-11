@@ -3,6 +3,7 @@ module github.com/LouisBrunner/go-dot-extension
 go 1.20
 
 require (
+	github.com/google/uuid v1.1.2
 	github.com/iancoleman/strcase v0.2.0
 	github.com/mattn/go-pointer v0.0.1
 	github.com/t-yuki/gocover-cobertura v0.0.0-20180217150009-aaee18c8195c

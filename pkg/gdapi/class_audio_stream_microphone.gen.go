@@ -39,4 +39,4 @@ func (me *AudioStreamMicrophone) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

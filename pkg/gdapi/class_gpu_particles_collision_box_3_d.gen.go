@@ -60,13 +60,7 @@ func  (me *GPUParticlesCollisionBox3D) GetSize() Vector3 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GPUParticlesCollisionBox3D) GetPropSize() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesCollisionBox3D) SetPropSize(value Vector3) {
-  panic("TODO: implement")
-}
+// Signals

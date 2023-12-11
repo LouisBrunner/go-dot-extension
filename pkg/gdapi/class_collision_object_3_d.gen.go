@@ -401,55 +401,55 @@ func  (me *CollisionObject3D) ShapeFindOwner(shape_index int, ) int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CollisionObject3D) GetPropDisableMode() int {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject3D) SetPropDisableMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject3D) GetPropCollisionLayer() int {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject3D) SetPropCollisionLayer(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject3D) GetPropCollisionMask() int {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject3D) SetPropCollisionMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject3D) GetPropCollisionPriority() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject3D) SetPropCollisionPriority(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject3D) GetPropInputRayPickable() bool {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject3D) SetPropInputRayPickable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject3D) GetPropInputCaptureOnDrag() bool {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject3D) SetPropInputCaptureOnDrag(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type CollisionObject3DInputEventSignalFn func(camera Node, event InputEvent, position Vector3, normal Vector3, shape_idx int, )
+
+func (me *CollisionObject3D) ConnectInputEvent(subs SignalSubscribers, fn CollisionObject3DInputEventSignalFn) {
+  sig := StringNameFromStr("input_event")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CollisionObject3D) DisconnectInputEvent(subs SignalSubscribers, fn CollisionObject3DInputEventSignalFn) {
+  sig := StringNameFromStr("input_event")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CollisionObject3DMouseEnteredSignalFn func()
+
+func (me *CollisionObject3D) ConnectMouseEntered(subs SignalSubscribers, fn CollisionObject3DMouseEnteredSignalFn) {
+  sig := StringNameFromStr("mouse_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CollisionObject3D) DisconnectMouseEntered(subs SignalSubscribers, fn CollisionObject3DMouseEnteredSignalFn) {
+  sig := StringNameFromStr("mouse_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CollisionObject3DMouseExitedSignalFn func()
+
+func (me *CollisionObject3D) ConnectMouseExited(subs SignalSubscribers, fn CollisionObject3DMouseExitedSignalFn) {
+  sig := StringNameFromStr("mouse_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CollisionObject3D) DisconnectMouseExited(subs SignalSubscribers, fn CollisionObject3DMouseExitedSignalFn) {
+  sig := StringNameFromStr("mouse_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

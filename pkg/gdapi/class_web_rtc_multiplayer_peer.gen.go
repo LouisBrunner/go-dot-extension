@@ -133,4 +133,4 @@ func  (me *WebRTCMultiplayerPeer) GetPeers() Dictionary {
   return ret
 }
 
-// Properties
+// Signals

@@ -170,53 +170,7 @@ func  (me *CSGTorus3D) GetSmoothFaces() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CSGTorus3D) GetPropInnerRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CSGTorus3D) SetPropInnerRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CSGTorus3D) GetPropOuterRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CSGTorus3D) SetPropOuterRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CSGTorus3D) GetPropSides() int {
-  panic("TODO: implement")
-}
-
-func (me *CSGTorus3D) SetPropSides(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CSGTorus3D) GetPropRingSides() int {
-  panic("TODO: implement")
-}
-
-func (me *CSGTorus3D) SetPropRingSides(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CSGTorus3D) GetPropSmoothFaces() bool {
-  panic("TODO: implement")
-}
-
-func (me *CSGTorus3D) SetPropSmoothFaces(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CSGTorus3D) GetPropMaterial() any {
-  panic("TODO: implement")
-}
-
-func (me *CSGTorus3D) SetPropMaterial(value any) {
-  panic("TODO: implement")
-}
+// Signals

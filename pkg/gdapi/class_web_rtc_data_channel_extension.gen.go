@@ -39,4 +39,4 @@ func (me *WebRTCDataChannelExtension) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -258,61 +258,7 @@ func  (me *NavigationLink2D) GetTravelCost() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NavigationLink2D) GetPropEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) SetPropEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) GetPropBidirectional() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) SetPropBidirectional(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) GetPropNavigationLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) SetPropNavigationLayers(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) GetPropStartPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) SetPropStartPosition(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) GetPropEndPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) SetPropEndPosition(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) GetPropEnterCost() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) SetPropEnterCost(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) GetPropTravelCost() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationLink2D) SetPropTravelCost(value float32) {
-  panic("TODO: implement")
-}
+// Signals

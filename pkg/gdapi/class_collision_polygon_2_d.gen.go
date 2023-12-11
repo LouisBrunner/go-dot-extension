@@ -154,45 +154,7 @@ func  (me *CollisionPolygon2D) GetOneWayCollisionMargin() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CollisionPolygon2D) GetPropBuildMode() int {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon2D) SetPropBuildMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon2D) GetPropPolygon() PackedVector2Array {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon2D) SetPropPolygon(value PackedVector2Array) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon2D) GetPropDisabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon2D) SetPropDisabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon2D) GetPropOneWayCollision() bool {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon2D) SetPropOneWayCollision(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon2D) GetPropOneWayCollisionMargin() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon2D) SetPropOneWayCollisionMargin(value float32) {
-  panic("TODO: implement")
-}
+// Signals

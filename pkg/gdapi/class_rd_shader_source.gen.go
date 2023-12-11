@@ -82,53 +82,7 @@ func  (me *RDShaderSource) GetLanguage() RenderingDeviceShaderLanguage {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RDShaderSource) GetPropSourceVertex() String {
-  panic("TODO: implement")
-}
-
-func (me *RDShaderSource) SetPropSourceVertex(value String) {
-  panic("TODO: implement")
-}
-
-func (me *RDShaderSource) GetPropSourceFragment() String {
-  panic("TODO: implement")
-}
-
-func (me *RDShaderSource) SetPropSourceFragment(value String) {
-  panic("TODO: implement")
-}
-
-func (me *RDShaderSource) GetPropSourceTesselationControl() String {
-  panic("TODO: implement")
-}
-
-func (me *RDShaderSource) SetPropSourceTesselationControl(value String) {
-  panic("TODO: implement")
-}
-
-func (me *RDShaderSource) GetPropSourceTesselationEvaluation() String {
-  panic("TODO: implement")
-}
-
-func (me *RDShaderSource) SetPropSourceTesselationEvaluation(value String) {
-  panic("TODO: implement")
-}
-
-func (me *RDShaderSource) GetPropSourceCompute() String {
-  panic("TODO: implement")
-}
-
-func (me *RDShaderSource) SetPropSourceCompute(value String) {
-  panic("TODO: implement")
-}
-
-func (me *RDShaderSource) GetPropLanguage() int {
-  panic("TODO: implement")
-}
-
-func (me *RDShaderSource) SetPropLanguage(value int) {
-  panic("TODO: implement")
-}
+// Signals

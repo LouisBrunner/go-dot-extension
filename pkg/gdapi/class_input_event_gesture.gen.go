@@ -60,13 +60,7 @@ func  (me *InputEventGesture) GetPosition() Vector2 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEventGesture) GetPropPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventGesture) SetPropPosition(value Vector2) {
-  panic("TODO: implement")
-}
+// Signals

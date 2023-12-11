@@ -60,15 +60,39 @@ func  (me *VisibleOnScreenNotifier3D) IsOnScreen() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisibleOnScreenNotifier3D) GetPropAabb() AABB {
-  panic("TODO: implement")
-}
-
-func (me *VisibleOnScreenNotifier3D) SetPropAabb(value AABB) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type VisibleOnScreenNotifier3DScreenEnteredSignalFn func()
+
+func (me *VisibleOnScreenNotifier3D) ConnectScreenEntered(subs SignalSubscribers, fn VisibleOnScreenNotifier3DScreenEnteredSignalFn) {
+  sig := StringNameFromStr("screen_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *VisibleOnScreenNotifier3D) DisconnectScreenEntered(subs SignalSubscribers, fn VisibleOnScreenNotifier3DScreenEnteredSignalFn) {
+  sig := StringNameFromStr("screen_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type VisibleOnScreenNotifier3DScreenExitedSignalFn func()
+
+func (me *VisibleOnScreenNotifier3D) ConnectScreenExited(subs SignalSubscribers, fn VisibleOnScreenNotifier3DScreenExitedSignalFn) {
+  sig := StringNameFromStr("screen_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *VisibleOnScreenNotifier3D) DisconnectScreenExited(subs SignalSubscribers, fn VisibleOnScreenNotifier3DScreenExitedSignalFn) {
+  sig := StringNameFromStr("screen_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

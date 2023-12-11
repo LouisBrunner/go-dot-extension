@@ -75,4 +75,4 @@ func  (me *MethodTweener) SetEase(ease TweenEaseType, ) MethodTweener {
   return ret
 }
 
-// Properties
+// Signals

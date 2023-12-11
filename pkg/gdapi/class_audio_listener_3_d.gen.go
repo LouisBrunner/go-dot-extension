@@ -83,4 +83,4 @@ func  (me *AudioListener3D) GetListenerTransform() Transform3D {
   return ret
 }
 
-// Properties
+// Signals

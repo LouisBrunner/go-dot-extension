@@ -268,31 +268,87 @@ func  (me *XRServer) SetPrimaryInterface(interface_ XRInterface, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(interface_.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *XRServer) GetPropWorldScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *XRServer) SetPropWorldScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *XRServer) GetPropWorldOrigin() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *XRServer) SetPropWorldOrigin(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *XRServer) GetPropPrimaryInterface() Object {
-  panic("TODO: implement")
-}
-
-func (me *XRServer) SetPropPrimaryInterface(value Object) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type XRServerInterfaceAddedSignalFn func(interface_name StringName, )
+
+func (me *XRServer) ConnectInterfaceAdded(subs SignalSubscribers, fn XRServerInterfaceAddedSignalFn) {
+  sig := StringNameFromStr("interface_added")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRServer) DisconnectInterfaceAdded(subs SignalSubscribers, fn XRServerInterfaceAddedSignalFn) {
+  sig := StringNameFromStr("interface_added")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRServerInterfaceRemovedSignalFn func(interface_name StringName, )
+
+func (me *XRServer) ConnectInterfaceRemoved(subs SignalSubscribers, fn XRServerInterfaceRemovedSignalFn) {
+  sig := StringNameFromStr("interface_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRServer) DisconnectInterfaceRemoved(subs SignalSubscribers, fn XRServerInterfaceRemovedSignalFn) {
+  sig := StringNameFromStr("interface_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRServerTrackerAddedSignalFn func(tracker_name StringName, type_ int, )
+
+func (me *XRServer) ConnectTrackerAdded(subs SignalSubscribers, fn XRServerTrackerAddedSignalFn) {
+  sig := StringNameFromStr("tracker_added")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRServer) DisconnectTrackerAdded(subs SignalSubscribers, fn XRServerTrackerAddedSignalFn) {
+  sig := StringNameFromStr("tracker_added")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRServerTrackerUpdatedSignalFn func(tracker_name StringName, type_ int, )
+
+func (me *XRServer) ConnectTrackerUpdated(subs SignalSubscribers, fn XRServerTrackerUpdatedSignalFn) {
+  sig := StringNameFromStr("tracker_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRServer) DisconnectTrackerUpdated(subs SignalSubscribers, fn XRServerTrackerUpdatedSignalFn) {
+  sig := StringNameFromStr("tracker_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRServerTrackerRemovedSignalFn func(tracker_name StringName, type_ int, )
+
+func (me *XRServer) ConnectTrackerRemoved(subs SignalSubscribers, fn XRServerTrackerRemovedSignalFn) {
+  sig := StringNameFromStr("tracker_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRServer) DisconnectTrackerRemoved(subs SignalSubscribers, fn XRServerTrackerRemovedSignalFn) {
+  sig := StringNameFromStr("tracker_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

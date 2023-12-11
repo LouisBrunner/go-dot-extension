@@ -256,63 +256,183 @@ func  (me *EditorProperty) EmitChanged(property StringName, value Variant, field
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(property.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), gdc.ConstTypePtr(field.AsCTypePtr()), gdc.ConstTypePtr(&changing), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *EditorProperty) GetPropLabel() String {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) SetPropLabel(value String) {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) GetPropReadOnly() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) SetPropReadOnly(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) GetPropCheckable() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) SetPropCheckable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) GetPropChecked() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) SetPropChecked(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) GetPropDrawWarning() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) SetPropDrawWarning(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) GetPropKeying() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) SetPropKeying(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) GetPropDeletable() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorProperty) SetPropDeletable(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type EditorPropertyPropertyChangedSignalFn func(property StringName, value Variant, field StringName, changing bool, )
+
+func (me *EditorProperty) ConnectPropertyChanged(subs SignalSubscribers, fn EditorPropertyPropertyChangedSignalFn) {
+  sig := StringNameFromStr("property_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorProperty) DisconnectPropertyChanged(subs SignalSubscribers, fn EditorPropertyPropertyChangedSignalFn) {
+  sig := StringNameFromStr("property_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPropertyMultiplePropertiesChangedSignalFn func(properties PackedStringArray, value Array, )
+
+func (me *EditorProperty) ConnectMultiplePropertiesChanged(subs SignalSubscribers, fn EditorPropertyMultiplePropertiesChangedSignalFn) {
+  sig := StringNameFromStr("multiple_properties_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorProperty) DisconnectMultiplePropertiesChanged(subs SignalSubscribers, fn EditorPropertyMultiplePropertiesChangedSignalFn) {
+  sig := StringNameFromStr("multiple_properties_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPropertyPropertyKeyedSignalFn func(property StringName, )
+
+func (me *EditorProperty) ConnectPropertyKeyed(subs SignalSubscribers, fn EditorPropertyPropertyKeyedSignalFn) {
+  sig := StringNameFromStr("property_keyed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorProperty) DisconnectPropertyKeyed(subs SignalSubscribers, fn EditorPropertyPropertyKeyedSignalFn) {
+  sig := StringNameFromStr("property_keyed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPropertyPropertyDeletedSignalFn func(property StringName, )
+
+func (me *EditorProperty) ConnectPropertyDeleted(subs SignalSubscribers, fn EditorPropertyPropertyDeletedSignalFn) {
+  sig := StringNameFromStr("property_deleted")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorProperty) DisconnectPropertyDeleted(subs SignalSubscribers, fn EditorPropertyPropertyDeletedSignalFn) {
+  sig := StringNameFromStr("property_deleted")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPropertyPropertyKeyedWithValueSignalFn func(property StringName, value Variant, )
+
+func (me *EditorProperty) ConnectPropertyKeyedWithValue(subs SignalSubscribers, fn EditorPropertyPropertyKeyedWithValueSignalFn) {
+  sig := StringNameFromStr("property_keyed_with_value")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorProperty) DisconnectPropertyKeyedWithValue(subs SignalSubscribers, fn EditorPropertyPropertyKeyedWithValueSignalFn) {
+  sig := StringNameFromStr("property_keyed_with_value")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPropertyPropertyCheckedSignalFn func(property StringName, checked bool, )
+
+func (me *EditorProperty) ConnectPropertyChecked(subs SignalSubscribers, fn EditorPropertyPropertyCheckedSignalFn) {
+  sig := StringNameFromStr("property_checked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorProperty) DisconnectPropertyChecked(subs SignalSubscribers, fn EditorPropertyPropertyCheckedSignalFn) {
+  sig := StringNameFromStr("property_checked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPropertyPropertyPinnedSignalFn func(property StringName, pinned bool, )
+
+func (me *EditorProperty) ConnectPropertyPinned(subs SignalSubscribers, fn EditorPropertyPropertyPinnedSignalFn) {
+  sig := StringNameFromStr("property_pinned")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorProperty) DisconnectPropertyPinned(subs SignalSubscribers, fn EditorPropertyPropertyPinnedSignalFn) {
+  sig := StringNameFromStr("property_pinned")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPropertyPropertyCanRevertChangedSignalFn func(property StringName, can_revert bool, )
+
+func (me *EditorProperty) ConnectPropertyCanRevertChanged(subs SignalSubscribers, fn EditorPropertyPropertyCanRevertChangedSignalFn) {
+  sig := StringNameFromStr("property_can_revert_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorProperty) DisconnectPropertyCanRevertChanged(subs SignalSubscribers, fn EditorPropertyPropertyCanRevertChangedSignalFn) {
+  sig := StringNameFromStr("property_can_revert_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPropertyResourceSelectedSignalFn func(path String, resource Resource, )
+
+func (me *EditorProperty) ConnectResourceSelected(subs SignalSubscribers, fn EditorPropertyResourceSelectedSignalFn) {
+  sig := StringNameFromStr("resource_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorProperty) DisconnectResourceSelected(subs SignalSubscribers, fn EditorPropertyResourceSelectedSignalFn) {
+  sig := StringNameFromStr("resource_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPropertyObjectIdSelectedSignalFn func(property StringName, id int, )
+
+func (me *EditorProperty) ConnectObjectIdSelected(subs SignalSubscribers, fn EditorPropertyObjectIdSelectedSignalFn) {
+  sig := StringNameFromStr("object_id_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorProperty) DisconnectObjectIdSelected(subs SignalSubscribers, fn EditorPropertyObjectIdSelectedSignalFn) {
+  sig := StringNameFromStr("object_id_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPropertySelectedSignalFn func(path String, focusable_idx int, )
+
+func (me *EditorProperty) ConnectSelected(subs SignalSubscribers, fn EditorPropertySelectedSignalFn) {
+  sig := StringNameFromStr("selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorProperty) DisconnectSelected(subs SignalSubscribers, fn EditorPropertySelectedSignalFn) {
+  sig := StringNameFromStr("selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

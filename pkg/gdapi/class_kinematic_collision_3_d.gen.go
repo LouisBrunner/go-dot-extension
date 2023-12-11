@@ -207,4 +207,4 @@ func  (me *KinematicCollision3D) GetColliderVelocity(collision_index int, ) Vect
   return ret
 }
 
-// Properties
+// Signals

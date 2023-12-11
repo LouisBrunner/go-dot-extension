@@ -316,79 +316,55 @@ func  (me *FileDialog) Invalidate()  {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *FileDialog) GetPropModeOverridesTitle() bool {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) SetPropModeOverridesTitle(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) GetPropFileMode() int {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) SetPropFileMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) GetPropAccess() int {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) SetPropAccess(value int) {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) GetPropRootSubfolder() String {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) SetPropRootSubfolder(value String) {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) GetPropFilters() PackedStringArray {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) SetPropFilters(value PackedStringArray) {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) GetPropShowHiddenFiles() bool {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) SetPropShowHiddenFiles(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) GetPropCurrentDir() String {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) SetPropCurrentDir(value String) {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) GetPropCurrentFile() String {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) SetPropCurrentFile(value String) {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) GetPropCurrentPath() String {
-  panic("TODO: implement")
-}
-
-func (me *FileDialog) SetPropCurrentPath(value String) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type FileDialogFileSelectedSignalFn func(path String, )
+
+func (me *FileDialog) ConnectFileSelected(subs SignalSubscribers, fn FileDialogFileSelectedSignalFn) {
+  sig := StringNameFromStr("file_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *FileDialog) DisconnectFileSelected(subs SignalSubscribers, fn FileDialogFileSelectedSignalFn) {
+  sig := StringNameFromStr("file_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type FileDialogFilesSelectedSignalFn func(paths PackedStringArray, )
+
+func (me *FileDialog) ConnectFilesSelected(subs SignalSubscribers, fn FileDialogFilesSelectedSignalFn) {
+  sig := StringNameFromStr("files_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *FileDialog) DisconnectFilesSelected(subs SignalSubscribers, fn FileDialogFilesSelectedSignalFn) {
+  sig := StringNameFromStr("files_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type FileDialogDirSelectedSignalFn func(dir String, )
+
+func (me *FileDialog) ConnectDirSelected(subs SignalSubscribers, fn FileDialogDirSelectedSignalFn) {
+  sig := StringNameFromStr("dir_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *FileDialog) DisconnectDirSelected(subs SignalSubscribers, fn FileDialogDirSelectedSignalFn) {
+  sig := StringNameFromStr("dir_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

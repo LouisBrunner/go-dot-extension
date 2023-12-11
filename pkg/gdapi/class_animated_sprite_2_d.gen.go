@@ -332,87 +332,87 @@ func  (me *AnimatedSprite2D) GetPlayingSpeed() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimatedSprite2D) GetPropSpriteFrames() SpriteFrames {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) SetPropSpriteFrames(value SpriteFrames) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) GetPropAnimation() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) SetPropAnimation(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) GetPropAutoplay() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) SetPropAutoplay(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) GetPropFrame() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) SetPropFrame(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) GetPropFrameProgress() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) SetPropFrameProgress(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) GetPropSpeedScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) SetPropSpeedScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) GetPropCentered() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) SetPropCentered(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) GetPropOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) SetPropOffset(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) GetPropFlipH() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) SetPropFlipH(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) GetPropFlipV() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite2D) SetPropFlipV(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AnimatedSprite2DSpriteFramesChangedSignalFn func()
+
+func (me *AnimatedSprite2D) ConnectSpriteFramesChanged(subs SignalSubscribers, fn AnimatedSprite2DSpriteFramesChangedSignalFn) {
+  sig := StringNameFromStr("sprite_frames_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimatedSprite2D) DisconnectSpriteFramesChanged(subs SignalSubscribers, fn AnimatedSprite2DSpriteFramesChangedSignalFn) {
+  sig := StringNameFromStr("sprite_frames_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimatedSprite2DAnimationChangedSignalFn func()
+
+func (me *AnimatedSprite2D) ConnectAnimationChanged(subs SignalSubscribers, fn AnimatedSprite2DAnimationChangedSignalFn) {
+  sig := StringNameFromStr("animation_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimatedSprite2D) DisconnectAnimationChanged(subs SignalSubscribers, fn AnimatedSprite2DAnimationChangedSignalFn) {
+  sig := StringNameFromStr("animation_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimatedSprite2DFrameChangedSignalFn func()
+
+func (me *AnimatedSprite2D) ConnectFrameChanged(subs SignalSubscribers, fn AnimatedSprite2DFrameChangedSignalFn) {
+  sig := StringNameFromStr("frame_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimatedSprite2D) DisconnectFrameChanged(subs SignalSubscribers, fn AnimatedSprite2DFrameChangedSignalFn) {
+  sig := StringNameFromStr("frame_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimatedSprite2DAnimationLoopedSignalFn func()
+
+func (me *AnimatedSprite2D) ConnectAnimationLooped(subs SignalSubscribers, fn AnimatedSprite2DAnimationLoopedSignalFn) {
+  sig := StringNameFromStr("animation_looped")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimatedSprite2D) DisconnectAnimationLooped(subs SignalSubscribers, fn AnimatedSprite2DAnimationLoopedSignalFn) {
+  sig := StringNameFromStr("animation_looped")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimatedSprite2DAnimationFinishedSignalFn func()
+
+func (me *AnimatedSprite2D) ConnectAnimationFinished(subs SignalSubscribers, fn AnimatedSprite2DAnimationFinishedSignalFn) {
+  sig := StringNameFromStr("animation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimatedSprite2D) DisconnectAnimationFinished(subs SignalSubscribers, fn AnimatedSprite2DAnimationFinishedSignalFn) {
+  sig := StringNameFromStr("animation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

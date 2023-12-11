@@ -420,69 +420,7 @@ func  (me *TextLine) HitTest(coords float32, ) int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *TextLine) GetPropDirection() int {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) SetPropDirection(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) GetPropOrientation() int {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) SetPropOrientation(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) GetPropPreserveInvalid() bool {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) SetPropPreserveInvalid(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) GetPropPreserveControl() bool {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) SetPropPreserveControl(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) GetPropWidth() float32 {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) SetPropWidth(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) GetPropAlignment() int {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) SetPropAlignment(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) GetPropFlags() int {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) SetPropFlags(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) GetPropTextOverrunBehavior() int {
-  panic("TODO: implement")
-}
-
-func (me *TextLine) SetPropTextOverrunBehavior(value int) {
-  panic("TODO: implement")
-}
+// Signals

@@ -104,29 +104,7 @@ func  (me *GLTFMesh) SetInstanceMaterials(instance_materials Material, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(instance_materials.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GLTFMesh) GetPropMesh() Object {
-  panic("TODO: implement")
-}
-
-func (me *GLTFMesh) SetPropMesh(value Object) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFMesh) GetPropBlendWeights() PackedFloat32Array {
-  panic("TODO: implement")
-}
-
-func (me *GLTFMesh) SetPropBlendWeights(value PackedFloat32Array) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFMesh) GetPropInstanceMaterials() Array {
-  panic("TODO: implement")
-}
-
-func (me *GLTFMesh) SetPropInstanceMaterials(value Array) {
-  panic("TODO: implement")
-}
+// Signals

@@ -82,21 +82,7 @@ func  (me *InputEventJoypadMotion) GetAxisValue() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEventJoypadMotion) GetPropAxis() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventJoypadMotion) SetPropAxis(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventJoypadMotion) GetPropAxisValue() float32 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventJoypadMotion) SetPropAxisValue(value float32) {
-  panic("TODO: implement")
-}
+// Signals

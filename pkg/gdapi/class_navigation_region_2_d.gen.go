@@ -270,69 +270,7 @@ func  (me *NavigationRegion2D) GetTravelCost() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NavigationRegion2D) GetPropNavigationPolygon() NavigationPolygon {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) SetPropNavigationPolygon(value NavigationPolygon) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) GetPropEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) SetPropEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) GetPropUseEdgeConnections() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) SetPropUseEdgeConnections(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) GetPropNavigationLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) SetPropNavigationLayers(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) GetPropEnterCost() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) SetPropEnterCost(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) GetPropTravelCost() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) SetPropTravelCost(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) GetPropConstrainAvoidance() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) SetPropConstrainAvoidance(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) GetPropAvoidanceLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion2D) SetPropAvoidanceLayers(value int) {
-  panic("TODO: implement")
-}
+// Signals

@@ -39,4 +39,4 @@ func (me *StyleBoxEmpty) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

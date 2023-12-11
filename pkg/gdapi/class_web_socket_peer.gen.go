@@ -348,45 +348,7 @@ func  (me *WebSocketPeer) GetMaxQueuedPackets() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *WebSocketPeer) GetPropSupportedProtocols() PackedStringArray {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketPeer) SetPropSupportedProtocols(value PackedStringArray) {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketPeer) GetPropHandshakeHeaders() PackedStringArray {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketPeer) SetPropHandshakeHeaders(value PackedStringArray) {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketPeer) GetPropInboundBufferSize() int {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketPeer) SetPropInboundBufferSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketPeer) GetPropOutboundBufferSize() int {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketPeer) SetPropOutboundBufferSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketPeer) GetPropMaxQueuedPackets() int {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketPeer) SetPropMaxQueuedPackets(value int) {
-  panic("TODO: implement")
-}
+// Signals

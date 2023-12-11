@@ -232,53 +232,7 @@ func  (me *UPNPDevice) GetIgdStatus() UPNPDeviceIGDStatus {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *UPNPDevice) GetPropDescriptionUrl() String {
-  panic("TODO: implement")
-}
-
-func (me *UPNPDevice) SetPropDescriptionUrl(value String) {
-  panic("TODO: implement")
-}
-
-func (me *UPNPDevice) GetPropServiceType() String {
-  panic("TODO: implement")
-}
-
-func (me *UPNPDevice) SetPropServiceType(value String) {
-  panic("TODO: implement")
-}
-
-func (me *UPNPDevice) GetPropIgdControlUrl() String {
-  panic("TODO: implement")
-}
-
-func (me *UPNPDevice) SetPropIgdControlUrl(value String) {
-  panic("TODO: implement")
-}
-
-func (me *UPNPDevice) GetPropIgdServiceType() String {
-  panic("TODO: implement")
-}
-
-func (me *UPNPDevice) SetPropIgdServiceType(value String) {
-  panic("TODO: implement")
-}
-
-func (me *UPNPDevice) GetPropIgdOurAddr() String {
-  panic("TODO: implement")
-}
-
-func (me *UPNPDevice) SetPropIgdOurAddr(value String) {
-  panic("TODO: implement")
-}
-
-func (me *UPNPDevice) GetPropIgdStatus() int {
-  panic("TODO: implement")
-}
-
-func (me *UPNPDevice) SetPropIgdStatus(value int) {
-  panic("TODO: implement")
-}
+// Signals

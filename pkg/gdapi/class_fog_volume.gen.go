@@ -104,29 +104,7 @@ func  (me *FogVolume) GetMaterial() Material {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *FogVolume) GetPropSize() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *FogVolume) SetPropSize(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *FogVolume) GetPropShape() int {
-  panic("TODO: implement")
-}
-
-func (me *FogVolume) SetPropShape(value int) {
-  panic("TODO: implement")
-}
-
-func (me *FogVolume) GetPropMaterial() any {
-  panic("TODO: implement")
-}
-
-func (me *FogVolume) SetPropMaterial(value any) {
-  panic("TODO: implement")
-}
+// Signals

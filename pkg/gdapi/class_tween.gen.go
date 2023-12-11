@@ -356,6 +356,52 @@ func  TweenInterpolateValue(initial_value Variant, delta_value Variant, elapsed_
   return ret
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type TweenStepFinishedSignalFn func(idx int, )
+
+func (me *Tween) ConnectStepFinished(subs SignalSubscribers, fn TweenStepFinishedSignalFn) {
+  sig := StringNameFromStr("step_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Tween) DisconnectStepFinished(subs SignalSubscribers, fn TweenStepFinishedSignalFn) {
+  sig := StringNameFromStr("step_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type TweenLoopFinishedSignalFn func(loop_count int, )
+
+func (me *Tween) ConnectLoopFinished(subs SignalSubscribers, fn TweenLoopFinishedSignalFn) {
+  sig := StringNameFromStr("loop_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Tween) DisconnectLoopFinished(subs SignalSubscribers, fn TweenLoopFinishedSignalFn) {
+  sig := StringNameFromStr("loop_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type TweenFinishedSignalFn func()
+
+func (me *Tween) ConnectFinished(subs SignalSubscribers, fn TweenFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Tween) DisconnectFinished(subs SignalSubscribers, fn TweenFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

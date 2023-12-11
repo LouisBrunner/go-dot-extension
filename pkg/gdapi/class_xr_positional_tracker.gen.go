@@ -221,47 +221,103 @@ func  (me *XRPositionalTracker) SetInput(name StringName, value Variant, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *XRPositionalTracker) GetPropType() int {
-  panic("TODO: implement")
-}
-
-func (me *XRPositionalTracker) SetPropType(value int) {
-  panic("TODO: implement")
-}
-
-func (me *XRPositionalTracker) GetPropName() String {
-  panic("TODO: implement")
-}
-
-func (me *XRPositionalTracker) SetPropName(value String) {
-  panic("TODO: implement")
-}
-
-func (me *XRPositionalTracker) GetPropDescription() String {
-  panic("TODO: implement")
-}
-
-func (me *XRPositionalTracker) SetPropDescription(value String) {
-  panic("TODO: implement")
-}
-
-func (me *XRPositionalTracker) GetPropProfile() String {
-  panic("TODO: implement")
-}
-
-func (me *XRPositionalTracker) SetPropProfile(value String) {
-  panic("TODO: implement")
-}
-
-func (me *XRPositionalTracker) GetPropHand() int {
-  panic("TODO: implement")
-}
-
-func (me *XRPositionalTracker) SetPropHand(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type XRPositionalTrackerPoseChangedSignalFn func(pose XRPose, )
+
+func (me *XRPositionalTracker) ConnectPoseChanged(subs SignalSubscribers, fn XRPositionalTrackerPoseChangedSignalFn) {
+  sig := StringNameFromStr("pose_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRPositionalTracker) DisconnectPoseChanged(subs SignalSubscribers, fn XRPositionalTrackerPoseChangedSignalFn) {
+  sig := StringNameFromStr("pose_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRPositionalTrackerButtonPressedSignalFn func(name String, )
+
+func (me *XRPositionalTracker) ConnectButtonPressed(subs SignalSubscribers, fn XRPositionalTrackerButtonPressedSignalFn) {
+  sig := StringNameFromStr("button_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRPositionalTracker) DisconnectButtonPressed(subs SignalSubscribers, fn XRPositionalTrackerButtonPressedSignalFn) {
+  sig := StringNameFromStr("button_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRPositionalTrackerButtonReleasedSignalFn func(name String, )
+
+func (me *XRPositionalTracker) ConnectButtonReleased(subs SignalSubscribers, fn XRPositionalTrackerButtonReleasedSignalFn) {
+  sig := StringNameFromStr("button_released")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRPositionalTracker) DisconnectButtonReleased(subs SignalSubscribers, fn XRPositionalTrackerButtonReleasedSignalFn) {
+  sig := StringNameFromStr("button_released")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRPositionalTrackerInputFloatChangedSignalFn func(name String, value float32, )
+
+func (me *XRPositionalTracker) ConnectInputFloatChanged(subs SignalSubscribers, fn XRPositionalTrackerInputFloatChangedSignalFn) {
+  sig := StringNameFromStr("input_float_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRPositionalTracker) DisconnectInputFloatChanged(subs SignalSubscribers, fn XRPositionalTrackerInputFloatChangedSignalFn) {
+  sig := StringNameFromStr("input_float_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRPositionalTrackerInputVector2ChangedSignalFn func(name String, vector Vector2, )
+
+func (me *XRPositionalTracker) ConnectInputVector2Changed(subs SignalSubscribers, fn XRPositionalTrackerInputVector2ChangedSignalFn) {
+  sig := StringNameFromStr("input_vector2_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRPositionalTracker) DisconnectInputVector2Changed(subs SignalSubscribers, fn XRPositionalTrackerInputVector2ChangedSignalFn) {
+  sig := StringNameFromStr("input_vector2_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRPositionalTrackerProfileChangedSignalFn func(role String, )
+
+func (me *XRPositionalTracker) ConnectProfileChanged(subs SignalSubscribers, fn XRPositionalTrackerProfileChangedSignalFn) {
+  sig := StringNameFromStr("profile_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRPositionalTracker) DisconnectProfileChanged(subs SignalSubscribers, fn XRPositionalTrackerProfileChangedSignalFn) {
+  sig := StringNameFromStr("profile_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

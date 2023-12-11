@@ -51,4 +51,4 @@ func  (me *EditorImportPlugin) AppendImportExternalResource(path String, custom_
   return ret
 }
 
-// Properties
+// Signals

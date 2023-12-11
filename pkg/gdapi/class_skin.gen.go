@@ -157,4 +157,4 @@ func  (me *Skin) ClearBinds()  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

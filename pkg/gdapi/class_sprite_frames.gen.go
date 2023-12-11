@@ -222,13 +222,7 @@ func  (me *SpriteFrames) ClearAll()  {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SpriteFrames) GetPropAnimations() Array {
-  panic("TODO: implement")
-}
-
-func (me *SpriteFrames) SetPropAnimations(value Array) {
-  panic("TODO: implement")
-}
+// Signals

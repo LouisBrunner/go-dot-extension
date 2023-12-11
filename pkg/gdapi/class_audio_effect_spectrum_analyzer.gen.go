@@ -114,29 +114,7 @@ func  (me *AudioEffectSpectrumAnalyzer) GetFftSize() AudioEffectSpectrumAnalyzer
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioEffectSpectrumAnalyzer) GetPropBufferLength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectSpectrumAnalyzer) SetPropBufferLength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectSpectrumAnalyzer) GetPropTapBackPos() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectSpectrumAnalyzer) SetPropTapBackPos(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectSpectrumAnalyzer) GetPropFftSize() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectSpectrumAnalyzer) SetPropFftSize(value int) {
-  panic("TODO: implement")
-}
+// Signals

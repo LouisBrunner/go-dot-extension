@@ -118,77 +118,7 @@ func  (me *DirectionalLight3D) GetSkyMode() DirectionalLight3DSkyMode {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *DirectionalLight3D) GetPropDirectionalShadowMode() int {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) SetPropDirectionalShadowMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) GetPropDirectionalShadowSplit1() float32 {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) SetPropDirectionalShadowSplit1(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) GetPropDirectionalShadowSplit2() float32 {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) SetPropDirectionalShadowSplit2(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) GetPropDirectionalShadowSplit3() float32 {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) SetPropDirectionalShadowSplit3(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) GetPropDirectionalShadowBlendSplits() bool {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) SetPropDirectionalShadowBlendSplits(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) GetPropDirectionalShadowFadeStart() float32 {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) SetPropDirectionalShadowFadeStart(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) GetPropDirectionalShadowMaxDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) SetPropDirectionalShadowMaxDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) GetPropDirectionalShadowPancakeSize() float32 {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) SetPropDirectionalShadowPancakeSize(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) GetPropSkyMode() int {
-  panic("TODO: implement")
-}
-
-func (me *DirectionalLight3D) SetPropSkyMode(value int) {
-  panic("TODO: implement")
-}
+// Signals

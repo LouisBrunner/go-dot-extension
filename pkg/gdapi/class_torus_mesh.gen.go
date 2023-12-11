@@ -126,37 +126,7 @@ func  (me *TorusMesh) GetRingSegments() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *TorusMesh) GetPropInnerRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *TorusMesh) SetPropInnerRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *TorusMesh) GetPropOuterRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *TorusMesh) SetPropOuterRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *TorusMesh) GetPropRings() int {
-  panic("TODO: implement")
-}
-
-func (me *TorusMesh) SetPropRings(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TorusMesh) GetPropRingSegments() int {
-  panic("TODO: implement")
-}
-
-func (me *TorusMesh) SetPropRingSegments(value int) {
-  panic("TODO: implement")
-}
+// Signals

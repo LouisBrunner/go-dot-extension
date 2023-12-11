@@ -39,6 +39,20 @@ func (me *Tweener) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type TweenerFinishedSignalFn func()
+
+func (me *Tweener) ConnectFinished(subs SignalSubscribers, fn TweenerFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Tweener) DisconnectFinished(subs SignalSubscribers, fn TweenerFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

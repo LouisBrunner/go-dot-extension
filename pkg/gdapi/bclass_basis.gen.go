@@ -105,6 +105,7 @@ func (me *Basis) Inverse() Basis {
 
   var ret Basis
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -116,6 +117,7 @@ func (me *Basis) Transposed() Basis {
 
   var ret Basis
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -127,6 +129,7 @@ func (me *Basis) Orthonormalized() Basis {
 
   var ret Basis
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -138,6 +141,7 @@ func (me *Basis) Determinant() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -149,6 +153,7 @@ func (me *Basis) Rotated(axis Vector3, angle float32, ) Basis {
 
   var ret Basis
   args := []gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(&angle), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -160,6 +165,7 @@ func (me *Basis) Scaled(scale Vector3, ) Basis {
 
   var ret Basis
   args := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -171,6 +177,7 @@ func (me *Basis) GetScale() Vector3 {
 
   var ret Vector3
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -182,6 +189,7 @@ func (me *Basis) GetEuler(order int, ) Vector3 {
 
   var ret Vector3
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&order), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -193,6 +201,7 @@ func (me *Basis) Tdotx(with Vector3, ) float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -204,6 +213,7 @@ func (me *Basis) Tdoty(with Vector3, ) float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -215,6 +225,7 @@ func (me *Basis) Tdotz(with Vector3, ) float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -226,6 +237,7 @@ func (me *Basis) Slerp(to Basis, weight float32, ) Basis {
 
   var ret Basis
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -237,6 +249,7 @@ func (me *Basis) IsEqualApprox(b Basis, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -248,6 +261,7 @@ func (me *Basis) IsFinite() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -259,6 +273,7 @@ func (me *Basis) GetRotationQuaternion() Quaternion {
 
   var ret Quaternion
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -270,6 +285,7 @@ func BasisLookingAt(target Vector3, up Vector3, use_model_front bool, ) Basis {
 
   var ret Basis
   args := []gdc.ConstTypePtr{target.AsCTypePtr(), up.AsCTypePtr(), gdc.ConstTypePtr(&use_model_front), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -281,6 +297,7 @@ func BasisFromScale(scale Vector3, ) Basis {
 
   var ret Basis
   args := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -292,6 +309,7 @@ func BasisFromEuler(euler Vector3, order int, ) Basis {
 
   var ret Basis
   args := []gdc.ConstTypePtr{euler.AsCTypePtr(), gdc.ConstTypePtr(&order), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

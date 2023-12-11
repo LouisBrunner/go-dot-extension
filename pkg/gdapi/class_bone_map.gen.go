@@ -94,15 +94,39 @@ func  (me *BoneMap) FindProfileBoneName(skeleton_bone_name StringName, ) StringN
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *BoneMap) GetPropProfile() SkeletonProfile {
-  panic("TODO: implement")
-}
-
-func (me *BoneMap) SetPropProfile(value SkeletonProfile) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type BoneMapBoneMapUpdatedSignalFn func()
+
+func (me *BoneMap) ConnectBoneMapUpdated(subs SignalSubscribers, fn BoneMapBoneMapUpdatedSignalFn) {
+  sig := StringNameFromStr("bone_map_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *BoneMap) DisconnectBoneMapUpdated(subs SignalSubscribers, fn BoneMapBoneMapUpdatedSignalFn) {
+  sig := StringNameFromStr("bone_map_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type BoneMapProfileUpdatedSignalFn func()
+
+func (me *BoneMap) ConnectProfileUpdated(subs SignalSubscribers, fn BoneMapProfileUpdatedSignalFn) {
+  sig := StringNameFromStr("profile_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *BoneMap) DisconnectProfileUpdated(subs SignalSubscribers, fn BoneMapProfileUpdatedSignalFn) {
+  sig := StringNameFromStr("profile_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

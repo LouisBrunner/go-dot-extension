@@ -60,13 +60,7 @@ func  (me *ConvexPolygonShape3D) GetPoints() PackedVector3Array {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ConvexPolygonShape3D) GetPropPoints() Array {
-  panic("TODO: implement")
-}
-
-func (me *ConvexPolygonShape3D) SetPropPoints(value Array) {
-  panic("TODO: implement")
-}
+// Signals

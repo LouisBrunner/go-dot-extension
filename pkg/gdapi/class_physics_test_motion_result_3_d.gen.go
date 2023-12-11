@@ -207,4 +207,4 @@ func  (me *PhysicsTestMotionResult3D) GetCollisionDepth(collision_index int, ) f
   return ret
 }
 
-// Properties
+// Signals

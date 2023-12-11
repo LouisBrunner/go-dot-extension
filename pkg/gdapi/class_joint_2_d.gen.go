@@ -126,37 +126,7 @@ func  (me *Joint2D) GetExcludeNodesFromCollision() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Joint2D) GetPropNodeA() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Joint2D) SetPropNodeA(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *Joint2D) GetPropNodeB() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Joint2D) SetPropNodeB(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *Joint2D) GetPropBias() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Joint2D) SetPropBias(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Joint2D) GetPropDisableCollision() bool {
-  panic("TODO: implement")
-}
-
-func (me *Joint2D) SetPropDisableCollision(value bool) {
-  panic("TODO: implement")
-}
+// Signals

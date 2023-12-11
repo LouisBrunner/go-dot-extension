@@ -63,4 +63,4 @@ func  (me *DTLSServer) TakeConnection(udp_peer PacketPeerUDP, ) PacketPeerDTLS {
   return ret
 }
 
-// Properties
+// Signals

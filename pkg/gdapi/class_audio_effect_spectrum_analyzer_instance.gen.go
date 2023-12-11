@@ -57,4 +57,4 @@ func  (me *AudioEffectSpectrumAnalyzerInstance) GetMagnitudeForFrequencyRange(fr
   return ret
 }
 
-// Properties
+// Signals

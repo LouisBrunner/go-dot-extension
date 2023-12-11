@@ -390,77 +390,7 @@ func  (me *RayCast3D) GetDebugShapeThickness() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RayCast3D) GetPropEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) SetPropEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) GetPropExcludeParent() bool {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) SetPropExcludeParent(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) GetPropTargetPosition() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) SetPropTargetPosition(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) GetPropCollisionMask() int {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) SetPropCollisionMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) GetPropHitFromInside() bool {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) SetPropHitFromInside(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) GetPropCollideWithAreas() bool {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) SetPropCollideWithAreas(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) GetPropCollideWithBodies() bool {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) SetPropCollideWithBodies(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) GetPropDebugShapeCustomColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) SetPropDebugShapeCustomColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) GetPropDebugShapeThickness() int {
-  panic("TODO: implement")
-}
-
-func (me *RayCast3D) SetPropDebugShapeThickness(value int) {
-  panic("TODO: implement")
-}
+// Signals

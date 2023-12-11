@@ -63,4 +63,4 @@ func  (me *PhysicsServer2DExtension) BodyTestMotionIsExcludingObject(object int,
   return ret
 }
 
-// Properties
+// Signals

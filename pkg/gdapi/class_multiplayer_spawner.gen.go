@@ -160,31 +160,39 @@ func  (me *MultiplayerSpawner) SetSpawnFunction(spawn_function Callable, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(spawn_function.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *MultiplayerSpawner) GetPropSpawnPath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSpawner) SetPropSpawnPath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSpawner) GetPropSpawnLimit() int {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSpawner) SetPropSpawnLimit(value int) {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSpawner) GetPropSpawnFunction() Callable {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSpawner) SetPropSpawnFunction(value Callable) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type MultiplayerSpawnerDespawnedSignalFn func(node Node, )
+
+func (me *MultiplayerSpawner) ConnectDespawned(subs SignalSubscribers, fn MultiplayerSpawnerDespawnedSignalFn) {
+  sig := StringNameFromStr("despawned")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *MultiplayerSpawner) DisconnectDespawned(subs SignalSubscribers, fn MultiplayerSpawnerDespawnedSignalFn) {
+  sig := StringNameFromStr("despawned")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type MultiplayerSpawnerSpawnedSignalFn func(node Node, )
+
+func (me *MultiplayerSpawner) ConnectSpawned(subs SignalSubscribers, fn MultiplayerSpawnerSpawnedSignalFn) {
+  sig := StringNameFromStr("spawned")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *MultiplayerSpawner) DisconnectSpawned(subs SignalSubscribers, fn MultiplayerSpawnerSpawnedSignalFn) {
+  sig := StringNameFromStr("spawned")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

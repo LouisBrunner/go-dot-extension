@@ -181,45 +181,7 @@ func  (me *GPUParticlesCollisionSDF3D) GetBakeMaskValue(layer_number int, ) bool
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GPUParticlesCollisionSDF3D) GetPropSize() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesCollisionSDF3D) SetPropSize(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesCollisionSDF3D) GetPropResolution() int {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesCollisionSDF3D) SetPropResolution(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesCollisionSDF3D) GetPropThickness() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesCollisionSDF3D) SetPropThickness(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesCollisionSDF3D) GetPropBakeMask() int {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesCollisionSDF3D) SetPropBakeMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesCollisionSDF3D) GetPropTexture() Texture3D {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesCollisionSDF3D) SetPropTexture(value Texture3D) {
-  panic("TODO: implement")
-}
+// Signals

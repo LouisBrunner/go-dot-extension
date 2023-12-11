@@ -130,4 +130,4 @@ func  (me *TextureLayered) GetLayerData(layer int, ) Image {
   return ret
 }
 
-// Properties
+// Signals

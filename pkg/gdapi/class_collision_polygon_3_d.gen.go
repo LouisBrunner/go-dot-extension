@@ -126,37 +126,7 @@ func  (me *CollisionPolygon3D) GetMargin() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CollisionPolygon3D) GetPropDepth() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon3D) SetPropDepth(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon3D) GetPropDisabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon3D) SetPropDisabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon3D) GetPropPolygon() PackedVector2Array {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon3D) SetPropPolygon(value PackedVector2Array) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon3D) GetPropMargin() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CollisionPolygon3D) SetPropMargin(value float32) {
-  panic("TODO: implement")
-}
+// Signals

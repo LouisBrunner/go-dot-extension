@@ -168,6 +168,7 @@ func (me *Array) Size() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -179,6 +180,7 @@ func (me *Array) IsEmpty() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -189,6 +191,7 @@ func (me *Array) Clear()  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -199,6 +202,7 @@ func (me *Array) Hash() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -209,6 +213,7 @@ func (me *Array) Assign(array Array, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2307260970) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{array.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -218,6 +223,7 @@ func (me *Array) PushBack(value Variant, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3316032543) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -227,6 +233,7 @@ func (me *Array) PushFront(value Variant, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3316032543) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -236,6 +243,7 @@ func (me *Array) Append(value Variant, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3316032543) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -245,6 +253,7 @@ func (me *Array) AppendArray(array Array, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2307260970) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{array.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -255,6 +264,7 @@ func (me *Array) Resize(size int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -266,6 +276,7 @@ func (me *Array) Insert(position int, value Variant, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -276,6 +287,7 @@ func (me *Array) RemoveAt(position int, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2823966027) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -285,6 +297,7 @@ func (me *Array) Fill(value Variant, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3316032543) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -294,6 +307,7 @@ func (me *Array) Erase(value Variant, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3316032543) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -304,6 +318,7 @@ func (me *Array) Front() Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -315,6 +330,7 @@ func (me *Array) Back() Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -326,6 +342,7 @@ func (me *Array) PickRandom() Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -337,6 +354,7 @@ func (me *Array) Find(what Variant, from int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -348,6 +366,7 @@ func (me *Array) Rfind(what Variant, from int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -359,6 +378,7 @@ func (me *Array) Count(value Variant, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -370,6 +390,7 @@ func (me *Array) Has(value Variant, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -381,6 +402,7 @@ func (me *Array) PopBack() Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -392,6 +414,7 @@ func (me *Array) PopFront() Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -403,6 +426,7 @@ func (me *Array) PopAt(position int, ) Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -413,6 +437,7 @@ func (me *Array) Sort()  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -422,6 +447,7 @@ func (me *Array) SortCustom(func_ Callable, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3470848906) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{func_.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -431,6 +457,7 @@ func (me *Array) Shuffle()  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -441,6 +468,7 @@ func (me *Array) Bsearch(value Variant, before bool, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), gdc.ConstTypePtr(&before), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -452,6 +480,7 @@ func (me *Array) BsearchCustom(value Variant, func_ Callable, before bool, ) int
 
   var ret int
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), func_.AsCTypePtr(), gdc.ConstTypePtr(&before), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -462,6 +491,7 @@ func (me *Array) Reverse()  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -472,6 +502,7 @@ func (me *Array) Duplicate(deep bool, ) Array {
 
   var ret Array
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&deep), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -483,6 +514,7 @@ func (me *Array) Slice(begin int, end int, step int, deep bool, ) Array {
 
   var ret Array
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&begin), gdc.ConstTypePtr(&end), gdc.ConstTypePtr(&step), gdc.ConstTypePtr(&deep), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -494,6 +526,7 @@ func (me *Array) Filter(method Callable, ) Array {
 
   var ret Array
   args := []gdc.ConstTypePtr{method.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -505,6 +538,7 @@ func (me *Array) Map(method Callable, ) Array {
 
   var ret Array
   args := []gdc.ConstTypePtr{method.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -516,6 +550,7 @@ func (me *Array) Reduce(method Callable, accum Variant, ) Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{method.AsCTypePtr(), accum.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -527,6 +562,7 @@ func (me *Array) Any(method Callable, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{method.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -538,6 +574,7 @@ func (me *Array) All(method Callable, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{method.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -549,6 +586,7 @@ func (me *Array) Max() Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -560,6 +598,7 @@ func (me *Array) Min() Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -571,6 +610,7 @@ func (me *Array) IsTyped() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -582,6 +622,7 @@ func (me *Array) IsSameTyped(array Array, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{array.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -593,6 +634,7 @@ func (me *Array) GetTypedBuiltin() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -604,6 +646,7 @@ func (me *Array) GetTypedClassName() StringName {
 
   var ret StringName
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -615,6 +658,7 @@ func (me *Array) GetTypedScript() Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -625,6 +669,7 @@ func (me *Array) MakeReadOnly()  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -635,6 +680,7 @@ func (me *Array) IsReadOnly() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

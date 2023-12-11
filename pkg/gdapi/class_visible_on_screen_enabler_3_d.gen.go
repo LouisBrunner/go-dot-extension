@@ -89,21 +89,7 @@ func  (me *VisibleOnScreenEnabler3D) GetEnableNodePath() NodePath {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisibleOnScreenEnabler3D) GetPropEnableMode() int {
-  panic("TODO: implement")
-}
-
-func (me *VisibleOnScreenEnabler3D) SetPropEnableMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VisibleOnScreenEnabler3D) GetPropEnableNodePath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *VisibleOnScreenEnabler3D) SetPropEnableNodePath(value NodePath) {
-  panic("TODO: implement")
-}
+// Signals

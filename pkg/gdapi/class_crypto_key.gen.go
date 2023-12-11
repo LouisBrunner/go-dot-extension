@@ -99,4 +99,4 @@ func  (me *CryptoKey) LoadFromString(string_key String, public_only bool, ) Erro
   return ret
 }
 
-// Properties
+// Signals

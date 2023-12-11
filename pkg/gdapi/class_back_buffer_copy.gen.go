@@ -89,21 +89,7 @@ func  (me *BackBufferCopy) GetCopyMode() BackBufferCopyCopyMode {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *BackBufferCopy) GetPropCopyMode() int {
-  panic("TODO: implement")
-}
-
-func (me *BackBufferCopy) SetPropCopyMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *BackBufferCopy) GetPropRect() Rect2 {
-  panic("TODO: implement")
-}
-
-func (me *BackBufferCopy) SetPropRect(value Rect2) {
-  panic("TODO: implement")
-}
+// Signals

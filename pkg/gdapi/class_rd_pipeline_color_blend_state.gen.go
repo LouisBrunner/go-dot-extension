@@ -126,37 +126,7 @@ func  (me *RDPipelineColorBlendState) GetAttachments() RDPipelineColorBlendState
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RDPipelineColorBlendState) GetPropEnableLogicOp() bool {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineColorBlendState) SetPropEnableLogicOp(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineColorBlendState) GetPropLogicOp() int {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineColorBlendState) SetPropLogicOp(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineColorBlendState) GetPropBlendConstant() Color {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineColorBlendState) SetPropBlendConstant(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineColorBlendState) GetPropAttachments() RDPipelineColorBlendStateAttachment {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineColorBlendState) SetPropAttachments(value RDPipelineColorBlendStateAttachment) {
-  panic("TODO: implement")
-}
+// Signals

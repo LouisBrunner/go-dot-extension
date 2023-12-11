@@ -549,167 +549,23 @@ func  (me *AudioStreamPlayer3D) GetStreamPlayback() AudioStreamPlayback {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioStreamPlayer3D) GetPropStream() AudioStream {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropStream(value AudioStream) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropAttenuationModel() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropAttenuationModel(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropVolumeDb() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropVolumeDb(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropUnitSize() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropUnitSize(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropMaxDb() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropMaxDb(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropPitchScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropPitchScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropPlaying() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropPlaying(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropAutoplay() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropAutoplay(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropStreamPaused() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropStreamPaused(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropMaxDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropMaxDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropMaxPolyphony() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropMaxPolyphony(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropPanningStrength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropPanningStrength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropBus() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropBus(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropAreaMask() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropAreaMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropEmissionAngleEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropEmissionAngleEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropEmissionAngleDegrees() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropEmissionAngleDegrees(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropEmissionAngleFilterAttenuationDb() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropEmissionAngleFilterAttenuationDb(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropAttenuationFilterCutoffHz() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropAttenuationFilterCutoffHz(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropAttenuationFilterDb() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropAttenuationFilterDb(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) GetPropDopplerTracking() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer3D) SetPropDopplerTracking(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AudioStreamPlayer3DFinishedSignalFn func()
+
+func (me *AudioStreamPlayer3D) ConnectFinished(subs SignalSubscribers, fn AudioStreamPlayer3DFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AudioStreamPlayer3D) DisconnectFinished(subs SignalSubscribers, fn AudioStreamPlayer3DFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

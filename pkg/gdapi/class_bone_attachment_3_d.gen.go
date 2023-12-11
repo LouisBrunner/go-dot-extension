@@ -158,29 +158,7 @@ func  (me *BoneAttachment3D) GetExternalSkeleton() NodePath {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *BoneAttachment3D) GetPropBoneName() StringName {
-  panic("TODO: implement")
-}
-
-func (me *BoneAttachment3D) SetPropBoneName(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *BoneAttachment3D) GetPropBoneIdx() int {
-  panic("TODO: implement")
-}
-
-func (me *BoneAttachment3D) SetPropBoneIdx(value int) {
-  panic("TODO: implement")
-}
-
-func (me *BoneAttachment3D) GetPropOverridePose() bool {
-  panic("TODO: implement")
-}
-
-func (me *BoneAttachment3D) SetPropOverridePose(value bool) {
-  panic("TODO: implement")
-}
+// Signals

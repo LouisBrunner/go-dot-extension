@@ -218,53 +218,7 @@ func  (me *GLTFLight) SetOuterConeAngle(outer_cone_angle float32, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&outer_cone_angle), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GLTFLight) GetPropColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *GLTFLight) SetPropColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFLight) GetPropIntensity() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFLight) SetPropIntensity(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFLight) GetPropLightType() String {
-  panic("TODO: implement")
-}
-
-func (me *GLTFLight) SetPropLightType(value String) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFLight) GetPropRange() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFLight) SetPropRange(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFLight) GetPropInnerConeAngle() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFLight) SetPropInnerConeAngle(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFLight) GetPropOuterConeAngle() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFLight) SetPropOuterConeAngle(value float32) {
-  panic("TODO: implement")
-}
+// Signals

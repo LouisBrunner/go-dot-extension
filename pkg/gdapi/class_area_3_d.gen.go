@@ -603,183 +603,135 @@ func  (me *Area3D) GetReverbUniformity() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Area3D) GetPropMonitoring() bool {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropMonitoring(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropMonitorable() bool {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropMonitorable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropPriority() int {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropPriority(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropGravitySpaceOverride() int {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropGravitySpaceOverride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropGravityPoint() bool {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropGravityPoint(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropGravityPointUnitDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropGravityPointUnitDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropGravityPointCenter() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropGravityPointCenter(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropGravityDirection() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropGravityDirection(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropGravity() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropGravity(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropLinearDampSpaceOverride() int {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropLinearDampSpaceOverride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropLinearDamp() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropLinearDamp(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropAngularDampSpaceOverride() int {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropAngularDampSpaceOverride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropAngularDamp() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropAngularDamp(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropWindForceMagnitude() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropWindForceMagnitude(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropWindAttenuationFactor() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropWindAttenuationFactor(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropWindSourcePath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropWindSourcePath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropAudioBusOverride() bool {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropAudioBusOverride(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropAudioBusName() StringName {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropAudioBusName(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropReverbBusEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropReverbBusEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropReverbBusName() StringName {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropReverbBusName(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropReverbBusAmount() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropReverbBusAmount(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) GetPropReverbBusUniformity() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area3D) SetPropReverbBusUniformity(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type Area3DBodyShapeEnteredSignalFn func(body_rid RID, body Node3D, body_shape_index int, local_shape_index int, )
+
+func (me *Area3D) ConnectBodyShapeEntered(subs SignalSubscribers, fn Area3DBodyShapeEnteredSignalFn) {
+  sig := StringNameFromStr("body_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area3D) DisconnectBodyShapeEntered(subs SignalSubscribers, fn Area3DBodyShapeEnteredSignalFn) {
+  sig := StringNameFromStr("body_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area3DBodyShapeExitedSignalFn func(body_rid RID, body Node3D, body_shape_index int, local_shape_index int, )
+
+func (me *Area3D) ConnectBodyShapeExited(subs SignalSubscribers, fn Area3DBodyShapeExitedSignalFn) {
+  sig := StringNameFromStr("body_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area3D) DisconnectBodyShapeExited(subs SignalSubscribers, fn Area3DBodyShapeExitedSignalFn) {
+  sig := StringNameFromStr("body_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area3DBodyEnteredSignalFn func(body Node3D, )
+
+func (me *Area3D) ConnectBodyEntered(subs SignalSubscribers, fn Area3DBodyEnteredSignalFn) {
+  sig := StringNameFromStr("body_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area3D) DisconnectBodyEntered(subs SignalSubscribers, fn Area3DBodyEnteredSignalFn) {
+  sig := StringNameFromStr("body_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area3DBodyExitedSignalFn func(body Node3D, )
+
+func (me *Area3D) ConnectBodyExited(subs SignalSubscribers, fn Area3DBodyExitedSignalFn) {
+  sig := StringNameFromStr("body_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area3D) DisconnectBodyExited(subs SignalSubscribers, fn Area3DBodyExitedSignalFn) {
+  sig := StringNameFromStr("body_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area3DAreaShapeEnteredSignalFn func(area_rid RID, area Area3D, area_shape_index int, local_shape_index int, )
+
+func (me *Area3D) ConnectAreaShapeEntered(subs SignalSubscribers, fn Area3DAreaShapeEnteredSignalFn) {
+  sig := StringNameFromStr("area_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area3D) DisconnectAreaShapeEntered(subs SignalSubscribers, fn Area3DAreaShapeEnteredSignalFn) {
+  sig := StringNameFromStr("area_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area3DAreaShapeExitedSignalFn func(area_rid RID, area Area3D, area_shape_index int, local_shape_index int, )
+
+func (me *Area3D) ConnectAreaShapeExited(subs SignalSubscribers, fn Area3DAreaShapeExitedSignalFn) {
+  sig := StringNameFromStr("area_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area3D) DisconnectAreaShapeExited(subs SignalSubscribers, fn Area3DAreaShapeExitedSignalFn) {
+  sig := StringNameFromStr("area_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area3DAreaEnteredSignalFn func(area Area3D, )
+
+func (me *Area3D) ConnectAreaEntered(subs SignalSubscribers, fn Area3DAreaEnteredSignalFn) {
+  sig := StringNameFromStr("area_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area3D) DisconnectAreaEntered(subs SignalSubscribers, fn Area3DAreaEnteredSignalFn) {
+  sig := StringNameFromStr("area_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area3DAreaExitedSignalFn func(area Area3D, )
+
+func (me *Area3D) ConnectAreaExited(subs SignalSubscribers, fn Area3DAreaExitedSignalFn) {
+  sig := StringNameFromStr("area_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area3D) DisconnectAreaExited(subs SignalSubscribers, fn Area3DAreaExitedSignalFn) {
+  sig := StringNameFromStr("area_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

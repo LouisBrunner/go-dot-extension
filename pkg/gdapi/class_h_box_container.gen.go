@@ -39,4 +39,4 @@ func (me *HBoxContainer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

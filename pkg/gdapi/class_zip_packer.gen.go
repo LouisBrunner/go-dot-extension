@@ -106,4 +106,4 @@ func  (me *ZIPPacker) Close() Error {
   return ret
 }
 
-// Properties
+// Signals

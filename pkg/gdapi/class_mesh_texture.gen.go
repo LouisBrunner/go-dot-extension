@@ -104,29 +104,7 @@ func  (me *MeshTexture) GetBaseTexture() Texture2D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *MeshTexture) GetPropMesh() Mesh {
-  panic("TODO: implement")
-}
-
-func (me *MeshTexture) SetPropMesh(value Mesh) {
-  panic("TODO: implement")
-}
-
-func (me *MeshTexture) GetPropBaseTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *MeshTexture) SetPropBaseTexture(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *MeshTexture) GetPropImageSize() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *MeshTexture) SetPropImageSize(value Vector2) {
-  panic("TODO: implement")
-}
+// Signals

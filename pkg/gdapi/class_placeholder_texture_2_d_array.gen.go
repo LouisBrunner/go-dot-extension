@@ -39,4 +39,4 @@ func (me *PlaceholderTexture2DArray) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

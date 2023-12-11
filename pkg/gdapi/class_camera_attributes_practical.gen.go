@@ -236,77 +236,7 @@ func  (me *CameraAttributesPractical) GetAutoExposureMinSensitivity() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CameraAttributesPractical) GetPropDofBlurFarEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) SetPropDofBlurFarEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) GetPropDofBlurFarDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) SetPropDofBlurFarDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) GetPropDofBlurFarTransition() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) SetPropDofBlurFarTransition(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) GetPropDofBlurNearEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) SetPropDofBlurNearEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) GetPropDofBlurNearDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) SetPropDofBlurNearDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) GetPropDofBlurNearTransition() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) SetPropDofBlurNearTransition(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) GetPropDofBlurAmount() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) SetPropDofBlurAmount(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) GetPropAutoExposureMinSensitivity() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) SetPropAutoExposureMinSensitivity(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) GetPropAutoExposureMaxSensitivity() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributesPractical) SetPropAutoExposureMaxSensitivity(value float32) {
-  panic("TODO: implement")
-}
+// Signals

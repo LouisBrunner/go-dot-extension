@@ -267,6 +267,7 @@ func (me *Color) ToArgb32() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -278,6 +279,7 @@ func (me *Color) ToAbgr32() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -289,6 +291,7 @@ func (me *Color) ToRgba32() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -300,6 +303,7 @@ func (me *Color) ToArgb64() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -311,6 +315,7 @@ func (me *Color) ToAbgr64() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -322,6 +327,7 @@ func (me *Color) ToRgba64() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -333,6 +339,7 @@ func (me *Color) ToHtml(with_alpha bool, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&with_alpha), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -344,6 +351,7 @@ func (me *Color) Clamp(min Color, max Color, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{min.AsCTypePtr(), max.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -355,6 +363,7 @@ func (me *Color) Inverted() Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -366,6 +375,7 @@ func (me *Color) Lerp(to Color, weight float32, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -377,6 +387,7 @@ func (me *Color) Lightened(amount float32, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -388,6 +399,7 @@ func (me *Color) Darkened(amount float32, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -399,6 +411,7 @@ func (me *Color) Blend(over Color, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{over.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -410,6 +423,7 @@ func (me *Color) GetLuminance() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -421,6 +435,7 @@ func (me *Color) SrgbToLinear() Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -432,6 +447,7 @@ func (me *Color) LinearToSrgb() Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -443,6 +459,7 @@ func (me *Color) IsEqualApprox(to Color, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -454,6 +471,7 @@ func ColorHex(hex int, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hex), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -465,6 +483,7 @@ func ColorHex64(hex int, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hex), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -476,6 +495,7 @@ func ColorHtml(rgba String, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{rgba.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -487,6 +507,7 @@ func ColorHtmlIsValid(color String, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{color.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -498,6 +519,7 @@ func ColorFromString(str String, default_ Color, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{str.AsCTypePtr(), default_.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -509,6 +531,7 @@ func ColorFromHsv(h float32, s float32, v float32, alpha float32, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&h), gdc.ConstTypePtr(&s), gdc.ConstTypePtr(&v), gdc.ConstTypePtr(&alpha), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -520,6 +543,7 @@ func ColorFromOkHsl(h float32, s float32, l float32, alpha float32, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&h), gdc.ConstTypePtr(&s), gdc.ConstTypePtr(&l), gdc.ConstTypePtr(&alpha), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -531,6 +555,7 @@ func ColorFromRgbe9995(rgbe int, ) Color {
 
   var ret Color
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rgbe), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

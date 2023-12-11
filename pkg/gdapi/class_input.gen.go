@@ -608,23 +608,23 @@ func  (me *Input) FlushBufferedEvents()  {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Input) GetPropMouseMode() int {
-  panic("TODO: implement")
-}
-
-func (me *Input) SetPropMouseMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Input) GetPropUseAccumulatedInput() bool {
-  panic("TODO: implement")
-}
-
-func (me *Input) SetPropUseAccumulatedInput(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type InputJoyConnectionChangedSignalFn func(device int, connected bool, )
+
+func (me *Input) ConnectJoyConnectionChanged(subs SignalSubscribers, fn InputJoyConnectionChangedSignalFn) {
+  sig := StringNameFromStr("joy_connection_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Input) DisconnectJoyConnectionChanged(subs SignalSubscribers, fn InputJoyConnectionChangedSignalFn) {
+  sig := StringNameFromStr("joy_connection_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

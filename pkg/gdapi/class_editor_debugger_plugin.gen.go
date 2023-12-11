@@ -63,4 +63,4 @@ func  (me *EditorDebuggerPlugin) GetSessions() Array {
   return ret
 }
 
-// Properties
+// Signals

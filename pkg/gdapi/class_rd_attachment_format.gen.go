@@ -104,29 +104,7 @@ func  (me *RDAttachmentFormat) GetUsageFlags() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RDAttachmentFormat) GetPropFormat() int {
-  panic("TODO: implement")
-}
-
-func (me *RDAttachmentFormat) SetPropFormat(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDAttachmentFormat) GetPropSamples() int {
-  panic("TODO: implement")
-}
-
-func (me *RDAttachmentFormat) SetPropSamples(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDAttachmentFormat) GetPropUsageFlags() int {
-  panic("TODO: implement")
-}
-
-func (me *RDAttachmentFormat) SetPropUsageFlags(value int) {
-  panic("TODO: implement")
-}
+// Signals

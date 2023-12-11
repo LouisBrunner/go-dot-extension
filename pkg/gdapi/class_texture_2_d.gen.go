@@ -141,4 +141,4 @@ func  (me *Texture2D) CreatePlaceholder() Resource {
   return ret
 }
 
-// Properties
+// Signals

@@ -131,4 +131,4 @@ func  GLTFDocumentUnregisterGltfDocumentExtension(extension GLTFDocumentExtensio
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

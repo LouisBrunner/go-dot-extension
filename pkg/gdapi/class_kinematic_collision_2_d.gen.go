@@ -195,4 +195,4 @@ func  (me *KinematicCollision2D) GetColliderVelocity() Vector2 {
   return ret
 }
 
-// Properties
+// Signals

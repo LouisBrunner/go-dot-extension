@@ -39,4 +39,4 @@ func (me *EditorSceneFormatImporterBlend) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

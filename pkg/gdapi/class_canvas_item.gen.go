@@ -1005,127 +1005,71 @@ func  (me *CanvasItem) GetClipChildrenMode() CanvasItemClipChildrenMode {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CanvasItem) GetPropVisible() bool {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropVisible(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropModulate() Color {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropModulate(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropSelfModulate() Color {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropSelfModulate(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropShowBehindParent() bool {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropShowBehindParent(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropTopLevel() bool {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropTopLevel(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropClipChildren() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropClipChildren(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropLightMask() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropLightMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropVisibilityLayer() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropVisibilityLayer(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropZIndex() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropZIndex(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropZAsRelative() bool {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropZAsRelative(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropYSortEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropYSortEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropTextureFilter() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropTextureFilter(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropTextureRepeat() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropTextureRepeat(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropMaterial() any {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropMaterial(value any) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) GetPropUseParentMaterial() bool {
-  panic("TODO: implement")
-}
-
-func (me *CanvasItem) SetPropUseParentMaterial(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type CanvasItemDrawSignalFn func()
+
+func (me *CanvasItem) ConnectDraw(subs SignalSubscribers, fn CanvasItemDrawSignalFn) {
+  sig := StringNameFromStr("draw")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CanvasItem) DisconnectDraw(subs SignalSubscribers, fn CanvasItemDrawSignalFn) {
+  sig := StringNameFromStr("draw")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CanvasItemVisibilityChangedSignalFn func()
+
+func (me *CanvasItem) ConnectVisibilityChanged(subs SignalSubscribers, fn CanvasItemVisibilityChangedSignalFn) {
+  sig := StringNameFromStr("visibility_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CanvasItem) DisconnectVisibilityChanged(subs SignalSubscribers, fn CanvasItemVisibilityChangedSignalFn) {
+  sig := StringNameFromStr("visibility_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CanvasItemHiddenSignalFn func()
+
+func (me *CanvasItem) ConnectHidden(subs SignalSubscribers, fn CanvasItemHiddenSignalFn) {
+  sig := StringNameFromStr("hidden")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CanvasItem) DisconnectHidden(subs SignalSubscribers, fn CanvasItemHiddenSignalFn) {
+  sig := StringNameFromStr("hidden")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CanvasItemItemRectChangedSignalFn func()
+
+func (me *CanvasItem) ConnectItemRectChanged(subs SignalSubscribers, fn CanvasItemItemRectChangedSignalFn) {
+  sig := StringNameFromStr("item_rect_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CanvasItem) DisconnectItemRectChanged(subs SignalSubscribers, fn CanvasItemItemRectChangedSignalFn) {
+  sig := StringNameFromStr("item_rect_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

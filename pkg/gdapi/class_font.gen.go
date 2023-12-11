@@ -435,4 +435,4 @@ func  (me *Font) GetFaceCount() int {
   return ret
 }
 
-// Properties
+// Signals

@@ -104,29 +104,7 @@ func  (me *PacketPeerStream) GetOutputBufferMaxSize() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PacketPeerStream) GetPropInputBufferMaxSize() int {
-  panic("TODO: implement")
-}
-
-func (me *PacketPeerStream) SetPropInputBufferMaxSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PacketPeerStream) GetPropOutputBufferMaxSize() int {
-  panic("TODO: implement")
-}
-
-func (me *PacketPeerStream) SetPropOutputBufferMaxSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PacketPeerStream) GetPropStreamPeer() StreamPeer {
-  panic("TODO: implement")
-}
-
-func (me *PacketPeerStream) SetPropStreamPeer(value StreamPeer) {
-  panic("TODO: implement")
-}
+// Signals

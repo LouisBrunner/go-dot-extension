@@ -39,4 +39,4 @@ func (me *VSlider) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

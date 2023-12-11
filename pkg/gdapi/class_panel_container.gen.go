@@ -39,4 +39,4 @@ func (me *PanelContainer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

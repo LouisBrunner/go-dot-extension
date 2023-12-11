@@ -1701,4 +1701,4 @@ func  (me *RenderingDevice) GetDriverResource(resource RenderingDeviceDriverReso
   return ret
 }
 
-// Properties
+// Signals

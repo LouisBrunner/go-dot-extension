@@ -214,69 +214,7 @@ func  (me *PhysicsTestMotionParameters3D) SetRecoveryAsCollisionEnabled(enabled 
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PhysicsTestMotionParameters3D) GetPropFrom() Transform3D {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) SetPropFrom(value Transform3D) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) GetPropMotion() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) SetPropMotion(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) GetPropMargin() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) SetPropMargin(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) GetPropMaxCollisions() int {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) SetPropMaxCollisions(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) GetPropCollideSeparationRay() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) SetPropCollideSeparationRay(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) GetPropExcludeBodies() RID {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) SetPropExcludeBodies(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) GetPropExcludeObjects() Array {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) SetPropExcludeObjects(value Array) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) GetPropRecoveryAsCollision() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsTestMotionParameters3D) SetPropRecoveryAsCollision(value bool) {
-  panic("TODO: implement")
-}
+// Signals

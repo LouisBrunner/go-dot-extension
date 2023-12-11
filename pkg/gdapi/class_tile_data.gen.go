@@ -542,95 +542,23 @@ func  (me *TileData) GetCustomDataByLayerId(layer_id int, ) Variant {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *TileData) GetPropFlipH() bool {
-  panic("TODO: implement")
-}
-
-func (me *TileData) SetPropFlipH(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TileData) GetPropFlipV() bool {
-  panic("TODO: implement")
-}
-
-func (me *TileData) SetPropFlipV(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TileData) GetPropTranspose() bool {
-  panic("TODO: implement")
-}
-
-func (me *TileData) SetPropTranspose(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TileData) GetPropTextureOrigin() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *TileData) SetPropTextureOrigin(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *TileData) GetPropModulate() Color {
-  panic("TODO: implement")
-}
-
-func (me *TileData) SetPropModulate(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *TileData) GetPropMaterial() any {
-  panic("TODO: implement")
-}
-
-func (me *TileData) SetPropMaterial(value any) {
-  panic("TODO: implement")
-}
-
-func (me *TileData) GetPropZIndex() int {
-  panic("TODO: implement")
-}
-
-func (me *TileData) SetPropZIndex(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TileData) GetPropYSortOrigin() int {
-  panic("TODO: implement")
-}
-
-func (me *TileData) SetPropYSortOrigin(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TileData) GetPropTerrainSet() int {
-  panic("TODO: implement")
-}
-
-func (me *TileData) SetPropTerrainSet(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TileData) GetPropTerrain() int {
-  panic("TODO: implement")
-}
-
-func (me *TileData) SetPropTerrain(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TileData) GetPropProbability() float32 {
-  panic("TODO: implement")
-}
-
-func (me *TileData) SetPropProbability(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type TileDataChangedSignalFn func()
+
+func (me *TileData) ConnectChanged(subs SignalSubscribers, fn TileDataChangedSignalFn) {
+  sig := StringNameFromStr("changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TileData) DisconnectChanged(subs SignalSubscribers, fn TileDataChangedSignalFn) {
+  sig := StringNameFromStr("changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

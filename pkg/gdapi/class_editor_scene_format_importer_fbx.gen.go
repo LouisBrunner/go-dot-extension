@@ -39,4 +39,4 @@ func (me *EditorSceneFormatImporterFBX) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

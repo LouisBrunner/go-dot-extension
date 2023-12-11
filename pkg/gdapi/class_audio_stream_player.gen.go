@@ -299,79 +299,23 @@ func  (me *AudioStreamPlayer) GetStreamPlayback() AudioStreamPlayback {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioStreamPlayer) GetPropStream() AudioStream {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) SetPropStream(value AudioStream) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) GetPropVolumeDb() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) SetPropVolumeDb(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) GetPropPitchScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) SetPropPitchScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) GetPropPlaying() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) SetPropPlaying(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) GetPropAutoplay() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) SetPropAutoplay(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) GetPropStreamPaused() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) SetPropStreamPaused(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) GetPropMixTarget() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) SetPropMixTarget(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) GetPropMaxPolyphony() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) SetPropMaxPolyphony(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) GetPropBus() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer) SetPropBus(value StringName) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AudioStreamPlayerFinishedSignalFn func()
+
+func (me *AudioStreamPlayer) ConnectFinished(subs SignalSubscribers, fn AudioStreamPlayerFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AudioStreamPlayer) DisconnectFinished(subs SignalSubscribers, fn AudioStreamPlayerFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

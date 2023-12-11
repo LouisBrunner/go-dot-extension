@@ -610,143 +610,263 @@ func  (me *GraphEdit) SetSelected(node Node, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GraphEdit) GetPropRightDisconnects() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropRightDisconnects(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropScrollOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropScrollOffset(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropSnapDistance() int {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropSnapDistance(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropUseSnap() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropUseSnap(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropPanningScheme() int {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropPanningScheme(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropConnectionLinesCurvature() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropConnectionLinesCurvature(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropConnectionLinesThickness() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropConnectionLinesThickness(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropConnectionLinesAntialiased() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropConnectionLinesAntialiased(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropZoom() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropZoom(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropZoomMin() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropZoomMin(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropZoomMax() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropZoomMax(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropZoomStep() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropZoomStep(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropShowZoomLabel() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropShowZoomLabel(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropMinimapEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropMinimapEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropMinimapSize() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropMinimapSize(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropMinimapOpacity() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropMinimapOpacity(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) GetPropArrangeNodesButtonHidden() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphEdit) SetPropArrangeNodesButtonHidden(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type GraphEditConnectionRequestSignalFn func(from_node StringName, from_port int, to_node StringName, to_port int, )
+
+func (me *GraphEdit) ConnectConnectionRequest(subs SignalSubscribers, fn GraphEditConnectionRequestSignalFn) {
+  sig := StringNameFromStr("connection_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectConnectionRequest(subs SignalSubscribers, fn GraphEditConnectionRequestSignalFn) {
+  sig := StringNameFromStr("connection_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditDisconnectionRequestSignalFn func(from_node StringName, from_port int, to_node StringName, to_port int, )
+
+func (me *GraphEdit) ConnectDisconnectionRequest(subs SignalSubscribers, fn GraphEditDisconnectionRequestSignalFn) {
+  sig := StringNameFromStr("disconnection_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectDisconnectionRequest(subs SignalSubscribers, fn GraphEditDisconnectionRequestSignalFn) {
+  sig := StringNameFromStr("disconnection_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditPopupRequestSignalFn func(position Vector2, )
+
+func (me *GraphEdit) ConnectPopupRequest(subs SignalSubscribers, fn GraphEditPopupRequestSignalFn) {
+  sig := StringNameFromStr("popup_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectPopupRequest(subs SignalSubscribers, fn GraphEditPopupRequestSignalFn) {
+  sig := StringNameFromStr("popup_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditDuplicateNodesRequestSignalFn func()
+
+func (me *GraphEdit) ConnectDuplicateNodesRequest(subs SignalSubscribers, fn GraphEditDuplicateNodesRequestSignalFn) {
+  sig := StringNameFromStr("duplicate_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectDuplicateNodesRequest(subs SignalSubscribers, fn GraphEditDuplicateNodesRequestSignalFn) {
+  sig := StringNameFromStr("duplicate_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditCopyNodesRequestSignalFn func()
+
+func (me *GraphEdit) ConnectCopyNodesRequest(subs SignalSubscribers, fn GraphEditCopyNodesRequestSignalFn) {
+  sig := StringNameFromStr("copy_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectCopyNodesRequest(subs SignalSubscribers, fn GraphEditCopyNodesRequestSignalFn) {
+  sig := StringNameFromStr("copy_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditPasteNodesRequestSignalFn func()
+
+func (me *GraphEdit) ConnectPasteNodesRequest(subs SignalSubscribers, fn GraphEditPasteNodesRequestSignalFn) {
+  sig := StringNameFromStr("paste_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectPasteNodesRequest(subs SignalSubscribers, fn GraphEditPasteNodesRequestSignalFn) {
+  sig := StringNameFromStr("paste_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditNodeSelectedSignalFn func(node Node, )
+
+func (me *GraphEdit) ConnectNodeSelected(subs SignalSubscribers, fn GraphEditNodeSelectedSignalFn) {
+  sig := StringNameFromStr("node_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectNodeSelected(subs SignalSubscribers, fn GraphEditNodeSelectedSignalFn) {
+  sig := StringNameFromStr("node_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditNodeDeselectedSignalFn func(node Node, )
+
+func (me *GraphEdit) ConnectNodeDeselected(subs SignalSubscribers, fn GraphEditNodeDeselectedSignalFn) {
+  sig := StringNameFromStr("node_deselected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectNodeDeselected(subs SignalSubscribers, fn GraphEditNodeDeselectedSignalFn) {
+  sig := StringNameFromStr("node_deselected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditConnectionToEmptySignalFn func(from_node StringName, from_port int, release_position Vector2, )
+
+func (me *GraphEdit) ConnectConnectionToEmpty(subs SignalSubscribers, fn GraphEditConnectionToEmptySignalFn) {
+  sig := StringNameFromStr("connection_to_empty")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectConnectionToEmpty(subs SignalSubscribers, fn GraphEditConnectionToEmptySignalFn) {
+  sig := StringNameFromStr("connection_to_empty")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditConnectionFromEmptySignalFn func(to_node StringName, to_port int, release_position Vector2, )
+
+func (me *GraphEdit) ConnectConnectionFromEmpty(subs SignalSubscribers, fn GraphEditConnectionFromEmptySignalFn) {
+  sig := StringNameFromStr("connection_from_empty")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectConnectionFromEmpty(subs SignalSubscribers, fn GraphEditConnectionFromEmptySignalFn) {
+  sig := StringNameFromStr("connection_from_empty")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditDeleteNodesRequestSignalFn func(nodes StringName, )
+
+func (me *GraphEdit) ConnectDeleteNodesRequest(subs SignalSubscribers, fn GraphEditDeleteNodesRequestSignalFn) {
+  sig := StringNameFromStr("delete_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectDeleteNodesRequest(subs SignalSubscribers, fn GraphEditDeleteNodesRequestSignalFn) {
+  sig := StringNameFromStr("delete_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditBeginNodeMoveSignalFn func()
+
+func (me *GraphEdit) ConnectBeginNodeMove(subs SignalSubscribers, fn GraphEditBeginNodeMoveSignalFn) {
+  sig := StringNameFromStr("begin_node_move")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectBeginNodeMove(subs SignalSubscribers, fn GraphEditBeginNodeMoveSignalFn) {
+  sig := StringNameFromStr("begin_node_move")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditEndNodeMoveSignalFn func()
+
+func (me *GraphEdit) ConnectEndNodeMove(subs SignalSubscribers, fn GraphEditEndNodeMoveSignalFn) {
+  sig := StringNameFromStr("end_node_move")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectEndNodeMove(subs SignalSubscribers, fn GraphEditEndNodeMoveSignalFn) {
+  sig := StringNameFromStr("end_node_move")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditScrollOffsetChangedSignalFn func(offset Vector2, )
+
+func (me *GraphEdit) ConnectScrollOffsetChanged(subs SignalSubscribers, fn GraphEditScrollOffsetChangedSignalFn) {
+  sig := StringNameFromStr("scroll_offset_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectScrollOffsetChanged(subs SignalSubscribers, fn GraphEditScrollOffsetChangedSignalFn) {
+  sig := StringNameFromStr("scroll_offset_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditConnectionDragStartedSignalFn func(from_node StringName, from_port int, is_output bool, )
+
+func (me *GraphEdit) ConnectConnectionDragStarted(subs SignalSubscribers, fn GraphEditConnectionDragStartedSignalFn) {
+  sig := StringNameFromStr("connection_drag_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectConnectionDragStarted(subs SignalSubscribers, fn GraphEditConnectionDragStartedSignalFn) {
+  sig := StringNameFromStr("connection_drag_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditConnectionDragEndedSignalFn func()
+
+func (me *GraphEdit) ConnectConnectionDragEnded(subs SignalSubscribers, fn GraphEditConnectionDragEndedSignalFn) {
+  sig := StringNameFromStr("connection_drag_ended")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectConnectionDragEnded(subs SignalSubscribers, fn GraphEditConnectionDragEndedSignalFn) {
+  sig := StringNameFromStr("connection_drag_ended")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

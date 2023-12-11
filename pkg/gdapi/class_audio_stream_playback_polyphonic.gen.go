@@ -99,4 +99,4 @@ func  (me *AudioStreamPlaybackPolyphonic) StopStream(stream int, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

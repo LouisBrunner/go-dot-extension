@@ -126,37 +126,7 @@ func  (me *DampedSpringJoint2D) GetDamping() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *DampedSpringJoint2D) GetPropLength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *DampedSpringJoint2D) SetPropLength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *DampedSpringJoint2D) GetPropRestLength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *DampedSpringJoint2D) SetPropRestLength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *DampedSpringJoint2D) GetPropStiffness() float32 {
-  panic("TODO: implement")
-}
-
-func (me *DampedSpringJoint2D) SetPropStiffness(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *DampedSpringJoint2D) GetPropDamping() float32 {
-  panic("TODO: implement")
-}
-
-func (me *DampedSpringJoint2D) SetPropDamping(value float32) {
-  panic("TODO: implement")
-}
+// Signals

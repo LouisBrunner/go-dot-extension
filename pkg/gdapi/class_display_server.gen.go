@@ -1971,4 +1971,4 @@ func  (me *DisplayServer) TabletSetCurrentDriver(name String, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

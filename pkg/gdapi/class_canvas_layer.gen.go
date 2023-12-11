@@ -280,79 +280,23 @@ func  (me *CanvasLayer) GetCanvas() RID {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CanvasLayer) GetPropLayer() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) SetPropLayer(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) GetPropVisible() bool {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) SetPropVisible(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) GetPropOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) SetPropOffset(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) GetPropRotation() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) SetPropRotation(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) GetPropScale() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) SetPropScale(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) GetPropTransform() Transform2D {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) SetPropTransform(value Transform2D) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) GetPropCustomViewport() Viewport {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) SetPropCustomViewport(value Viewport) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) GetPropFollowViewportEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) SetPropFollowViewportEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) GetPropFollowViewportScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CanvasLayer) SetPropFollowViewportScale(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type CanvasLayerVisibilityChangedSignalFn func()
+
+func (me *CanvasLayer) ConnectVisibilityChanged(subs SignalSubscribers, fn CanvasLayerVisibilityChangedSignalFn) {
+  sig := StringNameFromStr("visibility_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CanvasLayer) DisconnectVisibilityChanged(subs SignalSubscribers, fn CanvasLayerVisibilityChangedSignalFn) {
+  sig := StringNameFromStr("visibility_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

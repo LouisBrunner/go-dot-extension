@@ -170,53 +170,7 @@ func  (me *PhysicsPointQueryParameters2D) IsCollideWithAreasEnabled() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PhysicsPointQueryParameters2D) GetPropPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsPointQueryParameters2D) SetPropPosition(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsPointQueryParameters2D) GetPropCanvasInstanceId() int {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsPointQueryParameters2D) SetPropCanvasInstanceId(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsPointQueryParameters2D) GetPropCollisionMask() int {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsPointQueryParameters2D) SetPropCollisionMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsPointQueryParameters2D) GetPropExclude() RID {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsPointQueryParameters2D) SetPropExclude(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsPointQueryParameters2D) GetPropCollideWithBodies() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsPointQueryParameters2D) SetPropCollideWithBodies(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsPointQueryParameters2D) GetPropCollideWithAreas() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsPointQueryParameters2D) SetPropCollideWithAreas(value bool) {
-  panic("TODO: implement")
-}
+// Signals

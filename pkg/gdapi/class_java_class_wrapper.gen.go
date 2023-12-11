@@ -51,4 +51,4 @@ func  (me *JavaClassWrapper) Wrap(name String, ) JavaClass {
   return ret
 }
 
-// Properties
+// Signals

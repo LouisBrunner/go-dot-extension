@@ -106,6 +106,7 @@ func (me *Vector3i) MinAxisIndex() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -117,6 +118,7 @@ func (me *Vector3i) MaxAxisIndex() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -128,6 +130,7 @@ func (me *Vector3i) Length() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -139,6 +142,7 @@ func (me *Vector3i) LengthSquared() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -150,6 +154,7 @@ func (me *Vector3i) Sign() Vector3i {
 
   var ret Vector3i
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -161,6 +166,7 @@ func (me *Vector3i) Abs() Vector3i {
 
   var ret Vector3i
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -172,6 +178,7 @@ func (me *Vector3i) Clamp(min Vector3i, max Vector3i, ) Vector3i {
 
   var ret Vector3i
   args := []gdc.ConstTypePtr{min.AsCTypePtr(), max.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -183,6 +190,7 @@ func (me *Vector3i) Snapped(step Vector3i, ) Vector3i {
 
   var ret Vector3i
   args := []gdc.ConstTypePtr{step.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

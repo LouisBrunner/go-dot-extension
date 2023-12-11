@@ -230,53 +230,7 @@ func  (me *WebSocketMultiplayerPeer) GetMaxQueuedPackets() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *WebSocketMultiplayerPeer) GetPropSupportedProtocols() PackedStringArray {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketMultiplayerPeer) SetPropSupportedProtocols(value PackedStringArray) {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketMultiplayerPeer) GetPropHandshakeHeaders() PackedStringArray {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketMultiplayerPeer) SetPropHandshakeHeaders(value PackedStringArray) {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketMultiplayerPeer) GetPropInboundBufferSize() int {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketMultiplayerPeer) SetPropInboundBufferSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketMultiplayerPeer) GetPropOutboundBufferSize() int {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketMultiplayerPeer) SetPropOutboundBufferSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketMultiplayerPeer) GetPropHandshakeTimeout() float32 {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketMultiplayerPeer) SetPropHandshakeTimeout(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketMultiplayerPeer) GetPropMaxQueuedPackets() int {
-  panic("TODO: implement")
-}
-
-func (me *WebSocketMultiplayerPeer) SetPropMaxQueuedPackets(value int) {
-  panic("TODO: implement")
-}
+// Signals

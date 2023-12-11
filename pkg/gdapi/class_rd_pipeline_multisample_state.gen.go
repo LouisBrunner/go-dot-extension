@@ -170,53 +170,7 @@ func  (me *RDPipelineMultisampleState) GetSampleMasks() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RDPipelineMultisampleState) GetPropSampleCount() int {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineMultisampleState) SetPropSampleCount(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineMultisampleState) GetPropEnableSampleShading() bool {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineMultisampleState) SetPropEnableSampleShading(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineMultisampleState) GetPropMinSampleShading() float32 {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineMultisampleState) SetPropMinSampleShading(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineMultisampleState) GetPropEnableAlphaToCoverage() bool {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineMultisampleState) SetPropEnableAlphaToCoverage(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineMultisampleState) GetPropEnableAlphaToOne() bool {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineMultisampleState) SetPropEnableAlphaToOne(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineMultisampleState) GetPropSampleMasks() int {
-  panic("TODO: implement")
-}
-
-func (me *RDPipelineMultisampleState) SetPropSampleMasks(value int) {
-  panic("TODO: implement")
-}
+// Signals

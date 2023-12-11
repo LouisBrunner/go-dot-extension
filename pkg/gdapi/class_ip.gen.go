@@ -178,4 +178,4 @@ func  (me *IP) ClearCache(hostname String, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

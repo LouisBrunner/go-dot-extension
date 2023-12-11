@@ -76,6 +76,7 @@ func (me *AABB) Abs() AABB {
 
   var ret AABB
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -87,6 +88,7 @@ func (me *AABB) GetCenter() Vector3 {
 
   var ret Vector3
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -98,6 +100,7 @@ func (me *AABB) GetVolume() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -109,6 +112,7 @@ func (me *AABB) HasVolume() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -120,6 +124,7 @@ func (me *AABB) HasSurface() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -131,6 +136,7 @@ func (me *AABB) HasPoint(point Vector3, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -142,6 +148,7 @@ func (me *AABB) IsEqualApprox(aabb AABB, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{aabb.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -153,6 +160,7 @@ func (me *AABB) IsFinite() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -164,6 +172,7 @@ func (me *AABB) Intersects(with AABB, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -175,6 +184,7 @@ func (me *AABB) Encloses(with AABB, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -186,6 +196,7 @@ func (me *AABB) IntersectsPlane(plane Plane, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{plane.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -197,6 +208,7 @@ func (me *AABB) Intersection(with AABB, ) AABB {
 
   var ret AABB
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -208,6 +220,7 @@ func (me *AABB) Merge(with AABB, ) AABB {
 
   var ret AABB
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -219,6 +232,7 @@ func (me *AABB) Expand(to_point Vector3, ) AABB {
 
   var ret AABB
   args := []gdc.ConstTypePtr{to_point.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -230,6 +244,7 @@ func (me *AABB) Grow(by float32, ) AABB {
 
   var ret AABB
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&by), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -241,6 +256,7 @@ func (me *AABB) GetSupport(dir Vector3, ) Vector3 {
 
   var ret Vector3
   args := []gdc.ConstTypePtr{dir.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -252,6 +268,7 @@ func (me *AABB) GetLongestAxis() Vector3 {
 
   var ret Vector3
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -263,6 +280,7 @@ func (me *AABB) GetLongestAxisIndex() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -274,6 +292,7 @@ func (me *AABB) GetLongestAxisSize() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -285,6 +304,7 @@ func (me *AABB) GetShortestAxis() Vector3 {
 
   var ret Vector3
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -296,6 +316,7 @@ func (me *AABB) GetShortestAxisIndex() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -307,6 +328,7 @@ func (me *AABB) GetShortestAxisSize() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -318,6 +340,7 @@ func (me *AABB) GetEndpoint(idx int, ) Vector3 {
 
   var ret Vector3
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -329,6 +352,7 @@ func (me *AABB) IntersectsSegment(from Vector3, to Vector3, ) Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{from.AsCTypePtr(), to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -340,6 +364,7 @@ func (me *AABB) IntersectsRay(from Vector3, dir Vector3, ) Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{from.AsCTypePtr(), dir.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

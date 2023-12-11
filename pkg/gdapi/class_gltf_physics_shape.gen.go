@@ -240,61 +240,7 @@ func  (me *GLTFPhysicsShape) SetImporterMesh(importer_mesh ImporterMesh, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(importer_mesh.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GLTFPhysicsShape) GetPropShapeType() String {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) SetPropShapeType(value String) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) GetPropSize() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) SetPropSize(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) GetPropHeight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) SetPropHeight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) GetPropIsTrigger() bool {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) SetPropIsTrigger(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) GetPropMeshIndex() int {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) SetPropMeshIndex(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) GetPropImporterMesh() ImporterMesh {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsShape) SetPropImporterMesh(value ImporterMesh) {
-  panic("TODO: implement")
-}
+// Signals

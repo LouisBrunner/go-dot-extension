@@ -568,39 +568,23 @@ func  (me *AudioServer) SetEnableTaggingUsedAudioStreams(enable bool, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioServer) GetPropBusCount() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioServer) SetPropBusCount(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioServer) GetPropOutputDevice() String {
-  panic("TODO: implement")
-}
-
-func (me *AudioServer) SetPropOutputDevice(value String) {
-  panic("TODO: implement")
-}
-
-func (me *AudioServer) GetPropInputDevice() String {
-  panic("TODO: implement")
-}
-
-func (me *AudioServer) SetPropInputDevice(value String) {
-  panic("TODO: implement")
-}
-
-func (me *AudioServer) GetPropPlaybackSpeedScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioServer) SetPropPlaybackSpeedScale(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AudioServerBusLayoutChangedSignalFn func()
+
+func (me *AudioServer) ConnectBusLayoutChanged(subs SignalSubscribers, fn AudioServerBusLayoutChangedSignalFn) {
+  sig := StringNameFromStr("bus_layout_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AudioServer) DisconnectBusLayoutChanged(subs SignalSubscribers, fn AudioServerBusLayoutChangedSignalFn) {
+  sig := StringNameFromStr("bus_layout_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

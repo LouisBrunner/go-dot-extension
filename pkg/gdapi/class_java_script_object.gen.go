@@ -39,4 +39,4 @@ func (me *JavaScriptObject) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

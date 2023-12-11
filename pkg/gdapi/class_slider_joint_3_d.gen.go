@@ -88,4 +88,4 @@ func  (me *SliderJoint3D) GetParam(param SliderJoint3DParam, ) float32 {
   return ret
 }
 
-// Properties
+// Signals

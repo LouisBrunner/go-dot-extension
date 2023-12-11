@@ -70,21 +70,7 @@ func  (me *PlaceholderTextureLayered) SetLayers(layers int, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layers), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PlaceholderTextureLayered) GetPropSize() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *PlaceholderTextureLayered) SetPropSize(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *PlaceholderTextureLayered) GetPropLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *PlaceholderTextureLayered) SetPropLayers(value int) {
-  panic("TODO: implement")
-}
+// Signals

@@ -160,45 +160,7 @@ func  (me *PrimitiveMesh) GetUv2Padding() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PrimitiveMesh) GetPropMaterial() any {
-  panic("TODO: implement")
-}
-
-func (me *PrimitiveMesh) SetPropMaterial(value any) {
-  panic("TODO: implement")
-}
-
-func (me *PrimitiveMesh) GetPropCustomAabb() AABB {
-  panic("TODO: implement")
-}
-
-func (me *PrimitiveMesh) SetPropCustomAabb(value AABB) {
-  panic("TODO: implement")
-}
-
-func (me *PrimitiveMesh) GetPropFlipFaces() bool {
-  panic("TODO: implement")
-}
-
-func (me *PrimitiveMesh) SetPropFlipFaces(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PrimitiveMesh) GetPropAddUv2() bool {
-  panic("TODO: implement")
-}
-
-func (me *PrimitiveMesh) SetPropAddUv2(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PrimitiveMesh) GetPropUv2Padding() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PrimitiveMesh) SetPropUv2Padding(value float32) {
-  panic("TODO: implement")
-}
+// Signals

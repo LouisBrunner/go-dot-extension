@@ -82,21 +82,7 @@ func  (me *GLTFTexture) SetSampler(sampler int, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&sampler), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GLTFTexture) GetPropSrcImage() int {
-  panic("TODO: implement")
-}
-
-func (me *GLTFTexture) SetPropSrcImage(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFTexture) GetPropSampler() int {
-  panic("TODO: implement")
-}
-
-func (me *GLTFTexture) SetPropSampler(value int) {
-  panic("TODO: implement")
-}
+// Signals

@@ -60,13 +60,7 @@ func  (me *VisualShaderNodeParticleEmitter) IsMode2D() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeParticleEmitter) GetPropMode2D() bool {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeParticleEmitter) SetPropMode2D(value bool) {
-  panic("TODO: implement")
-}
+// Signals

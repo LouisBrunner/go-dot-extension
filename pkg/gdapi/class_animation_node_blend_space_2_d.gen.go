@@ -341,79 +341,23 @@ func  (me *AnimationNodeBlendSpace2D) IsUsingSync() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimationNodeBlendSpace2D) GetPropAutoTriangles() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) SetPropAutoTriangles(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) GetPropTriangles() PackedInt32Array {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) SetPropTriangles(value PackedInt32Array) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) GetPropMinSpace() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) SetPropMinSpace(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) GetPropMaxSpace() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) SetPropMaxSpace(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) GetPropSnap() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) SetPropSnap(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) GetPropXLabel() String {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) SetPropXLabel(value String) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) GetPropYLabel() String {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) SetPropYLabel(value String) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) GetPropBlendMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) SetPropBlendMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) GetPropSync() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace2D) SetPropSync(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AnimationNodeBlendSpace2DTrianglesUpdatedSignalFn func()
+
+func (me *AnimationNodeBlendSpace2D) ConnectTrianglesUpdated(subs SignalSubscribers, fn AnimationNodeBlendSpace2DTrianglesUpdatedSignalFn) {
+  sig := StringNameFromStr("triangles_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationNodeBlendSpace2D) DisconnectTrianglesUpdated(subs SignalSubscribers, fn AnimationNodeBlendSpace2DTrianglesUpdatedSignalFn) {
+  sig := StringNameFromStr("triangles_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

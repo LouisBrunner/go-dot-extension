@@ -82,21 +82,7 @@ func  (me *XROrigin3D) IsCurrent() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *XROrigin3D) GetPropWorldScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *XROrigin3D) SetPropWorldScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *XROrigin3D) GetPropCurrent() bool {
-  panic("TODO: implement")
-}
-
-func (me *XROrigin3D) SetPropCurrent(value bool) {
-  panic("TODO: implement")
-}
+// Signals

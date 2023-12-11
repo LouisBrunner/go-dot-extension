@@ -49,4 +49,4 @@ func  (me *EditorResourceTooltipPlugin) RequestThumbnail(path String, control Te
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

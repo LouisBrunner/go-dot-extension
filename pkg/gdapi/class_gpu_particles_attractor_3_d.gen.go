@@ -126,37 +126,7 @@ func  (me *GPUParticlesAttractor3D) GetDirectionality() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GPUParticlesAttractor3D) GetPropStrength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesAttractor3D) SetPropStrength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesAttractor3D) GetPropAttenuation() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesAttractor3D) SetPropAttenuation(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesAttractor3D) GetPropDirectionality() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesAttractor3D) SetPropDirectionality(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesAttractor3D) GetPropCullMask() int {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesAttractor3D) SetPropCullMask(value int) {
-  panic("TODO: implement")
-}
+// Signals

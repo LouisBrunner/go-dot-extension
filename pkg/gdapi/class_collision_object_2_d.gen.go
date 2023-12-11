@@ -423,47 +423,87 @@ func  (me *CollisionObject2D) ShapeFindOwner(shape_index int, ) int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CollisionObject2D) GetPropDisableMode() int {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject2D) SetPropDisableMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject2D) GetPropCollisionLayer() int {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject2D) SetPropCollisionLayer(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject2D) GetPropCollisionMask() int {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject2D) SetPropCollisionMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject2D) GetPropCollisionPriority() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject2D) SetPropCollisionPriority(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject2D) GetPropInputPickable() bool {
-  panic("TODO: implement")
-}
-
-func (me *CollisionObject2D) SetPropInputPickable(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type CollisionObject2DInputEventSignalFn func(viewport Node, event InputEvent, shape_idx int, )
+
+func (me *CollisionObject2D) ConnectInputEvent(subs SignalSubscribers, fn CollisionObject2DInputEventSignalFn) {
+  sig := StringNameFromStr("input_event")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CollisionObject2D) DisconnectInputEvent(subs SignalSubscribers, fn CollisionObject2DInputEventSignalFn) {
+  sig := StringNameFromStr("input_event")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CollisionObject2DMouseEnteredSignalFn func()
+
+func (me *CollisionObject2D) ConnectMouseEntered(subs SignalSubscribers, fn CollisionObject2DMouseEnteredSignalFn) {
+  sig := StringNameFromStr("mouse_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CollisionObject2D) DisconnectMouseEntered(subs SignalSubscribers, fn CollisionObject2DMouseEnteredSignalFn) {
+  sig := StringNameFromStr("mouse_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CollisionObject2DMouseExitedSignalFn func()
+
+func (me *CollisionObject2D) ConnectMouseExited(subs SignalSubscribers, fn CollisionObject2DMouseExitedSignalFn) {
+  sig := StringNameFromStr("mouse_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CollisionObject2D) DisconnectMouseExited(subs SignalSubscribers, fn CollisionObject2DMouseExitedSignalFn) {
+  sig := StringNameFromStr("mouse_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CollisionObject2DMouseShapeEnteredSignalFn func(shape_idx int, )
+
+func (me *CollisionObject2D) ConnectMouseShapeEntered(subs SignalSubscribers, fn CollisionObject2DMouseShapeEnteredSignalFn) {
+  sig := StringNameFromStr("mouse_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CollisionObject2D) DisconnectMouseShapeEntered(subs SignalSubscribers, fn CollisionObject2DMouseShapeEnteredSignalFn) {
+  sig := StringNameFromStr("mouse_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CollisionObject2DMouseShapeExitedSignalFn func(shape_idx int, )
+
+func (me *CollisionObject2D) ConnectMouseShapeExited(subs SignalSubscribers, fn CollisionObject2DMouseShapeExitedSignalFn) {
+  sig := StringNameFromStr("mouse_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CollisionObject2D) DisconnectMouseShapeExited(subs SignalSubscribers, fn CollisionObject2DMouseShapeExitedSignalFn) {
+  sig := StringNameFromStr("mouse_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

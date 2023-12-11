@@ -158,45 +158,7 @@ func  (me *RemoteTransform2D) GetUpdateScale() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RemoteTransform2D) GetPropRemotePath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *RemoteTransform2D) SetPropRemotePath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *RemoteTransform2D) GetPropUseGlobalCoordinates() bool {
-  panic("TODO: implement")
-}
-
-func (me *RemoteTransform2D) SetPropUseGlobalCoordinates(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RemoteTransform2D) GetPropUpdatePosition() bool {
-  panic("TODO: implement")
-}
-
-func (me *RemoteTransform2D) SetPropUpdatePosition(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RemoteTransform2D) GetPropUpdateRotation() bool {
-  panic("TODO: implement")
-}
-
-func (me *RemoteTransform2D) SetPropUpdateRotation(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RemoteTransform2D) GetPropUpdateScale() bool {
-  panic("TODO: implement")
-}
-
-func (me *RemoteTransform2D) SetPropUpdateScale(value bool) {
-  panic("TODO: implement")
-}
+// Signals

@@ -82,13 +82,7 @@ func  (me *ShaderMaterial) GetShaderParameter(param StringName, ) Variant {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ShaderMaterial) GetPropShader() Shader {
-  panic("TODO: implement")
-}
-
-func (me *ShaderMaterial) SetPropShader(value Shader) {
-  panic("TODO: implement")
-}
+// Signals

@@ -177,4 +177,4 @@ func  (me *EditorNode3DGizmo) GetSubgizmoSelection() PackedInt32Array {
   return ret
 }
 
-// Properties
+// Signals

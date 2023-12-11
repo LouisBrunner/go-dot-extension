@@ -102,21 +102,7 @@ func  (me *CollisionShape3D) MakeConvexFromSiblings()  {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CollisionShape3D) GetPropShape() Shape3D {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape3D) SetPropShape(value Shape3D) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape3D) GetPropDisabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape3D) SetPropDisabled(value bool) {
-  panic("TODO: implement")
-}
+// Signals

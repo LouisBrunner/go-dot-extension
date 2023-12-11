@@ -72,15 +72,23 @@ func  (me *VisualShaderNodeInput) GetInputRealName() String {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeInput) GetPropInputName() StringName {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeInput) SetPropInputName(value StringName) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type VisualShaderNodeInputInputTypeChangedSignalFn func()
+
+func (me *VisualShaderNodeInput) ConnectInputTypeChanged(subs SignalSubscribers, fn VisualShaderNodeInputInputTypeChangedSignalFn) {
+  sig := StringNameFromStr("input_type_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *VisualShaderNodeInput) DisconnectInputTypeChanged(subs SignalSubscribers, fn VisualShaderNodeInputInputTypeChangedSignalFn) {
+  sig := StringNameFromStr("input_type_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

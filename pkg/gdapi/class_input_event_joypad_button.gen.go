@@ -92,29 +92,7 @@ func  (me *InputEventJoypadButton) SetPressed(pressed bool, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEventJoypadButton) GetPropButtonIndex() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventJoypadButton) SetPropButtonIndex(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventJoypadButton) GetPropPressure() float32 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventJoypadButton) SetPropPressure(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventJoypadButton) GetPropPressed() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventJoypadButton) SetPropPressed(value bool) {
-  panic("TODO: implement")
-}
+// Signals

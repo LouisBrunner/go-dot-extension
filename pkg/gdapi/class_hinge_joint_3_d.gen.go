@@ -103,4 +103,4 @@ func  (me *HingeJoint3D) GetFlag(flag HingeJoint3DFlag, ) bool {
   return ret
 }
 
-// Properties
+// Signals

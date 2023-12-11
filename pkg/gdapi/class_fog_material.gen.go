@@ -170,53 +170,7 @@ func  (me *FogMaterial) GetDensityTexture() Texture3D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *FogMaterial) GetPropDensity() float32 {
-  panic("TODO: implement")
-}
-
-func (me *FogMaterial) SetPropDensity(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *FogMaterial) GetPropAlbedo() Color {
-  panic("TODO: implement")
-}
-
-func (me *FogMaterial) SetPropAlbedo(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *FogMaterial) GetPropEmission() Color {
-  panic("TODO: implement")
-}
-
-func (me *FogMaterial) SetPropEmission(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *FogMaterial) GetPropHeightFalloff() float32 {
-  panic("TODO: implement")
-}
-
-func (me *FogMaterial) SetPropHeightFalloff(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *FogMaterial) GetPropEdgeFade() float32 {
-  panic("TODO: implement")
-}
-
-func (me *FogMaterial) SetPropEdgeFade(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *FogMaterial) GetPropDensityTexture() Texture3D {
-  panic("TODO: implement")
-}
-
-func (me *FogMaterial) SetPropDensityTexture(value Texture3D) {
-  panic("TODO: implement")
-}
+// Signals

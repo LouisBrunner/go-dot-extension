@@ -126,29 +126,7 @@ func  (me *OccluderInstance3D) GetOccluder() Occluder3D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *OccluderInstance3D) GetPropOccluder() Occluder3D {
-  panic("TODO: implement")
-}
-
-func (me *OccluderInstance3D) SetPropOccluder(value Occluder3D) {
-  panic("TODO: implement")
-}
-
-func (me *OccluderInstance3D) GetPropBakeMask() int {
-  panic("TODO: implement")
-}
-
-func (me *OccluderInstance3D) SetPropBakeMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *OccluderInstance3D) GetPropBakeSimplificationDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *OccluderInstance3D) SetPropBakeSimplificationDistance(value float32) {
-  panic("TODO: implement")
-}
+// Signals

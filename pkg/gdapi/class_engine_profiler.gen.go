@@ -39,4 +39,4 @@ func (me *EngineProfiler) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

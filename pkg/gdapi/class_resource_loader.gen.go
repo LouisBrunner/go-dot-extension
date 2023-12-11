@@ -192,4 +192,4 @@ func  (me *ResourceLoader) GetResourceUid(path String, ) int {
   return ret
 }
 
-// Properties
+// Signals

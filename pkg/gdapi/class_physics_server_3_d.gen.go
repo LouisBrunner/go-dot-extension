@@ -1715,4 +1715,4 @@ func  (me *PhysicsServer3D) GetProcessInfo(process_info PhysicsServer3DProcessIn
   return ret
 }
 
-// Properties
+// Signals

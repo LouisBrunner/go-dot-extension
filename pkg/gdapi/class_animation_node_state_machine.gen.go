@@ -321,29 +321,7 @@ func  (me *AnimationNodeStateMachine) AreEndsReset() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimationNodeStateMachine) GetPropStateMachineType() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachine) SetPropStateMachineType(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachine) GetPropAllowTransitionToSelf() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachine) SetPropAllowTransitionToSelf(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachine) GetPropResetEnds() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachine) SetPropResetEnds(value bool) {
-  panic("TODO: implement")
-}
+// Signals

@@ -206,6 +206,52 @@ func  (me *WebRTCPeerConnection) GetSignalingState() WebRTCPeerConnectionSignali
   return ret
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type WebRTCPeerConnectionSessionDescriptionCreatedSignalFn func(type_ String, sdp String, )
+
+func (me *WebRTCPeerConnection) ConnectSessionDescriptionCreated(subs SignalSubscribers, fn WebRTCPeerConnectionSessionDescriptionCreatedSignalFn) {
+  sig := StringNameFromStr("session_description_created")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebRTCPeerConnection) DisconnectSessionDescriptionCreated(subs SignalSubscribers, fn WebRTCPeerConnectionSessionDescriptionCreatedSignalFn) {
+  sig := StringNameFromStr("session_description_created")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebRTCPeerConnectionIceCandidateCreatedSignalFn func(media String, index int, name String, )
+
+func (me *WebRTCPeerConnection) ConnectIceCandidateCreated(subs SignalSubscribers, fn WebRTCPeerConnectionIceCandidateCreatedSignalFn) {
+  sig := StringNameFromStr("ice_candidate_created")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebRTCPeerConnection) DisconnectIceCandidateCreated(subs SignalSubscribers, fn WebRTCPeerConnectionIceCandidateCreatedSignalFn) {
+  sig := StringNameFromStr("ice_candidate_created")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebRTCPeerConnectionDataChannelReceivedSignalFn func(channel WebRTCDataChannel, )
+
+func (me *WebRTCPeerConnection) ConnectDataChannelReceived(subs SignalSubscribers, fn WebRTCPeerConnectionDataChannelReceivedSignalFn) {
+  sig := StringNameFromStr("data_channel_received")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebRTCPeerConnection) DisconnectDataChannelReceived(subs SignalSubscribers, fn WebRTCPeerConnectionDataChannelReceivedSignalFn) {
+  sig := StringNameFromStr("data_channel_received")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

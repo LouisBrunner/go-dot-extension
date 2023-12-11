@@ -142,37 +142,7 @@ func  (me *NavigationPathQueryResult2D) Reset()  {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NavigationPathQueryResult2D) GetPropPath() PackedVector2Array {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryResult2D) SetPropPath(value PackedVector2Array) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryResult2D) GetPropPathTypes() PackedInt32Array {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryResult2D) SetPropPathTypes(value PackedInt32Array) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryResult2D) GetPropPathRids() RID {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryResult2D) SetPropPathRids(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryResult2D) GetPropPathOwnerIds() PackedInt64Array {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryResult2D) SetPropPathOwnerIds(value PackedInt64Array) {
-  panic("TODO: implement")
-}
+// Signals

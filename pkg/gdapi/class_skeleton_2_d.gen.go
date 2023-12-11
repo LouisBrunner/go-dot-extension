@@ -129,6 +129,20 @@ func  (me *Skeleton2D) GetBoneLocalPoseOverride(bone_idx int, ) Transform2D {
   return ret
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type Skeleton2DBoneSetupChangedSignalFn func()
+
+func (me *Skeleton2D) ConnectBoneSetupChanged(subs SignalSubscribers, fn Skeleton2DBoneSetupChangedSignalFn) {
+  sig := StringNameFromStr("bone_setup_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Skeleton2D) DisconnectBoneSetupChanged(subs SignalSubscribers, fn Skeleton2DBoneSetupChangedSignalFn) {
+  sig := StringNameFromStr("bone_setup_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

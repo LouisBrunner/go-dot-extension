@@ -82,21 +82,7 @@ func  (me *CylinderShape3D) GetHeight() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CylinderShape3D) GetPropHeight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CylinderShape3D) SetPropHeight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CylinderShape3D) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CylinderShape3D) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
+// Signals

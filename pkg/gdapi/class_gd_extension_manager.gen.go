@@ -120,4 +120,4 @@ func  (me *GDExtensionManager) GetExtension(path String, ) GDExtension {
   return ret
 }
 
-// Properties
+// Signals

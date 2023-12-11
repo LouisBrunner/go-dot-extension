@@ -216,23 +216,55 @@ func  (me *AnimationNode) GetParameter(name StringName, ) Variant {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimationNode) GetPropFilterEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNode) SetPropFilterEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNode) GetPropFilters() Array {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNode) SetPropFilters(value Array) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AnimationNodeTreeChangedSignalFn func()
+
+func (me *AnimationNode) ConnectTreeChanged(subs SignalSubscribers, fn AnimationNodeTreeChangedSignalFn) {
+  sig := StringNameFromStr("tree_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationNode) DisconnectTreeChanged(subs SignalSubscribers, fn AnimationNodeTreeChangedSignalFn) {
+  sig := StringNameFromStr("tree_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationNodeAnimationNodeRenamedSignalFn func(object_id int, old_name String, new_name String, )
+
+func (me *AnimationNode) ConnectAnimationNodeRenamed(subs SignalSubscribers, fn AnimationNodeAnimationNodeRenamedSignalFn) {
+  sig := StringNameFromStr("animation_node_renamed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationNode) DisconnectAnimationNodeRenamed(subs SignalSubscribers, fn AnimationNodeAnimationNodeRenamedSignalFn) {
+  sig := StringNameFromStr("animation_node_renamed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationNodeAnimationNodeRemovedSignalFn func(object_id int, name String, )
+
+func (me *AnimationNode) ConnectAnimationNodeRemoved(subs SignalSubscribers, fn AnimationNodeAnimationNodeRemovedSignalFn) {
+  sig := StringNameFromStr("animation_node_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationNode) DisconnectAnimationNodeRemoved(subs SignalSubscribers, fn AnimationNodeAnimationNodeRemovedSignalFn) {
+  sig := StringNameFromStr("animation_node_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -101,21 +101,7 @@ func  (me *FlowContainer) IsVertical() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *FlowContainer) GetPropAlignment() int {
-  panic("TODO: implement")
-}
-
-func (me *FlowContainer) SetPropAlignment(value int) {
-  panic("TODO: implement")
-}
-
-func (me *FlowContainer) GetPropVertical() bool {
-  panic("TODO: implement")
-}
-
-func (me *FlowContainer) SetPropVertical(value bool) {
-  panic("TODO: implement")
-}
+// Signals

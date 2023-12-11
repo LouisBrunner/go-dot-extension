@@ -116,4 +116,4 @@ func  (me *StreamPeerTLS) DisconnectFromStream()  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

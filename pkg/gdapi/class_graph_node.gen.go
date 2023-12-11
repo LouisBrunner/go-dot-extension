@@ -615,95 +615,135 @@ func  (me *GraphNode) GetOverlay() GraphNodeOverlay {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GraphNode) GetPropTitle() String {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) SetPropTitle(value String) {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) GetPropPositionOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) SetPropPositionOffset(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) GetPropShowClose() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) SetPropShowClose(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) GetPropResizable() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) SetPropResizable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) GetPropDraggable() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) SetPropDraggable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) GetPropSelectable() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) SetPropSelectable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) GetPropSelected() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) SetPropSelected(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) GetPropComment() bool {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) SetPropComment(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) GetPropOverlay() int {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) SetPropOverlay(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) GetPropTextDirection() int {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) SetPropTextDirection(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) GetPropLanguage() String {
-  panic("TODO: implement")
-}
-
-func (me *GraphNode) SetPropLanguage(value String) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type GraphNodePositionOffsetChangedSignalFn func()
+
+func (me *GraphNode) ConnectPositionOffsetChanged(subs SignalSubscribers, fn GraphNodePositionOffsetChangedSignalFn) {
+  sig := StringNameFromStr("position_offset_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphNode) DisconnectPositionOffsetChanged(subs SignalSubscribers, fn GraphNodePositionOffsetChangedSignalFn) {
+  sig := StringNameFromStr("position_offset_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphNodeNodeSelectedSignalFn func()
+
+func (me *GraphNode) ConnectNodeSelected(subs SignalSubscribers, fn GraphNodeNodeSelectedSignalFn) {
+  sig := StringNameFromStr("node_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphNode) DisconnectNodeSelected(subs SignalSubscribers, fn GraphNodeNodeSelectedSignalFn) {
+  sig := StringNameFromStr("node_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphNodeNodeDeselectedSignalFn func()
+
+func (me *GraphNode) ConnectNodeDeselected(subs SignalSubscribers, fn GraphNodeNodeDeselectedSignalFn) {
+  sig := StringNameFromStr("node_deselected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphNode) DisconnectNodeDeselected(subs SignalSubscribers, fn GraphNodeNodeDeselectedSignalFn) {
+  sig := StringNameFromStr("node_deselected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphNodeSlotUpdatedSignalFn func(idx int, )
+
+func (me *GraphNode) ConnectSlotUpdated(subs SignalSubscribers, fn GraphNodeSlotUpdatedSignalFn) {
+  sig := StringNameFromStr("slot_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphNode) DisconnectSlotUpdated(subs SignalSubscribers, fn GraphNodeSlotUpdatedSignalFn) {
+  sig := StringNameFromStr("slot_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphNodeDraggedSignalFn func(from Vector2, to Vector2, )
+
+func (me *GraphNode) ConnectDragged(subs SignalSubscribers, fn GraphNodeDraggedSignalFn) {
+  sig := StringNameFromStr("dragged")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphNode) DisconnectDragged(subs SignalSubscribers, fn GraphNodeDraggedSignalFn) {
+  sig := StringNameFromStr("dragged")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphNodeRaiseRequestSignalFn func()
+
+func (me *GraphNode) ConnectRaiseRequest(subs SignalSubscribers, fn GraphNodeRaiseRequestSignalFn) {
+  sig := StringNameFromStr("raise_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphNode) DisconnectRaiseRequest(subs SignalSubscribers, fn GraphNodeRaiseRequestSignalFn) {
+  sig := StringNameFromStr("raise_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphNodeCloseRequestSignalFn func()
+
+func (me *GraphNode) ConnectCloseRequest(subs SignalSubscribers, fn GraphNodeCloseRequestSignalFn) {
+  sig := StringNameFromStr("close_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphNode) DisconnectCloseRequest(subs SignalSubscribers, fn GraphNodeCloseRequestSignalFn) {
+  sig := StringNameFromStr("close_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphNodeResizeRequestSignalFn func(new_minsize Vector2, )
+
+func (me *GraphNode) ConnectResizeRequest(subs SignalSubscribers, fn GraphNodeResizeRequestSignalFn) {
+  sig := StringNameFromStr("resize_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphNode) DisconnectResizeRequest(subs SignalSubscribers, fn GraphNodeResizeRequestSignalFn) {
+  sig := StringNameFromStr("resize_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

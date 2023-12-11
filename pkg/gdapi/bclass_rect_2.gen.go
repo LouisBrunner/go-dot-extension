@@ -96,6 +96,7 @@ func (me *Rect2) GetCenter() Vector2 {
 
   var ret Vector2
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -107,6 +108,7 @@ func (me *Rect2) GetArea() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -118,6 +120,7 @@ func (me *Rect2) HasArea() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -129,6 +132,7 @@ func (me *Rect2) HasPoint(point Vector2, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -140,6 +144,7 @@ func (me *Rect2) IsEqualApprox(rect Rect2, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{rect.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -151,6 +156,7 @@ func (me *Rect2) IsFinite() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -162,6 +168,7 @@ func (me *Rect2) Intersects(b Rect2, include_borders bool, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), gdc.ConstTypePtr(&include_borders), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -173,6 +180,7 @@ func (me *Rect2) Encloses(b Rect2, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -184,6 +192,7 @@ func (me *Rect2) Intersection(b Rect2, ) Rect2 {
 
   var ret Rect2
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -195,6 +204,7 @@ func (me *Rect2) Merge(b Rect2, ) Rect2 {
 
   var ret Rect2
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -206,6 +216,7 @@ func (me *Rect2) Expand(to Vector2, ) Rect2 {
 
   var ret Rect2
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -217,6 +228,7 @@ func (me *Rect2) Grow(amount float32, ) Rect2 {
 
   var ret Rect2
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -228,6 +240,7 @@ func (me *Rect2) GrowSide(side int, amount float32, ) Rect2 {
 
   var ret Rect2
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&side), gdc.ConstTypePtr(&amount), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -239,6 +252,7 @@ func (me *Rect2) GrowIndividual(left float32, top float32, right float32, bottom
 
   var ret Rect2
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&left), gdc.ConstTypePtr(&top), gdc.ConstTypePtr(&right), gdc.ConstTypePtr(&bottom), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -250,6 +264,7 @@ func (me *Rect2) Abs() Rect2 {
 
   var ret Rect2
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

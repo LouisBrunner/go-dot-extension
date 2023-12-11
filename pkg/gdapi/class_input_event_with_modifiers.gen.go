@@ -172,45 +172,7 @@ func  (me *InputEventWithModifiers) GetModifiersMask() KeyModifierMask {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEventWithModifiers) GetPropCommandOrControlAutoremap() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventWithModifiers) SetPropCommandOrControlAutoremap(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventWithModifiers) GetPropAltPressed() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventWithModifiers) SetPropAltPressed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventWithModifiers) GetPropShiftPressed() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventWithModifiers) SetPropShiftPressed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventWithModifiers) GetPropCtrlPressed() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventWithModifiers) SetPropCtrlPressed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventWithModifiers) GetPropMetaPressed() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventWithModifiers) SetPropMetaPressed(value bool) {
-  panic("TODO: implement")
-}
+// Signals

@@ -69,7 +69,9 @@ func (me *{{$Class}}) AsCTypePtr() gdc.ConstTypePtr {
 {{- range .Methods}}
 
 func {{if .IsStatic }}{{$Class}}{{else}}(me *{{$Class}}) {{end }}{{mapMethod .Name -}}
-({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}) {{mapType .ReturnType}} {
+({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}
+{{- if .IsVarArg}}varargs ...Variant{{end -}}
+) {{mapType .ReturnType}} {
   name := StringNameFromStr("{{.Name}}")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantType{{pascalCased $.Name}}, name.AsCPtr(), {{.Hash}}) // FIXME: should cache?
@@ -84,6 +86,9 @@ func {{if .IsStatic }}{{$Class}}{{else}}(me *{{$Class}}) {{end }}{{mapMethod .Na
 {{- end -}}
     , {{ end -}}
   }
+{{if .IsVarArg}}  for _, arg := range varargs {
+    args = append(args, arg.AsCTypePtr())
+  }{{end}}
   giface.CallPtrBuiltInMethod(methodPtr, {{if .IsStatic}}nil{{else}}me.AsTypePtr(){{end}}, unsafe.SliceData(args), {{if .ReturnType}}gdc.TypePtr(&ret){{else}}nil{{end}}, len(args))
 {{if .ReturnType}}  return ret
 {{end -}}

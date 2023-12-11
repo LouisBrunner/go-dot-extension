@@ -54,6 +54,20 @@ func (me *MainLoop) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type MainLoopOnRequestPermissionsResultSignalFn func(permission String, granted bool, )
+
+func (me *MainLoop) ConnectOnRequestPermissionsResult(subs SignalSubscribers, fn MainLoopOnRequestPermissionsResultSignalFn) {
+  sig := StringNameFromStr("on_request_permissions_result")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *MainLoop) DisconnectOnRequestPermissionsResult(subs SignalSubscribers, fn MainLoopOnRequestPermissionsResultSignalFn) {
+  sig := StringNameFromStr("on_request_permissions_result")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

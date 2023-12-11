@@ -89,6 +89,20 @@ func  (me *EditorResourcePreview) CheckForInvalidation(path String, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type EditorResourcePreviewPreviewInvalidatedSignalFn func(path String, )
+
+func (me *EditorResourcePreview) ConnectPreviewInvalidated(subs SignalSubscribers, fn EditorResourcePreviewPreviewInvalidatedSignalFn) {
+  sig := StringNameFromStr("preview_invalidated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorResourcePreview) DisconnectPreviewInvalidated(subs SignalSubscribers, fn EditorResourcePreviewPreviewInvalidatedSignalFn) {
+  sig := StringNameFromStr("preview_invalidated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

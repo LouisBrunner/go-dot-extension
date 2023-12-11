@@ -209,4 +209,4 @@ func  (me *Generic6DOFJoint3D) GetFlagZ(flag Generic6DOFJoint3DFlag, ) bool {
   return ret
 }
 
-// Properties
+// Signals

@@ -39,4 +39,4 @@ func (me *EditorTranslationParserPlugin) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

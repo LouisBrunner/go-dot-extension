@@ -161,4 +161,4 @@ func  (me *SceneReplicationConfig) PropertySetWatch(path NodePath, enabled bool,
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

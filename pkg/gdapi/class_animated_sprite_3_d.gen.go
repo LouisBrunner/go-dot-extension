@@ -244,55 +244,87 @@ func  (me *AnimatedSprite3D) GetPlayingSpeed() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimatedSprite3D) GetPropSpriteFrames() SpriteFrames {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite3D) SetPropSpriteFrames(value SpriteFrames) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite3D) GetPropAnimation() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite3D) SetPropAnimation(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite3D) GetPropAutoplay() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite3D) SetPropAutoplay(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite3D) GetPropFrame() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite3D) SetPropFrame(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite3D) GetPropFrameProgress() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite3D) SetPropFrameProgress(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite3D) GetPropSpeedScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedSprite3D) SetPropSpeedScale(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AnimatedSprite3DSpriteFramesChangedSignalFn func()
+
+func (me *AnimatedSprite3D) ConnectSpriteFramesChanged(subs SignalSubscribers, fn AnimatedSprite3DSpriteFramesChangedSignalFn) {
+  sig := StringNameFromStr("sprite_frames_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimatedSprite3D) DisconnectSpriteFramesChanged(subs SignalSubscribers, fn AnimatedSprite3DSpriteFramesChangedSignalFn) {
+  sig := StringNameFromStr("sprite_frames_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimatedSprite3DAnimationChangedSignalFn func()
+
+func (me *AnimatedSprite3D) ConnectAnimationChanged(subs SignalSubscribers, fn AnimatedSprite3DAnimationChangedSignalFn) {
+  sig := StringNameFromStr("animation_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimatedSprite3D) DisconnectAnimationChanged(subs SignalSubscribers, fn AnimatedSprite3DAnimationChangedSignalFn) {
+  sig := StringNameFromStr("animation_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimatedSprite3DFrameChangedSignalFn func()
+
+func (me *AnimatedSprite3D) ConnectFrameChanged(subs SignalSubscribers, fn AnimatedSprite3DFrameChangedSignalFn) {
+  sig := StringNameFromStr("frame_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimatedSprite3D) DisconnectFrameChanged(subs SignalSubscribers, fn AnimatedSprite3DFrameChangedSignalFn) {
+  sig := StringNameFromStr("frame_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimatedSprite3DAnimationLoopedSignalFn func()
+
+func (me *AnimatedSprite3D) ConnectAnimationLooped(subs SignalSubscribers, fn AnimatedSprite3DAnimationLoopedSignalFn) {
+  sig := StringNameFromStr("animation_looped")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimatedSprite3D) DisconnectAnimationLooped(subs SignalSubscribers, fn AnimatedSprite3DAnimationLoopedSignalFn) {
+  sig := StringNameFromStr("animation_looped")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimatedSprite3DAnimationFinishedSignalFn func()
+
+func (me *AnimatedSprite3D) ConnectAnimationFinished(subs SignalSubscribers, fn AnimatedSprite3DAnimationFinishedSignalFn) {
+  sig := StringNameFromStr("animation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimatedSprite3D) DisconnectAnimationFinished(subs SignalSubscribers, fn AnimatedSprite3DAnimationFinishedSignalFn) {
+  sig := StringNameFromStr("animation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -87,4 +87,4 @@ func  (me *ZIPReader) ReadFile(path String, case_sensitive bool, ) PackedByteArr
   return ret
 }
 
-// Properties
+// Signals

@@ -82,4 +82,4 @@ func  (me *HashingContext) Finish() PackedByteArray {
   return ret
 }
 
-// Properties
+// Signals

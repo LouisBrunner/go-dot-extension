@@ -183,4 +183,4 @@ func  (me *Geometry3D) ClipPolygon(points PackedVector3Array, plane Plane, ) Pac
   return ret
 }
 
-// Properties
+// Signals

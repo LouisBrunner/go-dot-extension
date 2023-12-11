@@ -228,71 +228,23 @@ func  (me *AnimationNodeStateMachineTransition) GetAdvanceExpression() String {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimationNodeStateMachineTransition) GetPropXfadeTime() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) SetPropXfadeTime(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) GetPropXfadeCurve() Curve {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) SetPropXfadeCurve(value Curve) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) GetPropReset() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) SetPropReset(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) GetPropPriority() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) SetPropPriority(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) GetPropSwitchMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) SetPropSwitchMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) GetPropAdvanceMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) SetPropAdvanceMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) GetPropAdvanceCondition() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) SetPropAdvanceCondition(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) GetPropAdvanceExpression() String {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeStateMachineTransition) SetPropAdvanceExpression(value String) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AnimationNodeStateMachineTransitionAdvanceConditionChangedSignalFn func()
+
+func (me *AnimationNodeStateMachineTransition) ConnectAdvanceConditionChanged(subs SignalSubscribers, fn AnimationNodeStateMachineTransitionAdvanceConditionChangedSignalFn) {
+  sig := StringNameFromStr("advance_condition_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationNodeStateMachineTransition) DisconnectAdvanceConditionChanged(subs SignalSubscribers, fn AnimationNodeStateMachineTransitionAdvanceConditionChangedSignalFn) {
+  sig := StringNameFromStr("advance_condition_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

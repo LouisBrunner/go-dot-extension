@@ -39,4 +39,4 @@ func (me *VisualShaderNodeTextureParameterTriplanar) AsCTypePtr() gdc.ConstTypeP
 
 // Methods
 
-// Properties
+// Signals

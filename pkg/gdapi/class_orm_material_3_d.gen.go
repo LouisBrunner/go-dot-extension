@@ -39,4 +39,4 @@ func (me *ORMMaterial3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

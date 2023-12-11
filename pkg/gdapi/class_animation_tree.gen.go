@@ -281,63 +281,55 @@ func  (me *AnimationTree) Advance(delta float32, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delta), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimationTree) GetPropTreeRoot() AnimationRootNode {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) SetPropTreeRoot(value AnimationRootNode) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) GetPropAnimPlayer() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) SetPropAnimPlayer(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) GetPropAdvanceExpressionBaseNode() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) SetPropAdvanceExpressionBaseNode(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) GetPropActive() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) SetPropActive(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) GetPropProcessCallback() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) SetPropProcessCallback(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) GetPropAudioMaxPolyphony() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) SetPropAudioMaxPolyphony(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) GetPropRootMotionTrack() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *AnimationTree) SetPropRootMotionTrack(value NodePath) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AnimationTreeAnimationPlayerChangedSignalFn func()
+
+func (me *AnimationTree) ConnectAnimationPlayerChanged(subs SignalSubscribers, fn AnimationTreeAnimationPlayerChangedSignalFn) {
+  sig := StringNameFromStr("animation_player_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationTree) DisconnectAnimationPlayerChanged(subs SignalSubscribers, fn AnimationTreeAnimationPlayerChangedSignalFn) {
+  sig := StringNameFromStr("animation_player_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationTreeAnimationStartedSignalFn func(anim_name StringName, )
+
+func (me *AnimationTree) ConnectAnimationStarted(subs SignalSubscribers, fn AnimationTreeAnimationStartedSignalFn) {
+  sig := StringNameFromStr("animation_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationTree) DisconnectAnimationStarted(subs SignalSubscribers, fn AnimationTreeAnimationStartedSignalFn) {
+  sig := StringNameFromStr("animation_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationTreeAnimationFinishedSignalFn func(anim_name StringName, )
+
+func (me *AnimationTree) ConnectAnimationFinished(subs SignalSubscribers, fn AnimationTreeAnimationFinishedSignalFn) {
+  sig := StringNameFromStr("animation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationTree) DisconnectAnimationFinished(subs SignalSubscribers, fn AnimationTreeAnimationFinishedSignalFn) {
+  sig := StringNameFromStr("animation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

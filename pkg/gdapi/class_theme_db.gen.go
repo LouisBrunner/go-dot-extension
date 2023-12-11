@@ -172,47 +172,23 @@ func  (me *ThemeDB) GetFallbackStylebox() StyleBox {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ThemeDB) GetPropFallbackBaseScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *ThemeDB) SetPropFallbackBaseScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *ThemeDB) GetPropFallbackFont() Font {
-  panic("TODO: implement")
-}
-
-func (me *ThemeDB) SetPropFallbackFont(value Font) {
-  panic("TODO: implement")
-}
-
-func (me *ThemeDB) GetPropFallbackFontSize() int {
-  panic("TODO: implement")
-}
-
-func (me *ThemeDB) SetPropFallbackFontSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ThemeDB) GetPropFallbackIcon() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *ThemeDB) SetPropFallbackIcon(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *ThemeDB) GetPropFallbackStylebox() StyleBox {
-  panic("TODO: implement")
-}
-
-func (me *ThemeDB) SetPropFallbackStylebox(value StyleBox) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ThemeDBFallbackChangedSignalFn func()
+
+func (me *ThemeDB) ConnectFallbackChanged(subs SignalSubscribers, fn ThemeDBFallbackChangedSignalFn) {
+  sig := StringNameFromStr("fallback_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ThemeDB) DisconnectFallbackChanged(subs SignalSubscribers, fn ThemeDBFallbackChangedSignalFn) {
+  sig := StringNameFromStr("fallback_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

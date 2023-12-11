@@ -148,45 +148,7 @@ func  (me *RootMotionView) GetZeroY() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RootMotionView) GetPropAnimationPath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *RootMotionView) SetPropAnimationPath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *RootMotionView) GetPropColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *RootMotionView) SetPropColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *RootMotionView) GetPropCellSize() float32 {
-  panic("TODO: implement")
-}
-
-func (me *RootMotionView) SetPropCellSize(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *RootMotionView) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *RootMotionView) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *RootMotionView) GetPropZeroY() bool {
-  panic("TODO: implement")
-}
-
-func (me *RootMotionView) SetPropZeroY(value bool) {
-  panic("TODO: implement")
-}
+// Signals

@@ -39,4 +39,4 @@ func (me *GodotPhysicsServer3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

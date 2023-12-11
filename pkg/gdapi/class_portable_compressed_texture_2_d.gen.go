@@ -148,21 +148,7 @@ func  PortableCompressedTexture2DIsKeepingAllCompressedBuffers() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PortableCompressedTexture2D) GetPropSizeOverride() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *PortableCompressedTexture2D) SetPropSizeOverride(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *PortableCompressedTexture2D) GetPropKeepCompressedBuffer() bool {
-  panic("TODO: implement")
-}
-
-func (me *PortableCompressedTexture2D) SetPropKeepCompressedBuffer(value bool) {
-  panic("TODO: implement")
-}
+// Signals

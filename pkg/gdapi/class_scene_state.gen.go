@@ -299,4 +299,4 @@ func  (me *SceneState) GetConnectionUnbinds(idx int, ) int {
   return ret
 }
 
-// Properties
+// Signals

@@ -339,4 +339,4 @@ func  (me *Geometry2D) MakeAtlas(sizes PackedVector2Array, ) Dictionary {
   return ret
 }
 
-// Properties
+// Signals

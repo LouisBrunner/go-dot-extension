@@ -59,4 +59,4 @@ func  (me *EditorCommandPalette) RemoveCommand(key_name String, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

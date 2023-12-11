@@ -82,21 +82,7 @@ func  (me *VisualShaderNodeColorParameter) GetDefaultValue() Color {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeColorParameter) GetPropDefaultValueEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeColorParameter) SetPropDefaultValueEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeColorParameter) GetPropDefaultValue() Color {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeColorParameter) SetPropDefaultValue(value Color) {
-  panic("TODO: implement")
-}
+// Signals

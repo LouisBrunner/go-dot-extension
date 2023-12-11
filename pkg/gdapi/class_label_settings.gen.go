@@ -236,77 +236,7 @@ func  (me *LabelSettings) GetShadowOffset() Vector2 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *LabelSettings) GetPropLineSpacing() float32 {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) SetPropLineSpacing(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) GetPropFont() Font {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) SetPropFont(value Font) {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) GetPropFontSize() int {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) SetPropFontSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) GetPropFontColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) SetPropFontColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) GetPropOutlineSize() int {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) SetPropOutlineSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) GetPropOutlineColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) SetPropOutlineColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) GetPropShadowSize() int {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) SetPropShadowSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) GetPropShadowColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) SetPropShadowColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) GetPropShadowOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *LabelSettings) SetPropShadowOffset(value Vector2) {
-  panic("TODO: implement")
-}
+// Signals

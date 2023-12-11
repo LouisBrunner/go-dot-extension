@@ -49,4 +49,4 @@ func  (me *OptimizedTranslation) Generate(from Translation, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

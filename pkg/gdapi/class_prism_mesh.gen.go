@@ -148,45 +148,7 @@ func  (me *PrismMesh) GetSubdivideDepth() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PrismMesh) GetPropLeftToRight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PrismMesh) SetPropLeftToRight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PrismMesh) GetPropSize() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *PrismMesh) SetPropSize(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *PrismMesh) GetPropSubdivideWidth() int {
-  panic("TODO: implement")
-}
-
-func (me *PrismMesh) SetPropSubdivideWidth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PrismMesh) GetPropSubdivideHeight() int {
-  panic("TODO: implement")
-}
-
-func (me *PrismMesh) SetPropSubdivideHeight(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PrismMesh) GetPropSubdivideDepth() int {
-  panic("TODO: implement")
-}
-
-func (me *PrismMesh) SetPropSubdivideDepth(value int) {
-  panic("TODO: implement")
-}
+// Signals

@@ -96,6 +96,7 @@ func (me *Rect2i) GetCenter() Vector2i {
 
   var ret Vector2i
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -107,6 +108,7 @@ func (me *Rect2i) GetArea() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -118,6 +120,7 @@ func (me *Rect2i) HasArea() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -129,6 +132,7 @@ func (me *Rect2i) HasPoint(point Vector2i, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -140,6 +144,7 @@ func (me *Rect2i) Intersects(b Rect2i, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -151,6 +156,7 @@ func (me *Rect2i) Encloses(b Rect2i, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -162,6 +168,7 @@ func (me *Rect2i) Intersection(b Rect2i, ) Rect2i {
 
   var ret Rect2i
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -173,6 +180,7 @@ func (me *Rect2i) Merge(b Rect2i, ) Rect2i {
 
   var ret Rect2i
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -184,6 +192,7 @@ func (me *Rect2i) Expand(to Vector2i, ) Rect2i {
 
   var ret Rect2i
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -195,6 +204,7 @@ func (me *Rect2i) Grow(amount int, ) Rect2i {
 
   var ret Rect2i
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -206,6 +216,7 @@ func (me *Rect2i) GrowSide(side int, amount int, ) Rect2i {
 
   var ret Rect2i
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&side), gdc.ConstTypePtr(&amount), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -217,6 +228,7 @@ func (me *Rect2i) GrowIndividual(left int, top int, right int, bottom int, ) Rec
 
   var ret Rect2i
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&left), gdc.ConstTypePtr(&top), gdc.ConstTypePtr(&right), gdc.ConstTypePtr(&bottom), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -228,6 +240,7 @@ func (me *Rect2i) Abs() Rect2i {
 
   var ret Rect2i
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

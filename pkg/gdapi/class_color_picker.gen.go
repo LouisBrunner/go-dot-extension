@@ -361,95 +361,55 @@ func  (me *ColorPicker) GetPickerShape() ColorPickerPickerShapeType {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ColorPicker) GetPropColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) SetPropColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) GetPropEditAlpha() bool {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) SetPropEditAlpha(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) GetPropColorMode() int {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) SetPropColorMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) GetPropDeferredMode() bool {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) SetPropDeferredMode(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) GetPropPickerShape() int {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) SetPropPickerShape(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) GetPropCanAddSwatches() bool {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) SetPropCanAddSwatches(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) GetPropSamplerVisible() bool {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) SetPropSamplerVisible(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) GetPropColorModesVisible() bool {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) SetPropColorModesVisible(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) GetPropSlidersVisible() bool {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) SetPropSlidersVisible(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) GetPropHexVisible() bool {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) SetPropHexVisible(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) GetPropPresetsVisible() bool {
-  panic("TODO: implement")
-}
-
-func (me *ColorPicker) SetPropPresetsVisible(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ColorPickerColorChangedSignalFn func(color Color, )
+
+func (me *ColorPicker) ConnectColorChanged(subs SignalSubscribers, fn ColorPickerColorChangedSignalFn) {
+  sig := StringNameFromStr("color_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ColorPicker) DisconnectColorChanged(subs SignalSubscribers, fn ColorPickerColorChangedSignalFn) {
+  sig := StringNameFromStr("color_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ColorPickerPresetAddedSignalFn func(color Color, )
+
+func (me *ColorPicker) ConnectPresetAdded(subs SignalSubscribers, fn ColorPickerPresetAddedSignalFn) {
+  sig := StringNameFromStr("preset_added")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ColorPicker) DisconnectPresetAdded(subs SignalSubscribers, fn ColorPickerPresetAddedSignalFn) {
+  sig := StringNameFromStr("preset_added")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ColorPickerPresetRemovedSignalFn func(color Color, )
+
+func (me *ColorPicker) ConnectPresetRemoved(subs SignalSubscribers, fn ColorPickerPresetRemovedSignalFn) {
+  sig := StringNameFromStr("preset_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ColorPicker) DisconnectPresetRemoved(subs SignalSubscribers, fn ColorPickerPresetRemovedSignalFn) {
+  sig := StringNameFromStr("preset_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

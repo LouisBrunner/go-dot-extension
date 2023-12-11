@@ -48,13 +48,7 @@ func  (me *PlaceholderMesh) SetAabb(aabb AABB, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(aabb.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PlaceholderMesh) GetPropAabb() AABB {
-  panic("TODO: implement")
-}
-
-func (me *PlaceholderMesh) SetPropAabb(value AABB) {
-  panic("TODO: implement")
-}
+// Signals

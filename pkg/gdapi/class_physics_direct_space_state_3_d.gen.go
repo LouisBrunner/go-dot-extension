@@ -111,4 +111,4 @@ func  (me *PhysicsDirectSpaceState3D) GetRestInfo(parameters PhysicsShapeQueryPa
   return ret
 }
 
-// Properties
+// Signals

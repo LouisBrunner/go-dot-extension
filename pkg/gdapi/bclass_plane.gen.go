@@ -124,6 +124,7 @@ func (me *Plane) Normalized() Plane {
 
   var ret Plane
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -135,6 +136,7 @@ func (me *Plane) GetCenter() Vector3 {
 
   var ret Vector3
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -146,6 +148,7 @@ func (me *Plane) IsEqualApprox(to_plane Plane, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{to_plane.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -157,6 +160,7 @@ func (me *Plane) IsFinite() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -168,6 +172,7 @@ func (me *Plane) IsPointOver(point Vector3, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -179,6 +184,7 @@ func (me *Plane) DistanceTo(point Vector3, ) float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -190,6 +196,7 @@ func (me *Plane) HasPoint(point Vector3, tolerance float32, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), gdc.ConstTypePtr(&tolerance), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -201,6 +208,7 @@ func (me *Plane) Project(point Vector3, ) Vector3 {
 
   var ret Vector3
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -212,6 +220,7 @@ func (me *Plane) Intersect3(b Plane, c Plane, ) Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), c.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -223,6 +232,7 @@ func (me *Plane) IntersectsRay(from Vector3, dir Vector3, ) Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{from.AsCTypePtr(), dir.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -234,6 +244,7 @@ func (me *Plane) IntersectsSegment(from Vector3, to Vector3, ) Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{from.AsCTypePtr(), to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

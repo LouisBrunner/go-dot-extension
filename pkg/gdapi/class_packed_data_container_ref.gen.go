@@ -51,4 +51,4 @@ func  (me *PackedDataContainerRef) Size() int {
   return ret
 }
 
-// Properties
+// Signals

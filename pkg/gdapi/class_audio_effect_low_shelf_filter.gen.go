@@ -39,4 +39,4 @@ func (me *AudioEffectLowShelfFilter) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

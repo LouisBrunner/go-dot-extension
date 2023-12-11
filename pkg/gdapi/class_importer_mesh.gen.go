@@ -299,4 +299,4 @@ func  (me *ImporterMesh) GetLightmapSizeHint() Vector2i {
   return ret
 }
 
-// Properties
+// Signals

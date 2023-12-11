@@ -1029,45 +1029,7 @@ func  (me *TileSet) GetPatternsCount() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *TileSet) GetPropTileShape() int {
-  panic("TODO: implement")
-}
-
-func (me *TileSet) SetPropTileShape(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TileSet) GetPropTileLayout() int {
-  panic("TODO: implement")
-}
-
-func (me *TileSet) SetPropTileLayout(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TileSet) GetPropTileOffsetAxis() int {
-  panic("TODO: implement")
-}
-
-func (me *TileSet) SetPropTileOffsetAxis(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TileSet) GetPropTileSize() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *TileSet) SetPropTileSize(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *TileSet) GetPropUvClipping() bool {
-  panic("TODO: implement")
-}
-
-func (me *TileSet) SetPropUvClipping(value bool) {
-  panic("TODO: implement")
-}
+// Signals

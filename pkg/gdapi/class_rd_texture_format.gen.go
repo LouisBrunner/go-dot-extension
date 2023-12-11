@@ -256,77 +256,7 @@ func  (me *RDTextureFormat) RemoveShareableFormat(format RenderingDeviceDataForm
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&format), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RDTextureFormat) GetPropFormat() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) SetPropFormat(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) GetPropWidth() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) SetPropWidth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) GetPropHeight() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) SetPropHeight(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) GetPropDepth() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) SetPropDepth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) GetPropArrayLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) SetPropArrayLayers(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) GetPropMipmaps() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) SetPropMipmaps(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) GetPropTextureType() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) SetPropTextureType(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) GetPropSamples() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) SetPropSamples(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) GetPropUsageBits() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureFormat) SetPropUsageBits(value int) {
-  panic("TODO: implement")
-}
+// Signals

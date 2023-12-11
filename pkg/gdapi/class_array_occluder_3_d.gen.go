@@ -68,21 +68,7 @@ func  (me *ArrayOccluder3D) SetIndices(indices PackedInt32Array, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(indices.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ArrayOccluder3D) GetPropVertices() PackedVector3Array {
-  panic("TODO: implement")
-}
-
-func (me *ArrayOccluder3D) SetPropVertices(value PackedVector3Array) {
-  panic("TODO: implement")
-}
-
-func (me *ArrayOccluder3D) GetPropIndices() PackedInt32Array {
-  panic("TODO: implement")
-}
-
-func (me *ArrayOccluder3D) SetPropIndices(value PackedInt32Array) {
-  panic("TODO: implement")
-}
+// Signals

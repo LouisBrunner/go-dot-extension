@@ -39,4 +39,4 @@ func (me *EditorSyntaxHighlighter) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

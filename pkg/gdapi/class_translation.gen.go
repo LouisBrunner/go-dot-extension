@@ -150,21 +150,7 @@ func  (me *Translation) GetMessageCount() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Translation) GetPropMessages() Dictionary {
-  panic("TODO: implement")
-}
-
-func (me *Translation) SetPropMessages(value Dictionary) {
-  panic("TODO: implement")
-}
-
-func (me *Translation) GetPropLocale() String {
-  panic("TODO: implement")
-}
-
-func (me *Translation) SetPropLocale(value String) {
-  panic("TODO: implement")
-}
+// Signals

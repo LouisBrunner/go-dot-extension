@@ -39,4 +39,4 @@ func (me *EditorExportPlatformPC) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

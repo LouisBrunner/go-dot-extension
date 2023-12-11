@@ -192,61 +192,7 @@ func  (me *AudioEffectCompressor) GetSidechain() StringName {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioEffectCompressor) GetPropThreshold() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) SetPropThreshold(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) GetPropRatio() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) SetPropRatio(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) GetPropGain() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) SetPropGain(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) GetPropAttackUs() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) SetPropAttackUs(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) GetPropReleaseMs() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) SetPropReleaseMs(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) GetPropMix() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) SetPropMix(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) GetPropSidechain() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectCompressor) SetPropSidechain(value StringName) {
-  panic("TODO: implement")
-}
+// Signals

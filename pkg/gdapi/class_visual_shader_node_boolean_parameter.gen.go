@@ -82,21 +82,7 @@ func  (me *VisualShaderNodeBooleanParameter) GetDefaultValue() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeBooleanParameter) GetPropDefaultValueEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeBooleanParameter) SetPropDefaultValueEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeBooleanParameter) GetPropDefaultValue() bool {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeBooleanParameter) SetPropDefaultValue(value bool) {
-  panic("TODO: implement")
-}
+// Signals

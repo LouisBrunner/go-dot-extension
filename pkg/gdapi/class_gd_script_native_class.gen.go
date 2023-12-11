@@ -51,4 +51,4 @@ func  (me *GDScriptNativeClass) New() Variant {
   return ret
 }
 
-// Properties
+// Signals

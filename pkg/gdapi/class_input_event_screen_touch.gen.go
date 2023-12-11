@@ -124,45 +124,7 @@ func  (me *InputEventScreenTouch) IsDoubleTap() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEventScreenTouch) GetPropIndex() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenTouch) SetPropIndex(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenTouch) GetPropPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenTouch) SetPropPosition(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenTouch) GetPropCanceled() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenTouch) SetPropCanceled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenTouch) GetPropPressed() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenTouch) SetPropPressed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenTouch) GetPropDoubleTap() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenTouch) SetPropDoubleTap(value bool) {
-  panic("TODO: implement")
-}
+// Signals

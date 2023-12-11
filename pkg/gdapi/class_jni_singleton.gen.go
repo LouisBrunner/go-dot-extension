@@ -39,4 +39,4 @@ func (me *JNISingleton) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

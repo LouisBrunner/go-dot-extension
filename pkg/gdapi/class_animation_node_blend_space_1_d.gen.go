@@ -253,53 +253,7 @@ func  (me *AnimationNodeBlendSpace1D) IsUsingSync() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimationNodeBlendSpace1D) GetPropMinSpace() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace1D) SetPropMinSpace(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace1D) GetPropMaxSpace() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace1D) SetPropMaxSpace(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace1D) GetPropSnap() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace1D) SetPropSnap(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace1D) GetPropValueLabel() String {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace1D) SetPropValueLabel(value String) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace1D) GetPropBlendMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace1D) SetPropBlendMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace1D) GetPropSync() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendSpace1D) SetPropSync(value bool) {
-  panic("TODO: implement")
-}
+// Signals

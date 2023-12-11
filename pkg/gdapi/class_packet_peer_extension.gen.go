@@ -39,4 +39,4 @@ func (me *PacketPeerExtension) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

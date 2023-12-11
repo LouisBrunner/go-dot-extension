@@ -517,6 +517,84 @@ func  (me *EditorPlugin) RemoveDebuggerPlugin(script EditorDebuggerPlugin, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type EditorPluginSceneChangedSignalFn func(scene_root Node, )
+
+func (me *EditorPlugin) ConnectSceneChanged(subs SignalSubscribers, fn EditorPluginSceneChangedSignalFn) {
+  sig := StringNameFromStr("scene_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorPlugin) DisconnectSceneChanged(subs SignalSubscribers, fn EditorPluginSceneChangedSignalFn) {
+  sig := StringNameFromStr("scene_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPluginSceneClosedSignalFn func(filepath String, )
+
+func (me *EditorPlugin) ConnectSceneClosed(subs SignalSubscribers, fn EditorPluginSceneClosedSignalFn) {
+  sig := StringNameFromStr("scene_closed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorPlugin) DisconnectSceneClosed(subs SignalSubscribers, fn EditorPluginSceneClosedSignalFn) {
+  sig := StringNameFromStr("scene_closed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPluginMainScreenChangedSignalFn func(screen_name String, )
+
+func (me *EditorPlugin) ConnectMainScreenChanged(subs SignalSubscribers, fn EditorPluginMainScreenChangedSignalFn) {
+  sig := StringNameFromStr("main_screen_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorPlugin) DisconnectMainScreenChanged(subs SignalSubscribers, fn EditorPluginMainScreenChangedSignalFn) {
+  sig := StringNameFromStr("main_screen_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPluginResourceSavedSignalFn func(resource Resource, )
+
+func (me *EditorPlugin) ConnectResourceSaved(subs SignalSubscribers, fn EditorPluginResourceSavedSignalFn) {
+  sig := StringNameFromStr("resource_saved")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorPlugin) DisconnectResourceSaved(subs SignalSubscribers, fn EditorPluginResourceSavedSignalFn) {
+  sig := StringNameFromStr("resource_saved")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorPluginProjectSettingsChangedSignalFn func()
+
+func (me *EditorPlugin) ConnectProjectSettingsChanged(subs SignalSubscribers, fn EditorPluginProjectSettingsChangedSignalFn) {
+  sig := StringNameFromStr("project_settings_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorPlugin) DisconnectProjectSettingsChanged(subs SignalSubscribers, fn EditorPluginProjectSettingsChangedSignalFn) {
+  sig := StringNameFromStr("project_settings_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

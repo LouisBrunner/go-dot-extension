@@ -50,4 +50,4 @@ func (me *EditorSceneFormatImporter) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

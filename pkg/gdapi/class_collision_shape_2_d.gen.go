@@ -148,45 +148,7 @@ func  (me *CollisionShape2D) GetDebugColor() Color {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CollisionShape2D) GetPropShape() Shape2D {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape2D) SetPropShape(value Shape2D) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape2D) GetPropDisabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape2D) SetPropDisabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape2D) GetPropOneWayCollision() bool {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape2D) SetPropOneWayCollision(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape2D) GetPropOneWayCollisionMargin() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape2D) SetPropOneWayCollisionMargin(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape2D) GetPropDebugColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *CollisionShape2D) SetPropDebugColor(value Color) {
-  panic("TODO: implement")
-}
+// Signals

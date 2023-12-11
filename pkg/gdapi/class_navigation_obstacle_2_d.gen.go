@@ -204,45 +204,7 @@ func  (me *NavigationObstacle2D) GetAvoidanceLayerValue(layer_number int, ) bool
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NavigationObstacle2D) GetPropAvoidanceEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle2D) SetPropAvoidanceEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle2D) GetPropVelocity() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle2D) SetPropVelocity(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle2D) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle2D) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle2D) GetPropVertices() PackedVector2Array {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle2D) SetPropVertices(value PackedVector2Array) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle2D) GetPropAvoidanceLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle2D) SetPropAvoidanceLayers(value int) {
-  panic("TODO: implement")
-}
+// Signals

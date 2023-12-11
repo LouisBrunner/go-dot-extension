@@ -126,45 +126,7 @@ func  (me *LightmapGIData) ClearUsers()  {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *LightmapGIData) GetPropLightTexture() TextureLayered {
-  panic("TODO: implement")
-}
-
-func (me *LightmapGIData) SetPropLightTexture(value TextureLayered) {
-  panic("TODO: implement")
-}
-
-func (me *LightmapGIData) GetPropLightTextures() Array {
-  panic("TODO: implement")
-}
-
-func (me *LightmapGIData) SetPropLightTextures(value Array) {
-  panic("TODO: implement")
-}
-
-func (me *LightmapGIData) GetPropUsesSphericalHarmonics() bool {
-  panic("TODO: implement")
-}
-
-func (me *LightmapGIData) SetPropUsesSphericalHarmonics(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LightmapGIData) GetPropUserData() Array {
-  panic("TODO: implement")
-}
-
-func (me *LightmapGIData) SetPropUserData(value Array) {
-  panic("TODO: implement")
-}
-
-func (me *LightmapGIData) GetPropProbeData() Dictionary {
-  panic("TODO: implement")
-}
-
-func (me *LightmapGIData) SetPropProbeData(value Dictionary) {
-  panic("TODO: implement")
-}
+// Signals

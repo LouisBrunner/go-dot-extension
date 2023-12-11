@@ -219,6 +219,20 @@ func  (me *EditorSettings) MarkSettingChanged(setting String, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type EditorSettingsSettingsChangedSignalFn func()
+
+func (me *EditorSettings) ConnectSettingsChanged(subs SignalSubscribers, fn EditorSettingsSettingsChangedSignalFn) {
+  sig := StringNameFromStr("settings_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorSettings) DisconnectSettingsChanged(subs SignalSubscribers, fn EditorSettingsSettingsChangedSignalFn) {
+  sig := StringNameFromStr("settings_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

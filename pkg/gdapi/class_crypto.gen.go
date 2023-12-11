@@ -147,4 +147,4 @@ func  (me *Crypto) ConstantTimeCompare(trusted PackedByteArray, received PackedB
   return ret
 }
 
-// Properties
+// Signals

@@ -97,4 +97,4 @@ func  (me *XRInterfaceExtension) GetRenderTargetTexture(render_target RID, ) RID
   return ret
 }
 
-// Properties
+// Signals

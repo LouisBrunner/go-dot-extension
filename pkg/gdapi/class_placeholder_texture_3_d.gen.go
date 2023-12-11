@@ -60,13 +60,7 @@ func  (me *PlaceholderTexture3D) GetSize() Vector3i {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PlaceholderTexture3D) GetPropSize() Vector3i {
-  panic("TODO: implement")
-}
-
-func (me *PlaceholderTexture3D) SetPropSize(value Vector3i) {
-  panic("TODO: implement")
-}
+// Signals

@@ -846,29 +846,7 @@ func  (me *OS) GetGrantedPermissions() PackedStringArray {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *OS) GetPropLowProcessorUsageMode() bool {
-  panic("TODO: implement")
-}
-
-func (me *OS) SetPropLowProcessorUsageMode(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *OS) GetPropLowProcessorUsageModeSleepUsec() int {
-  panic("TODO: implement")
-}
-
-func (me *OS) SetPropLowProcessorUsageModeSleepUsec(value int) {
-  panic("TODO: implement")
-}
-
-func (me *OS) GetPropDeltaSmoothing() bool {
-  panic("TODO: implement")
-}
-
-func (me *OS) SetPropDeltaSmoothing(value bool) {
-  panic("TODO: implement")
-}
+// Signals

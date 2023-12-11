@@ -68,13 +68,7 @@ func  (me *VisualShaderNodeParticleAccelerator) GetMode() VisualShaderNodePartic
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeParticleAccelerator) GetPropMode() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeParticleAccelerator) SetPropMode(value int) {
-  panic("TODO: implement")
-}
+// Signals

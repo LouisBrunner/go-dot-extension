@@ -198,55 +198,23 @@ func  (me *Timer) GetTimerProcessCallback() TimerTimerProcessCallback {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Timer) GetPropProcessCallback() int {
-  panic("TODO: implement")
-}
-
-func (me *Timer) SetPropProcessCallback(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Timer) GetPropWaitTime() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Timer) SetPropWaitTime(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Timer) GetPropOneShot() bool {
-  panic("TODO: implement")
-}
-
-func (me *Timer) SetPropOneShot(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Timer) GetPropAutostart() bool {
-  panic("TODO: implement")
-}
-
-func (me *Timer) SetPropAutostart(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Timer) GetPropPaused() bool {
-  panic("TODO: implement")
-}
-
-func (me *Timer) SetPropPaused(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Timer) GetPropTimeLeft() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Timer) SetPropTimeLeft(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type TimerTimeoutSignalFn func()
+
+func (me *Timer) ConnectTimeout(subs SignalSubscribers, fn TimerTimeoutSignalFn) {
+  sig := StringNameFromStr("timeout")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Timer) DisconnectTimeout(subs SignalSubscribers, fn TimerTimeoutSignalFn) {
+  sig := StringNameFromStr("timeout")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

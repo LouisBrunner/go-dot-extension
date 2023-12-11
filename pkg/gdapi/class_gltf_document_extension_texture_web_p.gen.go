@@ -39,4 +39,4 @@ func (me *GLTFDocumentExtensionTextureWebP) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -126,39 +126,39 @@ func  (me *Slider) IsScrollable() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Slider) GetPropEditable() bool {
-  panic("TODO: implement")
-}
-
-func (me *Slider) SetPropEditable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Slider) GetPropScrollable() bool {
-  panic("TODO: implement")
-}
-
-func (me *Slider) SetPropScrollable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Slider) GetPropTickCount() int {
-  panic("TODO: implement")
-}
-
-func (me *Slider) SetPropTickCount(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Slider) GetPropTicksOnBorders() bool {
-  panic("TODO: implement")
-}
-
-func (me *Slider) SetPropTicksOnBorders(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type SliderDragStartedSignalFn func()
+
+func (me *Slider) ConnectDragStarted(subs SignalSubscribers, fn SliderDragStartedSignalFn) {
+  sig := StringNameFromStr("drag_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Slider) DisconnectDragStarted(subs SignalSubscribers, fn SliderDragStartedSignalFn) {
+  sig := StringNameFromStr("drag_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type SliderDragEndedSignalFn func(value_changed bool, )
+
+func (me *Slider) ConnectDragEnded(subs SignalSubscribers, fn SliderDragEndedSignalFn) {
+  sig := StringNameFromStr("drag_ended")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Slider) DisconnectDragEnded(subs SignalSubscribers, fn SliderDragEndedSignalFn) {
+  sig := StringNameFromStr("drag_ended")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

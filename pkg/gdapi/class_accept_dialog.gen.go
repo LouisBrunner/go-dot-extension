@@ -216,47 +216,55 @@ func  (me *AcceptDialog) GetOkButtonText() String {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AcceptDialog) GetPropOkButtonText() String {
-  panic("TODO: implement")
-}
-
-func (me *AcceptDialog) SetPropOkButtonText(value String) {
-  panic("TODO: implement")
-}
-
-func (me *AcceptDialog) GetPropDialogText() String {
-  panic("TODO: implement")
-}
-
-func (me *AcceptDialog) SetPropDialogText(value String) {
-  panic("TODO: implement")
-}
-
-func (me *AcceptDialog) GetPropDialogHideOnOk() bool {
-  panic("TODO: implement")
-}
-
-func (me *AcceptDialog) SetPropDialogHideOnOk(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AcceptDialog) GetPropDialogCloseOnEscape() bool {
-  panic("TODO: implement")
-}
-
-func (me *AcceptDialog) SetPropDialogCloseOnEscape(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AcceptDialog) GetPropDialogAutowrap() bool {
-  panic("TODO: implement")
-}
-
-func (me *AcceptDialog) SetPropDialogAutowrap(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AcceptDialogConfirmedSignalFn func()
+
+func (me *AcceptDialog) ConnectConfirmed(subs SignalSubscribers, fn AcceptDialogConfirmedSignalFn) {
+  sig := StringNameFromStr("confirmed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AcceptDialog) DisconnectConfirmed(subs SignalSubscribers, fn AcceptDialogConfirmedSignalFn) {
+  sig := StringNameFromStr("confirmed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AcceptDialogCanceledSignalFn func()
+
+func (me *AcceptDialog) ConnectCanceled(subs SignalSubscribers, fn AcceptDialogCanceledSignalFn) {
+  sig := StringNameFromStr("canceled")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AcceptDialog) DisconnectCanceled(subs SignalSubscribers, fn AcceptDialogCanceledSignalFn) {
+  sig := StringNameFromStr("canceled")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AcceptDialogCustomActionSignalFn func(action StringName, )
+
+func (me *AcceptDialog) ConnectCustomAction(subs SignalSubscribers, fn AcceptDialogCustomActionSignalFn) {
+  sig := StringNameFromStr("custom_action")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AcceptDialog) DisconnectCustomAction(subs SignalSubscribers, fn AcceptDialogCustomActionSignalFn) {
+  sig := StringNameFromStr("custom_action")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

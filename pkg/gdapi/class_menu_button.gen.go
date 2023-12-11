@@ -114,23 +114,23 @@ func  (me *MenuButton) GetItemCount() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *MenuButton) GetPropSwitchOnHover() bool {
-  panic("TODO: implement")
-}
-
-func (me *MenuButton) SetPropSwitchOnHover(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *MenuButton) GetPropItemCount() int {
-  panic("TODO: implement")
-}
-
-func (me *MenuButton) SetPropItemCount(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type MenuButtonAboutToPopupSignalFn func()
+
+func (me *MenuButton) ConnectAboutToPopup(subs SignalSubscribers, fn MenuButtonAboutToPopupSignalFn) {
+  sig := StringNameFromStr("about_to_popup")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *MenuButton) DisconnectAboutToPopup(subs SignalSubscribers, fn MenuButtonAboutToPopupSignalFn) {
+  sig := StringNameFromStr("about_to_popup")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

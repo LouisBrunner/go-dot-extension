@@ -274,61 +274,7 @@ func  (me *VoxelGIData) IsUsingTwoBounces() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VoxelGIData) GetPropDynamicRange() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) SetPropDynamicRange(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) GetPropEnergy() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) SetPropEnergy(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) GetPropBias() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) SetPropBias(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) GetPropNormalBias() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) SetPropNormalBias(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) GetPropPropagation() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) SetPropPropagation(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) GetPropUseTwoBounces() bool {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) SetPropUseTwoBounces(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) GetPropInterior() bool {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGIData) SetPropInterior(value bool) {
-  panic("TODO: implement")
-}
+// Signals

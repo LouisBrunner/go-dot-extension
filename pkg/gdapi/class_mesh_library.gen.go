@@ -281,4 +281,4 @@ func  (me *MeshLibrary) GetLastUnusedItemId() int {
   return ret
 }
 
-// Properties
+// Signals

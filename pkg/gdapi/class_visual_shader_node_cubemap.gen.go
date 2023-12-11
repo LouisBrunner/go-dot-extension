@@ -119,29 +119,7 @@ func  (me *VisualShaderNodeCubemap) GetTextureType() VisualShaderNodeCubemapText
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeCubemap) GetPropSource() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeCubemap) SetPropSource(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeCubemap) GetPropCubeMap() Cubemap {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeCubemap) SetPropCubeMap(value Cubemap) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeCubemap) GetPropTextureType() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeCubemap) SetPropTextureType(value int) {
-  panic("TODO: implement")
-}
+// Signals

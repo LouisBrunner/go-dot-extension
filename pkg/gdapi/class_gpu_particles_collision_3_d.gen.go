@@ -60,13 +60,7 @@ func  (me *GPUParticlesCollision3D) GetCullMask() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GPUParticlesCollision3D) GetPropCullMask() int {
-  panic("TODO: implement")
-}
-
-func (me *GPUParticlesCollision3D) SetPropCullMask(value int) {
-  panic("TODO: implement")
-}
+// Signals

@@ -148,45 +148,7 @@ func  (me *AudioEffectPhaser) GetDepth() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioEffectPhaser) GetPropRangeMinHz() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPhaser) SetPropRangeMinHz(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPhaser) GetPropRangeMaxHz() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPhaser) SetPropRangeMaxHz(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPhaser) GetPropRateHz() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPhaser) SetPropRateHz(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPhaser) GetPropFeedback() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPhaser) SetPropFeedback(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPhaser) GetPropDepth() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPhaser) SetPropDepth(value float32) {
-  panic("TODO: implement")
-}
+// Signals

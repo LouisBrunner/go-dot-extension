@@ -82,21 +82,7 @@ func  (me *MissingResource) IsRecordingProperties() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *MissingResource) GetPropOriginalClass() String {
-  panic("TODO: implement")
-}
-
-func (me *MissingResource) SetPropOriginalClass(value String) {
-  panic("TODO: implement")
-}
-
-func (me *MissingResource) GetPropRecordingProperties() bool {
-  panic("TODO: implement")
-}
-
-func (me *MissingResource) SetPropRecordingProperties(value bool) {
-  panic("TODO: implement")
-}
+// Signals

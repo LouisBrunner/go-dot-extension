@@ -180,13 +180,7 @@ func  (me *BitMap) OpaqueToPolygons(rect Rect2i, epsilon float32, ) PackedVector
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *BitMap) GetPropData() Dictionary {
-  panic("TODO: implement")
-}
-
-func (me *BitMap) SetPropData(value Dictionary) {
-  panic("TODO: implement")
-}
+// Signals

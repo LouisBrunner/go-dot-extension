@@ -267,4 +267,4 @@ func  (me *VisualShaderNodeGroupBase) GetFreeOutputPortId() int {
   return ret
 }
 
-// Properties
+// Signals

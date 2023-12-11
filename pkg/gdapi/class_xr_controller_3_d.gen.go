@@ -99,6 +99,68 @@ func  (me *XRController3D) GetTrackerHand() XRPositionalTrackerTrackerHand {
   return ret
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type XRController3DButtonPressedSignalFn func(name String, )
+
+func (me *XRController3D) ConnectButtonPressed(subs SignalSubscribers, fn XRController3DButtonPressedSignalFn) {
+  sig := StringNameFromStr("button_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRController3D) DisconnectButtonPressed(subs SignalSubscribers, fn XRController3DButtonPressedSignalFn) {
+  sig := StringNameFromStr("button_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRController3DButtonReleasedSignalFn func(name String, )
+
+func (me *XRController3D) ConnectButtonReleased(subs SignalSubscribers, fn XRController3DButtonReleasedSignalFn) {
+  sig := StringNameFromStr("button_released")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRController3D) DisconnectButtonReleased(subs SignalSubscribers, fn XRController3DButtonReleasedSignalFn) {
+  sig := StringNameFromStr("button_released")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRController3DInputFloatChangedSignalFn func(name String, value float32, )
+
+func (me *XRController3D) ConnectInputFloatChanged(subs SignalSubscribers, fn XRController3DInputFloatChangedSignalFn) {
+  sig := StringNameFromStr("input_float_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRController3D) DisconnectInputFloatChanged(subs SignalSubscribers, fn XRController3DInputFloatChangedSignalFn) {
+  sig := StringNameFromStr("input_float_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type XRController3DInputVector2ChangedSignalFn func(name String, value Vector2, )
+
+func (me *XRController3D) ConnectInputVector2Changed(subs SignalSubscribers, fn XRController3DInputVector2ChangedSignalFn) {
+  sig := StringNameFromStr("input_vector2_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRController3D) DisconnectInputVector2Changed(subs SignalSubscribers, fn XRController3DInputVector2ChangedSignalFn) {
+  sig := StringNameFromStr("input_vector2_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -88,6 +88,7 @@ func (me *String) CasecmpTo(to String, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -99,6 +100,7 @@ func (me *String) NocasecmpTo(to String, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -110,6 +112,7 @@ func (me *String) NaturalcasecmpTo(to String, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -121,6 +124,7 @@ func (me *String) NaturalnocasecmpTo(to String, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -132,6 +136,7 @@ func (me *String) Length() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -143,6 +148,7 @@ func (me *String) Substr(from int, len_ int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from), gdc.ConstTypePtr(&len_), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -154,6 +160,7 @@ func (me *String) GetSlice(delimiter String, slice int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(&slice), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -165,6 +172,7 @@ func (me *String) GetSlicec(delimiter int, slice int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delimiter), gdc.ConstTypePtr(&slice), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -176,6 +184,7 @@ func (me *String) GetSliceCount(delimiter String, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -187,6 +196,7 @@ func (me *String) Find(what String, from int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -198,6 +208,7 @@ func (me *String) Count(what String, from int, to int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), gdc.ConstTypePtr(&to), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -209,6 +220,7 @@ func (me *String) Countn(what String, from int, to int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), gdc.ConstTypePtr(&to), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -220,6 +232,7 @@ func (me *String) Findn(what String, from int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -231,6 +244,7 @@ func (me *String) Rfind(what String, from int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -242,6 +256,7 @@ func (me *String) Rfindn(what String, from int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -253,6 +268,7 @@ func (me *String) Match(expr String, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{expr.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -264,6 +280,7 @@ func (me *String) Matchn(expr String, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{expr.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -275,6 +292,7 @@ func (me *String) BeginsWith(text String, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{text.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -286,6 +304,7 @@ func (me *String) EndsWith(text String, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{text.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -297,6 +316,7 @@ func (me *String) IsSubsequenceOf(text String, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{text.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -308,6 +328,7 @@ func (me *String) IsSubsequenceOfn(text String, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{text.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -319,6 +340,7 @@ func (me *String) Bigrams() PackedStringArray {
 
   var ret PackedStringArray
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -330,6 +352,7 @@ func (me *String) Similarity(text String, ) float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{text.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -341,6 +364,7 @@ func (me *String) Format(values Variant, placeholder String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{values.AsCTypePtr(), placeholder.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -352,6 +376,7 @@ func (me *String) Replace(what String, forwhat String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{what.AsCTypePtr(), forwhat.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -363,6 +388,7 @@ func (me *String) Replacen(what String, forwhat String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{what.AsCTypePtr(), forwhat.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -374,6 +400,7 @@ func (me *String) Repeat(count int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -385,6 +412,7 @@ func (me *String) Insert(position int, what String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), what.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -396,6 +424,7 @@ func (me *String) Erase(position int, chars int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), gdc.ConstTypePtr(&chars), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -407,6 +436,7 @@ func (me *String) Capitalize() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -418,6 +448,7 @@ func (me *String) ToCamelCase() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -429,6 +460,7 @@ func (me *String) ToPascalCase() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -440,6 +472,7 @@ func (me *String) ToSnakeCase() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -451,6 +484,7 @@ func (me *String) Split(delimiter String, allow_empty bool, maxsplit int, ) Pack
 
   var ret PackedStringArray
   args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(&allow_empty), gdc.ConstTypePtr(&maxsplit), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -462,6 +496,7 @@ func (me *String) Rsplit(delimiter String, allow_empty bool, maxsplit int, ) Pac
 
   var ret PackedStringArray
   args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(&allow_empty), gdc.ConstTypePtr(&maxsplit), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -473,6 +508,7 @@ func (me *String) SplitFloats(delimiter String, allow_empty bool, ) PackedFloat6
 
   var ret PackedFloat64Array
   args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(&allow_empty), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -484,6 +520,7 @@ func (me *String) Join(parts PackedStringArray, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{parts.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -495,6 +532,7 @@ func (me *String) ToUpper() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -506,6 +544,7 @@ func (me *String) ToLower() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -517,6 +556,7 @@ func (me *String) Left(length int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -528,6 +568,7 @@ func (me *String) Right(length int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -539,6 +580,7 @@ func (me *String) StripEdges(left bool, right bool, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&left), gdc.ConstTypePtr(&right), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -550,6 +592,7 @@ func (me *String) StripEscapes() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -561,6 +604,7 @@ func (me *String) Lstrip(chars String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{chars.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -572,6 +616,7 @@ func (me *String) Rstrip(chars String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{chars.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -583,6 +628,7 @@ func (me *String) GetExtension() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -594,6 +640,7 @@ func (me *String) GetBasename() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -605,6 +652,7 @@ func (me *String) PathJoin(file String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{file.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -616,6 +664,7 @@ func (me *String) UnicodeAt(at int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&at), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -627,6 +676,7 @@ func (me *String) Indent(prefix String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{prefix.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -638,6 +688,7 @@ func (me *String) Dedent() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -649,6 +700,7 @@ func (me *String) Hash() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -660,6 +712,7 @@ func (me *String) Md5Text() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -671,6 +724,7 @@ func (me *String) Sha1Text() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -682,6 +736,7 @@ func (me *String) Sha256Text() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -693,6 +748,7 @@ func (me *String) Md5Buffer() PackedByteArray {
 
   var ret PackedByteArray
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -704,6 +760,7 @@ func (me *String) Sha1Buffer() PackedByteArray {
 
   var ret PackedByteArray
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -715,6 +772,7 @@ func (me *String) Sha256Buffer() PackedByteArray {
 
   var ret PackedByteArray
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -726,6 +784,7 @@ func (me *String) IsEmpty() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -737,6 +796,7 @@ func (me *String) Contains(what String, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{what.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -748,6 +808,7 @@ func (me *String) IsAbsolutePath() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -759,6 +820,7 @@ func (me *String) IsRelativePath() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -770,6 +832,7 @@ func (me *String) SimplifyPath() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -781,6 +844,7 @@ func (me *String) GetBaseDir() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -792,6 +856,7 @@ func (me *String) GetFile() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -803,6 +868,7 @@ func (me *String) XmlEscape(escape_quotes bool, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&escape_quotes), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -814,6 +880,7 @@ func (me *String) XmlUnescape() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -825,6 +892,7 @@ func (me *String) UriEncode() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -836,6 +904,7 @@ func (me *String) UriDecode() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -847,6 +916,7 @@ func (me *String) CEscape() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -858,6 +928,7 @@ func (me *String) CUnescape() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -869,6 +940,7 @@ func (me *String) JsonEscape() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -880,6 +952,7 @@ func (me *String) ValidateNodeName() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -891,6 +964,7 @@ func (me *String) ValidateFilename() String {
 
   var ret String
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -902,6 +976,7 @@ func (me *String) IsValidIdentifier() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -913,6 +988,7 @@ func (me *String) IsValidInt() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -924,6 +1000,7 @@ func (me *String) IsValidFloat() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -935,6 +1012,7 @@ func (me *String) IsValidHexNumber(with_prefix bool, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&with_prefix), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -946,6 +1024,7 @@ func (me *String) IsValidHtmlColor() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -957,6 +1036,7 @@ func (me *String) IsValidIpAddress() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -968,6 +1048,7 @@ func (me *String) IsValidFilename() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -979,6 +1060,7 @@ func (me *String) ToInt() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -990,6 +1072,7 @@ func (me *String) ToFloat() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1001,6 +1084,7 @@ func (me *String) HexToInt() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1012,6 +1096,7 @@ func (me *String) BinToInt() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1023,6 +1108,7 @@ func (me *String) Lpad(min_length int, character String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&min_length), character.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1034,6 +1120,7 @@ func (me *String) Rpad(min_length int, character String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&min_length), character.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1045,6 +1132,7 @@ func (me *String) PadDecimals(digits int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&digits), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1056,6 +1144,7 @@ func (me *String) PadZeros(digits int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&digits), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1067,6 +1156,7 @@ func (me *String) TrimPrefix(prefix String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{prefix.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1078,6 +1168,7 @@ func (me *String) TrimSuffix(suffix String, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{suffix.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1089,6 +1180,7 @@ func (me *String) ToAsciiBuffer() PackedByteArray {
 
   var ret PackedByteArray
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1100,6 +1192,7 @@ func (me *String) ToUtf8Buffer() PackedByteArray {
 
   var ret PackedByteArray
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1111,6 +1204,7 @@ func (me *String) ToUtf16Buffer() PackedByteArray {
 
   var ret PackedByteArray
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1122,6 +1216,7 @@ func (me *String) ToUtf32Buffer() PackedByteArray {
 
   var ret PackedByteArray
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1133,6 +1228,7 @@ func (me *String) HexDecode() PackedByteArray {
 
   var ret PackedByteArray
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1144,6 +1240,7 @@ func (me *String) ToWcharBuffer() PackedByteArray {
 
   var ret PackedByteArray
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1155,6 +1252,7 @@ func StringNumScientific(number float32, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&number), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1166,6 +1264,7 @@ func StringNum(number float32, decimals int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&number), gdc.ConstTypePtr(&decimals), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1177,6 +1276,7 @@ func StringNumInt64(number int, base int, capitalize_hex bool, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&number), gdc.ConstTypePtr(&base), gdc.ConstTypePtr(&capitalize_hex), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1188,6 +1288,7 @@ func StringNumUint64(number int, base int, capitalize_hex bool, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&number), gdc.ConstTypePtr(&base), gdc.ConstTypePtr(&capitalize_hex), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1199,6 +1300,7 @@ func StringChr(char int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&char), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -1210,6 +1312,7 @@ func StringHumanizeSize(size int, ) String {
 
   var ret String
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

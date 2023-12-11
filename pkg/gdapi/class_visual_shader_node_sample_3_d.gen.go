@@ -67,13 +67,7 @@ func  (me *VisualShaderNodeSample3D) GetSource() VisualShaderNodeSample3DSource 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeSample3D) GetPropSource() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeSample3D) SetPropSource(value int) {
-  panic("TODO: implement")
-}
+// Signals

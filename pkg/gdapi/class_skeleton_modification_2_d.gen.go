@@ -150,21 +150,7 @@ func  (me *SkeletonModification2D) GetEditorDrawGizmo() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SkeletonModification2D) GetPropEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2D) SetPropEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2D) GetPropExecutionMode() int {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2D) SetPropExecutionMode(value int) {
-  panic("TODO: implement")
-}
+// Signals

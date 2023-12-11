@@ -199,61 +199,7 @@ func  (me *LinkButton) GetStructuredTextBidiOverrideOptions() Array {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *LinkButton) GetPropText() String {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) SetPropText(value String) {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) GetPropUnderline() int {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) SetPropUnderline(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) GetPropUri() String {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) SetPropUri(value String) {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) GetPropTextDirection() int {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) SetPropTextDirection(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) GetPropLanguage() String {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) SetPropLanguage(value String) {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) GetPropStructuredTextBidiOverride() int {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) SetPropStructuredTextBidiOverride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) GetPropStructuredTextBidiOverrideOptions() Array {
-  panic("TODO: implement")
-}
-
-func (me *LinkButton) SetPropStructuredTextBidiOverrideOptions(value Array) {
-  panic("TODO: implement")
-}
+// Signals

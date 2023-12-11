@@ -39,4 +39,4 @@ func (me *VisualShaderNodeOutput) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

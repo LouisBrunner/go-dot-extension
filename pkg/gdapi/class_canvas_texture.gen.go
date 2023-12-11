@@ -192,61 +192,7 @@ func  (me *CanvasTexture) GetTextureRepeat() CanvasItemTextureRepeat {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CanvasTexture) GetPropDiffuseTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) SetPropDiffuseTexture(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) GetPropNormalTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) SetPropNormalTexture(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) GetPropSpecularTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) SetPropSpecularTexture(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) GetPropSpecularColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) SetPropSpecularColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) GetPropSpecularShininess() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) SetPropSpecularShininess(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) GetPropTextureFilter() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) SetPropTextureFilter(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) GetPropTextureRepeat() int {
-  panic("TODO: implement")
-}
-
-func (me *CanvasTexture) SetPropTextureRepeat(value int) {
-  panic("TODO: implement")
-}
+// Signals

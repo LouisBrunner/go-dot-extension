@@ -49,6 +49,20 @@ func  (me *ScriptCreateDialog) Config(inherits String, path String, built_in_ena
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ScriptCreateDialogScriptCreatedSignalFn func(script Script, )
+
+func (me *ScriptCreateDialog) ConnectScriptCreated(subs SignalSubscribers, fn ScriptCreateDialogScriptCreatedSignalFn) {
+  sig := StringNameFromStr("script_created")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ScriptCreateDialog) DisconnectScriptCreated(subs SignalSubscribers, fn ScriptCreateDialogScriptCreatedSignalFn) {
+  sig := StringNameFromStr("script_created")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -126,37 +126,7 @@ func  (me *GLTFTextureSampler) SetWrapT(wrap_mode int, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&wrap_mode), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GLTFTextureSampler) GetPropMagFilter() int {
-  panic("TODO: implement")
-}
-
-func (me *GLTFTextureSampler) SetPropMagFilter(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFTextureSampler) GetPropMinFilter() int {
-  panic("TODO: implement")
-}
-
-func (me *GLTFTextureSampler) SetPropMinFilter(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFTextureSampler) GetPropWrapS() int {
-  panic("TODO: implement")
-}
-
-func (me *GLTFTextureSampler) SetPropWrapS(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFTextureSampler) GetPropWrapT() int {
-  panic("TODO: implement")
-}
-
-func (me *GLTFTextureSampler) SetPropWrapT(value int) {
-  panic("TODO: implement")
-}
+// Signals

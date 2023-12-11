@@ -866,13 +866,7 @@ func  (me *Image) LoadBmpFromBuffer(buffer PackedByteArray, ) Error {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Image) GetPropData() Dictionary {
-  panic("TODO: implement")
-}
-
-func (me *Image) SetPropData(value Dictionary) {
-  panic("TODO: implement")
-}
+// Signals

@@ -257,77 +257,7 @@ func  PathFollow3DCorrectPosture(transform Transform3D, rotation_mode PathFollow
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PathFollow3D) GetPropProgress() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) SetPropProgress(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) GetPropProgressRatio() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) SetPropProgressRatio(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) GetPropHOffset() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) SetPropHOffset(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) GetPropVOffset() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) SetPropVOffset(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) GetPropRotationMode() int {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) SetPropRotationMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) GetPropUseModelFront() bool {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) SetPropUseModelFront(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) GetPropCubicInterp() bool {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) SetPropCubicInterp(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) GetPropLoop() bool {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) SetPropLoop(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) GetPropTiltEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow3D) SetPropTiltEnabled(value bool) {
-  panic("TODO: implement")
-}
+// Signals

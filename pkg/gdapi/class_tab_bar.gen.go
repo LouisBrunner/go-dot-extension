@@ -604,95 +604,135 @@ func  (me *TabBar) ClearTabs()  {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *TabBar) GetPropCurrentTab() int {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) SetPropCurrentTab(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) GetPropTabAlignment() int {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) SetPropTabAlignment(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) GetPropClipTabs() bool {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) SetPropClipTabs(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) GetPropTabCloseDisplayPolicy() int {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) SetPropTabCloseDisplayPolicy(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) GetPropMaxTabWidth() int {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) SetPropMaxTabWidth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) GetPropScrollingEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) SetPropScrollingEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) GetPropDragToRearrangeEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) SetPropDragToRearrangeEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) GetPropTabsRearrangeGroup() int {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) SetPropTabsRearrangeGroup(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) GetPropScrollToSelected() bool {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) SetPropScrollToSelected(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) GetPropSelectWithRmb() bool {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) SetPropSelectWithRmb(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) GetPropTabCount() int {
-  panic("TODO: implement")
-}
-
-func (me *TabBar) SetPropTabCount(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type TabBarTabSelectedSignalFn func(tab int, )
+
+func (me *TabBar) ConnectTabSelected(subs SignalSubscribers, fn TabBarTabSelectedSignalFn) {
+  sig := StringNameFromStr("tab_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TabBar) DisconnectTabSelected(subs SignalSubscribers, fn TabBarTabSelectedSignalFn) {
+  sig := StringNameFromStr("tab_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type TabBarTabChangedSignalFn func(tab int, )
+
+func (me *TabBar) ConnectTabChanged(subs SignalSubscribers, fn TabBarTabChangedSignalFn) {
+  sig := StringNameFromStr("tab_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TabBar) DisconnectTabChanged(subs SignalSubscribers, fn TabBarTabChangedSignalFn) {
+  sig := StringNameFromStr("tab_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type TabBarTabClickedSignalFn func(tab int, )
+
+func (me *TabBar) ConnectTabClicked(subs SignalSubscribers, fn TabBarTabClickedSignalFn) {
+  sig := StringNameFromStr("tab_clicked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TabBar) DisconnectTabClicked(subs SignalSubscribers, fn TabBarTabClickedSignalFn) {
+  sig := StringNameFromStr("tab_clicked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type TabBarTabRmbClickedSignalFn func(tab int, )
+
+func (me *TabBar) ConnectTabRmbClicked(subs SignalSubscribers, fn TabBarTabRmbClickedSignalFn) {
+  sig := StringNameFromStr("tab_rmb_clicked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TabBar) DisconnectTabRmbClicked(subs SignalSubscribers, fn TabBarTabRmbClickedSignalFn) {
+  sig := StringNameFromStr("tab_rmb_clicked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type TabBarTabClosePressedSignalFn func(tab int, )
+
+func (me *TabBar) ConnectTabClosePressed(subs SignalSubscribers, fn TabBarTabClosePressedSignalFn) {
+  sig := StringNameFromStr("tab_close_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TabBar) DisconnectTabClosePressed(subs SignalSubscribers, fn TabBarTabClosePressedSignalFn) {
+  sig := StringNameFromStr("tab_close_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type TabBarTabButtonPressedSignalFn func(tab int, )
+
+func (me *TabBar) ConnectTabButtonPressed(subs SignalSubscribers, fn TabBarTabButtonPressedSignalFn) {
+  sig := StringNameFromStr("tab_button_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TabBar) DisconnectTabButtonPressed(subs SignalSubscribers, fn TabBarTabButtonPressedSignalFn) {
+  sig := StringNameFromStr("tab_button_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type TabBarTabHoveredSignalFn func(tab int, )
+
+func (me *TabBar) ConnectTabHovered(subs SignalSubscribers, fn TabBarTabHoveredSignalFn) {
+  sig := StringNameFromStr("tab_hovered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TabBar) DisconnectTabHovered(subs SignalSubscribers, fn TabBarTabHoveredSignalFn) {
+  sig := StringNameFromStr("tab_hovered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type TabBarActiveTabRearrangedSignalFn func(idx_to int, )
+
+func (me *TabBar) ConnectActiveTabRearranged(subs SignalSubscribers, fn TabBarActiveTabRearrangedSignalFn) {
+  sig := StringNameFromStr("active_tab_rearranged")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TabBar) DisconnectActiveTabRearranged(subs SignalSubscribers, fn TabBarActiveTabRearrangedSignalFn) {
+  sig := StringNameFromStr("active_tab_rearranged")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -39,6 +39,20 @@ func (me *Popup) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type PopupPopupHideSignalFn func()
+
+func (me *Popup) ConnectPopupHide(subs SignalSubscribers, fn PopupPopupHideSignalFn) {
+  sig := StringNameFromStr("popup_hide")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Popup) DisconnectPopupHide(subs SignalSubscribers, fn PopupPopupHideSignalFn) {
+  sig := StringNameFromStr("popup_hide")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

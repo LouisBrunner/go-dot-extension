@@ -449,127 +449,135 @@ func  (me *Area2D) IsOverridingAudioBus() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Area2D) GetPropMonitoring() bool {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropMonitoring(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropMonitorable() bool {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropMonitorable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropPriority() int {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropPriority(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropGravitySpaceOverride() int {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropGravitySpaceOverride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropGravityPoint() bool {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropGravityPoint(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropGravityPointUnitDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropGravityPointUnitDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropGravityPointCenter() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropGravityPointCenter(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropGravityDirection() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropGravityDirection(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropGravity() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropGravity(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropLinearDampSpaceOverride() int {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropLinearDampSpaceOverride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropLinearDamp() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropLinearDamp(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropAngularDampSpaceOverride() int {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropAngularDampSpaceOverride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropAngularDamp() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropAngularDamp(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropAudioBusOverride() bool {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropAudioBusOverride(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) GetPropAudioBusName() StringName {
-  panic("TODO: implement")
-}
-
-func (me *Area2D) SetPropAudioBusName(value StringName) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type Area2DBodyShapeEnteredSignalFn func(body_rid RID, body Node2D, body_shape_index int, local_shape_index int, )
+
+func (me *Area2D) ConnectBodyShapeEntered(subs SignalSubscribers, fn Area2DBodyShapeEnteredSignalFn) {
+  sig := StringNameFromStr("body_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area2D) DisconnectBodyShapeEntered(subs SignalSubscribers, fn Area2DBodyShapeEnteredSignalFn) {
+  sig := StringNameFromStr("body_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area2DBodyShapeExitedSignalFn func(body_rid RID, body Node2D, body_shape_index int, local_shape_index int, )
+
+func (me *Area2D) ConnectBodyShapeExited(subs SignalSubscribers, fn Area2DBodyShapeExitedSignalFn) {
+  sig := StringNameFromStr("body_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area2D) DisconnectBodyShapeExited(subs SignalSubscribers, fn Area2DBodyShapeExitedSignalFn) {
+  sig := StringNameFromStr("body_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area2DBodyEnteredSignalFn func(body Node2D, )
+
+func (me *Area2D) ConnectBodyEntered(subs SignalSubscribers, fn Area2DBodyEnteredSignalFn) {
+  sig := StringNameFromStr("body_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area2D) DisconnectBodyEntered(subs SignalSubscribers, fn Area2DBodyEnteredSignalFn) {
+  sig := StringNameFromStr("body_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area2DBodyExitedSignalFn func(body Node2D, )
+
+func (me *Area2D) ConnectBodyExited(subs SignalSubscribers, fn Area2DBodyExitedSignalFn) {
+  sig := StringNameFromStr("body_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area2D) DisconnectBodyExited(subs SignalSubscribers, fn Area2DBodyExitedSignalFn) {
+  sig := StringNameFromStr("body_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area2DAreaShapeEnteredSignalFn func(area_rid RID, area Area2D, area_shape_index int, local_shape_index int, )
+
+func (me *Area2D) ConnectAreaShapeEntered(subs SignalSubscribers, fn Area2DAreaShapeEnteredSignalFn) {
+  sig := StringNameFromStr("area_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area2D) DisconnectAreaShapeEntered(subs SignalSubscribers, fn Area2DAreaShapeEnteredSignalFn) {
+  sig := StringNameFromStr("area_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area2DAreaShapeExitedSignalFn func(area_rid RID, area Area2D, area_shape_index int, local_shape_index int, )
+
+func (me *Area2D) ConnectAreaShapeExited(subs SignalSubscribers, fn Area2DAreaShapeExitedSignalFn) {
+  sig := StringNameFromStr("area_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area2D) DisconnectAreaShapeExited(subs SignalSubscribers, fn Area2DAreaShapeExitedSignalFn) {
+  sig := StringNameFromStr("area_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area2DAreaEnteredSignalFn func(area Area2D, )
+
+func (me *Area2D) ConnectAreaEntered(subs SignalSubscribers, fn Area2DAreaEnteredSignalFn) {
+  sig := StringNameFromStr("area_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area2D) DisconnectAreaEntered(subs SignalSubscribers, fn Area2DAreaEnteredSignalFn) {
+  sig := StringNameFromStr("area_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Area2DAreaExitedSignalFn func(area Area2D, )
+
+func (me *Area2D) ConnectAreaExited(subs SignalSubscribers, fn Area2DAreaExitedSignalFn) {
+  sig := StringNameFromStr("area_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Area2D) DisconnectAreaExited(subs SignalSubscribers, fn Area2DAreaExitedSignalFn) {
+  sig := StringNameFromStr("area_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

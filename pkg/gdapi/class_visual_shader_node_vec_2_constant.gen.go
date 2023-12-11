@@ -60,13 +60,7 @@ func  (me *VisualShaderNodeVec2Constant) GetConstant() Vector2 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeVec2Constant) GetPropConstant() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeVec2Constant) SetPropConstant(value Vector2) {
-  panic("TODO: implement")
-}
+// Signals

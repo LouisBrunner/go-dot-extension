@@ -73,4 +73,4 @@ func  (me *AudioEffectEQ) GetBandCount() int {
   return ret
 }
 
-// Properties
+// Signals

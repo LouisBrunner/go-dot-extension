@@ -315,4 +315,4 @@ func  (me *ClassDB) IsClassEnabled(class StringName, ) bool {
   return ret
 }
 
-// Properties
+// Signals

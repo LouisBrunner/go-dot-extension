@@ -78,13 +78,16 @@ func  (me *EditorUndoRedoManager) IsCommittingAction() bool {
   return ret
 }
 
-func  (me *EditorUndoRedoManager) AddDoMethod(object Object, method StringName, )  {
+func  (me *EditorUndoRedoManager) AddDoMethod(object Object, method StringName, varargs ...Variant)  {
   classNameV := StringNameFromStr("EditorUndoRedoManager")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_do_method")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1517810467) // FIXME: should cache?
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(object.AsCTypePtr()), gdc.ConstVariantPtr(method.AsCTypePtr()), }
+  for _, v := range varargs {
+    cargs = append(cargs, v.AsCPtr())
+  }
   err := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, err)
   if err.Error != gdc.CallOk {
@@ -93,13 +96,16 @@ func  (me *EditorUndoRedoManager) AddDoMethod(object Object, method StringName, 
 
 }
 
-func  (me *EditorUndoRedoManager) AddUndoMethod(object Object, method StringName, )  {
+func  (me *EditorUndoRedoManager) AddUndoMethod(object Object, method StringName, varargs ...Variant)  {
   classNameV := StringNameFromStr("EditorUndoRedoManager")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_undo_method")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1517810467) // FIXME: should cache?
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(object.AsCTypePtr()), gdc.ConstVariantPtr(method.AsCTypePtr()), }
+  for _, v := range varargs {
+    cargs = append(cargs, v.AsCPtr())
+  }
   err := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, err)
   if err.Error != gdc.CallOk {
@@ -172,6 +178,36 @@ func  (me *EditorUndoRedoManager) GetHistoryUndoRedo(id int, ) UndoRedo {
   return ret
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type EditorUndoRedoManagerHistoryChangedSignalFn func()
+
+func (me *EditorUndoRedoManager) ConnectHistoryChanged(subs SignalSubscribers, fn EditorUndoRedoManagerHistoryChangedSignalFn) {
+  sig := StringNameFromStr("history_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorUndoRedoManager) DisconnectHistoryChanged(subs SignalSubscribers, fn EditorUndoRedoManagerHistoryChangedSignalFn) {
+  sig := StringNameFromStr("history_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorUndoRedoManagerVersionChangedSignalFn func()
+
+func (me *EditorUndoRedoManager) ConnectVersionChanged(subs SignalSubscribers, fn EditorUndoRedoManagerVersionChangedSignalFn) {
+  sig := StringNameFromStr("version_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorUndoRedoManager) DisconnectVersionChanged(subs SignalSubscribers, fn EditorUndoRedoManagerVersionChangedSignalFn) {
+  sig := StringNameFromStr("version_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

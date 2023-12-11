@@ -7,7 +7,7 @@ import (
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-type bclass interface {
+type BClass interface {
 	Type() gdc.VariantType
 	Destroy()
 	AsTypePtr() gdc.TypePtr
@@ -15,7 +15,7 @@ type bclass interface {
 
 type Variant struct {
 	iface gdc.Interface
-	inner bclass
+	inner BClass
 	ptr   gdc.VariantPtr
 }
 
@@ -37,7 +37,7 @@ func NewVariantWithC(ptr gdc.ConstVariantPtr) Variant {
 
 // From other types
 
-func NewVariantFrom(inner bclass) Variant {
+func NewVariantFrom(inner BClass) Variant {
 	ctr := giface.GetVariantFromTypeConstructor(inner.Type()) // FIXME: cache?
 	ptr := (gdc.UninitializedVariantPtr)(cmalloc(classSizeVariant))
 	giface.CallVariantFromTypeConstructorFunc(ctr, ptr, inner.AsTypePtr())
@@ -51,21 +51,6 @@ func NewVariantFrom(inner bclass) Variant {
 func NewVariantFromStr(str string) Variant {
 	return NewVariantFrom(StringFromStr(str))
 }
-
-// func NewVariantFromInt(val int) Variant {
-// 	gdint := NewIntFromInt(val)
-// 	return NewVariantFrom(&gdint)
-// }
-
-// func NewVariantFromFloat32(val float32) Variant {
-// 	gdfloat := NewFloatFromFloat32(val)
-// 	return NewVariantFrom(&gdfloat)
-// }
-
-// func NewVariantFromBool(val bool) Variant {
-// 	gdbool := NewBoolFromBool(val)
-// 	return NewVariantFrom(&gdbool)
-// }
 
 // Getting pointers
 

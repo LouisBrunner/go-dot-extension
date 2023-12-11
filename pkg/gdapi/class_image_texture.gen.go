@@ -93,4 +93,4 @@ func  (me *ImageTexture) SetSizeOverride(size Vector2i, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

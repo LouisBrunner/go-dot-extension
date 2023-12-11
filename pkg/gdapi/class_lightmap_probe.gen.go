@@ -39,4 +39,4 @@ func (me *LightmapProbe) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

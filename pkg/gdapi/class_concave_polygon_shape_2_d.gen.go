@@ -60,13 +60,7 @@ func  (me *ConcavePolygonShape2D) GetSegments() PackedVector2Array {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ConcavePolygonShape2D) GetPropSegments() PackedVector2Array {
-  panic("TODO: implement")
-}
-
-func (me *ConcavePolygonShape2D) SetPropSegments(value PackedVector2Array) {
-  panic("TODO: implement")
-}
+// Signals

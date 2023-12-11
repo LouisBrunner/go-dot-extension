@@ -305,13 +305,16 @@ func  (me *SceneTree) QueueDelete(obj Object, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SceneTree) CallGroupFlags(flags int, group StringName, method StringName, )  {
+func  (me *SceneTree) CallGroupFlags(flags int, group StringName, method StringName, varargs ...Variant)  {
   classNameV := StringNameFromStr("SceneTree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("call_group_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1527739229) // FIXME: should cache?
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(&flags), gdc.ConstVariantPtr(group.AsCTypePtr()), gdc.ConstVariantPtr(method.AsCTypePtr()), }
+  for _, v := range varargs {
+    cargs = append(cargs, v.AsCPtr())
+  }
   err := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, err)
   if err.Error != gdc.CallOk {
@@ -340,13 +343,16 @@ func  (me *SceneTree) SetGroupFlags(call_flags int, group StringName, property S
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *SceneTree) CallGroup(group StringName, method StringName, )  {
+func  (me *SceneTree) CallGroup(group StringName, method StringName, varargs ...Variant)  {
   classNameV := StringNameFromStr("SceneTree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("call_group")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1257962832) // FIXME: should cache?
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(group.AsCTypePtr()), gdc.ConstVariantPtr(method.AsCTypePtr()), }
+  for _, v := range varargs {
+    cargs = append(cargs, v.AsCPtr())
+  }
   err := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, err)
   if err.Error != gdc.CallOk {
@@ -510,87 +516,135 @@ func  (me *SceneTree) IsMultiplayerPollEnabled() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SceneTree) GetPropAutoAcceptQuit() bool {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) SetPropAutoAcceptQuit(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) GetPropQuitOnGoBack() bool {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) SetPropQuitOnGoBack(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) GetPropDebugCollisionsHint() bool {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) SetPropDebugCollisionsHint(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) GetPropDebugPathsHint() bool {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) SetPropDebugPathsHint(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) GetPropDebugNavigationHint() bool {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) SetPropDebugNavigationHint(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) GetPropPaused() bool {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) SetPropPaused(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) GetPropEditedSceneRoot() Node {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) SetPropEditedSceneRoot(value Node) {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) GetPropCurrentScene() Node {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) SetPropCurrentScene(value Node) {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) GetPropRoot() Node {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) SetPropRoot(value Node) {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) GetPropMultiplayerPoll() bool {
-  panic("TODO: implement")
-}
-
-func (me *SceneTree) SetPropMultiplayerPoll(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type SceneTreeTreeChangedSignalFn func()
+
+func (me *SceneTree) ConnectTreeChanged(subs SignalSubscribers, fn SceneTreeTreeChangedSignalFn) {
+  sig := StringNameFromStr("tree_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneTree) DisconnectTreeChanged(subs SignalSubscribers, fn SceneTreeTreeChangedSignalFn) {
+  sig := StringNameFromStr("tree_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type SceneTreeTreeProcessModeChangedSignalFn func()
+
+func (me *SceneTree) ConnectTreeProcessModeChanged(subs SignalSubscribers, fn SceneTreeTreeProcessModeChangedSignalFn) {
+  sig := StringNameFromStr("tree_process_mode_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneTree) DisconnectTreeProcessModeChanged(subs SignalSubscribers, fn SceneTreeTreeProcessModeChangedSignalFn) {
+  sig := StringNameFromStr("tree_process_mode_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type SceneTreeNodeAddedSignalFn func(node Node, )
+
+func (me *SceneTree) ConnectNodeAdded(subs SignalSubscribers, fn SceneTreeNodeAddedSignalFn) {
+  sig := StringNameFromStr("node_added")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneTree) DisconnectNodeAdded(subs SignalSubscribers, fn SceneTreeNodeAddedSignalFn) {
+  sig := StringNameFromStr("node_added")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type SceneTreeNodeRemovedSignalFn func(node Node, )
+
+func (me *SceneTree) ConnectNodeRemoved(subs SignalSubscribers, fn SceneTreeNodeRemovedSignalFn) {
+  sig := StringNameFromStr("node_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneTree) DisconnectNodeRemoved(subs SignalSubscribers, fn SceneTreeNodeRemovedSignalFn) {
+  sig := StringNameFromStr("node_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type SceneTreeNodeRenamedSignalFn func(node Node, )
+
+func (me *SceneTree) ConnectNodeRenamed(subs SignalSubscribers, fn SceneTreeNodeRenamedSignalFn) {
+  sig := StringNameFromStr("node_renamed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneTree) DisconnectNodeRenamed(subs SignalSubscribers, fn SceneTreeNodeRenamedSignalFn) {
+  sig := StringNameFromStr("node_renamed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type SceneTreeNodeConfigurationWarningChangedSignalFn func(node Node, )
+
+func (me *SceneTree) ConnectNodeConfigurationWarningChanged(subs SignalSubscribers, fn SceneTreeNodeConfigurationWarningChangedSignalFn) {
+  sig := StringNameFromStr("node_configuration_warning_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneTree) DisconnectNodeConfigurationWarningChanged(subs SignalSubscribers, fn SceneTreeNodeConfigurationWarningChangedSignalFn) {
+  sig := StringNameFromStr("node_configuration_warning_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type SceneTreeProcessFrameSignalFn func()
+
+func (me *SceneTree) ConnectProcessFrame(subs SignalSubscribers, fn SceneTreeProcessFrameSignalFn) {
+  sig := StringNameFromStr("process_frame")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneTree) DisconnectProcessFrame(subs SignalSubscribers, fn SceneTreeProcessFrameSignalFn) {
+  sig := StringNameFromStr("process_frame")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type SceneTreePhysicsFrameSignalFn func()
+
+func (me *SceneTree) ConnectPhysicsFrame(subs SignalSubscribers, fn SceneTreePhysicsFrameSignalFn) {
+  sig := StringNameFromStr("physics_frame")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneTree) DisconnectPhysicsFrame(subs SignalSubscribers, fn SceneTreePhysicsFrameSignalFn) {
+  sig := StringNameFromStr("physics_frame")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

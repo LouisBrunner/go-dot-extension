@@ -39,4 +39,4 @@ func (me *AnimationNodeTimeSeek) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

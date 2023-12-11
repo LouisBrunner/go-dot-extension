@@ -548,31 +548,71 @@ func  (me *Skeleton3D) PhysicalBonesRemoveCollisionException(exception RID, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(exception.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Skeleton3D) GetPropMotionScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Skeleton3D) SetPropMotionScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Skeleton3D) GetPropShowRestOnly() bool {
-  panic("TODO: implement")
-}
-
-func (me *Skeleton3D) SetPropShowRestOnly(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Skeleton3D) GetPropAnimatePhysicalBones() bool {
-  panic("TODO: implement")
-}
-
-func (me *Skeleton3D) SetPropAnimatePhysicalBones(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type Skeleton3DPoseUpdatedSignalFn func()
+
+func (me *Skeleton3D) ConnectPoseUpdated(subs SignalSubscribers, fn Skeleton3DPoseUpdatedSignalFn) {
+  sig := StringNameFromStr("pose_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Skeleton3D) DisconnectPoseUpdated(subs SignalSubscribers, fn Skeleton3DPoseUpdatedSignalFn) {
+  sig := StringNameFromStr("pose_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Skeleton3DBonePoseChangedSignalFn func(bone_idx int, )
+
+func (me *Skeleton3D) ConnectBonePoseChanged(subs SignalSubscribers, fn Skeleton3DBonePoseChangedSignalFn) {
+  sig := StringNameFromStr("bone_pose_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Skeleton3D) DisconnectBonePoseChanged(subs SignalSubscribers, fn Skeleton3DBonePoseChangedSignalFn) {
+  sig := StringNameFromStr("bone_pose_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Skeleton3DBoneEnabledChangedSignalFn func(bone_idx int, )
+
+func (me *Skeleton3D) ConnectBoneEnabledChanged(subs SignalSubscribers, fn Skeleton3DBoneEnabledChangedSignalFn) {
+  sig := StringNameFromStr("bone_enabled_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Skeleton3D) DisconnectBoneEnabledChanged(subs SignalSubscribers, fn Skeleton3DBoneEnabledChangedSignalFn) {
+  sig := StringNameFromStr("bone_enabled_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Skeleton3DShowRestOnlyChangedSignalFn func()
+
+func (me *Skeleton3D) ConnectShowRestOnlyChanged(subs SignalSubscribers, fn Skeleton3DShowRestOnlyChangedSignalFn) {
+  sig := StringNameFromStr("show_rest_only_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Skeleton3D) DisconnectShowRestOnlyChanged(subs SignalSubscribers, fn Skeleton3DShowRestOnlyChangedSignalFn) {
+  sig := StringNameFromStr("show_rest_only_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

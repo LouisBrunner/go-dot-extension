@@ -38,13 +38,7 @@ func (me *VisualShaderNodeCustom) AsCTypePtr() gdc.ConstTypePtr {
 }
 
 // Methods
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeCustom) GetPropInitialized() bool {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeCustom) SetPropInitialized(value bool) {
-  panic("TODO: implement")
-}
+// Signals

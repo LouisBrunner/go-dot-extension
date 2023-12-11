@@ -91,4 +91,4 @@ func  (me *EditorNode3DGizmoPlugin) GetMaterial(name String, gizmo EditorNode3DG
   return ret
 }
 
-// Properties
+// Signals

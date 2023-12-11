@@ -167,15 +167,23 @@ func  (me *AnimationNodeBlendTree) GetGraphOffset() Vector2 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimationNodeBlendTree) GetPropGraphOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeBlendTree) SetPropGraphOffset(value Vector2) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AnimationNodeBlendTreeNodeChangedSignalFn func(node_name StringName, )
+
+func (me *AnimationNodeBlendTree) ConnectNodeChanged(subs SignalSubscribers, fn AnimationNodeBlendTreeNodeChangedSignalFn) {
+  sig := StringNameFromStr("node_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationNodeBlendTree) DisconnectNodeChanged(subs SignalSubscribers, fn AnimationNodeBlendTreeNodeChangedSignalFn) {
+  sig := StringNameFromStr("node_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

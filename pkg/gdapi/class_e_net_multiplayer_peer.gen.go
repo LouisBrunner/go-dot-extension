@@ -120,13 +120,7 @@ func  (me *ENetMultiplayerPeer) GetPeer(id int, ) ENetPacketPeer {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ENetMultiplayerPeer) GetPropHost() ENetConnection {
-  panic("TODO: implement")
-}
-
-func (me *ENetMultiplayerPeer) SetPropHost(value ENetConnection) {
-  panic("TODO: implement")
-}
+// Signals

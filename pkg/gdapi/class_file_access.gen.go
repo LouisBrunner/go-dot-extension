@@ -619,13 +619,7 @@ func  FileAccessGetModifiedTime(file String, ) int {
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *FileAccess) GetPropBigEndian() bool {
-  panic("TODO: implement")
-}
-
-func (me *FileAccess) SetPropBigEndian(value bool) {
-  panic("TODO: implement")
-}
+// Signals

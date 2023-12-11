@@ -216,13 +216,7 @@ func  (me *InputEvent) XformedBy(xform Transform2D, local_ofs Vector2, ) InputEv
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEvent) GetPropDevice() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEvent) SetPropDevice(value int) {
-  panic("TODO: implement")
-}
+// Signals

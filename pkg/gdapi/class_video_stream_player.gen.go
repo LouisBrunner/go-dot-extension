@@ -314,87 +314,23 @@ func  (me *VideoStreamPlayer) GetVideoTexture() Texture2D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VideoStreamPlayer) GetPropAudioTrack() int {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) SetPropAudioTrack(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) GetPropStream() VideoStream {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) SetPropStream(value VideoStream) {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) GetPropVolumeDb() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) SetPropVolumeDb(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) GetPropVolume() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) SetPropVolume(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) GetPropAutoplay() bool {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) SetPropAutoplay(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) GetPropPaused() bool {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) SetPropPaused(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) GetPropExpand() bool {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) SetPropExpand(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) GetPropBufferingMsec() int {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) SetPropBufferingMsec(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) GetPropStreamPosition() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) SetPropStreamPosition(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) GetPropBus() StringName {
-  panic("TODO: implement")
-}
-
-func (me *VideoStreamPlayer) SetPropBus(value StringName) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type VideoStreamPlayerFinishedSignalFn func()
+
+func (me *VideoStreamPlayer) ConnectFinished(subs SignalSubscribers, fn VideoStreamPlayerFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *VideoStreamPlayer) DisconnectFinished(subs SignalSubscribers, fn VideoStreamPlayerFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

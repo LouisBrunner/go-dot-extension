@@ -148,45 +148,7 @@ func  (me *RDTextureView) GetSwizzleA() RenderingDeviceTextureSwizzle {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RDTextureView) GetPropFormatOverride() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureView) SetPropFormatOverride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureView) GetPropSwizzleR() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureView) SetPropSwizzleR(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureView) GetPropSwizzleG() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureView) SetPropSwizzleG(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureView) GetPropSwizzleB() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureView) SetPropSwizzleB(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureView) GetPropSwizzleA() int {
-  panic("TODO: implement")
-}
-
-func (me *RDTextureView) SetPropSwizzleA(value int) {
-  panic("TODO: implement")
-}
+// Signals

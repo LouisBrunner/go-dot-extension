@@ -39,4 +39,4 @@ func (me *CheckButton) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

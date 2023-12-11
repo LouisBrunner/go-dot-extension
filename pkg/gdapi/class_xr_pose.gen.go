@@ -189,53 +189,7 @@ func  (me *XRPose) GetTrackingConfidence() XRPoseTrackingConfidence {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *XRPose) GetPropHasTrackingData() bool {
-  panic("TODO: implement")
-}
-
-func (me *XRPose) SetPropHasTrackingData(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *XRPose) GetPropName() String {
-  panic("TODO: implement")
-}
-
-func (me *XRPose) SetPropName(value String) {
-  panic("TODO: implement")
-}
-
-func (me *XRPose) GetPropTransform() String {
-  panic("TODO: implement")
-}
-
-func (me *XRPose) SetPropTransform(value String) {
-  panic("TODO: implement")
-}
-
-func (me *XRPose) GetPropLinearVelocity() String {
-  panic("TODO: implement")
-}
-
-func (me *XRPose) SetPropLinearVelocity(value String) {
-  panic("TODO: implement")
-}
-
-func (me *XRPose) GetPropAngularVelocity() String {
-  panic("TODO: implement")
-}
-
-func (me *XRPose) SetPropAngularVelocity(value String) {
-  panic("TODO: implement")
-}
-
-func (me *XRPose) GetPropTrackingConfidence() int {
-  panic("TODO: implement")
-}
-
-func (me *XRPose) SetPropTrackingConfidence(value int) {
-  panic("TODO: implement")
-}
+// Signals

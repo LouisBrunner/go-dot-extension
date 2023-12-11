@@ -60,15 +60,23 @@ func  (me *Path3D) GetCurve() Curve3D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Path3D) GetPropCurve() Curve3D {
-  panic("TODO: implement")
-}
-
-func (me *Path3D) SetPropCurve(value Curve3D) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type Path3DCurveChangedSignalFn func()
+
+func (me *Path3D) ConnectCurveChanged(subs SignalSubscribers, fn Path3DCurveChangedSignalFn) {
+  sig := StringNameFromStr("curve_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Path3D) DisconnectCurveChanged(subs SignalSubscribers, fn Path3DCurveChangedSignalFn) {
+  sig := StringNameFromStr("curve_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -82,21 +82,7 @@ func  (me *SubViewportContainer) GetStretchShrink() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SubViewportContainer) GetPropStretch() bool {
-  panic("TODO: implement")
-}
-
-func (me *SubViewportContainer) SetPropStretch(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SubViewportContainer) GetPropStretchShrink() int {
-  panic("TODO: implement")
-}
-
-func (me *SubViewportContainer) SetPropStretchShrink(value int) {
-  panic("TODO: implement")
-}
+// Signals

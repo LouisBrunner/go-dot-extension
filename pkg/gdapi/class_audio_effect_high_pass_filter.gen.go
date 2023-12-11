@@ -39,4 +39,4 @@ func (me *AudioEffectHighPassFilter) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -466,53 +466,7 @@ func  (me *Engine) IsPrintingErrorMessages() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Engine) GetPropPrintErrorMessages() bool {
-  panic("TODO: implement")
-}
-
-func (me *Engine) SetPropPrintErrorMessages(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Engine) GetPropPhysicsTicksPerSecond() int {
-  panic("TODO: implement")
-}
-
-func (me *Engine) SetPropPhysicsTicksPerSecond(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Engine) GetPropMaxPhysicsStepsPerFrame() int {
-  panic("TODO: implement")
-}
-
-func (me *Engine) SetPropMaxPhysicsStepsPerFrame(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Engine) GetPropMaxFps() int {
-  panic("TODO: implement")
-}
-
-func (me *Engine) SetPropMaxFps(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Engine) GetPropTimeScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Engine) SetPropTimeScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Engine) GetPropPhysicsJitterFix() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Engine) SetPropPhysicsJitterFix(value float32) {
-  panic("TODO: implement")
-}
+// Signals

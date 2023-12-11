@@ -82,23 +82,23 @@ func  (me *MeshInstance2D) GetTexture() Texture2D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *MeshInstance2D) GetPropMesh() Mesh {
-  panic("TODO: implement")
-}
-
-func (me *MeshInstance2D) SetPropMesh(value Mesh) {
-  panic("TODO: implement")
-}
-
-func (me *MeshInstance2D) GetPropTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *MeshInstance2D) SetPropTexture(value Texture2D) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type MeshInstance2DTextureChangedSignalFn func()
+
+func (me *MeshInstance2D) ConnectTextureChanged(subs SignalSubscribers, fn MeshInstance2DTextureChangedSignalFn) {
+  sig := StringNameFromStr("texture_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *MeshInstance2D) DisconnectTextureChanged(subs SignalSubscribers, fn MeshInstance2DTextureChangedSignalFn) {
+  sig := StringNameFromStr("texture_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

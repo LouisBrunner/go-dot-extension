@@ -245,4 +245,4 @@ func  (me *ENetPacketPeer) IsActive() bool {
   return ret
 }
 
-// Properties
+// Signals

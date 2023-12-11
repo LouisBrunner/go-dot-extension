@@ -60,15 +60,23 @@ func  (me *SceneTreeTimer) GetTimeLeft() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SceneTreeTimer) GetPropTimeLeft() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SceneTreeTimer) SetPropTimeLeft(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type SceneTreeTimerTimeoutSignalFn func()
+
+func (me *SceneTreeTimer) ConnectTimeout(subs SignalSubscribers, fn SceneTreeTimerTimeoutSignalFn) {
+  sig := StringNameFromStr("timeout")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneTreeTimer) DisconnectTimeout(subs SignalSubscribers, fn SceneTreeTimerTimeoutSignalFn) {
+  sig := StringNameFromStr("timeout")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

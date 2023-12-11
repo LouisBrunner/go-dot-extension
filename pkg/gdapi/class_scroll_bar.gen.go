@@ -60,15 +60,23 @@ func  (me *ScrollBar) GetCustomStep() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ScrollBar) GetPropCustomStep() float32 {
-  panic("TODO: implement")
-}
-
-func (me *ScrollBar) SetPropCustomStep(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ScrollBarScrollingSignalFn func()
+
+func (me *ScrollBar) ConnectScrolling(subs SignalSubscribers, fn ScrollBarScrollingSignalFn) {
+  sig := StringNameFromStr("scrolling")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ScrollBar) DisconnectScrolling(subs SignalSubscribers, fn ScrollBarScrollingSignalFn) {
+  sig := StringNameFromStr("scrolling")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

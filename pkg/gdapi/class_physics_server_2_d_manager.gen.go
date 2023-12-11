@@ -59,4 +59,4 @@ func  (me *PhysicsServer2DManager) SetDefaultServer(name String, priority int, )
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

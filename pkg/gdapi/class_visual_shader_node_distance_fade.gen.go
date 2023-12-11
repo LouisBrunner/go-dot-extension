@@ -39,4 +39,4 @@ func (me *VisualShaderNodeDistanceFade) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

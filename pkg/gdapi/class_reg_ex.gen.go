@@ -157,4 +157,4 @@ func  (me *RegEx) GetNames() PackedStringArray {
   return ret
 }
 
-// Properties
+// Signals

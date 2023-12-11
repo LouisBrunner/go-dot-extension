@@ -163,4 +163,4 @@ func  (me *TileSetScenesCollectionSource) GetNextSceneTileId() int {
   return ret
 }
 
-// Properties
+// Signals

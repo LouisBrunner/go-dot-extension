@@ -75,4 +75,4 @@ func  (me *InstancePlaceholder) GetInstancePath() String {
   return ret
 }
 
-// Properties
+// Signals

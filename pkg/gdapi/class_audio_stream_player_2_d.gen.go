@@ -358,103 +358,23 @@ func  (me *AudioStreamPlayer2D) GetStreamPlayback() AudioStreamPlayback {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioStreamPlayer2D) GetPropStream() AudioStream {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropStream(value AudioStream) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) GetPropVolumeDb() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropVolumeDb(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) GetPropPitchScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropPitchScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) GetPropPlaying() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropPlaying(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) GetPropAutoplay() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropAutoplay(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) GetPropStreamPaused() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropStreamPaused(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) GetPropMaxDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropMaxDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) GetPropAttenuation() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropAttenuation(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) GetPropMaxPolyphony() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropMaxPolyphony(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) GetPropPanningStrength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropPanningStrength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) GetPropBus() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropBus(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) GetPropAreaMask() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamPlayer2D) SetPropAreaMask(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AudioStreamPlayer2DFinishedSignalFn func()
+
+func (me *AudioStreamPlayer2D) ConnectFinished(subs SignalSubscribers, fn AudioStreamPlayer2DFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AudioStreamPlayer2D) DisconnectFinished(subs SignalSubscribers, fn AudioStreamPlayer2DFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

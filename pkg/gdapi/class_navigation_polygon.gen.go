@@ -222,37 +222,7 @@ func  (me *NavigationPolygon) GetCellSize() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NavigationPolygon) GetPropVertices() PackedVector2Array {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPolygon) SetPropVertices(value PackedVector2Array) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPolygon) GetPropPolygons() Array {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPolygon) SetPropPolygons(value Array) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPolygon) GetPropOutlines() Array {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPolygon) SetPropOutlines(value Array) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPolygon) GetPropCellSize() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPolygon) SetPropCellSize(value float32) {
-  panic("TODO: implement")
-}
+// Signals

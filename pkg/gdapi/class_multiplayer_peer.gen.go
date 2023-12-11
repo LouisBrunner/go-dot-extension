@@ -249,31 +249,39 @@ func  (me *MultiplayerPeer) IsServerRelaySupported() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *MultiplayerPeer) GetPropRefuseNewConnections() bool {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerPeer) SetPropRefuseNewConnections(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerPeer) GetPropTransferMode() int {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerPeer) SetPropTransferMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerPeer) GetPropTransferChannel() int {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerPeer) SetPropTransferChannel(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type MultiplayerPeerPeerConnectedSignalFn func(id int, )
+
+func (me *MultiplayerPeer) ConnectPeerConnected(subs SignalSubscribers, fn MultiplayerPeerPeerConnectedSignalFn) {
+  sig := StringNameFromStr("peer_connected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *MultiplayerPeer) DisconnectPeerConnected(subs SignalSubscribers, fn MultiplayerPeerPeerConnectedSignalFn) {
+  sig := StringNameFromStr("peer_connected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type MultiplayerPeerPeerDisconnectedSignalFn func(id int, )
+
+func (me *MultiplayerPeer) ConnectPeerDisconnected(subs SignalSubscribers, fn MultiplayerPeerPeerDisconnectedSignalFn) {
+  sig := StringNameFromStr("peer_disconnected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *MultiplayerPeer) DisconnectPeerDisconnected(subs SignalSubscribers, fn MultiplayerPeerPeerDisconnectedSignalFn) {
+  sig := StringNameFromStr("peer_disconnected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

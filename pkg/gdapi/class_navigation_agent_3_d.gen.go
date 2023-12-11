@@ -828,215 +828,103 @@ func  (me *NavigationAgent3D) GetDebugPathCustomPointSize() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NavigationAgent3D) GetPropTargetPosition() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropTargetPosition(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropPathDesiredDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropPathDesiredDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropTargetDesiredDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropTargetDesiredDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropPathHeightOffset() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropPathHeightOffset(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropPathMaxDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropPathMaxDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropNavigationLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropNavigationLayers(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropPathfindingAlgorithm() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropPathfindingAlgorithm(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropPathPostprocessing() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropPathPostprocessing(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropPathMetadataFlags() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropPathMetadataFlags(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropAvoidanceEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropAvoidanceEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropVelocity() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropVelocity(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropHeight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropHeight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropNeighborDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropNeighborDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropMaxNeighbors() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropMaxNeighbors(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropTimeHorizonAgents() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropTimeHorizonAgents(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropTimeHorizonObstacles() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropTimeHorizonObstacles(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropMaxSpeed() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropMaxSpeed(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropUse3DAvoidance() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropUse3DAvoidance(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropAvoidanceLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropAvoidanceLayers(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropAvoidanceMask() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropAvoidanceMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropAvoidancePriority() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropAvoidancePriority(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropDebugEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropDebugEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropDebugUseCustom() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropDebugUseCustom(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropDebugPathCustomColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropDebugPathCustomColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) GetPropDebugPathCustomPointSize() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent3D) SetPropDebugPathCustomPointSize(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type NavigationAgent3DPathChangedSignalFn func()
+
+func (me *NavigationAgent3D) ConnectPathChanged(subs SignalSubscribers, fn NavigationAgent3DPathChangedSignalFn) {
+  sig := StringNameFromStr("path_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent3D) DisconnectPathChanged(subs SignalSubscribers, fn NavigationAgent3DPathChangedSignalFn) {
+  sig := StringNameFromStr("path_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type NavigationAgent3DTargetReachedSignalFn func()
+
+func (me *NavigationAgent3D) ConnectTargetReached(subs SignalSubscribers, fn NavigationAgent3DTargetReachedSignalFn) {
+  sig := StringNameFromStr("target_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent3D) DisconnectTargetReached(subs SignalSubscribers, fn NavigationAgent3DTargetReachedSignalFn) {
+  sig := StringNameFromStr("target_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type NavigationAgent3DWaypointReachedSignalFn func(details Dictionary, )
+
+func (me *NavigationAgent3D) ConnectWaypointReached(subs SignalSubscribers, fn NavigationAgent3DWaypointReachedSignalFn) {
+  sig := StringNameFromStr("waypoint_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent3D) DisconnectWaypointReached(subs SignalSubscribers, fn NavigationAgent3DWaypointReachedSignalFn) {
+  sig := StringNameFromStr("waypoint_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type NavigationAgent3DLinkReachedSignalFn func(details Dictionary, )
+
+func (me *NavigationAgent3D) ConnectLinkReached(subs SignalSubscribers, fn NavigationAgent3DLinkReachedSignalFn) {
+  sig := StringNameFromStr("link_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent3D) DisconnectLinkReached(subs SignalSubscribers, fn NavigationAgent3DLinkReachedSignalFn) {
+  sig := StringNameFromStr("link_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type NavigationAgent3DNavigationFinishedSignalFn func()
+
+func (me *NavigationAgent3D) ConnectNavigationFinished(subs SignalSubscribers, fn NavigationAgent3DNavigationFinishedSignalFn) {
+  sig := StringNameFromStr("navigation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent3D) DisconnectNavigationFinished(subs SignalSubscribers, fn NavigationAgent3DNavigationFinishedSignalFn) {
+  sig := StringNameFromStr("navigation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type NavigationAgent3DVelocityComputedSignalFn func(safe_velocity Vector3, )
+
+func (me *NavigationAgent3D) ConnectVelocityComputed(subs SignalSubscribers, fn NavigationAgent3DVelocityComputedSignalFn) {
+  sig := StringNameFromStr("velocity_computed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent3D) DisconnectVelocityComputed(subs SignalSubscribers, fn NavigationAgent3DVelocityComputedSignalFn) {
+  sig := StringNameFromStr("velocity_computed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

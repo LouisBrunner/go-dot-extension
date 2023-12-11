@@ -312,79 +312,55 @@ func  (me *EditorFileDialog) Invalidate()  {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *EditorFileDialog) GetPropAccess() int {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) SetPropAccess(value int) {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) GetPropDisplayMode() int {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) SetPropDisplayMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) GetPropFileMode() int {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) SetPropFileMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) GetPropCurrentDir() String {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) SetPropCurrentDir(value String) {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) GetPropCurrentFile() String {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) SetPropCurrentFile(value String) {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) GetPropCurrentPath() String {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) SetPropCurrentPath(value String) {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) GetPropFilters() PackedStringArray {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) SetPropFilters(value PackedStringArray) {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) GetPropShowHiddenFiles() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) SetPropShowHiddenFiles(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) GetPropDisableOverwriteWarning() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorFileDialog) SetPropDisableOverwriteWarning(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type EditorFileDialogFileSelectedSignalFn func(path String, )
+
+func (me *EditorFileDialog) ConnectFileSelected(subs SignalSubscribers, fn EditorFileDialogFileSelectedSignalFn) {
+  sig := StringNameFromStr("file_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorFileDialog) DisconnectFileSelected(subs SignalSubscribers, fn EditorFileDialogFileSelectedSignalFn) {
+  sig := StringNameFromStr("file_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorFileDialogFilesSelectedSignalFn func(paths PackedStringArray, )
+
+func (me *EditorFileDialog) ConnectFilesSelected(subs SignalSubscribers, fn EditorFileDialogFilesSelectedSignalFn) {
+  sig := StringNameFromStr("files_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorFileDialog) DisconnectFilesSelected(subs SignalSubscribers, fn EditorFileDialogFilesSelectedSignalFn) {
+  sig := StringNameFromStr("files_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorFileDialogDirSelectedSignalFn func(dir String, )
+
+func (me *EditorFileDialog) ConnectDirSelected(subs SignalSubscribers, fn EditorFileDialogDirSelectedSignalFn) {
+  sig := StringNameFromStr("dir_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorFileDialog) DisconnectDirSelected(subs SignalSubscribers, fn EditorFileDialogDirSelectedSignalFn) {
+  sig := StringNameFromStr("dir_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

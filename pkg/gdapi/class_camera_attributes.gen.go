@@ -148,45 +148,7 @@ func  (me *CameraAttributes) GetAutoExposureScale() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CameraAttributes) GetPropExposureSensitivity() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributes) SetPropExposureSensitivity(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributes) GetPropExposureMultiplier() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributes) SetPropExposureMultiplier(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributes) GetPropAutoExposureEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributes) SetPropAutoExposureEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributes) GetPropAutoExposureScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributes) SetPropAutoExposureScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributes) GetPropAutoExposureSpeed() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CameraAttributes) SetPropAutoExposureSpeed(value float32) {
-  panic("TODO: implement")
-}
+// Signals

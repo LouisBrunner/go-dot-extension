@@ -60,13 +60,7 @@ func  (me *VisualShaderNodeCurveTexture) GetTexture() CurveTexture {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeCurveTexture) GetPropTexture() CurveTexture {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeCurveTexture) SetPropTexture(value CurveTexture) {
-  panic("TODO: implement")
-}
+// Signals

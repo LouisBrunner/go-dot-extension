@@ -127,6 +127,36 @@ func  (me *ScriptEditor) OpenScriptCreateDialog(base_name String, base_path Stri
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ScriptEditorEditorScriptChangedSignalFn func(script Script, )
+
+func (me *ScriptEditor) ConnectEditorScriptChanged(subs SignalSubscribers, fn ScriptEditorEditorScriptChangedSignalFn) {
+  sig := StringNameFromStr("editor_script_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ScriptEditor) DisconnectEditorScriptChanged(subs SignalSubscribers, fn ScriptEditorEditorScriptChangedSignalFn) {
+  sig := StringNameFromStr("editor_script_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ScriptEditorScriptCloseSignalFn func(script Script, )
+
+func (me *ScriptEditor) ConnectScriptClose(subs SignalSubscribers, fn ScriptEditorScriptCloseSignalFn) {
+  sig := StringNameFromStr("script_close")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ScriptEditor) DisconnectScriptClose(subs SignalSubscribers, fn ScriptEditorScriptCloseSignalFn) {
+  sig := StringNameFromStr("script_close")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

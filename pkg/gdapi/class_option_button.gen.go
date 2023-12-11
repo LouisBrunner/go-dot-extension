@@ -402,39 +402,39 @@ func  (me *OptionButton) GetAllowReselect() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *OptionButton) GetPropItemCount() int {
-  panic("TODO: implement")
-}
-
-func (me *OptionButton) SetPropItemCount(value int) {
-  panic("TODO: implement")
-}
-
-func (me *OptionButton) GetPropSelected() int {
-  panic("TODO: implement")
-}
-
-func (me *OptionButton) SetPropSelected(value int) {
-  panic("TODO: implement")
-}
-
-func (me *OptionButton) GetPropFitToLongestItem() bool {
-  panic("TODO: implement")
-}
-
-func (me *OptionButton) SetPropFitToLongestItem(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *OptionButton) GetPropAllowReselect() bool {
-  panic("TODO: implement")
-}
-
-func (me *OptionButton) SetPropAllowReselect(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type OptionButtonItemSelectedSignalFn func(index int, )
+
+func (me *OptionButton) ConnectItemSelected(subs SignalSubscribers, fn OptionButtonItemSelectedSignalFn) {
+  sig := StringNameFromStr("item_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *OptionButton) DisconnectItemSelected(subs SignalSubscribers, fn OptionButtonItemSelectedSignalFn) {
+  sig := StringNameFromStr("item_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type OptionButtonItemFocusedSignalFn func(index int, )
+
+func (me *OptionButton) ConnectItemFocused(subs SignalSubscribers, fn OptionButtonItemFocusedSignalFn) {
+  sig := StringNameFromStr("item_focused")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *OptionButton) DisconnectItemFocused(subs SignalSubscribers, fn OptionButtonItemFocusedSignalFn) {
+  sig := StringNameFromStr("item_focused")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -128,21 +128,7 @@ func  (me *XRNode3D) TriggerHapticPulse(action_name String, frequency float32, a
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action_name.AsCTypePtr()), gdc.ConstTypePtr(&frequency), gdc.ConstTypePtr(&amplitude), gdc.ConstTypePtr(&duration_sec), gdc.ConstTypePtr(&delay_sec), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *XRNode3D) GetPropTracker() String {
-  panic("TODO: implement")
-}
-
-func (me *XRNode3D) SetPropTracker(value String) {
-  panic("TODO: implement")
-}
-
-func (me *XRNode3D) GetPropPose() String {
-  panic("TODO: implement")
-}
-
-func (me *XRNode3D) SetPropPose(value String) {
-  panic("TODO: implement")
-}
+// Signals

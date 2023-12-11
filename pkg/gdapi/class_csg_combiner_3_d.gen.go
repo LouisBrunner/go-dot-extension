@@ -39,4 +39,4 @@ func (me *CSGCombiner3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

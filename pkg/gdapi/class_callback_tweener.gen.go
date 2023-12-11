@@ -51,4 +51,4 @@ func  (me *CallbackTweener) SetDelay(delay float32, ) CallbackTweener {
   return ret
 }
 
-// Properties
+// Signals

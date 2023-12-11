@@ -148,45 +148,7 @@ func  (me *RDVertexAttribute) GetFrequency() RenderingDeviceVertexFrequency {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RDVertexAttribute) GetPropLocation() int {
-  panic("TODO: implement")
-}
-
-func (me *RDVertexAttribute) SetPropLocation(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDVertexAttribute) GetPropOffset() int {
-  panic("TODO: implement")
-}
-
-func (me *RDVertexAttribute) SetPropOffset(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDVertexAttribute) GetPropFormat() int {
-  panic("TODO: implement")
-}
-
-func (me *RDVertexAttribute) SetPropFormat(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDVertexAttribute) GetPropStride() int {
-  panic("TODO: implement")
-}
-
-func (me *RDVertexAttribute) SetPropStride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RDVertexAttribute) GetPropFrequency() int {
-  panic("TODO: implement")
-}
-
-func (me *RDVertexAttribute) SetPropFrequency(value int) {
-  panic("TODO: implement")
-}
+// Signals

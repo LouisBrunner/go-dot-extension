@@ -887,239 +887,55 @@ func  (me *LineEdit) IsSelectAllOnFocus() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *LineEdit) GetPropText() String {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropText(value String) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropPlaceholderText() String {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropPlaceholderText(value String) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropAlignment() int {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropAlignment(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropMaxLength() int {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropMaxLength(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropEditable() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropEditable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropSecret() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropSecret(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropSecretCharacter() String {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropSecretCharacter(value String) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropExpandToTextLength() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropExpandToTextLength(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropContextMenuEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropContextMenuEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropVirtualKeyboardEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropVirtualKeyboardEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropVirtualKeyboardType() int {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropVirtualKeyboardType(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropClearButtonEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropClearButtonEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropShortcutKeysEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropShortcutKeysEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropMiddleMousePasteEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropMiddleMousePasteEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropSelectingEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropSelectingEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropDeselectOnFocusLossEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropDeselectOnFocusLossEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropRightIcon() Texture {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropRightIcon(value Texture) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropFlat() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropFlat(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropDrawControlChars() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropDrawControlChars(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropSelectAllOnFocus() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropSelectAllOnFocus(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropCaretBlink() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropCaretBlink(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropCaretBlinkInterval() float32 {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropCaretBlinkInterval(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropCaretColumn() int {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropCaretColumn(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropCaretForceDisplayed() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropCaretForceDisplayed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropCaretMidGrapheme() bool {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropCaretMidGrapheme(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropTextDirection() int {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropTextDirection(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropLanguage() String {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropLanguage(value String) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropStructuredTextBidiOverride() int {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropStructuredTextBidiOverride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) GetPropStructuredTextBidiOverrideOptions() Array {
-  panic("TODO: implement")
-}
-
-func (me *LineEdit) SetPropStructuredTextBidiOverrideOptions(value Array) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type LineEditTextChangedSignalFn func(new_text String, )
+
+func (me *LineEdit) ConnectTextChanged(subs SignalSubscribers, fn LineEditTextChangedSignalFn) {
+  sig := StringNameFromStr("text_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *LineEdit) DisconnectTextChanged(subs SignalSubscribers, fn LineEditTextChangedSignalFn) {
+  sig := StringNameFromStr("text_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type LineEditTextChangeRejectedSignalFn func(rejected_substring String, )
+
+func (me *LineEdit) ConnectTextChangeRejected(subs SignalSubscribers, fn LineEditTextChangeRejectedSignalFn) {
+  sig := StringNameFromStr("text_change_rejected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *LineEdit) DisconnectTextChangeRejected(subs SignalSubscribers, fn LineEditTextChangeRejectedSignalFn) {
+  sig := StringNameFromStr("text_change_rejected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type LineEditTextSubmittedSignalFn func(new_text String, )
+
+func (me *LineEdit) ConnectTextSubmitted(subs SignalSubscribers, fn LineEditTextSubmittedSignalFn) {
+  sig := StringNameFromStr("text_submitted")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *LineEdit) DisconnectTextSubmitted(subs SignalSubscribers, fn LineEditTextSubmittedSignalFn) {
+  sig := StringNameFromStr("text_submitted")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

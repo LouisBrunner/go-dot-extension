@@ -176,53 +176,7 @@ func  (me *RibbonTrailMesh) GetShape() RibbonTrailMeshShape {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RibbonTrailMesh) GetPropShape() int {
-  panic("TODO: implement")
-}
-
-func (me *RibbonTrailMesh) SetPropShape(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RibbonTrailMesh) GetPropSize() float32 {
-  panic("TODO: implement")
-}
-
-func (me *RibbonTrailMesh) SetPropSize(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *RibbonTrailMesh) GetPropSections() int {
-  panic("TODO: implement")
-}
-
-func (me *RibbonTrailMesh) SetPropSections(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RibbonTrailMesh) GetPropSectionLength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *RibbonTrailMesh) SetPropSectionLength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *RibbonTrailMesh) GetPropSectionSegments() int {
-  panic("TODO: implement")
-}
-
-func (me *RibbonTrailMesh) SetPropSectionSegments(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RibbonTrailMesh) GetPropCurve() Curve {
-  panic("TODO: implement")
-}
-
-func (me *RibbonTrailMesh) SetPropCurve(value Curve) {
-  panic("TODO: implement")
-}
+// Signals

@@ -288,87 +288,39 @@ func  (me *Range) Unshare()  {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Range) GetPropMinValue() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Range) SetPropMinValue(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Range) GetPropMaxValue() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Range) SetPropMaxValue(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Range) GetPropStep() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Range) SetPropStep(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Range) GetPropPage() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Range) SetPropPage(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Range) GetPropValue() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Range) SetPropValue(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Range) GetPropRatio() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Range) SetPropRatio(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Range) GetPropExpEdit() bool {
-  panic("TODO: implement")
-}
-
-func (me *Range) SetPropExpEdit(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Range) GetPropRounded() bool {
-  panic("TODO: implement")
-}
-
-func (me *Range) SetPropRounded(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Range) GetPropAllowGreater() bool {
-  panic("TODO: implement")
-}
-
-func (me *Range) SetPropAllowGreater(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Range) GetPropAllowLesser() bool {
-  panic("TODO: implement")
-}
-
-func (me *Range) SetPropAllowLesser(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type RangeValueChangedSignalFn func(value float32, )
+
+func (me *Range) ConnectValueChanged(subs SignalSubscribers, fn RangeValueChangedSignalFn) {
+  sig := StringNameFromStr("value_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Range) DisconnectValueChanged(subs SignalSubscribers, fn RangeValueChangedSignalFn) {
+  sig := StringNameFromStr("value_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type RangeChangedSignalFn func()
+
+func (me *Range) ConnectChanged(subs SignalSubscribers, fn RangeChangedSignalFn) {
+  sig := StringNameFromStr("changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Range) DisconnectChanged(subs SignalSubscribers, fn RangeChangedSignalFn) {
+  sig := StringNameFromStr("changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

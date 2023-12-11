@@ -162,37 +162,7 @@ func  (me *GLTFSkeleton) GetBoneAttachment(idx int, ) BoneAttachment3D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GLTFSkeleton) GetPropJoints() PackedInt32Array {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSkeleton) SetPropJoints(value PackedInt32Array) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSkeleton) GetPropRoots() PackedInt32Array {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSkeleton) SetPropRoots(value PackedInt32Array) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSkeleton) GetPropUniqueNames() Array {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSkeleton) SetPropUniqueNames(value Array) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSkeleton) GetPropGodotBoneNode() Dictionary {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSkeleton) SetPropGodotBoneNode(value Dictionary) {
-  panic("TODO: implement")
-}
+// Signals

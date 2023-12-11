@@ -78,6 +78,7 @@ func (me *PackedVector2Array) Size() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -89,6 +90,7 @@ func (me *PackedVector2Array) IsEmpty() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -99,6 +101,7 @@ func (me *PackedVector2Array) Set(index int, value Vector2, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector2Array, name.AsCPtr(), 635767250) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -109,6 +112,7 @@ func (me *PackedVector2Array) PushBack(value Vector2, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -120,6 +124,7 @@ func (me *PackedVector2Array) Append(value Vector2, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -130,6 +135,7 @@ func (me *PackedVector2Array) AppendArray(array PackedVector2Array, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector2Array, name.AsCPtr(), 3887534835) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{array.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -139,6 +145,7 @@ func (me *PackedVector2Array) RemoveAt(index int, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector2Array, name.AsCPtr(), 2823966027) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -149,6 +156,7 @@ func (me *PackedVector2Array) Insert(at_index int, value Vector2, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&at_index), value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -159,6 +167,7 @@ func (me *PackedVector2Array) Fill(value Vector2, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector2Array, name.AsCPtr(), 3790411178) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -169,6 +178,7 @@ func (me *PackedVector2Array) Resize(new_size int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&new_size), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -179,6 +189,7 @@ func (me *PackedVector2Array) Clear()  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector2Array, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -189,6 +200,7 @@ func (me *PackedVector2Array) Has(value Vector2, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -199,6 +211,7 @@ func (me *PackedVector2Array) Reverse()  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector2Array, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -209,6 +222,7 @@ func (me *PackedVector2Array) Slice(begin int, end int, ) PackedVector2Array {
 
   var ret PackedVector2Array
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&begin), gdc.ConstTypePtr(&end), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -220,6 +234,7 @@ func (me *PackedVector2Array) ToByteArray() PackedByteArray {
 
   var ret PackedByteArray
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -230,6 +245,7 @@ func (me *PackedVector2Array) Sort()  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector2Array, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -240,6 +256,7 @@ func (me *PackedVector2Array) Bsearch(value Vector2, before bool, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), gdc.ConstTypePtr(&before), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -251,6 +268,7 @@ func (me *PackedVector2Array) Duplicate() PackedVector2Array {
 
   var ret PackedVector2Array
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -262,6 +280,7 @@ func (me *PackedVector2Array) Find(value Vector2, from int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -273,6 +292,7 @@ func (me *PackedVector2Array) Rfind(value Vector2, from int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -284,6 +304,7 @@ func (me *PackedVector2Array) Count(value Vector2, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

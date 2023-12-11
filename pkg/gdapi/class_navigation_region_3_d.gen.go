@@ -214,55 +214,39 @@ func  (me *NavigationRegion3D) BakeNavigationMesh(on_thread bool, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&on_thread), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NavigationRegion3D) GetPropNavigationMesh() NavigationMesh {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion3D) SetPropNavigationMesh(value NavigationMesh) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion3D) GetPropEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion3D) SetPropEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion3D) GetPropUseEdgeConnections() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion3D) SetPropUseEdgeConnections(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion3D) GetPropNavigationLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion3D) SetPropNavigationLayers(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion3D) GetPropEnterCost() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion3D) SetPropEnterCost(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion3D) GetPropTravelCost() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationRegion3D) SetPropTravelCost(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type NavigationRegion3DNavigationMeshChangedSignalFn func()
+
+func (me *NavigationRegion3D) ConnectNavigationMeshChanged(subs SignalSubscribers, fn NavigationRegion3DNavigationMeshChangedSignalFn) {
+  sig := StringNameFromStr("navigation_mesh_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationRegion3D) DisconnectNavigationMeshChanged(subs SignalSubscribers, fn NavigationRegion3DNavigationMeshChangedSignalFn) {
+  sig := StringNameFromStr("navigation_mesh_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type NavigationRegion3DBakeFinishedSignalFn func()
+
+func (me *NavigationRegion3D) ConnectBakeFinished(subs SignalSubscribers, fn NavigationRegion3DBakeFinishedSignalFn) {
+  sig := StringNameFromStr("bake_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationRegion3D) DisconnectBakeFinished(subs SignalSubscribers, fn NavigationRegion3DBakeFinishedSignalFn) {
+  sig := StringNameFromStr("bake_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

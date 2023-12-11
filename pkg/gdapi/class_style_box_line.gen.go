@@ -148,45 +148,7 @@ func  (me *StyleBoxLine) IsVertical() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *StyleBoxLine) GetPropColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *StyleBoxLine) SetPropColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *StyleBoxLine) GetPropGrowBegin() float32 {
-  panic("TODO: implement")
-}
-
-func (me *StyleBoxLine) SetPropGrowBegin(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *StyleBoxLine) GetPropGrowEnd() float32 {
-  panic("TODO: implement")
-}
-
-func (me *StyleBoxLine) SetPropGrowEnd(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *StyleBoxLine) GetPropThickness() int {
-  panic("TODO: implement")
-}
-
-func (me *StyleBoxLine) SetPropThickness(value int) {
-  panic("TODO: implement")
-}
-
-func (me *StyleBoxLine) GetPropVertical() bool {
-  panic("TODO: implement")
-}
-
-func (me *StyleBoxLine) SetPropVertical(value bool) {
-  panic("TODO: implement")
-}
+// Signals

@@ -229,55 +229,55 @@ func  (me *MultiplayerSynchronizer) GetVisibilityFor(peer int, ) bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *MultiplayerSynchronizer) GetPropRootPath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSynchronizer) SetPropRootPath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSynchronizer) GetPropReplicationInterval() float32 {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSynchronizer) SetPropReplicationInterval(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSynchronizer) GetPropDeltaInterval() float32 {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSynchronizer) SetPropDeltaInterval(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSynchronizer) GetPropReplicationConfig() SceneReplicationConfig {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSynchronizer) SetPropReplicationConfig(value SceneReplicationConfig) {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSynchronizer) GetPropVisibilityUpdateMode() int {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSynchronizer) SetPropVisibilityUpdateMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSynchronizer) GetPropPublicVisibility() bool {
-  panic("TODO: implement")
-}
-
-func (me *MultiplayerSynchronizer) SetPropPublicVisibility(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type MultiplayerSynchronizerSynchronizedSignalFn func()
+
+func (me *MultiplayerSynchronizer) ConnectSynchronized(subs SignalSubscribers, fn MultiplayerSynchronizerSynchronizedSignalFn) {
+  sig := StringNameFromStr("synchronized")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *MultiplayerSynchronizer) DisconnectSynchronized(subs SignalSubscribers, fn MultiplayerSynchronizerSynchronizedSignalFn) {
+  sig := StringNameFromStr("synchronized")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type MultiplayerSynchronizerDeltaSynchronizedSignalFn func()
+
+func (me *MultiplayerSynchronizer) ConnectDeltaSynchronized(subs SignalSubscribers, fn MultiplayerSynchronizerDeltaSynchronizedSignalFn) {
+  sig := StringNameFromStr("delta_synchronized")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *MultiplayerSynchronizer) DisconnectDeltaSynchronized(subs SignalSubscribers, fn MultiplayerSynchronizerDeltaSynchronizedSignalFn) {
+  sig := StringNameFromStr("delta_synchronized")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type MultiplayerSynchronizerVisibilityChangedSignalFn func(for_peer int, )
+
+func (me *MultiplayerSynchronizer) ConnectVisibilityChanged(subs SignalSubscribers, fn MultiplayerSynchronizerVisibilityChangedSignalFn) {
+  sig := StringNameFromStr("visibility_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *MultiplayerSynchronizer) DisconnectVisibilityChanged(subs SignalSubscribers, fn MultiplayerSynchronizerVisibilityChangedSignalFn) {
+  sig := StringNameFromStr("visibility_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

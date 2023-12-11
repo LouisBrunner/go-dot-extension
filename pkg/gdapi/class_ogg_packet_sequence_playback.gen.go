@@ -39,4 +39,4 @@ func (me *OggPacketSequencePlayback) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

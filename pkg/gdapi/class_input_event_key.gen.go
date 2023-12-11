@@ -218,53 +218,7 @@ func  (me *InputEventKey) AsTextKeyLabel() String {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEventKey) GetPropPressed() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventKey) SetPropPressed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventKey) GetPropKeycode() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventKey) SetPropKeycode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventKey) GetPropPhysicalKeycode() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventKey) SetPropPhysicalKeycode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventKey) GetPropKeyLabel() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventKey) SetPropKeyLabel(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventKey) GetPropUnicode() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventKey) SetPropUnicode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventKey) GetPropEcho() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventKey) SetPropEcho(value bool) {
-  panic("TODO: implement")
-}
+// Signals

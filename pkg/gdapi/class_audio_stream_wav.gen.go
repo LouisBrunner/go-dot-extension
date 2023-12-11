@@ -219,61 +219,7 @@ func  (me *AudioStreamWAV) SaveToWav(path String, ) Error {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioStreamWAV) GetPropData() PackedByteArray {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) SetPropData(value PackedByteArray) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) GetPropFormat() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) SetPropFormat(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) GetPropLoopMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) SetPropLoopMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) GetPropLoopBegin() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) SetPropLoopBegin(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) GetPropLoopEnd() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) SetPropLoopEnd(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) GetPropMixRate() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) SetPropMixRate(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) GetPropStereo() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamWAV) SetPropStereo(value bool) {
-  panic("TODO: implement")
-}
+// Signals

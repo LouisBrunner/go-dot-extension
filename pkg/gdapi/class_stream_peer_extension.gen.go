@@ -39,4 +39,4 @@ func (me *StreamPeerExtension) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

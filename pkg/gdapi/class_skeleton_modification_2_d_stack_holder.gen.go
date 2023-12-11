@@ -61,4 +61,4 @@ func  (me *SkeletonModification2DStackHolder) GetHeldModificationStack() Skeleto
   return ret
 }
 
-// Properties
+// Signals

@@ -214,69 +214,7 @@ func  (me *TubeTrailMesh) GetCurve() Curve {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *TubeTrailMesh) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) GetPropRadialSteps() int {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) SetPropRadialSteps(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) GetPropSections() int {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) SetPropSections(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) GetPropSectionLength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) SetPropSectionLength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) GetPropSectionRings() int {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) SetPropSectionRings(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) GetPropCapTop() bool {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) SetPropCapTop(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) GetPropCapBottom() bool {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) SetPropCapBottom(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) GetPropCurve() Curve {
-  panic("TODO: implement")
-}
-
-func (me *TubeTrailMesh) SetPropCurve(value Curve) {
-  panic("TODO: implement")
-}
+// Signals

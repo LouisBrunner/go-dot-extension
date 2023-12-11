@@ -192,61 +192,7 @@ func  (me *MobileVRInterface) GetK2() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *MobileVRInterface) GetPropEyeHeight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) SetPropEyeHeight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) GetPropIod() float32 {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) SetPropIod(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) GetPropDisplayWidth() float32 {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) SetPropDisplayWidth(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) GetPropDisplayToLens() float32 {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) SetPropDisplayToLens(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) GetPropOversample() float32 {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) SetPropOversample(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) GetPropK1() float32 {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) SetPropK1(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) GetPropK2() float32 {
-  panic("TODO: implement")
-}
-
-func (me *MobileVRInterface) SetPropK2(value float32) {
-  panic("TODO: implement")
-}
+// Signals

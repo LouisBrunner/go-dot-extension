@@ -216,13 +216,7 @@ func  (me *Script) IsTool() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Script) GetPropSourceCode() String {
-  panic("TODO: implement")
-}
-
-func (me *Script) SetPropSourceCode(value String) {
-  panic("TODO: implement")
-}
+// Signals

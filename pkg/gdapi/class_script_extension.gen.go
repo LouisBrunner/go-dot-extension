@@ -39,4 +39,4 @@ func (me *ScriptExtension) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

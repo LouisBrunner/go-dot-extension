@@ -1324,351 +1324,39 @@ func  (me *Viewport) GetVrsTexture() Texture2D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Viewport) GetPropDisable3D() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropDisable3D(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropUseXr() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropUseXr(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropOwnWorld3D() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropOwnWorld3D(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropWorld3D() World3D {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropWorld3D(value World3D) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropWorld2D() World2D {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropWorld2D(value World2D) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropTransparentBg() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropTransparentBg(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropHandleInputLocally() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropHandleInputLocally(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropSnap2DTransformsToPixel() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropSnap2DTransformsToPixel(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropSnap2DVerticesToPixel() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropSnap2DVerticesToPixel(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropMsaa2D() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropMsaa2D(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropMsaa3D() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropMsaa3D(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropScreenSpaceAa() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropScreenSpaceAa(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropUseTaa() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropUseTaa(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropUseDebanding() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropUseDebanding(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropUseOcclusionCulling() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropUseOcclusionCulling(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropMeshLodThreshold() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropMeshLodThreshold(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropDebugDraw() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropDebugDraw(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropScaling3DMode() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropScaling3DMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropScaling3DScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropScaling3DScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropTextureMipmapBias() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropTextureMipmapBias(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropFsrSharpness() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropFsrSharpness(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropVrsMode() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropVrsMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropVrsTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropVrsTexture(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropCanvasItemDefaultTextureFilter() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropCanvasItemDefaultTextureFilter(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropCanvasItemDefaultTextureRepeat() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropCanvasItemDefaultTextureRepeat(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropAudioListenerEnable2D() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropAudioListenerEnable2D(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropAudioListenerEnable3D() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropAudioListenerEnable3D(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropPhysicsObjectPicking() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropPhysicsObjectPicking(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropPhysicsObjectPickingSort() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropPhysicsObjectPickingSort(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropGuiDisableInput() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropGuiDisableInput(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropGuiSnapControlsToPixels() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropGuiSnapControlsToPixels(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropGuiEmbedSubwindows() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropGuiEmbedSubwindows(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropSdfOversize() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropSdfOversize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropSdfScale() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropSdfScale(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropPositionalShadowAtlasSize() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropPositionalShadowAtlasSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropPositionalShadowAtlas16Bits() bool {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropPositionalShadowAtlas16Bits(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropPositionalShadowAtlasQuad0() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropPositionalShadowAtlasQuad0(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropPositionalShadowAtlasQuad1() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropPositionalShadowAtlasQuad1(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropPositionalShadowAtlasQuad2() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropPositionalShadowAtlasQuad2(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropPositionalShadowAtlasQuad3() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropPositionalShadowAtlasQuad3(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropCanvasTransform() Transform2D {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropCanvasTransform(value Transform2D) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropGlobalCanvasTransform() Transform2D {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropGlobalCanvasTransform(value Transform2D) {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) GetPropCanvasCullMask() int {
-  panic("TODO: implement")
-}
-
-func (me *Viewport) SetPropCanvasCullMask(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ViewportSizeChangedSignalFn func()
+
+func (me *Viewport) ConnectSizeChanged(subs SignalSubscribers, fn ViewportSizeChangedSignalFn) {
+  sig := StringNameFromStr("size_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Viewport) DisconnectSizeChanged(subs SignalSubscribers, fn ViewportSizeChangedSignalFn) {
+  sig := StringNameFromStr("size_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ViewportGuiFocusChangedSignalFn func(node Control, )
+
+func (me *Viewport) ConnectGuiFocusChanged(subs SignalSubscribers, fn ViewportGuiFocusChangedSignalFn) {
+  sig := StringNameFromStr("gui_focus_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Viewport) DisconnectGuiFocusChanged(subs SignalSubscribers, fn ViewportGuiFocusChangedSignalFn) {
+  sig := StringNameFromStr("gui_focus_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -39,4 +39,4 @@ func (me *VisualShaderNodeRandomRange) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

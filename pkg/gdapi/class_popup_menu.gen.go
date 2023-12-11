@@ -832,55 +832,71 @@ func  (me *PopupMenu) GetAllowSearch() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PopupMenu) GetPropHideOnItemSelection() bool {
-  panic("TODO: implement")
-}
-
-func (me *PopupMenu) SetPropHideOnItemSelection(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PopupMenu) GetPropHideOnCheckableItemSelection() bool {
-  panic("TODO: implement")
-}
-
-func (me *PopupMenu) SetPropHideOnCheckableItemSelection(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PopupMenu) GetPropHideOnStateItemSelection() bool {
-  panic("TODO: implement")
-}
-
-func (me *PopupMenu) SetPropHideOnStateItemSelection(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PopupMenu) GetPropSubmenuPopupDelay() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PopupMenu) SetPropSubmenuPopupDelay(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PopupMenu) GetPropAllowSearch() bool {
-  panic("TODO: implement")
-}
-
-func (me *PopupMenu) SetPropAllowSearch(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PopupMenu) GetPropItemCount() int {
-  panic("TODO: implement")
-}
-
-func (me *PopupMenu) SetPropItemCount(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type PopupMenuIdPressedSignalFn func(id int, )
+
+func (me *PopupMenu) ConnectIdPressed(subs SignalSubscribers, fn PopupMenuIdPressedSignalFn) {
+  sig := StringNameFromStr("id_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *PopupMenu) DisconnectIdPressed(subs SignalSubscribers, fn PopupMenuIdPressedSignalFn) {
+  sig := StringNameFromStr("id_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type PopupMenuIdFocusedSignalFn func(id int, )
+
+func (me *PopupMenu) ConnectIdFocused(subs SignalSubscribers, fn PopupMenuIdFocusedSignalFn) {
+  sig := StringNameFromStr("id_focused")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *PopupMenu) DisconnectIdFocused(subs SignalSubscribers, fn PopupMenuIdFocusedSignalFn) {
+  sig := StringNameFromStr("id_focused")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type PopupMenuIndexPressedSignalFn func(index int, )
+
+func (me *PopupMenu) ConnectIndexPressed(subs SignalSubscribers, fn PopupMenuIndexPressedSignalFn) {
+  sig := StringNameFromStr("index_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *PopupMenu) DisconnectIndexPressed(subs SignalSubscribers, fn PopupMenuIndexPressedSignalFn) {
+  sig := StringNameFromStr("index_pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type PopupMenuMenuChangedSignalFn func()
+
+func (me *PopupMenu) ConnectMenuChanged(subs SignalSubscribers, fn PopupMenuMenuChangedSignalFn) {
+  sig := StringNameFromStr("menu_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *PopupMenu) DisconnectMenuChanged(subs SignalSubscribers, fn PopupMenuMenuChangedSignalFn) {
+  sig := StringNameFromStr("menu_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

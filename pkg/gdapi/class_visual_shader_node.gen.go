@@ -138,29 +138,7 @@ func  (me *VisualShaderNode) GetDefaultInputValues() Array {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNode) GetPropOutputPortForPreview() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNode) SetPropOutputPortForPreview(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNode) GetPropDefaultInputValues() Array {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNode) SetPropDefaultInputValues(value Array) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNode) GetPropExpandedOutputPorts() Array {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNode) SetPropExpandedOutputPorts(value Array) {
-  panic("TODO: implement")
-}
+// Signals

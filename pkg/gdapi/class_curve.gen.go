@@ -331,39 +331,23 @@ func  (me *Curve) SetBakeResolution(resolution int, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&resolution), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Curve) GetPropMinValue() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Curve) SetPropMinValue(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Curve) GetPropMaxValue() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Curve) SetPropMaxValue(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Curve) GetPropBakeResolution() int {
-  panic("TODO: implement")
-}
-
-func (me *Curve) SetPropBakeResolution(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Curve) GetPropPointCount() int {
-  panic("TODO: implement")
-}
-
-func (me *Curve) SetPropPointCount(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type CurveRangeChangedSignalFn func()
+
+func (me *Curve) ConnectRangeChanged(subs SignalSubscribers, fn CurveRangeChangedSignalFn) {
+  sig := StringNameFromStr("range_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Curve) DisconnectRangeChanged(subs SignalSubscribers, fn CurveRangeChangedSignalFn) {
+  sig := StringNameFromStr("range_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

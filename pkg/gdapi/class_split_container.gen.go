@@ -143,39 +143,23 @@ func  (me *SplitContainer) IsVertical() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SplitContainer) GetPropSplitOffset() int {
-  panic("TODO: implement")
-}
-
-func (me *SplitContainer) SetPropSplitOffset(value int) {
-  panic("TODO: implement")
-}
-
-func (me *SplitContainer) GetPropCollapsed() bool {
-  panic("TODO: implement")
-}
-
-func (me *SplitContainer) SetPropCollapsed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SplitContainer) GetPropDraggerVisibility() int {
-  panic("TODO: implement")
-}
-
-func (me *SplitContainer) SetPropDraggerVisibility(value int) {
-  panic("TODO: implement")
-}
-
-func (me *SplitContainer) GetPropVertical() bool {
-  panic("TODO: implement")
-}
-
-func (me *SplitContainer) SetPropVertical(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type SplitContainerDraggedSignalFn func(offset int, )
+
+func (me *SplitContainer) ConnectDragged(subs SignalSubscribers, fn SplitContainerDraggedSignalFn) {
+  sig := StringNameFromStr("dragged")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SplitContainer) DisconnectDragged(subs SignalSubscribers, fn SplitContainerDraggedSignalFn) {
+  sig := StringNameFromStr("dragged")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

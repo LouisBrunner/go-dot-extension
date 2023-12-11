@@ -39,4 +39,4 @@ func (me *XRCamera3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

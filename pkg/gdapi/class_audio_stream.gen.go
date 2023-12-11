@@ -75,4 +75,4 @@ func  (me *AudioStream) InstantiatePlayback() AudioStreamPlayback {
   return ret
 }
 
-// Properties
+// Signals

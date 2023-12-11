@@ -84,15 +84,23 @@ func  (me *ButtonGroup) IsAllowUnpress() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ButtonGroup) GetPropAllowUnpress() bool {
-  panic("TODO: implement")
-}
-
-func (me *ButtonGroup) SetPropAllowUnpress(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ButtonGroupPressedSignalFn func(button BaseButton, )
+
+func (me *ButtonGroup) ConnectPressed(subs SignalSubscribers, fn ButtonGroupPressedSignalFn) {
+  sig := StringNameFromStr("pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ButtonGroup) DisconnectPressed(subs SignalSubscribers, fn ButtonGroupPressedSignalFn) {
+  sig := StringNameFromStr("pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

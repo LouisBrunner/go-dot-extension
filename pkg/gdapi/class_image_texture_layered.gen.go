@@ -61,4 +61,4 @@ func  (me *ImageTextureLayered) UpdateLayer(image Image, layer int, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

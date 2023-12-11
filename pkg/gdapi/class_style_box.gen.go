@@ -140,37 +140,7 @@ func  (me *StyleBox) TestMask(point Vector2, rect Rect2, ) bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *StyleBox) GetPropContentMarginLeft() float32 {
-  panic("TODO: implement")
-}
-
-func (me *StyleBox) SetPropContentMarginLeft(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *StyleBox) GetPropContentMarginTop() float32 {
-  panic("TODO: implement")
-}
-
-func (me *StyleBox) SetPropContentMarginTop(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *StyleBox) GetPropContentMarginRight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *StyleBox) SetPropContentMarginRight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *StyleBox) GetPropContentMarginBottom() float32 {
-  panic("TODO: implement")
-}
-
-func (me *StyleBox) SetPropContentMarginBottom(value float32) {
-  panic("TODO: implement")
-}
+// Signals

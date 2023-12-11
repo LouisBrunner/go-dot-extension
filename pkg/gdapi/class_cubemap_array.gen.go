@@ -51,4 +51,4 @@ func  (me *CubemapArray) CreatePlaceholder() Resource {
   return ret
 }
 
-// Properties
+// Signals

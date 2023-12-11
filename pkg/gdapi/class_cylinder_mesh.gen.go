@@ -192,61 +192,7 @@ func  (me *CylinderMesh) IsCapBottom() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CylinderMesh) GetPropTopRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) SetPropTopRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) GetPropBottomRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) SetPropBottomRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) GetPropHeight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) SetPropHeight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) GetPropRadialSegments() int {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) SetPropRadialSegments(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) GetPropRings() int {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) SetPropRings(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) GetPropCapTop() bool {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) SetPropCapTop(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) GetPropCapBottom() bool {
-  panic("TODO: implement")
-}
-
-func (me *CylinderMesh) SetPropCapBottom(value bool) {
-  panic("TODO: implement")
-}
+// Signals

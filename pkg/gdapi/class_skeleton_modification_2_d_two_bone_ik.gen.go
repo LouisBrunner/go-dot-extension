@@ -214,37 +214,7 @@ func  (me *SkeletonModification2DTwoBoneIK) GetJointTwoBoneIdx() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SkeletonModification2DTwoBoneIK) GetPropTargetNodepath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DTwoBoneIK) SetPropTargetNodepath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DTwoBoneIK) GetPropTargetMinimumDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DTwoBoneIK) SetPropTargetMinimumDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DTwoBoneIK) GetPropTargetMaximumDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DTwoBoneIK) SetPropTargetMaximumDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DTwoBoneIK) GetPropFlipBendDirection() bool {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DTwoBoneIK) SetPropFlipBendDirection(value bool) {
-  panic("TODO: implement")
-}
+// Signals

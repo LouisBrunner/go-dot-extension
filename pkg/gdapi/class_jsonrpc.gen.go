@@ -130,4 +130,4 @@ func  (me *JSONRPC) MakeResponseError(code int, message String, id Variant, ) Di
   return ret
 }
 
-// Properties
+// Signals

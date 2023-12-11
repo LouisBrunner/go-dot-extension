@@ -39,4 +39,4 @@ func (me *VisualShaderNodeTexture2DArrayParameter) AsCTypePtr() gdc.ConstTypePtr
 
 // Methods
 
-// Properties
+// Signals

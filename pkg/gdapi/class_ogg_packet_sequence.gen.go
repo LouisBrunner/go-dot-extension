@@ -116,29 +116,7 @@ func  (me *OggPacketSequence) GetLength() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *OggPacketSequence) GetPropPacketData() PackedByteArray {
-  panic("TODO: implement")
-}
-
-func (me *OggPacketSequence) SetPropPacketData(value PackedByteArray) {
-  panic("TODO: implement")
-}
-
-func (me *OggPacketSequence) GetPropGranulePositions() PackedInt64Array {
-  panic("TODO: implement")
-}
-
-func (me *OggPacketSequence) SetPropGranulePositions(value PackedInt64Array) {
-  panic("TODO: implement")
-}
-
-func (me *OggPacketSequence) GetPropSamplingRate() float32 {
-  panic("TODO: implement")
-}
-
-func (me *OggPacketSequence) SetPropSamplingRate(value float32) {
-  panic("TODO: implement")
-}
+// Signals

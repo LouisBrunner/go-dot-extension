@@ -49,4 +49,4 @@ func  MovieWriterAddWriter(writer MovieWriter, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

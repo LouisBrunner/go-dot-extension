@@ -79,4 +79,4 @@ func  (me *NavigationMeshGenerator) BakeFromSourceGeometryData(navigation_mesh N
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

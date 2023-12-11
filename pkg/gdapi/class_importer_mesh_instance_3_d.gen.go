@@ -104,29 +104,7 @@ func  (me *ImporterMeshInstance3D) GetSkeletonPath() NodePath {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ImporterMeshInstance3D) GetPropMesh() ImporterMesh {
-  panic("TODO: implement")
-}
-
-func (me *ImporterMeshInstance3D) SetPropMesh(value ImporterMesh) {
-  panic("TODO: implement")
-}
-
-func (me *ImporterMeshInstance3D) GetPropSkin() Skin {
-  panic("TODO: implement")
-}
-
-func (me *ImporterMeshInstance3D) SetPropSkin(value Skin) {
-  panic("TODO: implement")
-}
-
-func (me *ImporterMeshInstance3D) GetPropSkeletonPath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *ImporterMeshInstance3D) SetPropSkeletonPath(value NodePath) {
-  panic("TODO: implement")
-}
+// Signals

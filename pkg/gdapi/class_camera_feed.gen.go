@@ -145,21 +145,7 @@ func  (me *CameraFeed) GetDatatype() CameraFeedFeedDataType {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CameraFeed) GetPropFeedIsActive() bool {
-  panic("TODO: implement")
-}
-
-func (me *CameraFeed) SetPropFeedIsActive(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CameraFeed) GetPropFeedTransform() Transform2D {
-  panic("TODO: implement")
-}
-
-func (me *CameraFeed) SetPropFeedTransform(value Transform2D) {
-  panic("TODO: implement")
-}
+// Signals

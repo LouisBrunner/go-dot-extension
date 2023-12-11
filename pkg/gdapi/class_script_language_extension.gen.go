@@ -76,4 +76,4 @@ func (me *ScriptLanguageExtension) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

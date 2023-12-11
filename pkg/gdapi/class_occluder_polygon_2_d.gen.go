@@ -111,29 +111,7 @@ func  (me *OccluderPolygon2D) GetPolygon() PackedVector2Array {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *OccluderPolygon2D) GetPropClosed() bool {
-  panic("TODO: implement")
-}
-
-func (me *OccluderPolygon2D) SetPropClosed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *OccluderPolygon2D) GetPropCullMode() int {
-  panic("TODO: implement")
-}
-
-func (me *OccluderPolygon2D) SetPropCullMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *OccluderPolygon2D) GetPropPolygon() PackedVector2Array {
-  panic("TODO: implement")
-}
-
-func (me *OccluderPolygon2D) SetPropPolygon(value PackedVector2Array) {
-  panic("TODO: implement")
-}
+// Signals

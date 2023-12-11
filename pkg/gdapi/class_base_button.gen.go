@@ -307,87 +307,71 @@ func  (me *BaseButton) GetButtonGroup() ButtonGroup {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *BaseButton) GetPropDisabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) SetPropDisabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) GetPropToggleMode() bool {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) SetPropToggleMode(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) GetPropButtonPressed() bool {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) SetPropButtonPressed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) GetPropActionMode() int {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) SetPropActionMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) GetPropButtonMask() int {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) SetPropButtonMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) GetPropKeepPressedOutside() bool {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) SetPropKeepPressedOutside(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) GetPropButtonGroup() ButtonGroup {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) SetPropButtonGroup(value ButtonGroup) {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) GetPropShortcut() Shortcut {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) SetPropShortcut(value Shortcut) {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) GetPropShortcutFeedback() bool {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) SetPropShortcutFeedback(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) GetPropShortcutInTooltip() bool {
-  panic("TODO: implement")
-}
-
-func (me *BaseButton) SetPropShortcutInTooltip(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type BaseButtonPressedSignalFn func()
+
+func (me *BaseButton) ConnectPressed(subs SignalSubscribers, fn BaseButtonPressedSignalFn) {
+  sig := StringNameFromStr("pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *BaseButton) DisconnectPressed(subs SignalSubscribers, fn BaseButtonPressedSignalFn) {
+  sig := StringNameFromStr("pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type BaseButtonButtonUpSignalFn func()
+
+func (me *BaseButton) ConnectButtonUp(subs SignalSubscribers, fn BaseButtonButtonUpSignalFn) {
+  sig := StringNameFromStr("button_up")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *BaseButton) DisconnectButtonUp(subs SignalSubscribers, fn BaseButtonButtonUpSignalFn) {
+  sig := StringNameFromStr("button_up")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type BaseButtonButtonDownSignalFn func()
+
+func (me *BaseButton) ConnectButtonDown(subs SignalSubscribers, fn BaseButtonButtonDownSignalFn) {
+  sig := StringNameFromStr("button_down")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *BaseButton) DisconnectButtonDown(subs SignalSubscribers, fn BaseButtonButtonDownSignalFn) {
+  sig := StringNameFromStr("button_down")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type BaseButtonToggledSignalFn func(button_pressed bool, )
+
+func (me *BaseButton) ConnectToggled(subs SignalSubscribers, fn BaseButtonToggledSignalFn) {
+  sig := StringNameFromStr("toggled")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *BaseButton) DisconnectToggled(subs SignalSubscribers, fn BaseButtonToggledSignalFn) {
+  sig := StringNameFromStr("toggled")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

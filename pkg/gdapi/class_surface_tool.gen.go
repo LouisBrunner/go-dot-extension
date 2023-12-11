@@ -392,4 +392,4 @@ func  (me *SurfaceTool) CommitToArrays() Array {
   return ret
 }
 
-// Properties
+// Signals

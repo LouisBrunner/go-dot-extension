@@ -103,4 +103,4 @@ func  (me *GDExtension) InitializeLibrary(level GDExtensionInitializationLevel, 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

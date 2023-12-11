@@ -39,4 +39,4 @@ func (me *HSlider) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

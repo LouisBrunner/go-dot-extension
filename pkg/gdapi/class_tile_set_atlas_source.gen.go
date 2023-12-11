@@ -452,45 +452,7 @@ func  (me *TileSetAtlasSource) GetRuntimeTileTextureRegion(atlas_coords Vector2i
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *TileSetAtlasSource) GetPropTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *TileSetAtlasSource) SetPropTexture(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *TileSetAtlasSource) GetPropMargins() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *TileSetAtlasSource) SetPropMargins(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *TileSetAtlasSource) GetPropSeparation() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *TileSetAtlasSource) SetPropSeparation(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *TileSetAtlasSource) GetPropTextureRegionSize() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *TileSetAtlasSource) SetPropTextureRegionSize(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *TileSetAtlasSource) GetPropUseTexturePadding() bool {
-  panic("TODO: implement")
-}
-
-func (me *TileSetAtlasSource) SetPropUseTexturePadding(value bool) {
-  panic("TODO: implement")
-}
+// Signals

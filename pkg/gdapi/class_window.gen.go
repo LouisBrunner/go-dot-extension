@@ -1307,231 +1307,215 @@ func  (me *Window) PopupExclusiveCenteredClamped(from_node Node, minsize Vector2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from_node.AsCTypePtr()), gdc.ConstTypePtr(minsize.AsCTypePtr()), gdc.ConstTypePtr(&fallback_ratio), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Window) GetPropMode() int {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropTitle() String {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropTitle(value String) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropInitialPosition() int {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropInitialPosition(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropPosition() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropPosition(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropSize() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropSize(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropCurrentScreen() int {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropCurrentScreen(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropMousePassthroughPolygon() PackedVector2Array {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropMousePassthroughPolygon(value PackedVector2Array) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropVisible() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropVisible(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropWrapControls() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropWrapControls(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropTransient() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropTransient(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropExclusive() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropExclusive(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropUnresizable() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropUnresizable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropBorderless() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropBorderless(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropAlwaysOnTop() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropAlwaysOnTop(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropTransparent() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropTransparent(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropUnfocusable() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropUnfocusable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropPopupWindow() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropPopupWindow(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropExtendToTitle() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropExtendToTitle(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropMousePassthrough() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropMousePassthrough(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropMinSize() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropMinSize(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropMaxSize() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropMaxSize(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropContentScaleSize() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropContentScaleSize(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropContentScaleMode() int {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropContentScaleMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropContentScaleAspect() int {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropContentScaleAspect(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropContentScaleFactor() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropContentScaleFactor(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropAutoTranslate() bool {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropAutoTranslate(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropTheme() Theme {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropTheme(value Theme) {
-  panic("TODO: implement")
-}
-
-func (me *Window) GetPropThemeTypeVariation() String {
-  panic("TODO: implement")
-}
-
-func (me *Window) SetPropThemeTypeVariation(value String) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type WindowWindowInputSignalFn func(event InputEvent, )
+
+func (me *Window) ConnectWindowInput(subs SignalSubscribers, fn WindowWindowInputSignalFn) {
+  sig := StringNameFromStr("window_input")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectWindowInput(subs SignalSubscribers, fn WindowWindowInputSignalFn) {
+  sig := StringNameFromStr("window_input")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowFilesDroppedSignalFn func(files PackedStringArray, )
+
+func (me *Window) ConnectFilesDropped(subs SignalSubscribers, fn WindowFilesDroppedSignalFn) {
+  sig := StringNameFromStr("files_dropped")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectFilesDropped(subs SignalSubscribers, fn WindowFilesDroppedSignalFn) {
+  sig := StringNameFromStr("files_dropped")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowMouseEnteredSignalFn func()
+
+func (me *Window) ConnectMouseEntered(subs SignalSubscribers, fn WindowMouseEnteredSignalFn) {
+  sig := StringNameFromStr("mouse_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectMouseEntered(subs SignalSubscribers, fn WindowMouseEnteredSignalFn) {
+  sig := StringNameFromStr("mouse_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowMouseExitedSignalFn func()
+
+func (me *Window) ConnectMouseExited(subs SignalSubscribers, fn WindowMouseExitedSignalFn) {
+  sig := StringNameFromStr("mouse_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectMouseExited(subs SignalSubscribers, fn WindowMouseExitedSignalFn) {
+  sig := StringNameFromStr("mouse_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowFocusEnteredSignalFn func()
+
+func (me *Window) ConnectFocusEntered(subs SignalSubscribers, fn WindowFocusEnteredSignalFn) {
+  sig := StringNameFromStr("focus_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectFocusEntered(subs SignalSubscribers, fn WindowFocusEnteredSignalFn) {
+  sig := StringNameFromStr("focus_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowFocusExitedSignalFn func()
+
+func (me *Window) ConnectFocusExited(subs SignalSubscribers, fn WindowFocusExitedSignalFn) {
+  sig := StringNameFromStr("focus_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectFocusExited(subs SignalSubscribers, fn WindowFocusExitedSignalFn) {
+  sig := StringNameFromStr("focus_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowCloseRequestedSignalFn func()
+
+func (me *Window) ConnectCloseRequested(subs SignalSubscribers, fn WindowCloseRequestedSignalFn) {
+  sig := StringNameFromStr("close_requested")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectCloseRequested(subs SignalSubscribers, fn WindowCloseRequestedSignalFn) {
+  sig := StringNameFromStr("close_requested")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowGoBackRequestedSignalFn func()
+
+func (me *Window) ConnectGoBackRequested(subs SignalSubscribers, fn WindowGoBackRequestedSignalFn) {
+  sig := StringNameFromStr("go_back_requested")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectGoBackRequested(subs SignalSubscribers, fn WindowGoBackRequestedSignalFn) {
+  sig := StringNameFromStr("go_back_requested")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowVisibilityChangedSignalFn func()
+
+func (me *Window) ConnectVisibilityChanged(subs SignalSubscribers, fn WindowVisibilityChangedSignalFn) {
+  sig := StringNameFromStr("visibility_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectVisibilityChanged(subs SignalSubscribers, fn WindowVisibilityChangedSignalFn) {
+  sig := StringNameFromStr("visibility_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowAboutToPopupSignalFn func()
+
+func (me *Window) ConnectAboutToPopup(subs SignalSubscribers, fn WindowAboutToPopupSignalFn) {
+  sig := StringNameFromStr("about_to_popup")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectAboutToPopup(subs SignalSubscribers, fn WindowAboutToPopupSignalFn) {
+  sig := StringNameFromStr("about_to_popup")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowThemeChangedSignalFn func()
+
+func (me *Window) ConnectThemeChanged(subs SignalSubscribers, fn WindowThemeChangedSignalFn) {
+  sig := StringNameFromStr("theme_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectThemeChanged(subs SignalSubscribers, fn WindowThemeChangedSignalFn) {
+  sig := StringNameFromStr("theme_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowDpiChangedSignalFn func()
+
+func (me *Window) ConnectDpiChanged(subs SignalSubscribers, fn WindowDpiChangedSignalFn) {
+  sig := StringNameFromStr("dpi_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectDpiChanged(subs SignalSubscribers, fn WindowDpiChangedSignalFn) {
+  sig := StringNameFromStr("dpi_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WindowTitlebarChangedSignalFn func()
+
+func (me *Window) ConnectTitlebarChanged(subs SignalSubscribers, fn WindowTitlebarChangedSignalFn) {
+  sig := StringNameFromStr("titlebar_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Window) DisconnectTitlebarChanged(subs SignalSubscribers, fn WindowTitlebarChangedSignalFn) {
+  sig := StringNameFromStr("titlebar_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -40,7 +40,9 @@ func (me *{{$Class}}) AsCTypePtr() gdc.ConstTypePtr {
 {{- if ne .Hash 0}}
 
 func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .Name -}}
-({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}) {{if .ReturnValue}}{{mapType .ReturnValue.Type}}{{end}} {
+({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}
+{{- if .IsVarArg}}varargs ...Variant{{end -}}
+) {{if .ReturnValue}}{{mapType .ReturnValue.Type}}{{end}} {
   classNameV := StringNameFromStr("{{$.Name}}")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("{{.Name}}")
@@ -64,6 +66,9 @@ func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .
     , {{ end -}}
   }
 {{- if .IsVarArg}}
+  for _, v := range varargs {
+    cargs = append(cargs, v.AsCPtr())
+  }
   err := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), gdc.Int(len(cargs)), {{if .ReturnValue}}gdc.UninitializedVariantPtr(&ret){{else}}nil{{end}}, err)
   if err.Error != gdc.CallOk {
@@ -82,7 +87,22 @@ func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .
 // FIXME: can't seem to be able to use those from this side of the API
 {{- end}}
 
-{{- if .Signals}}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
-{{- end -}}
+{{- range .Signals}}
+
+type {{$Class}}{{pascalCased .Name}}SignalFn func({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}})
+
+func (me *{{$Class}}) Connect{{pascalCased .Name}}(subs SignalSubscribers, fn {{$Class}}{{pascalCased .Name}}SignalFn) {
+  sig := StringNameFromStr("{{.Name}}")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *{{$Class}}) Disconnect{{pascalCased .Name}}(subs SignalSubscribers, fn {{$Class}}{{pascalCased .Name}}SignalFn) {
+  sig := StringNameFromStr("{{.Name}}")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+{{- end}}

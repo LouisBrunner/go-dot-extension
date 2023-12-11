@@ -87,4 +87,4 @@ func  (me *Expression) GetErrorText() String {
   return ret
 }
 
-// Properties
+// Signals

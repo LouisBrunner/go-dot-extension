@@ -39,4 +39,4 @@ func (me *VSplitContainer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

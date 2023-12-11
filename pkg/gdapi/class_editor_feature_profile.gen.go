@@ -176,4 +176,4 @@ func  (me *EditorFeatureProfile) LoadFromFile(path String, ) Error {
   return ret
 }
 
-// Properties
+// Signals

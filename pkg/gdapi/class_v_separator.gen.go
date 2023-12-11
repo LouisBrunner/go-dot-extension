@@ -39,4 +39,4 @@ func (me *VSeparator) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -164,45 +164,7 @@ func  (me *SubViewport) GetClearMode() SubViewportClearMode {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SubViewport) GetPropSize() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *SubViewport) SetPropSize(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *SubViewport) GetPropSize2DOverride() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *SubViewport) SetPropSize2DOverride(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *SubViewport) GetPropSize2DOverrideStretch() bool {
-  panic("TODO: implement")
-}
-
-func (me *SubViewport) SetPropSize2DOverrideStretch(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SubViewport) GetPropRenderTargetClearMode() int {
-  panic("TODO: implement")
-}
-
-func (me *SubViewport) SetPropRenderTargetClearMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *SubViewport) GetPropRenderTargetUpdateMode() int {
-  panic("TODO: implement")
-}
-
-func (me *SubViewport) SetPropRenderTargetUpdateMode(value int) {
-  panic("TODO: implement")
-}
+// Signals

@@ -104,37 +104,7 @@ func  (me *PointLight2D) GetTextureScale() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PointLight2D) GetPropTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *PointLight2D) SetPropTexture(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *PointLight2D) GetPropOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *PointLight2D) SetPropOffset(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *PointLight2D) GetPropTextureScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PointLight2D) SetPropTextureScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PointLight2D) GetPropHeight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PointLight2D) SetPropHeight(value float32) {
-  panic("TODO: implement")
-}
+// Signals

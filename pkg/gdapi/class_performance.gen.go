@@ -157,4 +157,4 @@ func  (me *Performance) GetCustomMonitorNames() StringName {
   return ret
 }
 
-// Properties
+// Signals

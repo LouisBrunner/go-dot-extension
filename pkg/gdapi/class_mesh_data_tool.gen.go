@@ -469,4 +469,4 @@ func  (me *MeshDataTool) GetMaterial() Material {
   return ret
 }
 
-// Properties
+// Signals

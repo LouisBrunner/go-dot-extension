@@ -177,79 +177,23 @@ func  (me *NinePatchRect) GetVAxisStretchMode() NinePatchRectAxisStretchMode {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NinePatchRect) GetPropTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) SetPropTexture(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) GetPropDrawCenter() bool {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) SetPropDrawCenter(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) GetPropRegionRect() Rect2 {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) SetPropRegionRect(value Rect2) {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) GetPropPatchMarginLeft() int {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) SetPropPatchMarginLeft(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) GetPropPatchMarginTop() int {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) SetPropPatchMarginTop(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) GetPropPatchMarginRight() int {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) SetPropPatchMarginRight(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) GetPropPatchMarginBottom() int {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) SetPropPatchMarginBottom(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) GetPropAxisStretchHorizontal() int {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) SetPropAxisStretchHorizontal(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) GetPropAxisStretchVertical() int {
-  panic("TODO: implement")
-}
-
-func (me *NinePatchRect) SetPropAxisStretchVertical(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type NinePatchRectTextureChangedSignalFn func()
+
+func (me *NinePatchRect) ConnectTextureChanged(subs SignalSubscribers, fn NinePatchRectTextureChangedSignalFn) {
+  sig := StringNameFromStr("texture_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NinePatchRect) DisconnectTextureChanged(subs SignalSubscribers, fn NinePatchRectTextureChangedSignalFn) {
+  sig := StringNameFromStr("texture_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

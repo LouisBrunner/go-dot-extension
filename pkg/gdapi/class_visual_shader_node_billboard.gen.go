@@ -91,21 +91,7 @@ func  (me *VisualShaderNodeBillboard) IsKeepScaleEnabled() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeBillboard) GetPropBillboardType() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeBillboard) SetPropBillboardType(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeBillboard) GetPropKeepScale() bool {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeBillboard) SetPropKeepScale(value bool) {
-  panic("TODO: implement")
-}
+// Signals

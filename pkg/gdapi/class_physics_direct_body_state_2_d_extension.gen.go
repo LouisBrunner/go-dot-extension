@@ -39,4 +39,4 @@ func (me *PhysicsDirectBodyState2DExtension) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

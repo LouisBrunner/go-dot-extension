@@ -104,6 +104,7 @@ func (me *Transform2D) Inverse() Transform2D {
 
   var ret Transform2D
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -115,6 +116,7 @@ func (me *Transform2D) AffineInverse() Transform2D {
 
   var ret Transform2D
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -126,6 +128,7 @@ func (me *Transform2D) GetRotation() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -137,6 +140,7 @@ func (me *Transform2D) GetOrigin() Vector2 {
 
   var ret Vector2
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -148,6 +152,7 @@ func (me *Transform2D) GetScale() Vector2 {
 
   var ret Vector2
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -159,6 +164,7 @@ func (me *Transform2D) GetSkew() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -170,6 +176,7 @@ func (me *Transform2D) Orthonormalized() Transform2D {
 
   var ret Transform2D
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -181,6 +188,7 @@ func (me *Transform2D) Rotated(angle float32, ) Transform2D {
 
   var ret Transform2D
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -192,6 +200,7 @@ func (me *Transform2D) RotatedLocal(angle float32, ) Transform2D {
 
   var ret Transform2D
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -203,6 +212,7 @@ func (me *Transform2D) Scaled(scale Vector2, ) Transform2D {
 
   var ret Transform2D
   args := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -214,6 +224,7 @@ func (me *Transform2D) ScaledLocal(scale Vector2, ) Transform2D {
 
   var ret Transform2D
   args := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -225,6 +236,7 @@ func (me *Transform2D) Translated(offset Vector2, ) Transform2D {
 
   var ret Transform2D
   args := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -236,6 +248,7 @@ func (me *Transform2D) TranslatedLocal(offset Vector2, ) Transform2D {
 
   var ret Transform2D
   args := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -247,6 +260,7 @@ func (me *Transform2D) Determinant() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -258,6 +272,7 @@ func (me *Transform2D) BasisXform(v Vector2, ) Vector2 {
 
   var ret Vector2
   args := []gdc.ConstTypePtr{v.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -269,6 +284,7 @@ func (me *Transform2D) BasisXformInv(v Vector2, ) Vector2 {
 
   var ret Vector2
   args := []gdc.ConstTypePtr{v.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -280,6 +296,7 @@ func (me *Transform2D) InterpolateWith(xform Transform2D, weight float32, ) Tran
 
   var ret Transform2D
   args := []gdc.ConstTypePtr{xform.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -291,6 +308,7 @@ func (me *Transform2D) IsEqualApprox(xform Transform2D, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{xform.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -302,6 +320,7 @@ func (me *Transform2D) IsFinite() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -313,6 +332,7 @@ func (me *Transform2D) LookingAt(target Vector2, ) Transform2D {
 
   var ret Transform2D
   args := []gdc.ConstTypePtr{target.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

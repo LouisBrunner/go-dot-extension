@@ -214,69 +214,7 @@ func  (me *InputEventMIDI) GetControllerValue() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEventMIDI) GetPropChannel() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) SetPropChannel(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) GetPropMessage() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) SetPropMessage(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) GetPropPitch() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) SetPropPitch(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) GetPropVelocity() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) SetPropVelocity(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) GetPropInstrument() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) SetPropInstrument(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) GetPropPressure() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) SetPropPressure(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) GetPropControllerNumber() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) SetPropControllerNumber(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) GetPropControllerValue() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMIDI) SetPropControllerValue(value int) {
-  panic("TODO: implement")
-}
+// Signals

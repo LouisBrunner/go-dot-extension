@@ -383,29 +383,7 @@ func  (me *HTTPClient) QueryStringFromDict(fields Dictionary, ) String {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *HTTPClient) GetPropBlockingModeEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *HTTPClient) SetPropBlockingModeEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *HTTPClient) GetPropConnection() StreamPeer {
-  panic("TODO: implement")
-}
-
-func (me *HTTPClient) SetPropConnection(value StreamPeer) {
-  panic("TODO: implement")
-}
-
-func (me *HTTPClient) GetPropReadChunkSize() int {
-  panic("TODO: implement")
-}
-
-func (me *HTTPClient) SetPropReadChunkSize(value int) {
-  panic("TODO: implement")
-}
+// Signals

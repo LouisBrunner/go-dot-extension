@@ -39,4 +39,4 @@ func (me *QuadMesh) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

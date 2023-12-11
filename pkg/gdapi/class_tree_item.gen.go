@@ -1208,13 +1208,16 @@ func  (me *TreeItem) MoveAfter(item TreeItem, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *TreeItem) CallRecursive(method StringName, )  {
+func  (me *TreeItem) CallRecursive(method StringName, varargs ...Variant)  {
   classNameV := StringNameFromStr("TreeItem")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("call_recursive")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2866548813) // FIXME: should cache?
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(method.AsCTypePtr()), }
+  for _, v := range varargs {
+    cargs = append(cargs, v.AsCPtr())
+  }
   err := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, err)
   if err.Error != gdc.CallOk {
@@ -1222,37 +1225,7 @@ func  (me *TreeItem) CallRecursive(method StringName, )  {
   }
 
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *TreeItem) GetPropCollapsed() bool {
-  panic("TODO: implement")
-}
-
-func (me *TreeItem) SetPropCollapsed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TreeItem) GetPropVisible() bool {
-  panic("TODO: implement")
-}
-
-func (me *TreeItem) SetPropVisible(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TreeItem) GetPropDisableFolding() bool {
-  panic("TODO: implement")
-}
-
-func (me *TreeItem) SetPropDisableFolding(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TreeItem) GetPropCustomMinimumHeight() int {
-  panic("TODO: implement")
-}
-
-func (me *TreeItem) SetPropCustomMinimumHeight(value int) {
-  panic("TODO: implement")
-}
+// Signals

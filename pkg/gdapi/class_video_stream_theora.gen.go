@@ -39,4 +39,4 @@ func (me *VideoStreamTheora) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

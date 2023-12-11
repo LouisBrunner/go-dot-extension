@@ -304,53 +304,7 @@ func  (me *MenuBar) GetMenuPopup(menu int, ) PopupMenu {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *MenuBar) GetPropFlat() bool {
-  panic("TODO: implement")
-}
-
-func (me *MenuBar) SetPropFlat(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *MenuBar) GetPropStartIndex() int {
-  panic("TODO: implement")
-}
-
-func (me *MenuBar) SetPropStartIndex(value int) {
-  panic("TODO: implement")
-}
-
-func (me *MenuBar) GetPropSwitchOnHover() bool {
-  panic("TODO: implement")
-}
-
-func (me *MenuBar) SetPropSwitchOnHover(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *MenuBar) GetPropPreferGlobalMenu() bool {
-  panic("TODO: implement")
-}
-
-func (me *MenuBar) SetPropPreferGlobalMenu(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *MenuBar) GetPropTextDirection() int {
-  panic("TODO: implement")
-}
-
-func (me *MenuBar) SetPropTextDirection(value int) {
-  panic("TODO: implement")
-}
-
-func (me *MenuBar) GetPropLanguage() String {
-  panic("TODO: implement")
-}
-
-func (me *MenuBar) SetPropLanguage(value String) {
-  panic("TODO: implement")
-}
+// Signals

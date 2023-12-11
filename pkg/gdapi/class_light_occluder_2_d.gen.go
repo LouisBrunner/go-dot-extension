@@ -104,29 +104,7 @@ func  (me *LightOccluder2D) IsSetAsSdfCollision() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *LightOccluder2D) GetPropOccluder() OccluderPolygon2D {
-  panic("TODO: implement")
-}
-
-func (me *LightOccluder2D) SetPropOccluder(value OccluderPolygon2D) {
-  panic("TODO: implement")
-}
-
-func (me *LightOccluder2D) GetPropSdfCollision() bool {
-  panic("TODO: implement")
-}
-
-func (me *LightOccluder2D) SetPropSdfCollision(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *LightOccluder2D) GetPropOccluderLightMask() int {
-  panic("TODO: implement")
-}
-
-func (me *LightOccluder2D) SetPropOccluderLightMask(value int) {
-  panic("TODO: implement")
-}
+// Signals

@@ -192,63 +192,39 @@ func  (me *Sprite3D) GetHframes() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Sprite3D) GetPropTexture() Texture {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) SetPropTexture(value Texture) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) GetPropHframes() int {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) SetPropHframes(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) GetPropVframes() int {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) SetPropVframes(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) GetPropFrame() int {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) SetPropFrame(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) GetPropFrameCoords() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) SetPropFrameCoords(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) GetPropRegionEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) SetPropRegionEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) GetPropRegionRect() Rect2 {
-  panic("TODO: implement")
-}
-
-func (me *Sprite3D) SetPropRegionRect(value Rect2) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type Sprite3DFrameChangedSignalFn func()
+
+func (me *Sprite3D) ConnectFrameChanged(subs SignalSubscribers, fn Sprite3DFrameChangedSignalFn) {
+  sig := StringNameFromStr("frame_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Sprite3D) DisconnectFrameChanged(subs SignalSubscribers, fn Sprite3DFrameChangedSignalFn) {
+  sig := StringNameFromStr("frame_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Sprite3DTextureChangedSignalFn func()
+
+func (me *Sprite3D) ConnectTextureChanged(subs SignalSubscribers, fn Sprite3DTextureChangedSignalFn) {
+  sig := StringNameFromStr("texture_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Sprite3D) DisconnectTextureChanged(subs SignalSubscribers, fn Sprite3DTextureChangedSignalFn) {
+  sig := StringNameFromStr("texture_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

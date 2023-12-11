@@ -95,4 +95,4 @@ func  (me *ResourceSaver) RemoveResourceFormatSaver(format_saver ResourceFormatS
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

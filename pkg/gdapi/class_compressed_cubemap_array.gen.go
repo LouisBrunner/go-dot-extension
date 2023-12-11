@@ -39,4 +39,4 @@ func (me *CompressedCubemapArray) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -39,4 +39,4 @@ func (me *PlaceholderMaterial) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -204,69 +204,7 @@ func  (me *GradientTexture2D) GetRepeat() GradientTexture2DRepeat {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GradientTexture2D) GetPropGradient() Gradient {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) SetPropGradient(value Gradient) {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) GetPropWidth() int {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) SetPropWidth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) GetPropHeight() int {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) SetPropHeight(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) GetPropUseHdr() bool {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) SetPropUseHdr(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) GetPropFill() int {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) SetPropFill(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) GetPropFillFrom() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) SetPropFillFrom(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) GetPropFillTo() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) SetPropFillTo(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) GetPropRepeat() int {
-  panic("TODO: implement")
-}
-
-func (me *GradientTexture2D) SetPropRepeat(value int) {
-  panic("TODO: implement")
-}
+// Signals

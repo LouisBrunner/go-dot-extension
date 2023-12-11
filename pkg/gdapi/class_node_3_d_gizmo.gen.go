@@ -39,4 +39,4 @@ func (me *Node3DGizmo) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

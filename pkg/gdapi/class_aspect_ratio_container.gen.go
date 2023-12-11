@@ -141,37 +141,7 @@ func  (me *AspectRatioContainer) GetAlignmentVertical() AspectRatioContainerAlig
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AspectRatioContainer) GetPropRatio() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AspectRatioContainer) SetPropRatio(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AspectRatioContainer) GetPropStretchMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AspectRatioContainer) SetPropStretchMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AspectRatioContainer) GetPropAlignmentHorizontal() int {
-  panic("TODO: implement")
-}
-
-func (me *AspectRatioContainer) SetPropAlignmentHorizontal(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AspectRatioContainer) GetPropAlignmentVertical() int {
-  panic("TODO: implement")
-}
-
-func (me *AspectRatioContainer) SetPropAlignmentVertical(value int) {
-  panic("TODO: implement")
-}
+// Signals

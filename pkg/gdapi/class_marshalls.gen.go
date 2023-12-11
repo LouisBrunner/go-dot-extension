@@ -111,4 +111,4 @@ func  (me *Marshalls) Base64ToUtf8(base64_str String, ) String {
   return ret
 }
 
-// Properties
+// Signals

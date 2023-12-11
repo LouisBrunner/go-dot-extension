@@ -192,61 +192,7 @@ func  (me *InputEventScreenDrag) GetVelocity() Vector2 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEventScreenDrag) GetPropIndex() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) SetPropIndex(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) GetPropTilt() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) SetPropTilt(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) GetPropPressure() float32 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) SetPropPressure(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) GetPropPenInverted() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) SetPropPenInverted(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) GetPropPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) SetPropPosition(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) GetPropRelative() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) SetPropRelative(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) GetPropVelocity() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventScreenDrag) SetPropVelocity(value Vector2) {
-  panic("TODO: implement")
-}
+// Signals

@@ -192,61 +192,7 @@ func  (me *PathFollow2D) HasLoop() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PathFollow2D) GetPropProgress() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) SetPropProgress(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) GetPropProgressRatio() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) SetPropProgressRatio(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) GetPropHOffset() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) SetPropHOffset(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) GetPropVOffset() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) SetPropVOffset(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) GetPropRotates() bool {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) SetPropRotates(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) GetPropCubicInterp() bool {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) SetPropCubicInterp(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) GetPropLoop() bool {
-  panic("TODO: implement")
-}
-
-func (me *PathFollow2D) SetPropLoop(value bool) {
-  panic("TODO: implement")
-}
+// Signals

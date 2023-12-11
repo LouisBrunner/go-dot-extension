@@ -196,45 +196,7 @@ func  (me *GLTFCamera) SetDepthNear(zdepth_near float32, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&zdepth_near), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GLTFCamera) GetPropPerspective() bool {
-  panic("TODO: implement")
-}
-
-func (me *GLTFCamera) SetPropPerspective(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFCamera) GetPropFov() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFCamera) SetPropFov(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFCamera) GetPropSizeMag() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFCamera) SetPropSizeMag(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFCamera) GetPropDepthFar() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFCamera) SetPropDepthFar(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFCamera) GetPropDepthNear() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFCamera) SetPropDepthNear(value float32) {
-  panic("TODO: implement")
-}
+// Signals

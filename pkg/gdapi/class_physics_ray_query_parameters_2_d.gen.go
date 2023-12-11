@@ -204,61 +204,7 @@ func  (me *PhysicsRayQueryParameters2D) IsHitFromInsideEnabled() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PhysicsRayQueryParameters2D) GetPropFrom() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) SetPropFrom(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) GetPropTo() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) SetPropTo(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) GetPropCollisionMask() int {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) SetPropCollisionMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) GetPropExclude() RID {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) SetPropExclude(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) GetPropCollideWithBodies() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) SetPropCollideWithBodies(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) GetPropCollideWithAreas() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) SetPropCollideWithAreas(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) GetPropHitFromInside() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsRayQueryParameters2D) SetPropHitFromInside(value bool) {
-  panic("TODO: implement")
-}
+// Signals

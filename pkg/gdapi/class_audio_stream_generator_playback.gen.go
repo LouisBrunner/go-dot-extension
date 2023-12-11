@@ -109,4 +109,4 @@ func  (me *AudioStreamGeneratorPlayback) ClearBuffer()  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

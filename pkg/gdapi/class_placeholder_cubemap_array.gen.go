@@ -39,4 +39,4 @@ func (me *PlaceholderCubemapArray) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

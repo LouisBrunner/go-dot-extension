@@ -75,4 +75,4 @@ func  TLSOptionsServer(key CryptoKey, certificate X509Certificate, ) TLSOptions 
   return ret
 }
 
-// Properties
+// Signals

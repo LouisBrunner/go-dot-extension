@@ -239,4 +239,4 @@ func  (me *ProjectSettings) SaveCustom(file String, ) Error {
   return ret
 }
 
-// Properties
+// Signals

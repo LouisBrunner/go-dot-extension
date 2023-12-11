@@ -39,4 +39,4 @@ func (me *PointMesh) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

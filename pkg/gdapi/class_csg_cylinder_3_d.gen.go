@@ -170,53 +170,7 @@ func  (me *CSGCylinder3D) GetSmoothFaces() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CSGCylinder3D) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CSGCylinder3D) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CSGCylinder3D) GetPropHeight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CSGCylinder3D) SetPropHeight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CSGCylinder3D) GetPropSides() int {
-  panic("TODO: implement")
-}
-
-func (me *CSGCylinder3D) SetPropSides(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CSGCylinder3D) GetPropCone() bool {
-  panic("TODO: implement")
-}
-
-func (me *CSGCylinder3D) SetPropCone(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CSGCylinder3D) GetPropSmoothFaces() bool {
-  panic("TODO: implement")
-}
-
-func (me *CSGCylinder3D) SetPropSmoothFaces(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CSGCylinder3D) GetPropMaterial() any {
-  panic("TODO: implement")
-}
-
-func (me *CSGCylinder3D) SetPropMaterial(value any) {
-  panic("TODO: implement")
-}
+// Signals

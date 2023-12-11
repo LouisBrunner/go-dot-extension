@@ -267,61 +267,7 @@ func  (me *CSGShape3D) GetMeshes() Array {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CSGShape3D) GetPropOperation() int {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) SetPropOperation(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) GetPropSnap() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) SetPropSnap(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) GetPropCalculateTangents() bool {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) SetPropCalculateTangents(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) GetPropUseCollision() bool {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) SetPropUseCollision(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) GetPropCollisionLayer() int {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) SetPropCollisionLayer(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) GetPropCollisionMask() int {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) SetPropCollisionMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) GetPropCollisionPriority() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CSGShape3D) SetPropCollisionPriority(value float32) {
-  panic("TODO: implement")
-}
+// Signals

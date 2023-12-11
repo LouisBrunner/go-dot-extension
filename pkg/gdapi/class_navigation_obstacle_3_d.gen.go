@@ -248,61 +248,7 @@ func  (me *NavigationObstacle3D) GetUse3DAvoidance() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NavigationObstacle3D) GetPropAvoidanceEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) SetPropAvoidanceEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) GetPropVelocity() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) SetPropVelocity(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) GetPropHeight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) SetPropHeight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) GetPropVertices() PackedVector3Array {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) SetPropVertices(value PackedVector3Array) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) GetPropAvoidanceLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) SetPropAvoidanceLayers(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) GetPropUse3DAvoidance() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationObstacle3D) SetPropUse3DAvoidance(value bool) {
-  panic("TODO: implement")
-}
+// Signals

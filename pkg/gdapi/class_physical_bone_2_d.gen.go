@@ -172,45 +172,7 @@ func  (me *PhysicalBone2D) GetFollowBoneWhenSimulating() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PhysicalBone2D) GetPropBone2DNodepath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *PhysicalBone2D) SetPropBone2DNodepath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicalBone2D) GetPropBone2DIndex() int {
-  panic("TODO: implement")
-}
-
-func (me *PhysicalBone2D) SetPropBone2DIndex(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicalBone2D) GetPropAutoConfigureJoint() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicalBone2D) SetPropAutoConfigureJoint(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicalBone2D) GetPropSimulatePhysics() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicalBone2D) SetPropSimulatePhysics(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicalBone2D) GetPropFollowBoneWhenSimulating() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicalBone2D) SetPropFollowBoneWhenSimulating(value bool) {
-  panic("TODO: implement")
-}
+// Signals

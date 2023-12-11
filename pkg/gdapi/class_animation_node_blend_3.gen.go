@@ -39,4 +39,4 @@ func (me *AnimationNodeBlend3) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

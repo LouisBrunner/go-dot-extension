@@ -96,13 +96,7 @@ func  (me *Shortcut) GetAsText() String {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Shortcut) GetPropEvents() InputEvent {
-  panic("TODO: implement")
-}
-
-func (me *Shortcut) SetPropEvents(value InputEvent) {
-  panic("TODO: implement")
-}
+// Signals

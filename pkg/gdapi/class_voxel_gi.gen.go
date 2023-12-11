@@ -155,37 +155,7 @@ func  (me *VoxelGI) DebugBake()  {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VoxelGI) GetPropSubdiv() int {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGI) SetPropSubdiv(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGI) GetPropSize() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGI) SetPropSize(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGI) GetPropCameraAttributes() any {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGI) SetPropCameraAttributes(value any) {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGI) GetPropData() VoxelGIData {
-  panic("TODO: implement")
-}
-
-func (me *VoxelGI) SetPropData(value VoxelGIData) {
-  panic("TODO: implement")
-}
+// Signals

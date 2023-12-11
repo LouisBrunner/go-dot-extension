@@ -39,4 +39,4 @@ func (me *OfflineMultiplayerPeer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

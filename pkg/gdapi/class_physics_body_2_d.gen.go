@@ -95,4 +95,4 @@ func  (me *PhysicsBody2D) RemoveCollisionExceptionWith(body Node, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

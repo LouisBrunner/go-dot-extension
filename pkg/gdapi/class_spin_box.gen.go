@@ -214,61 +214,7 @@ func  (me *SpinBox) GetLineEdit() LineEdit {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SpinBox) GetPropAlignment() int {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) SetPropAlignment(value int) {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) GetPropEditable() bool {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) SetPropEditable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) GetPropUpdateOnTextChanged() bool {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) SetPropUpdateOnTextChanged(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) GetPropPrefix() String {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) SetPropPrefix(value String) {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) GetPropSuffix() String {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) SetPropSuffix(value String) {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) GetPropCustomArrowStep() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) SetPropCustomArrowStep(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) GetPropSelectAllOnFocus() bool {
-  panic("TODO: implement")
-}
-
-func (me *SpinBox) SetPropSelectAllOnFocus(value bool) {
-  panic("TODO: implement")
-}
+// Signals

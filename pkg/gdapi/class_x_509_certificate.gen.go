@@ -87,4 +87,4 @@ func  (me *X509Certificate) LoadFromString(string_ String, ) Error {
   return ret
 }
 
-// Properties
+// Signals

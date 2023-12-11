@@ -39,4 +39,4 @@ func (me *GLTFDocumentExtensionPhysics) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -139,6 +139,84 @@ func  (me *EditorFileSystem) ReimportFiles(files PackedStringArray, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type EditorFileSystemFilesystemChangedSignalFn func()
+
+func (me *EditorFileSystem) ConnectFilesystemChanged(subs SignalSubscribers, fn EditorFileSystemFilesystemChangedSignalFn) {
+  sig := StringNameFromStr("filesystem_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorFileSystem) DisconnectFilesystemChanged(subs SignalSubscribers, fn EditorFileSystemFilesystemChangedSignalFn) {
+  sig := StringNameFromStr("filesystem_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorFileSystemScriptClassesUpdatedSignalFn func()
+
+func (me *EditorFileSystem) ConnectScriptClassesUpdated(subs SignalSubscribers, fn EditorFileSystemScriptClassesUpdatedSignalFn) {
+  sig := StringNameFromStr("script_classes_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorFileSystem) DisconnectScriptClassesUpdated(subs SignalSubscribers, fn EditorFileSystemScriptClassesUpdatedSignalFn) {
+  sig := StringNameFromStr("script_classes_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorFileSystemSourcesChangedSignalFn func(exist bool, )
+
+func (me *EditorFileSystem) ConnectSourcesChanged(subs SignalSubscribers, fn EditorFileSystemSourcesChangedSignalFn) {
+  sig := StringNameFromStr("sources_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorFileSystem) DisconnectSourcesChanged(subs SignalSubscribers, fn EditorFileSystemSourcesChangedSignalFn) {
+  sig := StringNameFromStr("sources_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorFileSystemResourcesReimportedSignalFn func(resources PackedStringArray, )
+
+func (me *EditorFileSystem) ConnectResourcesReimported(subs SignalSubscribers, fn EditorFileSystemResourcesReimportedSignalFn) {
+  sig := StringNameFromStr("resources_reimported")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorFileSystem) DisconnectResourcesReimported(subs SignalSubscribers, fn EditorFileSystemResourcesReimportedSignalFn) {
+  sig := StringNameFromStr("resources_reimported")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorFileSystemResourcesReloadSignalFn func(resources PackedStringArray, )
+
+func (me *EditorFileSystem) ConnectResourcesReload(subs SignalSubscribers, fn EditorFileSystemResourcesReloadSignalFn) {
+  sig := StringNameFromStr("resources_reload")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorFileSystem) DisconnectResourcesReload(subs SignalSubscribers, fn EditorFileSystemResourcesReloadSignalFn) {
+  sig := StringNameFromStr("resources_reload")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

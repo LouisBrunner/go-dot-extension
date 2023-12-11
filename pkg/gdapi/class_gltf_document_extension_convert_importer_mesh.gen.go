@@ -39,4 +39,4 @@ func (me *GLTFDocumentExtensionConvertImporterMesh) AsCTypePtr() gdc.ConstTypePt
 
 // Methods
 
-// Properties
+// Signals

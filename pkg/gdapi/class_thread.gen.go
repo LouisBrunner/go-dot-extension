@@ -116,4 +116,4 @@ func  ThreadSetThreadSafetyChecksEnabled(enabled bool, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

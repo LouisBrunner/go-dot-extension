@@ -148,45 +148,7 @@ func  (me *CSGSphere3D) GetMaterial() Material {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CSGSphere3D) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CSGSphere3D) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CSGSphere3D) GetPropRadialSegments() int {
-  panic("TODO: implement")
-}
-
-func (me *CSGSphere3D) SetPropRadialSegments(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CSGSphere3D) GetPropRings() int {
-  panic("TODO: implement")
-}
-
-func (me *CSGSphere3D) SetPropRings(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CSGSphere3D) GetPropSmoothFaces() bool {
-  panic("TODO: implement")
-}
-
-func (me *CSGSphere3D) SetPropSmoothFaces(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CSGSphere3D) GetPropMaterial() any {
-  panic("TODO: implement")
-}
-
-func (me *CSGSphere3D) SetPropMaterial(value any) {
-  panic("TODO: implement")
-}
+// Signals

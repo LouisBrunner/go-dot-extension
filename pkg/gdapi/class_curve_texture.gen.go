@@ -98,29 +98,7 @@ func  (me *CurveTexture) GetTextureMode() CurveTextureTextureMode {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CurveTexture) GetPropWidth() int {
-  panic("TODO: implement")
-}
-
-func (me *CurveTexture) SetPropWidth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CurveTexture) GetPropTextureMode() int {
-  panic("TODO: implement")
-}
-
-func (me *CurveTexture) SetPropTextureMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CurveTexture) GetPropCurve() Curve {
-  panic("TODO: implement")
-}
-
-func (me *CurveTexture) SetPropCurve(value Curve) {
-  panic("TODO: implement")
-}
+// Signals

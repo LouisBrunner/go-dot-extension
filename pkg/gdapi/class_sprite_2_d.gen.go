@@ -326,103 +326,39 @@ func  (me *Sprite2D) GetRect() Rect2 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Sprite2D) GetPropTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropTexture(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) GetPropCentered() bool {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropCentered(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) GetPropOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropOffset(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) GetPropFlipH() bool {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropFlipH(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) GetPropFlipV() bool {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropFlipV(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) GetPropHframes() int {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropHframes(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) GetPropVframes() int {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropVframes(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) GetPropFrame() int {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropFrame(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) GetPropFrameCoords() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropFrameCoords(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) GetPropRegionEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropRegionEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) GetPropRegionRect() Rect2 {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropRegionRect(value Rect2) {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) GetPropRegionFilterClipEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *Sprite2D) SetPropRegionFilterClipEnabled(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type Sprite2DFrameChangedSignalFn func()
+
+func (me *Sprite2D) ConnectFrameChanged(subs SignalSubscribers, fn Sprite2DFrameChangedSignalFn) {
+  sig := StringNameFromStr("frame_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Sprite2D) DisconnectFrameChanged(subs SignalSubscribers, fn Sprite2DFrameChangedSignalFn) {
+  sig := StringNameFromStr("frame_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type Sprite2DTextureChangedSignalFn func()
+
+func (me *Sprite2D) ConnectTextureChanged(subs SignalSubscribers, fn Sprite2DTextureChangedSignalFn) {
+  sig := StringNameFromStr("texture_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Sprite2D) DisconnectTextureChanged(subs SignalSubscribers, fn Sprite2DTextureChangedSignalFn) {
+  sig := StringNameFromStr("texture_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

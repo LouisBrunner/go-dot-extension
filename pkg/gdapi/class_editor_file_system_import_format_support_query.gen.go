@@ -39,4 +39,4 @@ func (me *EditorFileSystemImportFormatSupportQuery) AsCTypePtr() gdc.ConstTypePt
 
 // Methods
 
-// Properties
+// Signals

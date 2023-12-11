@@ -698,191 +698,87 @@ func  (me *RigidBody3D) GetCollidingBodies() Node3D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RigidBody3D) GetPropMass() float32 {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropMass(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropInertia() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropInertia(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropCenterOfMassMode() int {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropCenterOfMassMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropCenterOfMass() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropCenterOfMass(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropPhysicsMaterialOverride() PhysicsMaterial {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropPhysicsMaterialOverride(value PhysicsMaterial) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropGravityScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropGravityScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropCustomIntegrator() bool {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropCustomIntegrator(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropContinuousCd() bool {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropContinuousCd(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropMaxContactsReported() int {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropMaxContactsReported(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropContactMonitor() bool {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropContactMonitor(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropSleeping() bool {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropSleeping(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropCanSleep() bool {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropCanSleep(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropLockRotation() bool {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropLockRotation(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropFreeze() bool {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropFreeze(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropFreezeMode() int {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropFreezeMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropLinearVelocity() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropLinearVelocity(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropLinearDampMode() int {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropLinearDampMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropLinearDamp() float32 {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropLinearDamp(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropAngularVelocity() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropAngularVelocity(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropAngularDampMode() int {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropAngularDampMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropAngularDamp() float32 {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropAngularDamp(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropConstantForce() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropConstantForce(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) GetPropConstantTorque() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *RigidBody3D) SetPropConstantTorque(value Vector3) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type RigidBody3DBodyShapeEnteredSignalFn func(body_rid RID, body Node, body_shape_index int, local_shape_index int, )
+
+func (me *RigidBody3D) ConnectBodyShapeEntered(subs SignalSubscribers, fn RigidBody3DBodyShapeEnteredSignalFn) {
+  sig := StringNameFromStr("body_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *RigidBody3D) DisconnectBodyShapeEntered(subs SignalSubscribers, fn RigidBody3DBodyShapeEnteredSignalFn) {
+  sig := StringNameFromStr("body_shape_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type RigidBody3DBodyShapeExitedSignalFn func(body_rid RID, body Node, body_shape_index int, local_shape_index int, )
+
+func (me *RigidBody3D) ConnectBodyShapeExited(subs SignalSubscribers, fn RigidBody3DBodyShapeExitedSignalFn) {
+  sig := StringNameFromStr("body_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *RigidBody3D) DisconnectBodyShapeExited(subs SignalSubscribers, fn RigidBody3DBodyShapeExitedSignalFn) {
+  sig := StringNameFromStr("body_shape_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type RigidBody3DBodyEnteredSignalFn func(body Node, )
+
+func (me *RigidBody3D) ConnectBodyEntered(subs SignalSubscribers, fn RigidBody3DBodyEnteredSignalFn) {
+  sig := StringNameFromStr("body_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *RigidBody3D) DisconnectBodyEntered(subs SignalSubscribers, fn RigidBody3DBodyEnteredSignalFn) {
+  sig := StringNameFromStr("body_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type RigidBody3DBodyExitedSignalFn func(body Node, )
+
+func (me *RigidBody3D) ConnectBodyExited(subs SignalSubscribers, fn RigidBody3DBodyExitedSignalFn) {
+  sig := StringNameFromStr("body_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *RigidBody3D) DisconnectBodyExited(subs SignalSubscribers, fn RigidBody3DBodyExitedSignalFn) {
+  sig := StringNameFromStr("body_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type RigidBody3DSleepingStateChangedSignalFn func()
+
+func (me *RigidBody3D) ConnectSleepingStateChanged(subs SignalSubscribers, fn RigidBody3DSleepingStateChangedSignalFn) {
+  sig := StringNameFromStr("sleeping_state_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *RigidBody3D) DisconnectSleepingStateChanged(subs SignalSubscribers, fn RigidBody3DSleepingStateChangedSignalFn) {
+  sig := StringNameFromStr("sleeping_state_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

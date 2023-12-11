@@ -68,4 +68,4 @@ func  (me *PinJoint3D) GetParam(param PinJoint3DParam, ) float32 {
   return ret
 }
 
-// Properties
+// Signals

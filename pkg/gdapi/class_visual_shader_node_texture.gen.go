@@ -125,29 +125,7 @@ func  (me *VisualShaderNodeTexture) GetTextureType() VisualShaderNodeTextureText
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeTexture) GetPropSource() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTexture) SetPropSource(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTexture) GetPropTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTexture) SetPropTexture(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTexture) GetPropTextureType() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTexture) SetPropTextureType(value int) {
-  panic("TODO: implement")
-}
+// Signals

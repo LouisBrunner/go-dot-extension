@@ -60,13 +60,7 @@ func  (me *WorldBoundaryShape3D) GetPlane() Plane {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *WorldBoundaryShape3D) GetPropPlane() Plane {
-  panic("TODO: implement")
-}
-
-func (me *WorldBoundaryShape3D) SetPropPlane(value Plane) {
-  panic("TODO: implement")
-}
+// Signals

@@ -88,21 +88,7 @@ func  (me *AnimationNodeAnimation) GetPlayMode() AnimationNodeAnimationPlayMode 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimationNodeAnimation) GetPropAnimation() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeAnimation) SetPropAnimation(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeAnimation) GetPropPlayMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeAnimation) SetPropPlayMode(value int) {
-  panic("TODO: implement")
-}
+// Signals

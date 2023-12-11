@@ -39,4 +39,4 @@ func (me *EditorExportPlatformMacOS) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

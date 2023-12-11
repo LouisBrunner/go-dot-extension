@@ -842,119 +842,87 @@ func  (me *ItemList) GetTextOverrunBehavior() TextServerOverrunBehavior {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ItemList) GetPropSelectMode() int {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropSelectMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropAllowReselect() bool {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropAllowReselect(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropAllowRmbSelect() bool {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropAllowRmbSelect(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropAllowSearch() bool {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropAllowSearch(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropMaxTextLines() int {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropMaxTextLines(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropAutoHeight() bool {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropAutoHeight(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropTextOverrunBehavior() int {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropTextOverrunBehavior(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropItemCount() int {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropItemCount(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropMaxColumns() int {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropMaxColumns(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropSameColumnWidth() bool {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropSameColumnWidth(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropFixedColumnWidth() int {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropFixedColumnWidth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropIconMode() int {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropIconMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropIconScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropIconScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) GetPropFixedIconSize() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *ItemList) SetPropFixedIconSize(value Vector2i) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ItemListItemSelectedSignalFn func(index int, )
+
+func (me *ItemList) ConnectItemSelected(subs SignalSubscribers, fn ItemListItemSelectedSignalFn) {
+  sig := StringNameFromStr("item_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ItemList) DisconnectItemSelected(subs SignalSubscribers, fn ItemListItemSelectedSignalFn) {
+  sig := StringNameFromStr("item_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ItemListEmptyClickedSignalFn func(at_position Vector2, mouse_button_index int, )
+
+func (me *ItemList) ConnectEmptyClicked(subs SignalSubscribers, fn ItemListEmptyClickedSignalFn) {
+  sig := StringNameFromStr("empty_clicked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ItemList) DisconnectEmptyClicked(subs SignalSubscribers, fn ItemListEmptyClickedSignalFn) {
+  sig := StringNameFromStr("empty_clicked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ItemListItemClickedSignalFn func(index int, at_position Vector2, mouse_button_index int, )
+
+func (me *ItemList) ConnectItemClicked(subs SignalSubscribers, fn ItemListItemClickedSignalFn) {
+  sig := StringNameFromStr("item_clicked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ItemList) DisconnectItemClicked(subs SignalSubscribers, fn ItemListItemClickedSignalFn) {
+  sig := StringNameFromStr("item_clicked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ItemListMultiSelectedSignalFn func(index int, selected bool, )
+
+func (me *ItemList) ConnectMultiSelected(subs SignalSubscribers, fn ItemListMultiSelectedSignalFn) {
+  sig := StringNameFromStr("multi_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ItemList) DisconnectMultiSelected(subs SignalSubscribers, fn ItemListMultiSelectedSignalFn) {
+  sig := StringNameFromStr("multi_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ItemListItemActivatedSignalFn func(index int, )
+
+func (me *ItemList) ConnectItemActivated(subs SignalSubscribers, fn ItemListItemActivatedSignalFn) {
+  sig := StringNameFromStr("item_activated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ItemList) DisconnectItemActivated(subs SignalSubscribers, fn ItemListItemActivatedSignalFn) {
+  sig := StringNameFromStr("item_activated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

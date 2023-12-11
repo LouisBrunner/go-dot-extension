@@ -104,29 +104,7 @@ func  (me *AudioEffectStereoEnhance) GetSurround() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioEffectStereoEnhance) GetPropPanPullout() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectStereoEnhance) SetPropPanPullout(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectStereoEnhance) GetPropTimePulloutMs() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectStereoEnhance) SetPropTimePulloutMs(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectStereoEnhance) GetPropSurround() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectStereoEnhance) SetPropSurround(value float32) {
-  panic("TODO: implement")
-}
+// Signals

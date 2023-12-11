@@ -60,13 +60,7 @@ func  (me *CSGPrimitive3D) GetFlipFaces() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CSGPrimitive3D) GetPropFlipFaces() bool {
-  panic("TODO: implement")
-}
-
-func (me *CSGPrimitive3D) SetPropFlipFaces(value bool) {
-  panic("TODO: implement")
-}
+// Signals

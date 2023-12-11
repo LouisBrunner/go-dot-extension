@@ -39,4 +39,4 @@ func (me *VScrollBar) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

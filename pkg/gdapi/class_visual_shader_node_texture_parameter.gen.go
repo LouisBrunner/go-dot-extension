@@ -194,45 +194,7 @@ func  (me *VisualShaderNodeTextureParameter) GetTextureSource() VisualShaderNode
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeTextureParameter) GetPropTextureType() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTextureParameter) SetPropTextureType(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTextureParameter) GetPropColorDefault() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTextureParameter) SetPropColorDefault(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTextureParameter) GetPropTextureFilter() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTextureParameter) SetPropTextureFilter(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTextureParameter) GetPropTextureRepeat() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTextureParameter) SetPropTextureRepeat(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTextureParameter) GetPropTextureSource() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTextureParameter) SetPropTextureSource(value int) {
-  panic("TODO: implement")
-}
+// Signals

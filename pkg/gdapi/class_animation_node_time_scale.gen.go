@@ -39,4 +39,4 @@ func (me *AnimationNodeTimeScale) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

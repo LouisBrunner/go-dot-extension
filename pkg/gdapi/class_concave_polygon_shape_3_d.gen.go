@@ -82,21 +82,7 @@ func  (me *ConcavePolygonShape3D) IsBackfaceCollisionEnabled() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ConcavePolygonShape3D) GetPropData() PackedVector3Array {
-  panic("TODO: implement")
-}
-
-func (me *ConcavePolygonShape3D) SetPropData(value PackedVector3Array) {
-  panic("TODO: implement")
-}
-
-func (me *ConcavePolygonShape3D) GetPropBackfaceCollision() bool {
-  panic("TODO: implement")
-}
-
-func (me *ConcavePolygonShape3D) SetPropBackfaceCollision(value bool) {
-  panic("TODO: implement")
-}
+// Signals

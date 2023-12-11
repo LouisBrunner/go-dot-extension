@@ -39,4 +39,4 @@ func (me *SkeletonProfileHumanoid) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

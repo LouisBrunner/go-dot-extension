@@ -195,4 +195,4 @@ func  (me *PhysicsTestMotionResult2D) GetCollisionUnsafeFraction() float32 {
   return ret
 }
 
-// Properties
+// Signals

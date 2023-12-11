@@ -207,37 +207,7 @@ func  (me *AudioStreamRandomizer) GetPlaybackMode() AudioStreamRandomizerPlaybac
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioStreamRandomizer) GetPropStreamsCount() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamRandomizer) SetPropStreamsCount(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamRandomizer) GetPropPlaybackMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamRandomizer) SetPropPlaybackMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamRandomizer) GetPropRandomPitch() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamRandomizer) SetPropRandomPitch(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamRandomizer) GetPropRandomVolumeOffsetDb() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamRandomizer) SetPropRandomVolumeOffsetDb(value float32) {
-  panic("TODO: implement")
-}
+// Signals

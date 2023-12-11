@@ -39,4 +39,4 @@ func (me *CompressedTexture2DArray) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -368,69 +368,7 @@ func  (me *AStarGrid2D) GetIdPath(from_id Vector2i, to_id Vector2i, ) Vector2i {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AStarGrid2D) GetPropRegion() Rect2i {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) SetPropRegion(value Rect2i) {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) GetPropSize() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) SetPropSize(value Vector2i) {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) GetPropOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) SetPropOffset(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) GetPropCellSize() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) SetPropCellSize(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) GetPropJumpingEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) SetPropJumpingEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) GetPropDefaultComputeHeuristic() int {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) SetPropDefaultComputeHeuristic(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) GetPropDefaultEstimateHeuristic() int {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) SetPropDefaultEstimateHeuristic(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) GetPropDiagonalMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AStarGrid2D) SetPropDiagonalMode(value int) {
-  panic("TODO: implement")
-}
+// Signals

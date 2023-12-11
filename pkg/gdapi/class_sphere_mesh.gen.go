@@ -148,45 +148,7 @@ func  (me *SphereMesh) GetIsHemisphere() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SphereMesh) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SphereMesh) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SphereMesh) GetPropHeight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SphereMesh) SetPropHeight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SphereMesh) GetPropRadialSegments() int {
-  panic("TODO: implement")
-}
-
-func (me *SphereMesh) SetPropRadialSegments(value int) {
-  panic("TODO: implement")
-}
-
-func (me *SphereMesh) GetPropRings() int {
-  panic("TODO: implement")
-}
-
-func (me *SphereMesh) SetPropRings(value int) {
-  panic("TODO: implement")
-}
-
-func (me *SphereMesh) GetPropIsHemisphere() bool {
-  panic("TODO: implement")
-}
-
-func (me *SphereMesh) SetPropIsHemisphere(value bool) {
-  panic("TODO: implement")
-}
+// Signals

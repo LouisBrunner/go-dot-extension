@@ -148,39 +148,39 @@ func  (me *EditorResourcePicker) IsEditable() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *EditorResourcePicker) GetPropBaseType() String {
-  panic("TODO: implement")
-}
-
-func (me *EditorResourcePicker) SetPropBaseType(value String) {
-  panic("TODO: implement")
-}
-
-func (me *EditorResourcePicker) GetPropEditedResource() Resource {
-  panic("TODO: implement")
-}
-
-func (me *EditorResourcePicker) SetPropEditedResource(value Resource) {
-  panic("TODO: implement")
-}
-
-func (me *EditorResourcePicker) GetPropEditable() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorResourcePicker) SetPropEditable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *EditorResourcePicker) GetPropToggleMode() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorResourcePicker) SetPropToggleMode(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type EditorResourcePickerResourceSelectedSignalFn func(resource Resource, inspect bool, )
+
+func (me *EditorResourcePicker) ConnectResourceSelected(subs SignalSubscribers, fn EditorResourcePickerResourceSelectedSignalFn) {
+  sig := StringNameFromStr("resource_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorResourcePicker) DisconnectResourceSelected(subs SignalSubscribers, fn EditorResourcePickerResourceSelectedSignalFn) {
+  sig := StringNameFromStr("resource_selected")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorResourcePickerResourceChangedSignalFn func(resource Resource, )
+
+func (me *EditorResourcePicker) ConnectResourceChanged(subs SignalSubscribers, fn EditorResourcePickerResourceChangedSignalFn) {
+  sig := StringNameFromStr("resource_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorResourcePicker) DisconnectResourceChanged(subs SignalSubscribers, fn EditorResourcePickerResourceChangedSignalFn) {
+  sig := StringNameFromStr("resource_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

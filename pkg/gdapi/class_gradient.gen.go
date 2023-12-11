@@ -238,37 +238,7 @@ func  (me *Gradient) GetInterpolationColorSpace() GradientColorSpace {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Gradient) GetPropInterpolationMode() int {
-  panic("TODO: implement")
-}
-
-func (me *Gradient) SetPropInterpolationMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Gradient) GetPropInterpolationColorSpace() int {
-  panic("TODO: implement")
-}
-
-func (me *Gradient) SetPropInterpolationColorSpace(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Gradient) GetPropOffsets() PackedFloat32Array {
-  panic("TODO: implement")
-}
-
-func (me *Gradient) SetPropOffsets(value PackedFloat32Array) {
-  panic("TODO: implement")
-}
-
-func (me *Gradient) GetPropColors() PackedColorArray {
-  panic("TODO: implement")
-}
-
-func (me *Gradient) SetPropColors(value PackedColorArray) {
-  panic("TODO: implement")
-}
+// Signals

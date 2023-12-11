@@ -38,37 +38,7 @@ func (me *SpotLight3D) AsCTypePtr() gdc.ConstTypePtr {
 }
 
 // Methods
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SpotLight3D) GetPropSpotRange() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SpotLight3D) SetPropSpotRange(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SpotLight3D) GetPropSpotAttenuation() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SpotLight3D) SetPropSpotAttenuation(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SpotLight3D) GetPropSpotAngle() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SpotLight3D) SetPropSpotAngle(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SpotLight3D) GetPropSpotAngleAttenuation() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SpotLight3D) SetPropSpotAngleAttenuation(value float32) {
-  panic("TODO: implement")
-}
+// Signals

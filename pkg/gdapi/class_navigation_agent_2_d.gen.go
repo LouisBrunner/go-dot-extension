@@ -784,199 +784,103 @@ func  (me *NavigationAgent2D) GetDebugPathCustomLineWidth() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NavigationAgent2D) GetPropTargetPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropTargetPosition(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropPathDesiredDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropPathDesiredDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropTargetDesiredDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropTargetDesiredDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropPathMaxDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropPathMaxDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropNavigationLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropNavigationLayers(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropPathfindingAlgorithm() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropPathfindingAlgorithm(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropPathPostprocessing() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropPathPostprocessing(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropPathMetadataFlags() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropPathMetadataFlags(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropAvoidanceEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropAvoidanceEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropVelocity() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropVelocity(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropNeighborDistance() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropNeighborDistance(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropMaxNeighbors() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropMaxNeighbors(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropTimeHorizonAgents() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropTimeHorizonAgents(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropTimeHorizonObstacles() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropTimeHorizonObstacles(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropMaxSpeed() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropMaxSpeed(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropAvoidanceLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropAvoidanceLayers(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropAvoidanceMask() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropAvoidanceMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropAvoidancePriority() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropAvoidancePriority(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropDebugEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropDebugEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropDebugUseCustom() bool {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropDebugUseCustom(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropDebugPathCustomColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropDebugPathCustomColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropDebugPathCustomPointSize() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropDebugPathCustomPointSize(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) GetPropDebugPathCustomLineWidth() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationAgent2D) SetPropDebugPathCustomLineWidth(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type NavigationAgent2DPathChangedSignalFn func()
+
+func (me *NavigationAgent2D) ConnectPathChanged(subs SignalSubscribers, fn NavigationAgent2DPathChangedSignalFn) {
+  sig := StringNameFromStr("path_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent2D) DisconnectPathChanged(subs SignalSubscribers, fn NavigationAgent2DPathChangedSignalFn) {
+  sig := StringNameFromStr("path_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type NavigationAgent2DTargetReachedSignalFn func()
+
+func (me *NavigationAgent2D) ConnectTargetReached(subs SignalSubscribers, fn NavigationAgent2DTargetReachedSignalFn) {
+  sig := StringNameFromStr("target_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent2D) DisconnectTargetReached(subs SignalSubscribers, fn NavigationAgent2DTargetReachedSignalFn) {
+  sig := StringNameFromStr("target_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type NavigationAgent2DWaypointReachedSignalFn func(details Dictionary, )
+
+func (me *NavigationAgent2D) ConnectWaypointReached(subs SignalSubscribers, fn NavigationAgent2DWaypointReachedSignalFn) {
+  sig := StringNameFromStr("waypoint_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent2D) DisconnectWaypointReached(subs SignalSubscribers, fn NavigationAgent2DWaypointReachedSignalFn) {
+  sig := StringNameFromStr("waypoint_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type NavigationAgent2DLinkReachedSignalFn func(details Dictionary, )
+
+func (me *NavigationAgent2D) ConnectLinkReached(subs SignalSubscribers, fn NavigationAgent2DLinkReachedSignalFn) {
+  sig := StringNameFromStr("link_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent2D) DisconnectLinkReached(subs SignalSubscribers, fn NavigationAgent2DLinkReachedSignalFn) {
+  sig := StringNameFromStr("link_reached")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type NavigationAgent2DNavigationFinishedSignalFn func()
+
+func (me *NavigationAgent2D) ConnectNavigationFinished(subs SignalSubscribers, fn NavigationAgent2DNavigationFinishedSignalFn) {
+  sig := StringNameFromStr("navigation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent2D) DisconnectNavigationFinished(subs SignalSubscribers, fn NavigationAgent2DNavigationFinishedSignalFn) {
+  sig := StringNameFromStr("navigation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type NavigationAgent2DVelocityComputedSignalFn func(safe_velocity Vector2, )
+
+func (me *NavigationAgent2D) ConnectVelocityComputed(subs SignalSubscribers, fn NavigationAgent2DVelocityComputedSignalFn) {
+  sig := StringNameFromStr("velocity_computed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *NavigationAgent2D) DisconnectVelocityComputed(subs SignalSubscribers, fn NavigationAgent2DVelocityComputedSignalFn) {
+  sig := StringNameFromStr("velocity_computed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

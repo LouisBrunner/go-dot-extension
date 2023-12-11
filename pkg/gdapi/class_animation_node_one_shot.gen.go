@@ -228,69 +228,7 @@ func  (me *AnimationNodeOneShot) GetMixMode() AnimationNodeOneShotMixMode {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimationNodeOneShot) GetPropMixMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) SetPropMixMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) GetPropFadeinTime() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) SetPropFadeinTime(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) GetPropFadeinCurve() Curve {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) SetPropFadeinCurve(value Curve) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) GetPropFadeoutTime() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) SetPropFadeoutTime(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) GetPropFadeoutCurve() Curve {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) SetPropFadeoutCurve(value Curve) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) GetPropAutorestart() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) SetPropAutorestart(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) GetPropAutorestartDelay() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) SetPropAutorestartDelay(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) GetPropAutorestartRandomDelay() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationNodeOneShot) SetPropAutorestartRandomDelay(value float32) {
-  panic("TODO: implement")
-}
+// Signals

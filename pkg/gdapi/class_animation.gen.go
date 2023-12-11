@@ -904,29 +904,7 @@ func  (me *Animation) Compress(page_size int, fps int, split_tolerance float32, 
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&page_size), gdc.ConstTypePtr(&fps), gdc.ConstTypePtr(&split_tolerance), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Animation) GetPropLength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Animation) SetPropLength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Animation) GetPropLoopMode() int {
-  panic("TODO: implement")
-}
-
-func (me *Animation) SetPropLoopMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Animation) GetPropStep() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Animation) SetPropStep(value float32) {
-  panic("TODO: implement")
-}
+// Signals

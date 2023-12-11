@@ -170,31 +170,39 @@ func  (me *Resource) Duplicate(subresources bool, ) Resource {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Resource) GetPropResourceLocalToScene() bool {
-  panic("TODO: implement")
-}
-
-func (me *Resource) SetPropResourceLocalToScene(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Resource) GetPropResourcePath() String {
-  panic("TODO: implement")
-}
-
-func (me *Resource) SetPropResourcePath(value String) {
-  panic("TODO: implement")
-}
-
-func (me *Resource) GetPropResourceName() String {
-  panic("TODO: implement")
-}
-
-func (me *Resource) SetPropResourceName(value String) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ResourceChangedSignalFn func()
+
+func (me *Resource) ConnectChanged(subs SignalSubscribers, fn ResourceChangedSignalFn) {
+  sig := StringNameFromStr("changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Resource) DisconnectChanged(subs SignalSubscribers, fn ResourceChangedSignalFn) {
+  sig := StringNameFromStr("changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ResourceSetupLocalToSceneRequestedSignalFn func()
+
+func (me *Resource) ConnectSetupLocalToSceneRequested(subs SignalSubscribers, fn ResourceSetupLocalToSceneRequestedSignalFn) {
+  sig := StringNameFromStr("setup_local_to_scene_requested")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Resource) DisconnectSetupLocalToSceneRequested(subs SignalSubscribers, fn ResourceSetupLocalToSceneRequestedSignalFn) {
+  sig := StringNameFromStr("setup_local_to_scene_requested")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

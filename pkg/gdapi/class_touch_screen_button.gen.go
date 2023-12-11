@@ -254,79 +254,39 @@ func  (me *TouchScreenButton) IsPressed() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *TouchScreenButton) GetPropTextureNormal() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) SetPropTextureNormal(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) GetPropTexturePressed() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) SetPropTexturePressed(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) GetPropBitmask() BitMap {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) SetPropBitmask(value BitMap) {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) GetPropShape() Shape2D {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) SetPropShape(value Shape2D) {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) GetPropShapeCentered() bool {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) SetPropShapeCentered(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) GetPropShapeVisible() bool {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) SetPropShapeVisible(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) GetPropPassbyPress() bool {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) SetPropPassbyPress(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) GetPropAction() StringName {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) SetPropAction(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) GetPropVisibilityMode() int {
-  panic("TODO: implement")
-}
-
-func (me *TouchScreenButton) SetPropVisibilityMode(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type TouchScreenButtonPressedSignalFn func()
+
+func (me *TouchScreenButton) ConnectPressed(subs SignalSubscribers, fn TouchScreenButtonPressedSignalFn) {
+  sig := StringNameFromStr("pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TouchScreenButton) DisconnectPressed(subs SignalSubscribers, fn TouchScreenButtonPressedSignalFn) {
+  sig := StringNameFromStr("pressed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type TouchScreenButtonReleasedSignalFn func()
+
+func (me *TouchScreenButton) ConnectReleased(subs SignalSubscribers, fn TouchScreenButtonReleasedSignalFn) {
+  sig := StringNameFromStr("released")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TouchScreenButton) DisconnectReleased(subs SignalSubscribers, fn TouchScreenButtonReleasedSignalFn) {
+  sig := StringNameFromStr("released")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

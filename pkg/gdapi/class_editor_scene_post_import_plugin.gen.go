@@ -83,4 +83,4 @@ func  (me *EditorScenePostImportPlugin) AddImportOptionAdvanced(type_ VariantTyp
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

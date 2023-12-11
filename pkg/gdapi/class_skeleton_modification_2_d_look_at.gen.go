@@ -214,29 +214,7 @@ func  (me *SkeletonModification2DLookAt) GetConstraintAngleInvert() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SkeletonModification2DLookAt) GetPropBoneIndex() int {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DLookAt) SetPropBoneIndex(value int) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DLookAt) GetPropBone2DNode() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DLookAt) SetPropBone2DNode(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DLookAt) GetPropTargetNodepath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DLookAt) SetPropTargetNodepath(value NodePath) {
-  panic("TODO: implement")
-}
+// Signals

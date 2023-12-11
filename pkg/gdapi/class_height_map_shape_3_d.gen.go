@@ -104,29 +104,7 @@ func  (me *HeightMapShape3D) GetMapData() PackedFloat32Array {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *HeightMapShape3D) GetPropMapWidth() int {
-  panic("TODO: implement")
-}
-
-func (me *HeightMapShape3D) SetPropMapWidth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *HeightMapShape3D) GetPropMapDepth() int {
-  panic("TODO: implement")
-}
-
-func (me *HeightMapShape3D) SetPropMapDepth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *HeightMapShape3D) GetPropMapData() PackedFloat32Array {
-  panic("TODO: implement")
-}
-
-func (me *HeightMapShape3D) SetPropMapData(value PackedFloat32Array) {
-  panic("TODO: implement")
-}
+// Signals

@@ -276,6 +276,20 @@ func  (me *UndoRedo) Undo() bool {
   return ret
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type UndoRedoVersionChangedSignalFn func()
+
+func (me *UndoRedo) ConnectVersionChanged(subs SignalSubscribers, fn UndoRedoVersionChangedSignalFn) {
+  sig := StringNameFromStr("version_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *UndoRedo) DisconnectVersionChanged(subs SignalSubscribers, fn UndoRedoVersionChangedSignalFn) {
+  sig := StringNameFromStr("version_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

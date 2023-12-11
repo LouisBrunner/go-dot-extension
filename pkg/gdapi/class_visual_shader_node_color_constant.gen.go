@@ -60,13 +60,7 @@ func  (me *VisualShaderNodeColorConstant) GetConstant() Color {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeColorConstant) GetPropConstant() Color {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeColorConstant) SetPropConstant(value Color) {
-  panic("TODO: implement")
-}
+// Signals

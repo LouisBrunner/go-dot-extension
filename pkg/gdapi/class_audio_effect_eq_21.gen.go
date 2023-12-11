@@ -39,4 +39,4 @@ func (me *AudioEffectEQ21) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -93,6 +93,20 @@ func  (me *EditorSelection) GetTransformableSelectedNodes() Node {
   return ret
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type EditorSelectionSelectionChangedSignalFn func()
+
+func (me *EditorSelection) ConnectSelectionChanged(subs SignalSubscribers, fn EditorSelectionSelectionChangedSignalFn) {
+  sig := StringNameFromStr("selection_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorSelection) DisconnectSelectionChanged(subs SignalSubscribers, fn EditorSelectionSelectionChangedSignalFn) {
+  sig := StringNameFromStr("selection_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

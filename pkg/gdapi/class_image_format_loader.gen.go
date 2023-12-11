@@ -46,4 +46,4 @@ func (me *ImageFormatLoader) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

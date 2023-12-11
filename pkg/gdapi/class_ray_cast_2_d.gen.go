@@ -346,61 +346,7 @@ func  (me *RayCast2D) IsHitFromInsideEnabled() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RayCast2D) GetPropEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) SetPropEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) GetPropExcludeParent() bool {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) SetPropExcludeParent(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) GetPropTargetPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) SetPropTargetPosition(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) GetPropCollisionMask() int {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) SetPropCollisionMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) GetPropHitFromInside() bool {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) SetPropHitFromInside(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) GetPropCollideWithAreas() bool {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) SetPropCollideWithAreas(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) GetPropCollideWithBodies() bool {
-  panic("TODO: implement")
-}
-
-func (me *RayCast2D) SetPropCollideWithBodies(value bool) {
-  panic("TODO: implement")
-}
+// Signals

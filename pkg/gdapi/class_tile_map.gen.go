@@ -621,47 +621,23 @@ func  (me *TileMap) GetNeighborCell(coords Vector2i, neighbor TileSetCellNeighbo
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *TileMap) GetPropTileSet() TileSet {
-  panic("TODO: implement")
-}
-
-func (me *TileMap) SetPropTileSet(value TileSet) {
-  panic("TODO: implement")
-}
-
-func (me *TileMap) GetPropCellQuadrantSize() int {
-  panic("TODO: implement")
-}
-
-func (me *TileMap) SetPropCellQuadrantSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TileMap) GetPropCollisionAnimatable() bool {
-  panic("TODO: implement")
-}
-
-func (me *TileMap) SetPropCollisionAnimatable(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TileMap) GetPropCollisionVisibilityMode() int {
-  panic("TODO: implement")
-}
-
-func (me *TileMap) SetPropCollisionVisibilityMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TileMap) GetPropNavigationVisibilityMode() int {
-  panic("TODO: implement")
-}
-
-func (me *TileMap) SetPropNavigationVisibilityMode(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type TileMapChangedSignalFn func()
+
+func (me *TileMap) ConnectChanged(subs SignalSubscribers, fn TileMapChangedSignalFn) {
+  sig := StringNameFromStr("changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *TileMap) DisconnectChanged(subs SignalSubscribers, fn TileMapChangedSignalFn) {
+  sig := StringNameFromStr("changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

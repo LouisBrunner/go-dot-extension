@@ -39,4 +39,4 @@ func (me *IntervalTweener) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

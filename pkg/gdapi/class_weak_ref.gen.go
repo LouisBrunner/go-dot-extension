@@ -51,4 +51,4 @@ func  (me *WeakRef) GetRef() Variant {
   return ret
 }
 
-// Properties
+// Signals

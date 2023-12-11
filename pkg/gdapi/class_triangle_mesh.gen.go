@@ -39,4 +39,4 @@ func (me *TriangleMesh) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

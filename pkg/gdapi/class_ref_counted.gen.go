@@ -87,4 +87,4 @@ func  (me *RefCounted) GetReferenceCount() int {
   return ret
 }
 
-// Properties
+// Signals

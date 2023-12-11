@@ -207,4 +207,4 @@ func  (me *EditorFileSystemDirectory) FindDirIndex(name String, ) int {
   return ret
 }
 
-// Properties
+// Signals

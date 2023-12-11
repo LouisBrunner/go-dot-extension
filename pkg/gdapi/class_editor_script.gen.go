@@ -73,4 +73,4 @@ func  (me *EditorScript) GetEditorInterface() EditorInterface {
   return ret
 }
 
-// Properties
+// Signals

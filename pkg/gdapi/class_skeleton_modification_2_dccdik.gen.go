@@ -258,29 +258,7 @@ func  (me *SkeletonModification2DCCDIK) GetCcdikJointConstraintAngleInvert(joint
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SkeletonModification2DCCDIK) GetPropTargetNodepath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DCCDIK) SetPropTargetNodepath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DCCDIK) GetPropTipNodepath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DCCDIK) SetPropTipNodepath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DCCDIK) GetPropCcdikDataChainLength() int {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DCCDIK) SetPropCcdikDataChainLength(value int) {
-  panic("TODO: implement")
-}
+// Signals

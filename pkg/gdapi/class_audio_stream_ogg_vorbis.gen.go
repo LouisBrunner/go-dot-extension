@@ -170,53 +170,7 @@ func  (me *AudioStreamOggVorbis) GetBarBeats() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioStreamOggVorbis) GetPropPacketSequence() Object {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamOggVorbis) SetPropPacketSequence(value Object) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamOggVorbis) GetPropBpm() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamOggVorbis) SetPropBpm(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamOggVorbis) GetPropBeatCount() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamOggVorbis) SetPropBeatCount(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamOggVorbis) GetPropBarBeats() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamOggVorbis) SetPropBarBeats(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamOggVorbis) GetPropLoop() bool {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamOggVorbis) SetPropLoop(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamOggVorbis) GetPropLoopOffset() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamOggVorbis) SetPropLoopOffset(value float32) {
-  panic("TODO: implement")
-}
+// Signals

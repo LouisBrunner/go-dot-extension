@@ -48,13 +48,7 @@ func  (me *PlaceholderTexture2D) SetSize(size Vector2, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PlaceholderTexture2D) GetPropSize() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *PlaceholderTexture2D) SetPropSize(value Vector2) {
-  panic("TODO: implement")
-}
+// Signals

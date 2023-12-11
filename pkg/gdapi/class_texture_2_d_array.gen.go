@@ -51,4 +51,4 @@ func  (me *Texture2DArray) CreatePlaceholder() Resource {
   return ret
 }
 
-// Properties
+// Signals

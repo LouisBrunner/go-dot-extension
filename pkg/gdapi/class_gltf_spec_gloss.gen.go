@@ -148,45 +148,7 @@ func  (me *GLTFSpecGloss) SetSpecGlossImg(spec_gloss_img Image, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(spec_gloss_img.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GLTFSpecGloss) GetPropDiffuseImg() Object {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSpecGloss) SetPropDiffuseImg(value Object) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSpecGloss) GetPropDiffuseFactor() Color {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSpecGloss) SetPropDiffuseFactor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSpecGloss) GetPropGlossFactor() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSpecGloss) SetPropGlossFactor(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSpecGloss) GetPropSpecularFactor() Color {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSpecGloss) SetPropSpecularFactor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSpecGloss) GetPropSpecGlossImg() Object {
-  panic("TODO: implement")
-}
-
-func (me *GLTFSpecGloss) SetPropSpecGlossImg(value Object) {
-  panic("TODO: implement")
-}
+// Signals

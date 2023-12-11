@@ -148,47 +148,71 @@ func  (me *EditorSpinSlider) IsHidingSlider() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *EditorSpinSlider) GetPropLabel() String {
-  panic("TODO: implement")
-}
-
-func (me *EditorSpinSlider) SetPropLabel(value String) {
-  panic("TODO: implement")
-}
-
-func (me *EditorSpinSlider) GetPropSuffix() String {
-  panic("TODO: implement")
-}
-
-func (me *EditorSpinSlider) SetPropSuffix(value String) {
-  panic("TODO: implement")
-}
-
-func (me *EditorSpinSlider) GetPropReadOnly() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorSpinSlider) SetPropReadOnly(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *EditorSpinSlider) GetPropFlat() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorSpinSlider) SetPropFlat(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *EditorSpinSlider) GetPropHideSlider() bool {
-  panic("TODO: implement")
-}
-
-func (me *EditorSpinSlider) SetPropHideSlider(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type EditorSpinSliderGrabbedSignalFn func()
+
+func (me *EditorSpinSlider) ConnectGrabbed(subs SignalSubscribers, fn EditorSpinSliderGrabbedSignalFn) {
+  sig := StringNameFromStr("grabbed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorSpinSlider) DisconnectGrabbed(subs SignalSubscribers, fn EditorSpinSliderGrabbedSignalFn) {
+  sig := StringNameFromStr("grabbed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorSpinSliderUngrabbedSignalFn func()
+
+func (me *EditorSpinSlider) ConnectUngrabbed(subs SignalSubscribers, fn EditorSpinSliderUngrabbedSignalFn) {
+  sig := StringNameFromStr("ungrabbed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorSpinSlider) DisconnectUngrabbed(subs SignalSubscribers, fn EditorSpinSliderUngrabbedSignalFn) {
+  sig := StringNameFromStr("ungrabbed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorSpinSliderValueFocusEnteredSignalFn func()
+
+func (me *EditorSpinSlider) ConnectValueFocusEntered(subs SignalSubscribers, fn EditorSpinSliderValueFocusEnteredSignalFn) {
+  sig := StringNameFromStr("value_focus_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorSpinSlider) DisconnectValueFocusEntered(subs SignalSubscribers, fn EditorSpinSliderValueFocusEnteredSignalFn) {
+  sig := StringNameFromStr("value_focus_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type EditorSpinSliderValueFocusExitedSignalFn func()
+
+func (me *EditorSpinSlider) ConnectValueFocusExited(subs SignalSubscribers, fn EditorSpinSliderValueFocusExitedSignalFn) {
+  sig := StringNameFromStr("value_focus_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *EditorSpinSlider) DisconnectValueFocusExited(subs SignalSubscribers, fn EditorSpinSliderValueFocusExitedSignalFn) {
+  sig := StringNameFromStr("value_focus_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

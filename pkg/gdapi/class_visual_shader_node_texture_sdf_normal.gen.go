@@ -39,4 +39,4 @@ func (me *VisualShaderNodeTextureSDFNormal) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -126,37 +126,7 @@ func  (me *Joint3D) GetExcludeNodesFromCollision() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Joint3D) GetPropNodeA() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Joint3D) SetPropNodeA(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *Joint3D) GetPropNodeB() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Joint3D) SetPropNodeB(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *Joint3D) GetPropSolverPriority() int {
-  panic("TODO: implement")
-}
-
-func (me *Joint3D) SetPropSolverPriority(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Joint3D) GetPropExcludeNodesFromCollision() bool {
-  panic("TODO: implement")
-}
-
-func (me *Joint3D) SetPropExcludeNodesFromCollision(value bool) {
-  panic("TODO: implement")
-}
+// Signals

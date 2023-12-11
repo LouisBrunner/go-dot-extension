@@ -104,29 +104,7 @@ func  (me *ParallaxLayer) GetMirroring() Vector2 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ParallaxLayer) GetPropMotionScale() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxLayer) SetPropMotionScale(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxLayer) GetPropMotionOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxLayer) SetPropMotionOffset(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxLayer) GetPropMotionMirroring() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxLayer) SetPropMotionMirroring(value Vector2) {
-  panic("TODO: implement")
-}
+// Signals

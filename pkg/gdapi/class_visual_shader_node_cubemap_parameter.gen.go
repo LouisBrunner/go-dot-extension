@@ -39,4 +39,4 @@ func (me *VisualShaderNodeCubemapParameter) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

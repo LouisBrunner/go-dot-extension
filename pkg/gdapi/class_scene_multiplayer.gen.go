@@ -282,71 +282,55 @@ func  (me *SceneMultiplayer) SetMaxDeltaPacketSize(size int, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SceneMultiplayer) GetPropRootPath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) SetPropRootPath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) GetPropAuthCallback() Callable {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) SetPropAuthCallback(value Callable) {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) GetPropAuthTimeout() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) SetPropAuthTimeout(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) GetPropAllowObjectDecoding() bool {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) SetPropAllowObjectDecoding(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) GetPropRefuseNewConnections() bool {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) SetPropRefuseNewConnections(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) GetPropServerRelay() bool {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) SetPropServerRelay(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) GetPropMaxSyncPacketSize() int {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) SetPropMaxSyncPacketSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) GetPropMaxDeltaPacketSize() int {
-  panic("TODO: implement")
-}
-
-func (me *SceneMultiplayer) SetPropMaxDeltaPacketSize(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type SceneMultiplayerPeerAuthenticatingSignalFn func(id int, )
+
+func (me *SceneMultiplayer) ConnectPeerAuthenticating(subs SignalSubscribers, fn SceneMultiplayerPeerAuthenticatingSignalFn) {
+  sig := StringNameFromStr("peer_authenticating")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneMultiplayer) DisconnectPeerAuthenticating(subs SignalSubscribers, fn SceneMultiplayerPeerAuthenticatingSignalFn) {
+  sig := StringNameFromStr("peer_authenticating")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type SceneMultiplayerPeerAuthenticationFailedSignalFn func(id int, )
+
+func (me *SceneMultiplayer) ConnectPeerAuthenticationFailed(subs SignalSubscribers, fn SceneMultiplayerPeerAuthenticationFailedSignalFn) {
+  sig := StringNameFromStr("peer_authentication_failed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneMultiplayer) DisconnectPeerAuthenticationFailed(subs SignalSubscribers, fn SceneMultiplayerPeerAuthenticationFailedSignalFn) {
+  sig := StringNameFromStr("peer_authentication_failed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type SceneMultiplayerPeerPacketSignalFn func(id int, packet PackedByteArray, )
+
+func (me *SceneMultiplayer) ConnectPeerPacket(subs SignalSubscribers, fn SceneMultiplayerPeerPacketSignalFn) {
+  sig := StringNameFromStr("peer_packet")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SceneMultiplayer) DisconnectPeerPacket(subs SignalSubscribers, fn SceneMultiplayerPeerPacketSignalFn) {
+  sig := StringNameFromStr("peer_packet")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

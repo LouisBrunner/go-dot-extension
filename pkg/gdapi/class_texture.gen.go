@@ -39,4 +39,4 @@ func (me *Texture) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

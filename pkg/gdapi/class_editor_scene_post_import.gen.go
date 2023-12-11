@@ -51,4 +51,4 @@ func  (me *EditorScenePostImport) GetSourceFile() String {
   return ret
 }
 
-// Properties
+// Signals

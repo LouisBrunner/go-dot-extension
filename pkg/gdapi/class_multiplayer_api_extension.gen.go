@@ -39,4 +39,4 @@ func (me *MultiplayerAPIExtension) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

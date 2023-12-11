@@ -39,4 +39,4 @@ func (me *AnimationRootNode) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

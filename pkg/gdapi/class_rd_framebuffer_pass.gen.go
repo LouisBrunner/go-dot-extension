@@ -154,45 +154,7 @@ func  (me *RDFramebufferPass) GetDepthAttachment() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RDFramebufferPass) GetPropColorAttachments() PackedInt32Array {
-  panic("TODO: implement")
-}
-
-func (me *RDFramebufferPass) SetPropColorAttachments(value PackedInt32Array) {
-  panic("TODO: implement")
-}
-
-func (me *RDFramebufferPass) GetPropInputAttachments() PackedInt32Array {
-  panic("TODO: implement")
-}
-
-func (me *RDFramebufferPass) SetPropInputAttachments(value PackedInt32Array) {
-  panic("TODO: implement")
-}
-
-func (me *RDFramebufferPass) GetPropResolveAttachments() PackedInt32Array {
-  panic("TODO: implement")
-}
-
-func (me *RDFramebufferPass) SetPropResolveAttachments(value PackedInt32Array) {
-  panic("TODO: implement")
-}
-
-func (me *RDFramebufferPass) GetPropPreserveAttachments() PackedInt32Array {
-  panic("TODO: implement")
-}
-
-func (me *RDFramebufferPass) SetPropPreserveAttachments(value PackedInt32Array) {
-  panic("TODO: implement")
-}
-
-func (me *RDFramebufferPass) GetPropDepthAttachment() int {
-  panic("TODO: implement")
-}
-
-func (me *RDFramebufferPass) SetPropDepthAttachment(value int) {
-  panic("TODO: implement")
-}
+// Signals

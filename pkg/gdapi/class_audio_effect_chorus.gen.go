@@ -236,29 +236,7 @@ func  (me *AudioEffectChorus) GetDry() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioEffectChorus) GetPropVoiceCount() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectChorus) SetPropVoiceCount(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectChorus) GetPropDry() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectChorus) SetPropDry(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectChorus) GetPropWet() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectChorus) SetPropWet(value float32) {
-  panic("TODO: implement")
-}
+// Signals

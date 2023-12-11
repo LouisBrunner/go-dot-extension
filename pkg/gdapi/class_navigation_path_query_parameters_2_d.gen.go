@@ -212,61 +212,7 @@ func  (me *NavigationPathQueryParameters2D) GetMetadataFlags() NavigationPathQue
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NavigationPathQueryParameters2D) GetPropMap() RID {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) SetPropMap(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) GetPropStartPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) SetPropStartPosition(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) GetPropTargetPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) SetPropTargetPosition(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) GetPropNavigationLayers() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) SetPropNavigationLayers(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) GetPropPathfindingAlgorithm() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) SetPropPathfindingAlgorithm(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) GetPropPathPostprocessing() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) SetPropPathPostprocessing(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) GetPropMetadataFlags() int {
-  panic("TODO: implement")
-}
-
-func (me *NavigationPathQueryParameters2D) SetPropMetadataFlags(value int) {
-  panic("TODO: implement")
-}
+// Signals

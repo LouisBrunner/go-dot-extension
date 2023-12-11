@@ -342,61 +342,7 @@ func  (me *CodeHighlighter) GetMemberVariableColor() Color {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CodeHighlighter) GetPropNumberColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) SetPropNumberColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) GetPropSymbolColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) SetPropSymbolColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) GetPropFunctionColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) SetPropFunctionColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) GetPropMemberVariableColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) SetPropMemberVariableColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) GetPropKeywordColors() Dictionary {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) SetPropKeywordColors(value Dictionary) {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) GetPropMemberKeywordColors() Dictionary {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) SetPropMemberKeywordColors(value Dictionary) {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) GetPropColorRegions() Dictionary {
-  panic("TODO: implement")
-}
-
-func (me *CodeHighlighter) SetPropColorRegions(value Dictionary) {
-  panic("TODO: implement")
-}
+// Signals

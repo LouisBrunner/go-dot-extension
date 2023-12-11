@@ -82,21 +82,7 @@ func  (me *AudioStreamGenerator) GetBufferLength() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioStreamGenerator) GetPropMixRate() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamGenerator) SetPropMixRate(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamGenerator) GetPropBufferLength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioStreamGenerator) SetPropBufferLength(value float32) {
-  panic("TODO: implement")
-}
+// Signals

@@ -153,4 +153,4 @@ func  (me *TileMapPattern) IsEmpty() bool {
   return ret
 }
 
-// Properties
+// Signals

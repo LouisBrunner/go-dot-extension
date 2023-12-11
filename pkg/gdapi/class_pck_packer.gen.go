@@ -75,4 +75,4 @@ func  (me *PCKPacker) Flush(verbose bool, ) Error {
   return ret
 }
 
-// Properties
+// Signals

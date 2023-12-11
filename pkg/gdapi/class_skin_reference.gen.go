@@ -63,4 +63,4 @@ func  (me *SkinReference) GetSkin() Skin {
   return ret
 }
 
-// Properties
+// Signals

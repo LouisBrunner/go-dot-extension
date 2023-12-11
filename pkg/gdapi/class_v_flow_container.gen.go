@@ -39,4 +39,4 @@ func (me *VFlowContainer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -39,4 +39,4 @@ func (me *IPUnix) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -147,4 +147,4 @@ func  (me *Noise) GetSeamlessImage3D(width int, height int, depth int, invert bo
   return ret
 }
 
-// Properties
+// Signals

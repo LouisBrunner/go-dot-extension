@@ -304,7 +304,7 @@ func  (me *Object) HasUserSignal(signal StringName, ) bool {
   return ret
 }
 
-func  (me *Object) EmitSignal(signal StringName, ) Error {
+func  (me *Object) EmitSignal(signal StringName, varargs ...Variant) Error {
   classNameV := StringNameFromStr("Object")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("emit_signal")
@@ -312,6 +312,9 @@ func  (me *Object) EmitSignal(signal StringName, ) Error {
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4047867050) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(signal.AsCTypePtr()), }
+  for _, v := range varargs {
+    cargs = append(cargs, v.AsCPtr())
+  }
   err := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), gdc.UninitializedVariantPtr(&ret), err)
   if err.Error != gdc.CallOk {
@@ -321,7 +324,7 @@ func  (me *Object) EmitSignal(signal StringName, ) Error {
   return ret
 }
 
-func  (me *Object) Call(method StringName, ) Variant {
+func  (me *Object) Call(method StringName, varargs ...Variant) Variant {
   classNameV := StringNameFromStr("Object")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("call")
@@ -329,6 +332,9 @@ func  (me *Object) Call(method StringName, ) Variant {
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3400424181) // FIXME: should cache?
   var ret Variant
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(method.AsCTypePtr()), }
+  for _, v := range varargs {
+    cargs = append(cargs, v.AsCPtr())
+  }
   err := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), gdc.UninitializedVariantPtr(&ret), err)
   if err.Error != gdc.CallOk {
@@ -338,7 +344,7 @@ func  (me *Object) Call(method StringName, ) Variant {
   return ret
 }
 
-func  (me *Object) CallDeferred(method StringName, ) Variant {
+func  (me *Object) CallDeferred(method StringName, varargs ...Variant) Variant {
   classNameV := StringNameFromStr("Object")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("call_deferred")
@@ -346,6 +352,9 @@ func  (me *Object) CallDeferred(method StringName, ) Variant {
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3400424181) // FIXME: should cache?
   var ret Variant
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(method.AsCTypePtr()), }
+  for _, v := range varargs {
+    cargs = append(cargs, v.AsCPtr())
+  }
   err := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), gdc.UninitializedVariantPtr(&ret), err)
   if err.Error != gdc.CallOk {
@@ -571,6 +580,36 @@ func  (me *Object) CancelFree()  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ObjectScriptChangedSignalFn func()
+
+func (me *Object) ConnectScriptChanged(subs SignalSubscribers, fn ObjectScriptChangedSignalFn) {
+  sig := StringNameFromStr("script_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Object) DisconnectScriptChanged(subs SignalSubscribers, fn ObjectScriptChangedSignalFn) {
+  sig := StringNameFromStr("script_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ObjectPropertyListChangedSignalFn func()
+
+func (me *Object) ConnectPropertyListChanged(subs SignalSubscribers, fn ObjectPropertyListChangedSignalFn) {
+  sig := StringNameFromStr("property_list_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Object) DisconnectPropertyListChanged(subs SignalSubscribers, fn ObjectPropertyListChangedSignalFn) {
+  sig := StringNameFromStr("property_list_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

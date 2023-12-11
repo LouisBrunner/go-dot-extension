@@ -148,45 +148,7 @@ func  (me *InputEventMouseMotion) GetVelocity() Vector2 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEventMouseMotion) GetPropTilt() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseMotion) SetPropTilt(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseMotion) GetPropPressure() float32 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseMotion) SetPropPressure(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseMotion) GetPropPenInverted() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseMotion) SetPropPenInverted(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseMotion) GetPropRelative() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseMotion) SetPropRelative(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseMotion) GetPropVelocity() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseMotion) SetPropVelocity(value Vector2) {
-  panic("TODO: implement")
-}
+// Signals

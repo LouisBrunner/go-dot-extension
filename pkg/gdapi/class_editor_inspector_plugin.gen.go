@@ -69,4 +69,4 @@ func  (me *EditorInspectorPlugin) AddPropertyEditorForMultipleProperties(label S
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

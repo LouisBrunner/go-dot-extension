@@ -1110,167 +1110,71 @@ func  (me *CodeEdit) SetSymbolLookupWordAsValid(valid bool, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&valid), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CodeEdit) GetPropSymbolLookupOnClick() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropSymbolLookupOnClick(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropLineFolding() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropLineFolding(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropLineLengthGuidelines() PackedInt32Array {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropLineLengthGuidelines(value PackedInt32Array) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropGuttersDrawBreakpointsGutter() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropGuttersDrawBreakpointsGutter(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropGuttersDrawBookmarks() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropGuttersDrawBookmarks(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropGuttersDrawExecutingLines() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropGuttersDrawExecutingLines(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropGuttersDrawLineNumbers() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropGuttersDrawLineNumbers(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropGuttersZeroPadLineNumbers() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropGuttersZeroPadLineNumbers(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropGuttersDrawFoldGutter() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropGuttersDrawFoldGutter(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropDelimiterStrings() PackedStringArray {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropDelimiterStrings(value PackedStringArray) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropDelimiterComments() PackedStringArray {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropDelimiterComments(value PackedStringArray) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropCodeCompletionEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropCodeCompletionEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropCodeCompletionPrefixes() PackedStringArray {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropCodeCompletionPrefixes(value PackedStringArray) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropIndentSize() int {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropIndentSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropIndentUseSpaces() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropIndentUseSpaces(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropIndentAutomatic() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropIndentAutomatic(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropIndentAutomaticPrefixes() PackedStringArray {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropIndentAutomaticPrefixes(value PackedStringArray) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropAutoBraceCompletionEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropAutoBraceCompletionEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropAutoBraceCompletionHighlightMatching() bool {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropAutoBraceCompletionHighlightMatching(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) GetPropAutoBraceCompletionPairs() Dictionary {
-  panic("TODO: implement")
-}
-
-func (me *CodeEdit) SetPropAutoBraceCompletionPairs(value Dictionary) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type CodeEditBreakpointToggledSignalFn func(line int, )
+
+func (me *CodeEdit) ConnectBreakpointToggled(subs SignalSubscribers, fn CodeEditBreakpointToggledSignalFn) {
+  sig := StringNameFromStr("breakpoint_toggled")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CodeEdit) DisconnectBreakpointToggled(subs SignalSubscribers, fn CodeEditBreakpointToggledSignalFn) {
+  sig := StringNameFromStr("breakpoint_toggled")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CodeEditCodeCompletionRequestedSignalFn func()
+
+func (me *CodeEdit) ConnectCodeCompletionRequested(subs SignalSubscribers, fn CodeEditCodeCompletionRequestedSignalFn) {
+  sig := StringNameFromStr("code_completion_requested")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CodeEdit) DisconnectCodeCompletionRequested(subs SignalSubscribers, fn CodeEditCodeCompletionRequestedSignalFn) {
+  sig := StringNameFromStr("code_completion_requested")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CodeEditSymbolLookupSignalFn func(symbol String, line int, column int, )
+
+func (me *CodeEdit) ConnectSymbolLookup(subs SignalSubscribers, fn CodeEditSymbolLookupSignalFn) {
+  sig := StringNameFromStr("symbol_lookup")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CodeEdit) DisconnectSymbolLookup(subs SignalSubscribers, fn CodeEditSymbolLookupSignalFn) {
+  sig := StringNameFromStr("symbol_lookup")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type CodeEditSymbolValidateSignalFn func(symbol String, )
+
+func (me *CodeEdit) ConnectSymbolValidate(subs SignalSubscribers, fn CodeEditSymbolValidateSignalFn) {
+  sig := StringNameFromStr("symbol_validate")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CodeEdit) DisconnectSymbolValidate(subs SignalSubscribers, fn CodeEditSymbolValidateSignalFn) {
+  sig := StringNameFromStr("symbol_validate")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

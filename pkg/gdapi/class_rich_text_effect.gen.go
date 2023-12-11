@@ -39,4 +39,4 @@ func (me *RichTextEffect) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

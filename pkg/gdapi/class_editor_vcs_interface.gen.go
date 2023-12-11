@@ -150,4 +150,4 @@ func  (me *EditorVCSInterface) PopupError(msg String, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

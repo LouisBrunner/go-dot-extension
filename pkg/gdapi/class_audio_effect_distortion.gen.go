@@ -157,45 +157,7 @@ func  (me *AudioEffectDistortion) GetPostGain() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioEffectDistortion) GetPropMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectDistortion) SetPropMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectDistortion) GetPropPreGain() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectDistortion) SetPropPreGain(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectDistortion) GetPropKeepHfHz() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectDistortion) SetPropKeepHfHz(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectDistortion) GetPropDrive() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectDistortion) SetPropDrive(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectDistortion) GetPropPostGain() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectDistortion) SetPropPostGain(value float32) {
-  panic("TODO: implement")
-}
+// Signals

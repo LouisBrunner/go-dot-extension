@@ -39,4 +39,4 @@ func (me *ResourceFormatSaver) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

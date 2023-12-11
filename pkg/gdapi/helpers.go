@@ -2,6 +2,14 @@ package gdapi
 
 import "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 
+// Object
+
+func ObjectFromPtr(ptr gdc.ObjectPtr) Object {
+	return Object{
+		obj: ptr,
+	}
+}
+
 // String
 
 func StringFromStr(str string) *String {

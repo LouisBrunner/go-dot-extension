@@ -155,45 +155,7 @@ func  (me *PlaneMesh) GetOrientation() PlaneMeshOrientation {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PlaneMesh) GetPropSize() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *PlaneMesh) SetPropSize(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *PlaneMesh) GetPropSubdivideWidth() int {
-  panic("TODO: implement")
-}
-
-func (me *PlaneMesh) SetPropSubdivideWidth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PlaneMesh) GetPropSubdivideDepth() int {
-  panic("TODO: implement")
-}
-
-func (me *PlaneMesh) SetPropSubdivideDepth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PlaneMesh) GetPropCenterOffset() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *PlaneMesh) SetPropCenterOffset(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *PlaneMesh) GetPropOrientation() int {
-  panic("TODO: implement")
-}
-
-func (me *PlaneMesh) SetPropOrientation(value int) {
-  panic("TODO: implement")
-}
+// Signals

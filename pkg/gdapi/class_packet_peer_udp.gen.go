@@ -191,4 +191,4 @@ func  (me *PacketPeerUDP) LeaveMulticastGroup(multicast_address String, interfac
   return ret
 }
 
-// Properties
+// Signals

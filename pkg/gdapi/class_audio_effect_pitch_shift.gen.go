@@ -114,29 +114,7 @@ func  (me *AudioEffectPitchShift) GetFftSize() AudioEffectPitchShiftFFTSize {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioEffectPitchShift) GetPropPitchScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPitchShift) SetPropPitchScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPitchShift) GetPropOversampling() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPitchShift) SetPropOversampling(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPitchShift) GetPropFftSize() int {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectPitchShift) SetPropFftSize(value int) {
-  panic("TODO: implement")
-}
+// Signals

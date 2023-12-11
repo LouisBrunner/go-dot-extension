@@ -126,37 +126,7 @@ func  (me *CapsuleMesh) GetRings() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *CapsuleMesh) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CapsuleMesh) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CapsuleMesh) GetPropHeight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *CapsuleMesh) SetPropHeight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *CapsuleMesh) GetPropRadialSegments() int {
-  panic("TODO: implement")
-}
-
-func (me *CapsuleMesh) SetPropRadialSegments(value int) {
-  panic("TODO: implement")
-}
-
-func (me *CapsuleMesh) GetPropRings() int {
-  panic("TODO: implement")
-}
-
-func (me *CapsuleMesh) SetPropRings(value int) {
-  panic("TODO: implement")
-}
+// Signals

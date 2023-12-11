@@ -170,53 +170,7 @@ func  (me *ParallaxBackground) IsIgnoreCameraZoom() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ParallaxBackground) GetPropScrollOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxBackground) SetPropScrollOffset(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxBackground) GetPropScrollBaseOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxBackground) SetPropScrollBaseOffset(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxBackground) GetPropScrollBaseScale() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxBackground) SetPropScrollBaseScale(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxBackground) GetPropScrollLimitBegin() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxBackground) SetPropScrollLimitBegin(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxBackground) GetPropScrollLimitEnd() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxBackground) SetPropScrollLimitEnd(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxBackground) GetPropScrollIgnoreCameraZoom() bool {
-  panic("TODO: implement")
-}
-
-func (me *ParallaxBackground) SetPropScrollIgnoreCameraZoom(value bool) {
-  panic("TODO: implement")
-}
+// Signals

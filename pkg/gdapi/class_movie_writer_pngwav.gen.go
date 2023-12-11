@@ -39,4 +39,4 @@ func (me *MovieWriterPNGWAV) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

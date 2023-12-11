@@ -60,13 +60,7 @@ func  (me *GLTFAnimation) SetLoop(loop bool, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&loop), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GLTFAnimation) GetPropLoop() bool {
-  panic("TODO: implement")
-}
-
-func (me *GLTFAnimation) SetPropLoop(value bool) {
-  panic("TODO: implement")
-}
+// Signals

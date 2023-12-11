@@ -198,45 +198,7 @@ func  (me *AnimatedTexture) GetFrameDuration(frame int, ) float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimatedTexture) GetPropFrames() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedTexture) SetPropFrames(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedTexture) GetPropCurrentFrame() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedTexture) SetPropCurrentFrame(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedTexture) GetPropPause() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedTexture) SetPropPause(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedTexture) GetPropOneShot() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedTexture) SetPropOneShot(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedTexture) GetPropSpeedScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimatedTexture) SetPropSpeedScale(value float32) {
-  panic("TODO: implement")
-}
+// Signals

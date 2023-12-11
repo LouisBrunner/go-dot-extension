@@ -200,77 +200,7 @@ func  (me *NoiseTexture3D) GetNoise() Noise {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *NoiseTexture3D) GetPropWidth() int {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) SetPropWidth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) GetPropHeight() int {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) SetPropHeight(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) GetPropDepth() int {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) SetPropDepth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) GetPropInvert() bool {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) SetPropInvert(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) GetPropSeamless() bool {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) SetPropSeamless(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) GetPropSeamlessBlendSkirt() float32 {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) SetPropSeamlessBlendSkirt(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) GetPropNormalize() bool {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) SetPropNormalize(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) GetPropColorRamp() Gradient {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) SetPropColorRamp(value Gradient) {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) GetPropNoise() Noise {
-  panic("TODO: implement")
-}
-
-func (me *NoiseTexture3D) SetPropNoise(value Noise) {
-  panic("TODO: implement")
-}
+// Signals

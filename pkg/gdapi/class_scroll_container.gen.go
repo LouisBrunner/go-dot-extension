@@ -256,71 +256,39 @@ func  (me *ScrollContainer) EnsureControlVisible(control Control, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(control.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ScrollContainer) GetPropFollowFocus() bool {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) SetPropFollowFocus(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) GetPropScrollHorizontal() int {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) SetPropScrollHorizontal(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) GetPropScrollVertical() int {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) SetPropScrollVertical(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) GetPropScrollHorizontalCustomStep() float32 {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) SetPropScrollHorizontalCustomStep(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) GetPropScrollVerticalCustomStep() float32 {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) SetPropScrollVerticalCustomStep(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) GetPropHorizontalScrollMode() int {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) SetPropHorizontalScrollMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) GetPropVerticalScrollMode() int {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) SetPropVerticalScrollMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) GetPropScrollDeadzone() int {
-  panic("TODO: implement")
-}
-
-func (me *ScrollContainer) SetPropScrollDeadzone(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ScrollContainerScrollStartedSignalFn func()
+
+func (me *ScrollContainer) ConnectScrollStarted(subs SignalSubscribers, fn ScrollContainerScrollStartedSignalFn) {
+  sig := StringNameFromStr("scroll_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ScrollContainer) DisconnectScrollStarted(subs SignalSubscribers, fn ScrollContainerScrollStartedSignalFn) {
+  sig := StringNameFromStr("scroll_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ScrollContainerScrollEndedSignalFn func()
+
+func (me *ScrollContainer) ConnectScrollEnded(subs SignalSubscribers, fn ScrollContainerScrollEndedSignalFn) {
+  sig := StringNameFromStr("scroll_ended")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ScrollContainer) DisconnectScrollEnded(subs SignalSubscribers, fn ScrollContainerScrollEndedSignalFn) {
+  sig := StringNameFromStr("scroll_ended")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

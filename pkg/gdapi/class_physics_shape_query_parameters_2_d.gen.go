@@ -236,77 +236,7 @@ func  (me *PhysicsShapeQueryParameters2D) IsCollideWithAreasEnabled() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PhysicsShapeQueryParameters2D) GetPropCollisionMask() int {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) SetPropCollisionMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) GetPropExclude() RID {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) SetPropExclude(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) GetPropMargin() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) SetPropMargin(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) GetPropMotion() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) SetPropMotion(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) GetPropShape() Shape2D {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) SetPropShape(value Shape2D) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) GetPropShapeRid() RID {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) SetPropShapeRid(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) GetPropTransform() Transform2D {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) SetPropTransform(value Transform2D) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) GetPropCollideWithBodies() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) SetPropCollideWithBodies(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) GetPropCollideWithAreas() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsShapeQueryParameters2D) SetPropCollideWithAreas(value bool) {
-  panic("TODO: implement")
-}
+// Signals

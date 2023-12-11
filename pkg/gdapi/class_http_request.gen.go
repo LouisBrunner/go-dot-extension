@@ -310,63 +310,23 @@ func  (me *HTTPRequest) SetHttpsProxy(host String, port int, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(host.AsCTypePtr()), gdc.ConstTypePtr(&port), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *HTTPRequest) GetPropDownloadFile() String {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) SetPropDownloadFile(value String) {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) GetPropDownloadChunkSize() int {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) SetPropDownloadChunkSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) GetPropUseThreads() bool {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) SetPropUseThreads(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) GetPropAcceptGzip() bool {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) SetPropAcceptGzip(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) GetPropBodySizeLimit() int {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) SetPropBodySizeLimit(value int) {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) GetPropMaxRedirects() int {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) SetPropMaxRedirects(value int) {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) GetPropTimeout() float32 {
-  panic("TODO: implement")
-}
-
-func (me *HTTPRequest) SetPropTimeout(value float32) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type HTTPRequestRequestCompletedSignalFn func(result int, response_code int, headers PackedStringArray, body PackedByteArray, )
+
+func (me *HTTPRequest) ConnectRequestCompleted(subs SignalSubscribers, fn HTTPRequestRequestCompletedSignalFn) {
+  sig := StringNameFromStr("request_completed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *HTTPRequest) DisconnectRequestCompleted(subs SignalSubscribers, fn HTTPRequestRequestCompletedSignalFn) {
+  sig := StringNameFromStr("request_completed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

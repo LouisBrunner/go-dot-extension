@@ -278,13 +278,7 @@ func  (me *Mesh) GenerateTriangleMesh() TriangleMesh {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Mesh) GetPropLightmapSizeHint() Vector2i {
-  panic("TODO: implement")
-}
-
-func (me *Mesh) SetPropLightmapSizeHint(value Vector2i) {
-  panic("TODO: implement")
-}
+// Signals

@@ -298,21 +298,7 @@ func  (me *Curve2D) TessellateEvenLength(max_stages int, tolerance_length float3
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Curve2D) GetPropBakeInterval() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Curve2D) SetPropBakeInterval(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Curve2D) GetPropPointCount() int {
-  panic("TODO: implement")
-}
-
-func (me *Curve2D) SetPropPointCount(value int) {
-  panic("TODO: implement")
-}
+// Signals

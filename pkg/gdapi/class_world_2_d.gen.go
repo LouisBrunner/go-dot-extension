@@ -86,37 +86,7 @@ func  (me *World2D) GetDirectSpaceState() PhysicsDirectSpaceState2D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *World2D) GetPropCanvas() RID {
-  panic("TODO: implement")
-}
-
-func (me *World2D) SetPropCanvas(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *World2D) GetPropSpace() RID {
-  panic("TODO: implement")
-}
-
-func (me *World2D) SetPropSpace(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *World2D) GetPropNavigationMap() RID {
-  panic("TODO: implement")
-}
-
-func (me *World2D) SetPropNavigationMap(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *World2D) GetPropDirectSpaceState() PhysicsDirectSpaceState2D {
-  panic("TODO: implement")
-}
-
-func (me *World2D) SetPropDirectSpaceState(value PhysicsDirectSpaceState2D) {
-  panic("TODO: implement")
-}
+// Signals

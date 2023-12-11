@@ -39,4 +39,4 @@ func (me *AudioStreamPlayback) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

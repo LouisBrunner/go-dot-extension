@@ -151,4 +151,4 @@ func  (me *AnimationNodeStateMachinePlayback) GetTravelPath() StringName {
   return ret
 }
 
-// Properties
+// Signals

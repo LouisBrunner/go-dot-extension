@@ -51,4 +51,4 @@ func  (me *PhysicsDirectSpaceState2DExtension) IsBodyExcludedFromQuery(body RID,
   return ret
 }
 
-// Properties
+// Signals

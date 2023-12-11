@@ -104,29 +104,7 @@ func  (me *ReferenceRect) SetEditorOnly(enabled bool, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ReferenceRect) GetPropBorderColor() Color {
-  panic("TODO: implement")
-}
-
-func (me *ReferenceRect) SetPropBorderColor(value Color) {
-  panic("TODO: implement")
-}
-
-func (me *ReferenceRect) GetPropBorderWidth() float32 {
-  panic("TODO: implement")
-}
-
-func (me *ReferenceRect) SetPropBorderWidth(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *ReferenceRect) GetPropEditorOnly() bool {
-  panic("TODO: implement")
-}
-
-func (me *ReferenceRect) SetPropEditorOnly(value bool) {
-  panic("TODO: implement")
-}
+// Signals

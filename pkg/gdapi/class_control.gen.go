@@ -1558,335 +1558,151 @@ func  (me *Control) IsLocalizingNumeralSystem() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Control) GetPropClipContents() bool {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropClipContents(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropCustomMinimumSize() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropCustomMinimumSize(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropLayoutDirection() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropLayoutDirection(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropLayoutMode() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropLayoutMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropAnchorsPreset() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropAnchorsPreset(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropAnchorLeft() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropAnchorLeft(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropAnchorTop() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropAnchorTop(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropAnchorRight() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropAnchorRight(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropAnchorBottom() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropAnchorBottom(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropOffsetLeft() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropOffsetLeft(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropOffsetTop() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropOffsetTop(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropOffsetRight() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropOffsetRight(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropOffsetBottom() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropOffsetBottom(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropGrowHorizontal() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropGrowHorizontal(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropGrowVertical() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropGrowVertical(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropSize() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropSize(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropPosition(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropGlobalPosition() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropGlobalPosition(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropRotation() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropRotation(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropRotationDegrees() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropRotationDegrees(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropScale() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropScale(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropPivotOffset() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropPivotOffset(value Vector2) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropSizeFlagsHorizontal() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropSizeFlagsHorizontal(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropSizeFlagsVertical() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropSizeFlagsVertical(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropSizeFlagsStretchRatio() float32 {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropSizeFlagsStretchRatio(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropAutoTranslate() bool {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropAutoTranslate(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropLocalizeNumeralSystem() bool {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropLocalizeNumeralSystem(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropTooltipText() String {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropTooltipText(value String) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropFocusNeighborLeft() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropFocusNeighborLeft(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropFocusNeighborTop() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropFocusNeighborTop(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropFocusNeighborRight() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropFocusNeighborRight(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropFocusNeighborBottom() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropFocusNeighborBottom(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropFocusNext() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropFocusNext(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropFocusPrevious() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropFocusPrevious(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropFocusMode() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropFocusMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropMouseFilter() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropMouseFilter(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropMouseForcePassScrollEvents() bool {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropMouseForcePassScrollEvents(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropMouseDefaultCursorShape() int {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropMouseDefaultCursorShape(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropShortcutContext() Object {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropShortcutContext(value Object) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropTheme() Theme {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropTheme(value Theme) {
-  panic("TODO: implement")
-}
-
-func (me *Control) GetPropThemeTypeVariation() String {
-  panic("TODO: implement")
-}
-
-func (me *Control) SetPropThemeTypeVariation(value String) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type ControlResizedSignalFn func()
+
+func (me *Control) ConnectResized(subs SignalSubscribers, fn ControlResizedSignalFn) {
+  sig := StringNameFromStr("resized")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Control) DisconnectResized(subs SignalSubscribers, fn ControlResizedSignalFn) {
+  sig := StringNameFromStr("resized")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ControlGuiInputSignalFn func(event InputEvent, )
+
+func (me *Control) ConnectGuiInput(subs SignalSubscribers, fn ControlGuiInputSignalFn) {
+  sig := StringNameFromStr("gui_input")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Control) DisconnectGuiInput(subs SignalSubscribers, fn ControlGuiInputSignalFn) {
+  sig := StringNameFromStr("gui_input")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ControlMouseEnteredSignalFn func()
+
+func (me *Control) ConnectMouseEntered(subs SignalSubscribers, fn ControlMouseEnteredSignalFn) {
+  sig := StringNameFromStr("mouse_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Control) DisconnectMouseEntered(subs SignalSubscribers, fn ControlMouseEnteredSignalFn) {
+  sig := StringNameFromStr("mouse_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ControlMouseExitedSignalFn func()
+
+func (me *Control) ConnectMouseExited(subs SignalSubscribers, fn ControlMouseExitedSignalFn) {
+  sig := StringNameFromStr("mouse_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Control) DisconnectMouseExited(subs SignalSubscribers, fn ControlMouseExitedSignalFn) {
+  sig := StringNameFromStr("mouse_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ControlFocusEnteredSignalFn func()
+
+func (me *Control) ConnectFocusEntered(subs SignalSubscribers, fn ControlFocusEnteredSignalFn) {
+  sig := StringNameFromStr("focus_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Control) DisconnectFocusEntered(subs SignalSubscribers, fn ControlFocusEnteredSignalFn) {
+  sig := StringNameFromStr("focus_entered")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ControlFocusExitedSignalFn func()
+
+func (me *Control) ConnectFocusExited(subs SignalSubscribers, fn ControlFocusExitedSignalFn) {
+  sig := StringNameFromStr("focus_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Control) DisconnectFocusExited(subs SignalSubscribers, fn ControlFocusExitedSignalFn) {
+  sig := StringNameFromStr("focus_exited")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ControlSizeFlagsChangedSignalFn func()
+
+func (me *Control) ConnectSizeFlagsChanged(subs SignalSubscribers, fn ControlSizeFlagsChangedSignalFn) {
+  sig := StringNameFromStr("size_flags_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Control) DisconnectSizeFlagsChanged(subs SignalSubscribers, fn ControlSizeFlagsChangedSignalFn) {
+  sig := StringNameFromStr("size_flags_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ControlMinimumSizeChangedSignalFn func()
+
+func (me *Control) ConnectMinimumSizeChanged(subs SignalSubscribers, fn ControlMinimumSizeChangedSignalFn) {
+  sig := StringNameFromStr("minimum_size_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Control) DisconnectMinimumSizeChanged(subs SignalSubscribers, fn ControlMinimumSizeChangedSignalFn) {
+  sig := StringNameFromStr("minimum_size_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type ControlThemeChangedSignalFn func()
+
+func (me *Control) ConnectThemeChanged(subs SignalSubscribers, fn ControlThemeChangedSignalFn) {
+  sig := StringNameFromStr("theme_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Control) DisconnectThemeChanged(subs SignalSubscribers, fn ControlThemeChangedSignalFn) {
+  sig := StringNameFromStr("theme_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

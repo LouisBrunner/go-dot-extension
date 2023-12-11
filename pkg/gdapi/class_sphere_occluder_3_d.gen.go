@@ -60,13 +60,7 @@ func  (me *SphereOccluder3D) GetRadius() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SphereOccluder3D) GetPropRadius() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SphereOccluder3D) SetPropRadius(value float32) {
-  panic("TODO: implement")
-}
+// Signals

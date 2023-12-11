@@ -71,4 +71,4 @@ func  (me *AudioListener2D) IsCurrent() bool {
   return ret
 }
 
-// Properties
+// Signals

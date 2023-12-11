@@ -63,4 +63,4 @@ func  (me *XRAnchor3D) GetPlane() Plane {
   return ret
 }
 
-// Properties
+// Signals

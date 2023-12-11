@@ -68,6 +68,7 @@ func (me *Dictionary) Size() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -79,6 +80,7 @@ func (me *Dictionary) IsEmpty() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -89,6 +91,7 @@ func (me *Dictionary) Clear()  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -98,6 +101,7 @@ func (me *Dictionary) Merge(dictionary Dictionary, overwrite bool, )  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 2079548978) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{dictionary.AsCTypePtr(), gdc.ConstTypePtr(&overwrite), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -108,6 +112,7 @@ func (me *Dictionary) Has(key Variant, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{key.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -119,6 +124,7 @@ func (me *Dictionary) HasAll(keys Array, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{keys.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -130,6 +136,7 @@ func (me *Dictionary) FindKey(value Variant, ) Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -141,6 +148,7 @@ func (me *Dictionary) Erase(key Variant, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{key.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -152,6 +160,7 @@ func (me *Dictionary) Hash() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -163,6 +172,7 @@ func (me *Dictionary) Keys() Array {
 
   var ret Array
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -174,6 +184,7 @@ func (me *Dictionary) Values() Array {
 
   var ret Array
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -185,6 +196,7 @@ func (me *Dictionary) Duplicate(deep bool, ) Dictionary {
 
   var ret Dictionary
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&deep), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -196,6 +208,7 @@ func (me *Dictionary) Get(key Variant, default_ Variant, ) Variant {
 
   var ret Variant
   args := []gdc.ConstTypePtr{key.AsCTypePtr(), default_.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -206,6 +219,7 @@ func (me *Dictionary) MakeReadOnly()  {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -216,6 +230,7 @@ func (me *Dictionary) IsReadOnly() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

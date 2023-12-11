@@ -39,4 +39,4 @@ func (me *HFlowContainer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

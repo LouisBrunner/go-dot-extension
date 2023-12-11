@@ -428,21 +428,7 @@ func  (me *DirAccess) GetIncludeHidden() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *DirAccess) GetPropIncludeNavigational() bool {
-  panic("TODO: implement")
-}
-
-func (me *DirAccess) SetPropIncludeNavigational(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *DirAccess) GetPropIncludeHidden() bool {
-  panic("TODO: implement")
-}
-
-func (me *DirAccess) SetPropIncludeHidden(value bool) {
-  panic("TODO: implement")
-}
+// Signals

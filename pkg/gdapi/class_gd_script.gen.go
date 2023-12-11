@@ -39,7 +39,7 @@ func (me *GDScript) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *GDScript) New() Variant {
+func  (me *GDScript) New(varargs ...Variant) Variant {
   classNameV := StringNameFromStr("GDScript")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("new")
@@ -47,6 +47,9 @@ func  (me *GDScript) New() Variant {
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1545262638) // FIXME: should cache?
   var ret Variant
   cargs := []gdc.ConstVariantPtr{}
+  for _, v := range varargs {
+    cargs = append(cargs, v.AsCPtr())
+  }
   err := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), gdc.UninitializedVariantPtr(&ret), err)
   if err.Error != gdc.CallOk {
@@ -56,4 +59,4 @@ func  (me *GDScript) New() Variant {
   return ret
 }
 
-// Properties
+// Signals

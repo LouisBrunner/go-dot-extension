@@ -196,45 +196,7 @@ func  (me *GLTFPhysicsBody) SetInertiaTensor(inertia_tensor Basis, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(inertia_tensor.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GLTFPhysicsBody) GetPropBodyType() String {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsBody) SetPropBodyType(value String) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsBody) GetPropMass() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsBody) SetPropMass(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsBody) GetPropLinearVelocity() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsBody) SetPropLinearVelocity(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsBody) GetPropAngularVelocity() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsBody) SetPropAngularVelocity(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsBody) GetPropInertiaTensor() Basis {
-  panic("TODO: implement")
-}
-
-func (me *GLTFPhysicsBody) SetPropInertiaTensor(value Basis) {
-  panic("TODO: implement")
-}
+// Signals

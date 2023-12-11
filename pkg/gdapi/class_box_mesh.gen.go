@@ -126,37 +126,7 @@ func  (me *BoxMesh) GetSubdivideDepth() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *BoxMesh) GetPropSize() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *BoxMesh) SetPropSize(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *BoxMesh) GetPropSubdivideWidth() int {
-  panic("TODO: implement")
-}
-
-func (me *BoxMesh) SetPropSubdivideWidth(value int) {
-  panic("TODO: implement")
-}
-
-func (me *BoxMesh) GetPropSubdivideHeight() int {
-  panic("TODO: implement")
-}
-
-func (me *BoxMesh) SetPropSubdivideHeight(value int) {
-  panic("TODO: implement")
-}
-
-func (me *BoxMesh) GetPropSubdivideDepth() int {
-  panic("TODO: implement")
-}
-
-func (me *BoxMesh) SetPropSubdivideDepth(value int) {
-  panic("TODO: implement")
-}
+// Signals

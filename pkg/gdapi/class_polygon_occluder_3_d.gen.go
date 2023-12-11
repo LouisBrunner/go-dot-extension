@@ -60,13 +60,7 @@ func  (me *PolygonOccluder3D) GetPolygon() PackedVector2Array {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PolygonOccluder3D) GetPropPolygon() PackedVector2Array {
-  panic("TODO: implement")
-}
-
-func (me *PolygonOccluder3D) SetPropPolygon(value PackedVector2Array) {
-  panic("TODO: implement")
-}
+// Signals

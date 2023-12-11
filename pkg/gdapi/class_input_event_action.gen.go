@@ -92,29 +92,7 @@ func  (me *InputEventAction) GetStrength() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEventAction) GetPropAction() StringName {
-  panic("TODO: implement")
-}
-
-func (me *InputEventAction) SetPropAction(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventAction) GetPropPressed() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventAction) SetPropPressed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventAction) GetPropStrength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventAction) SetPropStrength(value float32) {
-  panic("TODO: implement")
-}
+// Signals

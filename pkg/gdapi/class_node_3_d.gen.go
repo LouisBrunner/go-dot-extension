@@ -785,135 +785,23 @@ func  (me *Node3D) ToGlobal(local_point Vector3, ) Vector3 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *Node3D) GetPropTransform() Transform3D {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropTransform(value Transform3D) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropGlobalTransform() Transform3D {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropGlobalTransform(value Transform3D) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropPosition() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropPosition(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropRotation() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropRotation(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropRotationDegrees() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropRotationDegrees(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropQuaternion() Quaternion {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropQuaternion(value Quaternion) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropBasis() Basis {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropBasis(value Basis) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropScale() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropScale(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropRotationEditMode() int {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropRotationEditMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropRotationOrder() int {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropRotationOrder(value int) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropTopLevel() bool {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropTopLevel(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropGlobalPosition() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropGlobalPosition(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropGlobalRotation() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropGlobalRotation(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropGlobalRotationDegrees() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropGlobalRotationDegrees(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropVisible() bool {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropVisible(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) GetPropVisibilityParent() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *Node3D) SetPropVisibilityParent(value NodePath) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type Node3DVisibilityChangedSignalFn func()
+
+func (me *Node3D) ConnectVisibilityChanged(subs SignalSubscribers, fn Node3DVisibilityChangedSignalFn) {
+  sig := StringNameFromStr("visibility_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *Node3D) DisconnectVisibilityChanged(subs SignalSubscribers, fn Node3DVisibilityChangedSignalFn) {
+  sig := StringNameFromStr("visibility_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

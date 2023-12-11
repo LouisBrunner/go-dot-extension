@@ -82,21 +82,7 @@ func  (me *PanoramaSkyMaterial) IsFilteringEnabled() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PanoramaSkyMaterial) GetPropPanorama() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *PanoramaSkyMaterial) SetPropPanorama(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *PanoramaSkyMaterial) GetPropFilter() bool {
-  panic("TODO: implement")
-}
-
-func (me *PanoramaSkyMaterial) SetPropFilter(value bool) {
-  panic("TODO: implement")
-}
+// Signals

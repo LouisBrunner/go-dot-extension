@@ -107,6 +107,68 @@ func  (me *AnimationLibrary) GetAnimationList() StringName {
   return ret
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AnimationLibraryAnimationAddedSignalFn func(name StringName, )
+
+func (me *AnimationLibrary) ConnectAnimationAdded(subs SignalSubscribers, fn AnimationLibraryAnimationAddedSignalFn) {
+  sig := StringNameFromStr("animation_added")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationLibrary) DisconnectAnimationAdded(subs SignalSubscribers, fn AnimationLibraryAnimationAddedSignalFn) {
+  sig := StringNameFromStr("animation_added")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationLibraryAnimationRemovedSignalFn func(name StringName, )
+
+func (me *AnimationLibrary) ConnectAnimationRemoved(subs SignalSubscribers, fn AnimationLibraryAnimationRemovedSignalFn) {
+  sig := StringNameFromStr("animation_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationLibrary) DisconnectAnimationRemoved(subs SignalSubscribers, fn AnimationLibraryAnimationRemovedSignalFn) {
+  sig := StringNameFromStr("animation_removed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationLibraryAnimationRenamedSignalFn func(name StringName, to_name StringName, )
+
+func (me *AnimationLibrary) ConnectAnimationRenamed(subs SignalSubscribers, fn AnimationLibraryAnimationRenamedSignalFn) {
+  sig := StringNameFromStr("animation_renamed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationLibrary) DisconnectAnimationRenamed(subs SignalSubscribers, fn AnimationLibraryAnimationRenamedSignalFn) {
+  sig := StringNameFromStr("animation_renamed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationLibraryAnimationChangedSignalFn func(name StringName, )
+
+func (me *AnimationLibrary) ConnectAnimationChanged(subs SignalSubscribers, fn AnimationLibraryAnimationChangedSignalFn) {
+  sig := StringNameFromStr("animation_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationLibrary) DisconnectAnimationChanged(subs SignalSubscribers, fn AnimationLibraryAnimationChangedSignalFn) {
+  sig := StringNameFromStr("animation_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

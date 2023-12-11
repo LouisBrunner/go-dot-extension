@@ -132,13 +132,7 @@ func  (me *PacketPeer) SetEncodeBufferMaxSize(max_size int, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_size), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PacketPeer) GetPropEncodeBufferMaxSize() int {
-  panic("TODO: implement")
-}
-
-func (me *PacketPeer) SetPropEncodeBufferMaxSize(value int) {
-  panic("TODO: implement")
-}
+// Signals

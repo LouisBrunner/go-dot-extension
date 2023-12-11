@@ -178,53 +178,7 @@ func  (me *VisualShaderNodeFloatParameter) GetDefaultValue() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeFloatParameter) GetPropHint() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeFloatParameter) SetPropHint(value int) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeFloatParameter) GetPropMin() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeFloatParameter) SetPropMin(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeFloatParameter) GetPropMax() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeFloatParameter) SetPropMax(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeFloatParameter) GetPropStep() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeFloatParameter) SetPropStep(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeFloatParameter) GetPropDefaultValueEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeFloatParameter) SetPropDefaultValueEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeFloatParameter) GetPropDefaultValue() float32 {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeFloatParameter) SetPropDefaultValue(value float32) {
-  panic("TODO: implement")
-}
+// Signals

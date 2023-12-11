@@ -82,21 +82,7 @@ func  (me *VisualShaderNodeComment) GetDescription() String {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeComment) GetPropTitle() String {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeComment) SetPropTitle(value String) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeComment) GetPropDescription() String {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeComment) SetPropDescription(value String) {
-  panic("TODO: implement")
-}
+// Signals

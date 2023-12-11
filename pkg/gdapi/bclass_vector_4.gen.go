@@ -102,6 +102,7 @@ func (me *Vector4) MinAxisIndex() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -113,6 +114,7 @@ func (me *Vector4) MaxAxisIndex() int {
 
   var ret int
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -124,6 +126,7 @@ func (me *Vector4) Length() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -135,6 +138,7 @@ func (me *Vector4) LengthSquared() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -146,6 +150,7 @@ func (me *Vector4) Abs() Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -157,6 +162,7 @@ func (me *Vector4) Sign() Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -168,6 +174,7 @@ func (me *Vector4) Floor() Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -179,6 +186,7 @@ func (me *Vector4) Ceil() Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -190,6 +198,7 @@ func (me *Vector4) Round() Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -201,6 +210,7 @@ func (me *Vector4) Lerp(to Vector4, weight float32, ) Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -212,6 +222,7 @@ func (me *Vector4) CubicInterpolate(b Vector4, pre_a Vector4, post_b Vector4, we
 
   var ret Vector4
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -223,6 +234,7 @@ func (me *Vector4) CubicInterpolateInTime(b Vector4, pre_a Vector4, post_b Vecto
 
   var ret Vector4
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(&weight), gdc.ConstTypePtr(&b_t), gdc.ConstTypePtr(&pre_a_t), gdc.ConstTypePtr(&post_b_t), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -234,6 +246,7 @@ func (me *Vector4) Posmod(mod float32, ) Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mod), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -245,6 +258,7 @@ func (me *Vector4) Posmodv(modv Vector4, ) Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{modv.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -256,6 +270,7 @@ func (me *Vector4) Snapped(step Vector4, ) Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{step.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -267,6 +282,7 @@ func (me *Vector4) Clamp(min Vector4, max Vector4, ) Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{min.AsCTypePtr(), max.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -278,6 +294,7 @@ func (me *Vector4) Normalized() Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -289,6 +306,7 @@ func (me *Vector4) IsNormalized() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -300,6 +318,7 @@ func (me *Vector4) DirectionTo(to Vector4, ) Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -311,6 +330,7 @@ func (me *Vector4) DistanceTo(to Vector4, ) float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -322,6 +342,7 @@ func (me *Vector4) DistanceSquaredTo(to Vector4, ) float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -333,6 +354,7 @@ func (me *Vector4) Dot(with Vector4, ) float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -344,6 +366,7 @@ func (me *Vector4) Inverse() Vector4 {
 
   var ret Vector4
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -355,6 +378,7 @@ func (me *Vector4) IsEqualApprox(to Vector4, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -366,6 +390,7 @@ func (me *Vector4) IsZeroApprox() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -377,6 +402,7 @@ func (me *Vector4) IsFinite() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

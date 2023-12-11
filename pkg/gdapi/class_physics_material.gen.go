@@ -126,37 +126,7 @@ func  (me *PhysicsMaterial) IsAbsorbent() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *PhysicsMaterial) GetPropFriction() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsMaterial) SetPropFriction(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsMaterial) GetPropRough() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsMaterial) SetPropRough(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsMaterial) GetPropBounce() float32 {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsMaterial) SetPropBounce(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsMaterial) GetPropAbsorbent() bool {
-  panic("TODO: implement")
-}
-
-func (me *PhysicsMaterial) SetPropAbsorbent(value bool) {
-  panic("TODO: implement")
-}
+// Signals

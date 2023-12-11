@@ -568,103 +568,23 @@ func  (me *GridMap) MakeBakedMeshes(gen_lightmap_uv bool, lightmap_uv_texel_size
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gen_lightmap_uv), gdc.ConstTypePtr(&lightmap_uv_texel_size), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GridMap) GetPropMeshLibrary() MeshLibrary {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropMeshLibrary(value MeshLibrary) {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) GetPropPhysicsMaterial() PhysicsMaterial {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropPhysicsMaterial(value PhysicsMaterial) {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) GetPropCellSize() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropCellSize(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) GetPropCellOctantSize() int {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropCellOctantSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) GetPropCellCenterX() bool {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropCellCenterX(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) GetPropCellCenterY() bool {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropCellCenterY(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) GetPropCellCenterZ() bool {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropCellCenterZ(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) GetPropCellScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropCellScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) GetPropCollisionLayer() int {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropCollisionLayer(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) GetPropCollisionMask() int {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropCollisionMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) GetPropCollisionPriority() float32 {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropCollisionPriority(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) GetPropBakeNavigation() bool {
-  panic("TODO: implement")
-}
-
-func (me *GridMap) SetPropBakeNavigation(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type GridMapCellSizeChangedSignalFn func(cell_size Vector3, )
+
+func (me *GridMap) ConnectCellSizeChanged(subs SignalSubscribers, fn GridMapCellSizeChangedSignalFn) {
+  sig := StringNameFromStr("cell_size_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GridMap) DisconnectCellSizeChanged(subs SignalSubscribers, fn GridMapCellSizeChangedSignalFn) {
+  sig := StringNameFromStr("cell_size_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

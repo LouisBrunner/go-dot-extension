@@ -51,4 +51,4 @@ func  (me *VideoStreamPlayback) MixAudio(num_frames int, buffer PackedFloat32Arr
   return ret
 }
 
-// Properties
+// Signals

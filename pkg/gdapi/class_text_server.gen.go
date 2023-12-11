@@ -2400,4 +2400,4 @@ func  (me *TextServer) ParseStructuredText(parser_type TextServerStructuredTextP
   return ret
 }
 
-// Properties
+// Signals

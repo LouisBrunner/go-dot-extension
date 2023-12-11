@@ -252,4 +252,4 @@ func  (me *XMLParser) OpenBuffer(buffer PackedByteArray, ) Error {
   return ret
 }
 
-// Properties
+// Signals

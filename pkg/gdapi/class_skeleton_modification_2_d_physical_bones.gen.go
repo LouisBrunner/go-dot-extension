@@ -112,13 +112,7 @@ func  (me *SkeletonModification2DPhysicalBones) StopSimulation(bones StringName,
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(bones.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SkeletonModification2DPhysicalBones) GetPropPhysicalBoneChainLength() int {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DPhysicalBones) SetPropPhysicalBoneChainLength(value int) {
-  panic("TODO: implement")
-}
+// Signals

@@ -39,4 +39,4 @@ func (me *HSplitContainer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -637,119 +637,103 @@ func  (me *AnimationPlayer) Advance(delta float32, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delta), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AnimationPlayer) GetPropRootNode() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropRootNode(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropCurrentAnimation() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropCurrentAnimation(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropAssignedAnimation() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropAssignedAnimation(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropAutoplay() StringName {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropAutoplay(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropResetOnSave() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropResetOnSave(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropCurrentAnimationLength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropCurrentAnimationLength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropCurrentAnimationPosition() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropCurrentAnimationPosition(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropPlaybackProcessMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropPlaybackProcessMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropPlaybackDefaultBlendTime() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropPlaybackDefaultBlendTime(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropPlaybackActive() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropPlaybackActive(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropSpeedScale() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropSpeedScale(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropMethodCallMode() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropMethodCallMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropAudioMaxPolyphony() int {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropAudioMaxPolyphony(value int) {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) GetPropMovieQuitOnFinish() bool {
-  panic("TODO: implement")
-}
-
-func (me *AnimationPlayer) SetPropMovieQuitOnFinish(value bool) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type AnimationPlayerAnimationFinishedSignalFn func(anim_name StringName, )
+
+func (me *AnimationPlayer) ConnectAnimationFinished(subs SignalSubscribers, fn AnimationPlayerAnimationFinishedSignalFn) {
+  sig := StringNameFromStr("animation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationPlayer) DisconnectAnimationFinished(subs SignalSubscribers, fn AnimationPlayerAnimationFinishedSignalFn) {
+  sig := StringNameFromStr("animation_finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationPlayerAnimationChangedSignalFn func(old_name StringName, new_name StringName, )
+
+func (me *AnimationPlayer) ConnectAnimationChanged(subs SignalSubscribers, fn AnimationPlayerAnimationChangedSignalFn) {
+  sig := StringNameFromStr("animation_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationPlayer) DisconnectAnimationChanged(subs SignalSubscribers, fn AnimationPlayerAnimationChangedSignalFn) {
+  sig := StringNameFromStr("animation_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationPlayerAnimationStartedSignalFn func(anim_name StringName, )
+
+func (me *AnimationPlayer) ConnectAnimationStarted(subs SignalSubscribers, fn AnimationPlayerAnimationStartedSignalFn) {
+  sig := StringNameFromStr("animation_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationPlayer) DisconnectAnimationStarted(subs SignalSubscribers, fn AnimationPlayerAnimationStartedSignalFn) {
+  sig := StringNameFromStr("animation_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationPlayerAnimationListChangedSignalFn func()
+
+func (me *AnimationPlayer) ConnectAnimationListChanged(subs SignalSubscribers, fn AnimationPlayerAnimationListChangedSignalFn) {
+  sig := StringNameFromStr("animation_list_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationPlayer) DisconnectAnimationListChanged(subs SignalSubscribers, fn AnimationPlayerAnimationListChangedSignalFn) {
+  sig := StringNameFromStr("animation_list_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationPlayerAnimationLibrariesUpdatedSignalFn func()
+
+func (me *AnimationPlayer) ConnectAnimationLibrariesUpdated(subs SignalSubscribers, fn AnimationPlayerAnimationLibrariesUpdatedSignalFn) {
+  sig := StringNameFromStr("animation_libraries_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationPlayer) DisconnectAnimationLibrariesUpdated(subs SignalSubscribers, fn AnimationPlayerAnimationLibrariesUpdatedSignalFn) {
+  sig := StringNameFromStr("animation_libraries_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AnimationPlayerCachesClearedSignalFn func()
+
+func (me *AnimationPlayer) ConnectCachesCleared(subs SignalSubscribers, fn AnimationPlayerCachesClearedSignalFn) {
+  sig := StringNameFromStr("caches_cleared")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AnimationPlayer) DisconnectCachesCleared(subs SignalSubscribers, fn AnimationPlayerCachesClearedSignalFn) {
+  sig := StringNameFromStr("caches_cleared")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -75,4 +75,4 @@ func  (me *HMACContext) Finish() PackedByteArray {
   return ret
 }
 
-// Properties
+// Signals

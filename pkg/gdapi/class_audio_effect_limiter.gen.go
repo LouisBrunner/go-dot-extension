@@ -126,37 +126,7 @@ func  (me *AudioEffectLimiter) GetSoftClipRatio() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioEffectLimiter) GetPropCeilingDb() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectLimiter) SetPropCeilingDb(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectLimiter) GetPropThresholdDb() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectLimiter) SetPropThresholdDb(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectLimiter) GetPropSoftClipDb() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectLimiter) SetPropSoftClipDb(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectLimiter) GetPropSoftClipRatio() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectLimiter) SetPropSoftClipRatio(value float32) {
-  panic("TODO: implement")
-}
+// Signals

@@ -82,21 +82,7 @@ func  (me *WorldEnvironment) GetCameraAttributes() CameraAttributes {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *WorldEnvironment) GetPropEnvironment() Environment {
-  panic("TODO: implement")
-}
-
-func (me *WorldEnvironment) SetPropEnvironment(value Environment) {
-  panic("TODO: implement")
-}
-
-func (me *WorldEnvironment) GetPropCameraAttributes() any {
-  panic("TODO: implement")
-}
-
-func (me *WorldEnvironment) SetPropCameraAttributes(value any) {
-  panic("TODO: implement")
-}
+// Signals

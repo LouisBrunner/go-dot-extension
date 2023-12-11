@@ -104,29 +104,7 @@ func  (me *VisualShaderNodeParticleMeshEmitter) GetSurfaceIndex() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeParticleMeshEmitter) GetPropMesh() Mesh {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeParticleMeshEmitter) SetPropMesh(value Mesh) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeParticleMeshEmitter) GetPropUseAllSurfaces() bool {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeParticleMeshEmitter) SetPropUseAllSurfaces(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeParticleMeshEmitter) GetPropSurfaceIndex() int {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeParticleMeshEmitter) SetPropSurfaceIndex(value int) {
-  panic("TODO: implement")
-}
+// Signals

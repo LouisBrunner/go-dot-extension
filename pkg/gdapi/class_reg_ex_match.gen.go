@@ -122,29 +122,7 @@ func  (me *RegExMatch) GetEnd(name Variant, ) int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RegExMatch) GetPropSubject() String {
-  panic("TODO: implement")
-}
-
-func (me *RegExMatch) SetPropSubject(value String) {
-  panic("TODO: implement")
-}
-
-func (me *RegExMatch) GetPropNames() Dictionary {
-  panic("TODO: implement")
-}
-
-func (me *RegExMatch) SetPropNames(value Dictionary) {
-  panic("TODO: implement")
-}
-
-func (me *RegExMatch) GetPropStrings() Array {
-  panic("TODO: implement")
-}
-
-func (me *RegExMatch) SetPropStrings(value Array) {
-  panic("TODO: implement")
-}
+// Signals

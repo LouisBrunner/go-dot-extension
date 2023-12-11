@@ -343,39 +343,23 @@ func  (me *SkeletonProfile) SetGroup(bone_idx int, group StringName, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), gdc.ConstTypePtr(group.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SkeletonProfile) GetPropRootBone() StringName {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonProfile) SetPropRootBone(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonProfile) GetPropScaleBaseBone() StringName {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonProfile) SetPropScaleBaseBone(value StringName) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonProfile) GetPropGroupSize() int {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonProfile) SetPropGroupSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonProfile) GetPropBoneSize() int {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonProfile) SetPropBoneSize(value int) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type SkeletonProfileProfileUpdatedSignalFn func()
+
+func (me *SkeletonProfile) ConnectProfileUpdated(subs SignalSubscribers, fn SkeletonProfileProfileUpdatedSignalFn) {
+  sig := StringNameFromStr("profile_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *SkeletonProfile) DisconnectProfileUpdated(subs SignalSubscribers, fn SkeletonProfileProfileUpdatedSignalFn) {
+  sig := StringNameFromStr("profile_updated")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

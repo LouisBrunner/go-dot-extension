@@ -83,4 +83,4 @@ func  (me *SyntaxHighlighter) GetTextEdit() TextEdit {
   return ret
 }
 
-// Properties
+// Signals

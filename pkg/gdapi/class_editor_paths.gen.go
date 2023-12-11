@@ -111,4 +111,4 @@ func  (me *EditorPaths) GetProjectSettingsDir() String {
   return ret
 }
 
-// Properties
+// Signals

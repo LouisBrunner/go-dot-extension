@@ -39,4 +39,4 @@ func (me *AudioEffectNotchFilter) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

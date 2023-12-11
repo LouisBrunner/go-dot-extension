@@ -152,61 +152,7 @@ func  (me *World3D) GetDirectSpaceState() PhysicsDirectSpaceState3D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *World3D) GetPropEnvironment() Environment {
-  panic("TODO: implement")
-}
-
-func (me *World3D) SetPropEnvironment(value Environment) {
-  panic("TODO: implement")
-}
-
-func (me *World3D) GetPropFallbackEnvironment() Environment {
-  panic("TODO: implement")
-}
-
-func (me *World3D) SetPropFallbackEnvironment(value Environment) {
-  panic("TODO: implement")
-}
-
-func (me *World3D) GetPropCameraAttributes() any {
-  panic("TODO: implement")
-}
-
-func (me *World3D) SetPropCameraAttributes(value any) {
-  panic("TODO: implement")
-}
-
-func (me *World3D) GetPropSpace() RID {
-  panic("TODO: implement")
-}
-
-func (me *World3D) SetPropSpace(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *World3D) GetPropNavigationMap() RID {
-  panic("TODO: implement")
-}
-
-func (me *World3D) SetPropNavigationMap(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *World3D) GetPropScenario() RID {
-  panic("TODO: implement")
-}
-
-func (me *World3D) SetPropScenario(value RID) {
-  panic("TODO: implement")
-}
-
-func (me *World3D) GetPropDirectSpaceState() PhysicsDirectSpaceState3D {
-  panic("TODO: implement")
-}
-
-func (me *World3D) SetPropDirectSpaceState(value PhysicsDirectSpaceState3D) {
-  panic("TODO: implement")
-}
+// Signals

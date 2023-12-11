@@ -265,4 +265,4 @@ func  (me *ENetConnection) SocketSend(destination_address String, destination_po
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
+// Signals

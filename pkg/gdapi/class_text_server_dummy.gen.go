@@ -39,4 +39,4 @@ func (me *TextServerDummy) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

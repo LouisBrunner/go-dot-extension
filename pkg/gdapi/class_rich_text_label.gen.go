@@ -1231,191 +1231,71 @@ func  (me *RichTextLabel) MenuOption(option int, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *RichTextLabel) GetPropBbcodeEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropBbcodeEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropText() String {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropText(value String) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropFitContent() bool {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropFitContent(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropScrollActive() bool {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropScrollActive(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropScrollFollowing() bool {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropScrollFollowing(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropAutowrapMode() int {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropAutowrapMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropTabSize() int {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropTabSize(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropContextMenuEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropContextMenuEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropShortcutKeysEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropShortcutKeysEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropCustomEffects() RichTextEffect {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropCustomEffects(value RichTextEffect) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropMetaUnderlined() bool {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropMetaUnderlined(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropHintUnderlined() bool {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropHintUnderlined(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropThreaded() bool {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropThreaded(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropProgressBarDelay() int {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropProgressBarDelay(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropSelectionEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropSelectionEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropDeselectOnFocusLossEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropDeselectOnFocusLossEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropVisibleCharacters() int {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropVisibleCharacters(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropVisibleCharactersBehavior() int {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropVisibleCharactersBehavior(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropVisibleRatio() float32 {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropVisibleRatio(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropTextDirection() int {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropTextDirection(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropLanguage() String {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropLanguage(value String) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropStructuredTextBidiOverride() int {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropStructuredTextBidiOverride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) GetPropStructuredTextBidiOverrideOptions() Array {
-  panic("TODO: implement")
-}
-
-func (me *RichTextLabel) SetPropStructuredTextBidiOverrideOptions(value Array) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type RichTextLabelMetaClickedSignalFn func(meta Variant, )
+
+func (me *RichTextLabel) ConnectMetaClicked(subs SignalSubscribers, fn RichTextLabelMetaClickedSignalFn) {
+  sig := StringNameFromStr("meta_clicked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *RichTextLabel) DisconnectMetaClicked(subs SignalSubscribers, fn RichTextLabelMetaClickedSignalFn) {
+  sig := StringNameFromStr("meta_clicked")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type RichTextLabelMetaHoverStartedSignalFn func(meta Variant, )
+
+func (me *RichTextLabel) ConnectMetaHoverStarted(subs SignalSubscribers, fn RichTextLabelMetaHoverStartedSignalFn) {
+  sig := StringNameFromStr("meta_hover_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *RichTextLabel) DisconnectMetaHoverStarted(subs SignalSubscribers, fn RichTextLabelMetaHoverStartedSignalFn) {
+  sig := StringNameFromStr("meta_hover_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type RichTextLabelMetaHoverEndedSignalFn func(meta Variant, )
+
+func (me *RichTextLabel) ConnectMetaHoverEnded(subs SignalSubscribers, fn RichTextLabelMetaHoverEndedSignalFn) {
+  sig := StringNameFromStr("meta_hover_ended")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *RichTextLabel) DisconnectMetaHoverEnded(subs SignalSubscribers, fn RichTextLabelMetaHoverEndedSignalFn) {
+  sig := StringNameFromStr("meta_hover_ended")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type RichTextLabelFinishedSignalFn func()
+
+func (me *RichTextLabel) ConnectFinished(subs SignalSubscribers, fn RichTextLabelFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *RichTextLabel) DisconnectFinished(subs SignalSubscribers, fn RichTextLabelFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

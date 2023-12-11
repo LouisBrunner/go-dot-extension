@@ -112,6 +112,7 @@ func (me *Quaternion) Length() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -123,6 +124,7 @@ func (me *Quaternion) LengthSquared() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -134,6 +136,7 @@ func (me *Quaternion) Normalized() Quaternion {
 
   var ret Quaternion
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -145,6 +148,7 @@ func (me *Quaternion) IsNormalized() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -156,6 +160,7 @@ func (me *Quaternion) IsEqualApprox(to Quaternion, ) bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -167,6 +172,7 @@ func (me *Quaternion) IsFinite() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -178,6 +184,7 @@ func (me *Quaternion) Inverse() Quaternion {
 
   var ret Quaternion
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -189,6 +196,7 @@ func (me *Quaternion) Log() Quaternion {
 
   var ret Quaternion
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -200,6 +208,7 @@ func (me *Quaternion) Exp() Quaternion {
 
   var ret Quaternion
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -211,6 +220,7 @@ func (me *Quaternion) AngleTo(to Quaternion, ) float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -222,6 +232,7 @@ func (me *Quaternion) Dot(with Quaternion, ) float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -233,6 +244,7 @@ func (me *Quaternion) Slerp(to Quaternion, weight float32, ) Quaternion {
 
   var ret Quaternion
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -244,6 +256,7 @@ func (me *Quaternion) Slerpni(to Quaternion, weight float32, ) Quaternion {
 
   var ret Quaternion
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -255,6 +268,7 @@ func (me *Quaternion) SphericalCubicInterpolate(b Quaternion, pre_a Quaternion, 
 
   var ret Quaternion
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -266,6 +280,7 @@ func (me *Quaternion) SphericalCubicInterpolateInTime(b Quaternion, pre_a Quater
 
   var ret Quaternion
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(&weight), gdc.ConstTypePtr(&b_t), gdc.ConstTypePtr(&pre_a_t), gdc.ConstTypePtr(&post_b_t), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -277,6 +292,7 @@ func (me *Quaternion) GetEuler(order int, ) Vector3 {
 
   var ret Vector3
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&order), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -288,6 +304,7 @@ func QuaternionFromEuler(euler Vector3, ) Quaternion {
 
   var ret Quaternion
   args := []gdc.ConstTypePtr{euler.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -299,6 +316,7 @@ func (me *Quaternion) GetAxis() Vector3 {
 
   var ret Vector3
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -310,6 +328,7 @@ func (me *Quaternion) GetAngle() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

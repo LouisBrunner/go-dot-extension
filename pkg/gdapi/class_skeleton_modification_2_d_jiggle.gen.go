@@ -412,61 +412,7 @@ func  (me *SkeletonModification2DJiggle) GetJiggleJointGravity(joint_idx int, ) 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SkeletonModification2DJiggle) GetPropTargetNodepath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) SetPropTargetNodepath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) GetPropJiggleDataChainLength() int {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) SetPropJiggleDataChainLength(value int) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) GetPropStiffness() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) SetPropStiffness(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) GetPropMass() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) SetPropMass(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) GetPropDamping() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) SetPropDamping(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) GetPropUseGravity() bool {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) SetPropUseGravity(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) GetPropGravity() Vector2 {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DJiggle) SetPropGravity(value Vector2) {
-  panic("TODO: implement")
-}
+// Signals

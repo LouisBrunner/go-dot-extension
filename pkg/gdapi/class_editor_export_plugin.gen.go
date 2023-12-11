@@ -161,4 +161,4 @@ func  (me *EditorExportPlugin) GetOption(name StringName, ) Variant {
   return ret
 }
 
-// Properties
+// Signals

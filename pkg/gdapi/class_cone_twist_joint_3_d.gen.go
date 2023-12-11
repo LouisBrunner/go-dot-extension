@@ -70,45 +70,7 @@ func  (me *ConeTwistJoint3D) GetParam(param ConeTwistJoint3DParam, ) float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *ConeTwistJoint3D) GetPropSwingSpan() float32 {
-  panic("TODO: implement")
-}
-
-func (me *ConeTwistJoint3D) SetPropSwingSpan(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *ConeTwistJoint3D) GetPropTwistSpan() float32 {
-  panic("TODO: implement")
-}
-
-func (me *ConeTwistJoint3D) SetPropTwistSpan(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *ConeTwistJoint3D) GetPropBias() float32 {
-  panic("TODO: implement")
-}
-
-func (me *ConeTwistJoint3D) SetPropBias(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *ConeTwistJoint3D) GetPropSoftness() float32 {
-  panic("TODO: implement")
-}
-
-func (me *ConeTwistJoint3D) SetPropSoftness(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *ConeTwistJoint3D) GetPropRelaxation() float32 {
-  panic("TODO: implement")
-}
-
-func (me *ConeTwistJoint3D) SetPropRelaxation(value float32) {
-  panic("TODO: implement")
-}
+// Signals

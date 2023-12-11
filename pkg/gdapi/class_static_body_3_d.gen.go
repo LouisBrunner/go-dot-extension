@@ -104,29 +104,7 @@ func  (me *StaticBody3D) GetPhysicsMaterialOverride() PhysicsMaterial {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *StaticBody3D) GetPropPhysicsMaterialOverride() PhysicsMaterial {
-  panic("TODO: implement")
-}
-
-func (me *StaticBody3D) SetPropPhysicsMaterialOverride(value PhysicsMaterial) {
-  panic("TODO: implement")
-}
-
-func (me *StaticBody3D) GetPropConstantLinearVelocity() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *StaticBody3D) SetPropConstantLinearVelocity(value Vector3) {
-  panic("TODO: implement")
-}
-
-func (me *StaticBody3D) GetPropConstantAngularVelocity() Vector3 {
-  panic("TODO: implement")
-}
-
-func (me *StaticBody3D) SetPropConstantAngularVelocity(value Vector3) {
-  panic("TODO: implement")
-}
+// Signals

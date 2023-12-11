@@ -169,45 +169,7 @@ func  (me *TextureRect) GetStretchMode() TextureRectStretchMode {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *TextureRect) GetPropTexture() Texture2D {
-  panic("TODO: implement")
-}
-
-func (me *TextureRect) SetPropTexture(value Texture2D) {
-  panic("TODO: implement")
-}
-
-func (me *TextureRect) GetPropExpandMode() int {
-  panic("TODO: implement")
-}
-
-func (me *TextureRect) SetPropExpandMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TextureRect) GetPropStretchMode() int {
-  panic("TODO: implement")
-}
-
-func (me *TextureRect) SetPropStretchMode(value int) {
-  panic("TODO: implement")
-}
-
-func (me *TextureRect) GetPropFlipH() bool {
-  panic("TODO: implement")
-}
-
-func (me *TextureRect) SetPropFlipH(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *TextureRect) GetPropFlipV() bool {
-  panic("TODO: implement")
-}
-
-func (me *TextureRect) SetPropFlipV(value bool) {
-  panic("TODO: implement")
-}
+// Signals

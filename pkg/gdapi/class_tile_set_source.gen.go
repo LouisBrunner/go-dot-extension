@@ -111,4 +111,4 @@ func  (me *TileSetSource) HasAlternativeTile(atlas_coords Vector2i, alternative_
   return ret
 }
 
-// Properties
+// Signals

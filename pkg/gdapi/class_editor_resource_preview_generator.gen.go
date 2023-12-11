@@ -39,4 +39,4 @@ func (me *EditorResourcePreviewGenerator) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

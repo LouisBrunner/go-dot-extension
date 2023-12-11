@@ -75,7 +75,7 @@ func  (me *JavaScriptBridge) CreateCallback(callable Callable, ) JavaScriptObjec
   return ret
 }
 
-func  (me *JavaScriptBridge) CreateObject(object String, ) Variant {
+func  (me *JavaScriptBridge) CreateObject(object String, varargs ...Variant) Variant {
   classNameV := StringNameFromStr("JavaScriptBridge")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_object")
@@ -83,6 +83,9 @@ func  (me *JavaScriptBridge) CreateObject(object String, ) Variant {
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3093893586) // FIXME: should cache?
   var ret Variant
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(object.AsCTypePtr()), }
+  for _, v := range varargs {
+    cargs = append(cargs, v.AsCPtr())
+  }
   err := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), gdc.UninitializedVariantPtr(&ret), err)
   if err.Error != gdc.CallOk {
@@ -136,6 +139,20 @@ func  (me *JavaScriptBridge) ForceFsSync()  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-// Properties
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type JavaScriptBridgePwaUpdateAvailableSignalFn func()
+
+func (me *JavaScriptBridge) ConnectPwaUpdateAvailable(subs SignalSubscribers, fn JavaScriptBridgePwaUpdateAvailableSignalFn) {
+  sig := StringNameFromStr("pwa_update_available")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *JavaScriptBridge) DisconnectPwaUpdateAvailable(subs SignalSubscribers, fn JavaScriptBridgePwaUpdateAvailableSignalFn) {
+  sig := StringNameFromStr("pwa_update_available")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -214,69 +214,7 @@ func  (me *AudioEffectReverb) GetHpf() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *AudioEffectReverb) GetPropPredelayMsec() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) SetPropPredelayMsec(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) GetPropPredelayFeedback() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) SetPropPredelayFeedback(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) GetPropRoomSize() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) SetPropRoomSize(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) GetPropDamping() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) SetPropDamping(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) GetPropSpread() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) SetPropSpread(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) GetPropHipass() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) SetPropHipass(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) GetPropDry() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) SetPropDry(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) GetPropWet() float32 {
-  panic("TODO: implement")
-}
-
-func (me *AudioEffectReverb) SetPropWet(value float32) {
-  panic("TODO: implement")
-}
+// Signals

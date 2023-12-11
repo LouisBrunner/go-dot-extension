@@ -103,6 +103,7 @@ func ProjectionCreateDepthCorrection(flip_y bool, ) Projection {
 
   var ret Projection
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flip_y), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -114,6 +115,7 @@ func ProjectionCreateLightAtlasRect(rect Rect2, ) Projection {
 
   var ret Projection
   args := []gdc.ConstTypePtr{rect.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -125,6 +127,7 @@ func ProjectionCreatePerspective(fovy float32, aspect float32, z_near float32, z
 
   var ret Projection
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fovy), gdc.ConstTypePtr(&aspect), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), gdc.ConstTypePtr(&flip_fov), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -136,6 +139,7 @@ func ProjectionCreatePerspectiveHmd(fovy float32, aspect float32, z_near float32
 
   var ret Projection
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fovy), gdc.ConstTypePtr(&aspect), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), gdc.ConstTypePtr(&flip_fov), gdc.ConstTypePtr(&eye), gdc.ConstTypePtr(&intraocular_dist), gdc.ConstTypePtr(&convergence_dist), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -147,6 +151,7 @@ func ProjectionCreateForHmd(eye int, aspect float32, intraocular_dist float32, d
 
   var ret Projection
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&eye), gdc.ConstTypePtr(&aspect), gdc.ConstTypePtr(&intraocular_dist), gdc.ConstTypePtr(&display_width), gdc.ConstTypePtr(&display_to_lens), gdc.ConstTypePtr(&oversample), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -158,6 +163,7 @@ func ProjectionCreateOrthogonal(left float32, right float32, bottom float32, top
 
   var ret Projection
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&left), gdc.ConstTypePtr(&right), gdc.ConstTypePtr(&bottom), gdc.ConstTypePtr(&top), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -169,6 +175,7 @@ func ProjectionCreateOrthogonalAspect(size float32, aspect float32, z_near float
 
   var ret Projection
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&aspect), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), gdc.ConstTypePtr(&flip_fov), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -180,6 +187,7 @@ func ProjectionCreateFrustum(left float32, right float32, bottom float32, top fl
 
   var ret Projection
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&left), gdc.ConstTypePtr(&right), gdc.ConstTypePtr(&bottom), gdc.ConstTypePtr(&top), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -191,6 +199,7 @@ func ProjectionCreateFrustumAspect(size float32, aspect float32, offset Vector2,
 
   var ret Projection
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&aspect), offset.AsCTypePtr(), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), gdc.ConstTypePtr(&flip_fov), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -202,6 +211,7 @@ func ProjectionCreateFitAabb(aabb AABB, ) Projection {
 
   var ret Projection
   args := []gdc.ConstTypePtr{aabb.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -213,6 +223,7 @@ func (me *Projection) Determinant() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -224,6 +235,7 @@ func (me *Projection) PerspectiveZnearAdjusted(new_znear float32, ) Projection {
 
   var ret Projection
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&new_znear), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -235,6 +247,7 @@ func (me *Projection) GetProjectionPlane(plane int, ) Plane {
 
   var ret Plane
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&plane), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -246,6 +259,7 @@ func (me *Projection) FlippedY() Projection {
 
   var ret Projection
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -257,6 +271,7 @@ func (me *Projection) JitterOffseted(offset Vector2, ) Projection {
 
   var ret Projection
   args := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -268,6 +283,7 @@ func ProjectionGetFovy(fovx float32, aspect float32, ) float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fovx), gdc.ConstTypePtr(&aspect), }
+
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -279,6 +295,7 @@ func (me *Projection) GetZFar() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -290,6 +307,7 @@ func (me *Projection) GetZNear() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -301,6 +319,7 @@ func (me *Projection) GetAspect() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -312,6 +331,7 @@ func (me *Projection) GetFov() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -323,6 +343,7 @@ func (me *Projection) IsOrthogonal() bool {
 
   var ret bool
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -334,6 +355,7 @@ func (me *Projection) GetViewportHalfExtents() Vector2 {
 
   var ret Vector2
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -345,6 +367,7 @@ func (me *Projection) GetFarPlaneHalfExtents() Vector2 {
 
   var ret Vector2
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -356,6 +379,7 @@ func (me *Projection) Inverse() Projection {
 
   var ret Projection
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -367,6 +391,7 @@ func (me *Projection) GetPixelsPerMeter(for_pixel_width int, ) int {
 
   var ret int
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&for_pixel_width), }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -378,6 +403,7 @@ func (me *Projection) GetLodMultiplier() float32 {
 
   var ret float32
   args := []gdc.ConstTypePtr{}
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

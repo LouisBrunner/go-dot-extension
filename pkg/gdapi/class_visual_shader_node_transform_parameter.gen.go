@@ -82,21 +82,7 @@ func  (me *VisualShaderNodeTransformParameter) GetDefaultValue() Transform3D {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *VisualShaderNodeTransformParameter) GetPropDefaultValueEnabled() bool {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTransformParameter) SetPropDefaultValueEnabled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTransformParameter) GetPropDefaultValue() Transform3D {
-  panic("TODO: implement")
-}
-
-func (me *VisualShaderNodeTransformParameter) SetPropDefaultValue(value Transform3D) {
-  panic("TODO: implement")
-}
+// Signals

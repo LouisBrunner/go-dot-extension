@@ -170,21 +170,7 @@ func  (me *SkeletonModification2DFABRIK) GetFabrikJointUseTargetRotation(joint_i
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SkeletonModification2DFABRIK) GetPropTargetNodepath() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DFABRIK) SetPropTargetNodepath(value NodePath) {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DFABRIK) GetPropFabrikDataChainLength() int {
-  panic("TODO: implement")
-}
-
-func (me *SkeletonModification2DFABRIK) SetPropFabrikDataChainLength(value int) {
-  panic("TODO: implement")
-}
+// Signals

@@ -238,55 +238,215 @@ func  (me *WebXRInterface) GetAvailableDisplayRefreshRates() Array {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *WebXRInterface) GetPropSessionMode() String {
-  panic("TODO: implement")
-}
-
-func (me *WebXRInterface) SetPropSessionMode(value String) {
-  panic("TODO: implement")
-}
-
-func (me *WebXRInterface) GetPropRequiredFeatures() String {
-  panic("TODO: implement")
-}
-
-func (me *WebXRInterface) SetPropRequiredFeatures(value String) {
-  panic("TODO: implement")
-}
-
-func (me *WebXRInterface) GetPropOptionalFeatures() String {
-  panic("TODO: implement")
-}
-
-func (me *WebXRInterface) SetPropOptionalFeatures(value String) {
-  panic("TODO: implement")
-}
-
-func (me *WebXRInterface) GetPropRequestedReferenceSpaceTypes() String {
-  panic("TODO: implement")
-}
-
-func (me *WebXRInterface) SetPropRequestedReferenceSpaceTypes(value String) {
-  panic("TODO: implement")
-}
-
-func (me *WebXRInterface) GetPropReferenceSpaceType() String {
-  panic("TODO: implement")
-}
-
-func (me *WebXRInterface) SetPropReferenceSpaceType(value String) {
-  panic("TODO: implement")
-}
-
-func (me *WebXRInterface) GetPropVisibilityState() String {
-  panic("TODO: implement")
-}
-
-func (me *WebXRInterface) SetPropVisibilityState(value String) {
-  panic("TODO: implement")
-}
 // Signals
-// FIXME: can't seem to be able to connect them from this side of the API
+
+type WebXRInterfaceSessionSupportedSignalFn func(session_mode String, supported bool, )
+
+func (me *WebXRInterface) ConnectSessionSupported(subs SignalSubscribers, fn WebXRInterfaceSessionSupportedSignalFn) {
+  sig := StringNameFromStr("session_supported")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectSessionSupported(subs SignalSubscribers, fn WebXRInterfaceSessionSupportedSignalFn) {
+  sig := StringNameFromStr("session_supported")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceSessionStartedSignalFn func()
+
+func (me *WebXRInterface) ConnectSessionStarted(subs SignalSubscribers, fn WebXRInterfaceSessionStartedSignalFn) {
+  sig := StringNameFromStr("session_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectSessionStarted(subs SignalSubscribers, fn WebXRInterfaceSessionStartedSignalFn) {
+  sig := StringNameFromStr("session_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceSessionEndedSignalFn func()
+
+func (me *WebXRInterface) ConnectSessionEnded(subs SignalSubscribers, fn WebXRInterfaceSessionEndedSignalFn) {
+  sig := StringNameFromStr("session_ended")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectSessionEnded(subs SignalSubscribers, fn WebXRInterfaceSessionEndedSignalFn) {
+  sig := StringNameFromStr("session_ended")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceSessionFailedSignalFn func(message String, )
+
+func (me *WebXRInterface) ConnectSessionFailed(subs SignalSubscribers, fn WebXRInterfaceSessionFailedSignalFn) {
+  sig := StringNameFromStr("session_failed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectSessionFailed(subs SignalSubscribers, fn WebXRInterfaceSessionFailedSignalFn) {
+  sig := StringNameFromStr("session_failed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceSelectstartSignalFn func(input_source_id int, )
+
+func (me *WebXRInterface) ConnectSelectstart(subs SignalSubscribers, fn WebXRInterfaceSelectstartSignalFn) {
+  sig := StringNameFromStr("selectstart")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectSelectstart(subs SignalSubscribers, fn WebXRInterfaceSelectstartSignalFn) {
+  sig := StringNameFromStr("selectstart")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceSelectSignalFn func(input_source_id int, )
+
+func (me *WebXRInterface) ConnectSelect(subs SignalSubscribers, fn WebXRInterfaceSelectSignalFn) {
+  sig := StringNameFromStr("select")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectSelect(subs SignalSubscribers, fn WebXRInterfaceSelectSignalFn) {
+  sig := StringNameFromStr("select")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceSelectendSignalFn func(input_source_id int, )
+
+func (me *WebXRInterface) ConnectSelectend(subs SignalSubscribers, fn WebXRInterfaceSelectendSignalFn) {
+  sig := StringNameFromStr("selectend")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectSelectend(subs SignalSubscribers, fn WebXRInterfaceSelectendSignalFn) {
+  sig := StringNameFromStr("selectend")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceSqueezestartSignalFn func(input_source_id int, )
+
+func (me *WebXRInterface) ConnectSqueezestart(subs SignalSubscribers, fn WebXRInterfaceSqueezestartSignalFn) {
+  sig := StringNameFromStr("squeezestart")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectSqueezestart(subs SignalSubscribers, fn WebXRInterfaceSqueezestartSignalFn) {
+  sig := StringNameFromStr("squeezestart")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceSqueezeSignalFn func(input_source_id int, )
+
+func (me *WebXRInterface) ConnectSqueeze(subs SignalSubscribers, fn WebXRInterfaceSqueezeSignalFn) {
+  sig := StringNameFromStr("squeeze")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectSqueeze(subs SignalSubscribers, fn WebXRInterfaceSqueezeSignalFn) {
+  sig := StringNameFromStr("squeeze")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceSqueezeendSignalFn func(input_source_id int, )
+
+func (me *WebXRInterface) ConnectSqueezeend(subs SignalSubscribers, fn WebXRInterfaceSqueezeendSignalFn) {
+  sig := StringNameFromStr("squeezeend")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectSqueezeend(subs SignalSubscribers, fn WebXRInterfaceSqueezeendSignalFn) {
+  sig := StringNameFromStr("squeezeend")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceVisibilityStateChangedSignalFn func()
+
+func (me *WebXRInterface) ConnectVisibilityStateChanged(subs SignalSubscribers, fn WebXRInterfaceVisibilityStateChangedSignalFn) {
+  sig := StringNameFromStr("visibility_state_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectVisibilityStateChanged(subs SignalSubscribers, fn WebXRInterfaceVisibilityStateChangedSignalFn) {
+  sig := StringNameFromStr("visibility_state_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceReferenceSpaceResetSignalFn func()
+
+func (me *WebXRInterface) ConnectReferenceSpaceReset(subs SignalSubscribers, fn WebXRInterfaceReferenceSpaceResetSignalFn) {
+  sig := StringNameFromStr("reference_space_reset")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectReferenceSpaceReset(subs SignalSubscribers, fn WebXRInterfaceReferenceSpaceResetSignalFn) {
+  sig := StringNameFromStr("reference_space_reset")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type WebXRInterfaceDisplayRefreshRateChangedSignalFn func()
+
+func (me *WebXRInterface) ConnectDisplayRefreshRateChanged(subs SignalSubscribers, fn WebXRInterfaceDisplayRefreshRateChangedSignalFn) {
+  sig := StringNameFromStr("display_refresh_rate_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *WebXRInterface) DisconnectDisplayRefreshRateChanged(subs SignalSubscribers, fn WebXRInterfaceDisplayRefreshRateChangedSignalFn) {
+  sig := StringNameFromStr("display_refresh_rate_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -170,37 +170,7 @@ func  (me *SpringArm3D) GetMargin() float32 {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *SpringArm3D) GetPropCollisionMask() int {
-  panic("TODO: implement")
-}
-
-func (me *SpringArm3D) SetPropCollisionMask(value int) {
-  panic("TODO: implement")
-}
-
-func (me *SpringArm3D) GetPropShape() Shape3D {
-  panic("TODO: implement")
-}
-
-func (me *SpringArm3D) SetPropShape(value Shape3D) {
-  panic("TODO: implement")
-}
-
-func (me *SpringArm3D) GetPropSpringLength() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SpringArm3D) SetPropSpringLength(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *SpringArm3D) GetPropMargin() float32 {
-  panic("TODO: implement")
-}
-
-func (me *SpringArm3D) SetPropMargin(value float32) {
-  panic("TODO: implement")
-}
+// Signals

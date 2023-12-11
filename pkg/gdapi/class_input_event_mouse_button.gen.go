@@ -124,45 +124,7 @@ func  (me *InputEventMouseButton) IsDoubleClick() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *InputEventMouseButton) GetPropFactor() float32 {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseButton) SetPropFactor(value float32) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseButton) GetPropButtonIndex() int {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseButton) SetPropButtonIndex(value int) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseButton) GetPropCanceled() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseButton) SetPropCanceled(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseButton) GetPropPressed() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseButton) SetPropPressed(value bool) {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseButton) GetPropDoubleClick() bool {
-  panic("TODO: implement")
-}
-
-func (me *InputEventMouseButton) SetPropDoubleClick(value bool) {
-  panic("TODO: implement")
-}
+// Signals

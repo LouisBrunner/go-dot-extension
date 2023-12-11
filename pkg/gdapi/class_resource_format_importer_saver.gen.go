@@ -39,4 +39,4 @@ func (me *ResourceFormatImporterSaver) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

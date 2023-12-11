@@ -148,45 +148,7 @@ func  (me *GLTFBufferView) SetIndices(indices bool, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&indices), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *GLTFBufferView) GetPropBuffer() int {
-  panic("TODO: implement")
-}
-
-func (me *GLTFBufferView) SetPropBuffer(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFBufferView) GetPropByteOffset() int {
-  panic("TODO: implement")
-}
-
-func (me *GLTFBufferView) SetPropByteOffset(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFBufferView) GetPropByteLength() int {
-  panic("TODO: implement")
-}
-
-func (me *GLTFBufferView) SetPropByteLength(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFBufferView) GetPropByteStride() int {
-  panic("TODO: implement")
-}
-
-func (me *GLTFBufferView) SetPropByteStride(value int) {
-  panic("TODO: implement")
-}
-
-func (me *GLTFBufferView) GetPropIndices() bool {
-  panic("TODO: implement")
-}
-
-func (me *GLTFBufferView) SetPropIndices(value bool) {
-  panic("TODO: implement")
-}
+// Signals

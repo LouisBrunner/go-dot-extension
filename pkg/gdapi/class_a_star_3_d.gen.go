@@ -297,4 +297,4 @@ func  (me *AStar3D) GetIdPath(from_id int, to_id int, ) PackedInt64Array {
   return ret
 }
 
-// Properties
+// Signals

@@ -39,4 +39,4 @@ func (me *AudioEffectBandLimitFilter) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-// Properties
+// Signals

@@ -123,4 +123,4 @@ func  (me *Texture3D) CreatePlaceholder() Resource {
   return ret
 }
 
-// Properties
+// Signals

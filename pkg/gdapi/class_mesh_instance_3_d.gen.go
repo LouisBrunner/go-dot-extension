@@ -236,29 +236,7 @@ func  (me *MeshInstance3D) CreateDebugTangents()  {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
-
 // Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
-func (me *MeshInstance3D) GetPropMesh() Mesh {
-  panic("TODO: implement")
-}
-
-func (me *MeshInstance3D) SetPropMesh(value Mesh) {
-  panic("TODO: implement")
-}
-
-func (me *MeshInstance3D) GetPropSkin() Skin {
-  panic("TODO: implement")
-}
-
-func (me *MeshInstance3D) SetPropSkin(value Skin) {
-  panic("TODO: implement")
-}
-
-func (me *MeshInstance3D) GetPropSkeleton() NodePath {
-  panic("TODO: implement")
-}
-
-func (me *MeshInstance3D) SetPropSkeleton(value NodePath) {
-  panic("TODO: implement")
-}
+// Signals

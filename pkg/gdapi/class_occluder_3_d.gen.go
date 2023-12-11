@@ -63,4 +63,4 @@ func  (me *Occluder3D) GetIndices() PackedInt32Array {
   return ret
 }
 
-// Properties
+// Signals
