@@ -30,7 +30,11 @@ func New(pGetProcAddr gdc.InterfaceGetProcAddress, pLibrary gdc.ClassLibraryPtr,
 		iface:     iface,
 		pLibrary:  pLibrary,
 		initLevel: gdc.InitializationScene,
-		logLevel:  logLevel,
+		toRegister: []ClassConstructor{func() Class {
+			subs := gdapi.NewSignalSubscribers()
+			return &subs
+		}},
+		logLevel: logLevel,
 	}
 
 	gdc.Callbacks.SetInitializationInitializeHandler(func(userdata unsafe.Pointer, pLevel gdc.InitializationLevel) {
@@ -91,8 +95,7 @@ func (me *extension) onInit(level gdc.InitializationLevel) error {
 		return nil
 	}
 	gdapi.InitializeGlobals(me.iface)
-	for name, entry := range me.registered {
-		me.Logf(LogLevelDebug, "registering class %q", name)
+	for _, entry := range me.registered {
 		me.registerClass(entry)
 	}
 	return nil
@@ -102,8 +105,7 @@ func (me *extension) onFini(level gdc.InitializationLevel) error {
 	if level != gdc.InitializationScene {
 		return nil
 	}
-	for name, entry := range me.registered {
-		me.Logf(LogLevelDebug, "unregistering class %q", name)
+	for _, entry := range me.registered {
 		me.unregisterClass(entry)
 	}
 	return nil

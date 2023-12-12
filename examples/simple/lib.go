@@ -11,17 +11,17 @@ import (
 type MyNode2D struct {
 	gdapi.Node2D
 
-	Speed  int
+	Speed  gdapi.Int
 	secret string
 }
 
 func (n *MyNode2D) Move(vec gdapi.Vector2) {
-	varInt := gdapi.NewIntFromInt(n.Speed)
-	n.Node2D.SetPosition(vec.MultiplyInt(varInt))
+	n.Node2D.SetPosition(vec.MultiplyInt(n.Speed))
 }
 
 func (n *MyNode2D) X_Ready() {
 	n.printSecret()
+	n.Speed = gdapi.NewIntFromInt(100)
 }
 
 func (n *MyNode2D) printSecret() {

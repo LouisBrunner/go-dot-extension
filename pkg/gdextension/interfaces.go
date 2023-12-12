@@ -7,6 +7,10 @@ type Class interface {
 	SetBaseObject(obj gdc.ObjectPtr)
 }
 
+type Destroyable interface {
+	Destroy()
+}
+
 type ClassConstructor func() Class
 
 type LogLevel uint32

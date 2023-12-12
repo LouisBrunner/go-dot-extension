@@ -28,7 +28,7 @@ func NewSignalSubscribers() SignalSubscribers {
 	}
 }
 
-func (me *SignalSubscribers) XInit() {
+func (me *SignalSubscribers) X_Init() {
 	me.dispatchName = StringNameFromStr("dispatch")
 }
 
