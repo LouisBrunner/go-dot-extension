@@ -1,0 +1,42 @@
+// Code generated automatically by `go-dot-extension/pkg/gdapi/apigenerator`. DO NOT EDIT.
+package gdapi
+
+import (
+  "unsafe"
+
+  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+)
+
+var _ unsafe.Pointer // FIXME: avoid unused import warning
+
+type ResourceImporterBitMap struct {
+  obj gdc.ObjectPtr
+}
+
+func (me *ResourceImporterBitMap) SetBaseObject(obj gdc.ObjectPtr) {
+  me.obj = obj
+}
+
+func (me *ResourceImporterBitMap) BaseClass() string {
+  return "ResourceImporterBitMap"
+}
+
+
+
+// Enums
+
+func (me *ResourceImporterBitMap) Type() gdc.VariantType {
+  return gdc.VariantTypeObject
+}
+
+func (me *ResourceImporterBitMap) AsTypePtr() gdc.TypePtr {
+  return gdc.TypePtr(me.obj)
+}
+
+func (me *ResourceImporterBitMap) AsCTypePtr() gdc.ConstTypePtr {
+  return gdc.ConstTypePtr(me.obj)
+}
+
+// Methods
+
+// Signals
