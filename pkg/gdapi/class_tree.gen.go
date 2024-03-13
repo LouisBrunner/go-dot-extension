@@ -362,7 +362,7 @@ func  (me *Tree) GetItemAreaRect(item TreeItem, column int, button_index int, ) 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_area_rect")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1235226180) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 47968679) // FIXME: should cache?
   var ret Rect2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&button_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

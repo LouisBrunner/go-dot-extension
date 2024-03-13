@@ -517,6 +517,18 @@ func  (me *EditorPlugin) RemoveDebuggerPlugin(script EditorDebuggerPlugin, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
+func  (me *EditorPlugin) GetPluginVersion() String {
+  classNameV := StringNameFromStr("EditorPlugin")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_plugin_version")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 // Signals
 
 type EditorPluginSceneChangedSignalFn func(scene_root Node, )

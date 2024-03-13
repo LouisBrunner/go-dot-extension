@@ -230,7 +230,7 @@ func  (me *SceneTree) CreateTimer(time_sec float32, process_always bool, process
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_timer")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1780978058) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2709170273) // FIXME: should cache?
   var ret SceneTreeTimer
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time_sec), gdc.ConstTypePtr(&process_always), gdc.ConstTypePtr(&process_in_physics), gdc.ConstTypePtr(&ignore_time_scale), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

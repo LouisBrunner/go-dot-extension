@@ -17,6 +17,8 @@ type Vector3i struct {
 var (
   Vector3iZero = "Vector3i(0, 0, 0)" // TODO: construct correctly
   Vector3iOne = "Vector3i(1, 1, 1)" // TODO: construct correctly
+  Vector3iMin = "Vector3i(-2147483648, -2147483648, -2147483648)" // TODO: construct correctly
+  Vector3iMax = "Vector3i(2147483647, 2147483647, 2147483647)" // TODO: construct correctly
   Vector3iLeft = "Vector3i(-1, 0, 0)" // TODO: construct correctly
   Vector3iRight = "Vector3i(1, 0, 0)" // TODO: construct correctly
   Vector3iUp = "Vector3i(0, 1, 0)" // TODO: construct correctly
@@ -232,35 +234,50 @@ func (me *Vector3i) Not() bool {
   return ret
 }
 
-func (me *Vector3i) MultiplyInt(right Int) Vector3i {
+func (me *Vector3i) MultiplyInt(rightArg int) Vector3i {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
   var ret Vector3i
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Vector3i) DivideInt(right Int) Vector3i {
+func (me *Vector3i) DivideInt(rightArg int) Vector3i {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
   var ret Vector3i
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Vector3i) ModuleInt(right Int) Vector3i {
+func (me *Vector3i) ModuleInt(rightArg int) Vector3i {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpModule, me.Type(), right.Type()) // FIXME: cache
   var ret Vector3i
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Vector3i) MultiplyFloat32(right Float) Vector3 {
+func (me *Vector3i) MultiplyFloat32(rightArg float32) Vector3 {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
   var ret Vector3
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Vector3i) DivideFloat32(right Float) Vector3 {
+func (me *Vector3i) DivideFloat32(rightArg float32) Vector3 {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
   var ret Vector3
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))

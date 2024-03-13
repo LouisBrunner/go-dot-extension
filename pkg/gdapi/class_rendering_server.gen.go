@@ -131,6 +131,13 @@ const (
   RenderingServerArrayFormatArrayFlagUseDynamicUpdate RenderingServerArrayFormat = 67108864
   RenderingServerArrayFormatArrayFlagUse8BoneWeights RenderingServerArrayFormat = 134217728
   RenderingServerArrayFormatArrayFlagUsesEmptyVertexArray RenderingServerArrayFormat = 268435456
+  RenderingServerArrayFormatArrayFlagCompressAttributes RenderingServerArrayFormat = 536870912
+  RenderingServerArrayFormatArrayFlagFormatVersionBase RenderingServerArrayFormat = 35
+  RenderingServerArrayFormatArrayFlagFormatVersionShift RenderingServerArrayFormat = 35
+  RenderingServerArrayFormatArrayFlagFormatVersion1 RenderingServerArrayFormat = 0
+  RenderingServerArrayFormatArrayFlagFormatVersion2 RenderingServerArrayFormat = 34359738368
+  RenderingServerArrayFormatArrayFlagFormatCurrentVersion RenderingServerArrayFormat = 34359738368
+  RenderingServerArrayFormatArrayFlagFormatVersionMask RenderingServerArrayFormat = 255
 )
 
 type RenderingServerPrimitiveType int
@@ -332,7 +339,8 @@ type RenderingServerViewportScaling3DMode int
 const (
   RenderingServerViewportScaling3DModeViewportScaling3DModeBilinear RenderingServerViewportScaling3DMode = 0
   RenderingServerViewportScaling3DModeViewportScaling3DModeFsr RenderingServerViewportScaling3DMode = 1
-  RenderingServerViewportScaling3DModeViewportScaling3DModeMax RenderingServerViewportScaling3DMode = 2
+  RenderingServerViewportScaling3DModeViewportScaling3DModeFsr2 RenderingServerViewportScaling3DMode = 2
+  RenderingServerViewportScaling3DModeViewportScaling3DModeMax RenderingServerViewportScaling3DMode = 3
 )
 
 type RenderingServerViewportUpdateMode int
@@ -442,6 +450,7 @@ const (
   RenderingServerViewportDebugDrawViewportDebugDrawClusterReflectionProbes RenderingServerViewportDebugDraw = 23
   RenderingServerViewportDebugDrawViewportDebugDrawOccluders RenderingServerViewportDebugDraw = 24
   RenderingServerViewportDebugDrawViewportDebugDrawMotionVectors RenderingServerViewportDebugDraw = 25
+  RenderingServerViewportDebugDrawViewportDebugDrawInternalBuffer RenderingServerViewportDebugDraw = 26
 )
 
 type RenderingServerViewportVRSMode int
@@ -969,6 +978,18 @@ func  (me *RenderingServer) TextureGetPath(texture RID, ) String {
   return ret
 }
 
+func  (me *RenderingServer) TextureGetFormat(texture RID, ) ImageFormat {
+  classNameV := StringNameFromStr("RenderingServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("texture_get_format")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1932918979) // FIXME: should cache?
+  var ret ImageFormat
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *RenderingServer) TextureSetForceRedrawIfVisible(texture RID, enable bool, )  {
   classNameV := StringNameFromStr("RenderingServer")
   defer classNameV.Destroy()
@@ -977,6 +998,18 @@ func  (me *RenderingServer) TextureSetForceRedrawIfVisible(texture RID, enable b
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(&enable), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RenderingServer) TextureRdCreate(rd_texture RID, layer_type RenderingServerTextureLayeredType, ) RID {
+  classNameV := StringNameFromStr("RenderingServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("texture_rd_create")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1434128712) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rd_texture.AsCTypePtr()), gdc.ConstTypePtr(&layer_type), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *RenderingServer) TextureGetRdTexture(texture RID, srgb bool, ) RID {
@@ -1076,7 +1109,7 @@ func  (me *RenderingServer) ShaderSetDefaultTextureParameter(shader RID, name St
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("shader_set_default_texture_parameter")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3864903085) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4094001817) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shader.AsCTypePtr()), gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1086,7 +1119,7 @@ func  (me *RenderingServer) ShaderGetDefaultTextureParameter(shader RID, name St
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("shader_get_default_texture_parameter")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2523186822) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1464608890) // FIXME: should cache?
   var ret RID
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shader.AsCTypePtr()), gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -1162,7 +1195,7 @@ func  (me *RenderingServer) MeshCreateFromSurfaces(surfaces Dictionary, blend_sh
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("mesh_create_from_surfaces")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4007581507) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4291747531) // FIXME: should cache?
   var ret RID
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(surfaces.AsCTypePtr()), gdc.ConstTypePtr(&blend_shape_count), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -1197,6 +1230,18 @@ func  (me *RenderingServer) MeshSurfaceGetFormatVertexStride(format RenderingSer
   classNameV := StringNameFromStr("RenderingServer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("mesh_surface_get_format_vertex_stride")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3188363337) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&format), gdc.ConstTypePtr(&vertex_count), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *RenderingServer) MeshSurfaceGetFormatNormalTangentStride(format RenderingServerArrayFormat, vertex_count int, ) int {
+  classNameV := StringNameFromStr("RenderingServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("mesh_surface_get_format_normal_tangent_stride")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3188363337) // FIXME: should cache?
   var ret int
@@ -1244,7 +1289,7 @@ func  (me *RenderingServer) MeshAddSurfaceFromArrays(mesh RID, primitive Renderi
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("mesh_add_surface_from_arrays")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1247008646) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2342446560) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), gdc.ConstTypePtr(&primitive), gdc.ConstTypePtr(arrays.AsCTypePtr()), gdc.ConstTypePtr(blend_shapes.AsCTypePtr()), gdc.ConstTypePtr(lods.AsCTypePtr()), gdc.ConstTypePtr(&compress_format), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -2561,6 +2606,16 @@ func  (me *RenderingServer) ParticlesSetAmount(particles RID, amount int, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
+func  (me *RenderingServer) ParticlesSetAmountRatio(particles RID, ratio float32, )  {
+  classNameV := StringNameFromStr("RenderingServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("particles_set_amount_ratio")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(particles.AsCTypePtr()), gdc.ConstTypePtr(&ratio), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
 func  (me *RenderingServer) ParticlesSetLifetime(particles RID, lifetime float32, )  {
   classNameV := StringNameFromStr("RenderingServer")
   defer classNameV.Destroy()
@@ -2608,6 +2663,26 @@ func  (me *RenderingServer) ParticlesSetRandomnessRatio(particles RID, ratio flo
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(particles.AsCTypePtr()), gdc.ConstTypePtr(&ratio), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RenderingServer) ParticlesSetInterpToEnd(particles RID, factor float32, )  {
+  classNameV := StringNameFromStr("RenderingServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("particles_set_interp_to_end")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(particles.AsCTypePtr()), gdc.ConstTypePtr(&factor), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RenderingServer) ParticlesSetEmitterVelocity(particles RID, velocity Vector3, )  {
+  classNameV := StringNameFromStr("RenderingServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("particles_set_emitter_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(particles.AsCTypePtr()), gdc.ConstTypePtr(velocity.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
@@ -3182,7 +3257,7 @@ func  (me *RenderingServer) ViewportAttachToScreen(viewport RID, rect Rect2, scr
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("viewport_attach_to_screen")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1278520651) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1062245816) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(viewport.AsCTypePtr()), gdc.ConstTypePtr(rect.AsCTypePtr()), gdc.ConstTypePtr(&screen), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -3491,6 +3566,16 @@ func  (me *RenderingServer) ViewportSetMsaa2D(viewport RID, msaa RenderingServer
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
+func  (me *RenderingServer) ViewportSetUseHdr2D(viewport RID, enabled bool, )  {
+  classNameV := StringNameFromStr("RenderingServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("viewport_set_use_hdr_2d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(viewport.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
 func  (me *RenderingServer) ViewportSetScreenSpaceAa(viewport RID, mode RenderingServerViewportScreenSpaceAA, )  {
   classNameV := StringNameFromStr("RenderingServer")
   defer classNameV.Destroy()
@@ -3768,7 +3853,7 @@ func  (me *RenderingServer) EnvironmentSetAmbientLight(env RID, color Color, amb
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("environment_set_ambient_light")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 491659071) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1214961493) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(env.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), gdc.ConstTypePtr(&ambient), gdc.ConstTypePtr(&energy), gdc.ConstTypePtr(&sky_contibution), gdc.ConstTypePtr(&reflection_source), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4384,7 +4469,7 @@ func  (me *RenderingServer) InstancesCullAabb(aabb AABB, scenario RID, ) PackedI
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("instances_cull_aabb")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2031554939) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2570105777) // FIXME: should cache?
   var ret PackedInt64Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(aabb.AsCTypePtr()), gdc.ConstTypePtr(scenario.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -4396,7 +4481,7 @@ func  (me *RenderingServer) InstancesCullRay(from Vector3, to Vector3, scenario 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("instances_cull_ray")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3388524336) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2208759584) // FIXME: should cache?
   var ret PackedInt64Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from.AsCTypePtr()), gdc.ConstTypePtr(to.AsCTypePtr()), gdc.ConstTypePtr(scenario.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -4408,7 +4493,7 @@ func  (me *RenderingServer) InstancesCullConvex(convex Plane, scenario RID, ) Pa
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("instances_cull_convex")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690700105) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2488539944) // FIXME: should cache?
   var ret PackedInt64Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(convex.AsCTypePtr()), gdc.ConstTypePtr(scenario.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -4628,7 +4713,7 @@ func  (me *RenderingServer) CanvasItemSetCustomRect(item RID, use_custom_rect bo
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_set_custom_rect")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2180266943) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1333997032) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(&use_custom_rect), gdc.ConstTypePtr(rect.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4668,7 +4753,7 @@ func  (me *RenderingServer) CanvasItemAddLine(item RID, from Vector2, to Vector2
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_line")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2843922985) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1819681853) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(from.AsCTypePtr()), gdc.ConstTypePtr(to.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&antialiased), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4678,7 +4763,7 @@ func  (me *RenderingServer) CanvasItemAddPolyline(item RID, points PackedVector2
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_polyline")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3438017257) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3098767073) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(points.AsCTypePtr()), gdc.ConstTypePtr(colors.AsCTypePtr()), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&antialiased), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4688,7 +4773,7 @@ func  (me *RenderingServer) CanvasItemAddMultiline(item RID, points PackedVector
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_multiline")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3176074788) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2088642721) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(points.AsCTypePtr()), gdc.ConstTypePtr(colors.AsCTypePtr()), gdc.ConstTypePtr(&width), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4718,7 +4803,7 @@ func  (me *RenderingServer) CanvasItemAddTextureRect(item RID, rect Rect2, textu
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_texture_rect")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3205360868) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 324864032) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(rect.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(&tile), gdc.ConstTypePtr(modulate.AsCTypePtr()), gdc.ConstTypePtr(&transpose), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4728,7 +4813,7 @@ func  (me *RenderingServer) CanvasItemAddMsdfTextureRectRegion(item RID, rect Re
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_msdf_texture_rect_region")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 349157222) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 97408773) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(rect.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(src_rect.AsCTypePtr()), gdc.ConstTypePtr(modulate.AsCTypePtr()), gdc.ConstTypePtr(&outline_size), gdc.ConstTypePtr(&px_range), gdc.ConstTypePtr(&scale), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4748,7 +4833,7 @@ func  (me *RenderingServer) CanvasItemAddTextureRectRegion(item RID, rect Rect2,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_texture_rect_region")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2782979504) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 485157892) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(rect.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(src_rect.AsCTypePtr()), gdc.ConstTypePtr(modulate.AsCTypePtr()), gdc.ConstTypePtr(&transpose), gdc.ConstTypePtr(&clip_uv), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4758,7 +4843,7 @@ func  (me *RenderingServer) CanvasItemAddNinePatch(item RID, rect Rect2, source 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_nine_patch")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 904428547) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 389957886) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(rect.AsCTypePtr()), gdc.ConstTypePtr(source.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(topleft.AsCTypePtr()), gdc.ConstTypePtr(bottomright.AsCTypePtr()), gdc.ConstTypePtr(&x_axis_mode), gdc.ConstTypePtr(&y_axis_mode), gdc.ConstTypePtr(&draw_center), gdc.ConstTypePtr(modulate.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4778,7 +4863,7 @@ func  (me *RenderingServer) CanvasItemAddPolygon(item RID, points PackedVector2A
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_polygon")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2907936855) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3580000528) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(points.AsCTypePtr()), gdc.ConstTypePtr(colors.AsCTypePtr()), gdc.ConstTypePtr(uvs.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4788,7 +4873,7 @@ func  (me *RenderingServer) CanvasItemAddTriangleArray(item RID, indices PackedI
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_triangle_array")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 749685193) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 660261329) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(indices.AsCTypePtr()), gdc.ConstTypePtr(points.AsCTypePtr()), gdc.ConstTypePtr(colors.AsCTypePtr()), gdc.ConstTypePtr(uvs.AsCTypePtr()), gdc.ConstTypePtr(bones.AsCTypePtr()), gdc.ConstTypePtr(weights.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(&count), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4798,7 +4883,7 @@ func  (me *RenderingServer) CanvasItemAddMesh(item RID, mesh RID, transform Tran
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_mesh")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3548053052) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 316450961) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(mesh.AsCTypePtr()), gdc.ConstTypePtr(transform.AsCTypePtr()), gdc.ConstTypePtr(modulate.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4808,7 +4893,7 @@ func  (me *RenderingServer) CanvasItemAddMultimesh(item RID, mesh RID, texture R
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_multimesh")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1541595251) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2131855138) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(mesh.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4848,7 +4933,7 @@ func  (me *RenderingServer) CanvasItemAddAnimationSlice(item RID, animation_leng
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_add_animation_slice")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4107531031) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2646834499) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(&animation_length), gdc.ConstTypePtr(&slice_begin), gdc.ConstTypePtr(&slice_end), gdc.ConstTypePtr(&offset), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -4948,7 +5033,7 @@ func  (me *RenderingServer) CanvasItemSetCanvasGroupMode(item RID, mode Renderin
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("canvas_item_set_canvas_group_mode")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 41973386) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3973586316) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(&clear_margin), gdc.ConstTypePtr(&fit_empty), gdc.ConstTypePtr(&fit_margin), gdc.ConstTypePtr(&blur_mipmaps), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -5490,7 +5575,7 @@ func  (me *RenderingServer) SetBootImage(image Image, color Color, scale bool, u
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_boot_image")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2244367877) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3759744527) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), gdc.ConstTypePtr(&scale), gdc.ConstTypePtr(&use_filter), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -5627,6 +5712,16 @@ func  (me *RenderingServer) CreateLocalRenderingDevice() RenderingDevice {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
+}
+
+func  (me *RenderingServer) CallOnRenderThread(callable Callable, )  {
+  classNameV := StringNameFromStr("RenderingServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("call_on_render_thread")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1611583062) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callable.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

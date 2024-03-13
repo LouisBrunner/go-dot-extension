@@ -44,7 +44,7 @@ func  (me *VideoStreamPlayback) MixAudio(num_frames int, buffer PackedFloat32Arr
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("mix_audio")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1369271885) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 93876830) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&num_frames), gdc.ConstTypePtr(buffer.AsCTypePtr()), gdc.ConstTypePtr(&offset), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

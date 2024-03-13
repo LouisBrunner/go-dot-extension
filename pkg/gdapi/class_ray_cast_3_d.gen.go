@@ -165,6 +165,18 @@ func  (me *RayCast3D) GetCollisionNormal() Vector3 {
   return ret
 }
 
+func  (me *RayCast3D) GetCollisionFaceIndex() int {
+  classNameV := StringNameFromStr("RayCast3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_collision_face_index")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *RayCast3D) AddExceptionRid(rid RID, )  {
   classNameV := StringNameFromStr("RayCast3D")
   defer classNameV.Destroy()
@@ -339,6 +351,28 @@ func  (me *RayCast3D) IsHitFromInsideEnabled() bool {
   classNameV := StringNameFromStr("RayCast3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_hit_from_inside_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *RayCast3D) SetHitBackFaces(enable bool, )  {
+  classNameV := StringNameFromStr("RayCast3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_hit_back_faces")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RayCast3D) IsHitBackFacesEnabled() bool {
+  classNameV := StringNameFromStr("RayCast3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_hit_back_faces_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   var ret bool

@@ -115,6 +115,28 @@ func  (me *VideoStreamPlayer) IsPaused() bool {
   return ret
 }
 
+func  (me *VideoStreamPlayer) SetLoop(loop bool, )  {
+  classNameV := StringNameFromStr("VideoStreamPlayer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_loop")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&loop), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *VideoStreamPlayer) HasLoop() bool {
+  classNameV := StringNameFromStr("VideoStreamPlayer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_loop")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *VideoStreamPlayer) SetVolume(volume float32, )  {
   classNameV := StringNameFromStr("VideoStreamPlayer")
   defer classNameV.Destroy()
@@ -188,6 +210,18 @@ func  (me *VideoStreamPlayer) GetStreamName() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *VideoStreamPlayer) GetStreamLength() float32 {
+  classNameV := StringNameFromStr("VideoStreamPlayer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_stream_length")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret

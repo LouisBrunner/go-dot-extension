@@ -242,6 +242,18 @@ func (me *Basis) Slerp(to Basis, weight float32, ) Basis {
   return ret
 }
 
+func (me *Basis) IsConformal() bool {
+  name := StringNameFromStr("is_conformal")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeBasis, name.AsCPtr(), 3918633141) // FIXME: should cache?
+
+  var ret bool
+  args := []gdc.ConstTypePtr{}
+
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
+}
+
 func (me *Basis) IsEqualApprox(b Basis, ) bool {
   name := StringNameFromStr("is_equal_approx")
   defer name.Destroy()
@@ -337,14 +349,20 @@ func (me *Basis) Not() bool {
   return ret
 }
 
-func (me *Basis) MultiplyInt(right Int) Basis {
+func (me *Basis) MultiplyInt(rightArg int) Basis {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
   var ret Basis
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Basis) MultiplyFloat32(right Float) Basis {
+func (me *Basis) MultiplyFloat32(rightArg float32) Basis {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
   var ret Basis
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))

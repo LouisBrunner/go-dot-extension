@@ -155,6 +155,18 @@ func  (me *EditorInterface) IsPluginEnabled(plugin String, ) bool {
   return ret
 }
 
+func  (me *EditorInterface) GetEditorTheme() Theme {
+  classNameV := StringNameFromStr("EditorInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_editor_theme")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3846893731) // FIXME: should cache?
+  var ret Theme
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *EditorInterface) GetBaseControl() Control {
   classNameV := StringNameFromStr("EditorInterface")
   defer classNameV.Destroy()
@@ -187,6 +199,30 @@ func  (me *EditorInterface) GetScriptEditor() ScriptEditor {
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 90868003) // FIXME: should cache?
   var ret ScriptEditor
   cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *EditorInterface) GetEditorViewport2D() SubViewport {
+  classNameV := StringNameFromStr("EditorInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_editor_viewport_2d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3750751911) // FIXME: should cache?
+  var ret SubViewport
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *EditorInterface) GetEditorViewport3D(idx int, ) SubViewport {
+  classNameV := StringNameFromStr("EditorInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_editor_viewport_3d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1970834490) // FIXME: should cache?
+  var ret SubViewport
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
@@ -240,7 +276,7 @@ func  (me *EditorInterface) PopupDialog(dialog Window, rect Rect2i, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("popup_dialog")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2478844058) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2015770942) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(dialog.AsCTypePtr()), gdc.ConstTypePtr(rect.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -250,7 +286,7 @@ func  (me *EditorInterface) PopupDialogCentered(dialog Window, minsize Vector2i,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("popup_dialog_centered")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1723337679) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 346557367) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(dialog.AsCTypePtr()), gdc.ConstTypePtr(minsize.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -260,7 +296,7 @@ func  (me *EditorInterface) PopupDialogCenteredRatio(dialog Window, ratio float3
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("popup_dialog_centered_ratio")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1310934579) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2093669136) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(dialog.AsCTypePtr()), gdc.ConstTypePtr(&ratio), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -270,8 +306,30 @@ func  (me *EditorInterface) PopupDialogCenteredClamped(dialog Window, minsize Ve
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("popup_dialog_centered_clamped")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3433759678) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3763385571) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(dialog.AsCTypePtr()), gdc.ConstTypePtr(minsize.AsCTypePtr()), gdc.ConstTypePtr(&fallback_ratio), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *EditorInterface) GetCurrentFeatureProfile() String {
+  classNameV := StringNameFromStr("EditorInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_current_feature_profile")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *EditorInterface) SetCurrentFeatureProfile(profile_name String, )  {
+  classNameV := StringNameFromStr("EditorInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_current_feature_profile")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(profile_name.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
@@ -350,7 +408,7 @@ func  (me *EditorInterface) InspectObject(object Object, for_property String, in
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("inspect_object")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2564140749) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 127962172) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(object.AsCTypePtr()), gdc.ConstTypePtr(for_property.AsCTypePtr()), gdc.ConstTypePtr(&inspector_only), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -380,7 +438,7 @@ func  (me *EditorInterface) EditScript(script Script, line int, column int, grab
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("edit_script")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3664508569) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 219829402) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(script.AsCTypePtr()), gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&grab_focus), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -446,8 +504,18 @@ func  (me *EditorInterface) SaveSceneAs(path String, with_preview bool, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("save_scene_as")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1168363258) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3647332257) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&with_preview), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *EditorInterface) SaveAllScenes()  {
+  classNameV := StringNameFromStr("EditorInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("save_all_scenes")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 

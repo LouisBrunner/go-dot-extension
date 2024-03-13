@@ -217,7 +217,7 @@ func  (me *SurfaceTool) AddTriangleFan(vertices PackedVector3Array, uvs PackedVe
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_triangle_fan")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 297960074) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2235017613) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(vertices.AsCTypePtr()), gdc.ConstTypePtr(uvs.AsCTypePtr()), gdc.ConstTypePtr(colors.AsCTypePtr()), gdc.ConstTypePtr(uv2s.AsCTypePtr()), gdc.ConstTypePtr(normals.AsCTypePtr()), gdc.ConstTypePtr(tangents.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -299,7 +299,7 @@ func  (me *SurfaceTool) GenerateLod(nd_threshold float32, target_index_count int
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("generate_lod")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1894448909) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1938056459) // FIXME: should cache?
   var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&nd_threshold), gdc.ConstTypePtr(&target_index_count), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

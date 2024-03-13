@@ -99,7 +99,11 @@ func {{if .IsStatic }}{{$Class}}{{else}}(me *{{$Class}}) {{end }}{{mapMethod .Na
 {{- range .Operators}}
 
 func (me *{{$Class}}) {{mapMethod (mapOperator .Name)}}{{if ne .RightType ""}}{{pascalCased (mapType .RightType)}}{{end -}}
-({{if ne .RightType ""}}right {{mapClass .RightType}}{{end}}) {{mapType .ReturnType}} {
+({{if ne .RightType ""}}{{if isExported (mapType .RightType)}}right{{else}}rightArg{{end}} {{mapType .RightType}}{{end}}) {{mapType .ReturnType}} {
+{{- if ne .RightType ""}}{{if not (isExported (mapType .RightType))}}
+  right := New{{mapClass .RightType}}From{{pascalCased (mapType .RightType)}}(rightArg)
+  defer right.Destroy()
+{{end}}{{end}}
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOp{{mapOperator .Name}}, me.Type(), {{if ne .RightType ""}}right.Type(){{else}}gdc.VariantTypeNil{{end}}) // FIXME: cache
   var ret {{mapType .ReturnType}}
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), {{if ne .RightType ""}}right.AsCTypePtr(){{else}}nil{{end}}, gdc.TypePtr(&ret))

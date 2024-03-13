@@ -50,7 +50,7 @@ func  (me *AudioStreamPlaybackPolyphonic) PlayStream(stream AudioStream, from_of
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("play_stream")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3792189967) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 604492179) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(stream.AsCTypePtr()), gdc.ConstTypePtr(&from_offset), gdc.ConstTypePtr(&volume_db), gdc.ConstTypePtr(&pitch_scale), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

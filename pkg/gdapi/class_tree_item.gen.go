@@ -141,7 +141,7 @@ func  (me *TreeItem) PropagateCheck(column int, emit_signal bool, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("propagate_check")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4023243586) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 972357352) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&emit_signal), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -795,7 +795,7 @@ func  (me *TreeItem) AddButton(column int, button Texture2D, id int, disabled bo
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_button")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1507727907) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1688223362) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(button.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&disabled), gdc.ConstTypePtr(tooltip_text.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -858,6 +858,16 @@ func  (me *TreeItem) GetButton(column int, button_index int, ) Texture2D {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&button_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
+}
+
+func  (me *TreeItem) SetButtonTooltipText(column int, button_index int, tooltip String, )  {
+  classNameV := StringNameFromStr("TreeItem")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_button_tooltip_text")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2285447957) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&button_index), gdc.ConstTypePtr(tooltip.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TreeItem) SetButton(column int, button_index int, button Texture2D, )  {

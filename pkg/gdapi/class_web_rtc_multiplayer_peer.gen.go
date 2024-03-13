@@ -56,7 +56,7 @@ func  (me *WebRTCMultiplayerPeer) CreateClient(peer_id int, channels_config Arra
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_client")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1777354631) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2641732907) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id), gdc.ConstTypePtr(channels_config.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -68,7 +68,7 @@ func  (me *WebRTCMultiplayerPeer) CreateMesh(peer_id int, channels_config Array,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_mesh")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1777354631) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2641732907) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id), gdc.ConstTypePtr(channels_config.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -80,7 +80,7 @@ func  (me *WebRTCMultiplayerPeer) AddPeer(peer WebRTCPeerConnection, peer_id int
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_peer")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2555866323) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4078953270) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(peer.AsCTypePtr()), gdc.ConstTypePtr(&peer_id), gdc.ConstTypePtr(&unreliable_lifetime), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

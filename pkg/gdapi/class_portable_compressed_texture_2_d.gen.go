@@ -54,7 +54,7 @@ func  (me *PortableCompressedTexture2D) CreateFromImage(image Image, compression
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_from_image")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 97251393) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3679243433) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), gdc.ConstTypePtr(&compression_mode), gdc.ConstTypePtr(&normal_map), gdc.ConstTypePtr(&lossy_quality), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

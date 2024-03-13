@@ -25,6 +25,22 @@ func (me *NavigationPolygon) BaseClass() string {
 
 // Enums
 
+type NavigationPolygonParsedGeometryType int
+const (
+  NavigationPolygonParsedGeometryTypeParsedGeometryMeshInstances NavigationPolygonParsedGeometryType = 0
+  NavigationPolygonParsedGeometryTypeParsedGeometryStaticColliders NavigationPolygonParsedGeometryType = 1
+  NavigationPolygonParsedGeometryTypeParsedGeometryBoth NavigationPolygonParsedGeometryType = 2
+  NavigationPolygonParsedGeometryTypeParsedGeometryMax NavigationPolygonParsedGeometryType = 3
+)
+
+type NavigationPolygonSourceGeometryMode int
+const (
+  NavigationPolygonSourceGeometryModeSourceGeometryRootNodeChildren NavigationPolygonSourceGeometryMode = 0
+  NavigationPolygonSourceGeometryModeSourceGeometryGroupsWithChildren NavigationPolygonSourceGeometryMode = 1
+  NavigationPolygonSourceGeometryModeSourceGeometryGroupsExplicit NavigationPolygonSourceGeometryMode = 2
+  NavigationPolygonSourceGeometryModeSourceGeometryMax NavigationPolygonSourceGeometryMode = 3
+)
+
 func (me *NavigationPolygon) Type() gdc.VariantType {
   return gdc.VariantTypeObject
 }
@@ -221,6 +237,148 @@ func  (me *NavigationPolygon) GetCellSize() float32 {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
+}
+
+func  (me *NavigationPolygon) SetParsedGeometryType(geometry_type NavigationPolygonParsedGeometryType, )  {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_parsed_geometry_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2507971764) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&geometry_type), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *NavigationPolygon) GetParsedGeometryType() NavigationPolygonParsedGeometryType {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_parsed_geometry_type")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1073219508) // FIXME: should cache?
+  var ret NavigationPolygonParsedGeometryType
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *NavigationPolygon) SetParsedCollisionMask(mask int, )  {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_parsed_collision_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *NavigationPolygon) GetParsedCollisionMask() int {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_parsed_collision_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *NavigationPolygon) SetParsedCollisionMaskValue(layer_number int, value bool, )  {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_parsed_collision_mask_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *NavigationPolygon) GetParsedCollisionMaskValue(layer_number int, ) bool {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_parsed_collision_mask_value")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *NavigationPolygon) SetSourceGeometryMode(geometry_mode NavigationPolygonSourceGeometryMode, )  {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_source_geometry_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4002316705) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&geometry_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *NavigationPolygon) GetSourceGeometryMode() NavigationPolygonSourceGeometryMode {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_source_geometry_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 459686762) // FIXME: should cache?
+  var ret NavigationPolygonSourceGeometryMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *NavigationPolygon) SetSourceGeometryGroupName(group_name StringName, )  {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_source_geometry_group_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(group_name.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *NavigationPolygon) GetSourceGeometryGroupName() StringName {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_source_geometry_group_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
+  var ret StringName
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *NavigationPolygon) SetAgentRadius(agent_radius float32, )  {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_agent_radius")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&agent_radius), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *NavigationPolygon) GetAgentRadius() float32 {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_agent_radius")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *NavigationPolygon) Clear()  {
+  classNameV := StringNameFromStr("NavigationPolygon")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

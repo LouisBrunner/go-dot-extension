@@ -144,6 +144,28 @@ func  (me *LightmapGI) GetBounces() int {
   return ret
 }
 
+func  (me *LightmapGI) SetBounceIndirectEnergy(bounce_indirect_energy float32, )  {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_bounce_indirect_energy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bounce_indirect_energy), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *LightmapGI) GetBounceIndirectEnergy() float32 {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_bounce_indirect_energy")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *LightmapGI) SetGenerateProbes(subdivision LightmapGIGenerateProbes, )  {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
@@ -320,6 +342,28 @@ func  (me *LightmapGI) IsUsingDenoiser() bool {
   return ret
 }
 
+func  (me *LightmapGI) SetDenoiserStrength(denoiser_strength float32, )  {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_denoiser_strength")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&denoiser_strength), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *LightmapGI) GetDenoiserStrength() float32 {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_denoiser_strength")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *LightmapGI) SetInterior(enable bool, )  {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
@@ -356,6 +400,28 @@ func  (me *LightmapGI) IsDirectional() bool {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_directional")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *LightmapGI) SetUseTextureForBounces(use_texture_for_bounces bool, )  {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_texture_for_bounces")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&use_texture_for_bounces), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *LightmapGI) IsUsingTextureForBounces() bool {
+  classNameV := StringNameFromStr("LightmapGI")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_using_texture_for_bounces")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   var ret bool

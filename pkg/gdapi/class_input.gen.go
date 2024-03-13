@@ -218,7 +218,7 @@ func  (me *Input) GetVector(negative_x StringName, positive_x StringName, negati
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_vector")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1517139831) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2479607902) // FIXME: should cache?
   var ret Vector2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(negative_x.AsCTypePtr()), gdc.ConstTypePtr(positive_x.AsCTypePtr()), gdc.ConstTypePtr(negative_y.AsCTypePtr()), gdc.ConstTypePtr(positive_y.AsCTypePtr()), gdc.ConstTypePtr(&deadzone), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -293,6 +293,18 @@ func  (me *Input) GetJoyGuid(device int, ) String {
   return ret
 }
 
+func  (me *Input) GetJoyInfo(device int, ) Dictionary {
+  classNameV := StringNameFromStr("Input")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_joy_info")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3485342025) // FIXME: should cache?
+  var ret Dictionary
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&device), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *Input) ShouldIgnoreDevice(vendor_id int, product_id int, ) bool {
   classNameV := StringNameFromStr("Input")
   defer classNameV.Destroy()
@@ -346,7 +358,7 @@ func  (me *Input) StartJoyVibration(device int, weak_magnitude float32, strong_m
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("start_joy_vibration")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1890603622) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2576575033) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&device), gdc.ConstTypePtr(&weak_magnitude), gdc.ConstTypePtr(&strong_magnitude), gdc.ConstTypePtr(&duration), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -520,7 +532,7 @@ func  (me *Input) ActionPress(action StringName, strength float32, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("action_press")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 573731101) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1713091165) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&strength), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -562,7 +574,7 @@ func  (me *Input) SetCustomMouseCursor(image Resource, shape InputCursorShape, h
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_custom_mouse_cursor")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3489634142) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 703945977) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), gdc.ConstTypePtr(&shape), gdc.ConstTypePtr(hotspot.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

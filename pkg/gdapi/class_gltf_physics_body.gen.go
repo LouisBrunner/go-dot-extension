@@ -175,6 +175,28 @@ func  (me *GLTFPhysicsBody) SetAngularVelocity(angular_velocity Vector3, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
+func  (me *GLTFPhysicsBody) GetCenterOfMass() Vector3 {
+  classNameV := StringNameFromStr("GLTFPhysicsBody")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_center_of_mass")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *GLTFPhysicsBody) SetCenterOfMass(center_of_mass Vector3, )  {
+  classNameV := StringNameFromStr("GLTFPhysicsBody")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_center_of_mass")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(center_of_mass.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
 func  (me *GLTFPhysicsBody) GetInertiaTensor() Basis {
   classNameV := StringNameFromStr("GLTFPhysicsBody")
   defer classNameV.Destroy()

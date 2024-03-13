@@ -205,6 +205,16 @@ func  (me *GPUParticles2D) SetCollisionBaseSize(size float32, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
+func  (me *GPUParticles2D) SetInterpToEnd(interp float32, )  {
+  classNameV := StringNameFromStr("GPUParticles2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_interp_to_end")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&interp), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
 func  (me *GPUParticles2D) IsEmitting() bool {
   classNameV := StringNameFromStr("GPUParticles2D")
   defer classNameV.Destroy()
@@ -377,6 +387,18 @@ func  (me *GPUParticles2D) GetCollisionBaseSize() float32 {
   classNameV := StringNameFromStr("GPUParticles2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_base_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *GPUParticles2D) GetInterpToEnd() float32 {
+  classNameV := StringNameFromStr("GPUParticles2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_interp_to_end")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   var ret float32
@@ -570,7 +592,55 @@ func  (me *GPUParticles2D) GetTrailSectionSubdivisions() int {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
+
+func  (me *GPUParticles2D) ConvertFromParticles(particles Node, )  {
+  classNameV := StringNameFromStr("GPUParticles2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("convert_from_particles")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(particles.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *GPUParticles2D) SetAmountRatio(ratio float32, )  {
+  classNameV := StringNameFromStr("GPUParticles2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_amount_ratio")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ratio), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *GPUParticles2D) GetAmountRatio() float32 {
+  classNameV := StringNameFromStr("GPUParticles2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_amount_ratio")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API
 
 // Signals
+
+type GPUParticles2DFinishedSignalFn func()
+
+func (me *GPUParticles2D) ConnectFinished(subs SignalSubscribers, fn GPUParticles2DFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GPUParticles2D) DisconnectFinished(subs SignalSubscribers, fn GPUParticles2DFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

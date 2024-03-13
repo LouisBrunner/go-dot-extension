@@ -39,12 +39,24 @@ func (me *PopupMenu) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
+func  (me *PopupMenu) ActivateItemByEvent(event InputEvent, for_global_only bool, ) bool {
+  classNameV := StringNameFromStr("PopupMenu")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("activate_item_by_event")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3716412023) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(event.AsCTypePtr()), gdc.ConstTypePtr(&for_global_only), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *PopupMenu) AddItem(label String, id int, accel Key, )  {
   classNameV := StringNameFromStr("PopupMenu")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3224536192) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3674230041) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&accel), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -54,7 +66,7 @@ func  (me *PopupMenu) AddIconItem(texture Texture2D, label String, id int, accel
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_icon_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1200674553) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1086190128) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&accel), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -64,7 +76,7 @@ func  (me *PopupMenu) AddCheckItem(label String, id int, accel Key, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_check_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3224536192) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3674230041) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&accel), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -74,7 +86,7 @@ func  (me *PopupMenu) AddIconCheckItem(texture Texture2D, label String, id int, 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_icon_check_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1200674553) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1086190128) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&accel), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -84,7 +96,7 @@ func  (me *PopupMenu) AddRadioCheckItem(label String, id int, accel Key, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_radio_check_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3224536192) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3674230041) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&accel), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -94,7 +106,7 @@ func  (me *PopupMenu) AddIconRadioCheckItem(texture Texture2D, label String, id 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_icon_radio_check_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1200674553) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1086190128) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&accel), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -104,28 +116,28 @@ func  (me *PopupMenu) AddMultistateItem(label String, max_states int, default_st
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_multistate_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1585218420) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 150780458) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(&max_states), gdc.ConstTypePtr(&default_state), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&accel), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PopupMenu) AddShortcut(shortcut Shortcut, id int, global bool, )  {
+func  (me *PopupMenu) AddShortcut(shortcut Shortcut, id int, global bool, allow_echo bool, )  {
   classNameV := StringNameFromStr("PopupMenu")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_shortcut")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2168272394) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shortcut.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&global), }
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3451850107) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shortcut.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&global), gdc.ConstTypePtr(&allow_echo), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PopupMenu) AddIconShortcut(texture Texture2D, shortcut Shortcut, id int, global bool, )  {
+func  (me *PopupMenu) AddIconShortcut(texture Texture2D, shortcut Shortcut, id int, global bool, allow_echo bool, )  {
   classNameV := StringNameFromStr("PopupMenu")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_icon_shortcut")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 68101841) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(shortcut.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&global), }
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2997871092) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(shortcut.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&global), gdc.ConstTypePtr(&allow_echo), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
@@ -134,7 +146,7 @@ func  (me *PopupMenu) AddCheckShortcut(shortcut Shortcut, id int, global bool, )
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_check_shortcut")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2168272394) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1642193386) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shortcut.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&global), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -144,7 +156,7 @@ func  (me *PopupMenu) AddIconCheckShortcut(texture Texture2D, shortcut Shortcut,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_icon_check_shortcut")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 68101841) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3856247530) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(shortcut.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&global), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -154,7 +166,7 @@ func  (me *PopupMenu) AddRadioCheckShortcut(shortcut Shortcut, id int, global bo
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_radio_check_shortcut")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2168272394) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1642193386) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shortcut.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&global), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -164,7 +176,7 @@ func  (me *PopupMenu) AddIconRadioCheckShortcut(texture Texture2D, shortcut Shor
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_icon_radio_check_shortcut")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 68101841) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3856247530) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(shortcut.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&global), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -174,7 +186,7 @@ func  (me *PopupMenu) AddSubmenuItem(label String, submenu String, id int, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_submenu_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3728518296) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2979222410) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(submenu.AsCTypePtr()), gdc.ConstTypePtr(&id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -713,13 +725,13 @@ func  (me *PopupMenu) AddSeparator(label String, id int, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *PopupMenu) Clear()  {
+func  (me *PopupMenu) Clear(free_submenus bool, )  {
   classNameV := StringNameFromStr("PopupMenu")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("clear")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{}
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 107499316) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&free_submenus), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 

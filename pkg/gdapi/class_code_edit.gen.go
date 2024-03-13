@@ -673,6 +673,74 @@ func  (me *CodeEdit) GetFoldedLines() int {
   return ret
 }
 
+func  (me *CodeEdit) CreateCodeRegion()  {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("create_code_region")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *CodeEdit) GetCodeRegionStartTag() String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_code_region_start_tag")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *CodeEdit) GetCodeRegionEndTag() String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_code_region_end_tag")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *CodeEdit) SetCodeRegionTags(start String, end String, )  {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_code_region_tags")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 708800718) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start.AsCTypePtr()), gdc.ConstTypePtr(end.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *CodeEdit) IsLineCodeRegionStart(line int, ) bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_line_code_region_start")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *CodeEdit) IsLineCodeRegionEnd(line int, ) bool {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_line_code_region_end")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *CodeEdit) AddStringDelimiter(start_key String, end_key String, line_only bool, )  {
   classNameV := StringNameFromStr("CodeEdit")
   defer classNameV.Destroy()
@@ -742,7 +810,7 @@ func  (me *CodeEdit) IsInString(line int, column int, ) int {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_in_string")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3294126239) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 688195400) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -818,7 +886,7 @@ func  (me *CodeEdit) IsInComment(line int, column int, ) int {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_in_comment")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3294126239) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 688195400) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -920,7 +988,7 @@ func  (me *CodeEdit) AddCodeCompletionOption(type_ CodeEditCodeCompletionKind, d
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_code_completion_option")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1629240608) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 947964390) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(display_text.AsCTypePtr()), gdc.ConstTypePtr(insert_text.AsCTypePtr()), gdc.ConstTypePtr(text_color.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), gdc.ConstTypePtr(&location), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1094,9 +1162,21 @@ func  (me *CodeEdit) GetTextForSymbolLookup() String {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_text_for_symbol_lookup")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2841200299) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   var ret String
   cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *CodeEdit) GetTextWithCursorChar(line int, column int, ) String {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_text_with_cursor_char")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1391810591) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
@@ -1108,6 +1188,16 @@ func  (me *CodeEdit) SetSymbolLookupWordAsValid(valid bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&valid), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *CodeEdit) DuplicateLines()  {
+  classNameV := StringNameFromStr("CodeEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("duplicate_lines")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 // Properties

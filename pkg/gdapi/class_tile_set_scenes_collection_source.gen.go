@@ -80,7 +80,7 @@ func  (me *TileSetScenesCollectionSource) CreateSceneTile(packed_scene PackedSce
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_scene_tile")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2633389122) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1117465415) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(packed_scene.AsCTypePtr()), gdc.ConstTypePtr(&id_override), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

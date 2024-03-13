@@ -216,6 +216,18 @@ func  (me *Script) IsTool() bool {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
+
+func  (me *Script) IsAbstract() bool {
+  classNameV := StringNameFromStr("Script")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_abstract")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API
 

@@ -260,7 +260,7 @@ func  (me *AudioServer) AddBusEffect(bus_idx int, effect AudioEffect, at_positio
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_bus_effect")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4147765248) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4068819785) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bus_idx), gdc.ConstTypePtr(effect.AsCTypePtr()), gdc.ConstTypePtr(&at_position), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -304,7 +304,7 @@ func  (me *AudioServer) GetBusEffectInstance(bus_idx int, effect_idx int, channe
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bus_effect_instance")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2887144608) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1829771234) // FIXME: should cache?
   var ret AudioEffectInstance
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bus_idx), gdc.ConstTypePtr(&effect_idx), gdc.ConstTypePtr(&channel), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -584,6 +584,22 @@ func (me *AudioServer) ConnectBusLayoutChanged(subs SignalSubscribers, fn AudioS
 
 func (me *AudioServer) DisconnectBusLayoutChanged(subs SignalSubscribers, fn AudioServerBusLayoutChangedSignalFn) {
   sig := StringNameFromStr("bus_layout_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type AudioServerBusRenamedSignalFn func(bus_index int, old_name StringName, new_name StringName, )
+
+func (me *AudioServer) ConnectBusRenamed(subs SignalSubscribers, fn AudioServerBusRenamedSignalFn) {
+  sig := StringNameFromStr("bus_renamed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *AudioServer) DisconnectBusRenamed(subs SignalSubscribers, fn AudioServerBusRenamedSignalFn) {
+  sig := StringNameFromStr("bus_renamed")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Disconnect(sig, *subs.remove(fn))

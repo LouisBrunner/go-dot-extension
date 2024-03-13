@@ -18,6 +18,9 @@ type UtilityFunctions interface {
   Acos(x float32, ) float32
   Atan(x float32, ) float32
   Atan2(y float32, x float32, ) float32
+  Asinh(x float32, ) float32
+  Acosh(x float32, ) float32
+  Atanh(x float32, ) float32
   Sqrt(x float32, ) float32
   Fmod(x float32, y float32, ) float32
   Fposmod(x float32, y float32, ) float32
@@ -58,11 +61,13 @@ type UtilityFunctions interface {
   CubicInterpolateAngleInTime(from float32, to float32, pre float32, post float32, weight float32, to_t float32, pre_t float32, post_t float32, ) float32
   BezierInterpolate(start float32, control_1 float32, control_2 float32, end float32, t float32, ) float32
   BezierDerivative(start float32, control_1 float32, control_2 float32, end float32, t float32, ) float32
+  AngleDifference(from float32, to float32, ) float32
   LerpAngle(from float32, to float32, weight float32, ) float32
   InverseLerp(from float32, to float32, weight float32, ) float32
   Remap(value float32, istart float32, istop float32, ostart float32, ostop float32, ) float32
   Smoothstep(from float32, to float32, x float32, ) float32
   MoveToward(from float32, to float32, delta float32, ) float32
+  RotateToward(from float32, to float32, delta float32, ) float32
   DegToRad(deg float32, ) float32
   RadToDeg(rad float32, ) float32
   LinearToDb(lin float32, ) float32
@@ -91,8 +96,10 @@ type UtilityFunctions interface {
   RandFromSeed(seed int, ) PackedInt64Array
   Weakref(obj Variant, ) Variant
   Typeof(variable Variant, ) int
+  TypeConvert(variant Variant, type_ int, ) Variant
   Str(args ...Variant) String
   ErrorString(error int, ) String
+  TypeString(type_ int, ) String
   Print(args ...Variant) 
   PrintRich(args ...Variant) 
   Printerr(args ...Variant) 
@@ -129,6 +136,9 @@ type utilities struct {
   ptracos gdc.PtrUtilityFunction
   ptratan gdc.PtrUtilityFunction
   ptratan2 gdc.PtrUtilityFunction
+  ptrasinh gdc.PtrUtilityFunction
+  ptracosh gdc.PtrUtilityFunction
+  ptratanh gdc.PtrUtilityFunction
   ptrsqrt gdc.PtrUtilityFunction
   ptrfmod gdc.PtrUtilityFunction
   ptrfposmod gdc.PtrUtilityFunction
@@ -169,11 +179,13 @@ type utilities struct {
   ptrcubic_interpolate_angle_in_time gdc.PtrUtilityFunction
   ptrbezier_interpolate gdc.PtrUtilityFunction
   ptrbezier_derivative gdc.PtrUtilityFunction
+  ptrangle_difference gdc.PtrUtilityFunction
   ptrlerp_angle gdc.PtrUtilityFunction
   ptrinverse_lerp gdc.PtrUtilityFunction
   ptrremap gdc.PtrUtilityFunction
   ptrsmoothstep gdc.PtrUtilityFunction
   ptrmove_toward gdc.PtrUtilityFunction
+  ptrrotate_toward gdc.PtrUtilityFunction
   ptrdeg_to_rad gdc.PtrUtilityFunction
   ptrrad_to_deg gdc.PtrUtilityFunction
   ptrlinear_to_db gdc.PtrUtilityFunction
@@ -202,8 +214,10 @@ type utilities struct {
   ptrrand_from_seed gdc.PtrUtilityFunction
   ptrweakref gdc.PtrUtilityFunction
   ptrtypeof gdc.PtrUtilityFunction
+  ptrtype_convert gdc.PtrUtilityFunction
   ptrstr gdc.PtrUtilityFunction
   ptrerror_string gdc.PtrUtilityFunction
+  ptrtype_string gdc.PtrUtilityFunction
   ptrprint gdc.PtrUtilityFunction
   ptrprint_rich gdc.PtrUtilityFunction
   ptrprinterr gdc.PtrUtilityFunction
@@ -249,6 +263,12 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
   defer stratan.Destroy()
   stratan2 := StringNameFromStr("atan2")
   defer stratan2.Destroy()
+  strasinh := StringNameFromStr("asinh")
+  defer strasinh.Destroy()
+  stracosh := StringNameFromStr("acosh")
+  defer stracosh.Destroy()
+  stratanh := StringNameFromStr("atanh")
+  defer stratanh.Destroy()
   strsqrt := StringNameFromStr("sqrt")
   defer strsqrt.Destroy()
   strfmod := StringNameFromStr("fmod")
@@ -329,6 +349,8 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
   defer strbezier_interpolate.Destroy()
   strbezier_derivative := StringNameFromStr("bezier_derivative")
   defer strbezier_derivative.Destroy()
+  strangle_difference := StringNameFromStr("angle_difference")
+  defer strangle_difference.Destroy()
   strlerp_angle := StringNameFromStr("lerp_angle")
   defer strlerp_angle.Destroy()
   strinverse_lerp := StringNameFromStr("inverse_lerp")
@@ -339,6 +361,8 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
   defer strsmoothstep.Destroy()
   strmove_toward := StringNameFromStr("move_toward")
   defer strmove_toward.Destroy()
+  strrotate_toward := StringNameFromStr("rotate_toward")
+  defer strrotate_toward.Destroy()
   strdeg_to_rad := StringNameFromStr("deg_to_rad")
   defer strdeg_to_rad.Destroy()
   strrad_to_deg := StringNameFromStr("rad_to_deg")
@@ -395,10 +419,14 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
   defer strweakref.Destroy()
   strtypeof := StringNameFromStr("typeof")
   defer strtypeof.Destroy()
+  strtype_convert := StringNameFromStr("type_convert")
+  defer strtype_convert.Destroy()
   strstr := StringNameFromStr("str")
   defer strstr.Destroy()
   strerror_string := StringNameFromStr("error_string")
   defer strerror_string.Destroy()
+  strtype_string := StringNameFromStr("type_string")
+  defer strtype_string.Destroy()
   strprint := StringNameFromStr("print")
   defer strprint.Destroy()
   strprint_rich := StringNameFromStr("print_rich")
@@ -454,6 +482,9 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
     ptracos: iface.VariantGetPtrUtilityFunction(stracos.AsCPtr(), 2140049587),
     ptratan: iface.VariantGetPtrUtilityFunction(stratan.AsCPtr(), 2140049587),
     ptratan2: iface.VariantGetPtrUtilityFunction(stratan2.AsCPtr(), 92296394),
+    ptrasinh: iface.VariantGetPtrUtilityFunction(strasinh.AsCPtr(), 2140049587),
+    ptracosh: iface.VariantGetPtrUtilityFunction(stracosh.AsCPtr(), 2140049587),
+    ptratanh: iface.VariantGetPtrUtilityFunction(stratanh.AsCPtr(), 2140049587),
     ptrsqrt: iface.VariantGetPtrUtilityFunction(strsqrt.AsCPtr(), 2140049587),
     ptrfmod: iface.VariantGetPtrUtilityFunction(strfmod.AsCPtr(), 92296394),
     ptrfposmod: iface.VariantGetPtrUtilityFunction(strfposmod.AsCPtr(), 92296394),
@@ -494,11 +525,13 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
     ptrcubic_interpolate_angle_in_time: iface.VariantGetPtrUtilityFunction(strcubic_interpolate_angle_in_time.AsCPtr(), 388121036),
     ptrbezier_interpolate: iface.VariantGetPtrUtilityFunction(strbezier_interpolate.AsCPtr(), 1090965791),
     ptrbezier_derivative: iface.VariantGetPtrUtilityFunction(strbezier_derivative.AsCPtr(), 1090965791),
+    ptrangle_difference: iface.VariantGetPtrUtilityFunction(strangle_difference.AsCPtr(), 92296394),
     ptrlerp_angle: iface.VariantGetPtrUtilityFunction(strlerp_angle.AsCPtr(), 998901048),
     ptrinverse_lerp: iface.VariantGetPtrUtilityFunction(strinverse_lerp.AsCPtr(), 998901048),
     ptrremap: iface.VariantGetPtrUtilityFunction(strremap.AsCPtr(), 1090965791),
     ptrsmoothstep: iface.VariantGetPtrUtilityFunction(strsmoothstep.AsCPtr(), 998901048),
     ptrmove_toward: iface.VariantGetPtrUtilityFunction(strmove_toward.AsCPtr(), 998901048),
+    ptrrotate_toward: iface.VariantGetPtrUtilityFunction(strrotate_toward.AsCPtr(), 998901048),
     ptrdeg_to_rad: iface.VariantGetPtrUtilityFunction(strdeg_to_rad.AsCPtr(), 2140049587),
     ptrrad_to_deg: iface.VariantGetPtrUtilityFunction(strrad_to_deg.AsCPtr(), 2140049587),
     ptrlinear_to_db: iface.VariantGetPtrUtilityFunction(strlinear_to_db.AsCPtr(), 2140049587),
@@ -527,8 +560,10 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
     ptrrand_from_seed: iface.VariantGetPtrUtilityFunction(strrand_from_seed.AsCPtr(), 1391063685),
     ptrweakref: iface.VariantGetPtrUtilityFunction(strweakref.AsCPtr(), 4776452),
     ptrtypeof: iface.VariantGetPtrUtilityFunction(strtypeof.AsCPtr(), 326422594),
+    ptrtype_convert: iface.VariantGetPtrUtilityFunction(strtype_convert.AsCPtr(), 2453062746),
     ptrstr: iface.VariantGetPtrUtilityFunction(strstr.AsCPtr(), 32569176),
     ptrerror_string: iface.VariantGetPtrUtilityFunction(strerror_string.AsCPtr(), 942708242),
+    ptrtype_string: iface.VariantGetPtrUtilityFunction(strtype_string.AsCPtr(), 942708242),
     ptrprint: iface.VariantGetPtrUtilityFunction(strprint.AsCPtr(), 2648703342),
     ptrprint_rich: iface.VariantGetPtrUtilityFunction(strprint_rich.AsCPtr(), 2648703342),
     ptrprinterr: iface.VariantGetPtrUtilityFunction(strprinterr.AsCPtr(), 2648703342),
@@ -652,6 +687,36 @@ func (me *utilities) Atan2(y float32, x float32, ) float32 {
   var ret float32
   retPtr := gdc.TypePtr(&ret)
   me.iface.CallPtrUtilityFunction(me.ptratan2, retPtr, unsafe.SliceData(args), len(args))
+  return ret
+}
+
+func (me *utilities) Asinh(x float32, ) float32 {
+  args := []gdc.ConstTypePtr{
+    gdc.ConstTypePtr(&x),
+  }
+  var ret float32
+  retPtr := gdc.TypePtr(&ret)
+  me.iface.CallPtrUtilityFunction(me.ptrasinh, retPtr, unsafe.SliceData(args), len(args))
+  return ret
+}
+
+func (me *utilities) Acosh(x float32, ) float32 {
+  args := []gdc.ConstTypePtr{
+    gdc.ConstTypePtr(&x),
+  }
+  var ret float32
+  retPtr := gdc.TypePtr(&ret)
+  me.iface.CallPtrUtilityFunction(me.ptracosh, retPtr, unsafe.SliceData(args), len(args))
+  return ret
+}
+
+func (me *utilities) Atanh(x float32, ) float32 {
+  args := []gdc.ConstTypePtr{
+    gdc.ConstTypePtr(&x),
+  }
+  var ret float32
+  retPtr := gdc.TypePtr(&ret)
+  me.iface.CallPtrUtilityFunction(me.ptratanh, retPtr, unsafe.SliceData(args), len(args))
   return ret
 }
 
@@ -1098,6 +1163,17 @@ func (me *utilities) BezierDerivative(start float32, control_1 float32, control_
   return ret
 }
 
+func (me *utilities) AngleDifference(from float32, to float32, ) float32 {
+  args := []gdc.ConstTypePtr{
+    gdc.ConstTypePtr(&from),
+    gdc.ConstTypePtr(&to),
+  }
+  var ret float32
+  retPtr := gdc.TypePtr(&ret)
+  me.iface.CallPtrUtilityFunction(me.ptrangle_difference, retPtr, unsafe.SliceData(args), len(args))
+  return ret
+}
+
 func (me *utilities) LerpAngle(from float32, to float32, weight float32, ) float32 {
   args := []gdc.ConstTypePtr{
     gdc.ConstTypePtr(&from),
@@ -1157,6 +1233,18 @@ func (me *utilities) MoveToward(from float32, to float32, delta float32, ) float
   var ret float32
   retPtr := gdc.TypePtr(&ret)
   me.iface.CallPtrUtilityFunction(me.ptrmove_toward, retPtr, unsafe.SliceData(args), len(args))
+  return ret
+}
+
+func (me *utilities) RotateToward(from float32, to float32, delta float32, ) float32 {
+  args := []gdc.ConstTypePtr{
+    gdc.ConstTypePtr(&from),
+    gdc.ConstTypePtr(&to),
+    gdc.ConstTypePtr(&delta),
+  }
+  var ret float32
+  retPtr := gdc.TypePtr(&ret)
+  me.iface.CallPtrUtilityFunction(me.ptrrotate_toward, retPtr, unsafe.SliceData(args), len(args))
   return ret
 }
 
@@ -1459,6 +1547,17 @@ func (me *utilities) Typeof(variable Variant, ) int {
   return ret
 }
 
+func (me *utilities) TypeConvert(variant Variant, type_ int, ) Variant {
+  args := []gdc.ConstTypePtr{
+    variant.AsCTypePtr(),
+    gdc.ConstTypePtr(&type_),
+  }
+  var ret Variant
+  retPtr := gdc.TypePtr(&ret)
+  me.iface.CallPtrUtilityFunction(me.ptrtype_convert, retPtr, unsafe.SliceData(args), len(args))
+  return ret
+}
+
 func (me *utilities) Str(vargs ...Variant) String {
   args := make([]gdc.ConstTypePtr, len(vargs))
   for i, arg := range vargs {
@@ -1478,6 +1577,16 @@ func (me *utilities) ErrorString(error int, ) String {
   var ret String
   retPtr := gdc.TypePtr(&ret)
   me.iface.CallPtrUtilityFunction(me.ptrerror_string, retPtr, unsafe.SliceData(args), len(args))
+  return ret
+}
+
+func (me *utilities) TypeString(type_ int, ) String {
+  args := []gdc.ConstTypePtr{
+    gdc.ConstTypePtr(&type_),
+  }
+  var ret String
+  retPtr := gdc.TypePtr(&ret)
+  me.iface.CallPtrUtilityFunction(me.ptrtype_string, retPtr, unsafe.SliceData(args), len(args))
   return ret
 }
 

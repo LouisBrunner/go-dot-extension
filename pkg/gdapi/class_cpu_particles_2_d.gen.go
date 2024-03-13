@@ -830,3 +830,19 @@ func  (me *CPUParticles2D) ConvertFromParticles(particles Node, )  {
 // FIXME: can't seem to be able to use those from this side of the API
 
 // Signals
+
+type CPUParticles2DFinishedSignalFn func()
+
+func (me *CPUParticles2D) ConnectFinished(subs SignalSubscribers, fn CPUParticles2DFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *CPUParticles2D) DisconnectFinished(subs SignalSubscribers, fn CPUParticles2DFinishedSignalFn) {
+  sig := StringNameFromStr("finished")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -161,6 +161,7 @@ type PhysicsServer3DExtensionRayResult struct {
   ColliderId ObjectID
   Collider *Object
   Shape int
+  FaceIndex int
 }
 
 func DefaultPhysicsServer3DExtensionRayResult() PhysicsServer3DExtensionRayResult {

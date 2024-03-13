@@ -147,217 +147,310 @@ func (me *Float) Not() bool {
   return ret
 }
 
-func (me *Float) AndBool(right Bool) bool {
+func (me *Float) AndBool(rightArg bool) bool {
+  right := NewBoolFromBool(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) OrBool(right Bool) bool {
+func (me *Float) OrBool(rightArg bool) bool {
+  right := NewBoolFromBool(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) XorBool(right Bool) bool {
+func (me *Float) XorBool(rightArg bool) bool {
+  right := NewBoolFromBool(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) EqualInt(right Int) bool {
+func (me *Float) EqualInt(rightArg int) bool {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) NotEqualInt(right Int) bool {
+func (me *Float) NotEqualInt(rightArg int) bool {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) LessInt(right Int) bool {
+func (me *Float) LessInt(rightArg int) bool {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLess, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) LessEqualInt(right Int) bool {
+func (me *Float) LessEqualInt(rightArg int) bool {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLessEqual, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) GreaterInt(right Int) bool {
+func (me *Float) GreaterInt(rightArg int) bool {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreater, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) GreaterEqualInt(right Int) bool {
+func (me *Float) GreaterEqualInt(rightArg int) bool {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreaterEqual, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) AddInt(right Int) float32 {
+func (me *Float) AddInt(rightArg int) float32 {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAdd, me.Type(), right.Type()) // FIXME: cache
   var ret float32
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) SubtractInt(right Int) float32 {
+func (me *Float) SubtractInt(rightArg int) float32 {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpSubtract, me.Type(), right.Type()) // FIXME: cache
   var ret float32
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) MultiplyInt(right Int) float32 {
+func (me *Float) MultiplyInt(rightArg int) float32 {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
   var ret float32
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) DivideInt(right Int) float32 {
+func (me *Float) DivideInt(rightArg int) float32 {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
   var ret float32
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) PowerInt(right Int) float32 {
+func (me *Float) PowerInt(rightArg int) float32 {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpPower, me.Type(), right.Type()) // FIXME: cache
   var ret float32
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) AndInt(right Int) bool {
+func (me *Float) AndInt(rightArg int) bool {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) OrInt(right Int) bool {
+func (me *Float) OrInt(rightArg int) bool {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) XorInt(right Int) bool {
+func (me *Float) XorInt(rightArg int) bool {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) EqualFloat32(right Float) bool {
+func (me *Float) EqualFloat32(rightArg float32) bool {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) NotEqualFloat32(right Float) bool {
+func (me *Float) NotEqualFloat32(rightArg float32) bool {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) LessFloat32(right Float) bool {
+func (me *Float) LessFloat32(rightArg float32) bool {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLess, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) LessEqualFloat32(right Float) bool {
+func (me *Float) LessEqualFloat32(rightArg float32) bool {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLessEqual, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) GreaterFloat32(right Float) bool {
+func (me *Float) GreaterFloat32(rightArg float32) bool {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreater, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) GreaterEqualFloat32(right Float) bool {
+func (me *Float) GreaterEqualFloat32(rightArg float32) bool {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreaterEqual, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) AddFloat32(right Float) float32 {
+func (me *Float) AddFloat32(rightArg float32) float32 {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAdd, me.Type(), right.Type()) // FIXME: cache
   var ret float32
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) SubtractFloat32(right Float) float32 {
+func (me *Float) SubtractFloat32(rightArg float32) float32 {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpSubtract, me.Type(), right.Type()) // FIXME: cache
   var ret float32
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) MultiplyFloat32(right Float) float32 {
+func (me *Float) MultiplyFloat32(rightArg float32) float32 {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
   var ret float32
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) DivideFloat32(right Float) float32 {
+func (me *Float) DivideFloat32(rightArg float32) float32 {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
   var ret float32
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) PowerFloat32(right Float) float32 {
+func (me *Float) PowerFloat32(rightArg float32) float32 {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpPower, me.Type(), right.Type()) // FIXME: cache
   var ret float32
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) AndFloat32(right Float) bool {
+func (me *Float) AndFloat32(rightArg float32) bool {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) OrFloat32(right Float) bool {
+func (me *Float) OrFloat32(rightArg float32) bool {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Float) XorFloat32(right Float) bool {
+func (me *Float) XorFloat32(rightArg float32) bool {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, me.Type(), right.Type()) // FIXME: cache
   var ret bool
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))

@@ -277,14 +277,20 @@ func (me *Transform3D) Not() bool {
   return ret
 }
 
-func (me *Transform3D) MultiplyInt(right Int) Transform3D {
+func (me *Transform3D) MultiplyInt(rightArg int) Transform3D {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
   var ret Transform3D
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Transform3D) MultiplyFloat32(right Float) Transform3D {
+func (me *Transform3D) MultiplyFloat32(rightArg float32) Transform3D {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
   var ret Transform3D
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))

@@ -75,7 +75,7 @@ func  (me *StreamPeerTLS) ConnectToStream(stream StreamPeer, common_name String,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("connect_to_stream")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1325480781) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 57169517) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(stream.AsCTypePtr()), gdc.ConstTypePtr(common_name.AsCTypePtr()), gdc.ConstTypePtr(client_options.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

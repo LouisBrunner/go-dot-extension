@@ -115,6 +115,15 @@ const (
   DisplayServerCursorShapeCursorMax DisplayServerCursorShape = 17
 )
 
+type DisplayServerFileDialogMode int
+const (
+  DisplayServerFileDialogModeFileDialogModeOpenFile DisplayServerFileDialogMode = 0
+  DisplayServerFileDialogModeFileDialogModeOpenFiles DisplayServerFileDialogMode = 1
+  DisplayServerFileDialogModeFileDialogModeOpenDir DisplayServerFileDialogMode = 2
+  DisplayServerFileDialogModeFileDialogModeOpenAny DisplayServerFileDialogMode = 3
+  DisplayServerFileDialogModeFileDialogModeSaveFile DisplayServerFileDialogMode = 4
+)
+
 type DisplayServerWindowMode int
 const (
   DisplayServerWindowModeWindowModeWindowed DisplayServerWindowMode = 0
@@ -211,12 +220,22 @@ func  (me *DisplayServer) GetName() String {
   return ret
 }
 
+func  (me *DisplayServer) GlobalMenuSetPopupCallbacks(menu_root String, open_callback Callable, close_callback Callable, )  {
+  classNameV := StringNameFromStr("DisplayServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("global_menu_set_popup_callbacks")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3893727526) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(open_callback.AsCTypePtr()), gdc.ConstTypePtr(close_callback.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
 func  (me *DisplayServer) GlobalMenuAddSubmenuItem(menu_root String, label String, submenu String, index int, ) int {
   classNameV := StringNameFromStr("DisplayServer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("global_menu_add_submenu_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3806306913) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2828985934) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(submenu.AsCTypePtr()), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -228,7 +247,7 @@ func  (me *DisplayServer) GlobalMenuAddItem(menu_root String, label String, call
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("global_menu_add_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3415468211) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3401266716) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -240,7 +259,7 @@ func  (me *DisplayServer) GlobalMenuAddCheckItem(menu_root String, label String,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("global_menu_add_check_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3415468211) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3401266716) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -252,7 +271,7 @@ func  (me *DisplayServer) GlobalMenuAddIconItem(menu_root String, icon Texture2D
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("global_menu_add_icon_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1700867534) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4245856523) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -264,7 +283,7 @@ func  (me *DisplayServer) GlobalMenuAddIconCheckItem(menu_root String, icon Text
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("global_menu_add_icon_check_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1700867534) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4245856523) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -276,7 +295,7 @@ func  (me *DisplayServer) GlobalMenuAddRadioCheckItem(menu_root String, label St
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("global_menu_add_radio_check_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3415468211) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3401266716) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -288,7 +307,7 @@ func  (me *DisplayServer) GlobalMenuAddIconRadioCheckItem(menu_root String, icon
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("global_menu_add_icon_radio_check_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1700867534) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4245856523) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -300,7 +319,7 @@ func  (me *DisplayServer) GlobalMenuAddMultistateItem(menu_root String, label St
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("global_menu_add_multistate_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 635750054) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3431222859) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(&max_states), gdc.ConstTypePtr(&default_state), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -312,7 +331,7 @@ func  (me *DisplayServer) GlobalMenuAddSeparator(menu_root String, index int, ) 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("global_menu_add_separator")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1041533178) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3214812433) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -463,6 +482,18 @@ func  (me *DisplayServer) GlobalMenuIsItemDisabled(menu_root String, idx int, ) 
   return ret
 }
 
+func  (me *DisplayServer) GlobalMenuIsItemHidden(menu_root String, idx int, ) bool {
+  classNameV := StringNameFromStr("DisplayServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("global_menu_is_item_hidden")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3511468594) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *DisplayServer) GlobalMenuGetItemTooltip(menu_root String, idx int, ) String {
   classNameV := StringNameFromStr("DisplayServer")
   defer classNameV.Destroy()
@@ -563,6 +594,16 @@ func  (me *DisplayServer) GlobalMenuSetItemCallback(menu_root String, idx int, c
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
+func  (me *DisplayServer) GlobalMenuSetItemHoverCallbacks(menu_root String, idx int, callback Callable, )  {
+  classNameV := StringNameFromStr("DisplayServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("global_menu_set_item_hover_callbacks")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3809915389) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
 func  (me *DisplayServer) GlobalMenuSetItemKeyCallback(menu_root String, idx int, key_callback Callable, )  {
   classNameV := StringNameFromStr("DisplayServer")
   defer classNameV.Destroy()
@@ -620,6 +661,16 @@ func  (me *DisplayServer) GlobalMenuSetItemDisabled(menu_root String, idx int, d
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4108344793) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&disabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *DisplayServer) GlobalMenuSetItemHidden(menu_root String, idx int, hidden bool, )  {
+  classNameV := StringNameFromStr("DisplayServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("global_menu_set_item_hidden")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4108344793) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&hidden), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
@@ -758,7 +809,7 @@ func  (me *DisplayServer) TtsSpeak(text String, voice String, volume int, pitch 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("tts_speak")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3741216677) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 903992738) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(voice.AsCTypePtr()), gdc.ConstTypePtr(&volume), gdc.ConstTypePtr(&pitch), gdc.ConstTypePtr(&rate), gdc.ConstTypePtr(&utterance_id), gdc.ConstTypePtr(&interrupt), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -917,10 +968,34 @@ func  (me *DisplayServer) ClipboardGet() String {
   return ret
 }
 
+func  (me *DisplayServer) ClipboardGetImage() Image {
+  classNameV := StringNameFromStr("DisplayServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clipboard_get_image")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4190603485) // FIXME: should cache?
+  var ret Image
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *DisplayServer) ClipboardHas() bool {
   classNameV := StringNameFromStr("DisplayServer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("clipboard_has")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *DisplayServer) ClipboardHasImage() bool {
+  classNameV := StringNameFromStr("DisplayServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clipboard_has_image")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   var ret bool
@@ -1088,7 +1163,7 @@ func  (me *DisplayServer) IsTouchscreenAvailable() bool {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_touchscreen_available")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4162880507) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3323674545) // FIXME: should cache?
   var ret bool
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -1148,7 +1223,7 @@ func  (me *DisplayServer) ScreenSetOrientation(orientation DisplayServerScreenOr
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("screen_set_orientation")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2629526904) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2211511631) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&orientation), gdc.ConstTypePtr(&screen), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1216,7 +1291,7 @@ func  (me *DisplayServer) WindowGetNativeHandle(handle_type DisplayServerHandleT
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_get_native_handle")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2709193271) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1096425680) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&handle_type), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -1262,9 +1337,21 @@ func  (me *DisplayServer) WindowSetTitle(title String, window_id int, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_title")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3043792800) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 441246282) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(title.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *DisplayServer) WindowGetTitleSize(title String, window_id int, ) Vector2i {
+  classNameV := StringNameFromStr("DisplayServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("window_get_title_size")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2925301799) // FIXME: should cache?
+  var ret Vector2i
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(title.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 
 func  (me *DisplayServer) WindowSetMousePassthrough(region PackedVector2Array, window_id int, )  {
@@ -1272,7 +1359,7 @@ func  (me *DisplayServer) WindowSetMousePassthrough(region PackedVector2Array, w
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_mouse_passthrough")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3958815166) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1993637420) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1294,7 +1381,7 @@ func  (me *DisplayServer) WindowSetCurrentScreen(screen int, window_id int, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_current_screen")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3023605688) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2230941749) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1328,7 +1415,7 @@ func  (me *DisplayServer) WindowSetPosition(position Vector2i, window_id int, ) 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_position")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614040015) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1350,7 +1437,7 @@ func  (me *DisplayServer) WindowSetSize(size Vector2i, window_id int, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_size")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614040015) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1360,7 +1447,7 @@ func  (me *DisplayServer) WindowSetRectChangedCallback(callback Callable, window
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_rect_changed_callback")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3653650673) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1091192925) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1370,7 +1457,7 @@ func  (me *DisplayServer) WindowSetWindowEventCallback(callback Callable, window
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_window_event_callback")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3653650673) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1091192925) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1380,7 +1467,7 @@ func  (me *DisplayServer) WindowSetInputEventCallback(callback Callable, window_
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_input_event_callback")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3653650673) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1091192925) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1390,7 +1477,7 @@ func  (me *DisplayServer) WindowSetInputTextCallback(callback Callable, window_i
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_input_text_callback")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3653650673) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1091192925) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1400,7 +1487,7 @@ func  (me *DisplayServer) WindowSetDropFilesCallback(callback Callable, window_i
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_drop_files_callback")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3653650673) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1091192925) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1434,7 +1521,7 @@ func  (me *DisplayServer) WindowSetMaxSize(max_size Vector2i, window_id int, )  
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_max_size")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614040015) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(max_size.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1456,7 +1543,7 @@ func  (me *DisplayServer) WindowSetMinSize(min_size Vector2i, window_id int, )  
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_min_size")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614040015) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(min_size.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1490,7 +1577,7 @@ func  (me *DisplayServer) WindowSetMode(mode DisplayServerWindowMode, window_id 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_mode")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2942569511) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1319965401) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1500,7 +1587,7 @@ func  (me *DisplayServer) WindowSetFlag(flag DisplayServerWindowFlags, enabled b
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_flag")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3971592565) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 254894155) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), gdc.ConstTypePtr(&enabled), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1510,7 +1597,7 @@ func  (me *DisplayServer) WindowGetFlag(flag DisplayServerWindowFlags, window_id
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_get_flag")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2662949986) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 802816991) // FIXME: should cache?
   var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -1522,7 +1609,7 @@ func  (me *DisplayServer) WindowSetWindowButtonsOffset(offset Vector2i, window_i
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_window_buttons_offset")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614040015) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1608,7 +1695,7 @@ func  (me *DisplayServer) WindowSetImeActive(active bool, window_id int, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_ime_active")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 450484987) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1661950165) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1618,7 +1705,7 @@ func  (me *DisplayServer) WindowSetImePosition(position Vector2i, window_id int,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_ime_position")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614040015) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1628,7 +1715,7 @@ func  (me *DisplayServer) WindowSetVsyncMode(vsync_mode DisplayServerVSyncMode, 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("window_set_vsync_mode")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1708924624) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2179333492) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vsync_mode), gdc.ConstTypePtr(&window_id), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1710,7 +1797,7 @@ func  (me *DisplayServer) VirtualKeyboardShow(existing_text String, position Rec
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("virtual_keyboard_show")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 860410478) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3042891259) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(existing_text.AsCTypePtr()), gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&max_length), gdc.ConstTypePtr(&cursor_start), gdc.ConstTypePtr(&cursor_end), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1764,7 +1851,7 @@ func  (me *DisplayServer) CursorSetCustomImage(cursor Resource, shape DisplaySer
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("cursor_set_custom_image")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1358907026) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1816663697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(cursor.AsCTypePtr()), gdc.ConstTypePtr(&shape), gdc.ConstTypePtr(hotspot.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1811,6 +1898,18 @@ func  (me *DisplayServer) DialogInputText(title String, description String, exis
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3088703427) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(title.AsCTypePtr()), gdc.ConstTypePtr(description.AsCTypePtr()), gdc.ConstTypePtr(existing_text.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *DisplayServer) FileDialogShow(title String, current_directory String, filename String, show_hidden bool, mode DisplayServerFileDialogMode, filters PackedStringArray, callback Callable, ) Error {
+  classNameV := StringNameFromStr("DisplayServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("file_dialog_show")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1531299078) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(title.AsCTypePtr()), gdc.ConstTypePtr(current_directory.AsCTypePtr()), gdc.ConstTypePtr(filename.AsCTypePtr()), gdc.ConstTypePtr(&show_hidden), gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(filters.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
@@ -1877,6 +1976,18 @@ func  (me *DisplayServer) KeyboardGetKeycodeFromPhysical(keycode Key, ) Key {
   classNameV := StringNameFromStr("DisplayServer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("keyboard_get_keycode_from_physical")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3447613187) // FIXME: should cache?
+  var ret Key
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keycode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *DisplayServer) KeyboardGetLabelFromPhysical(keycode Key, ) Key {
+  classNameV := StringNameFromStr("DisplayServer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("keyboard_get_label_from_physical")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3447613187) // FIXME: should cache?
   var ret Key

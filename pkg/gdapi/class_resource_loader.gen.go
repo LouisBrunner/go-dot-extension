@@ -59,7 +59,7 @@ func  (me *ResourceLoader) LoadThreadedRequest(path String, type_hint String, us
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("load_threaded_request")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1939848623) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614384323) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(type_hint.AsCTypePtr()), gdc.ConstTypePtr(&use_sub_threads), gdc.ConstTypePtr(&cache_mode), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -71,7 +71,7 @@ func  (me *ResourceLoader) LoadThreadedGetStatus(path String, progress Array, ) 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("load_threaded_get_status")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3931021148) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4137685479) // FIXME: should cache?
   var ret ResourceLoaderThreadLoadStatus
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(progress.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -95,7 +95,7 @@ func  (me *ResourceLoader) Load(path String, type_hint String, cache_mode Resour
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("load")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2622212233) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3358495409) // FIXME: should cache?
   var ret Resource
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(type_hint.AsCTypePtr()), gdc.ConstTypePtr(&cache_mode), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -173,7 +173,7 @@ func  (me *ResourceLoader) Exists(path String, type_hint String, ) bool {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("exists")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2220807150) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4185558881) // FIXME: should cache?
   var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(type_hint.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

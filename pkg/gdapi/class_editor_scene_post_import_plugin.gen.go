@@ -78,7 +78,7 @@ func  (me *EditorScenePostImportPlugin) AddImportOptionAdvanced(type_ VariantTyp
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_import_option_advanced")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3774155785) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3674075649) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(default_value.AsCTypePtr()), gdc.ConstTypePtr(&hint), gdc.ConstTypePtr(hint_string.AsCTypePtr()), gdc.ConstTypePtr(&usage_flags), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

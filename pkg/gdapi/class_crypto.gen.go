@@ -68,7 +68,7 @@ func  (me *Crypto) GenerateSelfSignedCertificate(key CryptoKey, issuer_name Stri
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("generate_self_signed_certificate")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 947314696) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 492266173) // FIXME: should cache?
   var ret X509Certificate
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(issuer_name.AsCTypePtr()), gdc.ConstTypePtr(not_before.AsCTypePtr()), gdc.ConstTypePtr(not_after.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

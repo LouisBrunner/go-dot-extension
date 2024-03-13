@@ -46,7 +46,6 @@ var (
   NodeNotificationPostEnterTree = "27" // TODO: construct correctly
   NodeNotificationDisabled = "28" // TODO: construct correctly
   NodeNotificationEnabled = "29" // TODO: construct correctly
-  NodeNotificationNodeRecacheRequested = "30" // TODO: construct correctly
   NodeNotificationEditorPreSave = "9001" // TODO: construct correctly
   NodeNotificationEditorPostSave = "9002" // TODO: construct correctly
   NodeNotificationWmMouseEnter = "1002" // TODO: construct correctly
@@ -172,7 +171,7 @@ func  (me *Node) AddChild(node Node, force_readable_name bool, internal NodeInte
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_child")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3070154285) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3863233950) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), gdc.ConstTypePtr(&force_readable_name), gdc.ConstTypePtr(&internal), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -192,7 +191,7 @@ func  (me *Node) Reparent(new_parent Node, keep_global_transform bool, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("reparent")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2570952461) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3685795103) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(new_parent.AsCTypePtr()), gdc.ConstTypePtr(&keep_global_transform), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -286,7 +285,7 @@ func  (me *Node) FindChild(pattern String, recursive bool, owned bool, ) Node {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("find_child")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4253159453) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2008217037) // FIXME: should cache?
   var ret Node
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pattern.AsCTypePtr()), gdc.ConstTypePtr(&recursive), gdc.ConstTypePtr(&owned), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -298,7 +297,7 @@ func  (me *Node) FindChildren(pattern String, type_ String, recursive bool, owne
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("find_children")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1585018254) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2560337219) // FIXME: should cache?
   var ret Node
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pattern.AsCTypePtr()), gdc.ConstTypePtr(type_.AsCTypePtr()), gdc.ConstTypePtr(&recursive), gdc.ConstTypePtr(&owned), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -509,6 +508,30 @@ func  (me *Node) PrintTreePretty()  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
+func  (me *Node) GetTreeString() String {
+  classNameV := StringNameFromStr("Node")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tree_string")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2841200299) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *Node) GetTreeStringPretty() String {
+  classNameV := StringNameFromStr("Node")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tree_string_pretty")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2841200299) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *Node) SetSceneFilePath(scene_file_path String, )  {
   classNameV := StringNameFromStr("Node")
   defer classNameV.Destroy()
@@ -546,7 +569,7 @@ func  (me *Node) PropagateCall(method StringName, args Array, parent_first bool,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("propagate_call")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1667910434) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1871007965) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(method.AsCTypePtr()), gdc.ConstTypePtr(args.AsCTypePtr()), gdc.ConstTypePtr(&parent_first), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1080,7 +1103,7 @@ func  (me *Node) SetMultiplayerAuthority(id int, recursive bool, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_multiplayer_authority")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4023243586) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 972357352) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&recursive), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

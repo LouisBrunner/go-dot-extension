@@ -666,6 +666,16 @@ func  (me *NavigationMesh) CreateFromMesh(mesh Mesh, )  {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
+
+func  (me *NavigationMesh) Clear()  {
+  classNameV := StringNameFromStr("NavigationMesh")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API
 

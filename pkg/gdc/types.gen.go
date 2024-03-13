@@ -364,8 +364,12 @@ type ClassFreePropertyList C.GDExtensionClassFreePropertyList
 type ClassPropertyCanRevert C.GDExtensionClassPropertyCanRevert
 // ClassPropertyGetRevert corresponds to C type GDExtensionClassPropertyGetRevert
 type ClassPropertyGetRevert C.GDExtensionClassPropertyGetRevert
+// ClassValidateProperty corresponds to C type GDExtensionClassValidateProperty
+type ClassValidateProperty C.GDExtensionClassValidateProperty
 // ClassNotification corresponds to C type GDExtensionClassNotification
 type ClassNotification C.GDExtensionClassNotification
+// ClassNotification2 corresponds to C type GDExtensionClassNotification2
+type ClassNotification2 C.GDExtensionClassNotification2
 // ClassToString corresponds to C type GDExtensionClassToString
 type ClassToString C.GDExtensionClassToString
 // ClassReference corresponds to C type GDExtensionClassReference
@@ -378,8 +382,14 @@ type ClassCallVirtual C.GDExtensionClassCallVirtual
 type ClassCreateInstance C.GDExtensionClassCreateInstance
 // ClassFreeInstance corresponds to C type GDExtensionClassFreeInstance
 type ClassFreeInstance C.GDExtensionClassFreeInstance
+// ClassRecreateInstance corresponds to C type GDExtensionClassRecreateInstance
+type ClassRecreateInstance C.GDExtensionClassRecreateInstance
 // ClassGetVirtual corresponds to C type GDExtensionClassGetVirtual
 type ClassGetVirtual C.GDExtensionClassGetVirtual
+// ClassGetVirtualCallData corresponds to C type GDExtensionClassGetVirtualCallData
+type ClassGetVirtualCallData C.GDExtensionClassGetVirtualCallData
+// ClassCallVirtualWithData corresponds to C type GDExtensionClassCallVirtualWithData
+type ClassCallVirtualWithData C.GDExtensionClassCallVirtualWithData
 // ClassCreationInfoRaw corresponds to C type GDExtensionClassCreationInfo
 type ClassCreationInfoRaw C.GDExtensionClassCreationInfo
 
@@ -440,6 +450,82 @@ func (me *ClassCreationInfo) ToRaw() (ClassCreationInfoRaw, func()) {
 	raw.create_instance_func = C.GDExtensionClassCreateInstance(me.CreateInstanceFunc)
 	raw.free_instance_func = C.GDExtensionClassFreeInstance(me.FreeInstanceFunc)
 	raw.get_virtual_func = C.GDExtensionClassGetVirtual(me.GetVirtualFunc)
+	raw.get_rid_func = C.GDExtensionClassGetRID(me.GetRidFunc)
+	raw.class_userdata = me.ClassUserdata
+
+	return raw, func() {
+  }
+}
+// ClassCreationInfo2Raw corresponds to C type GDExtensionClassCreationInfo2
+type ClassCreationInfo2Raw C.GDExtensionClassCreationInfo2
+
+// ClassCreationInfo2RawFromUnsafe creates a ClassCreationInfo2Raw from an unsafe pointer to GDExtensionClassCreationInfo2
+func ClassCreationInfo2RawFromUnsafe(p unsafe.Pointer) *ClassCreationInfo2Raw {
+	return (*ClassCreationInfo2Raw)(p)
+}
+
+type ClassCreationInfo2 struct {
+	IsVirtual Bool
+	IsAbstract Bool
+	IsExposed Bool
+	SetFunc ClassSet
+	GetFunc ClassGet
+	GetPropertyListFunc ClassGetPropertyList
+	FreePropertyListFunc ClassFreePropertyList
+	PropertyCanRevertFunc ClassPropertyCanRevert
+	PropertyGetRevertFunc ClassPropertyGetRevert
+	ValidatePropertyFunc ClassValidateProperty
+	NotificationFunc ClassNotification2
+	ToStringFunc ClassToString
+	ReferenceFunc ClassReference
+	UnreferenceFunc ClassUnreference
+	CreateInstanceFunc ClassCreateInstance
+	FreeInstanceFunc ClassFreeInstance
+	RecreateInstanceFunc ClassRecreateInstance
+	GetVirtualFunc ClassGetVirtual
+	GetVirtualCallDataFunc ClassGetVirtualCallData
+	CallVirtualWithDataFunc ClassCallVirtualWithData
+	GetRidFunc ClassGetRID
+	ClassUserdata unsafe.Pointer
+}
+
+func CNewClassCreationInfo2() *ClassCreationInfo2 {
+  return (*ClassCreationInfo2)(C.malloc(C.sizeof_GDExtensionClassCreationInfo2))
+}
+
+func CNewClassCreationInfo2Array(size int) []ClassCreationInfo2 {
+  ptr := (*ClassCreationInfo2)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionClassCreationInfo2))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreeClassCreationInfo2(p *ClassCreationInfo2) {
+  C.free(unsafe.Pointer(p))
+}
+
+// ToRaw converts ClassCreationInfo2 to a ClassCreationInfo2Raw
+func (me *ClassCreationInfo2) ToRaw() (ClassCreationInfo2Raw, func()) {
+
+	raw := ClassCreationInfo2Raw{}
+	raw.is_virtual = C.GDExtensionBool(me.IsVirtual)
+	raw.is_abstract = C.GDExtensionBool(me.IsAbstract)
+	raw.is_exposed = C.GDExtensionBool(me.IsExposed)
+	raw.set_func = C.GDExtensionClassSet(me.SetFunc)
+	raw.get_func = C.GDExtensionClassGet(me.GetFunc)
+	raw.get_property_list_func = C.GDExtensionClassGetPropertyList(me.GetPropertyListFunc)
+	raw.free_property_list_func = C.GDExtensionClassFreePropertyList(me.FreePropertyListFunc)
+	raw.property_can_revert_func = C.GDExtensionClassPropertyCanRevert(me.PropertyCanRevertFunc)
+	raw.property_get_revert_func = C.GDExtensionClassPropertyGetRevert(me.PropertyGetRevertFunc)
+	raw.validate_property_func = C.GDExtensionClassValidateProperty(me.ValidatePropertyFunc)
+	raw.notification_func = C.GDExtensionClassNotification2(me.NotificationFunc)
+	raw.to_string_func = C.GDExtensionClassToString(me.ToStringFunc)
+	raw.reference_func = C.GDExtensionClassReference(me.ReferenceFunc)
+	raw.unreference_func = C.GDExtensionClassUnreference(me.UnreferenceFunc)
+	raw.create_instance_func = C.GDExtensionClassCreateInstance(me.CreateInstanceFunc)
+	raw.free_instance_func = C.GDExtensionClassFreeInstance(me.FreeInstanceFunc)
+	raw.recreate_instance_func = C.GDExtensionClassRecreateInstance(me.RecreateInstanceFunc)
+	raw.get_virtual_func = C.GDExtensionClassGetVirtual(me.GetVirtualFunc)
+	raw.get_virtual_call_data_func = C.GDExtensionClassGetVirtualCallData(me.GetVirtualCallDataFunc)
+	raw.call_virtual_with_data_func = C.GDExtensionClassCallVirtualWithData(me.CallVirtualWithDataFunc)
 	raw.get_rid_func = C.GDExtensionClassGetRID(me.GetRidFunc)
 	raw.class_userdata = me.ClassUserdata
 
@@ -542,6 +628,72 @@ func (me *ClassMethodInfo) ToRaw() (ClassMethodInfoRaw, func()) {
 	return raw, func() {
   }
 }
+// CallableCustomCall corresponds to C type GDExtensionCallableCustomCall
+type CallableCustomCall C.GDExtensionCallableCustomCall
+// CallableCustomIsValid corresponds to C type GDExtensionCallableCustomIsValid
+type CallableCustomIsValid C.GDExtensionCallableCustomIsValid
+// CallableCustomFree corresponds to C type GDExtensionCallableCustomFree
+type CallableCustomFree C.GDExtensionCallableCustomFree
+// CallableCustomHash corresponds to C type GDExtensionCallableCustomHash
+type CallableCustomHash C.GDExtensionCallableCustomHash
+// CallableCustomEqual corresponds to C type GDExtensionCallableCustomEqual
+type CallableCustomEqual C.GDExtensionCallableCustomEqual
+// CallableCustomLessThan corresponds to C type GDExtensionCallableCustomLessThan
+type CallableCustomLessThan C.GDExtensionCallableCustomLessThan
+// CallableCustomToString corresponds to C type GDExtensionCallableCustomToString
+type CallableCustomToString C.GDExtensionCallableCustomToString
+// CallableCustomInfoRaw corresponds to C type GDExtensionCallableCustomInfo
+type CallableCustomInfoRaw C.GDExtensionCallableCustomInfo
+
+// CallableCustomInfoRawFromUnsafe creates a CallableCustomInfoRaw from an unsafe pointer to GDExtensionCallableCustomInfo
+func CallableCustomInfoRawFromUnsafe(p unsafe.Pointer) *CallableCustomInfoRaw {
+	return (*CallableCustomInfoRaw)(p)
+}
+
+type CallableCustomInfo struct {
+	CallableUserdata unsafe.Pointer
+	Token unsafe.Pointer
+	ObjectId uint64
+	CallFunc CallableCustomCall
+	IsValidFunc CallableCustomIsValid
+	FreeFunc CallableCustomFree
+	HashFunc CallableCustomHash
+	EqualFunc CallableCustomEqual
+	LessThanFunc CallableCustomLessThan
+	ToStringFunc CallableCustomToString
+}
+
+func CNewCallableCustomInfo() *CallableCustomInfo {
+  return (*CallableCustomInfo)(C.malloc(C.sizeof_GDExtensionCallableCustomInfo))
+}
+
+func CNewCallableCustomInfoArray(size int) []CallableCustomInfo {
+  ptr := (*CallableCustomInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionCallableCustomInfo))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreeCallableCustomInfo(p *CallableCustomInfo) {
+  C.free(unsafe.Pointer(p))
+}
+
+// ToRaw converts CallableCustomInfo to a CallableCustomInfoRaw
+func (me *CallableCustomInfo) ToRaw() (CallableCustomInfoRaw, func()) {
+
+	raw := CallableCustomInfoRaw{}
+	raw.callable_userdata = me.CallableUserdata
+	raw.token = me.Token
+	raw.object_id = C.GDObjectInstanceID(me.ObjectId)
+	raw.call_func = C.GDExtensionCallableCustomCall(me.CallFunc)
+	raw.is_valid_func = C.GDExtensionCallableCustomIsValid(me.IsValidFunc)
+	raw.free_func = C.GDExtensionCallableCustomFree(me.FreeFunc)
+	raw.hash_func = C.GDExtensionCallableCustomHash(me.HashFunc)
+	raw.equal_func = C.GDExtensionCallableCustomEqual(me.EqualFunc)
+	raw.less_than_func = C.GDExtensionCallableCustomLessThan(me.LessThanFunc)
+	raw.to_string_func = C.GDExtensionCallableCustomToString(me.ToStringFunc)
+
+	return raw, func() {
+  }
+}
 // ScriptInstanceDataPtr is equivalent to C type GDExtensionScriptInstanceDataPtr
 type ScriptInstanceDataPtr C.GDExtensionScriptInstanceDataPtr
 // ScriptInstanceSet corresponds to C type GDExtensionScriptInstanceSet
@@ -552,8 +704,12 @@ type ScriptInstanceGet C.GDExtensionScriptInstanceGet
 type ScriptInstanceGetPropertyList C.GDExtensionScriptInstanceGetPropertyList
 // ScriptInstanceFreePropertyList corresponds to C type GDExtensionScriptInstanceFreePropertyList
 type ScriptInstanceFreePropertyList C.GDExtensionScriptInstanceFreePropertyList
+// ScriptInstanceGetClassCategory corresponds to C type GDExtensionScriptInstanceGetClassCategory
+type ScriptInstanceGetClassCategory C.GDExtensionScriptInstanceGetClassCategory
 // ScriptInstanceGetPropertyType corresponds to C type GDExtensionScriptInstanceGetPropertyType
 type ScriptInstanceGetPropertyType C.GDExtensionScriptInstanceGetPropertyType
+// ScriptInstanceValidateProperty corresponds to C type GDExtensionScriptInstanceValidateProperty
+type ScriptInstanceValidateProperty C.GDExtensionScriptInstanceValidateProperty
 // ScriptInstancePropertyCanRevert corresponds to C type GDExtensionScriptInstancePropertyCanRevert
 type ScriptInstancePropertyCanRevert C.GDExtensionScriptInstancePropertyCanRevert
 // ScriptInstancePropertyGetRevert corresponds to C type GDExtensionScriptInstancePropertyGetRevert
@@ -574,6 +730,8 @@ type ScriptInstanceHasMethod C.GDExtensionScriptInstanceHasMethod
 type ScriptInstanceCall C.GDExtensionScriptInstanceCall
 // ScriptInstanceNotification corresponds to C type GDExtensionScriptInstanceNotification
 type ScriptInstanceNotification C.GDExtensionScriptInstanceNotification
+// ScriptInstanceNotification2 corresponds to C type GDExtensionScriptInstanceNotification2
+type ScriptInstanceNotification2 C.GDExtensionScriptInstanceNotification2
 // ScriptInstanceToString corresponds to C type GDExtensionScriptInstanceToString
 type ScriptInstanceToString C.GDExtensionScriptInstanceToString
 // ScriptInstanceRefCountIncremented corresponds to C type GDExtensionScriptInstanceRefCountIncremented
@@ -657,6 +815,88 @@ func (me *ScriptInstanceInfo) ToRaw() (ScriptInstanceInfoRaw, func()) {
 	raw.has_method_func = C.GDExtensionScriptInstanceHasMethod(me.HasMethodFunc)
 	raw.call_func = C.GDExtensionScriptInstanceCall(me.CallFunc)
 	raw.notification_func = C.GDExtensionScriptInstanceNotification(me.NotificationFunc)
+	raw.to_string_func = C.GDExtensionScriptInstanceToString(me.ToStringFunc)
+	raw.refcount_incremented_func = C.GDExtensionScriptInstanceRefCountIncremented(me.RefcountIncrementedFunc)
+	raw.refcount_decremented_func = C.GDExtensionScriptInstanceRefCountDecremented(me.RefcountDecrementedFunc)
+	raw.get_script_func = C.GDExtensionScriptInstanceGetScript(me.GetScriptFunc)
+	raw.is_placeholder_func = C.GDExtensionScriptInstanceIsPlaceholder(me.IsPlaceholderFunc)
+	raw.set_fallback_func = C.GDExtensionScriptInstanceSet(me.SetFallbackFunc)
+	raw.get_fallback_func = C.GDExtensionScriptInstanceGet(me.GetFallbackFunc)
+	raw.get_language_func = C.GDExtensionScriptInstanceGetLanguage(me.GetLanguageFunc)
+	raw.free_func = C.GDExtensionScriptInstanceFree(me.FreeFunc)
+
+	return raw, func() {
+  }
+}
+// ScriptInstanceInfo2Raw corresponds to C type GDExtensionScriptInstanceInfo2
+type ScriptInstanceInfo2Raw C.GDExtensionScriptInstanceInfo2
+
+// ScriptInstanceInfo2RawFromUnsafe creates a ScriptInstanceInfo2Raw from an unsafe pointer to GDExtensionScriptInstanceInfo2
+func ScriptInstanceInfo2RawFromUnsafe(p unsafe.Pointer) *ScriptInstanceInfo2Raw {
+	return (*ScriptInstanceInfo2Raw)(p)
+}
+
+type ScriptInstanceInfo2 struct {
+	SetFunc ScriptInstanceSet
+	GetFunc ScriptInstanceGet
+	GetPropertyListFunc ScriptInstanceGetPropertyList
+	FreePropertyListFunc ScriptInstanceFreePropertyList
+	GetClassCategoryFunc ScriptInstanceGetClassCategory
+	PropertyCanRevertFunc ScriptInstancePropertyCanRevert
+	PropertyGetRevertFunc ScriptInstancePropertyGetRevert
+	GetOwnerFunc ScriptInstanceGetOwner
+	GetPropertyStateFunc ScriptInstanceGetPropertyState
+	GetMethodListFunc ScriptInstanceGetMethodList
+	FreeMethodListFunc ScriptInstanceFreeMethodList
+	GetPropertyTypeFunc ScriptInstanceGetPropertyType
+	ValidatePropertyFunc ScriptInstanceValidateProperty
+	HasMethodFunc ScriptInstanceHasMethod
+	CallFunc ScriptInstanceCall
+	NotificationFunc ScriptInstanceNotification2
+	ToStringFunc ScriptInstanceToString
+	RefcountIncrementedFunc ScriptInstanceRefCountIncremented
+	RefcountDecrementedFunc ScriptInstanceRefCountDecremented
+	GetScriptFunc ScriptInstanceGetScript
+	IsPlaceholderFunc ScriptInstanceIsPlaceholder
+	SetFallbackFunc ScriptInstanceSet
+	GetFallbackFunc ScriptInstanceGet
+	GetLanguageFunc ScriptInstanceGetLanguage
+	FreeFunc ScriptInstanceFree
+}
+
+func CNewScriptInstanceInfo2() *ScriptInstanceInfo2 {
+  return (*ScriptInstanceInfo2)(C.malloc(C.sizeof_GDExtensionScriptInstanceInfo2))
+}
+
+func CNewScriptInstanceInfo2Array(size int) []ScriptInstanceInfo2 {
+  ptr := (*ScriptInstanceInfo2)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionScriptInstanceInfo2))
+  return unsafe.Slice(ptr, size)
+}
+
+func CFreeScriptInstanceInfo2(p *ScriptInstanceInfo2) {
+  C.free(unsafe.Pointer(p))
+}
+
+// ToRaw converts ScriptInstanceInfo2 to a ScriptInstanceInfo2Raw
+func (me *ScriptInstanceInfo2) ToRaw() (ScriptInstanceInfo2Raw, func()) {
+
+	raw := ScriptInstanceInfo2Raw{}
+	raw.set_func = C.GDExtensionScriptInstanceSet(me.SetFunc)
+	raw.get_func = C.GDExtensionScriptInstanceGet(me.GetFunc)
+	raw.get_property_list_func = C.GDExtensionScriptInstanceGetPropertyList(me.GetPropertyListFunc)
+	raw.free_property_list_func = C.GDExtensionScriptInstanceFreePropertyList(me.FreePropertyListFunc)
+	raw.get_class_category_func = C.GDExtensionScriptInstanceGetClassCategory(me.GetClassCategoryFunc)
+	raw.property_can_revert_func = C.GDExtensionScriptInstancePropertyCanRevert(me.PropertyCanRevertFunc)
+	raw.property_get_revert_func = C.GDExtensionScriptInstancePropertyGetRevert(me.PropertyGetRevertFunc)
+	raw.get_owner_func = C.GDExtensionScriptInstanceGetOwner(me.GetOwnerFunc)
+	raw.get_property_state_func = C.GDExtensionScriptInstanceGetPropertyState(me.GetPropertyStateFunc)
+	raw.get_method_list_func = C.GDExtensionScriptInstanceGetMethodList(me.GetMethodListFunc)
+	raw.free_method_list_func = C.GDExtensionScriptInstanceFreeMethodList(me.FreeMethodListFunc)
+	raw.get_property_type_func = C.GDExtensionScriptInstanceGetPropertyType(me.GetPropertyTypeFunc)
+	raw.validate_property_func = C.GDExtensionScriptInstanceValidateProperty(me.ValidatePropertyFunc)
+	raw.has_method_func = C.GDExtensionScriptInstanceHasMethod(me.HasMethodFunc)
+	raw.call_func = C.GDExtensionScriptInstanceCall(me.CallFunc)
+	raw.notification_func = C.GDExtensionScriptInstanceNotification2(me.NotificationFunc)
 	raw.to_string_func = C.GDExtensionScriptInstanceToString(me.ToStringFunc)
 	raw.refcount_incremented_func = C.GDExtensionScriptInstanceRefCountIncremented(me.RefcountIncrementedFunc)
 	raw.refcount_decremented_func = C.GDExtensionScriptInstanceRefCountDecremented(me.RefcountDecrementedFunc)
@@ -931,6 +1171,14 @@ type InterfaceStringOperatorPlusEqCstr C.GDExtensionInterfaceStringOperatorPlusE
 type InterfaceStringOperatorPlusEqWcstr C.GDExtensionInterfaceStringOperatorPlusEqWcstr
 // InterfaceStringOperatorPlusEqC32str corresponds to C type GDExtensionInterfaceStringOperatorPlusEqC32str
 type InterfaceStringOperatorPlusEqC32str C.GDExtensionInterfaceStringOperatorPlusEqC32str
+// InterfaceStringResize corresponds to C type GDExtensionInterfaceStringResize
+type InterfaceStringResize C.GDExtensionInterfaceStringResize
+// InterfaceStringNameNewWithLatin1Chars corresponds to C type GDExtensionInterfaceStringNameNewWithLatin1Chars
+type InterfaceStringNameNewWithLatin1Chars C.GDExtensionInterfaceStringNameNewWithLatin1Chars
+// InterfaceStringNameNewWithUtf8Chars corresponds to C type GDExtensionInterfaceStringNameNewWithUtf8Chars
+type InterfaceStringNameNewWithUtf8Chars C.GDExtensionInterfaceStringNameNewWithUtf8Chars
+// InterfaceStringNameNewWithUtf8CharsAndLen corresponds to C type GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen
+type InterfaceStringNameNewWithUtf8CharsAndLen C.GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen
 // InterfaceXmlParserOpenBuffer corresponds to C type GDExtensionInterfaceXmlParserOpenBuffer
 type InterfaceXmlParserOpenBuffer C.GDExtensionInterfaceXmlParserOpenBuffer
 // InterfaceFileAccessStoreBuffer corresponds to C type GDExtensionInterfaceFileAccessStoreBuffer
@@ -1001,6 +1249,8 @@ type InterfaceGlobalGetSingleton C.GDExtensionInterfaceGlobalGetSingleton
 type InterfaceObjectGetInstanceBinding C.GDExtensionInterfaceObjectGetInstanceBinding
 // InterfaceObjectSetInstanceBinding corresponds to C type GDExtensionInterfaceObjectSetInstanceBinding
 type InterfaceObjectSetInstanceBinding C.GDExtensionInterfaceObjectSetInstanceBinding
+// InterfaceObjectFreeInstanceBinding corresponds to C type GDExtensionInterfaceObjectFreeInstanceBinding
+type InterfaceObjectFreeInstanceBinding C.GDExtensionInterfaceObjectFreeInstanceBinding
 // InterfaceObjectSetInstance corresponds to C type GDExtensionInterfaceObjectSetInstance
 type InterfaceObjectSetInstance C.GDExtensionInterfaceObjectSetInstance
 // InterfaceObjectGetClassName corresponds to C type GDExtensionInterfaceObjectGetClassName
@@ -1017,6 +1267,18 @@ type InterfaceRefGetObject C.GDExtensionInterfaceRefGetObject
 type InterfaceRefSetObject C.GDExtensionInterfaceRefSetObject
 // InterfaceScriptInstanceCreate corresponds to C type GDExtensionInterfaceScriptInstanceCreate
 type InterfaceScriptInstanceCreate C.GDExtensionInterfaceScriptInstanceCreate
+// InterfaceScriptInstanceCreate2 corresponds to C type GDExtensionInterfaceScriptInstanceCreate2
+type InterfaceScriptInstanceCreate2 C.GDExtensionInterfaceScriptInstanceCreate2
+// InterfacePlaceHolderScriptInstanceCreate corresponds to C type GDExtensionInterfacePlaceHolderScriptInstanceCreate
+type InterfacePlaceHolderScriptInstanceCreate C.GDExtensionInterfacePlaceHolderScriptInstanceCreate
+// InterfacePlaceHolderScriptInstanceUpdate corresponds to C type GDExtensionInterfacePlaceHolderScriptInstanceUpdate
+type InterfacePlaceHolderScriptInstanceUpdate C.GDExtensionInterfacePlaceHolderScriptInstanceUpdate
+// InterfaceObjectGetScriptInstance corresponds to C type GDExtensionInterfaceObjectGetScriptInstance
+type InterfaceObjectGetScriptInstance C.GDExtensionInterfaceObjectGetScriptInstance
+// InterfaceCallableCustomCreate corresponds to C type GDExtensionInterfaceCallableCustomCreate
+type InterfaceCallableCustomCreate C.GDExtensionInterfaceCallableCustomCreate
+// InterfaceCallableCustomGetUserData corresponds to C type GDExtensionInterfaceCallableCustomGetUserData
+type InterfaceCallableCustomGetUserData C.GDExtensionInterfaceCallableCustomGetUserData
 // InterfaceClassdbConstructObject corresponds to C type GDExtensionInterfaceClassdbConstructObject
 type InterfaceClassdbConstructObject C.GDExtensionInterfaceClassdbConstructObject
 // InterfaceClassdbGetMethodBind corresponds to C type GDExtensionInterfaceClassdbGetMethodBind
@@ -1025,12 +1287,16 @@ type InterfaceClassdbGetMethodBind C.GDExtensionInterfaceClassdbGetMethodBind
 type InterfaceClassdbGetClassTag C.GDExtensionInterfaceClassdbGetClassTag
 // InterfaceClassdbRegisterExtensionClass corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClass
 type InterfaceClassdbRegisterExtensionClass C.GDExtensionInterfaceClassdbRegisterExtensionClass
+// InterfaceClassdbRegisterExtensionClass2 corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClass2
+type InterfaceClassdbRegisterExtensionClass2 C.GDExtensionInterfaceClassdbRegisterExtensionClass2
 // InterfaceClassdbRegisterExtensionClassMethod corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassMethod
 type InterfaceClassdbRegisterExtensionClassMethod C.GDExtensionInterfaceClassdbRegisterExtensionClassMethod
 // InterfaceClassdbRegisterExtensionClassIntegerConstant corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
 type InterfaceClassdbRegisterExtensionClassIntegerConstant C.GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
 // InterfaceClassdbRegisterExtensionClassProperty corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassProperty
 type InterfaceClassdbRegisterExtensionClassProperty C.GDExtensionInterfaceClassdbRegisterExtensionClassProperty
+// InterfaceClassdbRegisterExtensionClassPropertyIndexed corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed
+type InterfaceClassdbRegisterExtensionClassPropertyIndexed C.GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed
 // InterfaceClassdbRegisterExtensionClassPropertyGroup corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup
 type InterfaceClassdbRegisterExtensionClassPropertyGroup C.GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup
 // InterfaceClassdbRegisterExtensionClassPropertySubgroup corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup

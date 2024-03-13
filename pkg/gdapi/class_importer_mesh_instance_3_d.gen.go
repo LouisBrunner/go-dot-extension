@@ -104,6 +104,160 @@ func  (me *ImporterMeshInstance3D) GetSkeletonPath() NodePath {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
+
+func  (me *ImporterMeshInstance3D) SetLayerMask(layer_mask int, )  {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_layer_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_mask), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ImporterMeshInstance3D) GetLayerMask() int {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_layer_mask")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ImporterMeshInstance3D) SetCastShadowsSetting(shadow_casting_setting GeometryInstance3DShadowCastingSetting, )  {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_cast_shadows_setting")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 856677339) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shadow_casting_setting), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ImporterMeshInstance3D) GetCastShadowsSetting() GeometryInstance3DShadowCastingSetting {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_cast_shadows_setting")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3383019359) // FIXME: should cache?
+  var ret GeometryInstance3DShadowCastingSetting
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ImporterMeshInstance3D) SetVisibilityRangeEndMargin(distance float32, )  {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_visibility_range_end_margin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ImporterMeshInstance3D) GetVisibilityRangeEndMargin() float32 {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_visibility_range_end_margin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ImporterMeshInstance3D) SetVisibilityRangeEnd(distance float32, )  {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_visibility_range_end")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ImporterMeshInstance3D) GetVisibilityRangeEnd() float32 {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_visibility_range_end")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ImporterMeshInstance3D) SetVisibilityRangeBeginMargin(distance float32, )  {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_visibility_range_begin_margin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ImporterMeshInstance3D) GetVisibilityRangeBeginMargin() float32 {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_visibility_range_begin_margin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ImporterMeshInstance3D) SetVisibilityRangeBegin(distance float32, )  {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_visibility_range_begin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ImporterMeshInstance3D) GetVisibilityRangeBegin() float32 {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_visibility_range_begin")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ImporterMeshInstance3D) SetVisibilityRangeFadeMode(mode GeometryInstance3DVisibilityRangeFadeMode, )  {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_visibility_range_fade_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1440117808) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ImporterMeshInstance3D) GetVisibilityRangeFadeMode() GeometryInstance3DVisibilityRangeFadeMode {
+  classNameV := StringNameFromStr("ImporterMeshInstance3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_visibility_range_fade_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2067221882) // FIXME: should cache?
+  var ret GeometryInstance3DVisibilityRangeFadeMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API
 

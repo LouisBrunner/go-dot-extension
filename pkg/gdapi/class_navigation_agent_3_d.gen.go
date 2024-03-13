@@ -205,6 +205,28 @@ func  (me *NavigationAgent3D) GetUse3DAvoidance() bool {
   return ret
 }
 
+func  (me *NavigationAgent3D) SetKeepYVelocity(enabled bool, )  {
+  classNameV := StringNameFromStr("NavigationAgent3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_keep_y_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *NavigationAgent3D) GetKeepYVelocity() bool {
+  classNameV := StringNameFromStr("NavigationAgent3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_keep_y_velocity")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *NavigationAgent3D) SetNeighborDistance(neighbor_distance float32, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()

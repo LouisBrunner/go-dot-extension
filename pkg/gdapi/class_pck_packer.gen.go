@@ -44,7 +44,7 @@ func  (me *PCKPacker) PckStart(pck_name String, alignment int, key String, encry
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("pck_start")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3232891339) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 508410629) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pck_name.AsCTypePtr()), gdc.ConstTypePtr(&alignment), gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(&encrypt_directory), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

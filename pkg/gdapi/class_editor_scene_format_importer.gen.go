@@ -32,6 +32,7 @@ var (
   EditorSceneFormatImporterImportGenerateTangentArrays = "8" // TODO: construct correctly
   EditorSceneFormatImporterImportUseNamedSkinBinds = "16" // TODO: construct correctly
   EditorSceneFormatImporterImportDiscardMeshesAndMaterials = "32" // TODO: construct correctly
+  EditorSceneFormatImporterImportForceDisableMeshCompression = "64" // TODO: construct correctly
 )
 
 // Enums

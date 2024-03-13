@@ -51,6 +51,18 @@ func  (me *EditorInspector) GetSelectedPath() String {
   return ret
 }
 
+func  (me *EditorInspector) GetEditedObject() Object {
+  classNameV := StringNameFromStr("EditorInspector")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_edited_object")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2050059866) // FIXME: should cache?
+  var ret Object
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 // Signals
 
 type EditorInspectorPropertySelectedSignalFn func(property String, )

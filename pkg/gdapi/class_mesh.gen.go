@@ -93,6 +93,7 @@ const (
   MeshArrayFormatArrayFlagUseDynamicUpdate MeshArrayFormat = 67108864
   MeshArrayFormatArrayFlagUse8BoneWeights MeshArrayFormat = 134217728
   MeshArrayFormatArrayFlagUsesEmptyVertexArray MeshArrayFormat = 268435456
+  MeshArrayFormatArrayFlagCompressAttributes MeshArrayFormat = 536870912
 )
 
 type MeshBlendShapeMode int

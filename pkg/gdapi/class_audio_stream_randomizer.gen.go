@@ -51,7 +51,7 @@ func  (me *AudioStreamRandomizer) AddStream(index int, stream AudioStream, weigh
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_stream")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3197802065) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1892018854) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), gdc.ConstTypePtr(stream.AsCTypePtr()), gdc.ConstTypePtr(&weight), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

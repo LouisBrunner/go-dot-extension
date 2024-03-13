@@ -388,6 +388,18 @@ func  (me *XRInterface) SetEnvironmentBlendMode(mode XRInterfaceEnvironmentBlend
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
+
+func  (me *XRInterface) GetEnvironmentBlendMode() XRInterfaceEnvironmentBlendMode {
+  classNameV := StringNameFromStr("XRInterface")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_environment_blend_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1984334071) // FIXME: should cache?
+  var ret XRInterfaceEnvironmentBlendMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API
 

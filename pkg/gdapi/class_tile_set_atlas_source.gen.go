@@ -23,7 +23,22 @@ func (me *TileSetAtlasSource) BaseClass() string {
 
 
 
+// Constants
+
+var (
+  TileSetAtlasSourceTransformFlipH = "4096" // TODO: construct correctly
+  TileSetAtlasSourceTransformFlipV = "8192" // TODO: construct correctly
+  TileSetAtlasSourceTransformTranspose = "16384" // TODO: construct correctly
+)
+
 // Enums
+
+type TileSetAtlasSourceTileAnimationMode int
+const (
+  TileSetAtlasSourceTileAnimationModeTileAnimationModeDefault TileSetAtlasSourceTileAnimationMode = 0
+  TileSetAtlasSourceTileAnimationModeTileAnimationModeRandomStartTimes TileSetAtlasSourceTileAnimationMode = 1
+  TileSetAtlasSourceTileAnimationModeTileAnimationModeMax TileSetAtlasSourceTileAnimationMode = 2
+)
 
 func (me *TileSetAtlasSource) Type() gdc.VariantType {
   return gdc.VariantTypeObject
@@ -154,7 +169,7 @@ func  (me *TileSetAtlasSource) CreateTile(atlas_coords Vector2i, size Vector2i, 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_tile")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1583819816) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 190528769) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -174,7 +189,7 @@ func  (me *TileSetAtlasSource) MoveTileInAtlas(atlas_coords Vector2i, new_atlas_
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("move_tile_in_atlas")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1375626516) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3870111920) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), gdc.ConstTypePtr(new_atlas_coords.AsCTypePtr()), gdc.ConstTypePtr(new_size.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -196,7 +211,7 @@ func  (me *TileSetAtlasSource) HasRoomForTile(atlas_coords Vector2i, size Vector
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("has_room_for_tile")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4182444377) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3018597268) // FIXME: should cache?
   var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&animation_columns), gdc.ConstTypePtr(animation_separation.AsCTypePtr()), gdc.ConstTypePtr(&frames_count), gdc.ConstTypePtr(ignored_tile.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -225,6 +240,28 @@ func  (me *TileSetAtlasSource) GetTileAtCoords(atlas_coords Vector2i, ) Vector2i
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
+}
+
+func  (me *TileSetAtlasSource) HasTilesOutsideTexture() bool {
+  classNameV := StringNameFromStr("TileSetAtlasSource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("has_tiles_outside_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *TileSetAtlasSource) ClearTilesOutsideTexture()  {
+  classNameV := StringNameFromStr("TileSetAtlasSource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("clear_tiles_outside_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *TileSetAtlasSource) SetTileAnimationColumns(atlas_coords Vector2i, frame_columns int, )  {
@@ -293,6 +330,28 @@ func  (me *TileSetAtlasSource) GetTileAnimationSpeed(atlas_coords Vector2i, ) fl
   return ret
 }
 
+func  (me *TileSetAtlasSource) SetTileAnimationMode(atlas_coords Vector2i, mode TileSetAtlasSourceTileAnimationMode, )  {
+  classNameV := StringNameFromStr("TileSetAtlasSource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_tile_animation_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3192753483) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), gdc.ConstTypePtr(&mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *TileSetAtlasSource) GetTileAnimationMode(atlas_coords Vector2i, ) TileSetAtlasSourceTileAnimationMode {
+  classNameV := StringNameFromStr("TileSetAtlasSource")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_tile_animation_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4025349959) // FIXME: should cache?
+  var ret TileSetAtlasSourceTileAnimationMode
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *TileSetAtlasSource) SetTileAnimationFramesCount(atlas_coords Vector2i, frames_count int, )  {
   classNameV := StringNameFromStr("TileSetAtlasSource")
   defer classNameV.Destroy()
@@ -354,7 +413,7 @@ func  (me *TileSetAtlasSource) CreateAlternativeTile(atlas_coords Vector2i, alte
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_alternative_tile")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3531100812) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2226298068) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), gdc.ConstTypePtr(&alternative_id_override), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -422,7 +481,7 @@ func  (me *TileSetAtlasSource) GetTileTextureRegion(atlas_coords Vector2i, frame
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tile_texture_region")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1321423751) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 241857547) // FIXME: should cache?
   var ret Rect2i
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), gdc.ConstTypePtr(&frame), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

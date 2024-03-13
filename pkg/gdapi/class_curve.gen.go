@@ -73,7 +73,7 @@ func  (me *Curve) AddPoint(position Vector2, left_tangent float32, right_tangent
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_point")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2766148617) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 434072736) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&left_tangent), gdc.ConstTypePtr(&right_tangent), gdc.ConstTypePtr(&left_mode), gdc.ConstTypePtr(&right_mode), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

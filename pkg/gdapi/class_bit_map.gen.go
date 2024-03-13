@@ -54,7 +54,7 @@ func  (me *BitMap) CreateFromImageAlpha(image Image, threshold float32, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_from_image_alpha")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 505265891) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 106271684) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), gdc.ConstTypePtr(&threshold), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -174,7 +174,7 @@ func  (me *BitMap) OpaqueToPolygons(rect Rect2i, epsilon float32, ) PackedVector
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("opaque_to_polygons")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 876132484) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 48478126) // FIXME: should cache?
   var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rect.AsCTypePtr()), gdc.ConstTypePtr(&epsilon), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

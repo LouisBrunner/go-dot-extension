@@ -29,9 +29,10 @@ type singletons struct {
   GDExtensionManager GDExtensionManager
   ResourceUID ResourceUID
   WorkerThreadPool WorkerThreadPool
+  ThemeDB ThemeDB
+  EditorInterface EditorInterface
   JavaClassWrapper JavaClassWrapper
   JavaScriptBridge JavaScriptBridge
-  ThemeDB ThemeDB
   DisplayServer DisplayServer
   RenderingServer RenderingServer
   AudioServer AudioServer
@@ -90,12 +91,14 @@ func newSingletons(iface gdc.Interface) *singletons {
   defer strResourceUID.Destroy()
   strWorkerThreadPool := StringNameFromStr("WorkerThreadPool")
   defer strWorkerThreadPool.Destroy()
+  strThemeDB := StringNameFromStr("ThemeDB")
+  defer strThemeDB.Destroy()
+  strEditorInterface := StringNameFromStr("EditorInterface")
+  defer strEditorInterface.Destroy()
   strJavaClassWrapper := StringNameFromStr("JavaClassWrapper")
   defer strJavaClassWrapper.Destroy()
   strJavaScriptBridge := StringNameFromStr("JavaScriptBridge")
   defer strJavaScriptBridge.Destroy()
-  strThemeDB := StringNameFromStr("ThemeDB")
-  defer strThemeDB.Destroy()
   strDisplayServer := StringNameFromStr("DisplayServer")
   defer strDisplayServer.Destroy()
   strRenderingServer := StringNameFromStr("RenderingServer")
@@ -184,14 +187,17 @@ func newSingletons(iface gdc.Interface) *singletons {
     WorkerThreadPool: WorkerThreadPool{
       obj: iface.GlobalGetSingleton(strWorkerThreadPool.AsCPtr()),
     },
+    ThemeDB: ThemeDB{
+      obj: iface.GlobalGetSingleton(strThemeDB.AsCPtr()),
+    },
+    EditorInterface: EditorInterface{
+      obj: iface.GlobalGetSingleton(strEditorInterface.AsCPtr()),
+    },
     JavaClassWrapper: JavaClassWrapper{
       obj: iface.GlobalGetSingleton(strJavaClassWrapper.AsCPtr()),
     },
     JavaScriptBridge: JavaScriptBridge{
       obj: iface.GlobalGetSingleton(strJavaScriptBridge.AsCPtr()),
-    },
-    ThemeDB: ThemeDB{
-      obj: iface.GlobalGetSingleton(strThemeDB.AsCPtr()),
     },
     DisplayServer: DisplayServer{
       obj: iface.GlobalGetSingleton(strDisplayServer.AsCPtr()),

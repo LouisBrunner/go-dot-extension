@@ -39,4 +39,16 @@ func (me *EditorExportPlatform) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
+func  (me *EditorExportPlatform) GetOsName() String {
+  classNameV := StringNameFromStr("EditorExportPlatform")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_os_name")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 // Signals

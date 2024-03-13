@@ -137,7 +137,7 @@ func  (me *HTTPClient) ConnectToHost(host String, port int, tls_options TLSOptio
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("connect_to_host")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1970282951) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 504540374) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(host.AsCTypePtr()), gdc.ConstTypePtr(&port), gdc.ConstTypePtr(tls_options.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -183,7 +183,7 @@ func  (me *HTTPClient) Request(method HTTPClientMethod, url String, headers Pack
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("request")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3249905507) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3778990155) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&method), gdc.ConstTypePtr(url.AsCTypePtr()), gdc.ConstTypePtr(headers.AsCTypePtr()), gdc.ConstTypePtr(body.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

@@ -39,6 +39,28 @@ func (me *CharFXTransform) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
+func  (me *CharFXTransform) GetTransform() Transform2D {
+  classNameV := StringNameFromStr("CharFXTransform")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3761352769) // FIXME: should cache?
+  var ret Transform2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *CharFXTransform) SetTransform(transform Transform2D, )  {
+  classNameV := StringNameFromStr("CharFXTransform")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_transform")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(transform.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
 func  (me *CharFXTransform) GetRange() Vector2i {
   classNameV := StringNameFromStr("CharFXTransform")
   defer classNameV.Destroy()

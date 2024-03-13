@@ -52,150 +52,46 @@ func (me *AnimationPlayer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *AnimationPlayer) AddAnimationLibrary(name StringName, library AnimationLibrary, ) Error {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_animation_library")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 618909818) // FIXME: should cache?
-  var ret Error
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(library.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) RemoveAnimationLibrary(name StringName, )  {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_animation_library")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *AnimationPlayer) RenameAnimationLibrary(name StringName, newname StringName, )  {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("rename_animation_library")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3740211285) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(newname.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *AnimationPlayer) HasAnimationLibrary(name StringName, ) bool {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_animation_library")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
-  var ret bool
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) GetAnimationLibrary(name StringName, ) AnimationLibrary {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_animation_library")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 147342321) // FIXME: should cache?
-  var ret AnimationLibrary
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) GetAnimationLibraryList() StringName {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_animation_library_list")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
-  var ret StringName
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) HasAnimation(name StringName, ) bool {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_animation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
-  var ret bool
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) GetAnimation(name StringName, ) Animation {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_animation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2933122410) // FIXME: should cache?
-  var ret Animation
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) GetAnimationList() PackedStringArray {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_animation_list")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
-  var ret PackedStringArray
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) AnimationSetNext(anim_from StringName, anim_to StringName, )  {
+func  (me *AnimationPlayer) AnimationSetNext(animation_from StringName, animation_to StringName, )  {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("animation_set_next")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3740211285) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim_from.AsCTypePtr()), gdc.ConstTypePtr(anim_to.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(animation_from.AsCTypePtr()), gdc.ConstTypePtr(animation_to.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationPlayer) AnimationGetNext(anim_from StringName, ) StringName {
+func  (me *AnimationPlayer) AnimationGetNext(animation_from StringName, ) StringName {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("animation_get_next")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965194235) // FIXME: should cache?
   var ret StringName
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim_from.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(animation_from.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
 
-func  (me *AnimationPlayer) SetBlendTime(anim_from StringName, anim_to StringName, sec float32, )  {
+func  (me *AnimationPlayer) SetBlendTime(animation_from StringName, animation_to StringName, sec float32, )  {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_blend_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3231131886) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim_from.AsCTypePtr()), gdc.ConstTypePtr(anim_to.AsCTypePtr()), gdc.ConstTypePtr(&sec), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(animation_from.AsCTypePtr()), gdc.ConstTypePtr(animation_to.AsCTypePtr()), gdc.ConstTypePtr(&sec), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationPlayer) GetBlendTime(anim_from StringName, anim_to StringName, ) float32 {
+func  (me *AnimationPlayer) GetBlendTime(animation_from StringName, animation_to StringName, ) float32 {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_blend_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1958752504) // FIXME: should cache?
   var ret float32
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim_from.AsCTypePtr()), gdc.ConstTypePtr(anim_to.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(animation_from.AsCTypePtr()), gdc.ConstTypePtr(animation_to.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
@@ -274,13 +170,13 @@ func  (me *AnimationPlayer) IsPlaying() bool {
   return ret
 }
 
-func  (me *AnimationPlayer) SetCurrentAnimation(anim String, )  {
+func  (me *AnimationPlayer) SetCurrentAnimation(animation String, )  {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_current_animation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(animation.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
@@ -296,13 +192,13 @@ func  (me *AnimationPlayer) GetCurrentAnimation() String {
   return ret
 }
 
-func  (me *AnimationPlayer) SetAssignedAnimation(anim String, )  {
+func  (me *AnimationPlayer) SetAssignedAnimation(animation String, )  {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_assigned_animation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(animation.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
@@ -348,28 +244,6 @@ func  (me *AnimationPlayer) ClearQueue()  {
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *AnimationPlayer) SetActive(active bool, )  {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *AnimationPlayer) IsActive() bool {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
 }
 
 func  (me *AnimationPlayer) SetSpeedScale(speed float32, )  {
@@ -428,20 +302,20 @@ func  (me *AnimationPlayer) GetAutoplay() String {
   return ret
 }
 
-func  (me *AnimationPlayer) SetResetOnSaveEnabled(enabled bool, )  {
+func  (me *AnimationPlayer) SetMovieQuitOnFinishEnabled(enabled bool, )  {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_reset_on_save_enabled")
+  methodNameV := StringNameFromStr("set_movie_quit_on_finish_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationPlayer) IsResetOnSaveEnabled() bool {
+func  (me *AnimationPlayer) IsMovieQuitOnFinishEnabled() bool {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_reset_on_save_enabled")
+  methodNameV := StringNameFromStr("is_movie_quit_on_finish_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   var ret bool
@@ -450,59 +324,37 @@ func  (me *AnimationPlayer) IsResetOnSaveEnabled() bool {
   return ret
 }
 
-func  (me *AnimationPlayer) SetRoot(path NodePath, )  {
+func  (me *AnimationPlayer) GetCurrentAnimationPosition() float32 {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_root")
+  methodNameV := StringNameFromStr("get_current_animation_position")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *AnimationPlayer) GetRoot() NodePath {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_root")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
-  var ret NodePath
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
 
-func  (me *AnimationPlayer) FindAnimation(animation Animation, ) StringName {
+func  (me *AnimationPlayer) GetCurrentAnimationLength() float32 {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("find_animation")
+  methodNameV := StringNameFromStr("get_current_animation_length")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1559484580) // FIXME: should cache?
-  var ret StringName
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(animation.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) FindAnimationLibrary(animation Animation, ) StringName {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("find_animation_library")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1559484580) // FIXME: should cache?
-  var ret StringName
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(animation.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) ClearCaches()  {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_caches")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
+  var ret float32
   cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *AnimationPlayer) Seek(seconds float32, update bool, update_only bool, )  {
+  classNameV := StringNameFromStr("AnimationPlayer")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("seek")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1807872683) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&seconds), gdc.ConstTypePtr(&update), gdc.ConstTypePtr(&update_only), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
@@ -550,109 +402,43 @@ func  (me *AnimationPlayer) GetMethodCallMode() AnimationPlayerAnimationMethodCa
   return ret
 }
 
-func  (me *AnimationPlayer) SetAudioMaxPolyphony(max_polyphony int, )  {
+func  (me *AnimationPlayer) SetRoot(path NodePath, )  {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_audio_max_polyphony")
+  methodNameV := StringNameFromStr("set_root")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_polyphony), }
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *AnimationPlayer) GetAudioMaxPolyphony() int {
+func  (me *AnimationPlayer) GetRoot() NodePath {
   classNameV := StringNameFromStr("AnimationPlayer")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_audio_max_polyphony")
+  methodNameV := StringNameFromStr("get_root")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
+  var ret NodePath
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
-}
-
-func  (me *AnimationPlayer) SetMovieQuitOnFinishEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_movie_quit_on_finish_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *AnimationPlayer) IsMovieQuitOnFinishEnabled() bool {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_movie_quit_on_finish_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) GetCurrentAnimationPosition() float32 {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_current_animation_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) GetCurrentAnimationLength() float32 {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_current_animation_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *AnimationPlayer) Seek(seconds float32, update bool, )  {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("seek")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2087892650) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&seconds), gdc.ConstTypePtr(&update), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *AnimationPlayer) Advance(delta float32, )  {
-  classNameV := StringNameFromStr("AnimationPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("advance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delta), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API
 
 // Signals
 
-type AnimationPlayerAnimationFinishedSignalFn func(anim_name StringName, )
+type AnimationPlayerCurrentAnimationChangedSignalFn func(name String, )
 
-func (me *AnimationPlayer) ConnectAnimationFinished(subs SignalSubscribers, fn AnimationPlayerAnimationFinishedSignalFn) {
-  sig := StringNameFromStr("animation_finished")
+func (me *AnimationPlayer) ConnectCurrentAnimationChanged(subs SignalSubscribers, fn AnimationPlayerCurrentAnimationChangedSignalFn) {
+  sig := StringNameFromStr("current_animation_changed")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Connect(sig, subs.add(fn), 0)
 }
 
-func (me *AnimationPlayer) DisconnectAnimationFinished(subs SignalSubscribers, fn AnimationPlayerAnimationFinishedSignalFn) {
-  sig := StringNameFromStr("animation_finished")
+func (me *AnimationPlayer) DisconnectCurrentAnimationChanged(subs SignalSubscribers, fn AnimationPlayerCurrentAnimationChangedSignalFn) {
+  sig := StringNameFromStr("current_animation_changed")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Disconnect(sig, *subs.remove(fn))
@@ -669,70 +455,6 @@ func (me *AnimationPlayer) ConnectAnimationChanged(subs SignalSubscribers, fn An
 
 func (me *AnimationPlayer) DisconnectAnimationChanged(subs SignalSubscribers, fn AnimationPlayerAnimationChangedSignalFn) {
   sig := StringNameFromStr("animation_changed")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type AnimationPlayerAnimationStartedSignalFn func(anim_name StringName, )
-
-func (me *AnimationPlayer) ConnectAnimationStarted(subs SignalSubscribers, fn AnimationPlayerAnimationStartedSignalFn) {
-  sig := StringNameFromStr("animation_started")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *AnimationPlayer) DisconnectAnimationStarted(subs SignalSubscribers, fn AnimationPlayerAnimationStartedSignalFn) {
-  sig := StringNameFromStr("animation_started")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type AnimationPlayerAnimationListChangedSignalFn func()
-
-func (me *AnimationPlayer) ConnectAnimationListChanged(subs SignalSubscribers, fn AnimationPlayerAnimationListChangedSignalFn) {
-  sig := StringNameFromStr("animation_list_changed")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *AnimationPlayer) DisconnectAnimationListChanged(subs SignalSubscribers, fn AnimationPlayerAnimationListChangedSignalFn) {
-  sig := StringNameFromStr("animation_list_changed")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type AnimationPlayerAnimationLibrariesUpdatedSignalFn func()
-
-func (me *AnimationPlayer) ConnectAnimationLibrariesUpdated(subs SignalSubscribers, fn AnimationPlayerAnimationLibrariesUpdatedSignalFn) {
-  sig := StringNameFromStr("animation_libraries_updated")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *AnimationPlayer) DisconnectAnimationLibrariesUpdated(subs SignalSubscribers, fn AnimationPlayerAnimationLibrariesUpdatedSignalFn) {
-  sig := StringNameFromStr("animation_libraries_updated")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type AnimationPlayerCachesClearedSignalFn func()
-
-func (me *AnimationPlayer) ConnectCachesCleared(subs SignalSubscribers, fn AnimationPlayerCachesClearedSignalFn) {
-  sig := StringNameFromStr("caches_cleared")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *AnimationPlayer) DisconnectCachesCleared(subs SignalSubscribers, fn AnimationPlayerCachesClearedSignalFn) {
-  sig := StringNameFromStr("caches_cleared")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Disconnect(sig, *subs.remove(fn))

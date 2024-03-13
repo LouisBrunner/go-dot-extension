@@ -44,7 +44,7 @@ func  (me *PhysicsDirectSpaceState2D) IntersectPoint(parameters PhysicsPointQuer
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("intersect_point")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3278207904) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2118456068) // FIXME: should cache?
   var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), gdc.ConstTypePtr(&max_results), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -68,7 +68,7 @@ func  (me *PhysicsDirectSpaceState2D) IntersectShape(parameters PhysicsShapeQuer
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("intersect_shape")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3803848594) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2488867228) // FIXME: should cache?
   var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), gdc.ConstTypePtr(&max_results), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -92,7 +92,7 @@ func  (me *PhysicsDirectSpaceState2D) CollideShape(parameters PhysicsShapeQueryP
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("collide_shape")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3803848594) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2488867228) // FIXME: should cache?
   var ret Vector2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), gdc.ConstTypePtr(&max_results), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

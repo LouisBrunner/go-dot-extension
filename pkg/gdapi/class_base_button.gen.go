@@ -360,7 +360,7 @@ func (me *BaseButton) DisconnectButtonDown(subs SignalSubscribers, fn BaseButton
   obj.Disconnect(sig, *subs.remove(fn))
 }
 
-type BaseButtonToggledSignalFn func(button_pressed bool, )
+type BaseButtonToggledSignalFn func(toggled_on bool, )
 
 func (me *BaseButton) ConnectToggled(subs SignalSubscribers, fn BaseButtonToggledSignalFn) {
   sig := StringNameFromStr("toggled")

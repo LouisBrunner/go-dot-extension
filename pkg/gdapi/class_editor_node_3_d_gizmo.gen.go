@@ -44,7 +44,7 @@ func  (me *EditorNode3DGizmo) AddLines(lines PackedVector3Array, material Materi
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_lines")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 302451090) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2910971437) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(lines.AsCTypePtr()), gdc.ConstTypePtr(material.AsCTypePtr()), gdc.ConstTypePtr(&billboard), gdc.ConstTypePtr(modulate.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -54,7 +54,7 @@ func  (me *EditorNode3DGizmo) AddMesh(mesh Mesh, material Material, transform Tr
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_mesh")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1868867708) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1579955111) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), gdc.ConstTypePtr(material.AsCTypePtr()), gdc.ConstTypePtr(transform.AsCTypePtr()), gdc.ConstTypePtr(skeleton.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -84,7 +84,7 @@ func  (me *EditorNode3DGizmo) AddUnscaledBillboard(material Material, default_sc
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_unscaled_billboard")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3719733075) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 520007164) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(material.AsCTypePtr()), gdc.ConstTypePtr(&default_scale), gdc.ConstTypePtr(modulate.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

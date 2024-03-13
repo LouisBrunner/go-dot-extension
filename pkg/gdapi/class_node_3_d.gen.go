@@ -298,6 +298,28 @@ func  (me *Node3D) GetGlobalPosition() Vector3 {
   return ret
 }
 
+func  (me *Node3D) SetGlobalBasis(basis Basis, )  {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_global_basis")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1055510324) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(basis.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *Node3D) GetGlobalBasis() Basis {
+  classNameV := StringNameFromStr("Node3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_global_basis")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2716978435) // FIXME: should cache?
+  var ret Basis
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *Node3D) SetGlobalRotation(euler_radians Vector3, )  {
   classNameV := StringNameFromStr("Node3D")
   defer classNameV.Destroy()
@@ -747,7 +769,7 @@ func  (me *Node3D) LookAt(target Vector3, up Vector3, use_model_front bool, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("look_at")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3123400617) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2882425029) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(target.AsCTypePtr()), gdc.ConstTypePtr(up.AsCTypePtr()), gdc.ConstTypePtr(&use_model_front), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -757,7 +779,7 @@ func  (me *Node3D) LookAtFromPosition(position Vector3, target Vector3, up Vecto
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("look_at_from_position")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4067663783) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2086826090) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(target.AsCTypePtr()), gdc.ConstTypePtr(up.AsCTypePtr()), gdc.ConstTypePtr(&use_model_front), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

@@ -51,7 +51,7 @@ func  (me *Thread) Start(callable Callable, priority ThreadPriority, ) Error {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("start")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2779832528) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1327203254) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callable.AsCTypePtr()), gdc.ConstTypePtr(&priority), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

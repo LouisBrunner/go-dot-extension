@@ -111,6 +111,30 @@ func  (me *TabBar) GetPreviousTab() int {
   return ret
 }
 
+func  (me *TabBar) SelectPreviousAvailable() bool {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("select_previous_available")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *TabBar) SelectNextAvailable() bool {
+  classNameV := StringNameFromStr("TabBar")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("select_next_available")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *TabBar) SetTabTitle(tab_idx int, title String, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()

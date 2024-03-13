@@ -220,7 +220,7 @@ func  (me *ProjectSettings) LoadResourcePack(pack String, replace_files bool, of
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("load_resource_pack")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3001721055) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 708980503) // FIXME: should cache?
   var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pack.AsCTypePtr()), gdc.ConstTypePtr(&replace_files), gdc.ConstTypePtr(&offset), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -240,3 +240,19 @@ func  (me *ProjectSettings) SaveCustom(file String, ) Error {
 }
 
 // Signals
+
+type ProjectSettingsSettingsChangedSignalFn func()
+
+func (me *ProjectSettings) ConnectSettingsChanged(subs SignalSubscribers, fn ProjectSettingsSettingsChangedSignalFn) {
+  sig := StringNameFromStr("settings_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *ProjectSettings) DisconnectSettingsChanged(subs SignalSubscribers, fn ProjectSettingsSettingsChangedSignalFn) {
+  sig := StringNameFromStr("settings_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

@@ -39,22 +39,22 @@ func (me *LightmapGIData) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *LightmapGIData) SetLightTexture(light_texture TextureLayered, )  {
+func  (me *LightmapGIData) SetLightmapTextures(light_textures TextureLayered, )  {
   classNameV := StringNameFromStr("LightmapGIData")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_light_texture")
+  methodNameV := StringNameFromStr("set_lightmap_textures")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1278366092) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(light_texture.AsCTypePtr()), }
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(light_textures.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *LightmapGIData) GetLightTexture() TextureLayered {
+func  (me *LightmapGIData) GetLightmapTextures() TextureLayered {
   classNameV := StringNameFromStr("LightmapGIData")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_light_texture")
+  methodNameV := StringNameFromStr("get_lightmap_textures")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3984243839) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   var ret TextureLayered
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -125,6 +125,28 @@ func  (me *LightmapGIData) ClearUsers()  {
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *LightmapGIData) SetLightTexture(light_texture TextureLayered, )  {
+  classNameV := StringNameFromStr("LightmapGIData")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_light_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1278366092) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(light_texture.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *LightmapGIData) GetLightTexture() TextureLayered {
+  classNameV := StringNameFromStr("LightmapGIData")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_light_texture")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3984243839) // FIXME: should cache?
+  var ret TextureLayered
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -44,7 +44,7 @@ func  JSONStringify(data Variant, indent String, sort_keys bool, full_precision 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("stringify")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2656701787) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 462733549) // FIXME: should cache?
   var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(data.AsCTypePtr()), gdc.ConstTypePtr(indent.AsCTypePtr()), gdc.ConstTypePtr(&sort_keys), gdc.ConstTypePtr(&full_precision), }
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

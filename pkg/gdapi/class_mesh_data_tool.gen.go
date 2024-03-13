@@ -61,14 +61,14 @@ func  (me *MeshDataTool) CreateFromSurface(mesh ArrayMesh, surface int, ) Error 
   return ret
 }
 
-func  (me *MeshDataTool) CommitToSurface(mesh ArrayMesh, ) Error {
+func  (me *MeshDataTool) CommitToSurface(mesh ArrayMesh, compression_flags int, ) Error {
   classNameV := StringNameFromStr("MeshDataTool")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("commit_to_surface")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3521099812) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2021686445) // FIXME: should cache?
   var ret Error
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), gdc.ConstTypePtr(&compression_flags), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }

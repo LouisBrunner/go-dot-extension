@@ -44,7 +44,7 @@ func  (me *EditorDebuggerSession) SendMessage(message String, data Array, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("send_message")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3780025912) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 85656714) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(message.AsCTypePtr()), gdc.ConstTypePtr(data.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -54,7 +54,7 @@ func  (me *EditorDebuggerSession) ToggleProfiler(profiler String, enable bool, d
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("toggle_profiler")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 35674246) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1198443697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(profiler.AsCTypePtr()), gdc.ConstTypePtr(&enable), gdc.ConstTypePtr(data.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

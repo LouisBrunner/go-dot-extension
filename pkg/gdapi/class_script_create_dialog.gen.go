@@ -44,7 +44,7 @@ func  (me *ScriptCreateDialog) Config(inherits String, path String, built_in_ena
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("config")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4210001628) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 869314288) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(inherits.AsCTypePtr()), gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&built_in_enabled), gdc.ConstTypePtr(&load_enabled), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

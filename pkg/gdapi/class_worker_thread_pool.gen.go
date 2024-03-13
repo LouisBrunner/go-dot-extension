@@ -44,7 +44,7 @@ func  (me *WorkerThreadPool) AddTask(action Callable, high_priority bool, descri
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_task")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3976347598) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3745067146) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&high_priority), gdc.ConstTypePtr(description.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -80,7 +80,7 @@ func  (me *WorkerThreadPool) AddGroupTask(action Callable, elements int, tasks_n
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_group_task")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2377228549) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1801953219) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&elements), gdc.ConstTypePtr(&tasks_needed), gdc.ConstTypePtr(&high_priority), gdc.ConstTypePtr(description.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

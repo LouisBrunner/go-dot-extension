@@ -44,7 +44,7 @@ func  PhysicsRayQueryParameters3DCreate(from Vector3, to Vector3, collision_mask
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 680321959) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3110599579) // FIXME: should cache?
   var ret PhysicsRayQueryParameters3D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from.AsCTypePtr()), gdc.ConstTypePtr(to.AsCTypePtr()), gdc.ConstTypePtr(&collision_mask), gdc.ConstTypePtr(exclude.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

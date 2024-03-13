@@ -166,7 +166,7 @@ func  (me *AnimationNode) BlendAnimation(animation StringName, time float32, del
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("blend_animation")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 11797022) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1630801826) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(animation.AsCTypePtr()), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(&delta), gdc.ConstTypePtr(&seeked), gdc.ConstTypePtr(&is_external_seeking), gdc.ConstTypePtr(&blend), gdc.ConstTypePtr(&looped_flag), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -176,7 +176,7 @@ func  (me *AnimationNode) BlendNode(name StringName, node AnimationNode, time fl
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("blend_node")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 263389446) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1746075988) // FIXME: should cache?
   var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(node.AsCTypePtr()), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(&seek), gdc.ConstTypePtr(&is_external_seeking), gdc.ConstTypePtr(&blend), gdc.ConstTypePtr(&filter), gdc.ConstTypePtr(&sync), gdc.ConstTypePtr(&test_only), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -188,7 +188,7 @@ func  (me *AnimationNode) BlendInput(input_index int, time float32, seek bool, i
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("blend_input")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2709059328) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1361527350) // FIXME: should cache?
   var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_index), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(&seek), gdc.ConstTypePtr(&is_external_seeking), gdc.ConstTypePtr(&blend), gdc.ConstTypePtr(&filter), gdc.ConstTypePtr(&sync), gdc.ConstTypePtr(&test_only), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

@@ -822,6 +822,28 @@ func  (me *LineEdit) IsDeselectOnFocusLossEnabled() bool {
   return ret
 }
 
+func  (me *LineEdit) SetDragAndDropSelectionEnabled(enable bool, )  {
+  classNameV := StringNameFromStr("LineEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_drag_and_drop_selection_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *LineEdit) IsDragAndDropSelectionEnabled() bool {
+  classNameV := StringNameFromStr("LineEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drag_and_drop_selection_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *LineEdit) SetRightIcon(icon Texture2D, )  {
   classNameV := StringNameFromStr("LineEdit")
   defer classNameV.Destroy()

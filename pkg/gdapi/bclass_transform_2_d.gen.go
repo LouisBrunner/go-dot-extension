@@ -301,6 +301,18 @@ func (me *Transform2D) InterpolateWith(xform Transform2D, weight float32, ) Tran
   return ret
 }
 
+func (me *Transform2D) IsConformal() bool {
+  name := StringNameFromStr("is_conformal")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 3918633141) // FIXME: should cache?
+
+  var ret bool
+  args := []gdc.ConstTypePtr{}
+
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
+}
+
 func (me *Transform2D) IsEqualApprox(xform Transform2D, ) bool {
   name := StringNameFromStr("is_equal_approx")
   defer name.Destroy()
@@ -360,14 +372,20 @@ func (me *Transform2D) Not() bool {
   return ret
 }
 
-func (me *Transform2D) MultiplyInt(right Int) Transform2D {
+func (me *Transform2D) MultiplyInt(rightArg int) Transform2D {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
   var ret Transform2D
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *Transform2D) MultiplyFloat32(right Float) Transform2D {
+func (me *Transform2D) MultiplyFloat32(rightArg float32) Transform2D {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
   var ret Transform2D
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))

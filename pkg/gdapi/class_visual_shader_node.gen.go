@@ -53,6 +53,18 @@ func (me *VisualShaderNode) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
+func  (me *VisualShaderNode) GetDefaultInputPort(type_ VisualShaderNodePortType, ) int {
+  classNameV := StringNameFromStr("VisualShaderNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_default_input_port")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1894493699) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *VisualShaderNode) SetOutputPortForPreview(port int, )  {
   classNameV := StringNameFromStr("VisualShaderNode")
   defer classNameV.Destroy()

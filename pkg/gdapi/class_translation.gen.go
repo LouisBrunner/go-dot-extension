@@ -66,7 +66,7 @@ func  (me *Translation) AddMessage(src_message StringName, xlated_message String
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_message")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 971803314) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3898530326) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(src_message.AsCTypePtr()), gdc.ConstTypePtr(xlated_message.AsCTypePtr()), gdc.ConstTypePtr(context.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -76,7 +76,7 @@ func  (me *Translation) AddPluralMessage(src_message StringName, xlated_messages
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_plural_message")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 360316719) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2356982266) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(src_message.AsCTypePtr()), gdc.ConstTypePtr(xlated_messages.AsCTypePtr()), gdc.ConstTypePtr(context.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -86,7 +86,7 @@ func  (me *Translation) GetMessage(src_message StringName, context StringName, )
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_message")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 58037827) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1829228469) // FIXME: should cache?
   var ret StringName
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(src_message.AsCTypePtr()), gdc.ConstTypePtr(context.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -98,7 +98,7 @@ func  (me *Translation) GetPluralMessage(src_message StringName, src_plural_mess
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_plural_message")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1333931916) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 229954002) // FIXME: should cache?
   var ret StringName
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(src_message.AsCTypePtr()), gdc.ConstTypePtr(src_plural_message.AsCTypePtr()), gdc.ConstTypePtr(&n), gdc.ConstTypePtr(context.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -110,7 +110,7 @@ func  (me *Translation) EraseMessage(src_message StringName, context StringName,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("erase_message")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3919944288) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3959009644) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(src_message.AsCTypePtr()), gdc.ConstTypePtr(context.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

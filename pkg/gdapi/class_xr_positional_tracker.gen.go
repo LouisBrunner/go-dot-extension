@@ -242,6 +242,22 @@ func (me *XRPositionalTracker) DisconnectPoseChanged(subs SignalSubscribers, fn 
   obj.Disconnect(sig, *subs.remove(fn))
 }
 
+type XRPositionalTrackerPoseLostTrackingSignalFn func(pose XRPose, )
+
+func (me *XRPositionalTracker) ConnectPoseLostTracking(subs SignalSubscribers, fn XRPositionalTrackerPoseLostTrackingSignalFn) {
+  sig := StringNameFromStr("pose_lost_tracking")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRPositionalTracker) DisconnectPoseLostTracking(subs SignalSubscribers, fn XRPositionalTrackerPoseLostTrackingSignalFn) {
+  sig := StringNameFromStr("pose_lost_tracking")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
 type XRPositionalTrackerButtonPressedSignalFn func(name String, )
 
 func (me *XRPositionalTracker) ConnectButtonPressed(subs SignalSubscribers, fn XRPositionalTrackerButtonPressedSignalFn) {

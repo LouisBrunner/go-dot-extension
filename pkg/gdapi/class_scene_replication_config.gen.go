@@ -25,6 +25,13 @@ func (me *SceneReplicationConfig) BaseClass() string {
 
 // Enums
 
+type SceneReplicationConfigReplicationMode int
+const (
+  SceneReplicationConfigReplicationModeReplicationModeNever SceneReplicationConfigReplicationMode = 0
+  SceneReplicationConfigReplicationModeReplicationModeAlways SceneReplicationConfigReplicationMode = 1
+  SceneReplicationConfigReplicationModeReplicationModeOnChange SceneReplicationConfigReplicationMode = 2
+)
+
 func (me *SceneReplicationConfig) Type() gdc.VariantType {
   return gdc.VariantTypeObject
 }
@@ -56,7 +63,7 @@ func  (me *SceneReplicationConfig) AddProperty(path NodePath, index int, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_property")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3818401521) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4094619021) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -114,6 +121,28 @@ func  (me *SceneReplicationConfig) PropertySetSpawn(path NodePath, enabled bool,
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3868023870) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *SceneReplicationConfig) PropertyGetReplicationMode(path NodePath, ) SceneReplicationConfigReplicationMode {
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("property_get_replication_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2870606336) // FIXME: should cache?
+  var ret SceneReplicationConfigReplicationMode
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *SceneReplicationConfig) PropertySetReplicationMode(path NodePath, mode SceneReplicationConfigReplicationMode, )  {
+  classNameV := StringNameFromStr("SceneReplicationConfig")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("property_set_replication_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3200083865) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&mode), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 

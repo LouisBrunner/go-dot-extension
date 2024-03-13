@@ -232,7 +232,7 @@ func  (me *SceneMultiplayer) SendBytes(bytes PackedByteArray, id int, mode Multi
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("send_bytes")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2742700601) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1307428718) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(bytes.AsCTypePtr()), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(&channel), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

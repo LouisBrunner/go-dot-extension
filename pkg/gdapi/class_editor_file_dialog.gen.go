@@ -76,7 +76,7 @@ func  (me *EditorFileDialog) AddFilter(filter String, description String, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_filter")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 233059325) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3388804757) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(filter.AsCTypePtr()), gdc.ConstTypePtr(description.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -301,6 +301,16 @@ func  (me *EditorFileDialog) IsOverwriteWarningDisabled() bool {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
+}
+
+func  (me *EditorFileDialog) AddSideMenu(menu Control, title String, )  {
+  classNameV := StringNameFromStr("EditorFileDialog")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("add_side_menu")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 402368861) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu.AsCTypePtr()), gdc.ConstTypePtr(title.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *EditorFileDialog) Invalidate()  {

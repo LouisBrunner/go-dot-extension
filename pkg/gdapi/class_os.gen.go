@@ -94,7 +94,7 @@ func  (me *OS) Alert(text String, title String, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("alert")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 233059325) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1783970740) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(title.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -216,7 +216,7 @@ func  (me *OS) GetSystemFontPath(font_name String, weight int, stretch int, ital
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_system_font_path")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2262142305) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 626580860) // FIXME: should cache?
   var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_name.AsCTypePtr()), gdc.ConstTypePtr(&weight), gdc.ConstTypePtr(&stretch), gdc.ConstTypePtr(&italic), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -228,7 +228,7 @@ func  (me *OS) GetSystemFontPathForText(font_name String, text String, locale St
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_system_font_path_for_text")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3824042574) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 197317981) // FIXME: should cache?
   var ret PackedStringArray
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_name.AsCTypePtr()), gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(locale.AsCTypePtr()), gdc.ConstTypePtr(script.AsCTypePtr()), gdc.ConstTypePtr(&weight), gdc.ConstTypePtr(&stretch), gdc.ConstTypePtr(&italic), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -264,7 +264,7 @@ func  (me *OS) Execute(path String, arguments PackedStringArray, output Array, r
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("execute")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2881709059) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1488299882) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(arguments.AsCTypePtr()), gdc.ConstTypePtr(output.AsCTypePtr()), gdc.ConstTypePtr(&read_stderr), gdc.ConstTypePtr(&open_console), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -324,7 +324,7 @@ func  (me *OS) ShellShowInFileManager(file_or_dir_path String, open_folder bool,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("shell_show_in_file_manager")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 885841341) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3565188097) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(file_or_dir_path.AsCTypePtr()), gdc.ConstTypePtr(&open_folder), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -476,7 +476,7 @@ func  (me *OS) SetRestartOnExit(restart bool, arguments PackedStringArray, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_restart_on_exit")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 611198603) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3331453935) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&restart), gdc.ConstTypePtr(arguments.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -662,7 +662,7 @@ func  (me *OS) GetSystemDir(dir OSSystemDir, shared_storage bool, ) String {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_system_dir")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965199849) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3073895123) // FIXME: should cache?
   var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&dir), gdc.ConstTypePtr(&shared_storage), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -811,6 +811,18 @@ func  (me *OS) HasFeature(tag_name String, ) bool {
   return ret
 }
 
+func  (me *OS) IsSandboxed() bool {
+  classNameV := StringNameFromStr("OS")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_sandboxed")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *OS) RequestPermission(name String, ) bool {
   classNameV := StringNameFromStr("OS")
   defer classNameV.Destroy()
@@ -845,6 +857,16 @@ func  (me *OS) GetGrantedPermissions() PackedStringArray {
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
+}
+
+func  (me *OS) RevokeGrantedPermissions()  {
+  classNameV := StringNameFromStr("OS")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("revoke_granted_permissions")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

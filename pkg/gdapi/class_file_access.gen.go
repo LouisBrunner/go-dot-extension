@@ -42,6 +42,22 @@ const (
   FileAccessCompressionModeCompressionBrotli FileAccessCompressionMode = 4
 )
 
+type FileAccessUnixPermissionFlags int
+const (
+  FileAccessUnixPermissionFlagsUnixReadOwner FileAccessUnixPermissionFlags = 256
+  FileAccessUnixPermissionFlagsUnixWriteOwner FileAccessUnixPermissionFlags = 128
+  FileAccessUnixPermissionFlagsUnixExecuteOwner FileAccessUnixPermissionFlags = 64
+  FileAccessUnixPermissionFlagsUnixReadGroup FileAccessUnixPermissionFlags = 32
+  FileAccessUnixPermissionFlagsUnixWriteGroup FileAccessUnixPermissionFlags = 16
+  FileAccessUnixPermissionFlagsUnixExecuteGroup FileAccessUnixPermissionFlags = 8
+  FileAccessUnixPermissionFlagsUnixReadOther FileAccessUnixPermissionFlags = 4
+  FileAccessUnixPermissionFlagsUnixWriteOther FileAccessUnixPermissionFlags = 2
+  FileAccessUnixPermissionFlagsUnixExecuteOther FileAccessUnixPermissionFlags = 1
+  FileAccessUnixPermissionFlagsUnixSetUserId FileAccessUnixPermissionFlags = 2048
+  FileAccessUnixPermissionFlagsUnixSetGroupId FileAccessUnixPermissionFlags = 1024
+  FileAccessUnixPermissionFlagsUnixRestrictedDelete FileAccessUnixPermissionFlags = 512
+)
+
 func (me *FileAccess) Type() gdc.VariantType {
   return gdc.VariantTypeObject
 }
@@ -97,7 +113,7 @@ func  FileAccessOpenCompressed(path String, mode_flags FileAccessModeFlags, comp
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("open_compressed")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2874458257) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3686439335) // FIXME: should cache?
   var ret FileAccess
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&mode_flags), gdc.ConstTypePtr(&compression_mode), }
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -539,7 +555,7 @@ func  (me *FileAccess) StoreCsvLine(values PackedStringArray, delim String, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("store_csv_line")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2217842308) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2173791505) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(values.AsCTypePtr()), gdc.ConstTypePtr(delim.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -615,6 +631,78 @@ func  FileAccessGetModifiedTime(file String, ) int {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1597066294) // FIXME: should cache?
   var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(file.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  FileAccessGetUnixPermissions(file String, ) FileAccessUnixPermissionFlags {
+  classNameV := StringNameFromStr("FileAccess")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_unix_permissions")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 524341837) // FIXME: should cache?
+  var ret FileAccessUnixPermissionFlags
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(file.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  FileAccessSetUnixPermissions(file String, permissions FileAccessUnixPermissionFlags, ) Error {
+  classNameV := StringNameFromStr("FileAccess")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_unix_permissions")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 846038644) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(file.AsCTypePtr()), gdc.ConstTypePtr(&permissions), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  FileAccessGetHiddenAttribute(file String, ) bool {
+  classNameV := StringNameFromStr("FileAccess")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_hidden_attribute")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2323990056) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(file.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  FileAccessSetHiddenAttribute(file String, hidden bool, ) Error {
+  classNameV := StringNameFromStr("FileAccess")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_hidden_attribute")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2892558115) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(file.AsCTypePtr()), gdc.ConstTypePtr(&hidden), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  FileAccessSetReadOnlyAttribute(file String, ro bool, ) Error {
+  classNameV := StringNameFromStr("FileAccess")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_read_only_attribute")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2892558115) // FIXME: should cache?
+  var ret Error
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(file.AsCTypePtr()), gdc.ConstTypePtr(&ro), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  FileAccessGetReadOnlyAttribute(file String, ) bool {
+  classNameV := StringNameFromStr("FileAccess")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_read_only_attribute")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2323990056) // FIXME: should cache?
+  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(file.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret

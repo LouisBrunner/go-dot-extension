@@ -78,7 +78,7 @@ func  (me *RegEx) Search(subject String, offset int, end int, ) RegExMatch {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("search")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4087180739) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3365977994) // FIXME: should cache?
   var ret RegExMatch
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(subject.AsCTypePtr()), gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(&end), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -90,7 +90,7 @@ func  (me *RegEx) SearchAll(subject String, offset int, end int, ) RegExMatch {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("search_all")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3354100289) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 849021363) // FIXME: should cache?
   var ret RegExMatch
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(subject.AsCTypePtr()), gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(&end), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -102,7 +102,7 @@ func  (me *RegEx) Sub(subject String, replacement String, all bool, offset int, 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("sub")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 758293621) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 54019702) // FIXME: should cache?
   var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(subject.AsCTypePtr()), gdc.ConstTypePtr(replacement.AsCTypePtr()), gdc.ConstTypePtr(&all), gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(&end), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

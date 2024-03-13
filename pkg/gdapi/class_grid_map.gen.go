@@ -314,7 +314,7 @@ func  (me *GridMap) SetCellItem(position Vector3i, item int, orientation int, ) 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_cell_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4177201334) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3449088946) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&item), gdc.ConstTypePtr(&orientation), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -584,6 +584,22 @@ func (me *GridMap) ConnectCellSizeChanged(subs SignalSubscribers, fn GridMapCell
 
 func (me *GridMap) DisconnectCellSizeChanged(subs SignalSubscribers, fn GridMapCellSizeChangedSignalFn) {
   sig := StringNameFromStr("cell_size_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GridMapChangedSignalFn func()
+
+func (me *GridMap) ConnectChanged(subs SignalSubscribers, fn GridMapChangedSignalFn) {
+  sig := StringNameFromStr("changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GridMap) DisconnectChanged(subs SignalSubscribers, fn GridMapChangedSignalFn) {
+  sig := StringNameFromStr("changed")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Disconnect(sig, *subs.remove(fn))

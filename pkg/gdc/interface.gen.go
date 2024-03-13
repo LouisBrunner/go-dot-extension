@@ -20,14 +20,18 @@ type Interface interface {
   ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) VariantPtr
   ArrayRef(pSelf TypePtr, pFrom ConstTypePtr, ) 
   ArraySetTyped(pSelf TypePtr, pType VariantType, pClassName ConstStringNamePtr, pScript ConstVariantPtr, ) 
+  CallableCustomCreate(rCallable UninitializedTypePtr, pCallableCustomInfo *CallableCustomInfo, ) 
+  CallableCustomGetUserdata(pCallable ConstTypePtr, pToken unsafe.Pointer, ) unsafe.Pointer
   ClassdbConstructObject(pClassname ConstStringNamePtr, ) ObjectPtr
   ClassdbGetClassTag(pClassname ConstStringNamePtr, ) unsafe.Pointer
   ClassdbGetMethodBind(pClassname ConstStringNamePtr, pMethodname ConstStringNamePtr, pHash Int, ) MethodBindPtr
   ClassdbRegisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo, ) 
+  ClassdbRegisterExtensionClass2(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo2, ) 
   ClassdbRegisterExtensionClassIntegerConstant(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pEnumName ConstStringNamePtr, pConstantName ConstStringNamePtr, pConstantValue Int, pIsBitfield Bool, ) 
   ClassdbRegisterExtensionClassMethod(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pMethodInfo *ClassMethodInfo, ) 
   ClassdbRegisterExtensionClassProperty(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr, ) 
   ClassdbRegisterExtensionClassPropertyGroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pGroupName ConstStringPtr, pPrefix ConstStringPtr, ) 
+  ClassdbRegisterExtensionClassPropertyIndexed(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr, pIndex Int, ) 
   ClassdbRegisterExtensionClassPropertySubgroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSubgroupName ConstStringPtr, pPrefix ConstStringPtr, ) 
   ClassdbRegisterExtensionClassSignal(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSignalName ConstStringNamePtr, pArgumentInfo *PropertyInfo, pArgumentCount Int, ) 
   ClassdbUnregisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, ) 
@@ -50,10 +54,12 @@ type Interface interface {
   MemRealloc(pPtr unsafe.Pointer, pBytes uint64, ) unsafe.Pointer
   ObjectCastTo(pObject ConstObjectPtr, pClassTag unsafe.Pointer, ) ObjectPtr
   ObjectDestroy(pO ObjectPtr, ) 
+  ObjectFreeInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, ) 
   ObjectGetClassName(pObject ConstObjectPtr, pLibrary ClassLibraryPtr, rClassName UninitializedStringNamePtr, ) Bool
   ObjectGetInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, pCallbacks *InstanceBindingCallbacks, ) unsafe.Pointer
   ObjectGetInstanceFromId(pInstanceId uint64, ) ObjectPtr
   ObjectGetInstanceId(pObject ConstObjectPtr, ) uint64
+  ObjectGetScriptInstance(pObject ConstObjectPtr, pLanguage ObjectPtr, ) ScriptInstanceDataPtr
   ObjectMethodBindCall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstVariantPtr, pArgCount Int, rRet UninitializedVariantPtr, rError *CallError, ) 
   ObjectMethodBindPtrcall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstTypePtr, rRet TypePtr, ) 
   ObjectSetInstance(pO ObjectPtr, pClassname ConstStringNamePtr, pInstance ClassInstancePtr, ) 
@@ -76,6 +82,8 @@ type Interface interface {
   PackedVector2ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) TypePtr
   PackedVector3ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) TypePtr
   PackedVector3ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) TypePtr
+  PlaceholderScriptInstanceCreate(pLanguage ObjectPtr, pScript ObjectPtr, pOwner ObjectPtr, ) ScriptInstancePtr
+  PlaceholderScriptInstanceUpdate(pPlaceholder ScriptInstancePtr, pProperties ConstTypePtr, pValues ConstTypePtr, ) 
   PrintError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, ) 
   PrintErrorWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool, ) 
   PrintScriptError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, ) 
@@ -85,16 +93,20 @@ type Interface interface {
   RefGetObject(pRef ConstRefPtr, ) ObjectPtr
   RefSetObject(pRef RefPtr, pObject ObjectPtr, ) 
   ScriptInstanceCreate(pInfo *ScriptInstanceInfo, pInstanceData ScriptInstanceDataPtr, ) ScriptInstancePtr
+  ScriptInstanceCreate2(pInfo *ScriptInstanceInfo2, pInstanceData ScriptInstanceDataPtr, ) ScriptInstancePtr
+  StringNameNewWithLatin1Chars(rDest UninitializedStringNamePtr, pContents string, pIsStatic Bool, ) 
+  StringNameNewWithUtf8Chars(rDest UninitializedStringNamePtr, pContents string, ) 
+  StringNameNewWithUtf8CharsAndLen(rDest UninitializedStringNamePtr, pContents string, pSize Int, ) 
   StringNewWithLatin1Chars(rDest UninitializedStringPtr, pContents string, ) 
   StringNewWithLatin1CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int, ) 
   StringNewWithUtf16Chars(rDest UninitializedStringPtr, pContents *uint16, ) 
-  StringNewWithUtf16CharsAndLen(rDest UninitializedStringPtr, pContents *uint16, pSize Int, ) 
+  StringNewWithUtf16CharsAndLen(rDest UninitializedStringPtr, pContents *uint16, pCharCount Int, ) 
   StringNewWithUtf32Chars(rDest UninitializedStringPtr, pContents *uint, ) 
-  StringNewWithUtf32CharsAndLen(rDest UninitializedStringPtr, pContents *uint, pSize Int, ) 
+  StringNewWithUtf32CharsAndLen(rDest UninitializedStringPtr, pContents *uint, pCharCount Int, ) 
   StringNewWithUtf8Chars(rDest UninitializedStringPtr, pContents string, ) 
   StringNewWithUtf8CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int, ) 
   StringNewWithWideChars(rDest UninitializedStringPtr, pContents *int, ) 
-  StringNewWithWideCharsAndLen(rDest UninitializedStringPtr, pContents *int, pSize Int, ) 
+  StringNewWithWideCharsAndLen(rDest UninitializedStringPtr, pContents *int, pCharCount Int, ) 
   StringOperatorIndex(pSelf StringPtr, pIndex Int, ) *uint
   StringOperatorIndexConst(pSelf ConstStringPtr, pIndex Int, ) *uint
   StringOperatorPlusEqC32Str(pSelf StringPtr, pB *uint, ) 
@@ -102,6 +114,7 @@ type Interface interface {
   StringOperatorPlusEqCstr(pSelf StringPtr, pB string, ) 
   StringOperatorPlusEqString(pSelf StringPtr, pB ConstStringPtr, ) 
   StringOperatorPlusEqWcstr(pSelf StringPtr, pB *int, ) 
+  StringResize(pSelf StringPtr, pResize Int, ) Int
   StringToLatin1Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int, ) Int
   StringToUtf16Chars(pSelf ConstStringPtr, rText *uint16, pMaxWriteLength Int, ) Int
   StringToUtf32Chars(pSelf ConstStringPtr, rText *uint, pMaxWriteLength Int, ) Int
@@ -206,6 +219,16 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
     return nil, err
   }
 
+  iface.ptrCallableCustomCreate, err = callGetProcAddress[InterfaceCallableCustomCreate](getProcAddr, "callable_custom_create")
+  if err != nil {
+    return nil, err
+  }
+
+  iface.ptrCallableCustomGetUserdata, err = callGetProcAddress[InterfaceCallableCustomGetUserData](getProcAddr, "callable_custom_get_userdata")
+  if err != nil {
+    return nil, err
+  }
+
   iface.ptrClassdbConstructObject, err = callGetProcAddress[InterfaceClassdbConstructObject](getProcAddr, "classdb_construct_object")
   if err != nil {
     return nil, err
@@ -226,6 +249,11 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
     return nil, err
   }
 
+  iface.ptrClassdbRegisterExtensionClass2, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClass2](getProcAddr, "classdb_register_extension_class2")
+  if err != nil {
+    return nil, err
+  }
+
   iface.ptrClassdbRegisterExtensionClassIntegerConstant, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassIntegerConstant](getProcAddr, "classdb_register_extension_class_integer_constant")
   if err != nil {
     return nil, err
@@ -242,6 +270,11 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
   }
 
   iface.ptrClassdbRegisterExtensionClassPropertyGroup, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassPropertyGroup](getProcAddr, "classdb_register_extension_class_property_group")
+  if err != nil {
+    return nil, err
+  }
+
+  iface.ptrClassdbRegisterExtensionClassPropertyIndexed, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassPropertyIndexed](getProcAddr, "classdb_register_extension_class_property_indexed")
   if err != nil {
     return nil, err
   }
@@ -346,6 +379,11 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
     return nil, err
   }
 
+  iface.ptrObjectFreeInstanceBinding, err = callGetProcAddress[InterfaceObjectFreeInstanceBinding](getProcAddr, "object_free_instance_binding")
+  if err != nil {
+    return nil, err
+  }
+
   iface.ptrObjectGetClassName, err = callGetProcAddress[InterfaceObjectGetClassName](getProcAddr, "object_get_class_name")
   if err != nil {
     return nil, err
@@ -362,6 +400,11 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
   }
 
   iface.ptrObjectGetInstanceId, err = callGetProcAddress[InterfaceObjectGetInstanceId](getProcAddr, "object_get_instance_id")
+  if err != nil {
+    return nil, err
+  }
+
+  iface.ptrObjectGetScriptInstance, err = callGetProcAddress[InterfaceObjectGetScriptInstance](getProcAddr, "object_get_script_instance")
   if err != nil {
     return nil, err
   }
@@ -476,6 +519,16 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
     return nil, err
   }
 
+  iface.ptrPlaceholderScriptInstanceCreate, err = callGetProcAddress[InterfacePlaceHolderScriptInstanceCreate](getProcAddr, "placeholder_script_instance_create")
+  if err != nil {
+    return nil, err
+  }
+
+  iface.ptrPlaceholderScriptInstanceUpdate, err = callGetProcAddress[InterfacePlaceHolderScriptInstanceUpdate](getProcAddr, "placeholder_script_instance_update")
+  if err != nil {
+    return nil, err
+  }
+
   iface.ptrPrintError, err = callGetProcAddress[InterfacePrintError](getProcAddr, "print_error")
   if err != nil {
     return nil, err
@@ -517,6 +570,26 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
   }
 
   iface.ptrScriptInstanceCreate, err = callGetProcAddress[InterfaceScriptInstanceCreate](getProcAddr, "script_instance_create")
+  if err != nil {
+    return nil, err
+  }
+
+  iface.ptrScriptInstanceCreate2, err = callGetProcAddress[InterfaceScriptInstanceCreate2](getProcAddr, "script_instance_create2")
+  if err != nil {
+    return nil, err
+  }
+
+  iface.ptrStringNameNewWithLatin1Chars, err = callGetProcAddress[InterfaceStringNameNewWithLatin1Chars](getProcAddr, "string_name_new_with_latin1_chars")
+  if err != nil {
+    return nil, err
+  }
+
+  iface.ptrStringNameNewWithUtf8Chars, err = callGetProcAddress[InterfaceStringNameNewWithUtf8Chars](getProcAddr, "string_name_new_with_utf8_chars")
+  if err != nil {
+    return nil, err
+  }
+
+  iface.ptrStringNameNewWithUtf8CharsAndLen, err = callGetProcAddress[InterfaceStringNameNewWithUtf8CharsAndLen](getProcAddr, "string_name_new_with_utf8_chars_and_len")
   if err != nil {
     return nil, err
   }
@@ -602,6 +675,11 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
   }
 
   iface.ptrStringOperatorPlusEqWcstr, err = callGetProcAddress[InterfaceStringOperatorPlusEqWcstr](getProcAddr, "string_operator_plus_eq_wcstr")
+  if err != nil {
+    return nil, err
+  }
+
+  iface.ptrStringResize, err = callGetProcAddress[InterfaceStringResize](getProcAddr, "string_resize")
   if err != nil {
     return nil, err
   }
@@ -874,14 +952,18 @@ type interfaceImpl struct {
   ptrArrayOperatorIndexConst InterfaceArrayOperatorIndexConst
   ptrArrayRef InterfaceArrayRef
   ptrArraySetTyped InterfaceArraySetTyped
+  ptrCallableCustomCreate InterfaceCallableCustomCreate
+  ptrCallableCustomGetUserdata InterfaceCallableCustomGetUserData
   ptrClassdbConstructObject InterfaceClassdbConstructObject
   ptrClassdbGetClassTag InterfaceClassdbGetClassTag
   ptrClassdbGetMethodBind InterfaceClassdbGetMethodBind
   ptrClassdbRegisterExtensionClass InterfaceClassdbRegisterExtensionClass
+  ptrClassdbRegisterExtensionClass2 InterfaceClassdbRegisterExtensionClass2
   ptrClassdbRegisterExtensionClassIntegerConstant InterfaceClassdbRegisterExtensionClassIntegerConstant
   ptrClassdbRegisterExtensionClassMethod InterfaceClassdbRegisterExtensionClassMethod
   ptrClassdbRegisterExtensionClassProperty InterfaceClassdbRegisterExtensionClassProperty
   ptrClassdbRegisterExtensionClassPropertyGroup InterfaceClassdbRegisterExtensionClassPropertyGroup
+  ptrClassdbRegisterExtensionClassPropertyIndexed InterfaceClassdbRegisterExtensionClassPropertyIndexed
   ptrClassdbRegisterExtensionClassPropertySubgroup InterfaceClassdbRegisterExtensionClassPropertySubgroup
   ptrClassdbRegisterExtensionClassSignal InterfaceClassdbRegisterExtensionClassSignal
   ptrClassdbUnregisterExtensionClass InterfaceClassdbUnregisterExtensionClass
@@ -902,10 +984,12 @@ type interfaceImpl struct {
   ptrMemRealloc InterfaceMemRealloc
   ptrObjectCastTo InterfaceObjectCastTo
   ptrObjectDestroy InterfaceObjectDestroy
+  ptrObjectFreeInstanceBinding InterfaceObjectFreeInstanceBinding
   ptrObjectGetClassName InterfaceObjectGetClassName
   ptrObjectGetInstanceBinding InterfaceObjectGetInstanceBinding
   ptrObjectGetInstanceFromId InterfaceObjectGetInstanceFromId
   ptrObjectGetInstanceId InterfaceObjectGetInstanceId
+  ptrObjectGetScriptInstance InterfaceObjectGetScriptInstance
   ptrObjectMethodBindCall InterfaceObjectMethodBindCall
   ptrObjectMethodBindPtrcall InterfaceObjectMethodBindPtrcall
   ptrObjectSetInstance InterfaceObjectSetInstance
@@ -928,6 +1012,8 @@ type interfaceImpl struct {
   ptrPackedVector2ArrayOperatorIndexConst InterfacePackedVector2ArrayOperatorIndexConst
   ptrPackedVector3ArrayOperatorIndex InterfacePackedVector3ArrayOperatorIndex
   ptrPackedVector3ArrayOperatorIndexConst InterfacePackedVector3ArrayOperatorIndexConst
+  ptrPlaceholderScriptInstanceCreate InterfacePlaceHolderScriptInstanceCreate
+  ptrPlaceholderScriptInstanceUpdate InterfacePlaceHolderScriptInstanceUpdate
   ptrPrintError InterfacePrintError
   ptrPrintErrorWithMessage InterfacePrintErrorWithMessage
   ptrPrintScriptError InterfacePrintScriptError
@@ -937,6 +1023,10 @@ type interfaceImpl struct {
   ptrRefGetObject InterfaceRefGetObject
   ptrRefSetObject InterfaceRefSetObject
   ptrScriptInstanceCreate InterfaceScriptInstanceCreate
+  ptrScriptInstanceCreate2 InterfaceScriptInstanceCreate2
+  ptrStringNameNewWithLatin1Chars InterfaceStringNameNewWithLatin1Chars
+  ptrStringNameNewWithUtf8Chars InterfaceStringNameNewWithUtf8Chars
+  ptrStringNameNewWithUtf8CharsAndLen InterfaceStringNameNewWithUtf8CharsAndLen
   ptrStringNewWithLatin1Chars InterfaceStringNewWithLatin1Chars
   ptrStringNewWithLatin1CharsAndLen InterfaceStringNewWithLatin1CharsAndLen
   ptrStringNewWithUtf16Chars InterfaceStringNewWithUtf16Chars
@@ -954,6 +1044,7 @@ type interfaceImpl struct {
   ptrStringOperatorPlusEqCstr InterfaceStringOperatorPlusEqCstr
   ptrStringOperatorPlusEqString InterfaceStringOperatorPlusEqString
   ptrStringOperatorPlusEqWcstr InterfaceStringOperatorPlusEqWcstr
+  ptrStringResize InterfaceStringResize
   ptrStringToLatin1Chars InterfaceStringToLatin1Chars
   ptrStringToUtf16Chars InterfaceStringToUtf16Chars
   ptrStringToUtf32Chars InterfaceStringToUtf32Chars
@@ -1030,6 +1121,17 @@ func (me *interfaceImpl) ArraySetTyped(pSelf TypePtr, pType VariantType, pClassN
   C.callArraySetTyped(me.ptrArraySetTyped, C.GDExtensionTypePtr(pSelf), C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstVariantPtr(pScript),)
 }
 
+func (me *interfaceImpl) CallableCustomCreate(rCallable UninitializedTypePtr, pCallableCustomInfo *CallableCustomInfo, )  {
+
+  C.callCallableCustomCreate(me.ptrCallableCustomCreate, C.GDExtensionUninitializedTypePtr(rCallable), (*C.GDExtensionCallableCustomInfo)(unsafe.Pointer(pCallableCustomInfo)),)
+}
+
+func (me *interfaceImpl) CallableCustomGetUserdata(pCallable ConstTypePtr, pToken unsafe.Pointer, ) unsafe.Pointer {
+
+  ret := C.callCallableCustomGetUserdata(me.ptrCallableCustomGetUserdata, C.GDExtensionConstTypePtr(pCallable), pToken,)
+  return unsafe.Pointer(ret)
+}
+
 func (me *interfaceImpl) ClassdbConstructObject(pClassname ConstStringNamePtr, ) ObjectPtr {
 
   ret := C.callClassdbConstructObject(me.ptrClassdbConstructObject, C.GDExtensionConstStringNamePtr(pClassname),)
@@ -1053,6 +1155,11 @@ func (me *interfaceImpl) ClassdbRegisterExtensionClass(pLibrary ClassLibraryPtr,
   C.callClassdbRegisterExtensionClass(me.ptrClassdbRegisterExtensionClass, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pParentClassName), (*C.GDExtensionClassCreationInfo)(unsafe.Pointer(pExtensionFuncs)),)
 }
 
+func (me *interfaceImpl) ClassdbRegisterExtensionClass2(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo2, )  {
+
+  C.callClassdbRegisterExtensionClass2(me.ptrClassdbRegisterExtensionClass2, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pParentClassName), (*C.GDExtensionClassCreationInfo2)(unsafe.Pointer(pExtensionFuncs)),)
+}
+
 func (me *interfaceImpl) ClassdbRegisterExtensionClassIntegerConstant(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pEnumName ConstStringNamePtr, pConstantName ConstStringNamePtr, pConstantValue Int, pIsBitfield Bool, )  {
 
   C.callClassdbRegisterExtensionClassIntegerConstant(me.ptrClassdbRegisterExtensionClassIntegerConstant, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pEnumName), C.GDExtensionConstStringNamePtr(pConstantName), C.GDExtensionInt(pConstantValue), C.GDExtensionBool(pIsBitfield),)
@@ -1071,6 +1178,11 @@ func (me *interfaceImpl) ClassdbRegisterExtensionClassProperty(pLibrary ClassLib
 func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertyGroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pGroupName ConstStringPtr, pPrefix ConstStringPtr, )  {
 
   C.callClassdbRegisterExtensionClassPropertyGroup(me.ptrClassdbRegisterExtensionClassPropertyGroup, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringPtr(pGroupName), C.GDExtensionConstStringPtr(pPrefix),)
+}
+
+func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertyIndexed(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr, pIndex Int, )  {
+
+  C.callClassdbRegisterExtensionClassPropertyIndexed(me.ptrClassdbRegisterExtensionClassPropertyIndexed, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), (*C.GDExtensionPropertyInfo)(unsafe.Pointer(pInfo)), C.GDExtensionConstStringNamePtr(pSetter), C.GDExtensionConstStringNamePtr(pGetter), C.GDExtensionInt(pIndex),)
 }
 
 func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertySubgroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSubgroupName ConstStringPtr, pPrefix ConstStringPtr, )  {
@@ -1193,6 +1305,11 @@ func (me *interfaceImpl) ObjectDestroy(pO ObjectPtr, )  {
   C.callObjectDestroy(me.ptrObjectDestroy, C.GDExtensionObjectPtr(pO),)
 }
 
+func (me *interfaceImpl) ObjectFreeInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, )  {
+
+  C.callObjectFreeInstanceBinding(me.ptrObjectFreeInstanceBinding, C.GDExtensionObjectPtr(pO), pToken,)
+}
+
 func (me *interfaceImpl) ObjectGetClassName(pObject ConstObjectPtr, pLibrary ClassLibraryPtr, rClassName UninitializedStringNamePtr, ) Bool {
 
   ret := C.callObjectGetClassName(me.ptrObjectGetClassName, C.GDExtensionConstObjectPtr(pObject), C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionUninitializedStringNamePtr(rClassName),)
@@ -1215,6 +1332,12 @@ func (me *interfaceImpl) ObjectGetInstanceId(pObject ConstObjectPtr, ) uint64 {
 
   ret := C.callObjectGetInstanceId(me.ptrObjectGetInstanceId, C.GDExtensionConstObjectPtr(pObject),)
   return uint64(ret)
+}
+
+func (me *interfaceImpl) ObjectGetScriptInstance(pObject ConstObjectPtr, pLanguage ObjectPtr, ) ScriptInstanceDataPtr {
+
+  ret := C.callObjectGetScriptInstance(me.ptrObjectGetScriptInstance, C.GDExtensionConstObjectPtr(pObject), C.GDExtensionObjectPtr(pLanguage),)
+  return ScriptInstanceDataPtr(ret)
 }
 
 func (me *interfaceImpl) ObjectMethodBindCall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstVariantPtr, pArgCount Int, rRet UninitializedVariantPtr, rError *CallError, )  {
@@ -1345,6 +1468,17 @@ func (me *interfaceImpl) PackedVector3ArrayOperatorIndexConst(pSelf ConstTypePtr
   return TypePtr(ret)
 }
 
+func (me *interfaceImpl) PlaceholderScriptInstanceCreate(pLanguage ObjectPtr, pScript ObjectPtr, pOwner ObjectPtr, ) ScriptInstancePtr {
+
+  ret := C.callPlaceholderScriptInstanceCreate(me.ptrPlaceholderScriptInstanceCreate, C.GDExtensionObjectPtr(pLanguage), C.GDExtensionObjectPtr(pScript), C.GDExtensionObjectPtr(pOwner),)
+  return ScriptInstancePtr(ret)
+}
+
+func (me *interfaceImpl) PlaceholderScriptInstanceUpdate(pPlaceholder ScriptInstancePtr, pProperties ConstTypePtr, pValues ConstTypePtr, )  {
+
+  C.callPlaceholderScriptInstanceUpdate(me.ptrPlaceholderScriptInstanceUpdate, C.GDExtensionScriptInstancePtr(pPlaceholder), C.GDExtensionConstTypePtr(pProperties), C.GDExtensionConstTypePtr(pValues),)
+}
+
 func (me *interfaceImpl) PrintError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
   cpDescription := C.CString(pDescription)
   cpFunction := C.CString(pFunction)
@@ -1440,6 +1574,36 @@ func (me *interfaceImpl) ScriptInstanceCreate(pInfo *ScriptInstanceInfo, pInstan
   return ScriptInstancePtr(ret)
 }
 
+func (me *interfaceImpl) ScriptInstanceCreate2(pInfo *ScriptInstanceInfo2, pInstanceData ScriptInstanceDataPtr, ) ScriptInstancePtr {
+
+  ret := C.callScriptInstanceCreate2(me.ptrScriptInstanceCreate2, (*C.GDExtensionScriptInstanceInfo2)(unsafe.Pointer(pInfo)), C.GDExtensionScriptInstanceDataPtr(pInstanceData),)
+  return ScriptInstancePtr(ret)
+}
+
+func (me *interfaceImpl) StringNameNewWithLatin1Chars(rDest UninitializedStringNamePtr, pContents string, pIsStatic Bool, )  {
+  cpContents := C.CString(pContents)
+  defer func() {
+    C.free(unsafe.Pointer(cpContents))
+  }()
+  C.callStringNameNewWithLatin1Chars(me.ptrStringNameNewWithLatin1Chars, C.GDExtensionUninitializedStringNamePtr(rDest), cpContents, C.GDExtensionBool(pIsStatic),)
+}
+
+func (me *interfaceImpl) StringNameNewWithUtf8Chars(rDest UninitializedStringNamePtr, pContents string, )  {
+  cpContents := C.CString(pContents)
+  defer func() {
+    C.free(unsafe.Pointer(cpContents))
+  }()
+  C.callStringNameNewWithUtf8Chars(me.ptrStringNameNewWithUtf8Chars, C.GDExtensionUninitializedStringNamePtr(rDest), cpContents,)
+}
+
+func (me *interfaceImpl) StringNameNewWithUtf8CharsAndLen(rDest UninitializedStringNamePtr, pContents string, pSize Int, )  {
+  cpContents := C.CString(pContents)
+  defer func() {
+    C.free(unsafe.Pointer(cpContents))
+  }()
+  C.callStringNameNewWithUtf8CharsAndLen(me.ptrStringNameNewWithUtf8CharsAndLen, C.GDExtensionUninitializedStringNamePtr(rDest), cpContents, C.GDExtensionInt(pSize),)
+}
+
 func (me *interfaceImpl) StringNewWithLatin1Chars(rDest UninitializedStringPtr, pContents string, )  {
   cpContents := C.CString(pContents)
   defer func() {
@@ -1461,9 +1625,9 @@ func (me *interfaceImpl) StringNewWithUtf16Chars(rDest UninitializedStringPtr, p
   C.callStringNewWithUtf16Chars(me.ptrStringNewWithUtf16Chars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.uint16_t)(unsafe.Pointer(&pContents)),)
 }
 
-func (me *interfaceImpl) StringNewWithUtf16CharsAndLen(rDest UninitializedStringPtr, pContents *uint16, pSize Int, )  {
+func (me *interfaceImpl) StringNewWithUtf16CharsAndLen(rDest UninitializedStringPtr, pContents *uint16, pCharCount Int, )  {
 
-  C.callStringNewWithUtf16CharsAndLen(me.ptrStringNewWithUtf16CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.uint16_t)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pSize),)
+  C.callStringNewWithUtf16CharsAndLen(me.ptrStringNewWithUtf16CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.uint16_t)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pCharCount),)
 }
 
 func (me *interfaceImpl) StringNewWithUtf32Chars(rDest UninitializedStringPtr, pContents *uint, )  {
@@ -1471,9 +1635,9 @@ func (me *interfaceImpl) StringNewWithUtf32Chars(rDest UninitializedStringPtr, p
   C.callStringNewWithUtf32Chars(me.ptrStringNewWithUtf32Chars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.unsigned)(unsafe.Pointer(&pContents)),)
 }
 
-func (me *interfaceImpl) StringNewWithUtf32CharsAndLen(rDest UninitializedStringPtr, pContents *uint, pSize Int, )  {
+func (me *interfaceImpl) StringNewWithUtf32CharsAndLen(rDest UninitializedStringPtr, pContents *uint, pCharCount Int, )  {
 
-  C.callStringNewWithUtf32CharsAndLen(me.ptrStringNewWithUtf32CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.unsigned)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pSize),)
+  C.callStringNewWithUtf32CharsAndLen(me.ptrStringNewWithUtf32CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.unsigned)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pCharCount),)
 }
 
 func (me *interfaceImpl) StringNewWithUtf8Chars(rDest UninitializedStringPtr, pContents string, )  {
@@ -1497,9 +1661,9 @@ func (me *interfaceImpl) StringNewWithWideChars(rDest UninitializedStringPtr, pC
   C.callStringNewWithWideChars(me.ptrStringNewWithWideChars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.int)(unsafe.Pointer(&pContents)),)
 }
 
-func (me *interfaceImpl) StringNewWithWideCharsAndLen(rDest UninitializedStringPtr, pContents *int, pSize Int, )  {
+func (me *interfaceImpl) StringNewWithWideCharsAndLen(rDest UninitializedStringPtr, pContents *int, pCharCount Int, )  {
 
-  C.callStringNewWithWideCharsAndLen(me.ptrStringNewWithWideCharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.int)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pSize),)
+  C.callStringNewWithWideCharsAndLen(me.ptrStringNewWithWideCharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.int)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pCharCount),)
 }
 
 func (me *interfaceImpl) StringOperatorIndex(pSelf StringPtr, pIndex Int, ) *uint {
@@ -1540,6 +1704,12 @@ func (me *interfaceImpl) StringOperatorPlusEqString(pSelf StringPtr, pB ConstStr
 func (me *interfaceImpl) StringOperatorPlusEqWcstr(pSelf StringPtr, pB *int, )  {
 
   C.callStringOperatorPlusEqWcstr(me.ptrStringOperatorPlusEqWcstr, C.GDExtensionStringPtr(pSelf), *(**C.int)(unsafe.Pointer(&pB)),)
+}
+
+func (me *interfaceImpl) StringResize(pSelf StringPtr, pResize Int, ) Int {
+
+  ret := C.callStringResize(me.ptrStringResize, C.GDExtensionStringPtr(pSelf), C.GDExtensionInt(pResize),)
+  return Int(ret)
 }
 
 func (me *interfaceImpl) StringToLatin1Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int, ) Int {

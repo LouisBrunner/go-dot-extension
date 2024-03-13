@@ -124,6 +124,28 @@ func  (me *GLTFState) SetMinorVersion(minor_version int, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
+func  (me *GLTFState) GetCopyright() String {
+  classNameV := StringNameFromStr("GLTFState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_copyright")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *GLTFState) SetCopyright(copyright String, )  {
+  classNameV := StringNameFromStr("GLTFState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_copyright")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(copyright.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
 func  (me *GLTFState) GetGlbData() PackedByteArray {
   classNameV := StringNameFromStr("GLTFState")
   defer classNameV.Destroy()
@@ -365,6 +387,28 @@ func  (me *GLTFState) SetBasePath(base_path String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(base_path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *GLTFState) GetFilename() String {
+  classNameV := StringNameFromStr("GLTFState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_filename")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
+  var ret String
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *GLTFState) SetFilename(filename String, )  {
+  classNameV := StringNameFromStr("GLTFState")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_filename")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(filename.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 

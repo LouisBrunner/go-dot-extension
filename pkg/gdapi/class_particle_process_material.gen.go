@@ -39,7 +39,10 @@ const (
   ParticleProcessMaterialParameterParamHueVariation ParticleProcessMaterialParameter = 9
   ParticleProcessMaterialParameterParamAnimSpeed ParticleProcessMaterialParameter = 10
   ParticleProcessMaterialParameterParamAnimOffset ParticleProcessMaterialParameter = 11
-  ParticleProcessMaterialParameterParamMax ParticleProcessMaterialParameter = 15
+  ParticleProcessMaterialParameterParamRadialVelocity ParticleProcessMaterialParameter = 15
+  ParticleProcessMaterialParameterParamDirectionalVelocity ParticleProcessMaterialParameter = 16
+  ParticleProcessMaterialParameterParamScaleOverVelocity ParticleProcessMaterialParameter = 17
+  ParticleProcessMaterialParameterParamMax ParticleProcessMaterialParameter = 18
   ParticleProcessMaterialParameterParamTurbVelInfluence ParticleProcessMaterialParameter = 13
   ParticleProcessMaterialParameterParamTurbInitDisplacement ParticleProcessMaterialParameter = 14
   ParticleProcessMaterialParameterParamTurbInfluenceOverLife ParticleProcessMaterialParameter = 12
@@ -50,7 +53,8 @@ const (
   ParticleProcessMaterialParticleFlagsParticleFlagAlignYToVelocity ParticleProcessMaterialParticleFlags = 0
   ParticleProcessMaterialParticleFlagsParticleFlagRotateY ParticleProcessMaterialParticleFlags = 1
   ParticleProcessMaterialParticleFlagsParticleFlagDisableZ ParticleProcessMaterialParticleFlags = 2
-  ParticleProcessMaterialParticleFlagsParticleFlagMax ParticleProcessMaterialParticleFlags = 3
+  ParticleProcessMaterialParticleFlagsParticleFlagDampingAsFriction ParticleProcessMaterialParticleFlags = 3
+  ParticleProcessMaterialParticleFlagsParticleFlagMax ParticleProcessMaterialParticleFlags = 4
 )
 
 type ParticleProcessMaterialEmissionShape int
@@ -113,6 +117,28 @@ func  (me *ParticleProcessMaterial) GetDirection() Vector3 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ParticleProcessMaterial) SetInheritVelocityRatio(ratio float32, )  {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_inherit_velocity_ratio")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ratio), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ParticleProcessMaterial) GetInheritVelocityRatio() float32 {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_inherit_velocity_ratio")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
+  var ret float32
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
@@ -272,6 +298,50 @@ func  (me *ParticleProcessMaterial) GetColorRamp() Texture2D {
   return ret
 }
 
+func  (me *ParticleProcessMaterial) SetAlphaCurve(curve Texture2D, )  {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_alpha_curve")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ParticleProcessMaterial) GetAlphaCurve() Texture2D {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_alpha_curve")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ParticleProcessMaterial) SetEmissionCurve(curve Texture2D, )  {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_emission_curve")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ParticleProcessMaterial) GetEmissionCurve() Texture2D {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_emission_curve")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *ParticleProcessMaterial) SetColorInitialRamp(ramp Texture2D, )  {
   classNameV := StringNameFromStr("ParticleProcessMaterial")
   defer classNameV.Destroy()
@@ -286,6 +356,28 @@ func  (me *ParticleProcessMaterial) GetColorInitialRamp() Texture2D {
   classNameV := StringNameFromStr("ParticleProcessMaterial")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_color_initial_ramp")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
+  var ret Texture2D
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ParticleProcessMaterial) SetVelocityLimitCurve(curve Texture2D, )  {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_velocity_limit_curve")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ParticleProcessMaterial) GetVelocityLimitCurve() Texture2D {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_velocity_limit_curve")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   var ret Texture2D
@@ -312,6 +404,28 @@ func  (me *ParticleProcessMaterial) GetParticleFlag(particle_flag ParticleProces
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3895316907) // FIXME: should cache?
   var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&particle_flag), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ParticleProcessMaterial) SetVelocityPivot(pivot Vector3, )  {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_velocity_pivot")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pivot.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ParticleProcessMaterial) GetVelocityPivot() Vector3 {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_velocity_pivot")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3783033775) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
@@ -553,6 +667,50 @@ func  (me *ParticleProcessMaterial) GetEmissionRingInnerRadius() float32 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   var ret float32
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ParticleProcessMaterial) SetEmissionShapeOffset(emission_shape_offset Vector3, )  {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_emission_shape_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(emission_shape_offset.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ParticleProcessMaterial) GetEmissionShapeOffset() Vector3 {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_emission_shape_offset")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *ParticleProcessMaterial) SetEmissionShapeScale(emission_shape_scale Vector3, )  {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_emission_shape_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(emission_shape_scale.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *ParticleProcessMaterial) GetEmissionShapeScale() Vector3 {
+  classNameV := StringNameFromStr("ParticleProcessMaterial")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_emission_shape_scale")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
+  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret

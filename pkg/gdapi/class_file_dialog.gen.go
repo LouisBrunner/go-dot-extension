@@ -70,7 +70,7 @@ func  (me *FileDialog) AddFilter(filter String, description String, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_filter")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 233059325) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3388804757) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(filter.AsCTypePtr()), gdc.ConstTypePtr(description.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -289,6 +289,28 @@ func  (me *FileDialog) IsShowingHiddenFiles() bool {
   classNameV := StringNameFromStr("FileDialog")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_showing_hidden_files")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *FileDialog) SetUseNativeDialog(native bool, )  {
+  classNameV := StringNameFromStr("FileDialog")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_native_dialog")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&native), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *FileDialog) GetUseNativeDialog() bool {
+  classNameV := StringNameFromStr("FileDialog")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_use_native_dialog")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   var ret bool

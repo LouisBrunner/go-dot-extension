@@ -405,6 +405,18 @@ func (me *String) Repeat(count int, ) String {
   return ret
 }
 
+func (me *String) Reverse() String {
+  name := StringNameFromStr("reverse")
+  defer name.Destroy()
+  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeString, name.AsCPtr(), 3942272618) // FIXME: should cache?
+
+  var ret String
+  args := []gdc.ConstTypePtr{}
+
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
+  return ret
+}
+
 func (me *String) Insert(position int, what String, ) String {
   name := StringNameFromStr("insert")
   defer name.Destroy()
@@ -1347,21 +1359,30 @@ func (me *String) Not() bool {
   return ret
 }
 
-func (me *String) ModuleBool(right Bool) String {
+func (me *String) ModuleBool(rightArg bool) String {
+  right := NewBoolFromBool(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpModule, me.Type(), right.Type()) // FIXME: cache
   var ret String
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *String) ModuleInt(right Int) String {
+func (me *String) ModuleInt(rightArg int) String {
+  right := NewIntFromInt(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpModule, me.Type(), right.Type()) // FIXME: cache
   var ret String
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
   return ret
 }
 
-func (me *String) ModuleFloat32(right Float) String {
+func (me *String) ModuleFloat32(rightArg float32) String {
+  right := NewFloatFromFloat32(rightArg)
+  defer right.Destroy()
+
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpModule, me.Type(), right.Type()) // FIXME: cache
   var ret String
   me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))

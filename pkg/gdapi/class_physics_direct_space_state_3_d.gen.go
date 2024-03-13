@@ -44,7 +44,7 @@ func  (me *PhysicsDirectSpaceState3D) IntersectPoint(parameters PhysicsPointQuer
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("intersect_point")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 45993382) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 975173756) // FIXME: should cache?
   var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), gdc.ConstTypePtr(&max_results), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -68,7 +68,7 @@ func  (me *PhysicsDirectSpaceState3D) IntersectShape(parameters PhysicsShapeQuer
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("intersect_shape")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 550215980) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3762137681) // FIXME: should cache?
   var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), gdc.ConstTypePtr(&max_results), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -92,7 +92,7 @@ func  (me *PhysicsDirectSpaceState3D) CollideShape(parameters PhysicsShapeQueryP
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("collide_shape")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 550215980) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3762137681) // FIXME: should cache?
   var ret Vector3
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), gdc.ConstTypePtr(&max_results), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

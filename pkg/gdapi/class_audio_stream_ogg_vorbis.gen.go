@@ -39,6 +39,30 @@ func (me *AudioStreamOggVorbis) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
+func  AudioStreamOggVorbisLoadFromBuffer(buffer PackedByteArray, ) AudioStreamOggVorbis {
+  classNameV := StringNameFromStr("AudioStreamOggVorbis")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("load_from_buffer")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 354904730) // FIXME: should cache?
+  var ret AudioStreamOggVorbis
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(buffer.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  AudioStreamOggVorbisLoadFromFile(path String, ) AudioStreamOggVorbis {
+  classNameV := StringNameFromStr("AudioStreamOggVorbis")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("load_from_file")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 797568536) // FIXME: should cache?
+  var ret AudioStreamOggVorbis
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *AudioStreamOggVorbis) SetPacketSequence(packet_sequence OggPacketSequence, )  {
   classNameV := StringNameFromStr("AudioStreamOggVorbis")
   defer classNameV.Destroy()

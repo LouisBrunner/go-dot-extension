@@ -41,7 +41,8 @@ type ViewportScaling3DMode int
 const (
   ViewportScaling3DModeScaling3DModeBilinear ViewportScaling3DMode = 0
   ViewportScaling3DModeScaling3DModeFsr ViewportScaling3DMode = 1
-  ViewportScaling3DModeScaling3DModeMax ViewportScaling3DMode = 2
+  ViewportScaling3DModeScaling3DModeFsr2 ViewportScaling3DMode = 2
+  ViewportScaling3DModeScaling3DModeMax ViewportScaling3DMode = 3
 )
 
 type ViewportMSAA int
@@ -103,6 +104,7 @@ const (
   ViewportDebugDrawDebugDrawClusterReflectionProbes ViewportDebugDraw = 23
   ViewportDebugDrawDebugDrawOccluders ViewportDebugDraw = 24
   ViewportDebugDrawDebugDrawMotionVectors ViewportDebugDraw = 25
+  ViewportDebugDrawDebugDrawInternalBuffer ViewportDebugDraw = 26
 )
 
 type ViewportDefaultCanvasItemTextureFilter int
@@ -289,6 +291,28 @@ func  (me *Viewport) HasTransparentBackground() bool {
   classNameV := StringNameFromStr("Viewport")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("has_transparent_background")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *Viewport) SetUseHdr2D(enable bool, )  {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_use_hdr_2d")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *Viewport) IsUsingHdr2D() bool {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_using_hdr_2d")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   var ret bool
@@ -922,6 +946,18 @@ func  (me *Viewport) IsEmbeddingSubwindows() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *Viewport) GetEmbeddedSubwindows() Window {
+  classNameV := StringNameFromStr("Viewport")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_embedded_subwindows")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
+  var ret Window
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret

@@ -44,7 +44,7 @@ func  (me *EditorImportPlugin) AppendImportExternalResource(path String, custom_
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("append_import_external_resource")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3645925746) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 320493106) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(custom_options.AsCTypePtr()), gdc.ConstTypePtr(custom_importer.AsCTypePtr()), gdc.ConstTypePtr(generator_parameters.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

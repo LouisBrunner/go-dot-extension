@@ -93,7 +93,7 @@ func  (me *WebRTCPeerConnection) CreateDataChannel(label String, options Diction
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_data_channel")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3997447457) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1288557393) // FIXME: should cache?
   var ret WebRTCDataChannel
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(options.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

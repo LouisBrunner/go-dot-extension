@@ -152,7 +152,8 @@ const (
   BaseMaterial3DFlagsFlagSubsurfaceModeSkin BaseMaterial3DFlags = 18
   BaseMaterial3DFlagsFlagParticleTrailsMode BaseMaterial3DFlags = 19
   BaseMaterial3DFlagsFlagAlbedoTextureMsdf BaseMaterial3DFlags = 20
-  BaseMaterial3DFlagsFlagMax BaseMaterial3DFlags = 21
+  BaseMaterial3DFlagsFlagDisableFog BaseMaterial3DFlags = 21
+  BaseMaterial3DFlagsFlagMax BaseMaterial3DFlags = 22
 )
 
 type BaseMaterial3DDiffuseMode int

@@ -67,7 +67,7 @@ func  (me *IP) ResolveHostname(host String, ip_type IPType, ) String {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("resolve_hostname")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 396864159) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4283295457) // FIXME: should cache?
   var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(host.AsCTypePtr()), gdc.ConstTypePtr(&ip_type), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -79,7 +79,7 @@ func  (me *IP) ResolveHostnameAddresses(host String, ip_type IPType, ) PackedStr
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("resolve_hostname_addresses")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3462780090) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 773767525) // FIXME: should cache?
   var ret PackedStringArray
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(host.AsCTypePtr()), gdc.ConstTypePtr(&ip_type), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -91,7 +91,7 @@ func  (me *IP) ResolveHostnameQueueItem(host String, ip_type IPType, ) int {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("resolve_hostname_queue_item")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3936392508) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1749894742) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(host.AsCTypePtr()), gdc.ConstTypePtr(&ip_type), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

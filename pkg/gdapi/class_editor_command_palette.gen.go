@@ -44,7 +44,7 @@ func  (me *EditorCommandPalette) AddCommand(command_name String, key_name String
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_command")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3664614892) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 864043298) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(command_name.AsCTypePtr()), gdc.ConstTypePtr(key_name.AsCTypePtr()), gdc.ConstTypePtr(binded_callable.AsCTypePtr()), gdc.ConstTypePtr(shortcut_text.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

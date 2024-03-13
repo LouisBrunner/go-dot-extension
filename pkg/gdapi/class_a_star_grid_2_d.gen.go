@@ -284,7 +284,7 @@ func  (me *AStarGrid2D) SetPointSolid(id Vector2i, solid bool, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_point_solid")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2825551965) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1765703753) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), gdc.ConstTypePtr(&solid), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -321,6 +321,26 @@ func  (me *AStarGrid2D) GetPointWeightScale(id Vector2i, ) float32 {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
+}
+
+func  (me *AStarGrid2D) FillSolidRegion(region Rect2i, solid bool, )  {
+  classNameV := StringNameFromStr("AStarGrid2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("fill_solid_region")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2261970063) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&solid), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *AStarGrid2D) FillWeightScaleRegion(region Rect2i, weight_scale float32, )  {
+  classNameV := StringNameFromStr("AStarGrid2D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("fill_weight_scale_region")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2793244083) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&weight_scale), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *AStarGrid2D) Clear()  {

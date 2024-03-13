@@ -308,7 +308,7 @@ func  (me *Geometry2D) OffsetPolygon(polygon PackedVector2Array, delta float32, 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("offset_polygon")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3837618924) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1275354010) // FIXME: should cache?
   var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon.AsCTypePtr()), gdc.ConstTypePtr(&delta), gdc.ConstTypePtr(&join_type), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -320,7 +320,7 @@ func  (me *Geometry2D) OffsetPolyline(polyline PackedVector2Array, delta float32
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("offset_polyline")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 328033063) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2328231778) // FIXME: should cache?
   var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polyline.AsCTypePtr()), gdc.ConstTypePtr(&delta), gdc.ConstTypePtr(&join_type), gdc.ConstTypePtr(&end_type), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

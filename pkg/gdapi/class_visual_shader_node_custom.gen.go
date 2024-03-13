@@ -38,6 +38,18 @@ func (me *VisualShaderNodeCustom) AsCTypePtr() gdc.ConstTypePtr {
 }
 
 // Methods
+
+func  (me *VisualShaderNodeCustom) GetOptionIndex(option int, ) int {
+  classNameV := StringNameFromStr("VisualShaderNodeCustom")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_option_index")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API
 

@@ -104,7 +104,7 @@ func  (me *Noise) GetImage(width int, height int, invert bool, in_3d_space bool,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_image")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2569233413) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3180683109) // FIXME: should cache?
   var ret Image
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&invert), gdc.ConstTypePtr(&in_3d_space), gdc.ConstTypePtr(&normalize), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -116,7 +116,7 @@ func  (me *Noise) GetSeamlessImage(width int, height int, invert bool, in_3d_spa
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_seamless_image")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2210827790) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2770743602) // FIXME: should cache?
   var ret Image
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&invert), gdc.ConstTypePtr(&in_3d_space), gdc.ConstTypePtr(&skirt), gdc.ConstTypePtr(&normalize), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -128,7 +128,7 @@ func  (me *Noise) GetImage3D(width int, height int, depth int, invert bool, norm
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_image_3d")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2358868431) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3977814329) // FIXME: should cache?
   var ret Image
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&depth), gdc.ConstTypePtr(&invert), gdc.ConstTypePtr(&normalize), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -140,7 +140,7 @@ func  (me *Noise) GetSeamlessImage3D(width int, height int, depth int, invert bo
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_seamless_image_3d")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3328694319) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 451006340) // FIXME: should cache?
   var ret Image
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&depth), gdc.ConstTypePtr(&invert), gdc.ConstTypePtr(&skirt), gdc.ConstTypePtr(&normalize), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

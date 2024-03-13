@@ -40,6 +40,18 @@ const (
   RichTextLabelMenuItemsMenuMax RichTextLabelMenuItems = 2
 )
 
+type RichTextLabelImageUpdateMask int
+const (
+  RichTextLabelImageUpdateMaskUpdateTexture RichTextLabelImageUpdateMask = 1
+  RichTextLabelImageUpdateMaskUpdateSize RichTextLabelImageUpdateMask = 2
+  RichTextLabelImageUpdateMaskUpdateColor RichTextLabelImageUpdateMask = 4
+  RichTextLabelImageUpdateMaskUpdateAlignment RichTextLabelImageUpdateMask = 8
+  RichTextLabelImageUpdateMaskUpdateRegion RichTextLabelImageUpdateMask = 16
+  RichTextLabelImageUpdateMaskUpdatePad RichTextLabelImageUpdateMask = 32
+  RichTextLabelImageUpdateMaskUpdateTooltip RichTextLabelImageUpdateMask = 64
+  RichTextLabelImageUpdateMaskUpdateWidthInPercent RichTextLabelImageUpdateMask = 128
+)
+
 func (me *RichTextLabel) Type() gdc.VariantType {
   return gdc.VariantTypeObject
 }
@@ -86,13 +98,23 @@ func  (me *RichTextLabel) SetText(text String, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *RichTextLabel) AddImage(image Texture2D, width int, height int, color Color, inline_align InlineAlignment, region Rect2, )  {
+func  (me *RichTextLabel) AddImage(image Texture2D, width int, height int, color Color, inline_align InlineAlignment, region Rect2, key Variant, pad bool, tooltip String, size_in_percent bool, )  {
   classNameV := StringNameFromStr("RichTextLabel")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_image")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3346058748) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(color.AsCTypePtr()), gdc.ConstTypePtr(&inline_align), gdc.ConstTypePtr(region.AsCTypePtr()), }
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3017663154) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(color.AsCTypePtr()), gdc.ConstTypePtr(&inline_align), gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(&pad), gdc.ConstTypePtr(tooltip.AsCTypePtr()), gdc.ConstTypePtr(&size_in_percent), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RichTextLabel) UpdateImage(key Variant, mask RichTextLabelImageUpdateMask, image Texture2D, width int, height int, color Color, inline_align InlineAlignment, region Rect2, pad bool, tooltip String, size_in_percent bool, )  {
+  classNameV := StringNameFromStr("RichTextLabel")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("update_image")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 815048486) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(&mask), gdc.ConstTypePtr(image.AsCTypePtr()), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(color.AsCTypePtr()), gdc.ConstTypePtr(&inline_align), gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&pad), gdc.ConstTypePtr(tooltip.AsCTypePtr()), gdc.ConstTypePtr(&size_in_percent), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
@@ -123,7 +145,7 @@ func  (me *RichTextLabel) PushFont(font Font, font_size int, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("push_font")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3014009009) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2347424842) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font.AsCTypePtr()), gdc.ConstTypePtr(&font_size), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -223,7 +245,7 @@ func  (me *RichTextLabel) PushParagraph(alignment HorizontalAlignment, base_dire
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("push_paragraph")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218895358) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3089306873) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment), gdc.ConstTypePtr(&base_direction), gdc.ConstTypePtr(language.AsCTypePtr()), gdc.ConstTypePtr(&st_parser), gdc.ConstTypePtr(&justification_flags), gdc.ConstTypePtr(tab_stops.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -243,7 +265,7 @@ func  (me *RichTextLabel) PushList(level int, type_ RichTextLabelListType, capit
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("push_list")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4036303897) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3017143144) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&level), gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&capitalize), gdc.ConstTypePtr(bullet.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -265,6 +287,16 @@ func  (me *RichTextLabel) PushHint(description String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(description.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RichTextLabel) PushLanguage(language String, )  {
+  classNameV := StringNameFromStr("RichTextLabel")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("push_language")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(language.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
@@ -293,7 +325,7 @@ func  (me *RichTextLabel) PushTable(columns int, inline_align InlineAlignment, a
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("push_table")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1125058220) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2623499273) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&columns), gdc.ConstTypePtr(&inline_align), gdc.ConstTypePtr(&align_to_row), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -303,7 +335,7 @@ func  (me *RichTextLabel) PushDropcap(string_ String, font Font, size int, dropc
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("push_dropcap")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 311501835) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4061635501) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(string_.AsCTypePtr()), gdc.ConstTypePtr(font.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(dropcap_margins.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), gdc.ConstTypePtr(&outline_size), gdc.ConstTypePtr(outline_color.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -313,7 +345,7 @@ func  (me *RichTextLabel) SetTableColumnExpand(column int, expand bool, ratio in
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_table_column_expand")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4258957458) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2185176273) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&expand), gdc.ConstTypePtr(&ratio), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -398,10 +430,40 @@ func  (me *RichTextLabel) PushCustomfx(effect RichTextEffect, env Dictionary, ) 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
+func  (me *RichTextLabel) PushContext()  {
+  classNameV := StringNameFromStr("RichTextLabel")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("push_context")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RichTextLabel) PopContext()  {
+  classNameV := StringNameFromStr("RichTextLabel")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("pop_context")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
 func  (me *RichTextLabel) Pop()  {
   classNameV := StringNameFromStr("RichTextLabel")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("pop")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RichTextLabel) PopAll()  {
+  classNameV := StringNameFromStr("RichTextLabel")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("pop_all")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
@@ -782,6 +844,28 @@ func  (me *RichTextLabel) IsDeselectOnFocusLossEnabled() bool {
   classNameV := StringNameFromStr("RichTextLabel")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_deselect_on_focus_loss_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *RichTextLabel) SetDragAndDropSelectionEnabled(enable bool, )  {
+  classNameV := StringNameFromStr("RichTextLabel")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_drag_and_drop_selection_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *RichTextLabel) IsDragAndDropSelectionEnabled() bool {
+  classNameV := StringNameFromStr("RichTextLabel")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_drag_and_drop_selection_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   var ret bool

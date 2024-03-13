@@ -267,6 +267,28 @@ func  (me *FontFile) GetFixedSize() int {
   return ret
 }
 
+func  (me *FontFile) SetFixedSizeScaleMode(fixed_size_scale_mode TextServerFixedSizeScaleMode, )  {
+  classNameV := StringNameFromStr("FontFile")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_fixed_size_scale_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1660989956) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fixed_size_scale_mode), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *FontFile) GetFixedSizeScaleMode() TextServerFixedSizeScaleMode {
+  classNameV := StringNameFromStr("FontFile")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_fixed_size_scale_mode")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 753873478) // FIXME: should cache?
+  var ret TextServerFixedSizeScaleMode
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *FontFile) SetAllowSystemFallback(allow_system_fallback bool, )  {
   classNameV := StringNameFromStr("FontFile")
   defer classNameV.Destroy()
@@ -503,6 +525,28 @@ func  (me *FontFile) GetTransform(cache_index int, ) Transform2D {
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3836996910) // FIXME: should cache?
   var ret Transform2D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cache_index), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *FontFile) SetExtraSpacing(cache_index int, spacing TextServerSpacingType, value int, )  {
+  classNameV := StringNameFromStr("FontFile")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_extra_spacing")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 62942285) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cache_index), gdc.ConstTypePtr(&spacing), gdc.ConstTypePtr(&value), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *FontFile) GetExtraSpacing(cache_index int, spacing TextServerSpacingType, ) int {
+  classNameV := StringNameFromStr("FontFile")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_extra_spacing")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1924257185) // FIXME: should cache?
+  var ret int
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cache_index), gdc.ConstTypePtr(&spacing), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }

@@ -25,13 +25,6 @@ func (me *GraphNode) BaseClass() string {
 
 // Enums
 
-type GraphNodeOverlay int
-const (
-  GraphNodeOverlayOverlayDisabled GraphNodeOverlay = 0
-  GraphNodeOverlayOverlayBreakpoint GraphNodeOverlay = 1
-  GraphNodeOverlayOverlayPosition GraphNodeOverlay = 2
-)
-
 func (me *GraphNode) Type() gdc.VariantType {
   return gdc.VariantTypeObject
 }
@@ -68,45 +61,13 @@ func  (me *GraphNode) GetTitle() String {
   return ret
 }
 
-func  (me *GraphNode) SetTextDirection(direction ControlTextDirection, )  {
+func  (me *GraphNode) GetTitlebarHbox() HBoxContainer {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_text_direction")
+  methodNameV := StringNameFromStr("get_titlebar_hbox")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 119160795) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&direction), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *GraphNode) GetTextDirection() ControlTextDirection {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_text_direction")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 797257663) // FIXME: should cache?
-  var ret ControlTextDirection
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphNode) SetLanguage(language String, )  {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_language")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(language.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *GraphNode) GetLanguage() String {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_language")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3590609951) // FIXME: should cache?
+  var ret HBoxContainer
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
@@ -117,7 +78,7 @@ func  (me *GraphNode) SetSlot(slot_index int, enable_left_port bool, type_left i
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_slot")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 902131739) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2873310869) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index), gdc.ConstTypePtr(&enable_left_port), gdc.ConstTypePtr(&type_left), gdc.ConstTypePtr(color_left.AsCTypePtr()), gdc.ConstTypePtr(&enable_right_port), gdc.ConstTypePtr(&type_right), gdc.ConstTypePtr(color_right.AsCTypePtr()), gdc.ConstTypePtr(custom_icon_left.AsCTypePtr()), gdc.ConstTypePtr(custom_icon_right.AsCTypePtr()), gdc.ConstTypePtr(&draw_stylebox), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -142,16 +103,6 @@ func  (me *GraphNode) ClearAllSlots()  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *GraphNode) SetSlotEnabledLeft(slot_index int, enable bool, )  {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_slot_enabled_left")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index), gdc.ConstTypePtr(&enable), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
 func  (me *GraphNode) IsSlotEnabledLeft(slot_index int, ) bool {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
@@ -162,6 +113,16 @@ func  (me *GraphNode) IsSlotEnabledLeft(slot_index int, ) bool {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
+}
+
+func  (me *GraphNode) SetSlotEnabledLeft(slot_index int, enable bool, )  {
+  classNameV := StringNameFromStr("GraphNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_slot_enabled_left")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index), gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *GraphNode) SetSlotTypeLeft(slot_index int, type_ int, )  {
@@ -208,16 +169,6 @@ func  (me *GraphNode) GetSlotColorLeft(slot_index int, ) Color {
   return ret
 }
 
-func  (me *GraphNode) SetSlotEnabledRight(slot_index int, enable bool, )  {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_slot_enabled_right")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index), gdc.ConstTypePtr(&enable), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
 func  (me *GraphNode) IsSlotEnabledRight(slot_index int, ) bool {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
@@ -228,6 +179,16 @@ func  (me *GraphNode) IsSlotEnabledRight(slot_index int, ) bool {
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
+}
+
+func  (me *GraphNode) SetSlotEnabledRight(slot_index int, enable bool, )  {
+  classNameV := StringNameFromStr("GraphNode")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_slot_enabled_right")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index), gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
 func  (me *GraphNode) SetSlotTypeRight(slot_index int, type_ int, )  {
@@ -296,142 +257,10 @@ func  (me *GraphNode) SetSlotDrawStylebox(slot_index int, enable bool, )  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *GraphNode) SetPositionOffset(offset Vector2, )  {
+func  (me *GraphNode) GetInputPortCount() int {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_position_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *GraphNode) GetPositionOffset() Vector2 {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_position_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphNode) SetComment(comment bool, )  {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_comment")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&comment), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *GraphNode) IsComment() bool {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_comment")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphNode) SetResizable(resizable bool, )  {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_resizable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&resizable), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *GraphNode) IsResizable() bool {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_resizable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphNode) SetDraggable(draggable bool, )  {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_draggable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&draggable), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *GraphNode) IsDraggable() bool {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_draggable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphNode) SetSelectable(selectable bool, )  {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_selectable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&selectable), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *GraphNode) IsSelectable() bool {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_selectable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphNode) SetSelected(selected bool, )  {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_selected")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&selected), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *GraphNode) IsSelected() bool {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_selected")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphNode) GetConnectionInputCount() int {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_input_count")
+  methodNameV := StringNameFromStr("get_input_port_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   var ret int
@@ -440,70 +269,58 @@ func  (me *GraphNode) GetConnectionInputCount() int {
   return ret
 }
 
-func  (me *GraphNode) GetConnectionInputHeight(port int, ) int {
+func  (me *GraphNode) GetInputPortPosition(port_idx int, ) Vector2 {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_input_height")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3744713108) // FIXME: should cache?
-  var ret int
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphNode) GetConnectionInputPosition(port int, ) Vector2 {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_input_position")
+  methodNameV := StringNameFromStr("get_input_port_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3114997196) // FIXME: should cache?
   var ret Vector2
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port_idx), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
 
-func  (me *GraphNode) GetConnectionInputType(port int, ) int {
+func  (me *GraphNode) GetInputPortType(port_idx int, ) int {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_input_type")
+  methodNameV := StringNameFromStr("get_input_port_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3744713108) // FIXME: should cache?
   var ret int
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port_idx), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
 
-func  (me *GraphNode) GetConnectionInputColor(port int, ) Color {
+func  (me *GraphNode) GetInputPortColor(port_idx int, ) Color {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_input_color")
+  methodNameV := StringNameFromStr("get_input_port_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2624840992) // FIXME: should cache?
   var ret Color
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port_idx), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
 
-func  (me *GraphNode) GetConnectionInputSlot(port int, ) int {
+func  (me *GraphNode) GetInputPortSlot(port_idx int, ) int {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_input_slot")
+  methodNameV := StringNameFromStr("get_input_port_slot")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3744713108) // FIXME: should cache?
   var ret int
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port_idx), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
 
-func  (me *GraphNode) GetConnectionOutputCount() int {
+func  (me *GraphNode) GetOutputPortCount() int {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_output_count")
+  methodNameV := StringNameFromStr("get_output_port_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   var ret int
@@ -512,106 +329,50 @@ func  (me *GraphNode) GetConnectionOutputCount() int {
   return ret
 }
 
-func  (me *GraphNode) GetConnectionOutputHeight(port int, ) int {
+func  (me *GraphNode) GetOutputPortPosition(port_idx int, ) Vector2 {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_output_height")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3744713108) // FIXME: should cache?
-  var ret int
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphNode) GetConnectionOutputPosition(port int, ) Vector2 {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_output_position")
+  methodNameV := StringNameFromStr("get_output_port_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3114997196) // FIXME: should cache?
   var ret Vector2
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port_idx), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
 
-func  (me *GraphNode) GetConnectionOutputType(port int, ) int {
+func  (me *GraphNode) GetOutputPortType(port_idx int, ) int {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_output_type")
+  methodNameV := StringNameFromStr("get_output_port_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3744713108) // FIXME: should cache?
   var ret int
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port_idx), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
 
-func  (me *GraphNode) GetConnectionOutputColor(port int, ) Color {
+func  (me *GraphNode) GetOutputPortColor(port_idx int, ) Color {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_output_color")
+  methodNameV := StringNameFromStr("get_output_port_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2624840992) // FIXME: should cache?
   var ret Color
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port_idx), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
 
-func  (me *GraphNode) GetConnectionOutputSlot(port int, ) int {
+func  (me *GraphNode) GetOutputPortSlot(port_idx int, ) int {
   classNameV := StringNameFromStr("GraphNode")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection_output_slot")
+  methodNameV := StringNameFromStr("get_output_port_slot")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3744713108) // FIXME: should cache?
   var ret int
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphNode) SetShowCloseButton(show bool, )  {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_show_close_button")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&show), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *GraphNode) IsCloseButtonVisible() bool {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_close_button_visible")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphNode) SetOverlay(overlay GraphNodeOverlay, )  {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_overlay")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3144190109) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&overlay), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *GraphNode) GetOverlay() GraphNodeOverlay {
-  classNameV := StringNameFromStr("GraphNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_overlay")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2854257040) // FIXME: should cache?
-  var ret GraphNodeOverlay
-  cargs := []gdc.ConstTypePtr{}
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port_idx), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }
@@ -620,55 +381,7 @@ func  (me *GraphNode) GetOverlay() GraphNodeOverlay {
 
 // Signals
 
-type GraphNodePositionOffsetChangedSignalFn func()
-
-func (me *GraphNode) ConnectPositionOffsetChanged(subs SignalSubscribers, fn GraphNodePositionOffsetChangedSignalFn) {
-  sig := StringNameFromStr("position_offset_changed")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *GraphNode) DisconnectPositionOffsetChanged(subs SignalSubscribers, fn GraphNodePositionOffsetChangedSignalFn) {
-  sig := StringNameFromStr("position_offset_changed")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type GraphNodeNodeSelectedSignalFn func()
-
-func (me *GraphNode) ConnectNodeSelected(subs SignalSubscribers, fn GraphNodeNodeSelectedSignalFn) {
-  sig := StringNameFromStr("node_selected")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *GraphNode) DisconnectNodeSelected(subs SignalSubscribers, fn GraphNodeNodeSelectedSignalFn) {
-  sig := StringNameFromStr("node_selected")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type GraphNodeNodeDeselectedSignalFn func()
-
-func (me *GraphNode) ConnectNodeDeselected(subs SignalSubscribers, fn GraphNodeNodeDeselectedSignalFn) {
-  sig := StringNameFromStr("node_deselected")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *GraphNode) DisconnectNodeDeselected(subs SignalSubscribers, fn GraphNodeNodeDeselectedSignalFn) {
-  sig := StringNameFromStr("node_deselected")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type GraphNodeSlotUpdatedSignalFn func(idx int, )
+type GraphNodeSlotUpdatedSignalFn func(slot_index int, )
 
 func (me *GraphNode) ConnectSlotUpdated(subs SignalSubscribers, fn GraphNodeSlotUpdatedSignalFn) {
   sig := StringNameFromStr("slot_updated")
@@ -679,70 +392,6 @@ func (me *GraphNode) ConnectSlotUpdated(subs SignalSubscribers, fn GraphNodeSlot
 
 func (me *GraphNode) DisconnectSlotUpdated(subs SignalSubscribers, fn GraphNodeSlotUpdatedSignalFn) {
   sig := StringNameFromStr("slot_updated")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type GraphNodeDraggedSignalFn func(from Vector2, to Vector2, )
-
-func (me *GraphNode) ConnectDragged(subs SignalSubscribers, fn GraphNodeDraggedSignalFn) {
-  sig := StringNameFromStr("dragged")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *GraphNode) DisconnectDragged(subs SignalSubscribers, fn GraphNodeDraggedSignalFn) {
-  sig := StringNameFromStr("dragged")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type GraphNodeRaiseRequestSignalFn func()
-
-func (me *GraphNode) ConnectRaiseRequest(subs SignalSubscribers, fn GraphNodeRaiseRequestSignalFn) {
-  sig := StringNameFromStr("raise_request")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *GraphNode) DisconnectRaiseRequest(subs SignalSubscribers, fn GraphNodeRaiseRequestSignalFn) {
-  sig := StringNameFromStr("raise_request")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type GraphNodeCloseRequestSignalFn func()
-
-func (me *GraphNode) ConnectCloseRequest(subs SignalSubscribers, fn GraphNodeCloseRequestSignalFn) {
-  sig := StringNameFromStr("close_request")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *GraphNode) DisconnectCloseRequest(subs SignalSubscribers, fn GraphNodeCloseRequestSignalFn) {
-  sig := StringNameFromStr("close_request")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type GraphNodeResizeRequestSignalFn func(new_minsize Vector2, )
-
-func (me *GraphNode) ConnectResizeRequest(subs SignalSubscribers, fn GraphNodeResizeRequestSignalFn) {
-  sig := StringNameFromStr("resize_request")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *GraphNode) DisconnectResizeRequest(subs SignalSubscribers, fn GraphNodeResizeRequestSignalFn) {
-  sig := StringNameFromStr("resize_request")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Disconnect(sig, *subs.remove(fn))

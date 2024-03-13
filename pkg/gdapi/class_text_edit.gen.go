@@ -464,7 +464,7 @@ func  (me *TextEdit) GetLineWidth(line int, wrap_index int, ) int {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_width")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3294126239) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 688195400) // FIXME: should cache?
   var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&wrap_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -532,7 +532,7 @@ func  (me *TextEdit) InsertTextAtCaret(text String, caret_index int, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("insert_text_at_caret")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3043792800) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2697778442) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(&caret_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -832,7 +832,7 @@ func  (me *TextEdit) GetLineColumnAtPos(position Vector2i, allow_out_of_bounds b
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_column_at_pos")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 850652858) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 239517838) // FIXME: should cache?
   var ret Vector2i
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&allow_out_of_bounds), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -892,7 +892,7 @@ func  (me *TextEdit) IsMouseOverSelection(edges bool, caret_index int, ) bool {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_mouse_over_selection")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1099474134) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1840282309) // FIXME: should cache?
   var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&edges), gdc.ConstTypePtr(&caret_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -1168,7 +1168,7 @@ func  (me *TextEdit) SetCaretLine(line int, adjust_viewport bool, can_be_hidden 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_caret_line")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1413195636) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1302582944) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&adjust_viewport), gdc.ConstTypePtr(&can_be_hidden), gdc.ConstTypePtr(&wrap_index), gdc.ConstTypePtr(&caret_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1190,7 +1190,7 @@ func  (me *TextEdit) SetCaretColumn(column int, adjust_viewport bool, caret_inde
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_caret_column")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1071284433) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3796796178) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&adjust_viewport), gdc.ConstTypePtr(&caret_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1302,7 +1302,7 @@ func  (me *TextEdit) SetSelectionMode(mode TextEditSelectionMode, line int, colu
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_selection_mode")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920622473) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1443345937) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&caret_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1354,7 +1354,7 @@ func  (me *TextEdit) Select(from_line int, from_column int, to_line int, to_colu
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("select")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4269665324) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2560984452) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_line), gdc.ConstTypePtr(&from_column), gdc.ConstTypePtr(&to_line), gdc.ConstTypePtr(&to_column), gdc.ConstTypePtr(&caret_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1728,7 +1728,7 @@ func  (me *TextEdit) GetScrollPosForLine(line int, wrap_index int, ) float32 {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_scroll_pos_for_line")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3274652423) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3929084198) // FIXME: should cache?
   var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&wrap_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -1740,7 +1740,7 @@ func  (me *TextEdit) SetLineAsFirstVisible(line int, wrap_index int, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_line_as_first_visible")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3023605688) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2230941749) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&wrap_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1762,7 +1762,7 @@ func  (me *TextEdit) SetLineAsCenterVisible(line int, wrap_index int, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_line_as_center_visible")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3023605688) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2230941749) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&wrap_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
@@ -1772,7 +1772,7 @@ func  (me *TextEdit) SetLineAsLastVisible(line int, wrap_index int, )  {
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_line_as_last_visible")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3023605688) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2230941749) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&wrap_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

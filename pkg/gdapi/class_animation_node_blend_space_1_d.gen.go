@@ -51,7 +51,7 @@ func  (me *AnimationNodeBlendSpace1D) AddBlendPoint(node AnimationRootNode, pos 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_blend_point")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4069484420) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 285050433) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), gdc.ConstTypePtr(&pos), gdc.ConstTypePtr(&at_index), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }

@@ -132,3 +132,19 @@ func  (me *XRNode3D) TriggerHapticPulse(action_name String, frequency float32, a
 // FIXME: can't seem to be able to use those from this side of the API
 
 // Signals
+
+type XRNode3DTrackingChangedSignalFn func(tracking bool, )
+
+func (me *XRNode3D) ConnectTrackingChanged(subs SignalSubscribers, fn XRNode3DTrackingChangedSignalFn) {
+  sig := StringNameFromStr("tracking_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *XRNode3D) DisconnectTrackingChanged(subs SignalSubscribers, fn XRNode3DTrackingChangedSignalFn) {
+  sig := StringNameFromStr("tracking_changed")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}

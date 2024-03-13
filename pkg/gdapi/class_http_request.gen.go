@@ -62,7 +62,7 @@ func  (me *HTTPRequest) Request(url String, custom_headers PackedStringArray, me
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("request")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2720304520) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3215244323) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(url.AsCTypePtr()), gdc.ConstTypePtr(custom_headers.AsCTypePtr()), gdc.ConstTypePtr(&method), gdc.ConstTypePtr(request_data.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -74,7 +74,7 @@ func  (me *HTTPRequest) RequestRaw(url String, custom_headers PackedStringArray,
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("request_raw")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4282724657) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2714829993) // FIXME: should cache?
   var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(url.AsCTypePtr()), gdc.ConstTypePtr(custom_headers.AsCTypePtr()), gdc.ConstTypePtr(&method), gdc.ConstTypePtr(request_data_raw.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))

@@ -39,6 +39,18 @@ func (me *Geometry3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
+func  (me *Geometry3D) ComputeConvexMeshPoints(planes Plane, ) PackedVector3Array {
+  classNameV := StringNameFromStr("Geometry3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("compute_convex_mesh_points")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1936902142) // FIXME: should cache?
+  var ret PackedVector3Array
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(planes.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *Geometry3D) BuildBoxPlanes(extents Vector3, ) Plane {
   classNameV := StringNameFromStr("Geometry3D")
   defer classNameV.Destroy()
@@ -56,7 +68,7 @@ func  (me *Geometry3D) BuildCylinderPlanes(radius float32, height float32, sides
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("build_cylinder_planes")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3142160516) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 449920067) // FIXME: should cache?
   var ret Plane
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&sides), gdc.ConstTypePtr(&axis), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -68,7 +80,7 @@ func  (me *Geometry3D) BuildCapsulePlanes(radius float32, height float32, sides 
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("build_capsule_planes")
   defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 410870045) // FIXME: should cache?
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2113592876) // FIXME: should cache?
   var ret Plane
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&sides), gdc.ConstTypePtr(&lats), gdc.ConstTypePtr(&axis), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
@@ -107,6 +119,18 @@ func  (me *Geometry3D) GetClosestPointToSegmentUncapped(point Vector3, s1 Vector
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2168193209) // FIXME: should cache?
   var ret Vector3
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), gdc.ConstTypePtr(s1.AsCTypePtr()), gdc.ConstTypePtr(s2.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *Geometry3D) GetTriangleBarycentricCoords(point Vector3, a Vector3, b Vector3, c Vector3, ) Vector3 {
+  classNameV := StringNameFromStr("Geometry3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_triangle_barycentric_coords")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1362048029) // FIXME: should cache?
+  var ret Vector3
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), gdc.ConstTypePtr(a.AsCTypePtr()), gdc.ConstTypePtr(b.AsCTypePtr()), gdc.ConstTypePtr(c.AsCTypePtr()), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
 }

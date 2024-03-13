@@ -121,10 +121,10 @@ func  (me *GraphEdit) ForceConnectionDragEnd()  {
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *GraphEdit) GetScrollOfs() Vector2 {
+func  (me *GraphEdit) GetScrollOffset() Vector2 {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_scroll_ofs")
+  methodNameV := StringNameFromStr("get_scroll_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   var ret Vector2
@@ -133,10 +133,10 @@ func  (me *GraphEdit) GetScrollOfs() Vector2 {
   return ret
 }
 
-func  (me *GraphEdit) SetScrollOfs(offset Vector2, )  {
+func  (me *GraphEdit) SetScrollOffset(offset Vector2, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_scroll_ofs")
+  methodNameV := StringNameFromStr("set_scroll_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
@@ -337,20 +337,20 @@ func  (me *GraphEdit) GetZoomStep() float32 {
   return ret
 }
 
-func  (me *GraphEdit) SetShowZoomLabel(enable bool, )  {
+func  (me *GraphEdit) SetShowGrid(enable bool, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_show_zoom_label")
+  methodNameV := StringNameFromStr("set_show_grid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *GraphEdit) IsShowingZoomLabel() bool {
+func  (me *GraphEdit) IsShowingGrid() bool {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_showing_zoom_label")
+  methodNameV := StringNameFromStr("is_showing_grid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   var ret bool
@@ -359,45 +359,45 @@ func  (me *GraphEdit) IsShowingZoomLabel() bool {
   return ret
 }
 
-func  (me *GraphEdit) SetSnap(pixels int, )  {
+func  (me *GraphEdit) SetSnappingEnabled(enable bool, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_snap")
+  methodNameV := StringNameFromStr("set_snapping_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *GraphEdit) IsSnappingEnabled() bool {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_snapping_enabled")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *GraphEdit) SetSnappingDistance(pixels int, )  {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_snapping_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pixels), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *GraphEdit) GetSnap() int {
+func  (me *GraphEdit) GetSnappingDistance() int {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_snap")
+  methodNameV := StringNameFromStr("get_snapping_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   var ret int
-  cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
-}
-
-func  (me *GraphEdit) SetUseSnap(enable bool, )  {
-  classNameV := StringNameFromStr("GraphEdit")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_snap")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
-}
-
-func  (me *GraphEdit) IsUsingSnap() bool {
-  classNameV := StringNameFromStr("GraphEdit")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_snap")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
   return ret
@@ -535,20 +535,130 @@ func  (me *GraphEdit) IsMinimapEnabled() bool {
   return ret
 }
 
-func  (me *GraphEdit) SetArrangeNodesButtonHidden(enable bool, )  {
+func  (me *GraphEdit) SetShowMenu(hidden bool, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_arrange_nodes_button_hidden")
+  methodNameV := StringNameFromStr("set_show_menu")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hidden), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *GraphEdit) IsShowingMenu() bool {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_showing_menu")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *GraphEdit) SetShowZoomLabel(enable bool, )  {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_show_zoom_label")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 }
 
-func  (me *GraphEdit) IsArrangeNodesButtonHidden() bool {
+func  (me *GraphEdit) IsShowingZoomLabel() bool {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_arrange_nodes_button_hidden")
+  methodNameV := StringNameFromStr("is_showing_zoom_label")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *GraphEdit) SetShowGridButtons(hidden bool, )  {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_show_grid_buttons")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hidden), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *GraphEdit) IsShowingGridButtons() bool {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_showing_grid_buttons")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *GraphEdit) SetShowZoomButtons(hidden bool, )  {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_show_zoom_buttons")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hidden), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *GraphEdit) IsShowingZoomButtons() bool {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_showing_zoom_buttons")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *GraphEdit) SetShowMinimapButton(hidden bool, )  {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_show_minimap_button")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hidden), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *GraphEdit) IsShowingMinimapButton() bool {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_showing_minimap_button")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
+  var ret bool
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
+func  (me *GraphEdit) SetShowArrangeButton(hidden bool, )  {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_show_arrange_button")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hidden), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *GraphEdit) IsShowingArrangeButton() bool {
+  classNameV := StringNameFromStr("GraphEdit")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("is_showing_arrange_button")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   var ret bool
@@ -579,10 +689,10 @@ func  (me *GraphEdit) IsRightDisconnectsEnabled() bool {
   return ret
 }
 
-func  (me *GraphEdit) GetZoomHbox() HBoxContainer {
+func  (me *GraphEdit) GetMenuHbox() HBoxContainer {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_zoom_hbox")
+  methodNameV := StringNameFromStr("get_menu_hbox")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3590609951) // FIXME: should cache?
   var ret HBoxContainer
@@ -647,33 +757,65 @@ func (me *GraphEdit) DisconnectDisconnectionRequest(subs SignalSubscribers, fn G
   obj.Disconnect(sig, *subs.remove(fn))
 }
 
-type GraphEditPopupRequestSignalFn func(position Vector2, )
+type GraphEditConnectionToEmptySignalFn func(from_node StringName, from_port int, release_position Vector2, )
 
-func (me *GraphEdit) ConnectPopupRequest(subs SignalSubscribers, fn GraphEditPopupRequestSignalFn) {
-  sig := StringNameFromStr("popup_request")
+func (me *GraphEdit) ConnectConnectionToEmpty(subs SignalSubscribers, fn GraphEditConnectionToEmptySignalFn) {
+  sig := StringNameFromStr("connection_to_empty")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Connect(sig, subs.add(fn), 0)
 }
 
-func (me *GraphEdit) DisconnectPopupRequest(subs SignalSubscribers, fn GraphEditPopupRequestSignalFn) {
-  sig := StringNameFromStr("popup_request")
+func (me *GraphEdit) DisconnectConnectionToEmpty(subs SignalSubscribers, fn GraphEditConnectionToEmptySignalFn) {
+  sig := StringNameFromStr("connection_to_empty")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Disconnect(sig, *subs.remove(fn))
 }
 
-type GraphEditDuplicateNodesRequestSignalFn func()
+type GraphEditConnectionFromEmptySignalFn func(to_node StringName, to_port int, release_position Vector2, )
 
-func (me *GraphEdit) ConnectDuplicateNodesRequest(subs SignalSubscribers, fn GraphEditDuplicateNodesRequestSignalFn) {
-  sig := StringNameFromStr("duplicate_nodes_request")
+func (me *GraphEdit) ConnectConnectionFromEmpty(subs SignalSubscribers, fn GraphEditConnectionFromEmptySignalFn) {
+  sig := StringNameFromStr("connection_from_empty")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Connect(sig, subs.add(fn), 0)
 }
 
-func (me *GraphEdit) DisconnectDuplicateNodesRequest(subs SignalSubscribers, fn GraphEditDuplicateNodesRequestSignalFn) {
-  sig := StringNameFromStr("duplicate_nodes_request")
+func (me *GraphEdit) DisconnectConnectionFromEmpty(subs SignalSubscribers, fn GraphEditConnectionFromEmptySignalFn) {
+  sig := StringNameFromStr("connection_from_empty")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditConnectionDragStartedSignalFn func(from_node StringName, from_port int, is_output bool, )
+
+func (me *GraphEdit) ConnectConnectionDragStarted(subs SignalSubscribers, fn GraphEditConnectionDragStartedSignalFn) {
+  sig := StringNameFromStr("connection_drag_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectConnectionDragStarted(subs SignalSubscribers, fn GraphEditConnectionDragStartedSignalFn) {
+  sig := StringNameFromStr("connection_drag_started")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditConnectionDragEndedSignalFn func()
+
+func (me *GraphEdit) ConnectConnectionDragEnded(subs SignalSubscribers, fn GraphEditConnectionDragEndedSignalFn) {
+  sig := StringNameFromStr("connection_drag_ended")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectConnectionDragEnded(subs SignalSubscribers, fn GraphEditConnectionDragEndedSignalFn) {
+  sig := StringNameFromStr("connection_drag_ended")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Disconnect(sig, *subs.remove(fn))
@@ -711,6 +853,38 @@ func (me *GraphEdit) DisconnectPasteNodesRequest(subs SignalSubscribers, fn Grap
   obj.Disconnect(sig, *subs.remove(fn))
 }
 
+type GraphEditDuplicateNodesRequestSignalFn func()
+
+func (me *GraphEdit) ConnectDuplicateNodesRequest(subs SignalSubscribers, fn GraphEditDuplicateNodesRequestSignalFn) {
+  sig := StringNameFromStr("duplicate_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectDuplicateNodesRequest(subs SignalSubscribers, fn GraphEditDuplicateNodesRequestSignalFn) {
+  sig := StringNameFromStr("duplicate_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
+type GraphEditDeleteNodesRequestSignalFn func(nodes StringName, )
+
+func (me *GraphEdit) ConnectDeleteNodesRequest(subs SignalSubscribers, fn GraphEditDeleteNodesRequestSignalFn) {
+  sig := StringNameFromStr("delete_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Connect(sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectDeleteNodesRequest(subs SignalSubscribers, fn GraphEditDeleteNodesRequestSignalFn) {
+  sig := StringNameFromStr("delete_nodes_request")
+  defer sig.Destroy()
+  obj := ObjectFromPtr(me.obj)
+  obj.Disconnect(sig, *subs.remove(fn))
+}
+
 type GraphEditNodeSelectedSignalFn func(node Node, )
 
 func (me *GraphEdit) ConnectNodeSelected(subs SignalSubscribers, fn GraphEditNodeSelectedSignalFn) {
@@ -743,49 +917,17 @@ func (me *GraphEdit) DisconnectNodeDeselected(subs SignalSubscribers, fn GraphEd
   obj.Disconnect(sig, *subs.remove(fn))
 }
 
-type GraphEditConnectionToEmptySignalFn func(from_node StringName, from_port int, release_position Vector2, )
+type GraphEditPopupRequestSignalFn func(position Vector2, )
 
-func (me *GraphEdit) ConnectConnectionToEmpty(subs SignalSubscribers, fn GraphEditConnectionToEmptySignalFn) {
-  sig := StringNameFromStr("connection_to_empty")
+func (me *GraphEdit) ConnectPopupRequest(subs SignalSubscribers, fn GraphEditPopupRequestSignalFn) {
+  sig := StringNameFromStr("popup_request")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Connect(sig, subs.add(fn), 0)
 }
 
-func (me *GraphEdit) DisconnectConnectionToEmpty(subs SignalSubscribers, fn GraphEditConnectionToEmptySignalFn) {
-  sig := StringNameFromStr("connection_to_empty")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type GraphEditConnectionFromEmptySignalFn func(to_node StringName, to_port int, release_position Vector2, )
-
-func (me *GraphEdit) ConnectConnectionFromEmpty(subs SignalSubscribers, fn GraphEditConnectionFromEmptySignalFn) {
-  sig := StringNameFromStr("connection_from_empty")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *GraphEdit) DisconnectConnectionFromEmpty(subs SignalSubscribers, fn GraphEditConnectionFromEmptySignalFn) {
-  sig := StringNameFromStr("connection_from_empty")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type GraphEditDeleteNodesRequestSignalFn func(nodes StringName, )
-
-func (me *GraphEdit) ConnectDeleteNodesRequest(subs SignalSubscribers, fn GraphEditDeleteNodesRequestSignalFn) {
-  sig := StringNameFromStr("delete_nodes_request")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *GraphEdit) DisconnectDeleteNodesRequest(subs SignalSubscribers, fn GraphEditDeleteNodesRequestSignalFn) {
-  sig := StringNameFromStr("delete_nodes_request")
+func (me *GraphEdit) DisconnectPopupRequest(subs SignalSubscribers, fn GraphEditPopupRequestSignalFn) {
+  sig := StringNameFromStr("popup_request")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Disconnect(sig, *subs.remove(fn))
@@ -834,38 +976,6 @@ func (me *GraphEdit) ConnectScrollOffsetChanged(subs SignalSubscribers, fn Graph
 
 func (me *GraphEdit) DisconnectScrollOffsetChanged(subs SignalSubscribers, fn GraphEditScrollOffsetChangedSignalFn) {
   sig := StringNameFromStr("scroll_offset_changed")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type GraphEditConnectionDragStartedSignalFn func(from_node StringName, from_port int, is_output bool, )
-
-func (me *GraphEdit) ConnectConnectionDragStarted(subs SignalSubscribers, fn GraphEditConnectionDragStartedSignalFn) {
-  sig := StringNameFromStr("connection_drag_started")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *GraphEdit) DisconnectConnectionDragStarted(subs SignalSubscribers, fn GraphEditConnectionDragStartedSignalFn) {
-  sig := StringNameFromStr("connection_drag_started")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
-}
-
-type GraphEditConnectionDragEndedSignalFn func()
-
-func (me *GraphEdit) ConnectConnectionDragEnded(subs SignalSubscribers, fn GraphEditConnectionDragEndedSignalFn) {
-  sig := StringNameFromStr("connection_drag_ended")
-  defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
-}
-
-func (me *GraphEdit) DisconnectConnectionDragEnded(subs SignalSubscribers, fn GraphEditConnectionDragEndedSignalFn) {
-  sig := StringNameFromStr("connection_drag_ended")
   defer sig.Destroy()
   obj := ObjectFromPtr(me.obj)
   obj.Disconnect(sig, *subs.remove(fn))

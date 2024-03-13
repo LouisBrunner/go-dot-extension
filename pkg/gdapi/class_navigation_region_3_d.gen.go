@@ -83,6 +83,28 @@ func  (me *NavigationRegion3D) IsEnabled() bool {
   return ret
 }
 
+func  (me *NavigationRegion3D) SetNavigationMap(navigation_map RID, )  {
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("set_navigation_map")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_map.AsCTypePtr()), }
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+}
+
+func  (me *NavigationRegion3D) GetNavigationMap() RID {
+  classNameV := StringNameFromStr("NavigationRegion3D")
+  defer classNameV.Destroy()
+  methodNameV := StringNameFromStr("get_navigation_map")
+  defer methodNameV.Destroy()
+  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
+  var ret RID
+  cargs := []gdc.ConstTypePtr{}
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  return ret
+}
+
 func  (me *NavigationRegion3D) SetUseEdgeConnections(enabled bool, )  {
   classNameV := StringNameFromStr("NavigationRegion3D")
   defer classNameV.Destroy()

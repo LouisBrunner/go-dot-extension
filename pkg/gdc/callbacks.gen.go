@@ -9,13 +9,20 @@ import (
 /*
 #include <gdextension_interface.h>
 
-GDExtensionObjectPtr cgo_ClassCreationInfoCreateInstanceFunc(void* pUserdata);
-void cgo_ClassCreationInfoFreeInstanceFunc(void* pUserdata, GDExtensionClassInstancePtr pInstance);
+void cgo_CallableCustomInfoCallFunc(void* callableUserdata,  GDExtensionConstVariantPtr* pArgs, GDExtensionInt pArgumentCount, GDExtensionVariantPtr rReturn, GDExtensionCallError* rError);
+GDExtensionBool cgo_CallableCustomInfoEqualFunc(void* callableUserdataA, void* callableUserdataB);
+void cgo_CallableCustomInfoFreeFunc(void* callableUserdata);
+uint32_t cgo_CallableCustomInfoHashFunc(void* callableUserdata);
+GDExtensionBool cgo_CallableCustomInfoIsValidFunc(void* callableUserdata);
+GDExtensionBool cgo_CallableCustomInfoLessThanFunc(void* callableUserdataA, void* callableUserdataB);
+void cgo_CallableCustomInfoToStringFunc(void* callableUserdata, uint8_t* rIsValid, GDExtensionStringPtr rOut);
+GDExtensionObjectPtr cgo_ClassCreationInfoCreateInstanceFunc(void* pClassUserdata);
+void cgo_ClassCreationInfoFreeInstanceFunc(void* pClassUserdata, GDExtensionClassInstancePtr pInstance);
 void cgo_ClassCreationInfoFreePropertyListFunc(GDExtensionClassInstancePtr pInstance, GDExtensionPropertyInfo* pList);
 GDExtensionBool cgo_ClassCreationInfoGetFunc(GDExtensionClassInstancePtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionVariantPtr rRet);
 GDExtensionPropertyInfo* cgo_ClassCreationInfoGetPropertyListFunc(GDExtensionClassInstancePtr pInstance, unsigned* rCount);
 uint64_t cgo_ClassCreationInfoGetRidFunc(GDExtensionClassInstancePtr pInstance);
-GDExtensionClassCallVirtual cgo_ClassCreationInfoGetVirtualFunc(void* pUserdata, GDExtensionConstStringNamePtr pName);
+GDExtensionClassCallVirtual cgo_ClassCreationInfoGetVirtualFunc(void* pClassUserdata, GDExtensionConstStringNamePtr pName);
 void cgo_ClassCreationInfoNotificationFunc(GDExtensionClassInstancePtr pInstance, int32_t pWhat);
 GDExtensionBool cgo_ClassCreationInfoPropertyCanRevertFunc(GDExtensionClassInstancePtr pInstance, GDExtensionConstStringNamePtr pName);
 GDExtensionBool cgo_ClassCreationInfoPropertyGetRevertFunc(GDExtensionClassInstancePtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionVariantPtr rRet);
@@ -23,6 +30,24 @@ void cgo_ClassCreationInfoReferenceFunc(GDExtensionClassInstancePtr pInstance);
 GDExtensionBool cgo_ClassCreationInfoSetFunc(GDExtensionClassInstancePtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionConstVariantPtr pValue);
 void cgo_ClassCreationInfoToStringFunc(GDExtensionClassInstancePtr pInstance, uint8_t* rIsValid, GDExtensionStringPtr pOut);
 void cgo_ClassCreationInfoUnreferenceFunc(GDExtensionClassInstancePtr pInstance);
+void cgo_ClassCreationInfo2CallVirtualWithDataFunc(GDExtensionClassInstancePtr pInstance, GDExtensionConstStringNamePtr pName, void* pVirtualCallUserdata,  GDExtensionConstTypePtr* pArgs, GDExtensionTypePtr rRet);
+GDExtensionObjectPtr cgo_ClassCreationInfo2CreateInstanceFunc(void* pClassUserdata);
+void cgo_ClassCreationInfo2FreeInstanceFunc(void* pClassUserdata, GDExtensionClassInstancePtr pInstance);
+void cgo_ClassCreationInfo2FreePropertyListFunc(GDExtensionClassInstancePtr pInstance, GDExtensionPropertyInfo* pList);
+GDExtensionBool cgo_ClassCreationInfo2GetFunc(GDExtensionClassInstancePtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionVariantPtr rRet);
+GDExtensionPropertyInfo* cgo_ClassCreationInfo2GetPropertyListFunc(GDExtensionClassInstancePtr pInstance, unsigned* rCount);
+uint64_t cgo_ClassCreationInfo2GetRidFunc(GDExtensionClassInstancePtr pInstance);
+void* cgo_ClassCreationInfo2GetVirtualCallDataFunc(void* pClassUserdata, GDExtensionConstStringNamePtr pName);
+GDExtensionClassCallVirtual cgo_ClassCreationInfo2GetVirtualFunc(void* pClassUserdata, GDExtensionConstStringNamePtr pName);
+void cgo_ClassCreationInfo2NotificationFunc(GDExtensionClassInstancePtr pInstance, int32_t pWhat, GDExtensionBool pReversed);
+GDExtensionBool cgo_ClassCreationInfo2PropertyCanRevertFunc(GDExtensionClassInstancePtr pInstance, GDExtensionConstStringNamePtr pName);
+GDExtensionBool cgo_ClassCreationInfo2PropertyGetRevertFunc(GDExtensionClassInstancePtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionVariantPtr rRet);
+GDExtensionClassInstancePtr cgo_ClassCreationInfo2RecreateInstanceFunc(void* pClassUserdata, GDExtensionObjectPtr pObject);
+void cgo_ClassCreationInfo2ReferenceFunc(GDExtensionClassInstancePtr pInstance);
+GDExtensionBool cgo_ClassCreationInfo2SetFunc(GDExtensionClassInstancePtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionConstVariantPtr pValue);
+void cgo_ClassCreationInfo2ToStringFunc(GDExtensionClassInstancePtr pInstance, uint8_t* rIsValid, GDExtensionStringPtr pOut);
+void cgo_ClassCreationInfo2UnreferenceFunc(GDExtensionClassInstancePtr pInstance);
+GDExtensionBool cgo_ClassCreationInfo2ValidatePropertyFunc(GDExtensionClassInstancePtr pInstance, GDExtensionPropertyInfo* pProperty);
 void cgo_ClassMethodInfoCallFunc(void* methodUserdata, GDExtensionClassInstancePtr pInstance,  GDExtensionConstVariantPtr* pArgs, GDExtensionInt pArgumentCount, GDExtensionVariantPtr rReturn, GDExtensionCallError* rError);
 void cgo_ClassMethodInfoPtrcallFunc(void* methodUserdata, GDExtensionClassInstancePtr pInstance,  GDExtensionConstTypePtr* pArgs, GDExtensionTypePtr rRet);
 void cgo_InitializationDeinitialize(void* userdata, GDExtensionInitializationLevel pLevel);
@@ -53,6 +78,31 @@ void cgo_ScriptInstanceInfoRefcountIncrementedFunc(GDExtensionScriptInstanceData
 GDExtensionBool cgo_ScriptInstanceInfoSetFallbackFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionConstVariantPtr pValue);
 GDExtensionBool cgo_ScriptInstanceInfoSetFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionConstVariantPtr pValue);
 void cgo_ScriptInstanceInfoToStringFunc(GDExtensionScriptInstanceDataPtr pInstance, uint8_t* rIsValid, GDExtensionStringPtr rOut);
+void cgo_ScriptInstanceInfo2CallFunc(GDExtensionScriptInstanceDataPtr pSelf, GDExtensionConstStringNamePtr pMethod,  GDExtensionConstVariantPtr* pArgs, GDExtensionInt pArgumentCount, GDExtensionVariantPtr rReturn, GDExtensionCallError* rError);
+void cgo_ScriptInstanceInfo2FreeFunc(GDExtensionScriptInstanceDataPtr pInstance);
+void cgo_ScriptInstanceInfo2FreeMethodListFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionMethodInfo* pList);
+void cgo_ScriptInstanceInfo2FreePropertyListFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionPropertyInfo* pList);
+GDExtensionBool cgo_ScriptInstanceInfo2GetClassCategoryFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionPropertyInfo* pClassCategory);
+GDExtensionBool cgo_ScriptInstanceInfo2GetFallbackFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionVariantPtr rRet);
+GDExtensionBool cgo_ScriptInstanceInfo2GetFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionVariantPtr rRet);
+GDExtensionScriptLanguagePtr cgo_ScriptInstanceInfo2GetLanguageFunc(GDExtensionScriptInstanceDataPtr pInstance);
+GDExtensionMethodInfo* cgo_ScriptInstanceInfo2GetMethodListFunc(GDExtensionScriptInstanceDataPtr pInstance, unsigned* rCount);
+GDExtensionObjectPtr cgo_ScriptInstanceInfo2GetOwnerFunc(GDExtensionScriptInstanceDataPtr pInstance);
+GDExtensionPropertyInfo* cgo_ScriptInstanceInfo2GetPropertyListFunc(GDExtensionScriptInstanceDataPtr pInstance, unsigned* rCount);
+void cgo_ScriptInstanceInfo2GetPropertyStateFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionScriptInstancePropertyStateAdd pAddFunc, void* pUserdata);
+GDExtensionVariantType cgo_ScriptInstanceInfo2GetPropertyTypeFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionConstStringNamePtr pName, uint8_t* rIsValid);
+GDExtensionObjectPtr cgo_ScriptInstanceInfo2GetScriptFunc(GDExtensionScriptInstanceDataPtr pInstance);
+GDExtensionBool cgo_ScriptInstanceInfo2HasMethodFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionConstStringNamePtr pName);
+GDExtensionBool cgo_ScriptInstanceInfo2IsPlaceholderFunc(GDExtensionScriptInstanceDataPtr pInstance);
+void cgo_ScriptInstanceInfo2NotificationFunc(GDExtensionScriptInstanceDataPtr pInstance, int32_t pWhat, GDExtensionBool pReversed);
+GDExtensionBool cgo_ScriptInstanceInfo2PropertyCanRevertFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionConstStringNamePtr pName);
+GDExtensionBool cgo_ScriptInstanceInfo2PropertyGetRevertFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionVariantPtr rRet);
+GDExtensionBool cgo_ScriptInstanceInfo2RefcountDecrementedFunc(GDExtensionScriptInstanceDataPtr pInstance);
+void cgo_ScriptInstanceInfo2RefcountIncrementedFunc(GDExtensionScriptInstanceDataPtr pInstance);
+GDExtensionBool cgo_ScriptInstanceInfo2SetFallbackFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionConstVariantPtr pValue);
+GDExtensionBool cgo_ScriptInstanceInfo2SetFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionConstStringNamePtr pName, GDExtensionConstVariantPtr pValue);
+void cgo_ScriptInstanceInfo2ToStringFunc(GDExtensionScriptInstanceDataPtr pInstance, uint8_t* rIsValid, GDExtensionStringPtr rOut);
+GDExtensionBool cgo_ScriptInstanceInfo2ValidatePropertyFunc(GDExtensionScriptInstanceDataPtr pInstance, GDExtensionPropertyInfo* pProperty);
 */
 import "C"
 
@@ -60,12 +110,40 @@ import "C"
 var Callbacks = newCallbacks()
 
 type callbacks interface {
+  // SetCallableCustomInfoCallFuncHandler sets the callback which will be used by GetCallableCustomInfoCallFuncCallback.
+  SetCallableCustomInfoCallFuncHandler(fn func(callableUserdata unsafe.Pointer, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) )
+  // GetCallableCustomInfoCallFuncCallback is a C-callable function that will call the Go callback set by SetCallableCustomInfoCallFuncHandler.
+  GetCallableCustomInfoCallFuncCallback() CallableCustomCall
+  // SetCallableCustomInfoEqualFuncHandler sets the callback which will be used by GetCallableCustomInfoEqualFuncCallback.
+  SetCallableCustomInfoEqualFuncHandler(fn func(callableUserdataA unsafe.Pointer, callableUserdataB unsafe.Pointer, ) Bool)
+  // GetCallableCustomInfoEqualFuncCallback is a C-callable function that will call the Go callback set by SetCallableCustomInfoEqualFuncHandler.
+  GetCallableCustomInfoEqualFuncCallback() CallableCustomEqual
+  // SetCallableCustomInfoFreeFuncHandler sets the callback which will be used by GetCallableCustomInfoFreeFuncCallback.
+  SetCallableCustomInfoFreeFuncHandler(fn func(callableUserdata unsafe.Pointer, ) )
+  // GetCallableCustomInfoFreeFuncCallback is a C-callable function that will call the Go callback set by SetCallableCustomInfoFreeFuncHandler.
+  GetCallableCustomInfoFreeFuncCallback() CallableCustomFree
+  // SetCallableCustomInfoHashFuncHandler sets the callback which will be used by GetCallableCustomInfoHashFuncCallback.
+  SetCallableCustomInfoHashFuncHandler(fn func(callableUserdata unsafe.Pointer, ) uint)
+  // GetCallableCustomInfoHashFuncCallback is a C-callable function that will call the Go callback set by SetCallableCustomInfoHashFuncHandler.
+  GetCallableCustomInfoHashFuncCallback() CallableCustomHash
+  // SetCallableCustomInfoIsValidFuncHandler sets the callback which will be used by GetCallableCustomInfoIsValidFuncCallback.
+  SetCallableCustomInfoIsValidFuncHandler(fn func(callableUserdata unsafe.Pointer, ) Bool)
+  // GetCallableCustomInfoIsValidFuncCallback is a C-callable function that will call the Go callback set by SetCallableCustomInfoIsValidFuncHandler.
+  GetCallableCustomInfoIsValidFuncCallback() CallableCustomIsValid
+  // SetCallableCustomInfoLessThanFuncHandler sets the callback which will be used by GetCallableCustomInfoLessThanFuncCallback.
+  SetCallableCustomInfoLessThanFuncHandler(fn func(callableUserdataA unsafe.Pointer, callableUserdataB unsafe.Pointer, ) Bool)
+  // GetCallableCustomInfoLessThanFuncCallback is a C-callable function that will call the Go callback set by SetCallableCustomInfoLessThanFuncHandler.
+  GetCallableCustomInfoLessThanFuncCallback() CallableCustomLessThan
+  // SetCallableCustomInfoToStringFuncHandler sets the callback which will be used by GetCallableCustomInfoToStringFuncCallback.
+  SetCallableCustomInfoToStringFuncHandler(fn func(callableUserdata unsafe.Pointer, rIsValid *uint8, rOut StringPtr, ) )
+  // GetCallableCustomInfoToStringFuncCallback is a C-callable function that will call the Go callback set by SetCallableCustomInfoToStringFuncHandler.
+  GetCallableCustomInfoToStringFuncCallback() CallableCustomToString
   // SetClassCreationInfoCreateInstanceFuncHandler sets the callback which will be used by GetClassCreationInfoCreateInstanceFuncCallback.
-  SetClassCreationInfoCreateInstanceFuncHandler(fn func(pUserdata unsafe.Pointer, ) ObjectPtr)
+  SetClassCreationInfoCreateInstanceFuncHandler(fn func(pClassUserdata unsafe.Pointer, ) ObjectPtr)
   // GetClassCreationInfoCreateInstanceFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfoCreateInstanceFuncHandler.
   GetClassCreationInfoCreateInstanceFuncCallback() ClassCreateInstance
   // SetClassCreationInfoFreeInstanceFuncHandler sets the callback which will be used by GetClassCreationInfoFreeInstanceFuncCallback.
-  SetClassCreationInfoFreeInstanceFuncHandler(fn func(pUserdata unsafe.Pointer, pInstance ClassInstancePtr, ) )
+  SetClassCreationInfoFreeInstanceFuncHandler(fn func(pClassUserdata unsafe.Pointer, pInstance ClassInstancePtr, ) )
   // GetClassCreationInfoFreeInstanceFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfoFreeInstanceFuncHandler.
   GetClassCreationInfoFreeInstanceFuncCallback() ClassFreeInstance
   // SetClassCreationInfoFreePropertyListFuncHandler sets the callback which will be used by GetClassCreationInfoFreePropertyListFuncCallback.
@@ -85,7 +163,7 @@ type callbacks interface {
   // GetClassCreationInfoGetRidFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfoGetRidFuncHandler.
   GetClassCreationInfoGetRidFuncCallback() ClassGetRID
   // SetClassCreationInfoGetVirtualFuncHandler sets the callback which will be used by GetClassCreationInfoGetVirtualFuncCallback.
-  SetClassCreationInfoGetVirtualFuncHandler(fn func(pUserdata unsafe.Pointer, pName ConstStringNamePtr, ) ClassCallVirtual)
+  SetClassCreationInfoGetVirtualFuncHandler(fn func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) ClassCallVirtual)
   // GetClassCreationInfoGetVirtualFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfoGetVirtualFuncHandler.
   GetClassCreationInfoGetVirtualFuncCallback() ClassGetVirtual
   // SetClassCreationInfoNotificationFuncHandler sets the callback which will be used by GetClassCreationInfoNotificationFuncCallback.
@@ -116,6 +194,78 @@ type callbacks interface {
   SetClassCreationInfoUnreferenceFuncHandler(fn func(pInstance ClassInstancePtr, ) )
   // GetClassCreationInfoUnreferenceFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfoUnreferenceFuncHandler.
   GetClassCreationInfoUnreferenceFuncCallback() ClassUnreference
+  // SetClassCreationInfo2CallVirtualWithDataFuncHandler sets the callback which will be used by GetClassCreationInfo2CallVirtualWithDataFuncCallback.
+  SetClassCreationInfo2CallVirtualWithDataFuncHandler(fn func(pInstance ClassInstancePtr, pName ConstStringNamePtr, pVirtualCallUserdata unsafe.Pointer, pArgs *ConstTypePtr, rRet TypePtr, ) )
+  // GetClassCreationInfo2CallVirtualWithDataFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2CallVirtualWithDataFuncHandler.
+  GetClassCreationInfo2CallVirtualWithDataFuncCallback() ClassCallVirtualWithData
+  // SetClassCreationInfo2CreateInstanceFuncHandler sets the callback which will be used by GetClassCreationInfo2CreateInstanceFuncCallback.
+  SetClassCreationInfo2CreateInstanceFuncHandler(fn func(pClassUserdata unsafe.Pointer, ) ObjectPtr)
+  // GetClassCreationInfo2CreateInstanceFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2CreateInstanceFuncHandler.
+  GetClassCreationInfo2CreateInstanceFuncCallback() ClassCreateInstance
+  // SetClassCreationInfo2FreeInstanceFuncHandler sets the callback which will be used by GetClassCreationInfo2FreeInstanceFuncCallback.
+  SetClassCreationInfo2FreeInstanceFuncHandler(fn func(pClassUserdata unsafe.Pointer, pInstance ClassInstancePtr, ) )
+  // GetClassCreationInfo2FreeInstanceFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2FreeInstanceFuncHandler.
+  GetClassCreationInfo2FreeInstanceFuncCallback() ClassFreeInstance
+  // SetClassCreationInfo2FreePropertyListFuncHandler sets the callback which will be used by GetClassCreationInfo2FreePropertyListFuncCallback.
+  SetClassCreationInfo2FreePropertyListFuncHandler(fn func(pInstance ClassInstancePtr, pList *PropertyInfo, ) )
+  // GetClassCreationInfo2FreePropertyListFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2FreePropertyListFuncHandler.
+  GetClassCreationInfo2FreePropertyListFuncCallback() ClassFreePropertyList
+  // SetClassCreationInfo2GetFuncHandler sets the callback which will be used by GetClassCreationInfo2GetFuncCallback.
+  SetClassCreationInfo2GetFuncHandler(fn func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool)
+  // GetClassCreationInfo2GetFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2GetFuncHandler.
+  GetClassCreationInfo2GetFuncCallback() ClassGet
+  // SetClassCreationInfo2GetPropertyListFuncHandler sets the callback which will be used by GetClassCreationInfo2GetPropertyListFuncCallback.
+  SetClassCreationInfo2GetPropertyListFuncHandler(fn func(pInstance ClassInstancePtr, rCount *uint, ) *PropertyInfo)
+  // GetClassCreationInfo2GetPropertyListFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2GetPropertyListFuncHandler.
+  GetClassCreationInfo2GetPropertyListFuncCallback() ClassGetPropertyList
+  // SetClassCreationInfo2GetRidFuncHandler sets the callback which will be used by GetClassCreationInfo2GetRidFuncCallback.
+  SetClassCreationInfo2GetRidFuncHandler(fn func(pInstance ClassInstancePtr, ) uint64)
+  // GetClassCreationInfo2GetRidFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2GetRidFuncHandler.
+  GetClassCreationInfo2GetRidFuncCallback() ClassGetRID
+  // SetClassCreationInfo2GetVirtualCallDataFuncHandler sets the callback which will be used by GetClassCreationInfo2GetVirtualCallDataFuncCallback.
+  SetClassCreationInfo2GetVirtualCallDataFuncHandler(fn func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) unsafe.Pointer)
+  // GetClassCreationInfo2GetVirtualCallDataFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2GetVirtualCallDataFuncHandler.
+  GetClassCreationInfo2GetVirtualCallDataFuncCallback() ClassGetVirtualCallData
+  // SetClassCreationInfo2GetVirtualFuncHandler sets the callback which will be used by GetClassCreationInfo2GetVirtualFuncCallback.
+  SetClassCreationInfo2GetVirtualFuncHandler(fn func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) ClassCallVirtual)
+  // GetClassCreationInfo2GetVirtualFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2GetVirtualFuncHandler.
+  GetClassCreationInfo2GetVirtualFuncCallback() ClassGetVirtual
+  // SetClassCreationInfo2NotificationFuncHandler sets the callback which will be used by GetClassCreationInfo2NotificationFuncCallback.
+  SetClassCreationInfo2NotificationFuncHandler(fn func(pInstance ClassInstancePtr, pWhat int, pReversed Bool, ) )
+  // GetClassCreationInfo2NotificationFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2NotificationFuncHandler.
+  GetClassCreationInfo2NotificationFuncCallback() ClassNotification2
+  // SetClassCreationInfo2PropertyCanRevertFuncHandler sets the callback which will be used by GetClassCreationInfo2PropertyCanRevertFuncCallback.
+  SetClassCreationInfo2PropertyCanRevertFuncHandler(fn func(pInstance ClassInstancePtr, pName ConstStringNamePtr, ) Bool)
+  // GetClassCreationInfo2PropertyCanRevertFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2PropertyCanRevertFuncHandler.
+  GetClassCreationInfo2PropertyCanRevertFuncCallback() ClassPropertyCanRevert
+  // SetClassCreationInfo2PropertyGetRevertFuncHandler sets the callback which will be used by GetClassCreationInfo2PropertyGetRevertFuncCallback.
+  SetClassCreationInfo2PropertyGetRevertFuncHandler(fn func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool)
+  // GetClassCreationInfo2PropertyGetRevertFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2PropertyGetRevertFuncHandler.
+  GetClassCreationInfo2PropertyGetRevertFuncCallback() ClassPropertyGetRevert
+  // SetClassCreationInfo2RecreateInstanceFuncHandler sets the callback which will be used by GetClassCreationInfo2RecreateInstanceFuncCallback.
+  SetClassCreationInfo2RecreateInstanceFuncHandler(fn func(pClassUserdata unsafe.Pointer, pObject ObjectPtr, ) ClassInstancePtr)
+  // GetClassCreationInfo2RecreateInstanceFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2RecreateInstanceFuncHandler.
+  GetClassCreationInfo2RecreateInstanceFuncCallback() ClassRecreateInstance
+  // SetClassCreationInfo2ReferenceFuncHandler sets the callback which will be used by GetClassCreationInfo2ReferenceFuncCallback.
+  SetClassCreationInfo2ReferenceFuncHandler(fn func(pInstance ClassInstancePtr, ) )
+  // GetClassCreationInfo2ReferenceFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2ReferenceFuncHandler.
+  GetClassCreationInfo2ReferenceFuncCallback() ClassReference
+  // SetClassCreationInfo2SetFuncHandler sets the callback which will be used by GetClassCreationInfo2SetFuncCallback.
+  SetClassCreationInfo2SetFuncHandler(fn func(pInstance ClassInstancePtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool)
+  // GetClassCreationInfo2SetFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2SetFuncHandler.
+  GetClassCreationInfo2SetFuncCallback() ClassSet
+  // SetClassCreationInfo2ToStringFuncHandler sets the callback which will be used by GetClassCreationInfo2ToStringFuncCallback.
+  SetClassCreationInfo2ToStringFuncHandler(fn func(pInstance ClassInstancePtr, rIsValid *uint8, pOut StringPtr, ) )
+  // GetClassCreationInfo2ToStringFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2ToStringFuncHandler.
+  GetClassCreationInfo2ToStringFuncCallback() ClassToString
+  // SetClassCreationInfo2UnreferenceFuncHandler sets the callback which will be used by GetClassCreationInfo2UnreferenceFuncCallback.
+  SetClassCreationInfo2UnreferenceFuncHandler(fn func(pInstance ClassInstancePtr, ) )
+  // GetClassCreationInfo2UnreferenceFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2UnreferenceFuncHandler.
+  GetClassCreationInfo2UnreferenceFuncCallback() ClassUnreference
+  // SetClassCreationInfo2ValidatePropertyFuncHandler sets the callback which will be used by GetClassCreationInfo2ValidatePropertyFuncCallback.
+  SetClassCreationInfo2ValidatePropertyFuncHandler(fn func(pInstance ClassInstancePtr, pProperty *PropertyInfo, ) Bool)
+  // GetClassCreationInfo2ValidatePropertyFuncCallback is a C-callable function that will call the Go callback set by SetClassCreationInfo2ValidatePropertyFuncHandler.
+  GetClassCreationInfo2ValidatePropertyFuncCallback() ClassValidateProperty
   // SetClassMethodInfoCallFuncHandler sets the callback which will be used by GetClassMethodInfoCallFuncCallback.
   SetClassMethodInfoCallFuncHandler(fn func(methodUserdata unsafe.Pointer, pInstance ClassInstancePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) )
   // GetClassMethodInfoCallFuncCallback is a C-callable function that will call the Go callback set by SetClassMethodInfoCallFuncHandler.
@@ -236,53 +386,203 @@ type callbacks interface {
   SetScriptInstanceInfoToStringFuncHandler(fn func(pInstance ScriptInstanceDataPtr, rIsValid *uint8, rOut StringPtr, ) )
   // GetScriptInstanceInfoToStringFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfoToStringFuncHandler.
   GetScriptInstanceInfoToStringFuncCallback() ScriptInstanceToString
+  // SetScriptInstanceInfo2CallFuncHandler sets the callback which will be used by GetScriptInstanceInfo2CallFuncCallback.
+  SetScriptInstanceInfo2CallFuncHandler(fn func(pSelf ScriptInstanceDataPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) )
+  // GetScriptInstanceInfo2CallFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2CallFuncHandler.
+  GetScriptInstanceInfo2CallFuncCallback() ScriptInstanceCall
+  // SetScriptInstanceInfo2FreeFuncHandler sets the callback which will be used by GetScriptInstanceInfo2FreeFuncCallback.
+  SetScriptInstanceInfo2FreeFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) )
+  // GetScriptInstanceInfo2FreeFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2FreeFuncHandler.
+  GetScriptInstanceInfo2FreeFuncCallback() ScriptInstanceFree
+  // SetScriptInstanceInfo2FreeMethodListFuncHandler sets the callback which will be used by GetScriptInstanceInfo2FreeMethodListFuncCallback.
+  SetScriptInstanceInfo2FreeMethodListFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pList *MethodInfo, ) )
+  // GetScriptInstanceInfo2FreeMethodListFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2FreeMethodListFuncHandler.
+  GetScriptInstanceInfo2FreeMethodListFuncCallback() ScriptInstanceFreeMethodList
+  // SetScriptInstanceInfo2FreePropertyListFuncHandler sets the callback which will be used by GetScriptInstanceInfo2FreePropertyListFuncCallback.
+  SetScriptInstanceInfo2FreePropertyListFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pList *PropertyInfo, ) )
+  // GetScriptInstanceInfo2FreePropertyListFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2FreePropertyListFuncHandler.
+  GetScriptInstanceInfo2FreePropertyListFuncCallback() ScriptInstanceFreePropertyList
+  // SetScriptInstanceInfo2GetClassCategoryFuncHandler sets the callback which will be used by GetScriptInstanceInfo2GetClassCategoryFuncCallback.
+  SetScriptInstanceInfo2GetClassCategoryFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pClassCategory *PropertyInfo, ) Bool)
+  // GetScriptInstanceInfo2GetClassCategoryFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2GetClassCategoryFuncHandler.
+  GetScriptInstanceInfo2GetClassCategoryFuncCallback() ScriptInstanceGetClassCategory
+  // SetScriptInstanceInfo2GetFallbackFuncHandler sets the callback which will be used by GetScriptInstanceInfo2GetFallbackFuncCallback.
+  SetScriptInstanceInfo2GetFallbackFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool)
+  // GetScriptInstanceInfo2GetFallbackFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2GetFallbackFuncHandler.
+  GetScriptInstanceInfo2GetFallbackFuncCallback() ScriptInstanceGet
+  // SetScriptInstanceInfo2GetFuncHandler sets the callback which will be used by GetScriptInstanceInfo2GetFuncCallback.
+  SetScriptInstanceInfo2GetFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool)
+  // GetScriptInstanceInfo2GetFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2GetFuncHandler.
+  GetScriptInstanceInfo2GetFuncCallback() ScriptInstanceGet
+  // SetScriptInstanceInfo2GetLanguageFuncHandler sets the callback which will be used by GetScriptInstanceInfo2GetLanguageFuncCallback.
+  SetScriptInstanceInfo2GetLanguageFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) ScriptLanguagePtr)
+  // GetScriptInstanceInfo2GetLanguageFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2GetLanguageFuncHandler.
+  GetScriptInstanceInfo2GetLanguageFuncCallback() ScriptInstanceGetLanguage
+  // SetScriptInstanceInfo2GetMethodListFuncHandler sets the callback which will be used by GetScriptInstanceInfo2GetMethodListFuncCallback.
+  SetScriptInstanceInfo2GetMethodListFuncHandler(fn func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *MethodInfo)
+  // GetScriptInstanceInfo2GetMethodListFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2GetMethodListFuncHandler.
+  GetScriptInstanceInfo2GetMethodListFuncCallback() ScriptInstanceGetMethodList
+  // SetScriptInstanceInfo2GetOwnerFuncHandler sets the callback which will be used by GetScriptInstanceInfo2GetOwnerFuncCallback.
+  SetScriptInstanceInfo2GetOwnerFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) ObjectPtr)
+  // GetScriptInstanceInfo2GetOwnerFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2GetOwnerFuncHandler.
+  GetScriptInstanceInfo2GetOwnerFuncCallback() ScriptInstanceGetOwner
+  // SetScriptInstanceInfo2GetPropertyListFuncHandler sets the callback which will be used by GetScriptInstanceInfo2GetPropertyListFuncCallback.
+  SetScriptInstanceInfo2GetPropertyListFuncHandler(fn func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *PropertyInfo)
+  // GetScriptInstanceInfo2GetPropertyListFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2GetPropertyListFuncHandler.
+  GetScriptInstanceInfo2GetPropertyListFuncCallback() ScriptInstanceGetPropertyList
+  // SetScriptInstanceInfo2GetPropertyStateFuncHandler sets the callback which will be used by GetScriptInstanceInfo2GetPropertyStateFuncCallback.
+  SetScriptInstanceInfo2GetPropertyStateFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pAddFunc ScriptInstancePropertyStateAdd, pUserdata unsafe.Pointer, ) )
+  // GetScriptInstanceInfo2GetPropertyStateFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2GetPropertyStateFuncHandler.
+  GetScriptInstanceInfo2GetPropertyStateFuncCallback() ScriptInstanceGetPropertyState
+  // SetScriptInstanceInfo2GetPropertyTypeFuncHandler sets the callback which will be used by GetScriptInstanceInfo2GetPropertyTypeFuncCallback.
+  SetScriptInstanceInfo2GetPropertyTypeFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rIsValid *uint8, ) VariantType)
+  // GetScriptInstanceInfo2GetPropertyTypeFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2GetPropertyTypeFuncHandler.
+  GetScriptInstanceInfo2GetPropertyTypeFuncCallback() ScriptInstanceGetPropertyType
+  // SetScriptInstanceInfo2GetScriptFuncHandler sets the callback which will be used by GetScriptInstanceInfo2GetScriptFuncCallback.
+  SetScriptInstanceInfo2GetScriptFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) ObjectPtr)
+  // GetScriptInstanceInfo2GetScriptFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2GetScriptFuncHandler.
+  GetScriptInstanceInfo2GetScriptFuncCallback() ScriptInstanceGetScript
+  // SetScriptInstanceInfo2HasMethodFuncHandler sets the callback which will be used by GetScriptInstanceInfo2HasMethodFuncCallback.
+  SetScriptInstanceInfo2HasMethodFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool)
+  // GetScriptInstanceInfo2HasMethodFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2HasMethodFuncHandler.
+  GetScriptInstanceInfo2HasMethodFuncCallback() ScriptInstanceHasMethod
+  // SetScriptInstanceInfo2IsPlaceholderFuncHandler sets the callback which will be used by GetScriptInstanceInfo2IsPlaceholderFuncCallback.
+  SetScriptInstanceInfo2IsPlaceholderFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) Bool)
+  // GetScriptInstanceInfo2IsPlaceholderFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2IsPlaceholderFuncHandler.
+  GetScriptInstanceInfo2IsPlaceholderFuncCallback() ScriptInstanceIsPlaceholder
+  // SetScriptInstanceInfo2NotificationFuncHandler sets the callback which will be used by GetScriptInstanceInfo2NotificationFuncCallback.
+  SetScriptInstanceInfo2NotificationFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pWhat int, pReversed Bool, ) )
+  // GetScriptInstanceInfo2NotificationFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2NotificationFuncHandler.
+  GetScriptInstanceInfo2NotificationFuncCallback() ScriptInstanceNotification2
+  // SetScriptInstanceInfo2PropertyCanRevertFuncHandler sets the callback which will be used by GetScriptInstanceInfo2PropertyCanRevertFuncCallback.
+  SetScriptInstanceInfo2PropertyCanRevertFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool)
+  // GetScriptInstanceInfo2PropertyCanRevertFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2PropertyCanRevertFuncHandler.
+  GetScriptInstanceInfo2PropertyCanRevertFuncCallback() ScriptInstancePropertyCanRevert
+  // SetScriptInstanceInfo2PropertyGetRevertFuncHandler sets the callback which will be used by GetScriptInstanceInfo2PropertyGetRevertFuncCallback.
+  SetScriptInstanceInfo2PropertyGetRevertFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool)
+  // GetScriptInstanceInfo2PropertyGetRevertFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2PropertyGetRevertFuncHandler.
+  GetScriptInstanceInfo2PropertyGetRevertFuncCallback() ScriptInstancePropertyGetRevert
+  // SetScriptInstanceInfo2RefcountDecrementedFuncHandler sets the callback which will be used by GetScriptInstanceInfo2RefcountDecrementedFuncCallback.
+  SetScriptInstanceInfo2RefcountDecrementedFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) Bool)
+  // GetScriptInstanceInfo2RefcountDecrementedFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2RefcountDecrementedFuncHandler.
+  GetScriptInstanceInfo2RefcountDecrementedFuncCallback() ScriptInstanceRefCountDecremented
+  // SetScriptInstanceInfo2RefcountIncrementedFuncHandler sets the callback which will be used by GetScriptInstanceInfo2RefcountIncrementedFuncCallback.
+  SetScriptInstanceInfo2RefcountIncrementedFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) )
+  // GetScriptInstanceInfo2RefcountIncrementedFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2RefcountIncrementedFuncHandler.
+  GetScriptInstanceInfo2RefcountIncrementedFuncCallback() ScriptInstanceRefCountIncremented
+  // SetScriptInstanceInfo2SetFallbackFuncHandler sets the callback which will be used by GetScriptInstanceInfo2SetFallbackFuncCallback.
+  SetScriptInstanceInfo2SetFallbackFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool)
+  // GetScriptInstanceInfo2SetFallbackFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2SetFallbackFuncHandler.
+  GetScriptInstanceInfo2SetFallbackFuncCallback() ScriptInstanceSet
+  // SetScriptInstanceInfo2SetFuncHandler sets the callback which will be used by GetScriptInstanceInfo2SetFuncCallback.
+  SetScriptInstanceInfo2SetFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool)
+  // GetScriptInstanceInfo2SetFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2SetFuncHandler.
+  GetScriptInstanceInfo2SetFuncCallback() ScriptInstanceSet
+  // SetScriptInstanceInfo2ToStringFuncHandler sets the callback which will be used by GetScriptInstanceInfo2ToStringFuncCallback.
+  SetScriptInstanceInfo2ToStringFuncHandler(fn func(pInstance ScriptInstanceDataPtr, rIsValid *uint8, rOut StringPtr, ) )
+  // GetScriptInstanceInfo2ToStringFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2ToStringFuncHandler.
+  GetScriptInstanceInfo2ToStringFuncCallback() ScriptInstanceToString
+  // SetScriptInstanceInfo2ValidatePropertyFuncHandler sets the callback which will be used by GetScriptInstanceInfo2ValidatePropertyFuncCallback.
+  SetScriptInstanceInfo2ValidatePropertyFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pProperty *PropertyInfo, ) Bool)
+  // GetScriptInstanceInfo2ValidatePropertyFuncCallback is a C-callable function that will call the Go callback set by SetScriptInstanceInfo2ValidatePropertyFuncHandler.
+  GetScriptInstanceInfo2ValidatePropertyFuncCallback() ScriptInstanceValidateProperty
 }
 
 type callbacksImpl struct {
-  fnClassCreationInfoCreateInstanceFunc func(pUserdata unsafe.Pointer, ) ObjectPtr
-  fnClassCreationInfoFreeInstanceFunc func(pUserdata unsafe.Pointer, pInstance ClassInstancePtr, ) 
-  fnClassCreationInfoFreePropertyListFunc func(pInstance ClassInstancePtr, pList *PropertyInfo, ) 
+  fnCallableCustomInfoCallFunc func(callableUserdata unsafe.Pointer, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, )
+  fnCallableCustomInfoEqualFunc func(callableUserdataA unsafe.Pointer, callableUserdataB unsafe.Pointer, ) Bool
+  fnCallableCustomInfoFreeFunc func(callableUserdata unsafe.Pointer, )
+  fnCallableCustomInfoHashFunc func(callableUserdata unsafe.Pointer, ) uint
+  fnCallableCustomInfoIsValidFunc func(callableUserdata unsafe.Pointer, ) Bool
+  fnCallableCustomInfoLessThanFunc func(callableUserdataA unsafe.Pointer, callableUserdataB unsafe.Pointer, ) Bool
+  fnCallableCustomInfoToStringFunc func(callableUserdata unsafe.Pointer, rIsValid *uint8, rOut StringPtr, )
+  fnClassCreationInfoCreateInstanceFunc func(pClassUserdata unsafe.Pointer, ) ObjectPtr
+  fnClassCreationInfoFreeInstanceFunc func(pClassUserdata unsafe.Pointer, pInstance ClassInstancePtr, )
+  fnClassCreationInfoFreePropertyListFunc func(pInstance ClassInstancePtr, pList *PropertyInfo, )
   fnClassCreationInfoGetFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnClassCreationInfoGetPropertyListFunc func(pInstance ClassInstancePtr, rCount *uint, ) *PropertyInfo
   fnClassCreationInfoGetRidFunc func(pInstance ClassInstancePtr, ) uint64
-  fnClassCreationInfoGetVirtualFunc func(pUserdata unsafe.Pointer, pName ConstStringNamePtr, ) ClassCallVirtual
-  fnClassCreationInfoNotificationFunc func(pInstance ClassInstancePtr, pWhat int, ) 
+  fnClassCreationInfoGetVirtualFunc func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) ClassCallVirtual
+  fnClassCreationInfoNotificationFunc func(pInstance ClassInstancePtr, pWhat int, )
   fnClassCreationInfoPropertyCanRevertFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, ) Bool
   fnClassCreationInfoPropertyGetRevertFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
-  fnClassCreationInfoReferenceFunc func(pInstance ClassInstancePtr, ) 
+  fnClassCreationInfoReferenceFunc func(pInstance ClassInstancePtr, )
   fnClassCreationInfoSetFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
-  fnClassCreationInfoToStringFunc func(pInstance ClassInstancePtr, rIsValid *uint8, pOut StringPtr, ) 
-  fnClassCreationInfoUnreferenceFunc func(pInstance ClassInstancePtr, ) 
-  fnClassMethodInfoCallFunc func(methodUserdata unsafe.Pointer, pInstance ClassInstancePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) 
-  fnClassMethodInfoPtrcallFunc func(methodUserdata unsafe.Pointer, pInstance ClassInstancePtr, pArgs *ConstTypePtr, rRet TypePtr, ) 
-  fnInitializationDeinitialize func(userdata unsafe.Pointer, pLevel InitializationLevel, ) 
-  fnInitializationInitialize func(userdata unsafe.Pointer, pLevel InitializationLevel, ) 
+  fnClassCreationInfoToStringFunc func(pInstance ClassInstancePtr, rIsValid *uint8, pOut StringPtr, )
+  fnClassCreationInfoUnreferenceFunc func(pInstance ClassInstancePtr, )
+  fnClassCreationInfo2CallVirtualWithDataFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, pVirtualCallUserdata unsafe.Pointer, pArgs *ConstTypePtr, rRet TypePtr, )
+  fnClassCreationInfo2CreateInstanceFunc func(pClassUserdata unsafe.Pointer, ) ObjectPtr
+  fnClassCreationInfo2FreeInstanceFunc func(pClassUserdata unsafe.Pointer, pInstance ClassInstancePtr, )
+  fnClassCreationInfo2FreePropertyListFunc func(pInstance ClassInstancePtr, pList *PropertyInfo, )
+  fnClassCreationInfo2GetFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
+  fnClassCreationInfo2GetPropertyListFunc func(pInstance ClassInstancePtr, rCount *uint, ) *PropertyInfo
+  fnClassCreationInfo2GetRidFunc func(pInstance ClassInstancePtr, ) uint64
+  fnClassCreationInfo2GetVirtualCallDataFunc func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) unsafe.Pointer
+  fnClassCreationInfo2GetVirtualFunc func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) ClassCallVirtual
+  fnClassCreationInfo2NotificationFunc func(pInstance ClassInstancePtr, pWhat int, pReversed Bool, )
+  fnClassCreationInfo2PropertyCanRevertFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, ) Bool
+  fnClassCreationInfo2PropertyGetRevertFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
+  fnClassCreationInfo2RecreateInstanceFunc func(pClassUserdata unsafe.Pointer, pObject ObjectPtr, ) ClassInstancePtr
+  fnClassCreationInfo2ReferenceFunc func(pInstance ClassInstancePtr, )
+  fnClassCreationInfo2SetFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
+  fnClassCreationInfo2ToStringFunc func(pInstance ClassInstancePtr, rIsValid *uint8, pOut StringPtr, )
+  fnClassCreationInfo2UnreferenceFunc func(pInstance ClassInstancePtr, )
+  fnClassCreationInfo2ValidatePropertyFunc func(pInstance ClassInstancePtr, pProperty *PropertyInfo, ) Bool
+  fnClassMethodInfoCallFunc func(methodUserdata unsafe.Pointer, pInstance ClassInstancePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, )
+  fnClassMethodInfoPtrcallFunc func(methodUserdata unsafe.Pointer, pInstance ClassInstancePtr, pArgs *ConstTypePtr, rRet TypePtr, )
+  fnInitializationDeinitialize func(userdata unsafe.Pointer, pLevel InitializationLevel, )
+  fnInitializationInitialize func(userdata unsafe.Pointer, pLevel InitializationLevel, )
   fnInstanceBindingCallbacksCreateCallback func(pToken unsafe.Pointer, pInstance unsafe.Pointer, ) unsafe.Pointer
-  fnInstanceBindingCallbacksFreeCallback func(pToken unsafe.Pointer, pInstance unsafe.Pointer, pBinding unsafe.Pointer, ) 
+  fnInstanceBindingCallbacksFreeCallback func(pToken unsafe.Pointer, pInstance unsafe.Pointer, pBinding unsafe.Pointer, )
   fnInstanceBindingCallbacksReferenceCallback func(pToken unsafe.Pointer, pBinding unsafe.Pointer, pReference Bool, ) Bool
-  fnScriptInstanceInfoCallFunc func(pSelf ScriptInstanceDataPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) 
-  fnScriptInstanceInfoFreeFunc func(pInstance ScriptInstanceDataPtr, ) 
-  fnScriptInstanceInfoFreeMethodListFunc func(pInstance ScriptInstanceDataPtr, pList *MethodInfo, ) 
-  fnScriptInstanceInfoFreePropertyListFunc func(pInstance ScriptInstanceDataPtr, pList *PropertyInfo, ) 
+  fnScriptInstanceInfoCallFunc func(pSelf ScriptInstanceDataPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, )
+  fnScriptInstanceInfoFreeFunc func(pInstance ScriptInstanceDataPtr, )
+  fnScriptInstanceInfoFreeMethodListFunc func(pInstance ScriptInstanceDataPtr, pList *MethodInfo, )
+  fnScriptInstanceInfoFreePropertyListFunc func(pInstance ScriptInstanceDataPtr, pList *PropertyInfo, )
   fnScriptInstanceInfoGetFallbackFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnScriptInstanceInfoGetFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnScriptInstanceInfoGetLanguageFunc func(pInstance ScriptInstanceDataPtr, ) ScriptLanguagePtr
   fnScriptInstanceInfoGetMethodListFunc func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *MethodInfo
   fnScriptInstanceInfoGetOwnerFunc func(pInstance ScriptInstanceDataPtr, ) ObjectPtr
   fnScriptInstanceInfoGetPropertyListFunc func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *PropertyInfo
-  fnScriptInstanceInfoGetPropertyStateFunc func(pInstance ScriptInstanceDataPtr, pAddFunc ScriptInstancePropertyStateAdd, pUserdata unsafe.Pointer, ) 
+  fnScriptInstanceInfoGetPropertyStateFunc func(pInstance ScriptInstanceDataPtr, pAddFunc ScriptInstancePropertyStateAdd, pUserdata unsafe.Pointer, )
   fnScriptInstanceInfoGetPropertyTypeFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rIsValid *uint8, ) VariantType
   fnScriptInstanceInfoGetScriptFunc func(pInstance ScriptInstanceDataPtr, ) ObjectPtr
   fnScriptInstanceInfoHasMethodFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool
   fnScriptInstanceInfoIsPlaceholderFunc func(pInstance ScriptInstanceDataPtr, ) Bool
-  fnScriptInstanceInfoNotificationFunc func(pInstance ScriptInstanceDataPtr, pWhat int, ) 
+  fnScriptInstanceInfoNotificationFunc func(pInstance ScriptInstanceDataPtr, pWhat int, )
   fnScriptInstanceInfoPropertyCanRevertFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool
   fnScriptInstanceInfoPropertyGetRevertFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnScriptInstanceInfoRefcountDecrementedFunc func(pInstance ScriptInstanceDataPtr, ) Bool
-  fnScriptInstanceInfoRefcountIncrementedFunc func(pInstance ScriptInstanceDataPtr, ) 
+  fnScriptInstanceInfoRefcountIncrementedFunc func(pInstance ScriptInstanceDataPtr, )
   fnScriptInstanceInfoSetFallbackFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
   fnScriptInstanceInfoSetFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
-  fnScriptInstanceInfoToStringFunc func(pInstance ScriptInstanceDataPtr, rIsValid *uint8, rOut StringPtr, ) 
+  fnScriptInstanceInfoToStringFunc func(pInstance ScriptInstanceDataPtr, rIsValid *uint8, rOut StringPtr, )
+  fnScriptInstanceInfo2CallFunc func(pSelf ScriptInstanceDataPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, )
+  fnScriptInstanceInfo2FreeFunc func(pInstance ScriptInstanceDataPtr, )
+  fnScriptInstanceInfo2FreeMethodListFunc func(pInstance ScriptInstanceDataPtr, pList *MethodInfo, )
+  fnScriptInstanceInfo2FreePropertyListFunc func(pInstance ScriptInstanceDataPtr, pList *PropertyInfo, )
+  fnScriptInstanceInfo2GetClassCategoryFunc func(pInstance ScriptInstanceDataPtr, pClassCategory *PropertyInfo, ) Bool
+  fnScriptInstanceInfo2GetFallbackFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
+  fnScriptInstanceInfo2GetFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
+  fnScriptInstanceInfo2GetLanguageFunc func(pInstance ScriptInstanceDataPtr, ) ScriptLanguagePtr
+  fnScriptInstanceInfo2GetMethodListFunc func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *MethodInfo
+  fnScriptInstanceInfo2GetOwnerFunc func(pInstance ScriptInstanceDataPtr, ) ObjectPtr
+  fnScriptInstanceInfo2GetPropertyListFunc func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *PropertyInfo
+  fnScriptInstanceInfo2GetPropertyStateFunc func(pInstance ScriptInstanceDataPtr, pAddFunc ScriptInstancePropertyStateAdd, pUserdata unsafe.Pointer, )
+  fnScriptInstanceInfo2GetPropertyTypeFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rIsValid *uint8, ) VariantType
+  fnScriptInstanceInfo2GetScriptFunc func(pInstance ScriptInstanceDataPtr, ) ObjectPtr
+  fnScriptInstanceInfo2HasMethodFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool
+  fnScriptInstanceInfo2IsPlaceholderFunc func(pInstance ScriptInstanceDataPtr, ) Bool
+  fnScriptInstanceInfo2NotificationFunc func(pInstance ScriptInstanceDataPtr, pWhat int, pReversed Bool, )
+  fnScriptInstanceInfo2PropertyCanRevertFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool
+  fnScriptInstanceInfo2PropertyGetRevertFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
+  fnScriptInstanceInfo2RefcountDecrementedFunc func(pInstance ScriptInstanceDataPtr, ) Bool
+  fnScriptInstanceInfo2RefcountIncrementedFunc func(pInstance ScriptInstanceDataPtr, )
+  fnScriptInstanceInfo2SetFallbackFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
+  fnScriptInstanceInfo2SetFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
+  fnScriptInstanceInfo2ToStringFunc func(pInstance ScriptInstanceDataPtr, rIsValid *uint8, rOut StringPtr, )
+  fnScriptInstanceInfo2ValidatePropertyFunc func(pInstance ScriptInstanceDataPtr, pProperty *PropertyInfo, ) Bool
 }
 
 func newCallbacks() *callbacksImpl {
@@ -296,13 +596,108 @@ func transformPointer[T, U any](fn U) T {
 }
 
 
-func (me *callbacksImpl) SetClassCreationInfoCreateInstanceFuncHandler(fn func(pUserdata unsafe.Pointer, ) ObjectPtr) {
+func (me *callbacksImpl) SetCallableCustomInfoCallFuncHandler(fn func(callableUserdata unsafe.Pointer, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) ) {
+  me.fnCallableCustomInfoCallFunc = fn
+}
+
+//export cgo_CallableCustomInfoCallFunc
+func cgo_CallableCustomInfoCallFunc(callableUserdata unsafe.Pointer, pArgs *C.GDExtensionConstVariantPtr, pArgumentCount C.GDExtensionInt, rReturn C.GDExtensionVariantPtr, rError *C.GDExtensionCallError, )  {
+  Callbacks.fnCallableCustomInfoCallFunc(unsafe.Pointer(callableUserdata), *(**ConstVariantPtr)(unsafe.Pointer(&pArgs)), Int(pArgumentCount), VariantPtr(rReturn), (*CallError)(unsafe.Pointer(rError)), )
+}
+
+func (me *callbacksImpl) GetCallableCustomInfoCallFuncCallback() CallableCustomCall {
+  return transformPointer[CallableCustomCall](C.cgo_CallableCustomInfoCallFunc)
+}
+
+func (me *callbacksImpl) SetCallableCustomInfoEqualFuncHandler(fn func(callableUserdataA unsafe.Pointer, callableUserdataB unsafe.Pointer, ) Bool) {
+  me.fnCallableCustomInfoEqualFunc = fn
+}
+
+//export cgo_CallableCustomInfoEqualFunc
+func cgo_CallableCustomInfoEqualFunc(callableUserdataA unsafe.Pointer, callableUserdataB unsafe.Pointer, ) C.GDExtensionBool {
+  ret := Callbacks.fnCallableCustomInfoEqualFunc(unsafe.Pointer(callableUserdataA), unsafe.Pointer(callableUserdataB), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetCallableCustomInfoEqualFuncCallback() CallableCustomEqual {
+  return transformPointer[CallableCustomEqual](C.cgo_CallableCustomInfoEqualFunc)
+}
+
+func (me *callbacksImpl) SetCallableCustomInfoFreeFuncHandler(fn func(callableUserdata unsafe.Pointer, ) ) {
+  me.fnCallableCustomInfoFreeFunc = fn
+}
+
+//export cgo_CallableCustomInfoFreeFunc
+func cgo_CallableCustomInfoFreeFunc(callableUserdata unsafe.Pointer, )  {
+  Callbacks.fnCallableCustomInfoFreeFunc(unsafe.Pointer(callableUserdata), )
+}
+
+func (me *callbacksImpl) GetCallableCustomInfoFreeFuncCallback() CallableCustomFree {
+  return transformPointer[CallableCustomFree](C.cgo_CallableCustomInfoFreeFunc)
+}
+
+func (me *callbacksImpl) SetCallableCustomInfoHashFuncHandler(fn func(callableUserdata unsafe.Pointer, ) uint) {
+  me.fnCallableCustomInfoHashFunc = fn
+}
+
+//export cgo_CallableCustomInfoHashFunc
+func cgo_CallableCustomInfoHashFunc(callableUserdata unsafe.Pointer, ) C.uint32_t {
+  ret := Callbacks.fnCallableCustomInfoHashFunc(unsafe.Pointer(callableUserdata), )
+  return C.uint32_t(ret)
+}
+
+func (me *callbacksImpl) GetCallableCustomInfoHashFuncCallback() CallableCustomHash {
+  return transformPointer[CallableCustomHash](C.cgo_CallableCustomInfoHashFunc)
+}
+
+func (me *callbacksImpl) SetCallableCustomInfoIsValidFuncHandler(fn func(callableUserdata unsafe.Pointer, ) Bool) {
+  me.fnCallableCustomInfoIsValidFunc = fn
+}
+
+//export cgo_CallableCustomInfoIsValidFunc
+func cgo_CallableCustomInfoIsValidFunc(callableUserdata unsafe.Pointer, ) C.GDExtensionBool {
+  ret := Callbacks.fnCallableCustomInfoIsValidFunc(unsafe.Pointer(callableUserdata), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetCallableCustomInfoIsValidFuncCallback() CallableCustomIsValid {
+  return transformPointer[CallableCustomIsValid](C.cgo_CallableCustomInfoIsValidFunc)
+}
+
+func (me *callbacksImpl) SetCallableCustomInfoLessThanFuncHandler(fn func(callableUserdataA unsafe.Pointer, callableUserdataB unsafe.Pointer, ) Bool) {
+  me.fnCallableCustomInfoLessThanFunc = fn
+}
+
+//export cgo_CallableCustomInfoLessThanFunc
+func cgo_CallableCustomInfoLessThanFunc(callableUserdataA unsafe.Pointer, callableUserdataB unsafe.Pointer, ) C.GDExtensionBool {
+  ret := Callbacks.fnCallableCustomInfoLessThanFunc(unsafe.Pointer(callableUserdataA), unsafe.Pointer(callableUserdataB), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetCallableCustomInfoLessThanFuncCallback() CallableCustomLessThan {
+  return transformPointer[CallableCustomLessThan](C.cgo_CallableCustomInfoLessThanFunc)
+}
+
+func (me *callbacksImpl) SetCallableCustomInfoToStringFuncHandler(fn func(callableUserdata unsafe.Pointer, rIsValid *uint8, rOut StringPtr, ) ) {
+  me.fnCallableCustomInfoToStringFunc = fn
+}
+
+//export cgo_CallableCustomInfoToStringFunc
+func cgo_CallableCustomInfoToStringFunc(callableUserdata unsafe.Pointer, rIsValid *C.uint8_t, rOut C.GDExtensionStringPtr, )  {
+  Callbacks.fnCallableCustomInfoToStringFunc(unsafe.Pointer(callableUserdata), *(**uint8)(unsafe.Pointer(&rIsValid)), StringPtr(rOut), )
+}
+
+func (me *callbacksImpl) GetCallableCustomInfoToStringFuncCallback() CallableCustomToString {
+  return transformPointer[CallableCustomToString](C.cgo_CallableCustomInfoToStringFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfoCreateInstanceFuncHandler(fn func(pClassUserdata unsafe.Pointer, ) ObjectPtr) {
   me.fnClassCreationInfoCreateInstanceFunc = fn
 }
 
 //export cgo_ClassCreationInfoCreateInstanceFunc
-func cgo_ClassCreationInfoCreateInstanceFunc(pUserdata unsafe.Pointer, ) C.GDExtensionObjectPtr {
-  ret := Callbacks.fnClassCreationInfoCreateInstanceFunc(unsafe.Pointer(pUserdata), )
+func cgo_ClassCreationInfoCreateInstanceFunc(pClassUserdata unsafe.Pointer, ) C.GDExtensionObjectPtr {
+  ret := Callbacks.fnClassCreationInfoCreateInstanceFunc(unsafe.Pointer(pClassUserdata), )
   return C.GDExtensionObjectPtr(ret)
 }
 
@@ -310,13 +705,13 @@ func (me *callbacksImpl) GetClassCreationInfoCreateInstanceFuncCallback() ClassC
   return transformPointer[ClassCreateInstance](C.cgo_ClassCreationInfoCreateInstanceFunc)
 }
 
-func (me *callbacksImpl) SetClassCreationInfoFreeInstanceFuncHandler(fn func(pUserdata unsafe.Pointer, pInstance ClassInstancePtr, ) ) {
+func (me *callbacksImpl) SetClassCreationInfoFreeInstanceFuncHandler(fn func(pClassUserdata unsafe.Pointer, pInstance ClassInstancePtr, ) ) {
   me.fnClassCreationInfoFreeInstanceFunc = fn
 }
 
 //export cgo_ClassCreationInfoFreeInstanceFunc
-func cgo_ClassCreationInfoFreeInstanceFunc(pUserdata unsafe.Pointer, pInstance C.GDExtensionClassInstancePtr, )  {
-  Callbacks.fnClassCreationInfoFreeInstanceFunc(unsafe.Pointer(pUserdata), ClassInstancePtr(pInstance), )
+func cgo_ClassCreationInfoFreeInstanceFunc(pClassUserdata unsafe.Pointer, pInstance C.GDExtensionClassInstancePtr, )  {
+  Callbacks.fnClassCreationInfoFreeInstanceFunc(unsafe.Pointer(pClassUserdata), ClassInstancePtr(pInstance), )
 }
 
 func (me *callbacksImpl) GetClassCreationInfoFreeInstanceFuncCallback() ClassFreeInstance {
@@ -378,13 +773,13 @@ func (me *callbacksImpl) GetClassCreationInfoGetRidFuncCallback() ClassGetRID {
   return transformPointer[ClassGetRID](C.cgo_ClassCreationInfoGetRidFunc)
 }
 
-func (me *callbacksImpl) SetClassCreationInfoGetVirtualFuncHandler(fn func(pUserdata unsafe.Pointer, pName ConstStringNamePtr, ) ClassCallVirtual) {
+func (me *callbacksImpl) SetClassCreationInfoGetVirtualFuncHandler(fn func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) ClassCallVirtual) {
   me.fnClassCreationInfoGetVirtualFunc = fn
 }
 
 //export cgo_ClassCreationInfoGetVirtualFunc
-func cgo_ClassCreationInfoGetVirtualFunc(pUserdata unsafe.Pointer, pName C.GDExtensionConstStringNamePtr, ) C.GDExtensionClassCallVirtual {
-  ret := Callbacks.fnClassCreationInfoGetVirtualFunc(unsafe.Pointer(pUserdata), ConstStringNamePtr(pName), )
+func cgo_ClassCreationInfoGetVirtualFunc(pClassUserdata unsafe.Pointer, pName C.GDExtensionConstStringNamePtr, ) C.GDExtensionClassCallVirtual {
+  ret := Callbacks.fnClassCreationInfoGetVirtualFunc(unsafe.Pointer(pClassUserdata), ConstStringNamePtr(pName), )
   return C.GDExtensionClassCallVirtual(ret)
 }
 
@@ -484,6 +879,251 @@ func cgo_ClassCreationInfoUnreferenceFunc(pInstance C.GDExtensionClassInstancePt
 
 func (me *callbacksImpl) GetClassCreationInfoUnreferenceFuncCallback() ClassUnreference {
   return transformPointer[ClassUnreference](C.cgo_ClassCreationInfoUnreferenceFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2CallVirtualWithDataFuncHandler(fn func(pInstance ClassInstancePtr, pName ConstStringNamePtr, pVirtualCallUserdata unsafe.Pointer, pArgs *ConstTypePtr, rRet TypePtr, ) ) {
+  me.fnClassCreationInfo2CallVirtualWithDataFunc = fn
+}
+
+//export cgo_ClassCreationInfo2CallVirtualWithDataFunc
+func cgo_ClassCreationInfo2CallVirtualWithDataFunc(pInstance C.GDExtensionClassInstancePtr, pName C.GDExtensionConstStringNamePtr, pVirtualCallUserdata unsafe.Pointer, pArgs *C.GDExtensionConstTypePtr, rRet C.GDExtensionTypePtr, )  {
+  Callbacks.fnClassCreationInfo2CallVirtualWithDataFunc(ClassInstancePtr(pInstance), ConstStringNamePtr(pName), unsafe.Pointer(pVirtualCallUserdata), *(**ConstTypePtr)(unsafe.Pointer(&pArgs)), TypePtr(rRet), )
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2CallVirtualWithDataFuncCallback() ClassCallVirtualWithData {
+  return transformPointer[ClassCallVirtualWithData](C.cgo_ClassCreationInfo2CallVirtualWithDataFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2CreateInstanceFuncHandler(fn func(pClassUserdata unsafe.Pointer, ) ObjectPtr) {
+  me.fnClassCreationInfo2CreateInstanceFunc = fn
+}
+
+//export cgo_ClassCreationInfo2CreateInstanceFunc
+func cgo_ClassCreationInfo2CreateInstanceFunc(pClassUserdata unsafe.Pointer, ) C.GDExtensionObjectPtr {
+  ret := Callbacks.fnClassCreationInfo2CreateInstanceFunc(unsafe.Pointer(pClassUserdata), )
+  return C.GDExtensionObjectPtr(ret)
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2CreateInstanceFuncCallback() ClassCreateInstance {
+  return transformPointer[ClassCreateInstance](C.cgo_ClassCreationInfo2CreateInstanceFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2FreeInstanceFuncHandler(fn func(pClassUserdata unsafe.Pointer, pInstance ClassInstancePtr, ) ) {
+  me.fnClassCreationInfo2FreeInstanceFunc = fn
+}
+
+//export cgo_ClassCreationInfo2FreeInstanceFunc
+func cgo_ClassCreationInfo2FreeInstanceFunc(pClassUserdata unsafe.Pointer, pInstance C.GDExtensionClassInstancePtr, )  {
+  Callbacks.fnClassCreationInfo2FreeInstanceFunc(unsafe.Pointer(pClassUserdata), ClassInstancePtr(pInstance), )
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2FreeInstanceFuncCallback() ClassFreeInstance {
+  return transformPointer[ClassFreeInstance](C.cgo_ClassCreationInfo2FreeInstanceFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2FreePropertyListFuncHandler(fn func(pInstance ClassInstancePtr, pList *PropertyInfo, ) ) {
+  me.fnClassCreationInfo2FreePropertyListFunc = fn
+}
+
+//export cgo_ClassCreationInfo2FreePropertyListFunc
+func cgo_ClassCreationInfo2FreePropertyListFunc(pInstance C.GDExtensionClassInstancePtr, pList *C.GDExtensionPropertyInfo, )  {
+  Callbacks.fnClassCreationInfo2FreePropertyListFunc(ClassInstancePtr(pInstance), (*PropertyInfo)(unsafe.Pointer(pList)), )
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2FreePropertyListFuncCallback() ClassFreePropertyList {
+  return transformPointer[ClassFreePropertyList](C.cgo_ClassCreationInfo2FreePropertyListFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2GetFuncHandler(fn func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool) {
+  me.fnClassCreationInfo2GetFunc = fn
+}
+
+//export cgo_ClassCreationInfo2GetFunc
+func cgo_ClassCreationInfo2GetFunc(pInstance C.GDExtensionClassInstancePtr, pName C.GDExtensionConstStringNamePtr, rRet C.GDExtensionVariantPtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnClassCreationInfo2GetFunc(ClassInstancePtr(pInstance), ConstStringNamePtr(pName), VariantPtr(rRet), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2GetFuncCallback() ClassGet {
+  return transformPointer[ClassGet](C.cgo_ClassCreationInfo2GetFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2GetPropertyListFuncHandler(fn func(pInstance ClassInstancePtr, rCount *uint, ) *PropertyInfo) {
+  me.fnClassCreationInfo2GetPropertyListFunc = fn
+}
+
+//export cgo_ClassCreationInfo2GetPropertyListFunc
+func cgo_ClassCreationInfo2GetPropertyListFunc(pInstance C.GDExtensionClassInstancePtr, rCount *C.unsigned, ) *C.GDExtensionPropertyInfo {
+  ret := Callbacks.fnClassCreationInfo2GetPropertyListFunc(ClassInstancePtr(pInstance), *(**uint)(unsafe.Pointer(&rCount)), )
+  return (*C.GDExtensionPropertyInfo)(unsafe.Pointer(ret))
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2GetPropertyListFuncCallback() ClassGetPropertyList {
+  return transformPointer[ClassGetPropertyList](C.cgo_ClassCreationInfo2GetPropertyListFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2GetRidFuncHandler(fn func(pInstance ClassInstancePtr, ) uint64) {
+  me.fnClassCreationInfo2GetRidFunc = fn
+}
+
+//export cgo_ClassCreationInfo2GetRidFunc
+func cgo_ClassCreationInfo2GetRidFunc(pInstance C.GDExtensionClassInstancePtr, ) C.uint64_t {
+  ret := Callbacks.fnClassCreationInfo2GetRidFunc(ClassInstancePtr(pInstance), )
+  return C.uint64_t(ret)
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2GetRidFuncCallback() ClassGetRID {
+  return transformPointer[ClassGetRID](C.cgo_ClassCreationInfo2GetRidFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2GetVirtualCallDataFuncHandler(fn func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) unsafe.Pointer) {
+  me.fnClassCreationInfo2GetVirtualCallDataFunc = fn
+}
+
+//export cgo_ClassCreationInfo2GetVirtualCallDataFunc
+func cgo_ClassCreationInfo2GetVirtualCallDataFunc(pClassUserdata unsafe.Pointer, pName C.GDExtensionConstStringNamePtr, ) unsafe.Pointer {
+  ret := Callbacks.fnClassCreationInfo2GetVirtualCallDataFunc(unsafe.Pointer(pClassUserdata), ConstStringNamePtr(pName), )
+  return ret
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2GetVirtualCallDataFuncCallback() ClassGetVirtualCallData {
+  return transformPointer[ClassGetVirtualCallData](C.cgo_ClassCreationInfo2GetVirtualCallDataFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2GetVirtualFuncHandler(fn func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) ClassCallVirtual) {
+  me.fnClassCreationInfo2GetVirtualFunc = fn
+}
+
+//export cgo_ClassCreationInfo2GetVirtualFunc
+func cgo_ClassCreationInfo2GetVirtualFunc(pClassUserdata unsafe.Pointer, pName C.GDExtensionConstStringNamePtr, ) C.GDExtensionClassCallVirtual {
+  ret := Callbacks.fnClassCreationInfo2GetVirtualFunc(unsafe.Pointer(pClassUserdata), ConstStringNamePtr(pName), )
+  return C.GDExtensionClassCallVirtual(ret)
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2GetVirtualFuncCallback() ClassGetVirtual {
+  return transformPointer[ClassGetVirtual](C.cgo_ClassCreationInfo2GetVirtualFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2NotificationFuncHandler(fn func(pInstance ClassInstancePtr, pWhat int, pReversed Bool, ) ) {
+  me.fnClassCreationInfo2NotificationFunc = fn
+}
+
+//export cgo_ClassCreationInfo2NotificationFunc
+func cgo_ClassCreationInfo2NotificationFunc(pInstance C.GDExtensionClassInstancePtr, pWhat C.int32_t, pReversed C.GDExtensionBool, )  {
+  Callbacks.fnClassCreationInfo2NotificationFunc(ClassInstancePtr(pInstance), int(pWhat), Bool(pReversed), )
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2NotificationFuncCallback() ClassNotification2 {
+  return transformPointer[ClassNotification2](C.cgo_ClassCreationInfo2NotificationFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2PropertyCanRevertFuncHandler(fn func(pInstance ClassInstancePtr, pName ConstStringNamePtr, ) Bool) {
+  me.fnClassCreationInfo2PropertyCanRevertFunc = fn
+}
+
+//export cgo_ClassCreationInfo2PropertyCanRevertFunc
+func cgo_ClassCreationInfo2PropertyCanRevertFunc(pInstance C.GDExtensionClassInstancePtr, pName C.GDExtensionConstStringNamePtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnClassCreationInfo2PropertyCanRevertFunc(ClassInstancePtr(pInstance), ConstStringNamePtr(pName), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2PropertyCanRevertFuncCallback() ClassPropertyCanRevert {
+  return transformPointer[ClassPropertyCanRevert](C.cgo_ClassCreationInfo2PropertyCanRevertFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2PropertyGetRevertFuncHandler(fn func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool) {
+  me.fnClassCreationInfo2PropertyGetRevertFunc = fn
+}
+
+//export cgo_ClassCreationInfo2PropertyGetRevertFunc
+func cgo_ClassCreationInfo2PropertyGetRevertFunc(pInstance C.GDExtensionClassInstancePtr, pName C.GDExtensionConstStringNamePtr, rRet C.GDExtensionVariantPtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnClassCreationInfo2PropertyGetRevertFunc(ClassInstancePtr(pInstance), ConstStringNamePtr(pName), VariantPtr(rRet), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2PropertyGetRevertFuncCallback() ClassPropertyGetRevert {
+  return transformPointer[ClassPropertyGetRevert](C.cgo_ClassCreationInfo2PropertyGetRevertFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2RecreateInstanceFuncHandler(fn func(pClassUserdata unsafe.Pointer, pObject ObjectPtr, ) ClassInstancePtr) {
+  me.fnClassCreationInfo2RecreateInstanceFunc = fn
+}
+
+//export cgo_ClassCreationInfo2RecreateInstanceFunc
+func cgo_ClassCreationInfo2RecreateInstanceFunc(pClassUserdata unsafe.Pointer, pObject C.GDExtensionObjectPtr, ) C.GDExtensionClassInstancePtr {
+  ret := Callbacks.fnClassCreationInfo2RecreateInstanceFunc(unsafe.Pointer(pClassUserdata), ObjectPtr(pObject), )
+  return C.GDExtensionClassInstancePtr(ret)
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2RecreateInstanceFuncCallback() ClassRecreateInstance {
+  return transformPointer[ClassRecreateInstance](C.cgo_ClassCreationInfo2RecreateInstanceFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2ReferenceFuncHandler(fn func(pInstance ClassInstancePtr, ) ) {
+  me.fnClassCreationInfo2ReferenceFunc = fn
+}
+
+//export cgo_ClassCreationInfo2ReferenceFunc
+func cgo_ClassCreationInfo2ReferenceFunc(pInstance C.GDExtensionClassInstancePtr, )  {
+  Callbacks.fnClassCreationInfo2ReferenceFunc(ClassInstancePtr(pInstance), )
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2ReferenceFuncCallback() ClassReference {
+  return transformPointer[ClassReference](C.cgo_ClassCreationInfo2ReferenceFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2SetFuncHandler(fn func(pInstance ClassInstancePtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool) {
+  me.fnClassCreationInfo2SetFunc = fn
+}
+
+//export cgo_ClassCreationInfo2SetFunc
+func cgo_ClassCreationInfo2SetFunc(pInstance C.GDExtensionClassInstancePtr, pName C.GDExtensionConstStringNamePtr, pValue C.GDExtensionConstVariantPtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnClassCreationInfo2SetFunc(ClassInstancePtr(pInstance), ConstStringNamePtr(pName), ConstVariantPtr(pValue), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2SetFuncCallback() ClassSet {
+  return transformPointer[ClassSet](C.cgo_ClassCreationInfo2SetFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2ToStringFuncHandler(fn func(pInstance ClassInstancePtr, rIsValid *uint8, pOut StringPtr, ) ) {
+  me.fnClassCreationInfo2ToStringFunc = fn
+}
+
+//export cgo_ClassCreationInfo2ToStringFunc
+func cgo_ClassCreationInfo2ToStringFunc(pInstance C.GDExtensionClassInstancePtr, rIsValid *C.uint8_t, pOut C.GDExtensionStringPtr, )  {
+  Callbacks.fnClassCreationInfo2ToStringFunc(ClassInstancePtr(pInstance), *(**uint8)(unsafe.Pointer(&rIsValid)), StringPtr(pOut), )
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2ToStringFuncCallback() ClassToString {
+  return transformPointer[ClassToString](C.cgo_ClassCreationInfo2ToStringFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2UnreferenceFuncHandler(fn func(pInstance ClassInstancePtr, ) ) {
+  me.fnClassCreationInfo2UnreferenceFunc = fn
+}
+
+//export cgo_ClassCreationInfo2UnreferenceFunc
+func cgo_ClassCreationInfo2UnreferenceFunc(pInstance C.GDExtensionClassInstancePtr, )  {
+  Callbacks.fnClassCreationInfo2UnreferenceFunc(ClassInstancePtr(pInstance), )
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2UnreferenceFuncCallback() ClassUnreference {
+  return transformPointer[ClassUnreference](C.cgo_ClassCreationInfo2UnreferenceFunc)
+}
+
+func (me *callbacksImpl) SetClassCreationInfo2ValidatePropertyFuncHandler(fn func(pInstance ClassInstancePtr, pProperty *PropertyInfo, ) Bool) {
+  me.fnClassCreationInfo2ValidatePropertyFunc = fn
+}
+
+//export cgo_ClassCreationInfo2ValidatePropertyFunc
+func cgo_ClassCreationInfo2ValidatePropertyFunc(pInstance C.GDExtensionClassInstancePtr, pProperty *C.GDExtensionPropertyInfo, ) C.GDExtensionBool {
+  ret := Callbacks.fnClassCreationInfo2ValidatePropertyFunc(ClassInstancePtr(pInstance), (*PropertyInfo)(unsafe.Pointer(pProperty)), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetClassCreationInfo2ValidatePropertyFuncCallback() ClassValidateProperty {
+  return transformPointer[ClassValidateProperty](C.cgo_ClassCreationInfo2ValidatePropertyFunc)
 }
 
 func (me *callbacksImpl) SetClassMethodInfoCallFuncHandler(fn func(methodUserdata unsafe.Pointer, pInstance ClassInstancePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) ) {
@@ -893,3 +1533,344 @@ func (me *callbacksImpl) GetScriptInstanceInfoToStringFuncCallback() ScriptInsta
   return transformPointer[ScriptInstanceToString](C.cgo_ScriptInstanceInfoToStringFunc)
 }
 
+func (me *callbacksImpl) SetScriptInstanceInfo2CallFuncHandler(fn func(pSelf ScriptInstanceDataPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) ) {
+  me.fnScriptInstanceInfo2CallFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2CallFunc
+func cgo_ScriptInstanceInfo2CallFunc(pSelf C.GDExtensionScriptInstanceDataPtr, pMethod C.GDExtensionConstStringNamePtr, pArgs *C.GDExtensionConstVariantPtr, pArgumentCount C.GDExtensionInt, rReturn C.GDExtensionVariantPtr, rError *C.GDExtensionCallError, )  {
+  Callbacks.fnScriptInstanceInfo2CallFunc(ScriptInstanceDataPtr(pSelf), ConstStringNamePtr(pMethod), *(**ConstVariantPtr)(unsafe.Pointer(&pArgs)), Int(pArgumentCount), VariantPtr(rReturn), (*CallError)(unsafe.Pointer(rError)), )
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2CallFuncCallback() ScriptInstanceCall {
+  return transformPointer[ScriptInstanceCall](C.cgo_ScriptInstanceInfo2CallFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2FreeFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) ) {
+  me.fnScriptInstanceInfo2FreeFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2FreeFunc
+func cgo_ScriptInstanceInfo2FreeFunc(pInstance C.GDExtensionScriptInstanceDataPtr, )  {
+  Callbacks.fnScriptInstanceInfo2FreeFunc(ScriptInstanceDataPtr(pInstance), )
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2FreeFuncCallback() ScriptInstanceFree {
+  return transformPointer[ScriptInstanceFree](C.cgo_ScriptInstanceInfo2FreeFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2FreeMethodListFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pList *MethodInfo, ) ) {
+  me.fnScriptInstanceInfo2FreeMethodListFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2FreeMethodListFunc
+func cgo_ScriptInstanceInfo2FreeMethodListFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pList *C.GDExtensionMethodInfo, )  {
+  Callbacks.fnScriptInstanceInfo2FreeMethodListFunc(ScriptInstanceDataPtr(pInstance), (*MethodInfo)(unsafe.Pointer(pList)), )
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2FreeMethodListFuncCallback() ScriptInstanceFreeMethodList {
+  return transformPointer[ScriptInstanceFreeMethodList](C.cgo_ScriptInstanceInfo2FreeMethodListFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2FreePropertyListFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pList *PropertyInfo, ) ) {
+  me.fnScriptInstanceInfo2FreePropertyListFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2FreePropertyListFunc
+func cgo_ScriptInstanceInfo2FreePropertyListFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pList *C.GDExtensionPropertyInfo, )  {
+  Callbacks.fnScriptInstanceInfo2FreePropertyListFunc(ScriptInstanceDataPtr(pInstance), (*PropertyInfo)(unsafe.Pointer(pList)), )
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2FreePropertyListFuncCallback() ScriptInstanceFreePropertyList {
+  return transformPointer[ScriptInstanceFreePropertyList](C.cgo_ScriptInstanceInfo2FreePropertyListFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2GetClassCategoryFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pClassCategory *PropertyInfo, ) Bool) {
+  me.fnScriptInstanceInfo2GetClassCategoryFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2GetClassCategoryFunc
+func cgo_ScriptInstanceInfo2GetClassCategoryFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pClassCategory *C.GDExtensionPropertyInfo, ) C.GDExtensionBool {
+  ret := Callbacks.fnScriptInstanceInfo2GetClassCategoryFunc(ScriptInstanceDataPtr(pInstance), (*PropertyInfo)(unsafe.Pointer(pClassCategory)), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2GetClassCategoryFuncCallback() ScriptInstanceGetClassCategory {
+  return transformPointer[ScriptInstanceGetClassCategory](C.cgo_ScriptInstanceInfo2GetClassCategoryFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2GetFallbackFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool) {
+  me.fnScriptInstanceInfo2GetFallbackFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2GetFallbackFunc
+func cgo_ScriptInstanceInfo2GetFallbackFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pName C.GDExtensionConstStringNamePtr, rRet C.GDExtensionVariantPtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnScriptInstanceInfo2GetFallbackFunc(ScriptInstanceDataPtr(pInstance), ConstStringNamePtr(pName), VariantPtr(rRet), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2GetFallbackFuncCallback() ScriptInstanceGet {
+  return transformPointer[ScriptInstanceGet](C.cgo_ScriptInstanceInfo2GetFallbackFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2GetFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool) {
+  me.fnScriptInstanceInfo2GetFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2GetFunc
+func cgo_ScriptInstanceInfo2GetFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pName C.GDExtensionConstStringNamePtr, rRet C.GDExtensionVariantPtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnScriptInstanceInfo2GetFunc(ScriptInstanceDataPtr(pInstance), ConstStringNamePtr(pName), VariantPtr(rRet), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2GetFuncCallback() ScriptInstanceGet {
+  return transformPointer[ScriptInstanceGet](C.cgo_ScriptInstanceInfo2GetFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2GetLanguageFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) ScriptLanguagePtr) {
+  me.fnScriptInstanceInfo2GetLanguageFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2GetLanguageFunc
+func cgo_ScriptInstanceInfo2GetLanguageFunc(pInstance C.GDExtensionScriptInstanceDataPtr, ) C.GDExtensionScriptLanguagePtr {
+  ret := Callbacks.fnScriptInstanceInfo2GetLanguageFunc(ScriptInstanceDataPtr(pInstance), )
+  return C.GDExtensionScriptLanguagePtr(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2GetLanguageFuncCallback() ScriptInstanceGetLanguage {
+  return transformPointer[ScriptInstanceGetLanguage](C.cgo_ScriptInstanceInfo2GetLanguageFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2GetMethodListFuncHandler(fn func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *MethodInfo) {
+  me.fnScriptInstanceInfo2GetMethodListFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2GetMethodListFunc
+func cgo_ScriptInstanceInfo2GetMethodListFunc(pInstance C.GDExtensionScriptInstanceDataPtr, rCount *C.unsigned, ) *C.GDExtensionMethodInfo {
+  ret := Callbacks.fnScriptInstanceInfo2GetMethodListFunc(ScriptInstanceDataPtr(pInstance), *(**uint)(unsafe.Pointer(&rCount)), )
+  return (*C.GDExtensionMethodInfo)(unsafe.Pointer(ret))
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2GetMethodListFuncCallback() ScriptInstanceGetMethodList {
+  return transformPointer[ScriptInstanceGetMethodList](C.cgo_ScriptInstanceInfo2GetMethodListFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2GetOwnerFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) ObjectPtr) {
+  me.fnScriptInstanceInfo2GetOwnerFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2GetOwnerFunc
+func cgo_ScriptInstanceInfo2GetOwnerFunc(pInstance C.GDExtensionScriptInstanceDataPtr, ) C.GDExtensionObjectPtr {
+  ret := Callbacks.fnScriptInstanceInfo2GetOwnerFunc(ScriptInstanceDataPtr(pInstance), )
+  return C.GDExtensionObjectPtr(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2GetOwnerFuncCallback() ScriptInstanceGetOwner {
+  return transformPointer[ScriptInstanceGetOwner](C.cgo_ScriptInstanceInfo2GetOwnerFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2GetPropertyListFuncHandler(fn func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *PropertyInfo) {
+  me.fnScriptInstanceInfo2GetPropertyListFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2GetPropertyListFunc
+func cgo_ScriptInstanceInfo2GetPropertyListFunc(pInstance C.GDExtensionScriptInstanceDataPtr, rCount *C.unsigned, ) *C.GDExtensionPropertyInfo {
+  ret := Callbacks.fnScriptInstanceInfo2GetPropertyListFunc(ScriptInstanceDataPtr(pInstance), *(**uint)(unsafe.Pointer(&rCount)), )
+  return (*C.GDExtensionPropertyInfo)(unsafe.Pointer(ret))
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2GetPropertyListFuncCallback() ScriptInstanceGetPropertyList {
+  return transformPointer[ScriptInstanceGetPropertyList](C.cgo_ScriptInstanceInfo2GetPropertyListFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2GetPropertyStateFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pAddFunc ScriptInstancePropertyStateAdd, pUserdata unsafe.Pointer, ) ) {
+  me.fnScriptInstanceInfo2GetPropertyStateFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2GetPropertyStateFunc
+func cgo_ScriptInstanceInfo2GetPropertyStateFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pAddFunc C.GDExtensionScriptInstancePropertyStateAdd, pUserdata unsafe.Pointer, )  {
+  Callbacks.fnScriptInstanceInfo2GetPropertyStateFunc(ScriptInstanceDataPtr(pInstance), ScriptInstancePropertyStateAdd(pAddFunc), unsafe.Pointer(pUserdata), )
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2GetPropertyStateFuncCallback() ScriptInstanceGetPropertyState {
+  return transformPointer[ScriptInstanceGetPropertyState](C.cgo_ScriptInstanceInfo2GetPropertyStateFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2GetPropertyTypeFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rIsValid *uint8, ) VariantType) {
+  me.fnScriptInstanceInfo2GetPropertyTypeFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2GetPropertyTypeFunc
+func cgo_ScriptInstanceInfo2GetPropertyTypeFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pName C.GDExtensionConstStringNamePtr, rIsValid *C.uint8_t, ) C.GDExtensionVariantType {
+  ret := Callbacks.fnScriptInstanceInfo2GetPropertyTypeFunc(ScriptInstanceDataPtr(pInstance), ConstStringNamePtr(pName), *(**uint8)(unsafe.Pointer(&rIsValid)), )
+  return C.GDExtensionVariantType(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2GetPropertyTypeFuncCallback() ScriptInstanceGetPropertyType {
+  return transformPointer[ScriptInstanceGetPropertyType](C.cgo_ScriptInstanceInfo2GetPropertyTypeFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2GetScriptFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) ObjectPtr) {
+  me.fnScriptInstanceInfo2GetScriptFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2GetScriptFunc
+func cgo_ScriptInstanceInfo2GetScriptFunc(pInstance C.GDExtensionScriptInstanceDataPtr, ) C.GDExtensionObjectPtr {
+  ret := Callbacks.fnScriptInstanceInfo2GetScriptFunc(ScriptInstanceDataPtr(pInstance), )
+  return C.GDExtensionObjectPtr(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2GetScriptFuncCallback() ScriptInstanceGetScript {
+  return transformPointer[ScriptInstanceGetScript](C.cgo_ScriptInstanceInfo2GetScriptFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2HasMethodFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool) {
+  me.fnScriptInstanceInfo2HasMethodFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2HasMethodFunc
+func cgo_ScriptInstanceInfo2HasMethodFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pName C.GDExtensionConstStringNamePtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnScriptInstanceInfo2HasMethodFunc(ScriptInstanceDataPtr(pInstance), ConstStringNamePtr(pName), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2HasMethodFuncCallback() ScriptInstanceHasMethod {
+  return transformPointer[ScriptInstanceHasMethod](C.cgo_ScriptInstanceInfo2HasMethodFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2IsPlaceholderFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) Bool) {
+  me.fnScriptInstanceInfo2IsPlaceholderFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2IsPlaceholderFunc
+func cgo_ScriptInstanceInfo2IsPlaceholderFunc(pInstance C.GDExtensionScriptInstanceDataPtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnScriptInstanceInfo2IsPlaceholderFunc(ScriptInstanceDataPtr(pInstance), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2IsPlaceholderFuncCallback() ScriptInstanceIsPlaceholder {
+  return transformPointer[ScriptInstanceIsPlaceholder](C.cgo_ScriptInstanceInfo2IsPlaceholderFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2NotificationFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pWhat int, pReversed Bool, ) ) {
+  me.fnScriptInstanceInfo2NotificationFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2NotificationFunc
+func cgo_ScriptInstanceInfo2NotificationFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pWhat C.int32_t, pReversed C.GDExtensionBool, )  {
+  Callbacks.fnScriptInstanceInfo2NotificationFunc(ScriptInstanceDataPtr(pInstance), int(pWhat), Bool(pReversed), )
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2NotificationFuncCallback() ScriptInstanceNotification2 {
+  return transformPointer[ScriptInstanceNotification2](C.cgo_ScriptInstanceInfo2NotificationFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2PropertyCanRevertFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool) {
+  me.fnScriptInstanceInfo2PropertyCanRevertFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2PropertyCanRevertFunc
+func cgo_ScriptInstanceInfo2PropertyCanRevertFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pName C.GDExtensionConstStringNamePtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnScriptInstanceInfo2PropertyCanRevertFunc(ScriptInstanceDataPtr(pInstance), ConstStringNamePtr(pName), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2PropertyCanRevertFuncCallback() ScriptInstancePropertyCanRevert {
+  return transformPointer[ScriptInstancePropertyCanRevert](C.cgo_ScriptInstanceInfo2PropertyCanRevertFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2PropertyGetRevertFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool) {
+  me.fnScriptInstanceInfo2PropertyGetRevertFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2PropertyGetRevertFunc
+func cgo_ScriptInstanceInfo2PropertyGetRevertFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pName C.GDExtensionConstStringNamePtr, rRet C.GDExtensionVariantPtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnScriptInstanceInfo2PropertyGetRevertFunc(ScriptInstanceDataPtr(pInstance), ConstStringNamePtr(pName), VariantPtr(rRet), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2PropertyGetRevertFuncCallback() ScriptInstancePropertyGetRevert {
+  return transformPointer[ScriptInstancePropertyGetRevert](C.cgo_ScriptInstanceInfo2PropertyGetRevertFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2RefcountDecrementedFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) Bool) {
+  me.fnScriptInstanceInfo2RefcountDecrementedFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2RefcountDecrementedFunc
+func cgo_ScriptInstanceInfo2RefcountDecrementedFunc(pInstance C.GDExtensionScriptInstanceDataPtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnScriptInstanceInfo2RefcountDecrementedFunc(ScriptInstanceDataPtr(pInstance), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2RefcountDecrementedFuncCallback() ScriptInstanceRefCountDecremented {
+  return transformPointer[ScriptInstanceRefCountDecremented](C.cgo_ScriptInstanceInfo2RefcountDecrementedFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2RefcountIncrementedFuncHandler(fn func(pInstance ScriptInstanceDataPtr, ) ) {
+  me.fnScriptInstanceInfo2RefcountIncrementedFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2RefcountIncrementedFunc
+func cgo_ScriptInstanceInfo2RefcountIncrementedFunc(pInstance C.GDExtensionScriptInstanceDataPtr, )  {
+  Callbacks.fnScriptInstanceInfo2RefcountIncrementedFunc(ScriptInstanceDataPtr(pInstance), )
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2RefcountIncrementedFuncCallback() ScriptInstanceRefCountIncremented {
+  return transformPointer[ScriptInstanceRefCountIncremented](C.cgo_ScriptInstanceInfo2RefcountIncrementedFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2SetFallbackFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool) {
+  me.fnScriptInstanceInfo2SetFallbackFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2SetFallbackFunc
+func cgo_ScriptInstanceInfo2SetFallbackFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pName C.GDExtensionConstStringNamePtr, pValue C.GDExtensionConstVariantPtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnScriptInstanceInfo2SetFallbackFunc(ScriptInstanceDataPtr(pInstance), ConstStringNamePtr(pName), ConstVariantPtr(pValue), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2SetFallbackFuncCallback() ScriptInstanceSet {
+  return transformPointer[ScriptInstanceSet](C.cgo_ScriptInstanceInfo2SetFallbackFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2SetFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool) {
+  me.fnScriptInstanceInfo2SetFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2SetFunc
+func cgo_ScriptInstanceInfo2SetFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pName C.GDExtensionConstStringNamePtr, pValue C.GDExtensionConstVariantPtr, ) C.GDExtensionBool {
+  ret := Callbacks.fnScriptInstanceInfo2SetFunc(ScriptInstanceDataPtr(pInstance), ConstStringNamePtr(pName), ConstVariantPtr(pValue), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2SetFuncCallback() ScriptInstanceSet {
+  return transformPointer[ScriptInstanceSet](C.cgo_ScriptInstanceInfo2SetFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2ToStringFuncHandler(fn func(pInstance ScriptInstanceDataPtr, rIsValid *uint8, rOut StringPtr, ) ) {
+  me.fnScriptInstanceInfo2ToStringFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2ToStringFunc
+func cgo_ScriptInstanceInfo2ToStringFunc(pInstance C.GDExtensionScriptInstanceDataPtr, rIsValid *C.uint8_t, rOut C.GDExtensionStringPtr, )  {
+  Callbacks.fnScriptInstanceInfo2ToStringFunc(ScriptInstanceDataPtr(pInstance), *(**uint8)(unsafe.Pointer(&rIsValid)), StringPtr(rOut), )
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2ToStringFuncCallback() ScriptInstanceToString {
+  return transformPointer[ScriptInstanceToString](C.cgo_ScriptInstanceInfo2ToStringFunc)
+}
+
+func (me *callbacksImpl) SetScriptInstanceInfo2ValidatePropertyFuncHandler(fn func(pInstance ScriptInstanceDataPtr, pProperty *PropertyInfo, ) Bool) {
+  me.fnScriptInstanceInfo2ValidatePropertyFunc = fn
+}
+
+//export cgo_ScriptInstanceInfo2ValidatePropertyFunc
+func cgo_ScriptInstanceInfo2ValidatePropertyFunc(pInstance C.GDExtensionScriptInstanceDataPtr, pProperty *C.GDExtensionPropertyInfo, ) C.GDExtensionBool {
+  ret := Callbacks.fnScriptInstanceInfo2ValidatePropertyFunc(ScriptInstanceDataPtr(pInstance), (*PropertyInfo)(unsafe.Pointer(pProperty)), )
+  return C.GDExtensionBool(ret)
+}
+
+func (me *callbacksImpl) GetScriptInstanceInfo2ValidatePropertyFuncCallback() ScriptInstanceValidateProperty {
+  return transformPointer[ScriptInstanceValidateProperty](C.cgo_ScriptInstanceInfo2ValidatePropertyFunc)
+}
