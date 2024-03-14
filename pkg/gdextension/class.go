@@ -3,6 +3,7 @@ package gdextension
 import (
 	"fmt"
 	"reflect"
+	"runtime"
 	"strings"
 	"sync"
 	"unsafe"
@@ -14,7 +15,42 @@ import (
 )
 
 func (me *extension) addClassCallbacks() {
-	gdc.Callbacks.SetClassCreationInfoCreateInstanceFuncHandler(func(pUserdata unsafe.Pointer) gdc.ObjectPtr {
+	gdc.Callbacks.SetClassCreationInfo2ReferenceFuncHandler(func(pInstance gdc.ClassInstancePtr) {
+		me.Logf(LogLevelDebug, "SetClassCreationInfoReferenceFuncHandler")
+		// TODO: implement
+	})
+	gdc.Callbacks.SetClassCreationInfo2UnreferenceFuncHandler(func(pInstance gdc.ClassInstancePtr) {
+		me.Logf(LogLevelDebug, "SetClassCreationInfoUnreferenceFuncHandler")
+		// TODO: implement
+	})
+	gdc.Callbacks.SetClassCreationInfo2RecreateInstanceFuncHandler(func(pClassUserdata unsafe.Pointer, pObject gdc.ObjectPtr) gdc.ClassInstancePtr {
+		me.Logf(LogLevelDebug, "SetClassCreationInfoRecreateInstanceFuncHandler")
+		// TODO: implement
+		return nil
+	})
+	gdc.Callbacks.SetClassCreationInfo2GetVirtualFuncHandler(func(pClassUserdata unsafe.Pointer, pName gdc.ConstStringNamePtr) gdc.ClassCallVirtual {
+		me.Logf(LogLevelDebug, "SetClassCreationInfoGetVirtualFuncHandler: %s", gdapi.NewVariantWithC(gdc.ConstVariantPtr(pName)))
+		// TODO: implement
+		return nil
+	})
+	gdc.Callbacks.SetClassCreationInfo2GetVirtualCallDataFuncHandler(func(pClassUserdata unsafe.Pointer, pName gdc.ConstStringNamePtr) unsafe.Pointer {
+		me.Logf(LogLevelDebug, "SetClassCreationInfoGetVirtualCallDataFuncHandler: %s", gdapi.NewVariantWithC(gdc.ConstVariantPtr(pName)))
+		// TODO: implement
+		return nil
+	})
+	gdc.Callbacks.SetClassCreationInfo2CallVirtualWithDataFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, pVirtualCallUserdata unsafe.Pointer, pArgs *gdc.ConstTypePtr, rRet gdc.TypePtr) {
+		me.Logf(LogLevelDebug, "SetClassCreationInfoCallVirtualWithDataFuncHandler: %s", gdapi.NewVariantWithC(gdc.ConstVariantPtr(pName)))
+		// TODO: implement
+	})
+	gdc.Callbacks.SetClassCreationInfo2GetRidFuncHandler(func(pInstance gdc.ClassInstancePtr) uint64 {
+		instance, err := restore[*classInstance](unsafe.Pointer(pInstance))
+		if err != nil {
+			me.Logf(LogLevelError, "could not restore class entry: %s", err.Error())
+			return 0
+		}
+		return instance.id
+	})
+	gdc.Callbacks.SetClassCreationInfo2CreateInstanceFuncHandler(func(pUserdata unsafe.Pointer) gdc.ObjectPtr {
 		class, err := restore[*classEntry](pUserdata)
 		if err != nil {
 			me.Logf(LogLevelError, "could not restore class entry: %s", err.Error())
@@ -22,7 +58,7 @@ func (me *extension) addClassCallbacks() {
 		}
 		return me.createClass(class)
 	})
-	gdc.Callbacks.SetClassCreationInfoFreeInstanceFuncHandler(func(pUserdata unsafe.Pointer, pInstance gdc.ClassInstancePtr) {
+	gdc.Callbacks.SetClassCreationInfo2FreeInstanceFuncHandler(func(pUserdata unsafe.Pointer, pInstance gdc.ClassInstancePtr) {
 		instance, err := restore[*classInstance](unsafe.Pointer(pInstance))
 		if err != nil {
 			me.Logf(LogLevelError, "could not restore class entry: %s", err.Error())
@@ -30,17 +66,17 @@ func (me *extension) addClassCallbacks() {
 		}
 		me.freeClass(instance)
 	})
-	gdc.Callbacks.SetClassCreationInfoSetFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, pValue gdc.ConstVariantPtr) gdc.Bool {
+	gdc.Callbacks.SetClassCreationInfo2SetFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, pValue gdc.ConstVariantPtr) gdc.Bool {
 		me.Logf(LogLevelDebug, "SetClassCreationInfoSetFuncHandler: %s=%s", gdapi.NewVariantWithC(gdc.ConstVariantPtr(pName)), gdapi.NewVariantWithC(pValue))
 		// TODO: implement
 		return gdc.Bool(0)
 	})
-	gdc.Callbacks.SetClassCreationInfoGetFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, rRet gdc.VariantPtr) gdc.Bool {
+	gdc.Callbacks.SetClassCreationInfo2GetFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, rRet gdc.VariantPtr) gdc.Bool {
 		me.Logf(LogLevelDebug, "SetClassCreationInfoGetFuncHandler: %s", gdapi.NewVariantWithC(gdc.ConstVariantPtr(pName)))
 		// TODO: implement
 		return gdc.Bool(0)
 	})
-	gdc.Callbacks.SetClassCreationInfoGetPropertyListFuncHandler(func(pInstance gdc.ClassInstancePtr, rCount *uint) *gdc.PropertyInfo {
+	gdc.Callbacks.SetClassCreationInfo2GetPropertyListFuncHandler(func(pInstance gdc.ClassInstancePtr, rCount *uint) *gdc.PropertyInfo {
 		instance, err := restore[*classInstance](unsafe.Pointer(pInstance))
 		if err != nil {
 			me.Logf(LogLevelError, "could not restore class entry: %s", err.Error())
@@ -50,23 +86,23 @@ func (me *extension) addClassCallbacks() {
 		*rCount = uint(len(properties))
 		return unsafe.SliceData(properties)
 	})
-	gdc.Callbacks.SetClassCreationInfoFreePropertyListFuncHandler(func(pInstance gdc.ClassInstancePtr, pList *gdc.PropertyInfo) {
+	gdc.Callbacks.SetClassCreationInfo2FreePropertyListFuncHandler(func(pInstance gdc.ClassInstancePtr, pList *gdc.PropertyInfo) {
 		if pList == nil {
 			return
 		}
 		gdc.CFreePropertyInfo(pList)
 	})
-	gdc.Callbacks.SetClassCreationInfoPropertyCanRevertFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr) gdc.Bool {
+	gdc.Callbacks.SetClassCreationInfo2PropertyCanRevertFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr) gdc.Bool {
 		me.Logf(LogLevelDebug, "SetClassCreationInfoPropertyCanRevertFuncHandler: %s", gdapi.NewVariantWithC(gdc.ConstVariantPtr(pName)))
 		// TODO: implement
 		return gdc.Bool(0)
 	})
-	gdc.Callbacks.SetClassCreationInfoPropertyGetRevertFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, rRet gdc.VariantPtr) gdc.Bool {
+	gdc.Callbacks.SetClassCreationInfo2PropertyGetRevertFuncHandler(func(pInstance gdc.ClassInstancePtr, pName gdc.ConstStringNamePtr, rRet gdc.VariantPtr) gdc.Bool {
 		me.Logf(LogLevelDebug, "SetClassCreationInfoPropertyGetRevertFuncHandler: %s", gdapi.NewVariantWithC(gdc.ConstVariantPtr(pName)))
 		// TODO: implement
 		return gdc.Bool(0)
 	})
-	gdc.Callbacks.SetClassCreationInfoToStringFuncHandler(func(pInstance gdc.ClassInstancePtr, rIsValid *uint8, pOut gdc.StringPtr) {
+	gdc.Callbacks.SetClassCreationInfo2ToStringFuncHandler(func(pInstance gdc.ClassInstancePtr, rIsValid *uint8, pOut gdc.StringPtr) {
 		instance, err := restore[*classInstance](unsafe.Pointer(pInstance))
 		if err != nil {
 			me.Logf(LogLevelError, "could not restore class entry: %s", err.Error())
@@ -92,9 +128,12 @@ type classProperty struct {
 }
 
 type classMethod struct {
-	name   string
-	method gdc.ClassMethodInfo
-	fn     interface{}
+	name            string
+	method          gdc.ClassMethodInfo
+	fn              interface{}
+	pinner          runtime.Pinner
+	saveArgInfo     []gdc.PropertyInfo
+	saveArgMetadata []gdc.ClassMethodArgumentMetadata
 }
 
 type classEntry struct {
@@ -135,6 +174,52 @@ func (me *classInstance) String() string {
 	return str
 }
 
+func scalarToName(val reflect.Value) (gdc.StringNamePtr, error) {
+	var str gdapi.StringName
+	switch val.Kind() {
+	case reflect.Bool:
+		str = gdapi.StringNameFromStr("bool")
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64,
+		reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+		str = gdapi.StringNameFromStr("int")
+	case reflect.Float32, reflect.Float64:
+		str = gdapi.StringNameFromStr("float")
+	case reflect.String:
+		str = gdapi.StringNameFromStr("string")
+	case reflect.Array, reflect.Slice:
+		str = gdapi.StringNameFromStr("array")
+	default:
+		return nil, fmt.Errorf("unsupported type %s", val.Kind())
+	}
+	return str.AsPtr(), nil
+}
+
+func typeToVariant(val reflect.Type) (gdc.VariantType, error) {
+	switch val.Kind() {
+	case reflect.Bool:
+		return gdc.VariantTypeBool, nil
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64,
+		reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+		return gdc.VariantTypeInt, nil
+	case reflect.Float32, reflect.Float64:
+		return gdc.VariantTypeFloat, nil
+	case reflect.String:
+		return gdc.VariantTypeString, nil
+	case reflect.Array, reflect.Slice:
+		return gdc.VariantTypeArray, nil
+	case reflect.Struct, reflect.Interface:
+		bclazz, isBclass := reflect.New(val).Interface().(gdapi.BClass)
+		if isBclass {
+			return bclazz.Type(), nil
+		}
+		return gdc.VariantTypeObject, nil
+	case reflect.Pointer:
+		return typeToVariant(val.Elem())
+	default:
+		return gdc.VariantTypeNil, fmt.Errorf("unsupported type %s", val.Kind())
+	}
+}
+
 func infoFromType(name string, val reflect.Value) (*gdc.PropertyInfo, error) {
 	namePtr := gdapi.StringNameFromStr(name)
 	bcl, isBclass := val.Addr().Interface().(gdapi.BClass)
@@ -149,7 +234,11 @@ func infoFromType(name string, val reflect.Value) (*gdc.PropertyInfo, error) {
 			classNameStr := gdapi.StringNameFromStr(obj.BaseClass())
 			className = (&classNameStr).AsPtr()
 		} else {
-			return nil, fmt.Errorf("property %q cannot be exported as it is neither a Godot class or variant", name)
+			var err error
+			className, err = scalarToName(val)
+			if err != nil {
+				return nil, fmt.Errorf("property %q cannot be exported: %w", name, err)
+			}
 		}
 	}
 	return &gdc.PropertyInfo{
@@ -169,7 +258,10 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 		return nil, fmt.Errorf("expected a pointer to struct but got %s (%T)", typ.Kind(), instance)
 	}
 
-	name := typ.Elem().Name()
+	className := typ.Elem().Name()
+	namePtr := gdapi.StringNameFromStr(className)
+	parentPtr := gdapi.StringNameFromStr(instance.BaseClass())
+
 	properties := make([]classProperty, 0, typ.Elem().NumField())
 	methods := make([]classMethod, 0, typ.NumMethod())
 
@@ -183,7 +275,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 					methodsFromParent[method.Name] = struct{}{}
 				}
 			}
-			ftyp = reflect.PtrTo(ftyp)
+			ftyp = reflect.PointerTo(ftyp)
 			for m := 0; m < ftyp.NumMethod(); m++ {
 				method := ftyp.Method(m)
 				if method.IsExported() {
@@ -191,6 +283,8 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 				}
 			}
 		}
+
+		continue
 
 		if !field.IsExported() || field.Anonymous {
 			continue
@@ -204,7 +298,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 
 		prop, err := infoFromType(fieldName, val.Elem().FieldByName(field.Name))
 		if err != nil {
-			return nil, fmt.Errorf("class %q: %w", name, err)
+			return nil, fmt.Errorf("class %q: %w", className, err)
 		}
 		propCpy := gdc.CNewPropertyInfo()
 		*propCpy = *prop
@@ -256,26 +350,109 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 		if _, found := methodsFromParent[method.Name]; found {
 			continue
 		}
+
 		methodName := strcase.ToSnake(method.Name)
+		flags := uint(gdapi.MethodFlagsDefault)
 		if strings.HasPrefix(methodName, "x_") {
 			methodName = strings.TrimPrefix(methodName, "x")
+			flags = uint(gdapi.MethodFlagVirtual)
 		}
 		name := gdapi.StringNameFromStr(methodName)
+
+		argCount := method.Type.NumIn() - 1
+		var argInfo []gdc.PropertyInfo
+		if method.Type.IsVariadic() {
+			flags |= uint(gdapi.MethodFlagVararg)
+			argCount = 1
+			argInfo = []gdc.PropertyInfo{
+				{
+					ClassName:  namePtr.AsPtr(),
+					Name:       gdapi.PStringNameFromStr("varargs").AsPtr(),
+					Type:       gdc.VariantTypeNil,
+					Hint:       uint(gdapi.PropertyHintNone),
+					HintString: gdapi.StringFromStr("").AsPtr(),
+					Usage:      uint(gdapi.PropertyUsageDefault),
+				},
+			}
+		} else {
+			argInfo = make([]gdc.PropertyInfo, argCount)
+			for i := 0; i < argCount; i += 1 {
+				arg := method.Type.In(i + 1)
+				aname := fmt.Sprintf("arg%d", i)
+				varType, err := typeToVariant(arg)
+				if err != nil {
+					return nil, fmt.Errorf("argument %d of method %q of class %q: %w", i, method.Name, className, err)
+				}
+				argInfo[i] = gdc.PropertyInfo{
+					ClassName:  namePtr.AsPtr(),
+					Name:       gdapi.PStringNameFromStr(aname).AsPtr(),
+					Type:       varType,
+					Hint:       uint(gdapi.PropertyHintNone),
+					HintString: gdapi.StringFromStr("").AsPtr(),
+					Usage:      uint(gdapi.PropertyUsageDefault),
+				}
+			}
+		}
+		argMetadata := make([]gdc.ClassMethodArgumentMetadata, argCount)
+		for i := 0; i < argCount; i += 1 {
+			argMetadata[i] = gdc.MethodArgumentMetadataNone
+		}
+
+		pinner := runtime.Pinner{}
+		var argMedataP *gdc.ClassMethodArgumentMetadata
+		var argInfoP *gdc.PropertyInfo
+		if argCount > 0 {
+			argMedataP = unsafe.SliceData(argMetadata)
+			argInfoP = unsafe.SliceData(argInfo)
+			pinner.Pin(argMedataP)
+			pinner.Pin(argInfoP)
+		}
+
+		hasReturn := gdc.Bool(0)
+		var retInfo *gdc.PropertyInfo
+		if method.Type.NumOut() > 1 {
+			return nil, fmt.Errorf("method %q of class %q: too many return values", method.Name, className)
+		} else if method.Type.NumOut() > 0 {
+			hasReturn = gdc.Bool(1)
+			out := method.Type.Out(0)
+			varType, err := typeToVariant(out)
+			if err != nil {
+				return nil, fmt.Errorf("return value of method %q of class %q: %w", method.Name, className, err)
+			}
+			retInfo = &gdc.PropertyInfo{
+				ClassName:  namePtr.AsPtr(),
+				Name:       gdapi.PStringNameFromStr(out.Name()).AsPtr(),
+				Type:       varType,
+				Hint:       uint(gdapi.PropertyHintNone),
+				HintString: gdapi.StringFromStr("").AsPtr(),
+				Usage:      uint(gdapi.PropertyUsageDefault),
+			}
+		}
+
 		methods = append(methods, classMethod{
-			name: method.Name,
+			name:            method.Name,
+			fn:              method.Func.Interface(),
+			pinner:          pinner,
+			saveArgInfo:     argInfo,
+			saveArgMetadata: argMetadata,
 			method: gdc.ClassMethodInfo{
-				Name:           name.AsPtr(),
-				MethodUserdata: *(*unsafe.Pointer)(unsafe.Pointer(utils.ToPointer[int](len(methods)))),
-				// TODO: missing
+				Name:                name.AsPtr(),
+				MethodUserdata:      *(*unsafe.Pointer)(unsafe.Pointer(utils.ToPointer(len(methods)))),
+				MethodFlags:         flags,
+				CallFunc:            gdc.Callbacks.GetClassMethodInfoCallFuncCallback(),
+				PtrcallFunc:         gdc.Callbacks.GetClassMethodInfoPtrcallFuncCallback(),
+				HasReturnValue:      hasReturn,
+				ReturnValueInfo:     retInfo,
+				ReturnValueMetadata: gdc.MethodArgumentMetadataNone,
+				ArgumentCount:       uint(argCount),
+				ArgumentsMetadata:   argMedataP,
+				ArgumentsInfo:       argInfoP,
 			},
 		})
 	}
 
-	namePtr := gdapi.StringNameFromStr(name)
-	parentPtr := gdapi.StringNameFromStr(instance.BaseClass())
-
 	return &classEntry{
-		name:          name,
+		name:          className,
 		constructor:   ctr,
 		properties:    properties,
 		methods:       methods,
@@ -287,25 +464,33 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 
 func (me *extension) registerClass(class *classEntry) {
 	me.Logf(LogLevelDebug, "registering class %q", class.name)
-	me.iface.ClassdbRegisterExtensionClass(me.pLibrary, class.namePtr.AsCPtr(), class.parentNamePtr.AsCPtr(), &gdc.ClassCreationInfo{
-		ClassUserdata:         store(class),
-		CreateInstanceFunc:    gdc.Callbacks.GetClassCreationInfoCreateInstanceFuncCallback(),
-		FreeInstanceFunc:      gdc.Callbacks.GetClassCreationInfoFreeInstanceFuncCallback(),
-		SetFunc:               gdc.Callbacks.GetClassCreationInfoSetFuncCallback(),
-		GetFunc:               gdc.Callbacks.GetClassCreationInfoGetFuncCallback(),
-		GetPropertyListFunc:   gdc.Callbacks.GetClassCreationInfoGetPropertyListFuncCallback(),
-		FreePropertyListFunc:  gdc.Callbacks.GetClassCreationInfoFreePropertyListFuncCallback(),
-		PropertyCanRevertFunc: gdc.Callbacks.GetClassCreationInfoPropertyCanRevertFuncCallback(),
-		PropertyGetRevertFunc: gdc.Callbacks.GetClassCreationInfoPropertyGetRevertFuncCallback(),
-		ToStringFunc:          gdc.Callbacks.GetClassCreationInfoToStringFuncCallback(),
+	me.iface.ClassdbRegisterExtensionClass2(me.pLibrary, class.namePtr.AsCPtr(), class.parentNamePtr.AsCPtr(), &gdc.ClassCreationInfo2{
+		ClassUserdata:           store(class),
+		IsExposed:               gdc.Bool(1),
+		CreateInstanceFunc:      gdc.Callbacks.GetClassCreationInfo2CreateInstanceFuncCallback(),
+		FreeInstanceFunc:        gdc.Callbacks.GetClassCreationInfo2FreeInstanceFuncCallback(),
+		SetFunc:                 gdc.Callbacks.GetClassCreationInfo2SetFuncCallback(),
+		GetFunc:                 gdc.Callbacks.GetClassCreationInfo2GetFuncCallback(),
+		GetPropertyListFunc:     gdc.Callbacks.GetClassCreationInfo2GetPropertyListFuncCallback(),
+		FreePropertyListFunc:    gdc.Callbacks.GetClassCreationInfo2FreePropertyListFuncCallback(),
+		PropertyCanRevertFunc:   gdc.Callbacks.GetClassCreationInfo2PropertyCanRevertFuncCallback(),
+		PropertyGetRevertFunc:   gdc.Callbacks.GetClassCreationInfo2PropertyGetRevertFuncCallback(),
+		ToStringFunc:            gdc.Callbacks.GetClassCreationInfo2ToStringFuncCallback(),
+		ReferenceFunc:           gdc.Callbacks.GetClassCreationInfo2ReferenceFuncCallback(),
+		UnreferenceFunc:         gdc.Callbacks.GetClassCreationInfo2UnreferenceFuncCallback(),
+		RecreateInstanceFunc:    gdc.Callbacks.GetClassCreationInfo2RecreateInstanceFuncCallback(),
+		GetVirtualFunc:          gdc.Callbacks.GetClassCreationInfo2GetVirtualFuncCallback(),
+		GetVirtualCallDataFunc:  gdc.Callbacks.GetClassCreationInfo2GetVirtualCallDataFuncCallback(),
+		CallVirtualWithDataFunc: gdc.Callbacks.GetClassCreationInfo2CallVirtualWithDataFuncCallback(),
+		GetRidFunc:              gdc.Callbacks.GetClassCreationInfo2GetRidFuncCallback(),
 	})
 
 	for _, method := range class.methods {
 		me.Logf(LogLevelDebug, "registering method %q of class %q", method.name, class.name)
-		cmethod := gdc.CNewClassMethodInfo()
-		defer gdc.CFreeClassMethodInfo(cmethod)
-		*cmethod = method.method
-		me.iface.ClassdbRegisterExtensionClassMethod(me.pLibrary, class.namePtr.AsCPtr(), cmethod)
+		mi := method.method
+		rawMI, clean := mi.ToRaw()
+		defer clean()
+		me.iface.ClassdbRegisterExtensionClassMethod(me.pLibrary, class.namePtr.AsCPtr(), (*gdc.ClassMethodInfo)(unsafe.Pointer(&rawMI)))
 	}
 
 	for _, property := range class.properties {
@@ -313,10 +498,15 @@ func (me *extension) registerClass(class *classEntry) {
 		me.iface.ClassdbRegisterExtensionClassProperty(me.pLibrary, class.namePtr.AsCPtr(), &property.property, property.setter.AsCPtr(), property.getter.AsCPtr())
 	}
 
+	// yes!
 	// TODO: register signals
+
+	// not sure we need yet
+	// TODO: register sub properties through tags
+
+	// oof, hard
 	// TODO: register constants through tags
 	// TODO: register enums through tags
-	// TODO: register sub properties through tags
 }
 
 func (me *extension) createClass(class *classEntry) gdc.ObjectPtr {

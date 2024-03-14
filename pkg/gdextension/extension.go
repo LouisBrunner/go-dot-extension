@@ -19,6 +19,11 @@ type extension struct {
 	logLevel LogLevel
 }
 
+func newSignalSubscribers() Class {
+	subs := gdapi.NewSignalSubscribers()
+	return &subs
+}
+
 func New(pGetProcAddr gdc.InterfaceGetProcAddress, pLibrary gdc.ClassLibraryPtr, logLevel LogLevel) (Extension, error) {
 	iface, err := gdc.NewInterface(pGetProcAddr)
 	if err != nil {
@@ -30,10 +35,9 @@ func New(pGetProcAddr gdc.InterfaceGetProcAddress, pLibrary gdc.ClassLibraryPtr,
 		iface:     iface,
 		pLibrary:  pLibrary,
 		initLevel: gdc.InitializationScene,
-		toRegister: []ClassConstructor{func() Class {
-			subs := gdapi.NewSignalSubscribers()
-			return &subs
-		}},
+		toRegister: []ClassConstructor{
+			newSignalSubscribers,
+		},
 		logLevel: logLevel,
 	}
 

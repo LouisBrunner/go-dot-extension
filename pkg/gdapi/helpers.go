@@ -1,6 +1,9 @@
 package gdapi
 
-import "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+import (
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/utils"
+)
 
 // Object
 
@@ -42,6 +45,12 @@ func StringNameFromStr(str string) StringName {
 	strPtr := StringFromStr(str)
 	defer strPtr.Destroy()
 	return NewStringNameFromString(*strPtr)
+}
+
+func PStringNameFromStr(str string) *StringName {
+	strPtr := StringFromStr(str)
+	defer strPtr.Destroy()
+	return utils.ToPointer(NewStringNameFromString(*strPtr))
 }
 
 func StringNameFromPtr(ptr gdc.StringNamePtr) StringName {
