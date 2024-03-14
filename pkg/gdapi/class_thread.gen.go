@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Thread struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Thread) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *Thread) BaseClass() string {

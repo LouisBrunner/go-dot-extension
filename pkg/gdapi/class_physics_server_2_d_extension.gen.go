@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PhysicsServer2DExtension struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PhysicsServer2DExtension) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PhysicsServer2D
 }
 
 func (me *PhysicsServer2DExtension) BaseClass() string {

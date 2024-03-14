@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MeshConvexDecompositionSettings struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *MeshConvexDecompositionSettings) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *MeshConvexDecompositionSettings) BaseClass() string {

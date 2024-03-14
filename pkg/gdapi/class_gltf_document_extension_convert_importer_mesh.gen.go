@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFDocumentExtensionConvertImporterMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GLTFDocumentExtensionConvertImporterMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  GLTFDocumentExtension
 }
 
 func (me *GLTFDocumentExtensionConvertImporterMesh) BaseClass() string {

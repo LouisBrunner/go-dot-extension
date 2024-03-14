@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SceneMultiplayer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SceneMultiplayer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  MultiplayerAPI
 }
 
 func (me *SceneMultiplayer) BaseClass() string {

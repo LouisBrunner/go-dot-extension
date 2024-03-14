@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type OggPacketSequence struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *OggPacketSequence) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *OggPacketSequence) BaseClass() string {

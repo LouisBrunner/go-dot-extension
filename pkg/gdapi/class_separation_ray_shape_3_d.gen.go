@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SeparationRayShape3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SeparationRayShape3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Shape3D
 }
 
 func (me *SeparationRayShape3D) BaseClass() string {

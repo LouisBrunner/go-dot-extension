@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Timer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Timer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node
 }
 
 func (me *Timer) BaseClass() string {

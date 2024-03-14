@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorNode3DGizmo struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorNode3DGizmo) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node3DGizmo
 }
 
 func (me *EditorNode3DGizmo) BaseClass() string {

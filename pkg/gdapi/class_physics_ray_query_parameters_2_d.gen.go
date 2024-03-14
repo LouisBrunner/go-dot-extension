@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PhysicsRayQueryParameters2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PhysicsRayQueryParameters2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *PhysicsRayQueryParameters2D) BaseClass() string {

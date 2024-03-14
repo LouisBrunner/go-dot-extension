@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type HSeparator struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *HSeparator) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Separator
 }
 
 func (me *HSeparator) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GridMap struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GridMap) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node3D
 }
 
 func (me *GridMap) BaseClass() string {

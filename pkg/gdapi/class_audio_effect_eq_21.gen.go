@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioEffectEQ21 struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AudioEffectEQ21) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  AudioEffectEQ
 }
 
 func (me *AudioEffectEQ21) BaseClass() string {

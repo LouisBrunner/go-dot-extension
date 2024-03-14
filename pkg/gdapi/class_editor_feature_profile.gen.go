@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorFeatureProfile struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorFeatureProfile) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *EditorFeatureProfile) BaseClass() string {

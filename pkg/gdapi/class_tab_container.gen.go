@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TabContainer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TabContainer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Container
 }
 
 func (me *TabContainer) BaseClass() string {

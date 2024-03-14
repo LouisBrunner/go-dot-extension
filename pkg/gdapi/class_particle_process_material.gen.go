@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ParticleProcessMaterial struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ParticleProcessMaterial) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Material
 }
 
 func (me *ParticleProcessMaterial) BaseClass() string {

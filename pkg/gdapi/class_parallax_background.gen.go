@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ParallaxBackground struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ParallaxBackground) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  CanvasLayer
 }
 
 func (me *ParallaxBackground) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisibleOnScreenEnabler3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VisibleOnScreenEnabler3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisibleOnScreenNotifier3D
 }
 
 func (me *VisibleOnScreenEnabler3D) BaseClass() string {

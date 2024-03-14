@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PinJoint2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PinJoint2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Joint2D
 }
 
 func (me *PinJoint2D) BaseClass() string {

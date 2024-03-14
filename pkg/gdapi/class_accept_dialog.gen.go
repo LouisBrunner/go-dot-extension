@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AcceptDialog struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AcceptDialog) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Window
 }
 
 func (me *AcceptDialog) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type HFlowContainer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *HFlowContainer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  FlowContainer
 }
 
 func (me *HFlowContainer) BaseClass() string {

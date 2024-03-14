@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Node struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Node) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *Node) BaseClass() string {

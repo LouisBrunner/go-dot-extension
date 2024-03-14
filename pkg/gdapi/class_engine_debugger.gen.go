@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EngineDebugger struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EngineDebugger) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *EngineDebugger) BaseClass() string {

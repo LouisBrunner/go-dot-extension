@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type OpenXRAPIExtension struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *OpenXRAPIExtension) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *OpenXRAPIExtension) BaseClass() string {

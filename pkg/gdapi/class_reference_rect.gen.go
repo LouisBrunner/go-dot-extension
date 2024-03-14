@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ReferenceRect struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ReferenceRect) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Control
 }
 
 func (me *ReferenceRect) BaseClass() string {

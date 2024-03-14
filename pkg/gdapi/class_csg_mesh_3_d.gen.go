@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CSGMesh3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CSGMesh3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  CSGPrimitive3D
 }
 
 func (me *CSGMesh3D) BaseClass() string {

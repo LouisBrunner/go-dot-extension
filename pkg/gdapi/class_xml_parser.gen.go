@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type XMLParser struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *XMLParser) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *XMLParser) BaseClass() string {

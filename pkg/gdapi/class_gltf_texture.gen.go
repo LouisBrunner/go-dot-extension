@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFTexture struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GLTFTexture) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *GLTFTexture) BaseClass() string {

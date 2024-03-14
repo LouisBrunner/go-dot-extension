@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GPUParticles2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GPUParticles2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node2D
 }
 
 func (me *GPUParticles2D) BaseClass() string {

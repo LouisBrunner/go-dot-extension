@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type LightmapProbe struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *LightmapProbe) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node3D
 }
 
 func (me *LightmapProbe) BaseClass() string {

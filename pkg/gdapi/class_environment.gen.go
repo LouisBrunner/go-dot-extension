@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Environment struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Environment) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *Environment) BaseClass() string {

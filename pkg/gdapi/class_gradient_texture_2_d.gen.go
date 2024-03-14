@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GradientTexture2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GradientTexture2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Texture2D
 }
 
 func (me *GradientTexture2D) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFBufferView struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GLTFBufferView) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *GLTFBufferView) BaseClass() string {

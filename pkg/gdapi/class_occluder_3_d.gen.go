@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Occluder3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Occluder3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *Occluder3D) BaseClass() string {

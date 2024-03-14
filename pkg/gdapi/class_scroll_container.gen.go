@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ScrollContainer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ScrollContainer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Container
 }
 
 func (me *ScrollContainer) BaseClass() string {

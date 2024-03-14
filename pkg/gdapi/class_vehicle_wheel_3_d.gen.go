@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VehicleWheel3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VehicleWheel3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node3D
 }
 
 func (me *VehicleWheel3D) BaseClass() string {

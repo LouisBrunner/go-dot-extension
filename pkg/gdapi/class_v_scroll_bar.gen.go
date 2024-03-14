@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VScrollBar struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VScrollBar) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  ScrollBar
 }
 
 func (me *VScrollBar) BaseClass() string {

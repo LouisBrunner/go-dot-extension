@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TextServerExtension struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TextServerExtension) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  TextServer
 }
 
 func (me *TextServerExtension) BaseClass() string {

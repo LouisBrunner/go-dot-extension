@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorSceneFormatImporterFBX struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorSceneFormatImporterFBX) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  EditorSceneFormatImporter
 }
 
 func (me *EditorSceneFormatImporterFBX) BaseClass() string {

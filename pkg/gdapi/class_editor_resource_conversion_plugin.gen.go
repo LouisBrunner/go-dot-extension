@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorResourceConversionPlugin struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorResourceConversionPlugin) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *EditorResourceConversionPlugin) BaseClass() string {

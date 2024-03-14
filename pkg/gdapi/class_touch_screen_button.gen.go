@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TouchScreenButton struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TouchScreenButton) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node2D
 }
 
 func (me *TouchScreenButton) BaseClass() string {

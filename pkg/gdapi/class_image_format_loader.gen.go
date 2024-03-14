@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ImageFormatLoader struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ImageFormatLoader) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *ImageFormatLoader) BaseClass() string {

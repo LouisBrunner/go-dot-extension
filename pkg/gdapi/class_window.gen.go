@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Window struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Window) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Viewport
 }
 
 func (me *Window) BaseClass() string {

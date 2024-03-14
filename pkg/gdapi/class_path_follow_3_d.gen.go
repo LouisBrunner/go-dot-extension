@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PathFollow3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PathFollow3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node3D
 }
 
 func (me *PathFollow3D) BaseClass() string {

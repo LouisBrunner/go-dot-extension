@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PhysicsMaterial struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PhysicsMaterial) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *PhysicsMaterial) BaseClass() string {

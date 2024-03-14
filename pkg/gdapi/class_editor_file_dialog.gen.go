@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorFileDialog struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorFileDialog) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  ConfirmationDialog
 }
 
 func (me *EditorFileDialog) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type InputEventMouseMotion struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *InputEventMouseMotion) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  InputEventMouse
 }
 
 func (me *InputEventMouseMotion) BaseClass() string {

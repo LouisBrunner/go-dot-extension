@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ConvexPolygonShape3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ConvexPolygonShape3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Shape3D
 }
 
 func (me *ConvexPolygonShape3D) BaseClass() string {

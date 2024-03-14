@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioBusLayout struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AudioBusLayout) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *AudioBusLayout) BaseClass() string {

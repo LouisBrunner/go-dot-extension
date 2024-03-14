@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GridContainer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GridContainer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Container
 }
 
 func (me *GridContainer) BaseClass() string {

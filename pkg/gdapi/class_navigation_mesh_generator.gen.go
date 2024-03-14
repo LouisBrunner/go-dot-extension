@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NavigationMeshGenerator struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *NavigationMeshGenerator) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *NavigationMeshGenerator) BaseClass() string {

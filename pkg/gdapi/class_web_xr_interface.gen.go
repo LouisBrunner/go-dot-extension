@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type WebXRInterface struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *WebXRInterface) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  XRInterface
 }
 
 func (me *WebXRInterface) BaseClass() string {

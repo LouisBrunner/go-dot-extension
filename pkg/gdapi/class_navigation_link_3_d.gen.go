@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NavigationLink3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *NavigationLink3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node3D
 }
 
 func (me *NavigationLink3D) BaseClass() string {

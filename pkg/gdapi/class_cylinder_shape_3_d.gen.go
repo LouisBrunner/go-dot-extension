@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CylinderShape3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CylinderShape3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Shape3D
 }
 
 func (me *CylinderShape3D) BaseClass() string {

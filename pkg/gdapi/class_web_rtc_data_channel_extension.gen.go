@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type WebRTCDataChannelExtension struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *WebRTCDataChannelExtension) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  WebRTCDataChannel
 }
 
 func (me *WebRTCDataChannelExtension) BaseClass() string {

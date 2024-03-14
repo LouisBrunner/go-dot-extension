@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TileSetScenesCollectionSource struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TileSetScenesCollectionSource) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  TileSetSource
 }
 
 func (me *TileSetScenesCollectionSource) BaseClass() string {

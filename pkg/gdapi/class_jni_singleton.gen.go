@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type JNISingleton struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *JNISingleton) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *JNISingleton) BaseClass() string {

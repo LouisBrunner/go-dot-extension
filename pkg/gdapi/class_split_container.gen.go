@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SplitContainer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SplitContainer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Container
 }
 
 func (me *SplitContainer) BaseClass() string {

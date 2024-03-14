@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TriangleMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TriangleMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *TriangleMesh) BaseClass() string {

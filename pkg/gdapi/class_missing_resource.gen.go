@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MissingResource struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *MissingResource) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *MissingResource) BaseClass() string {

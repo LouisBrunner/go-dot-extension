@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Mutex struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Mutex) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *Mutex) BaseClass() string {

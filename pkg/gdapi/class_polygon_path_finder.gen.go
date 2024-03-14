@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PolygonPathFinder struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PolygonPathFinder) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *PolygonPathFinder) BaseClass() string {

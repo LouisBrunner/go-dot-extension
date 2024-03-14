@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SpotLight3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SpotLight3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Light3D
 }
 
 func (me *SpotLight3D) BaseClass() string {

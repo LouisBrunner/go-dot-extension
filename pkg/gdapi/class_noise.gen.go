@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Noise struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Noise) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *Noise) BaseClass() string {

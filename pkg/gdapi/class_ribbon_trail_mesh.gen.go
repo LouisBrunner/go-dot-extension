@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RibbonTrailMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RibbonTrailMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PrimitiveMesh
 }
 
 func (me *RibbonTrailMesh) BaseClass() string {

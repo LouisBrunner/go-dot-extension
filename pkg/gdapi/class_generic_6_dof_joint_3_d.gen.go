@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Generic6DOFJoint3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Generic6DOFJoint3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Joint3D
 }
 
 func (me *Generic6DOFJoint3D) BaseClass() string {

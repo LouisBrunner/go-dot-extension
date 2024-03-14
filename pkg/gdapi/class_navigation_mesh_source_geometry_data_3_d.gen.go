@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NavigationMeshSourceGeometryData3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *NavigationMeshSourceGeometryData3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *NavigationMeshSourceGeometryData3D) BaseClass() string {

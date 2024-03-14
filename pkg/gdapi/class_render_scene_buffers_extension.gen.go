@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RenderSceneBuffersExtension struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RenderSceneBuffersExtension) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RenderSceneBuffers
 }
 
 func (me *RenderSceneBuffersExtension) BaseClass() string {

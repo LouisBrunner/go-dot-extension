@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TCPServer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TCPServer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *TCPServer) BaseClass() string {

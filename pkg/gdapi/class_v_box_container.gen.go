@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VBoxContainer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VBoxContainer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  BoxContainer
 }
 
 func (me *VBoxContainer) BaseClass() string {

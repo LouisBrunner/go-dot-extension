@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Curve3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Curve3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *Curve3D) BaseClass() string {

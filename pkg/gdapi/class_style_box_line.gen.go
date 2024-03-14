@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type StyleBoxLine struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *StyleBoxLine) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  StyleBox
 }
 
 func (me *StyleBoxLine) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TextureProgressBar struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TextureProgressBar) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Range
 }
 
 func (me *TextureProgressBar) BaseClass() string {

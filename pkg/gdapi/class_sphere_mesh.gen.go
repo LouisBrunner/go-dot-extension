@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SphereMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SphereMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PrimitiveMesh
 }
 
 func (me *SphereMesh) BaseClass() string {

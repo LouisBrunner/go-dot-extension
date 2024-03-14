@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PhysicsServer3DManager struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PhysicsServer3DManager) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *PhysicsServer3DManager) BaseClass() string {

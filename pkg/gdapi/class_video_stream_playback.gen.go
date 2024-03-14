@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VideoStreamPlayback struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VideoStreamPlayback) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *VideoStreamPlayback) BaseClass() string {

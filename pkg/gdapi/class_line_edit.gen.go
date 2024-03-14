@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type LineEdit struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *LineEdit) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Control
 }
 
 func (me *LineEdit) BaseClass() string {

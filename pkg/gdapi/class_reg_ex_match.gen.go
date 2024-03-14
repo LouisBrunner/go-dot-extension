@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RegExMatch struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RegExMatch) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *RegExMatch) BaseClass() string {

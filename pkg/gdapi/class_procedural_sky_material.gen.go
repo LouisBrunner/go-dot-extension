@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ProceduralSkyMaterial struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ProceduralSkyMaterial) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Material
 }
 
 func (me *ProceduralSkyMaterial) BaseClass() string {

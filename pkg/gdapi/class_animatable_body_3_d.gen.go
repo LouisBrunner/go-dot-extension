@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AnimatableBody3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AnimatableBody3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  StaticBody3D
 }
 
 func (me *AnimatableBody3D) BaseClass() string {

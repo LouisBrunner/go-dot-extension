@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NavigationAgent2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *NavigationAgent2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node
 }
 
 func (me *NavigationAgent2D) BaseClass() string {

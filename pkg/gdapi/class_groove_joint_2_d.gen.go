@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GrooveJoint2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GrooveJoint2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Joint2D
 }
 
 func (me *GrooveJoint2D) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SkeletonModification2DPhysicalBones struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SkeletonModification2DPhysicalBones) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  SkeletonModification2D
 }
 
 func (me *SkeletonModification2DPhysicalBones) BaseClass() string {

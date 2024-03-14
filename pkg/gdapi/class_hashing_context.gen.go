@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type HashingContext struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *HashingContext) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *HashingContext) BaseClass() string {

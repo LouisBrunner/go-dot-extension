@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ShaderGlobalsOverride struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ShaderGlobalsOverride) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node
 }
 
 func (me *ShaderGlobalsOverride) BaseClass() string {

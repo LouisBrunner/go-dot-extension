@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MultiplayerSpawner struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *MultiplayerSpawner) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node
 }
 
 func (me *MultiplayerSpawner) BaseClass() string {

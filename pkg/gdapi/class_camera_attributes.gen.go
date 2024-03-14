@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CameraAttributes struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CameraAttributes) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *CameraAttributes) BaseClass() string {

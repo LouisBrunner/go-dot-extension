@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type XRController3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *XRController3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  XRNode3D
 }
 
 func (me *XRController3D) BaseClass() string {

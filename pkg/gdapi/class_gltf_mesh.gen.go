@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GLTFMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *GLTFMesh) BaseClass() string {

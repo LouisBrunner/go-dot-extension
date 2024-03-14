@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ImmediateMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ImmediateMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Mesh
 }
 
 func (me *ImmediateMesh) BaseClass() string {

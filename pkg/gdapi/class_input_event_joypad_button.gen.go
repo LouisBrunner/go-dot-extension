@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type InputEventJoypadButton struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *InputEventJoypadButton) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  InputEvent
 }
 
 func (me *InputEventJoypadButton) BaseClass() string {

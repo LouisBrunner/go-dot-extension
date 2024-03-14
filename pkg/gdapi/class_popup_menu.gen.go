@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PopupMenu struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PopupMenu) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Popup
 }
 
 func (me *PopupMenu) BaseClass() string {

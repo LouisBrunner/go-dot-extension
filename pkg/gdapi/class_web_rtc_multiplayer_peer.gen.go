@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type WebRTCMultiplayerPeer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *WebRTCMultiplayerPeer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  MultiplayerPeer
 }
 
 func (me *WebRTCMultiplayerPeer) BaseClass() string {

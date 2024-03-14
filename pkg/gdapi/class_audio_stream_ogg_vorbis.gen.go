@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioStreamOggVorbis struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AudioStreamOggVorbis) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  AudioStream
 }
 
 func (me *AudioStreamOggVorbis) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDTextureFormat struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RDTextureFormat) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *RDTextureFormat) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AspectRatioContainer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AspectRatioContainer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Container
 }
 
 func (me *AspectRatioContainer) BaseClass() string {

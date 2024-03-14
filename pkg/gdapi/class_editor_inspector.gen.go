@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorInspector struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorInspector) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  ScrollContainer
 }
 
 func (me *EditorInspector) BaseClass() string {

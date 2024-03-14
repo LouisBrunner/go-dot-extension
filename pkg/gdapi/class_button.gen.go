@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Button struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Button) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  BaseButton
 }
 
 func (me *Button) BaseClass() string {

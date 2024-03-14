@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EncodedObjectAsID struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EncodedObjectAsID) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *EncodedObjectAsID) BaseClass() string {

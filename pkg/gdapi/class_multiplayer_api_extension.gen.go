@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MultiplayerAPIExtension struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *MultiplayerAPIExtension) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  MultiplayerAPI
 }
 
 func (me *MultiplayerAPIExtension) BaseClass() string {

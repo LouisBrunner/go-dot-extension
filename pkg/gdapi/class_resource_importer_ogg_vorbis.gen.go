@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ResourceImporterOggVorbis struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ResourceImporterOggVorbis) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  ResourceImporter
 }
 
 func (me *ResourceImporterOggVorbis) BaseClass() string {

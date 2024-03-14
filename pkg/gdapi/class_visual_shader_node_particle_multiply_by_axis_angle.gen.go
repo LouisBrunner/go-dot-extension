@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeParticleMultiplyByAxisAngle struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VisualShaderNodeParticleMultiplyByAxisAngle) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualShaderNode
 }
 
 func (me *VisualShaderNodeParticleMultiplyByAxisAngle) BaseClass() string {

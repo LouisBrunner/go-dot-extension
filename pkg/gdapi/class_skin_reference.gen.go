@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SkinReference struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SkinReference) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *SkinReference) BaseClass() string {

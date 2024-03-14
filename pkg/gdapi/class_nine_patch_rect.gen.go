@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NinePatchRect struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *NinePatchRect) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Control
 }
 
 func (me *NinePatchRect) BaseClass() string {

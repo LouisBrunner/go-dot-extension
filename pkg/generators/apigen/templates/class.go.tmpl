@@ -10,13 +10,17 @@ var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 {{$Class := mapClass .Name -}}
 type {{$Class}} struct {
-  obj gdc.ObjectPtr
+  {{if .Inherits -}}
+    {{mapClass .Inherits}}
+  {{- else -}}
+    obj gdc.ObjectPtr
+{{- end}}
 }
-
+{{if not .Inherits}}
 func (me *{{$Class}}) SetBaseObject(obj gdc.ObjectPtr) {
   me.obj = obj
 }
-
+{{end}}
 func (me *{{$Class}}) BaseClass() string {
   return "{{.Name}}"
 }

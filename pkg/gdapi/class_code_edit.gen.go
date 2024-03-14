@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CodeEdit struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CodeEdit) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  TextEdit
 }
 
 func (me *CodeEdit) BaseClass() string {

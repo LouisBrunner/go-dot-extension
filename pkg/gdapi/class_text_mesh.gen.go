@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TextMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TextMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PrimitiveMesh
 }
 
 func (me *TextMesh) BaseClass() string {

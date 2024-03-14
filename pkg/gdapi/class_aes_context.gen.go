@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AESContext struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AESContext) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *AESContext) BaseClass() string {

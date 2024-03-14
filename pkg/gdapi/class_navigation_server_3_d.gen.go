@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NavigationServer3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *NavigationServer3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *NavigationServer3D) BaseClass() string {

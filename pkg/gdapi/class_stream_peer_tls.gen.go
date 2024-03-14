@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type StreamPeerTLS struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *StreamPeerTLS) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  StreamPeer
 }
 
 func (me *StreamPeerTLS) BaseClass() string {

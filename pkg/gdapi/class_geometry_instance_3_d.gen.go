@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GeometryInstance3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GeometryInstance3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualInstance3D
 }
 
 func (me *GeometryInstance3D) BaseClass() string {

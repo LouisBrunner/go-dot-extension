@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CSGSphere3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CSGSphere3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  CSGPrimitive3D
 }
 
 func (me *CSGSphere3D) BaseClass() string {

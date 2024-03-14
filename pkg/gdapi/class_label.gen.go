@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Label struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Label) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Control
 }
 
 func (me *Label) BaseClass() string {

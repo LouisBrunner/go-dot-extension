@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GraphElement struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GraphElement) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Container
 }
 
 func (me *GraphElement) BaseClass() string {

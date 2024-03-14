@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SegmentShape2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SegmentShape2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Shape2D
 }
 
 func (me *SegmentShape2D) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PackedScene struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PackedScene) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *PackedScene) BaseClass() string {

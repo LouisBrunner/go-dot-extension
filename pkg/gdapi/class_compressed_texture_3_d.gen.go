@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CompressedTexture3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CompressedTexture3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Texture3D
 }
 
 func (me *CompressedTexture3D) BaseClass() string {

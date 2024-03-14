@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioListener2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AudioListener2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node2D
 }
 
 func (me *AudioListener2D) BaseClass() string {

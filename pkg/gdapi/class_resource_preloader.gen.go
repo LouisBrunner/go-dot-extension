@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ResourcePreloader struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ResourcePreloader) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node
 }
 
 func (me *ResourcePreloader) BaseClass() string {

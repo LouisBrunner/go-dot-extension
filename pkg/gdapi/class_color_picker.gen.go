@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ColorPicker struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ColorPicker) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VBoxContainer
 }
 
 func (me *ColorPicker) BaseClass() string {

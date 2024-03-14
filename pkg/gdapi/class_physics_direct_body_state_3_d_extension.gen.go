@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PhysicsDirectBodyState3DExtension struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PhysicsDirectBodyState3DExtension) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PhysicsDirectBodyState3D
 }
 
 func (me *PhysicsDirectBodyState3DExtension) BaseClass() string {

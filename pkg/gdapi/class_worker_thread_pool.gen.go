@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type WorkerThreadPool struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *WorkerThreadPool) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *WorkerThreadPool) BaseClass() string {

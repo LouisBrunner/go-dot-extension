@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NavigationPathQueryResult3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *NavigationPathQueryResult3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *NavigationPathQueryResult3D) BaseClass() string {

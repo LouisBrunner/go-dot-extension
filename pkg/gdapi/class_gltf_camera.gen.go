@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFCamera struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GLTFCamera) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *GLTFCamera) BaseClass() string {

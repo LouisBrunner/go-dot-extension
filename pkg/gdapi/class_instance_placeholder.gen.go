@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type InstancePlaceholder struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *InstancePlaceholder) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node
 }
 
 func (me *InstancePlaceholder) BaseClass() string {

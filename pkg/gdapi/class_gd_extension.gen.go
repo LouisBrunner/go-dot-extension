@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GDExtension struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GDExtension) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *GDExtension) BaseClass() string {

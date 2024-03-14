@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TileMapPattern struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TileMapPattern) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *TileMapPattern) BaseClass() string {

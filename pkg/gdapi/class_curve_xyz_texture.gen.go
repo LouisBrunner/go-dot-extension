@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CurveXYZTexture struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CurveXYZTexture) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Texture2D
 }
 
 func (me *CurveXYZTexture) BaseClass() string {

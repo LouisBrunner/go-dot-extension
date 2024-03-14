@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ENetPacketPeer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ENetPacketPeer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PacketPeer
 }
 
 func (me *ENetPacketPeer) BaseClass() string {

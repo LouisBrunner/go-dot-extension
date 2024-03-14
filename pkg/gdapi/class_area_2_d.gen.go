@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Area2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Area2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  CollisionObject2D
 }
 
 func (me *Area2D) BaseClass() string {

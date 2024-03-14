@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SoftBody3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SoftBody3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  MeshInstance3D
 }
 
 func (me *SoftBody3D) BaseClass() string {

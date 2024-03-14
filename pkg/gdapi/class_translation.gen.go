@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Translation struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Translation) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *Translation) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VoxelGI struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VoxelGI) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualInstance3D
 }
 
 func (me *VoxelGI) BaseClass() string {

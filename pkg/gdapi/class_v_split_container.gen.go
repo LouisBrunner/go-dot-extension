@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VSplitContainer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VSplitContainer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  SplitContainer
 }
 
 func (me *VSplitContainer) BaseClass() string {

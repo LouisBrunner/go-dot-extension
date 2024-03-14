@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ConfirmationDialog struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ConfirmationDialog) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  AcceptDialog
 }
 
 func (me *ConfirmationDialog) BaseClass() string {

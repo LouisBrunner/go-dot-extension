@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type OpenXRInterface struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *OpenXRInterface) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  XRInterface
 }
 
 func (me *OpenXRInterface) BaseClass() string {

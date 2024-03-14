@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SpriteFrames struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SpriteFrames) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *SpriteFrames) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PackedDataContainer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PackedDataContainer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *PackedDataContainer) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type JSONRPC struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *JSONRPC) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *JSONRPC) BaseClass() string {

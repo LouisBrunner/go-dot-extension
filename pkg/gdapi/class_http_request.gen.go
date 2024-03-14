@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type HTTPRequest struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *HTTPRequest) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node
 }
 
 func (me *HTTPRequest) BaseClass() string {

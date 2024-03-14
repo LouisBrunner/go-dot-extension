@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeDistanceFade struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VisualShaderNodeDistanceFade) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualShaderNode
 }
 
 func (me *VisualShaderNodeDistanceFade) BaseClass() string {

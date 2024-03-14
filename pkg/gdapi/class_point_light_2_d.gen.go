@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PointLight2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PointLight2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Light2D
 }
 
 func (me *PointLight2D) BaseClass() string {

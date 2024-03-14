@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type XRServer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *XRServer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *XRServer) BaseClass() string {

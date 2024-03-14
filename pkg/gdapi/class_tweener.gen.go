@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Tweener struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Tweener) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *Tweener) BaseClass() string {

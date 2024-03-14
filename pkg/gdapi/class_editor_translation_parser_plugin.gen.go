@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorTranslationParserPlugin struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorTranslationParserPlugin) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *EditorTranslationParserPlugin) BaseClass() string {

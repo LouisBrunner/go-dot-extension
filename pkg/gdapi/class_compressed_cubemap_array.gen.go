@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CompressedCubemapArray struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CompressedCubemapArray) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  CompressedTextureLayered
 }
 
 func (me *CompressedCubemapArray) BaseClass() string {

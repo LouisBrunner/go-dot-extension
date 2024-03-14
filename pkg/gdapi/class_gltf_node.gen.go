@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFNode struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GLTFNode) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *GLTFNode) BaseClass() string {

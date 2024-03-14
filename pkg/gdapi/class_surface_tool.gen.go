@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SurfaceTool struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SurfaceTool) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *SurfaceTool) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ZIPReader struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ZIPReader) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *ZIPReader) BaseClass() string {

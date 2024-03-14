@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioEffectSpectrumAnalyzerInstance struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AudioEffectSpectrumAnalyzerInstance) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  AudioEffectInstance
 }
 
 func (me *AudioEffectSpectrumAnalyzerInstance) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ResourceImporterDynamicFont struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ResourceImporterDynamicFont) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  ResourceImporter
 }
 
 func (me *ResourceImporterDynamicFont) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type WebSocketPeer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *WebSocketPeer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PacketPeer
 }
 
 func (me *WebSocketPeer) BaseClass() string {

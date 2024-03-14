@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ImageTextureLayered struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ImageTextureLayered) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  TextureLayered
 }
 
 func (me *ImageTextureLayered) BaseClass() string {

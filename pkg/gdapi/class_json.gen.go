@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type JSON struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *JSON) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *JSON) BaseClass() string {

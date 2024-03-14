@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Camera3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Camera3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node3D
 }
 
 func (me *Camera3D) BaseClass() string {

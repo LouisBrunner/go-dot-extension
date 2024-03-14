@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EngineProfiler struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EngineProfiler) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *EngineProfiler) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SkeletonProfileHumanoid struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SkeletonProfileHumanoid) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  SkeletonProfile
 }
 
 func (me *SkeletonProfileHumanoid) BaseClass() string {

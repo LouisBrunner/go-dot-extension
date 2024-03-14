@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Slider struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Slider) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Range
 }
 
 func (me *Slider) BaseClass() string {

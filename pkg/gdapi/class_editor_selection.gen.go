@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorSelection struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorSelection) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *EditorSelection) BaseClass() string {

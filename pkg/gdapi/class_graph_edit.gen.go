@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GraphEdit struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GraphEdit) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Control
 }
 
 func (me *GraphEdit) BaseClass() string {

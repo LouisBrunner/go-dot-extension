@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TorusMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TorusMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PrimitiveMesh
 }
 
 func (me *TorusMesh) BaseClass() string {

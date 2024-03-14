@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NavigationPolygon struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *NavigationPolygon) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *NavigationPolygon) BaseClass() string {

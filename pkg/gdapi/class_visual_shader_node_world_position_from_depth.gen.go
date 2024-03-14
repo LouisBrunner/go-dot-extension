@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeWorldPositionFromDepth struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VisualShaderNodeWorldPositionFromDepth) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualShaderNode
 }
 
 func (me *VisualShaderNodeWorldPositionFromDepth) BaseClass() string {

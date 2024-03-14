@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type LightmapGIData struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *LightmapGIData) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *LightmapGIData) BaseClass() string {

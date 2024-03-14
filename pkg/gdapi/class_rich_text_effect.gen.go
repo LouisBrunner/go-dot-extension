@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RichTextEffect struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RichTextEffect) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *RichTextEffect) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PropertyTweener struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PropertyTweener) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Tweener
 }
 
 func (me *PropertyTweener) BaseClass() string {

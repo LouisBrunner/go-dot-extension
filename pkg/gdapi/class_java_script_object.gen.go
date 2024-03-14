@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type JavaScriptObject struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *JavaScriptObject) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *JavaScriptObject) BaseClass() string {

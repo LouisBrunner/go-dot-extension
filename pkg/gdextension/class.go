@@ -125,6 +125,8 @@ type classProperty struct {
 	property gdc.PropertyInfo
 	getter   gdapi.StringName
 	setter   gdapi.StringName
+
+	objClassNamePtr *gdapi.StringName
 }
 
 type classMethod struct {
@@ -136,11 +138,19 @@ type classMethod struct {
 	saveArgMetadata []gdc.ClassMethodArgumentMetadata
 }
 
+type classSignal struct {
+	name     string
+	namePtr  gdapi.StringName
+	argsPtr  *gdc.PropertyInfo
+	argCount uint
+}
+
 type classEntry struct {
 	name        string
 	constructor ClassConstructor
 	properties  []classProperty
 	methods     []classMethod
+	signals     []classSignal
 
 	parentNamePtr gdapi.StringName
 	namePtr       gdapi.StringName
@@ -264,6 +274,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 
 	properties := make([]classProperty, 0, typ.Elem().NumField())
 	methods := make([]classMethod, 0, typ.NumMethod())
+	signals := make([]classSignal, 0, 0)
 
 	methodsFromParent := map[string]struct{}{}
 	for _, field := range reflect.VisibleFields(typ.Elem()) {
@@ -284,11 +295,24 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 			}
 		}
 
-		continue
-
 		if !field.IsExported() || field.Anonymous {
 			continue
 		}
+
+		_, sig := reflect.New(ftyp).Interface().(*gdapi.Signal)
+		if sig {
+			sigName := strcase.ToSnake(field.Name)
+			signals = append(signals, classSignal{
+				name:    field.Name,
+				namePtr: gdapi.StringNameFromStr(sigName),
+				// TODO: no clue how to get the args ATM
+				argsPtr:  nil,
+				argCount: 0,
+			})
+			continue
+		}
+
+		continue
 
 		fieldName := strcase.ToSnake(field.Name)
 		getterName := fmt.Sprintf("_get_property_%s", fieldName)
@@ -456,6 +480,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 		constructor:   ctr,
 		properties:    properties,
 		methods:       methods,
+		signals:       signals,
 		parentNamePtr: parentPtr,
 		namePtr:       namePtr,
 		instances:     make(map[uint64]*classInstance),
@@ -498,12 +523,13 @@ func (me *extension) registerClass(class *classEntry) {
 		me.iface.ClassdbRegisterExtensionClassProperty(me.pLibrary, class.namePtr.AsCPtr(), &property.property, property.setter.AsCPtr(), property.getter.AsCPtr())
 	}
 
-	// yes!
-	// TODO: register signals
+	for _, signal := range class.signals {
+		me.Logf(LogLevelDebug, "registering signal %q of class %q", signal.name, class.name)
+		me.iface.ClassdbRegisterExtensionClassSignal(me.pLibrary, class.namePtr.AsCPtr(), signal.namePtr.AsCPtr(), signal.argsPtr, gdc.Int(signal.argCount))
+	}
 
 	// not sure we need yet
 	// TODO: register sub properties through tags
-
 	// oof, hard
 	// TODO: register constants through tags
 	// TODO: register enums through tags
@@ -519,6 +545,20 @@ func (me *extension) createClass(class *classEntry) gdc.ObjectPtr {
 	}
 	me.iface.ObjectSetInstance(obj, class.namePtr.AsCPtr(), gdc.ClassInstancePtr(store(instance)))
 	instance.instance.SetBaseObject(obj)
+	for _, property := range class.properties {
+		if property.objClassNamePtr == nil {
+			continue
+		}
+		prop := me.iface.ClassdbConstructObject(property.objClassNamePtr.AsCPtr())
+		reflect.ValueOf(instance.instance).FieldByName(property.name).Set(
+			reflect.ValueOf(gdapi.ObjectFromPtr(prop)), // TODO: wrong type most likely
+		)
+	}
+	for _, signal := range class.signals {
+		reflect.ValueOf(instance.instance).Elem().FieldByName(signal.name).Set(
+			reflect.ValueOf(gdapi.NewSignalFromObjectStringName(gdapi.ObjectFromPtr(obj), signal.namePtr)),
+		)
+	}
 
 	class.mutex.Lock()
 	defer class.mutex.Unlock()

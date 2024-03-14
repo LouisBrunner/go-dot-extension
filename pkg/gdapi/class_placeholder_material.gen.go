@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PlaceholderMaterial struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PlaceholderMaterial) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Material
 }
 
 func (me *PlaceholderMaterial) BaseClass() string {

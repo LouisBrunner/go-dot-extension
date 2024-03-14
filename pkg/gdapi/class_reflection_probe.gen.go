@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ReflectionProbe struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ReflectionProbe) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualInstance3D
 }
 
 func (me *ReflectionProbe) BaseClass() string {

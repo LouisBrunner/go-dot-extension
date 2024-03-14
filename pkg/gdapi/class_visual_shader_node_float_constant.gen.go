@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeFloatConstant struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VisualShaderNodeFloatConstant) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualShaderNodeConstant
 }
 
 func (me *VisualShaderNodeFloatConstant) BaseClass() string {

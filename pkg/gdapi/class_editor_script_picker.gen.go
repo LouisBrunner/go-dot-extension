@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorScriptPicker struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorScriptPicker) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  EditorResourcePicker
 }
 
 func (me *EditorScriptPicker) BaseClass() string {

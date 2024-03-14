@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type OpenXRHand struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *OpenXRHand) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node3D
 }
 
 func (me *OpenXRHand) BaseClass() string {

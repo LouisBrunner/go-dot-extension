@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CylinderMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CylinderMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PrimitiveMesh
 }
 
 func (me *CylinderMesh) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorSceneFormatImporter struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorSceneFormatImporter) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *EditorSceneFormatImporter) BaseClass() string {

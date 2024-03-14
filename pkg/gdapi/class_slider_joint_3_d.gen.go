@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SliderJoint3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SliderJoint3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Joint3D
 }
 
 func (me *SliderJoint3D) BaseClass() string {

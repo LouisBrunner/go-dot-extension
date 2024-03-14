@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFSkeleton struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GLTFSkeleton) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *GLTFSkeleton) BaseClass() string {

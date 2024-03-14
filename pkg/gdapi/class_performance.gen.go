@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Performance struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Performance) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *Performance) BaseClass() string {

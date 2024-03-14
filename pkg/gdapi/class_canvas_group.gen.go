@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CanvasGroup struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CanvasGroup) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node2D
 }
 
 func (me *CanvasGroup) BaseClass() string {

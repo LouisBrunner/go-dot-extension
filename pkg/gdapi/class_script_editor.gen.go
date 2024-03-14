@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ScriptEditor struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ScriptEditor) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PanelContainer
 }
 
 func (me *ScriptEditor) BaseClass() string {

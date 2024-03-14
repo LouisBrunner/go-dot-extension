@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MovieWriter struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *MovieWriter) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *MovieWriter) BaseClass() string {

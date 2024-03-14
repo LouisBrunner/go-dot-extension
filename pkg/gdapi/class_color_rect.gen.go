@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ColorRect struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ColorRect) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Control
 }
 
 func (me *ColorRect) BaseClass() string {

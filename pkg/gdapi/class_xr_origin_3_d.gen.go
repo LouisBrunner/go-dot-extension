@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type XROrigin3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *XROrigin3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node3D
 }
 
 func (me *XROrigin3D) BaseClass() string {

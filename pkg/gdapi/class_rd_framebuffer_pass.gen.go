@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDFramebufferPass struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RDFramebufferPass) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *RDFramebufferPass) BaseClass() string {

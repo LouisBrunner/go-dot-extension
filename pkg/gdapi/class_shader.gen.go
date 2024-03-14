@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Shader struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Shader) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *Shader) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AnimationPlayer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AnimationPlayer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  AnimationMixer
 }
 
 func (me *AnimationPlayer) BaseClass() string {

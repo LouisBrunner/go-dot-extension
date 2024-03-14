@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Label3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Label3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  GeometryInstance3D
 }
 
 func (me *Label3D) BaseClass() string {

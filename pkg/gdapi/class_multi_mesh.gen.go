@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MultiMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *MultiMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *MultiMesh) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RefCounted struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RefCounted) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *RefCounted) BaseClass() string {

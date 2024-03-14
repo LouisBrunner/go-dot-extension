@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ResourceImporterImage struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ResourceImporterImage) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  ResourceImporter
 }
 
 func (me *ResourceImporterImage) BaseClass() string {

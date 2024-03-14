@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VoxelGIData struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VoxelGIData) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *VoxelGIData) BaseClass() string {

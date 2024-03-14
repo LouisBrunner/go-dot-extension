@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorExportPlatformWindows struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorExportPlatformWindows) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  EditorExportPlatformPC
 }
 
 func (me *EditorExportPlatformWindows) BaseClass() string {

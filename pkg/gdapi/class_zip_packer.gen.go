@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ZIPPacker struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ZIPPacker) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *ZIPPacker) BaseClass() string {

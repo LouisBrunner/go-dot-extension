@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type JavaClassWrapper struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *JavaClassWrapper) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *JavaClassWrapper) BaseClass() string {

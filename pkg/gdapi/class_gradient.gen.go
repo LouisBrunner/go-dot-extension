@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Gradient struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Gradient) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *Gradient) BaseClass() string {

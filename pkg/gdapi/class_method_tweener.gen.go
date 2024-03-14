@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MethodTweener struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *MethodTweener) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Tweener
 }
 
 func (me *MethodTweener) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioStreamPlaybackPolyphonic struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AudioStreamPlaybackPolyphonic) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  AudioStreamPlayback
 }
 
 func (me *AudioStreamPlaybackPolyphonic) BaseClass() string {

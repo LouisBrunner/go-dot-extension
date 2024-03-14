@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type InputEventScreenTouch struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *InputEventScreenTouch) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  InputEventFromWindow
 }
 
 func (me *InputEventScreenTouch) BaseClass() string {

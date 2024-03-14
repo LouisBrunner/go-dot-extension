@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDSamplerState struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RDSamplerState) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *RDSamplerState) BaseClass() string {

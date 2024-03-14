@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type UndoRedo struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *UndoRedo) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *UndoRedo) BaseClass() string {

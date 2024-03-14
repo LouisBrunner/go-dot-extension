@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AStar2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AStar2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *AStar2D) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ResourceUID struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ResourceUID) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *ResourceUID) BaseClass() string {

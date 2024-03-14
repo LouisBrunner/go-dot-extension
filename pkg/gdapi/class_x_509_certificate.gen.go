@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type X509Certificate struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *X509Certificate) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *X509Certificate) BaseClass() string {

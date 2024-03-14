@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFLight struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GLTFLight) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *GLTFLight) BaseClass() string {

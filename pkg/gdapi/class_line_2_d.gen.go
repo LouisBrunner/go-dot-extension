@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Line2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Line2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node2D
 }
 
 func (me *Line2D) BaseClass() string {

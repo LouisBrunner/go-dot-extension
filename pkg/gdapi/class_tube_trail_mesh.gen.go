@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TubeTrailMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TubeTrailMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PrimitiveMesh
 }
 
 func (me *TubeTrailMesh) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDUniform struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RDUniform) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *RDUniform) BaseClass() string {

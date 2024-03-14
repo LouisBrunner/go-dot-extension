@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type InputEventScreenDrag struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *InputEventScreenDrag) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  InputEventFromWindow
 }
 
 func (me *InputEventScreenDrag) BaseClass() string {

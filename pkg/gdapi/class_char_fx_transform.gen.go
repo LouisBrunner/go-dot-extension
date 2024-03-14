@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CharFXTransform struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CharFXTransform) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *CharFXTransform) BaseClass() string {

@@ -119,112 +119,184 @@ func newSingletons(iface gdc.Interface) *singletons {
   defer strCameraServer.Destroy()
   return &singletons{
     Performance: Performance{
-      obj: iface.GlobalGetSingleton(strPerformance.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strPerformance.AsCPtr()),
+      },
     },
     TextServerManager: TextServerManager{
-      obj: iface.GlobalGetSingleton(strTextServerManager.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strTextServerManager.AsCPtr()),
+      },
     },
     PhysicsServer2DManager: PhysicsServer2DManager{
-      obj: iface.GlobalGetSingleton(strPhysicsServer2DManager.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strPhysicsServer2DManager.AsCPtr()),
+      },
     },
     PhysicsServer3DManager: PhysicsServer3DManager{
-      obj: iface.GlobalGetSingleton(strPhysicsServer3DManager.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strPhysicsServer3DManager.AsCPtr()),
+      },
     },
     NavigationMeshGenerator: NavigationMeshGenerator{
-      obj: iface.GlobalGetSingleton(strNavigationMeshGenerator.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strNavigationMeshGenerator.AsCPtr()),
+      },
     },
     ProjectSettings: ProjectSettings{
-      obj: iface.GlobalGetSingleton(strProjectSettings.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strProjectSettings.AsCPtr()),
+      },
     },
     IP: IP{
-      obj: iface.GlobalGetSingleton(strIP.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strIP.AsCPtr()),
+      },
     },
     Geometry2D: Geometry2D{
-      obj: iface.GlobalGetSingleton(strGeometry2D.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strGeometry2D.AsCPtr()),
+      },
     },
     Geometry3D: Geometry3D{
-      obj: iface.GlobalGetSingleton(strGeometry3D.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strGeometry3D.AsCPtr()),
+      },
     },
     ResourceLoader: ResourceLoader{
-      obj: iface.GlobalGetSingleton(strResourceLoader.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strResourceLoader.AsCPtr()),
+      },
     },
     ResourceSaver: ResourceSaver{
-      obj: iface.GlobalGetSingleton(strResourceSaver.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strResourceSaver.AsCPtr()),
+      },
     },
     OS: OS{
-      obj: iface.GlobalGetSingleton(strOS.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strOS.AsCPtr()),
+      },
     },
     Engine: Engine{
-      obj: iface.GlobalGetSingleton(strEngine.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strEngine.AsCPtr()),
+      },
     },
     ClassDB: ClassDB{
-      obj: iface.GlobalGetSingleton(strClassDB.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strClassDB.AsCPtr()),
+      },
     },
     Marshalls: Marshalls{
-      obj: iface.GlobalGetSingleton(strMarshalls.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strMarshalls.AsCPtr()),
+      },
     },
     TranslationServer: TranslationServer{
-      obj: iface.GlobalGetSingleton(strTranslationServer.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strTranslationServer.AsCPtr()),
+      },
     },
     Input: Input{
-      obj: iface.GlobalGetSingleton(strInput.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strInput.AsCPtr()),
+      },
     },
     InputMap: InputMap{
-      obj: iface.GlobalGetSingleton(strInputMap.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strInputMap.AsCPtr()),
+      },
     },
     EngineDebugger: EngineDebugger{
-      obj: iface.GlobalGetSingleton(strEngineDebugger.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strEngineDebugger.AsCPtr()),
+      },
     },
     Time: Time{
-      obj: iface.GlobalGetSingleton(strTime.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strTime.AsCPtr()),
+      },
     },
     GDExtensionManager: GDExtensionManager{
-      obj: iface.GlobalGetSingleton(strGDExtensionManager.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strGDExtensionManager.AsCPtr()),
+      },
     },
     ResourceUID: ResourceUID{
-      obj: iface.GlobalGetSingleton(strResourceUID.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strResourceUID.AsCPtr()),
+      },
     },
     WorkerThreadPool: WorkerThreadPool{
-      obj: iface.GlobalGetSingleton(strWorkerThreadPool.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strWorkerThreadPool.AsCPtr()),
+      },
     },
     ThemeDB: ThemeDB{
-      obj: iface.GlobalGetSingleton(strThemeDB.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strThemeDB.AsCPtr()),
+      },
     },
     EditorInterface: EditorInterface{
-      obj: iface.GlobalGetSingleton(strEditorInterface.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strEditorInterface.AsCPtr()),
+      },
     },
     JavaClassWrapper: JavaClassWrapper{
-      obj: iface.GlobalGetSingleton(strJavaClassWrapper.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strJavaClassWrapper.AsCPtr()),
+      },
     },
     JavaScriptBridge: JavaScriptBridge{
-      obj: iface.GlobalGetSingleton(strJavaScriptBridge.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strJavaScriptBridge.AsCPtr()),
+      },
     },
     DisplayServer: DisplayServer{
-      obj: iface.GlobalGetSingleton(strDisplayServer.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strDisplayServer.AsCPtr()),
+      },
     },
     RenderingServer: RenderingServer{
-      obj: iface.GlobalGetSingleton(strRenderingServer.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strRenderingServer.AsCPtr()),
+      },
     },
     AudioServer: AudioServer{
-      obj: iface.GlobalGetSingleton(strAudioServer.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strAudioServer.AsCPtr()),
+      },
     },
     PhysicsServer2D: PhysicsServer2D{
-      obj: iface.GlobalGetSingleton(strPhysicsServer2D.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strPhysicsServer2D.AsCPtr()),
+      },
     },
     PhysicsServer3D: PhysicsServer3D{
-      obj: iface.GlobalGetSingleton(strPhysicsServer3D.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strPhysicsServer3D.AsCPtr()),
+      },
     },
     NavigationServer2D: NavigationServer2D{
-      obj: iface.GlobalGetSingleton(strNavigationServer2D.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strNavigationServer2D.AsCPtr()),
+      },
     },
     NavigationServer3D: NavigationServer3D{
-      obj: iface.GlobalGetSingleton(strNavigationServer3D.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strNavigationServer3D.AsCPtr()),
+      },
     },
     XRServer: XRServer{
-      obj: iface.GlobalGetSingleton(strXRServer.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strXRServer.AsCPtr()),
+      },
     },
     CameraServer: CameraServer{
-      obj: iface.GlobalGetSingleton(strCameraServer.AsCPtr()),
+      Object: Object{
+        obj: iface.GlobalGetSingleton(strCameraServer.AsCPtr()),
+      },
     },
 }
 }

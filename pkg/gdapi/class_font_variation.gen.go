@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type FontVariation struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *FontVariation) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Font
 }
 
 func (me *FontVariation) BaseClass() string {

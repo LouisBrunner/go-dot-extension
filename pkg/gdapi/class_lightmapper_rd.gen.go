@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type LightmapperRD struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *LightmapperRD) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Lightmapper
 }
 
 func (me *LightmapperRD) BaseClass() string {

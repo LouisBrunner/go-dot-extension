@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RenderingDevice struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RenderingDevice) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *RenderingDevice) BaseClass() string {

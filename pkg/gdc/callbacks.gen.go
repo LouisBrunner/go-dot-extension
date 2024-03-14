@@ -489,79 +489,79 @@ type callbacks interface {
 }
 
 type callbacksImpl struct {
-  fnCallableCustomInfoCallFunc func(callableUserdata unsafe.Pointer, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, )
+  fnCallableCustomInfoCallFunc func(callableUserdata unsafe.Pointer, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) 
   fnCallableCustomInfoEqualFunc func(callableUserdataA unsafe.Pointer, callableUserdataB unsafe.Pointer, ) Bool
-  fnCallableCustomInfoFreeFunc func(callableUserdata unsafe.Pointer, )
+  fnCallableCustomInfoFreeFunc func(callableUserdata unsafe.Pointer, ) 
   fnCallableCustomInfoHashFunc func(callableUserdata unsafe.Pointer, ) uint
   fnCallableCustomInfoIsValidFunc func(callableUserdata unsafe.Pointer, ) Bool
   fnCallableCustomInfoLessThanFunc func(callableUserdataA unsafe.Pointer, callableUserdataB unsafe.Pointer, ) Bool
-  fnCallableCustomInfoToStringFunc func(callableUserdata unsafe.Pointer, rIsValid *uint8, rOut StringPtr, )
+  fnCallableCustomInfoToStringFunc func(callableUserdata unsafe.Pointer, rIsValid *uint8, rOut StringPtr, ) 
   fnClassCreationInfoCreateInstanceFunc func(pClassUserdata unsafe.Pointer, ) ObjectPtr
-  fnClassCreationInfoFreeInstanceFunc func(pClassUserdata unsafe.Pointer, pInstance ClassInstancePtr, )
-  fnClassCreationInfoFreePropertyListFunc func(pInstance ClassInstancePtr, pList *PropertyInfo, )
+  fnClassCreationInfoFreeInstanceFunc func(pClassUserdata unsafe.Pointer, pInstance ClassInstancePtr, ) 
+  fnClassCreationInfoFreePropertyListFunc func(pInstance ClassInstancePtr, pList *PropertyInfo, ) 
   fnClassCreationInfoGetFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnClassCreationInfoGetPropertyListFunc func(pInstance ClassInstancePtr, rCount *uint, ) *PropertyInfo
   fnClassCreationInfoGetRidFunc func(pInstance ClassInstancePtr, ) uint64
   fnClassCreationInfoGetVirtualFunc func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) ClassCallVirtual
-  fnClassCreationInfoNotificationFunc func(pInstance ClassInstancePtr, pWhat int, )
+  fnClassCreationInfoNotificationFunc func(pInstance ClassInstancePtr, pWhat int, ) 
   fnClassCreationInfoPropertyCanRevertFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, ) Bool
   fnClassCreationInfoPropertyGetRevertFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
-  fnClassCreationInfoReferenceFunc func(pInstance ClassInstancePtr, )
+  fnClassCreationInfoReferenceFunc func(pInstance ClassInstancePtr, ) 
   fnClassCreationInfoSetFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
-  fnClassCreationInfoToStringFunc func(pInstance ClassInstancePtr, rIsValid *uint8, pOut StringPtr, )
-  fnClassCreationInfoUnreferenceFunc func(pInstance ClassInstancePtr, )
-  fnClassCreationInfo2CallVirtualWithDataFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, pVirtualCallUserdata unsafe.Pointer, pArgs *ConstTypePtr, rRet TypePtr, )
+  fnClassCreationInfoToStringFunc func(pInstance ClassInstancePtr, rIsValid *uint8, pOut StringPtr, ) 
+  fnClassCreationInfoUnreferenceFunc func(pInstance ClassInstancePtr, ) 
+  fnClassCreationInfo2CallVirtualWithDataFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, pVirtualCallUserdata unsafe.Pointer, pArgs *ConstTypePtr, rRet TypePtr, ) 
   fnClassCreationInfo2CreateInstanceFunc func(pClassUserdata unsafe.Pointer, ) ObjectPtr
-  fnClassCreationInfo2FreeInstanceFunc func(pClassUserdata unsafe.Pointer, pInstance ClassInstancePtr, )
-  fnClassCreationInfo2FreePropertyListFunc func(pInstance ClassInstancePtr, pList *PropertyInfo, )
+  fnClassCreationInfo2FreeInstanceFunc func(pClassUserdata unsafe.Pointer, pInstance ClassInstancePtr, ) 
+  fnClassCreationInfo2FreePropertyListFunc func(pInstance ClassInstancePtr, pList *PropertyInfo, ) 
   fnClassCreationInfo2GetFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnClassCreationInfo2GetPropertyListFunc func(pInstance ClassInstancePtr, rCount *uint, ) *PropertyInfo
   fnClassCreationInfo2GetRidFunc func(pInstance ClassInstancePtr, ) uint64
   fnClassCreationInfo2GetVirtualCallDataFunc func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) unsafe.Pointer
   fnClassCreationInfo2GetVirtualFunc func(pClassUserdata unsafe.Pointer, pName ConstStringNamePtr, ) ClassCallVirtual
-  fnClassCreationInfo2NotificationFunc func(pInstance ClassInstancePtr, pWhat int, pReversed Bool, )
+  fnClassCreationInfo2NotificationFunc func(pInstance ClassInstancePtr, pWhat int, pReversed Bool, ) 
   fnClassCreationInfo2PropertyCanRevertFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, ) Bool
   fnClassCreationInfo2PropertyGetRevertFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnClassCreationInfo2RecreateInstanceFunc func(pClassUserdata unsafe.Pointer, pObject ObjectPtr, ) ClassInstancePtr
-  fnClassCreationInfo2ReferenceFunc func(pInstance ClassInstancePtr, )
+  fnClassCreationInfo2ReferenceFunc func(pInstance ClassInstancePtr, ) 
   fnClassCreationInfo2SetFunc func(pInstance ClassInstancePtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
-  fnClassCreationInfo2ToStringFunc func(pInstance ClassInstancePtr, rIsValid *uint8, pOut StringPtr, )
-  fnClassCreationInfo2UnreferenceFunc func(pInstance ClassInstancePtr, )
+  fnClassCreationInfo2ToStringFunc func(pInstance ClassInstancePtr, rIsValid *uint8, pOut StringPtr, ) 
+  fnClassCreationInfo2UnreferenceFunc func(pInstance ClassInstancePtr, ) 
   fnClassCreationInfo2ValidatePropertyFunc func(pInstance ClassInstancePtr, pProperty *PropertyInfo, ) Bool
-  fnClassMethodInfoCallFunc func(methodUserdata unsafe.Pointer, pInstance ClassInstancePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, )
-  fnClassMethodInfoPtrcallFunc func(methodUserdata unsafe.Pointer, pInstance ClassInstancePtr, pArgs *ConstTypePtr, rRet TypePtr, )
-  fnInitializationDeinitialize func(userdata unsafe.Pointer, pLevel InitializationLevel, )
-  fnInitializationInitialize func(userdata unsafe.Pointer, pLevel InitializationLevel, )
+  fnClassMethodInfoCallFunc func(methodUserdata unsafe.Pointer, pInstance ClassInstancePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) 
+  fnClassMethodInfoPtrcallFunc func(methodUserdata unsafe.Pointer, pInstance ClassInstancePtr, pArgs *ConstTypePtr, rRet TypePtr, ) 
+  fnInitializationDeinitialize func(userdata unsafe.Pointer, pLevel InitializationLevel, ) 
+  fnInitializationInitialize func(userdata unsafe.Pointer, pLevel InitializationLevel, ) 
   fnInstanceBindingCallbacksCreateCallback func(pToken unsafe.Pointer, pInstance unsafe.Pointer, ) unsafe.Pointer
-  fnInstanceBindingCallbacksFreeCallback func(pToken unsafe.Pointer, pInstance unsafe.Pointer, pBinding unsafe.Pointer, )
+  fnInstanceBindingCallbacksFreeCallback func(pToken unsafe.Pointer, pInstance unsafe.Pointer, pBinding unsafe.Pointer, ) 
   fnInstanceBindingCallbacksReferenceCallback func(pToken unsafe.Pointer, pBinding unsafe.Pointer, pReference Bool, ) Bool
-  fnScriptInstanceInfoCallFunc func(pSelf ScriptInstanceDataPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, )
-  fnScriptInstanceInfoFreeFunc func(pInstance ScriptInstanceDataPtr, )
-  fnScriptInstanceInfoFreeMethodListFunc func(pInstance ScriptInstanceDataPtr, pList *MethodInfo, )
-  fnScriptInstanceInfoFreePropertyListFunc func(pInstance ScriptInstanceDataPtr, pList *PropertyInfo, )
+  fnScriptInstanceInfoCallFunc func(pSelf ScriptInstanceDataPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) 
+  fnScriptInstanceInfoFreeFunc func(pInstance ScriptInstanceDataPtr, ) 
+  fnScriptInstanceInfoFreeMethodListFunc func(pInstance ScriptInstanceDataPtr, pList *MethodInfo, ) 
+  fnScriptInstanceInfoFreePropertyListFunc func(pInstance ScriptInstanceDataPtr, pList *PropertyInfo, ) 
   fnScriptInstanceInfoGetFallbackFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnScriptInstanceInfoGetFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnScriptInstanceInfoGetLanguageFunc func(pInstance ScriptInstanceDataPtr, ) ScriptLanguagePtr
   fnScriptInstanceInfoGetMethodListFunc func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *MethodInfo
   fnScriptInstanceInfoGetOwnerFunc func(pInstance ScriptInstanceDataPtr, ) ObjectPtr
   fnScriptInstanceInfoGetPropertyListFunc func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *PropertyInfo
-  fnScriptInstanceInfoGetPropertyStateFunc func(pInstance ScriptInstanceDataPtr, pAddFunc ScriptInstancePropertyStateAdd, pUserdata unsafe.Pointer, )
+  fnScriptInstanceInfoGetPropertyStateFunc func(pInstance ScriptInstanceDataPtr, pAddFunc ScriptInstancePropertyStateAdd, pUserdata unsafe.Pointer, ) 
   fnScriptInstanceInfoGetPropertyTypeFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rIsValid *uint8, ) VariantType
   fnScriptInstanceInfoGetScriptFunc func(pInstance ScriptInstanceDataPtr, ) ObjectPtr
   fnScriptInstanceInfoHasMethodFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool
   fnScriptInstanceInfoIsPlaceholderFunc func(pInstance ScriptInstanceDataPtr, ) Bool
-  fnScriptInstanceInfoNotificationFunc func(pInstance ScriptInstanceDataPtr, pWhat int, )
+  fnScriptInstanceInfoNotificationFunc func(pInstance ScriptInstanceDataPtr, pWhat int, ) 
   fnScriptInstanceInfoPropertyCanRevertFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool
   fnScriptInstanceInfoPropertyGetRevertFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnScriptInstanceInfoRefcountDecrementedFunc func(pInstance ScriptInstanceDataPtr, ) Bool
-  fnScriptInstanceInfoRefcountIncrementedFunc func(pInstance ScriptInstanceDataPtr, )
+  fnScriptInstanceInfoRefcountIncrementedFunc func(pInstance ScriptInstanceDataPtr, ) 
   fnScriptInstanceInfoSetFallbackFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
   fnScriptInstanceInfoSetFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
-  fnScriptInstanceInfoToStringFunc func(pInstance ScriptInstanceDataPtr, rIsValid *uint8, rOut StringPtr, )
-  fnScriptInstanceInfo2CallFunc func(pSelf ScriptInstanceDataPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, )
-  fnScriptInstanceInfo2FreeFunc func(pInstance ScriptInstanceDataPtr, )
-  fnScriptInstanceInfo2FreeMethodListFunc func(pInstance ScriptInstanceDataPtr, pList *MethodInfo, )
-  fnScriptInstanceInfo2FreePropertyListFunc func(pInstance ScriptInstanceDataPtr, pList *PropertyInfo, )
+  fnScriptInstanceInfoToStringFunc func(pInstance ScriptInstanceDataPtr, rIsValid *uint8, rOut StringPtr, ) 
+  fnScriptInstanceInfo2CallFunc func(pSelf ScriptInstanceDataPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn VariantPtr, rError *CallError, ) 
+  fnScriptInstanceInfo2FreeFunc func(pInstance ScriptInstanceDataPtr, ) 
+  fnScriptInstanceInfo2FreeMethodListFunc func(pInstance ScriptInstanceDataPtr, pList *MethodInfo, ) 
+  fnScriptInstanceInfo2FreePropertyListFunc func(pInstance ScriptInstanceDataPtr, pList *PropertyInfo, ) 
   fnScriptInstanceInfo2GetClassCategoryFunc func(pInstance ScriptInstanceDataPtr, pClassCategory *PropertyInfo, ) Bool
   fnScriptInstanceInfo2GetFallbackFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnScriptInstanceInfo2GetFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
@@ -569,19 +569,19 @@ type callbacksImpl struct {
   fnScriptInstanceInfo2GetMethodListFunc func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *MethodInfo
   fnScriptInstanceInfo2GetOwnerFunc func(pInstance ScriptInstanceDataPtr, ) ObjectPtr
   fnScriptInstanceInfo2GetPropertyListFunc func(pInstance ScriptInstanceDataPtr, rCount *uint, ) *PropertyInfo
-  fnScriptInstanceInfo2GetPropertyStateFunc func(pInstance ScriptInstanceDataPtr, pAddFunc ScriptInstancePropertyStateAdd, pUserdata unsafe.Pointer, )
+  fnScriptInstanceInfo2GetPropertyStateFunc func(pInstance ScriptInstanceDataPtr, pAddFunc ScriptInstancePropertyStateAdd, pUserdata unsafe.Pointer, ) 
   fnScriptInstanceInfo2GetPropertyTypeFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rIsValid *uint8, ) VariantType
   fnScriptInstanceInfo2GetScriptFunc func(pInstance ScriptInstanceDataPtr, ) ObjectPtr
   fnScriptInstanceInfo2HasMethodFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool
   fnScriptInstanceInfo2IsPlaceholderFunc func(pInstance ScriptInstanceDataPtr, ) Bool
-  fnScriptInstanceInfo2NotificationFunc func(pInstance ScriptInstanceDataPtr, pWhat int, pReversed Bool, )
+  fnScriptInstanceInfo2NotificationFunc func(pInstance ScriptInstanceDataPtr, pWhat int, pReversed Bool, ) 
   fnScriptInstanceInfo2PropertyCanRevertFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, ) Bool
   fnScriptInstanceInfo2PropertyGetRevertFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, rRet VariantPtr, ) Bool
   fnScriptInstanceInfo2RefcountDecrementedFunc func(pInstance ScriptInstanceDataPtr, ) Bool
-  fnScriptInstanceInfo2RefcountIncrementedFunc func(pInstance ScriptInstanceDataPtr, )
+  fnScriptInstanceInfo2RefcountIncrementedFunc func(pInstance ScriptInstanceDataPtr, ) 
   fnScriptInstanceInfo2SetFallbackFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
   fnScriptInstanceInfo2SetFunc func(pInstance ScriptInstanceDataPtr, pName ConstStringNamePtr, pValue ConstVariantPtr, ) Bool
-  fnScriptInstanceInfo2ToStringFunc func(pInstance ScriptInstanceDataPtr, rIsValid *uint8, rOut StringPtr, )
+  fnScriptInstanceInfo2ToStringFunc func(pInstance ScriptInstanceDataPtr, rIsValid *uint8, rOut StringPtr, ) 
   fnScriptInstanceInfo2ValidatePropertyFunc func(pInstance ScriptInstanceDataPtr, pProperty *PropertyInfo, ) Bool
 }
 
@@ -1874,3 +1874,4 @@ func cgo_ScriptInstanceInfo2ValidatePropertyFunc(pInstance C.GDExtensionScriptIn
 func (me *callbacksImpl) GetScriptInstanceInfo2ValidatePropertyFuncCallback() ScriptInstanceValidateProperty {
   return transformPointer[ScriptInstanceValidateProperty](C.cgo_ScriptInstanceInfo2ValidatePropertyFunc)
 }
+

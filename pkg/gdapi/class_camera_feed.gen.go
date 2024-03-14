@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CameraFeed struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CameraFeed) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *CameraFeed) BaseClass() string {

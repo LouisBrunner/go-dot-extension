@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Sky struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Sky) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *Sky) BaseClass() string {

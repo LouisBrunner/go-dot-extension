@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDPipelineColorBlendState struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RDPipelineColorBlendState) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *RDPipelineColorBlendState) BaseClass() string {

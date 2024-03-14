@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeParticleRingEmitter struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VisualShaderNodeParticleRingEmitter) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualShaderNodeParticleEmitter
 }
 
 func (me *VisualShaderNodeParticleRingEmitter) BaseClass() string {

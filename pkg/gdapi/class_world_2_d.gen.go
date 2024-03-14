@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type World2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *World2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *World2D) BaseClass() string {

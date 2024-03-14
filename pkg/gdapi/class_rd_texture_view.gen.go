@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDTextureView struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RDTextureView) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *RDTextureView) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFAnimation struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GLTFAnimation) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *GLTFAnimation) BaseClass() string {

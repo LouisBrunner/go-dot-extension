@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SceneTree struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SceneTree) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  MainLoop
 }
 
 func (me *SceneTree) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDShaderSPIRV struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RDShaderSPIRV) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *RDShaderSPIRV) BaseClass() string {

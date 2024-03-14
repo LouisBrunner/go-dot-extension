@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type StreamPeerGZIP struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *StreamPeerGZIP) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  StreamPeer
 }
 
 func (me *StreamPeerGZIP) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SceneTreeTimer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SceneTreeTimer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *SceneTreeTimer) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CanvasModulate struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CanvasModulate) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node2D
 }
 
 func (me *CanvasModulate) BaseClass() string {

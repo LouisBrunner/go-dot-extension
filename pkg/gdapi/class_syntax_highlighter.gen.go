@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SyntaxHighlighter struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SyntaxHighlighter) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *SyntaxHighlighter) BaseClass() string {

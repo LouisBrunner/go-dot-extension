@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type QuadMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *QuadMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PlaneMesh
 }
 
 func (me *QuadMesh) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MultiMeshInstance3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *MultiMeshInstance3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  GeometryInstance3D
 }
 
 func (me *MultiMeshInstance3D) BaseClass() string {

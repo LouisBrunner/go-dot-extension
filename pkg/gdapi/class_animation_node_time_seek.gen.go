@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AnimationNodeTimeSeek struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AnimationNodeTimeSeek) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  AnimationNode
 }
 
 func (me *AnimationNodeTimeSeek) BaseClass() string {

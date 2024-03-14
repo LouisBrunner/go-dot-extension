@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDVertexAttribute struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RDVertexAttribute) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *RDVertexAttribute) BaseClass() string {

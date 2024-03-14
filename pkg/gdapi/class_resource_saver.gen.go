@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ResourceSaver struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ResourceSaver) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *ResourceSaver) BaseClass() string {

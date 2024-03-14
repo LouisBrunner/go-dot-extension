@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TextureCubemapArrayRD struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TextureCubemapArrayRD) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  TextureLayeredRD
 }
 
 func (me *TextureCubemapArrayRD) BaseClass() string {

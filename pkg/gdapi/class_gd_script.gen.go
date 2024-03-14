@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GDScript struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GDScript) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Script
 }
 
 func (me *GDScript) BaseClass() string {

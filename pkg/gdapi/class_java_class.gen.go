@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type JavaClass struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *JavaClass) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *JavaClass) BaseClass() string {

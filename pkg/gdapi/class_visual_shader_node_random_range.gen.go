@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeRandomRange struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VisualShaderNodeRandomRange) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualShaderNode
 }
 
 func (me *VisualShaderNodeRandomRange) BaseClass() string {

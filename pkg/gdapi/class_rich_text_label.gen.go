@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RichTextLabel struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RichTextLabel) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Control
 }
 
 func (me *RichTextLabel) BaseClass() string {

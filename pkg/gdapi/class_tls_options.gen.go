@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type TLSOptions struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *TLSOptions) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *TLSOptions) BaseClass() string {

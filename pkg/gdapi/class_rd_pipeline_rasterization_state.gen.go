@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDPipelineRasterizationState struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RDPipelineRasterizationState) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *RDPipelineRasterizationState) BaseClass() string {

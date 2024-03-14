@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GPUParticlesCollisionHeightField3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *GPUParticlesCollisionHeightField3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  GPUParticlesCollision3D
 }
 
 func (me *GPUParticlesCollisionHeightField3D) BaseClass() string {

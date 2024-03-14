@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type SubViewport struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *SubViewport) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Viewport
 }
 
 func (me *SubViewport) BaseClass() string {

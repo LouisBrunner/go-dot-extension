@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PlaceholderTexture2DArray struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PlaceholderTexture2DArray) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PlaceholderTextureLayered
 }
 
 func (me *PlaceholderTexture2DArray) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type EditorVCSInterface struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *EditorVCSInterface) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *EditorVCSInterface) BaseClass() string {

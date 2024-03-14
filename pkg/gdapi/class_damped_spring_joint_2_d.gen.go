@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type DampedSpringJoint2D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *DampedSpringJoint2D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Joint2D
 }
 
 func (me *DampedSpringJoint2D) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RootMotionView struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RootMotionView) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualInstance3D
 }
 
 func (me *RootMotionView) BaseClass() string {

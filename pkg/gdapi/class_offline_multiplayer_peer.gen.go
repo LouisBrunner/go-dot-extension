@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type OfflineMultiplayerPeer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *OfflineMultiplayerPeer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  MultiplayerPeer
 }
 
 func (me *OfflineMultiplayerPeer) BaseClass() string {

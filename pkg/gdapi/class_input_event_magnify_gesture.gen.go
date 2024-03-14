@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type InputEventMagnifyGesture struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *InputEventMagnifyGesture) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  InputEventGesture
 }
 
 func (me *InputEventMagnifyGesture) BaseClass() string {

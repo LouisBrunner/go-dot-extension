@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AudioStreamGenerator struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AudioStreamGenerator) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  AudioStream
 }
 
 func (me *AudioStreamGenerator) BaseClass() string {

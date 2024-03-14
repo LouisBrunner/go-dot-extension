@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Skin struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Skin) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *Skin) BaseClass() string {

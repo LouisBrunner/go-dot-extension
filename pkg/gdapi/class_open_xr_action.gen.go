@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type OpenXRAction struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *OpenXRAction) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *OpenXRAction) BaseClass() string {

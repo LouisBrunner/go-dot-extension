@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Theme struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Theme) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *Theme) BaseClass() string {

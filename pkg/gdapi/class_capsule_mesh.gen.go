@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type CapsuleMesh struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *CapsuleMesh) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  PrimitiveMesh
 }
 
 func (me *CapsuleMesh) BaseClass() string {

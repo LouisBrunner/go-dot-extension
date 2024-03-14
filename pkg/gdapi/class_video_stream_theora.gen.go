@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VideoStreamTheora struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VideoStreamTheora) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VideoStream
 }
 
 func (me *VideoStreamTheora) BaseClass() string {

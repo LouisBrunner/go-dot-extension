@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type FogVolume struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *FogVolume) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualInstance3D
 }
 
 func (me *FogVolume) BaseClass() string {

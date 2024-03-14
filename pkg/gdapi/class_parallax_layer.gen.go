@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ParallaxLayer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ParallaxLayer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node2D
 }
 
 func (me *ParallaxLayer) BaseClass() string {

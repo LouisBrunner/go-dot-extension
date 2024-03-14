@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type RDPipelineMultisampleState struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *RDPipelineMultisampleState) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *RDPipelineMultisampleState) BaseClass() string {

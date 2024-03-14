@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type InputEventMIDI struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *InputEventMIDI) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  InputEvent
 }
 
 func (me *InputEventMIDI) BaseClass() string {

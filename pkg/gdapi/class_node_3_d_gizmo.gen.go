@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type Node3DGizmo struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *Node3DGizmo) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *Node3DGizmo) BaseClass() string {

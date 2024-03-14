@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AtlasTexture struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AtlasTexture) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Texture2D
 }
 
 func (me *AtlasTexture) BaseClass() string {

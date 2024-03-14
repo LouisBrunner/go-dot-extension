@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type UDPServer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *UDPServer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *UDPServer) BaseClass() string {

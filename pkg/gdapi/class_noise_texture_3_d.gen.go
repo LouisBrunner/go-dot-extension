@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type NoiseTexture3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *NoiseTexture3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Texture3D
 }
 
 func (me *NoiseTexture3D) BaseClass() string {

@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type XRPose struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *XRPose) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *XRPose) BaseClass() string {

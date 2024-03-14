@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type VisualShaderNodeTexture2DArrayParameter struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *VisualShaderNodeTexture2DArrayParameter) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  VisualShaderNodeTextureParameter
 }
 
 func (me *VisualShaderNodeTexture2DArrayParameter) BaseClass() string {

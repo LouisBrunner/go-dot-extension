@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type JavaScriptBridge struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *JavaScriptBridge) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *JavaScriptBridge) BaseClass() string {

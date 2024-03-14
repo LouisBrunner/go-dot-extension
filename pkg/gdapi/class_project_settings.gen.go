@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ProjectSettings struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ProjectSettings) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Object
 }
 
 func (me *ProjectSettings) BaseClass() string {

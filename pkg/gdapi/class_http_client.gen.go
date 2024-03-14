@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type HTTPClient struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *HTTPClient) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *HTTPClient) BaseClass() string {

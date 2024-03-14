@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type AnimationNodeBlendSpace1D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *AnimationNodeBlendSpace1D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  AnimationRootNode
 }
 
 func (me *AnimationNodeBlendSpace1D) BaseClass() string {

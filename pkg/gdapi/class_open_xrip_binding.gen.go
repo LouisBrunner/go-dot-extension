@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type OpenXRIPBinding struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *OpenXRIPBinding) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Resource
 }
 
 func (me *OpenXRIPBinding) BaseClass() string {

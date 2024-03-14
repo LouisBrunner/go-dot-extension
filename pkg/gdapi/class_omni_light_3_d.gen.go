@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type OmniLight3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *OmniLight3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Light3D
 }
 
 func (me *OmniLight3D) BaseClass() string {

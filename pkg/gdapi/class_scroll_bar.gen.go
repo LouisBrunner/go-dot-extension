@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type ScrollBar struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *ScrollBar) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Range
 }
 
 func (me *ScrollBar) BaseClass() string {

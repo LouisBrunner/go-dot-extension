@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MultiplayerAPI struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *MultiplayerAPI) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *MultiplayerAPI) BaseClass() string {

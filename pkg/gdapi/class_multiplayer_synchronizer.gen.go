@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type MultiplayerSynchronizer struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *MultiplayerSynchronizer) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  Node
 }
 
 func (me *MultiplayerSynchronizer) BaseClass() string {

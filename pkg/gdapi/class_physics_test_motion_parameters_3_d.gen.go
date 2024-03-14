@@ -10,11 +10,7 @@ import (
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type PhysicsTestMotionParameters3D struct {
-  obj gdc.ObjectPtr
-}
-
-func (me *PhysicsTestMotionParameters3D) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+  RefCounted
 }
 
 func (me *PhysicsTestMotionParameters3D) BaseClass() string {
