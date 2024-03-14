@@ -20,7 +20,7 @@ type extension struct {
 }
 
 func newSignalSubscribers() Class {
-	subs := gdapi.NewSignalSubscribers()
+	subs := gdapi.NewSignalSubscribers(nil)
 	return &subs
 }
 

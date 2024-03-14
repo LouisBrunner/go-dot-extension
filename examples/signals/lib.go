@@ -24,7 +24,6 @@ func (n *MyNode2D) Move(vec gdapi.Vector2) {
 }
 
 func (n *MyNode2D) X_Ready() {
-	n.subs = gdapi.NewSignalSubscribers()
 	n.printSecret()
 	n.Speed = 100
 }

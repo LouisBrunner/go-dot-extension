@@ -4,6 +4,7 @@ import (
 	"log"
 	"reflect"
 
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 	"github.com/google/uuid"
 )
 
@@ -21,11 +22,13 @@ type SignalSubscribers struct {
 	subsRef      map[Subcriber]string
 }
 
-func NewSignalSubscribers() SignalSubscribers {
-	return SignalSubscribers{
+func NewSignalSubscribers(obj gdc.ObjectPtr) SignalSubscribers {
+	ssubs := SignalSubscribers{
 		subs:    make(map[string]subscriber),
 		subsRef: make(map[Subcriber]string),
 	}
+	ssubs.SetBaseObject(obj)
+	return ssubs
 }
 
 func (me *SignalSubscribers) X_Init() {
