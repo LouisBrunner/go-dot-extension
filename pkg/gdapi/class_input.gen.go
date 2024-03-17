@@ -626,13 +626,11 @@ type InputJoyConnectionChangedSignalFn func(device int, connected bool, )
 func (me *Input) ConnectJoyConnectionChanged(subs SignalSubscribers, fn InputJoyConnectionChangedSignalFn) {
   sig := StringNameFromStr("joy_connection_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Input) DisconnectJoyConnectionChanged(subs SignalSubscribers, fn InputJoyConnectionChangedSignalFn) {
   sig := StringNameFromStr("joy_connection_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

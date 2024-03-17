@@ -2,59 +2,90 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type StringName struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeStringName]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Enums
 
 // Constructors
-
-func NewStringName() StringName {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeStringName))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeStringName, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return StringName{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newStringName() *StringName {
+  me := &StringName{
+    data:   new([classSizeStringName]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewStringNameFromStringName(from StringName, ) StringName {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeStringName))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeStringName, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return StringName{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewStringName() *StringName {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newStringName()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeStringName, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewStringNameFromString(from String, ) StringName {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeStringName))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeStringName, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return StringName{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewStringNameFromStringName(from StringName, ) *StringName {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newStringName()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeStringName, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
+}
+
+func NewStringNameFromString(from String, ) *StringName {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newStringName()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeStringName, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *StringName) Destroy() {
-  if me.ptr == nil {
-    return
-  }
   dtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeStringName)
-	me.iface.CallPtrDestructor(dtr, gdc.TypePtr(me.ptr))
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+	me.iface.CallPtrDestructor(dtr, me.AsTypePtr())
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsStringName() (*StringName, error) {
+	if me.Type() != gdc.VariantTypeStringName {
+		return nil, fmt.Errorf("variant is not a StringName")
+	}
+  bclass := newStringName()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *StringName) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func StringNameFromPtr(ptr gdc.ConstTypePtr) *StringName {
+  me := newStringName()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *StringName) Type() gdc.VariantType {
@@ -62,11 +93,15 @@ func (me *StringName) Type() gdc.VariantType {
 }
 
 func (me *StringName) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *StringName) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *StringName) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -137,7 +172,7 @@ func (me *StringName) Substr(from int, len_ int, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 787537301) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from), gdc.ConstTypePtr(&len_), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&from)), gdc.ConstTypePtr(unsafe.Pointer(&len_)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -149,7 +184,7 @@ func (me *StringName) GetSlice(delimiter String, slice int, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 3535100402) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(&slice), }
+  args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&slice)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -161,7 +196,7 @@ func (me *StringName) GetSlicec(delimiter int, slice int, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 787537301) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delimiter), gdc.ConstTypePtr(&slice), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&delimiter)), gdc.ConstTypePtr(unsafe.Pointer(&slice)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -185,7 +220,7 @@ func (me *StringName) Find(what String, from int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 1760645412) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&from)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -197,7 +232,7 @@ func (me *StringName) Count(what String, from int, to int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 2343087891) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), gdc.ConstTypePtr(&to), }
+  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&from)), gdc.ConstTypePtr(unsafe.Pointer(&to)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -209,7 +244,7 @@ func (me *StringName) Countn(what String, from int, to int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 2343087891) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), gdc.ConstTypePtr(&to), }
+  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&from)), gdc.ConstTypePtr(unsafe.Pointer(&to)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -221,7 +256,7 @@ func (me *StringName) Findn(what String, from int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 1760645412) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&from)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -233,7 +268,7 @@ func (me *StringName) Rfind(what String, from int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 1760645412) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&from)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -245,7 +280,7 @@ func (me *StringName) Rfindn(what String, from int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 1760645412) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&from)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -389,7 +424,7 @@ func (me *StringName) Repeat(count int, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 2162347432) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&count)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -413,7 +448,7 @@ func (me *StringName) Insert(position int, what String, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 248737229) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), what.AsCTypePtr(), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&position)), what.AsCTypePtr(), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -425,7 +460,7 @@ func (me *StringName) Erase(position int, chars int, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 787537301) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), gdc.ConstTypePtr(&chars), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&position)), gdc.ConstTypePtr(unsafe.Pointer(&chars)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -485,7 +520,7 @@ func (me *StringName) Split(delimiter String, allow_empty bool, maxsplit int, ) 
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 1252735785) // FIXME: should cache?
 
   var ret PackedStringArray
-  args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(&allow_empty), gdc.ConstTypePtr(&maxsplit), }
+  args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&allow_empty)), gdc.ConstTypePtr(unsafe.Pointer(&maxsplit)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -497,7 +532,7 @@ func (me *StringName) Rsplit(delimiter String, allow_empty bool, maxsplit int, )
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 1252735785) // FIXME: should cache?
 
   var ret PackedStringArray
-  args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(&allow_empty), gdc.ConstTypePtr(&maxsplit), }
+  args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&allow_empty)), gdc.ConstTypePtr(unsafe.Pointer(&maxsplit)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -509,7 +544,7 @@ func (me *StringName) SplitFloats(delimiter String, allow_empty bool, ) PackedFl
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 2092079095) // FIXME: should cache?
 
   var ret PackedFloat64Array
-  args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(&allow_empty), }
+  args := []gdc.ConstTypePtr{delimiter.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&allow_empty)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -557,7 +592,7 @@ func (me *StringName) Left(length int, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 2162347432) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&length)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -569,7 +604,7 @@ func (me *StringName) Right(length int, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 2162347432) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&length)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -581,7 +616,7 @@ func (me *StringName) StripEdges(left bool, right bool, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 907855311) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&left), gdc.ConstTypePtr(&right), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&left)), gdc.ConstTypePtr(unsafe.Pointer(&right)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -665,7 +700,7 @@ func (me *StringName) UnicodeAt(at int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 4103005248) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&at), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&at)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -857,7 +892,7 @@ func (me *StringName) XmlEscape(escape_quotes bool, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 3429816538) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&escape_quotes), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&escape_quotes)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -1001,7 +1036,7 @@ func (me *StringName) IsValidHexNumber(with_prefix bool, ) bool {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 593672999) // FIXME: should cache?
 
   var ret bool
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&with_prefix), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&with_prefix)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -1097,7 +1132,7 @@ func (me *StringName) Lpad(min_length int, character String, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 248737229) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&min_length), character.AsCTypePtr(), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&min_length)), character.AsCTypePtr(), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -1109,7 +1144,7 @@ func (me *StringName) Rpad(min_length int, character String, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 248737229) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&min_length), character.AsCTypePtr(), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&min_length)), character.AsCTypePtr(), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -1121,7 +1156,7 @@ func (me *StringName) PadDecimals(digits int, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 2162347432) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&digits), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&digits)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -1133,7 +1168,7 @@ func (me *StringName) PadZeros(digits int, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, name.AsCPtr(), 2162347432) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&digits), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&digits)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -1287,7 +1322,7 @@ func (me *StringName) ModuleBool(rightArg bool) String {
   return ret
 }
 
-func (me *StringName) ModuleInt(rightArg int) String {
+func (me *StringName) ModuleInt(rightArg int64) String {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -1297,7 +1332,7 @@ func (me *StringName) ModuleInt(rightArg int) String {
   return ret
 }
 
-func (me *StringName) ModuleFloat32(rightArg float32) String {
+func (me *StringName) ModuleFloat32(rightArg float64) String {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 

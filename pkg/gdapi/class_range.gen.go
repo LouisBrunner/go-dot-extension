@@ -294,15 +294,13 @@ type RangeValueChangedSignalFn func(value float32, )
 func (me *Range) ConnectValueChanged(subs SignalSubscribers, fn RangeValueChangedSignalFn) {
   sig := StringNameFromStr("value_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Range) DisconnectValueChanged(subs SignalSubscribers, fn RangeValueChangedSignalFn) {
   sig := StringNameFromStr("value_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type RangeChangedSignalFn func()
@@ -310,13 +308,11 @@ type RangeChangedSignalFn func()
 func (me *Range) ConnectChanged(subs SignalSubscribers, fn RangeChangedSignalFn) {
   sig := StringNameFromStr("changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Range) DisconnectChanged(subs SignalSubscribers, fn RangeChangedSignalFn) {
   sig := StringNameFromStr("changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

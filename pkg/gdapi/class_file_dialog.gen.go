@@ -344,15 +344,13 @@ type FileDialogFileSelectedSignalFn func(path String, )
 func (me *FileDialog) ConnectFileSelected(subs SignalSubscribers, fn FileDialogFileSelectedSignalFn) {
   sig := StringNameFromStr("file_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *FileDialog) DisconnectFileSelected(subs SignalSubscribers, fn FileDialogFileSelectedSignalFn) {
   sig := StringNameFromStr("file_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type FileDialogFilesSelectedSignalFn func(paths PackedStringArray, )
@@ -360,15 +358,13 @@ type FileDialogFilesSelectedSignalFn func(paths PackedStringArray, )
 func (me *FileDialog) ConnectFilesSelected(subs SignalSubscribers, fn FileDialogFilesSelectedSignalFn) {
   sig := StringNameFromStr("files_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *FileDialog) DisconnectFilesSelected(subs SignalSubscribers, fn FileDialogFilesSelectedSignalFn) {
   sig := StringNameFromStr("files_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type FileDialogDirSelectedSignalFn func(dir String, )
@@ -376,13 +372,11 @@ type FileDialogDirSelectedSignalFn func(dir String, )
 func (me *FileDialog) ConnectDirSelected(subs SignalSubscribers, fn FileDialogDirSelectedSignalFn) {
   sig := StringNameFromStr("dir_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *FileDialog) DisconnectDirSelected(subs SignalSubscribers, fn FileDialogDirSelectedSignalFn) {
   sig := StringNameFromStr("dir_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

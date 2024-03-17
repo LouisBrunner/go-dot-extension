@@ -154,15 +154,13 @@ type GraphElementNodeSelectedSignalFn func()
 func (me *GraphElement) ConnectNodeSelected(subs SignalSubscribers, fn GraphElementNodeSelectedSignalFn) {
   sig := StringNameFromStr("node_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphElement) DisconnectNodeSelected(subs SignalSubscribers, fn GraphElementNodeSelectedSignalFn) {
   sig := StringNameFromStr("node_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphElementNodeDeselectedSignalFn func()
@@ -170,15 +168,13 @@ type GraphElementNodeDeselectedSignalFn func()
 func (me *GraphElement) ConnectNodeDeselected(subs SignalSubscribers, fn GraphElementNodeDeselectedSignalFn) {
   sig := StringNameFromStr("node_deselected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphElement) DisconnectNodeDeselected(subs SignalSubscribers, fn GraphElementNodeDeselectedSignalFn) {
   sig := StringNameFromStr("node_deselected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphElementRaiseRequestSignalFn func()
@@ -186,15 +182,13 @@ type GraphElementRaiseRequestSignalFn func()
 func (me *GraphElement) ConnectRaiseRequest(subs SignalSubscribers, fn GraphElementRaiseRequestSignalFn) {
   sig := StringNameFromStr("raise_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphElement) DisconnectRaiseRequest(subs SignalSubscribers, fn GraphElementRaiseRequestSignalFn) {
   sig := StringNameFromStr("raise_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphElementDeleteRequestSignalFn func()
@@ -202,15 +196,13 @@ type GraphElementDeleteRequestSignalFn func()
 func (me *GraphElement) ConnectDeleteRequest(subs SignalSubscribers, fn GraphElementDeleteRequestSignalFn) {
   sig := StringNameFromStr("delete_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphElement) DisconnectDeleteRequest(subs SignalSubscribers, fn GraphElementDeleteRequestSignalFn) {
   sig := StringNameFromStr("delete_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphElementResizeRequestSignalFn func(new_minsize Vector2, )
@@ -218,15 +210,13 @@ type GraphElementResizeRequestSignalFn func(new_minsize Vector2, )
 func (me *GraphElement) ConnectResizeRequest(subs SignalSubscribers, fn GraphElementResizeRequestSignalFn) {
   sig := StringNameFromStr("resize_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphElement) DisconnectResizeRequest(subs SignalSubscribers, fn GraphElementResizeRequestSignalFn) {
   sig := StringNameFromStr("resize_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphElementDraggedSignalFn func(from Vector2, to Vector2, )
@@ -234,15 +224,13 @@ type GraphElementDraggedSignalFn func(from Vector2, to Vector2, )
 func (me *GraphElement) ConnectDragged(subs SignalSubscribers, fn GraphElementDraggedSignalFn) {
   sig := StringNameFromStr("dragged")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphElement) DisconnectDragged(subs SignalSubscribers, fn GraphElementDraggedSignalFn) {
   sig := StringNameFromStr("dragged")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphElementPositionOffsetChangedSignalFn func()
@@ -250,13 +238,11 @@ type GraphElementPositionOffsetChangedSignalFn func()
 func (me *GraphElement) ConnectPositionOffsetChanged(subs SignalSubscribers, fn GraphElementPositionOffsetChangedSignalFn) {
   sig := StringNameFromStr("position_offset_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphElement) DisconnectPositionOffsetChanged(subs SignalSubscribers, fn GraphElementPositionOffsetChangedSignalFn) {
   sig := StringNameFromStr("position_offset_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

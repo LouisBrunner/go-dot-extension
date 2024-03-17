@@ -2,77 +2,109 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Int struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeInt]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Enums
 
 // Constructors
-
-func NewInt() Int {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeInt))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeInt, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Int{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newInt() *Int {
+  me := &Int{
+    data:   new([classSizeInt]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewIntFromInt(from int, ) Int {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeInt))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeInt, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
-  return Int{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewInt() *Int {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newInt()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeInt, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewIntFromFloat32(from float32, ) Int {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeInt))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeInt, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
-  return Int{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewIntFromInt(from int64, ) *Int {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&from)
+  me := newInt()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeInt, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
+  return me
 }
 
-func NewIntFromBool(from bool, ) Int {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeInt))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeInt, 3) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
-  return Int{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewIntFromFloat32(from float64, ) *Int {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&from)
+  me := newInt()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeInt, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
+  return me
 }
 
-func NewIntFromString(from String, ) Int {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeInt))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeInt, 4) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Int{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewIntFromBool(from bool, ) *Int {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&from)
+  me := newInt()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeInt, 3) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
+  return me
+}
+
+func NewIntFromString(from String, ) *Int {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newInt()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeInt, 4) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *Int) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsInt() (*Int, error) {
+	if me.Type() != gdc.VariantTypeInt {
+		return nil, fmt.Errorf("variant is not a Int")
+	}
+  bclass := newInt()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Int) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func IntFromPtr(ptr gdc.ConstTypePtr) *Int {
+  me := newInt()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Int) Type() gdc.VariantType {
@@ -80,11 +112,19 @@ func (me *Int) Type() gdc.VariantType {
 }
 
 func (me *Int) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Int) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Int) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
+}
+
+func (me *Int) Get() int64 {
+  return *(*int64)(unsafe.Pointer(&me.data))
 }
 
 // Methods
@@ -184,7 +224,7 @@ func (me *Int) XorBool(rightArg bool) bool {
   return ret
 }
 
-func (me *Int) EqualInt(rightArg int) bool {
+func (me *Int) EqualInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -194,7 +234,7 @@ func (me *Int) EqualInt(rightArg int) bool {
   return ret
 }
 
-func (me *Int) NotEqualInt(rightArg int) bool {
+func (me *Int) NotEqualInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -204,7 +244,7 @@ func (me *Int) NotEqualInt(rightArg int) bool {
   return ret
 }
 
-func (me *Int) LessInt(rightArg int) bool {
+func (me *Int) LessInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -214,7 +254,7 @@ func (me *Int) LessInt(rightArg int) bool {
   return ret
 }
 
-func (me *Int) LessEqualInt(rightArg int) bool {
+func (me *Int) LessEqualInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -224,7 +264,7 @@ func (me *Int) LessEqualInt(rightArg int) bool {
   return ret
 }
 
-func (me *Int) GreaterInt(rightArg int) bool {
+func (me *Int) GreaterInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -234,7 +274,7 @@ func (me *Int) GreaterInt(rightArg int) bool {
   return ret
 }
 
-func (me *Int) GreaterEqualInt(rightArg int) bool {
+func (me *Int) GreaterEqualInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -244,7 +284,7 @@ func (me *Int) GreaterEqualInt(rightArg int) bool {
   return ret
 }
 
-func (me *Int) AddInt(rightArg int) int {
+func (me *Int) AddInt(rightArg int64) int {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -254,7 +294,7 @@ func (me *Int) AddInt(rightArg int) int {
   return ret
 }
 
-func (me *Int) SubtractInt(rightArg int) int {
+func (me *Int) SubtractInt(rightArg int64) int {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -264,7 +304,7 @@ func (me *Int) SubtractInt(rightArg int) int {
   return ret
 }
 
-func (me *Int) MultiplyInt(rightArg int) int {
+func (me *Int) MultiplyInt(rightArg int64) int {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -274,7 +314,7 @@ func (me *Int) MultiplyInt(rightArg int) int {
   return ret
 }
 
-func (me *Int) DivideInt(rightArg int) int {
+func (me *Int) DivideInt(rightArg int64) int {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -284,7 +324,7 @@ func (me *Int) DivideInt(rightArg int) int {
   return ret
 }
 
-func (me *Int) ModuleInt(rightArg int) int {
+func (me *Int) ModuleInt(rightArg int64) int {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -294,7 +334,7 @@ func (me *Int) ModuleInt(rightArg int) int {
   return ret
 }
 
-func (me *Int) PowerInt(rightArg int) int {
+func (me *Int) PowerInt(rightArg int64) int {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -304,7 +344,7 @@ func (me *Int) PowerInt(rightArg int) int {
   return ret
 }
 
-func (me *Int) ShiftLeftInt(rightArg int) int {
+func (me *Int) ShiftLeftInt(rightArg int64) int {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -314,7 +354,7 @@ func (me *Int) ShiftLeftInt(rightArg int) int {
   return ret
 }
 
-func (me *Int) ShiftRightInt(rightArg int) int {
+func (me *Int) ShiftRightInt(rightArg int64) int {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -324,7 +364,7 @@ func (me *Int) ShiftRightInt(rightArg int) int {
   return ret
 }
 
-func (me *Int) BitAndInt(rightArg int) int {
+func (me *Int) BitAndInt(rightArg int64) int {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -334,7 +374,7 @@ func (me *Int) BitAndInt(rightArg int) int {
   return ret
 }
 
-func (me *Int) BitOrInt(rightArg int) int {
+func (me *Int) BitOrInt(rightArg int64) int {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -344,7 +384,7 @@ func (me *Int) BitOrInt(rightArg int) int {
   return ret
 }
 
-func (me *Int) BitXorInt(rightArg int) int {
+func (me *Int) BitXorInt(rightArg int64) int {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -354,7 +394,7 @@ func (me *Int) BitXorInt(rightArg int) int {
   return ret
 }
 
-func (me *Int) AndInt(rightArg int) bool {
+func (me *Int) AndInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -364,7 +404,7 @@ func (me *Int) AndInt(rightArg int) bool {
   return ret
 }
 
-func (me *Int) OrInt(rightArg int) bool {
+func (me *Int) OrInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -374,7 +414,7 @@ func (me *Int) OrInt(rightArg int) bool {
   return ret
 }
 
-func (me *Int) XorInt(rightArg int) bool {
+func (me *Int) XorInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -384,7 +424,7 @@ func (me *Int) XorInt(rightArg int) bool {
   return ret
 }
 
-func (me *Int) EqualFloat32(rightArg float32) bool {
+func (me *Int) EqualFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -394,7 +434,7 @@ func (me *Int) EqualFloat32(rightArg float32) bool {
   return ret
 }
 
-func (me *Int) NotEqualFloat32(rightArg float32) bool {
+func (me *Int) NotEqualFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -404,7 +444,7 @@ func (me *Int) NotEqualFloat32(rightArg float32) bool {
   return ret
 }
 
-func (me *Int) LessFloat32(rightArg float32) bool {
+func (me *Int) LessFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -414,7 +454,7 @@ func (me *Int) LessFloat32(rightArg float32) bool {
   return ret
 }
 
-func (me *Int) LessEqualFloat32(rightArg float32) bool {
+func (me *Int) LessEqualFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -424,7 +464,7 @@ func (me *Int) LessEqualFloat32(rightArg float32) bool {
   return ret
 }
 
-func (me *Int) GreaterFloat32(rightArg float32) bool {
+func (me *Int) GreaterFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -434,7 +474,7 @@ func (me *Int) GreaterFloat32(rightArg float32) bool {
   return ret
 }
 
-func (me *Int) GreaterEqualFloat32(rightArg float32) bool {
+func (me *Int) GreaterEqualFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -444,7 +484,7 @@ func (me *Int) GreaterEqualFloat32(rightArg float32) bool {
   return ret
 }
 
-func (me *Int) AddFloat32(rightArg float32) float32 {
+func (me *Int) AddFloat32(rightArg float64) float32 {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -454,7 +494,7 @@ func (me *Int) AddFloat32(rightArg float32) float32 {
   return ret
 }
 
-func (me *Int) SubtractFloat32(rightArg float32) float32 {
+func (me *Int) SubtractFloat32(rightArg float64) float32 {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -464,7 +504,7 @@ func (me *Int) SubtractFloat32(rightArg float32) float32 {
   return ret
 }
 
-func (me *Int) MultiplyFloat32(rightArg float32) float32 {
+func (me *Int) MultiplyFloat32(rightArg float64) float32 {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -474,7 +514,7 @@ func (me *Int) MultiplyFloat32(rightArg float32) float32 {
   return ret
 }
 
-func (me *Int) DivideFloat32(rightArg float32) float32 {
+func (me *Int) DivideFloat32(rightArg float64) float32 {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -484,7 +524,7 @@ func (me *Int) DivideFloat32(rightArg float32) float32 {
   return ret
 }
 
-func (me *Int) PowerFloat32(rightArg float32) float32 {
+func (me *Int) PowerFloat32(rightArg float64) float32 {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -494,7 +534,7 @@ func (me *Int) PowerFloat32(rightArg float32) float32 {
   return ret
 }
 
-func (me *Int) AndFloat32(rightArg float32) bool {
+func (me *Int) AndFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -504,7 +544,7 @@ func (me *Int) AndFloat32(rightArg float32) bool {
   return ret
 }
 
-func (me *Int) OrFloat32(rightArg float32) bool {
+func (me *Int) OrFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -514,7 +554,7 @@ func (me *Int) OrFloat32(rightArg float32) bool {
   return ret
 }
 
-func (me *Int) XorFloat32(rightArg float32) bool {
+func (me *Int) XorFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 

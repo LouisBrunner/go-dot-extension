@@ -132,15 +132,13 @@ type TextServerManagerInterfaceAddedSignalFn func(interface_name StringName, )
 func (me *TextServerManager) ConnectInterfaceAdded(subs SignalSubscribers, fn TextServerManagerInterfaceAddedSignalFn) {
   sig := StringNameFromStr("interface_added")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TextServerManager) DisconnectInterfaceAdded(subs SignalSubscribers, fn TextServerManagerInterfaceAddedSignalFn) {
   sig := StringNameFromStr("interface_added")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TextServerManagerInterfaceRemovedSignalFn func(interface_name StringName, )
@@ -148,13 +146,11 @@ type TextServerManagerInterfaceRemovedSignalFn func(interface_name StringName, )
 func (me *TextServerManager) ConnectInterfaceRemoved(subs SignalSubscribers, fn TextServerManagerInterfaceRemovedSignalFn) {
   sig := StringNameFromStr("interface_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TextServerManager) DisconnectInterfaceRemoved(subs SignalSubscribers, fn TextServerManagerInterfaceRemovedSignalFn) {
   sig := StringNameFromStr("interface_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

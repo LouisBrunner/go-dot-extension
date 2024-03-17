@@ -242,15 +242,13 @@ type NavigationRegion3DNavigationMeshChangedSignalFn func()
 func (me *NavigationRegion3D) ConnectNavigationMeshChanged(subs SignalSubscribers, fn NavigationRegion3DNavigationMeshChangedSignalFn) {
   sig := StringNameFromStr("navigation_mesh_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationRegion3D) DisconnectNavigationMeshChanged(subs SignalSubscribers, fn NavigationRegion3DNavigationMeshChangedSignalFn) {
   sig := StringNameFromStr("navigation_mesh_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NavigationRegion3DBakeFinishedSignalFn func()
@@ -258,13 +256,11 @@ type NavigationRegion3DBakeFinishedSignalFn func()
 func (me *NavigationRegion3D) ConnectBakeFinished(subs SignalSubscribers, fn NavigationRegion3DBakeFinishedSignalFn) {
   sig := StringNameFromStr("bake_finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationRegion3D) DisconnectBakeFinished(subs SignalSubscribers, fn NavigationRegion3DBakeFinishedSignalFn) {
   sig := StringNameFromStr("bake_finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

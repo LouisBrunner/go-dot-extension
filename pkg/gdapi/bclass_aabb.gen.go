@@ -2,57 +2,88 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type AABB struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeAABB]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Enums
 
 // Constructors
-
-func NewAABB() AABB {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeAABB))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return AABB{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newAABB() *AABB {
+  me := &AABB{
+    data:   new([classSizeAABB]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewAABBFromAABB(from AABB, ) AABB {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeAABB))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return AABB{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewAABB() *AABB {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newAABB()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewAABBFromVector3Vector3(position Vector3, size Vector3, ) AABB {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeAABB))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{position.AsCTypePtr(), size.AsCTypePtr(), }))
-  return AABB{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewAABBFromAABB(from AABB, ) *AABB {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newAABB()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
+}
+
+func NewAABBFromVector3Vector3(position Vector3, size Vector3, ) *AABB {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newAABB()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{position.AsCTypePtr(), size.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *AABB) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsAABB() (*AABB, error) {
+	if me.Type() != gdc.VariantTypeAABB {
+		return nil, fmt.Errorf("variant is not a AABB")
+	}
+  bclass := newAABB()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *AABB) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func AABBFromPtr(ptr gdc.ConstTypePtr) *AABB {
+  me := newAABB()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *AABB) Type() gdc.VariantType {
@@ -60,11 +91,15 @@ func (me *AABB) Type() gdc.VariantType {
 }
 
 func (me *AABB) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *AABB) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *AABB) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -243,7 +278,7 @@ func (me *AABB) Grow(by float32, ) AABB {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 239217291) // FIXME: should cache?
 
   var ret AABB
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&by), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&by)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -339,7 +374,7 @@ func (me *AABB) GetEndpoint(idx int, ) Vector3 {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1394941017) // FIXME: should cache?
 
   var ret Vector3
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&idx)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -444,7 +479,7 @@ func (me *AABB) SetPosition(value Vector3) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *AABB) Size() Vector3 {
@@ -462,7 +497,7 @@ func (me *AABB) SetSize(value Vector3) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *AABB) End() Vector3 {
@@ -480,5 +515,5 @@ func (me *AABB) SetEnd(value Vector3) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }

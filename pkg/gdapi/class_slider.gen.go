@@ -132,15 +132,13 @@ type SliderDragStartedSignalFn func()
 func (me *Slider) ConnectDragStarted(subs SignalSubscribers, fn SliderDragStartedSignalFn) {
   sig := StringNameFromStr("drag_started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Slider) DisconnectDragStarted(subs SignalSubscribers, fn SliderDragStartedSignalFn) {
   sig := StringNameFromStr("drag_started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type SliderDragEndedSignalFn func(value_changed bool, )
@@ -148,13 +146,11 @@ type SliderDragEndedSignalFn func(value_changed bool, )
 func (me *Slider) ConnectDragEnded(subs SignalSubscribers, fn SliderDragEndedSignalFn) {
   sig := StringNameFromStr("drag_ended")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Slider) DisconnectDragEnded(subs SignalSubscribers, fn SliderDragEndedSignalFn) {
   sig := StringNameFromStr("drag_ended")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

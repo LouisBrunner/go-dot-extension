@@ -349,13 +349,11 @@ type SkeletonProfileProfileUpdatedSignalFn func()
 func (me *SkeletonProfile) ConnectProfileUpdated(subs SignalSubscribers, fn SkeletonProfileProfileUpdatedSignalFn) {
   sig := StringNameFromStr("profile_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SkeletonProfile) DisconnectProfileUpdated(subs SignalSubscribers, fn SkeletonProfileProfileUpdatedSignalFn) {
   sig := StringNameFromStr("profile_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -96,13 +96,11 @@ type EditorSelectionSelectionChangedSignalFn func()
 func (me *EditorSelection) ConnectSelectionChanged(subs SignalSubscribers, fn EditorSelectionSelectionChangedSignalFn) {
   sig := StringNameFromStr("selection_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorSelection) DisconnectSelectionChanged(subs SignalSubscribers, fn EditorSelectionSelectionChangedSignalFn) {
   sig := StringNameFromStr("selection_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

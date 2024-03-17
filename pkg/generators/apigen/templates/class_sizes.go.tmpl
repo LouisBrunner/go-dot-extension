@@ -1,9 +1,0 @@
-{{template "preamble"}}
-
-type RealType {{replace .BuildConfiguration "_" ""}}
-
-const (
-{{- range .Sizes}}
-  classSize{{mapClass .Name}} = {{.Size}}
-{{- end }}
-)

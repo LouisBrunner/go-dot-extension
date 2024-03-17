@@ -418,15 +418,13 @@ type OptionButtonItemSelectedSignalFn func(index int, )
 func (me *OptionButton) ConnectItemSelected(subs SignalSubscribers, fn OptionButtonItemSelectedSignalFn) {
   sig := StringNameFromStr("item_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *OptionButton) DisconnectItemSelected(subs SignalSubscribers, fn OptionButtonItemSelectedSignalFn) {
   sig := StringNameFromStr("item_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type OptionButtonItemFocusedSignalFn func(index int, )
@@ -434,13 +432,11 @@ type OptionButtonItemFocusedSignalFn func(index int, )
 func (me *OptionButton) ConnectItemFocused(subs SignalSubscribers, fn OptionButtonItemFocusedSignalFn) {
   sig := StringNameFromStr("item_focused")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *OptionButton) DisconnectItemFocused(subs SignalSubscribers, fn OptionButtonItemFocusedSignalFn) {
   sig := StringNameFromStr("item_focused")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

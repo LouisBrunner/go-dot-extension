@@ -630,13 +630,11 @@ type GPUParticles2DFinishedSignalFn func()
 func (me *GPUParticles2D) ConnectFinished(subs SignalSubscribers, fn GPUParticles2DFinishedSignalFn) {
   sig := StringNameFromStr("finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GPUParticles2D) DisconnectFinished(subs SignalSubscribers, fn GPUParticles2DFinishedSignalFn) {
   sig := StringNameFromStr("finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

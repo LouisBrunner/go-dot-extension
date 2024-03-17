@@ -57,13 +57,11 @@ type MainLoopOnRequestPermissionsResultSignalFn func(permission String, granted 
 func (me *MainLoop) ConnectOnRequestPermissionsResult(subs SignalSubscribers, fn MainLoopOnRequestPermissionsResultSignalFn) {
   sig := StringNameFromStr("on_request_permissions_result")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MainLoop) DisconnectOnRequestPermissionsResult(subs SignalSubscribers, fn MainLoopOnRequestPermissionsResultSignalFn) {
   sig := StringNameFromStr("on_request_permissions_result")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

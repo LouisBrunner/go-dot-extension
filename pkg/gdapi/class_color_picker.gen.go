@@ -367,15 +367,13 @@ type ColorPickerColorChangedSignalFn func(color Color, )
 func (me *ColorPicker) ConnectColorChanged(subs SignalSubscribers, fn ColorPickerColorChangedSignalFn) {
   sig := StringNameFromStr("color_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ColorPicker) DisconnectColorChanged(subs SignalSubscribers, fn ColorPickerColorChangedSignalFn) {
   sig := StringNameFromStr("color_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ColorPickerPresetAddedSignalFn func(color Color, )
@@ -383,15 +381,13 @@ type ColorPickerPresetAddedSignalFn func(color Color, )
 func (me *ColorPicker) ConnectPresetAdded(subs SignalSubscribers, fn ColorPickerPresetAddedSignalFn) {
   sig := StringNameFromStr("preset_added")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ColorPicker) DisconnectPresetAdded(subs SignalSubscribers, fn ColorPickerPresetAddedSignalFn) {
   sig := StringNameFromStr("preset_added")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ColorPickerPresetRemovedSignalFn func(color Color, )
@@ -399,13 +395,11 @@ type ColorPickerPresetRemovedSignalFn func(color Color, )
 func (me *ColorPicker) ConnectPresetRemoved(subs SignalSubscribers, fn ColorPickerPresetRemovedSignalFn) {
   sig := StringNameFromStr("preset_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ColorPicker) DisconnectPresetRemoved(subs SignalSubscribers, fn ColorPickerPresetRemovedSignalFn) {
   sig := StringNameFromStr("preset_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

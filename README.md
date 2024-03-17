@@ -89,6 +89,18 @@ go build -buildmode=c-shared -o libmyextension.dll pkg_folder
 
 You can name the shared library whatever you want, the example above uses `libmyextension`.
 
+### How to write your class
+
+Here are some notes on how to write your class:
+
+- Any exported method will be available as a method on the Godot class (apart from any function called `Destroy`)
+- Any exported field will be available as a property on the Godot class (apart from any with type `gdapi.Signal` or `gdapi.SignalSubscribers`)
+- Any method starting with `X_` will be assumed to be a virtual method (e.g. `X_Ready` for `_ready`)
+- All methods and fields will be exported as `snake_case` (e.g. `MyMethod` will be `my_method`), this might lead to name conflicts, so make sure to use unique names
+- All exported methods must have 1 or no return value, multiple return values are not supported
+- Any exported property which is a `gdapi.Object` (basically anything from `gdapi`) will be automatically initialized for you, if it is a pointer however, you will need to initialize it yourself
+- Any `gdapi.SignalSubscribers` field will be automatically initialized for you, even if its not exported, as stated above, it must be a field and not a pointer however
+
 ### Including the shared library in Godot
 
 You will need to create a file with the extension `.gdextension` and place it in your project for Godot to be able to load the shared library.
@@ -116,6 +128,9 @@ You will need to replace `your_folder` with the path to the folder containing th
 You can find examples in the `examples` folder.
 
 - `simple`: a simple example of a custom Godot class, which basically reproduces the above usage
+- `property-getset`: an example of how to use getter and setter for your properties
+- `signals`: an example of how to use signals
+- `gdscript`: an example of how to use the custom Godot class in GDScript
 
 ## Acknowledgements
 

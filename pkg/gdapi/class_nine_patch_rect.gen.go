@@ -183,13 +183,11 @@ type NinePatchRectTextureChangedSignalFn func()
 func (me *NinePatchRect) ConnectTextureChanged(subs SignalSubscribers, fn NinePatchRectTextureChangedSignalFn) {
   sig := StringNameFromStr("texture_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NinePatchRect) DisconnectTextureChanged(subs SignalSubscribers, fn NinePatchRectTextureChangedSignalFn) {
   sig := StringNameFromStr("texture_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

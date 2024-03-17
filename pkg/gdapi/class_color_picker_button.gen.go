@@ -112,15 +112,13 @@ type ColorPickerButtonColorChangedSignalFn func(color Color, )
 func (me *ColorPickerButton) ConnectColorChanged(subs SignalSubscribers, fn ColorPickerButtonColorChangedSignalFn) {
   sig := StringNameFromStr("color_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ColorPickerButton) DisconnectColorChanged(subs SignalSubscribers, fn ColorPickerButtonColorChangedSignalFn) {
   sig := StringNameFromStr("color_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ColorPickerButtonPopupClosedSignalFn func()
@@ -128,15 +126,13 @@ type ColorPickerButtonPopupClosedSignalFn func()
 func (me *ColorPickerButton) ConnectPopupClosed(subs SignalSubscribers, fn ColorPickerButtonPopupClosedSignalFn) {
   sig := StringNameFromStr("popup_closed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ColorPickerButton) DisconnectPopupClosed(subs SignalSubscribers, fn ColorPickerButtonPopupClosedSignalFn) {
   sig := StringNameFromStr("popup_closed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ColorPickerButtonPickerCreatedSignalFn func()
@@ -144,13 +140,11 @@ type ColorPickerButtonPickerCreatedSignalFn func()
 func (me *ColorPickerButton) ConnectPickerCreated(subs SignalSubscribers, fn ColorPickerButtonPickerCreatedSignalFn) {
   sig := StringNameFromStr("picker_created")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ColorPickerButton) DisconnectPickerCreated(subs SignalSubscribers, fn ColorPickerButtonPickerCreatedSignalFn) {
   sig := StringNameFromStr("picker_created")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

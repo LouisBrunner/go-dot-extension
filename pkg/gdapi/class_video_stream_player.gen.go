@@ -354,13 +354,11 @@ type VideoStreamPlayerFinishedSignalFn func()
 func (me *VideoStreamPlayer) ConnectFinished(subs SignalSubscribers, fn VideoStreamPlayerFinishedSignalFn) {
   sig := StringNameFromStr("finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *VideoStreamPlayer) DisconnectFinished(subs SignalSubscribers, fn VideoStreamPlayerFinishedSignalFn) {
   sig := StringNameFromStr("finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

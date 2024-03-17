@@ -574,15 +574,13 @@ type GridMapCellSizeChangedSignalFn func(cell_size Vector3, )
 func (me *GridMap) ConnectCellSizeChanged(subs SignalSubscribers, fn GridMapCellSizeChangedSignalFn) {
   sig := StringNameFromStr("cell_size_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GridMap) DisconnectCellSizeChanged(subs SignalSubscribers, fn GridMapCellSizeChangedSignalFn) {
   sig := StringNameFromStr("cell_size_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GridMapChangedSignalFn func()
@@ -590,13 +588,11 @@ type GridMapChangedSignalFn func()
 func (me *GridMap) ConnectChanged(subs SignalSubscribers, fn GridMapChangedSignalFn) {
   sig := StringNameFromStr("changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GridMap) DisconnectChanged(subs SignalSubscribers, fn GridMapChangedSignalFn) {
   sig := StringNameFromStr("changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

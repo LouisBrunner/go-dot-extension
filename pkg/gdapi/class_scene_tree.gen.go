@@ -522,15 +522,13 @@ type SceneTreeTreeChangedSignalFn func()
 func (me *SceneTree) ConnectTreeChanged(subs SignalSubscribers, fn SceneTreeTreeChangedSignalFn) {
   sig := StringNameFromStr("tree_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneTree) DisconnectTreeChanged(subs SignalSubscribers, fn SceneTreeTreeChangedSignalFn) {
   sig := StringNameFromStr("tree_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type SceneTreeTreeProcessModeChangedSignalFn func()
@@ -538,15 +536,13 @@ type SceneTreeTreeProcessModeChangedSignalFn func()
 func (me *SceneTree) ConnectTreeProcessModeChanged(subs SignalSubscribers, fn SceneTreeTreeProcessModeChangedSignalFn) {
   sig := StringNameFromStr("tree_process_mode_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneTree) DisconnectTreeProcessModeChanged(subs SignalSubscribers, fn SceneTreeTreeProcessModeChangedSignalFn) {
   sig := StringNameFromStr("tree_process_mode_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type SceneTreeNodeAddedSignalFn func(node Node, )
@@ -554,15 +550,13 @@ type SceneTreeNodeAddedSignalFn func(node Node, )
 func (me *SceneTree) ConnectNodeAdded(subs SignalSubscribers, fn SceneTreeNodeAddedSignalFn) {
   sig := StringNameFromStr("node_added")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneTree) DisconnectNodeAdded(subs SignalSubscribers, fn SceneTreeNodeAddedSignalFn) {
   sig := StringNameFromStr("node_added")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type SceneTreeNodeRemovedSignalFn func(node Node, )
@@ -570,15 +564,13 @@ type SceneTreeNodeRemovedSignalFn func(node Node, )
 func (me *SceneTree) ConnectNodeRemoved(subs SignalSubscribers, fn SceneTreeNodeRemovedSignalFn) {
   sig := StringNameFromStr("node_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneTree) DisconnectNodeRemoved(subs SignalSubscribers, fn SceneTreeNodeRemovedSignalFn) {
   sig := StringNameFromStr("node_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type SceneTreeNodeRenamedSignalFn func(node Node, )
@@ -586,15 +578,13 @@ type SceneTreeNodeRenamedSignalFn func(node Node, )
 func (me *SceneTree) ConnectNodeRenamed(subs SignalSubscribers, fn SceneTreeNodeRenamedSignalFn) {
   sig := StringNameFromStr("node_renamed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneTree) DisconnectNodeRenamed(subs SignalSubscribers, fn SceneTreeNodeRenamedSignalFn) {
   sig := StringNameFromStr("node_renamed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type SceneTreeNodeConfigurationWarningChangedSignalFn func(node Node, )
@@ -602,15 +592,13 @@ type SceneTreeNodeConfigurationWarningChangedSignalFn func(node Node, )
 func (me *SceneTree) ConnectNodeConfigurationWarningChanged(subs SignalSubscribers, fn SceneTreeNodeConfigurationWarningChangedSignalFn) {
   sig := StringNameFromStr("node_configuration_warning_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneTree) DisconnectNodeConfigurationWarningChanged(subs SignalSubscribers, fn SceneTreeNodeConfigurationWarningChangedSignalFn) {
   sig := StringNameFromStr("node_configuration_warning_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type SceneTreeProcessFrameSignalFn func()
@@ -618,15 +606,13 @@ type SceneTreeProcessFrameSignalFn func()
 func (me *SceneTree) ConnectProcessFrame(subs SignalSubscribers, fn SceneTreeProcessFrameSignalFn) {
   sig := StringNameFromStr("process_frame")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneTree) DisconnectProcessFrame(subs SignalSubscribers, fn SceneTreeProcessFrameSignalFn) {
   sig := StringNameFromStr("process_frame")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type SceneTreePhysicsFrameSignalFn func()
@@ -634,13 +620,11 @@ type SceneTreePhysicsFrameSignalFn func()
 func (me *SceneTree) ConnectPhysicsFrame(subs SignalSubscribers, fn SceneTreePhysicsFrameSignalFn) {
   sig := StringNameFromStr("physics_frame")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneTree) DisconnectPhysicsFrame(subs SignalSubscribers, fn SceneTreePhysicsFrameSignalFn) {
   sig := StringNameFromStr("physics_frame")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

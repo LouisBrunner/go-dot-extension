@@ -691,13 +691,11 @@ type TileMapChangedSignalFn func()
 func (me *TileMap) ConnectChanged(subs SignalSubscribers, fn TileMapChangedSignalFn) {
   sig := StringNameFromStr("changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TileMap) DisconnectChanged(subs SignalSubscribers, fn TileMapChangedSignalFn) {
   sig := StringNameFromStr("changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

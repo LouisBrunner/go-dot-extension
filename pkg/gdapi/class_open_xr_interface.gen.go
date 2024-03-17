@@ -364,15 +364,13 @@ type OpenXRInterfaceSessionBegunSignalFn func()
 func (me *OpenXRInterface) ConnectSessionBegun(subs SignalSubscribers, fn OpenXRInterfaceSessionBegunSignalFn) {
   sig := StringNameFromStr("session_begun")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *OpenXRInterface) DisconnectSessionBegun(subs SignalSubscribers, fn OpenXRInterfaceSessionBegunSignalFn) {
   sig := StringNameFromStr("session_begun")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type OpenXRInterfaceSessionStoppingSignalFn func()
@@ -380,15 +378,13 @@ type OpenXRInterfaceSessionStoppingSignalFn func()
 func (me *OpenXRInterface) ConnectSessionStopping(subs SignalSubscribers, fn OpenXRInterfaceSessionStoppingSignalFn) {
   sig := StringNameFromStr("session_stopping")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *OpenXRInterface) DisconnectSessionStopping(subs SignalSubscribers, fn OpenXRInterfaceSessionStoppingSignalFn) {
   sig := StringNameFromStr("session_stopping")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type OpenXRInterfaceSessionFocussedSignalFn func()
@@ -396,15 +392,13 @@ type OpenXRInterfaceSessionFocussedSignalFn func()
 func (me *OpenXRInterface) ConnectSessionFocussed(subs SignalSubscribers, fn OpenXRInterfaceSessionFocussedSignalFn) {
   sig := StringNameFromStr("session_focussed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *OpenXRInterface) DisconnectSessionFocussed(subs SignalSubscribers, fn OpenXRInterfaceSessionFocussedSignalFn) {
   sig := StringNameFromStr("session_focussed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type OpenXRInterfaceSessionVisibleSignalFn func()
@@ -412,15 +406,13 @@ type OpenXRInterfaceSessionVisibleSignalFn func()
 func (me *OpenXRInterface) ConnectSessionVisible(subs SignalSubscribers, fn OpenXRInterfaceSessionVisibleSignalFn) {
   sig := StringNameFromStr("session_visible")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *OpenXRInterface) DisconnectSessionVisible(subs SignalSubscribers, fn OpenXRInterfaceSessionVisibleSignalFn) {
   sig := StringNameFromStr("session_visible")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type OpenXRInterfacePoseRecenteredSignalFn func()
@@ -428,13 +420,11 @@ type OpenXRInterfacePoseRecenteredSignalFn func()
 func (me *OpenXRInterface) ConnectPoseRecentered(subs SignalSubscribers, fn OpenXRInterfacePoseRecenteredSignalFn) {
   sig := StringNameFromStr("pose_recentered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *OpenXRInterface) DisconnectPoseRecentered(subs SignalSubscribers, fn OpenXRInterfacePoseRecenteredSignalFn) {
   sig := StringNameFromStr("pose_recentered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

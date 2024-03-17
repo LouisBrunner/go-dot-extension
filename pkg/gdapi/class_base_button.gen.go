@@ -313,15 +313,13 @@ type BaseButtonPressedSignalFn func()
 func (me *BaseButton) ConnectPressed(subs SignalSubscribers, fn BaseButtonPressedSignalFn) {
   sig := StringNameFromStr("pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *BaseButton) DisconnectPressed(subs SignalSubscribers, fn BaseButtonPressedSignalFn) {
   sig := StringNameFromStr("pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type BaseButtonButtonUpSignalFn func()
@@ -329,15 +327,13 @@ type BaseButtonButtonUpSignalFn func()
 func (me *BaseButton) ConnectButtonUp(subs SignalSubscribers, fn BaseButtonButtonUpSignalFn) {
   sig := StringNameFromStr("button_up")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *BaseButton) DisconnectButtonUp(subs SignalSubscribers, fn BaseButtonButtonUpSignalFn) {
   sig := StringNameFromStr("button_up")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type BaseButtonButtonDownSignalFn func()
@@ -345,15 +341,13 @@ type BaseButtonButtonDownSignalFn func()
 func (me *BaseButton) ConnectButtonDown(subs SignalSubscribers, fn BaseButtonButtonDownSignalFn) {
   sig := StringNameFromStr("button_down")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *BaseButton) DisconnectButtonDown(subs SignalSubscribers, fn BaseButtonButtonDownSignalFn) {
   sig := StringNameFromStr("button_down")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type BaseButtonToggledSignalFn func(toggled_on bool, )
@@ -361,13 +355,11 @@ type BaseButtonToggledSignalFn func(toggled_on bool, )
 func (me *BaseButton) ConnectToggled(subs SignalSubscribers, fn BaseButtonToggledSignalFn) {
   sig := StringNameFromStr("toggled")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *BaseButton) DisconnectToggled(subs SignalSubscribers, fn BaseButtonToggledSignalFn) {
   sig := StringNameFromStr("toggled")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

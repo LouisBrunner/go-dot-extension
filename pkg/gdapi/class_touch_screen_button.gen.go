@@ -260,15 +260,13 @@ type TouchScreenButtonPressedSignalFn func()
 func (me *TouchScreenButton) ConnectPressed(subs SignalSubscribers, fn TouchScreenButtonPressedSignalFn) {
   sig := StringNameFromStr("pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TouchScreenButton) DisconnectPressed(subs SignalSubscribers, fn TouchScreenButtonPressedSignalFn) {
   sig := StringNameFromStr("pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TouchScreenButtonReleasedSignalFn func()
@@ -276,13 +274,11 @@ type TouchScreenButtonReleasedSignalFn func()
 func (me *TouchScreenButton) ConnectReleased(subs SignalSubscribers, fn TouchScreenButtonReleasedSignalFn) {
   sig := StringNameFromStr("released")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TouchScreenButton) DisconnectReleased(subs SignalSubscribers, fn TouchScreenButtonReleasedSignalFn) {
   sig := StringNameFromStr("released")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

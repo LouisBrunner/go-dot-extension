@@ -1578,15 +1578,13 @@ type ControlResizedSignalFn func()
 func (me *Control) ConnectResized(subs SignalSubscribers, fn ControlResizedSignalFn) {
   sig := StringNameFromStr("resized")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Control) DisconnectResized(subs SignalSubscribers, fn ControlResizedSignalFn) {
   sig := StringNameFromStr("resized")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ControlGuiInputSignalFn func(event InputEvent, )
@@ -1594,15 +1592,13 @@ type ControlGuiInputSignalFn func(event InputEvent, )
 func (me *Control) ConnectGuiInput(subs SignalSubscribers, fn ControlGuiInputSignalFn) {
   sig := StringNameFromStr("gui_input")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Control) DisconnectGuiInput(subs SignalSubscribers, fn ControlGuiInputSignalFn) {
   sig := StringNameFromStr("gui_input")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ControlMouseEnteredSignalFn func()
@@ -1610,15 +1606,13 @@ type ControlMouseEnteredSignalFn func()
 func (me *Control) ConnectMouseEntered(subs SignalSubscribers, fn ControlMouseEnteredSignalFn) {
   sig := StringNameFromStr("mouse_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Control) DisconnectMouseEntered(subs SignalSubscribers, fn ControlMouseEnteredSignalFn) {
   sig := StringNameFromStr("mouse_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ControlMouseExitedSignalFn func()
@@ -1626,15 +1620,13 @@ type ControlMouseExitedSignalFn func()
 func (me *Control) ConnectMouseExited(subs SignalSubscribers, fn ControlMouseExitedSignalFn) {
   sig := StringNameFromStr("mouse_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Control) DisconnectMouseExited(subs SignalSubscribers, fn ControlMouseExitedSignalFn) {
   sig := StringNameFromStr("mouse_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ControlFocusEnteredSignalFn func()
@@ -1642,15 +1634,13 @@ type ControlFocusEnteredSignalFn func()
 func (me *Control) ConnectFocusEntered(subs SignalSubscribers, fn ControlFocusEnteredSignalFn) {
   sig := StringNameFromStr("focus_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Control) DisconnectFocusEntered(subs SignalSubscribers, fn ControlFocusEnteredSignalFn) {
   sig := StringNameFromStr("focus_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ControlFocusExitedSignalFn func()
@@ -1658,15 +1648,13 @@ type ControlFocusExitedSignalFn func()
 func (me *Control) ConnectFocusExited(subs SignalSubscribers, fn ControlFocusExitedSignalFn) {
   sig := StringNameFromStr("focus_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Control) DisconnectFocusExited(subs SignalSubscribers, fn ControlFocusExitedSignalFn) {
   sig := StringNameFromStr("focus_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ControlSizeFlagsChangedSignalFn func()
@@ -1674,15 +1662,13 @@ type ControlSizeFlagsChangedSignalFn func()
 func (me *Control) ConnectSizeFlagsChanged(subs SignalSubscribers, fn ControlSizeFlagsChangedSignalFn) {
   sig := StringNameFromStr("size_flags_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Control) DisconnectSizeFlagsChanged(subs SignalSubscribers, fn ControlSizeFlagsChangedSignalFn) {
   sig := StringNameFromStr("size_flags_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ControlMinimumSizeChangedSignalFn func()
@@ -1690,15 +1676,13 @@ type ControlMinimumSizeChangedSignalFn func()
 func (me *Control) ConnectMinimumSizeChanged(subs SignalSubscribers, fn ControlMinimumSizeChangedSignalFn) {
   sig := StringNameFromStr("minimum_size_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Control) DisconnectMinimumSizeChanged(subs SignalSubscribers, fn ControlMinimumSizeChangedSignalFn) {
   sig := StringNameFromStr("minimum_size_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ControlThemeChangedSignalFn func()
@@ -1706,13 +1690,11 @@ type ControlThemeChangedSignalFn func()
 func (me *Control) ConnectThemeChanged(subs SignalSubscribers, fn ControlThemeChangedSignalFn) {
   sig := StringNameFromStr("theme_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Control) DisconnectThemeChanged(subs SignalSubscribers, fn ControlThemeChangedSignalFn) {
   sig := StringNameFromStr("theme_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

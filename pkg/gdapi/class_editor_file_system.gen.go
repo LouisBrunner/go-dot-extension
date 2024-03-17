@@ -142,15 +142,13 @@ type EditorFileSystemFilesystemChangedSignalFn func()
 func (me *EditorFileSystem) ConnectFilesystemChanged(subs SignalSubscribers, fn EditorFileSystemFilesystemChangedSignalFn) {
   sig := StringNameFromStr("filesystem_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorFileSystem) DisconnectFilesystemChanged(subs SignalSubscribers, fn EditorFileSystemFilesystemChangedSignalFn) {
   sig := StringNameFromStr("filesystem_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorFileSystemScriptClassesUpdatedSignalFn func()
@@ -158,15 +156,13 @@ type EditorFileSystemScriptClassesUpdatedSignalFn func()
 func (me *EditorFileSystem) ConnectScriptClassesUpdated(subs SignalSubscribers, fn EditorFileSystemScriptClassesUpdatedSignalFn) {
   sig := StringNameFromStr("script_classes_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorFileSystem) DisconnectScriptClassesUpdated(subs SignalSubscribers, fn EditorFileSystemScriptClassesUpdatedSignalFn) {
   sig := StringNameFromStr("script_classes_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorFileSystemSourcesChangedSignalFn func(exist bool, )
@@ -174,15 +170,13 @@ type EditorFileSystemSourcesChangedSignalFn func(exist bool, )
 func (me *EditorFileSystem) ConnectSourcesChanged(subs SignalSubscribers, fn EditorFileSystemSourcesChangedSignalFn) {
   sig := StringNameFromStr("sources_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorFileSystem) DisconnectSourcesChanged(subs SignalSubscribers, fn EditorFileSystemSourcesChangedSignalFn) {
   sig := StringNameFromStr("sources_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorFileSystemResourcesReimportedSignalFn func(resources PackedStringArray, )
@@ -190,15 +184,13 @@ type EditorFileSystemResourcesReimportedSignalFn func(resources PackedStringArra
 func (me *EditorFileSystem) ConnectResourcesReimported(subs SignalSubscribers, fn EditorFileSystemResourcesReimportedSignalFn) {
   sig := StringNameFromStr("resources_reimported")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorFileSystem) DisconnectResourcesReimported(subs SignalSubscribers, fn EditorFileSystemResourcesReimportedSignalFn) {
   sig := StringNameFromStr("resources_reimported")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorFileSystemResourcesReloadSignalFn func(resources PackedStringArray, )
@@ -206,13 +198,11 @@ type EditorFileSystemResourcesReloadSignalFn func(resources PackedStringArray, )
 func (me *EditorFileSystem) ConnectResourcesReload(subs SignalSubscribers, fn EditorFileSystemResourcesReloadSignalFn) {
   sig := StringNameFromStr("resources_reload")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorFileSystem) DisconnectResourcesReload(subs SignalSubscribers, fn EditorFileSystemResourcesReloadSignalFn) {
   sig := StringNameFromStr("resources_reload")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

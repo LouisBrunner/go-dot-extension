@@ -347,13 +347,11 @@ type AnimationNodeBlendSpace2DTrianglesUpdatedSignalFn func()
 func (me *AnimationNodeBlendSpace2D) ConnectTrianglesUpdated(subs SignalSubscribers, fn AnimationNodeBlendSpace2DTrianglesUpdatedSignalFn) {
   sig := StringNameFromStr("triangles_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationNodeBlendSpace2D) DisconnectTrianglesUpdated(subs SignalSubscribers, fn AnimationNodeBlendSpace2DTrianglesUpdatedSignalFn) {
   sig := StringNameFromStr("triangles_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

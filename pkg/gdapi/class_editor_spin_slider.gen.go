@@ -154,15 +154,13 @@ type EditorSpinSliderGrabbedSignalFn func()
 func (me *EditorSpinSlider) ConnectGrabbed(subs SignalSubscribers, fn EditorSpinSliderGrabbedSignalFn) {
   sig := StringNameFromStr("grabbed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorSpinSlider) DisconnectGrabbed(subs SignalSubscribers, fn EditorSpinSliderGrabbedSignalFn) {
   sig := StringNameFromStr("grabbed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorSpinSliderUngrabbedSignalFn func()
@@ -170,15 +168,13 @@ type EditorSpinSliderUngrabbedSignalFn func()
 func (me *EditorSpinSlider) ConnectUngrabbed(subs SignalSubscribers, fn EditorSpinSliderUngrabbedSignalFn) {
   sig := StringNameFromStr("ungrabbed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorSpinSlider) DisconnectUngrabbed(subs SignalSubscribers, fn EditorSpinSliderUngrabbedSignalFn) {
   sig := StringNameFromStr("ungrabbed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorSpinSliderValueFocusEnteredSignalFn func()
@@ -186,15 +182,13 @@ type EditorSpinSliderValueFocusEnteredSignalFn func()
 func (me *EditorSpinSlider) ConnectValueFocusEntered(subs SignalSubscribers, fn EditorSpinSliderValueFocusEnteredSignalFn) {
   sig := StringNameFromStr("value_focus_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorSpinSlider) DisconnectValueFocusEntered(subs SignalSubscribers, fn EditorSpinSliderValueFocusEnteredSignalFn) {
   sig := StringNameFromStr("value_focus_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorSpinSliderValueFocusExitedSignalFn func()
@@ -202,13 +196,11 @@ type EditorSpinSliderValueFocusExitedSignalFn func()
 func (me *EditorSpinSlider) ConnectValueFocusExited(subs SignalSubscribers, fn EditorSpinSliderValueFocusExitedSignalFn) {
   sig := StringNameFromStr("value_focus_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorSpinSlider) DisconnectValueFocusExited(subs SignalSubscribers, fn EditorSpinSliderValueFocusExitedSignalFn) {
   sig := StringNameFromStr("value_focus_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

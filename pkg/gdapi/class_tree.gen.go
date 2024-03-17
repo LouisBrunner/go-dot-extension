@@ -740,15 +740,13 @@ type TreeItemSelectedSignalFn func()
 func (me *Tree) ConnectItemSelected(subs SignalSubscribers, fn TreeItemSelectedSignalFn) {
   sig := StringNameFromStr("item_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectItemSelected(subs SignalSubscribers, fn TreeItemSelectedSignalFn) {
   sig := StringNameFromStr("item_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeCellSelectedSignalFn func()
@@ -756,15 +754,13 @@ type TreeCellSelectedSignalFn func()
 func (me *Tree) ConnectCellSelected(subs SignalSubscribers, fn TreeCellSelectedSignalFn) {
   sig := StringNameFromStr("cell_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectCellSelected(subs SignalSubscribers, fn TreeCellSelectedSignalFn) {
   sig := StringNameFromStr("cell_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeMultiSelectedSignalFn func(item TreeItem, column int, selected bool, )
@@ -772,15 +768,13 @@ type TreeMultiSelectedSignalFn func(item TreeItem, column int, selected bool, )
 func (me *Tree) ConnectMultiSelected(subs SignalSubscribers, fn TreeMultiSelectedSignalFn) {
   sig := StringNameFromStr("multi_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectMultiSelected(subs SignalSubscribers, fn TreeMultiSelectedSignalFn) {
   sig := StringNameFromStr("multi_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeItemMouseSelectedSignalFn func(position Vector2, mouse_button_index int, )
@@ -788,15 +782,13 @@ type TreeItemMouseSelectedSignalFn func(position Vector2, mouse_button_index int
 func (me *Tree) ConnectItemMouseSelected(subs SignalSubscribers, fn TreeItemMouseSelectedSignalFn) {
   sig := StringNameFromStr("item_mouse_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectItemMouseSelected(subs SignalSubscribers, fn TreeItemMouseSelectedSignalFn) {
   sig := StringNameFromStr("item_mouse_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeEmptyClickedSignalFn func(position Vector2, mouse_button_index int, )
@@ -804,15 +796,13 @@ type TreeEmptyClickedSignalFn func(position Vector2, mouse_button_index int, )
 func (me *Tree) ConnectEmptyClicked(subs SignalSubscribers, fn TreeEmptyClickedSignalFn) {
   sig := StringNameFromStr("empty_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectEmptyClicked(subs SignalSubscribers, fn TreeEmptyClickedSignalFn) {
   sig := StringNameFromStr("empty_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeItemEditedSignalFn func()
@@ -820,15 +810,13 @@ type TreeItemEditedSignalFn func()
 func (me *Tree) ConnectItemEdited(subs SignalSubscribers, fn TreeItemEditedSignalFn) {
   sig := StringNameFromStr("item_edited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectItemEdited(subs SignalSubscribers, fn TreeItemEditedSignalFn) {
   sig := StringNameFromStr("item_edited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeCustomItemClickedSignalFn func(mouse_button_index int, )
@@ -836,15 +824,13 @@ type TreeCustomItemClickedSignalFn func(mouse_button_index int, )
 func (me *Tree) ConnectCustomItemClicked(subs SignalSubscribers, fn TreeCustomItemClickedSignalFn) {
   sig := StringNameFromStr("custom_item_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectCustomItemClicked(subs SignalSubscribers, fn TreeCustomItemClickedSignalFn) {
   sig := StringNameFromStr("custom_item_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeItemIconDoubleClickedSignalFn func()
@@ -852,15 +838,13 @@ type TreeItemIconDoubleClickedSignalFn func()
 func (me *Tree) ConnectItemIconDoubleClicked(subs SignalSubscribers, fn TreeItemIconDoubleClickedSignalFn) {
   sig := StringNameFromStr("item_icon_double_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectItemIconDoubleClicked(subs SignalSubscribers, fn TreeItemIconDoubleClickedSignalFn) {
   sig := StringNameFromStr("item_icon_double_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeItemCollapsedSignalFn func(item TreeItem, )
@@ -868,15 +852,13 @@ type TreeItemCollapsedSignalFn func(item TreeItem, )
 func (me *Tree) ConnectItemCollapsed(subs SignalSubscribers, fn TreeItemCollapsedSignalFn) {
   sig := StringNameFromStr("item_collapsed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectItemCollapsed(subs SignalSubscribers, fn TreeItemCollapsedSignalFn) {
   sig := StringNameFromStr("item_collapsed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeCheckPropagatedToItemSignalFn func(item TreeItem, column int, )
@@ -884,15 +866,13 @@ type TreeCheckPropagatedToItemSignalFn func(item TreeItem, column int, )
 func (me *Tree) ConnectCheckPropagatedToItem(subs SignalSubscribers, fn TreeCheckPropagatedToItemSignalFn) {
   sig := StringNameFromStr("check_propagated_to_item")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectCheckPropagatedToItem(subs SignalSubscribers, fn TreeCheckPropagatedToItemSignalFn) {
   sig := StringNameFromStr("check_propagated_to_item")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeButtonClickedSignalFn func(item TreeItem, column int, id int, mouse_button_index int, )
@@ -900,15 +880,13 @@ type TreeButtonClickedSignalFn func(item TreeItem, column int, id int, mouse_but
 func (me *Tree) ConnectButtonClicked(subs SignalSubscribers, fn TreeButtonClickedSignalFn) {
   sig := StringNameFromStr("button_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectButtonClicked(subs SignalSubscribers, fn TreeButtonClickedSignalFn) {
   sig := StringNameFromStr("button_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeCustomPopupEditedSignalFn func(arrow_clicked bool, )
@@ -916,15 +894,13 @@ type TreeCustomPopupEditedSignalFn func(arrow_clicked bool, )
 func (me *Tree) ConnectCustomPopupEdited(subs SignalSubscribers, fn TreeCustomPopupEditedSignalFn) {
   sig := StringNameFromStr("custom_popup_edited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectCustomPopupEdited(subs SignalSubscribers, fn TreeCustomPopupEditedSignalFn) {
   sig := StringNameFromStr("custom_popup_edited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeItemActivatedSignalFn func()
@@ -932,15 +908,13 @@ type TreeItemActivatedSignalFn func()
 func (me *Tree) ConnectItemActivated(subs SignalSubscribers, fn TreeItemActivatedSignalFn) {
   sig := StringNameFromStr("item_activated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectItemActivated(subs SignalSubscribers, fn TreeItemActivatedSignalFn) {
   sig := StringNameFromStr("item_activated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeColumnTitleClickedSignalFn func(column int, mouse_button_index int, )
@@ -948,15 +922,13 @@ type TreeColumnTitleClickedSignalFn func(column int, mouse_button_index int, )
 func (me *Tree) ConnectColumnTitleClicked(subs SignalSubscribers, fn TreeColumnTitleClickedSignalFn) {
   sig := StringNameFromStr("column_title_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectColumnTitleClicked(subs SignalSubscribers, fn TreeColumnTitleClickedSignalFn) {
   sig := StringNameFromStr("column_title_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TreeNothingSelectedSignalFn func()
@@ -964,13 +936,11 @@ type TreeNothingSelectedSignalFn func()
 func (me *Tree) ConnectNothingSelected(subs SignalSubscribers, fn TreeNothingSelectedSignalFn) {
   sig := StringNameFromStr("nothing_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tree) DisconnectNothingSelected(subs SignalSubscribers, fn TreeNothingSelectedSignalFn) {
   sig := StringNameFromStr("nothing_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

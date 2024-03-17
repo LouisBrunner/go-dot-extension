@@ -305,13 +305,11 @@ type AudioStreamPlayerFinishedSignalFn func()
 func (me *AudioStreamPlayer) ConnectFinished(subs SignalSubscribers, fn AudioStreamPlayerFinishedSignalFn) {
   sig := StringNameFromStr("finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AudioStreamPlayer) DisconnectFinished(subs SignalSubscribers, fn AudioStreamPlayerFinishedSignalFn) {
   sig := StringNameFromStr("finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

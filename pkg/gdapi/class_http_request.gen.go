@@ -316,13 +316,11 @@ type HTTPRequestRequestCompletedSignalFn func(result int, response_code int, hea
 func (me *HTTPRequest) ConnectRequestCompleted(subs SignalSubscribers, fn HTTPRequestRequestCompletedSignalFn) {
   sig := StringNameFromStr("request_completed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *HTTPRequest) DisconnectRequestCompleted(subs SignalSubscribers, fn HTTPRequestRequestCompletedSignalFn) {
   sig := StringNameFromStr("request_completed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

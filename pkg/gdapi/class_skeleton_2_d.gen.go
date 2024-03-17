@@ -132,13 +132,11 @@ type Skeleton2DBoneSetupChangedSignalFn func()
 func (me *Skeleton2D) ConnectBoneSetupChanged(subs SignalSubscribers, fn Skeleton2DBoneSetupChangedSignalFn) {
   sig := StringNameFromStr("bone_setup_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Skeleton2D) DisconnectBoneSetupChanged(subs SignalSubscribers, fn Skeleton2DBoneSetupChangedSignalFn) {
   sig := StringNameFromStr("bone_setup_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

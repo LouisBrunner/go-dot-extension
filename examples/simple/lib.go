@@ -16,12 +16,12 @@ type MyNode2D struct {
 }
 
 func (n *MyNode2D) Move(vec gdapi.Vector2) {
-	n.Node2D.SetPosition(vec.MultiplyInt(n.Speed))
+	n.Node2D.SetPosition(vec.MultiplyInt(int64(n.Speed)))
 }
 
 func (n *MyNode2D) X_Ready() {
 	n.printSecret()
-	n.Speed = 100
+	n.Speed *= 10
 }
 
 func (n *MyNode2D) printSecret() {
@@ -31,6 +31,7 @@ func (n *MyNode2D) printSecret() {
 func newMyNode2D() gde.Class {
 	return &MyNode2D{
 		secret: "123",
+		Speed:  10,
 	}
 }
 

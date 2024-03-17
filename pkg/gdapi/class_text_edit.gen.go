@@ -2412,15 +2412,13 @@ type TextEditTextSetSignalFn func()
 func (me *TextEdit) ConnectTextSet(subs SignalSubscribers, fn TextEditTextSetSignalFn) {
   sig := StringNameFromStr("text_set")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TextEdit) DisconnectTextSet(subs SignalSubscribers, fn TextEditTextSetSignalFn) {
   sig := StringNameFromStr("text_set")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TextEditTextChangedSignalFn func()
@@ -2428,15 +2426,13 @@ type TextEditTextChangedSignalFn func()
 func (me *TextEdit) ConnectTextChanged(subs SignalSubscribers, fn TextEditTextChangedSignalFn) {
   sig := StringNameFromStr("text_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TextEdit) DisconnectTextChanged(subs SignalSubscribers, fn TextEditTextChangedSignalFn) {
   sig := StringNameFromStr("text_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TextEditLinesEditedFromSignalFn func(from_line int, to_line int, )
@@ -2444,15 +2440,13 @@ type TextEditLinesEditedFromSignalFn func(from_line int, to_line int, )
 func (me *TextEdit) ConnectLinesEditedFrom(subs SignalSubscribers, fn TextEditLinesEditedFromSignalFn) {
   sig := StringNameFromStr("lines_edited_from")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TextEdit) DisconnectLinesEditedFrom(subs SignalSubscribers, fn TextEditLinesEditedFromSignalFn) {
   sig := StringNameFromStr("lines_edited_from")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TextEditCaretChangedSignalFn func()
@@ -2460,15 +2454,13 @@ type TextEditCaretChangedSignalFn func()
 func (me *TextEdit) ConnectCaretChanged(subs SignalSubscribers, fn TextEditCaretChangedSignalFn) {
   sig := StringNameFromStr("caret_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TextEdit) DisconnectCaretChanged(subs SignalSubscribers, fn TextEditCaretChangedSignalFn) {
   sig := StringNameFromStr("caret_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TextEditGutterClickedSignalFn func(line int, gutter int, )
@@ -2476,15 +2468,13 @@ type TextEditGutterClickedSignalFn func(line int, gutter int, )
 func (me *TextEdit) ConnectGutterClicked(subs SignalSubscribers, fn TextEditGutterClickedSignalFn) {
   sig := StringNameFromStr("gutter_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TextEdit) DisconnectGutterClicked(subs SignalSubscribers, fn TextEditGutterClickedSignalFn) {
   sig := StringNameFromStr("gutter_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TextEditGutterAddedSignalFn func()
@@ -2492,15 +2482,13 @@ type TextEditGutterAddedSignalFn func()
 func (me *TextEdit) ConnectGutterAdded(subs SignalSubscribers, fn TextEditGutterAddedSignalFn) {
   sig := StringNameFromStr("gutter_added")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TextEdit) DisconnectGutterAdded(subs SignalSubscribers, fn TextEditGutterAddedSignalFn) {
   sig := StringNameFromStr("gutter_added")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TextEditGutterRemovedSignalFn func()
@@ -2508,13 +2496,11 @@ type TextEditGutterRemovedSignalFn func()
 func (me *TextEdit) ConnectGutterRemoved(subs SignalSubscribers, fn TextEditGutterRemovedSignalFn) {
   sig := StringNameFromStr("gutter_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TextEdit) DisconnectGutterRemoved(subs SignalSubscribers, fn TextEditGutterRemovedSignalFn) {
   sig := StringNameFromStr("gutter_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

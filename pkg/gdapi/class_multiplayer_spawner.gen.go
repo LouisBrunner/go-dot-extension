@@ -166,15 +166,13 @@ type MultiplayerSpawnerDespawnedSignalFn func(node Node, )
 func (me *MultiplayerSpawner) ConnectDespawned(subs SignalSubscribers, fn MultiplayerSpawnerDespawnedSignalFn) {
   sig := StringNameFromStr("despawned")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerSpawner) DisconnectDespawned(subs SignalSubscribers, fn MultiplayerSpawnerDespawnedSignalFn) {
   sig := StringNameFromStr("despawned")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type MultiplayerSpawnerSpawnedSignalFn func(node Node, )
@@ -182,13 +180,11 @@ type MultiplayerSpawnerSpawnedSignalFn func(node Node, )
 func (me *MultiplayerSpawner) ConnectSpawned(subs SignalSubscribers, fn MultiplayerSpawnerSpawnedSignalFn) {
   sig := StringNameFromStr("spawned")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerSpawner) DisconnectSpawned(subs SignalSubscribers, fn MultiplayerSpawnerSpawnedSignalFn) {
   sig := StringNameFromStr("spawned")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

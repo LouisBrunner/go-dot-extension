@@ -286,13 +286,11 @@ type CanvasLayerVisibilityChangedSignalFn func()
 func (me *CanvasLayer) ConnectVisibilityChanged(subs SignalSubscribers, fn CanvasLayerVisibilityChangedSignalFn) {
   sig := StringNameFromStr("visibility_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CanvasLayer) DisconnectVisibilityChanged(subs SignalSubscribers, fn CanvasLayerVisibilityChangedSignalFn) {
   sig := StringNameFromStr("visibility_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

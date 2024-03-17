@@ -2,67 +2,100 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Bool struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeBool]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Enums
 
 // Constructors
-
-func NewBool() Bool {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeBool))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeBool, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Bool{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newBool() *Bool {
+  me := &Bool{
+    data:   new([classSizeBool]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewBoolFromBool(from bool, ) Bool {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeBool))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeBool, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
-  return Bool{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewBool() *Bool {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newBool()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewBoolFromInt(from int, ) Bool {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeBool))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeBool, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
-  return Bool{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewBoolFromBool(from bool, ) *Bool {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&from)
+  me := newBool()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
+  return me
 }
 
-func NewBoolFromFloat32(from float32, ) Bool {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeBool))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeBool, 3) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
-  return Bool{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewBoolFromInt(from int64, ) *Bool {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&from)
+  me := newBool()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
+  return me
+}
+
+func NewBoolFromFloat32(from float64, ) *Bool {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&from)
+  me := newBool()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 3) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
+  return me
 }
 
 // Destructor
 func (me *Bool) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsBool() (*Bool, error) {
+	if me.Type() != gdc.VariantTypeBool {
+		return nil, fmt.Errorf("variant is not a Bool")
+	}
+  bclass := newBool()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Bool) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func BoolFromPtr(ptr gdc.ConstTypePtr) *Bool {
+  me := newBool()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Bool) Type() gdc.VariantType {
@@ -70,11 +103,19 @@ func (me *Bool) Type() gdc.VariantType {
 }
 
 func (me *Bool) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Bool) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Bool) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
+}
+
+func (me *Bool) Get() bool {
+  return *(*bool)(unsafe.Pointer(&me.data))
 }
 
 // Methods
@@ -193,7 +234,7 @@ func (me *Bool) XorBool(rightArg bool) bool {
   return ret
 }
 
-func (me *Bool) AndInt(rightArg int) bool {
+func (me *Bool) AndInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -203,7 +244,7 @@ func (me *Bool) AndInt(rightArg int) bool {
   return ret
 }
 
-func (me *Bool) OrInt(rightArg int) bool {
+func (me *Bool) OrInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -213,7 +254,7 @@ func (me *Bool) OrInt(rightArg int) bool {
   return ret
 }
 
-func (me *Bool) XorInt(rightArg int) bool {
+func (me *Bool) XorInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -223,7 +264,7 @@ func (me *Bool) XorInt(rightArg int) bool {
   return ret
 }
 
-func (me *Bool) AndFloat32(rightArg float32) bool {
+func (me *Bool) AndFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -233,7 +274,7 @@ func (me *Bool) AndFloat32(rightArg float32) bool {
   return ret
 }
 
-func (me *Bool) OrFloat32(rightArg float32) bool {
+func (me *Bool) OrFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -243,7 +284,7 @@ func (me *Bool) OrFloat32(rightArg float32) bool {
   return ret
 }
 
-func (me *Bool) XorFloat32(rightArg float32) bool {
+func (me *Bool) XorFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 

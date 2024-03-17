@@ -288,15 +288,13 @@ type SceneMultiplayerPeerAuthenticatingSignalFn func(id int, )
 func (me *SceneMultiplayer) ConnectPeerAuthenticating(subs SignalSubscribers, fn SceneMultiplayerPeerAuthenticatingSignalFn) {
   sig := StringNameFromStr("peer_authenticating")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneMultiplayer) DisconnectPeerAuthenticating(subs SignalSubscribers, fn SceneMultiplayerPeerAuthenticatingSignalFn) {
   sig := StringNameFromStr("peer_authenticating")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type SceneMultiplayerPeerAuthenticationFailedSignalFn func(id int, )
@@ -304,15 +302,13 @@ type SceneMultiplayerPeerAuthenticationFailedSignalFn func(id int, )
 func (me *SceneMultiplayer) ConnectPeerAuthenticationFailed(subs SignalSubscribers, fn SceneMultiplayerPeerAuthenticationFailedSignalFn) {
   sig := StringNameFromStr("peer_authentication_failed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneMultiplayer) DisconnectPeerAuthenticationFailed(subs SignalSubscribers, fn SceneMultiplayerPeerAuthenticationFailedSignalFn) {
   sig := StringNameFromStr("peer_authentication_failed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type SceneMultiplayerPeerPacketSignalFn func(id int, packet PackedByteArray, )
@@ -320,13 +316,11 @@ type SceneMultiplayerPeerPacketSignalFn func(id int, packet PackedByteArray, )
 func (me *SceneMultiplayer) ConnectPeerPacket(subs SignalSubscribers, fn SceneMultiplayerPeerPacketSignalFn) {
   sig := StringNameFromStr("peer_packet")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneMultiplayer) DisconnectPeerPacket(subs SignalSubscribers, fn SceneMultiplayerPeerPacketSignalFn) {
   sig := StringNameFromStr("peer_packet")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

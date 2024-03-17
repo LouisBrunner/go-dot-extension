@@ -8,6 +8,30 @@ import (
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
+type LogLevel uint32
+
+func (me LogLevel) String() string {
+	switch me {
+	case LogLevelDebug:
+		return "debug"
+	case LogLevelInfo:
+		return "info"
+	case LogLevelWarning:
+		return "warning"
+	case LogLevelError:
+		return "error"
+	default:
+		return "unknown"
+	}
+}
+
+const (
+	LogLevelError LogLevel = iota
+	LogLevelWarning
+	LogLevelInfo
+	LogLevelDebug
+)
+
 func (me *extension) Logf(level LogLevel, format string, args ...interface{}) {
 	me.LogDetailedf(level, "go-dot-extension", "internal", "internal", 0, false, format, args...)
 }
@@ -36,7 +60,9 @@ func (me *extension) LogDetailedf(level LogLevel, description, function, file st
 	case LogLevelWarning:
 		me.iface.PrintWarningWithMessage(description, msg, function, file, lineC, notifyEditorC)
 	case LogLevelInfo:
-		gdapi.Utilities.Print(gdapi.NewVariantFrom(gdapi.StringFromStr(fmt.Sprintf("%s: %s", description, msg))))
+		va := gdapi.StringFromStr(fmt.Sprintf("%s: %s", description, msg)).AsVariant()
+		defer va.Destroy()
+		gdapi.Utilities.Print(*va)
 	case LogLevelDebug:
 	default:
 		log.Printf("unknown log level %q for %q", level, msg)

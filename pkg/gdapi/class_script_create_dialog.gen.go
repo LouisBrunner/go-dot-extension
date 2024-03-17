@@ -52,13 +52,11 @@ type ScriptCreateDialogScriptCreatedSignalFn func(script Script, )
 func (me *ScriptCreateDialog) ConnectScriptCreated(subs SignalSubscribers, fn ScriptCreateDialogScriptCreatedSignalFn) {
   sig := StringNameFromStr("script_created")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScriptCreateDialog) DisconnectScriptCreated(subs SignalSubscribers, fn ScriptCreateDialogScriptCreatedSignalFn) {
   sig := StringNameFromStr("script_created")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -308,15 +308,13 @@ type NavigationRegion2DNavigationPolygonChangedSignalFn func()
 func (me *NavigationRegion2D) ConnectNavigationPolygonChanged(subs SignalSubscribers, fn NavigationRegion2DNavigationPolygonChangedSignalFn) {
   sig := StringNameFromStr("navigation_polygon_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationRegion2D) DisconnectNavigationPolygonChanged(subs SignalSubscribers, fn NavigationRegion2DNavigationPolygonChangedSignalFn) {
   sig := StringNameFromStr("navigation_polygon_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NavigationRegion2DBakeFinishedSignalFn func()
@@ -324,13 +322,11 @@ type NavigationRegion2DBakeFinishedSignalFn func()
 func (me *NavigationRegion2D) ConnectBakeFinished(subs SignalSubscribers, fn NavigationRegion2DBakeFinishedSignalFn) {
   sig := StringNameFromStr("bake_finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationRegion2D) DisconnectBakeFinished(subs SignalSubscribers, fn NavigationRegion2DBakeFinishedSignalFn) {
   sig := StringNameFromStr("bake_finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

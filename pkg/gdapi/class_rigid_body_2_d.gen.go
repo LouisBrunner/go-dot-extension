@@ -699,15 +699,13 @@ type RigidBody2DBodyShapeEnteredSignalFn func(body_rid RID, body Node, body_shap
 func (me *RigidBody2D) ConnectBodyShapeEntered(subs SignalSubscribers, fn RigidBody2DBodyShapeEnteredSignalFn) {
   sig := StringNameFromStr("body_shape_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *RigidBody2D) DisconnectBodyShapeEntered(subs SignalSubscribers, fn RigidBody2DBodyShapeEnteredSignalFn) {
   sig := StringNameFromStr("body_shape_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type RigidBody2DBodyShapeExitedSignalFn func(body_rid RID, body Node, body_shape_index int, local_shape_index int, )
@@ -715,15 +713,13 @@ type RigidBody2DBodyShapeExitedSignalFn func(body_rid RID, body Node, body_shape
 func (me *RigidBody2D) ConnectBodyShapeExited(subs SignalSubscribers, fn RigidBody2DBodyShapeExitedSignalFn) {
   sig := StringNameFromStr("body_shape_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *RigidBody2D) DisconnectBodyShapeExited(subs SignalSubscribers, fn RigidBody2DBodyShapeExitedSignalFn) {
   sig := StringNameFromStr("body_shape_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type RigidBody2DBodyEnteredSignalFn func(body Node, )
@@ -731,15 +727,13 @@ type RigidBody2DBodyEnteredSignalFn func(body Node, )
 func (me *RigidBody2D) ConnectBodyEntered(subs SignalSubscribers, fn RigidBody2DBodyEnteredSignalFn) {
   sig := StringNameFromStr("body_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *RigidBody2D) DisconnectBodyEntered(subs SignalSubscribers, fn RigidBody2DBodyEnteredSignalFn) {
   sig := StringNameFromStr("body_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type RigidBody2DBodyExitedSignalFn func(body Node, )
@@ -747,15 +741,13 @@ type RigidBody2DBodyExitedSignalFn func(body Node, )
 func (me *RigidBody2D) ConnectBodyExited(subs SignalSubscribers, fn RigidBody2DBodyExitedSignalFn) {
   sig := StringNameFromStr("body_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *RigidBody2D) DisconnectBodyExited(subs SignalSubscribers, fn RigidBody2DBodyExitedSignalFn) {
   sig := StringNameFromStr("body_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type RigidBody2DSleepingStateChangedSignalFn func()
@@ -763,13 +755,11 @@ type RigidBody2DSleepingStateChangedSignalFn func()
 func (me *RigidBody2D) ConnectSleepingStateChanged(subs SignalSubscribers, fn RigidBody2DSleepingStateChangedSignalFn) {
   sig := StringNameFromStr("sleeping_state_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *RigidBody2D) DisconnectSleepingStateChanged(subs SignalSubscribers, fn RigidBody2DSleepingStateChangedSignalFn) {
   sig := StringNameFromStr("sleeping_state_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

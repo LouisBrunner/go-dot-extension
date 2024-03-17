@@ -429,15 +429,13 @@ type CollisionObject2DInputEventSignalFn func(viewport Node, event InputEvent, s
 func (me *CollisionObject2D) ConnectInputEvent(subs SignalSubscribers, fn CollisionObject2DInputEventSignalFn) {
   sig := StringNameFromStr("input_event")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CollisionObject2D) DisconnectInputEvent(subs SignalSubscribers, fn CollisionObject2DInputEventSignalFn) {
   sig := StringNameFromStr("input_event")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CollisionObject2DMouseEnteredSignalFn func()
@@ -445,15 +443,13 @@ type CollisionObject2DMouseEnteredSignalFn func()
 func (me *CollisionObject2D) ConnectMouseEntered(subs SignalSubscribers, fn CollisionObject2DMouseEnteredSignalFn) {
   sig := StringNameFromStr("mouse_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CollisionObject2D) DisconnectMouseEntered(subs SignalSubscribers, fn CollisionObject2DMouseEnteredSignalFn) {
   sig := StringNameFromStr("mouse_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CollisionObject2DMouseExitedSignalFn func()
@@ -461,15 +457,13 @@ type CollisionObject2DMouseExitedSignalFn func()
 func (me *CollisionObject2D) ConnectMouseExited(subs SignalSubscribers, fn CollisionObject2DMouseExitedSignalFn) {
   sig := StringNameFromStr("mouse_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CollisionObject2D) DisconnectMouseExited(subs SignalSubscribers, fn CollisionObject2DMouseExitedSignalFn) {
   sig := StringNameFromStr("mouse_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CollisionObject2DMouseShapeEnteredSignalFn func(shape_idx int, )
@@ -477,15 +471,13 @@ type CollisionObject2DMouseShapeEnteredSignalFn func(shape_idx int, )
 func (me *CollisionObject2D) ConnectMouseShapeEntered(subs SignalSubscribers, fn CollisionObject2DMouseShapeEnteredSignalFn) {
   sig := StringNameFromStr("mouse_shape_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CollisionObject2D) DisconnectMouseShapeEntered(subs SignalSubscribers, fn CollisionObject2DMouseShapeEnteredSignalFn) {
   sig := StringNameFromStr("mouse_shape_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CollisionObject2DMouseShapeExitedSignalFn func(shape_idx int, )
@@ -493,13 +485,11 @@ type CollisionObject2DMouseShapeExitedSignalFn func(shape_idx int, )
 func (me *CollisionObject2D) ConnectMouseShapeExited(subs SignalSubscribers, fn CollisionObject2DMouseShapeExitedSignalFn) {
   sig := StringNameFromStr("mouse_shape_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CollisionObject2D) DisconnectMouseShapeExited(subs SignalSubscribers, fn CollisionObject2DMouseShapeExitedSignalFn) {
   sig := StringNameFromStr("mouse_shape_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

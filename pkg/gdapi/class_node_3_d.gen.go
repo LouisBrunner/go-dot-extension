@@ -813,13 +813,11 @@ type Node3DVisibilityChangedSignalFn func()
 func (me *Node3D) ConnectVisibilityChanged(subs SignalSubscribers, fn Node3DVisibilityChangedSignalFn) {
   sig := StringNameFromStr("visibility_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Node3D) DisconnectVisibilityChanged(subs SignalSubscribers, fn Node3DVisibilityChangedSignalFn) {
   sig := StringNameFromStr("visibility_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

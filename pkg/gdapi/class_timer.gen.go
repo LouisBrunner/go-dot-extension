@@ -204,13 +204,11 @@ type TimerTimeoutSignalFn func()
 func (me *Timer) ConnectTimeout(subs SignalSubscribers, fn TimerTimeoutSignalFn) {
   sig := StringNameFromStr("timeout")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Timer) DisconnectTimeout(subs SignalSubscribers, fn TimerTimeoutSignalFn) {
   sig := StringNameFromStr("timeout")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

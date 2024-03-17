@@ -149,13 +149,11 @@ type SplitContainerDraggedSignalFn func(offset int, )
 func (me *SplitContainer) ConnectDragged(subs SignalSubscribers, fn SplitContainerDraggedSignalFn) {
   sig := StringNameFromStr("dragged")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SplitContainer) DisconnectDragged(subs SignalSubscribers, fn SplitContainerDraggedSignalFn) {
   sig := StringNameFromStr("dragged")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -123,13 +123,11 @@ type GDExtensionManagerExtensionsReloadedSignalFn func()
 func (me *GDExtensionManager) ConnectExtensionsReloaded(subs SignalSubscribers, fn GDExtensionManagerExtensionsReloadedSignalFn) {
   sig := StringNameFromStr("extensions_reloaded")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GDExtensionManager) DisconnectExtensionsReloaded(subs SignalSubscribers, fn GDExtensionManagerExtensionsReloadedSignalFn) {
   sig := StringNameFromStr("extensions_reloaded")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -19,6 +19,7 @@ var outputFuncs = map[string]interface{}{
 	"mapMethod":   mapMethod,
 	"mapName":     mapName,
 	"mapType":     mapType,
+	"mapWideType": mapWideType,
 	"mapLiteral":  mapLiteral,
 	"mapClass":    mapClass,
 	"mapOperator": mapOperator,
@@ -135,6 +136,17 @@ func mapType(t string) string {
 		return "float64"
 	}
 	return t
+}
+
+func mapWideType(t string) string {
+	typ := mapType(t)
+	switch typ {
+	case "int":
+		return "int64"
+	case "float32":
+		return "float64"
+	}
+	return typ
 }
 
 func mapLiteral(t string) string {

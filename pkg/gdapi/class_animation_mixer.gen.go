@@ -453,15 +453,13 @@ type AnimationMixerMixerUpdatedSignalFn func()
 func (me *AnimationMixer) ConnectMixerUpdated(subs SignalSubscribers, fn AnimationMixerMixerUpdatedSignalFn) {
   sig := StringNameFromStr("mixer_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationMixer) DisconnectMixerUpdated(subs SignalSubscribers, fn AnimationMixerMixerUpdatedSignalFn) {
   sig := StringNameFromStr("mixer_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimationMixerAnimationListChangedSignalFn func()
@@ -469,15 +467,13 @@ type AnimationMixerAnimationListChangedSignalFn func()
 func (me *AnimationMixer) ConnectAnimationListChanged(subs SignalSubscribers, fn AnimationMixerAnimationListChangedSignalFn) {
   sig := StringNameFromStr("animation_list_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationMixer) DisconnectAnimationListChanged(subs SignalSubscribers, fn AnimationMixerAnimationListChangedSignalFn) {
   sig := StringNameFromStr("animation_list_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimationMixerAnimationLibrariesUpdatedSignalFn func()
@@ -485,15 +481,13 @@ type AnimationMixerAnimationLibrariesUpdatedSignalFn func()
 func (me *AnimationMixer) ConnectAnimationLibrariesUpdated(subs SignalSubscribers, fn AnimationMixerAnimationLibrariesUpdatedSignalFn) {
   sig := StringNameFromStr("animation_libraries_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationMixer) DisconnectAnimationLibrariesUpdated(subs SignalSubscribers, fn AnimationMixerAnimationLibrariesUpdatedSignalFn) {
   sig := StringNameFromStr("animation_libraries_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimationMixerAnimationFinishedSignalFn func(anim_name StringName, )
@@ -501,15 +495,13 @@ type AnimationMixerAnimationFinishedSignalFn func(anim_name StringName, )
 func (me *AnimationMixer) ConnectAnimationFinished(subs SignalSubscribers, fn AnimationMixerAnimationFinishedSignalFn) {
   sig := StringNameFromStr("animation_finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationMixer) DisconnectAnimationFinished(subs SignalSubscribers, fn AnimationMixerAnimationFinishedSignalFn) {
   sig := StringNameFromStr("animation_finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimationMixerAnimationStartedSignalFn func(anim_name StringName, )
@@ -517,15 +509,13 @@ type AnimationMixerAnimationStartedSignalFn func(anim_name StringName, )
 func (me *AnimationMixer) ConnectAnimationStarted(subs SignalSubscribers, fn AnimationMixerAnimationStartedSignalFn) {
   sig := StringNameFromStr("animation_started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationMixer) DisconnectAnimationStarted(subs SignalSubscribers, fn AnimationMixerAnimationStartedSignalFn) {
   sig := StringNameFromStr("animation_started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimationMixerCachesClearedSignalFn func()
@@ -533,13 +523,11 @@ type AnimationMixerCachesClearedSignalFn func()
 func (me *AnimationMixer) ConnectCachesCleared(subs SignalSubscribers, fn AnimationMixerCachesClearedSignalFn) {
   sig := StringNameFromStr("caches_cleared")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationMixer) DisconnectCachesCleared(subs SignalSubscribers, fn AnimationMixerCachesClearedSignalFn) {
   sig := StringNameFromStr("caches_cleared")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

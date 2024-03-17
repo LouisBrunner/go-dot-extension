@@ -250,15 +250,13 @@ type AnimatedSprite3DSpriteFramesChangedSignalFn func()
 func (me *AnimatedSprite3D) ConnectSpriteFramesChanged(subs SignalSubscribers, fn AnimatedSprite3DSpriteFramesChangedSignalFn) {
   sig := StringNameFromStr("sprite_frames_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimatedSprite3D) DisconnectSpriteFramesChanged(subs SignalSubscribers, fn AnimatedSprite3DSpriteFramesChangedSignalFn) {
   sig := StringNameFromStr("sprite_frames_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimatedSprite3DAnimationChangedSignalFn func()
@@ -266,15 +264,13 @@ type AnimatedSprite3DAnimationChangedSignalFn func()
 func (me *AnimatedSprite3D) ConnectAnimationChanged(subs SignalSubscribers, fn AnimatedSprite3DAnimationChangedSignalFn) {
   sig := StringNameFromStr("animation_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimatedSprite3D) DisconnectAnimationChanged(subs SignalSubscribers, fn AnimatedSprite3DAnimationChangedSignalFn) {
   sig := StringNameFromStr("animation_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimatedSprite3DFrameChangedSignalFn func()
@@ -282,15 +278,13 @@ type AnimatedSprite3DFrameChangedSignalFn func()
 func (me *AnimatedSprite3D) ConnectFrameChanged(subs SignalSubscribers, fn AnimatedSprite3DFrameChangedSignalFn) {
   sig := StringNameFromStr("frame_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimatedSprite3D) DisconnectFrameChanged(subs SignalSubscribers, fn AnimatedSprite3DFrameChangedSignalFn) {
   sig := StringNameFromStr("frame_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimatedSprite3DAnimationLoopedSignalFn func()
@@ -298,15 +292,13 @@ type AnimatedSprite3DAnimationLoopedSignalFn func()
 func (me *AnimatedSprite3D) ConnectAnimationLooped(subs SignalSubscribers, fn AnimatedSprite3DAnimationLoopedSignalFn) {
   sig := StringNameFromStr("animation_looped")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimatedSprite3D) DisconnectAnimationLooped(subs SignalSubscribers, fn AnimatedSprite3DAnimationLoopedSignalFn) {
   sig := StringNameFromStr("animation_looped")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimatedSprite3DAnimationFinishedSignalFn func()
@@ -314,13 +306,11 @@ type AnimatedSprite3DAnimationFinishedSignalFn func()
 func (me *AnimatedSprite3D) ConnectAnimationFinished(subs SignalSubscribers, fn AnimatedSprite3DAnimationFinishedSignalFn) {
   sig := StringNameFromStr("animation_finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimatedSprite3D) DisconnectAnimationFinished(subs SignalSubscribers, fn AnimatedSprite3DAnimationFinishedSignalFn) {
   sig := StringNameFromStr("animation_finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

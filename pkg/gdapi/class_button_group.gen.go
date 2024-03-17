@@ -90,13 +90,11 @@ type ButtonGroupPressedSignalFn func(button BaseButton, )
 func (me *ButtonGroup) ConnectPressed(subs SignalSubscribers, fn ButtonGroupPressedSignalFn) {
   sig := StringNameFromStr("pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ButtonGroup) DisconnectPressed(subs SignalSubscribers, fn ButtonGroupPressedSignalFn) {
   sig := StringNameFromStr("pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

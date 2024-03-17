@@ -215,15 +215,13 @@ type MultiplayerAPIPeerConnectedSignalFn func(id int, )
 func (me *MultiplayerAPI) ConnectPeerConnected(subs SignalSubscribers, fn MultiplayerAPIPeerConnectedSignalFn) {
   sig := StringNameFromStr("peer_connected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerAPI) DisconnectPeerConnected(subs SignalSubscribers, fn MultiplayerAPIPeerConnectedSignalFn) {
   sig := StringNameFromStr("peer_connected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type MultiplayerAPIPeerDisconnectedSignalFn func(id int, )
@@ -231,15 +229,13 @@ type MultiplayerAPIPeerDisconnectedSignalFn func(id int, )
 func (me *MultiplayerAPI) ConnectPeerDisconnected(subs SignalSubscribers, fn MultiplayerAPIPeerDisconnectedSignalFn) {
   sig := StringNameFromStr("peer_disconnected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerAPI) DisconnectPeerDisconnected(subs SignalSubscribers, fn MultiplayerAPIPeerDisconnectedSignalFn) {
   sig := StringNameFromStr("peer_disconnected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type MultiplayerAPIConnectedToServerSignalFn func()
@@ -247,15 +243,13 @@ type MultiplayerAPIConnectedToServerSignalFn func()
 func (me *MultiplayerAPI) ConnectConnectedToServer(subs SignalSubscribers, fn MultiplayerAPIConnectedToServerSignalFn) {
   sig := StringNameFromStr("connected_to_server")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerAPI) DisconnectConnectedToServer(subs SignalSubscribers, fn MultiplayerAPIConnectedToServerSignalFn) {
   sig := StringNameFromStr("connected_to_server")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type MultiplayerAPIConnectionFailedSignalFn func()
@@ -263,15 +257,13 @@ type MultiplayerAPIConnectionFailedSignalFn func()
 func (me *MultiplayerAPI) ConnectConnectionFailed(subs SignalSubscribers, fn MultiplayerAPIConnectionFailedSignalFn) {
   sig := StringNameFromStr("connection_failed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerAPI) DisconnectConnectionFailed(subs SignalSubscribers, fn MultiplayerAPIConnectionFailedSignalFn) {
   sig := StringNameFromStr("connection_failed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type MultiplayerAPIServerDisconnectedSignalFn func()
@@ -279,13 +271,11 @@ type MultiplayerAPIServerDisconnectedSignalFn func()
 func (me *MultiplayerAPI) ConnectServerDisconnected(subs SignalSubscribers, fn MultiplayerAPIServerDisconnectedSignalFn) {
   sig := StringNameFromStr("server_disconnected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerAPI) DisconnectServerDisconnected(subs SignalSubscribers, fn MultiplayerAPIServerDisconnectedSignalFn) {
   sig := StringNameFromStr("server_disconnected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

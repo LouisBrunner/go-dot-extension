@@ -1333,15 +1333,13 @@ type NodeReadySignalFn func()
 func (me *Node) ConnectReady(subs SignalSubscribers, fn NodeReadySignalFn) {
   sig := StringNameFromStr("ready")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Node) DisconnectReady(subs SignalSubscribers, fn NodeReadySignalFn) {
   sig := StringNameFromStr("ready")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NodeRenamedSignalFn func()
@@ -1349,15 +1347,13 @@ type NodeRenamedSignalFn func()
 func (me *Node) ConnectRenamed(subs SignalSubscribers, fn NodeRenamedSignalFn) {
   sig := StringNameFromStr("renamed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Node) DisconnectRenamed(subs SignalSubscribers, fn NodeRenamedSignalFn) {
   sig := StringNameFromStr("renamed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NodeTreeEnteredSignalFn func()
@@ -1365,15 +1361,13 @@ type NodeTreeEnteredSignalFn func()
 func (me *Node) ConnectTreeEntered(subs SignalSubscribers, fn NodeTreeEnteredSignalFn) {
   sig := StringNameFromStr("tree_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Node) DisconnectTreeEntered(subs SignalSubscribers, fn NodeTreeEnteredSignalFn) {
   sig := StringNameFromStr("tree_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NodeTreeExitingSignalFn func()
@@ -1381,15 +1375,13 @@ type NodeTreeExitingSignalFn func()
 func (me *Node) ConnectTreeExiting(subs SignalSubscribers, fn NodeTreeExitingSignalFn) {
   sig := StringNameFromStr("tree_exiting")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Node) DisconnectTreeExiting(subs SignalSubscribers, fn NodeTreeExitingSignalFn) {
   sig := StringNameFromStr("tree_exiting")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NodeTreeExitedSignalFn func()
@@ -1397,15 +1389,13 @@ type NodeTreeExitedSignalFn func()
 func (me *Node) ConnectTreeExited(subs SignalSubscribers, fn NodeTreeExitedSignalFn) {
   sig := StringNameFromStr("tree_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Node) DisconnectTreeExited(subs SignalSubscribers, fn NodeTreeExitedSignalFn) {
   sig := StringNameFromStr("tree_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NodeChildEnteredTreeSignalFn func(node Node, )
@@ -1413,15 +1403,13 @@ type NodeChildEnteredTreeSignalFn func(node Node, )
 func (me *Node) ConnectChildEnteredTree(subs SignalSubscribers, fn NodeChildEnteredTreeSignalFn) {
   sig := StringNameFromStr("child_entered_tree")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Node) DisconnectChildEnteredTree(subs SignalSubscribers, fn NodeChildEnteredTreeSignalFn) {
   sig := StringNameFromStr("child_entered_tree")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NodeChildExitingTreeSignalFn func(node Node, )
@@ -1429,15 +1417,13 @@ type NodeChildExitingTreeSignalFn func(node Node, )
 func (me *Node) ConnectChildExitingTree(subs SignalSubscribers, fn NodeChildExitingTreeSignalFn) {
   sig := StringNameFromStr("child_exiting_tree")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Node) DisconnectChildExitingTree(subs SignalSubscribers, fn NodeChildExitingTreeSignalFn) {
   sig := StringNameFromStr("child_exiting_tree")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NodeChildOrderChangedSignalFn func()
@@ -1445,15 +1431,13 @@ type NodeChildOrderChangedSignalFn func()
 func (me *Node) ConnectChildOrderChanged(subs SignalSubscribers, fn NodeChildOrderChangedSignalFn) {
   sig := StringNameFromStr("child_order_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Node) DisconnectChildOrderChanged(subs SignalSubscribers, fn NodeChildOrderChangedSignalFn) {
   sig := StringNameFromStr("child_order_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NodeReplacingBySignalFn func(node Node, )
@@ -1461,13 +1445,11 @@ type NodeReplacingBySignalFn func(node Node, )
 func (me *Node) ConnectReplacingBy(subs SignalSubscribers, fn NodeReplacingBySignalFn) {
   sig := StringNameFromStr("replacing_by")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Node) DisconnectReplacingBy(subs SignalSubscribers, fn NodeReplacingBySignalFn) {
   sig := StringNameFromStr("replacing_by")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

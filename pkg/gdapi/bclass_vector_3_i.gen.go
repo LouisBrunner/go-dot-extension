@@ -2,14 +2,17 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Vector3i struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeVector3i]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Constants
@@ -37,54 +40,84 @@ const (
 )
 
 // Constructors
-
-func NewVector3i() Vector3i {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeVector3i))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Vector3i{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newVector3i() *Vector3i {
+  me := &Vector3i{
+    data:   new([classSizeVector3i]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewVector3iFromVector3I(from Vector3i, ) Vector3i {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeVector3i))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Vector3i{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewVector3i() *Vector3i {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newVector3i()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewVector3iFromVector3(from Vector3, ) Vector3i {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeVector3i))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Vector3i{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewVector3iFromVector3I(from Vector3i, ) *Vector3i {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newVector3i()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewVector3iFromIntIntInt(x int, y int, z int, ) Vector3i {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeVector3i))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 3) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), gdc.ConstTypePtr(&z), }))
-  return Vector3i{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewVector3iFromVector3(from Vector3, ) *Vector3i {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newVector3i()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
+}
+
+func NewVector3iFromIntIntInt(x int64, y int64, z int64, ) *Vector3i {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&x)
+  pinner.Pin(&y)
+  pinner.Pin(&z)
+  me := newVector3i()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 3) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), gdc.ConstTypePtr(&z), }))
+  return me
 }
 
 // Destructor
 func (me *Vector3i) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsVector3i() (*Vector3i, error) {
+	if me.Type() != gdc.VariantTypeVector3I {
+		return nil, fmt.Errorf("variant is not a Vector3i")
+	}
+  bclass := newVector3i()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Vector3i) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func Vector3iFromPtr(ptr gdc.ConstTypePtr) *Vector3i {
+  me := newVector3i()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Vector3i) Type() gdc.VariantType {
@@ -92,11 +125,15 @@ func (me *Vector3i) Type() gdc.VariantType {
 }
 
 func (me *Vector3i) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Vector3i) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Vector3i) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -234,7 +271,7 @@ func (me *Vector3i) Not() bool {
   return ret
 }
 
-func (me *Vector3i) MultiplyInt(rightArg int) Vector3i {
+func (me *Vector3i) MultiplyInt(rightArg int64) Vector3i {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -244,7 +281,7 @@ func (me *Vector3i) MultiplyInt(rightArg int) Vector3i {
   return ret
 }
 
-func (me *Vector3i) DivideInt(rightArg int) Vector3i {
+func (me *Vector3i) DivideInt(rightArg int64) Vector3i {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -254,7 +291,7 @@ func (me *Vector3i) DivideInt(rightArg int) Vector3i {
   return ret
 }
 
-func (me *Vector3i) ModuleInt(rightArg int) Vector3i {
+func (me *Vector3i) ModuleInt(rightArg int64) Vector3i {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -264,7 +301,7 @@ func (me *Vector3i) ModuleInt(rightArg int) Vector3i {
   return ret
 }
 
-func (me *Vector3i) MultiplyFloat32(rightArg float32) Vector3 {
+func (me *Vector3i) MultiplyFloat32(rightArg float64) Vector3 {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -274,7 +311,7 @@ func (me *Vector3i) MultiplyFloat32(rightArg float32) Vector3 {
   return ret
 }
 
-func (me *Vector3i) DivideFloat32(rightArg float32) Vector3 {
+func (me *Vector3i) DivideFloat32(rightArg float64) Vector3 {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -392,7 +429,7 @@ func (me *Vector3i) SetX(value int) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Vector3i) Y() int {
@@ -410,7 +447,7 @@ func (me *Vector3i) SetY(value int) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Vector3i) Z() int {
@@ -428,5 +465,5 @@ func (me *Vector3i) SetZ(value int) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }

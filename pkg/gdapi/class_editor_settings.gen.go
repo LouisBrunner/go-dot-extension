@@ -222,13 +222,11 @@ type EditorSettingsSettingsChangedSignalFn func()
 func (me *EditorSettings) ConnectSettingsChanged(subs SignalSubscribers, fn EditorSettingsSettingsChangedSignalFn) {
   sig := StringNameFromStr("settings_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorSettings) DisconnectSettingsChanged(subs SignalSubscribers, fn EditorSettingsSettingsChangedSignalFn) {
   sig := StringNameFromStr("settings_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

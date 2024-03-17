@@ -555,13 +555,11 @@ type AudioStreamPlayer3DFinishedSignalFn func()
 func (me *AudioStreamPlayer3D) ConnectFinished(subs SignalSubscribers, fn AudioStreamPlayer3DFinishedSignalFn) {
   sig := StringNameFromStr("finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AudioStreamPlayer3D) DisconnectFinished(subs SignalSubscribers, fn AudioStreamPlayer3DFinishedSignalFn) {
   sig := StringNameFromStr("finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

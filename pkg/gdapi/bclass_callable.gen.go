@@ -2,59 +2,90 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Callable struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeCallable]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Enums
 
 // Constructors
-
-func NewCallable() Callable {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeCallable))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeCallable, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Callable{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newCallable() *Callable {
+  me := &Callable{
+    data:   new([classSizeCallable]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewCallableFromCallable(from Callable, ) Callable {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeCallable))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeCallable, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Callable{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewCallable() *Callable {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newCallable()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeCallable, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewCallableFromObjectStringName(object Object, method StringName, ) Callable {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeCallable))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeCallable, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{object.AsCTypePtr(), method.AsCTypePtr(), }))
-  return Callable{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewCallableFromCallable(from Callable, ) *Callable {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newCallable()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeCallable, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
+}
+
+func NewCallableFromObjectStringName(object Object, method StringName, ) *Callable {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newCallable()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeCallable, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{object.AsCTypePtr(), method.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *Callable) Destroy() {
-  if me.ptr == nil {
-    return
-  }
   dtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeCallable)
-	me.iface.CallPtrDestructor(dtr, gdc.TypePtr(me.ptr))
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+	me.iface.CallPtrDestructor(dtr, me.AsTypePtr())
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsCallable() (*Callable, error) {
+	if me.Type() != gdc.VariantTypeCallable {
+		return nil, fmt.Errorf("variant is not a Callable")
+	}
+  bclass := newCallable()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Callable) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func CallableFromPtr(ptr gdc.ConstTypePtr) *Callable {
+  me := newCallable()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Callable) Type() gdc.VariantType {
@@ -62,11 +93,15 @@ func (me *Callable) Type() gdc.VariantType {
 }
 
 func (me *Callable) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Callable) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Callable) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -221,7 +256,7 @@ func (me *Callable) Unbind(argcount int, ) Callable {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 755001590) // FIXME: should cache?
 
   var ret Callable
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&argcount), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&argcount)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -270,7 +305,7 @@ func (me *Callable) RpcId(peer_id int, varargs ...Variant)  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 2270047679) // FIXME: should cache?
 
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&peer_id)), }
   for _, arg := range varargs {
     args = append(args, arg.AsCTypePtr())
   }

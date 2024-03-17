@@ -4,7 +4,6 @@ import (
 	"log"
 	"reflect"
 
-	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 	"github.com/google/uuid"
 )
 
@@ -22,7 +21,12 @@ type SignalSubscribers struct {
 	subsRef      map[Subcriber]string
 }
 
-func NewSignalSubscribers(obj gdc.ObjectPtr) SignalSubscribers {
+func NewSignalSubscribers() SignalSubscribers {
+	subClass := StringNameFromStr("SignalSubscribers") // FIXME: cache?
+	defer subClass.Destroy()
+
+	obj := giface.ClassdbConstructObject(subClass.AsCPtr())
+
 	ssubs := SignalSubscribers{
 		subs:    make(map[string]subscriber),
 		subsRef: make(map[Subcriber]string),
@@ -32,7 +36,7 @@ func NewSignalSubscribers(obj gdc.ObjectPtr) SignalSubscribers {
 }
 
 func (me *SignalSubscribers) X_Init() {
-	me.dispatchName = StringNameFromStr("dispatch")
+	me.dispatchName = *StringNameFromStr("dispatch")
 }
 
 func (me *SignalSubscribers) Destroy() {
@@ -48,9 +52,9 @@ func (me *SignalSubscribers) add(sub interface{}) Callable {
 	callable := NewCallableFromObjectStringName(me.Object, me.dispatchName)
 	defer callable.Destroy()
 	fnID := uuid.New().String()
-	fnIDVar := NewVariantFrom(StringFromStr(fnID))
+	fnIDVar := StringFromStr(fnID).AsVariant()
 	defer fnIDVar.Destroy()
-	boundCallable := callable.Bind(fnIDVar)
+	boundCallable := callable.Bind(*fnIDVar)
 	me.subs[fnID] = subscriber{
 		fn:   sub,
 		call: boundCallable,
@@ -58,7 +62,7 @@ func (me *SignalSubscribers) add(sub interface{}) Callable {
 	return boundCallable
 }
 
-func (me *SignalSubscribers) Dispatch(fnIDVar Variant, cargs ...interface{}) {
+func (me *SignalSubscribers) Dispatch(fnIDVar Variant, cargs ...Variant) {
 	fnID := fnIDVar.String()
 	sub, found := me.subs[fnID]
 	if !found {

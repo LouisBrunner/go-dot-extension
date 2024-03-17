@@ -222,15 +222,13 @@ type AnimationNodeTreeChangedSignalFn func()
 func (me *AnimationNode) ConnectTreeChanged(subs SignalSubscribers, fn AnimationNodeTreeChangedSignalFn) {
   sig := StringNameFromStr("tree_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationNode) DisconnectTreeChanged(subs SignalSubscribers, fn AnimationNodeTreeChangedSignalFn) {
   sig := StringNameFromStr("tree_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimationNodeAnimationNodeRenamedSignalFn func(object_id int, old_name String, new_name String, )
@@ -238,15 +236,13 @@ type AnimationNodeAnimationNodeRenamedSignalFn func(object_id int, old_name Stri
 func (me *AnimationNode) ConnectAnimationNodeRenamed(subs SignalSubscribers, fn AnimationNodeAnimationNodeRenamedSignalFn) {
   sig := StringNameFromStr("animation_node_renamed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationNode) DisconnectAnimationNodeRenamed(subs SignalSubscribers, fn AnimationNodeAnimationNodeRenamedSignalFn) {
   sig := StringNameFromStr("animation_node_renamed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimationNodeAnimationNodeRemovedSignalFn func(object_id int, name String, )
@@ -254,13 +250,11 @@ type AnimationNodeAnimationNodeRemovedSignalFn func(object_id int, name String, 
 func (me *AnimationNode) ConnectAnimationNodeRemoved(subs SignalSubscribers, fn AnimationNodeAnimationNodeRemovedSignalFn) {
   sig := StringNameFromStr("animation_node_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationNode) DisconnectAnimationNodeRemoved(subs SignalSubscribers, fn AnimationNodeAnimationNodeRemovedSignalFn) {
   sig := StringNameFromStr("animation_node_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

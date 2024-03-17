@@ -2,14 +2,17 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Transform2D struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeTransform2D]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Constants
@@ -23,64 +26,93 @@ var (
 // Enums
 
 // Constructors
-
-func NewTransform2D() Transform2D {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeTransform2D))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeTransform2D, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Transform2D{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newTransform2D() *Transform2D {
+  me := &Transform2D{
+    data:   new([classSizeTransform2D]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewTransform2DFromTransform2D(from Transform2D, ) Transform2D {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeTransform2D))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeTransform2D, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Transform2D{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewTransform2D() *Transform2D {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newTransform2D()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeTransform2D, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewTransform2DFromFloat32Vector2(rotation float32, position Vector2, ) Transform2D {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeTransform2D))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeTransform2D, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&rotation), position.AsCTypePtr(), }))
-  return Transform2D{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewTransform2DFromTransform2D(from Transform2D, ) *Transform2D {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newTransform2D()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeTransform2D, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewTransform2DFromFloat32Vector2Float32Vector2(rotation float32, scale Vector2, skew float32, position Vector2, ) Transform2D {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeTransform2D))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeTransform2D, 3) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&rotation), scale.AsCTypePtr(), gdc.ConstTypePtr(&skew), position.AsCTypePtr(), }))
-  return Transform2D{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewTransform2DFromFloat32Vector2(rotation float64, position Vector2, ) *Transform2D {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&rotation)
+  me := newTransform2D()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeTransform2D, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&rotation), position.AsCTypePtr(), }))
+  return me
 }
 
-func NewTransform2DFromVector2Vector2Vector2(x_axis Vector2, y_axis Vector2, origin Vector2, ) Transform2D {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeTransform2D))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeTransform2D, 4) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{x_axis.AsCTypePtr(), y_axis.AsCTypePtr(), origin.AsCTypePtr(), }))
-  return Transform2D{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewTransform2DFromFloat32Vector2Float32Vector2(rotation float64, scale Vector2, skew float64, position Vector2, ) *Transform2D {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&rotation)
+  pinner.Pin(&skew)
+  me := newTransform2D()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeTransform2D, 3) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&rotation), scale.AsCTypePtr(), gdc.ConstTypePtr(&skew), position.AsCTypePtr(), }))
+  return me
+}
+
+func NewTransform2DFromVector2Vector2Vector2(x_axis Vector2, y_axis Vector2, origin Vector2, ) *Transform2D {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newTransform2D()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeTransform2D, 4) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{x_axis.AsCTypePtr(), y_axis.AsCTypePtr(), origin.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *Transform2D) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsTransform2D() (*Transform2D, error) {
+	if me.Type() != gdc.VariantTypeTransform2D {
+		return nil, fmt.Errorf("variant is not a Transform2D")
+	}
+  bclass := newTransform2D()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Transform2D) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func Transform2DFromPtr(ptr gdc.ConstTypePtr) *Transform2D {
+  me := newTransform2D()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Transform2D) Type() gdc.VariantType {
@@ -88,11 +120,15 @@ func (me *Transform2D) Type() gdc.VariantType {
 }
 
 func (me *Transform2D) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Transform2D) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Transform2D) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -187,7 +223,7 @@ func (me *Transform2D) Rotated(angle float32, ) Transform2D {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 729597514) // FIXME: should cache?
 
   var ret Transform2D
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&angle)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -199,7 +235,7 @@ func (me *Transform2D) RotatedLocal(angle float32, ) Transform2D {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 729597514) // FIXME: should cache?
 
   var ret Transform2D
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&angle)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -295,7 +331,7 @@ func (me *Transform2D) InterpolateWith(xform Transform2D, weight float32, ) Tran
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform2D, name.AsCPtr(), 359399686) // FIXME: should cache?
 
   var ret Transform2D
-  args := []gdc.ConstTypePtr{xform.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+  args := []gdc.ConstTypePtr{xform.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -372,7 +408,7 @@ func (me *Transform2D) Not() bool {
   return ret
 }
 
-func (me *Transform2D) MultiplyInt(rightArg int) Transform2D {
+func (me *Transform2D) MultiplyInt(rightArg int64) Transform2D {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -382,7 +418,7 @@ func (me *Transform2D) MultiplyInt(rightArg int) Transform2D {
   return ret
 }
 
-func (me *Transform2D) MultiplyFloat32(rightArg float32) Transform2D {
+func (me *Transform2D) MultiplyFloat32(rightArg float64) Transform2D {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -465,7 +501,7 @@ func (me *Transform2D) SetX(value Vector2) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Transform2D) Y() Vector2 {
@@ -483,7 +519,7 @@ func (me *Transform2D) SetY(value Vector2) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Transform2D) Origin() Vector2 {
@@ -501,5 +537,5 @@ func (me *Transform2D) SetOrigin(value Vector2) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }

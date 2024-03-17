@@ -235,15 +235,13 @@ type MultiplayerSynchronizerSynchronizedSignalFn func()
 func (me *MultiplayerSynchronizer) ConnectSynchronized(subs SignalSubscribers, fn MultiplayerSynchronizerSynchronizedSignalFn) {
   sig := StringNameFromStr("synchronized")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerSynchronizer) DisconnectSynchronized(subs SignalSubscribers, fn MultiplayerSynchronizerSynchronizedSignalFn) {
   sig := StringNameFromStr("synchronized")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type MultiplayerSynchronizerDeltaSynchronizedSignalFn func()
@@ -251,15 +249,13 @@ type MultiplayerSynchronizerDeltaSynchronizedSignalFn func()
 func (me *MultiplayerSynchronizer) ConnectDeltaSynchronized(subs SignalSubscribers, fn MultiplayerSynchronizerDeltaSynchronizedSignalFn) {
   sig := StringNameFromStr("delta_synchronized")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerSynchronizer) DisconnectDeltaSynchronized(subs SignalSubscribers, fn MultiplayerSynchronizerDeltaSynchronizedSignalFn) {
   sig := StringNameFromStr("delta_synchronized")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type MultiplayerSynchronizerVisibilityChangedSignalFn func(for_peer int, )
@@ -267,13 +263,11 @@ type MultiplayerSynchronizerVisibilityChangedSignalFn func(for_peer int, )
 func (me *MultiplayerSynchronizer) ConnectVisibilityChanged(subs SignalSubscribers, fn MultiplayerSynchronizerVisibilityChangedSignalFn) {
   sig := StringNameFromStr("visibility_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerSynchronizer) DisconnectVisibilityChanged(subs SignalSubscribers, fn MultiplayerSynchronizerVisibilityChangedSignalFn) {
   sig := StringNameFromStr("visibility_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

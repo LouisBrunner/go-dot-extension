@@ -181,15 +181,13 @@ type EditorUndoRedoManagerHistoryChangedSignalFn func()
 func (me *EditorUndoRedoManager) ConnectHistoryChanged(subs SignalSubscribers, fn EditorUndoRedoManagerHistoryChangedSignalFn) {
   sig := StringNameFromStr("history_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorUndoRedoManager) DisconnectHistoryChanged(subs SignalSubscribers, fn EditorUndoRedoManagerHistoryChangedSignalFn) {
   sig := StringNameFromStr("history_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorUndoRedoManagerVersionChangedSignalFn func()
@@ -197,13 +195,11 @@ type EditorUndoRedoManagerVersionChangedSignalFn func()
 func (me *EditorUndoRedoManager) ConnectVersionChanged(subs SignalSubscribers, fn EditorUndoRedoManagerVersionChangedSignalFn) {
   sig := StringNameFromStr("version_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorUndoRedoManager) DisconnectVersionChanged(subs SignalSubscribers, fn EditorUndoRedoManagerVersionChangedSignalFn) {
   sig := StringNameFromStr("version_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

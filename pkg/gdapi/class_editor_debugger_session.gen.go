@@ -118,15 +118,13 @@ type EditorDebuggerSessionStartedSignalFn func()
 func (me *EditorDebuggerSession) ConnectStarted(subs SignalSubscribers, fn EditorDebuggerSessionStartedSignalFn) {
   sig := StringNameFromStr("started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorDebuggerSession) DisconnectStarted(subs SignalSubscribers, fn EditorDebuggerSessionStartedSignalFn) {
   sig := StringNameFromStr("started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorDebuggerSessionStoppedSignalFn func()
@@ -134,15 +132,13 @@ type EditorDebuggerSessionStoppedSignalFn func()
 func (me *EditorDebuggerSession) ConnectStopped(subs SignalSubscribers, fn EditorDebuggerSessionStoppedSignalFn) {
   sig := StringNameFromStr("stopped")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorDebuggerSession) DisconnectStopped(subs SignalSubscribers, fn EditorDebuggerSessionStoppedSignalFn) {
   sig := StringNameFromStr("stopped")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorDebuggerSessionBreakedSignalFn func(can_debug bool, )
@@ -150,15 +146,13 @@ type EditorDebuggerSessionBreakedSignalFn func(can_debug bool, )
 func (me *EditorDebuggerSession) ConnectBreaked(subs SignalSubscribers, fn EditorDebuggerSessionBreakedSignalFn) {
   sig := StringNameFromStr("breaked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorDebuggerSession) DisconnectBreaked(subs SignalSubscribers, fn EditorDebuggerSessionBreakedSignalFn) {
   sig := StringNameFromStr("breaked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorDebuggerSessionContinuedSignalFn func()
@@ -166,13 +160,11 @@ type EditorDebuggerSessionContinuedSignalFn func()
 func (me *EditorDebuggerSession) ConnectContinued(subs SignalSubscribers, fn EditorDebuggerSessionContinuedSignalFn) {
   sig := StringNameFromStr("continued")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorDebuggerSession) DisconnectContinued(subs SignalSubscribers, fn EditorDebuggerSessionContinuedSignalFn) {
   sig := StringNameFromStr("continued")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

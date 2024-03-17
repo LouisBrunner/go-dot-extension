@@ -1134,15 +1134,13 @@ type NavigationServer2DMapChangedSignalFn func(map_ RID, )
 func (me *NavigationServer2D) ConnectMapChanged(subs SignalSubscribers, fn NavigationServer2DMapChangedSignalFn) {
   sig := StringNameFromStr("map_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationServer2D) DisconnectMapChanged(subs SignalSubscribers, fn NavigationServer2DMapChangedSignalFn) {
   sig := StringNameFromStr("map_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NavigationServer2DNavigationDebugChangedSignalFn func()
@@ -1150,13 +1148,11 @@ type NavigationServer2DNavigationDebugChangedSignalFn func()
 func (me *NavigationServer2D) ConnectNavigationDebugChanged(subs SignalSubscribers, fn NavigationServer2DNavigationDebugChangedSignalFn) {
   sig := StringNameFromStr("navigation_debug_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationServer2D) DisconnectNavigationDebugChanged(subs SignalSubscribers, fn NavigationServer2DNavigationDebugChangedSignalFn) {
   sig := StringNameFromStr("navigation_debug_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -337,13 +337,11 @@ type CurveRangeChangedSignalFn func()
 func (me *Curve) ConnectRangeChanged(subs SignalSubscribers, fn CurveRangeChangedSignalFn) {
   sig := StringNameFromStr("range_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Curve) DisconnectRangeChanged(subs SignalSubscribers, fn CurveRangeChangedSignalFn) {
   sig := StringNameFromStr("range_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

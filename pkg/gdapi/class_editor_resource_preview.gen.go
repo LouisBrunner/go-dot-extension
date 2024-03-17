@@ -92,13 +92,11 @@ type EditorResourcePreviewPreviewInvalidatedSignalFn func(path String, )
 func (me *EditorResourcePreview) ConnectPreviewInvalidated(subs SignalSubscribers, fn EditorResourcePreviewPreviewInvalidatedSignalFn) {
   sig := StringNameFromStr("preview_invalidated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorResourcePreview) DisconnectPreviewInvalidated(subs SignalSubscribers, fn EditorResourcePreviewPreviewInvalidatedSignalFn) {
   sig := StringNameFromStr("preview_invalidated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

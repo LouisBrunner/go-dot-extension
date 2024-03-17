@@ -2,14 +2,17 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Plane struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizePlane]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Constants
@@ -23,84 +26,113 @@ var (
 // Enums
 
 // Constructors
-
-func NewPlane() Plane {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizePlane))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypePlane, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Plane{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newPlane() *Plane {
+  me := &Plane{
+    data:   new([classSizePlane]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewPlaneFromPlane(from Plane, ) Plane {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizePlane))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypePlane, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Plane{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewPlane() *Plane {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newPlane()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePlane, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewPlaneFromVector3(normal Vector3, ) Plane {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizePlane))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypePlane, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{normal.AsCTypePtr(), }))
-  return Plane{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewPlaneFromPlane(from Plane, ) *Plane {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newPlane()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePlane, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewPlaneFromVector3Float32(normal Vector3, d float32, ) Plane {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizePlane))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypePlane, 3) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{normal.AsCTypePtr(), gdc.ConstTypePtr(&d), }))
-  return Plane{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewPlaneFromVector3(normal Vector3, ) *Plane {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newPlane()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePlane, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{normal.AsCTypePtr(), }))
+  return me
 }
 
-func NewPlaneFromVector3Vector3(normal Vector3, point Vector3, ) Plane {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizePlane))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypePlane, 4) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{normal.AsCTypePtr(), point.AsCTypePtr(), }))
-  return Plane{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewPlaneFromVector3Float32(normal Vector3, d float64, ) *Plane {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&d)
+  me := newPlane()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePlane, 3) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{normal.AsCTypePtr(), gdc.ConstTypePtr(&d), }))
+  return me
 }
 
-func NewPlaneFromVector3Vector3Vector3(point1 Vector3, point2 Vector3, point3 Vector3, ) Plane {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizePlane))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypePlane, 5) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{point1.AsCTypePtr(), point2.AsCTypePtr(), point3.AsCTypePtr(), }))
-  return Plane{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewPlaneFromVector3Vector3(normal Vector3, point Vector3, ) *Plane {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newPlane()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePlane, 4) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{normal.AsCTypePtr(), point.AsCTypePtr(), }))
+  return me
 }
 
-func NewPlaneFromFloat32Float32Float32Float32(a float32, b float32, c float32, d float32, ) Plane {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizePlane))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypePlane, 6) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&a), gdc.ConstTypePtr(&b), gdc.ConstTypePtr(&c), gdc.ConstTypePtr(&d), }))
-  return Plane{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewPlaneFromVector3Vector3Vector3(point1 Vector3, point2 Vector3, point3 Vector3, ) *Plane {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newPlane()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePlane, 5) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{point1.AsCTypePtr(), point2.AsCTypePtr(), point3.AsCTypePtr(), }))
+  return me
+}
+
+func NewPlaneFromFloat32Float32Float32Float32(a float64, b float64, c float64, d float64, ) *Plane {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&a)
+  pinner.Pin(&b)
+  pinner.Pin(&c)
+  pinner.Pin(&d)
+  me := newPlane()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePlane, 6) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&a), gdc.ConstTypePtr(&b), gdc.ConstTypePtr(&c), gdc.ConstTypePtr(&d), }))
+  return me
 }
 
 // Destructor
 func (me *Plane) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsPlane() (*Plane, error) {
+	if me.Type() != gdc.VariantTypePlane {
+		return nil, fmt.Errorf("variant is not a Plane")
+	}
+  bclass := newPlane()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Plane) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func PlaneFromPtr(ptr gdc.ConstTypePtr) *Plane {
+  me := newPlane()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Plane) Type() gdc.VariantType {
@@ -108,11 +140,15 @@ func (me *Plane) Type() gdc.VariantType {
 }
 
 func (me *Plane) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Plane) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Plane) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -195,7 +231,7 @@ func (me *Plane) HasPoint(point Vector3, tolerance float32, ) bool {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 1258189072) // FIXME: should cache?
 
   var ret bool
-  args := []gdc.ConstTypePtr{point.AsCTypePtr(), gdc.ConstTypePtr(&tolerance), }
+  args := []gdc.ConstTypePtr{point.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&tolerance)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -338,7 +374,7 @@ func (me *Plane) SetX(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Plane) Y() float32 {
@@ -356,7 +392,7 @@ func (me *Plane) SetY(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Plane) Z() float32 {
@@ -374,7 +410,7 @@ func (me *Plane) SetZ(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Plane) D() float32 {
@@ -392,7 +428,7 @@ func (me *Plane) SetD(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Plane) Normal() Vector3 {
@@ -410,5 +446,5 @@ func (me *Plane) SetNormal(value Vector3) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }

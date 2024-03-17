@@ -66,13 +66,11 @@ type ScrollBarScrollingSignalFn func()
 func (me *ScrollBar) ConnectScrolling(subs SignalSubscribers, fn ScrollBarScrollingSignalFn) {
   sig := StringNameFromStr("scrolling")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScrollBar) DisconnectScrolling(subs SignalSubscribers, fn ScrollBarScrollingSignalFn) {
   sig := StringNameFromStr("scrolling")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

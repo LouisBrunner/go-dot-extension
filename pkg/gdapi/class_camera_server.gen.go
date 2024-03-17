@@ -106,15 +106,13 @@ type CameraServerCameraFeedAddedSignalFn func(id int, )
 func (me *CameraServer) ConnectCameraFeedAdded(subs SignalSubscribers, fn CameraServerCameraFeedAddedSignalFn) {
   sig := StringNameFromStr("camera_feed_added")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CameraServer) DisconnectCameraFeedAdded(subs SignalSubscribers, fn CameraServerCameraFeedAddedSignalFn) {
   sig := StringNameFromStr("camera_feed_added")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CameraServerCameraFeedRemovedSignalFn func(id int, )
@@ -122,13 +120,11 @@ type CameraServerCameraFeedRemovedSignalFn func(id int, )
 func (me *CameraServer) ConnectCameraFeedRemoved(subs SignalSubscribers, fn CameraServerCameraFeedRemovedSignalFn) {
   sig := StringNameFromStr("camera_feed_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CameraServer) DisconnectCameraFeedRemoved(subs SignalSubscribers, fn CameraServerCameraFeedRemovedSignalFn) {
   sig := StringNameFromStr("camera_feed_removed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

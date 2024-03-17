@@ -574,15 +574,13 @@ type AudioServerBusLayoutChangedSignalFn func()
 func (me *AudioServer) ConnectBusLayoutChanged(subs SignalSubscribers, fn AudioServerBusLayoutChangedSignalFn) {
   sig := StringNameFromStr("bus_layout_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AudioServer) DisconnectBusLayoutChanged(subs SignalSubscribers, fn AudioServerBusLayoutChangedSignalFn) {
   sig := StringNameFromStr("bus_layout_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AudioServerBusRenamedSignalFn func(bus_index int, old_name StringName, new_name StringName, )
@@ -590,13 +588,11 @@ type AudioServerBusRenamedSignalFn func(bus_index int, old_name StringName, new_
 func (me *AudioServer) ConnectBusRenamed(subs SignalSubscribers, fn AudioServerBusRenamedSignalFn) {
   sig := StringNameFromStr("bus_renamed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AudioServer) DisconnectBusRenamed(subs SignalSubscribers, fn AudioServerBusRenamedSignalFn) {
   sig := StringNameFromStr("bus_renamed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

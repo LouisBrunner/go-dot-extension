@@ -2,47 +2,79 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type RID struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeRID]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Enums
 
 // Constructors
-
-func NewRID() RID {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeRID))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeRID, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return RID{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newRID() *RID {
+  me := &RID{
+    data:   new([classSizeRID]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewRIDFromRID(from RID, ) RID {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeRID))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeRID, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return RID{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewRID() *RID {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newRID()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeRID, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
+}
+
+func NewRIDFromRID(from RID, ) *RID {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newRID()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeRID, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *RID) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsRID() (*RID, error) {
+	if me.Type() != gdc.VariantTypeRID {
+		return nil, fmt.Errorf("variant is not a RID")
+	}
+  bclass := newRID()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *RID) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func RIDFromPtr(ptr gdc.ConstTypePtr) *RID {
+  me := newRID()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *RID) Type() gdc.VariantType {
@@ -50,11 +82,15 @@ func (me *RID) Type() gdc.VariantType {
 }
 
 func (me *RID) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *RID) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *RID) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods

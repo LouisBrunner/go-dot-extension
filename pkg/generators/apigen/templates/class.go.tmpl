@@ -99,14 +99,12 @@ type {{$Class}}{{pascalCased .Name}}SignalFn func({{range .Arguments}}{{mapName 
 func (me *{{$Class}}) Connect{{pascalCased .Name}}(subs SignalSubscribers, fn {{$Class}}{{pascalCased .Name}}SignalFn) {
   sig := StringNameFromStr("{{.Name}}")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *{{$Class}}) Disconnect{{pascalCased .Name}}(subs SignalSubscribers, fn {{$Class}}{{pascalCased .Name}}SignalFn) {
   sig := StringNameFromStr("{{.Name}}")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 {{- end}}

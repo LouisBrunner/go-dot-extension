@@ -227,15 +227,13 @@ type XRPositionalTrackerPoseChangedSignalFn func(pose XRPose, )
 func (me *XRPositionalTracker) ConnectPoseChanged(subs SignalSubscribers, fn XRPositionalTrackerPoseChangedSignalFn) {
   sig := StringNameFromStr("pose_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *XRPositionalTracker) DisconnectPoseChanged(subs SignalSubscribers, fn XRPositionalTrackerPoseChangedSignalFn) {
   sig := StringNameFromStr("pose_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type XRPositionalTrackerPoseLostTrackingSignalFn func(pose XRPose, )
@@ -243,15 +241,13 @@ type XRPositionalTrackerPoseLostTrackingSignalFn func(pose XRPose, )
 func (me *XRPositionalTracker) ConnectPoseLostTracking(subs SignalSubscribers, fn XRPositionalTrackerPoseLostTrackingSignalFn) {
   sig := StringNameFromStr("pose_lost_tracking")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *XRPositionalTracker) DisconnectPoseLostTracking(subs SignalSubscribers, fn XRPositionalTrackerPoseLostTrackingSignalFn) {
   sig := StringNameFromStr("pose_lost_tracking")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type XRPositionalTrackerButtonPressedSignalFn func(name String, )
@@ -259,15 +255,13 @@ type XRPositionalTrackerButtonPressedSignalFn func(name String, )
 func (me *XRPositionalTracker) ConnectButtonPressed(subs SignalSubscribers, fn XRPositionalTrackerButtonPressedSignalFn) {
   sig := StringNameFromStr("button_pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *XRPositionalTracker) DisconnectButtonPressed(subs SignalSubscribers, fn XRPositionalTrackerButtonPressedSignalFn) {
   sig := StringNameFromStr("button_pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type XRPositionalTrackerButtonReleasedSignalFn func(name String, )
@@ -275,15 +269,13 @@ type XRPositionalTrackerButtonReleasedSignalFn func(name String, )
 func (me *XRPositionalTracker) ConnectButtonReleased(subs SignalSubscribers, fn XRPositionalTrackerButtonReleasedSignalFn) {
   sig := StringNameFromStr("button_released")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *XRPositionalTracker) DisconnectButtonReleased(subs SignalSubscribers, fn XRPositionalTrackerButtonReleasedSignalFn) {
   sig := StringNameFromStr("button_released")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type XRPositionalTrackerInputFloatChangedSignalFn func(name String, value float32, )
@@ -291,15 +283,13 @@ type XRPositionalTrackerInputFloatChangedSignalFn func(name String, value float3
 func (me *XRPositionalTracker) ConnectInputFloatChanged(subs SignalSubscribers, fn XRPositionalTrackerInputFloatChangedSignalFn) {
   sig := StringNameFromStr("input_float_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *XRPositionalTracker) DisconnectInputFloatChanged(subs SignalSubscribers, fn XRPositionalTrackerInputFloatChangedSignalFn) {
   sig := StringNameFromStr("input_float_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type XRPositionalTrackerInputVector2ChangedSignalFn func(name String, vector Vector2, )
@@ -307,15 +297,13 @@ type XRPositionalTrackerInputVector2ChangedSignalFn func(name String, vector Vec
 func (me *XRPositionalTracker) ConnectInputVector2Changed(subs SignalSubscribers, fn XRPositionalTrackerInputVector2ChangedSignalFn) {
   sig := StringNameFromStr("input_vector2_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *XRPositionalTracker) DisconnectInputVector2Changed(subs SignalSubscribers, fn XRPositionalTrackerInputVector2ChangedSignalFn) {
   sig := StringNameFromStr("input_vector2_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type XRPositionalTrackerProfileChangedSignalFn func(role String, )
@@ -323,13 +311,11 @@ type XRPositionalTrackerProfileChangedSignalFn func(role String, )
 func (me *XRPositionalTracker) ConnectProfileChanged(subs SignalSubscribers, fn XRPositionalTrackerProfileChangedSignalFn) {
   sig := StringNameFromStr("profile_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *XRPositionalTracker) DisconnectProfileChanged(subs SignalSubscribers, fn XRPositionalTrackerProfileChangedSignalFn) {
   sig := StringNameFromStr("profile_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

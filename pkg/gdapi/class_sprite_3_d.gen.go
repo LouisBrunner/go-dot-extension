@@ -198,15 +198,13 @@ type Sprite3DFrameChangedSignalFn func()
 func (me *Sprite3D) ConnectFrameChanged(subs SignalSubscribers, fn Sprite3DFrameChangedSignalFn) {
   sig := StringNameFromStr("frame_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Sprite3D) DisconnectFrameChanged(subs SignalSubscribers, fn Sprite3DFrameChangedSignalFn) {
   sig := StringNameFromStr("frame_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type Sprite3DTextureChangedSignalFn func()
@@ -214,13 +212,11 @@ type Sprite3DTextureChangedSignalFn func()
 func (me *Sprite3D) ConnectTextureChanged(subs SignalSubscribers, fn Sprite3DTextureChangedSignalFn) {
   sig := StringNameFromStr("texture_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Sprite3D) DisconnectTextureChanged(subs SignalSubscribers, fn Sprite3DTextureChangedSignalFn) {
   sig := StringNameFromStr("texture_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

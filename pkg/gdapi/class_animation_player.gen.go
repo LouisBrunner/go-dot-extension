@@ -429,15 +429,13 @@ type AnimationPlayerCurrentAnimationChangedSignalFn func(name String, )
 func (me *AnimationPlayer) ConnectCurrentAnimationChanged(subs SignalSubscribers, fn AnimationPlayerCurrentAnimationChangedSignalFn) {
   sig := StringNameFromStr("current_animation_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationPlayer) DisconnectCurrentAnimationChanged(subs SignalSubscribers, fn AnimationPlayerCurrentAnimationChangedSignalFn) {
   sig := StringNameFromStr("current_animation_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AnimationPlayerAnimationChangedSignalFn func(old_name StringName, new_name StringName, )
@@ -445,13 +443,11 @@ type AnimationPlayerAnimationChangedSignalFn func(old_name StringName, new_name 
 func (me *AnimationPlayer) ConnectAnimationChanged(subs SignalSubscribers, fn AnimationPlayerAnimationChangedSignalFn) {
   sig := StringNameFromStr("animation_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationPlayer) DisconnectAnimationChanged(subs SignalSubscribers, fn AnimationPlayerAnimationChangedSignalFn) {
   sig := StringNameFromStr("animation_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

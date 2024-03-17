@@ -850,15 +850,13 @@ type PopupMenuIdPressedSignalFn func(id int, )
 func (me *PopupMenu) ConnectIdPressed(subs SignalSubscribers, fn PopupMenuIdPressedSignalFn) {
   sig := StringNameFromStr("id_pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *PopupMenu) DisconnectIdPressed(subs SignalSubscribers, fn PopupMenuIdPressedSignalFn) {
   sig := StringNameFromStr("id_pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type PopupMenuIdFocusedSignalFn func(id int, )
@@ -866,15 +864,13 @@ type PopupMenuIdFocusedSignalFn func(id int, )
 func (me *PopupMenu) ConnectIdFocused(subs SignalSubscribers, fn PopupMenuIdFocusedSignalFn) {
   sig := StringNameFromStr("id_focused")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *PopupMenu) DisconnectIdFocused(subs SignalSubscribers, fn PopupMenuIdFocusedSignalFn) {
   sig := StringNameFromStr("id_focused")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type PopupMenuIndexPressedSignalFn func(index int, )
@@ -882,15 +878,13 @@ type PopupMenuIndexPressedSignalFn func(index int, )
 func (me *PopupMenu) ConnectIndexPressed(subs SignalSubscribers, fn PopupMenuIndexPressedSignalFn) {
   sig := StringNameFromStr("index_pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *PopupMenu) DisconnectIndexPressed(subs SignalSubscribers, fn PopupMenuIndexPressedSignalFn) {
   sig := StringNameFromStr("index_pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type PopupMenuMenuChangedSignalFn func()
@@ -898,13 +892,11 @@ type PopupMenuMenuChangedSignalFn func()
 func (me *PopupMenu) ConnectMenuChanged(subs SignalSubscribers, fn PopupMenuMenuChangedSignalFn) {
   sig := StringNameFromStr("menu_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *PopupMenu) DisconnectMenuChanged(subs SignalSubscribers, fn PopupMenuMenuChangedSignalFn) {
   sig := StringNameFromStr("menu_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

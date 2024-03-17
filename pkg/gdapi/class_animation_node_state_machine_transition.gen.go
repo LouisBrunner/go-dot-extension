@@ -234,13 +234,11 @@ type AnimationNodeStateMachineTransitionAdvanceConditionChangedSignalFn func()
 func (me *AnimationNodeStateMachineTransition) ConnectAdvanceConditionChanged(subs SignalSubscribers, fn AnimationNodeStateMachineTransitionAdvanceConditionChangedSignalFn) {
   sig := StringNameFromStr("advance_condition_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationNodeStateMachineTransition) DisconnectAdvanceConditionChanged(subs SignalSubscribers, fn AnimationNodeStateMachineTransitionAdvanceConditionChangedSignalFn) {
   sig := StringNameFromStr("advance_condition_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -66,13 +66,11 @@ type SceneTreeTimerTimeoutSignalFn func()
 func (me *SceneTreeTimer) ConnectTimeout(subs SignalSubscribers, fn SceneTreeTimerTimeoutSignalFn) {
   sig := StringNameFromStr("timeout")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *SceneTreeTimer) DisconnectTimeout(subs SignalSubscribers, fn SceneTreeTimerTimeoutSignalFn) {
   sig := StringNameFromStr("timeout")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

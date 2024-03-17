@@ -1,0 +1,43 @@
+{{template "preamble"}}
+
+import (
+  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+)
+
+type RealType {{replace .BuildConfiguration "_" ""}}
+
+const (
+{{- range .Sizes}}
+  classSize{{mapClass .Name}} = {{.Size}}
+{{- end }}
+)
+
+var bclassToSize = map[gdc.VariantType]int{
+{{- range .Sizes}}{{if ne .Name "Variant"}}
+  gdc.VariantType{{pascalCased .Name}}: classSize{{mapClass .Name}},
+{{- end }}{{ end }}
+}
+
+type bclassFromVariantFn func(va *Variant) (BClass, error)
+
+var bclassFromVariant = map[gdc.VariantType]bclassFromVariantFn{
+{{- range .Sizes}}{{if ne .Name "Variant"}}{{if ne .Name "Object"}}
+  gdc.VariantType{{pascalCased .Name}}: func(va *Variant) (BClass, error) { return va.As{{mapClass .Name}}() },
+{{- end }}{{- end }}{{- end }}
+}
+
+type bclassPtrConstructorFn func(ptr gdc.ConstTypePtr) any
+
+var bclassPtrConstructor = map[gdc.VariantType]bclassPtrConstructorFn{
+{{- range .Sizes}}{{if ne .Name "Variant"}}{{if ne .Name "Object"}}
+  gdc.VariantType{{pascalCased .Name}}: func(ptr gdc.ConstTypePtr) any { return {{mapClass .Name}}FromPtr(ptr) },
+{{- end }}{{- end }}{{- end }}
+}
+
+type objectPtrConstructorFn func(ptr gdc.ConstTypePtr) any
+
+var objectPtrConstructor = map[string]objectPtrConstructorFn{
+{{- range .Classes}}
+  "{{.}}": func(ptr gdc.ConstTypePtr) any { return createObject(&{{.}}{}, ptr) },
+{{- end }}
+}

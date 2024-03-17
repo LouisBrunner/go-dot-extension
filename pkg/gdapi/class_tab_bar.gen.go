@@ -634,15 +634,13 @@ type TabBarTabSelectedSignalFn func(tab int, )
 func (me *TabBar) ConnectTabSelected(subs SignalSubscribers, fn TabBarTabSelectedSignalFn) {
   sig := StringNameFromStr("tab_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TabBar) DisconnectTabSelected(subs SignalSubscribers, fn TabBarTabSelectedSignalFn) {
   sig := StringNameFromStr("tab_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TabBarTabChangedSignalFn func(tab int, )
@@ -650,15 +648,13 @@ type TabBarTabChangedSignalFn func(tab int, )
 func (me *TabBar) ConnectTabChanged(subs SignalSubscribers, fn TabBarTabChangedSignalFn) {
   sig := StringNameFromStr("tab_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TabBar) DisconnectTabChanged(subs SignalSubscribers, fn TabBarTabChangedSignalFn) {
   sig := StringNameFromStr("tab_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TabBarTabClickedSignalFn func(tab int, )
@@ -666,15 +662,13 @@ type TabBarTabClickedSignalFn func(tab int, )
 func (me *TabBar) ConnectTabClicked(subs SignalSubscribers, fn TabBarTabClickedSignalFn) {
   sig := StringNameFromStr("tab_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TabBar) DisconnectTabClicked(subs SignalSubscribers, fn TabBarTabClickedSignalFn) {
   sig := StringNameFromStr("tab_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TabBarTabRmbClickedSignalFn func(tab int, )
@@ -682,15 +676,13 @@ type TabBarTabRmbClickedSignalFn func(tab int, )
 func (me *TabBar) ConnectTabRmbClicked(subs SignalSubscribers, fn TabBarTabRmbClickedSignalFn) {
   sig := StringNameFromStr("tab_rmb_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TabBar) DisconnectTabRmbClicked(subs SignalSubscribers, fn TabBarTabRmbClickedSignalFn) {
   sig := StringNameFromStr("tab_rmb_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TabBarTabClosePressedSignalFn func(tab int, )
@@ -698,15 +690,13 @@ type TabBarTabClosePressedSignalFn func(tab int, )
 func (me *TabBar) ConnectTabClosePressed(subs SignalSubscribers, fn TabBarTabClosePressedSignalFn) {
   sig := StringNameFromStr("tab_close_pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TabBar) DisconnectTabClosePressed(subs SignalSubscribers, fn TabBarTabClosePressedSignalFn) {
   sig := StringNameFromStr("tab_close_pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TabBarTabButtonPressedSignalFn func(tab int, )
@@ -714,15 +704,13 @@ type TabBarTabButtonPressedSignalFn func(tab int, )
 func (me *TabBar) ConnectTabButtonPressed(subs SignalSubscribers, fn TabBarTabButtonPressedSignalFn) {
   sig := StringNameFromStr("tab_button_pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TabBar) DisconnectTabButtonPressed(subs SignalSubscribers, fn TabBarTabButtonPressedSignalFn) {
   sig := StringNameFromStr("tab_button_pressed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TabBarTabHoveredSignalFn func(tab int, )
@@ -730,15 +718,13 @@ type TabBarTabHoveredSignalFn func(tab int, )
 func (me *TabBar) ConnectTabHovered(subs SignalSubscribers, fn TabBarTabHoveredSignalFn) {
   sig := StringNameFromStr("tab_hovered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TabBar) DisconnectTabHovered(subs SignalSubscribers, fn TabBarTabHoveredSignalFn) {
   sig := StringNameFromStr("tab_hovered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type TabBarActiveTabRearrangedSignalFn func(idx_to int, )
@@ -746,13 +732,11 @@ type TabBarActiveTabRearrangedSignalFn func(idx_to int, )
 func (me *TabBar) ConnectActiveTabRearranged(subs SignalSubscribers, fn TabBarActiveTabRearrangedSignalFn) {
   sig := StringNameFromStr("active_tab_rearranged")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *TabBar) DisconnectActiveTabRearranged(subs SignalSubscribers, fn TabBarActiveTabRearrangedSignalFn) {
   sig := StringNameFromStr("active_tab_rearranged")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

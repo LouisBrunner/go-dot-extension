@@ -2,14 +2,17 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Basis struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeBasis]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Constants
@@ -24,64 +27,91 @@ var (
 // Enums
 
 // Constructors
-
-func NewBasis() Basis {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeBasis))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeBasis, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Basis{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newBasis() *Basis {
+  me := &Basis{
+    data:   new([classSizeBasis]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewBasisFromBasis(from Basis, ) Basis {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeBasis))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeBasis, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Basis{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewBasis() *Basis {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newBasis()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBasis, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewBasisFromQuaternion(from Quaternion, ) Basis {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeBasis))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeBasis, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Basis{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewBasisFromBasis(from Basis, ) *Basis {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newBasis()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBasis, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewBasisFromVector3Float32(axis Vector3, angle float32, ) Basis {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeBasis))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeBasis, 3) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(&angle), }))
-  return Basis{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewBasisFromQuaternion(from Quaternion, ) *Basis {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newBasis()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBasis, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewBasisFromVector3Vector3Vector3(x_axis Vector3, y_axis Vector3, z_axis Vector3, ) Basis {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeBasis))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeBasis, 4) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{x_axis.AsCTypePtr(), y_axis.AsCTypePtr(), z_axis.AsCTypePtr(), }))
-  return Basis{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewBasisFromVector3Float32(axis Vector3, angle float64, ) *Basis {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&angle)
+  me := newBasis()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBasis, 3) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(&angle), }))
+  return me
+}
+
+func NewBasisFromVector3Vector3Vector3(x_axis Vector3, y_axis Vector3, z_axis Vector3, ) *Basis {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newBasis()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBasis, 4) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{x_axis.AsCTypePtr(), y_axis.AsCTypePtr(), z_axis.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *Basis) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsBasis() (*Basis, error) {
+	if me.Type() != gdc.VariantTypeBasis {
+		return nil, fmt.Errorf("variant is not a Basis")
+	}
+  bclass := newBasis()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Basis) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func BasisFromPtr(ptr gdc.ConstTypePtr) *Basis {
+  me := newBasis()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Basis) Type() gdc.VariantType {
@@ -89,11 +119,15 @@ func (me *Basis) Type() gdc.VariantType {
 }
 
 func (me *Basis) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Basis) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Basis) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -152,7 +186,7 @@ func (me *Basis) Rotated(axis Vector3, angle float32, ) Basis {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeBasis, name.AsCPtr(), 1998708965) // FIXME: should cache?
 
   var ret Basis
-  args := []gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(&angle), }
+  args := []gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&angle)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -188,7 +222,7 @@ func (me *Basis) GetEuler(order int, ) Vector3 {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeBasis, name.AsCPtr(), 1394941017) // FIXME: should cache?
 
   var ret Vector3
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&order), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&order)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -236,7 +270,7 @@ func (me *Basis) Slerp(to Basis, weight float32, ) Basis {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeBasis, name.AsCPtr(), 3118673011) // FIXME: should cache?
 
   var ret Basis
-  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -296,7 +330,7 @@ func BasisLookingAt(target Vector3, up Vector3, use_model_front bool, ) Basis {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeBasis, name.AsCPtr(), 3728732505) // FIXME: should cache?
 
   var ret Basis
-  args := []gdc.ConstTypePtr{target.AsCTypePtr(), up.AsCTypePtr(), gdc.ConstTypePtr(&use_model_front), }
+  args := []gdc.ConstTypePtr{target.AsCTypePtr(), up.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&use_model_front)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -320,7 +354,7 @@ func BasisFromEuler(euler Vector3, order int, ) Basis {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeBasis, name.AsCPtr(), 2802321791) // FIXME: should cache?
 
   var ret Basis
-  args := []gdc.ConstTypePtr{euler.AsCTypePtr(), gdc.ConstTypePtr(&order), }
+  args := []gdc.ConstTypePtr{euler.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&order)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -349,7 +383,7 @@ func (me *Basis) Not() bool {
   return ret
 }
 
-func (me *Basis) MultiplyInt(rightArg int) Basis {
+func (me *Basis) MultiplyInt(rightArg int64) Basis {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -359,7 +393,7 @@ func (me *Basis) MultiplyInt(rightArg int) Basis {
   return ret
 }
 
-func (me *Basis) MultiplyFloat32(rightArg float32) Basis {
+func (me *Basis) MultiplyFloat32(rightArg float64) Basis {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -428,7 +462,7 @@ func (me *Basis) SetX(value Vector3) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Basis) Y() Vector3 {
@@ -446,7 +480,7 @@ func (me *Basis) SetY(value Vector3) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Basis) Z() Vector3 {
@@ -464,5 +498,5 @@ func (me *Basis) SetZ(value Vector3) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }

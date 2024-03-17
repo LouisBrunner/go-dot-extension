@@ -66,15 +66,13 @@ type VisibleOnScreenNotifier3DScreenEnteredSignalFn func()
 func (me *VisibleOnScreenNotifier3D) ConnectScreenEntered(subs SignalSubscribers, fn VisibleOnScreenNotifier3DScreenEnteredSignalFn) {
   sig := StringNameFromStr("screen_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *VisibleOnScreenNotifier3D) DisconnectScreenEntered(subs SignalSubscribers, fn VisibleOnScreenNotifier3DScreenEnteredSignalFn) {
   sig := StringNameFromStr("screen_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type VisibleOnScreenNotifier3DScreenExitedSignalFn func()
@@ -82,13 +80,11 @@ type VisibleOnScreenNotifier3DScreenExitedSignalFn func()
 func (me *VisibleOnScreenNotifier3D) ConnectScreenExited(subs SignalSubscribers, fn VisibleOnScreenNotifier3DScreenExitedSignalFn) {
   sig := StringNameFromStr("screen_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *VisibleOnScreenNotifier3D) DisconnectScreenExited(subs SignalSubscribers, fn VisibleOnScreenNotifier3DScreenExitedSignalFn) {
   sig := StringNameFromStr("screen_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

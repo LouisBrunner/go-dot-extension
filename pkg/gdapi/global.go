@@ -9,7 +9,7 @@ var giface gdc.Interface
 var Singletons *singletons
 var Utilities UtilityFunctions
 
-// TODO: don't like this but it's the only way I found
+// FIXME: don't like this but it's the only way I found
 
 func Initialize(iface gdc.Interface) {
 	giface = iface

@@ -242,13 +242,11 @@ type ProjectSettingsSettingsChangedSignalFn func()
 func (me *ProjectSettings) ConnectSettingsChanged(subs SignalSubscribers, fn ProjectSettingsSettingsChangedSignalFn) {
   sig := StringNameFromStr("settings_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ProjectSettings) DisconnectSettingsChanged(subs SignalSubscribers, fn ProjectSettingsSettingsChangedSignalFn) {
   sig := StringNameFromStr("settings_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

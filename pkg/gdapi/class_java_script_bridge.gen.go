@@ -142,13 +142,11 @@ type JavaScriptBridgePwaUpdateAvailableSignalFn func()
 func (me *JavaScriptBridge) ConnectPwaUpdateAvailable(subs SignalSubscribers, fn JavaScriptBridgePwaUpdateAvailableSignalFn) {
   sig := StringNameFromStr("pwa_update_available")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *JavaScriptBridge) DisconnectPwaUpdateAvailable(subs SignalSubscribers, fn JavaScriptBridgePwaUpdateAvailableSignalFn) {
   sig := StringNameFromStr("pwa_update_available")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

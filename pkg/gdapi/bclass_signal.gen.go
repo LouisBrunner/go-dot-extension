@@ -2,59 +2,90 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Signal struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeSignal]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Enums
 
 // Constructors
-
-func NewSignal() Signal {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeSignal))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Signal{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newSignal() *Signal {
+  me := &Signal{
+    data:   new([classSizeSignal]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewSignalFromSignal(from Signal, ) Signal {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeSignal))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Signal{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewSignal() *Signal {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newSignal()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewSignalFromObjectStringName(object Object, signal StringName, ) Signal {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeSignal))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{object.AsCTypePtr(), signal.AsCTypePtr(), }))
-  return Signal{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewSignalFromSignal(from Signal, ) *Signal {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newSignal()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
+}
+
+func NewSignalFromObjectStringName(object Object, signal StringName, ) *Signal {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newSignal()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{object.AsCTypePtr(), signal.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *Signal) Destroy() {
-  if me.ptr == nil {
-    return
-  }
   dtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeSignal)
-	me.iface.CallPtrDestructor(dtr, gdc.TypePtr(me.ptr))
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+	me.iface.CallPtrDestructor(dtr, me.AsTypePtr())
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsSignal() (*Signal, error) {
+	if me.Type() != gdc.VariantTypeSignal {
+		return nil, fmt.Errorf("variant is not a Signal")
+	}
+  bclass := newSignal()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Signal) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func SignalFromPtr(ptr gdc.ConstTypePtr) *Signal {
+  me := newSignal()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Signal) Type() gdc.VariantType {
@@ -62,11 +93,15 @@ func (me *Signal) Type() gdc.VariantType {
 }
 
 func (me *Signal) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Signal) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Signal) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -125,7 +160,7 @@ func (me *Signal) Connect(callable Callable, flags int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 979702392) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{callable.AsCTypePtr(), gdc.ConstTypePtr(&flags), }
+  args := []gdc.ConstTypePtr{callable.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&flags)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret

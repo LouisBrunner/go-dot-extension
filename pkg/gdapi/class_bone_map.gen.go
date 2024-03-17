@@ -100,15 +100,13 @@ type BoneMapBoneMapUpdatedSignalFn func()
 func (me *BoneMap) ConnectBoneMapUpdated(subs SignalSubscribers, fn BoneMapBoneMapUpdatedSignalFn) {
   sig := StringNameFromStr("bone_map_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *BoneMap) DisconnectBoneMapUpdated(subs SignalSubscribers, fn BoneMapBoneMapUpdatedSignalFn) {
   sig := StringNameFromStr("bone_map_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type BoneMapProfileUpdatedSignalFn func()
@@ -116,13 +114,11 @@ type BoneMapProfileUpdatedSignalFn func()
 func (me *BoneMap) ConnectProfileUpdated(subs SignalSubscribers, fn BoneMapProfileUpdatedSignalFn) {
   sig := StringNameFromStr("profile_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *BoneMap) DisconnectProfileUpdated(subs SignalSubscribers, fn BoneMapProfileUpdatedSignalFn) {
   sig := StringNameFromStr("profile_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

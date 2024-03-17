@@ -2,14 +2,17 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Vector2 struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeVector2]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Constants
@@ -33,54 +36,83 @@ const (
 )
 
 // Constructors
-
-func NewVector2() Vector2 {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeVector2))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeVector2, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Vector2{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newVector2() *Vector2 {
+  me := &Vector2{
+    data:   new([classSizeVector2]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewVector2FromVector2(from Vector2, ) Vector2 {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeVector2))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeVector2, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Vector2{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewVector2() *Vector2 {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newVector2()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector2, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewVector2FromVector2I(from Vector2i, ) Vector2 {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeVector2))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeVector2, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Vector2{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewVector2FromVector2(from Vector2, ) *Vector2 {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newVector2()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector2, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewVector2FromFloat32Float32(x float32, y float32, ) Vector2 {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeVector2))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeVector2, 3) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), }))
-  return Vector2{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewVector2FromVector2I(from Vector2i, ) *Vector2 {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newVector2()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector2, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
+}
+
+func NewVector2FromFloat32Float32(x float64, y float64, ) *Vector2 {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&x)
+  pinner.Pin(&y)
+  me := newVector2()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector2, 3) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), }))
+  return me
 }
 
 // Destructor
 func (me *Vector2) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsVector2() (*Vector2, error) {
+	if me.Type() != gdc.VariantTypeVector2 {
+		return nil, fmt.Errorf("variant is not a Vector2")
+	}
+  bclass := newVector2()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Vector2) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func Vector2FromPtr(ptr gdc.ConstTypePtr) *Vector2 {
+  me := newVector2()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Vector2) Type() gdc.VariantType {
@@ -88,11 +120,15 @@ func (me *Vector2) Type() gdc.VariantType {
 }
 
 func (me *Vector2) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Vector2) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Vector2) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -199,7 +235,7 @@ func (me *Vector2) LimitLength(length float32, ) Vector2 {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2, name.AsCPtr(), 2544004089) // FIXME: should cache?
 
   var ret Vector2
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&length)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -271,7 +307,7 @@ func (me *Vector2) Posmod(mod float32, ) Vector2 {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2, name.AsCPtr(), 2544004089) // FIXME: should cache?
 
   var ret Vector2
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mod), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&mod)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -307,7 +343,7 @@ func (me *Vector2) Lerp(to Vector2, weight float32, ) Vector2 {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2, name.AsCPtr(), 4250033116) // FIXME: should cache?
 
   var ret Vector2
-  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -319,7 +355,7 @@ func (me *Vector2) Slerp(to Vector2, weight float32, ) Vector2 {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2, name.AsCPtr(), 4250033116) // FIXME: should cache?
 
   var ret Vector2
-  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -331,7 +367,7 @@ func (me *Vector2) CubicInterpolate(b Vector2, pre_a Vector2, post_b Vector2, we
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2, name.AsCPtr(), 193522989) // FIXME: should cache?
 
   var ret Vector2
-  args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+  args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -343,7 +379,7 @@ func (me *Vector2) CubicInterpolateInTime(b Vector2, pre_a Vector2, post_b Vecto
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2, name.AsCPtr(), 1957055074) // FIXME: should cache?
 
   var ret Vector2
-  args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(&weight), gdc.ConstTypePtr(&b_t), gdc.ConstTypePtr(&pre_a_t), gdc.ConstTypePtr(&post_b_t), }
+  args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), gdc.ConstTypePtr(unsafe.Pointer(&b_t)), gdc.ConstTypePtr(unsafe.Pointer(&pre_a_t)), gdc.ConstTypePtr(unsafe.Pointer(&post_b_t)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -355,7 +391,7 @@ func (me *Vector2) BezierInterpolate(control_1 Vector2, control_2 Vector2, end V
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2, name.AsCPtr(), 193522989) // FIXME: should cache?
 
   var ret Vector2
-  args := []gdc.ConstTypePtr{control_1.AsCTypePtr(), control_2.AsCTypePtr(), end.AsCTypePtr(), gdc.ConstTypePtr(&t), }
+  args := []gdc.ConstTypePtr{control_1.AsCTypePtr(), control_2.AsCTypePtr(), end.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&t)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -367,7 +403,7 @@ func (me *Vector2) BezierDerivative(control_1 Vector2, control_2 Vector2, end Ve
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2, name.AsCPtr(), 193522989) // FIXME: should cache?
 
   var ret Vector2
-  args := []gdc.ConstTypePtr{control_1.AsCTypePtr(), control_2.AsCTypePtr(), end.AsCTypePtr(), gdc.ConstTypePtr(&t), }
+  args := []gdc.ConstTypePtr{control_1.AsCTypePtr(), control_2.AsCTypePtr(), end.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&t)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -403,7 +439,7 @@ func (me *Vector2) MoveToward(to Vector2, delta float32, ) Vector2 {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2, name.AsCPtr(), 4250033116) // FIXME: should cache?
 
   var ret Vector2
-  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&delta), }
+  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&delta)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -415,7 +451,7 @@ func (me *Vector2) Rotated(angle float32, ) Vector2 {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2, name.AsCPtr(), 2544004089) // FIXME: should cache?
 
   var ret Vector2
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&angle)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -595,7 +631,7 @@ func Vector2FromAngle(angle float32, ) Vector2 {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2, name.AsCPtr(), 889263119) // FIXME: should cache?
 
   var ret Vector2
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&angle)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -638,7 +674,7 @@ func (me *Vector2) Not() bool {
   return ret
 }
 
-func (me *Vector2) MultiplyInt(rightArg int) Vector2 {
+func (me *Vector2) MultiplyInt(rightArg int64) Vector2 {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -648,7 +684,7 @@ func (me *Vector2) MultiplyInt(rightArg int) Vector2 {
   return ret
 }
 
-func (me *Vector2) DivideInt(rightArg int) Vector2 {
+func (me *Vector2) DivideInt(rightArg int64) Vector2 {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -658,7 +694,7 @@ func (me *Vector2) DivideInt(rightArg int) Vector2 {
   return ret
 }
 
-func (me *Vector2) MultiplyFloat32(rightArg float32) Vector2 {
+func (me *Vector2) MultiplyFloat32(rightArg float64) Vector2 {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -668,7 +704,7 @@ func (me *Vector2) MultiplyFloat32(rightArg float32) Vector2 {
   return ret
 }
 
-func (me *Vector2) DivideFloat32(rightArg float32) Vector2 {
+func (me *Vector2) DivideFloat32(rightArg float64) Vector2 {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -793,7 +829,7 @@ func (me *Vector2) SetX(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Vector2) Y() float32 {
@@ -811,5 +847,5 @@ func (me *Vector2) SetY(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }

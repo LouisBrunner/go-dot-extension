@@ -858,15 +858,13 @@ type ItemListItemSelectedSignalFn func(index int, )
 func (me *ItemList) ConnectItemSelected(subs SignalSubscribers, fn ItemListItemSelectedSignalFn) {
   sig := StringNameFromStr("item_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ItemList) DisconnectItemSelected(subs SignalSubscribers, fn ItemListItemSelectedSignalFn) {
   sig := StringNameFromStr("item_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ItemListEmptyClickedSignalFn func(at_position Vector2, mouse_button_index int, )
@@ -874,15 +872,13 @@ type ItemListEmptyClickedSignalFn func(at_position Vector2, mouse_button_index i
 func (me *ItemList) ConnectEmptyClicked(subs SignalSubscribers, fn ItemListEmptyClickedSignalFn) {
   sig := StringNameFromStr("empty_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ItemList) DisconnectEmptyClicked(subs SignalSubscribers, fn ItemListEmptyClickedSignalFn) {
   sig := StringNameFromStr("empty_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ItemListItemClickedSignalFn func(index int, at_position Vector2, mouse_button_index int, )
@@ -890,15 +886,13 @@ type ItemListItemClickedSignalFn func(index int, at_position Vector2, mouse_butt
 func (me *ItemList) ConnectItemClicked(subs SignalSubscribers, fn ItemListItemClickedSignalFn) {
   sig := StringNameFromStr("item_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ItemList) DisconnectItemClicked(subs SignalSubscribers, fn ItemListItemClickedSignalFn) {
   sig := StringNameFromStr("item_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ItemListMultiSelectedSignalFn func(index int, selected bool, )
@@ -906,15 +900,13 @@ type ItemListMultiSelectedSignalFn func(index int, selected bool, )
 func (me *ItemList) ConnectMultiSelected(subs SignalSubscribers, fn ItemListMultiSelectedSignalFn) {
   sig := StringNameFromStr("multi_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ItemList) DisconnectMultiSelected(subs SignalSubscribers, fn ItemListMultiSelectedSignalFn) {
   sig := StringNameFromStr("multi_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ItemListItemActivatedSignalFn func(index int, )
@@ -922,13 +914,11 @@ type ItemListItemActivatedSignalFn func(index int, )
 func (me *ItemList) ConnectItemActivated(subs SignalSubscribers, fn ItemListItemActivatedSignalFn) {
   sig := StringNameFromStr("item_activated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ItemList) DisconnectItemActivated(subs SignalSubscribers, fn ItemListItemActivatedSignalFn) {
   sig := StringNameFromStr("item_activated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

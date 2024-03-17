@@ -1206,15 +1206,13 @@ type CodeEditBreakpointToggledSignalFn func(line int, )
 func (me *CodeEdit) ConnectBreakpointToggled(subs SignalSubscribers, fn CodeEditBreakpointToggledSignalFn) {
   sig := StringNameFromStr("breakpoint_toggled")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CodeEdit) DisconnectBreakpointToggled(subs SignalSubscribers, fn CodeEditBreakpointToggledSignalFn) {
   sig := StringNameFromStr("breakpoint_toggled")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CodeEditCodeCompletionRequestedSignalFn func()
@@ -1222,15 +1220,13 @@ type CodeEditCodeCompletionRequestedSignalFn func()
 func (me *CodeEdit) ConnectCodeCompletionRequested(subs SignalSubscribers, fn CodeEditCodeCompletionRequestedSignalFn) {
   sig := StringNameFromStr("code_completion_requested")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CodeEdit) DisconnectCodeCompletionRequested(subs SignalSubscribers, fn CodeEditCodeCompletionRequestedSignalFn) {
   sig := StringNameFromStr("code_completion_requested")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CodeEditSymbolLookupSignalFn func(symbol String, line int, column int, )
@@ -1238,15 +1234,13 @@ type CodeEditSymbolLookupSignalFn func(symbol String, line int, column int, )
 func (me *CodeEdit) ConnectSymbolLookup(subs SignalSubscribers, fn CodeEditSymbolLookupSignalFn) {
   sig := StringNameFromStr("symbol_lookup")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CodeEdit) DisconnectSymbolLookup(subs SignalSubscribers, fn CodeEditSymbolLookupSignalFn) {
   sig := StringNameFromStr("symbol_lookup")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CodeEditSymbolValidateSignalFn func(symbol String, )
@@ -1254,13 +1248,11 @@ type CodeEditSymbolValidateSignalFn func(symbol String, )
 func (me *CodeEdit) ConnectSymbolValidate(subs SignalSubscribers, fn CodeEditSymbolValidateSignalFn) {
   sig := StringNameFromStr("symbol_validate")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CodeEdit) DisconnectSymbolValidate(subs SignalSubscribers, fn CodeEditSymbolValidateSignalFn) {
   sig := StringNameFromStr("symbol_validate")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

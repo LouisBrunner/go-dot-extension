@@ -20,8 +20,7 @@ type extension struct {
 }
 
 func newSignalSubscribers() Class {
-	subs := gdapi.NewSignalSubscribers(nil)
-	return &subs
+	return &gdapi.SignalSubscribers{}
 }
 
 func New(pGetProcAddr gdc.InterfaceGetProcAddress, pLibrary gdc.ClassLibraryPtr, logLevel LogLevel) (Extension, error) {

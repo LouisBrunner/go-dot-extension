@@ -154,15 +154,13 @@ type EditorResourcePickerResourceSelectedSignalFn func(resource Resource, inspec
 func (me *EditorResourcePicker) ConnectResourceSelected(subs SignalSubscribers, fn EditorResourcePickerResourceSelectedSignalFn) {
   sig := StringNameFromStr("resource_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorResourcePicker) DisconnectResourceSelected(subs SignalSubscribers, fn EditorResourcePickerResourceSelectedSignalFn) {
   sig := StringNameFromStr("resource_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorResourcePickerResourceChangedSignalFn func(resource Resource, )
@@ -170,13 +168,11 @@ type EditorResourcePickerResourceChangedSignalFn func(resource Resource, )
 func (me *EditorResourcePicker) ConnectResourceChanged(subs SignalSubscribers, fn EditorResourcePickerResourceChangedSignalFn) {
   sig := StringNameFromStr("resource_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorResourcePicker) DisconnectResourceChanged(subs SignalSubscribers, fn EditorResourcePickerResourceChangedSignalFn) {
   sig := StringNameFromStr("resource_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

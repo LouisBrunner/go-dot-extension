@@ -1373,15 +1373,13 @@ type WindowWindowInputSignalFn func(event InputEvent, )
 func (me *Window) ConnectWindowInput(subs SignalSubscribers, fn WindowWindowInputSignalFn) {
   sig := StringNameFromStr("window_input")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectWindowInput(subs SignalSubscribers, fn WindowWindowInputSignalFn) {
   sig := StringNameFromStr("window_input")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowFilesDroppedSignalFn func(files PackedStringArray, )
@@ -1389,15 +1387,13 @@ type WindowFilesDroppedSignalFn func(files PackedStringArray, )
 func (me *Window) ConnectFilesDropped(subs SignalSubscribers, fn WindowFilesDroppedSignalFn) {
   sig := StringNameFromStr("files_dropped")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectFilesDropped(subs SignalSubscribers, fn WindowFilesDroppedSignalFn) {
   sig := StringNameFromStr("files_dropped")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowMouseEnteredSignalFn func()
@@ -1405,15 +1401,13 @@ type WindowMouseEnteredSignalFn func()
 func (me *Window) ConnectMouseEntered(subs SignalSubscribers, fn WindowMouseEnteredSignalFn) {
   sig := StringNameFromStr("mouse_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectMouseEntered(subs SignalSubscribers, fn WindowMouseEnteredSignalFn) {
   sig := StringNameFromStr("mouse_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowMouseExitedSignalFn func()
@@ -1421,15 +1415,13 @@ type WindowMouseExitedSignalFn func()
 func (me *Window) ConnectMouseExited(subs SignalSubscribers, fn WindowMouseExitedSignalFn) {
   sig := StringNameFromStr("mouse_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectMouseExited(subs SignalSubscribers, fn WindowMouseExitedSignalFn) {
   sig := StringNameFromStr("mouse_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowFocusEnteredSignalFn func()
@@ -1437,15 +1429,13 @@ type WindowFocusEnteredSignalFn func()
 func (me *Window) ConnectFocusEntered(subs SignalSubscribers, fn WindowFocusEnteredSignalFn) {
   sig := StringNameFromStr("focus_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectFocusEntered(subs SignalSubscribers, fn WindowFocusEnteredSignalFn) {
   sig := StringNameFromStr("focus_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowFocusExitedSignalFn func()
@@ -1453,15 +1443,13 @@ type WindowFocusExitedSignalFn func()
 func (me *Window) ConnectFocusExited(subs SignalSubscribers, fn WindowFocusExitedSignalFn) {
   sig := StringNameFromStr("focus_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectFocusExited(subs SignalSubscribers, fn WindowFocusExitedSignalFn) {
   sig := StringNameFromStr("focus_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowCloseRequestedSignalFn func()
@@ -1469,15 +1457,13 @@ type WindowCloseRequestedSignalFn func()
 func (me *Window) ConnectCloseRequested(subs SignalSubscribers, fn WindowCloseRequestedSignalFn) {
   sig := StringNameFromStr("close_requested")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectCloseRequested(subs SignalSubscribers, fn WindowCloseRequestedSignalFn) {
   sig := StringNameFromStr("close_requested")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowGoBackRequestedSignalFn func()
@@ -1485,15 +1471,13 @@ type WindowGoBackRequestedSignalFn func()
 func (me *Window) ConnectGoBackRequested(subs SignalSubscribers, fn WindowGoBackRequestedSignalFn) {
   sig := StringNameFromStr("go_back_requested")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectGoBackRequested(subs SignalSubscribers, fn WindowGoBackRequestedSignalFn) {
   sig := StringNameFromStr("go_back_requested")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowVisibilityChangedSignalFn func()
@@ -1501,15 +1485,13 @@ type WindowVisibilityChangedSignalFn func()
 func (me *Window) ConnectVisibilityChanged(subs SignalSubscribers, fn WindowVisibilityChangedSignalFn) {
   sig := StringNameFromStr("visibility_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectVisibilityChanged(subs SignalSubscribers, fn WindowVisibilityChangedSignalFn) {
   sig := StringNameFromStr("visibility_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowAboutToPopupSignalFn func()
@@ -1517,15 +1499,13 @@ type WindowAboutToPopupSignalFn func()
 func (me *Window) ConnectAboutToPopup(subs SignalSubscribers, fn WindowAboutToPopupSignalFn) {
   sig := StringNameFromStr("about_to_popup")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectAboutToPopup(subs SignalSubscribers, fn WindowAboutToPopupSignalFn) {
   sig := StringNameFromStr("about_to_popup")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowThemeChangedSignalFn func()
@@ -1533,15 +1513,13 @@ type WindowThemeChangedSignalFn func()
 func (me *Window) ConnectThemeChanged(subs SignalSubscribers, fn WindowThemeChangedSignalFn) {
   sig := StringNameFromStr("theme_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectThemeChanged(subs SignalSubscribers, fn WindowThemeChangedSignalFn) {
   sig := StringNameFromStr("theme_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowDpiChangedSignalFn func()
@@ -1549,15 +1527,13 @@ type WindowDpiChangedSignalFn func()
 func (me *Window) ConnectDpiChanged(subs SignalSubscribers, fn WindowDpiChangedSignalFn) {
   sig := StringNameFromStr("dpi_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectDpiChanged(subs SignalSubscribers, fn WindowDpiChangedSignalFn) {
   sig := StringNameFromStr("dpi_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type WindowTitlebarChangedSignalFn func()
@@ -1565,13 +1541,11 @@ type WindowTitlebarChangedSignalFn func()
 func (me *Window) ConnectTitlebarChanged(subs SignalSubscribers, fn WindowTitlebarChangedSignalFn) {
   sig := StringNameFromStr("titlebar_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Window) DisconnectTitlebarChanged(subs SignalSubscribers, fn WindowTitlebarChangedSignalFn) {
   sig := StringNameFromStr("titlebar_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -554,15 +554,13 @@ type Skeleton3DPoseUpdatedSignalFn func()
 func (me *Skeleton3D) ConnectPoseUpdated(subs SignalSubscribers, fn Skeleton3DPoseUpdatedSignalFn) {
   sig := StringNameFromStr("pose_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Skeleton3D) DisconnectPoseUpdated(subs SignalSubscribers, fn Skeleton3DPoseUpdatedSignalFn) {
   sig := StringNameFromStr("pose_updated")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type Skeleton3DBonePoseChangedSignalFn func(bone_idx int, )
@@ -570,15 +568,13 @@ type Skeleton3DBonePoseChangedSignalFn func(bone_idx int, )
 func (me *Skeleton3D) ConnectBonePoseChanged(subs SignalSubscribers, fn Skeleton3DBonePoseChangedSignalFn) {
   sig := StringNameFromStr("bone_pose_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Skeleton3D) DisconnectBonePoseChanged(subs SignalSubscribers, fn Skeleton3DBonePoseChangedSignalFn) {
   sig := StringNameFromStr("bone_pose_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type Skeleton3DBoneEnabledChangedSignalFn func(bone_idx int, )
@@ -586,15 +582,13 @@ type Skeleton3DBoneEnabledChangedSignalFn func(bone_idx int, )
 func (me *Skeleton3D) ConnectBoneEnabledChanged(subs SignalSubscribers, fn Skeleton3DBoneEnabledChangedSignalFn) {
   sig := StringNameFromStr("bone_enabled_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Skeleton3D) DisconnectBoneEnabledChanged(subs SignalSubscribers, fn Skeleton3DBoneEnabledChangedSignalFn) {
   sig := StringNameFromStr("bone_enabled_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type Skeleton3DShowRestOnlyChangedSignalFn func()
@@ -602,13 +596,11 @@ type Skeleton3DShowRestOnlyChangedSignalFn func()
 func (me *Skeleton3D) ConnectShowRestOnlyChanged(subs SignalSubscribers, fn Skeleton3DShowRestOnlyChangedSignalFn) {
   sig := StringNameFromStr("show_rest_only_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Skeleton3D) DisconnectShowRestOnlyChanged(subs SignalSubscribers, fn Skeleton3DShowRestOnlyChangedSignalFn) {
   sig := StringNameFromStr("show_rest_only_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

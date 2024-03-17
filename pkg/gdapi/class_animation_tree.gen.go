@@ -139,13 +139,11 @@ type AnimationTreeAnimationPlayerChangedSignalFn func()
 func (me *AnimationTree) ConnectAnimationPlayerChanged(subs SignalSubscribers, fn AnimationTreeAnimationPlayerChangedSignalFn) {
   sig := StringNameFromStr("animation_player_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationTree) DisconnectAnimationPlayerChanged(subs SignalSubscribers, fn AnimationTreeAnimationPlayerChangedSignalFn) {
   sig := StringNameFromStr("animation_player_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

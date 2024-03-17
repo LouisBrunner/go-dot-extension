@@ -3,6 +3,7 @@ package main
 import (
 	"embed"
 	"fmt"
+	"strings"
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/generators/gencommon"
 	"github.com/iancoleman/strcase"
@@ -22,8 +23,35 @@ func getBuiltinClassSize(list []gencommon.ExtensionClassSize, config string) (*g
 	return nil, false
 }
 
+var goos_list = map[string]struct{}{
+	"aix":       {},
+	"android":   {},
+	"darwin":    {},
+	"dragonfly": {},
+	"freebsd":   {},
+	"hurd":      {},
+	"illumos":   {},
+	"ios":       {},
+	"js":        {},
+	"linux":     {},
+	"nacl":      {},
+	"netbsd":    {},
+	"openbsd":   {},
+	"plan9":     {},
+	"solaris":   {},
+	"wasip1":    {},
+	"windows":   {},
+	"zos":       {},
+}
+
 func renderClass(class gencommon.ExtensionClass, outputDir string) error {
 	name := strcase.ToSnake(class.Name)
+	for goos := range goos_list {
+		if strings.HasSuffix(name, "_"+goos) {
+			name += "_"
+			break
+		}
+	}
 	err := renderFile("class", fmt.Sprintf("class_%s", name), class, outputDir)
 	if err != nil {
 		return fmt.Errorf("error rendering class %s: %w", class.Name, err)
@@ -40,6 +68,11 @@ func renderBClass(class gencommon.ExtensionBuiltinClass, outputDir string) error
 	return nil
 }
 
+type lookups struct {
+	gencommon.ExtensionClassSize
+	Classes []string
+}
+
 func output(api *gencommon.ExtensionAPI, outputDir string) error {
 	config := fmt.Sprintf("float_%d", bitsPerWord)
 	classSizes, ok := getBuiltinClassSize(api.BuiltinClassSizes, config)
@@ -47,7 +80,15 @@ func output(api *gencommon.ExtensionAPI, outputDir string) error {
 		return fmt.Errorf("no class size for %s", config)
 	}
 
-	err := renderFile("class_sizes", "classes_sizes", classSizes, outputDir)
+	classes := make([]string, 0, len(api.Classes))
+	for _, class := range api.Classes {
+		classes = append(classes, class.Name)
+	}
+
+	err := renderFile("lookups", "lookups", lookups{
+		ExtensionClassSize: *classSizes,
+		Classes:            classes,
+	}, outputDir)
 	if err != nil {
 		return fmt.Errorf("error rendering class sizes: %w", err)
 	}

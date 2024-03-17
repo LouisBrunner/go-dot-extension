@@ -173,13 +173,11 @@ type AnimationNodeBlendTreeNodeChangedSignalFn func(node_name StringName, )
 func (me *AnimationNodeBlendTree) ConnectNodeChanged(subs SignalSubscribers, fn AnimationNodeBlendTreeNodeChangedSignalFn) {
   sig := StringNameFromStr("node_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AnimationNodeBlendTree) DisconnectNodeChanged(subs SignalSubscribers, fn AnimationNodeBlendTreeNodeChangedSignalFn) {
   sig := StringNameFromStr("node_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

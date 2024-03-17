@@ -2,14 +2,17 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Color struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeColor]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Constants
@@ -166,84 +169,117 @@ var (
 // Enums
 
 // Constructors
-
-func NewColor() Color {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Color{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newColor() *Color {
+  me := &Color{
+    data:   new([classSizeColor]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewColorFromColor(from Color, ) Color {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Color{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewColor() *Color {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newColor()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewColorFromColorFloat32(from Color, alpha float32, ) Color {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), gdc.ConstTypePtr(&alpha), }))
-  return Color{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewColorFromColor(from Color, ) *Color {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newColor()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewColorFromFloat32Float32Float32(r float32, g float32, b float32, ) Color {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 3) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&r), gdc.ConstTypePtr(&g), gdc.ConstTypePtr(&b), }))
-  return Color{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewColorFromColorFloat32(from Color, alpha float64, ) *Color {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&alpha)
+  me := newColor()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), gdc.ConstTypePtr(&alpha), }))
+  return me
 }
 
-func NewColorFromFloat32Float32Float32Float32(r float32, g float32, b float32, a float32, ) Color {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 4) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&r), gdc.ConstTypePtr(&g), gdc.ConstTypePtr(&b), gdc.ConstTypePtr(&a), }))
-  return Color{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewColorFromFloat32Float32Float32(r float64, g float64, b float64, ) *Color {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&r)
+  pinner.Pin(&g)
+  pinner.Pin(&b)
+  me := newColor()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 3) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&r), gdc.ConstTypePtr(&g), gdc.ConstTypePtr(&b), }))
+  return me
 }
 
-func NewColorFromString(code String, ) Color {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 5) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{code.AsCTypePtr(), }))
-  return Color{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewColorFromFloat32Float32Float32Float32(r float64, g float64, b float64, a float64, ) *Color {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&r)
+  pinner.Pin(&g)
+  pinner.Pin(&b)
+  pinner.Pin(&a)
+  me := newColor()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 4) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&r), gdc.ConstTypePtr(&g), gdc.ConstTypePtr(&b), gdc.ConstTypePtr(&a), }))
+  return me
 }
 
-func NewColorFromStringFloat32(code String, alpha float32, ) Color {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeColor))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeColor, 6) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{code.AsCTypePtr(), gdc.ConstTypePtr(&alpha), }))
-  return Color{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewColorFromString(code String, ) *Color {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newColor()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 5) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{code.AsCTypePtr(), }))
+  return me
+}
+
+func NewColorFromStringFloat32(code String, alpha float64, ) *Color {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&alpha)
+  me := newColor()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 6) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{code.AsCTypePtr(), gdc.ConstTypePtr(&alpha), }))
+  return me
 }
 
 // Destructor
 func (me *Color) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsColor() (*Color, error) {
+	if me.Type() != gdc.VariantTypeColor {
+		return nil, fmt.Errorf("variant is not a Color")
+	}
+  bclass := newColor()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Color) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func ColorFromPtr(ptr gdc.ConstTypePtr) *Color {
+  me := newColor()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Color) Type() gdc.VariantType {
@@ -251,11 +287,15 @@ func (me *Color) Type() gdc.VariantType {
 }
 
 func (me *Color) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Color) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Color) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -338,7 +378,7 @@ func (me *Color) ToHtml(with_alpha bool, ) String {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3429816538) // FIXME: should cache?
 
   var ret String
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&with_alpha), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&with_alpha)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -374,7 +414,7 @@ func (me *Color) Lerp(to Color, weight float32, ) Color {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 402949615) // FIXME: should cache?
 
   var ret Color
-  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -386,7 +426,7 @@ func (me *Color) Lightened(amount float32, ) Color {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 1466039168) // FIXME: should cache?
 
   var ret Color
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&amount)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -398,7 +438,7 @@ func (me *Color) Darkened(amount float32, ) Color {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 1466039168) // FIXME: should cache?
 
   var ret Color
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&amount)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -470,7 +510,7 @@ func ColorHex(hex int, ) Color {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 351421375) // FIXME: should cache?
 
   var ret Color
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hex), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&hex)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -482,7 +522,7 @@ func ColorHex64(hex int, ) Color {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 351421375) // FIXME: should cache?
 
   var ret Color
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hex), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&hex)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -530,7 +570,7 @@ func ColorFromHsv(h float32, s float32, v float32, alpha float32, ) Color {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 1573799446) // FIXME: should cache?
 
   var ret Color
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&h), gdc.ConstTypePtr(&s), gdc.ConstTypePtr(&v), gdc.ConstTypePtr(&alpha), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&h)), gdc.ConstTypePtr(unsafe.Pointer(&s)), gdc.ConstTypePtr(unsafe.Pointer(&v)), gdc.ConstTypePtr(unsafe.Pointer(&alpha)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -542,7 +582,7 @@ func ColorFromOkHsl(h float32, s float32, l float32, alpha float32, ) Color {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 1573799446) // FIXME: should cache?
 
   var ret Color
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&h), gdc.ConstTypePtr(&s), gdc.ConstTypePtr(&l), gdc.ConstTypePtr(&alpha), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&h)), gdc.ConstTypePtr(unsafe.Pointer(&s)), gdc.ConstTypePtr(unsafe.Pointer(&l)), gdc.ConstTypePtr(unsafe.Pointer(&alpha)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -554,7 +594,7 @@ func ColorFromRgbe9995(rgbe int, ) Color {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 351421375) // FIXME: should cache?
 
   var ret Color
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rgbe), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&rgbe)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -597,7 +637,7 @@ func (me *Color) Not() bool {
   return ret
 }
 
-func (me *Color) MultiplyInt(rightArg int) Color {
+func (me *Color) MultiplyInt(rightArg int64) Color {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -607,7 +647,7 @@ func (me *Color) MultiplyInt(rightArg int) Color {
   return ret
 }
 
-func (me *Color) DivideInt(rightArg int) Color {
+func (me *Color) DivideInt(rightArg int64) Color {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -617,7 +657,7 @@ func (me *Color) DivideInt(rightArg int) Color {
   return ret
 }
 
-func (me *Color) MultiplyFloat32(rightArg float32) Color {
+func (me *Color) MultiplyFloat32(rightArg float64) Color {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -627,7 +667,7 @@ func (me *Color) MultiplyFloat32(rightArg float32) Color {
   return ret
 }
 
-func (me *Color) DivideFloat32(rightArg float32) Color {
+func (me *Color) DivideFloat32(rightArg float64) Color {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -717,7 +757,7 @@ func (me *Color) SetR(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Color) G() float32 {
@@ -735,7 +775,7 @@ func (me *Color) SetG(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Color) B() float32 {
@@ -753,7 +793,7 @@ func (me *Color) SetB(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Color) A() float32 {
@@ -771,7 +811,7 @@ func (me *Color) SetA(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Color) R8() int {
@@ -789,7 +829,7 @@ func (me *Color) SetR8(value int) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Color) G8() int {
@@ -807,7 +847,7 @@ func (me *Color) SetG8(value int) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Color) B8() int {
@@ -825,7 +865,7 @@ func (me *Color) SetB8(value int) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Color) A8() int {
@@ -843,7 +883,7 @@ func (me *Color) SetA8(value int) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Color) H() float32 {
@@ -861,7 +901,7 @@ func (me *Color) SetH(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Color) S() float32 {
@@ -879,7 +919,7 @@ func (me *Color) SetS(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Color) V() float32 {
@@ -897,5 +937,5 @@ func (me *Color) SetV(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }

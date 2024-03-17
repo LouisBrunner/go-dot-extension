@@ -255,15 +255,13 @@ type MultiplayerPeerPeerConnectedSignalFn func(id int, )
 func (me *MultiplayerPeer) ConnectPeerConnected(subs SignalSubscribers, fn MultiplayerPeerPeerConnectedSignalFn) {
   sig := StringNameFromStr("peer_connected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerPeer) DisconnectPeerConnected(subs SignalSubscribers, fn MultiplayerPeerPeerConnectedSignalFn) {
   sig := StringNameFromStr("peer_connected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type MultiplayerPeerPeerDisconnectedSignalFn func(id int, )
@@ -271,13 +269,11 @@ type MultiplayerPeerPeerDisconnectedSignalFn func(id int, )
 func (me *MultiplayerPeer) ConnectPeerDisconnected(subs SignalSubscribers, fn MultiplayerPeerPeerDisconnectedSignalFn) {
   sig := StringNameFromStr("peer_disconnected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MultiplayerPeer) DisconnectPeerDisconnected(subs SignalSubscribers, fn MultiplayerPeerPeerDisconnectedSignalFn) {
   sig := StringNameFromStr("peer_disconnected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

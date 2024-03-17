@@ -407,15 +407,13 @@ type CollisionObject3DInputEventSignalFn func(camera Node, event InputEvent, pos
 func (me *CollisionObject3D) ConnectInputEvent(subs SignalSubscribers, fn CollisionObject3DInputEventSignalFn) {
   sig := StringNameFromStr("input_event")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CollisionObject3D) DisconnectInputEvent(subs SignalSubscribers, fn CollisionObject3DInputEventSignalFn) {
   sig := StringNameFromStr("input_event")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CollisionObject3DMouseEnteredSignalFn func()
@@ -423,15 +421,13 @@ type CollisionObject3DMouseEnteredSignalFn func()
 func (me *CollisionObject3D) ConnectMouseEntered(subs SignalSubscribers, fn CollisionObject3DMouseEnteredSignalFn) {
   sig := StringNameFromStr("mouse_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CollisionObject3D) DisconnectMouseEntered(subs SignalSubscribers, fn CollisionObject3DMouseEnteredSignalFn) {
   sig := StringNameFromStr("mouse_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CollisionObject3DMouseExitedSignalFn func()
@@ -439,13 +435,11 @@ type CollisionObject3DMouseExitedSignalFn func()
 func (me *CollisionObject3D) ConnectMouseExited(subs SignalSubscribers, fn CollisionObject3DMouseExitedSignalFn) {
   sig := StringNameFromStr("mouse_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CollisionObject3D) DisconnectMouseExited(subs SignalSubscribers, fn CollisionObject3DMouseExitedSignalFn) {
   sig := StringNameFromStr("mouse_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

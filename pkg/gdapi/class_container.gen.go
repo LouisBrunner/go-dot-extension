@@ -69,15 +69,13 @@ type ContainerPreSortChildrenSignalFn func()
 func (me *Container) ConnectPreSortChildren(subs SignalSubscribers, fn ContainerPreSortChildrenSignalFn) {
   sig := StringNameFromStr("pre_sort_children")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Container) DisconnectPreSortChildren(subs SignalSubscribers, fn ContainerPreSortChildrenSignalFn) {
   sig := StringNameFromStr("pre_sort_children")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ContainerSortChildrenSignalFn func()
@@ -85,13 +83,11 @@ type ContainerSortChildrenSignalFn func()
 func (me *Container) ConnectSortChildren(subs SignalSubscribers, fn ContainerSortChildrenSignalFn) {
   sig := StringNameFromStr("sort_children")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Container) DisconnectSortChildren(subs SignalSubscribers, fn ContainerSortChildrenSignalFn) {
   sig := StringNameFromStr("sort_children")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

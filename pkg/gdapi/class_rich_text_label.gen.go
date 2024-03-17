@@ -1321,15 +1321,13 @@ type RichTextLabelMetaClickedSignalFn func(meta Variant, )
 func (me *RichTextLabel) ConnectMetaClicked(subs SignalSubscribers, fn RichTextLabelMetaClickedSignalFn) {
   sig := StringNameFromStr("meta_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *RichTextLabel) DisconnectMetaClicked(subs SignalSubscribers, fn RichTextLabelMetaClickedSignalFn) {
   sig := StringNameFromStr("meta_clicked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type RichTextLabelMetaHoverStartedSignalFn func(meta Variant, )
@@ -1337,15 +1335,13 @@ type RichTextLabelMetaHoverStartedSignalFn func(meta Variant, )
 func (me *RichTextLabel) ConnectMetaHoverStarted(subs SignalSubscribers, fn RichTextLabelMetaHoverStartedSignalFn) {
   sig := StringNameFromStr("meta_hover_started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *RichTextLabel) DisconnectMetaHoverStarted(subs SignalSubscribers, fn RichTextLabelMetaHoverStartedSignalFn) {
   sig := StringNameFromStr("meta_hover_started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type RichTextLabelMetaHoverEndedSignalFn func(meta Variant, )
@@ -1353,15 +1349,13 @@ type RichTextLabelMetaHoverEndedSignalFn func(meta Variant, )
 func (me *RichTextLabel) ConnectMetaHoverEnded(subs SignalSubscribers, fn RichTextLabelMetaHoverEndedSignalFn) {
   sig := StringNameFromStr("meta_hover_ended")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *RichTextLabel) DisconnectMetaHoverEnded(subs SignalSubscribers, fn RichTextLabelMetaHoverEndedSignalFn) {
   sig := StringNameFromStr("meta_hover_ended")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type RichTextLabelFinishedSignalFn func()
@@ -1369,13 +1363,11 @@ type RichTextLabelFinishedSignalFn func()
 func (me *RichTextLabel) ConnectFinished(subs SignalSubscribers, fn RichTextLabelFinishedSignalFn) {
   sig := StringNameFromStr("finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *RichTextLabel) DisconnectFinished(subs SignalSubscribers, fn RichTextLabelFinishedSignalFn) {
   sig := StringNameFromStr("finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -1311,15 +1311,13 @@ type NavigationServer3DMapChangedSignalFn func(map_ RID, )
 func (me *NavigationServer3D) ConnectMapChanged(subs SignalSubscribers, fn NavigationServer3DMapChangedSignalFn) {
   sig := StringNameFromStr("map_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationServer3D) DisconnectMapChanged(subs SignalSubscribers, fn NavigationServer3DMapChangedSignalFn) {
   sig := StringNameFromStr("map_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NavigationServer3DNavigationDebugChangedSignalFn func()
@@ -1327,15 +1325,13 @@ type NavigationServer3DNavigationDebugChangedSignalFn func()
 func (me *NavigationServer3D) ConnectNavigationDebugChanged(subs SignalSubscribers, fn NavigationServer3DNavigationDebugChangedSignalFn) {
   sig := StringNameFromStr("navigation_debug_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationServer3D) DisconnectNavigationDebugChanged(subs SignalSubscribers, fn NavigationServer3DNavigationDebugChangedSignalFn) {
   sig := StringNameFromStr("navigation_debug_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NavigationServer3DAvoidanceDebugChangedSignalFn func()
@@ -1343,13 +1339,11 @@ type NavigationServer3DAvoidanceDebugChangedSignalFn func()
 func (me *NavigationServer3D) ConnectAvoidanceDebugChanged(subs SignalSubscribers, fn NavigationServer3DAvoidanceDebugChangedSignalFn) {
   sig := StringNameFromStr("avoidance_debug_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationServer3D) DisconnectAvoidanceDebugChanged(subs SignalSubscribers, fn NavigationServer3DAvoidanceDebugChangedSignalFn) {
   sig := StringNameFromStr("avoidance_debug_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

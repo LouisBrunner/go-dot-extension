@@ -1011,15 +1011,13 @@ type CanvasItemDrawSignalFn func()
 func (me *CanvasItem) ConnectDraw(subs SignalSubscribers, fn CanvasItemDrawSignalFn) {
   sig := StringNameFromStr("draw")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CanvasItem) DisconnectDraw(subs SignalSubscribers, fn CanvasItemDrawSignalFn) {
   sig := StringNameFromStr("draw")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CanvasItemVisibilityChangedSignalFn func()
@@ -1027,15 +1025,13 @@ type CanvasItemVisibilityChangedSignalFn func()
 func (me *CanvasItem) ConnectVisibilityChanged(subs SignalSubscribers, fn CanvasItemVisibilityChangedSignalFn) {
   sig := StringNameFromStr("visibility_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CanvasItem) DisconnectVisibilityChanged(subs SignalSubscribers, fn CanvasItemVisibilityChangedSignalFn) {
   sig := StringNameFromStr("visibility_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CanvasItemHiddenSignalFn func()
@@ -1043,15 +1039,13 @@ type CanvasItemHiddenSignalFn func()
 func (me *CanvasItem) ConnectHidden(subs SignalSubscribers, fn CanvasItemHiddenSignalFn) {
   sig := StringNameFromStr("hidden")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CanvasItem) DisconnectHidden(subs SignalSubscribers, fn CanvasItemHiddenSignalFn) {
   sig := StringNameFromStr("hidden")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type CanvasItemItemRectChangedSignalFn func()
@@ -1059,13 +1053,11 @@ type CanvasItemItemRectChangedSignalFn func()
 func (me *CanvasItem) ConnectItemRectChanged(subs SignalSubscribers, fn CanvasItemItemRectChangedSignalFn) {
   sig := StringNameFromStr("item_rect_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CanvasItem) DisconnectItemRectChanged(subs SignalSubscribers, fn CanvasItemItemRectChangedSignalFn) {
   sig := StringNameFromStr("item_rect_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

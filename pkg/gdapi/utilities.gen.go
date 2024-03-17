@@ -591,7 +591,7 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
 
 func (me *utilities) Sin(angle_rad float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&angle_rad),
+    gdc.ConstTypePtr(unsafe.Pointer(&angle_rad)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -601,7 +601,7 @@ func (me *utilities) Sin(angle_rad float32, ) float32 {
 
 func (me *utilities) Cos(angle_rad float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&angle_rad),
+    gdc.ConstTypePtr(unsafe.Pointer(&angle_rad)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -611,7 +611,7 @@ func (me *utilities) Cos(angle_rad float32, ) float32 {
 
 func (me *utilities) Tan(angle_rad float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&angle_rad),
+    gdc.ConstTypePtr(unsafe.Pointer(&angle_rad)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -621,7 +621,7 @@ func (me *utilities) Tan(angle_rad float32, ) float32 {
 
 func (me *utilities) Sinh(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -631,7 +631,7 @@ func (me *utilities) Sinh(x float32, ) float32 {
 
 func (me *utilities) Cosh(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -641,7 +641,7 @@ func (me *utilities) Cosh(x float32, ) float32 {
 
 func (me *utilities) Tanh(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -651,7 +651,7 @@ func (me *utilities) Tanh(x float32, ) float32 {
 
 func (me *utilities) Asin(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -661,7 +661,7 @@ func (me *utilities) Asin(x float32, ) float32 {
 
 func (me *utilities) Acos(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -671,7 +671,7 @@ func (me *utilities) Acos(x float32, ) float32 {
 
 func (me *utilities) Atan(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -681,8 +681,8 @@ func (me *utilities) Atan(x float32, ) float32 {
 
 func (me *utilities) Atan2(y float32, x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&y),
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&y)),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -692,7 +692,7 @@ func (me *utilities) Atan2(y float32, x float32, ) float32 {
 
 func (me *utilities) Asinh(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -702,7 +702,7 @@ func (me *utilities) Asinh(x float32, ) float32 {
 
 func (me *utilities) Acosh(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -712,7 +712,7 @@ func (me *utilities) Acosh(x float32, ) float32 {
 
 func (me *utilities) Atanh(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -722,7 +722,7 @@ func (me *utilities) Atanh(x float32, ) float32 {
 
 func (me *utilities) Sqrt(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -732,8 +732,8 @@ func (me *utilities) Sqrt(x float32, ) float32 {
 
 func (me *utilities) Fmod(x float32, y float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&y),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
+    gdc.ConstTypePtr(unsafe.Pointer(&y)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -743,8 +743,8 @@ func (me *utilities) Fmod(x float32, y float32, ) float32 {
 
 func (me *utilities) Fposmod(x float32, y float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&y),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
+    gdc.ConstTypePtr(unsafe.Pointer(&y)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -754,8 +754,8 @@ func (me *utilities) Fposmod(x float32, y float32, ) float32 {
 
 func (me *utilities) Posmod(x int, y int, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&y),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
+    gdc.ConstTypePtr(unsafe.Pointer(&y)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -775,7 +775,7 @@ func (me *utilities) Floor(x Variant, ) Variant {
 
 func (me *utilities) Floorf(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -785,7 +785,7 @@ func (me *utilities) Floorf(x float32, ) float32 {
 
 func (me *utilities) Floori(x float32, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -805,7 +805,7 @@ func (me *utilities) Ceil(x Variant, ) Variant {
 
 func (me *utilities) Ceilf(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -815,7 +815,7 @@ func (me *utilities) Ceilf(x float32, ) float32 {
 
 func (me *utilities) Ceili(x float32, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -835,7 +835,7 @@ func (me *utilities) Round(x Variant, ) Variant {
 
 func (me *utilities) Roundf(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -845,7 +845,7 @@ func (me *utilities) Roundf(x float32, ) float32 {
 
 func (me *utilities) Roundi(x float32, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -865,7 +865,7 @@ func (me *utilities) Abs(x Variant, ) Variant {
 
 func (me *utilities) Absf(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -875,7 +875,7 @@ func (me *utilities) Absf(x float32, ) float32 {
 
 func (me *utilities) Absi(x int, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -895,7 +895,7 @@ func (me *utilities) Sign(x Variant, ) Variant {
 
 func (me *utilities) Signf(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -905,7 +905,7 @@ func (me *utilities) Signf(x float32, ) float32 {
 
 func (me *utilities) Signi(x int, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -926,8 +926,8 @@ func (me *utilities) Snapped(x Variant, step Variant, ) Variant {
 
 func (me *utilities) Snappedf(x float32, step float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&step),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
+    gdc.ConstTypePtr(unsafe.Pointer(&step)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -937,8 +937,8 @@ func (me *utilities) Snappedf(x float32, step float32, ) float32 {
 
 func (me *utilities) Snappedi(x float32, step int, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&step),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
+    gdc.ConstTypePtr(unsafe.Pointer(&step)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -948,8 +948,8 @@ func (me *utilities) Snappedi(x float32, step int, ) int {
 
 func (me *utilities) Pow(base float32, exp float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&base),
-    gdc.ConstTypePtr(&exp),
+    gdc.ConstTypePtr(unsafe.Pointer(&base)),
+    gdc.ConstTypePtr(unsafe.Pointer(&exp)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -959,7 +959,7 @@ func (me *utilities) Pow(base float32, exp float32, ) float32 {
 
 func (me *utilities) Log(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -969,7 +969,7 @@ func (me *utilities) Log(x float32, ) float32 {
 
 func (me *utilities) Exp(x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -979,7 +979,7 @@ func (me *utilities) Exp(x float32, ) float32 {
 
 func (me *utilities) IsNan(x float32, ) bool {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret bool
   retPtr := gdc.TypePtr(&ret)
@@ -989,7 +989,7 @@ func (me *utilities) IsNan(x float32, ) bool {
 
 func (me *utilities) IsInf(x float32, ) bool {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret bool
   retPtr := gdc.TypePtr(&ret)
@@ -999,8 +999,8 @@ func (me *utilities) IsInf(x float32, ) bool {
 
 func (me *utilities) IsEqualApprox(a float32, b float32, ) bool {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&a),
-    gdc.ConstTypePtr(&b),
+    gdc.ConstTypePtr(unsafe.Pointer(&a)),
+    gdc.ConstTypePtr(unsafe.Pointer(&b)),
   }
   var ret bool
   retPtr := gdc.TypePtr(&ret)
@@ -1010,7 +1010,7 @@ func (me *utilities) IsEqualApprox(a float32, b float32, ) bool {
 
 func (me *utilities) IsZeroApprox(x float32, ) bool {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret bool
   retPtr := gdc.TypePtr(&ret)
@@ -1020,7 +1020,7 @@ func (me *utilities) IsZeroApprox(x float32, ) bool {
 
 func (me *utilities) IsFinite(x float32, ) bool {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret bool
   retPtr := gdc.TypePtr(&ret)
@@ -1030,8 +1030,8 @@ func (me *utilities) IsFinite(x float32, ) bool {
 
 func (me *utilities) Ease(x float32, curve float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&curve),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
+    gdc.ConstTypePtr(unsafe.Pointer(&curve)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1041,7 +1041,7 @@ func (me *utilities) Ease(x float32, curve float32, ) float32 {
 
 func (me *utilities) StepDecimals(x float32, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -1063,9 +1063,9 @@ func (me *utilities) Lerp(from Variant, to Variant, weight Variant, ) Variant {
 
 func (me *utilities) Lerpf(from float32, to float32, weight float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&weight),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
+    gdc.ConstTypePtr(unsafe.Pointer(&weight)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1075,11 +1075,11 @@ func (me *utilities) Lerpf(from float32, to float32, weight float32, ) float32 {
 
 func (me *utilities) CubicInterpolate(from float32, to float32, pre float32, post float32, weight float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&pre),
-    gdc.ConstTypePtr(&post),
-    gdc.ConstTypePtr(&weight),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
+    gdc.ConstTypePtr(unsafe.Pointer(&pre)),
+    gdc.ConstTypePtr(unsafe.Pointer(&post)),
+    gdc.ConstTypePtr(unsafe.Pointer(&weight)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1089,11 +1089,11 @@ func (me *utilities) CubicInterpolate(from float32, to float32, pre float32, pos
 
 func (me *utilities) CubicInterpolateAngle(from float32, to float32, pre float32, post float32, weight float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&pre),
-    gdc.ConstTypePtr(&post),
-    gdc.ConstTypePtr(&weight),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
+    gdc.ConstTypePtr(unsafe.Pointer(&pre)),
+    gdc.ConstTypePtr(unsafe.Pointer(&post)),
+    gdc.ConstTypePtr(unsafe.Pointer(&weight)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1103,14 +1103,14 @@ func (me *utilities) CubicInterpolateAngle(from float32, to float32, pre float32
 
 func (me *utilities) CubicInterpolateInTime(from float32, to float32, pre float32, post float32, weight float32, to_t float32, pre_t float32, post_t float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&pre),
-    gdc.ConstTypePtr(&post),
-    gdc.ConstTypePtr(&weight),
-    gdc.ConstTypePtr(&to_t),
-    gdc.ConstTypePtr(&pre_t),
-    gdc.ConstTypePtr(&post_t),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
+    gdc.ConstTypePtr(unsafe.Pointer(&pre)),
+    gdc.ConstTypePtr(unsafe.Pointer(&post)),
+    gdc.ConstTypePtr(unsafe.Pointer(&weight)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to_t)),
+    gdc.ConstTypePtr(unsafe.Pointer(&pre_t)),
+    gdc.ConstTypePtr(unsafe.Pointer(&post_t)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1120,14 +1120,14 @@ func (me *utilities) CubicInterpolateInTime(from float32, to float32, pre float3
 
 func (me *utilities) CubicInterpolateAngleInTime(from float32, to float32, pre float32, post float32, weight float32, to_t float32, pre_t float32, post_t float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&pre),
-    gdc.ConstTypePtr(&post),
-    gdc.ConstTypePtr(&weight),
-    gdc.ConstTypePtr(&to_t),
-    gdc.ConstTypePtr(&pre_t),
-    gdc.ConstTypePtr(&post_t),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
+    gdc.ConstTypePtr(unsafe.Pointer(&pre)),
+    gdc.ConstTypePtr(unsafe.Pointer(&post)),
+    gdc.ConstTypePtr(unsafe.Pointer(&weight)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to_t)),
+    gdc.ConstTypePtr(unsafe.Pointer(&pre_t)),
+    gdc.ConstTypePtr(unsafe.Pointer(&post_t)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1137,11 +1137,11 @@ func (me *utilities) CubicInterpolateAngleInTime(from float32, to float32, pre f
 
 func (me *utilities) BezierInterpolate(start float32, control_1 float32, control_2 float32, end float32, t float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&start),
-    gdc.ConstTypePtr(&control_1),
-    gdc.ConstTypePtr(&control_2),
-    gdc.ConstTypePtr(&end),
-    gdc.ConstTypePtr(&t),
+    gdc.ConstTypePtr(unsafe.Pointer(&start)),
+    gdc.ConstTypePtr(unsafe.Pointer(&control_1)),
+    gdc.ConstTypePtr(unsafe.Pointer(&control_2)),
+    gdc.ConstTypePtr(unsafe.Pointer(&end)),
+    gdc.ConstTypePtr(unsafe.Pointer(&t)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1151,11 +1151,11 @@ func (me *utilities) BezierInterpolate(start float32, control_1 float32, control
 
 func (me *utilities) BezierDerivative(start float32, control_1 float32, control_2 float32, end float32, t float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&start),
-    gdc.ConstTypePtr(&control_1),
-    gdc.ConstTypePtr(&control_2),
-    gdc.ConstTypePtr(&end),
-    gdc.ConstTypePtr(&t),
+    gdc.ConstTypePtr(unsafe.Pointer(&start)),
+    gdc.ConstTypePtr(unsafe.Pointer(&control_1)),
+    gdc.ConstTypePtr(unsafe.Pointer(&control_2)),
+    gdc.ConstTypePtr(unsafe.Pointer(&end)),
+    gdc.ConstTypePtr(unsafe.Pointer(&t)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1165,8 +1165,8 @@ func (me *utilities) BezierDerivative(start float32, control_1 float32, control_
 
 func (me *utilities) AngleDifference(from float32, to float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1176,9 +1176,9 @@ func (me *utilities) AngleDifference(from float32, to float32, ) float32 {
 
 func (me *utilities) LerpAngle(from float32, to float32, weight float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&weight),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
+    gdc.ConstTypePtr(unsafe.Pointer(&weight)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1188,9 +1188,9 @@ func (me *utilities) LerpAngle(from float32, to float32, weight float32, ) float
 
 func (me *utilities) InverseLerp(from float32, to float32, weight float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&weight),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
+    gdc.ConstTypePtr(unsafe.Pointer(&weight)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1200,11 +1200,11 @@ func (me *utilities) InverseLerp(from float32, to float32, weight float32, ) flo
 
 func (me *utilities) Remap(value float32, istart float32, istop float32, ostart float32, ostop float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&istart),
-    gdc.ConstTypePtr(&istop),
-    gdc.ConstTypePtr(&ostart),
-    gdc.ConstTypePtr(&ostop),
+    gdc.ConstTypePtr(unsafe.Pointer(&value)),
+    gdc.ConstTypePtr(unsafe.Pointer(&istart)),
+    gdc.ConstTypePtr(unsafe.Pointer(&istop)),
+    gdc.ConstTypePtr(unsafe.Pointer(&ostart)),
+    gdc.ConstTypePtr(unsafe.Pointer(&ostop)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1214,9 +1214,9 @@ func (me *utilities) Remap(value float32, istart float32, istop float32, ostart 
 
 func (me *utilities) Smoothstep(from float32, to float32, x float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&x),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
+    gdc.ConstTypePtr(unsafe.Pointer(&x)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1226,9 +1226,9 @@ func (me *utilities) Smoothstep(from float32, to float32, x float32, ) float32 {
 
 func (me *utilities) MoveToward(from float32, to float32, delta float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&delta),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
+    gdc.ConstTypePtr(unsafe.Pointer(&delta)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1238,9 +1238,9 @@ func (me *utilities) MoveToward(from float32, to float32, delta float32, ) float
 
 func (me *utilities) RotateToward(from float32, to float32, delta float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&delta),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
+    gdc.ConstTypePtr(unsafe.Pointer(&delta)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1250,7 +1250,7 @@ func (me *utilities) RotateToward(from float32, to float32, delta float32, ) flo
 
 func (me *utilities) DegToRad(deg float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&deg),
+    gdc.ConstTypePtr(unsafe.Pointer(&deg)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1260,7 +1260,7 @@ func (me *utilities) DegToRad(deg float32, ) float32 {
 
 func (me *utilities) RadToDeg(rad float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&rad),
+    gdc.ConstTypePtr(unsafe.Pointer(&rad)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1270,7 +1270,7 @@ func (me *utilities) RadToDeg(rad float32, ) float32 {
 
 func (me *utilities) LinearToDb(lin float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&lin),
+    gdc.ConstTypePtr(unsafe.Pointer(&lin)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1280,7 +1280,7 @@ func (me *utilities) LinearToDb(lin float32, ) float32 {
 
 func (me *utilities) DbToLinear(db float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&db),
+    gdc.ConstTypePtr(unsafe.Pointer(&db)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1302,9 +1302,9 @@ func (me *utilities) Wrap(value Variant, min Variant, max Variant, ) Variant {
 
 func (me *utilities) Wrapi(value int, min int, max int, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&min),
-    gdc.ConstTypePtr(&max),
+    gdc.ConstTypePtr(unsafe.Pointer(&value)),
+    gdc.ConstTypePtr(unsafe.Pointer(&min)),
+    gdc.ConstTypePtr(unsafe.Pointer(&max)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -1314,9 +1314,9 @@ func (me *utilities) Wrapi(value int, min int, max int, ) int {
 
 func (me *utilities) Wrapf(value float32, min float32, max float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&min),
-    gdc.ConstTypePtr(&max),
+    gdc.ConstTypePtr(unsafe.Pointer(&value)),
+    gdc.ConstTypePtr(unsafe.Pointer(&min)),
+    gdc.ConstTypePtr(unsafe.Pointer(&max)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1338,8 +1338,8 @@ func (me *utilities) Max(vargs ...Variant) Variant {
 
 func (me *utilities) Maxi(a int, b int, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&a),
-    gdc.ConstTypePtr(&b),
+    gdc.ConstTypePtr(unsafe.Pointer(&a)),
+    gdc.ConstTypePtr(unsafe.Pointer(&b)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -1349,8 +1349,8 @@ func (me *utilities) Maxi(a int, b int, ) int {
 
 func (me *utilities) Maxf(a float32, b float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&a),
-    gdc.ConstTypePtr(&b),
+    gdc.ConstTypePtr(unsafe.Pointer(&a)),
+    gdc.ConstTypePtr(unsafe.Pointer(&b)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1372,8 +1372,8 @@ func (me *utilities) Min(vargs ...Variant) Variant {
 
 func (me *utilities) Mini(a int, b int, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&a),
-    gdc.ConstTypePtr(&b),
+    gdc.ConstTypePtr(unsafe.Pointer(&a)),
+    gdc.ConstTypePtr(unsafe.Pointer(&b)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -1383,8 +1383,8 @@ func (me *utilities) Mini(a int, b int, ) int {
 
 func (me *utilities) Minf(a float32, b float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&a),
-    gdc.ConstTypePtr(&b),
+    gdc.ConstTypePtr(unsafe.Pointer(&a)),
+    gdc.ConstTypePtr(unsafe.Pointer(&b)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1406,9 +1406,9 @@ func (me *utilities) Clamp(value Variant, min Variant, max Variant, ) Variant {
 
 func (me *utilities) Clampi(value int, min int, max int, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&min),
-    gdc.ConstTypePtr(&max),
+    gdc.ConstTypePtr(unsafe.Pointer(&value)),
+    gdc.ConstTypePtr(unsafe.Pointer(&min)),
+    gdc.ConstTypePtr(unsafe.Pointer(&max)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -1418,9 +1418,9 @@ func (me *utilities) Clampi(value int, min int, max int, ) int {
 
 func (me *utilities) Clampf(value float32, min float32, max float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&min),
-    gdc.ConstTypePtr(&max),
+    gdc.ConstTypePtr(unsafe.Pointer(&value)),
+    gdc.ConstTypePtr(unsafe.Pointer(&min)),
+    gdc.ConstTypePtr(unsafe.Pointer(&max)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1430,7 +1430,7 @@ func (me *utilities) Clampf(value float32, min float32, max float32, ) float32 {
 
 func (me *utilities) NearestPo2(value int, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
+    gdc.ConstTypePtr(unsafe.Pointer(&value)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -1440,8 +1440,8 @@ func (me *utilities) NearestPo2(value int, ) int {
 
 func (me *utilities) Pingpong(value float32, length float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&length),
+    gdc.ConstTypePtr(unsafe.Pointer(&value)),
+    gdc.ConstTypePtr(unsafe.Pointer(&length)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1477,8 +1477,8 @@ func (me *utilities) Randf() float32 {
 
 func (me *utilities) RandiRange(from int, to int, ) int {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
   }
   var ret int
   retPtr := gdc.TypePtr(&ret)
@@ -1488,8 +1488,8 @@ func (me *utilities) RandiRange(from int, to int, ) int {
 
 func (me *utilities) RandfRange(from float32, to float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
+    gdc.ConstTypePtr(unsafe.Pointer(&from)),
+    gdc.ConstTypePtr(unsafe.Pointer(&to)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1499,8 +1499,8 @@ func (me *utilities) RandfRange(from float32, to float32, ) float32 {
 
 func (me *utilities) Randfn(mean float32, deviation float32, ) float32 {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&mean),
-    gdc.ConstTypePtr(&deviation),
+    gdc.ConstTypePtr(unsafe.Pointer(&mean)),
+    gdc.ConstTypePtr(unsafe.Pointer(&deviation)),
   }
   var ret float32
   retPtr := gdc.TypePtr(&ret)
@@ -1510,7 +1510,7 @@ func (me *utilities) Randfn(mean float32, deviation float32, ) float32 {
 
 func (me *utilities) Seed(base int, )  {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&base),
+    gdc.ConstTypePtr(unsafe.Pointer(&base)),
   }
 
   me.iface.CallPtrUtilityFunction(me.ptrseed, nil, unsafe.SliceData(args), len(args))
@@ -1519,7 +1519,7 @@ func (me *utilities) Seed(base int, )  {
 
 func (me *utilities) RandFromSeed(seed int, ) PackedInt64Array {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&seed),
+    gdc.ConstTypePtr(unsafe.Pointer(&seed)),
   }
   var ret PackedInt64Array
   retPtr := gdc.TypePtr(&ret)
@@ -1550,7 +1550,7 @@ func (me *utilities) Typeof(variable Variant, ) int {
 func (me *utilities) TypeConvert(variant Variant, type_ int, ) Variant {
   args := []gdc.ConstTypePtr{
     variant.AsCTypePtr(),
-    gdc.ConstTypePtr(&type_),
+    gdc.ConstTypePtr(unsafe.Pointer(&type_)),
   }
   var ret Variant
   retPtr := gdc.TypePtr(&ret)
@@ -1572,7 +1572,7 @@ func (me *utilities) Str(vargs ...Variant) String {
 
 func (me *utilities) ErrorString(error int, ) String {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&error),
+    gdc.ConstTypePtr(unsafe.Pointer(&error)),
   }
   var ret String
   retPtr := gdc.TypePtr(&ret)
@@ -1582,7 +1582,7 @@ func (me *utilities) ErrorString(error int, ) String {
 
 func (me *utilities) TypeString(type_ int, ) String {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&type_),
+    gdc.ConstTypePtr(unsafe.Pointer(&type_)),
   }
   var ret String
   retPtr := gdc.TypePtr(&ret)
@@ -1701,7 +1701,7 @@ func (me *utilities) VarToStr(variable Variant, ) String {
 
 func (me *utilities) StrToVar(string_ String, ) Variant {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&string_),
+    gdc.ConstTypePtr(unsafe.Pointer(&string_)),
   }
   var ret Variant
   retPtr := gdc.TypePtr(&ret)
@@ -1721,7 +1721,7 @@ func (me *utilities) VarToBytes(variable Variant, ) PackedByteArray {
 
 func (me *utilities) BytesToVar(bytes PackedByteArray, ) Variant {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&bytes),
+    gdc.ConstTypePtr(unsafe.Pointer(&bytes)),
   }
   var ret Variant
   retPtr := gdc.TypePtr(&ret)
@@ -1741,7 +1741,7 @@ func (me *utilities) VarToBytesWithObjects(variable Variant, ) PackedByteArray {
 
 func (me *utilities) BytesToVarWithObjects(bytes PackedByteArray, ) Variant {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&bytes),
+    gdc.ConstTypePtr(unsafe.Pointer(&bytes)),
   }
   var ret Variant
   retPtr := gdc.TypePtr(&ret)
@@ -1761,7 +1761,7 @@ func (me *utilities) Hash(variable Variant, ) int {
 
 func (me *utilities) InstanceFromId(instance_id int, ) Object {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&instance_id),
+    gdc.ConstTypePtr(unsafe.Pointer(&instance_id)),
   }
   var ret Object
   retPtr := gdc.TypePtr(&ret)
@@ -1771,7 +1771,7 @@ func (me *utilities) InstanceFromId(instance_id int, ) Object {
 
 func (me *utilities) IsInstanceIdValid(id int, ) bool {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&id),
+    gdc.ConstTypePtr(unsafe.Pointer(&id)),
   }
   var ret bool
   retPtr := gdc.TypePtr(&ret)
@@ -1800,7 +1800,7 @@ func (me *utilities) RidAllocateId() int {
 
 func (me *utilities) RidFromInt64(base int, ) RID {
   args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&base),
+    gdc.ConstTypePtr(unsafe.Pointer(&base)),
   }
   var ret RID
   retPtr := gdc.TypePtr(&ret)

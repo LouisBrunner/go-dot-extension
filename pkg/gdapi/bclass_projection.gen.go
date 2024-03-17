@@ -2,14 +2,17 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Projection struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeProjection]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Constants
@@ -32,54 +35,81 @@ const (
 )
 
 // Constructors
-
-func NewProjection() Projection {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeProjection))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeProjection, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Projection{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newProjection() *Projection {
+  me := &Projection{
+    data:   new([classSizeProjection]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewProjectionFromProjection(from Projection, ) Projection {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeProjection))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeProjection, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Projection{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewProjection() *Projection {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newProjection()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeProjection, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewProjectionFromTransform3D(from Transform3D, ) Projection {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeProjection))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeProjection, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Projection{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewProjectionFromProjection(from Projection, ) *Projection {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newProjection()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeProjection, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewProjectionFromVector4Vector4Vector4Vector4(x_axis Vector4, y_axis Vector4, z_axis Vector4, w_axis Vector4, ) Projection {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeProjection))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeProjection, 3) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{x_axis.AsCTypePtr(), y_axis.AsCTypePtr(), z_axis.AsCTypePtr(), w_axis.AsCTypePtr(), }))
-  return Projection{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewProjectionFromTransform3D(from Transform3D, ) *Projection {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newProjection()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeProjection, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
+}
+
+func NewProjectionFromVector4Vector4Vector4Vector4(x_axis Vector4, y_axis Vector4, z_axis Vector4, w_axis Vector4, ) *Projection {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newProjection()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeProjection, 3) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{x_axis.AsCTypePtr(), y_axis.AsCTypePtr(), z_axis.AsCTypePtr(), w_axis.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *Projection) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsProjection() (*Projection, error) {
+	if me.Type() != gdc.VariantTypeProjection {
+		return nil, fmt.Errorf("variant is not a Projection")
+	}
+  bclass := newProjection()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Projection) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func ProjectionFromPtr(ptr gdc.ConstTypePtr) *Projection {
+  me := newProjection()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Projection) Type() gdc.VariantType {
@@ -87,11 +117,15 @@ func (me *Projection) Type() gdc.VariantType {
 }
 
 func (me *Projection) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Projection) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Projection) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -102,7 +136,7 @@ func ProjectionCreateDepthCorrection(flip_y bool, ) Projection {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 1228516048) // FIXME: should cache?
 
   var ret Projection
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flip_y), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&flip_y)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -126,7 +160,7 @@ func ProjectionCreatePerspective(fovy float32, aspect float32, z_near float32, z
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 390915442) // FIXME: should cache?
 
   var ret Projection
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fovy), gdc.ConstTypePtr(&aspect), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), gdc.ConstTypePtr(&flip_fov), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&fovy)), gdc.ConstTypePtr(unsafe.Pointer(&aspect)), gdc.ConstTypePtr(unsafe.Pointer(&z_near)), gdc.ConstTypePtr(unsafe.Pointer(&z_far)), gdc.ConstTypePtr(unsafe.Pointer(&flip_fov)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -138,7 +172,7 @@ func ProjectionCreatePerspectiveHmd(fovy float32, aspect float32, z_near float32
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 2857674800) // FIXME: should cache?
 
   var ret Projection
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fovy), gdc.ConstTypePtr(&aspect), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), gdc.ConstTypePtr(&flip_fov), gdc.ConstTypePtr(&eye), gdc.ConstTypePtr(&intraocular_dist), gdc.ConstTypePtr(&convergence_dist), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&fovy)), gdc.ConstTypePtr(unsafe.Pointer(&aspect)), gdc.ConstTypePtr(unsafe.Pointer(&z_near)), gdc.ConstTypePtr(unsafe.Pointer(&z_far)), gdc.ConstTypePtr(unsafe.Pointer(&flip_fov)), gdc.ConstTypePtr(unsafe.Pointer(&eye)), gdc.ConstTypePtr(unsafe.Pointer(&intraocular_dist)), gdc.ConstTypePtr(unsafe.Pointer(&convergence_dist)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -150,7 +184,7 @@ func ProjectionCreateForHmd(eye int, aspect float32, intraocular_dist float32, d
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 4184144994) // FIXME: should cache?
 
   var ret Projection
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&eye), gdc.ConstTypePtr(&aspect), gdc.ConstTypePtr(&intraocular_dist), gdc.ConstTypePtr(&display_width), gdc.ConstTypePtr(&display_to_lens), gdc.ConstTypePtr(&oversample), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&eye)), gdc.ConstTypePtr(unsafe.Pointer(&aspect)), gdc.ConstTypePtr(unsafe.Pointer(&intraocular_dist)), gdc.ConstTypePtr(unsafe.Pointer(&display_width)), gdc.ConstTypePtr(unsafe.Pointer(&display_to_lens)), gdc.ConstTypePtr(unsafe.Pointer(&oversample)), gdc.ConstTypePtr(unsafe.Pointer(&z_near)), gdc.ConstTypePtr(unsafe.Pointer(&z_far)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -162,7 +196,7 @@ func ProjectionCreateOrthogonal(left float32, right float32, bottom float32, top
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 3707929169) // FIXME: should cache?
 
   var ret Projection
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&left), gdc.ConstTypePtr(&right), gdc.ConstTypePtr(&bottom), gdc.ConstTypePtr(&top), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&left)), gdc.ConstTypePtr(unsafe.Pointer(&right)), gdc.ConstTypePtr(unsafe.Pointer(&bottom)), gdc.ConstTypePtr(unsafe.Pointer(&top)), gdc.ConstTypePtr(unsafe.Pointer(&z_near)), gdc.ConstTypePtr(unsafe.Pointer(&z_far)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -174,7 +208,7 @@ func ProjectionCreateOrthogonalAspect(size float32, aspect float32, z_near float
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 390915442) // FIXME: should cache?
 
   var ret Projection
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&aspect), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), gdc.ConstTypePtr(&flip_fov), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&size)), gdc.ConstTypePtr(unsafe.Pointer(&aspect)), gdc.ConstTypePtr(unsafe.Pointer(&z_near)), gdc.ConstTypePtr(unsafe.Pointer(&z_far)), gdc.ConstTypePtr(unsafe.Pointer(&flip_fov)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -186,7 +220,7 @@ func ProjectionCreateFrustum(left float32, right float32, bottom float32, top fl
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 3707929169) // FIXME: should cache?
 
   var ret Projection
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&left), gdc.ConstTypePtr(&right), gdc.ConstTypePtr(&bottom), gdc.ConstTypePtr(&top), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&left)), gdc.ConstTypePtr(unsafe.Pointer(&right)), gdc.ConstTypePtr(unsafe.Pointer(&bottom)), gdc.ConstTypePtr(unsafe.Pointer(&top)), gdc.ConstTypePtr(unsafe.Pointer(&z_near)), gdc.ConstTypePtr(unsafe.Pointer(&z_far)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -198,7 +232,7 @@ func ProjectionCreateFrustumAspect(size float32, aspect float32, offset Vector2,
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 1535076251) // FIXME: should cache?
 
   var ret Projection
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&aspect), offset.AsCTypePtr(), gdc.ConstTypePtr(&z_near), gdc.ConstTypePtr(&z_far), gdc.ConstTypePtr(&flip_fov), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&size)), gdc.ConstTypePtr(unsafe.Pointer(&aspect)), offset.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&z_near)), gdc.ConstTypePtr(unsafe.Pointer(&z_far)), gdc.ConstTypePtr(unsafe.Pointer(&flip_fov)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -234,7 +268,7 @@ func (me *Projection) PerspectiveZnearAdjusted(new_znear float32, ) Projection {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 3584785443) // FIXME: should cache?
 
   var ret Projection
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&new_znear), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&new_znear)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -246,7 +280,7 @@ func (me *Projection) GetProjectionPlane(plane int, ) Plane {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 1551184160) // FIXME: should cache?
 
   var ret Plane
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&plane), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&plane)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -282,7 +316,7 @@ func ProjectionGetFovy(fovx float32, aspect float32, ) float32 {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 3514207532) // FIXME: should cache?
 
   var ret float32
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fovx), gdc.ConstTypePtr(&aspect), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&fovx)), gdc.ConstTypePtr(unsafe.Pointer(&aspect)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -390,7 +424,7 @@ func (me *Projection) GetPixelsPerMeter(for_pixel_width int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeProjection, name.AsCPtr(), 4103005248) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&for_pixel_width), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&for_pixel_width)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -490,7 +524,7 @@ func (me *Projection) SetX(value Vector4) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Projection) Y() Vector4 {
@@ -508,7 +542,7 @@ func (me *Projection) SetY(value Vector4) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Projection) Z() Vector4 {
@@ -526,7 +560,7 @@ func (me *Projection) SetZ(value Vector4) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Projection) W() Vector4 {
@@ -544,5 +578,5 @@ func (me *Projection) SetW(value Vector4) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }

@@ -726,15 +726,13 @@ type GraphEditConnectionRequestSignalFn func(from_node StringName, from_port int
 func (me *GraphEdit) ConnectConnectionRequest(subs SignalSubscribers, fn GraphEditConnectionRequestSignalFn) {
   sig := StringNameFromStr("connection_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectConnectionRequest(subs SignalSubscribers, fn GraphEditConnectionRequestSignalFn) {
   sig := StringNameFromStr("connection_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditDisconnectionRequestSignalFn func(from_node StringName, from_port int, to_node StringName, to_port int, )
@@ -742,15 +740,13 @@ type GraphEditDisconnectionRequestSignalFn func(from_node StringName, from_port 
 func (me *GraphEdit) ConnectDisconnectionRequest(subs SignalSubscribers, fn GraphEditDisconnectionRequestSignalFn) {
   sig := StringNameFromStr("disconnection_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectDisconnectionRequest(subs SignalSubscribers, fn GraphEditDisconnectionRequestSignalFn) {
   sig := StringNameFromStr("disconnection_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditConnectionToEmptySignalFn func(from_node StringName, from_port int, release_position Vector2, )
@@ -758,15 +754,13 @@ type GraphEditConnectionToEmptySignalFn func(from_node StringName, from_port int
 func (me *GraphEdit) ConnectConnectionToEmpty(subs SignalSubscribers, fn GraphEditConnectionToEmptySignalFn) {
   sig := StringNameFromStr("connection_to_empty")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectConnectionToEmpty(subs SignalSubscribers, fn GraphEditConnectionToEmptySignalFn) {
   sig := StringNameFromStr("connection_to_empty")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditConnectionFromEmptySignalFn func(to_node StringName, to_port int, release_position Vector2, )
@@ -774,15 +768,13 @@ type GraphEditConnectionFromEmptySignalFn func(to_node StringName, to_port int, 
 func (me *GraphEdit) ConnectConnectionFromEmpty(subs SignalSubscribers, fn GraphEditConnectionFromEmptySignalFn) {
   sig := StringNameFromStr("connection_from_empty")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectConnectionFromEmpty(subs SignalSubscribers, fn GraphEditConnectionFromEmptySignalFn) {
   sig := StringNameFromStr("connection_from_empty")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditConnectionDragStartedSignalFn func(from_node StringName, from_port int, is_output bool, )
@@ -790,15 +782,13 @@ type GraphEditConnectionDragStartedSignalFn func(from_node StringName, from_port
 func (me *GraphEdit) ConnectConnectionDragStarted(subs SignalSubscribers, fn GraphEditConnectionDragStartedSignalFn) {
   sig := StringNameFromStr("connection_drag_started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectConnectionDragStarted(subs SignalSubscribers, fn GraphEditConnectionDragStartedSignalFn) {
   sig := StringNameFromStr("connection_drag_started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditConnectionDragEndedSignalFn func()
@@ -806,15 +796,13 @@ type GraphEditConnectionDragEndedSignalFn func()
 func (me *GraphEdit) ConnectConnectionDragEnded(subs SignalSubscribers, fn GraphEditConnectionDragEndedSignalFn) {
   sig := StringNameFromStr("connection_drag_ended")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectConnectionDragEnded(subs SignalSubscribers, fn GraphEditConnectionDragEndedSignalFn) {
   sig := StringNameFromStr("connection_drag_ended")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditCopyNodesRequestSignalFn func()
@@ -822,15 +810,13 @@ type GraphEditCopyNodesRequestSignalFn func()
 func (me *GraphEdit) ConnectCopyNodesRequest(subs SignalSubscribers, fn GraphEditCopyNodesRequestSignalFn) {
   sig := StringNameFromStr("copy_nodes_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectCopyNodesRequest(subs SignalSubscribers, fn GraphEditCopyNodesRequestSignalFn) {
   sig := StringNameFromStr("copy_nodes_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditPasteNodesRequestSignalFn func()
@@ -838,15 +824,13 @@ type GraphEditPasteNodesRequestSignalFn func()
 func (me *GraphEdit) ConnectPasteNodesRequest(subs SignalSubscribers, fn GraphEditPasteNodesRequestSignalFn) {
   sig := StringNameFromStr("paste_nodes_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectPasteNodesRequest(subs SignalSubscribers, fn GraphEditPasteNodesRequestSignalFn) {
   sig := StringNameFromStr("paste_nodes_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditDuplicateNodesRequestSignalFn func()
@@ -854,15 +838,13 @@ type GraphEditDuplicateNodesRequestSignalFn func()
 func (me *GraphEdit) ConnectDuplicateNodesRequest(subs SignalSubscribers, fn GraphEditDuplicateNodesRequestSignalFn) {
   sig := StringNameFromStr("duplicate_nodes_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectDuplicateNodesRequest(subs SignalSubscribers, fn GraphEditDuplicateNodesRequestSignalFn) {
   sig := StringNameFromStr("duplicate_nodes_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditDeleteNodesRequestSignalFn func(nodes StringName, )
@@ -870,15 +852,13 @@ type GraphEditDeleteNodesRequestSignalFn func(nodes StringName, )
 func (me *GraphEdit) ConnectDeleteNodesRequest(subs SignalSubscribers, fn GraphEditDeleteNodesRequestSignalFn) {
   sig := StringNameFromStr("delete_nodes_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectDeleteNodesRequest(subs SignalSubscribers, fn GraphEditDeleteNodesRequestSignalFn) {
   sig := StringNameFromStr("delete_nodes_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditNodeSelectedSignalFn func(node Node, )
@@ -886,15 +866,13 @@ type GraphEditNodeSelectedSignalFn func(node Node, )
 func (me *GraphEdit) ConnectNodeSelected(subs SignalSubscribers, fn GraphEditNodeSelectedSignalFn) {
   sig := StringNameFromStr("node_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectNodeSelected(subs SignalSubscribers, fn GraphEditNodeSelectedSignalFn) {
   sig := StringNameFromStr("node_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditNodeDeselectedSignalFn func(node Node, )
@@ -902,15 +880,13 @@ type GraphEditNodeDeselectedSignalFn func(node Node, )
 func (me *GraphEdit) ConnectNodeDeselected(subs SignalSubscribers, fn GraphEditNodeDeselectedSignalFn) {
   sig := StringNameFromStr("node_deselected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectNodeDeselected(subs SignalSubscribers, fn GraphEditNodeDeselectedSignalFn) {
   sig := StringNameFromStr("node_deselected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditPopupRequestSignalFn func(position Vector2, )
@@ -918,15 +894,13 @@ type GraphEditPopupRequestSignalFn func(position Vector2, )
 func (me *GraphEdit) ConnectPopupRequest(subs SignalSubscribers, fn GraphEditPopupRequestSignalFn) {
   sig := StringNameFromStr("popup_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectPopupRequest(subs SignalSubscribers, fn GraphEditPopupRequestSignalFn) {
   sig := StringNameFromStr("popup_request")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditBeginNodeMoveSignalFn func()
@@ -934,15 +908,13 @@ type GraphEditBeginNodeMoveSignalFn func()
 func (me *GraphEdit) ConnectBeginNodeMove(subs SignalSubscribers, fn GraphEditBeginNodeMoveSignalFn) {
   sig := StringNameFromStr("begin_node_move")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectBeginNodeMove(subs SignalSubscribers, fn GraphEditBeginNodeMoveSignalFn) {
   sig := StringNameFromStr("begin_node_move")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditEndNodeMoveSignalFn func()
@@ -950,15 +922,13 @@ type GraphEditEndNodeMoveSignalFn func()
 func (me *GraphEdit) ConnectEndNodeMove(subs SignalSubscribers, fn GraphEditEndNodeMoveSignalFn) {
   sig := StringNameFromStr("end_node_move")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectEndNodeMove(subs SignalSubscribers, fn GraphEditEndNodeMoveSignalFn) {
   sig := StringNameFromStr("end_node_move")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type GraphEditScrollOffsetChangedSignalFn func(offset Vector2, )
@@ -966,13 +936,11 @@ type GraphEditScrollOffsetChangedSignalFn func(offset Vector2, )
 func (me *GraphEdit) ConnectScrollOffsetChanged(subs SignalSubscribers, fn GraphEditScrollOffsetChangedSignalFn) {
   sig := StringNameFromStr("scroll_offset_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *GraphEdit) DisconnectScrollOffsetChanged(subs SignalSubscribers, fn GraphEditScrollOffsetChangedSignalFn) {
   sig := StringNameFromStr("scroll_offset_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

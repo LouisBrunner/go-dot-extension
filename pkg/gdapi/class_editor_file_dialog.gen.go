@@ -328,15 +328,13 @@ type EditorFileDialogFileSelectedSignalFn func(path String, )
 func (me *EditorFileDialog) ConnectFileSelected(subs SignalSubscribers, fn EditorFileDialogFileSelectedSignalFn) {
   sig := StringNameFromStr("file_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorFileDialog) DisconnectFileSelected(subs SignalSubscribers, fn EditorFileDialogFileSelectedSignalFn) {
   sig := StringNameFromStr("file_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorFileDialogFilesSelectedSignalFn func(paths PackedStringArray, )
@@ -344,15 +342,13 @@ type EditorFileDialogFilesSelectedSignalFn func(paths PackedStringArray, )
 func (me *EditorFileDialog) ConnectFilesSelected(subs SignalSubscribers, fn EditorFileDialogFilesSelectedSignalFn) {
   sig := StringNameFromStr("files_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorFileDialog) DisconnectFilesSelected(subs SignalSubscribers, fn EditorFileDialogFilesSelectedSignalFn) {
   sig := StringNameFromStr("files_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorFileDialogDirSelectedSignalFn func(dir String, )
@@ -360,13 +356,11 @@ type EditorFileDialogDirSelectedSignalFn func(dir String, )
 func (me *EditorFileDialog) ConnectDirSelected(subs SignalSubscribers, fn EditorFileDialogDirSelectedSignalFn) {
   sig := StringNameFromStr("dir_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorFileDialog) DisconnectDirSelected(subs SignalSubscribers, fn EditorFileDialogDirSelectedSignalFn) {
   sig := StringNameFromStr("dir_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -5729,15 +5729,13 @@ type RenderingServerFramePreDrawSignalFn func()
 func (me *RenderingServer) ConnectFramePreDraw(subs SignalSubscribers, fn RenderingServerFramePreDrawSignalFn) {
   sig := StringNameFromStr("frame_pre_draw")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *RenderingServer) DisconnectFramePreDraw(subs SignalSubscribers, fn RenderingServerFramePreDrawSignalFn) {
   sig := StringNameFromStr("frame_pre_draw")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type RenderingServerFramePostDrawSignalFn func()
@@ -5745,13 +5743,11 @@ type RenderingServerFramePostDrawSignalFn func()
 func (me *RenderingServer) ConnectFramePostDraw(subs SignalSubscribers, fn RenderingServerFramePostDrawSignalFn) {
   sig := StringNameFromStr("frame_post_draw")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *RenderingServer) DisconnectFramePostDraw(subs SignalSubscribers, fn RenderingServerFramePostDrawSignalFn) {
   sig := StringNameFromStr("frame_post_draw")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

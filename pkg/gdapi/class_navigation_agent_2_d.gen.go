@@ -790,15 +790,13 @@ type NavigationAgent2DPathChangedSignalFn func()
 func (me *NavigationAgent2D) ConnectPathChanged(subs SignalSubscribers, fn NavigationAgent2DPathChangedSignalFn) {
   sig := StringNameFromStr("path_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationAgent2D) DisconnectPathChanged(subs SignalSubscribers, fn NavigationAgent2DPathChangedSignalFn) {
   sig := StringNameFromStr("path_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NavigationAgent2DTargetReachedSignalFn func()
@@ -806,15 +804,13 @@ type NavigationAgent2DTargetReachedSignalFn func()
 func (me *NavigationAgent2D) ConnectTargetReached(subs SignalSubscribers, fn NavigationAgent2DTargetReachedSignalFn) {
   sig := StringNameFromStr("target_reached")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationAgent2D) DisconnectTargetReached(subs SignalSubscribers, fn NavigationAgent2DTargetReachedSignalFn) {
   sig := StringNameFromStr("target_reached")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NavigationAgent2DWaypointReachedSignalFn func(details Dictionary, )
@@ -822,15 +818,13 @@ type NavigationAgent2DWaypointReachedSignalFn func(details Dictionary, )
 func (me *NavigationAgent2D) ConnectWaypointReached(subs SignalSubscribers, fn NavigationAgent2DWaypointReachedSignalFn) {
   sig := StringNameFromStr("waypoint_reached")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationAgent2D) DisconnectWaypointReached(subs SignalSubscribers, fn NavigationAgent2DWaypointReachedSignalFn) {
   sig := StringNameFromStr("waypoint_reached")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NavigationAgent2DLinkReachedSignalFn func(details Dictionary, )
@@ -838,15 +832,13 @@ type NavigationAgent2DLinkReachedSignalFn func(details Dictionary, )
 func (me *NavigationAgent2D) ConnectLinkReached(subs SignalSubscribers, fn NavigationAgent2DLinkReachedSignalFn) {
   sig := StringNameFromStr("link_reached")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationAgent2D) DisconnectLinkReached(subs SignalSubscribers, fn NavigationAgent2DLinkReachedSignalFn) {
   sig := StringNameFromStr("link_reached")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NavigationAgent2DNavigationFinishedSignalFn func()
@@ -854,15 +846,13 @@ type NavigationAgent2DNavigationFinishedSignalFn func()
 func (me *NavigationAgent2D) ConnectNavigationFinished(subs SignalSubscribers, fn NavigationAgent2DNavigationFinishedSignalFn) {
   sig := StringNameFromStr("navigation_finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationAgent2D) DisconnectNavigationFinished(subs SignalSubscribers, fn NavigationAgent2DNavigationFinishedSignalFn) {
   sig := StringNameFromStr("navigation_finished")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type NavigationAgent2DVelocityComputedSignalFn func(safe_velocity Vector2, )
@@ -870,13 +860,11 @@ type NavigationAgent2DVelocityComputedSignalFn func(safe_velocity Vector2, )
 func (me *NavigationAgent2D) ConnectVelocityComputed(subs SignalSubscribers, fn NavigationAgent2DVelocityComputedSignalFn) {
   sig := StringNameFromStr("velocity_computed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *NavigationAgent2D) DisconnectVelocityComputed(subs SignalSubscribers, fn NavigationAgent2DVelocityComputedSignalFn) {
   sig := StringNameFromStr("velocity_computed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -2,49 +2,81 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Dictionary struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeDictionary]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Enums
 
 // Constructors
-
-func NewDictionary() Dictionary {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeDictionary))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeDictionary, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Dictionary{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newDictionary() *Dictionary {
+  me := &Dictionary{
+    data:   new([classSizeDictionary]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewDictionaryFromDictionary(from Dictionary, ) Dictionary {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeDictionary))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeDictionary, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Dictionary{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewDictionary() *Dictionary {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newDictionary()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeDictionary, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
+}
+
+func NewDictionaryFromDictionary(from Dictionary, ) *Dictionary {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newDictionary()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeDictionary, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *Dictionary) Destroy() {
-  if me.ptr == nil {
-    return
-  }
   dtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeDictionary)
-	me.iface.CallPtrDestructor(dtr, gdc.TypePtr(me.ptr))
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+	me.iface.CallPtrDestructor(dtr, me.AsTypePtr())
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsDictionary() (*Dictionary, error) {
+	if me.Type() != gdc.VariantTypeDictionary {
+		return nil, fmt.Errorf("variant is not a Dictionary")
+	}
+  bclass := newDictionary()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Dictionary) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func DictionaryFromPtr(ptr gdc.ConstTypePtr) *Dictionary {
+  me := newDictionary()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Dictionary) Type() gdc.VariantType {
@@ -52,11 +84,15 @@ func (me *Dictionary) Type() gdc.VariantType {
 }
 
 func (me *Dictionary) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Dictionary) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Dictionary) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -100,7 +136,7 @@ func (me *Dictionary) Merge(dictionary Dictionary, overwrite bool, )  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 2079548978) // FIXME: should cache?
 
-  args := []gdc.ConstTypePtr{dictionary.AsCTypePtr(), gdc.ConstTypePtr(&overwrite), }
+  args := []gdc.ConstTypePtr{dictionary.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&overwrite)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
@@ -195,7 +231,7 @@ func (me *Dictionary) Duplicate(deep bool, ) Dictionary {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 830099069) // FIXME: should cache?
 
   var ret Dictionary
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&deep), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&deep)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret

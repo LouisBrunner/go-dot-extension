@@ -262,15 +262,13 @@ type EditorPropertyPropertyChangedSignalFn func(property StringName, value Varia
 func (me *EditorProperty) ConnectPropertyChanged(subs SignalSubscribers, fn EditorPropertyPropertyChangedSignalFn) {
   sig := StringNameFromStr("property_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorProperty) DisconnectPropertyChanged(subs SignalSubscribers, fn EditorPropertyPropertyChangedSignalFn) {
   sig := StringNameFromStr("property_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorPropertyMultiplePropertiesChangedSignalFn func(properties PackedStringArray, value Array, )
@@ -278,15 +276,13 @@ type EditorPropertyMultiplePropertiesChangedSignalFn func(properties PackedStrin
 func (me *EditorProperty) ConnectMultiplePropertiesChanged(subs SignalSubscribers, fn EditorPropertyMultiplePropertiesChangedSignalFn) {
   sig := StringNameFromStr("multiple_properties_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorProperty) DisconnectMultiplePropertiesChanged(subs SignalSubscribers, fn EditorPropertyMultiplePropertiesChangedSignalFn) {
   sig := StringNameFromStr("multiple_properties_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorPropertyPropertyKeyedSignalFn func(property StringName, )
@@ -294,15 +290,13 @@ type EditorPropertyPropertyKeyedSignalFn func(property StringName, )
 func (me *EditorProperty) ConnectPropertyKeyed(subs SignalSubscribers, fn EditorPropertyPropertyKeyedSignalFn) {
   sig := StringNameFromStr("property_keyed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorProperty) DisconnectPropertyKeyed(subs SignalSubscribers, fn EditorPropertyPropertyKeyedSignalFn) {
   sig := StringNameFromStr("property_keyed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorPropertyPropertyDeletedSignalFn func(property StringName, )
@@ -310,15 +304,13 @@ type EditorPropertyPropertyDeletedSignalFn func(property StringName, )
 func (me *EditorProperty) ConnectPropertyDeleted(subs SignalSubscribers, fn EditorPropertyPropertyDeletedSignalFn) {
   sig := StringNameFromStr("property_deleted")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorProperty) DisconnectPropertyDeleted(subs SignalSubscribers, fn EditorPropertyPropertyDeletedSignalFn) {
   sig := StringNameFromStr("property_deleted")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorPropertyPropertyKeyedWithValueSignalFn func(property StringName, value Variant, )
@@ -326,15 +318,13 @@ type EditorPropertyPropertyKeyedWithValueSignalFn func(property StringName, valu
 func (me *EditorProperty) ConnectPropertyKeyedWithValue(subs SignalSubscribers, fn EditorPropertyPropertyKeyedWithValueSignalFn) {
   sig := StringNameFromStr("property_keyed_with_value")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorProperty) DisconnectPropertyKeyedWithValue(subs SignalSubscribers, fn EditorPropertyPropertyKeyedWithValueSignalFn) {
   sig := StringNameFromStr("property_keyed_with_value")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorPropertyPropertyCheckedSignalFn func(property StringName, checked bool, )
@@ -342,15 +332,13 @@ type EditorPropertyPropertyCheckedSignalFn func(property StringName, checked boo
 func (me *EditorProperty) ConnectPropertyChecked(subs SignalSubscribers, fn EditorPropertyPropertyCheckedSignalFn) {
   sig := StringNameFromStr("property_checked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorProperty) DisconnectPropertyChecked(subs SignalSubscribers, fn EditorPropertyPropertyCheckedSignalFn) {
   sig := StringNameFromStr("property_checked")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorPropertyPropertyPinnedSignalFn func(property StringName, pinned bool, )
@@ -358,15 +346,13 @@ type EditorPropertyPropertyPinnedSignalFn func(property StringName, pinned bool,
 func (me *EditorProperty) ConnectPropertyPinned(subs SignalSubscribers, fn EditorPropertyPropertyPinnedSignalFn) {
   sig := StringNameFromStr("property_pinned")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorProperty) DisconnectPropertyPinned(subs SignalSubscribers, fn EditorPropertyPropertyPinnedSignalFn) {
   sig := StringNameFromStr("property_pinned")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorPropertyPropertyCanRevertChangedSignalFn func(property StringName, can_revert bool, )
@@ -374,15 +360,13 @@ type EditorPropertyPropertyCanRevertChangedSignalFn func(property StringName, ca
 func (me *EditorProperty) ConnectPropertyCanRevertChanged(subs SignalSubscribers, fn EditorPropertyPropertyCanRevertChangedSignalFn) {
   sig := StringNameFromStr("property_can_revert_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorProperty) DisconnectPropertyCanRevertChanged(subs SignalSubscribers, fn EditorPropertyPropertyCanRevertChangedSignalFn) {
   sig := StringNameFromStr("property_can_revert_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorPropertyResourceSelectedSignalFn func(path String, resource Resource, )
@@ -390,15 +374,13 @@ type EditorPropertyResourceSelectedSignalFn func(path String, resource Resource,
 func (me *EditorProperty) ConnectResourceSelected(subs SignalSubscribers, fn EditorPropertyResourceSelectedSignalFn) {
   sig := StringNameFromStr("resource_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorProperty) DisconnectResourceSelected(subs SignalSubscribers, fn EditorPropertyResourceSelectedSignalFn) {
   sig := StringNameFromStr("resource_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorPropertyObjectIdSelectedSignalFn func(property StringName, id int, )
@@ -406,15 +388,13 @@ type EditorPropertyObjectIdSelectedSignalFn func(property StringName, id int, )
 func (me *EditorProperty) ConnectObjectIdSelected(subs SignalSubscribers, fn EditorPropertyObjectIdSelectedSignalFn) {
   sig := StringNameFromStr("object_id_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorProperty) DisconnectObjectIdSelected(subs SignalSubscribers, fn EditorPropertyObjectIdSelectedSignalFn) {
   sig := StringNameFromStr("object_id_selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type EditorPropertySelectedSignalFn func(path String, focusable_idx int, )
@@ -422,13 +402,11 @@ type EditorPropertySelectedSignalFn func(path String, focusable_idx int, )
 func (me *EditorProperty) ConnectSelected(subs SignalSubscribers, fn EditorPropertySelectedSignalFn) {
   sig := StringNameFromStr("selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *EditorProperty) DisconnectSelected(subs SignalSubscribers, fn EditorPropertySelectedSignalFn) {
   sig := StringNameFromStr("selected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

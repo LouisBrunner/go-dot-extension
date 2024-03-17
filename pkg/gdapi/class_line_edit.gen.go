@@ -915,15 +915,13 @@ type LineEditTextChangedSignalFn func(new_text String, )
 func (me *LineEdit) ConnectTextChanged(subs SignalSubscribers, fn LineEditTextChangedSignalFn) {
   sig := StringNameFromStr("text_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *LineEdit) DisconnectTextChanged(subs SignalSubscribers, fn LineEditTextChangedSignalFn) {
   sig := StringNameFromStr("text_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type LineEditTextChangeRejectedSignalFn func(rejected_substring String, )
@@ -931,15 +929,13 @@ type LineEditTextChangeRejectedSignalFn func(rejected_substring String, )
 func (me *LineEdit) ConnectTextChangeRejected(subs SignalSubscribers, fn LineEditTextChangeRejectedSignalFn) {
   sig := StringNameFromStr("text_change_rejected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *LineEdit) DisconnectTextChangeRejected(subs SignalSubscribers, fn LineEditTextChangeRejectedSignalFn) {
   sig := StringNameFromStr("text_change_rejected")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type LineEditTextSubmittedSignalFn func(new_text String, )
@@ -947,13 +943,11 @@ type LineEditTextSubmittedSignalFn func(new_text String, )
 func (me *LineEdit) ConnectTextSubmitted(subs SignalSubscribers, fn LineEditTextSubmittedSignalFn) {
   sig := StringNameFromStr("text_submitted")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *LineEdit) DisconnectTextSubmitted(subs SignalSubscribers, fn LineEditTextSubmittedSignalFn) {
   sig := StringNameFromStr("text_submitted")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

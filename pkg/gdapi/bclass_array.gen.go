@@ -2,149 +2,172 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Array struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeArray]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Enums
 
 // Constructors
-
-func NewArray() Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newArray() *Array {
+  me := &Array{
+    data:   new([classSizeArray]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewArrayFromArray(from Array, ) Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewArray() *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewArrayFromArrayIntStringNameVariant(base Array, type_ int, class_name StringName, script Variant, ) Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{base.AsCTypePtr(), gdc.ConstTypePtr(&type_), class_name.AsCTypePtr(), script.AsCTypePtr(), }))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewArrayFromArray(from Array, ) *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewArrayFromPackedByteArray(from PackedByteArray, ) Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 3) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewArrayFromArrayIntStringNameVariant(base Array, type_ int64, class_name StringName, script Variant, ) *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&type_)
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{base.AsCTypePtr(), gdc.ConstTypePtr(&type_), class_name.AsCTypePtr(), script.AsCTypePtr(), }))
+  return me
 }
 
-func NewArrayFromPackedInt32Array(from PackedInt32Array, ) Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 4) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewArrayFromPackedByteArray(from PackedByteArray, ) *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 3) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewArrayFromPackedInt64Array(from PackedInt64Array, ) Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 5) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewArrayFromPackedInt32Array(from PackedInt32Array, ) *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 4) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewArrayFromPackedFloat32Array(from PackedFloat32Array, ) Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 6) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewArrayFromPackedInt64Array(from PackedInt64Array, ) *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 5) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewArrayFromPackedFloat64Array(from PackedFloat64Array, ) Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 7) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewArrayFromPackedFloat32Array(from PackedFloat32Array, ) *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 6) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewArrayFromPackedStringArray(from PackedStringArray, ) Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 8) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewArrayFromPackedFloat64Array(from PackedFloat64Array, ) *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 7) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewArrayFromPackedVector2Array(from PackedVector2Array, ) Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 9) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewArrayFromPackedStringArray(from PackedStringArray, ) *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 8) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewArrayFromPackedVector3Array(from PackedVector3Array, ) Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 10) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewArrayFromPackedVector2Array(from PackedVector2Array, ) *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 9) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewArrayFromPackedColorArray(from PackedColorArray, ) Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeArray))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeArray, 11) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewArrayFromPackedVector3Array(from PackedVector3Array, ) *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 10) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
+}
+
+func NewArrayFromPackedColorArray(from PackedColorArray, ) *Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newArray()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeArray, 11) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *Array) Destroy() {
-  if me.ptr == nil {
-    return
-  }
   dtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeArray)
-	me.iface.CallPtrDestructor(dtr, gdc.TypePtr(me.ptr))
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+	me.iface.CallPtrDestructor(dtr, me.AsTypePtr())
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsArray() (*Array, error) {
+	if me.Type() != gdc.VariantTypeArray {
+		return nil, fmt.Errorf("variant is not a Array")
+	}
+  bclass := newArray()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Array) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func ArrayFromPtr(ptr gdc.ConstTypePtr) *Array {
+  me := newArray()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Array) Type() gdc.VariantType {
@@ -152,11 +175,15 @@ func (me *Array) Type() gdc.VariantType {
 }
 
 func (me *Array) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Array) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Array) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -263,7 +290,7 @@ func (me *Array) Resize(size int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 848867239) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&size)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -275,7 +302,7 @@ func (me *Array) Insert(position int, value Variant, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3176316662) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), value.AsCTypePtr(), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&position)), value.AsCTypePtr(), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -286,7 +313,7 @@ func (me *Array) RemoveAt(position int, )  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2823966027) // FIXME: should cache?
 
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&position)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
@@ -353,7 +380,7 @@ func (me *Array) Find(what Variant, from int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2336346817) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&from)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -365,7 +392,7 @@ func (me *Array) Rfind(what Variant, from int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 2336346817) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(&from), }
+  args := []gdc.ConstTypePtr{what.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&from)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -425,7 +452,7 @@ func (me *Array) PopAt(position int, ) Variant {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3518259424) // FIXME: should cache?
 
   var ret Variant
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&position)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -467,7 +494,7 @@ func (me *Array) Bsearch(value Variant, before bool, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 3372222236) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{value.AsCTypePtr(), gdc.ConstTypePtr(&before), }
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&before)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -479,7 +506,7 @@ func (me *Array) BsearchCustom(value Variant, func_ Callable, before bool, ) int
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 161317131) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{value.AsCTypePtr(), func_.AsCTypePtr(), gdc.ConstTypePtr(&before), }
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), func_.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&before)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -501,7 +528,7 @@ func (me *Array) Duplicate(deep bool, ) Array {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 636440122) // FIXME: should cache?
 
   var ret Array
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&deep), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&deep)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -513,7 +540,7 @@ func (me *Array) Slice(begin int, end int, step int, deep bool, ) Array {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeArray, name.AsCPtr(), 1393718243) // FIXME: should cache?
 
   var ret Array
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&begin), gdc.ConstTypePtr(&end), gdc.ConstTypePtr(&step), gdc.ConstTypePtr(&deep), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&begin)), gdc.ConstTypePtr(unsafe.Pointer(&end)), gdc.ConstTypePtr(unsafe.Pointer(&step)), gdc.ConstTypePtr(unsafe.Pointer(&deep)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret

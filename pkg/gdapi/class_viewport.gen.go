@@ -1366,15 +1366,13 @@ type ViewportSizeChangedSignalFn func()
 func (me *Viewport) ConnectSizeChanged(subs SignalSubscribers, fn ViewportSizeChangedSignalFn) {
   sig := StringNameFromStr("size_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Viewport) DisconnectSizeChanged(subs SignalSubscribers, fn ViewportSizeChangedSignalFn) {
   sig := StringNameFromStr("size_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ViewportGuiFocusChangedSignalFn func(node Control, )
@@ -1382,13 +1380,11 @@ type ViewportGuiFocusChangedSignalFn func(node Control, )
 func (me *Viewport) ConnectGuiFocusChanged(subs SignalSubscribers, fn ViewportGuiFocusChangedSignalFn) {
   sig := StringNameFromStr("gui_focus_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Viewport) DisconnectGuiFocusChanged(subs SignalSubscribers, fn ViewportGuiFocusChangedSignalFn) {
   sig := StringNameFromStr("gui_focus_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

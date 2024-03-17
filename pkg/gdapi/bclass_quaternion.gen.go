@@ -2,14 +2,17 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type Quaternion struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizeQuaternion]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Constants
@@ -21,74 +24,104 @@ var (
 // Enums
 
 // Constructors
-
-func NewQuaternion() Quaternion {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeQuaternion))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return Quaternion{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newQuaternion() *Quaternion {
+  me := &Quaternion{
+    data:   new([classSizeQuaternion]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewQuaternionFromQuaternion(from Quaternion, ) Quaternion {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeQuaternion))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Quaternion{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewQuaternion() *Quaternion {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newQuaternion()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewQuaternionFromBasis(from Basis, ) Quaternion {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeQuaternion))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return Quaternion{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewQuaternionFromQuaternion(from Quaternion, ) *Quaternion {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newQuaternion()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewQuaternionFromVector3Float32(axis Vector3, angle float32, ) Quaternion {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeQuaternion))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 3) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(&angle), }))
-  return Quaternion{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewQuaternionFromBasis(from Basis, ) *Quaternion {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newQuaternion()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
-func NewQuaternionFromVector3Vector3(arc_from Vector3, arc_to Vector3, ) Quaternion {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeQuaternion))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 4) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{arc_from.AsCTypePtr(), arc_to.AsCTypePtr(), }))
-  return Quaternion{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewQuaternionFromVector3Float32(axis Vector3, angle float64, ) *Quaternion {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&angle)
+  me := newQuaternion()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 3) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(&angle), }))
+  return me
 }
 
-func NewQuaternionFromFloat32Float32Float32Float32(x float32, y float32, z float32, w float32, ) Quaternion {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizeQuaternion))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 5) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), gdc.ConstTypePtr(&z), gdc.ConstTypePtr(&w), }))
-  return Quaternion{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewQuaternionFromVector3Vector3(arc_from Vector3, arc_to Vector3, ) *Quaternion {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newQuaternion()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 4) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{arc_from.AsCTypePtr(), arc_to.AsCTypePtr(), }))
+  return me
+}
+
+func NewQuaternionFromFloat32Float32Float32Float32(x float64, y float64, z float64, w float64, ) *Quaternion {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&x)
+  pinner.Pin(&y)
+  pinner.Pin(&z)
+  pinner.Pin(&w)
+  me := newQuaternion()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeQuaternion, 5) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), gdc.ConstTypePtr(&z), gdc.ConstTypePtr(&w), }))
+  return me
 }
 
 // Destructor
 func (me *Quaternion) Destroy() {
-  if me.ptr == nil {
-    return
-  }
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsQuaternion() (*Quaternion, error) {
+	if me.Type() != gdc.VariantTypeQuaternion {
+		return nil, fmt.Errorf("variant is not a Quaternion")
+	}
+  bclass := newQuaternion()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *Quaternion) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func QuaternionFromPtr(ptr gdc.ConstTypePtr) *Quaternion {
+  me := newQuaternion()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *Quaternion) Type() gdc.VariantType {
@@ -96,11 +129,15 @@ func (me *Quaternion) Type() gdc.VariantType {
 }
 
 func (me *Quaternion) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *Quaternion) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *Quaternion) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -243,7 +280,7 @@ func (me *Quaternion) Slerp(to Quaternion, weight float32, ) Quaternion {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeQuaternion, name.AsCPtr(), 1773590316) // FIXME: should cache?
 
   var ret Quaternion
-  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -255,7 +292,7 @@ func (me *Quaternion) Slerpni(to Quaternion, weight float32, ) Quaternion {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeQuaternion, name.AsCPtr(), 1773590316) // FIXME: should cache?
 
   var ret Quaternion
-  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+  args := []gdc.ConstTypePtr{to.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -267,7 +304,7 @@ func (me *Quaternion) SphericalCubicInterpolate(b Quaternion, pre_a Quaternion, 
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeQuaternion, name.AsCPtr(), 2150967576) // FIXME: should cache?
 
   var ret Quaternion
-  args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(&weight), }
+  args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -279,7 +316,7 @@ func (me *Quaternion) SphericalCubicInterpolateInTime(b Quaternion, pre_a Quater
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeQuaternion, name.AsCPtr(), 1436023539) // FIXME: should cache?
 
   var ret Quaternion
-  args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(&weight), gdc.ConstTypePtr(&b_t), gdc.ConstTypePtr(&pre_a_t), gdc.ConstTypePtr(&post_b_t), }
+  args := []gdc.ConstTypePtr{b.AsCTypePtr(), pre_a.AsCTypePtr(), post_b.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), gdc.ConstTypePtr(unsafe.Pointer(&b_t)), gdc.ConstTypePtr(unsafe.Pointer(&pre_a_t)), gdc.ConstTypePtr(unsafe.Pointer(&post_b_t)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -291,7 +328,7 @@ func (me *Quaternion) GetEuler(order int, ) Vector3 {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeQuaternion, name.AsCPtr(), 1394941017) // FIXME: should cache?
 
   var ret Vector3
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&order), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&order)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -370,7 +407,7 @@ func (me *Quaternion) Not() bool {
   return ret
 }
 
-func (me *Quaternion) MultiplyInt(rightArg int) Quaternion {
+func (me *Quaternion) MultiplyInt(rightArg int64) Quaternion {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -380,7 +417,7 @@ func (me *Quaternion) MultiplyInt(rightArg int) Quaternion {
   return ret
 }
 
-func (me *Quaternion) DivideInt(rightArg int) Quaternion {
+func (me *Quaternion) DivideInt(rightArg int64) Quaternion {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
@@ -390,7 +427,7 @@ func (me *Quaternion) DivideInt(rightArg int) Quaternion {
   return ret
 }
 
-func (me *Quaternion) MultiplyFloat32(rightArg float32) Quaternion {
+func (me *Quaternion) MultiplyFloat32(rightArg float64) Quaternion {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -400,7 +437,7 @@ func (me *Quaternion) MultiplyFloat32(rightArg float32) Quaternion {
   return ret
 }
 
-func (me *Quaternion) DivideFloat32(rightArg float32) Quaternion {
+func (me *Quaternion) DivideFloat32(rightArg float64) Quaternion {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
@@ -483,7 +520,7 @@ func (me *Quaternion) SetX(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Quaternion) Y() float32 {
@@ -501,7 +538,7 @@ func (me *Quaternion) SetY(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Quaternion) Z() float32 {
@@ -519,7 +556,7 @@ func (me *Quaternion) SetZ(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }
 
 func (me *Quaternion) W() float32 {
@@ -537,5 +574,5 @@ func (me *Quaternion) SetW(value float32) {
   defer name.Destroy()
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
 }

@@ -587,15 +587,13 @@ type ObjectScriptChangedSignalFn func()
 func (me *Object) ConnectScriptChanged(subs SignalSubscribers, fn ObjectScriptChangedSignalFn) {
   sig := StringNameFromStr("script_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Object) DisconnectScriptChanged(subs SignalSubscribers, fn ObjectScriptChangedSignalFn) {
   sig := StringNameFromStr("script_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ObjectPropertyListChangedSignalFn func()
@@ -603,13 +601,11 @@ type ObjectPropertyListChangedSignalFn func()
 func (me *Object) ConnectPropertyListChanged(subs SignalSubscribers, fn ObjectPropertyListChangedSignalFn) {
   sig := StringNameFromStr("property_list_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Object) DisconnectPropertyListChanged(subs SignalSubscribers, fn ObjectPropertyListChangedSignalFn) {
   sig := StringNameFromStr("property_list_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

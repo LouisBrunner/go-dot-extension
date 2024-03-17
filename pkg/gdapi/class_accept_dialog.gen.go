@@ -222,15 +222,13 @@ type AcceptDialogConfirmedSignalFn func()
 func (me *AcceptDialog) ConnectConfirmed(subs SignalSubscribers, fn AcceptDialogConfirmedSignalFn) {
   sig := StringNameFromStr("confirmed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AcceptDialog) DisconnectConfirmed(subs SignalSubscribers, fn AcceptDialogConfirmedSignalFn) {
   sig := StringNameFromStr("confirmed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AcceptDialogCanceledSignalFn func()
@@ -238,15 +236,13 @@ type AcceptDialogCanceledSignalFn func()
 func (me *AcceptDialog) ConnectCanceled(subs SignalSubscribers, fn AcceptDialogCanceledSignalFn) {
   sig := StringNameFromStr("canceled")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AcceptDialog) DisconnectCanceled(subs SignalSubscribers, fn AcceptDialogCanceledSignalFn) {
   sig := StringNameFromStr("canceled")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type AcceptDialogCustomActionSignalFn func(action StringName, )
@@ -254,13 +250,11 @@ type AcceptDialogCustomActionSignalFn func(action StringName, )
 func (me *AcceptDialog) ConnectCustomAction(subs SignalSubscribers, fn AcceptDialogCustomActionSignalFn) {
   sig := StringNameFromStr("custom_action")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *AcceptDialog) DisconnectCustomAction(subs SignalSubscribers, fn AcceptDialogCustomActionSignalFn) {
   sig := StringNameFromStr("custom_action")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

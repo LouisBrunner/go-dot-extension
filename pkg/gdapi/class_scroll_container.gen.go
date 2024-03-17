@@ -262,15 +262,13 @@ type ScrollContainerScrollStartedSignalFn func()
 func (me *ScrollContainer) ConnectScrollStarted(subs SignalSubscribers, fn ScrollContainerScrollStartedSignalFn) {
   sig := StringNameFromStr("scroll_started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScrollContainer) DisconnectScrollStarted(subs SignalSubscribers, fn ScrollContainerScrollStartedSignalFn) {
   sig := StringNameFromStr("scroll_started")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ScrollContainerScrollEndedSignalFn func()
@@ -278,13 +276,11 @@ type ScrollContainerScrollEndedSignalFn func()
 func (me *ScrollContainer) ConnectScrollEnded(subs SignalSubscribers, fn ScrollContainerScrollEndedSignalFn) {
   sig := StringNameFromStr("scroll_ended")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScrollContainer) DisconnectScrollEnded(subs SignalSubscribers, fn ScrollContainerScrollEndedSignalFn) {
   sig := StringNameFromStr("scroll_ended")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

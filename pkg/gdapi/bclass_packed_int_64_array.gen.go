@@ -2,59 +2,90 @@
 package gdapi
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 type PackedInt64Array struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSizePackedInt64Array]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 // Enums
 
 // Constructors
-
-func NewPackedInt64Array() PackedInt64Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizePackedInt64Array))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypePackedInt64Array, 0) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{}))
-  return PackedInt64Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
+func newPackedInt64Array() *PackedInt64Array {
+  me := &PackedInt64Array{
+    data:   new([classSizePackedInt64Array]byte),
+    iface:  giface,
   }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
 }
 
-func NewPackedInt64ArrayFromPackedInt64Array(from PackedInt64Array, ) PackedInt64Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizePackedInt64Array))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypePackedInt64Array, 1) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return PackedInt64Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewPackedInt64Array() *PackedInt64Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newPackedInt64Array()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePackedInt64Array, 0) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  return me
 }
 
-func NewPackedInt64ArrayFromArray(from Array, ) PackedInt64Array {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSizePackedInt64Array))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantTypePackedInt64Array, 2) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
-  return PackedInt64Array{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+func NewPackedInt64ArrayFromPackedInt64Array(from PackedInt64Array, ) *PackedInt64Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newPackedInt64Array()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePackedInt64Array, 1) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
+}
+
+func NewPackedInt64ArrayFromArray(from Array, ) *PackedInt64Array {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  me := newPackedInt64Array()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePackedInt64Array, 2) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  return me
 }
 
 // Destructor
 func (me *PackedInt64Array) Destroy() {
-  if me.ptr == nil {
-    return
-  }
   dtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypePackedInt64Array)
-	me.iface.CallPtrDestructor(dtr, gdc.TypePtr(me.ptr))
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+	me.iface.CallPtrDestructor(dtr, me.AsTypePtr())
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) AsPackedInt64Array() (*PackedInt64Array, error) {
+	if me.Type() != gdc.VariantTypePackedInt64Array {
+		return nil, fmt.Errorf("variant is not a PackedInt64Array")
+	}
+  bclass := newPackedInt64Array()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *PackedInt64Array) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func PackedInt64ArrayFromPtr(ptr gdc.ConstTypePtr) *PackedInt64Array {
+  me := newPackedInt64Array()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *PackedInt64Array) Type() gdc.VariantType {
@@ -62,11 +93,15 @@ func (me *PackedInt64Array) Type() gdc.VariantType {
 }
 
 func (me *PackedInt64Array) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *PackedInt64Array) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
+}
+
+func (me *PackedInt64Array) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
 // Methods
@@ -100,7 +135,7 @@ func (me *PackedInt64Array) Set(index int, value int, )  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 3638975848) // FIXME: should cache?
 
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), gdc.ConstTypePtr(&value), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&index)), gdc.ConstTypePtr(unsafe.Pointer(&value)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
@@ -111,7 +146,7 @@ func (me *PackedInt64Array) PushBack(value int, ) bool {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 694024632) // FIXME: should cache?
 
   var ret bool
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&value)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -123,7 +158,7 @@ func (me *PackedInt64Array) Append(value int, ) bool {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 694024632) // FIXME: should cache?
 
   var ret bool
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&value)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -144,7 +179,7 @@ func (me *PackedInt64Array) RemoveAt(index int, )  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 2823966027) // FIXME: should cache?
 
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&index)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
@@ -155,7 +190,7 @@ func (me *PackedInt64Array) Insert(at_index int, value int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 1487112728) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&at_index), gdc.ConstTypePtr(&value), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&at_index)), gdc.ConstTypePtr(unsafe.Pointer(&value)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -166,7 +201,7 @@ func (me *PackedInt64Array) Fill(value int, )  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 2823966027) // FIXME: should cache?
 
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&value)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
@@ -177,7 +212,7 @@ func (me *PackedInt64Array) Resize(new_size int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 848867239) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&new_size), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&new_size)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -199,7 +234,7 @@ func (me *PackedInt64Array) Has(value int, ) bool {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 931488181) // FIXME: should cache?
 
   var ret bool
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&value)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -221,7 +256,7 @@ func (me *PackedInt64Array) Slice(begin int, end int, ) PackedInt64Array {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 1726550804) // FIXME: should cache?
 
   var ret PackedInt64Array
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&begin), gdc.ConstTypePtr(&end), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&begin)), gdc.ConstTypePtr(unsafe.Pointer(&end)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -255,7 +290,7 @@ func (me *PackedInt64Array) Bsearch(value int, before bool, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 3380005890) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), gdc.ConstTypePtr(&before), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&value)), gdc.ConstTypePtr(unsafe.Pointer(&before)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -279,7 +314,7 @@ func (me *PackedInt64Array) Find(value int, from int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 2984303840) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), gdc.ConstTypePtr(&from), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&value)), gdc.ConstTypePtr(unsafe.Pointer(&from)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -291,7 +326,7 @@ func (me *PackedInt64Array) Rfind(value int, from int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 2984303840) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), gdc.ConstTypePtr(&from), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&value)), gdc.ConstTypePtr(unsafe.Pointer(&from)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -303,7 +338,7 @@ func (me *PackedInt64Array) Count(value int, ) int {
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedInt64Array, name.AsCPtr(), 4103005248) // FIXME: should cache?
 
   var ret int
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&value)), }
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret

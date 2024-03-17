@@ -88,13 +88,11 @@ type MeshInstance2DTextureChangedSignalFn func()
 func (me *MeshInstance2D) ConnectTextureChanged(subs SignalSubscribers, fn MeshInstance2DTextureChangedSignalFn) {
   sig := StringNameFromStr("texture_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *MeshInstance2D) DisconnectTextureChanged(subs SignalSubscribers, fn MeshInstance2DTextureChangedSignalFn) {
   sig := StringNameFromStr("texture_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

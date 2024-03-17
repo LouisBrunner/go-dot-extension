@@ -5,7 +5,6 @@ import (
 	"reflect"
 	"runtime"
 	"strings"
-	"sync"
 	"unsafe"
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdapi"
@@ -14,84 +13,13 @@ import (
 	"github.com/iancoleman/strcase"
 )
 
-type classProperty struct {
-	name     string
-	property *gdc.PropertyInfo
-	getter   gdapi.StringName
-	setter   gdapi.StringName
-
-	objClassNamePtr *gdapi.StringName
-}
-
-type classMethod struct {
-	name        string
-	method      gdc.ClassMethodInfo
-	fn          interface{}
-	pinner      runtime.Pinner
-	saveArgInfo []gdc.PropertyInfo
-}
-
-type classSignal struct {
-	name     string
-	namePtr  gdapi.StringName
-	argsPtr  *gdc.PropertyInfo
-	argCount uint
-}
-
-type classEntry struct {
-	name        string
-	constructor ClassConstructor
-	properties  []classProperty
-	methods     []classMethod
-	signals     []classSignal
-	subscribers []string
-
-	parentNamePtr gdapi.StringName
-	namePtr       gdapi.StringName
-
-	mutex     sync.Mutex
-	instances map[uint64]*classInstance
-}
-
-func (me *classEntry) makeProperties() []gdc.PropertyInfo {
-	properties := gdc.CNewPropertyInfoArray(len(me.properties))
-	for i, property := range me.properties {
-		properties[i] = *property.property
-	}
-	return properties
-}
-
-func typeToVariant(val reflect.Type) (gdc.VariantType, error) {
-	switch val.Kind() {
-	case reflect.Bool:
-		return gdc.VariantTypeBool, nil
-	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64,
-		reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-		return gdc.VariantTypeInt, nil
-	case reflect.Float32, reflect.Float64:
-		return gdc.VariantTypeFloat, nil
-	case reflect.String:
-		return gdc.VariantTypeString, nil
-	case reflect.Array, reflect.Slice:
-		return gdc.VariantTypeArray, nil
-	case reflect.Struct, reflect.Interface:
-		bclazz, isBclass := reflect.New(val).Interface().(gdapi.BClass)
-		if isBclass {
-			return bclazz.Type(), nil
-		}
-		return gdc.VariantTypeObject, nil
-	case reflect.Pointer:
-		return typeToVariant(val.Elem())
-	default:
-		return gdc.VariantTypeNil, fmt.Errorf("unsupported type %s", val.Kind())
-	}
-}
-
 type tagData struct {
 	name   string
 	getter string
 	setter string
 }
+
+const tagName = "godot"
 
 func parseTag(tag string) *tagData {
 	if tag == "" {
@@ -116,6 +44,10 @@ func parseTag(tag string) *tagData {
 	return data
 }
 
+var reservedMethods = []string{
+	"Destroy",
+}
+
 func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 	instance := ctr()
 	typ := reflect.TypeOf(instance)
@@ -124,15 +56,19 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 	}
 
 	className := typ.Elem().Name()
-	namePtr := gdapi.StringNameFromStr(className)
-	parentPtr := gdapi.StringNameFromStr(instance.BaseClass())
+	namePtr := *gdapi.StringNameFromStr(className)
+	parentPtr := *gdapi.StringNameFromStr(instance.BaseClass())
 
-	properties := make([]classProperty, 0, typ.Elem().NumField())
+	properties := make(map[string]classProperty, typ.Elem().NumField())
 	methods := make([]classMethod, 0, typ.NumMethod())
 	signals := make([]classSignal, 0)
-	subscribers := make([]string, 0)
+	subscribers := make([]classSubscriber, 0)
 
 	ignoredMethods := map[string]struct{}{}
+	for _, method := range reservedMethods {
+		ignoredMethods[method] = struct{}{}
+	}
+
 	for _, field := range reflect.VisibleFields(typ.Elem()) {
 		ftyp := field.Type
 		if field.Anonymous {
@@ -152,9 +88,8 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 			continue
 		}
 
-		_, isSubs := reflect.New(ftyp).Interface().(*gdapi.SignalSubscribers)
-		if isSubs {
-			subscribers = append(subscribers, field.Name)
+		if reflectIsA[gdapi.SignalSubscribers](ftyp) {
+			subscribers = append(subscribers, classSubscriber(field.Name))
 			continue
 		}
 
@@ -162,12 +97,16 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 			continue
 		}
 
-		_, isSignal := reflect.New(ftyp).Interface().(*gdapi.Signal)
-		if isSignal {
-			sigName := strcase.ToSnake(field.Name)
+		fieldName := strcase.ToSnake(field.Name)
+		info := parseTag(field.Tag.Get(tagName))
+		if info != nil && info.name != "" {
+			fieldName = info.name
+		}
+
+		if reflectIsA[gdapi.Signal](ftyp) {
 			signals = append(signals, classSignal{
 				name:    field.Name,
-				namePtr: gdapi.StringNameFromStr(sigName),
+				namePtr: *gdapi.StringNameFromStr(fieldName),
 				// TODO: no clue how to get the args ATM
 				argsPtr:  nil,
 				argCount: 0,
@@ -175,13 +114,21 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 			continue
 		}
 
-		getter, setter, prop, err := makeProperty(&namePtr, len(methods), field, ignoredMethods)
+		getter, setter, prop, err := makeProperty(len(methods), fieldName, info, typ, field, ignoredMethods)
 		if err != nil {
 			return nil, fmt.Errorf("property %q of class %q: %w", field.Name, className, err)
 		}
 
-		methods = append(methods, *getter, *setter)
-		properties = append(properties, *prop)
+		methods = append(methods, *getter)
+		if setter != nil {
+			methods = append(methods, *setter)
+		}
+
+		_, found := properties[prop.gdName]
+		if found {
+			return nil, fmt.Errorf("property %q of class %q: duplicate name", field.Name, className)
+		}
+		properties[prop.gdName] = *prop
 	}
 
 	for m := 0; m < typ.NumMethod(); m++ {
@@ -193,7 +140,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 			continue
 		}
 
-		methodPtr, err := makeMethod(&namePtr, len(methods), method)
+		methodPtr, err := makeMethod(len(methods), method)
 		if err != nil {
 			return nil, fmt.Errorf("method %q of class %q: %w", method.Name, className, err)
 		}
@@ -214,38 +161,47 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 	}, nil
 }
 
-func makeProperty(className *gdapi.StringName, idx int, field reflect.StructField, ignoredMethods map[string]struct{}) (*classMethod, *classMethod, *classProperty, error) {
-	fieldName := strcase.ToSnake(field.Name)
-	info := parseTag(field.Tag.Get("gde"))
-	if info != nil && info.name != "" {
-		fieldName = info.name
-	}
-
-	getterFn := func(me interface{}) interface{} {
-		return reflect.ValueOf(me).Elem().FieldByName(field.Name).Interface()
-	}
+func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, field reflect.StructField, ignoredMethods map[string]struct{}) (*classMethod, *classMethod, *classProperty, error) {
+	getterFn := any(func(me interface{}) interface{} {
+		return reflectGetField(me, field.Name).Interface()
+	})
 	getterName := fmt.Sprintf("_get_property_%s", fieldName)
 	if info != nil && info.getter != "" {
-		getterFn = func(me interface{}) interface{} {
-			// TODO: need a lot of checking
-			return reflect.ValueOf(me).MethodByName(info.getter).Call(nil)[0].Interface()
+		method, found := clazz.MethodByName(info.getter)
+		if !found {
+			return nil, nil, nil, fmt.Errorf("getter %q not found", info.getter)
 		}
+		if method.Type.NumIn() != 1 || method.Type.NumOut() != 1 {
+			return nil, nil, nil, fmt.Errorf("getter %q has wrong signature", info.getter)
+		}
+		getterFn = method.Func.Interface()
 		ignoredMethods[info.getter] = struct{}{}
 	}
 	getter := gdapi.StringNameFromStr(getterName)
-	setterFn := func(me interface{}, value interface{}) {
-		reflect.ValueOf(me).Elem().FieldByName(field.Name).Set(reflect.ValueOf(value))
-	}
+
+	setterFn := any(func(me interface{}, value interface{}) {
+		reflectSetField(me, field.Name, value)
+	})
 	setterName := fmt.Sprintf("_set_property_%s", fieldName)
 	if info != nil && info.setter != "" {
-		setterFn = func(me interface{}, value interface{}) {
-			reflect.ValueOf(me).MethodByName(info.setter).Call([]reflect.Value{reflect.ValueOf(value)})
+		if info.setter == "nil" {
+			setterFn = nil
+			setterName = ""
+		} else {
+			method, found := clazz.MethodByName(info.setter)
+			if !found {
+				return nil, nil, nil, fmt.Errorf("setter %q not found", info.setter)
+			}
+			if method.Type.NumIn() != 2 || method.Type.NumOut() != 0 {
+				return nil, nil, nil, fmt.Errorf("setter %q has wrong signature", info.setter)
+			}
+			setterFn = method.Func.Interface()
+			ignoredMethods[info.setter] = struct{}{}
 		}
-		ignoredMethods[info.setter] = struct{}{}
 	}
 	setter := gdapi.StringNameFromStr(setterName)
 
-	varType, err := typeToVariant(field.Type)
+	varType, objClassName, err := typeToVariantNClass(field.Type)
 	if err != nil {
 		return nil, nil, nil, err
 	}
@@ -253,8 +209,8 @@ func makeProperty(className *gdapi.StringName, idx int, field reflect.StructFiel
 	pinner := runtime.Pinner{}
 
 	propCpy := &gdc.PropertyInfo{
-		ClassName:  className.AsPtr(),
-		Name:       gdapi.PStringNameFromStr(fieldName).AsPtr(),
+		ClassName:  objClassName,
+		Name:       gdapi.StringNameFromStr(fieldName).AsPtr(),
 		Type:       varType,
 		Hint:       uint(gdapi.PropertyHintNone),
 		HintString: gdapi.StringFromStr("").AsPtr(),
@@ -265,11 +221,26 @@ func makeProperty(className *gdapi.StringName, idx int, field reflect.StructFiel
 	argMetadataP := unsafe.SliceData(argMetadata)
 	pinner.Pin(argMetadataP)
 
-	var objClassName *gdapi.StringName
+	var objClassNamePtr gdc.ConstStringNamePtr
 	if varType == gdc.VariantTypeObject {
-		inst, ok := reflect.New(field.Type).Interface().(gdapi.Object)
-		if ok {
-			objClassName = gdapi.PStringNameFromStr(inst.BaseClass())
+		objClassNamePtr = gdc.ConstStringNamePtr(objClassName)
+	}
+
+	var setterMethod *classMethod
+	if setterFn != nil {
+		setterMethod = &classMethod{
+			name: setterName,
+			fn:   setterFn,
+			method: gdc.ClassMethodInfo{
+				Name:              setter.AsPtr(),
+				MethodUserdata:    *(*unsafe.Pointer)(unsafe.Pointer(utils.ToPointer(idx + 1))),
+				PtrcallFunc:       gdc.Callbacks.GetClassMethodInfoPtrcallFuncCallback(),
+				CallFunc:          gdc.Callbacks.GetClassMethodInfoCallFuncCallback(),
+				MethodFlags:       uint(gdapi.MethodFlagsDefault),
+				ArgumentCount:     1,
+				ArgumentsInfo:     propCpy,
+				ArgumentsMetadata: argMetadataP,
+			},
 		}
 	}
 
@@ -287,29 +258,18 @@ func makeProperty(className *gdapi.StringName, idx int, field reflect.StructFiel
 				ReturnValueMetadata: gdc.MethodArgumentMetadataNone,
 				ReturnValueInfo:     propCpy,
 			},
-		}, &classMethod{
-			name: setterName,
-			fn:   setterFn,
-			method: gdc.ClassMethodInfo{
-				Name:              setter.AsPtr(),
-				MethodUserdata:    *(*unsafe.Pointer)(unsafe.Pointer(utils.ToPointer(idx + 1))),
-				PtrcallFunc:       gdc.Callbacks.GetClassMethodInfoPtrcallFuncCallback(),
-				CallFunc:          gdc.Callbacks.GetClassMethodInfoCallFuncCallback(),
-				MethodFlags:       uint(gdapi.MethodFlagsDefault),
-				ArgumentCount:     1,
-				ArgumentsInfo:     propCpy,
-				ArgumentsMetadata: argMetadataP,
-			},
-		}, &classProperty{
+		}, setterMethod, &classProperty{
 			name:            field.Name,
+			gdName:          fieldName,
+			typ:             field.Type,
 			property:        propCpy,
-			getter:          getter,
-			setter:          setter,
-			objClassNamePtr: objClassName,
+			getter:          *getter,
+			setter:          *setter,
+			objClassNamePtr: objClassNamePtr,
 		}, nil
 }
 
-func makeMethod(className *gdapi.StringName, idx int, method reflect.Method) (*classMethod, error) {
+func makeMethod(idx int, method reflect.Method) (*classMethod, error) {
 	methodName := strcase.ToSnake(method.Name)
 	flags := uint(gdapi.MethodFlagsDefault)
 	if strings.HasPrefix(methodName, "x_") {
@@ -325,8 +285,8 @@ func makeMethod(className *gdapi.StringName, idx int, method reflect.Method) (*c
 		argCount = 1
 		argInfo = []gdc.PropertyInfo{
 			{
-				ClassName:  className.AsPtr(),
-				Name:       gdapi.PStringNameFromStr("varargs").AsPtr(),
+				ClassName:  gdapi.NewStringName().AsPtr(),
+				Name:       gdapi.StringNameFromStr("varargs").AsPtr(),
 				Type:       gdc.VariantTypeNil,
 				Hint:       uint(gdapi.PropertyHintNone),
 				HintString: gdapi.StringFromStr("").AsPtr(),
@@ -338,13 +298,13 @@ func makeMethod(className *gdapi.StringName, idx int, method reflect.Method) (*c
 		for i := 0; i < argCount; i += 1 {
 			arg := method.Type.In(i + 1)
 			aname := fmt.Sprintf("arg%d", i)
-			varType, err := typeToVariant(arg)
+			varType, className, err := typeToVariantNClass(arg)
 			if err != nil {
 				return nil, fmt.Errorf("argument %d: %w", i, err)
 			}
 			argInfo[i] = gdc.PropertyInfo{
-				ClassName:  className.AsPtr(),
-				Name:       gdapi.PStringNameFromStr(aname).AsPtr(),
+				ClassName:  className,
+				Name:       gdapi.StringNameFromStr(aname).AsPtr(),
 				Type:       varType,
 				Hint:       uint(gdapi.PropertyHintNone),
 				HintString: gdapi.StringFromStr("").AsPtr(),
@@ -374,13 +334,13 @@ func makeMethod(className *gdapi.StringName, idx int, method reflect.Method) (*c
 	} else if method.Type.NumOut() > 0 {
 		hasReturn = gdc.Bool(1)
 		out := method.Type.Out(0)
-		varType, err := typeToVariant(out)
+		varType, className, err := typeToVariantNClass(out)
 		if err != nil {
 			return nil, fmt.Errorf("return value: %w", err)
 		}
 		retInfo = &gdc.PropertyInfo{
-			ClassName:  className.AsPtr(),
-			Name:       gdapi.PStringNameFromStr(out.Name()).AsPtr(),
+			ClassName:  className,
+			Name:       gdapi.StringNameFromStr(out.Name()).AsPtr(),
 			Type:       varType,
 			Hint:       uint(gdapi.PropertyHintNone),
 			HintString: gdapi.StringFromStr("").AsPtr(),

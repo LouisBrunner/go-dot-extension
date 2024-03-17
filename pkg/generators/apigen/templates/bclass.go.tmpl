@@ -1,6 +1,8 @@
 {{template "preamble"}}
 
 import (
+  "fmt"
+  "runtime"
   "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
@@ -8,8 +10,9 @@ import (
 
 {{$Class := mapClass .Name -}}
 type {{$Class}} struct {
-  iface gdc.Interface
-  ptr gdc.TypePtr
+  data   *[classSize{{$Class}}]byte
+  iface  gdc.Interface
+  pinner runtime.Pinner
 }
 
 {{- template "class_enums" .}}
@@ -19,12 +22,29 @@ type {{$Class}} struct {
 {{- end}}
 
 // Constructors
+func new{{$Class}}() *{{$Class}} {
+  me := &{{$Class}}{
+    data:   new([classSize{{$Class}}]byte),
+    iface:  giface,
+  }
+  me.pinner.Pin(me)
+  me.pinner.Pin(me.AsTypePtr())
+  return me
+}
+
 {{- range .Constructors}}
 
-func New{{$Class}}{{template "function_name" .}}({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}) {{$Class}} {
-  ptr := (gdc.UninitializedTypePtr)(cmalloc(classSize{{$Class}}))
-  ctr := giface.VariantGetPtrConstructor(gdc.VariantType{{pascalCased $.Name}}, {{.Index}}) // FIXME: should cache?
-  giface.CallPtrConstructor(ctr, ptr, unsafe.SliceData([]gdc.ConstTypePtr{
+func New{{$Class}}{{template "function_name" .}}({{range .Arguments}}{{mapName .Name}} {{mapWideType .Type}}, {{end}}) *{{$Class}} {
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+{{- range .Arguments}}
+{{- if not (isExported (mapType .Type))}}
+  pinner.Pin(&{{mapName .Name}})
+{{- end -}}
+{{ end}}
+  me := new{{$Class}}()
+  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantType{{pascalCased $.Name}}, {{.Index}}) // FIXME: should cache?
+  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{
     {{- range .Arguments}}
 {{- if isExported (mapType .Type) -}}
   {{mapName .Name}}.AsCTypePtr()
@@ -33,24 +53,43 @@ func New{{$Class}}{{template "function_name" .}}({{range .Arguments}}{{mapName .
 {{- end -}}
     , {{ end -}}
   }))
-  return {{$Class}}{
-    iface: giface,
-    ptr: gdc.TypePtr(ptr),
-  }
+  return me
 }
 {{- end}}
 
 // Destructor
 func (me *{{$Class}}) Destroy() {
-  if me.ptr == nil {
-    return
-  }
 {{- if .HasDestructor}}
   dtr := me.iface.VariantGetPtrDestructor(gdc.VariantType{{$Class}})
-	me.iface.CallPtrDestructor(dtr, gdc.TypePtr(me.ptr))
+	me.iface.CallPtrDestructor(dtr, me.AsTypePtr())
 {{- end}}
-	cfree(unsafe.Pointer(me.ptr))
-  me.ptr = nil
+  me.pinner.Unpin()
+}
+
+// Variant support
+func (me *Variant) As{{$Class}}() (*{{$Class}}, error) {
+	if me.Type() != gdc.VariantType{{pascalCased .Name}} {
+		return nil, fmt.Errorf("variant is not a {{$Class}}")
+	}
+  bclass := new{{$Class}}()
+	fn := me.iface.GetVariantToTypeConstructor(me.Type())
+	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	return bclass, nil
+}
+
+func (me *{{$Class}}) AsVariant() *Variant {
+  va := newVariant()
+  va.inner = me
+  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
+  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  return va
+}
+
+// Pointers
+func {{$Class}}FromPtr(ptr gdc.ConstTypePtr) *{{$Class}} {
+  me := new{{$Class}}()
+  dataFromPtr(me.data[:], ptr)
+  return me
 }
 
 func (me *{{$Class}}) Type() gdc.VariantType {
@@ -58,13 +97,21 @@ func (me *{{$Class}}) Type() gdc.VariantType {
 }
 
 func (me *{{$Class}}) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.ptr)
+  return gdc.TypePtr(unsafe.Pointer(me.data))
 }
 
 func (me *{{$Class}}) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.ptr)
+  return gdc.ConstTypePtr(me.AsTypePtr())
 }
 
+func (me *{{$Class}}) asUninitialized() gdc.UninitializedTypePtr {
+  return gdc.UninitializedTypePtr(me.AsTypePtr())
+}
+{{if or (eq .Name "bool") (or (eq .Name "int") (eq .Name "float"))}}
+func (me *{{$Class}}) Get() {{mapWideType .Name}} {
+  return *(*{{mapWideType .Name}})(unsafe.Pointer(&me.data))
+}
+{{end}}
 // Methods
 {{- range .Methods}}
 
@@ -76,13 +123,22 @@ func {{if .IsStatic }}{{$Class}}{{else}}(me *{{$Class}}) {{end }}{{mapMethod .Na
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantType{{pascalCased $.Name}}, name.AsCPtr(), {{.Hash}}) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+{{- range .Arguments}}
+{{- if not (isExported (mapType .Type))}}
+  pinner.Pin(&{{mapName .Name}})
+{{- end -}}
+{{ end}}
+  pinner.Pin(&ret)
+
 {{if .ReturnType}}  var ret {{mapType .ReturnType}}
 {{end}}  args := []gdc.ConstTypePtr{
     {{- range .Arguments}}
 {{- if isExported (mapType .Type) -}}
   {{mapName .Name}}.AsCTypePtr()
 {{- else -}}
-  gdc.ConstTypePtr(&{{mapName .Name}})
+  gdc.ConstTypePtr(unsafe.Pointer(&{{mapName .Name}}))
 {{- end -}}
     , {{ end -}}
   }
@@ -99,7 +155,7 @@ func {{if .IsStatic }}{{$Class}}{{else}}(me *{{$Class}}) {{end }}{{mapMethod .Na
 {{- range .Operators}}
 
 func (me *{{$Class}}) {{mapMethod (mapOperator .Name)}}{{if ne .RightType ""}}{{pascalCased (mapType .RightType)}}{{end -}}
-({{if ne .RightType ""}}{{if isExported (mapType .RightType)}}right{{else}}rightArg{{end}} {{mapType .RightType}}{{end}}) {{mapType .ReturnType}} {
+({{if ne .RightType ""}}{{if isExported (mapType .RightType)}}right{{else}}rightArg{{end}} {{mapWideType .RightType}}{{end}}) {{mapType .ReturnType}} {
 {{- if ne .RightType ""}}{{if not (isExported (mapType .RightType))}}
   right := New{{mapClass .RightType}}From{{pascalCased (mapType .RightType)}}(rightArg)
   defer right.Destroy()
@@ -127,6 +183,10 @@ func (me *{{$Class}}) {{mapMethod .Name}}() {{mapType .Type}} {
 func (me *{{$Class}}) Set{{pascalCased .Name}}(value {{mapType .Type}}) {
   name := StringNameFromStr("{{.Name}}")
   defer name.Destroy()
+
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&value)
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
   me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))

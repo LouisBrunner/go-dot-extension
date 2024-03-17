@@ -64,15 +64,13 @@ type ScriptEditorBaseNameChangedSignalFn func()
 func (me *ScriptEditorBase) ConnectNameChanged(subs SignalSubscribers, fn ScriptEditorBaseNameChangedSignalFn) {
   sig := StringNameFromStr("name_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScriptEditorBase) DisconnectNameChanged(subs SignalSubscribers, fn ScriptEditorBaseNameChangedSignalFn) {
   sig := StringNameFromStr("name_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ScriptEditorBaseEditedScriptChangedSignalFn func()
@@ -80,15 +78,13 @@ type ScriptEditorBaseEditedScriptChangedSignalFn func()
 func (me *ScriptEditorBase) ConnectEditedScriptChanged(subs SignalSubscribers, fn ScriptEditorBaseEditedScriptChangedSignalFn) {
   sig := StringNameFromStr("edited_script_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScriptEditorBase) DisconnectEditedScriptChanged(subs SignalSubscribers, fn ScriptEditorBaseEditedScriptChangedSignalFn) {
   sig := StringNameFromStr("edited_script_changed")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ScriptEditorBaseRequestHelpSignalFn func(topic String, )
@@ -96,15 +92,13 @@ type ScriptEditorBaseRequestHelpSignalFn func(topic String, )
 func (me *ScriptEditorBase) ConnectRequestHelp(subs SignalSubscribers, fn ScriptEditorBaseRequestHelpSignalFn) {
   sig := StringNameFromStr("request_help")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScriptEditorBase) DisconnectRequestHelp(subs SignalSubscribers, fn ScriptEditorBaseRequestHelpSignalFn) {
   sig := StringNameFromStr("request_help")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ScriptEditorBaseRequestOpenScriptAtLineSignalFn func(script Object, line int, )
@@ -112,15 +106,13 @@ type ScriptEditorBaseRequestOpenScriptAtLineSignalFn func(script Object, line in
 func (me *ScriptEditorBase) ConnectRequestOpenScriptAtLine(subs SignalSubscribers, fn ScriptEditorBaseRequestOpenScriptAtLineSignalFn) {
   sig := StringNameFromStr("request_open_script_at_line")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScriptEditorBase) DisconnectRequestOpenScriptAtLine(subs SignalSubscribers, fn ScriptEditorBaseRequestOpenScriptAtLineSignalFn) {
   sig := StringNameFromStr("request_open_script_at_line")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ScriptEditorBaseRequestSaveHistorySignalFn func()
@@ -128,15 +120,13 @@ type ScriptEditorBaseRequestSaveHistorySignalFn func()
 func (me *ScriptEditorBase) ConnectRequestSaveHistory(subs SignalSubscribers, fn ScriptEditorBaseRequestSaveHistorySignalFn) {
   sig := StringNameFromStr("request_save_history")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScriptEditorBase) DisconnectRequestSaveHistory(subs SignalSubscribers, fn ScriptEditorBaseRequestSaveHistorySignalFn) {
   sig := StringNameFromStr("request_save_history")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ScriptEditorBaseGoToHelpSignalFn func(what String, )
@@ -144,15 +134,13 @@ type ScriptEditorBaseGoToHelpSignalFn func(what String, )
 func (me *ScriptEditorBase) ConnectGoToHelp(subs SignalSubscribers, fn ScriptEditorBaseGoToHelpSignalFn) {
   sig := StringNameFromStr("go_to_help")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScriptEditorBase) DisconnectGoToHelp(subs SignalSubscribers, fn ScriptEditorBaseGoToHelpSignalFn) {
   sig := StringNameFromStr("go_to_help")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ScriptEditorBaseSearchInFilesRequestedSignalFn func(text String, )
@@ -160,15 +148,13 @@ type ScriptEditorBaseSearchInFilesRequestedSignalFn func(text String, )
 func (me *ScriptEditorBase) ConnectSearchInFilesRequested(subs SignalSubscribers, fn ScriptEditorBaseSearchInFilesRequestedSignalFn) {
   sig := StringNameFromStr("search_in_files_requested")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScriptEditorBase) DisconnectSearchInFilesRequested(subs SignalSubscribers, fn ScriptEditorBaseSearchInFilesRequestedSignalFn) {
   sig := StringNameFromStr("search_in_files_requested")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ScriptEditorBaseReplaceInFilesRequestedSignalFn func(text String, )
@@ -176,15 +162,13 @@ type ScriptEditorBaseReplaceInFilesRequestedSignalFn func(text String, )
 func (me *ScriptEditorBase) ConnectReplaceInFilesRequested(subs SignalSubscribers, fn ScriptEditorBaseReplaceInFilesRequestedSignalFn) {
   sig := StringNameFromStr("replace_in_files_requested")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScriptEditorBase) DisconnectReplaceInFilesRequested(subs SignalSubscribers, fn ScriptEditorBaseReplaceInFilesRequestedSignalFn) {
   sig := StringNameFromStr("replace_in_files_requested")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type ScriptEditorBaseGoToMethodSignalFn func(script Object, method String, )
@@ -192,13 +176,11 @@ type ScriptEditorBaseGoToMethodSignalFn func(script Object, method String, )
 func (me *ScriptEditorBase) ConnectGoToMethod(subs SignalSubscribers, fn ScriptEditorBaseGoToMethodSignalFn) {
   sig := StringNameFromStr("go_to_method")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *ScriptEditorBase) DisconnectGoToMethod(subs SignalSubscribers, fn ScriptEditorBaseGoToMethodSignalFn) {
   sig := StringNameFromStr("go_to_method")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -38,5 +38,12 @@ test-macos:
 	/Applications/Godot.app/Contents/MacOS/Godot project.godot --headless -v
 .PHONY: test-macos
 
+test-macos-ui:
+	/Applications/Godot.app/Contents/MacOS/Godot project.godot -v
+.PHONY: test-macos-ui
+
 test-macos-arm64: build-macos-arm64 test-macos
 .PHONY: test-macos-arm64
+
+test-macos-arm64-ui: build-macos-arm64 test-macos-ui
+.PHONY: test-macos-arm64-ui

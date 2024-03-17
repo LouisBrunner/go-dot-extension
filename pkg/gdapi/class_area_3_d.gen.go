@@ -609,15 +609,13 @@ type Area3DBodyShapeEnteredSignalFn func(body_rid RID, body Node3D, body_shape_i
 func (me *Area3D) ConnectBodyShapeEntered(subs SignalSubscribers, fn Area3DBodyShapeEnteredSignalFn) {
   sig := StringNameFromStr("body_shape_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Area3D) DisconnectBodyShapeEntered(subs SignalSubscribers, fn Area3DBodyShapeEnteredSignalFn) {
   sig := StringNameFromStr("body_shape_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type Area3DBodyShapeExitedSignalFn func(body_rid RID, body Node3D, body_shape_index int, local_shape_index int, )
@@ -625,15 +623,13 @@ type Area3DBodyShapeExitedSignalFn func(body_rid RID, body Node3D, body_shape_in
 func (me *Area3D) ConnectBodyShapeExited(subs SignalSubscribers, fn Area3DBodyShapeExitedSignalFn) {
   sig := StringNameFromStr("body_shape_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Area3D) DisconnectBodyShapeExited(subs SignalSubscribers, fn Area3DBodyShapeExitedSignalFn) {
   sig := StringNameFromStr("body_shape_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type Area3DBodyEnteredSignalFn func(body Node3D, )
@@ -641,15 +637,13 @@ type Area3DBodyEnteredSignalFn func(body Node3D, )
 func (me *Area3D) ConnectBodyEntered(subs SignalSubscribers, fn Area3DBodyEnteredSignalFn) {
   sig := StringNameFromStr("body_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Area3D) DisconnectBodyEntered(subs SignalSubscribers, fn Area3DBodyEnteredSignalFn) {
   sig := StringNameFromStr("body_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type Area3DBodyExitedSignalFn func(body Node3D, )
@@ -657,15 +651,13 @@ type Area3DBodyExitedSignalFn func(body Node3D, )
 func (me *Area3D) ConnectBodyExited(subs SignalSubscribers, fn Area3DBodyExitedSignalFn) {
   sig := StringNameFromStr("body_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Area3D) DisconnectBodyExited(subs SignalSubscribers, fn Area3DBodyExitedSignalFn) {
   sig := StringNameFromStr("body_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type Area3DAreaShapeEnteredSignalFn func(area_rid RID, area Area3D, area_shape_index int, local_shape_index int, )
@@ -673,15 +665,13 @@ type Area3DAreaShapeEnteredSignalFn func(area_rid RID, area Area3D, area_shape_i
 func (me *Area3D) ConnectAreaShapeEntered(subs SignalSubscribers, fn Area3DAreaShapeEnteredSignalFn) {
   sig := StringNameFromStr("area_shape_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Area3D) DisconnectAreaShapeEntered(subs SignalSubscribers, fn Area3DAreaShapeEnteredSignalFn) {
   sig := StringNameFromStr("area_shape_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type Area3DAreaShapeExitedSignalFn func(area_rid RID, area Area3D, area_shape_index int, local_shape_index int, )
@@ -689,15 +679,13 @@ type Area3DAreaShapeExitedSignalFn func(area_rid RID, area Area3D, area_shape_in
 func (me *Area3D) ConnectAreaShapeExited(subs SignalSubscribers, fn Area3DAreaShapeExitedSignalFn) {
   sig := StringNameFromStr("area_shape_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Area3D) DisconnectAreaShapeExited(subs SignalSubscribers, fn Area3DAreaShapeExitedSignalFn) {
   sig := StringNameFromStr("area_shape_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type Area3DAreaEnteredSignalFn func(area Area3D, )
@@ -705,15 +693,13 @@ type Area3DAreaEnteredSignalFn func(area Area3D, )
 func (me *Area3D) ConnectAreaEntered(subs SignalSubscribers, fn Area3DAreaEnteredSignalFn) {
   sig := StringNameFromStr("area_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Area3D) DisconnectAreaEntered(subs SignalSubscribers, fn Area3DAreaEnteredSignalFn) {
   sig := StringNameFromStr("area_entered")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
 
 type Area3DAreaExitedSignalFn func(area Area3D, )
@@ -721,13 +707,11 @@ type Area3DAreaExitedSignalFn func(area Area3D, )
 func (me *Area3D) ConnectAreaExited(subs SignalSubscribers, fn Area3DAreaExitedSignalFn) {
   sig := StringNameFromStr("area_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Connect(sig, subs.add(fn), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Area3D) DisconnectAreaExited(subs SignalSubscribers, fn Area3DAreaExitedSignalFn) {
   sig := StringNameFromStr("area_exited")
   defer sig.Destroy()
-  obj := ObjectFromPtr(me.obj)
-  obj.Disconnect(sig, *subs.remove(fn))
+  me.Disconnect(*sig, *subs.remove(fn))
 }
