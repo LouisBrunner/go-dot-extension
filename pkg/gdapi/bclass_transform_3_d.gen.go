@@ -136,8 +136,13 @@ func (me *Transform3D) Inverse() Transform3D {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 3816817146) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Transform3D
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -148,8 +153,13 @@ func (me *Transform3D) AffineInverse() Transform3D {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 3816817146) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Transform3D
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -160,8 +170,13 @@ func (me *Transform3D) Orthonormalized() Transform3D {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 3816817146) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Transform3D
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -172,8 +187,14 @@ func (me *Transform3D) Rotated(axis Vector3, angle float32, ) Transform3D {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 1563203923) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Transform3D
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&angle)), }
+
+  pinner.Pin(&angle)
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -184,8 +205,14 @@ func (me *Transform3D) RotatedLocal(axis Vector3, angle float32, ) Transform3D {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 1563203923) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Transform3D
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&angle)), }
+
+  pinner.Pin(&angle)
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -196,8 +223,13 @@ func (me *Transform3D) Scaled(scale Vector3, ) Transform3D {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 1405596198) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Transform3D
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -208,8 +240,13 @@ func (me *Transform3D) ScaledLocal(scale Vector3, ) Transform3D {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 1405596198) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Transform3D
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -220,8 +257,13 @@ func (me *Transform3D) Translated(offset Vector3, ) Transform3D {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 1405596198) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Transform3D
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -232,8 +274,13 @@ func (me *Transform3D) TranslatedLocal(offset Vector3, ) Transform3D {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 1405596198) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Transform3D
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -244,8 +291,14 @@ func (me *Transform3D) LookingAt(target Vector3, up Vector3, use_model_front boo
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 90889270) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Transform3D
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{target.AsCTypePtr(), up.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&use_model_front)), }
+
+  pinner.Pin(&use_model_front)
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -256,8 +309,14 @@ func (me *Transform3D) InterpolateWith(xform Transform3D, weight float32, ) Tran
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 1786453358) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Transform3D
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{xform.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&weight)), }
+
+  pinner.Pin(&weight)
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -268,8 +327,13 @@ func (me *Transform3D) IsEqualApprox(xform Transform3D, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 696001652) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret bool
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{xform.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -280,8 +344,13 @@ func (me *Transform3D) IsFinite() bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeTransform3D, name.AsCPtr(), 3918633141) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret bool
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -409,8 +478,12 @@ func (me *Transform3D) SetBasis(value Basis) {
   name := StringNameFromStr("basis")
   defer name.Destroy()
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&value)
+
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
 }
 
 func (me *Transform3D) Origin() Vector3 {
@@ -427,6 +500,10 @@ func (me *Transform3D) SetOrigin(value Vector3) {
   name := StringNameFromStr("origin")
   defer name.Destroy()
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&value)
+
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
 }

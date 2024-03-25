@@ -111,8 +111,13 @@ func (me *Callable) Callv(arguments Array, ) Variant {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 413578926) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Variant
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{arguments.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -123,8 +128,13 @@ func (me *Callable) IsNull() bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3918633141) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret bool
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -135,8 +145,13 @@ func (me *Callable) IsCustom() bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3918633141) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret bool
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -147,8 +162,13 @@ func (me *Callable) IsStandard() bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3918633141) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret bool
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -159,8 +179,13 @@ func (me *Callable) IsValid() bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3918633141) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret bool
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -171,8 +196,13 @@ func (me *Callable) GetObject() Object {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 4008621732) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Object
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -183,8 +213,13 @@ func (me *Callable) GetObjectId() int {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3173160232) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret int
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -195,8 +230,13 @@ func (me *Callable) GetMethod() StringName {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 1825232092) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret StringName
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -207,8 +247,13 @@ func (me *Callable) GetBoundArgumentsCount() int {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3173160232) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret int
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -219,8 +264,13 @@ func (me *Callable) GetBoundArguments() Array {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 4144163970) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Array
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -231,8 +281,13 @@ func (me *Callable) Hash() int {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3173160232) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret int
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -243,8 +298,13 @@ func (me *Callable) Bindv(arguments Array, ) Callable {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3564560322) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Callable
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{arguments.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -255,8 +315,14 @@ func (me *Callable) Unbind(argcount int, ) Callable {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 755001590) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Callable
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&argcount)), }
+
+  pinner.Pin(&argcount)
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -267,11 +333,16 @@ func (me *Callable) Call(varargs ...Variant) Variant {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3643564216) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Variant
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
   for _, arg := range varargs {
     args = append(args, arg.AsCTypePtr())
   }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }
@@ -281,10 +352,14 @@ func (me *Callable) CallDeferred(varargs ...Variant)  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3286317445) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   args := []gdc.ConstTypePtr{}
   for _, arg := range varargs {
     args = append(args, arg.AsCTypePtr())
   }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -293,10 +368,14 @@ func (me *Callable) Rpc(varargs ...Variant)  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3286317445) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   args := []gdc.ConstTypePtr{}
   for _, arg := range varargs {
     args = append(args, arg.AsCTypePtr())
   }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -305,10 +384,15 @@ func (me *Callable) RpcId(peer_id int, varargs ...Variant)  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 2270047679) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&peer_id)), }
   for _, arg := range varargs {
     args = append(args, arg.AsCTypePtr())
   }
+  pinner.Pin(&peer_id)
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
@@ -317,11 +401,16 @@ func (me *Callable) Bind(varargs ...Variant) Callable {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, name.AsCPtr(), 3224143119) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Callable
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
   for _, arg := range varargs {
     args = append(args, arg.AsCTypePtr())
   }
+
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
 }

@@ -158,8 +158,13 @@ func (me *Plane) Normalized() Plane {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 1051796340) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Plane
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -170,8 +175,13 @@ func (me *Plane) GetCenter() Vector3 {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 1776574132) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Vector3
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -182,8 +192,13 @@ func (me *Plane) IsEqualApprox(to_plane Plane, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 1150170233) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret bool
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{to_plane.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -194,8 +209,13 @@ func (me *Plane) IsFinite() bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 3918633141) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret bool
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -206,8 +226,13 @@ func (me *Plane) IsPointOver(point Vector3, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 1749054343) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret bool
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -218,8 +243,13 @@ func (me *Plane) DistanceTo(point Vector3, ) float32 {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 1047977935) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret float32
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -230,8 +260,14 @@ func (me *Plane) HasPoint(point Vector3, tolerance float32, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 1258189072) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret bool
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&tolerance)), }
+
+  pinner.Pin(&tolerance)
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -242,8 +278,13 @@ func (me *Plane) Project(point Vector3, ) Vector3 {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 2923479887) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Vector3
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -254,8 +295,13 @@ func (me *Plane) Intersect3(b Plane, c Plane, ) Variant {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 2012052692) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Variant
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{b.AsCTypePtr(), c.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -266,8 +312,13 @@ func (me *Plane) IntersectsRay(from Vector3, dir Vector3, ) Variant {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 2048133369) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Variant
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{from.AsCTypePtr(), dir.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -278,8 +329,13 @@ func (me *Plane) IntersectsSegment(from Vector3, to Vector3, ) Variant {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePlane, name.AsCPtr(), 2048133369) // FIXME: should cache?
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+
   var ret Variant
+  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{from.AsCTypePtr(), to.AsCTypePtr(), }
+
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
   return ret
@@ -373,8 +429,12 @@ func (me *Plane) SetX(value float32) {
   name := StringNameFromStr("x")
   defer name.Destroy()
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&value)
+
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
 }
 
 func (me *Plane) Y() float32 {
@@ -391,8 +451,12 @@ func (me *Plane) SetY(value float32) {
   name := StringNameFromStr("y")
   defer name.Destroy()
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&value)
+
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
 }
 
 func (me *Plane) Z() float32 {
@@ -409,8 +473,12 @@ func (me *Plane) SetZ(value float32) {
   name := StringNameFromStr("z")
   defer name.Destroy()
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&value)
+
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
 }
 
 func (me *Plane) D() float32 {
@@ -427,8 +495,12 @@ func (me *Plane) SetD(value float32) {
   name := StringNameFromStr("d")
   defer name.Destroy()
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&value)
+
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
 }
 
 func (me *Plane) Normal() Vector3 {
@@ -445,6 +517,10 @@ func (me *Plane) SetNormal(value Vector3) {
   name := StringNameFromStr("normal")
   defer name.Destroy()
 
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
+  pinner.Pin(&value)
+
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&value)))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
 }

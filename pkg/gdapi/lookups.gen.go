@@ -90,6 +90,48 @@ var bclassToSize = map[gdc.VariantType]int{
   gdc.VariantTypePackedColorArray: classSizePackedColorArray,
 }
 
+type bclassDefaultConstructorFn func() any
+
+var bclassDefaultConstructor = map[gdc.VariantType]bclassDefaultConstructorFn{
+  gdc.VariantTypeNil: func() any { return NewNil() },
+  gdc.VariantTypeBool: func() any { return NewBool() },
+  gdc.VariantTypeInt: func() any { return NewInt() },
+  gdc.VariantTypeFloat: func() any { return NewFloat() },
+  gdc.VariantTypeString: func() any { return NewString() },
+  gdc.VariantTypeVector2: func() any { return NewVector2() },
+  gdc.VariantTypeVector2I: func() any { return NewVector2i() },
+  gdc.VariantTypeRect2: func() any { return NewRect2() },
+  gdc.VariantTypeRect2I: func() any { return NewRect2i() },
+  gdc.VariantTypeVector3: func() any { return NewVector3() },
+  gdc.VariantTypeVector3I: func() any { return NewVector3i() },
+  gdc.VariantTypeTransform2D: func() any { return NewTransform2D() },
+  gdc.VariantTypeVector4: func() any { return NewVector4() },
+  gdc.VariantTypeVector4I: func() any { return NewVector4i() },
+  gdc.VariantTypePlane: func() any { return NewPlane() },
+  gdc.VariantTypeQuaternion: func() any { return NewQuaternion() },
+  gdc.VariantTypeAABB: func() any { return NewAABB() },
+  gdc.VariantTypeBasis: func() any { return NewBasis() },
+  gdc.VariantTypeTransform3D: func() any { return NewTransform3D() },
+  gdc.VariantTypeProjection: func() any { return NewProjection() },
+  gdc.VariantTypeColor: func() any { return NewColor() },
+  gdc.VariantTypeStringName: func() any { return NewStringName() },
+  gdc.VariantTypeNodePath: func() any { return NewNodePath() },
+  gdc.VariantTypeRID: func() any { return NewRID() },
+  gdc.VariantTypeCallable: func() any { return NewCallable() },
+  gdc.VariantTypeSignal: func() any { return NewSignal() },
+  gdc.VariantTypeDictionary: func() any { return NewDictionary() },
+  gdc.VariantTypeArray: func() any { return NewArray() },
+  gdc.VariantTypePackedByteArray: func() any { return NewPackedByteArray() },
+  gdc.VariantTypePackedInt32Array: func() any { return NewPackedInt32Array() },
+  gdc.VariantTypePackedInt64Array: func() any { return NewPackedInt64Array() },
+  gdc.VariantTypePackedFloat32Array: func() any { return NewPackedFloat32Array() },
+  gdc.VariantTypePackedFloat64Array: func() any { return NewPackedFloat64Array() },
+  gdc.VariantTypePackedStringArray: func() any { return NewPackedStringArray() },
+  gdc.VariantTypePackedVector2Array: func() any { return NewPackedVector2Array() },
+  gdc.VariantTypePackedVector3Array: func() any { return NewPackedVector3Array() },
+  gdc.VariantTypePackedColorArray: func() any { return NewPackedColorArray() },
+}
+
 type bclassFromVariantFn func(va *Variant) (BClass, error)
 
 var bclassFromVariant = map[gdc.VariantType]bclassFromVariantFn{

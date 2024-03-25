@@ -43,8 +43,7 @@ func NewVariantWith(ptr gdc.VariantPtr) *Variant {
 
 func NewVariantWithC(ptr gdc.ConstVariantPtr) *Variant {
 	me := newVariant()
-	slice := unsafe.Slice((*byte)(ptr), classSizeVariant)
-	copy(me.data[:], slice)
+	me.iface.VariantNewCopy(me.asUninitialized(), ptr)
 	return me
 }
 

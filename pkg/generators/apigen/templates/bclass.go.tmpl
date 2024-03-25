@@ -125,14 +125,9 @@ func {{if .IsStatic }}{{$Class}}{{else}}(me *{{$Class}}) {{end }}{{mapMethod .Na
 
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
-{{- range .Arguments}}
-{{- if not (isExported (mapType .Type))}}
-  pinner.Pin(&{{mapName .Name}})
-{{- end -}}
-{{ end}}
-  pinner.Pin(&ret)
 
 {{if .ReturnType}}  var ret {{mapType .ReturnType}}
+  pinner.Pin(&ret)
 {{end}}  args := []gdc.ConstTypePtr{
     {{- range .Arguments}}
 {{- if isExported (mapType .Type) -}}
@@ -145,6 +140,12 @@ func {{if .IsStatic }}{{$Class}}{{else}}(me *{{$Class}}) {{end }}{{mapMethod .Na
 {{if .IsVarArg}}  for _, arg := range varargs {
     args = append(args, arg.AsCTypePtr())
   }{{end}}
+{{- range .Arguments}}
+{{- if not (isExported (mapType .Type))}}
+  pinner.Pin(&{{mapName .Name}})
+{{- end -}}
+{{ end}}
+
   giface.CallPtrBuiltInMethod(methodPtr, {{if .IsStatic}}nil{{else}}me.AsTypePtr(){{end}}, unsafe.SliceData(args), {{if .ReturnType}}gdc.TypePtr(&ret){{else}}nil{{end}}, len(args))
 {{if .ReturnType}}  return ret
 {{end -}}

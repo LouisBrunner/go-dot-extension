@@ -2,3 +2,5 @@
 #/*.gen.go
 #/pkg/gdraw/*
 #!/pkg/gdraw/*.go
+
+.DS_Store

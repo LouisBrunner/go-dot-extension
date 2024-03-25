@@ -18,6 +18,7 @@ type classProperty struct {
 	getter   gdapi.StringName
 	setter   gdapi.StringName
 
+	isBClass        bool
 	objClassNamePtr gdc.ConstStringNamePtr
 }
 
@@ -26,15 +27,21 @@ func (me *classProperty) register(ext *extension, class *classEntry) {
 }
 
 func (me *classProperty) create(ext *extension, instance Class) error {
-	if me.objClassNamePtr == nil {
-		return nil
+	switch {
+	case me.objClassNamePtr != nil:
+		prop := ext.iface.ClassdbConstructObject(me.objClassNamePtr)
+		obj, err := ext.objectFromPtr(me.typ, prop)
+		if err != nil {
+			return err
+		}
+		reflectSetProperty(instance, me, obj)
+	case me.isBClass:
+		bclass, err := gdapi.BClassForType(me.property.Type)
+		if err != nil {
+			return err
+		}
+		reflectSetProperty(instance, me, bclass)
 	}
-	prop := ext.iface.ClassdbConstructObject(me.objClassNamePtr)
-	obj, err := ext.objectFromPtr(me.typ, prop)
-	if err != nil {
-		return err
-	}
-	reflectSetProperty(instance, me, obj)
 	return nil
 }
 
@@ -55,7 +62,8 @@ func (me *classProperty) unregister(ext *extension, class *classEntry) {
 
 type classMethod struct {
 	name        string
-	typ         reflect.Method
+	argTypes    []reflect.Type
+	returnType  *reflect.Type
 	method      gdc.ClassMethodInfo
 	fn          interface{}
 	pinner      runtime.Pinner

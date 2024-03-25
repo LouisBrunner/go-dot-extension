@@ -90,7 +90,7 @@ func (me *extension) reflectFromType(val gdc.ConstTypePtr, expected reflect.Type
 }
 
 func typeFromReflect(val reflect.Value) (gdc.TypePtr, error) {
-	// TODO: finish
+	panic("unimplemented") // TODO: finish
 	// TODO: this will leak
 	switch val.Kind() {
 	case reflect.Bool:
@@ -191,14 +191,14 @@ func nativeFromVariant(vaRaw gdc.ConstVariantPtr, expected reflect.Type) (any, e
 		}
 		return *obj, nil
 	default:
-		if expected.Kind() != reflect.Struct {
-			return nil, fmt.Errorf("cannot convert bclass to %s", expected.Kind())
+		if expected.Kind() != reflect.Interface {
+			return nil, fmt.Errorf("cannot convert bclass %v to %s", va.Type(), expected.Kind())
 		}
 		bclass, err := va.AsBClass()
 		if err != nil {
 			return nil, err
 		}
-		return reflect.ValueOf(bclass).Elem().Interface(), nil
+		return bclass, nil
 	}
 }
 
@@ -241,42 +241,42 @@ func variantFromReflect(val reflect.Value) (gdc.VariantPtr, error) {
 	return nil, fmt.Errorf("unsupported type: %s (%+v)", val.Type().String(), val.Interface())
 }
 
-func typeToVariant(val reflect.Type) (gdc.VariantType, error) {
+func typeToVariant(val reflect.Type) (gdc.VariantType, bool, error) {
 	switch val.Kind() {
 	case reflect.Bool:
-		return gdc.VariantTypeBool, nil
+		return gdc.VariantTypeBool, false, nil
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64,
 		reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-		return gdc.VariantTypeInt, nil
+		return gdc.VariantTypeInt, false, nil
 	case reflect.Float32, reflect.Float64:
-		return gdc.VariantTypeFloat, nil
+		return gdc.VariantTypeFloat, false, nil
 	case reflect.String:
-		return gdc.VariantTypeString, nil
+		return gdc.VariantTypeString, false, nil
 	case reflect.Array, reflect.Slice:
-		return gdc.VariantTypeArray, nil
+		return gdc.VariantTypeArray, false, nil
 	case reflect.Struct, reflect.Interface:
 		bclazz, isBclass := bclassForType(val)
 		if isBclass {
-			return bclazz, nil
+			return bclazz, true, nil
 		}
-		return gdc.VariantTypeObject, nil
+		return gdc.VariantTypeObject, true, nil
 	case reflect.Pointer:
 		return typeToVariant(val.Elem())
 	}
-	return gdc.VariantTypeNil, fmt.Errorf("unsupported type %s", val.Kind())
+	return gdc.VariantTypeNil, false, fmt.Errorf("unsupported type %s", val.Kind())
 }
 
-func typeToVariantNClass(val reflect.Type) (gdc.VariantType, gdc.StringNamePtr, error) {
-	va, err := typeToVariant(val)
+func typeToVariantNClass(val reflect.Type) (gdc.VariantType, bool, gdc.StringNamePtr, error) {
+	va, isBclass, err := typeToVariant(val)
 	if err != nil {
-		return gdc.VariantTypeNil, nil, err
+		return gdc.VariantTypeNil, false, nil, err
 	}
 	if va != gdc.VariantTypeObject {
-		return va, gdapi.NewStringName().AsPtr(), nil
+		return va, isBclass, gdapi.NewStringName().AsPtr(), nil
 	}
 	inst, ok := reflect.New(val).Interface().(Class)
 	if !ok {
-		return gdc.VariantTypeNil, nil, fmt.Errorf("unsupported object type %s (%T)", val, inst)
+		return gdc.VariantTypeNil, false, nil, fmt.Errorf("unsupported object type %s (%T)", val, inst)
 	}
-	return va, gdapi.StringNameFromStr(inst.BaseClass()).AsPtr(), nil
+	return va, true, gdapi.StringNameFromStr(inst.BaseClass()).AsPtr(), nil
 }

@@ -30,6 +30,7 @@ const (
 	LogLevelWarning
 	LogLevelInfo
 	LogLevelDebug
+	LogLevelTrace
 )
 
 func (me *extension) Logf(level LogLevel, format string, args ...interface{}) {
@@ -38,6 +39,11 @@ func (me *extension) Logf(level LogLevel, format string, args ...interface{}) {
 
 func (me *extension) LogDetailedf(level LogLevel, description, function, file string, line int32, notifyEditor bool, format string, args ...interface{}) {
 	if level > me.logLevel {
+		return
+	}
+
+	if level == LogLevelTrace {
+		// FIXME: not sure how to handle yet
 		return
 	}
 

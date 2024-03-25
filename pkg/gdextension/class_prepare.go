@@ -162,8 +162,8 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 }
 
 func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, field reflect.StructField, ignoredMethods map[string]struct{}) (*classMethod, *classMethod, *classProperty, error) {
-	getterFn := any(func(me interface{}) interface{} {
-		return reflectGetField(me, field.Name).Interface()
+	getterFn := any(func(me Class) reflect.Value {
+		return reflectGetField(me, field.Name)
 	})
 	getterName := fmt.Sprintf("_get_property_%s", fieldName)
 	if info != nil && info.getter != "" {
@@ -179,7 +179,7 @@ func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, 
 	}
 	getter := gdapi.StringNameFromStr(getterName)
 
-	setterFn := any(func(me interface{}, value interface{}) {
+	setterFn := any(func(me Class, value interface{}) {
 		reflectSetField(me, field.Name, value)
 	})
 	setterName := fmt.Sprintf("_set_property_%s", fieldName)
@@ -201,7 +201,7 @@ func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, 
 	}
 	setter := gdapi.StringNameFromStr(setterName)
 
-	varType, objClassName, err := typeToVariantNClass(field.Type)
+	varType, isBClass, objClassName, err := typeToVariantNClass(field.Type)
 	if err != nil {
 		return nil, nil, nil, err
 	}
@@ -231,6 +231,9 @@ func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, 
 		setterMethod = &classMethod{
 			name: setterName,
 			fn:   setterFn,
+			argTypes: []reflect.Type{
+				field.Type,
+			},
 			method: gdc.ClassMethodInfo{
 				Name:              setter.AsPtr(),
 				MethodUserdata:    *(*unsafe.Pointer)(unsafe.Pointer(utils.ToPointer(idx + 1))),
@@ -245,9 +248,10 @@ func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, 
 	}
 
 	return &classMethod{
-			name:   getterName,
-			fn:     getterFn,
-			pinner: pinner,
+			name:       getterName,
+			fn:         getterFn,
+			returnType: &field.Type,
+			pinner:     pinner,
 			method: gdc.ClassMethodInfo{
 				Name:                getter.AsPtr(),
 				MethodUserdata:      *(*unsafe.Pointer)(unsafe.Pointer(utils.ToPointer(idx))),
@@ -265,6 +269,7 @@ func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, 
 			property:        propCpy,
 			getter:          *getter,
 			setter:          *setter,
+			isBClass:        isBClass,
 			objClassNamePtr: objClassNamePtr,
 		}, nil
 }
@@ -279,6 +284,7 @@ func makeMethod(idx int, method reflect.Method) (*classMethod, error) {
 	name := gdapi.StringNameFromStr(methodName)
 
 	argCount := method.Type.NumIn() - 1
+	var argTypes []reflect.Type
 	var argInfo []gdc.PropertyInfo
 	if method.Type.IsVariadic() {
 		flags |= uint(gdapi.MethodFlagVararg)
@@ -295,10 +301,12 @@ func makeMethod(idx int, method reflect.Method) (*classMethod, error) {
 		}
 	} else {
 		argInfo = make([]gdc.PropertyInfo, argCount)
+		argTypes = make([]reflect.Type, argCount)
 		for i := 0; i < argCount; i += 1 {
 			arg := method.Type.In(i + 1)
+			argTypes[i] = arg
 			aname := fmt.Sprintf("arg%d", i)
-			varType, className, err := typeToVariantNClass(arg)
+			varType, _, className, err := typeToVariantNClass(arg)
 			if err != nil {
 				return nil, fmt.Errorf("argument %d: %w", i, err)
 			}
@@ -328,13 +336,15 @@ func makeMethod(idx int, method reflect.Method) (*classMethod, error) {
 	}
 
 	hasReturn := gdc.Bool(0)
+	var retType *reflect.Type
 	var retInfo *gdc.PropertyInfo
 	if method.Type.NumOut() > 1 {
 		return nil, fmt.Errorf("too many return values")
 	} else if method.Type.NumOut() > 0 {
 		hasReturn = gdc.Bool(1)
 		out := method.Type.Out(0)
-		varType, className, err := typeToVariantNClass(out)
+		retType = &out
+		varType, _, className, err := typeToVariantNClass(out)
 		if err != nil {
 			return nil, fmt.Errorf("return value: %w", err)
 		}
@@ -352,6 +362,8 @@ func makeMethod(idx int, method reflect.Method) (*classMethod, error) {
 	return &classMethod{
 		name:        method.Name,
 		fn:          method.Func.Interface(),
+		argTypes:    argTypes,
+		returnType:  retType,
 		pinner:      pinner,
 		saveArgInfo: argInfo,
 		method: gdc.ClassMethodInfo{

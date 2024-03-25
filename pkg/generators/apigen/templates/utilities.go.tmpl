@@ -25,7 +25,7 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
 {{end}}  }
 }
 
-{/* TODO: need a runtime.Pinner for ConstTypePtr */}
+{{/* TODO: need a runtime.Pinner for ConstTypePtr */}}
 {{- define "mapUtilityArg" -}}
 {{- if eq (mapType .Type) "Variant"}}{{mapName .Name}}.AsCTypePtr(){{else}}gdc.ConstTypePtr(&{{mapName .Name}}){{end -}}
 {{- end -}}

@@ -20,6 +20,14 @@ func BClassFromPtr(typ gdc.VariantType, ptr gdc.ConstTypePtr) (interface{}, erro
 	return ctr(ptr), nil
 }
 
+func BClassForType(typ gdc.VariantType) (any, error) {
+	ctr, found := bclassDefaultConstructor[typ]
+	if !found {
+		return nil, fmt.Errorf("no constructor found for type %v", typ)
+	}
+	return ctr(), nil
+}
+
 func dataFromPtr(data []byte, ptr gdc.ConstTypePtr) {
 	slice := unsafe.Slice((*byte)(ptr), len(data))
 	copy(data, slice)
@@ -43,7 +51,7 @@ func ObjectFromPtr(ptr gdc.ObjectPtr) Object {
 }
 
 func DObjectFromPtr(className string, ptr gdc.ObjectPtr) (interface{}, error) {
-	return nil, nil // TODO: HERE!
+	panic("unimplemented") // TODO: HERE!
 }
 
 // String

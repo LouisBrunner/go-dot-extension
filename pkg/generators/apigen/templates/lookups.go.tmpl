@@ -18,6 +18,14 @@ var bclassToSize = map[gdc.VariantType]int{
 {{- end }}{{ end }}
 }
 
+type bclassDefaultConstructorFn func() any
+
+var bclassDefaultConstructor = map[gdc.VariantType]bclassDefaultConstructorFn{
+{{- range .Sizes}}{{if ne .Name "Variant"}}{{if ne .Name "Object"}}
+  gdc.VariantType{{pascalCased .Name}}: func() any { return New{{mapClass .Name}}() },
+{{- end }}{{- end }}{{- end }}
+}
+
 type bclassFromVariantFn func(va *Variant) (BClass, error)
 
 var bclassFromVariant = map[gdc.VariantType]bclassFromVariantFn{
