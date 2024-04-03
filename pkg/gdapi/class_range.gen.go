@@ -17,6 +17,16 @@ func (me *Range) BaseClass() string {
   return "Range"
 }
 
+func NewRange() *Range {
+  str := StringNameFromStr("Range") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Range{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,146 +45,166 @@ func (me *Range) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *Range) GetValue() float32 {
+func  (me *Range) GetValue() float64 {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Range) GetMin() float32 {
+func  (me *Range) GetMin() float64 {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Range) GetMax() float32 {
+func  (me *Range) GetMax() float64 {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Range) GetStep() float32 {
+func  (me *Range) GetStep() float64 {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Range) GetPage() float32 {
+func  (me *Range) GetPage() float64 {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_page")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Range) GetAsRatio() float32 {
+func  (me *Range) GetAsRatio() float64 {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_as_ratio")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Range) SetValue(value float32, )  {
+func  (me *Range) SetValue(value float64, )  {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Range) SetValueNoSignal(value float32, )  {
+func  (me *Range) SetValueNoSignal(value float64, )  {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_value_no_signal")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Range) SetMin(minimum float32, )  {
+func  (me *Range) SetMin(minimum float64, )  {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&minimum), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Range) SetMax(maximum float32, )  {
+func  (me *Range) SetMax(maximum float64, )  {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&maximum), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Range) SetStep(step float32, )  {
+func  (me *Range) SetStep(step float64, )  {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&step), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Range) SetPage(pagesize float32, )  {
+func  (me *Range) SetPage(pagesize float64, )  {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_page")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pagesize), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Range) SetAsRatio(value float32, )  {
+func  (me *Range) SetAsRatio(value float64, )  {
   classNameV := StringNameFromStr("Range")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_as_ratio")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Range) SetUseRoundedValues(enabled bool, )  {
@@ -184,7 +214,9 @@ func  (me *Range) SetUseRoundedValues(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Range) IsUsingRoundedValues() bool {
@@ -193,10 +225,11 @@ func  (me *Range) IsUsingRoundedValues() bool {
   methodNameV := StringNameFromStr("is_using_rounded_values")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Range) SetExpRatio(enabled bool, )  {
@@ -206,7 +239,9 @@ func  (me *Range) SetExpRatio(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Range) IsRatioExp() bool {
@@ -215,10 +250,11 @@ func  (me *Range) IsRatioExp() bool {
   methodNameV := StringNameFromStr("is_ratio_exp")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Range) SetAllowGreater(allow bool, )  {
@@ -228,7 +264,9 @@ func  (me *Range) SetAllowGreater(allow bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Range) IsGreaterAllowed() bool {
@@ -237,10 +275,11 @@ func  (me *Range) IsGreaterAllowed() bool {
   methodNameV := StringNameFromStr("is_greater_allowed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Range) SetAllowLesser(allow bool, )  {
@@ -250,7 +289,9 @@ func  (me *Range) SetAllowLesser(allow bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Range) IsLesserAllowed() bool {
@@ -259,10 +300,11 @@ func  (me *Range) IsLesserAllowed() bool {
   methodNameV := StringNameFromStr("is_lesser_allowed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Range) Share(with Node, )  {
@@ -272,7 +314,9 @@ func  (me *Range) Share(with Node, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(with.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Range) Unshare()  {
@@ -282,7 +326,9 @@ func  (me *Range) Unshare()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

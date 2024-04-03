@@ -17,6 +17,16 @@ func (me *Occluder3D) BaseClass() string {
   return "Occluder3D"
 }
 
+func NewOccluder3D() *Occluder3D {
+  str := StringNameFromStr("Occluder3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Occluder3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *Occluder3D) GetVertices() PackedVector3Array {
   methodNameV := StringNameFromStr("get_vertices")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
-  var ret PackedVector3Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector3Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Occluder3D) GetIndices() PackedInt32Array {
@@ -53,10 +64,11 @@ func  (me *Occluder3D) GetIndices() PackedInt32Array {
   methodNameV := StringNameFromStr("get_indices")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

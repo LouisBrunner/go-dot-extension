@@ -17,6 +17,16 @@ func (me *CanvasItemMaterial) BaseClass() string {
   return "CanvasItemMaterial"
 }
 
+func NewCanvasItemMaterial() *CanvasItemMaterial {
+  str := StringNameFromStr("CanvasItemMaterial") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CanvasItemMaterial{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -58,7 +68,9 @@ func  (me *CanvasItemMaterial) SetBlendMode(blend_mode CanvasItemMaterialBlendMo
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1786054936) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&blend_mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CanvasItemMaterial) GetBlendMode() CanvasItemMaterialBlendMode {
@@ -67,9 +79,10 @@ func  (me *CanvasItemMaterial) GetBlendMode() CanvasItemMaterialBlendMode {
   methodNameV := StringNameFromStr("get_blend_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3318684035) // FIXME: should cache?
-  var ret CanvasItemMaterialBlendMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret CanvasItemMaterialBlendMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -80,7 +93,9 @@ func  (me *CanvasItemMaterial) SetLightMode(light_mode CanvasItemMaterialLightMo
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 628074070) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&light_mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CanvasItemMaterial) GetLightMode() CanvasItemMaterialLightMode {
@@ -89,9 +104,10 @@ func  (me *CanvasItemMaterial) GetLightMode() CanvasItemMaterialLightMode {
   methodNameV := StringNameFromStr("get_light_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3863292382) // FIXME: should cache?
-  var ret CanvasItemMaterialLightMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret CanvasItemMaterialLightMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -102,7 +118,9 @@ func  (me *CanvasItemMaterial) SetParticlesAnimation(particles_anim bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&particles_anim), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CanvasItemMaterial) GetParticlesAnimation() bool {
@@ -111,54 +129,61 @@ func  (me *CanvasItemMaterial) GetParticlesAnimation() bool {
   methodNameV := StringNameFromStr("get_particles_animation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CanvasItemMaterial) SetParticlesAnimHFrames(frames int, )  {
+func  (me *CanvasItemMaterial) SetParticlesAnimHFrames(frames int64, )  {
   classNameV := StringNameFromStr("CanvasItemMaterial")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_particles_anim_h_frames")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frames), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CanvasItemMaterial) GetParticlesAnimHFrames() int {
+func  (me *CanvasItemMaterial) GetParticlesAnimHFrames() int64 {
   classNameV := StringNameFromStr("CanvasItemMaterial")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_particles_anim_h_frames")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CanvasItemMaterial) SetParticlesAnimVFrames(frames int, )  {
+func  (me *CanvasItemMaterial) SetParticlesAnimVFrames(frames int64, )  {
   classNameV := StringNameFromStr("CanvasItemMaterial")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_particles_anim_v_frames")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frames), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CanvasItemMaterial) GetParticlesAnimVFrames() int {
+func  (me *CanvasItemMaterial) GetParticlesAnimVFrames() int64 {
   classNameV := StringNameFromStr("CanvasItemMaterial")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_particles_anim_v_frames")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CanvasItemMaterial) SetParticlesAnimLoop(loop bool, )  {
@@ -168,7 +193,9 @@ func  (me *CanvasItemMaterial) SetParticlesAnimLoop(loop bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&loop), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CanvasItemMaterial) GetParticlesAnimLoop() bool {
@@ -177,10 +204,11 @@ func  (me *CanvasItemMaterial) GetParticlesAnimLoop() bool {
   methodNameV := StringNameFromStr("get_particles_anim_loop")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

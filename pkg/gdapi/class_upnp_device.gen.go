@@ -17,6 +17,16 @@ func (me *UPNPDevice) BaseClass() string {
   return "UPNPDevice"
 }
 
+func NewUPNPDevice() *UPNPDevice {
+  str := StringNameFromStr("UPNPDevice") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &UPNPDevice{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -55,10 +65,11 @@ func  (me *UPNPDevice) IsValidGateway() bool {
   methodNameV := StringNameFromStr("is_valid_gateway")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *UPNPDevice) QueryExternalAddress() String {
@@ -67,34 +78,37 @@ func  (me *UPNPDevice) QueryExternalAddress() String {
   methodNameV := StringNameFromStr("query_external_address")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *UPNPDevice) AddPortMapping(port int, port_internal int, desc String, proto String, duration int, ) int {
+func  (me *UPNPDevice) AddPortMapping(port int64, port_internal int64, desc String, proto String, duration int64, ) int64 {
   classNameV := StringNameFromStr("UPNPDevice")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_port_mapping")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 818314583) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), gdc.ConstTypePtr(&port_internal), gdc.ConstTypePtr(desc.AsCTypePtr()), gdc.ConstTypePtr(proto.AsCTypePtr()), gdc.ConstTypePtr(&duration), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *UPNPDevice) DeletePortMapping(port int, proto String, ) int {
+func  (me *UPNPDevice) DeletePortMapping(port int64, proto String, ) int64 {
   classNameV := StringNameFromStr("UPNPDevice")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("delete_port_mapping")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444187325) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), gdc.ConstTypePtr(proto.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *UPNPDevice) SetDescriptionUrl(url String, )  {
@@ -104,7 +118,9 @@ func  (me *UPNPDevice) SetDescriptionUrl(url String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(url.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *UPNPDevice) GetDescriptionUrl() String {
@@ -113,10 +129,11 @@ func  (me *UPNPDevice) GetDescriptionUrl() String {
   methodNameV := StringNameFromStr("get_description_url")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *UPNPDevice) SetServiceType(type_ String, )  {
@@ -126,7 +143,9 @@ func  (me *UPNPDevice) SetServiceType(type_ String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *UPNPDevice) GetServiceType() String {
@@ -135,10 +154,11 @@ func  (me *UPNPDevice) GetServiceType() String {
   methodNameV := StringNameFromStr("get_service_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *UPNPDevice) SetIgdControlUrl(url String, )  {
@@ -148,7 +168,9 @@ func  (me *UPNPDevice) SetIgdControlUrl(url String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(url.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *UPNPDevice) GetIgdControlUrl() String {
@@ -157,10 +179,11 @@ func  (me *UPNPDevice) GetIgdControlUrl() String {
   methodNameV := StringNameFromStr("get_igd_control_url")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *UPNPDevice) SetIgdServiceType(type_ String, )  {
@@ -170,7 +193,9 @@ func  (me *UPNPDevice) SetIgdServiceType(type_ String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *UPNPDevice) GetIgdServiceType() String {
@@ -179,10 +204,11 @@ func  (me *UPNPDevice) GetIgdServiceType() String {
   methodNameV := StringNameFromStr("get_igd_service_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *UPNPDevice) SetIgdOurAddr(addr String, )  {
@@ -192,7 +218,9 @@ func  (me *UPNPDevice) SetIgdOurAddr(addr String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(addr.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *UPNPDevice) GetIgdOurAddr() String {
@@ -201,10 +229,11 @@ func  (me *UPNPDevice) GetIgdOurAddr() String {
   methodNameV := StringNameFromStr("get_igd_our_addr")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *UPNPDevice) SetIgdStatus(status UPNPDeviceIGDStatus, )  {
@@ -214,7 +243,9 @@ func  (me *UPNPDevice) SetIgdStatus(status UPNPDeviceIGDStatus, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 519504122) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&status), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *UPNPDevice) GetIgdStatus() UPNPDeviceIGDStatus {
@@ -223,9 +254,10 @@ func  (me *UPNPDevice) GetIgdStatus() UPNPDeviceIGDStatus {
   methodNameV := StringNameFromStr("get_igd_status")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 180887011) // FIXME: should cache?
-  var ret UPNPDeviceIGDStatus
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret UPNPDeviceIGDStatus
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

@@ -17,6 +17,16 @@ func (me *EditorResourcePreviewGenerator) BaseClass() string {
   return "EditorResourcePreviewGenerator"
 }
 
+func NewEditorResourcePreviewGenerator() *EditorResourcePreviewGenerator {
+  str := StringNameFromStr("EditorResourcePreviewGenerator") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorResourcePreviewGenerator{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

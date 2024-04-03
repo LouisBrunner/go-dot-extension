@@ -17,6 +17,16 @@ func (me *EditorCommandPalette) BaseClass() string {
   return "EditorCommandPalette"
 }
 
+func NewEditorCommandPalette() *EditorCommandPalette {
+  str := StringNameFromStr("EditorCommandPalette") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorCommandPalette{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *EditorCommandPalette) AddCommand(command_name String, key_name String
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 864043298) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(command_name.AsCTypePtr()), gdc.ConstTypePtr(key_name.AsCTypePtr()), gdc.ConstTypePtr(binded_callable.AsCTypePtr()), gdc.ConstTypePtr(shortcut_text.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorCommandPalette) RemoveCommand(key_name String, )  {
@@ -52,7 +64,9 @@ func  (me *EditorCommandPalette) RemoveCommand(key_name String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(key_name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

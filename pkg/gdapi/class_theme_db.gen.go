@@ -17,6 +17,16 @@ func (me *ThemeDB) BaseClass() string {
   return "ThemeDB"
 }
 
+func NewThemeDB() *ThemeDB {
+  str := StringNameFromStr("ThemeDB") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ThemeDB{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *ThemeDB) GetDefaultTheme() Theme {
   methodNameV := StringNameFromStr("get_default_theme")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 754276358) // FIXME: should cache?
-  var ret Theme
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTheme()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ThemeDB) GetProjectTheme() Theme {
@@ -53,32 +64,36 @@ func  (me *ThemeDB) GetProjectTheme() Theme {
   methodNameV := StringNameFromStr("get_project_theme")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 754276358) // FIXME: should cache?
-  var ret Theme
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTheme()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ThemeDB) SetFallbackBaseScale(base_scale float32, )  {
+func  (me *ThemeDB) SetFallbackBaseScale(base_scale float64, )  {
   classNameV := StringNameFromStr("ThemeDB")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_fallback_base_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&base_scale), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ThemeDB) GetFallbackBaseScale() float32 {
+func  (me *ThemeDB) GetFallbackBaseScale() float64 {
   classNameV := StringNameFromStr("ThemeDB")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_fallback_base_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ThemeDB) SetFallbackFont(font Font, )  {
@@ -88,7 +103,9 @@ func  (me *ThemeDB) SetFallbackFont(font Font, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1262170328) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ThemeDB) GetFallbackFont() Font {
@@ -97,32 +114,36 @@ func  (me *ThemeDB) GetFallbackFont() Font {
   methodNameV := StringNameFromStr("get_fallback_font")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3656929885) // FIXME: should cache?
-  var ret Font
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFont()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ThemeDB) SetFallbackFontSize(font_size int, )  {
+func  (me *ThemeDB) SetFallbackFontSize(font_size int64, )  {
   classNameV := StringNameFromStr("ThemeDB")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_fallback_font_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ThemeDB) GetFallbackFontSize() int {
+func  (me *ThemeDB) GetFallbackFontSize() int64 {
   classNameV := StringNameFromStr("ThemeDB")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_fallback_font_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ThemeDB) SetFallbackIcon(icon Texture2D, )  {
@@ -132,7 +153,9 @@ func  (me *ThemeDB) SetFallbackIcon(icon Texture2D, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(icon.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ThemeDB) GetFallbackIcon() Texture2D {
@@ -141,10 +164,11 @@ func  (me *ThemeDB) GetFallbackIcon() Texture2D {
   methodNameV := StringNameFromStr("get_fallback_icon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 255860311) // FIXME: should cache?
-  var ret Texture2D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTexture2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ThemeDB) SetFallbackStylebox(stylebox StyleBox, )  {
@@ -154,7 +178,9 @@ func  (me *ThemeDB) SetFallbackStylebox(stylebox StyleBox, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2797200388) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(stylebox.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ThemeDB) GetFallbackStylebox() StyleBox {
@@ -163,10 +189,11 @@ func  (me *ThemeDB) GetFallbackStylebox() StyleBox {
   methodNameV := StringNameFromStr("get_fallback_stylebox")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 496040854) // FIXME: should cache?
-  var ret StyleBox
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStyleBox()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

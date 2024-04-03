@@ -17,6 +17,16 @@ func (me *World2D) BaseClass() string {
   return "World2D"
 }
 
+func NewWorld2D() *World2D {
+  str := StringNameFromStr("World2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &World2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *World2D) GetCanvas() RID {
   methodNameV := StringNameFromStr("get_canvas")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRID()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *World2D) GetSpace() RID {
@@ -53,10 +64,11 @@ func  (me *World2D) GetSpace() RID {
   methodNameV := StringNameFromStr("get_space")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRID()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *World2D) GetNavigationMap() RID {
@@ -65,10 +77,11 @@ func  (me *World2D) GetNavigationMap() RID {
   methodNameV := StringNameFromStr("get_navigation_map")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRID()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *World2D) GetDirectSpaceState() PhysicsDirectSpaceState2D {
@@ -77,10 +90,11 @@ func  (me *World2D) GetDirectSpaceState() PhysicsDirectSpaceState2D {
   methodNameV := StringNameFromStr("get_direct_space_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2506717822) // FIXME: should cache?
-  var ret PhysicsDirectSpaceState2D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPhysicsDirectSpaceState2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

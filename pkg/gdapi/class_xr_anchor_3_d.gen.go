@@ -17,6 +17,16 @@ func (me *XRAnchor3D) BaseClass() string {
   return "XRAnchor3D"
 }
 
+func NewXRAnchor3D() *XRAnchor3D {
+  str := StringNameFromStr("XRAnchor3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &XRAnchor3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *XRAnchor3D) GetSize() Vector3 {
   methodNameV := StringNameFromStr("get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *XRAnchor3D) GetPlane() Plane {
@@ -53,10 +64,11 @@ func  (me *XRAnchor3D) GetPlane() Plane {
   methodNameV := StringNameFromStr("get_plane")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2753500971) // FIXME: should cache?
-  var ret Plane
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPlane()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

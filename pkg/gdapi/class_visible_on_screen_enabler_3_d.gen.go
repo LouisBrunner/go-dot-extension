@@ -17,6 +17,16 @@ func (me *VisibleOnScreenEnabler3D) BaseClass() string {
   return "VisibleOnScreenEnabler3D"
 }
 
+func NewVisibleOnScreenEnabler3D() *VisibleOnScreenEnabler3D {
+  str := StringNameFromStr("VisibleOnScreenEnabler3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisibleOnScreenEnabler3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -49,7 +59,9 @@ func  (me *VisibleOnScreenEnabler3D) SetEnableMode(mode VisibleOnScreenEnabler3D
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 320303646) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisibleOnScreenEnabler3D) GetEnableMode() VisibleOnScreenEnabler3DEnableMode {
@@ -58,9 +70,10 @@ func  (me *VisibleOnScreenEnabler3D) GetEnableMode() VisibleOnScreenEnabler3DEna
   methodNameV := StringNameFromStr("get_enable_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3352990031) // FIXME: should cache?
-  var ret VisibleOnScreenEnabler3DEnableMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisibleOnScreenEnabler3DEnableMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -71,7 +84,9 @@ func  (me *VisibleOnScreenEnabler3D) SetEnableNodePath(path NodePath, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisibleOnScreenEnabler3D) GetEnableNodePath() NodePath {
@@ -80,10 +95,11 @@ func  (me *VisibleOnScreenEnabler3D) GetEnableNodePath() NodePath {
   methodNameV := StringNameFromStr("get_enable_node_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 277076166) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

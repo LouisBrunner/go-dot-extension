@@ -17,6 +17,16 @@ func (me *VisibleOnScreenNotifier2D) BaseClass() string {
   return "VisibleOnScreenNotifier2D"
 }
 
+func NewVisibleOnScreenNotifier2D() *VisibleOnScreenNotifier2D {
+  str := StringNameFromStr("VisibleOnScreenNotifier2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisibleOnScreenNotifier2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *VisibleOnScreenNotifier2D) SetRect(rect Rect2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2046264180) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rect.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisibleOnScreenNotifier2D) GetRect() Rect2 {
@@ -51,10 +63,11 @@ func  (me *VisibleOnScreenNotifier2D) GetRect() Rect2 {
   methodNameV := StringNameFromStr("get_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
-  var ret Rect2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRect2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *VisibleOnScreenNotifier2D) IsOnScreen() bool {
@@ -63,10 +76,11 @@ func  (me *VisibleOnScreenNotifier2D) IsOnScreen() bool {
   methodNameV := StringNameFromStr("is_on_screen")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

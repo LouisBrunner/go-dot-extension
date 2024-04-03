@@ -17,6 +17,16 @@ func (me *VisualShaderNodeMultiplyAdd) BaseClass() string {
   return "VisualShaderNodeMultiplyAdd"
 }
 
+func NewVisualShaderNodeMultiplyAdd() *VisualShaderNodeMultiplyAdd {
+  str := StringNameFromStr("VisualShaderNodeMultiplyAdd") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeMultiplyAdd{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -51,7 +61,9 @@ func  (me *VisualShaderNodeMultiplyAdd) SetOpType(type_ VisualShaderNodeMultiply
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1409862380) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeMultiplyAdd) GetOpType() VisualShaderNodeMultiplyAddOpType {
@@ -60,9 +72,10 @@ func  (me *VisualShaderNodeMultiplyAdd) GetOpType() VisualShaderNodeMultiplyAddO
   methodNameV := StringNameFromStr("get_op_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2823201991) // FIXME: should cache?
-  var ret VisualShaderNodeMultiplyAddOpType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeMultiplyAddOpType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

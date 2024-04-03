@@ -17,6 +17,16 @@ func (me *SoftBody3D) BaseClass() string {
   return "SoftBody3D"
 }
 
+func NewSoftBody3D() *SoftBody3D {
+  str := StringNameFromStr("SoftBody3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &SoftBody3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -47,98 +57,111 @@ func  (me *SoftBody3D) GetPhysicsRid() RID {
   methodNameV := StringNameFromStr("get_physics_rid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRID()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SoftBody3D) SetCollisionMask(collision_mask int, )  {
+func  (me *SoftBody3D) SetCollisionMask(collision_mask int64, )  {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) GetCollisionMask() int {
+func  (me *SoftBody3D) GetCollisionMask() int64 {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SoftBody3D) SetCollisionLayer(collision_layer int, )  {
+func  (me *SoftBody3D) SetCollisionLayer(collision_layer int64, )  {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_collision_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_layer), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) GetCollisionLayer() int {
+func  (me *SoftBody3D) GetCollisionLayer() int64 {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SoftBody3D) SetCollisionMaskValue(layer_number int, value bool, )  {
+func  (me *SoftBody3D) SetCollisionMaskValue(layer_number int64, value bool, )  {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_collision_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) GetCollisionMaskValue(layer_number int, ) bool {
+func  (me *SoftBody3D) GetCollisionMaskValue(layer_number int64, ) bool {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SoftBody3D) SetCollisionLayerValue(layer_number int, value bool, )  {
+func  (me *SoftBody3D) SetCollisionLayerValue(layer_number int64, value bool, )  {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_collision_layer_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) GetCollisionLayerValue(layer_number int, ) bool {
+func  (me *SoftBody3D) GetCollisionLayerValue(layer_number int64, ) bool {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_layer_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *SoftBody3D) SetParentCollisionIgnore(parent_collision_ignore NodePath, )  {
@@ -148,7 +171,9 @@ func  (me *SoftBody3D) SetParentCollisionIgnore(parent_collision_ignore NodePath
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parent_collision_ignore.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SoftBody3D) GetParentCollisionIgnore() NodePath {
@@ -157,10 +182,11 @@ func  (me *SoftBody3D) GetParentCollisionIgnore() NodePath {
   methodNameV := StringNameFromStr("get_parent_collision_ignore")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *SoftBody3D) SetDisableMode(mode SoftBody3DDisableMode, )  {
@@ -170,7 +196,9 @@ func  (me *SoftBody3D) SetDisableMode(mode SoftBody3DDisableMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1104158384) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SoftBody3D) GetDisableMode() SoftBody3DDisableMode {
@@ -179,22 +207,25 @@ func  (me *SoftBody3D) GetDisableMode() SoftBody3DDisableMode {
   methodNameV := StringNameFromStr("get_disable_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4135042476) // FIXME: should cache?
-  var ret SoftBody3DDisableMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret SoftBody3DDisableMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *SoftBody3D) GetCollisionExceptions() PhysicsBody3D {
+func  (me *SoftBody3D) GetCollisionExceptions() []PhysicsBody3D {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_exceptions")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
-  var ret PhysicsBody3D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[PhysicsBody3D](ret)
 }
 
 func  (me *SoftBody3D) AddCollisionExceptionWith(body Node, )  {
@@ -204,7 +235,9 @@ func  (me *SoftBody3D) AddCollisionExceptionWith(body Node, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SoftBody3D) RemoveCollisionExceptionWith(body Node, )  {
@@ -214,173 +247,197 @@ func  (me *SoftBody3D) RemoveCollisionExceptionWith(body Node, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) SetSimulationPrecision(simulation_precision int, )  {
+func  (me *SoftBody3D) SetSimulationPrecision(simulation_precision int64, )  {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_simulation_precision")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&simulation_precision), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) GetSimulationPrecision() int {
+func  (me *SoftBody3D) GetSimulationPrecision() int64 {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_simulation_precision")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SoftBody3D) SetTotalMass(mass float32, )  {
+func  (me *SoftBody3D) SetTotalMass(mass float64, )  {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_total_mass")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mass), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) GetTotalMass() float32 {
+func  (me *SoftBody3D) GetTotalMass() float64 {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_total_mass")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SoftBody3D) SetLinearStiffness(linear_stiffness float32, )  {
+func  (me *SoftBody3D) SetLinearStiffness(linear_stiffness float64, )  {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_linear_stiffness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&linear_stiffness), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) GetLinearStiffness() float32 {
+func  (me *SoftBody3D) GetLinearStiffness() float64 {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_linear_stiffness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SoftBody3D) SetPressureCoefficient(pressure_coefficient float32, )  {
+func  (me *SoftBody3D) SetPressureCoefficient(pressure_coefficient float64, )  {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_pressure_coefficient")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressure_coefficient), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) GetPressureCoefficient() float32 {
+func  (me *SoftBody3D) GetPressureCoefficient() float64 {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_pressure_coefficient")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SoftBody3D) SetDampingCoefficient(damping_coefficient float32, )  {
+func  (me *SoftBody3D) SetDampingCoefficient(damping_coefficient float64, )  {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_damping_coefficient")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&damping_coefficient), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) GetDampingCoefficient() float32 {
+func  (me *SoftBody3D) GetDampingCoefficient() float64 {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_damping_coefficient")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SoftBody3D) SetDragCoefficient(drag_coefficient float32, )  {
+func  (me *SoftBody3D) SetDragCoefficient(drag_coefficient float64, )  {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_drag_coefficient")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&drag_coefficient), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) GetDragCoefficient() float32 {
+func  (me *SoftBody3D) GetDragCoefficient() float64 {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_drag_coefficient")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SoftBody3D) GetPointTransform(point_index int, ) Vector3 {
+func  (me *SoftBody3D) GetPointTransform(point_index int64, ) Vector3 {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_point_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 871989493) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SoftBody3D) SetPointPinned(point_index int, pinned bool, attachment_path NodePath, )  {
+func  (me *SoftBody3D) SetPointPinned(point_index int64, pinned bool, attachment_path NodePath, )  {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_point_pinned")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814935226) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point_index), gdc.ConstTypePtr(&pinned), gdc.ConstTypePtr(attachment_path.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SoftBody3D) IsPointPinned(point_index int, ) bool {
+func  (me *SoftBody3D) IsPointPinned(point_index int64, ) bool {
   classNameV := StringNameFromStr("SoftBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_point_pinned")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *SoftBody3D) SetRayPickable(ray_pickable bool, )  {
@@ -390,7 +447,9 @@ func  (me *SoftBody3D) SetRayPickable(ray_pickable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ray_pickable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SoftBody3D) IsRayPickable() bool {
@@ -399,10 +458,11 @@ func  (me *SoftBody3D) IsRayPickable() bool {
   methodNameV := StringNameFromStr("is_ray_pickable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

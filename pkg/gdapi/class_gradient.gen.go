@@ -17,6 +17,16 @@ func (me *Gradient) BaseClass() string {
   return "Gradient"
 }
 
+func NewGradient() *Gradient {
+  str := StringNameFromStr("Gradient") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Gradient{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -49,46 +59,53 @@ func (me *Gradient) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *Gradient) AddPoint(offset float32, color Color, )  {
+func  (me *Gradient) AddPoint(offset float64, color Color, )  {
   classNameV := StringNameFromStr("Gradient")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_point")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3629403827) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Gradient) RemovePoint(point int, )  {
+func  (me *Gradient) RemovePoint(point int64, )  {
   classNameV := StringNameFromStr("Gradient")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_point")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Gradient) SetOffset(point int, offset float32, )  {
+func  (me *Gradient) SetOffset(point int64, offset float64, )  {
   classNameV := StringNameFromStr("Gradient")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1602489585) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point), gdc.ConstTypePtr(&offset), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Gradient) GetOffset(point int, ) float32 {
+func  (me *Gradient) GetOffset(point int64, ) float64 {
   classNameV := StringNameFromStr("Gradient")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4025615559) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Gradient) Reverse()  {
@@ -98,53 +115,60 @@ func  (me *Gradient) Reverse()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Gradient) SetColor(point int, color Color, )  {
+func  (me *Gradient) SetColor(point int64, color Color, )  {
   classNameV := StringNameFromStr("Gradient")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2878471219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point), gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Gradient) GetColor(point int, ) Color {
+func  (me *Gradient) GetColor(point int64, ) Color {
   classNameV := StringNameFromStr("Gradient")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2624840992) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Gradient) Sample(offset float32, ) Color {
+func  (me *Gradient) Sample(offset float64, ) Color {
   classNameV := StringNameFromStr("Gradient")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("sample")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1250405064) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&offset), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Gradient) GetPointCount() int {
+func  (me *Gradient) GetPointCount() int64 {
   classNameV := StringNameFromStr("Gradient")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_point_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Gradient) SetOffsets(offsets PackedFloat32Array, )  {
@@ -154,7 +178,9 @@ func  (me *Gradient) SetOffsets(offsets PackedFloat32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2899603908) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offsets.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Gradient) GetOffsets() PackedFloat32Array {
@@ -163,10 +189,11 @@ func  (me *Gradient) GetOffsets() PackedFloat32Array {
   methodNameV := StringNameFromStr("get_offsets")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 675695659) // FIXME: should cache?
-  var ret PackedFloat32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedFloat32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Gradient) SetColors(colors PackedColorArray, )  {
@@ -176,7 +203,9 @@ func  (me *Gradient) SetColors(colors PackedColorArray, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3546319833) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(colors.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Gradient) GetColors() PackedColorArray {
@@ -185,10 +214,11 @@ func  (me *Gradient) GetColors() PackedColorArray {
   methodNameV := StringNameFromStr("get_colors")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1392750486) // FIXME: should cache?
-  var ret PackedColorArray
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedColorArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Gradient) SetInterpolationMode(interpolation_mode GradientInterpolationMode, )  {
@@ -198,7 +228,9 @@ func  (me *Gradient) SetInterpolationMode(interpolation_mode GradientInterpolati
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1971444490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&interpolation_mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Gradient) GetInterpolationMode() GradientInterpolationMode {
@@ -207,9 +239,10 @@ func  (me *Gradient) GetInterpolationMode() GradientInterpolationMode {
   methodNameV := StringNameFromStr("get_interpolation_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3674172981) // FIXME: should cache?
-  var ret GradientInterpolationMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret GradientInterpolationMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -220,7 +253,9 @@ func  (me *Gradient) SetInterpolationColorSpace(interpolation_color_space Gradie
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3685995981) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&interpolation_color_space), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Gradient) GetInterpolationColorSpace() GradientColorSpace {
@@ -229,9 +264,10 @@ func  (me *Gradient) GetInterpolationColorSpace() GradientColorSpace {
   methodNameV := StringNameFromStr("get_interpolation_color_space")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1538296000) // FIXME: should cache?
-  var ret GradientColorSpace
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret GradientColorSpace
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

@@ -17,6 +17,16 @@ func (me *CameraServer) BaseClass() string {
   return "CameraServer"
 }
 
+func NewCameraServer() *CameraServer {
+  str := StringNameFromStr("CameraServer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CameraServer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -43,40 +53,44 @@ func (me *CameraServer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *CameraServer) GetFeed(index int, ) CameraFeed {
+func  (me *CameraServer) GetFeed(index int64, ) CameraFeed {
   classNameV := StringNameFromStr("CameraServer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_feed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 361927068) // FIXME: should cache?
-  var ret CameraFeed
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCameraFeed()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *CameraServer) GetFeedCount() int {
+func  (me *CameraServer) GetFeedCount() int64 {
   classNameV := StringNameFromStr("CameraServer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_feed_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CameraServer) Feeds() CameraFeed {
+func  (me *CameraServer) Feeds() []CameraFeed {
   classNameV := StringNameFromStr("CameraServer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("feeds")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
-  var ret CameraFeed
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[CameraFeed](ret)
 }
 
 func  (me *CameraServer) AddFeed(feed CameraFeed, )  {
@@ -86,7 +100,9 @@ func  (me *CameraServer) AddFeed(feed CameraFeed, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3204782488) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(feed.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CameraServer) RemoveFeed(feed CameraFeed, )  {
@@ -96,7 +112,9 @@ func  (me *CameraServer) RemoveFeed(feed CameraFeed, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3204782488) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(feed.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

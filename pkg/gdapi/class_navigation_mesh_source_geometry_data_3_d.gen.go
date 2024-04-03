@@ -17,6 +17,16 @@ func (me *NavigationMeshSourceGeometryData3D) BaseClass() string {
   return "NavigationMeshSourceGeometryData3D"
 }
 
+func NewNavigationMeshSourceGeometryData3D() *NavigationMeshSourceGeometryData3D {
+  str := StringNameFromStr("NavigationMeshSourceGeometryData3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &NavigationMeshSourceGeometryData3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *NavigationMeshSourceGeometryData3D) SetVertices(vertices PackedFloat3
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2899603908) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(vertices.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) GetVertices() PackedFloat32Array {
@@ -51,10 +63,11 @@ func  (me *NavigationMeshSourceGeometryData3D) GetVertices() PackedFloat32Array 
   methodNameV := StringNameFromStr("get_vertices")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 675695659) // FIXME: should cache?
-  var ret PackedFloat32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedFloat32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) SetIndices(indices PackedInt32Array, )  {
@@ -64,7 +77,9 @@ func  (me *NavigationMeshSourceGeometryData3D) SetIndices(indices PackedInt32Arr
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(indices.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) GetIndices() PackedInt32Array {
@@ -73,10 +88,11 @@ func  (me *NavigationMeshSourceGeometryData3D) GetIndices() PackedInt32Array {
   methodNameV := StringNameFromStr("get_indices")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) Clear()  {
@@ -86,7 +102,9 @@ func  (me *NavigationMeshSourceGeometryData3D) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) HasData() bool {
@@ -95,10 +113,11 @@ func  (me *NavigationMeshSourceGeometryData3D) HasData() bool {
   methodNameV := StringNameFromStr("has_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) AddMesh(mesh Mesh, xform Transform3D, )  {
@@ -108,7 +127,9 @@ func  (me *NavigationMeshSourceGeometryData3D) AddMesh(mesh Mesh, xform Transfor
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 975462459) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), gdc.ConstTypePtr(xform.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) AddMeshArray(mesh_array Array, xform Transform3D, )  {
@@ -118,7 +139,9 @@ func  (me *NavigationMeshSourceGeometryData3D) AddMeshArray(mesh_array Array, xf
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4235710913) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh_array.AsCTypePtr()), gdc.ConstTypePtr(xform.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) AddFaces(faces PackedVector3Array, xform Transform3D, )  {
@@ -128,7 +151,9 @@ func  (me *NavigationMeshSourceGeometryData3D) AddFaces(faces PackedVector3Array
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1440358797) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(faces.AsCTypePtr()), gdc.ConstTypePtr(xform.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

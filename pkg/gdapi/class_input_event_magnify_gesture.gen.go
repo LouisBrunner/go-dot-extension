@@ -17,6 +17,16 @@ func (me *InputEventMagnifyGesture) BaseClass() string {
   return "InputEventMagnifyGesture"
 }
 
+func NewInputEventMagnifyGesture() *InputEventMagnifyGesture {
+  str := StringNameFromStr("InputEventMagnifyGesture") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &InputEventMagnifyGesture{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *InputEventMagnifyGesture) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *InputEventMagnifyGesture) SetFactor(factor float32, )  {
+func  (me *InputEventMagnifyGesture) SetFactor(factor float64, )  {
   classNameV := StringNameFromStr("InputEventMagnifyGesture")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_factor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&factor), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *InputEventMagnifyGesture) GetFactor() float32 {
+func  (me *InputEventMagnifyGesture) GetFactor() float64 {
   classNameV := StringNameFromStr("InputEventMagnifyGesture")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_factor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *PortableCompressedTexture2D) BaseClass() string {
   return "PortableCompressedTexture2D"
 }
 
+func NewPortableCompressedTexture2D() *PortableCompressedTexture2D {
+  str := StringNameFromStr("PortableCompressedTexture2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PortableCompressedTexture2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -45,14 +55,16 @@ func (me *PortableCompressedTexture2D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *PortableCompressedTexture2D) CreateFromImage(image Image, compression_mode PortableCompressedTexture2DCompressionMode, normal_map bool, lossy_quality float32, )  {
+func  (me *PortableCompressedTexture2D) CreateFromImage(image Image, compression_mode PortableCompressedTexture2DCompressionMode, normal_map bool, lossy_quality float64, )  {
   classNameV := StringNameFromStr("PortableCompressedTexture2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_from_image")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3679243433) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), gdc.ConstTypePtr(&compression_mode), gdc.ConstTypePtr(&normal_map), gdc.ConstTypePtr(&lossy_quality), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PortableCompressedTexture2D) GetFormat() ImageFormat {
@@ -61,9 +73,10 @@ func  (me *PortableCompressedTexture2D) GetFormat() ImageFormat {
   methodNameV := StringNameFromStr("get_format")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3847873762) // FIXME: should cache?
-  var ret ImageFormat
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret ImageFormat
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -73,9 +86,10 @@ func  (me *PortableCompressedTexture2D) GetCompressionMode() PortableCompressedT
   methodNameV := StringNameFromStr("get_compression_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3265612739) // FIXME: should cache?
-  var ret PortableCompressedTexture2DCompressionMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret PortableCompressedTexture2DCompressionMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -86,7 +100,9 @@ func  (me *PortableCompressedTexture2D) SetSizeOverride(size Vector2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PortableCompressedTexture2D) GetSizeOverride() Vector2 {
@@ -95,10 +111,11 @@ func  (me *PortableCompressedTexture2D) GetSizeOverride() Vector2 {
   methodNameV := StringNameFromStr("get_size_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PortableCompressedTexture2D) SetKeepCompressedBuffer(keep bool, )  {
@@ -108,7 +125,9 @@ func  (me *PortableCompressedTexture2D) SetKeepCompressedBuffer(keep bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keep), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PortableCompressedTexture2D) IsKeepingCompressedBuffer() bool {
@@ -117,10 +136,11 @@ func  (me *PortableCompressedTexture2D) IsKeepingCompressedBuffer() bool {
   methodNameV := StringNameFromStr("is_keeping_compressed_buffer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  PortableCompressedTexture2DSetKeepAllCompressedBuffers(keep bool, )  {
@@ -130,7 +150,9 @@ func  PortableCompressedTexture2DSetKeepAllCompressedBuffers(keep bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keep), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
+
 }
 
 func  PortableCompressedTexture2DIsKeepingAllCompressedBuffers() bool {
@@ -139,10 +161,11 @@ func  PortableCompressedTexture2DIsKeepingAllCompressedBuffers() bool {
   methodNameV := StringNameFromStr("is_keeping_all_compressed_buffers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

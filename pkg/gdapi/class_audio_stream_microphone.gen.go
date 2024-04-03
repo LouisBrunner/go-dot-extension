@@ -17,6 +17,16 @@ func (me *AudioStreamMicrophone) BaseClass() string {
   return "AudioStreamMicrophone"
 }
 
+func NewAudioStreamMicrophone() *AudioStreamMicrophone {
+  str := StringNameFromStr("AudioStreamMicrophone") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioStreamMicrophone{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

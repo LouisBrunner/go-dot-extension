@@ -17,6 +17,16 @@ func (me *Shape2D) BaseClass() string {
   return "Shape2D"
 }
 
+func NewShape2D() *Shape2D {
+  str := StringNameFromStr("Shape2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Shape2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *Shape2D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *Shape2D) SetCustomSolverBias(bias float32, )  {
+func  (me *Shape2D) SetCustomSolverBias(bias float64, )  {
   classNameV := StringNameFromStr("Shape2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_custom_solver_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bias), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Shape2D) GetCustomSolverBias() float32 {
+func  (me *Shape2D) GetCustomSolverBias() float64 {
   classNameV := StringNameFromStr("Shape2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_custom_solver_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Shape2D) Collide(local_xform Transform2D, with_shape Shape2D, shape_xform Transform2D, ) bool {
@@ -63,10 +76,11 @@ func  (me *Shape2D) Collide(local_xform Transform2D, with_shape Shape2D, shape_x
   methodNameV := StringNameFromStr("collide")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3709843132) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(local_xform.AsCTypePtr()), gdc.ConstTypePtr(with_shape.AsCTypePtr()), gdc.ConstTypePtr(shape_xform.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Shape2D) CollideWithMotion(local_xform Transform2D, local_motion Vector2, with_shape Shape2D, shape_xform Transform2D, shape_motion Vector2, ) bool {
@@ -75,10 +89,11 @@ func  (me *Shape2D) CollideWithMotion(local_xform Transform2D, local_motion Vect
   methodNameV := StringNameFromStr("collide_with_motion")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2869556801) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(local_xform.AsCTypePtr()), gdc.ConstTypePtr(local_motion.AsCTypePtr()), gdc.ConstTypePtr(with_shape.AsCTypePtr()), gdc.ConstTypePtr(shape_xform.AsCTypePtr()), gdc.ConstTypePtr(shape_motion.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Shape2D) CollideAndGetContacts(local_xform Transform2D, with_shape Shape2D, shape_xform Transform2D, ) PackedVector2Array {
@@ -87,10 +102,11 @@ func  (me *Shape2D) CollideAndGetContacts(local_xform Transform2D, with_shape Sh
   methodNameV := StringNameFromStr("collide_and_get_contacts")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3056932662) // FIXME: should cache?
-  var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(local_xform.AsCTypePtr()), gdc.ConstTypePtr(with_shape.AsCTypePtr()), gdc.ConstTypePtr(shape_xform.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector2Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Shape2D) CollideWithMotionAndGetContacts(local_xform Transform2D, local_motion Vector2, with_shape Shape2D, shape_xform Transform2D, shape_motion Vector2, ) PackedVector2Array {
@@ -99,10 +115,11 @@ func  (me *Shape2D) CollideWithMotionAndGetContacts(local_xform Transform2D, loc
   methodNameV := StringNameFromStr("collide_with_motion_and_get_contacts")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3620351573) // FIXME: should cache?
-  var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(local_xform.AsCTypePtr()), gdc.ConstTypePtr(local_motion.AsCTypePtr()), gdc.ConstTypePtr(with_shape.AsCTypePtr()), gdc.ConstTypePtr(shape_xform.AsCTypePtr()), gdc.ConstTypePtr(shape_motion.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector2Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Shape2D) Draw(canvas_item RID, color Color, )  {
@@ -112,7 +129,9 @@ func  (me *Shape2D) Draw(canvas_item RID, color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2948539648) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas_item.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Shape2D) GetRect() Rect2 {
@@ -121,10 +140,11 @@ func  (me *Shape2D) GetRect() Rect2 {
   methodNameV := StringNameFromStr("get_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
-  var ret Rect2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRect2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

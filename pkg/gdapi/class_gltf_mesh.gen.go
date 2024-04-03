@@ -17,6 +17,16 @@ func (me *GLTFMesh) BaseClass() string {
   return "GLTFMesh"
 }
 
+func NewGLTFMesh() *GLTFMesh {
+  str := StringNameFromStr("GLTFMesh") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GLTFMesh{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *GLTFMesh) GetMesh() ImporterMesh {
   methodNameV := StringNameFromStr("get_mesh")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3754628756) // FIXME: should cache?
-  var ret ImporterMesh
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewImporterMesh()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFMesh) SetMesh(mesh ImporterMesh, )  {
@@ -54,7 +65,9 @@ func  (me *GLTFMesh) SetMesh(mesh ImporterMesh, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2255166972) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFMesh) GetBlendWeights() PackedFloat32Array {
@@ -63,10 +76,11 @@ func  (me *GLTFMesh) GetBlendWeights() PackedFloat32Array {
   methodNameV := StringNameFromStr("get_blend_weights")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2445143706) // FIXME: should cache?
-  var ret PackedFloat32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedFloat32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFMesh) SetBlendWeights(blend_weights PackedFloat32Array, )  {
@@ -76,29 +90,35 @@ func  (me *GLTFMesh) SetBlendWeights(blend_weights PackedFloat32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2899603908) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(blend_weights.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GLTFMesh) GetInstanceMaterials() Material {
+func  (me *GLTFMesh) GetInstanceMaterials() []Material {
   classNameV := StringNameFromStr("GLTFMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_instance_materials")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
-  var ret Material
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[Material](ret)
 }
 
-func  (me *GLTFMesh) SetInstanceMaterials(instance_materials Material, )  {
+func  (me *GLTFMesh) SetInstanceMaterials(instance_materials []Material, )  {
   classNameV := StringNameFromStr("GLTFMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_instance_materials")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(instance_materials.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&instance_materials), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

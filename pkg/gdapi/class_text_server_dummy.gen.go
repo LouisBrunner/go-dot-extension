@@ -17,6 +17,16 @@ func (me *TextServerDummy) BaseClass() string {
   return "TextServerDummy"
 }
 
+func NewTextServerDummy() *TextServerDummy {
+  str := StringNameFromStr("TextServerDummy") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &TextServerDummy{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

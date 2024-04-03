@@ -17,6 +17,16 @@ func (me *PhysicsBody3D) BaseClass() string {
   return "PhysicsBody3D"
 }
 
+func NewPhysicsBody3D() *PhysicsBody3D {
+  str := StringNameFromStr("PhysicsBody3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PhysicsBody3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,28 +45,30 @@ func (me *PhysicsBody3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *PhysicsBody3D) MoveAndCollide(motion Vector3, test_only bool, safe_margin float32, recovery_as_collision bool, max_collisions int, ) KinematicCollision3D {
+func  (me *PhysicsBody3D) MoveAndCollide(motion Vector3, test_only bool, safe_margin float64, recovery_as_collision bool, max_collisions int64, ) KinematicCollision3D {
   classNameV := StringNameFromStr("PhysicsBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("move_and_collide")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3208792678) // FIXME: should cache?
-  var ret KinematicCollision3D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(motion.AsCTypePtr()), gdc.ConstTypePtr(&test_only), gdc.ConstTypePtr(&safe_margin), gdc.ConstTypePtr(&recovery_as_collision), gdc.ConstTypePtr(&max_collisions), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewKinematicCollision3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *PhysicsBody3D) TestMove(from Transform3D, motion Vector3, collision KinematicCollision3D, safe_margin float32, recovery_as_collision bool, max_collisions int, ) bool {
+func  (me *PhysicsBody3D) TestMove(from Transform3D, motion Vector3, collision KinematicCollision3D, safe_margin float64, recovery_as_collision bool, max_collisions int64, ) bool {
   classNameV := StringNameFromStr("PhysicsBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("test_move")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2481691619) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from.AsCTypePtr()), gdc.ConstTypePtr(motion.AsCTypePtr()), gdc.ConstTypePtr(collision.AsCTypePtr()), gdc.ConstTypePtr(&safe_margin), gdc.ConstTypePtr(&recovery_as_collision), gdc.ConstTypePtr(&max_collisions), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *PhysicsBody3D) SetAxisLock(axis PhysicsServer3DBodyAxis, lock bool, )  {
@@ -66,7 +78,9 @@ func  (me *PhysicsBody3D) SetAxisLock(axis PhysicsServer3DBodyAxis, lock bool, )
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1787895195) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&axis), gdc.ConstTypePtr(&lock), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PhysicsBody3D) GetAxisLock(axis PhysicsServer3DBodyAxis, ) bool {
@@ -75,22 +89,25 @@ func  (me *PhysicsBody3D) GetAxisLock(axis PhysicsServer3DBodyAxis, ) bool {
   methodNameV := StringNameFromStr("get_axis_lock")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2264617709) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&axis), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *PhysicsBody3D) GetCollisionExceptions() PhysicsBody3D {
+func  (me *PhysicsBody3D) GetCollisionExceptions() []PhysicsBody3D {
   classNameV := StringNameFromStr("PhysicsBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_exceptions")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
-  var ret PhysicsBody3D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[PhysicsBody3D](ret)
 }
 
 func  (me *PhysicsBody3D) AddCollisionExceptionWith(body Node, )  {
@@ -100,7 +117,9 @@ func  (me *PhysicsBody3D) AddCollisionExceptionWith(body Node, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PhysicsBody3D) RemoveCollisionExceptionWith(body Node, )  {
@@ -110,7 +129,9 @@ func  (me *PhysicsBody3D) RemoveCollisionExceptionWith(body Node, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

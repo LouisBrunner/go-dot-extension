@@ -17,6 +17,16 @@ func (me *PlaceholderTexture2DArray) BaseClass() string {
   return "PlaceholderTexture2DArray"
 }
 
+func NewPlaceholderTexture2DArray() *PlaceholderTexture2DArray {
+  str := StringNameFromStr("PlaceholderTexture2DArray") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PlaceholderTexture2DArray{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

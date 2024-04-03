@@ -17,6 +17,16 @@ func (me *VisualShaderNodeStep) BaseClass() string {
   return "VisualShaderNodeStep"
 }
 
+func NewVisualShaderNodeStep() *VisualShaderNodeStep {
+  str := StringNameFromStr("VisualShaderNodeStep") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeStep{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -54,7 +64,9 @@ func  (me *VisualShaderNodeStep) SetOpType(op_type VisualShaderNodeStepOpType, )
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 715172489) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&op_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeStep) GetOpType() VisualShaderNodeStepOpType {
@@ -63,9 +75,10 @@ func  (me *VisualShaderNodeStep) GetOpType() VisualShaderNodeStepOpType {
   methodNameV := StringNameFromStr("get_op_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3274022781) // FIXME: should cache?
-  var ret VisualShaderNodeStepOpType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeStepOpType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

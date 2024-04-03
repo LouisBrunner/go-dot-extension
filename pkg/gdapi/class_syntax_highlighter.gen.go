@@ -17,6 +17,16 @@ func (me *SyntaxHighlighter) BaseClass() string {
   return "SyntaxHighlighter"
 }
 
+func NewSyntaxHighlighter() *SyntaxHighlighter {
+  str := StringNameFromStr("SyntaxHighlighter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &SyntaxHighlighter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,16 +45,17 @@ func (me *SyntaxHighlighter) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *SyntaxHighlighter) GetLineSyntaxHighlighting(line int, ) Dictionary {
+func  (me *SyntaxHighlighter) GetLineSyntaxHighlighting(line int64, ) Dictionary {
   classNameV := StringNameFromStr("SyntaxHighlighter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_syntax_highlighting")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3554694381) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *SyntaxHighlighter) UpdateCache()  {
@@ -54,7 +65,9 @@ func  (me *SyntaxHighlighter) UpdateCache()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SyntaxHighlighter) ClearHighlightingCache()  {
@@ -64,7 +77,9 @@ func  (me *SyntaxHighlighter) ClearHighlightingCache()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SyntaxHighlighter) GetTextEdit() TextEdit {
@@ -73,10 +88,11 @@ func  (me *SyntaxHighlighter) GetTextEdit() TextEdit {
   methodNameV := StringNameFromStr("get_text_edit")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1893027089) // FIXME: should cache?
-  var ret TextEdit
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTextEdit()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

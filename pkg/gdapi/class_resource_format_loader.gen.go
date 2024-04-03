@@ -17,6 +17,16 @@ func (me *ResourceFormatLoader) BaseClass() string {
   return "ResourceFormatLoader"
 }
 
+func NewResourceFormatLoader() *ResourceFormatLoader {
+  str := StringNameFromStr("ResourceFormatLoader") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ResourceFormatLoader{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -115,6 +115,29 @@ func typeFromReflect(val reflect.Value) (gdc.TypePtr, error) {
 	return nil, fmt.Errorf("unsupported type: %s", val.Kind())
 }
 
+func findExpected(obj any, expected reflect.Type) (interface{}, error) {
+	val := reflect.ValueOf(obj).Elem()
+
+	if val.Type() == expected {
+		return val.Interface(), nil
+	}
+
+	for i := 0; i < val.NumField(); i += 1 {
+		field := val.Field(i)
+		if field.Type() == expected {
+			return field.Interface(), nil
+		}
+		if field.Kind() == reflect.Struct {
+			res, err := findExpected(field.Addr().Interface(), expected)
+			if err == nil {
+				return res, nil
+			}
+		}
+	}
+
+	return nil, fmt.Errorf("could not find expected type %s in %s", expected, val.Type())
+}
+
 func nativeFromVariant(vaRaw gdc.ConstVariantPtr, expected reflect.Type) (any, error) {
 	va := gdapi.NewVariantWithC(vaRaw)
 	switch va.Type() {
@@ -189,7 +212,7 @@ func nativeFromVariant(vaRaw gdc.ConstVariantPtr, expected reflect.Type) (any, e
 		if err != nil {
 			return nil, err
 		}
-		return *obj, nil
+		return findExpected(obj, expected)
 	default:
 		if expected.Kind() != reflect.Interface {
 			return nil, fmt.Errorf("cannot convert bclass %v to %s", va.Type(), expected.Kind())
@@ -202,18 +225,17 @@ func nativeFromVariant(vaRaw gdc.ConstVariantPtr, expected reflect.Type) (any, e
 	}
 }
 
-func variantFromReflect(val reflect.Value) (gdc.VariantPtr, error) {
-	// TODO: this leaks
+func variantFromReflect(val reflect.Value) (*gdapi.Variant, error) {
 	switch val.Kind() {
 	case reflect.Bool:
-		return gdapi.NewBoolFromBool(val.Bool()).AsVariant().AsPtr(), nil
+		return gdapi.NewBoolFromBool(val.Bool()).AsVariant(), nil
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64,
 		reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-		return gdapi.NewIntFromInt(val.Int()).AsVariant().AsPtr(), nil
+		return gdapi.NewIntFromInt(val.Int()).AsVariant(), nil
 	case reflect.Float32, reflect.Float64:
-		return gdapi.NewFloatFromFloat32(val.Float()).AsVariant().AsPtr(), nil
+		return gdapi.NewFloatFromFloat32(val.Float()).AsVariant(), nil
 	case reflect.String:
-		return gdapi.StringFromStr(val.String()).AsVariant().AsPtr(), nil
+		return gdapi.StringFromStr(val.String()).AsVariant(), nil
 	case reflect.Array, reflect.Slice:
 		arr := gdapi.NewArray()
 		for i := 0; i < val.Len(); i++ {
@@ -223,14 +245,14 @@ func variantFromReflect(val reflect.Value) (gdc.VariantPtr, error) {
 			}
 			arr.PushBack(*gdapi.NewVariantWith(gdc.VariantPtr(va)))
 		}
-		return arr.AsVariant().AsPtr(), nil
+		return arr.AsVariant(), nil
 	case reflect.Struct:
 		val = val.Addr()
 		fallthrough
 	case reflect.Interface:
 		bclazz, isBclass := val.Interface().(gdapi.BClass)
 		if isBclass {
-			return bclazz.AsVariant().AsPtr(), nil
+			return bclazz.AsVariant(), nil
 		}
 	case reflect.Ptr:
 		if val.IsNil() {

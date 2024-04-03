@@ -17,6 +17,16 @@ func (me *CameraAttributes) BaseClass() string {
   return "CameraAttributes"
 }
 
+func NewCameraAttributes() *CameraAttributes {
+  str := StringNameFromStr("CameraAttributes") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CameraAttributes{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,48 +45,54 @@ func (me *CameraAttributes) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *CameraAttributes) SetExposureMultiplier(multiplier float32, )  {
+func  (me *CameraAttributes) SetExposureMultiplier(multiplier float64, )  {
   classNameV := StringNameFromStr("CameraAttributes")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_exposure_multiplier")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&multiplier), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CameraAttributes) GetExposureMultiplier() float32 {
+func  (me *CameraAttributes) GetExposureMultiplier() float64 {
   classNameV := StringNameFromStr("CameraAttributes")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_exposure_multiplier")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CameraAttributes) SetExposureSensitivity(sensitivity float32, )  {
+func  (me *CameraAttributes) SetExposureSensitivity(sensitivity float64, )  {
   classNameV := StringNameFromStr("CameraAttributes")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_exposure_sensitivity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&sensitivity), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CameraAttributes) GetExposureSensitivity() float32 {
+func  (me *CameraAttributes) GetExposureSensitivity() float64 {
   classNameV := StringNameFromStr("CameraAttributes")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_exposure_sensitivity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CameraAttributes) SetAutoExposureEnabled(enabled bool, )  {
@@ -86,7 +102,9 @@ func  (me *CameraAttributes) SetAutoExposureEnabled(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CameraAttributes) IsAutoExposureEnabled() bool {
@@ -95,54 +113,61 @@ func  (me *CameraAttributes) IsAutoExposureEnabled() bool {
   methodNameV := StringNameFromStr("is_auto_exposure_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CameraAttributes) SetAutoExposureSpeed(exposure_speed float32, )  {
+func  (me *CameraAttributes) SetAutoExposureSpeed(exposure_speed float64, )  {
   classNameV := StringNameFromStr("CameraAttributes")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_auto_exposure_speed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&exposure_speed), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CameraAttributes) GetAutoExposureSpeed() float32 {
+func  (me *CameraAttributes) GetAutoExposureSpeed() float64 {
   classNameV := StringNameFromStr("CameraAttributes")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_auto_exposure_speed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CameraAttributes) SetAutoExposureScale(exposure_grey float32, )  {
+func  (me *CameraAttributes) SetAutoExposureScale(exposure_grey float64, )  {
   classNameV := StringNameFromStr("CameraAttributes")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_auto_exposure_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&exposure_grey), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CameraAttributes) GetAutoExposureScale() float32 {
+func  (me *CameraAttributes) GetAutoExposureScale() float64 {
   classNameV := StringNameFromStr("CameraAttributes")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_auto_exposure_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

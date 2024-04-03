@@ -17,6 +17,16 @@ func (me *VisualShaderNodeVectorCompose) BaseClass() string {
   return "VisualShaderNodeVectorCompose"
 }
 
+func NewVisualShaderNodeVectorCompose() *VisualShaderNodeVectorCompose {
+  str := StringNameFromStr("VisualShaderNodeVectorCompose") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeVectorCompose{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

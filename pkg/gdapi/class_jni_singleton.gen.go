@@ -17,6 +17,16 @@ func (me *JNISingleton) BaseClass() string {
   return "JNISingleton"
 }
 
+func NewJNISingleton() *JNISingleton {
+  str := StringNameFromStr("JNISingleton") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &JNISingleton{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

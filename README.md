@@ -132,6 +132,14 @@ You can find examples in the `examples` folder.
 - `signals`: an example of how to use signals
 - `gdscript`: an example of how to use the custom Godot class in GDScript
 
+## Issues
+
+- ptrcall methods return type conversion is unimplemented
+- `Signal`s have no arguments in the Godot documentation/type hint system
+- potential panic when using functions which return `Array`s (bad support for the cast from `Variant`)
+- potential panic when using varargs functions (bad error handling)
+- potential panic when using functions which deal with enums (bad pointer passing)
+
 ## Acknowledgements
 
 - https://github.com/ShadowApex/godot-go: for their great work and straight-forward API which inspired this project

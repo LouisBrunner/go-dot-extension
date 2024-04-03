@@ -17,6 +17,16 @@ func (me *PhysicsRayQueryParameters3D) BaseClass() string {
   return "PhysicsRayQueryParameters3D"
 }
 
+func NewPhysicsRayQueryParameters3D() *PhysicsRayQueryParameters3D {
+  str := StringNameFromStr("PhysicsRayQueryParameters3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PhysicsRayQueryParameters3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,16 +45,17 @@ func (me *PhysicsRayQueryParameters3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  PhysicsRayQueryParameters3DCreate(from Vector3, to Vector3, collision_mask int, exclude RID, ) PhysicsRayQueryParameters3D {
+func  PhysicsRayQueryParameters3DCreate(from Vector3, to Vector3, collision_mask int64, exclude []RID, ) PhysicsRayQueryParameters3D {
   classNameV := StringNameFromStr("PhysicsRayQueryParameters3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3110599579) // FIXME: should cache?
-  var ret PhysicsRayQueryParameters3D
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from.AsCTypePtr()), gdc.ConstTypePtr(to.AsCTypePtr()), gdc.ConstTypePtr(&collision_mask), gdc.ConstTypePtr(exclude.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from.AsCTypePtr()), gdc.ConstTypePtr(to.AsCTypePtr()), gdc.ConstTypePtr(&collision_mask), gdc.ConstTypePtr(&exclude), }
+  ret := NewPhysicsRayQueryParameters3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PhysicsRayQueryParameters3D) SetFrom(from Vector3, )  {
@@ -54,7 +65,9 @@ func  (me *PhysicsRayQueryParameters3D) SetFrom(from Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PhysicsRayQueryParameters3D) GetFrom() Vector3 {
@@ -63,10 +76,11 @@ func  (me *PhysicsRayQueryParameters3D) GetFrom() Vector3 {
   methodNameV := StringNameFromStr("get_from")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PhysicsRayQueryParameters3D) SetTo(to Vector3, )  {
@@ -76,7 +90,9 @@ func  (me *PhysicsRayQueryParameters3D) SetTo(to Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(to.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PhysicsRayQueryParameters3D) GetTo() Vector3 {
@@ -85,54 +101,62 @@ func  (me *PhysicsRayQueryParameters3D) GetTo() Vector3 {
   methodNameV := StringNameFromStr("get_to")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *PhysicsRayQueryParameters3D) SetCollisionMask(collision_mask int, )  {
+func  (me *PhysicsRayQueryParameters3D) SetCollisionMask(collision_mask int64, )  {
   classNameV := StringNameFromStr("PhysicsRayQueryParameters3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *PhysicsRayQueryParameters3D) GetCollisionMask() int {
+func  (me *PhysicsRayQueryParameters3D) GetCollisionMask() int64 {
   classNameV := StringNameFromStr("PhysicsRayQueryParameters3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *PhysicsRayQueryParameters3D) SetExclude(exclude RID, )  {
+func  (me *PhysicsRayQueryParameters3D) SetExclude(exclude []RID, )  {
   classNameV := StringNameFromStr("PhysicsRayQueryParameters3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_exclude")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(exclude.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&exclude), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *PhysicsRayQueryParameters3D) GetExclude() RID {
+func  (me *PhysicsRayQueryParameters3D) GetExclude() []RID {
   classNameV := StringNameFromStr("PhysicsRayQueryParameters3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_exclude")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[RID](ret)
 }
 
 func  (me *PhysicsRayQueryParameters3D) SetCollideWithBodies(enable bool, )  {
@@ -142,7 +166,9 @@ func  (me *PhysicsRayQueryParameters3D) SetCollideWithBodies(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PhysicsRayQueryParameters3D) IsCollideWithBodiesEnabled() bool {
@@ -151,10 +177,11 @@ func  (me *PhysicsRayQueryParameters3D) IsCollideWithBodiesEnabled() bool {
   methodNameV := StringNameFromStr("is_collide_with_bodies_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *PhysicsRayQueryParameters3D) SetCollideWithAreas(enable bool, )  {
@@ -164,7 +191,9 @@ func  (me *PhysicsRayQueryParameters3D) SetCollideWithAreas(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PhysicsRayQueryParameters3D) IsCollideWithAreasEnabled() bool {
@@ -173,10 +202,11 @@ func  (me *PhysicsRayQueryParameters3D) IsCollideWithAreasEnabled() bool {
   methodNameV := StringNameFromStr("is_collide_with_areas_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *PhysicsRayQueryParameters3D) SetHitFromInside(enable bool, )  {
@@ -186,7 +216,9 @@ func  (me *PhysicsRayQueryParameters3D) SetHitFromInside(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PhysicsRayQueryParameters3D) IsHitFromInsideEnabled() bool {
@@ -195,10 +227,11 @@ func  (me *PhysicsRayQueryParameters3D) IsHitFromInsideEnabled() bool {
   methodNameV := StringNameFromStr("is_hit_from_inside_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *PhysicsRayQueryParameters3D) SetHitBackFaces(enable bool, )  {
@@ -208,7 +241,9 @@ func  (me *PhysicsRayQueryParameters3D) SetHitBackFaces(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PhysicsRayQueryParameters3D) IsHitBackFacesEnabled() bool {
@@ -217,10 +252,11 @@ func  (me *PhysicsRayQueryParameters3D) IsHitBackFacesEnabled() bool {
   methodNameV := StringNameFromStr("is_hit_back_faces_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

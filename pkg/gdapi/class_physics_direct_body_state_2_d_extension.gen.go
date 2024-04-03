@@ -17,6 +17,16 @@ func (me *PhysicsDirectBodyState2DExtension) BaseClass() string {
   return "PhysicsDirectBodyState2DExtension"
 }
 
+func NewPhysicsDirectBodyState2DExtension() *PhysicsDirectBodyState2DExtension {
+  str := StringNameFromStr("PhysicsDirectBodyState2DExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PhysicsDirectBodyState2DExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

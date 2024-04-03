@@ -17,6 +17,16 @@ func (me *EditorNode3DGizmo) BaseClass() string {
   return "EditorNode3DGizmo"
 }
 
+func NewEditorNode3DGizmo() *EditorNode3DGizmo {
+  str := StringNameFromStr("EditorNode3DGizmo") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorNode3DGizmo{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *EditorNode3DGizmo) AddLines(lines PackedVector3Array, material Materi
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2910971437) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(lines.AsCTypePtr()), gdc.ConstTypePtr(material.AsCTypePtr()), gdc.ConstTypePtr(&billboard), gdc.ConstTypePtr(modulate.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorNode3DGizmo) AddMesh(mesh Mesh, material Material, transform Transform3D, skeleton SkinReference, )  {
@@ -52,7 +64,9 @@ func  (me *EditorNode3DGizmo) AddMesh(mesh Mesh, material Material, transform Tr
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1579955111) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), gdc.ConstTypePtr(material.AsCTypePtr()), gdc.ConstTypePtr(transform.AsCTypePtr()), gdc.ConstTypePtr(skeleton.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorNode3DGizmo) AddCollisionSegments(segments PackedVector3Array, )  {
@@ -62,7 +76,9 @@ func  (me *EditorNode3DGizmo) AddCollisionSegments(segments PackedVector3Array, 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334873810) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(segments.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorNode3DGizmo) AddCollisionTriangles(triangles TriangleMesh, )  {
@@ -72,17 +88,21 @@ func  (me *EditorNode3DGizmo) AddCollisionTriangles(triangles TriangleMesh, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 54901064) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(triangles.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *EditorNode3DGizmo) AddUnscaledBillboard(material Material, default_scale float32, modulate Color, )  {
+func  (me *EditorNode3DGizmo) AddUnscaledBillboard(material Material, default_scale float64, modulate Color, )  {
   classNameV := StringNameFromStr("EditorNode3DGizmo")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_unscaled_billboard")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 520007164) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(material.AsCTypePtr()), gdc.ConstTypePtr(&default_scale), gdc.ConstTypePtr(modulate.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorNode3DGizmo) AddHandles(handles PackedVector3Array, material Material, ids PackedInt32Array, billboard bool, secondary bool, )  {
@@ -92,7 +112,9 @@ func  (me *EditorNode3DGizmo) AddHandles(handles PackedVector3Array, material Ma
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2254560097) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(handles.AsCTypePtr()), gdc.ConstTypePtr(material.AsCTypePtr()), gdc.ConstTypePtr(ids.AsCTypePtr()), gdc.ConstTypePtr(&billboard), gdc.ConstTypePtr(&secondary), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorNode3DGizmo) SetNode3D(node Node, )  {
@@ -102,7 +124,9 @@ func  (me *EditorNode3DGizmo) SetNode3D(node Node, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorNode3DGizmo) GetNode3D() Node3D {
@@ -111,10 +135,11 @@ func  (me *EditorNode3DGizmo) GetNode3D() Node3D {
   methodNameV := StringNameFromStr("get_node_3d")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 151077316) // FIXME: should cache?
-  var ret Node3D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNode3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *EditorNode3DGizmo) GetPlugin() EditorNode3DGizmoPlugin {
@@ -123,10 +148,11 @@ func  (me *EditorNode3DGizmo) GetPlugin() EditorNode3DGizmoPlugin {
   methodNameV := StringNameFromStr("get_plugin")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4250544552) // FIXME: should cache?
-  var ret EditorNode3DGizmoPlugin
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewEditorNode3DGizmoPlugin()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *EditorNode3DGizmo) Clear()  {
@@ -136,7 +162,9 @@ func  (me *EditorNode3DGizmo) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorNode3DGizmo) SetHidden(hidden bool, )  {
@@ -146,19 +174,22 @@ func  (me *EditorNode3DGizmo) SetHidden(hidden bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hidden), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *EditorNode3DGizmo) IsSubgizmoSelected(id int, ) bool {
+func  (me *EditorNode3DGizmo) IsSubgizmoSelected(id int64, ) bool {
   classNameV := StringNameFromStr("EditorNode3DGizmo")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_subgizmo_selected")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *EditorNode3DGizmo) GetSubgizmoSelection() PackedInt32Array {
@@ -167,10 +198,11 @@ func  (me *EditorNode3DGizmo) GetSubgizmoSelection() PackedInt32Array {
   methodNameV := StringNameFromStr("get_subgizmo_selection")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

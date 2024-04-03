@@ -17,6 +17,16 @@ func (me *GLTFSkeleton) BaseClass() string {
   return "GLTFSkeleton"
 }
 
+func NewGLTFSkeleton() *GLTFSkeleton {
+  str := StringNameFromStr("GLTFSkeleton") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GLTFSkeleton{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *GLTFSkeleton) GetJoints() PackedInt32Array {
   methodNameV := StringNameFromStr("get_joints")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 969006518) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFSkeleton) SetJoints(joints PackedInt32Array, )  {
@@ -54,7 +65,9 @@ func  (me *GLTFSkeleton) SetJoints(joints PackedInt32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joints.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFSkeleton) GetRoots() PackedInt32Array {
@@ -63,10 +76,11 @@ func  (me *GLTFSkeleton) GetRoots() PackedInt32Array {
   methodNameV := StringNameFromStr("get_roots")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 969006518) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFSkeleton) SetRoots(roots PackedInt32Array, )  {
@@ -76,7 +90,9 @@ func  (me *GLTFSkeleton) SetRoots(roots PackedInt32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(roots.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFSkeleton) GetGodotSkeleton() Skeleton3D {
@@ -85,32 +101,37 @@ func  (me *GLTFSkeleton) GetGodotSkeleton() Skeleton3D {
   methodNameV := StringNameFromStr("get_godot_skeleton")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1814733083) // FIXME: should cache?
-  var ret Skeleton3D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewSkeleton3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *GLTFSkeleton) GetUniqueNames() String {
+func  (me *GLTFSkeleton) GetUniqueNames() []String {
   classNameV := StringNameFromStr("GLTFSkeleton")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_unique_names")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[String](ret)
 }
 
-func  (me *GLTFSkeleton) SetUniqueNames(unique_names String, )  {
+func  (me *GLTFSkeleton) SetUniqueNames(unique_names []String, )  {
   classNameV := StringNameFromStr("GLTFSkeleton")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_unique_names")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(unique_names.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&unique_names), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFSkeleton) GetGodotBoneNode() Dictionary {
@@ -119,10 +140,11 @@ func  (me *GLTFSkeleton) GetGodotBoneNode() Dictionary {
   methodNameV := StringNameFromStr("get_godot_bone_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2382534195) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFSkeleton) SetGodotBoneNode(godot_bone_node Dictionary, )  {
@@ -132,31 +154,35 @@ func  (me *GLTFSkeleton) SetGodotBoneNode(godot_bone_node Dictionary, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155329257) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(godot_bone_node.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GLTFSkeleton) GetBoneAttachmentCount() int {
+func  (me *GLTFSkeleton) GetBoneAttachmentCount() int64 {
   classNameV := StringNameFromStr("GLTFSkeleton")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bone_attachment_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GLTFSkeleton) GetBoneAttachment(idx int, ) BoneAttachment3D {
+func  (me *GLTFSkeleton) GetBoneAttachment(idx int64, ) BoneAttachment3D {
   classNameV := StringNameFromStr("GLTFSkeleton")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bone_attachment")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 945440495) // FIXME: should cache?
-  var ret BoneAttachment3D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBoneAttachment3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

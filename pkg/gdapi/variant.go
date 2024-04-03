@@ -35,6 +35,10 @@ func newVariant() *Variant {
 	return me
 }
 
+func NewVariant() *Variant {
+	return newVariant()
+}
+
 // From pointers
 
 func NewVariantWith(ptr gdc.VariantPtr) *Variant {
@@ -92,7 +96,7 @@ func (me *Variant) String() string {
 	return string(content[:len])
 }
 
-func (me *Variant) AsObject() (*Object, error) {
+func (me *Variant) AsObject() (interface{}, error) {
 	if me.Type() != gdc.VariantTypeObject {
 		return nil, fmt.Errorf("variant is not an object")
 	}
@@ -100,8 +104,11 @@ func (me *Variant) AsObject() (*Object, error) {
 	dataPtr := unsafe.Pointer(&data)
 	fn := me.iface.GetVariantToTypeConstructor(me.Type())
 	me.iface.CallTypeFromVariantConstructorFunc(fn, gdc.UninitializedTypePtr(dataPtr), me.AsPtr())
-	obj := ObjectFromPtr(gdc.ObjectPtr(dataPtr))
-	return &obj, nil
+	objPtr := *(*gdc.ObjectPtr)(dataPtr)
+	obj := ObjectFromPtr(objPtr)
+	clazzStr := obj.GetClass()
+	defer clazzStr.Destroy()
+	return DObjectFromPtr(clazzStr.String(), objPtr)
 }
 
 func (me *Variant) AsBClass() (BClass, error) {

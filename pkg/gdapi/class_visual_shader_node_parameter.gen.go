@@ -17,6 +17,16 @@ func (me *VisualShaderNodeParameter) BaseClass() string {
   return "VisualShaderNodeParameter"
 }
 
+func NewVisualShaderNodeParameter() *VisualShaderNodeParameter {
+  str := StringNameFromStr("VisualShaderNodeParameter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeParameter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -50,7 +60,9 @@ func  (me *VisualShaderNodeParameter) SetParameterName(name String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeParameter) GetParameterName() String {
@@ -59,10 +71,11 @@ func  (me *VisualShaderNodeParameter) GetParameterName() String {
   methodNameV := StringNameFromStr("get_parameter_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *VisualShaderNodeParameter) SetQualifier(qualifier VisualShaderNodeParameterQualifier, )  {
@@ -72,7 +85,9 @@ func  (me *VisualShaderNodeParameter) SetQualifier(qualifier VisualShaderNodePar
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1276489447) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&qualifier), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeParameter) GetQualifier() VisualShaderNodeParameterQualifier {
@@ -81,9 +96,10 @@ func  (me *VisualShaderNodeParameter) GetQualifier() VisualShaderNodeParameterQu
   methodNameV := StringNameFromStr("get_qualifier")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3558406205) // FIXME: should cache?
-  var ret VisualShaderNodeParameterQualifier
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeParameterQualifier
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

@@ -17,6 +17,16 @@ func (me *Material) BaseClass() string {
   return "Material"
 }
 
+func NewMaterial() *Material {
+  str := StringNameFromStr("Material") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Material{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Constants
@@ -49,7 +59,9 @@ func  (me *Material) SetNextPass(next_pass Material, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757459619) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(next_pass.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Material) GetNextPass() Material {
@@ -58,32 +70,36 @@ func  (me *Material) GetNextPass() Material {
   methodNameV := StringNameFromStr("get_next_pass")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5934680) // FIXME: should cache?
-  var ret Material
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewMaterial()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Material) SetRenderPriority(priority int, )  {
+func  (me *Material) SetRenderPriority(priority int64, )  {
   classNameV := StringNameFromStr("Material")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_render_priority")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&priority), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Material) GetRenderPriority() int {
+func  (me *Material) GetRenderPriority() int64 {
   classNameV := StringNameFromStr("Material")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_render_priority")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Material) InspectNativeShaderCode()  {
@@ -93,7 +109,9 @@ func  (me *Material) InspectNativeShaderCode()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Material) CreatePlaceholder() Resource {
@@ -102,10 +120,11 @@ func  (me *Material) CreatePlaceholder() Resource {
   methodNameV := StringNameFromStr("create_placeholder")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 121922552) // FIXME: should cache?
-  var ret Resource
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewResource()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

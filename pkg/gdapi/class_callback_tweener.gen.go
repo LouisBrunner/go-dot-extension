@@ -17,6 +17,16 @@ func (me *CallbackTweener) BaseClass() string {
   return "CallbackTweener"
 }
 
+func NewCallbackTweener() *CallbackTweener {
+  str := StringNameFromStr("CallbackTweener") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CallbackTweener{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,16 +45,17 @@ func (me *CallbackTweener) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *CallbackTweener) SetDelay(delay float32, ) CallbackTweener {
+func  (me *CallbackTweener) SetDelay(delay float64, ) CallbackTweener {
   classNameV := StringNameFromStr("CallbackTweener")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_delay")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3008182292) // FIXME: should cache?
-  var ret CallbackTweener
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delay), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCallbackTweener()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

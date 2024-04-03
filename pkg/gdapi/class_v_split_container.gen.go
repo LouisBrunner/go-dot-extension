@@ -17,6 +17,16 @@ func (me *VSplitContainer) BaseClass() string {
   return "VSplitContainer"
 }
 
+func NewVSplitContainer() *VSplitContainer {
+  str := StringNameFromStr("VSplitContainer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VSplitContainer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

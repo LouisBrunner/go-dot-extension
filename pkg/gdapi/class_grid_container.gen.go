@@ -17,6 +17,16 @@ func (me *GridContainer) BaseClass() string {
   return "GridContainer"
 }
 
+func NewGridContainer() *GridContainer {
+  str := StringNameFromStr("GridContainer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GridContainer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *GridContainer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *GridContainer) SetColumns(columns int, )  {
+func  (me *GridContainer) SetColumns(columns int64, )  {
   classNameV := StringNameFromStr("GridContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_columns")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&columns), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GridContainer) GetColumns() int {
+func  (me *GridContainer) GetColumns() int64 {
   classNameV := StringNameFromStr("GridContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_columns")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

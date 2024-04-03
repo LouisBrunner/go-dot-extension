@@ -17,6 +17,16 @@ func (me *VisualShaderNodeParticleEmit) BaseClass() string {
   return "VisualShaderNodeParticleEmit"
 }
 
+func NewVisualShaderNodeParticleEmit() *VisualShaderNodeParticleEmit {
+  str := StringNameFromStr("VisualShaderNodeParticleEmit") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeParticleEmit{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -51,7 +61,9 @@ func  (me *VisualShaderNodeParticleEmit) SetFlags(flags VisualShaderNodeParticle
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3960756792) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeParticleEmit) GetFlags() VisualShaderNodeParticleEmitEmitFlags {
@@ -60,9 +72,10 @@ func  (me *VisualShaderNodeParticleEmit) GetFlags() VisualShaderNodeParticleEmit
   methodNameV := StringNameFromStr("get_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 171277835) // FIXME: should cache?
-  var ret VisualShaderNodeParticleEmitEmitFlags
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeParticleEmitEmitFlags
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

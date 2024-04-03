@@ -7,7 +7,7 @@ import (
 )
 
 type UtilityFunctions interface {
-{{range .}}  {{mapMethod .Name}}({{if .IsVarArg}}args ...Variant{{else}}{{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}{{end}}) {{mapType .ReturnType}}
+{{range .}}  {{mapMethod .Name}}({{if .IsVarArg}}args ...Variant{{else}}{{range .Arguments}}{{mapName .Name}} {{mapWideType .Type}}, {{end}}{{end}}) {{mapWideType .ReturnType}}
 {{end -}}
 }
 
@@ -25,25 +25,29 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
 {{end}}  }
 }
 
-{{/* TODO: need a runtime.Pinner for ConstTypePtr */}}
-{{- define "mapUtilityArg" -}}
-{{- if eq (mapType .Type) "Variant"}}{{mapName .Name}}.AsCTypePtr(){{else}}gdc.ConstTypePtr(&{{mapName .Name}}){{end -}}
-{{- end -}}
-
 {{- range .}}
 
-func (me *utilities) {{mapMethod .Name}}({{if .IsVarArg}}vargs ...Variant{{else}}{{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}{{end}}) {{mapType .ReturnType}} {
+func (me *utilities) {{mapMethod .Name}}({{if .IsVarArg}}vargs ...Variant{{else}}{{range .Arguments}}{{mapName .Name}} {{mapWideType .Type}}, {{end}}{{end}}) {{mapWideType .ReturnType}} {
 {{if .IsVarArg}}  args := make([]gdc.ConstTypePtr, len(vargs))
   for i, arg := range vargs {
     args[i] = arg.AsCTypePtr()
   }
-{{else}}  args := []gdc.ConstTypePtr{
-{{range .Arguments}}    {{template "mapUtilityArg" .}},
-{{end}}  }
+{{else}}{{range $i, $e := .Arguments}}
+{{- if not (isExported (mapType .Type))}}  varg{{ $i }} := New{{mapClass .Type}}From{{pascalCased (mapType .Type)}}({{mapName .Name}})
+  defer varg{{ $i }}.Destroy()
 {{- end}}
-{{if ne .ReturnType ""}}  var ret {{mapType .ReturnType}}
-  retPtr := gdc.TypePtr(&ret){{end}}
-  me.iface.CallPtrUtilityFunction(me.ptr{{.Name}}, {{if eq .ReturnType ""}}nil{{else}}retPtr{{end}}, unsafe.SliceData(args), len(args))
-{{if ne .ReturnType ""}}  return ret{{end}}
+{{ end}}  args := []gdc.ConstTypePtr{
+{{- range $i, $e := .Arguments}}
+{{- if isExported (mapType .Type) -}}
+  {{mapName .Name}}
+{{- else -}}
+  varg{{ $i }}
+{{- end -}}
+    .AsCTypePtr(), {{ end -}}
+  }
+{{- end}}
+{{if ne .ReturnType ""}}  ret := New{{mapClass .ReturnType}}()
+{{end}}  me.iface.CallPtrUtilityFunction(me.ptr{{.Name}}, {{if eq .ReturnType ""}}nil{{else}}ret.AsTypePtr(){{end}}, unsafe.SliceData(args), len(args))
+{{if ne .ReturnType ""}}  return {{if isExported (mapType .ReturnType)}}*ret{{else}}ret.Get(){{end}}{{end}}
 }
 {{- end -}}

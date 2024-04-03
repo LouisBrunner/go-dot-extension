@@ -17,6 +17,16 @@ func (me *InputMap) BaseClass() string {
   return "InputMap"
 }
 
+func NewInputMap() *InputMap {
+  str := StringNameFromStr("InputMap") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &InputMap{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,32 +51,37 @@ func  (me *InputMap) HasAction(action StringName, ) bool {
   methodNameV := StringNameFromStr("has_action")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *InputMap) GetActions() StringName {
+func  (me *InputMap) GetActions() []StringName {
   classNameV := StringNameFromStr("InputMap")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_actions")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[StringName](ret)
 }
 
-func  (me *InputMap) AddAction(action StringName, deadzone float32, )  {
+func  (me *InputMap) AddAction(action StringName, deadzone float64, )  {
   classNameV := StringNameFromStr("InputMap")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_action")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4100757082) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&deadzone), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *InputMap) EraseAction(action StringName, )  {
@@ -76,29 +91,34 @@ func  (me *InputMap) EraseAction(action StringName, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *InputMap) ActionSetDeadzone(action StringName, deadzone float32, )  {
+func  (me *InputMap) ActionSetDeadzone(action StringName, deadzone float64, )  {
   classNameV := StringNameFromStr("InputMap")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("action_set_deadzone")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4135858297) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&deadzone), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *InputMap) ActionGetDeadzone(action StringName, ) float32 {
+func  (me *InputMap) ActionGetDeadzone(action StringName, ) float64 {
   classNameV := StringNameFromStr("InputMap")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("action_get_deadzone")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1391627649) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *InputMap) ActionAddEvent(action StringName, event InputEvent, )  {
@@ -108,7 +128,9 @@ func  (me *InputMap) ActionAddEvent(action StringName, event InputEvent, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 518302593) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(event.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *InputMap) ActionHasEvent(action StringName, event InputEvent, ) bool {
@@ -117,10 +139,11 @@ func  (me *InputMap) ActionHasEvent(action StringName, event InputEvent, ) bool 
   methodNameV := StringNameFromStr("action_has_event")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1185871985) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(event.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *InputMap) ActionEraseEvent(action StringName, event InputEvent, )  {
@@ -130,7 +153,9 @@ func  (me *InputMap) ActionEraseEvent(action StringName, event InputEvent, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 518302593) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(event.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *InputMap) ActionEraseEvents(action StringName, )  {
@@ -140,19 +165,23 @@ func  (me *InputMap) ActionEraseEvents(action StringName, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *InputMap) ActionGetEvents(action StringName, ) InputEvent {
+func  (me *InputMap) ActionGetEvents(action StringName, ) []InputEvent {
   classNameV := StringNameFromStr("InputMap")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("action_get_events")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 689397652) // FIXME: should cache?
-  var ret InputEvent
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[InputEvent](ret)
 }
 
 func  (me *InputMap) EventIsAction(event InputEvent, action StringName, exact_match bool, ) bool {
@@ -161,10 +190,11 @@ func  (me *InputMap) EventIsAction(event InputEvent, action StringName, exact_ma
   methodNameV := StringNameFromStr("event_is_action")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3193353650) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(event.AsCTypePtr()), gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&exact_match), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *InputMap) LoadFromProjectSettings()  {
@@ -174,7 +204,9 @@ func  (me *InputMap) LoadFromProjectSettings()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

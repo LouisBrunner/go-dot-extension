@@ -17,6 +17,16 @@ func (me *ResourceImporterBitMap) BaseClass() string {
   return "ResourceImporterBitMap"
 }
 
+func NewResourceImporterBitMap() *ResourceImporterBitMap {
+  str := StringNameFromStr("ResourceImporterBitMap") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ResourceImporterBitMap{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

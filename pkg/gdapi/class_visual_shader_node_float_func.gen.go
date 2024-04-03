@@ -17,6 +17,16 @@ func (me *VisualShaderNodeFloatFunc) BaseClass() string {
   return "VisualShaderNodeFloatFunc"
 }
 
+func NewVisualShaderNodeFloatFunc() *VisualShaderNodeFloatFunc {
+  str := StringNameFromStr("VisualShaderNodeFloatFunc") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeFloatFunc{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -79,7 +89,9 @@ func  (me *VisualShaderNodeFloatFunc) SetFunction(func_ VisualShaderNodeFloatFun
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 536026177) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&func_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeFloatFunc) GetFunction() VisualShaderNodeFloatFuncFunction {
@@ -88,9 +100,10 @@ func  (me *VisualShaderNodeFloatFunc) GetFunction() VisualShaderNodeFloatFuncFun
   methodNameV := StringNameFromStr("get_function")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2033948868) // FIXME: should cache?
-  var ret VisualShaderNodeFloatFuncFunction
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeFloatFuncFunction
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

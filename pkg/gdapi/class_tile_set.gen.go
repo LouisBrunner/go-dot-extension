@@ -17,6 +17,16 @@ func (me *TileSet) BaseClass() string {
   return "TileSet"
 }
 
+func NewTileSet() *TileSet {
+  str := StringNameFromStr("TileSet") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &TileSet{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -86,96 +96,106 @@ func (me *TileSet) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *TileSet) GetNextSourceId() int {
+func  (me *TileSet) GetNextSourceId() int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_next_source_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) AddSource(source TileSetSource, atlas_source_id_override int, ) int {
+func  (me *TileSet) AddSource(source TileSetSource, atlas_source_id_override int64, ) int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_source")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1059186179) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(source.AsCTypePtr()), gdc.ConstTypePtr(&atlas_source_id_override), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) RemoveSource(source_id int, )  {
+func  (me *TileSet) RemoveSource(source_id int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_source")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_id), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) SetSourceId(source_id int, new_source_id int, )  {
+func  (me *TileSet) SetSourceId(source_id int64, new_source_id int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_source_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_id), gdc.ConstTypePtr(&new_source_id), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetSourceCount() int {
+func  (me *TileSet) GetSourceCount() int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_source_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) GetSourceId(index int, ) int {
+func  (me *TileSet) GetSourceId(index int64, ) int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_source_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) HasSource(source_id int, ) bool {
+func  (me *TileSet) HasSource(source_id int64, ) bool {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("has_source")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_id), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) GetSource(source_id int, ) TileSetSource {
+func  (me *TileSet) GetSource(source_id int64, ) TileSetSource {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_source")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1763540252) // FIXME: should cache?
-  var ret TileSetSource
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_id), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTileSetSource()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *TileSet) SetTileShape(shape TileSetTileShape, )  {
@@ -185,7 +205,9 @@ func  (me *TileSet) SetTileShape(shape TileSetTileShape, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2131427112) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shape), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TileSet) GetTileShape() TileSetTileShape {
@@ -194,9 +216,10 @@ func  (me *TileSet) GetTileShape() TileSetTileShape {
   methodNameV := StringNameFromStr("get_tile_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 716918169) // FIXME: should cache?
-  var ret TileSetTileShape
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TileSetTileShape
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -207,7 +230,9 @@ func  (me *TileSet) SetTileLayout(layout TileSetTileLayout, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1071216679) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layout), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TileSet) GetTileLayout() TileSetTileLayout {
@@ -216,9 +241,10 @@ func  (me *TileSet) GetTileLayout() TileSetTileLayout {
   methodNameV := StringNameFromStr("get_tile_layout")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 194628839) // FIXME: should cache?
-  var ret TileSetTileLayout
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TileSetTileLayout
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -229,7 +255,9 @@ func  (me *TileSet) SetTileOffsetAxis(alignment TileSetTileOffsetAxis, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3300198521) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TileSet) GetTileOffsetAxis() TileSetTileOffsetAxis {
@@ -238,9 +266,10 @@ func  (me *TileSet) GetTileOffsetAxis() TileSetTileOffsetAxis {
   methodNameV := StringNameFromStr("get_tile_offset_axis")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 762494114) // FIXME: should cache?
-  var ret TileSetTileOffsetAxis
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TileSetTileOffsetAxis
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -251,7 +280,9 @@ func  (me *TileSet) SetTileSize(size Vector2i, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130785943) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TileSet) GetTileSize() Vector2i {
@@ -260,10 +291,11 @@ func  (me *TileSet) GetTileSize() Vector2i {
   methodNameV := StringNameFromStr("get_tile_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690982128) // FIXME: should cache?
-  var ret Vector2i
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2i()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *TileSet) SetUvClipping(uv_clipping bool, )  {
@@ -273,7 +305,9 @@ func  (me *TileSet) SetUvClipping(uv_clipping bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&uv_clipping), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TileSet) IsUvClipping() bool {
@@ -282,682 +316,781 @@ func  (me *TileSet) IsUvClipping() bool {
   methodNameV := StringNameFromStr("is_uv_clipping")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) GetOcclusionLayersCount() int {
+func  (me *TileSet) GetOcclusionLayersCount() int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_occlusion_layers_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) AddOcclusionLayer(to_position int, )  {
+func  (me *TileSet) AddOcclusionLayer(to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_occlusion_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) MoveOcclusionLayer(layer_index int, to_position int, )  {
+func  (me *TileSet) MoveOcclusionLayer(layer_index int64, to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("move_occlusion_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) RemoveOcclusionLayer(layer_index int, )  {
+func  (me *TileSet) RemoveOcclusionLayer(layer_index int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_occlusion_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) SetOcclusionLayerLightMask(layer_index int, light_mask int, )  {
+func  (me *TileSet) SetOcclusionLayerLightMask(layer_index int64, light_mask int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_occlusion_layer_light_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&light_mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetOcclusionLayerLightMask(layer_index int, ) int {
+func  (me *TileSet) GetOcclusionLayerLightMask(layer_index int64, ) int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_occlusion_layer_light_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) SetOcclusionLayerSdfCollision(layer_index int, sdf_collision bool, )  {
+func  (me *TileSet) SetOcclusionLayerSdfCollision(layer_index int64, sdf_collision bool, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_occlusion_layer_sdf_collision")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&sdf_collision), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetOcclusionLayerSdfCollision(layer_index int, ) bool {
+func  (me *TileSet) GetOcclusionLayerSdfCollision(layer_index int64, ) bool {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_occlusion_layer_sdf_collision")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) GetPhysicsLayersCount() int {
+func  (me *TileSet) GetPhysicsLayersCount() int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_physics_layers_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) AddPhysicsLayer(to_position int, )  {
+func  (me *TileSet) AddPhysicsLayer(to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_physics_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) MovePhysicsLayer(layer_index int, to_position int, )  {
+func  (me *TileSet) MovePhysicsLayer(layer_index int64, to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("move_physics_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) RemovePhysicsLayer(layer_index int, )  {
+func  (me *TileSet) RemovePhysicsLayer(layer_index int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_physics_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) SetPhysicsLayerCollisionLayer(layer_index int, layer int, )  {
+func  (me *TileSet) SetPhysicsLayerCollisionLayer(layer_index int64, layer int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_physics_layer_collision_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&layer), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetPhysicsLayerCollisionLayer(layer_index int, ) int {
+func  (me *TileSet) GetPhysicsLayerCollisionLayer(layer_index int64, ) int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_physics_layer_collision_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) SetPhysicsLayerCollisionMask(layer_index int, mask int, )  {
+func  (me *TileSet) SetPhysicsLayerCollisionMask(layer_index int64, mask int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_physics_layer_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetPhysicsLayerCollisionMask(layer_index int, ) int {
+func  (me *TileSet) GetPhysicsLayerCollisionMask(layer_index int64, ) int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_physics_layer_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) SetPhysicsLayerPhysicsMaterial(layer_index int, physics_material PhysicsMaterial, )  {
+func  (me *TileSet) SetPhysicsLayerPhysicsMaterial(layer_index int64, physics_material PhysicsMaterial, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_physics_layer_physics_material")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1018687357) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(physics_material.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetPhysicsLayerPhysicsMaterial(layer_index int, ) PhysicsMaterial {
+func  (me *TileSet) GetPhysicsLayerPhysicsMaterial(layer_index int64, ) PhysicsMaterial {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_physics_layer_physics_material")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 788318639) // FIXME: should cache?
-  var ret PhysicsMaterial
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPhysicsMaterial()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TileSet) GetTerrainSetsCount() int {
+func  (me *TileSet) GetTerrainSetsCount() int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_terrain_sets_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) AddTerrainSet(to_position int, )  {
+func  (me *TileSet) AddTerrainSet(to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_terrain_set")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) MoveTerrainSet(terrain_set int, to_position int, )  {
+func  (me *TileSet) MoveTerrainSet(terrain_set int64, to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("move_terrain_set")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) RemoveTerrainSet(terrain_set int, )  {
+func  (me *TileSet) RemoveTerrainSet(terrain_set int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_terrain_set")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) SetTerrainSetMode(terrain_set int, mode TileSetTerrainMode, )  {
+func  (me *TileSet) SetTerrainSetMode(terrain_set int64, mode TileSetTerrainMode, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_terrain_set_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3943003916) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetTerrainSetMode(terrain_set int, ) TileSetTerrainMode {
+func  (me *TileSet) GetTerrainSetMode(terrain_set int64, ) TileSetTerrainMode {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_terrain_set_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2084469411) // FIXME: should cache?
-  var ret TileSetTerrainMode
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TileSetTerrainMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *TileSet) GetTerrainsCount(terrain_set int, ) int {
+func  (me *TileSet) GetTerrainsCount(terrain_set int64, ) int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_terrains_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) AddTerrain(terrain_set int, to_position int, )  {
+func  (me *TileSet) AddTerrain(terrain_set int64, to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_terrain")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1230568737) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) MoveTerrain(terrain_set int, terrain_index int, to_position int, )  {
+func  (me *TileSet) MoveTerrain(terrain_set int64, terrain_index int64, to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("move_terrain")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1649997291) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), gdc.ConstTypePtr(&terrain_index), gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) RemoveTerrain(terrain_set int, terrain_index int, )  {
+func  (me *TileSet) RemoveTerrain(terrain_set int64, terrain_index int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_terrain")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), gdc.ConstTypePtr(&terrain_index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) SetTerrainName(terrain_set int, terrain_index int, name String, )  {
+func  (me *TileSet) SetTerrainName(terrain_set int64, terrain_index int64, name String, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_terrain_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2285447957) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), gdc.ConstTypePtr(&terrain_index), gdc.ConstTypePtr(name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetTerrainName(terrain_set int, terrain_index int, ) String {
+func  (me *TileSet) GetTerrainName(terrain_set int64, terrain_index int64, ) String {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_terrain_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1391810591) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), gdc.ConstTypePtr(&terrain_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TileSet) SetTerrainColor(terrain_set int, terrain_index int, color Color, )  {
+func  (me *TileSet) SetTerrainColor(terrain_set int64, terrain_index int64, color Color, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_terrain_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3733378741) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), gdc.ConstTypePtr(&terrain_index), gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetTerrainColor(terrain_set int, terrain_index int, ) Color {
+func  (me *TileSet) GetTerrainColor(terrain_set int64, terrain_index int64, ) Color {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_terrain_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2165839948) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&terrain_set), gdc.ConstTypePtr(&terrain_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TileSet) GetNavigationLayersCount() int {
+func  (me *TileSet) GetNavigationLayersCount() int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_navigation_layers_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) AddNavigationLayer(to_position int, )  {
+func  (me *TileSet) AddNavigationLayer(to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_navigation_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) MoveNavigationLayer(layer_index int, to_position int, )  {
+func  (me *TileSet) MoveNavigationLayer(layer_index int64, to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("move_navigation_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) RemoveNavigationLayer(layer_index int, )  {
+func  (me *TileSet) RemoveNavigationLayer(layer_index int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_navigation_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) SetNavigationLayerLayers(layer_index int, layers int, )  {
+func  (me *TileSet) SetNavigationLayerLayers(layer_index int64, layers int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_navigation_layer_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&layers), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetNavigationLayerLayers(layer_index int, ) int {
+func  (me *TileSet) GetNavigationLayerLayers(layer_index int64, ) int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_navigation_layer_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) SetNavigationLayerLayerValue(layer_index int, layer_number int, value bool, )  {
+func  (me *TileSet) SetNavigationLayerLayerValue(layer_index int64, layer_number int64, value bool, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_navigation_layer_layer_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1383440665) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetNavigationLayerLayerValue(layer_index int, layer_number int, ) bool {
+func  (me *TileSet) GetNavigationLayerLayerValue(layer_index int64, layer_number int64, ) bool {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_navigation_layer_layer_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2522259332) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&layer_number), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) GetCustomDataLayersCount() int {
+func  (me *TileSet) GetCustomDataLayersCount() int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_custom_data_layers_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) AddCustomDataLayer(to_position int, )  {
+func  (me *TileSet) AddCustomDataLayer(to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_custom_data_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025054187) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) MoveCustomDataLayer(layer_index int, to_position int, )  {
+func  (me *TileSet) MoveCustomDataLayer(layer_index int64, to_position int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("move_custom_data_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) RemoveCustomDataLayer(layer_index int, )  {
+func  (me *TileSet) RemoveCustomDataLayer(layer_index int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_custom_data_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetCustomDataLayerByName(layer_name String, ) int {
+func  (me *TileSet) GetCustomDataLayerByName(layer_name String, ) int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_custom_data_layer_by_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1321353865) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(layer_name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) SetCustomDataLayerName(layer_index int, layer_name String, )  {
+func  (me *TileSet) SetCustomDataLayerName(layer_index int64, layer_name String, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_custom_data_layer_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(layer_name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetCustomDataLayerName(layer_index int, ) String {
+func  (me *TileSet) GetCustomDataLayerName(layer_index int64, ) String {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_custom_data_layer_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TileSet) SetCustomDataLayerType(layer_index int, layer_type VariantType, )  {
+func  (me *TileSet) SetCustomDataLayerType(layer_index int64, layer_type VariantType, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_custom_data_layer_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3492912874) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), gdc.ConstTypePtr(&layer_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetCustomDataLayerType(layer_index int, ) VariantType {
+func  (me *TileSet) GetCustomDataLayerType(layer_index int64, ) VariantType {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_custom_data_layer_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2990820875) // FIXME: should cache?
-  var ret VariantType
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VariantType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *TileSet) SetSourceLevelTileProxy(source_from int, source_to int, )  {
+func  (me *TileSet) SetSourceLevelTileProxy(source_from int64, source_to int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_source_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), gdc.ConstTypePtr(&source_to), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetSourceLevelTileProxy(source_from int, ) int {
+func  (me *TileSet) GetSourceLevelTileProxy(source_from int64, ) int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_source_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3744713108) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) HasSourceLevelTileProxy(source_from int, ) bool {
+func  (me *TileSet) HasSourceLevelTileProxy(source_from int64, ) bool {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("has_source_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3067735520) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) RemoveSourceLevelTileProxy(source_from int, )  {
+func  (me *TileSet) RemoveSourceLevelTileProxy(source_from int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_source_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) SetCoordsLevelTileProxy(p_source_from int, coords_from Vector2i, source_to int, coords_to Vector2i, )  {
+func  (me *TileSet) SetCoordsLevelTileProxy(p_source_from int64, coords_from Vector2i, source_to int64, coords_to Vector2i, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_coords_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1769939278) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_source_from), gdc.ConstTypePtr(coords_from.AsCTypePtr()), gdc.ConstTypePtr(&source_to), gdc.ConstTypePtr(coords_to.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetCoordsLevelTileProxy(source_from int, coords_from Vector2i, ) Array {
+func  (me *TileSet) GetCoordsLevelTileProxy(source_from int64, coords_from Vector2i, ) Array {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_coords_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2856536371) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), gdc.ConstTypePtr(coords_from.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TileSet) HasCoordsLevelTileProxy(source_from int, coords_from Vector2i, ) bool {
+func  (me *TileSet) HasCoordsLevelTileProxy(source_from int64, coords_from Vector2i, ) bool {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("has_coords_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3957903770) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), gdc.ConstTypePtr(coords_from.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) RemoveCoordsLevelTileProxy(source_from int, coords_from Vector2i, )  {
+func  (me *TileSet) RemoveCoordsLevelTileProxy(source_from int64, coords_from Vector2i, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_coords_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2311374912) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), gdc.ConstTypePtr(coords_from.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) SetAlternativeLevelTileProxy(source_from int, coords_from Vector2i, alternative_from int, source_to int, coords_to Vector2i, alternative_to int, )  {
+func  (me *TileSet) SetAlternativeLevelTileProxy(source_from int64, coords_from Vector2i, alternative_from int64, source_to int64, coords_to Vector2i, alternative_to int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_alternative_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3862385460) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), gdc.ConstTypePtr(coords_from.AsCTypePtr()), gdc.ConstTypePtr(&alternative_from), gdc.ConstTypePtr(&source_to), gdc.ConstTypePtr(coords_to.AsCTypePtr()), gdc.ConstTypePtr(&alternative_to), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetAlternativeLevelTileProxy(source_from int, coords_from Vector2i, alternative_from int, ) Array {
+func  (me *TileSet) GetAlternativeLevelTileProxy(source_from int64, coords_from Vector2i, alternative_from int64, ) Array {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_alternative_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2303761075) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), gdc.ConstTypePtr(coords_from.AsCTypePtr()), gdc.ConstTypePtr(&alternative_from), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TileSet) HasAlternativeLevelTileProxy(source_from int, coords_from Vector2i, alternative_from int, ) bool {
+func  (me *TileSet) HasAlternativeLevelTileProxy(source_from int64, coords_from Vector2i, alternative_from int64, ) bool {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("has_alternative_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 180086755) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), gdc.ConstTypePtr(coords_from.AsCTypePtr()), gdc.ConstTypePtr(&alternative_from), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) RemoveAlternativeLevelTileProxy(source_from int, coords_from Vector2i, alternative_from int, )  {
+func  (me *TileSet) RemoveAlternativeLevelTileProxy(source_from int64, coords_from Vector2i, alternative_from int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_alternative_level_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2328951467) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), gdc.ConstTypePtr(coords_from.AsCTypePtr()), gdc.ConstTypePtr(&alternative_from), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) MapTileProxy(source_from int, coords_from Vector2i, alternative_from int, ) Array {
+func  (me *TileSet) MapTileProxy(source_from int64, coords_from Vector2i, alternative_from int64, ) Array {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("map_tile_proxy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4267935328) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source_from), gdc.ConstTypePtr(coords_from.AsCTypePtr()), gdc.ConstTypePtr(&alternative_from), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *TileSet) CleanupInvalidTileProxies()  {
@@ -967,7 +1100,9 @@ func  (me *TileSet) CleanupInvalidTileProxies()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TileSet) ClearTileProxies()  {
@@ -977,53 +1112,60 @@ func  (me *TileSet) ClearTileProxies()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) AddPattern(pattern TileMapPattern, index int, ) int {
+func  (me *TileSet) AddPattern(pattern TileMapPattern, index int64, ) int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_pattern")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 763712015) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pattern.AsCTypePtr()), gdc.ConstTypePtr(&index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSet) GetPattern(index int, ) TileMapPattern {
+func  (me *TileSet) GetPattern(index int64, ) TileMapPattern {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_pattern")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4207737510) // FIXME: should cache?
-  var ret TileMapPattern
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTileMapPattern()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TileSet) RemovePattern(index int, )  {
+func  (me *TileSet) RemovePattern(index int64, )  {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_pattern")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileSet) GetPatternsCount() int {
+func  (me *TileSet) GetPatternsCount() int64 {
   classNameV := StringNameFromStr("TileSet")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_patterns_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

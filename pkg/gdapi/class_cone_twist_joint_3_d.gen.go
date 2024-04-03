@@ -17,6 +17,16 @@ func (me *ConeTwistJoint3D) BaseClass() string {
   return "ConeTwistJoint3D"
 }
 
+func NewConeTwistJoint3D() *ConeTwistJoint3D {
+  str := StringNameFromStr("ConeTwistJoint3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ConeTwistJoint3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -45,26 +55,29 @@ func (me *ConeTwistJoint3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *ConeTwistJoint3D) SetParam(param ConeTwistJoint3DParam, value float32, )  {
+func  (me *ConeTwistJoint3D) SetParam(param ConeTwistJoint3DParam, value float64, )  {
   classNameV := StringNameFromStr("ConeTwistJoint3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1062470226) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ConeTwistJoint3D) GetParam(param ConeTwistJoint3DParam, ) float32 {
+func  (me *ConeTwistJoint3D) GetParam(param ConeTwistJoint3DParam, ) float64 {
   classNameV := StringNameFromStr("ConeTwistJoint3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2928790850) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

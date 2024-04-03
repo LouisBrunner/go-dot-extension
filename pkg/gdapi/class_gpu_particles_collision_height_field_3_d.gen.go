@@ -17,6 +17,16 @@ func (me *GPUParticlesCollisionHeightField3D) BaseClass() string {
   return "GPUParticlesCollisionHeightField3D"
 }
 
+func NewGPUParticlesCollisionHeightField3D() *GPUParticlesCollisionHeightField3D {
+  str := StringNameFromStr("GPUParticlesCollisionHeightField3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GPUParticlesCollisionHeightField3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -59,7 +69,9 @@ func  (me *GPUParticlesCollisionHeightField3D) SetSize(size Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) GetSize() Vector3 {
@@ -68,10 +80,11 @@ func  (me *GPUParticlesCollisionHeightField3D) GetSize() Vector3 {
   methodNameV := StringNameFromStr("get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) SetResolution(resolution GPUParticlesCollisionHeightField3DResolution, )  {
@@ -81,7 +94,9 @@ func  (me *GPUParticlesCollisionHeightField3D) SetResolution(resolution GPUParti
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1009996517) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&resolution), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) GetResolution() GPUParticlesCollisionHeightField3DResolution {
@@ -90,9 +105,10 @@ func  (me *GPUParticlesCollisionHeightField3D) GetResolution() GPUParticlesColli
   methodNameV := StringNameFromStr("get_resolution")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1156065644) // FIXME: should cache?
-  var ret GPUParticlesCollisionHeightField3DResolution
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret GPUParticlesCollisionHeightField3DResolution
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -103,7 +119,9 @@ func  (me *GPUParticlesCollisionHeightField3D) SetUpdateMode(update_mode GPUPart
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 673680859) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&update_mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) GetUpdateMode() GPUParticlesCollisionHeightField3DUpdateMode {
@@ -112,9 +130,10 @@ func  (me *GPUParticlesCollisionHeightField3D) GetUpdateMode() GPUParticlesColli
   methodNameV := StringNameFromStr("get_update_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1998141380) // FIXME: should cache?
-  var ret GPUParticlesCollisionHeightField3DUpdateMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret GPUParticlesCollisionHeightField3DUpdateMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -125,7 +144,9 @@ func  (me *GPUParticlesCollisionHeightField3D) SetFollowCameraEnabled(enabled bo
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) IsFollowCameraEnabled() bool {
@@ -134,10 +155,11 @@ func  (me *GPUParticlesCollisionHeightField3D) IsFollowCameraEnabled() bool {
   methodNameV := StringNameFromStr("is_follow_camera_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

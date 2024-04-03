@@ -17,6 +17,16 @@ func (me *TileMapPattern) BaseClass() string {
   return "TileMapPattern"
 }
 
+func NewTileMapPattern() *TileMapPattern {
+  str := StringNameFromStr("TileMapPattern") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &TileMapPattern{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,14 +45,16 @@ func (me *TileMapPattern) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *TileMapPattern) SetCell(coords Vector2i, source_id int, atlas_coords Vector2i, alternative_tile int, )  {
+func  (me *TileMapPattern) SetCell(coords Vector2i, source_id int64, atlas_coords Vector2i, alternative_tile int64, )  {
   classNameV := StringNameFromStr("TileMapPattern")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_cell")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2224802556) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(coords.AsCTypePtr()), gdc.ConstTypePtr(&source_id), gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), gdc.ConstTypePtr(&alternative_tile), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TileMapPattern) HasCell(coords Vector2i, ) bool {
@@ -51,10 +63,11 @@ func  (me *TileMapPattern) HasCell(coords Vector2i, ) bool {
   methodNameV := StringNameFromStr("has_cell")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3900751641) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(coords.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TileMapPattern) RemoveCell(coords Vector2i, update_size bool, )  {
@@ -64,19 +77,22 @@ func  (me *TileMapPattern) RemoveCell(coords Vector2i, update_size bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4153096796) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(coords.AsCTypePtr()), gdc.ConstTypePtr(&update_size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TileMapPattern) GetCellSourceId(coords Vector2i, ) int {
+func  (me *TileMapPattern) GetCellSourceId(coords Vector2i, ) int64 {
   classNameV := StringNameFromStr("TileMapPattern")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_cell_source_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2485466453) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(coords.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TileMapPattern) GetCellAtlasCoords(coords Vector2i, ) Vector2i {
@@ -85,34 +101,38 @@ func  (me *TileMapPattern) GetCellAtlasCoords(coords Vector2i, ) Vector2i {
   methodNameV := StringNameFromStr("get_cell_atlas_coords")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3050897911) // FIXME: should cache?
-  var ret Vector2i
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(coords.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2i()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TileMapPattern) GetCellAlternativeTile(coords Vector2i, ) int {
+func  (me *TileMapPattern) GetCellAlternativeTile(coords Vector2i, ) int64 {
   classNameV := StringNameFromStr("TileMapPattern")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_cell_alternative_tile")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2485466453) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(coords.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileMapPattern) GetUsedCells() Vector2i {
+func  (me *TileMapPattern) GetUsedCells() []Vector2i {
   classNameV := StringNameFromStr("TileMapPattern")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_used_cells")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
-  var ret Vector2i
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[Vector2i](ret)
 }
 
 func  (me *TileMapPattern) GetSize() Vector2i {
@@ -121,10 +141,11 @@ func  (me *TileMapPattern) GetSize() Vector2i {
   methodNameV := StringNameFromStr("get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690982128) // FIXME: should cache?
-  var ret Vector2i
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2i()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *TileMapPattern) SetSize(size Vector2i, )  {
@@ -134,7 +155,9 @@ func  (me *TileMapPattern) SetSize(size Vector2i, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130785943) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TileMapPattern) IsEmpty() bool {
@@ -143,10 +166,11 @@ func  (me *TileMapPattern) IsEmpty() bool {
   methodNameV := StringNameFromStr("is_empty")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

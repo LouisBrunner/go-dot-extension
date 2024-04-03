@@ -17,6 +17,16 @@ func (me *ResourceImporterTextureAtlas) BaseClass() string {
   return "ResourceImporterTextureAtlas"
 }
 
+func NewResourceImporterTextureAtlas() *ResourceImporterTextureAtlas {
+  str := StringNameFromStr("ResourceImporterTextureAtlas") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ResourceImporterTextureAtlas{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

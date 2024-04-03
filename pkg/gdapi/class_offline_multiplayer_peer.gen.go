@@ -17,6 +17,16 @@ func (me *OfflineMultiplayerPeer) BaseClass() string {
   return "OfflineMultiplayerPeer"
 }
 
+func NewOfflineMultiplayerPeer() *OfflineMultiplayerPeer {
+  str := StringNameFromStr("OfflineMultiplayerPeer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &OfflineMultiplayerPeer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *OpenXRExtensionWrapperExtension) BaseClass() string {
   return "OpenXRExtensionWrapperExtension"
 }
 
+func NewOpenXRExtensionWrapperExtension() *OpenXRExtensionWrapperExtension {
+  str := StringNameFromStr("OpenXRExtensionWrapperExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &OpenXRExtensionWrapperExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *OpenXRExtensionWrapperExtension) GetOpenxrApi() OpenXRAPIExtension {
   methodNameV := StringNameFromStr("get_openxr_api")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1637791613) // FIXME: should cache?
-  var ret OpenXRAPIExtension
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewOpenXRAPIExtension()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *OpenXRExtensionWrapperExtension) RegisterExtensionWrapper()  {
@@ -54,7 +65,9 @@ func  (me *OpenXRExtensionWrapperExtension) RegisterExtensionWrapper()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

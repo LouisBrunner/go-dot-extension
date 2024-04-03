@@ -17,6 +17,16 @@ func (me *VisualShaderNodeRotationByAxis) BaseClass() string {
   return "VisualShaderNodeRotationByAxis"
 }
 
+func NewVisualShaderNodeRotationByAxis() *VisualShaderNodeRotationByAxis {
+  str := StringNameFromStr("VisualShaderNodeRotationByAxis") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeRotationByAxis{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *InputEventJoypadMotion) BaseClass() string {
   return "InputEventJoypadMotion"
 }
 
+func NewInputEventJoypadMotion() *InputEventJoypadMotion {
+  str := StringNameFromStr("InputEventJoypadMotion") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &InputEventJoypadMotion{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *InputEventJoypadMotion) SetAxis(axis JoyAxis, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1332685170) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&axis), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *InputEventJoypadMotion) GetAxis() JoyAxis {
@@ -51,32 +63,36 @@ func  (me *InputEventJoypadMotion) GetAxis() JoyAxis {
   methodNameV := StringNameFromStr("get_axis")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4019121683) // FIXME: should cache?
-  var ret JoyAxis
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret JoyAxis
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *InputEventJoypadMotion) SetAxisValue(axis_value float32, )  {
+func  (me *InputEventJoypadMotion) SetAxisValue(axis_value float64, )  {
   classNameV := StringNameFromStr("InputEventJoypadMotion")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_axis_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&axis_value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *InputEventJoypadMotion) GetAxisValue() float32 {
+func  (me *InputEventJoypadMotion) GetAxisValue() float64 {
   classNameV := StringNameFromStr("InputEventJoypadMotion")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_axis_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *VisualShaderNodeParticleAccelerator) BaseClass() string {
   return "VisualShaderNodeParticleAccelerator"
 }
 
+func NewVisualShaderNodeParticleAccelerator() *VisualShaderNodeParticleAccelerator {
+  str := StringNameFromStr("VisualShaderNodeParticleAccelerator") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeParticleAccelerator{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -50,7 +60,9 @@ func  (me *VisualShaderNodeParticleAccelerator) SetMode(mode VisualShaderNodePar
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3457585749) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeParticleAccelerator) GetMode() VisualShaderNodeParticleAcceleratorMode {
@@ -59,9 +71,10 @@ func  (me *VisualShaderNodeParticleAccelerator) GetMode() VisualShaderNodePartic
   methodNameV := StringNameFromStr("get_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2660365633) // FIXME: should cache?
-  var ret VisualShaderNodeParticleAcceleratorMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeParticleAcceleratorMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

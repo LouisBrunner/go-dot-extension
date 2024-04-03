@@ -17,6 +17,16 @@ func (me *StreamPeerBuffer) BaseClass() string {
   return "StreamPeerBuffer"
 }
 
+func NewStreamPeerBuffer() *StreamPeerBuffer {
+  str := StringNameFromStr("StreamPeerBuffer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &StreamPeerBuffer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,48 +45,54 @@ func (me *StreamPeerBuffer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *StreamPeerBuffer) Seek(position int, )  {
+func  (me *StreamPeerBuffer) Seek(position int64, )  {
   classNameV := StringNameFromStr("StreamPeerBuffer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("seek")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *StreamPeerBuffer) GetSize() int {
+func  (me *StreamPeerBuffer) GetSize() int64 {
   classNameV := StringNameFromStr("StreamPeerBuffer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *StreamPeerBuffer) GetPosition() int {
+func  (me *StreamPeerBuffer) GetPosition() int64 {
   classNameV := StringNameFromStr("StreamPeerBuffer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *StreamPeerBuffer) Resize(size int, )  {
+func  (me *StreamPeerBuffer) Resize(size int64, )  {
   classNameV := StringNameFromStr("StreamPeerBuffer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("resize")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *StreamPeerBuffer) SetDataArray(data PackedByteArray, )  {
@@ -86,7 +102,9 @@ func  (me *StreamPeerBuffer) SetDataArray(data PackedByteArray, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2971499966) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(data.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *StreamPeerBuffer) GetDataArray() PackedByteArray {
@@ -95,10 +113,11 @@ func  (me *StreamPeerBuffer) GetDataArray() PackedByteArray {
   methodNameV := StringNameFromStr("get_data_array")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2362200018) // FIXME: should cache?
-  var ret PackedByteArray
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedByteArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *StreamPeerBuffer) Clear()  {
@@ -108,7 +127,9 @@ func  (me *StreamPeerBuffer) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *StreamPeerBuffer) Duplicate() StreamPeerBuffer {
@@ -117,10 +138,11 @@ func  (me *StreamPeerBuffer) Duplicate() StreamPeerBuffer {
   methodNameV := StringNameFromStr("duplicate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2474064677) // FIXME: should cache?
-  var ret StreamPeerBuffer
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStreamPeerBuffer()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

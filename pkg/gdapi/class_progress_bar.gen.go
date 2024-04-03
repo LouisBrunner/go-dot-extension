@@ -17,6 +17,16 @@ func (me *ProgressBar) BaseClass() string {
   return "ProgressBar"
 }
 
+func NewProgressBar() *ProgressBar {
+  str := StringNameFromStr("ProgressBar") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ProgressBar{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -43,26 +53,29 @@ func (me *ProgressBar) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *ProgressBar) SetFillMode(mode int, )  {
+func  (me *ProgressBar) SetFillMode(mode int64, )  {
   classNameV := StringNameFromStr("ProgressBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_fill_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ProgressBar) GetFillMode() int {
+func  (me *ProgressBar) GetFillMode() int64 {
   classNameV := StringNameFromStr("ProgressBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_fill_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ProgressBar) SetShowPercentage(visible bool, )  {
@@ -72,7 +85,9 @@ func  (me *ProgressBar) SetShowPercentage(visible bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&visible), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ProgressBar) IsPercentageShown() bool {
@@ -81,10 +96,11 @@ func  (me *ProgressBar) IsPercentageShown() bool {
   methodNameV := StringNameFromStr("is_percentage_shown")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *CanvasTexture) BaseClass() string {
   return "CanvasTexture"
 }
 
+func NewCanvasTexture() *CanvasTexture {
+  str := StringNameFromStr("CanvasTexture") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CanvasTexture{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *CanvasTexture) SetDiffuseTexture(texture Texture2D, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CanvasTexture) GetDiffuseTexture() Texture2D {
@@ -51,10 +63,11 @@ func  (me *CanvasTexture) GetDiffuseTexture() Texture2D {
   methodNameV := StringNameFromStr("get_diffuse_texture")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
-  var ret Texture2D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTexture2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CanvasTexture) SetNormalTexture(texture Texture2D, )  {
@@ -64,7 +77,9 @@ func  (me *CanvasTexture) SetNormalTexture(texture Texture2D, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CanvasTexture) GetNormalTexture() Texture2D {
@@ -73,10 +88,11 @@ func  (me *CanvasTexture) GetNormalTexture() Texture2D {
   methodNameV := StringNameFromStr("get_normal_texture")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
-  var ret Texture2D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTexture2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CanvasTexture) SetSpecularTexture(texture Texture2D, )  {
@@ -86,7 +102,9 @@ func  (me *CanvasTexture) SetSpecularTexture(texture Texture2D, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CanvasTexture) GetSpecularTexture() Texture2D {
@@ -95,10 +113,11 @@ func  (me *CanvasTexture) GetSpecularTexture() Texture2D {
   methodNameV := StringNameFromStr("get_specular_texture")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
-  var ret Texture2D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTexture2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CanvasTexture) SetSpecularColor(color Color, )  {
@@ -108,7 +127,9 @@ func  (me *CanvasTexture) SetSpecularColor(color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CanvasTexture) GetSpecularColor() Color {
@@ -117,32 +138,36 @@ func  (me *CanvasTexture) GetSpecularColor() Color {
   methodNameV := StringNameFromStr("get_specular_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *CanvasTexture) SetSpecularShininess(shininess float32, )  {
+func  (me *CanvasTexture) SetSpecularShininess(shininess float64, )  {
   classNameV := StringNameFromStr("CanvasTexture")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_specular_shininess")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shininess), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CanvasTexture) GetSpecularShininess() float32 {
+func  (me *CanvasTexture) GetSpecularShininess() float64 {
   classNameV := StringNameFromStr("CanvasTexture")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_specular_shininess")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CanvasTexture) SetTextureFilter(filter CanvasItemTextureFilter, )  {
@@ -152,7 +177,9 @@ func  (me *CanvasTexture) SetTextureFilter(filter CanvasItemTextureFilter, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1037999706) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&filter), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CanvasTexture) GetTextureFilter() CanvasItemTextureFilter {
@@ -161,9 +188,10 @@ func  (me *CanvasTexture) GetTextureFilter() CanvasItemTextureFilter {
   methodNameV := StringNameFromStr("get_texture_filter")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 121960042) // FIXME: should cache?
-  var ret CanvasItemTextureFilter
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret CanvasItemTextureFilter
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -174,7 +202,9 @@ func  (me *CanvasTexture) SetTextureRepeat(repeat CanvasItemTextureRepeat, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1716472974) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&repeat), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CanvasTexture) GetTextureRepeat() CanvasItemTextureRepeat {
@@ -183,9 +213,10 @@ func  (me *CanvasTexture) GetTextureRepeat() CanvasItemTextureRepeat {
   methodNameV := StringNameFromStr("get_texture_repeat")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2667158319) // FIXME: should cache?
-  var ret CanvasItemTextureRepeat
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret CanvasItemTextureRepeat
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

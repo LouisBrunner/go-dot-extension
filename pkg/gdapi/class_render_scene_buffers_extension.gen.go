@@ -17,6 +17,16 @@ func (me *RenderSceneBuffersExtension) BaseClass() string {
   return "RenderSceneBuffersExtension"
 }
 
+func NewRenderSceneBuffersExtension() *RenderSceneBuffersExtension {
+  str := StringNameFromStr("RenderSceneBuffersExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &RenderSceneBuffersExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

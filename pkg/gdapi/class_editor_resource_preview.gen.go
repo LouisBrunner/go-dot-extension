@@ -17,6 +17,16 @@ func (me *EditorResourcePreview) BaseClass() string {
   return "EditorResourcePreview"
 }
 
+func NewEditorResourcePreview() *EditorResourcePreview {
+  str := StringNameFromStr("EditorResourcePreview") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorResourcePreview{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *EditorResourcePreview) QueueResourcePreview(path String, receiver Obj
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 233177534) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(receiver.AsCTypePtr()), gdc.ConstTypePtr(receiver_func.AsCTypePtr()), gdc.ConstTypePtr(userdata.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorResourcePreview) QueueEditedResourcePreview(resource Resource, receiver Object, receiver_func StringName, userdata Variant, )  {
@@ -52,7 +64,9 @@ func  (me *EditorResourcePreview) QueueEditedResourcePreview(resource Resource, 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1608376650) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(resource.AsCTypePtr()), gdc.ConstTypePtr(receiver.AsCTypePtr()), gdc.ConstTypePtr(receiver_func.AsCTypePtr()), gdc.ConstTypePtr(userdata.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorResourcePreview) AddPreviewGenerator(generator EditorResourcePreviewGenerator, )  {
@@ -62,7 +76,9 @@ func  (me *EditorResourcePreview) AddPreviewGenerator(generator EditorResourcePr
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 332288124) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(generator.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorResourcePreview) RemovePreviewGenerator(generator EditorResourcePreviewGenerator, )  {
@@ -72,7 +88,9 @@ func  (me *EditorResourcePreview) RemovePreviewGenerator(generator EditorResourc
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 332288124) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(generator.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorResourcePreview) CheckForInvalidation(path String, )  {
@@ -82,7 +100,9 @@ func  (me *EditorResourcePreview) CheckForInvalidation(path String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

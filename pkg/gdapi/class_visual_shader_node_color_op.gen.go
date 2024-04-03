@@ -17,6 +17,16 @@ func (me *VisualShaderNodeColorOp) BaseClass() string {
   return "VisualShaderNodeColorOp"
 }
 
+func NewVisualShaderNodeColorOp() *VisualShaderNodeColorOp {
+  str := StringNameFromStr("VisualShaderNodeColorOp") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeColorOp{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -56,7 +66,9 @@ func  (me *VisualShaderNodeColorOp) SetOperator(op VisualShaderNodeColorOpOperat
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4260370673) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&op), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeColorOp) GetOperator() VisualShaderNodeColorOpOperator {
@@ -65,9 +77,10 @@ func  (me *VisualShaderNodeColorOp) GetOperator() VisualShaderNodeColorOpOperato
   methodNameV := StringNameFromStr("get_operator")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1950956529) // FIXME: should cache?
-  var ret VisualShaderNodeColorOpOperator
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeColorOpOperator
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

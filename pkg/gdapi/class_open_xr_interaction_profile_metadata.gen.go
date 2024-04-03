@@ -17,6 +17,16 @@ func (me *OpenXRInteractionProfileMetadata) BaseClass() string {
   return "OpenXRInteractionProfileMetadata"
 }
 
+func NewOpenXRInteractionProfileMetadata() *OpenXRInteractionProfileMetadata {
+  str := StringNameFromStr("OpenXRInteractionProfileMetadata") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &OpenXRInteractionProfileMetadata{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *OpenXRInteractionProfileMetadata) RegisterProfileRename(old_name Stri
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3186203200) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(old_name.AsCTypePtr()), gdc.ConstTypePtr(new_name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRInteractionProfileMetadata) RegisterTopLevelPath(display_name String, openxr_path String, openxr_extension_name String, )  {
@@ -52,7 +64,9 @@ func  (me *OpenXRInteractionProfileMetadata) RegisterTopLevelPath(display_name S
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 254767734) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(display_name.AsCTypePtr()), gdc.ConstTypePtr(openxr_path.AsCTypePtr()), gdc.ConstTypePtr(openxr_extension_name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRInteractionProfileMetadata) RegisterInteractionProfile(display_name String, openxr_path String, openxr_extension_name String, )  {
@@ -62,7 +76,9 @@ func  (me *OpenXRInteractionProfileMetadata) RegisterInteractionProfile(display_
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 254767734) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(display_name.AsCTypePtr()), gdc.ConstTypePtr(openxr_path.AsCTypePtr()), gdc.ConstTypePtr(openxr_extension_name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRInteractionProfileMetadata) RegisterIoPath(interaction_profile String, display_name String, toplevel_path String, openxr_path String, openxr_extension_name String, action_type OpenXRActionActionType, )  {
@@ -72,7 +88,9 @@ func  (me *OpenXRInteractionProfileMetadata) RegisterIoPath(interaction_profile 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3443511926) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(interaction_profile.AsCTypePtr()), gdc.ConstTypePtr(display_name.AsCTypePtr()), gdc.ConstTypePtr(toplevel_path.AsCTypePtr()), gdc.ConstTypePtr(openxr_path.AsCTypePtr()), gdc.ConstTypePtr(openxr_extension_name.AsCTypePtr()), gdc.ConstTypePtr(&action_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

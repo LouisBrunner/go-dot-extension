@@ -17,6 +17,16 @@ func (me *VisualShaderNodeIntParameter) BaseClass() string {
   return "VisualShaderNodeIntParameter"
 }
 
+func NewVisualShaderNodeIntParameter() *VisualShaderNodeIntParameter {
+  str := StringNameFromStr("VisualShaderNodeIntParameter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeIntParameter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -50,7 +60,9 @@ func  (me *VisualShaderNodeIntParameter) SetHint(hint VisualShaderNodeIntParamet
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2540512075) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hint), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeIntParameter) GetHint() VisualShaderNodeIntParameterHint {
@@ -59,76 +71,86 @@ func  (me *VisualShaderNodeIntParameter) GetHint() VisualShaderNodeIntParameterH
   methodNameV := StringNameFromStr("get_hint")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4250814924) // FIXME: should cache?
-  var ret VisualShaderNodeIntParameterHint
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeIntParameterHint
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *VisualShaderNodeIntParameter) SetMin(value int, )  {
+func  (me *VisualShaderNodeIntParameter) SetMin(value int64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeIntParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeIntParameter) GetMin() int {
+func  (me *VisualShaderNodeIntParameter) GetMin() int64 {
   classNameV := StringNameFromStr("VisualShaderNodeIntParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNodeIntParameter) SetMax(value int, )  {
+func  (me *VisualShaderNodeIntParameter) SetMax(value int64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeIntParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeIntParameter) GetMax() int {
+func  (me *VisualShaderNodeIntParameter) GetMax() int64 {
   classNameV := StringNameFromStr("VisualShaderNodeIntParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNodeIntParameter) SetStep(value int, )  {
+func  (me *VisualShaderNodeIntParameter) SetStep(value int64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeIntParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeIntParameter) GetStep() int {
+func  (me *VisualShaderNodeIntParameter) GetStep() int64 {
   classNameV := StringNameFromStr("VisualShaderNodeIntParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *VisualShaderNodeIntParameter) SetDefaultValueEnabled(enabled bool, )  {
@@ -138,7 +160,9 @@ func  (me *VisualShaderNodeIntParameter) SetDefaultValueEnabled(enabled bool, ) 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeIntParameter) IsDefaultValueEnabled() bool {
@@ -147,32 +171,36 @@ func  (me *VisualShaderNodeIntParameter) IsDefaultValueEnabled() bool {
   methodNameV := StringNameFromStr("is_default_value_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNodeIntParameter) SetDefaultValue(value int, )  {
+func  (me *VisualShaderNodeIntParameter) SetDefaultValue(value int64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeIntParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_default_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeIntParameter) GetDefaultValue() int {
+func  (me *VisualShaderNodeIntParameter) GetDefaultValue() int64 {
   classNameV := StringNameFromStr("VisualShaderNodeIntParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_default_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

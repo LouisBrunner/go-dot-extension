@@ -17,6 +17,16 @@ func (me *XRCamera3D) BaseClass() string {
   return "XRCamera3D"
 }
 
+func NewXRCamera3D() *XRCamera3D {
+  str := StringNameFromStr("XRCamera3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &XRCamera3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

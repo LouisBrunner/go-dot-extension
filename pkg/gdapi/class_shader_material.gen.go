@@ -17,6 +17,16 @@ func (me *ShaderMaterial) BaseClass() string {
   return "ShaderMaterial"
 }
 
+func NewShaderMaterial() *ShaderMaterial {
+  str := StringNameFromStr("ShaderMaterial") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ShaderMaterial{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *ShaderMaterial) SetShader(shader Shader, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341921675) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shader.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ShaderMaterial) GetShader() Shader {
@@ -51,10 +63,11 @@ func  (me *ShaderMaterial) GetShader() Shader {
   methodNameV := StringNameFromStr("get_shader")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2078273437) // FIXME: should cache?
-  var ret Shader
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewShader()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ShaderMaterial) SetShaderParameter(param StringName, value Variant, )  {
@@ -64,7 +77,9 @@ func  (me *ShaderMaterial) SetShaderParameter(param StringName, value Variant, )
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3776071444) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(param.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ShaderMaterial) GetShaderParameter(param StringName, ) Variant {
@@ -73,10 +88,11 @@ func  (me *ShaderMaterial) GetShaderParameter(param StringName, ) Variant {
   methodNameV := StringNameFromStr("get_shader_parameter")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2760726917) // FIXME: should cache?
-  var ret Variant
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(param.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVariant()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

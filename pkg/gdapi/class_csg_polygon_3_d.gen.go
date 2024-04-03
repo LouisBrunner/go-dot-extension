@@ -17,6 +17,16 @@ func (me *CSGPolygon3D) BaseClass() string {
   return "CSGPolygon3D"
 }
 
+func NewCSGPolygon3D() *CSGPolygon3D {
+  str := StringNameFromStr("CSGPolygon3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CSGPolygon3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -62,7 +72,9 @@ func  (me *CSGPolygon3D) SetPolygon(polygon PackedVector2Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CSGPolygon3D) GetPolygon() PackedVector2Array {
@@ -71,10 +83,11 @@ func  (me *CSGPolygon3D) GetPolygon() PackedVector2Array {
   methodNameV := StringNameFromStr("get_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2961356807) // FIXME: should cache?
-  var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector2Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CSGPolygon3D) SetMode(mode CSGPolygon3DMode, )  {
@@ -84,7 +97,9 @@ func  (me *CSGPolygon3D) SetMode(mode CSGPolygon3DMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3158377035) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CSGPolygon3D) GetMode() CSGPolygon3DMode {
@@ -93,76 +108,86 @@ func  (me *CSGPolygon3D) GetMode() CSGPolygon3DMode {
   methodNameV := StringNameFromStr("get_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1201612222) // FIXME: should cache?
-  var ret CSGPolygon3DMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret CSGPolygon3DMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *CSGPolygon3D) SetDepth(depth float32, )  {
+func  (me *CSGPolygon3D) SetDepth(depth float64, )  {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_depth")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&depth), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CSGPolygon3D) GetDepth() float32 {
+func  (me *CSGPolygon3D) GetDepth() float64 {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_depth")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CSGPolygon3D) SetSpinDegrees(degrees float32, )  {
+func  (me *CSGPolygon3D) SetSpinDegrees(degrees float64, )  {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_spin_degrees")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&degrees), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CSGPolygon3D) GetSpinDegrees() float32 {
+func  (me *CSGPolygon3D) GetSpinDegrees() float64 {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_spin_degrees")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CSGPolygon3D) SetSpinSides(spin_sides int, )  {
+func  (me *CSGPolygon3D) SetSpinSides(spin_sides int64, )  {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_spin_sides")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&spin_sides), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CSGPolygon3D) GetSpinSides() int {
+func  (me *CSGPolygon3D) GetSpinSides() int64 {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_spin_sides")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CSGPolygon3D) SetPathNode(path NodePath, )  {
@@ -172,7 +197,9 @@ func  (me *CSGPolygon3D) SetPathNode(path NodePath, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CSGPolygon3D) GetPathNode() NodePath {
@@ -181,10 +208,11 @@ func  (me *CSGPolygon3D) GetPathNode() NodePath {
   methodNameV := StringNameFromStr("get_path_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CSGPolygon3D) SetPathIntervalType(interval_type CSGPolygon3DPathIntervalType, )  {
@@ -194,7 +222,9 @@ func  (me *CSGPolygon3D) SetPathIntervalType(interval_type CSGPolygon3DPathInter
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3744240707) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&interval_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CSGPolygon3D) GetPathIntervalType() CSGPolygon3DPathIntervalType {
@@ -203,54 +233,61 @@ func  (me *CSGPolygon3D) GetPathIntervalType() CSGPolygon3DPathIntervalType {
   methodNameV := StringNameFromStr("get_path_interval_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3434618397) // FIXME: should cache?
-  var ret CSGPolygon3DPathIntervalType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret CSGPolygon3DPathIntervalType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *CSGPolygon3D) SetPathInterval(interval float32, )  {
+func  (me *CSGPolygon3D) SetPathInterval(interval float64, )  {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_path_interval")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&interval), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CSGPolygon3D) GetPathInterval() float32 {
+func  (me *CSGPolygon3D) GetPathInterval() float64 {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_path_interval")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CSGPolygon3D) SetPathSimplifyAngle(degrees float32, )  {
+func  (me *CSGPolygon3D) SetPathSimplifyAngle(degrees float64, )  {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_path_simplify_angle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&degrees), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CSGPolygon3D) GetPathSimplifyAngle() float32 {
+func  (me *CSGPolygon3D) GetPathSimplifyAngle() float64 {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_path_simplify_angle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CSGPolygon3D) SetPathRotation(path_rotation CSGPolygon3DPathRotation, )  {
@@ -260,7 +297,9 @@ func  (me *CSGPolygon3D) SetPathRotation(path_rotation CSGPolygon3DPathRotation,
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1412947288) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&path_rotation), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CSGPolygon3D) GetPathRotation() CSGPolygon3DPathRotation {
@@ -269,9 +308,10 @@ func  (me *CSGPolygon3D) GetPathRotation() CSGPolygon3DPathRotation {
   methodNameV := StringNameFromStr("get_path_rotation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 647219346) // FIXME: should cache?
-  var ret CSGPolygon3DPathRotation
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret CSGPolygon3DPathRotation
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -282,7 +322,9 @@ func  (me *CSGPolygon3D) SetPathLocal(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CSGPolygon3D) IsPathLocal() bool {
@@ -291,10 +333,11 @@ func  (me *CSGPolygon3D) IsPathLocal() bool {
   methodNameV := StringNameFromStr("is_path_local")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CSGPolygon3D) SetPathContinuousU(enable bool, )  {
@@ -304,7 +347,9 @@ func  (me *CSGPolygon3D) SetPathContinuousU(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CSGPolygon3D) IsPathContinuousU() bool {
@@ -313,32 +358,36 @@ func  (me *CSGPolygon3D) IsPathContinuousU() bool {
   methodNameV := StringNameFromStr("is_path_continuous_u")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CSGPolygon3D) SetPathUDistance(distance float32, )  {
+func  (me *CSGPolygon3D) SetPathUDistance(distance float64, )  {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_path_u_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CSGPolygon3D) GetPathUDistance() float32 {
+func  (me *CSGPolygon3D) GetPathUDistance() float64 {
   classNameV := StringNameFromStr("CSGPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_path_u_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CSGPolygon3D) SetPathJoined(enable bool, )  {
@@ -348,7 +397,9 @@ func  (me *CSGPolygon3D) SetPathJoined(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CSGPolygon3D) IsPathJoined() bool {
@@ -357,10 +408,11 @@ func  (me *CSGPolygon3D) IsPathJoined() bool {
   methodNameV := StringNameFromStr("is_path_joined")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CSGPolygon3D) SetMaterial(material Material, )  {
@@ -370,7 +422,9 @@ func  (me *CSGPolygon3D) SetMaterial(material Material, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757459619) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(material.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CSGPolygon3D) GetMaterial() Material {
@@ -379,10 +433,11 @@ func  (me *CSGPolygon3D) GetMaterial() Material {
   methodNameV := StringNameFromStr("get_material")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5934680) // FIXME: should cache?
-  var ret Material
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewMaterial()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CSGPolygon3D) SetSmoothFaces(smooth_faces bool, )  {
@@ -392,7 +447,9 @@ func  (me *CSGPolygon3D) SetSmoothFaces(smooth_faces bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&smooth_faces), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CSGPolygon3D) GetSmoothFaces() bool {
@@ -401,10 +458,11 @@ func  (me *CSGPolygon3D) GetSmoothFaces() bool {
   methodNameV := StringNameFromStr("get_smooth_faces")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

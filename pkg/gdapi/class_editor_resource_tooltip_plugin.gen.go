@@ -17,6 +17,16 @@ func (me *EditorResourceTooltipPlugin) BaseClass() string {
   return "EditorResourceTooltipPlugin"
 }
 
+func NewEditorResourceTooltipPlugin() *EditorResourceTooltipPlugin {
+  str := StringNameFromStr("EditorResourceTooltipPlugin") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorResourceTooltipPlugin{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *EditorResourceTooltipPlugin) RequestThumbnail(path String, control Te
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3245519720) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(control.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

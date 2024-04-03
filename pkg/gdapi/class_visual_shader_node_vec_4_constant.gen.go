@@ -17,6 +17,16 @@ func (me *VisualShaderNodeVec4Constant) BaseClass() string {
   return "VisualShaderNodeVec4Constant"
 }
 
+func NewVisualShaderNodeVec4Constant() *VisualShaderNodeVec4Constant {
+  str := StringNameFromStr("VisualShaderNodeVec4Constant") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeVec4Constant{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *VisualShaderNodeVec4Constant) SetConstant(constant Quaternion, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1727505552) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(constant.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeVec4Constant) GetConstant() Quaternion {
@@ -51,10 +63,11 @@ func  (me *VisualShaderNodeVec4Constant) GetConstant() Quaternion {
   methodNameV := StringNameFromStr("get_constant")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1222331677) // FIXME: should cache?
-  var ret Quaternion
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewQuaternion()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

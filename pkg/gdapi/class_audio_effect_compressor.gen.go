@@ -17,6 +17,16 @@ func (me *AudioEffectCompressor) BaseClass() string {
   return "AudioEffectCompressor"
 }
 
+func NewAudioEffectCompressor() *AudioEffectCompressor {
+  str := StringNameFromStr("AudioEffectCompressor") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioEffectCompressor{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,136 +45,154 @@ func (me *AudioEffectCompressor) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *AudioEffectCompressor) SetThreshold(threshold float32, )  {
+func  (me *AudioEffectCompressor) SetThreshold(threshold float64, )  {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_threshold")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&threshold), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioEffectCompressor) GetThreshold() float32 {
+func  (me *AudioEffectCompressor) GetThreshold() float64 {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_threshold")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioEffectCompressor) SetRatio(ratio float32, )  {
+func  (me *AudioEffectCompressor) SetRatio(ratio float64, )  {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_ratio")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ratio), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioEffectCompressor) GetRatio() float32 {
+func  (me *AudioEffectCompressor) GetRatio() float64 {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_ratio")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioEffectCompressor) SetGain(gain float32, )  {
+func  (me *AudioEffectCompressor) SetGain(gain float64, )  {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_gain")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gain), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioEffectCompressor) GetGain() float32 {
+func  (me *AudioEffectCompressor) GetGain() float64 {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_gain")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioEffectCompressor) SetAttackUs(attack_us float32, )  {
+func  (me *AudioEffectCompressor) SetAttackUs(attack_us float64, )  {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_attack_us")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&attack_us), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioEffectCompressor) GetAttackUs() float32 {
+func  (me *AudioEffectCompressor) GetAttackUs() float64 {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_attack_us")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioEffectCompressor) SetReleaseMs(release_ms float32, )  {
+func  (me *AudioEffectCompressor) SetReleaseMs(release_ms float64, )  {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_release_ms")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&release_ms), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioEffectCompressor) GetReleaseMs() float32 {
+func  (me *AudioEffectCompressor) GetReleaseMs() float64 {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_release_ms")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioEffectCompressor) SetMix(mix float32, )  {
+func  (me *AudioEffectCompressor) SetMix(mix float64, )  {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_mix")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mix), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioEffectCompressor) GetMix() float32 {
+func  (me *AudioEffectCompressor) GetMix() float64 {
   classNameV := StringNameFromStr("AudioEffectCompressor")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_mix")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AudioEffectCompressor) SetSidechain(sidechain StringName, )  {
@@ -174,7 +202,9 @@ func  (me *AudioEffectCompressor) SetSidechain(sidechain StringName, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(sidechain.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AudioEffectCompressor) GetSidechain() StringName {
@@ -183,10 +213,11 @@ func  (me *AudioEffectCompressor) GetSidechain() StringName {
   methodNameV := StringNameFromStr("get_sidechain")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

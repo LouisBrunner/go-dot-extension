@@ -8,98 +8,98 @@ import (
 )
 
 type UtilityFunctions interface {
-  Sin(angle_rad float32, ) float32
-  Cos(angle_rad float32, ) float32
-  Tan(angle_rad float32, ) float32
-  Sinh(x float32, ) float32
-  Cosh(x float32, ) float32
-  Tanh(x float32, ) float32
-  Asin(x float32, ) float32
-  Acos(x float32, ) float32
-  Atan(x float32, ) float32
-  Atan2(y float32, x float32, ) float32
-  Asinh(x float32, ) float32
-  Acosh(x float32, ) float32
-  Atanh(x float32, ) float32
-  Sqrt(x float32, ) float32
-  Fmod(x float32, y float32, ) float32
-  Fposmod(x float32, y float32, ) float32
-  Posmod(x int, y int, ) int
+  Sin(angle_rad float64, ) float64
+  Cos(angle_rad float64, ) float64
+  Tan(angle_rad float64, ) float64
+  Sinh(x float64, ) float64
+  Cosh(x float64, ) float64
+  Tanh(x float64, ) float64
+  Asin(x float64, ) float64
+  Acos(x float64, ) float64
+  Atan(x float64, ) float64
+  Atan2(y float64, x float64, ) float64
+  Asinh(x float64, ) float64
+  Acosh(x float64, ) float64
+  Atanh(x float64, ) float64
+  Sqrt(x float64, ) float64
+  Fmod(x float64, y float64, ) float64
+  Fposmod(x float64, y float64, ) float64
+  Posmod(x int64, y int64, ) int64
   Floor(x Variant, ) Variant
-  Floorf(x float32, ) float32
-  Floori(x float32, ) int
+  Floorf(x float64, ) float64
+  Floori(x float64, ) int64
   Ceil(x Variant, ) Variant
-  Ceilf(x float32, ) float32
-  Ceili(x float32, ) int
+  Ceilf(x float64, ) float64
+  Ceili(x float64, ) int64
   Round(x Variant, ) Variant
-  Roundf(x float32, ) float32
-  Roundi(x float32, ) int
+  Roundf(x float64, ) float64
+  Roundi(x float64, ) int64
   Abs(x Variant, ) Variant
-  Absf(x float32, ) float32
-  Absi(x int, ) int
+  Absf(x float64, ) float64
+  Absi(x int64, ) int64
   Sign(x Variant, ) Variant
-  Signf(x float32, ) float32
-  Signi(x int, ) int
+  Signf(x float64, ) float64
+  Signi(x int64, ) int64
   Snapped(x Variant, step Variant, ) Variant
-  Snappedf(x float32, step float32, ) float32
-  Snappedi(x float32, step int, ) int
-  Pow(base float32, exp float32, ) float32
-  Log(x float32, ) float32
-  Exp(x float32, ) float32
-  IsNan(x float32, ) bool
-  IsInf(x float32, ) bool
-  IsEqualApprox(a float32, b float32, ) bool
-  IsZeroApprox(x float32, ) bool
-  IsFinite(x float32, ) bool
-  Ease(x float32, curve float32, ) float32
-  StepDecimals(x float32, ) int
+  Snappedf(x float64, step float64, ) float64
+  Snappedi(x float64, step int64, ) int64
+  Pow(base float64, exp float64, ) float64
+  Log(x float64, ) float64
+  Exp(x float64, ) float64
+  IsNan(x float64, ) bool
+  IsInf(x float64, ) bool
+  IsEqualApprox(a float64, b float64, ) bool
+  IsZeroApprox(x float64, ) bool
+  IsFinite(x float64, ) bool
+  Ease(x float64, curve float64, ) float64
+  StepDecimals(x float64, ) int64
   Lerp(from Variant, to Variant, weight Variant, ) Variant
-  Lerpf(from float32, to float32, weight float32, ) float32
-  CubicInterpolate(from float32, to float32, pre float32, post float32, weight float32, ) float32
-  CubicInterpolateAngle(from float32, to float32, pre float32, post float32, weight float32, ) float32
-  CubicInterpolateInTime(from float32, to float32, pre float32, post float32, weight float32, to_t float32, pre_t float32, post_t float32, ) float32
-  CubicInterpolateAngleInTime(from float32, to float32, pre float32, post float32, weight float32, to_t float32, pre_t float32, post_t float32, ) float32
-  BezierInterpolate(start float32, control_1 float32, control_2 float32, end float32, t float32, ) float32
-  BezierDerivative(start float32, control_1 float32, control_2 float32, end float32, t float32, ) float32
-  AngleDifference(from float32, to float32, ) float32
-  LerpAngle(from float32, to float32, weight float32, ) float32
-  InverseLerp(from float32, to float32, weight float32, ) float32
-  Remap(value float32, istart float32, istop float32, ostart float32, ostop float32, ) float32
-  Smoothstep(from float32, to float32, x float32, ) float32
-  MoveToward(from float32, to float32, delta float32, ) float32
-  RotateToward(from float32, to float32, delta float32, ) float32
-  DegToRad(deg float32, ) float32
-  RadToDeg(rad float32, ) float32
-  LinearToDb(lin float32, ) float32
-  DbToLinear(db float32, ) float32
+  Lerpf(from float64, to float64, weight float64, ) float64
+  CubicInterpolate(from float64, to float64, pre float64, post float64, weight float64, ) float64
+  CubicInterpolateAngle(from float64, to float64, pre float64, post float64, weight float64, ) float64
+  CubicInterpolateInTime(from float64, to float64, pre float64, post float64, weight float64, to_t float64, pre_t float64, post_t float64, ) float64
+  CubicInterpolateAngleInTime(from float64, to float64, pre float64, post float64, weight float64, to_t float64, pre_t float64, post_t float64, ) float64
+  BezierInterpolate(start float64, control_1 float64, control_2 float64, end float64, t float64, ) float64
+  BezierDerivative(start float64, control_1 float64, control_2 float64, end float64, t float64, ) float64
+  AngleDifference(from float64, to float64, ) float64
+  LerpAngle(from float64, to float64, weight float64, ) float64
+  InverseLerp(from float64, to float64, weight float64, ) float64
+  Remap(value float64, istart float64, istop float64, ostart float64, ostop float64, ) float64
+  Smoothstep(from float64, to float64, x float64, ) float64
+  MoveToward(from float64, to float64, delta float64, ) float64
+  RotateToward(from float64, to float64, delta float64, ) float64
+  DegToRad(deg float64, ) float64
+  RadToDeg(rad float64, ) float64
+  LinearToDb(lin float64, ) float64
+  DbToLinear(db float64, ) float64
   Wrap(value Variant, min Variant, max Variant, ) Variant
-  Wrapi(value int, min int, max int, ) int
-  Wrapf(value float32, min float32, max float32, ) float32
+  Wrapi(value int64, min int64, max int64, ) int64
+  Wrapf(value float64, min float64, max float64, ) float64
   Max(args ...Variant) Variant
-  Maxi(a int, b int, ) int
-  Maxf(a float32, b float32, ) float32
+  Maxi(a int64, b int64, ) int64
+  Maxf(a float64, b float64, ) float64
   Min(args ...Variant) Variant
-  Mini(a int, b int, ) int
-  Minf(a float32, b float32, ) float32
+  Mini(a int64, b int64, ) int64
+  Minf(a float64, b float64, ) float64
   Clamp(value Variant, min Variant, max Variant, ) Variant
-  Clampi(value int, min int, max int, ) int
-  Clampf(value float32, min float32, max float32, ) float32
-  NearestPo2(value int, ) int
-  Pingpong(value float32, length float32, ) float32
+  Clampi(value int64, min int64, max int64, ) int64
+  Clampf(value float64, min float64, max float64, ) float64
+  NearestPo2(value int64, ) int64
+  Pingpong(value float64, length float64, ) float64
   Randomize() 
-  Randi() int
-  Randf() float32
-  RandiRange(from int, to int, ) int
-  RandfRange(from float32, to float32, ) float32
-  Randfn(mean float32, deviation float32, ) float32
-  Seed(base int, ) 
-  RandFromSeed(seed int, ) PackedInt64Array
+  Randi() int64
+  Randf() float64
+  RandiRange(from int64, to int64, ) int64
+  RandfRange(from float64, to float64, ) float64
+  Randfn(mean float64, deviation float64, ) float64
+  Seed(base int64, ) 
+  RandFromSeed(seed int64, ) PackedInt64Array
   Weakref(obj Variant, ) Variant
-  Typeof(variable Variant, ) int
-  TypeConvert(variant Variant, type_ int, ) Variant
+  Typeof(variable Variant, ) int64
+  TypeConvert(variant Variant, type_ int64, ) Variant
   Str(args ...Variant) String
-  ErrorString(error int, ) String
-  TypeString(type_ int, ) String
+  ErrorString(error int64, ) String
+  TypeString(type_ int64, ) String
   Print(args ...Variant) 
   PrintRich(args ...Variant) 
   Printerr(args ...Variant) 
@@ -115,12 +115,12 @@ type UtilityFunctions interface {
   BytesToVar(bytes PackedByteArray, ) Variant
   VarToBytesWithObjects(variable Variant, ) PackedByteArray
   BytesToVarWithObjects(bytes PackedByteArray, ) Variant
-  Hash(variable Variant, ) int
-  InstanceFromId(instance_id int, ) Object
-  IsInstanceIdValid(id int, ) bool
+  Hash(variable Variant, ) int64
+  InstanceFromId(instance_id int64, ) Object
+  IsInstanceIdValid(id int64, ) bool
   IsInstanceValid(instance Variant, ) bool
-  RidAllocateId() int
-  RidFromInt64(base int, ) RID
+  RidAllocateId() int64
+  RidFromInt64(base int64, ) RID
   IsSame(a Variant, b Variant, ) bool
 }
 
@@ -589,741 +589,724 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
   }
 }
 
-
-
-func (me *utilities) Sin(angle_rad float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&angle_rad),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrsin, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Sin(angle_rad float64, ) float64 {
+  varg0 := NewFloatFromFloat32(angle_rad)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrsin, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Cos(angle_rad float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&angle_rad),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrcos, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Cos(angle_rad float64, ) float64 {
+  varg0 := NewFloatFromFloat32(angle_rad)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrcos, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Tan(angle_rad float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&angle_rad),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrtan, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Tan(angle_rad float64, ) float64 {
+  varg0 := NewFloatFromFloat32(angle_rad)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrtan, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Sinh(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrsinh, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Sinh(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrsinh, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Cosh(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrcosh, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Cosh(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrcosh, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Tanh(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrtanh, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Tanh(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrtanh, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Asin(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrasin, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Asin(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrasin, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Acos(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptracos, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Acos(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptracos, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Atan(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptratan, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Atan(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptratan, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Atan2(y float32, x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&y),
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptratan2, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Atan2(y float64, x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(y)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(x)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptratan2, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Asinh(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrasinh, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Asinh(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrasinh, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Acosh(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptracosh, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Acosh(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptracosh, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Atanh(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptratanh, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Atanh(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptratanh, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Sqrt(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrsqrt, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Sqrt(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrsqrt, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Fmod(x float32, y float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&y),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrfmod, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Fmod(x float64, y float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(y)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrfmod, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Fposmod(x float32, y float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&y),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrfposmod, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Fposmod(x float64, y float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(y)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrfposmod, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Posmod(x int, y int, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&y),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrposmod, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Posmod(x int64, y int64, ) int64 {
+  varg0 := NewIntFromInt(x)
+  defer varg0.Destroy()
+  varg1 := NewIntFromInt(y)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrposmod, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Floor(x Variant, ) Variant {
-  args := []gdc.ConstTypePtr{
-    x.AsCTypePtr(),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrfloor, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{x.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrfloor, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Floorf(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrfloorf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Floorf(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrfloorf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Floori(x float32, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrfloori, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Floori(x float64, ) int64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrfloori, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Ceil(x Variant, ) Variant {
-  args := []gdc.ConstTypePtr{
-    x.AsCTypePtr(),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrceil, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{x.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrceil, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Ceilf(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrceilf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Ceilf(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrceilf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Ceili(x float32, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrceili, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Ceili(x float64, ) int64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrceili, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Round(x Variant, ) Variant {
-  args := []gdc.ConstTypePtr{
-    x.AsCTypePtr(),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrround, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{x.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrround, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Roundf(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrroundf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Roundf(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrroundf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Roundi(x float32, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrroundi, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Roundi(x float64, ) int64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrroundi, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Abs(x Variant, ) Variant {
-  args := []gdc.ConstTypePtr{
-    x.AsCTypePtr(),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrabs, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{x.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrabs, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Absf(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrabsf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Absf(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrabsf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Absi(x int, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrabsi, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Absi(x int64, ) int64 {
+  varg0 := NewIntFromInt(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrabsi, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Sign(x Variant, ) Variant {
-  args := []gdc.ConstTypePtr{
-    x.AsCTypePtr(),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrsign, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{x.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrsign, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Signf(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrsignf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Signf(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrsignf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Signi(x int, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrsigni, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Signi(x int64, ) int64 {
+  varg0 := NewIntFromInt(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrsigni, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Snapped(x Variant, step Variant, ) Variant {
-  args := []gdc.ConstTypePtr{
-    x.AsCTypePtr(),
-    step.AsCTypePtr(),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrsnapped, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+
+  args := []gdc.ConstTypePtr{x.AsCTypePtr(), step.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrsnapped, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Snappedf(x float32, step float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&step),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrsnappedf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Snappedf(x float64, step float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(step)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrsnappedf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Snappedi(x float32, step int, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&step),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrsnappedi, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Snappedi(x float64, step int64, ) int64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  varg1 := NewIntFromInt(step)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrsnappedi, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Pow(base float32, exp float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&base),
-    gdc.ConstTypePtr(&exp),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrpow, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Pow(base float64, exp float64, ) float64 {
+  varg0 := NewFloatFromFloat32(base)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(exp)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrpow, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Log(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrlog, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Log(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrlog, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Exp(x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrexp, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Exp(x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrexp, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) IsNan(x float32, ) bool {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret bool
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptris_nan, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) IsNan(x float64, ) bool {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewBool()
+  me.iface.CallPtrUtilityFunction(me.ptris_nan, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) IsInf(x float32, ) bool {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret bool
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptris_inf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) IsInf(x float64, ) bool {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewBool()
+  me.iface.CallPtrUtilityFunction(me.ptris_inf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) IsEqualApprox(a float32, b float32, ) bool {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&a),
-    gdc.ConstTypePtr(&b),
-  }
-  var ret bool
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptris_equal_approx, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) IsEqualApprox(a float64, b float64, ) bool {
+  varg0 := NewFloatFromFloat32(a)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(b)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewBool()
+  me.iface.CallPtrUtilityFunction(me.ptris_equal_approx, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) IsZeroApprox(x float32, ) bool {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret bool
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptris_zero_approx, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) IsZeroApprox(x float64, ) bool {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewBool()
+  me.iface.CallPtrUtilityFunction(me.ptris_zero_approx, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) IsFinite(x float32, ) bool {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret bool
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptris_finite, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) IsFinite(x float64, ) bool {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewBool()
+  me.iface.CallPtrUtilityFunction(me.ptris_finite, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Ease(x float32, curve float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-    gdc.ConstTypePtr(&curve),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrease, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Ease(x float64, curve float64, ) float64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(curve)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrease, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) StepDecimals(x float32, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&x),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrstep_decimals, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) StepDecimals(x float64, ) int64 {
+  varg0 := NewFloatFromFloat32(x)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrstep_decimals, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Lerp(from Variant, to Variant, weight Variant, ) Variant {
-  args := []gdc.ConstTypePtr{
-    from.AsCTypePtr(),
-    to.AsCTypePtr(),
-    weight.AsCTypePtr(),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrlerp, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+
+
+  args := []gdc.ConstTypePtr{from.AsCTypePtr(), to.AsCTypePtr(), weight.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrlerp, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Lerpf(from float32, to float32, weight float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&weight),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrlerpf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Lerpf(from float64, to float64, weight float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(weight)
+  defer varg2.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrlerpf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) CubicInterpolate(from float32, to float32, pre float32, post float32, weight float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&pre),
-    gdc.ConstTypePtr(&post),
-    gdc.ConstTypePtr(&weight),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrcubic_interpolate, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) CubicInterpolate(from float64, to float64, pre float64, post float64, weight float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(pre)
+  defer varg2.Destroy()
+  varg3 := NewFloatFromFloat32(post)
+  defer varg3.Destroy()
+  varg4 := NewFloatFromFloat32(weight)
+  defer varg4.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), varg3.AsCTypePtr(), varg4.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrcubic_interpolate, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) CubicInterpolateAngle(from float32, to float32, pre float32, post float32, weight float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&pre),
-    gdc.ConstTypePtr(&post),
-    gdc.ConstTypePtr(&weight),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrcubic_interpolate_angle, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) CubicInterpolateAngle(from float64, to float64, pre float64, post float64, weight float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(pre)
+  defer varg2.Destroy()
+  varg3 := NewFloatFromFloat32(post)
+  defer varg3.Destroy()
+  varg4 := NewFloatFromFloat32(weight)
+  defer varg4.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), varg3.AsCTypePtr(), varg4.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrcubic_interpolate_angle, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) CubicInterpolateInTime(from float32, to float32, pre float32, post float32, weight float32, to_t float32, pre_t float32, post_t float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&pre),
-    gdc.ConstTypePtr(&post),
-    gdc.ConstTypePtr(&weight),
-    gdc.ConstTypePtr(&to_t),
-    gdc.ConstTypePtr(&pre_t),
-    gdc.ConstTypePtr(&post_t),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrcubic_interpolate_in_time, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) CubicInterpolateInTime(from float64, to float64, pre float64, post float64, weight float64, to_t float64, pre_t float64, post_t float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(pre)
+  defer varg2.Destroy()
+  varg3 := NewFloatFromFloat32(post)
+  defer varg3.Destroy()
+  varg4 := NewFloatFromFloat32(weight)
+  defer varg4.Destroy()
+  varg5 := NewFloatFromFloat32(to_t)
+  defer varg5.Destroy()
+  varg6 := NewFloatFromFloat32(pre_t)
+  defer varg6.Destroy()
+  varg7 := NewFloatFromFloat32(post_t)
+  defer varg7.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), varg3.AsCTypePtr(), varg4.AsCTypePtr(), varg5.AsCTypePtr(), varg6.AsCTypePtr(), varg7.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrcubic_interpolate_in_time, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) CubicInterpolateAngleInTime(from float32, to float32, pre float32, post float32, weight float32, to_t float32, pre_t float32, post_t float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&pre),
-    gdc.ConstTypePtr(&post),
-    gdc.ConstTypePtr(&weight),
-    gdc.ConstTypePtr(&to_t),
-    gdc.ConstTypePtr(&pre_t),
-    gdc.ConstTypePtr(&post_t),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrcubic_interpolate_angle_in_time, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) CubicInterpolateAngleInTime(from float64, to float64, pre float64, post float64, weight float64, to_t float64, pre_t float64, post_t float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(pre)
+  defer varg2.Destroy()
+  varg3 := NewFloatFromFloat32(post)
+  defer varg3.Destroy()
+  varg4 := NewFloatFromFloat32(weight)
+  defer varg4.Destroy()
+  varg5 := NewFloatFromFloat32(to_t)
+  defer varg5.Destroy()
+  varg6 := NewFloatFromFloat32(pre_t)
+  defer varg6.Destroy()
+  varg7 := NewFloatFromFloat32(post_t)
+  defer varg7.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), varg3.AsCTypePtr(), varg4.AsCTypePtr(), varg5.AsCTypePtr(), varg6.AsCTypePtr(), varg7.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrcubic_interpolate_angle_in_time, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) BezierInterpolate(start float32, control_1 float32, control_2 float32, end float32, t float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&start),
-    gdc.ConstTypePtr(&control_1),
-    gdc.ConstTypePtr(&control_2),
-    gdc.ConstTypePtr(&end),
-    gdc.ConstTypePtr(&t),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrbezier_interpolate, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) BezierInterpolate(start float64, control_1 float64, control_2 float64, end float64, t float64, ) float64 {
+  varg0 := NewFloatFromFloat32(start)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(control_1)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(control_2)
+  defer varg2.Destroy()
+  varg3 := NewFloatFromFloat32(end)
+  defer varg3.Destroy()
+  varg4 := NewFloatFromFloat32(t)
+  defer varg4.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), varg3.AsCTypePtr(), varg4.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrbezier_interpolate, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) BezierDerivative(start float32, control_1 float32, control_2 float32, end float32, t float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&start),
-    gdc.ConstTypePtr(&control_1),
-    gdc.ConstTypePtr(&control_2),
-    gdc.ConstTypePtr(&end),
-    gdc.ConstTypePtr(&t),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrbezier_derivative, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) BezierDerivative(start float64, control_1 float64, control_2 float64, end float64, t float64, ) float64 {
+  varg0 := NewFloatFromFloat32(start)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(control_1)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(control_2)
+  defer varg2.Destroy()
+  varg3 := NewFloatFromFloat32(end)
+  defer varg3.Destroy()
+  varg4 := NewFloatFromFloat32(t)
+  defer varg4.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), varg3.AsCTypePtr(), varg4.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrbezier_derivative, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) AngleDifference(from float32, to float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrangle_difference, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) AngleDifference(from float64, to float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrangle_difference, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) LerpAngle(from float32, to float32, weight float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&weight),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrlerp_angle, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) LerpAngle(from float64, to float64, weight float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(weight)
+  defer varg2.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrlerp_angle, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) InverseLerp(from float32, to float32, weight float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&weight),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrinverse_lerp, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) InverseLerp(from float64, to float64, weight float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(weight)
+  defer varg2.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrinverse_lerp, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Remap(value float32, istart float32, istop float32, ostart float32, ostop float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&istart),
-    gdc.ConstTypePtr(&istop),
-    gdc.ConstTypePtr(&ostart),
-    gdc.ConstTypePtr(&ostop),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrremap, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Remap(value float64, istart float64, istop float64, ostart float64, ostop float64, ) float64 {
+  varg0 := NewFloatFromFloat32(value)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(istart)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(istop)
+  defer varg2.Destroy()
+  varg3 := NewFloatFromFloat32(ostart)
+  defer varg3.Destroy()
+  varg4 := NewFloatFromFloat32(ostop)
+  defer varg4.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), varg3.AsCTypePtr(), varg4.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrremap, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Smoothstep(from float32, to float32, x float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&x),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrsmoothstep, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Smoothstep(from float64, to float64, x float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(x)
+  defer varg2.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrsmoothstep, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) MoveToward(from float32, to float32, delta float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&delta),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrmove_toward, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) MoveToward(from float64, to float64, delta float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(delta)
+  defer varg2.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrmove_toward, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) RotateToward(from float32, to float32, delta float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-    gdc.ConstTypePtr(&delta),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrrotate_toward, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) RotateToward(from float64, to float64, delta float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(delta)
+  defer varg2.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrrotate_toward, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) DegToRad(deg float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&deg),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrdeg_to_rad, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) DegToRad(deg float64, ) float64 {
+  varg0 := NewFloatFromFloat32(deg)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrdeg_to_rad, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) RadToDeg(rad float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&rad),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrrad_to_deg, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) RadToDeg(rad float64, ) float64 {
+  varg0 := NewFloatFromFloat32(rad)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrrad_to_deg, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) LinearToDb(lin float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&lin),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrlinear_to_db, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) LinearToDb(lin float64, ) float64 {
+  varg0 := NewFloatFromFloat32(lin)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrlinear_to_db, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) DbToLinear(db float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&db),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrdb_to_linear, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) DbToLinear(db float64, ) float64 {
+  varg0 := NewFloatFromFloat32(db)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrdb_to_linear, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Wrap(value Variant, min Variant, max Variant, ) Variant {
-  args := []gdc.ConstTypePtr{
-    value.AsCTypePtr(),
-    min.AsCTypePtr(),
-    max.AsCTypePtr(),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrwrap, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+
+
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), min.AsCTypePtr(), max.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrwrap, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Wrapi(value int, min int, max int, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&min),
-    gdc.ConstTypePtr(&max),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrwrapi, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Wrapi(value int64, min int64, max int64, ) int64 {
+  varg0 := NewIntFromInt(value)
+  defer varg0.Destroy()
+  varg1 := NewIntFromInt(min)
+  defer varg1.Destroy()
+  varg2 := NewIntFromInt(max)
+  defer varg2.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrwrapi, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Wrapf(value float32, min float32, max float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&min),
-    gdc.ConstTypePtr(&max),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrwrapf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Wrapf(value float64, min float64, max float64, ) float64 {
+  varg0 := NewFloatFromFloat32(value)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(min)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(max)
+  defer varg2.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrwrapf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Max(vargs ...Variant) Variant {
@@ -1332,32 +1315,31 @@ func (me *utilities) Max(vargs ...Variant) Variant {
     args[i] = arg.AsCTypePtr()
   }
 
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrmax, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrmax, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Maxi(a int, b int, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&a),
-    gdc.ConstTypePtr(&b),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrmaxi, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Maxi(a int64, b int64, ) int64 {
+  varg0 := NewIntFromInt(a)
+  defer varg0.Destroy()
+  varg1 := NewIntFromInt(b)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrmaxi, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Maxf(a float32, b float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&a),
-    gdc.ConstTypePtr(&b),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrmaxf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Maxf(a float64, b float64, ) float64 {
+  varg0 := NewFloatFromFloat32(a)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(b)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrmaxf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Min(vargs ...Variant) Variant {
@@ -1366,198 +1348,183 @@ func (me *utilities) Min(vargs ...Variant) Variant {
     args[i] = arg.AsCTypePtr()
   }
 
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrmin, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrmin, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Mini(a int, b int, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&a),
-    gdc.ConstTypePtr(&b),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrmini, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Mini(a int64, b int64, ) int64 {
+  varg0 := NewIntFromInt(a)
+  defer varg0.Destroy()
+  varg1 := NewIntFromInt(b)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrmini, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Minf(a float32, b float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&a),
-    gdc.ConstTypePtr(&b),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrminf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Minf(a float64, b float64, ) float64 {
+  varg0 := NewFloatFromFloat32(a)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(b)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrminf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Clamp(value Variant, min Variant, max Variant, ) Variant {
-  args := []gdc.ConstTypePtr{
-    value.AsCTypePtr(),
-    min.AsCTypePtr(),
-    max.AsCTypePtr(),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrclamp, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+
+
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), min.AsCTypePtr(), max.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrclamp, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Clampi(value int, min int, max int, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&min),
-    gdc.ConstTypePtr(&max),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrclampi, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Clampi(value int64, min int64, max int64, ) int64 {
+  varg0 := NewIntFromInt(value)
+  defer varg0.Destroy()
+  varg1 := NewIntFromInt(min)
+  defer varg1.Destroy()
+  varg2 := NewIntFromInt(max)
+  defer varg2.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrclampi, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Clampf(value float32, min float32, max float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&min),
-    gdc.ConstTypePtr(&max),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrclampf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Clampf(value float64, min float64, max float64, ) float64 {
+  varg0 := NewFloatFromFloat32(value)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(min)
+  defer varg1.Destroy()
+  varg2 := NewFloatFromFloat32(max)
+  defer varg2.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrclampf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) NearestPo2(value int, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrnearest_po2, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) NearestPo2(value int64, ) int64 {
+  varg0 := NewIntFromInt(value)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrnearest_po2, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Pingpong(value float32, length float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&value),
-    gdc.ConstTypePtr(&length),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrpingpong, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Pingpong(value float64, length float64, ) float64 {
+  varg0 := NewFloatFromFloat32(value)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(length)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrpingpong, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) Randomize()  {
-  args := []gdc.ConstTypePtr{
-  }
-
+  args := []gdc.ConstTypePtr{}
   me.iface.CallPtrUtilityFunction(me.ptrrandomize, nil, unsafe.SliceData(args), len(args))
 
 }
 
-func (me *utilities) Randi() int {
-  args := []gdc.ConstTypePtr{
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrrandi, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Randi() int64 {
+  args := []gdc.ConstTypePtr{}
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrrandi, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Randf() float32 {
-  args := []gdc.ConstTypePtr{
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrrandf, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Randf() float64 {
+  args := []gdc.ConstTypePtr{}
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrrandf, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) RandiRange(from int, to int, ) int {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrrandi_range, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) RandiRange(from int64, to int64, ) int64 {
+  varg0 := NewIntFromInt(from)
+  defer varg0.Destroy()
+  varg1 := NewIntFromInt(to)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrrandi_range, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) RandfRange(from float32, to float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&from),
-    gdc.ConstTypePtr(&to),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrrandf_range, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) RandfRange(from float64, to float64, ) float64 {
+  varg0 := NewFloatFromFloat32(from)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(to)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrrandf_range, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Randfn(mean float32, deviation float32, ) float32 {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&mean),
-    gdc.ConstTypePtr(&deviation),
-  }
-  var ret float32
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrrandfn, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Randfn(mean float64, deviation float64, ) float64 {
+  varg0 := NewFloatFromFloat32(mean)
+  defer varg0.Destroy()
+  varg1 := NewFloatFromFloat32(deviation)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewFloat()
+  me.iface.CallPtrUtilityFunction(me.ptrrandfn, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) Seed(base int, )  {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&base),
-  }
-
+func (me *utilities) Seed(base int64, )  {
+  varg0 := NewIntFromInt(base)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
   me.iface.CallPtrUtilityFunction(me.ptrseed, nil, unsafe.SliceData(args), len(args))
 
 }
 
-func (me *utilities) RandFromSeed(seed int, ) PackedInt64Array {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&seed),
-  }
-  var ret PackedInt64Array
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrrand_from_seed, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) RandFromSeed(seed int64, ) PackedInt64Array {
+  varg0 := NewIntFromInt(seed)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewPackedInt64Array()
+  me.iface.CallPtrUtilityFunction(me.ptrrand_from_seed, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
 func (me *utilities) Weakref(obj Variant, ) Variant {
-  args := []gdc.ConstTypePtr{
-    obj.AsCTypePtr(),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrweakref, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{obj.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrweakref, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Typeof(variable Variant, ) int {
-  args := []gdc.ConstTypePtr{
-    variable.AsCTypePtr(),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrtypeof, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Typeof(variable Variant, ) int64 {
+
+  args := []gdc.ConstTypePtr{variable.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrtypeof, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) TypeConvert(variant Variant, type_ int, ) Variant {
-  args := []gdc.ConstTypePtr{
-    variant.AsCTypePtr(),
-    gdc.ConstTypePtr(&type_),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrtype_convert, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) TypeConvert(variant Variant, type_ int64, ) Variant {
+
+  varg1 := NewIntFromInt(type_)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{variant.AsCTypePtr(), varg1.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrtype_convert, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
 func (me *utilities) Str(vargs ...Variant) String {
@@ -1566,30 +1533,27 @@ func (me *utilities) Str(vargs ...Variant) String {
     args[i] = arg.AsCTypePtr()
   }
 
-  var ret String
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrstr, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+  ret := NewString()
+  me.iface.CallPtrUtilityFunction(me.ptrstr, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) ErrorString(error int, ) String {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&error),
-  }
-  var ret String
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrerror_string, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) ErrorString(error int64, ) String {
+  varg0 := NewIntFromInt(error)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewString()
+  me.iface.CallPtrUtilityFunction(me.ptrerror_string, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) TypeString(type_ int, ) String {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&type_),
-  }
-  var ret String
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrtype_string, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) TypeString(type_ int64, ) String {
+  varg0 := NewIntFromInt(type_)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewString()
+  me.iface.CallPtrUtilityFunction(me.ptrtype_string, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
 func (me *utilities) Print(vargs ...Variant)  {
@@ -1597,7 +1561,6 @@ func (me *utilities) Print(vargs ...Variant)  {
   for i, arg := range vargs {
     args[i] = arg.AsCTypePtr()
   }
-
 
   me.iface.CallPtrUtilityFunction(me.ptrprint, nil, unsafe.SliceData(args), len(args))
 
@@ -1609,7 +1572,6 @@ func (me *utilities) PrintRich(vargs ...Variant)  {
     args[i] = arg.AsCTypePtr()
   }
 
-
   me.iface.CallPtrUtilityFunction(me.ptrprint_rich, nil, unsafe.SliceData(args), len(args))
 
 }
@@ -1619,7 +1581,6 @@ func (me *utilities) Printerr(vargs ...Variant)  {
   for i, arg := range vargs {
     args[i] = arg.AsCTypePtr()
   }
-
 
   me.iface.CallPtrUtilityFunction(me.ptrprinterr, nil, unsafe.SliceData(args), len(args))
 
@@ -1631,7 +1592,6 @@ func (me *utilities) Printt(vargs ...Variant)  {
     args[i] = arg.AsCTypePtr()
   }
 
-
   me.iface.CallPtrUtilityFunction(me.ptrprintt, nil, unsafe.SliceData(args), len(args))
 
 }
@@ -1641,7 +1601,6 @@ func (me *utilities) Prints(vargs ...Variant)  {
   for i, arg := range vargs {
     args[i] = arg.AsCTypePtr()
   }
-
 
   me.iface.CallPtrUtilityFunction(me.ptrprints, nil, unsafe.SliceData(args), len(args))
 
@@ -1653,7 +1612,6 @@ func (me *utilities) Printraw(vargs ...Variant)  {
     args[i] = arg.AsCTypePtr()
   }
 
-
   me.iface.CallPtrUtilityFunction(me.ptrprintraw, nil, unsafe.SliceData(args), len(args))
 
 }
@@ -1663,7 +1621,6 @@ func (me *utilities) PrintVerbose(vargs ...Variant)  {
   for i, arg := range vargs {
     args[i] = arg.AsCTypePtr()
   }
-
 
   me.iface.CallPtrUtilityFunction(me.ptrprint_verbose, nil, unsafe.SliceData(args), len(args))
 
@@ -1675,7 +1632,6 @@ func (me *utilities) PushError(vargs ...Variant)  {
     args[i] = arg.AsCTypePtr()
   }
 
-
   me.iface.CallPtrUtilityFunction(me.ptrpush_error, nil, unsafe.SliceData(args), len(args))
 
 }
@@ -1686,137 +1642,113 @@ func (me *utilities) PushWarning(vargs ...Variant)  {
     args[i] = arg.AsCTypePtr()
   }
 
-
   me.iface.CallPtrUtilityFunction(me.ptrpush_warning, nil, unsafe.SliceData(args), len(args))
 
 }
 
 func (me *utilities) VarToStr(variable Variant, ) String {
-  args := []gdc.ConstTypePtr{
-    variable.AsCTypePtr(),
-  }
-  var ret String
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrvar_to_str, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{variable.AsCTypePtr(), }
+  ret := NewString()
+  me.iface.CallPtrUtilityFunction(me.ptrvar_to_str, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
 func (me *utilities) StrToVar(string_ String, ) Variant {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&string_),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrstr_to_var, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{string_.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrstr_to_var, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
 func (me *utilities) VarToBytes(variable Variant, ) PackedByteArray {
-  args := []gdc.ConstTypePtr{
-    variable.AsCTypePtr(),
-  }
-  var ret PackedByteArray
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrvar_to_bytes, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{variable.AsCTypePtr(), }
+  ret := NewPackedByteArray()
+  me.iface.CallPtrUtilityFunction(me.ptrvar_to_bytes, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
 func (me *utilities) BytesToVar(bytes PackedByteArray, ) Variant {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&bytes),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrbytes_to_var, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{bytes.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrbytes_to_var, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
 func (me *utilities) VarToBytesWithObjects(variable Variant, ) PackedByteArray {
-  args := []gdc.ConstTypePtr{
-    variable.AsCTypePtr(),
-  }
-  var ret PackedByteArray
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrvar_to_bytes_with_objects, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{variable.AsCTypePtr(), }
+  ret := NewPackedByteArray()
+  me.iface.CallPtrUtilityFunction(me.ptrvar_to_bytes_with_objects, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
 func (me *utilities) BytesToVarWithObjects(bytes PackedByteArray, ) Variant {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&bytes),
-  }
-  var ret Variant
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrbytes_to_var_with_objects, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{bytes.AsCTypePtr(), }
+  ret := NewVariant()
+  me.iface.CallPtrUtilityFunction(me.ptrbytes_to_var_with_objects, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) Hash(variable Variant, ) int {
-  args := []gdc.ConstTypePtr{
-    variable.AsCTypePtr(),
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrhash, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) Hash(variable Variant, ) int64 {
+
+  args := []gdc.ConstTypePtr{variable.AsCTypePtr(), }
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrhash, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) InstanceFromId(instance_id int, ) Object {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&instance_id),
-  }
-  var ret Object
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrinstance_from_id, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) InstanceFromId(instance_id int64, ) Object {
+  varg0 := NewIntFromInt(instance_id)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewObject()
+  me.iface.CallPtrUtilityFunction(me.ptrinstance_from_id, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
-func (me *utilities) IsInstanceIdValid(id int, ) bool {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&id),
-  }
-  var ret bool
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptris_instance_id_valid, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) IsInstanceIdValid(id int64, ) bool {
+  varg0 := NewIntFromInt(id)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewBool()
+  me.iface.CallPtrUtilityFunction(me.ptris_instance_id_valid, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
 func (me *utilities) IsInstanceValid(instance Variant, ) bool {
-  args := []gdc.ConstTypePtr{
-    instance.AsCTypePtr(),
-  }
-  var ret bool
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptris_instance_valid, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+  args := []gdc.ConstTypePtr{instance.AsCTypePtr(), }
+  ret := NewBool()
+  me.iface.CallPtrUtilityFunction(me.ptris_instance_valid, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) RidAllocateId() int {
-  args := []gdc.ConstTypePtr{
-  }
-  var ret int
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrrid_allocate_id, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) RidAllocateId() int64 {
+  args := []gdc.ConstTypePtr{}
+  ret := NewInt()
+  me.iface.CallPtrUtilityFunction(me.ptrrid_allocate_id, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }
 
-func (me *utilities) RidFromInt64(base int, ) RID {
-  args := []gdc.ConstTypePtr{
-    gdc.ConstTypePtr(&base),
-  }
-  var ret RID
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptrrid_from_int64, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+func (me *utilities) RidFromInt64(base int64, ) RID {
+  varg0 := NewIntFromInt(base)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
+  ret := NewRID()
+  me.iface.CallPtrUtilityFunction(me.ptrrid_from_int64, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return *ret
 }
 
 func (me *utilities) IsSame(a Variant, b Variant, ) bool {
-  args := []gdc.ConstTypePtr{
-    a.AsCTypePtr(),
-    b.AsCTypePtr(),
-  }
-  var ret bool
-  retPtr := gdc.TypePtr(&ret)
-  me.iface.CallPtrUtilityFunction(me.ptris_same, retPtr, unsafe.SliceData(args), len(args))
-  return ret
+
+
+  args := []gdc.ConstTypePtr{a.AsCTypePtr(), b.AsCTypePtr(), }
+  ret := NewBool()
+  me.iface.CallPtrUtilityFunction(me.ptris_same, ret.AsTypePtr(), unsafe.SliceData(args), len(args))
+  return ret.Get()
 }

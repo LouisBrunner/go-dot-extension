@@ -17,6 +17,16 @@ func (me *WorldBoundaryShape3D) BaseClass() string {
   return "WorldBoundaryShape3D"
 }
 
+func NewWorldBoundaryShape3D() *WorldBoundaryShape3D {
+  str := StringNameFromStr("WorldBoundaryShape3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &WorldBoundaryShape3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *WorldBoundaryShape3D) SetPlane(plane Plane, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3505987427) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plane.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *WorldBoundaryShape3D) GetPlane() Plane {
@@ -51,10 +63,11 @@ func  (me *WorldBoundaryShape3D) GetPlane() Plane {
   methodNameV := StringNameFromStr("get_plane")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2753500971) // FIXME: should cache?
-  var ret Plane
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPlane()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

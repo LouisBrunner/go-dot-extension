@@ -17,6 +17,16 @@ func (me *InputEventMouseButton) BaseClass() string {
   return "InputEventMouseButton"
 }
 
+func NewInputEventMouseButton() *InputEventMouseButton {
+  str := StringNameFromStr("InputEventMouseButton") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &InputEventMouseButton{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *InputEventMouseButton) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *InputEventMouseButton) SetFactor(factor float32, )  {
+func  (me *InputEventMouseButton) SetFactor(factor float64, )  {
   classNameV := StringNameFromStr("InputEventMouseButton")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_factor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&factor), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *InputEventMouseButton) GetFactor() float32 {
+func  (me *InputEventMouseButton) GetFactor() float64 {
   classNameV := StringNameFromStr("InputEventMouseButton")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_factor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *InputEventMouseButton) SetButtonIndex(button_index MouseButton, )  {
@@ -64,7 +77,9 @@ func  (me *InputEventMouseButton) SetButtonIndex(button_index MouseButton, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3624991109) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&button_index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *InputEventMouseButton) GetButtonIndex() MouseButton {
@@ -73,9 +88,10 @@ func  (me *InputEventMouseButton) GetButtonIndex() MouseButton {
   methodNameV := StringNameFromStr("get_button_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1132662608) // FIXME: should cache?
-  var ret MouseButton
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret MouseButton
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -86,7 +102,9 @@ func  (me *InputEventMouseButton) SetPressed(pressed bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *InputEventMouseButton) SetCanceled(canceled bool, )  {
@@ -96,7 +114,9 @@ func  (me *InputEventMouseButton) SetCanceled(canceled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&canceled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *InputEventMouseButton) SetDoubleClick(double_click bool, )  {
@@ -106,7 +126,9 @@ func  (me *InputEventMouseButton) SetDoubleClick(double_click bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&double_click), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *InputEventMouseButton) IsDoubleClick() bool {
@@ -115,10 +137,11 @@ func  (me *InputEventMouseButton) IsDoubleClick() bool {
   methodNameV := StringNameFromStr("is_double_click")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *QuadMesh) BaseClass() string {
   return "QuadMesh"
 }
 
+func NewQuadMesh() *QuadMesh {
+  str := StringNameFromStr("QuadMesh") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &QuadMesh{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

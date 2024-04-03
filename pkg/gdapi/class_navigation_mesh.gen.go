@@ -17,6 +17,16 @@ func (me *NavigationMesh) BaseClass() string {
   return "NavigationMesh"
 }
 
+func NewNavigationMesh() *NavigationMesh {
+  str := StringNameFromStr("NavigationMesh") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &NavigationMesh{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -66,7 +76,9 @@ func  (me *NavigationMesh) SetSamplePartitionType(sample_partition_type Navigati
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2472437533) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&sample_partition_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) GetSamplePartitionType() NavigationMeshSamplePartitionType {
@@ -75,9 +87,10 @@ func  (me *NavigationMesh) GetSamplePartitionType() NavigationMeshSamplePartitio
   methodNameV := StringNameFromStr("get_sample_partition_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 833513918) // FIXME: should cache?
-  var ret NavigationMeshSamplePartitionType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret NavigationMeshSamplePartitionType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -88,7 +101,9 @@ func  (me *NavigationMesh) SetParsedGeometryType(geometry_type NavigationMeshPar
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3064713163) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&geometry_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) GetParsedGeometryType() NavigationMeshParsedGeometryType {
@@ -97,54 +112,61 @@ func  (me *NavigationMesh) GetParsedGeometryType() NavigationMeshParsedGeometryT
   methodNameV := StringNameFromStr("get_parsed_geometry_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3928011953) // FIXME: should cache?
-  var ret NavigationMeshParsedGeometryType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret NavigationMeshParsedGeometryType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *NavigationMesh) SetCollisionMask(mask int, )  {
+func  (me *NavigationMesh) SetCollisionMask(mask int64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetCollisionMask() int {
+func  (me *NavigationMesh) GetCollisionMask() int64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetCollisionMaskValue(layer_number int, value bool, )  {
+func  (me *NavigationMesh) SetCollisionMaskValue(layer_number int64, value bool, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_collision_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetCollisionMaskValue(layer_number int, ) bool {
+func  (me *NavigationMesh) GetCollisionMaskValue(layer_number int64, ) bool {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationMesh) SetSourceGeometryMode(mask NavigationMeshSourceGeometryMode, )  {
@@ -154,7 +176,9 @@ func  (me *NavigationMesh) SetSourceGeometryMode(mask NavigationMeshSourceGeomet
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2700825194) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) GetSourceGeometryMode() NavigationMeshSourceGeometryMode {
@@ -163,9 +187,10 @@ func  (me *NavigationMesh) GetSourceGeometryMode() NavigationMeshSourceGeometryM
   methodNameV := StringNameFromStr("get_source_geometry_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2770484141) // FIXME: should cache?
-  var ret NavigationMeshSourceGeometryMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret NavigationMeshSourceGeometryMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -176,7 +201,9 @@ func  (me *NavigationMesh) SetSourceGroupName(mask StringName, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mask.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) GetSourceGroupName() StringName {
@@ -185,296 +212,336 @@ func  (me *NavigationMesh) GetSourceGroupName() StringName {
   methodNameV := StringNameFromStr("get_source_group_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *NavigationMesh) SetCellSize(cell_size float32, )  {
+func  (me *NavigationMesh) SetCellSize(cell_size float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_cell_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cell_size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetCellSize() float32 {
+func  (me *NavigationMesh) GetCellSize() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_cell_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetCellHeight(cell_height float32, )  {
+func  (me *NavigationMesh) SetCellHeight(cell_height float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_cell_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cell_height), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetCellHeight() float32 {
+func  (me *NavigationMesh) GetCellHeight() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_cell_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetAgentHeight(agent_height float32, )  {
+func  (me *NavigationMesh) SetAgentHeight(agent_height float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_agent_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&agent_height), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetAgentHeight() float32 {
+func  (me *NavigationMesh) GetAgentHeight() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_agent_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetAgentRadius(agent_radius float32, )  {
+func  (me *NavigationMesh) SetAgentRadius(agent_radius float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_agent_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&agent_radius), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetAgentRadius() float32 {
+func  (me *NavigationMesh) GetAgentRadius() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_agent_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetAgentMaxClimb(agent_max_climb float32, )  {
+func  (me *NavigationMesh) SetAgentMaxClimb(agent_max_climb float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_agent_max_climb")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&agent_max_climb), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetAgentMaxClimb() float32 {
+func  (me *NavigationMesh) GetAgentMaxClimb() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_agent_max_climb")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetAgentMaxSlope(agent_max_slope float32, )  {
+func  (me *NavigationMesh) SetAgentMaxSlope(agent_max_slope float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_agent_max_slope")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&agent_max_slope), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetAgentMaxSlope() float32 {
+func  (me *NavigationMesh) GetAgentMaxSlope() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_agent_max_slope")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetRegionMinSize(region_min_size float32, )  {
+func  (me *NavigationMesh) SetRegionMinSize(region_min_size float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_region_min_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&region_min_size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetRegionMinSize() float32 {
+func  (me *NavigationMesh) GetRegionMinSize() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_region_min_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetRegionMergeSize(region_merge_size float32, )  {
+func  (me *NavigationMesh) SetRegionMergeSize(region_merge_size float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_region_merge_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&region_merge_size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetRegionMergeSize() float32 {
+func  (me *NavigationMesh) GetRegionMergeSize() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_region_merge_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetEdgeMaxLength(edge_max_length float32, )  {
+func  (me *NavigationMesh) SetEdgeMaxLength(edge_max_length float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_edge_max_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&edge_max_length), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetEdgeMaxLength() float32 {
+func  (me *NavigationMesh) GetEdgeMaxLength() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_edge_max_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetEdgeMaxError(edge_max_error float32, )  {
+func  (me *NavigationMesh) SetEdgeMaxError(edge_max_error float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_edge_max_error")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&edge_max_error), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetEdgeMaxError() float32 {
+func  (me *NavigationMesh) GetEdgeMaxError() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_edge_max_error")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetVerticesPerPolygon(vertices_per_polygon float32, )  {
+func  (me *NavigationMesh) SetVerticesPerPolygon(vertices_per_polygon float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_vertices_per_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vertices_per_polygon), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetVerticesPerPolygon() float32 {
+func  (me *NavigationMesh) GetVerticesPerPolygon() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_vertices_per_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetDetailSampleDistance(detail_sample_dist float32, )  {
+func  (me *NavigationMesh) SetDetailSampleDistance(detail_sample_dist float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_detail_sample_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&detail_sample_dist), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetDetailSampleDistance() float32 {
+func  (me *NavigationMesh) GetDetailSampleDistance() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_detail_sample_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) SetDetailSampleMaxError(detail_sample_max_error float32, )  {
+func  (me *NavigationMesh) SetDetailSampleMaxError(detail_sample_max_error float64, )  {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_detail_sample_max_error")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&detail_sample_max_error), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetDetailSampleMaxError() float32 {
+func  (me *NavigationMesh) GetDetailSampleMaxError() float64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_detail_sample_max_error")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationMesh) SetFilterLowHangingObstacles(filter_low_hanging_obstacles bool, )  {
@@ -484,7 +551,9 @@ func  (me *NavigationMesh) SetFilterLowHangingObstacles(filter_low_hanging_obsta
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&filter_low_hanging_obstacles), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) GetFilterLowHangingObstacles() bool {
@@ -493,10 +562,11 @@ func  (me *NavigationMesh) GetFilterLowHangingObstacles() bool {
   methodNameV := StringNameFromStr("get_filter_low_hanging_obstacles")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationMesh) SetFilterLedgeSpans(filter_ledge_spans bool, )  {
@@ -506,7 +576,9 @@ func  (me *NavigationMesh) SetFilterLedgeSpans(filter_ledge_spans bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&filter_ledge_spans), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) GetFilterLedgeSpans() bool {
@@ -515,10 +587,11 @@ func  (me *NavigationMesh) GetFilterLedgeSpans() bool {
   methodNameV := StringNameFromStr("get_filter_ledge_spans")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationMesh) SetFilterWalkableLowHeightSpans(filter_walkable_low_height_spans bool, )  {
@@ -528,7 +601,9 @@ func  (me *NavigationMesh) SetFilterWalkableLowHeightSpans(filter_walkable_low_h
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&filter_walkable_low_height_spans), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) GetFilterWalkableLowHeightSpans() bool {
@@ -537,10 +612,11 @@ func  (me *NavigationMesh) GetFilterWalkableLowHeightSpans() bool {
   methodNameV := StringNameFromStr("get_filter_walkable_low_height_spans")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationMesh) SetFilterBakingAabb(baking_aabb AABB, )  {
@@ -550,7 +626,9 @@ func  (me *NavigationMesh) SetFilterBakingAabb(baking_aabb AABB, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 259215842) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(baking_aabb.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) GetFilterBakingAabb() AABB {
@@ -559,10 +637,11 @@ func  (me *NavigationMesh) GetFilterBakingAabb() AABB {
   methodNameV := StringNameFromStr("get_filter_baking_aabb")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1068685055) // FIXME: should cache?
-  var ret AABB
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewAABB()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationMesh) SetFilterBakingAabbOffset(baking_aabb_offset Vector3, )  {
@@ -572,7 +651,9 @@ func  (me *NavigationMesh) SetFilterBakingAabbOffset(baking_aabb_offset Vector3,
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(baking_aabb_offset.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) GetFilterBakingAabbOffset() Vector3 {
@@ -581,10 +662,11 @@ func  (me *NavigationMesh) GetFilterBakingAabbOffset() Vector3 {
   methodNameV := StringNameFromStr("get_filter_baking_aabb_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationMesh) SetVertices(vertices PackedVector3Array, )  {
@@ -594,7 +676,9 @@ func  (me *NavigationMesh) SetVertices(vertices PackedVector3Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334873810) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(vertices.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) GetVertices() PackedVector3Array {
@@ -603,10 +687,11 @@ func  (me *NavigationMesh) GetVertices() PackedVector3Array {
   methodNameV := StringNameFromStr("get_vertices")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
-  var ret PackedVector3Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector3Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationMesh) AddPolygon(polygon PackedInt32Array, )  {
@@ -616,31 +701,35 @@ func  (me *NavigationMesh) AddPolygon(polygon PackedInt32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMesh) GetPolygonCount() int {
+func  (me *NavigationMesh) GetPolygonCount() int64 {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_polygon_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMesh) GetPolygon(idx int, ) PackedInt32Array {
+func  (me *NavigationMesh) GetPolygon(idx int64, ) PackedInt32Array {
   classNameV := StringNameFromStr("NavigationMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3668444399) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationMesh) ClearPolygons()  {
@@ -650,7 +739,9 @@ func  (me *NavigationMesh) ClearPolygons()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) CreateFromMesh(mesh Mesh, )  {
@@ -660,7 +751,9 @@ func  (me *NavigationMesh) CreateFromMesh(mesh Mesh, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 194775623) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMesh) Clear()  {
@@ -670,7 +763,9 @@ func  (me *NavigationMesh) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

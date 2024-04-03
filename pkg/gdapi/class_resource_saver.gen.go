@@ -17,6 +17,16 @@ func (me *ResourceSaver) BaseClass() string {
   return "ResourceSaver"
 }
 
+func NewResourceSaver() *ResourceSaver {
+  str := StringNameFromStr("ResourceSaver") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ResourceSaver{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -53,9 +63,10 @@ func  (me *ResourceSaver) Save(resource Resource, path String, flags ResourceSav
   methodNameV := StringNameFromStr("save")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2983274697) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(resource.AsCTypePtr()), gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&flags), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -65,10 +76,11 @@ func  (me *ResourceSaver) GetRecognizedExtensions(type_ Resource, ) PackedString
   methodNameV := StringNameFromStr("get_recognized_extensions")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4223597960) // FIXME: should cache?
-  var ret PackedStringArray
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedStringArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ResourceSaver) AddResourceFormatSaver(format_saver ResourceFormatSaver, at_front bool, )  {
@@ -78,7 +90,9 @@ func  (me *ResourceSaver) AddResourceFormatSaver(format_saver ResourceFormatSave
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 362894272) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(format_saver.AsCTypePtr()), gdc.ConstTypePtr(&at_front), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ResourceSaver) RemoveResourceFormatSaver(format_saver ResourceFormatSaver, )  {
@@ -88,7 +102,9 @@ func  (me *ResourceSaver) RemoveResourceFormatSaver(format_saver ResourceFormatS
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3373026878) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(format_saver.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

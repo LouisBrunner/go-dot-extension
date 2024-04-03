@@ -17,6 +17,16 @@ func (me *JSONRPC) BaseClass() string {
   return "JSONRPC"
 }
 
+func NewJSONRPC() *JSONRPC {
+  str := StringNameFromStr("JSONRPC") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &JSONRPC{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -51,7 +61,9 @@ func  (me *JSONRPC) SetScope(scope String, target Object, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2572618360) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scope.AsCTypePtr()), gdc.ConstTypePtr(target.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *JSONRPC) ProcessAction(action Variant, recurse bool, ) Variant {
@@ -60,10 +72,11 @@ func  (me *JSONRPC) ProcessAction(action Variant, recurse bool, ) Variant {
   methodNameV := StringNameFromStr("process_action")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2963479484) // FIXME: should cache?
-  var ret Variant
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&recurse), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVariant()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *JSONRPC) ProcessString(action String, ) String {
@@ -72,10 +85,11 @@ func  (me *JSONRPC) ProcessString(action String, ) String {
   methodNameV := StringNameFromStr("process_string")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1703090593) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *JSONRPC) MakeRequest(method String, params Variant, id Variant, ) Dictionary {
@@ -84,10 +98,11 @@ func  (me *JSONRPC) MakeRequest(method String, params Variant, id Variant, ) Dic
   methodNameV := StringNameFromStr("make_request")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3423508980) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(method.AsCTypePtr()), gdc.ConstTypePtr(params.AsCTypePtr()), gdc.ConstTypePtr(id.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *JSONRPC) MakeResponse(result Variant, id Variant, ) Dictionary {
@@ -96,10 +111,11 @@ func  (me *JSONRPC) MakeResponse(result Variant, id Variant, ) Dictionary {
   methodNameV := StringNameFromStr("make_response")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5053918) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(result.AsCTypePtr()), gdc.ConstTypePtr(id.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *JSONRPC) MakeNotification(method String, params Variant, ) Dictionary {
@@ -108,22 +124,24 @@ func  (me *JSONRPC) MakeNotification(method String, params Variant, ) Dictionary
   methodNameV := StringNameFromStr("make_notification")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2949127017) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(method.AsCTypePtr()), gdc.ConstTypePtr(params.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *JSONRPC) MakeResponseError(code int, message String, id Variant, ) Dictionary {
+func  (me *JSONRPC) MakeResponseError(code int64, message String, id Variant, ) Dictionary {
   classNameV := StringNameFromStr("JSONRPC")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("make_response_error")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 928596297) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&code), gdc.ConstTypePtr(message.AsCTypePtr()), gdc.ConstTypePtr(id.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

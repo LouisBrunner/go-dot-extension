@@ -17,6 +17,16 @@ func (me *PCKPacker) BaseClass() string {
   return "PCKPacker"
 }
 
+func NewPCKPacker() *PCKPacker {
+  str := StringNameFromStr("PCKPacker") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PCKPacker{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,15 +45,16 @@ func (me *PCKPacker) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *PCKPacker) PckStart(pck_name String, alignment int, key String, encrypt_directory bool, ) Error {
+func  (me *PCKPacker) PckStart(pck_name String, alignment int64, key String, encrypt_directory bool, ) Error {
   classNameV := StringNameFromStr("PCKPacker")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("pck_start")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 508410629) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pck_name.AsCTypePtr()), gdc.ConstTypePtr(&alignment), gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(&encrypt_directory), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -53,9 +64,10 @@ func  (me *PCKPacker) AddFile(pck_path String, source_path String, encrypt bool,
   methodNameV := StringNameFromStr("add_file")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2215643711) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pck_path.AsCTypePtr()), gdc.ConstTypePtr(source_path.AsCTypePtr()), gdc.ConstTypePtr(&encrypt), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -65,9 +77,10 @@ func  (me *PCKPacker) Flush(verbose bool, ) Error {
   methodNameV := StringNameFromStr("flush")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1633102583) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&verbose), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 

@@ -17,6 +17,16 @@ func (me *VisualShaderNodeSample3D) BaseClass() string {
   return "VisualShaderNodeSample3D"
 }
 
+func NewVisualShaderNodeSample3D() *VisualShaderNodeSample3D {
+  str := StringNameFromStr("VisualShaderNodeSample3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeSample3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -49,7 +59,9 @@ func  (me *VisualShaderNodeSample3D) SetSource(value VisualShaderNodeSample3DSou
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3315130991) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeSample3D) GetSource() VisualShaderNodeSample3DSource {
@@ -58,9 +70,10 @@ func  (me *VisualShaderNodeSample3D) GetSource() VisualShaderNodeSample3DSource 
   methodNameV := StringNameFromStr("get_source")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1079494121) // FIXME: should cache?
-  var ret VisualShaderNodeSample3DSource
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeSample3DSource
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

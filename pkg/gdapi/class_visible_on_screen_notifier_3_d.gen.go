@@ -17,6 +17,16 @@ func (me *VisibleOnScreenNotifier3D) BaseClass() string {
   return "VisibleOnScreenNotifier3D"
 }
 
+func NewVisibleOnScreenNotifier3D() *VisibleOnScreenNotifier3D {
+  str := StringNameFromStr("VisibleOnScreenNotifier3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisibleOnScreenNotifier3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *VisibleOnScreenNotifier3D) SetAabb(rect AABB, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 259215842) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rect.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisibleOnScreenNotifier3D) IsOnScreen() bool {
@@ -51,10 +63,11 @@ func  (me *VisibleOnScreenNotifier3D) IsOnScreen() bool {
   methodNameV := StringNameFromStr("is_on_screen")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

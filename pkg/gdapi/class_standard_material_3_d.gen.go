@@ -17,6 +17,16 @@ func (me *StandardMaterial3D) BaseClass() string {
   return "StandardMaterial3D"
 }
 
+func NewStandardMaterial3D() *StandardMaterial3D {
+  str := StringNameFromStr("StandardMaterial3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &StandardMaterial3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *AudioEffectNotchFilter) BaseClass() string {
   return "AudioEffectNotchFilter"
 }
 
+func NewAudioEffectNotchFilter() *AudioEffectNotchFilter {
+  str := StringNameFromStr("AudioEffectNotchFilter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioEffectNotchFilter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

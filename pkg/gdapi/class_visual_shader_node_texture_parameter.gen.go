@@ -17,6 +17,16 @@ func (me *VisualShaderNodeTextureParameter) BaseClass() string {
   return "VisualShaderNodeTextureParameter"
 }
 
+func NewVisualShaderNodeTextureParameter() *VisualShaderNodeTextureParameter {
+  str := StringNameFromStr("VisualShaderNodeTextureParameter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeTextureParameter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -88,7 +98,9 @@ func  (me *VisualShaderNodeTextureParameter) SetTextureType(type_ VisualShaderNo
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2227296876) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeTextureParameter) GetTextureType() VisualShaderNodeTextureParameterTextureType {
@@ -97,9 +109,10 @@ func  (me *VisualShaderNodeTextureParameter) GetTextureType() VisualShaderNodeTe
   methodNameV := StringNameFromStr("get_texture_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 367922070) // FIXME: should cache?
-  var ret VisualShaderNodeTextureParameterTextureType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeTextureParameterTextureType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -110,7 +123,9 @@ func  (me *VisualShaderNodeTextureParameter) SetColorDefault(color VisualShaderN
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4217624432) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&color), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeTextureParameter) GetColorDefault() VisualShaderNodeTextureParameterColorDefault {
@@ -119,9 +134,10 @@ func  (me *VisualShaderNodeTextureParameter) GetColorDefault() VisualShaderNodeT
   methodNameV := StringNameFromStr("get_color_default")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3837060134) // FIXME: should cache?
-  var ret VisualShaderNodeTextureParameterColorDefault
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeTextureParameterColorDefault
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -132,7 +148,9 @@ func  (me *VisualShaderNodeTextureParameter) SetTextureFilter(filter VisualShade
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2147684752) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&filter), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeTextureParameter) GetTextureFilter() VisualShaderNodeTextureParameterTextureFilter {
@@ -141,9 +159,10 @@ func  (me *VisualShaderNodeTextureParameter) GetTextureFilter() VisualShaderNode
   methodNameV := StringNameFromStr("get_texture_filter")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4184490817) // FIXME: should cache?
-  var ret VisualShaderNodeTextureParameterTextureFilter
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeTextureParameterTextureFilter
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -154,7 +173,9 @@ func  (me *VisualShaderNodeTextureParameter) SetTextureRepeat(repeat VisualShade
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2036143070) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&repeat), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeTextureParameter) GetTextureRepeat() VisualShaderNodeTextureParameterTextureRepeat {
@@ -163,9 +184,10 @@ func  (me *VisualShaderNodeTextureParameter) GetTextureRepeat() VisualShaderNode
   methodNameV := StringNameFromStr("get_texture_repeat")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1690132794) // FIXME: should cache?
-  var ret VisualShaderNodeTextureParameterTextureRepeat
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeTextureParameterTextureRepeat
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -176,7 +198,9 @@ func  (me *VisualShaderNodeTextureParameter) SetTextureSource(source VisualShade
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1212687372) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&source), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeTextureParameter) GetTextureSource() VisualShaderNodeTextureParameterTextureSource {
@@ -185,9 +209,10 @@ func  (me *VisualShaderNodeTextureParameter) GetTextureSource() VisualShaderNode
   methodNameV := StringNameFromStr("get_texture_source")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2039092262) // FIXME: should cache?
-  var ret VisualShaderNodeTextureParameterTextureSource
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeTextureParameterTextureSource
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

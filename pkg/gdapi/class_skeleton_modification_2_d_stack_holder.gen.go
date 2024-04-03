@@ -17,6 +17,16 @@ func (me *SkeletonModification2DStackHolder) BaseClass() string {
   return "SkeletonModification2DStackHolder"
 }
 
+func NewSkeletonModification2DStackHolder() *SkeletonModification2DStackHolder {
+  str := StringNameFromStr("SkeletonModification2DStackHolder") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &SkeletonModification2DStackHolder{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *SkeletonModification2DStackHolder) SetHeldModificationStack(held_modi
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3907307132) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(held_modification_stack.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SkeletonModification2DStackHolder) GetHeldModificationStack() SkeletonModificationStack2D {
@@ -51,10 +63,11 @@ func  (me *SkeletonModification2DStackHolder) GetHeldModificationStack() Skeleto
   methodNameV := StringNameFromStr("get_held_modification_stack")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2107508396) // FIXME: should cache?
-  var ret SkeletonModificationStack2D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewSkeletonModificationStack2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

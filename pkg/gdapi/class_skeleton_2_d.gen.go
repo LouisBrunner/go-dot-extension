@@ -17,6 +17,16 @@ func (me *Skeleton2D) BaseClass() string {
   return "Skeleton2D"
 }
 
+func NewSkeleton2D() *Skeleton2D {
+  str := StringNameFromStr("Skeleton2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Skeleton2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,28 +45,30 @@ func (me *Skeleton2D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *Skeleton2D) GetBoneCount() int {
+func  (me *Skeleton2D) GetBoneCount() int64 {
   classNameV := StringNameFromStr("Skeleton2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bone_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Skeleton2D) GetBone(idx int, ) Bone2D {
+func  (me *Skeleton2D) GetBone(idx int64, ) Bone2D {
   classNameV := StringNameFromStr("Skeleton2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bone")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2556267111) // FIXME: should cache?
-  var ret Bone2D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBone2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Skeleton2D) GetSkeleton() RID {
@@ -65,10 +77,11 @@ func  (me *Skeleton2D) GetSkeleton() RID {
   methodNameV := StringNameFromStr("get_skeleton")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRID()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Skeleton2D) SetModificationStack(modification_stack SkeletonModificationStack2D, )  {
@@ -78,7 +91,9 @@ func  (me *Skeleton2D) SetModificationStack(modification_stack SkeletonModificat
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3907307132) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(modification_stack.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Skeleton2D) GetModificationStack() SkeletonModificationStack2D {
@@ -87,42 +102,48 @@ func  (me *Skeleton2D) GetModificationStack() SkeletonModificationStack2D {
   methodNameV := StringNameFromStr("get_modification_stack")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2107508396) // FIXME: should cache?
-  var ret SkeletonModificationStack2D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewSkeletonModificationStack2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Skeleton2D) ExecuteModifications(delta float32, execution_mode int, )  {
+func  (me *Skeleton2D) ExecuteModifications(delta float64, execution_mode int64, )  {
   classNameV := StringNameFromStr("Skeleton2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("execute_modifications")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1005356550) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delta), gdc.ConstTypePtr(&execution_mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Skeleton2D) SetBoneLocalPoseOverride(bone_idx int, override_pose Transform2D, strength float32, persistent bool, )  {
+func  (me *Skeleton2D) SetBoneLocalPoseOverride(bone_idx int64, override_pose Transform2D, strength float64, persistent bool, )  {
   classNameV := StringNameFromStr("Skeleton2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bone_local_pose_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 555457532) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), gdc.ConstTypePtr(override_pose.AsCTypePtr()), gdc.ConstTypePtr(&strength), gdc.ConstTypePtr(&persistent), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Skeleton2D) GetBoneLocalPoseOverride(bone_idx int, ) Transform2D {
+func  (me *Skeleton2D) GetBoneLocalPoseOverride(bone_idx int64, ) Transform2D {
   classNameV := StringNameFromStr("Skeleton2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bone_local_pose_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2995540667) // FIXME: should cache?
-  var ret Transform2D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTransform2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

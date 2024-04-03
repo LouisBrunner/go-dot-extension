@@ -17,6 +17,16 @@ func (me *EditorExportPlatformAndroid) BaseClass() string {
   return "EditorExportPlatformAndroid"
 }
 
+func NewEditorExportPlatformAndroid() *EditorExportPlatformAndroid {
+  str := StringNameFromStr("EditorExportPlatformAndroid") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorExportPlatformAndroid{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

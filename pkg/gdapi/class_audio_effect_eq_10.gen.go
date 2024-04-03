@@ -17,6 +17,16 @@ func (me *AudioEffectEQ10) BaseClass() string {
   return "AudioEffectEQ10"
 }
 
+func NewAudioEffectEQ10() *AudioEffectEQ10 {
+  str := StringNameFromStr("AudioEffectEQ10") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioEffectEQ10{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

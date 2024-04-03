@@ -17,6 +17,16 @@ func (me *OccluderInstance3D) BaseClass() string {
   return "OccluderInstance3D"
 }
 
+func NewOccluderInstance3D() *OccluderInstance3D {
+  str := StringNameFromStr("OccluderInstance3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &OccluderInstance3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,70 +45,79 @@ func (me *OccluderInstance3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *OccluderInstance3D) SetBakeMask(mask int, )  {
+func  (me *OccluderInstance3D) SetBakeMask(mask int64, )  {
   classNameV := StringNameFromStr("OccluderInstance3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bake_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *OccluderInstance3D) GetBakeMask() int {
+func  (me *OccluderInstance3D) GetBakeMask() int64 {
   classNameV := StringNameFromStr("OccluderInstance3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bake_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *OccluderInstance3D) SetBakeMaskValue(layer_number int, value bool, )  {
+func  (me *OccluderInstance3D) SetBakeMaskValue(layer_number int64, value bool, )  {
   classNameV := StringNameFromStr("OccluderInstance3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bake_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *OccluderInstance3D) GetBakeMaskValue(layer_number int, ) bool {
+func  (me *OccluderInstance3D) GetBakeMaskValue(layer_number int64, ) bool {
   classNameV := StringNameFromStr("OccluderInstance3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bake_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *OccluderInstance3D) SetBakeSimplificationDistance(simplification_distance float32, )  {
+func  (me *OccluderInstance3D) SetBakeSimplificationDistance(simplification_distance float64, )  {
   classNameV := StringNameFromStr("OccluderInstance3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bake_simplification_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&simplification_distance), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *OccluderInstance3D) GetBakeSimplificationDistance() float32 {
+func  (me *OccluderInstance3D) GetBakeSimplificationDistance() float64 {
   classNameV := StringNameFromStr("OccluderInstance3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bake_simplification_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *OccluderInstance3D) SetOccluder(occluder Occluder3D, )  {
@@ -108,7 +127,9 @@ func  (me *OccluderInstance3D) SetOccluder(occluder Occluder3D, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1664878165) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(occluder.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OccluderInstance3D) GetOccluder() Occluder3D {
@@ -117,10 +138,11 @@ func  (me *OccluderInstance3D) GetOccluder() Occluder3D {
   methodNameV := StringNameFromStr("get_occluder")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1696836198) // FIXME: should cache?
-  var ret Occluder3D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewOccluder3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

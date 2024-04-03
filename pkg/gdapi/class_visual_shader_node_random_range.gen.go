@@ -17,6 +17,16 @@ func (me *VisualShaderNodeRandomRange) BaseClass() string {
   return "VisualShaderNodeRandomRange"
 }
 
+func NewVisualShaderNodeRandomRange() *VisualShaderNodeRandomRange {
+  str := StringNameFromStr("VisualShaderNodeRandomRange") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeRandomRange{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

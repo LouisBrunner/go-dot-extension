@@ -17,6 +17,16 @@ func (me *StyleBoxFlat) BaseClass() string {
   return "StyleBoxFlat"
 }
 
+func NewStyleBoxFlat() *StyleBoxFlat {
+  str := StringNameFromStr("StyleBoxFlat") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &StyleBoxFlat{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *StyleBoxFlat) SetBgColor(color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *StyleBoxFlat) GetBgColor() Color {
@@ -51,10 +63,11 @@ func  (me *StyleBoxFlat) GetBgColor() Color {
   methodNameV := StringNameFromStr("get_bg_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *StyleBoxFlat) SetBorderColor(color Color, )  {
@@ -64,7 +77,9 @@ func  (me *StyleBoxFlat) SetBorderColor(color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *StyleBoxFlat) GetBorderColor() Color {
@@ -73,54 +88,61 @@ func  (me *StyleBoxFlat) GetBorderColor() Color {
   methodNameV := StringNameFromStr("get_border_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *StyleBoxFlat) SetBorderWidthAll(width int, )  {
+func  (me *StyleBoxFlat) SetBorderWidthAll(width int64, )  {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_border_width_all")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *StyleBoxFlat) GetBorderWidthMin() int {
+func  (me *StyleBoxFlat) GetBorderWidthMin() int64 {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_border_width_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *StyleBoxFlat) SetBorderWidth(margin Side, width int, )  {
+func  (me *StyleBoxFlat) SetBorderWidth(margin Side, width int64, )  {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_border_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 437707142) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin), gdc.ConstTypePtr(&width), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *StyleBoxFlat) GetBorderWidth(margin Side, ) int {
+func  (me *StyleBoxFlat) GetBorderWidth(margin Side, ) int64 {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_border_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1983885014) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *StyleBoxFlat) SetBorderBlend(blend bool, )  {
@@ -130,7 +152,9 @@ func  (me *StyleBoxFlat) SetBorderBlend(blend bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&blend), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *StyleBoxFlat) GetBorderBlend() bool {
@@ -139,74 +163,85 @@ func  (me *StyleBoxFlat) GetBorderBlend() bool {
   methodNameV := StringNameFromStr("get_border_blend")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *StyleBoxFlat) SetCornerRadiusAll(radius int, )  {
+func  (me *StyleBoxFlat) SetCornerRadiusAll(radius int64, )  {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_corner_radius_all")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *StyleBoxFlat) SetCornerRadius(corner Corner, radius int, )  {
+func  (me *StyleBoxFlat) SetCornerRadius(corner Corner, radius int64, )  {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_corner_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2696158768) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&corner), gdc.ConstTypePtr(&radius), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *StyleBoxFlat) GetCornerRadius(corner Corner, ) int {
+func  (me *StyleBoxFlat) GetCornerRadius(corner Corner, ) int64 {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_corner_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3982397690) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&corner), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *StyleBoxFlat) SetExpandMargin(margin Side, size float32, )  {
+func  (me *StyleBoxFlat) SetExpandMargin(margin Side, size float64, )  {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_expand_margin")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4290182280) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin), gdc.ConstTypePtr(&size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *StyleBoxFlat) SetExpandMarginAll(size float32, )  {
+func  (me *StyleBoxFlat) SetExpandMarginAll(size float64, )  {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_expand_margin_all")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *StyleBoxFlat) GetExpandMargin(margin Side, ) float32 {
+func  (me *StyleBoxFlat) GetExpandMargin(margin Side, ) float64 {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_expand_margin")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2869120046) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *StyleBoxFlat) SetDrawCenter(draw_center bool, )  {
@@ -216,7 +251,9 @@ func  (me *StyleBoxFlat) SetDrawCenter(draw_center bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&draw_center), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *StyleBoxFlat) IsDrawCenterEnabled() bool {
@@ -225,10 +262,11 @@ func  (me *StyleBoxFlat) IsDrawCenterEnabled() bool {
   methodNameV := StringNameFromStr("is_draw_center_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *StyleBoxFlat) SetSkew(skew Vector2, )  {
@@ -238,7 +276,9 @@ func  (me *StyleBoxFlat) SetSkew(skew Vector2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(skew.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *StyleBoxFlat) GetSkew() Vector2 {
@@ -247,10 +287,11 @@ func  (me *StyleBoxFlat) GetSkew() Vector2 {
   methodNameV := StringNameFromStr("get_skew")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *StyleBoxFlat) SetShadowColor(color Color, )  {
@@ -260,7 +301,9 @@ func  (me *StyleBoxFlat) SetShadowColor(color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *StyleBoxFlat) GetShadowColor() Color {
@@ -269,32 +312,36 @@ func  (me *StyleBoxFlat) GetShadowColor() Color {
   methodNameV := StringNameFromStr("get_shadow_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *StyleBoxFlat) SetShadowSize(size int, )  {
+func  (me *StyleBoxFlat) SetShadowSize(size int64, )  {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_shadow_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *StyleBoxFlat) GetShadowSize() int {
+func  (me *StyleBoxFlat) GetShadowSize() int64 {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_shadow_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *StyleBoxFlat) SetShadowOffset(offset Vector2, )  {
@@ -304,7 +351,9 @@ func  (me *StyleBoxFlat) SetShadowOffset(offset Vector2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *StyleBoxFlat) GetShadowOffset() Vector2 {
@@ -313,10 +362,11 @@ func  (me *StyleBoxFlat) GetShadowOffset() Vector2 {
   methodNameV := StringNameFromStr("get_shadow_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *StyleBoxFlat) SetAntiAliased(anti_aliased bool, )  {
@@ -326,7 +376,9 @@ func  (me *StyleBoxFlat) SetAntiAliased(anti_aliased bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&anti_aliased), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *StyleBoxFlat) IsAntiAliased() bool {
@@ -335,54 +387,61 @@ func  (me *StyleBoxFlat) IsAntiAliased() bool {
   methodNameV := StringNameFromStr("is_anti_aliased")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *StyleBoxFlat) SetAaSize(size float32, )  {
+func  (me *StyleBoxFlat) SetAaSize(size float64, )  {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_aa_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *StyleBoxFlat) GetAaSize() float32 {
+func  (me *StyleBoxFlat) GetAaSize() float64 {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_aa_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *StyleBoxFlat) SetCornerDetail(detail int, )  {
+func  (me *StyleBoxFlat) SetCornerDetail(detail int64, )  {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_corner_detail")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&detail), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *StyleBoxFlat) GetCornerDetail() int {
+func  (me *StyleBoxFlat) GetCornerDetail() int64 {
   classNameV := StringNameFromStr("StyleBoxFlat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_corner_detail")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *VisualShaderNodeFloatParameter) BaseClass() string {
   return "VisualShaderNodeFloatParameter"
 }
 
+func NewVisualShaderNodeFloatParameter() *VisualShaderNodeFloatParameter {
+  str := StringNameFromStr("VisualShaderNodeFloatParameter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeFloatParameter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -50,7 +60,9 @@ func  (me *VisualShaderNodeFloatParameter) SetHint(hint VisualShaderNodeFloatPar
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3712586466) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hint), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeFloatParameter) GetHint() VisualShaderNodeFloatParameterHint {
@@ -59,76 +71,86 @@ func  (me *VisualShaderNodeFloatParameter) GetHint() VisualShaderNodeFloatParame
   methodNameV := StringNameFromStr("get_hint")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3042240429) // FIXME: should cache?
-  var ret VisualShaderNodeFloatParameterHint
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeFloatParameterHint
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *VisualShaderNodeFloatParameter) SetMin(value float32, )  {
+func  (me *VisualShaderNodeFloatParameter) SetMin(value float64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeFloatParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeFloatParameter) GetMin() float32 {
+func  (me *VisualShaderNodeFloatParameter) GetMin() float64 {
   classNameV := StringNameFromStr("VisualShaderNodeFloatParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNodeFloatParameter) SetMax(value float32, )  {
+func  (me *VisualShaderNodeFloatParameter) SetMax(value float64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeFloatParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeFloatParameter) GetMax() float32 {
+func  (me *VisualShaderNodeFloatParameter) GetMax() float64 {
   classNameV := StringNameFromStr("VisualShaderNodeFloatParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNodeFloatParameter) SetStep(value float32, )  {
+func  (me *VisualShaderNodeFloatParameter) SetStep(value float64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeFloatParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeFloatParameter) GetStep() float32 {
+func  (me *VisualShaderNodeFloatParameter) GetStep() float64 {
   classNameV := StringNameFromStr("VisualShaderNodeFloatParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *VisualShaderNodeFloatParameter) SetDefaultValueEnabled(enabled bool, )  {
@@ -138,7 +160,9 @@ func  (me *VisualShaderNodeFloatParameter) SetDefaultValueEnabled(enabled bool, 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeFloatParameter) IsDefaultValueEnabled() bool {
@@ -147,32 +171,36 @@ func  (me *VisualShaderNodeFloatParameter) IsDefaultValueEnabled() bool {
   methodNameV := StringNameFromStr("is_default_value_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNodeFloatParameter) SetDefaultValue(value float32, )  {
+func  (me *VisualShaderNodeFloatParameter) SetDefaultValue(value float64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeFloatParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_default_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeFloatParameter) GetDefaultValue() float32 {
+func  (me *VisualShaderNodeFloatParameter) GetDefaultValue() float64 {
   classNameV := StringNameFromStr("VisualShaderNodeFloatParameter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_default_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

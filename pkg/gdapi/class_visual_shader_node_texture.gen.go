@@ -17,6 +17,16 @@ func (me *VisualShaderNodeTexture) BaseClass() string {
   return "VisualShaderNodeTexture"
 }
 
+func NewVisualShaderNodeTexture() *VisualShaderNodeTexture {
+  str := StringNameFromStr("VisualShaderNodeTexture") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeTexture{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -63,7 +73,9 @@ func  (me *VisualShaderNodeTexture) SetSource(value VisualShaderNodeTextureSourc
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 905262939) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeTexture) GetSource() VisualShaderNodeTextureSource {
@@ -72,9 +84,10 @@ func  (me *VisualShaderNodeTexture) GetSource() VisualShaderNodeTextureSource {
   methodNameV := StringNameFromStr("get_source")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2896297444) // FIXME: should cache?
-  var ret VisualShaderNodeTextureSource
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeTextureSource
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -85,7 +98,9 @@ func  (me *VisualShaderNodeTexture) SetTexture(value Texture2D, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(value.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeTexture) GetTexture() Texture2D {
@@ -94,10 +109,11 @@ func  (me *VisualShaderNodeTexture) GetTexture() Texture2D {
   methodNameV := StringNameFromStr("get_texture")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
-  var ret Texture2D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTexture2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *VisualShaderNodeTexture) SetTextureType(value VisualShaderNodeTextureTextureType, )  {
@@ -107,7 +123,9 @@ func  (me *VisualShaderNodeTexture) SetTextureType(value VisualShaderNodeTexture
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 986314081) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeTexture) GetTextureType() VisualShaderNodeTextureTextureType {
@@ -116,9 +134,10 @@ func  (me *VisualShaderNodeTexture) GetTextureType() VisualShaderNodeTextureText
   methodNameV := StringNameFromStr("get_texture_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3290430153) // FIXME: should cache?
-  var ret VisualShaderNodeTextureTextureType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeTextureTextureType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

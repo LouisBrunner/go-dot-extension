@@ -17,6 +17,16 @@ func (me *ScriptCreateDialog) BaseClass() string {
   return "ScriptCreateDialog"
 }
 
+func NewScriptCreateDialog() *ScriptCreateDialog {
+  str := StringNameFromStr("ScriptCreateDialog") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ScriptCreateDialog{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *ScriptCreateDialog) Config(inherits String, path String, built_in_ena
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 869314288) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(inherits.AsCTypePtr()), gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&built_in_enabled), gdc.ConstTypePtr(&load_enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

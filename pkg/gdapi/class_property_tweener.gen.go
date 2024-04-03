@@ -17,6 +17,16 @@ func (me *PropertyTweener) BaseClass() string {
   return "PropertyTweener"
 }
 
+func NewPropertyTweener() *PropertyTweener {
+  str := StringNameFromStr("PropertyTweener") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PropertyTweener{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *PropertyTweener) From(value Variant, ) PropertyTweener {
   methodNameV := StringNameFromStr("from")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4190193059) // FIXME: should cache?
-  var ret PropertyTweener
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(value.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPropertyTweener()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PropertyTweener) FromCurrent() PropertyTweener {
@@ -53,10 +64,11 @@ func  (me *PropertyTweener) FromCurrent() PropertyTweener {
   methodNameV := StringNameFromStr("from_current")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4279177709) // FIXME: should cache?
-  var ret PropertyTweener
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPropertyTweener()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PropertyTweener) AsRelative() PropertyTweener {
@@ -65,10 +77,11 @@ func  (me *PropertyTweener) AsRelative() PropertyTweener {
   methodNameV := StringNameFromStr("as_relative")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4279177709) // FIXME: should cache?
-  var ret PropertyTweener
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPropertyTweener()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PropertyTweener) SetTrans(trans TweenTransitionType, ) PropertyTweener {
@@ -77,10 +90,11 @@ func  (me *PropertyTweener) SetTrans(trans TweenTransitionType, ) PropertyTweene
   methodNameV := StringNameFromStr("set_trans")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1899107404) // FIXME: should cache?
-  var ret PropertyTweener
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&trans), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPropertyTweener()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PropertyTweener) SetEase(ease TweenEaseType, ) PropertyTweener {
@@ -89,22 +103,24 @@ func  (me *PropertyTweener) SetEase(ease TweenEaseType, ) PropertyTweener {
   methodNameV := StringNameFromStr("set_ease")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1080455622) // FIXME: should cache?
-  var ret PropertyTweener
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ease), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPropertyTweener()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *PropertyTweener) SetDelay(delay float32, ) PropertyTweener {
+func  (me *PropertyTweener) SetDelay(delay float64, ) PropertyTweener {
   classNameV := StringNameFromStr("PropertyTweener")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_delay")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2171559331) // FIXME: should cache?
-  var ret PropertyTweener
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delay), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPropertyTweener()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

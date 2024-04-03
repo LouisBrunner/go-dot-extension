@@ -17,6 +17,16 @@ func (me *VoxelGIData) BaseClass() string {
   return "VoxelGIData"
 }
 
+func NewVoxelGIData() *VoxelGIData {
+  str := StringNameFromStr("VoxelGIData") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VoxelGIData{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *VoxelGIData) Allocate(to_cell_xform Transform3D, aabb AABB, octree_si
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4041601946) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(to_cell_xform.AsCTypePtr()), gdc.ConstTypePtr(aabb.AsCTypePtr()), gdc.ConstTypePtr(octree_size.AsCTypePtr()), gdc.ConstTypePtr(octree_cells.AsCTypePtr()), gdc.ConstTypePtr(data_cells.AsCTypePtr()), gdc.ConstTypePtr(distance_field.AsCTypePtr()), gdc.ConstTypePtr(level_counts.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VoxelGIData) GetBounds() AABB {
@@ -51,10 +63,11 @@ func  (me *VoxelGIData) GetBounds() AABB {
   methodNameV := StringNameFromStr("get_bounds")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1068685055) // FIXME: should cache?
-  var ret AABB
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewAABB()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *VoxelGIData) GetOctreeSize() Vector3 {
@@ -63,10 +76,11 @@ func  (me *VoxelGIData) GetOctreeSize() Vector3 {
   methodNameV := StringNameFromStr("get_octree_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *VoxelGIData) GetToCellXform() Transform3D {
@@ -75,10 +89,11 @@ func  (me *VoxelGIData) GetToCellXform() Transform3D {
   methodNameV := StringNameFromStr("get_to_cell_xform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
-  var ret Transform3D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTransform3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *VoxelGIData) GetOctreeCells() PackedByteArray {
@@ -87,10 +102,11 @@ func  (me *VoxelGIData) GetOctreeCells() PackedByteArray {
   methodNameV := StringNameFromStr("get_octree_cells")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2362200018) // FIXME: should cache?
-  var ret PackedByteArray
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedByteArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *VoxelGIData) GetDataCells() PackedByteArray {
@@ -99,10 +115,11 @@ func  (me *VoxelGIData) GetDataCells() PackedByteArray {
   methodNameV := StringNameFromStr("get_data_cells")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2362200018) // FIXME: should cache?
-  var ret PackedByteArray
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedByteArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *VoxelGIData) GetLevelCounts() PackedInt32Array {
@@ -111,120 +128,136 @@ func  (me *VoxelGIData) GetLevelCounts() PackedInt32Array {
   methodNameV := StringNameFromStr("get_level_counts")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *VoxelGIData) SetDynamicRange(dynamic_range float32, )  {
+func  (me *VoxelGIData) SetDynamicRange(dynamic_range float64, )  {
   classNameV := StringNameFromStr("VoxelGIData")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_dynamic_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&dynamic_range), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VoxelGIData) GetDynamicRange() float32 {
+func  (me *VoxelGIData) GetDynamicRange() float64 {
   classNameV := StringNameFromStr("VoxelGIData")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_dynamic_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VoxelGIData) SetEnergy(energy float32, )  {
+func  (me *VoxelGIData) SetEnergy(energy float64, )  {
   classNameV := StringNameFromStr("VoxelGIData")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_energy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&energy), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VoxelGIData) GetEnergy() float32 {
+func  (me *VoxelGIData) GetEnergy() float64 {
   classNameV := StringNameFromStr("VoxelGIData")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_energy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VoxelGIData) SetBias(bias float32, )  {
+func  (me *VoxelGIData) SetBias(bias float64, )  {
   classNameV := StringNameFromStr("VoxelGIData")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bias), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VoxelGIData) GetBias() float32 {
+func  (me *VoxelGIData) GetBias() float64 {
   classNameV := StringNameFromStr("VoxelGIData")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VoxelGIData) SetNormalBias(bias float32, )  {
+func  (me *VoxelGIData) SetNormalBias(bias float64, )  {
   classNameV := StringNameFromStr("VoxelGIData")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_normal_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bias), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VoxelGIData) GetNormalBias() float32 {
+func  (me *VoxelGIData) GetNormalBias() float64 {
   classNameV := StringNameFromStr("VoxelGIData")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_normal_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VoxelGIData) SetPropagation(propagation float32, )  {
+func  (me *VoxelGIData) SetPropagation(propagation float64, )  {
   classNameV := StringNameFromStr("VoxelGIData")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_propagation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&propagation), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VoxelGIData) GetPropagation() float32 {
+func  (me *VoxelGIData) GetPropagation() float64 {
   classNameV := StringNameFromStr("VoxelGIData")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_propagation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *VoxelGIData) SetInterior(interior bool, )  {
@@ -234,7 +267,9 @@ func  (me *VoxelGIData) SetInterior(interior bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&interior), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VoxelGIData) IsInterior() bool {
@@ -243,10 +278,11 @@ func  (me *VoxelGIData) IsInterior() bool {
   methodNameV := StringNameFromStr("is_interior")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *VoxelGIData) SetUseTwoBounces(enable bool, )  {
@@ -256,7 +292,9 @@ func  (me *VoxelGIData) SetUseTwoBounces(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VoxelGIData) IsUsingTwoBounces() bool {
@@ -265,10 +303,11 @@ func  (me *VoxelGIData) IsUsingTwoBounces() bool {
   methodNameV := StringNameFromStr("is_using_two_bounces")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

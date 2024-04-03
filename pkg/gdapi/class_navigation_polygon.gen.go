@@ -17,6 +17,16 @@ func (me *NavigationPolygon) BaseClass() string {
   return "NavigationPolygon"
 }
 
+func NewNavigationPolygon() *NavigationPolygon {
+  str := StringNameFromStr("NavigationPolygon") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &NavigationPolygon{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -58,7 +68,9 @@ func  (me *NavigationPolygon) SetVertices(vertices PackedVector2Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(vertices.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationPolygon) GetVertices() PackedVector2Array {
@@ -67,10 +79,11 @@ func  (me *NavigationPolygon) GetVertices() PackedVector2Array {
   methodNameV := StringNameFromStr("get_vertices")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2961356807) // FIXME: should cache?
-  var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector2Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationPolygon) AddPolygon(polygon PackedInt32Array, )  {
@@ -80,31 +93,35 @@ func  (me *NavigationPolygon) AddPolygon(polygon PackedInt32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationPolygon) GetPolygonCount() int {
+func  (me *NavigationPolygon) GetPolygonCount() int64 {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_polygon_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationPolygon) GetPolygon(idx int, ) PackedInt32Array {
+func  (me *NavigationPolygon) GetPolygon(idx int64, ) PackedInt32Array {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3668444399) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationPolygon) ClearPolygons()  {
@@ -114,7 +131,9 @@ func  (me *NavigationPolygon) ClearPolygons()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationPolygon) GetNavigationMesh() NavigationMesh {
@@ -123,10 +142,11 @@ func  (me *NavigationPolygon) GetNavigationMesh() NavigationMesh {
   methodNameV := StringNameFromStr("get_navigation_mesh")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 330232164) // FIXME: should cache?
-  var ret NavigationMesh
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNavigationMesh()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationPolygon) AddOutline(outline PackedVector2Array, )  {
@@ -136,61 +156,71 @@ func  (me *NavigationPolygon) AddOutline(outline PackedVector2Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(outline.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationPolygon) AddOutlineAtIndex(outline PackedVector2Array, index int, )  {
+func  (me *NavigationPolygon) AddOutlineAtIndex(outline PackedVector2Array, index int64, )  {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_outline_at_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1569738947) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(outline.AsCTypePtr()), gdc.ConstTypePtr(&index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationPolygon) GetOutlineCount() int {
+func  (me *NavigationPolygon) GetOutlineCount() int64 {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_outline_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationPolygon) SetOutline(idx int, outline PackedVector2Array, )  {
+func  (me *NavigationPolygon) SetOutline(idx int64, outline PackedVector2Array, )  {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_outline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1201971903) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(outline.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationPolygon) GetOutline(idx int, ) PackedVector2Array {
+func  (me *NavigationPolygon) GetOutline(idx int64, ) PackedVector2Array {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_outline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3946907486) // FIXME: should cache?
-  var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector2Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *NavigationPolygon) RemoveOutline(idx int, )  {
+func  (me *NavigationPolygon) RemoveOutline(idx int64, )  {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_outline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationPolygon) ClearOutlines()  {
@@ -200,7 +230,9 @@ func  (me *NavigationPolygon) ClearOutlines()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationPolygon) MakePolygonsFromOutlines()  {
@@ -210,29 +242,34 @@ func  (me *NavigationPolygon) MakePolygonsFromOutlines()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationPolygon) SetCellSize(cell_size float32, )  {
+func  (me *NavigationPolygon) SetCellSize(cell_size float64, )  {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_cell_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cell_size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationPolygon) GetCellSize() float32 {
+func  (me *NavigationPolygon) GetCellSize() float64 {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_cell_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationPolygon) SetParsedGeometryType(geometry_type NavigationPolygonParsedGeometryType, )  {
@@ -242,7 +279,9 @@ func  (me *NavigationPolygon) SetParsedGeometryType(geometry_type NavigationPoly
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2507971764) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&geometry_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationPolygon) GetParsedGeometryType() NavigationPolygonParsedGeometryType {
@@ -251,54 +290,61 @@ func  (me *NavigationPolygon) GetParsedGeometryType() NavigationPolygonParsedGeo
   methodNameV := StringNameFromStr("get_parsed_geometry_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1073219508) // FIXME: should cache?
-  var ret NavigationPolygonParsedGeometryType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret NavigationPolygonParsedGeometryType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *NavigationPolygon) SetParsedCollisionMask(mask int, )  {
+func  (me *NavigationPolygon) SetParsedCollisionMask(mask int64, )  {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_parsed_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationPolygon) GetParsedCollisionMask() int {
+func  (me *NavigationPolygon) GetParsedCollisionMask() int64 {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_parsed_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationPolygon) SetParsedCollisionMaskValue(layer_number int, value bool, )  {
+func  (me *NavigationPolygon) SetParsedCollisionMaskValue(layer_number int64, value bool, )  {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_parsed_collision_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationPolygon) GetParsedCollisionMaskValue(layer_number int, ) bool {
+func  (me *NavigationPolygon) GetParsedCollisionMaskValue(layer_number int64, ) bool {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_parsed_collision_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationPolygon) SetSourceGeometryMode(geometry_mode NavigationPolygonSourceGeometryMode, )  {
@@ -308,7 +354,9 @@ func  (me *NavigationPolygon) SetSourceGeometryMode(geometry_mode NavigationPoly
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4002316705) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&geometry_mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationPolygon) GetSourceGeometryMode() NavigationPolygonSourceGeometryMode {
@@ -317,9 +365,10 @@ func  (me *NavigationPolygon) GetSourceGeometryMode() NavigationPolygonSourceGeo
   methodNameV := StringNameFromStr("get_source_geometry_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 459686762) // FIXME: should cache?
-  var ret NavigationPolygonSourceGeometryMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret NavigationPolygonSourceGeometryMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -330,7 +379,9 @@ func  (me *NavigationPolygon) SetSourceGeometryGroupName(group_name StringName, 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(group_name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationPolygon) GetSourceGeometryGroupName() StringName {
@@ -339,32 +390,36 @@ func  (me *NavigationPolygon) GetSourceGeometryGroupName() StringName {
   methodNameV := StringNameFromStr("get_source_geometry_group_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *NavigationPolygon) SetAgentRadius(agent_radius float32, )  {
+func  (me *NavigationPolygon) SetAgentRadius(agent_radius float64, )  {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_agent_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&agent_radius), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationPolygon) GetAgentRadius() float32 {
+func  (me *NavigationPolygon) GetAgentRadius() float64 {
   classNameV := StringNameFromStr("NavigationPolygon")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_agent_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationPolygon) Clear()  {
@@ -374,7 +429,9 @@ func  (me *NavigationPolygon) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

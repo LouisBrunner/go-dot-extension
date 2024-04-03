@@ -17,6 +17,16 @@ func (me *WebSocketPeer) BaseClass() string {
   return "WebSocketPeer"
 }
 
+func NewWebSocketPeer() *WebSocketPeer {
+  str := StringNameFromStr("WebSocketPeer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &WebSocketPeer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -55,9 +65,10 @@ func  (me *WebSocketPeer) ConnectToUrl(url String, tls_client_options TLSOptions
   methodNameV := StringNameFromStr("connect_to_url")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1966198364) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(url.AsCTypePtr()), gdc.ConstTypePtr(tls_client_options.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -67,9 +78,10 @@ func  (me *WebSocketPeer) AcceptStream(stream StreamPeer, ) Error {
   methodNameV := StringNameFromStr("accept_stream")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 255125695) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(stream.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -79,9 +91,10 @@ func  (me *WebSocketPeer) Send(message PackedByteArray, write_mode WebSocketPeer
   methodNameV := StringNameFromStr("send")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2780360567) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(message.AsCTypePtr()), gdc.ConstTypePtr(&write_mode), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -91,9 +104,10 @@ func  (me *WebSocketPeer) SendText(message String, ) Error {
   methodNameV := StringNameFromStr("send_text")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(message.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -103,10 +117,11 @@ func  (me *WebSocketPeer) WasStringPacket() bool {
   methodNameV := StringNameFromStr("was_string_packet")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *WebSocketPeer) Poll()  {
@@ -116,17 +131,21 @@ func  (me *WebSocketPeer) Poll()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *WebSocketPeer) Close(code int, reason String, )  {
+func  (me *WebSocketPeer) Close(code int64, reason String, )  {
   classNameV := StringNameFromStr("WebSocketPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("close")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1047156615) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&code), gdc.ConstTypePtr(reason.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *WebSocketPeer) GetConnectedHost() String {
@@ -135,22 +154,24 @@ func  (me *WebSocketPeer) GetConnectedHost() String {
   methodNameV := StringNameFromStr("get_connected_host")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *WebSocketPeer) GetConnectedPort() int {
+func  (me *WebSocketPeer) GetConnectedPort() int64 {
   classNameV := StringNameFromStr("WebSocketPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connected_port")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *WebSocketPeer) GetSelectedProtocol() String {
@@ -159,10 +180,11 @@ func  (me *WebSocketPeer) GetSelectedProtocol() String {
   methodNameV := StringNameFromStr("get_selected_protocol")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *WebSocketPeer) GetRequestedUrl() String {
@@ -171,10 +193,11 @@ func  (me *WebSocketPeer) GetRequestedUrl() String {
   methodNameV := StringNameFromStr("get_requested_url")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *WebSocketPeer) SetNoDelay(enabled bool, )  {
@@ -184,19 +207,22 @@ func  (me *WebSocketPeer) SetNoDelay(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *WebSocketPeer) GetCurrentOutboundBufferedAmount() int {
+func  (me *WebSocketPeer) GetCurrentOutboundBufferedAmount() int64 {
   classNameV := StringNameFromStr("WebSocketPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_current_outbound_buffered_amount")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *WebSocketPeer) GetReadyState() WebSocketPeerState {
@@ -205,22 +231,24 @@ func  (me *WebSocketPeer) GetReadyState() WebSocketPeerState {
   methodNameV := StringNameFromStr("get_ready_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 346482985) // FIXME: should cache?
-  var ret WebSocketPeerState
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret WebSocketPeerState
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *WebSocketPeer) GetCloseCode() int {
+func  (me *WebSocketPeer) GetCloseCode() int64 {
   classNameV := StringNameFromStr("WebSocketPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_close_code")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *WebSocketPeer) GetCloseReason() String {
@@ -229,10 +257,11 @@ func  (me *WebSocketPeer) GetCloseReason() String {
   methodNameV := StringNameFromStr("get_close_reason")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *WebSocketPeer) GetSupportedProtocols() PackedStringArray {
@@ -241,10 +270,11 @@ func  (me *WebSocketPeer) GetSupportedProtocols() PackedStringArray {
   methodNameV := StringNameFromStr("get_supported_protocols")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
-  var ret PackedStringArray
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedStringArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *WebSocketPeer) SetSupportedProtocols(protocols PackedStringArray, )  {
@@ -254,7 +284,9 @@ func  (me *WebSocketPeer) SetSupportedProtocols(protocols PackedStringArray, )  
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015028928) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(protocols.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *WebSocketPeer) GetHandshakeHeaders() PackedStringArray {
@@ -263,10 +295,11 @@ func  (me *WebSocketPeer) GetHandshakeHeaders() PackedStringArray {
   methodNameV := StringNameFromStr("get_handshake_headers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
-  var ret PackedStringArray
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedStringArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *WebSocketPeer) SetHandshakeHeaders(protocols PackedStringArray, )  {
@@ -276,73 +309,84 @@ func  (me *WebSocketPeer) SetHandshakeHeaders(protocols PackedStringArray, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015028928) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(protocols.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *WebSocketPeer) GetInboundBufferSize() int {
+func  (me *WebSocketPeer) GetInboundBufferSize() int64 {
   classNameV := StringNameFromStr("WebSocketPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_inbound_buffer_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *WebSocketPeer) SetInboundBufferSize(buffer_size int, )  {
+func  (me *WebSocketPeer) SetInboundBufferSize(buffer_size int64, )  {
   classNameV := StringNameFromStr("WebSocketPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_inbound_buffer_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&buffer_size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *WebSocketPeer) GetOutboundBufferSize() int {
+func  (me *WebSocketPeer) GetOutboundBufferSize() int64 {
   classNameV := StringNameFromStr("WebSocketPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_outbound_buffer_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *WebSocketPeer) SetOutboundBufferSize(buffer_size int, )  {
+func  (me *WebSocketPeer) SetOutboundBufferSize(buffer_size int64, )  {
   classNameV := StringNameFromStr("WebSocketPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_outbound_buffer_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&buffer_size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *WebSocketPeer) SetMaxQueuedPackets(buffer_size int, )  {
+func  (me *WebSocketPeer) SetMaxQueuedPackets(buffer_size int64, )  {
   classNameV := StringNameFromStr("WebSocketPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_queued_packets")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&buffer_size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *WebSocketPeer) GetMaxQueuedPackets() int {
+func  (me *WebSocketPeer) GetMaxQueuedPackets() int64 {
   classNameV := StringNameFromStr("WebSocketPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_queued_packets")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

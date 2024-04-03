@@ -17,6 +17,16 @@ func (me *Marker3D) BaseClass() string {
   return "Marker3D"
 }
 
+func NewMarker3D() *Marker3D {
+  str := StringNameFromStr("Marker3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Marker3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *Marker3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *Marker3D) SetGizmoExtents(extents float32, )  {
+func  (me *Marker3D) SetGizmoExtents(extents float64, )  {
   classNameV := StringNameFromStr("Marker3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_gizmo_extents")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&extents), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Marker3D) GetGizmoExtents() float32 {
+func  (me *Marker3D) GetGizmoExtents() float64 {
   classNameV := StringNameFromStr("Marker3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_gizmo_extents")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

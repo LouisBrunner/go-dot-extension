@@ -17,6 +17,16 @@ func (me *CompressedCubemap) BaseClass() string {
   return "CompressedCubemap"
 }
 
+func NewCompressedCubemap() *CompressedCubemap {
+  str := StringNameFromStr("CompressedCubemap") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CompressedCubemap{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

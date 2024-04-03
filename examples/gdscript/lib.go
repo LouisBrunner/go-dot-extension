@@ -27,7 +27,7 @@ func (n *MyNode2D) X_Ready() {
 	n.Speed *= 10
 }
 
-func (n *MyNode2D) Monitor(other gdapi.Node2D) {
+func (n *MyNode2D) Monitor(other gdapi.CanvasItem) {
 	var sub gdapi.CanvasItemDrawSignalFn
 	sub = func() {
 		fmt.Println("Other has been drawed")

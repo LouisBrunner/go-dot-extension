@@ -17,6 +17,16 @@ func (me *VisualShaderNodeCurveTexture) BaseClass() string {
   return "VisualShaderNodeCurveTexture"
 }
 
+func NewVisualShaderNodeCurveTexture() *VisualShaderNodeCurveTexture {
+  str := StringNameFromStr("VisualShaderNodeCurveTexture") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeCurveTexture{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *VisualShaderNodeCurveTexture) SetTexture(texture CurveTexture, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 181872837) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeCurveTexture) GetTexture() CurveTexture {
@@ -51,10 +63,11 @@ func  (me *VisualShaderNodeCurveTexture) GetTexture() CurveTexture {
   methodNameV := StringNameFromStr("get_texture")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2800800579) // FIXME: should cache?
-  var ret CurveTexture
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCurveTexture()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

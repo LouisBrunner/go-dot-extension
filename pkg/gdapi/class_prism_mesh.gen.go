@@ -17,6 +17,16 @@ func (me *PrismMesh) BaseClass() string {
   return "PrismMesh"
 }
 
+func NewPrismMesh() *PrismMesh {
+  str := StringNameFromStr("PrismMesh") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PrismMesh{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *PrismMesh) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *PrismMesh) SetLeftToRight(left_to_right float32, )  {
+func  (me *PrismMesh) SetLeftToRight(left_to_right float64, )  {
   classNameV := StringNameFromStr("PrismMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_left_to_right")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&left_to_right), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *PrismMesh) GetLeftToRight() float32 {
+func  (me *PrismMesh) GetLeftToRight() float64 {
   classNameV := StringNameFromStr("PrismMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_left_to_right")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *PrismMesh) SetSize(size Vector3, )  {
@@ -64,7 +77,9 @@ func  (me *PrismMesh) SetSize(size Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *PrismMesh) GetSize() Vector3 {
@@ -73,76 +88,86 @@ func  (me *PrismMesh) GetSize() Vector3 {
   methodNameV := StringNameFromStr("get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *PrismMesh) SetSubdivideWidth(segments int, )  {
+func  (me *PrismMesh) SetSubdivideWidth(segments int64, )  {
   classNameV := StringNameFromStr("PrismMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_subdivide_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&segments), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *PrismMesh) GetSubdivideWidth() int {
+func  (me *PrismMesh) GetSubdivideWidth() int64 {
   classNameV := StringNameFromStr("PrismMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_subdivide_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *PrismMesh) SetSubdivideHeight(segments int, )  {
+func  (me *PrismMesh) SetSubdivideHeight(segments int64, )  {
   classNameV := StringNameFromStr("PrismMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_subdivide_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&segments), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *PrismMesh) GetSubdivideHeight() int {
+func  (me *PrismMesh) GetSubdivideHeight() int64 {
   classNameV := StringNameFromStr("PrismMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_subdivide_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *PrismMesh) SetSubdivideDepth(segments int, )  {
+func  (me *PrismMesh) SetSubdivideDepth(segments int64, )  {
   classNameV := StringNameFromStr("PrismMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_subdivide_depth")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&segments), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *PrismMesh) GetSubdivideDepth() int {
+func  (me *PrismMesh) GetSubdivideDepth() int64 {
   classNameV := StringNameFromStr("PrismMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_subdivide_depth")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

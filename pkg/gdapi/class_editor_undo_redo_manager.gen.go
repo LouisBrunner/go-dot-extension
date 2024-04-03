@@ -17,6 +17,16 @@ func (me *EditorUndoRedoManager) BaseClass() string {
   return "EditorUndoRedoManager"
 }
 
+func NewEditorUndoRedoManager() *EditorUndoRedoManager {
+  str := StringNameFromStr("EditorUndoRedoManager") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorUndoRedoManager{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -49,7 +59,9 @@ func  (me *EditorUndoRedoManager) CreateAction(name String, merge_mode UndoRedoM
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2107025470) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(&merge_mode), gdc.ConstTypePtr(custom_context.AsCTypePtr()), gdc.ConstTypePtr(&backward_undo_ops), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorUndoRedoManager) CommitAction(execute bool, )  {
@@ -59,7 +71,9 @@ func  (me *EditorUndoRedoManager) CommitAction(execute bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3216645846) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&execute), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorUndoRedoManager) IsCommittingAction() bool {
@@ -68,10 +82,11 @@ func  (me *EditorUndoRedoManager) IsCommittingAction() bool {
   methodNameV := StringNameFromStr("is_committing_action")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *EditorUndoRedoManager) AddDoMethod(object Object, method StringName, varargs ...Variant)  {
@@ -81,13 +96,14 @@ func  (me *EditorUndoRedoManager) AddDoMethod(object Object, method StringName, 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1517810467) // FIXME: should cache?
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(object.AsCTypePtr()), gdc.ConstVariantPtr(method.AsCTypePtr()), }
+
   for _, v := range varargs {
     cargs = append(cargs, v.AsCPtr())
   }
-  err := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, err)
-  if err.Error != gdc.CallOk {
-    panic(err) // TODO: return `err`?
+  cerr := &gdc.CallError{}
+  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, cerr)
+  if cerr.Error != gdc.CallOk {
+    panic(cerr) // TODO: return `cerr`?
   }
 
 }
@@ -99,13 +115,14 @@ func  (me *EditorUndoRedoManager) AddUndoMethod(object Object, method StringName
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1517810467) // FIXME: should cache?
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(object.AsCTypePtr()), gdc.ConstVariantPtr(method.AsCTypePtr()), }
+
   for _, v := range varargs {
     cargs = append(cargs, v.AsCPtr())
   }
-  err := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, err)
-  if err.Error != gdc.CallOk {
-    panic(err) // TODO: return `err`?
+  cerr := &gdc.CallError{}
+  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, cerr)
+  if cerr.Error != gdc.CallOk {
+    panic(cerr) // TODO: return `cerr`?
   }
 
 }
@@ -117,7 +134,9 @@ func  (me *EditorUndoRedoManager) AddDoProperty(object Object, property StringNa
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1017172818) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(object.AsCTypePtr()), gdc.ConstTypePtr(property.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorUndoRedoManager) AddUndoProperty(object Object, property StringName, value Variant, )  {
@@ -127,7 +146,9 @@ func  (me *EditorUndoRedoManager) AddUndoProperty(object Object, property String
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1017172818) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(object.AsCTypePtr()), gdc.ConstTypePtr(property.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorUndoRedoManager) AddDoReference(object Object, )  {
@@ -137,7 +158,9 @@ func  (me *EditorUndoRedoManager) AddDoReference(object Object, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3975164845) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(object.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorUndoRedoManager) AddUndoReference(object Object, )  {
@@ -147,31 +170,35 @@ func  (me *EditorUndoRedoManager) AddUndoReference(object Object, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3975164845) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(object.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *EditorUndoRedoManager) GetObjectHistoryId(object Object, ) int {
+func  (me *EditorUndoRedoManager) GetObjectHistoryId(object Object, ) int64 {
   classNameV := StringNameFromStr("EditorUndoRedoManager")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_object_history_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1107568780) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(object.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *EditorUndoRedoManager) GetHistoryUndoRedo(id int, ) UndoRedo {
+func  (me *EditorUndoRedoManager) GetHistoryUndoRedo(id int64, ) UndoRedo {
   classNameV := StringNameFromStr("EditorUndoRedoManager")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_history_undo_redo")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2417974513) // FIXME: should cache?
-  var ret UndoRedo
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewUndoRedo()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

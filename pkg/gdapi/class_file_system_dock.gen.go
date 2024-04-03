@@ -17,6 +17,16 @@ func (me *FileSystemDock) BaseClass() string {
   return "FileSystemDock"
 }
 
+func NewFileSystemDock() *FileSystemDock {
+  str := StringNameFromStr("FileSystemDock") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &FileSystemDock{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *FileSystemDock) NavigateToPath(path String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FileSystemDock) AddResourceTooltipPlugin(plugin EditorResourceTooltipPlugin, )  {
@@ -52,7 +64,9 @@ func  (me *FileSystemDock) AddResourceTooltipPlugin(plugin EditorResourceTooltip
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2258356838) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FileSystemDock) RemoveResourceTooltipPlugin(plugin EditorResourceTooltipPlugin, )  {
@@ -62,7 +76,9 @@ func  (me *FileSystemDock) RemoveResourceTooltipPlugin(plugin EditorResourceTool
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2258356838) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

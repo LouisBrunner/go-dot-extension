@@ -17,6 +17,16 @@ func (me *BoneAttachment3D) BaseClass() string {
   return "BoneAttachment3D"
 }
 
+func NewBoneAttachment3D() *BoneAttachment3D {
+  str := StringNameFromStr("BoneAttachment3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &BoneAttachment3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *BoneAttachment3D) SetBoneName(bone_name String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(bone_name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *BoneAttachment3D) GetBoneName() String {
@@ -51,42 +63,48 @@ func  (me *BoneAttachment3D) GetBoneName() String {
   methodNameV := StringNameFromStr("get_bone_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *BoneAttachment3D) SetBoneIdx(bone_idx int, )  {
+func  (me *BoneAttachment3D) SetBoneIdx(bone_idx int64, )  {
   classNameV := StringNameFromStr("BoneAttachment3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bone_idx")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *BoneAttachment3D) GetBoneIdx() int {
+func  (me *BoneAttachment3D) GetBoneIdx() int64 {
   classNameV := StringNameFromStr("BoneAttachment3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bone_idx")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *BoneAttachment3D) OnBonePoseUpdate(bone_index int, )  {
+func  (me *BoneAttachment3D) OnBonePoseUpdate(bone_index int64, )  {
   classNameV := StringNameFromStr("BoneAttachment3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("on_bone_pose_update")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *BoneAttachment3D) SetOverridePose(override_pose bool, )  {
@@ -96,7 +114,9 @@ func  (me *BoneAttachment3D) SetOverridePose(override_pose bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&override_pose), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *BoneAttachment3D) GetOverridePose() bool {
@@ -105,10 +125,11 @@ func  (me *BoneAttachment3D) GetOverridePose() bool {
   methodNameV := StringNameFromStr("get_override_pose")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *BoneAttachment3D) SetUseExternalSkeleton(use_external_skeleton bool, )  {
@@ -118,7 +139,9 @@ func  (me *BoneAttachment3D) SetUseExternalSkeleton(use_external_skeleton bool, 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&use_external_skeleton), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *BoneAttachment3D) GetUseExternalSkeleton() bool {
@@ -127,10 +150,11 @@ func  (me *BoneAttachment3D) GetUseExternalSkeleton() bool {
   methodNameV := StringNameFromStr("get_use_external_skeleton")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *BoneAttachment3D) SetExternalSkeleton(external_skeleton NodePath, )  {
@@ -140,7 +164,9 @@ func  (me *BoneAttachment3D) SetExternalSkeleton(external_skeleton NodePath, )  
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(external_skeleton.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *BoneAttachment3D) GetExternalSkeleton() NodePath {
@@ -149,10 +175,11 @@ func  (me *BoneAttachment3D) GetExternalSkeleton() NodePath {
   methodNameV := StringNameFromStr("get_external_skeleton")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

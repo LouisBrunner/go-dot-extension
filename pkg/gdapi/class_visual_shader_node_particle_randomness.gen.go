@@ -17,6 +17,16 @@ func (me *VisualShaderNodeParticleRandomness) BaseClass() string {
   return "VisualShaderNodeParticleRandomness"
 }
 
+func NewVisualShaderNodeParticleRandomness() *VisualShaderNodeParticleRandomness {
+  str := StringNameFromStr("VisualShaderNodeParticleRandomness") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeParticleRandomness{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -51,7 +61,9 @@ func  (me *VisualShaderNodeParticleRandomness) SetOpType(type_ VisualShaderNodeP
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2060089061) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeParticleRandomness) GetOpType() VisualShaderNodeParticleRandomnessOpType {
@@ -60,9 +72,10 @@ func  (me *VisualShaderNodeParticleRandomness) GetOpType() VisualShaderNodeParti
   methodNameV := StringNameFromStr("get_op_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3597061078) // FIXME: should cache?
-  var ret VisualShaderNodeParticleRandomnessOpType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeParticleRandomnessOpType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

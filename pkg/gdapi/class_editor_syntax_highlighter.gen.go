@@ -17,6 +17,16 @@ func (me *EditorSyntaxHighlighter) BaseClass() string {
   return "EditorSyntaxHighlighter"
 }
 
+func NewEditorSyntaxHighlighter() *EditorSyntaxHighlighter {
+  str := StringNameFromStr("EditorSyntaxHighlighter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorSyntaxHighlighter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

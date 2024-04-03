@@ -17,6 +17,16 @@ func (me *Container) BaseClass() string {
   return "Container"
 }
 
+func NewContainer() *Container {
+  str := StringNameFromStr("Container") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Container{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Constants
@@ -49,7 +59,9 @@ func  (me *Container) QueueSort()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Container) FitChildInRect(child Control, rect Rect2, )  {
@@ -59,7 +71,9 @@ func  (me *Container) FitChildInRect(child Control, rect Rect2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1993438598) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(child.AsCTypePtr()), gdc.ConstTypePtr(rect.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

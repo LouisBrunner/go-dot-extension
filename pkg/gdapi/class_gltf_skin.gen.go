@@ -17,6 +17,16 @@ func (me *GLTFSkin) BaseClass() string {
   return "GLTFSkin"
 }
 
+func NewGLTFSkin() *GLTFSkin {
+  str := StringNameFromStr("GLTFSkin") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GLTFSkin{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *GLTFSkin) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *GLTFSkin) GetSkinRoot() int {
+func  (me *GLTFSkin) GetSkinRoot() int64 {
   classNameV := StringNameFromStr("GLTFSkin")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_skin_root")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GLTFSkin) SetSkinRoot(skin_root int, )  {
+func  (me *GLTFSkin) SetSkinRoot(skin_root int64, )  {
   classNameV := StringNameFromStr("GLTFSkin")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_skin_root")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&skin_root), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFSkin) GetJointsOriginal() PackedInt32Array {
@@ -63,10 +76,11 @@ func  (me *GLTFSkin) GetJointsOriginal() PackedInt32Array {
   methodNameV := StringNameFromStr("get_joints_original")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 969006518) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFSkin) SetJointsOriginal(joints_original PackedInt32Array, )  {
@@ -76,29 +90,35 @@ func  (me *GLTFSkin) SetJointsOriginal(joints_original PackedInt32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joints_original.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GLTFSkin) GetInverseBinds() Transform3D {
+func  (me *GLTFSkin) GetInverseBinds() []Transform3D {
   classNameV := StringNameFromStr("GLTFSkin")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_inverse_binds")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
-  var ret Transform3D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[Transform3D](ret)
 }
 
-func  (me *GLTFSkin) SetInverseBinds(inverse_binds Transform3D, )  {
+func  (me *GLTFSkin) SetInverseBinds(inverse_binds []Transform3D, )  {
   classNameV := StringNameFromStr("GLTFSkin")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_inverse_binds")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(inverse_binds.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&inverse_binds), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFSkin) GetJoints() PackedInt32Array {
@@ -107,10 +127,11 @@ func  (me *GLTFSkin) GetJoints() PackedInt32Array {
   methodNameV := StringNameFromStr("get_joints")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 969006518) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFSkin) SetJoints(joints PackedInt32Array, )  {
@@ -120,7 +141,9 @@ func  (me *GLTFSkin) SetJoints(joints PackedInt32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joints.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFSkin) GetNonJoints() PackedInt32Array {
@@ -129,10 +152,11 @@ func  (me *GLTFSkin) GetNonJoints() PackedInt32Array {
   methodNameV := StringNameFromStr("get_non_joints")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 969006518) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFSkin) SetNonJoints(non_joints PackedInt32Array, )  {
@@ -142,7 +166,9 @@ func  (me *GLTFSkin) SetNonJoints(non_joints PackedInt32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(non_joints.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFSkin) GetRoots() PackedInt32Array {
@@ -151,10 +177,11 @@ func  (me *GLTFSkin) GetRoots() PackedInt32Array {
   methodNameV := StringNameFromStr("get_roots")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 969006518) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFSkin) SetRoots(roots PackedInt32Array, )  {
@@ -164,29 +191,34 @@ func  (me *GLTFSkin) SetRoots(roots PackedInt32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(roots.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GLTFSkin) GetSkeleton() int {
+func  (me *GLTFSkin) GetSkeleton() int64 {
   classNameV := StringNameFromStr("GLTFSkin")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_skeleton")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GLTFSkin) SetSkeleton(skeleton int, )  {
+func  (me *GLTFSkin) SetSkeleton(skeleton int64, )  {
   classNameV := StringNameFromStr("GLTFSkin")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_skeleton")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&skeleton), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFSkin) GetJointIToBoneI() Dictionary {
@@ -195,10 +227,11 @@ func  (me *GLTFSkin) GetJointIToBoneI() Dictionary {
   methodNameV := StringNameFromStr("get_joint_i_to_bone_i")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2382534195) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFSkin) SetJointIToBoneI(joint_i_to_bone_i Dictionary, )  {
@@ -208,7 +241,9 @@ func  (me *GLTFSkin) SetJointIToBoneI(joint_i_to_bone_i Dictionary, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155329257) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint_i_to_bone_i.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFSkin) GetJointIToName() Dictionary {
@@ -217,10 +252,11 @@ func  (me *GLTFSkin) GetJointIToName() Dictionary {
   methodNameV := StringNameFromStr("get_joint_i_to_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2382534195) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFSkin) SetJointIToName(joint_i_to_name Dictionary, )  {
@@ -230,7 +266,9 @@ func  (me *GLTFSkin) SetJointIToName(joint_i_to_name Dictionary, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155329257) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint_i_to_name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFSkin) GetGodotSkin() Skin {
@@ -239,10 +277,11 @@ func  (me *GLTFSkin) GetGodotSkin() Skin {
   methodNameV := StringNameFromStr("get_godot_skin")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1032037385) // FIXME: should cache?
-  var ret Skin
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewSkin()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFSkin) SetGodotSkin(godot_skin Skin, )  {
@@ -252,7 +291,9 @@ func  (me *GLTFSkin) SetGodotSkin(godot_skin Skin, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3971435618) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(godot_skin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

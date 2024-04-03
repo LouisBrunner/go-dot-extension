@@ -17,6 +17,16 @@ func (me *LightmapGI) BaseClass() string {
   return "LightmapGI"
 }
 
+func NewLightmapGI() *LightmapGI {
+  str := StringNameFromStr("LightmapGI") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &LightmapGI{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -81,7 +91,9 @@ func  (me *LightmapGI) SetLightData(data LightmapGIData, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1790597277) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(data.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *LightmapGI) GetLightData() LightmapGIData {
@@ -90,10 +102,11 @@ func  (me *LightmapGI) GetLightData() LightmapGIData {
   methodNameV := StringNameFromStr("get_light_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 290354153) // FIXME: should cache?
-  var ret LightmapGIData
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewLightmapGIData()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *LightmapGI) SetBakeQuality(bake_quality LightmapGIBakeQuality, )  {
@@ -103,7 +116,9 @@ func  (me *LightmapGI) SetBakeQuality(bake_quality LightmapGIBakeQuality, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1192215803) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bake_quality), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *LightmapGI) GetBakeQuality() LightmapGIBakeQuality {
@@ -112,54 +127,61 @@ func  (me *LightmapGI) GetBakeQuality() LightmapGIBakeQuality {
   methodNameV := StringNameFromStr("get_bake_quality")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 688832735) // FIXME: should cache?
-  var ret LightmapGIBakeQuality
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret LightmapGIBakeQuality
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *LightmapGI) SetBounces(bounces int, )  {
+func  (me *LightmapGI) SetBounces(bounces int64, )  {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bounces")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bounces), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *LightmapGI) GetBounces() int {
+func  (me *LightmapGI) GetBounces() int64 {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bounces")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *LightmapGI) SetBounceIndirectEnergy(bounce_indirect_energy float32, )  {
+func  (me *LightmapGI) SetBounceIndirectEnergy(bounce_indirect_energy float64, )  {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bounce_indirect_energy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bounce_indirect_energy), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *LightmapGI) GetBounceIndirectEnergy() float32 {
+func  (me *LightmapGI) GetBounceIndirectEnergy() float64 {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bounce_indirect_energy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *LightmapGI) SetGenerateProbes(subdivision LightmapGIGenerateProbes, )  {
@@ -169,7 +191,9 @@ func  (me *LightmapGI) SetGenerateProbes(subdivision LightmapGIGenerateProbes, )
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 549981046) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subdivision), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *LightmapGI) GetGenerateProbes() LightmapGIGenerateProbes {
@@ -178,32 +202,36 @@ func  (me *LightmapGI) GetGenerateProbes() LightmapGIGenerateProbes {
   methodNameV := StringNameFromStr("get_generate_probes")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3930596226) // FIXME: should cache?
-  var ret LightmapGIGenerateProbes
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret LightmapGIGenerateProbes
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *LightmapGI) SetBias(bias float32, )  {
+func  (me *LightmapGI) SetBias(bias float64, )  {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bias), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *LightmapGI) GetBias() float32 {
+func  (me *LightmapGI) GetBias() float64 {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *LightmapGI) SetEnvironmentMode(mode LightmapGIEnvironmentMode, )  {
@@ -213,7 +241,9 @@ func  (me *LightmapGI) SetEnvironmentMode(mode LightmapGIEnvironmentMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2282650285) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *LightmapGI) GetEnvironmentMode() LightmapGIEnvironmentMode {
@@ -222,9 +252,10 @@ func  (me *LightmapGI) GetEnvironmentMode() LightmapGIEnvironmentMode {
   methodNameV := StringNameFromStr("get_environment_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4128646479) // FIXME: should cache?
-  var ret LightmapGIEnvironmentMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret LightmapGIEnvironmentMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -235,7 +266,9 @@ func  (me *LightmapGI) SetEnvironmentCustomSky(sky Sky, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3336722921) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(sky.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *LightmapGI) GetEnvironmentCustomSky() Sky {
@@ -244,10 +277,11 @@ func  (me *LightmapGI) GetEnvironmentCustomSky() Sky {
   methodNameV := StringNameFromStr("get_environment_custom_sky")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1177136966) // FIXME: should cache?
-  var ret Sky
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewSky()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *LightmapGI) SetEnvironmentCustomColor(color Color, )  {
@@ -257,7 +291,9 @@ func  (me *LightmapGI) SetEnvironmentCustomColor(color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *LightmapGI) GetEnvironmentCustomColor() Color {
@@ -266,54 +302,61 @@ func  (me *LightmapGI) GetEnvironmentCustomColor() Color {
   methodNameV := StringNameFromStr("get_environment_custom_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *LightmapGI) SetEnvironmentCustomEnergy(energy float32, )  {
+func  (me *LightmapGI) SetEnvironmentCustomEnergy(energy float64, )  {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_environment_custom_energy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&energy), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *LightmapGI) GetEnvironmentCustomEnergy() float32 {
+func  (me *LightmapGI) GetEnvironmentCustomEnergy() float64 {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_environment_custom_energy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *LightmapGI) SetMaxTextureSize(max_texture_size int, )  {
+func  (me *LightmapGI) SetMaxTextureSize(max_texture_size int64, )  {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_texture_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_texture_size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *LightmapGI) GetMaxTextureSize() int {
+func  (me *LightmapGI) GetMaxTextureSize() int64 {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_texture_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *LightmapGI) SetUseDenoiser(use_denoiser bool, )  {
@@ -323,7 +366,9 @@ func  (me *LightmapGI) SetUseDenoiser(use_denoiser bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&use_denoiser), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *LightmapGI) IsUsingDenoiser() bool {
@@ -332,32 +377,36 @@ func  (me *LightmapGI) IsUsingDenoiser() bool {
   methodNameV := StringNameFromStr("is_using_denoiser")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *LightmapGI) SetDenoiserStrength(denoiser_strength float32, )  {
+func  (me *LightmapGI) SetDenoiserStrength(denoiser_strength float64, )  {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_denoiser_strength")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&denoiser_strength), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *LightmapGI) GetDenoiserStrength() float32 {
+func  (me *LightmapGI) GetDenoiserStrength() float64 {
   classNameV := StringNameFromStr("LightmapGI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_denoiser_strength")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *LightmapGI) SetInterior(enable bool, )  {
@@ -367,7 +416,9 @@ func  (me *LightmapGI) SetInterior(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *LightmapGI) IsInterior() bool {
@@ -376,10 +427,11 @@ func  (me *LightmapGI) IsInterior() bool {
   methodNameV := StringNameFromStr("is_interior")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *LightmapGI) SetDirectional(directional bool, )  {
@@ -389,7 +441,9 @@ func  (me *LightmapGI) SetDirectional(directional bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&directional), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *LightmapGI) IsDirectional() bool {
@@ -398,10 +452,11 @@ func  (me *LightmapGI) IsDirectional() bool {
   methodNameV := StringNameFromStr("is_directional")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *LightmapGI) SetUseTextureForBounces(use_texture_for_bounces bool, )  {
@@ -411,7 +466,9 @@ func  (me *LightmapGI) SetUseTextureForBounces(use_texture_for_bounces bool, )  
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&use_texture_for_bounces), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *LightmapGI) IsUsingTextureForBounces() bool {
@@ -420,10 +477,11 @@ func  (me *LightmapGI) IsUsingTextureForBounces() bool {
   methodNameV := StringNameFromStr("is_using_texture_for_bounces")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *LightmapGI) SetCameraAttributes(camera_attributes CameraAttributes, )  {
@@ -433,7 +491,9 @@ func  (me *LightmapGI) SetCameraAttributes(camera_attributes CameraAttributes, )
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2817810567) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(camera_attributes.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *LightmapGI) GetCameraAttributes() CameraAttributes {
@@ -442,10 +502,11 @@ func  (me *LightmapGI) GetCameraAttributes() CameraAttributes {
   methodNameV := StringNameFromStr("get_camera_attributes")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3921283215) // FIXME: should cache?
-  var ret CameraAttributes
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCameraAttributes()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *HScrollBar) BaseClass() string {
   return "HScrollBar"
 }
 
+func NewHScrollBar() *HScrollBar {
+  str := StringNameFromStr("HScrollBar") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &HScrollBar{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

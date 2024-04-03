@@ -17,6 +17,16 @@ func (me *TextureCubemapRD) BaseClass() string {
   return "TextureCubemapRD"
 }
 
+func NewTextureCubemapRD() *TextureCubemapRD {
+  str := StringNameFromStr("TextureCubemapRD") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &TextureCubemapRD{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

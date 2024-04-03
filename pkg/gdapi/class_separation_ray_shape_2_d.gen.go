@@ -17,6 +17,16 @@ func (me *SeparationRayShape2D) BaseClass() string {
   return "SeparationRayShape2D"
 }
 
+func NewSeparationRayShape2D() *SeparationRayShape2D {
+  str := StringNameFromStr("SeparationRayShape2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &SeparationRayShape2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *SeparationRayShape2D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *SeparationRayShape2D) SetLength(length float32, )  {
+func  (me *SeparationRayShape2D) SetLength(length float64, )  {
   classNameV := StringNameFromStr("SeparationRayShape2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SeparationRayShape2D) GetLength() float32 {
+func  (me *SeparationRayShape2D) GetLength() float64 {
   classNameV := StringNameFromStr("SeparationRayShape2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *SeparationRayShape2D) SetSlideOnSlope(active bool, )  {
@@ -64,7 +77,9 @@ func  (me *SeparationRayShape2D) SetSlideOnSlope(active bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SeparationRayShape2D) GetSlideOnSlope() bool {
@@ -73,10 +88,11 @@ func  (me *SeparationRayShape2D) GetSlideOnSlope() bool {
   methodNameV := StringNameFromStr("get_slide_on_slope")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

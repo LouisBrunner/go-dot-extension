@@ -42,10 +42,10 @@ var bclassPtrConstructor = map[gdc.VariantType]bclassPtrConstructorFn{
 {{- end }}{{- end }}{{- end }}
 }
 
-type objectPtrConstructorFn func(ptr gdc.ConstTypePtr) any
+type objectPtrConstructorFn func(ptr gdc.ObjectPtr) any
 
 var objectPtrConstructor = map[string]objectPtrConstructorFn{
 {{- range .Classes}}
-  "{{.}}": func(ptr gdc.ConstTypePtr) any { return createObject(&{{.}}{}, ptr) },
+  "{{.}}": func(ptr gdc.ObjectPtr) any { return createObject(&{{.}}{}, ptr) },
 {{- end }}
 }

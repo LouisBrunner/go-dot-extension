@@ -17,6 +17,16 @@ func (me *Tree) BaseClass() string {
   return "Tree"
 }
 
+func NewTree() *Tree {
+  str := StringNameFromStr("Tree") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Tree{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -56,19 +66,22 @@ func  (me *Tree) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) CreateItem(parent TreeItem, index int, ) TreeItem {
+func  (me *Tree) CreateItem(parent TreeItem, index int64, ) TreeItem {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("create_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 528467046) // FIXME: should cache?
-  var ret TreeItem
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parent.AsCTypePtr()), gdc.ConstTypePtr(&index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTreeItem()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Tree) GetRoot() TreeItem {
@@ -77,98 +90,111 @@ func  (me *Tree) GetRoot() TreeItem {
   methodNameV := StringNameFromStr("get_root")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1514277247) // FIXME: should cache?
-  var ret TreeItem
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTreeItem()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Tree) SetColumnCustomMinimumWidth(column int, min_width int, )  {
+func  (me *Tree) SetColumnCustomMinimumWidth(column int64, min_width int64, )  {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_column_custom_minimum_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&min_width), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) SetColumnExpand(column int, expand bool, )  {
+func  (me *Tree) SetColumnExpand(column int64, expand bool, )  {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_column_expand")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&expand), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) SetColumnExpandRatio(column int, ratio int, )  {
+func  (me *Tree) SetColumnExpandRatio(column int64, ratio int64, )  {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_column_expand_ratio")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&ratio), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) SetColumnClipContent(column int, enable bool, )  {
+func  (me *Tree) SetColumnClipContent(column int64, enable bool, )  {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_column_clip_content")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) IsColumnExpanding(column int, ) bool {
+func  (me *Tree) IsColumnExpanding(column int64, ) bool {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_column_expanding")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Tree) IsColumnClippingContent(column int, ) bool {
+func  (me *Tree) IsColumnClippingContent(column int64, ) bool {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_column_clipping_content")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Tree) GetColumnExpandRatio(column int, ) int {
+func  (me *Tree) GetColumnExpandRatio(column int64, ) int64 {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_column_expand_ratio")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Tree) GetColumnWidth(column int, ) int {
+func  (me *Tree) GetColumnWidth(column int64, ) int64 {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_column_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) SetHideRoot(enable bool, )  {
@@ -178,7 +204,9 @@ func  (me *Tree) SetHideRoot(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) IsRootHidden() bool {
@@ -187,10 +215,11 @@ func  (me *Tree) IsRootHidden() bool {
   methodNameV := StringNameFromStr("is_root_hidden")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) GetNextSelected(from TreeItem, ) TreeItem {
@@ -199,10 +228,11 @@ func  (me *Tree) GetNextSelected(from TreeItem, ) TreeItem {
   methodNameV := StringNameFromStr("get_next_selected")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 873446299) // FIXME: should cache?
-  var ret TreeItem
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTreeItem()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Tree) GetSelected() TreeItem {
@@ -211,44 +241,49 @@ func  (me *Tree) GetSelected() TreeItem {
   methodNameV := StringNameFromStr("get_selected")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1514277247) // FIXME: should cache?
-  var ret TreeItem
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTreeItem()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Tree) SetSelected(item TreeItem, column int, )  {
+func  (me *Tree) SetSelected(item TreeItem, column int64, )  {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_selected")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2662547442) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(&column), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) GetSelectedColumn() int {
+func  (me *Tree) GetSelectedColumn() int64 {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_selected_column")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Tree) GetPressedButton() int {
+func  (me *Tree) GetPressedButton() int64 {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_pressed_button")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) SetSelectMode(mode TreeSelectMode, )  {
@@ -258,7 +293,9 @@ func  (me *Tree) SetSelectMode(mode TreeSelectMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3223887270) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) GetSelectMode() TreeSelectMode {
@@ -267,9 +304,10 @@ func  (me *Tree) GetSelectMode() TreeSelectMode {
   methodNameV := StringNameFromStr("get_select_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 100748571) // FIXME: should cache?
-  var ret TreeSelectMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TreeSelectMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -280,29 +318,34 @@ func  (me *Tree) DeselectAll()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) SetColumns(amount int, )  {
+func  (me *Tree) SetColumns(amount int64, )  {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_columns")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) GetColumns() int {
+func  (me *Tree) GetColumns() int64 {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_columns")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) GetEdited() TreeItem {
@@ -311,22 +354,24 @@ func  (me *Tree) GetEdited() TreeItem {
   methodNameV := StringNameFromStr("get_edited")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1514277247) // FIXME: should cache?
-  var ret TreeItem
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTreeItem()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Tree) GetEditedColumn() int {
+func  (me *Tree) GetEditedColumn() int64 {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_edited_column")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) EditSelected(force_edit bool, ) bool {
@@ -335,10 +380,11 @@ func  (me *Tree) EditSelected(force_edit bool, ) bool {
   methodNameV := StringNameFromStr("edit_selected")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2595650253) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&force_edit), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) GetCustomPopupRect() Rect2 {
@@ -347,22 +393,24 @@ func  (me *Tree) GetCustomPopupRect() Rect2 {
   methodNameV := StringNameFromStr("get_custom_popup_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
-  var ret Rect2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRect2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Tree) GetItemAreaRect(item TreeItem, column int, button_index int, ) Rect2 {
+func  (me *Tree) GetItemAreaRect(item TreeItem, column int64, button_index int64, ) Rect2 {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_area_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 47968679) // FIXME: should cache?
-  var ret Rect2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&button_index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRect2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Tree) GetItemAtPosition(position Vector2, ) TreeItem {
@@ -371,46 +419,50 @@ func  (me *Tree) GetItemAtPosition(position Vector2, ) TreeItem {
   methodNameV := StringNameFromStr("get_item_at_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4193340126) // FIXME: should cache?
-  var ret TreeItem
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTreeItem()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Tree) GetColumnAtPosition(position Vector2, ) int {
+func  (me *Tree) GetColumnAtPosition(position Vector2, ) int64 {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_column_at_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3820158470) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Tree) GetDropSectionAtPosition(position Vector2, ) int {
+func  (me *Tree) GetDropSectionAtPosition(position Vector2, ) int64 {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_drop_section_at_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3820158470) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Tree) GetButtonIdAtPosition(position Vector2, ) int {
+func  (me *Tree) GetButtonIdAtPosition(position Vector2, ) int64 {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_button_id_at_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3820158470) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) EnsureCursorIsVisible()  {
@@ -420,7 +472,9 @@ func  (me *Tree) EnsureCursorIsVisible()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) SetColumnTitlesVisible(visible bool, )  {
@@ -430,7 +484,9 @@ func  (me *Tree) SetColumnTitlesVisible(visible bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&visible), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) AreColumnTitlesVisible() bool {
@@ -439,98 +495,111 @@ func  (me *Tree) AreColumnTitlesVisible() bool {
   methodNameV := StringNameFromStr("are_column_titles_visible")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Tree) SetColumnTitle(column int, title String, )  {
+func  (me *Tree) SetColumnTitle(column int64, title String, )  {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_column_title")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(title.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) GetColumnTitle(column int, ) String {
+func  (me *Tree) GetColumnTitle(column int64, ) String {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_column_title")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Tree) SetColumnTitleAlignment(column int, title_alignment HorizontalAlignment, )  {
+func  (me *Tree) SetColumnTitleAlignment(column int64, title_alignment HorizontalAlignment, )  {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_column_title_alignment")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3276431499) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&title_alignment), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) GetColumnTitleAlignment(column int, ) HorizontalAlignment {
+func  (me *Tree) GetColumnTitleAlignment(column int64, ) HorizontalAlignment {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_column_title_alignment")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4171562184) // FIXME: should cache?
-  var ret HorizontalAlignment
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret HorizontalAlignment
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *Tree) SetColumnTitleDirection(column int, direction ControlTextDirection, )  {
+func  (me *Tree) SetColumnTitleDirection(column int64, direction ControlTextDirection, )  {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_column_title_direction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1707680378) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&direction), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) GetColumnTitleDirection(column int, ) ControlTextDirection {
+func  (me *Tree) GetColumnTitleDirection(column int64, ) ControlTextDirection {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_column_title_direction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4235602388) // FIXME: should cache?
-  var ret ControlTextDirection
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret ControlTextDirection
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *Tree) SetColumnTitleLanguage(column int, language String, )  {
+func  (me *Tree) SetColumnTitleLanguage(column int64, language String, )  {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_column_title_language")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(language.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) GetColumnTitleLanguage(column int, ) String {
+func  (me *Tree) GetColumnTitleLanguage(column int64, ) String {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_column_title_language")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Tree) GetScroll() Vector2 {
@@ -539,10 +608,11 @@ func  (me *Tree) GetScroll() Vector2 {
   methodNameV := StringNameFromStr("get_scroll")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Tree) ScrollToItem(item TreeItem, center_on_item bool, )  {
@@ -552,7 +622,9 @@ func  (me *Tree) ScrollToItem(item TreeItem, center_on_item bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1314737213) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), gdc.ConstTypePtr(&center_on_item), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) SetHScrollEnabled(h_scroll bool, )  {
@@ -562,7 +634,9 @@ func  (me *Tree) SetHScrollEnabled(h_scroll bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&h_scroll), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) IsHScrollEnabled() bool {
@@ -571,10 +645,11 @@ func  (me *Tree) IsHScrollEnabled() bool {
   methodNameV := StringNameFromStr("is_h_scroll_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) SetVScrollEnabled(h_scroll bool, )  {
@@ -584,7 +659,9 @@ func  (me *Tree) SetVScrollEnabled(h_scroll bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&h_scroll), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) IsVScrollEnabled() bool {
@@ -593,10 +670,11 @@ func  (me *Tree) IsVScrollEnabled() bool {
   methodNameV := StringNameFromStr("is_v_scroll_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) SetHideFolding(hide bool, )  {
@@ -606,7 +684,9 @@ func  (me *Tree) SetHideFolding(hide bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hide), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) IsFoldingHidden() bool {
@@ -615,10 +695,11 @@ func  (me *Tree) IsFoldingHidden() bool {
   methodNameV := StringNameFromStr("is_folding_hidden")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) SetEnableRecursiveFolding(enable bool, )  {
@@ -628,7 +709,9 @@ func  (me *Tree) SetEnableRecursiveFolding(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) IsRecursiveFoldingEnabled() bool {
@@ -637,32 +720,36 @@ func  (me *Tree) IsRecursiveFoldingEnabled() bool {
   methodNameV := StringNameFromStr("is_recursive_folding_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Tree) SetDropModeFlags(flags int, )  {
+func  (me *Tree) SetDropModeFlags(flags int64, )  {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_drop_mode_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *Tree) GetDropModeFlags() int {
+func  (me *Tree) GetDropModeFlags() int64 {
   classNameV := StringNameFromStr("Tree")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_drop_mode_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) SetAllowRmbSelect(allow bool, )  {
@@ -672,7 +759,9 @@ func  (me *Tree) SetAllowRmbSelect(allow bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) GetAllowRmbSelect() bool {
@@ -681,10 +770,11 @@ func  (me *Tree) GetAllowRmbSelect() bool {
   methodNameV := StringNameFromStr("get_allow_rmb_select")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) SetAllowReselect(allow bool, )  {
@@ -694,7 +784,9 @@ func  (me *Tree) SetAllowReselect(allow bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) GetAllowReselect() bool {
@@ -703,10 +795,11 @@ func  (me *Tree) GetAllowReselect() bool {
   methodNameV := StringNameFromStr("get_allow_reselect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Tree) SetAllowSearch(allow bool, )  {
@@ -716,7 +809,9 @@ func  (me *Tree) SetAllowSearch(allow bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Tree) GetAllowSearch() bool {
@@ -725,10 +820,11 @@ func  (me *Tree) GetAllowSearch() bool {
   methodNameV := StringNameFromStr("get_allow_search")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

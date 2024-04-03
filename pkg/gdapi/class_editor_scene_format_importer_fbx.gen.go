@@ -17,6 +17,16 @@ func (me *EditorSceneFormatImporterFBX) BaseClass() string {
   return "EditorSceneFormatImporterFBX"
 }
 
+func NewEditorSceneFormatImporterFBX() *EditorSceneFormatImporterFBX {
+  str := StringNameFromStr("EditorSceneFormatImporterFBX") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorSceneFormatImporterFBX{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

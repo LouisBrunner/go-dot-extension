@@ -17,6 +17,16 @@ func (me *SkeletonProfileHumanoid) BaseClass() string {
   return "SkeletonProfileHumanoid"
 }
 
+func NewSkeletonProfileHumanoid() *SkeletonProfileHumanoid {
+  str := StringNameFromStr("SkeletonProfileHumanoid") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &SkeletonProfileHumanoid{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *VisualShaderNodeCubemapParameter) BaseClass() string {
   return "VisualShaderNodeCubemapParameter"
 }
 
+func NewVisualShaderNodeCubemapParameter() *VisualShaderNodeCubemapParameter {
+  str := StringNameFromStr("VisualShaderNodeCubemapParameter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeCubemapParameter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

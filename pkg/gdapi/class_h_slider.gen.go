@@ -17,6 +17,16 @@ func (me *HSlider) BaseClass() string {
   return "HSlider"
 }
 
+func NewHSlider() *HSlider {
+  str := StringNameFromStr("HSlider") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &HSlider{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

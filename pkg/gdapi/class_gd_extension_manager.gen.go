@@ -17,6 +17,16 @@ func (me *GDExtensionManager) BaseClass() string {
   return "GDExtensionManager"
 }
 
+func NewGDExtensionManager() *GDExtensionManager {
+  str := StringNameFromStr("GDExtensionManager") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GDExtensionManager{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -50,9 +60,10 @@ func  (me *GDExtensionManager) LoadExtension(path String, ) GDExtensionManagerLo
   methodNameV := StringNameFromStr("load_extension")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4024158731) // FIXME: should cache?
-  var ret GDExtensionManagerLoadStatus
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret GDExtensionManagerLoadStatus
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -62,9 +73,10 @@ func  (me *GDExtensionManager) ReloadExtension(path String, ) GDExtensionManager
   methodNameV := StringNameFromStr("reload_extension")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4024158731) // FIXME: should cache?
-  var ret GDExtensionManagerLoadStatus
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret GDExtensionManagerLoadStatus
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -74,9 +86,10 @@ func  (me *GDExtensionManager) UnloadExtension(path String, ) GDExtensionManager
   methodNameV := StringNameFromStr("unload_extension")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4024158731) // FIXME: should cache?
-  var ret GDExtensionManagerLoadStatus
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret GDExtensionManagerLoadStatus
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -86,10 +99,11 @@ func  (me *GDExtensionManager) IsExtensionLoaded(path String, ) bool {
   methodNameV := StringNameFromStr("is_extension_loaded")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GDExtensionManager) GetLoadedExtensions() PackedStringArray {
@@ -98,10 +112,11 @@ func  (me *GDExtensionManager) GetLoadedExtensions() PackedStringArray {
   methodNameV := StringNameFromStr("get_loaded_extensions")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
-  var ret PackedStringArray
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedStringArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GDExtensionManager) GetExtension(path String, ) GDExtension {
@@ -110,10 +125,11 @@ func  (me *GDExtensionManager) GetExtension(path String, ) GDExtension {
   methodNameV := StringNameFromStr("get_extension")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 49743343) // FIXME: should cache?
-  var ret GDExtension
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewGDExtension()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

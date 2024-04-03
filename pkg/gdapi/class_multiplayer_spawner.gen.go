@@ -17,6 +17,16 @@ func (me *MultiplayerSpawner) BaseClass() string {
   return "MultiplayerSpawner"
 }
 
+func NewMultiplayerSpawner() *MultiplayerSpawner {
+  str := StringNameFromStr("MultiplayerSpawner") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &MultiplayerSpawner{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,31 +52,35 @@ func  (me *MultiplayerSpawner) AddSpawnableScene(path String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MultiplayerSpawner) GetSpawnableSceneCount() int {
+func  (me *MultiplayerSpawner) GetSpawnableSceneCount() int64 {
   classNameV := StringNameFromStr("MultiplayerSpawner")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_spawnable_scene_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MultiplayerSpawner) GetSpawnableScene(index int, ) String {
+func  (me *MultiplayerSpawner) GetSpawnableScene(index int64, ) String {
   classNameV := StringNameFromStr("MultiplayerSpawner")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_spawnable_scene")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *MultiplayerSpawner) ClearSpawnableScenes()  {
@@ -76,7 +90,9 @@ func  (me *MultiplayerSpawner) ClearSpawnableScenes()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *MultiplayerSpawner) Spawn(data Variant, ) Node {
@@ -85,10 +101,11 @@ func  (me *MultiplayerSpawner) Spawn(data Variant, ) Node {
   methodNameV := StringNameFromStr("spawn")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1991184589) // FIXME: should cache?
-  var ret Node
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(data.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNode()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *MultiplayerSpawner) GetSpawnPath() NodePath {
@@ -97,10 +114,11 @@ func  (me *MultiplayerSpawner) GetSpawnPath() NodePath {
   methodNameV := StringNameFromStr("get_spawn_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *MultiplayerSpawner) SetSpawnPath(path NodePath, )  {
@@ -110,29 +128,34 @@ func  (me *MultiplayerSpawner) SetSpawnPath(path NodePath, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MultiplayerSpawner) GetSpawnLimit() int {
+func  (me *MultiplayerSpawner) GetSpawnLimit() int64 {
   classNameV := StringNameFromStr("MultiplayerSpawner")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_spawn_limit")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MultiplayerSpawner) SetSpawnLimit(limit int, )  {
+func  (me *MultiplayerSpawner) SetSpawnLimit(limit int64, )  {
   classNameV := StringNameFromStr("MultiplayerSpawner")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_spawn_limit")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&limit), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *MultiplayerSpawner) GetSpawnFunction() Callable {
@@ -141,10 +164,11 @@ func  (me *MultiplayerSpawner) GetSpawnFunction() Callable {
   methodNameV := StringNameFromStr("get_spawn_function")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1307783378) // FIXME: should cache?
-  var ret Callable
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCallable()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *MultiplayerSpawner) SetSpawnFunction(spawn_function Callable, )  {
@@ -154,7 +178,9 @@ func  (me *MultiplayerSpawner) SetSpawnFunction(spawn_function Callable, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1611583062) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(spawn_function.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

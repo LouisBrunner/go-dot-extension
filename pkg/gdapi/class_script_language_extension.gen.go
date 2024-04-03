@@ -17,6 +17,16 @@ func (me *ScriptLanguageExtension) BaseClass() string {
   return "ScriptLanguageExtension"
 }
 
+func NewScriptLanguageExtension() *ScriptLanguageExtension {
+  str := StringNameFromStr("ScriptLanguageExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ScriptLanguageExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

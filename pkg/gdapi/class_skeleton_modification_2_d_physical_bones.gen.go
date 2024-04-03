@@ -17,6 +17,16 @@ func (me *SkeletonModification2DPhysicalBones) BaseClass() string {
   return "SkeletonModification2DPhysicalBones"
 }
 
+func NewSkeletonModification2DPhysicalBones() *SkeletonModification2DPhysicalBones {
+  str := StringNameFromStr("SkeletonModification2DPhysicalBones") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &SkeletonModification2DPhysicalBones{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,48 +45,54 @@ func (me *SkeletonModification2DPhysicalBones) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *SkeletonModification2DPhysicalBones) SetPhysicalBoneChainLength(length int, )  {
+func  (me *SkeletonModification2DPhysicalBones) SetPhysicalBoneChainLength(length int64, )  {
   classNameV := StringNameFromStr("SkeletonModification2DPhysicalBones")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_physical_bone_chain_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SkeletonModification2DPhysicalBones) GetPhysicalBoneChainLength() int {
+func  (me *SkeletonModification2DPhysicalBones) GetPhysicalBoneChainLength() int64 {
   classNameV := StringNameFromStr("SkeletonModification2DPhysicalBones")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_physical_bone_chain_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SkeletonModification2DPhysicalBones) SetPhysicalBoneNode(joint_idx int, physicalbone2d_node NodePath, )  {
+func  (me *SkeletonModification2DPhysicalBones) SetPhysicalBoneNode(joint_idx int64, physicalbone2d_node NodePath, )  {
   classNameV := StringNameFromStr("SkeletonModification2DPhysicalBones")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_physical_bone_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761262315) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx), gdc.ConstTypePtr(physicalbone2d_node.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SkeletonModification2DPhysicalBones) GetPhysicalBoneNode(joint_idx int, ) NodePath {
+func  (me *SkeletonModification2DPhysicalBones) GetPhysicalBoneNode(joint_idx int64, ) NodePath {
   classNameV := StringNameFromStr("SkeletonModification2DPhysicalBones")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_physical_bone_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 408788394) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *SkeletonModification2DPhysicalBones) FetchPhysicalBones()  {
@@ -86,27 +102,33 @@ func  (me *SkeletonModification2DPhysicalBones) FetchPhysicalBones()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SkeletonModification2DPhysicalBones) StartSimulation(bones StringName, )  {
+func  (me *SkeletonModification2DPhysicalBones) StartSimulation(bones []StringName, )  {
   classNameV := StringNameFromStr("SkeletonModification2DPhysicalBones")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("start_simulation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2787316981) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(bones.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bones), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SkeletonModification2DPhysicalBones) StopSimulation(bones StringName, )  {
+func  (me *SkeletonModification2DPhysicalBones) StopSimulation(bones []StringName, )  {
   classNameV := StringNameFromStr("SkeletonModification2DPhysicalBones")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("stop_simulation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2787316981) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(bones.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bones), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

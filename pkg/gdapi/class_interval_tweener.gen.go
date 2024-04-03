@@ -17,6 +17,16 @@ func (me *IntervalTweener) BaseClass() string {
   return "IntervalTweener"
 }
 
+func NewIntervalTweener() *IntervalTweener {
+  str := StringNameFromStr("IntervalTweener") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &IntervalTweener{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

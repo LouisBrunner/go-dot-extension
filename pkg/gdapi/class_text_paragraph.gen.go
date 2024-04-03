@@ -17,6 +17,16 @@ func (me *TextParagraph) BaseClass() string {
   return "TextParagraph"
 }
 
+func NewTextParagraph() *TextParagraph {
+  str := StringNameFromStr("TextParagraph") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &TextParagraph{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *TextParagraph) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) SetDirection(direction TextServerDirection, )  {
@@ -52,7 +64,9 @@ func  (me *TextParagraph) SetDirection(direction TextServerDirection, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1418190634) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&direction), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) GetDirection() TextServerDirection {
@@ -61,9 +75,10 @@ func  (me *TextParagraph) GetDirection() TextServerDirection {
   methodNameV := StringNameFromStr("get_direction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2516697328) // FIXME: should cache?
-  var ret TextServerDirection
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TextServerDirection
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -74,7 +89,9 @@ func  (me *TextParagraph) SetCustomPunctuation(custom_punctuation String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(custom_punctuation.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) GetCustomPunctuation() String {
@@ -83,10 +100,11 @@ func  (me *TextParagraph) GetCustomPunctuation() String {
   methodNameV := StringNameFromStr("get_custom_punctuation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *TextParagraph) SetOrientation(orientation TextServerOrientation, )  {
@@ -96,7 +114,9 @@ func  (me *TextParagraph) SetOrientation(orientation TextServerOrientation, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 42823726) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&orientation), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) GetOrientation() TextServerOrientation {
@@ -105,9 +125,10 @@ func  (me *TextParagraph) GetOrientation() TextServerOrientation {
   methodNameV := StringNameFromStr("get_orientation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 175768116) // FIXME: should cache?
-  var ret TextServerOrientation
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TextServerOrientation
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -118,7 +139,9 @@ func  (me *TextParagraph) SetPreserveInvalid(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) GetPreserveInvalid() bool {
@@ -127,10 +150,11 @@ func  (me *TextParagraph) GetPreserveInvalid() bool {
   methodNameV := StringNameFromStr("get_preserve_invalid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TextParagraph) SetPreserveControl(enabled bool, )  {
@@ -140,7 +164,9 @@ func  (me *TextParagraph) SetPreserveControl(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) GetPreserveControl() bool {
@@ -149,10 +175,11 @@ func  (me *TextParagraph) GetPreserveControl() bool {
   methodNameV := StringNameFromStr("get_preserve_control")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TextParagraph) SetBidiOverride(override Array, )  {
@@ -162,19 +189,22 @@ func  (me *TextParagraph) SetBidiOverride(override Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(override.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TextParagraph) SetDropcap(text String, font Font, font_size int, dropcap_margins Rect2, language String, ) bool {
+func  (me *TextParagraph) SetDropcap(text String, font Font, font_size int64, dropcap_margins Rect2, language String, ) bool {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_dropcap")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2498990330) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(font.AsCTypePtr()), gdc.ConstTypePtr(&font_size), gdc.ConstTypePtr(dropcap_margins.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TextParagraph) ClearDropcap()  {
@@ -184,43 +214,48 @@ func  (me *TextParagraph) ClearDropcap()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TextParagraph) AddString(text String, font Font, font_size int, language String, meta Variant, ) bool {
+func  (me *TextParagraph) AddString(text String, font Font, font_size int64, language String, meta Variant, ) bool {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_string")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 621426851) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(font.AsCTypePtr()), gdc.ConstTypePtr(&font_size), gdc.ConstTypePtr(language.AsCTypePtr()), gdc.ConstTypePtr(meta.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TextParagraph) AddObject(key Variant, size Vector2, inline_align InlineAlignment, length int, baseline float32, ) bool {
+func  (me *TextParagraph) AddObject(key Variant, size Vector2, inline_align InlineAlignment, length int64, baseline float64, ) bool {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_object")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1316529304) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&inline_align), gdc.ConstTypePtr(&length), gdc.ConstTypePtr(&baseline), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TextParagraph) ResizeObject(key Variant, size Vector2, inline_align InlineAlignment, baseline float32, ) bool {
+func  (me *TextParagraph) ResizeObject(key Variant, size Vector2, inline_align InlineAlignment, baseline float64, ) bool {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("resize_object")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2095776372) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&inline_align), gdc.ConstTypePtr(&baseline), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TextParagraph) SetAlignment(alignment HorizontalAlignment, )  {
@@ -230,7 +265,9 @@ func  (me *TextParagraph) SetAlignment(alignment HorizontalAlignment, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2312603777) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) GetAlignment() HorizontalAlignment {
@@ -239,9 +276,10 @@ func  (me *TextParagraph) GetAlignment() HorizontalAlignment {
   methodNameV := StringNameFromStr("get_alignment")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 341400642) // FIXME: should cache?
-  var ret HorizontalAlignment
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret HorizontalAlignment
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -252,7 +290,9 @@ func  (me *TextParagraph) TabAlign(tab_stops PackedFloat32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2899603908) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(tab_stops.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) SetBreakFlags(flags TextServerLineBreakFlag, )  {
@@ -262,7 +302,9 @@ func  (me *TextParagraph) SetBreakFlags(flags TextServerLineBreakFlag, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2809697122) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) GetBreakFlags() TextServerLineBreakFlag {
@@ -271,9 +313,10 @@ func  (me *TextParagraph) GetBreakFlags() TextServerLineBreakFlag {
   methodNameV := StringNameFromStr("get_break_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2340632602) // FIXME: should cache?
-  var ret TextServerLineBreakFlag
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TextServerLineBreakFlag
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -284,7 +327,9 @@ func  (me *TextParagraph) SetJustificationFlags(flags TextServerJustificationFla
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2877345813) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) GetJustificationFlags() TextServerJustificationFlag {
@@ -293,9 +338,10 @@ func  (me *TextParagraph) GetJustificationFlags() TextServerJustificationFlag {
   methodNameV := StringNameFromStr("get_justification_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1583363614) // FIXME: should cache?
-  var ret TextServerJustificationFlag
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TextServerJustificationFlag
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -306,7 +352,9 @@ func  (me *TextParagraph) SetTextOverrunBehavior(overrun_behavior TextServerOver
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1008890932) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&overrun_behavior), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) GetTextOverrunBehavior() TextServerOverrunBehavior {
@@ -315,32 +363,36 @@ func  (me *TextParagraph) GetTextOverrunBehavior() TextServerOverrunBehavior {
   methodNameV := StringNameFromStr("get_text_overrun_behavior")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3779142101) // FIXME: should cache?
-  var ret TextServerOverrunBehavior
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TextServerOverrunBehavior
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *TextParagraph) SetWidth(width float32, )  {
+func  (me *TextParagraph) SetWidth(width float64, )  {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TextParagraph) GetWidth() float32 {
+func  (me *TextParagraph) GetWidth() float64 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TextParagraph) GetNonWrappedSize() Vector2 {
@@ -349,10 +401,11 @@ func  (me *TextParagraph) GetNonWrappedSize() Vector2 {
   methodNameV := StringNameFromStr("get_non_wrapped_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *TextParagraph) GetSize() Vector2 {
@@ -361,10 +414,11 @@ func  (me *TextParagraph) GetSize() Vector2 {
   methodNameV := StringNameFromStr("get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *TextParagraph) GetRid() RID {
@@ -373,22 +427,24 @@ func  (me *TextParagraph) GetRid() RID {
   methodNameV := StringNameFromStr("get_rid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRID()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TextParagraph) GetLineRid(line int, ) RID {
+func  (me *TextParagraph) GetLineRid(line int64, ) RID {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_rid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 495598643) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRID()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *TextParagraph) GetDropcapRid() RID {
@@ -397,152 +453,166 @@ func  (me *TextParagraph) GetDropcapRid() RID {
   methodNameV := StringNameFromStr("get_dropcap_rid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRID()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TextParagraph) GetLineCount() int {
+func  (me *TextParagraph) GetLineCount() int64 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TextParagraph) SetMaxLinesVisible(max_lines_visible int, )  {
+func  (me *TextParagraph) SetMaxLinesVisible(max_lines_visible int64, )  {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_lines_visible")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_lines_visible), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TextParagraph) GetMaxLinesVisible() int {
+func  (me *TextParagraph) GetMaxLinesVisible() int64 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_lines_visible")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TextParagraph) GetLineObjects(line int, ) Array {
+func  (me *TextParagraph) GetLineObjects(line int64, ) Array {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_objects")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 663333327) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TextParagraph) GetLineObjectRect(line int, key Variant, ) Rect2 {
+func  (me *TextParagraph) GetLineObjectRect(line int64, key Variant, ) Rect2 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_object_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 204315017) // FIXME: should cache?
-  var ret Rect2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), gdc.ConstTypePtr(key.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRect2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TextParagraph) GetLineSize(line int, ) Vector2 {
+func  (me *TextParagraph) GetLineSize(line int64, ) Vector2 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2299179447) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TextParagraph) GetLineRange(line int, ) Vector2i {
+func  (me *TextParagraph) GetLineRange(line int64, ) Vector2i {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 880721226) // FIXME: should cache?
-  var ret Vector2i
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2i()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TextParagraph) GetLineAscent(line int, ) float32 {
+func  (me *TextParagraph) GetLineAscent(line int64, ) float64 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_ascent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339986948) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TextParagraph) GetLineDescent(line int, ) float32 {
+func  (me *TextParagraph) GetLineDescent(line int64, ) float64 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_descent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339986948) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TextParagraph) GetLineWidth(line int, ) float32 {
+func  (me *TextParagraph) GetLineWidth(line int64, ) float64 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339986948) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TextParagraph) GetLineUnderlinePosition(line int, ) float32 {
+func  (me *TextParagraph) GetLineUnderlinePosition(line int64, ) float64 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_underline_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339986948) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TextParagraph) GetLineUnderlineThickness(line int, ) float32 {
+func  (me *TextParagraph) GetLineUnderlineThickness(line int64, ) float64 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_underline_thickness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339986948) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TextParagraph) GetDropcapSize() Vector2 {
@@ -551,22 +621,24 @@ func  (me *TextParagraph) GetDropcapSize() Vector2 {
   methodNameV := StringNameFromStr("get_dropcap_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TextParagraph) GetDropcapLines() int {
+func  (me *TextParagraph) GetDropcapLines() int64 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_dropcap_lines")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TextParagraph) Draw(canvas RID, pos Vector2, color Color, dc_color Color, )  {
@@ -576,37 +648,45 @@ func  (me *TextParagraph) Draw(canvas RID, pos Vector2, color Color, dc_color Co
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1567802413) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), gdc.ConstTypePtr(dc_color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TextParagraph) DrawOutline(canvas RID, pos Vector2, outline_size int, color Color, dc_color Color, )  {
+func  (me *TextParagraph) DrawOutline(canvas RID, pos Vector2, outline_size int64, color Color, dc_color Color, )  {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("draw_outline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1893131224) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&outline_size), gdc.ConstTypePtr(color.AsCTypePtr()), gdc.ConstTypePtr(dc_color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TextParagraph) DrawLine(canvas RID, pos Vector2, line int, color Color, )  {
+func  (me *TextParagraph) DrawLine(canvas RID, pos Vector2, line int64, color Color, )  {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("draw_line")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1242169894) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&line), gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TextParagraph) DrawLineOutline(canvas RID, pos Vector2, line int, outline_size int, color Color, )  {
+func  (me *TextParagraph) DrawLineOutline(canvas RID, pos Vector2, line int64, outline_size int64, color Color, )  {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("draw_line_outline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2664926980) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&line), gdc.ConstTypePtr(&outline_size), gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TextParagraph) DrawDropcap(canvas RID, pos Vector2, color Color, )  {
@@ -616,29 +696,34 @@ func  (me *TextParagraph) DrawDropcap(canvas RID, pos Vector2, color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 856975658) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TextParagraph) DrawDropcapOutline(canvas RID, pos Vector2, outline_size int, color Color, )  {
+func  (me *TextParagraph) DrawDropcapOutline(canvas RID, pos Vector2, outline_size int64, color Color, )  {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("draw_dropcap_outline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1343401456) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&outline_size), gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TextParagraph) HitTest(coords Vector2, ) int {
+func  (me *TextParagraph) HitTest(coords Vector2, ) int64 {
   classNameV := StringNameFromStr("TextParagraph")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("hit_test")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3820158470) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(coords.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

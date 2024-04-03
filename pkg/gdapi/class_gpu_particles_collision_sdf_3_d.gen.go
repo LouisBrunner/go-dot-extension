@@ -17,6 +17,16 @@ func (me *GPUParticlesCollisionSDF3D) BaseClass() string {
   return "GPUParticlesCollisionSDF3D"
 }
 
+func NewGPUParticlesCollisionSDF3D() *GPUParticlesCollisionSDF3D {
+  str := StringNameFromStr("GPUParticlesCollisionSDF3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GPUParticlesCollisionSDF3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -53,7 +63,9 @@ func  (me *GPUParticlesCollisionSDF3D) SetSize(size Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GPUParticlesCollisionSDF3D) GetSize() Vector3 {
@@ -62,10 +74,11 @@ func  (me *GPUParticlesCollisionSDF3D) GetSize() Vector3 {
   methodNameV := StringNameFromStr("get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GPUParticlesCollisionSDF3D) SetResolution(resolution GPUParticlesCollisionSDF3DResolution, )  {
@@ -75,7 +88,9 @@ func  (me *GPUParticlesCollisionSDF3D) SetResolution(resolution GPUParticlesColl
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1155629297) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&resolution), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GPUParticlesCollisionSDF3D) GetResolution() GPUParticlesCollisionSDF3DResolution {
@@ -84,9 +99,10 @@ func  (me *GPUParticlesCollisionSDF3D) GetResolution() GPUParticlesCollisionSDF3
   methodNameV := StringNameFromStr("get_resolution")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2919555867) // FIXME: should cache?
-  var ret GPUParticlesCollisionSDF3DResolution
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret GPUParticlesCollisionSDF3DResolution
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -97,7 +113,9 @@ func  (me *GPUParticlesCollisionSDF3D) SetTexture(texture Texture3D, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1188404210) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(texture.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GPUParticlesCollisionSDF3D) GetTexture() Texture3D {
@@ -106,76 +124,86 @@ func  (me *GPUParticlesCollisionSDF3D) GetTexture() Texture3D {
   methodNameV := StringNameFromStr("get_texture")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373985333) // FIXME: should cache?
-  var ret Texture3D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTexture3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *GPUParticlesCollisionSDF3D) SetThickness(thickness float32, )  {
+func  (me *GPUParticlesCollisionSDF3D) SetThickness(thickness float64, )  {
   classNameV := StringNameFromStr("GPUParticlesCollisionSDF3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_thickness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&thickness), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GPUParticlesCollisionSDF3D) GetThickness() float32 {
+func  (me *GPUParticlesCollisionSDF3D) GetThickness() float64 {
   classNameV := StringNameFromStr("GPUParticlesCollisionSDF3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_thickness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GPUParticlesCollisionSDF3D) SetBakeMask(mask int, )  {
+func  (me *GPUParticlesCollisionSDF3D) SetBakeMask(mask int64, )  {
   classNameV := StringNameFromStr("GPUParticlesCollisionSDF3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bake_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GPUParticlesCollisionSDF3D) GetBakeMask() int {
+func  (me *GPUParticlesCollisionSDF3D) GetBakeMask() int64 {
   classNameV := StringNameFromStr("GPUParticlesCollisionSDF3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bake_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GPUParticlesCollisionSDF3D) SetBakeMaskValue(layer_number int, value bool, )  {
+func  (me *GPUParticlesCollisionSDF3D) SetBakeMaskValue(layer_number int64, value bool, )  {
   classNameV := StringNameFromStr("GPUParticlesCollisionSDF3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bake_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GPUParticlesCollisionSDF3D) GetBakeMaskValue(layer_number int, ) bool {
+func  (me *GPUParticlesCollisionSDF3D) GetBakeMaskValue(layer_number int64, ) bool {
   classNameV := StringNameFromStr("GPUParticlesCollisionSDF3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bake_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

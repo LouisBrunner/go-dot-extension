@@ -17,6 +17,16 @@ func (me *RenderSceneBuffers) BaseClass() string {
   return "RenderSceneBuffers"
 }
 
+func NewRenderSceneBuffers() *RenderSceneBuffers {
+  str := StringNameFromStr("RenderSceneBuffers") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &RenderSceneBuffers{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *RenderSceneBuffers) Configure(config RenderSceneBuffersConfiguration,
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3072623270) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(config.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

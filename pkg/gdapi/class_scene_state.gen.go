@@ -17,6 +17,16 @@ func (me *SceneState) BaseClass() string {
   return "SceneState"
 }
 
+func NewSceneState() *SceneState {
+  str := StringNameFromStr("SceneState") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &SceneState{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -43,256 +53,277 @@ func (me *SceneState) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *SceneState) GetNodeCount() int {
+func  (me *SceneState) GetNodeCount() int64 {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SceneState) GetNodeType(idx int, ) StringName {
+func  (me *SceneState) GetNodeType(idx int64, ) StringName {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 659327637) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetNodeName(idx int, ) StringName {
+func  (me *SceneState) GetNodeName(idx int64, ) StringName {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 659327637) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetNodePath(idx int, for_parent bool, ) NodePath {
+func  (me *SceneState) GetNodePath(idx int64, for_parent bool, ) NodePath {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2272487792) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&for_parent), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetNodeOwnerPath(idx int, ) NodePath {
+func  (me *SceneState) GetNodeOwnerPath(idx int64, ) NodePath {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_owner_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 408788394) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) IsNodeInstancePlaceholder(idx int, ) bool {
+func  (me *SceneState) IsNodeInstancePlaceholder(idx int64, ) bool {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_node_instance_placeholder")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SceneState) GetNodeInstancePlaceholder(idx int, ) String {
+func  (me *SceneState) GetNodeInstancePlaceholder(idx int64, ) String {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_instance_placeholder")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetNodeInstance(idx int, ) PackedScene {
+func  (me *SceneState) GetNodeInstance(idx int64, ) PackedScene {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_instance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 511017218) // FIXME: should cache?
-  var ret PackedScene
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedScene()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetNodeGroups(idx int, ) PackedStringArray {
+func  (me *SceneState) GetNodeGroups(idx int64, ) PackedStringArray {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_groups")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 647634434) // FIXME: should cache?
-  var ret PackedStringArray
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedStringArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetNodeIndex(idx int, ) int {
+func  (me *SceneState) GetNodeIndex(idx int64, ) int64 {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SceneState) GetNodePropertyCount(idx int, ) int {
+func  (me *SceneState) GetNodePropertyCount(idx int64, ) int64 {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_property_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SceneState) GetNodePropertyName(idx int, prop_idx int, ) StringName {
+func  (me *SceneState) GetNodePropertyName(idx int64, prop_idx int64, ) StringName {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_property_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 351665558) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&prop_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetNodePropertyValue(idx int, prop_idx int, ) Variant {
+func  (me *SceneState) GetNodePropertyValue(idx int64, prop_idx int64, ) Variant {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_node_property_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 678354945) // FIXME: should cache?
-  var ret Variant
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&prop_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVariant()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetConnectionCount() int {
+func  (me *SceneState) GetConnectionCount() int64 {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connection_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SceneState) GetConnectionSource(idx int, ) NodePath {
+func  (me *SceneState) GetConnectionSource(idx int64, ) NodePath {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connection_source")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 408788394) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetConnectionSignal(idx int, ) StringName {
+func  (me *SceneState) GetConnectionSignal(idx int64, ) StringName {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connection_signal")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 659327637) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetConnectionTarget(idx int, ) NodePath {
+func  (me *SceneState) GetConnectionTarget(idx int64, ) NodePath {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connection_target")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 408788394) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetConnectionMethod(idx int, ) StringName {
+func  (me *SceneState) GetConnectionMethod(idx int64, ) StringName {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connection_method")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 659327637) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetConnectionFlags(idx int, ) int {
+func  (me *SceneState) GetConnectionFlags(idx int64, ) int64 {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connection_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SceneState) GetConnectionBinds(idx int, ) Array {
+func  (me *SceneState) GetConnectionBinds(idx int64, ) Array {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connection_binds")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 663333327) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SceneState) GetConnectionUnbinds(idx int, ) int {
+func  (me *SceneState) GetConnectionUnbinds(idx int64, ) int64 {
   classNameV := StringNameFromStr("SceneState")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connection_unbinds")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

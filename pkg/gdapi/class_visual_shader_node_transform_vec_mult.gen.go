@@ -17,6 +17,16 @@ func (me *VisualShaderNodeTransformVecMult) BaseClass() string {
   return "VisualShaderNodeTransformVecMult"
 }
 
+func NewVisualShaderNodeTransformVecMult() *VisualShaderNodeTransformVecMult {
+  str := StringNameFromStr("VisualShaderNodeTransformVecMult") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeTransformVecMult{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -51,7 +61,9 @@ func  (me *VisualShaderNodeTransformVecMult) SetOperator(op VisualShaderNodeTran
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1785665912) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&op), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeTransformVecMult) GetOperator() VisualShaderNodeTransformVecMultOperator {
@@ -60,9 +72,10 @@ func  (me *VisualShaderNodeTransformVecMult) GetOperator() VisualShaderNodeTrans
   methodNameV := StringNameFromStr("get_operator")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1622088722) // FIXME: should cache?
-  var ret VisualShaderNodeTransformVecMultOperator
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeTransformVecMultOperator
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

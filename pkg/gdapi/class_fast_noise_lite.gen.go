@@ -17,6 +17,16 @@ func (me *FastNoiseLite) BaseClass() string {
   return "FastNoiseLite"
 }
 
+func NewFastNoiseLite() *FastNoiseLite {
+  str := StringNameFromStr("FastNoiseLite") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &FastNoiseLite{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -93,7 +103,9 @@ func  (me *FastNoiseLite) SetNoiseType(type_ FastNoiseLiteNoiseType, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2624461392) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FastNoiseLite) GetNoiseType() FastNoiseLiteNoiseType {
@@ -102,54 +114,61 @@ func  (me *FastNoiseLite) GetNoiseType() FastNoiseLiteNoiseType {
   methodNameV := StringNameFromStr("get_noise_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1458108610) // FIXME: should cache?
-  var ret FastNoiseLiteNoiseType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret FastNoiseLiteNoiseType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *FastNoiseLite) SetSeed(seed int, )  {
+func  (me *FastNoiseLite) SetSeed(seed int64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_seed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&seed), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetSeed() int {
+func  (me *FastNoiseLite) GetSeed() int64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_seed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *FastNoiseLite) SetFrequency(freq float32, )  {
+func  (me *FastNoiseLite) SetFrequency(freq float64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_frequency")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&freq), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetFrequency() float32 {
+func  (me *FastNoiseLite) GetFrequency() float64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_frequency")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *FastNoiseLite) SetOffset(offset Vector3, )  {
@@ -159,7 +178,9 @@ func  (me *FastNoiseLite) SetOffset(offset Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FastNoiseLite) GetOffset() Vector3 {
@@ -168,10 +189,11 @@ func  (me *FastNoiseLite) GetOffset() Vector3 {
   methodNameV := StringNameFromStr("get_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *FastNoiseLite) SetFractalType(type_ FastNoiseLiteFractalType, )  {
@@ -181,7 +203,9 @@ func  (me *FastNoiseLite) SetFractalType(type_ FastNoiseLiteFractalType, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4132731174) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FastNoiseLite) GetFractalType() FastNoiseLiteFractalType {
@@ -190,120 +214,136 @@ func  (me *FastNoiseLite) GetFractalType() FastNoiseLiteFractalType {
   methodNameV := StringNameFromStr("get_fractal_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1036889279) // FIXME: should cache?
-  var ret FastNoiseLiteFractalType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret FastNoiseLiteFractalType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *FastNoiseLite) SetFractalOctaves(octave_count int, )  {
+func  (me *FastNoiseLite) SetFractalOctaves(octave_count int64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_fractal_octaves")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&octave_count), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetFractalOctaves() int {
+func  (me *FastNoiseLite) GetFractalOctaves() int64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_fractal_octaves")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *FastNoiseLite) SetFractalLacunarity(lacunarity float32, )  {
+func  (me *FastNoiseLite) SetFractalLacunarity(lacunarity float64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_fractal_lacunarity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&lacunarity), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetFractalLacunarity() float32 {
+func  (me *FastNoiseLite) GetFractalLacunarity() float64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_fractal_lacunarity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *FastNoiseLite) SetFractalGain(gain float32, )  {
+func  (me *FastNoiseLite) SetFractalGain(gain float64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_fractal_gain")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&gain), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetFractalGain() float32 {
+func  (me *FastNoiseLite) GetFractalGain() float64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_fractal_gain")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *FastNoiseLite) SetFractalWeightedStrength(weighted_strength float32, )  {
+func  (me *FastNoiseLite) SetFractalWeightedStrength(weighted_strength float64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_fractal_weighted_strength")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&weighted_strength), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetFractalWeightedStrength() float32 {
+func  (me *FastNoiseLite) GetFractalWeightedStrength() float64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_fractal_weighted_strength")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *FastNoiseLite) SetFractalPingPongStrength(ping_pong_strength float32, )  {
+func  (me *FastNoiseLite) SetFractalPingPongStrength(ping_pong_strength float64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_fractal_ping_pong_strength")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ping_pong_strength), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetFractalPingPongStrength() float32 {
+func  (me *FastNoiseLite) GetFractalPingPongStrength() float64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_fractal_ping_pong_strength")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *FastNoiseLite) SetCellularDistanceFunction(func_ FastNoiseLiteCellularDistanceFunction, )  {
@@ -313,7 +353,9 @@ func  (me *FastNoiseLite) SetCellularDistanceFunction(func_ FastNoiseLiteCellula
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1006013267) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&func_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FastNoiseLite) GetCellularDistanceFunction() FastNoiseLiteCellularDistanceFunction {
@@ -322,32 +364,36 @@ func  (me *FastNoiseLite) GetCellularDistanceFunction() FastNoiseLiteCellularDis
   methodNameV := StringNameFromStr("get_cellular_distance_function")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2021274088) // FIXME: should cache?
-  var ret FastNoiseLiteCellularDistanceFunction
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret FastNoiseLiteCellularDistanceFunction
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *FastNoiseLite) SetCellularJitter(jitter float32, )  {
+func  (me *FastNoiseLite) SetCellularJitter(jitter float64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_cellular_jitter")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&jitter), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetCellularJitter() float32 {
+func  (me *FastNoiseLite) GetCellularJitter() float64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_cellular_jitter")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *FastNoiseLite) SetCellularReturnType(ret FastNoiseLiteCellularReturnType, )  {
@@ -357,7 +403,9 @@ func  (me *FastNoiseLite) SetCellularReturnType(ret FastNoiseLiteCellularReturnT
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2654169698) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ret), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FastNoiseLite) GetCellularReturnType() FastNoiseLiteCellularReturnType {
@@ -366,9 +414,10 @@ func  (me *FastNoiseLite) GetCellularReturnType() FastNoiseLiteCellularReturnTyp
   methodNameV := StringNameFromStr("get_cellular_return_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3699796343) // FIXME: should cache?
-  var ret FastNoiseLiteCellularReturnType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret FastNoiseLiteCellularReturnType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -379,7 +428,9 @@ func  (me *FastNoiseLite) SetDomainWarpEnabled(domain_warp_enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&domain_warp_enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FastNoiseLite) IsDomainWarpEnabled() bool {
@@ -388,10 +439,11 @@ func  (me *FastNoiseLite) IsDomainWarpEnabled() bool {
   methodNameV := StringNameFromStr("is_domain_warp_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *FastNoiseLite) SetDomainWarpType(domain_warp_type FastNoiseLiteDomainWarpType, )  {
@@ -401,7 +453,9 @@ func  (me *FastNoiseLite) SetDomainWarpType(domain_warp_type FastNoiseLiteDomain
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3629692980) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&domain_warp_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FastNoiseLite) GetDomainWarpType() FastNoiseLiteDomainWarpType {
@@ -410,54 +464,61 @@ func  (me *FastNoiseLite) GetDomainWarpType() FastNoiseLiteDomainWarpType {
   methodNameV := StringNameFromStr("get_domain_warp_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2980162020) // FIXME: should cache?
-  var ret FastNoiseLiteDomainWarpType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret FastNoiseLiteDomainWarpType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *FastNoiseLite) SetDomainWarpAmplitude(domain_warp_amplitude float32, )  {
+func  (me *FastNoiseLite) SetDomainWarpAmplitude(domain_warp_amplitude float64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_domain_warp_amplitude")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&domain_warp_amplitude), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetDomainWarpAmplitude() float32 {
+func  (me *FastNoiseLite) GetDomainWarpAmplitude() float64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_domain_warp_amplitude")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *FastNoiseLite) SetDomainWarpFrequency(domain_warp_frequency float32, )  {
+func  (me *FastNoiseLite) SetDomainWarpFrequency(domain_warp_frequency float64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_domain_warp_frequency")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&domain_warp_frequency), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetDomainWarpFrequency() float32 {
+func  (me *FastNoiseLite) GetDomainWarpFrequency() float64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_domain_warp_frequency")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *FastNoiseLite) SetDomainWarpFractalType(domain_warp_fractal_type FastNoiseLiteDomainWarpFractalType, )  {
@@ -467,7 +528,9 @@ func  (me *FastNoiseLite) SetDomainWarpFractalType(domain_warp_fractal_type Fast
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3999408287) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&domain_warp_fractal_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FastNoiseLite) GetDomainWarpFractalType() FastNoiseLiteDomainWarpFractalType {
@@ -476,76 +539,86 @@ func  (me *FastNoiseLite) GetDomainWarpFractalType() FastNoiseLiteDomainWarpFrac
   methodNameV := StringNameFromStr("get_domain_warp_fractal_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 407716934) // FIXME: should cache?
-  var ret FastNoiseLiteDomainWarpFractalType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret FastNoiseLiteDomainWarpFractalType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *FastNoiseLite) SetDomainWarpFractalOctaves(domain_warp_octave_count int, )  {
+func  (me *FastNoiseLite) SetDomainWarpFractalOctaves(domain_warp_octave_count int64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_domain_warp_fractal_octaves")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&domain_warp_octave_count), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetDomainWarpFractalOctaves() int {
+func  (me *FastNoiseLite) GetDomainWarpFractalOctaves() int64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_domain_warp_fractal_octaves")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *FastNoiseLite) SetDomainWarpFractalLacunarity(domain_warp_lacunarity float32, )  {
+func  (me *FastNoiseLite) SetDomainWarpFractalLacunarity(domain_warp_lacunarity float64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_domain_warp_fractal_lacunarity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&domain_warp_lacunarity), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetDomainWarpFractalLacunarity() float32 {
+func  (me *FastNoiseLite) GetDomainWarpFractalLacunarity() float64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_domain_warp_fractal_lacunarity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *FastNoiseLite) SetDomainWarpFractalGain(domain_warp_gain float32, )  {
+func  (me *FastNoiseLite) SetDomainWarpFractalGain(domain_warp_gain float64, )  {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_domain_warp_fractal_gain")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&domain_warp_gain), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *FastNoiseLite) GetDomainWarpFractalGain() float32 {
+func  (me *FastNoiseLite) GetDomainWarpFractalGain() float64 {
   classNameV := StringNameFromStr("FastNoiseLite")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_domain_warp_fractal_gain")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

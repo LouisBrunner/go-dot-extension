@@ -17,6 +17,16 @@ func (me *CurveTexture) BaseClass() string {
   return "CurveTexture"
 }
 
+func NewCurveTexture() *CurveTexture {
+  str := StringNameFromStr("CurveTexture") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CurveTexture{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,14 +51,16 @@ func (me *CurveTexture) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *CurveTexture) SetWidth(width int, )  {
+func  (me *CurveTexture) SetWidth(width int64, )  {
   classNameV := StringNameFromStr("CurveTexture")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CurveTexture) SetCurve(curve Curve, )  {
@@ -58,7 +70,9 @@ func  (me *CurveTexture) SetCurve(curve Curve, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CurveTexture) GetCurve() Curve {
@@ -67,10 +81,11 @@ func  (me *CurveTexture) GetCurve() Curve {
   methodNameV := StringNameFromStr("get_curve")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
-  var ret Curve
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCurve()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CurveTexture) SetTextureMode(texture_mode CurveTextureTextureMode, )  {
@@ -80,7 +95,9 @@ func  (me *CurveTexture) SetTextureMode(texture_mode CurveTextureTextureMode, ) 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1321955367) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&texture_mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CurveTexture) GetTextureMode() CurveTextureTextureMode {
@@ -89,9 +106,10 @@ func  (me *CurveTexture) GetTextureMode() CurveTextureTextureMode {
   methodNameV := StringNameFromStr("get_texture_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 715756376) // FIXME: should cache?
-  var ret CurveTextureTextureMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret CurveTextureTextureMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

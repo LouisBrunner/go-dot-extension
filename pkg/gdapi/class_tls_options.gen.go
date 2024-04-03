@@ -17,6 +17,16 @@ func (me *TLSOptions) BaseClass() string {
   return "TLSOptions"
 }
 
+func NewTLSOptions() *TLSOptions {
+  str := StringNameFromStr("TLSOptions") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &TLSOptions{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  TLSOptionsClient(trusted_chain X509Certificate, common_name_override Strin
   methodNameV := StringNameFromStr("client")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3565000357) // FIXME: should cache?
-  var ret TLSOptions
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(trusted_chain.AsCTypePtr()), gdc.ConstTypePtr(common_name_override.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTLSOptions()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  TLSOptionsClientUnsafe(trusted_chain X509Certificate, ) TLSOptions {
@@ -53,10 +64,11 @@ func  TLSOptionsClientUnsafe(trusted_chain X509Certificate, ) TLSOptions {
   methodNameV := StringNameFromStr("client_unsafe")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2090251749) // FIXME: should cache?
-  var ret TLSOptions
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(trusted_chain.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTLSOptions()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  TLSOptionsServer(key CryptoKey, certificate X509Certificate, ) TLSOptions {
@@ -65,10 +77,11 @@ func  TLSOptionsServer(key CryptoKey, certificate X509Certificate, ) TLSOptions 
   methodNameV := StringNameFromStr("server")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36969539) // FIXME: should cache?
-  var ret TLSOptions
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(certificate.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTLSOptions()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

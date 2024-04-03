@@ -17,6 +17,16 @@ func (me *HFlowContainer) BaseClass() string {
   return "HFlowContainer"
 }
 
+func NewHFlowContainer() *HFlowContainer {
+  str := StringNameFromStr("HFlowContainer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &HFlowContainer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

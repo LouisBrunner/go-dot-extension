@@ -25,6 +25,16 @@ func (me *{{$Class}}) BaseClass() string {
   return "{{.Name}}"
 }
 
+func New{{$Class}}() *{{$Class}} {
+  str := StringNameFromStr("{{.Name}}") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &{{$Class}}{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 {{template "class_enums" .}}
 
 func (me *{{$Class}}) Type() gdc.VariantType {
@@ -44,17 +54,16 @@ func (me *{{$Class}}) AsCTypePtr() gdc.ConstTypePtr {
 {{- if ne .Hash 0}}
 
 func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .Name -}}
-({{range .Arguments}}{{mapName .Name}} {{mapType .Type}}, {{end}}
+({{range .Arguments}}{{mapName .Name}} {{mapWideType .Type}}, {{end}}
 {{- if .IsVarArg}}varargs ...Variant{{end -}}
-) {{if .ReturnValue}}{{mapType .ReturnValue.Type}}{{end}} {
+) {{if .ReturnValue}}{{mapWideType .ReturnValue.Type}}{{end}} {
   classNameV := StringNameFromStr("{{$.Name}}")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("{{.Name}}")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), {{.Hash}}) // FIXME: should cache?
 {{- $vartype := ternary .IsVarArg "ConstVariantPtr" "ConstTypePtr"}}
-{{if .ReturnValue}}  var ret {{mapType .ReturnValue.Type}}
-{{end}}  cargs := []gdc.{{$vartype}}{
+  cargs := []gdc.{{$vartype}}{
     {{- range .Arguments}}
 {{- if isExported (mapType .Type) -}}
   {{- if startsWith .Type "enum::" -}}
@@ -69,19 +78,55 @@ func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .
 {{- end -}}
     , {{ end -}}
   }
+
 {{- if .IsVarArg}}
+{{if .ReturnValue}}  ret := NewVariant()
+{{end}}
   for _, v := range varargs {
     cargs = append(cargs, v.AsCPtr())
   }
-  err := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), gdc.Int(len(cargs)), {{if .ReturnValue}}gdc.UninitializedVariantPtr(&ret){{else}}nil{{end}}, err)
-  if err.Error != gdc.CallOk {
+  cerr := &gdc.CallError{}
+  giface.ObjectMethodBindCall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), gdc.Int(len(cargs)), {{if .ReturnValue}}ret.asUninitialized(){{else}}nil{{end}}, cerr)
+  if cerr.Error != gdc.CallOk {
+    panic(cerr) // TODO: return `cerr`?
+  }
+{{if .ReturnValue}}  {{if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::") -}}
+defer ret.Destroy()
+  retInt, err := ret.AsInt()
+  if err != nil {
     panic(err) // TODO: return `err`?
   }
+  return {{mapType .ReturnValue.Type}}(retInt.Get())
+{{- else -}}
+return *ret
+{{- end}}{{end}}
 {{else}}
-  giface.ObjectMethodBindPtrcall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), {{if .ReturnValue}}gdc.TypePtr(&ret){{else}}nil{{end}})
+{{if .ReturnValue}}  {{if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::") -}}
+var ret {{mapType .ReturnValue.Type}}
+{{- else if startsWith .ReturnValue.Type "typedarray::" -}}
+ret := NewArray()
+  defer ret.Destroy()
+{{- else -}}
+ret := New{{mapClass .ReturnValue.Type}}()
 {{- end}}
-{{if .ReturnValue}}  return ret
+{{end}}
+  giface.ObjectMethodBindPtrcall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), {{if .ReturnValue -}}
+{{- if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::") -}}
+gdc.TypePtr(unsafe.Pointer(&ret))
+{{- else -}}
+ret.AsTypePtr()
+{{- end -}}
+{{- else}}nil{{end}})
+{{if .ReturnValue}}  return {{if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::") -}}
+ret
+{{- else if startsWith .ReturnValue.Type "typedarray::" -}}
+ConvertArrayToSlice[{{trimPrefix (mapWideType .ReturnValue.Type) "[]"}}](ret)
+{{- else if isExported (mapType .ReturnValue.Type) -}}
+*ret
+{{- else -}}
+ret.Get()
+{{- end}}
+{{- end}}
 {{end -}}
 }
 {{- end}}{{end}}

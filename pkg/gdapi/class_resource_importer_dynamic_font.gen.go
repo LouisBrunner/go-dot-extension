@@ -17,6 +17,16 @@ func (me *ResourceImporterDynamicFont) BaseClass() string {
   return "ResourceImporterDynamicFont"
 }
 
+func NewResourceImporterDynamicFont() *ResourceImporterDynamicFont {
+  str := StringNameFromStr("ResourceImporterDynamicFont") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ResourceImporterDynamicFont{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *PlaceholderCubemapArray) BaseClass() string {
   return "PlaceholderCubemapArray"
 }
 
+func NewPlaceholderCubemapArray() *PlaceholderCubemapArray {
+  str := StringNameFromStr("PlaceholderCubemapArray") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PlaceholderCubemapArray{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

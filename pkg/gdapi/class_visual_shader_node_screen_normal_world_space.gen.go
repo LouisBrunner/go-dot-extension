@@ -17,6 +17,16 @@ func (me *VisualShaderNodeScreenNormalWorldSpace) BaseClass() string {
   return "VisualShaderNodeScreenNormalWorldSpace"
 }
 
+func NewVisualShaderNodeScreenNormalWorldSpace() *VisualShaderNodeScreenNormalWorldSpace {
+  str := StringNameFromStr("VisualShaderNodeScreenNormalWorldSpace") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeScreenNormalWorldSpace{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

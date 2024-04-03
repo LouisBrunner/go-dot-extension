@@ -17,6 +17,16 @@ func (me *MultiplayerAPI) BaseClass() string {
   return "MultiplayerAPI"
 }
 
+func NewMultiplayerAPI() *MultiplayerAPI {
+  str := StringNameFromStr("MultiplayerAPI") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &MultiplayerAPI{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -48,10 +58,11 @@ func  (me *MultiplayerAPI) HasMultiplayerPeer() bool {
   methodNameV := StringNameFromStr("has_multiplayer_peer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *MultiplayerAPI) GetMultiplayerPeer() MultiplayerPeer {
@@ -60,10 +71,11 @@ func  (me *MultiplayerAPI) GetMultiplayerPeer() MultiplayerPeer {
   methodNameV := StringNameFromStr("get_multiplayer_peer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3223692825) // FIXME: should cache?
-  var ret MultiplayerPeer
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewMultiplayerPeer()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *MultiplayerAPI) SetMultiplayerPeer(peer MultiplayerPeer, )  {
@@ -73,19 +85,22 @@ func  (me *MultiplayerAPI) SetMultiplayerPeer(peer MultiplayerPeer, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3694835298) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(peer.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MultiplayerAPI) GetUniqueId() int {
+func  (me *MultiplayerAPI) GetUniqueId() int64 {
   classNameV := StringNameFromStr("MultiplayerAPI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_unique_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *MultiplayerAPI) IsServer() bool {
@@ -94,22 +109,24 @@ func  (me *MultiplayerAPI) IsServer() bool {
   methodNameV := StringNameFromStr("is_server")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MultiplayerAPI) GetRemoteSenderId() int {
+func  (me *MultiplayerAPI) GetRemoteSenderId() int64 {
   classNameV := StringNameFromStr("MultiplayerAPI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_remote_sender_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *MultiplayerAPI) Poll() Error {
@@ -118,21 +135,23 @@ func  (me *MultiplayerAPI) Poll() Error {
   methodNameV := StringNameFromStr("poll")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *MultiplayerAPI) Rpc(peer int, object Object, method StringName, arguments Array, ) Error {
+func  (me *MultiplayerAPI) Rpc(peer int64, object Object, method StringName, arguments Array, ) Error {
   classNameV := StringNameFromStr("MultiplayerAPI")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("rpc")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2077486355) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer), gdc.ConstTypePtr(object.AsCTypePtr()), gdc.ConstTypePtr(method.AsCTypePtr()), gdc.ConstTypePtr(arguments.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -142,9 +161,10 @@ func  (me *MultiplayerAPI) ObjectConfigurationAdd(object Object, configuration V
   methodNameV := StringNameFromStr("object_configuration_add")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1171879464) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(object.AsCTypePtr()), gdc.ConstTypePtr(configuration.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -154,9 +174,10 @@ func  (me *MultiplayerAPI) ObjectConfigurationRemove(object Object, configuratio
   methodNameV := StringNameFromStr("object_configuration_remove")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1171879464) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(object.AsCTypePtr()), gdc.ConstTypePtr(configuration.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -166,10 +187,11 @@ func  (me *MultiplayerAPI) GetPeers() PackedInt32Array {
   methodNameV := StringNameFromStr("get_peers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 969006518) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  MultiplayerAPISetDefaultInterface(interface_name StringName, )  {
@@ -179,7 +201,9 @@ func  MultiplayerAPISetDefaultInterface(interface_name StringName, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(interface_name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
+
 }
 
 func  MultiplayerAPIGetDefaultInterface() StringName {
@@ -188,10 +212,11 @@ func  MultiplayerAPIGetDefaultInterface() StringName {
   methodNameV := StringNameFromStr("get_default_interface")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2737447660) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  MultiplayerAPICreateDefaultInterface() MultiplayerAPI {
@@ -200,10 +225,11 @@ func  MultiplayerAPICreateDefaultInterface() MultiplayerAPI {
   methodNameV := StringNameFromStr("create_default_interface")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3294156723) // FIXME: should cache?
-  var ret MultiplayerAPI
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewMultiplayerAPI()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

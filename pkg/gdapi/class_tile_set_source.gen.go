@@ -17,6 +17,16 @@ func (me *TileSetSource) BaseClass() string {
   return "TileSetSource"
 }
 
+func NewTileSetSource() *TileSetSource {
+  str := StringNameFromStr("TileSetSource") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &TileSetSource{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,28 +45,30 @@ func (me *TileSetSource) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *TileSetSource) GetTilesCount() int {
+func  (me *TileSetSource) GetTilesCount() int64 {
   classNameV := StringNameFromStr("TileSetSource")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tiles_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSetSource) GetTileId(index int, ) Vector2i {
+func  (me *TileSetSource) GetTileId(index int64, ) Vector2i {
   classNameV := StringNameFromStr("TileSetSource")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tile_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 880721226) // FIXME: should cache?
-  var ret Vector2i
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2i()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *TileSetSource) HasTile(atlas_coords Vector2i, ) bool {
@@ -65,46 +77,50 @@ func  (me *TileSetSource) HasTile(atlas_coords Vector2i, ) bool {
   methodNameV := StringNameFromStr("has_tile")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3900751641) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSetSource) GetAlternativeTilesCount(atlas_coords Vector2i, ) int {
+func  (me *TileSetSource) GetAlternativeTilesCount(atlas_coords Vector2i, ) int64 {
   classNameV := StringNameFromStr("TileSetSource")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_alternative_tiles_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2485466453) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSetSource) GetAlternativeTileId(atlas_coords Vector2i, index int, ) int {
+func  (me *TileSetSource) GetAlternativeTileId(atlas_coords Vector2i, index int64, ) int64 {
   classNameV := StringNameFromStr("TileSetSource")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_alternative_tile_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 89881719) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), gdc.ConstTypePtr(&index), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TileSetSource) HasAlternativeTile(atlas_coords Vector2i, alternative_tile int, ) bool {
+func  (me *TileSetSource) HasAlternativeTile(atlas_coords Vector2i, alternative_tile int64, ) bool {
   classNameV := StringNameFromStr("TileSetSource")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("has_alternative_tile")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1073731340) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(atlas_coords.AsCTypePtr()), gdc.ConstTypePtr(&alternative_tile), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

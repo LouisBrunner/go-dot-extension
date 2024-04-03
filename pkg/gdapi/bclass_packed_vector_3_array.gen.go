@@ -106,21 +106,18 @@ func (me *PackedVector3Array) asUninitialized() gdc.UninitializedTypePtr {
 
 // Methods
 
-func (me *PackedVector3Array) Size() int {
+func (me *PackedVector3Array) Size() int64 {
   name := StringNameFromStr("size")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3173160232) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
-  var ret int
-  pinner.Pin(&ret)
+  ret := NewInt()
+  defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) IsEmpty() bool {
@@ -128,29 +125,25 @@ func (me *PackedVector3Array) IsEmpty() bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3918633141) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
-  var ret bool
-  pinner.Pin(&ret)
+  ret := NewBool()
+  defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
-func (me *PackedVector3Array) Set(index int, value Vector3, )  {
+func (me *PackedVector3Array) Set(index int64, value Vector3, )  {
   name := StringNameFromStr("set")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3975343409) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  varg0 := NewIntFromInt(index)
+  defer varg0.Destroy()
 
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&index)), value.AsCTypePtr(), }
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), value.AsCTypePtr(), }
 
-  pinner.Pin(&index)
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
@@ -160,16 +153,14 @@ func (me *PackedVector3Array) PushBack(value Vector3, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3295363524) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewBool()
+  defer ret.Destroy()
 
-  var ret bool
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) Append(value Vector3, ) bool {
@@ -177,16 +168,14 @@ func (me *PackedVector3Array) Append(value Vector3, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3295363524) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewBool()
+  defer ret.Destroy()
 
-  var ret bool
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) AppendArray(array PackedVector3Array, )  {
@@ -194,8 +183,6 @@ func (me *PackedVector3Array) AppendArray(array PackedVector3Array, )  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 203538016) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
 
   args := []gdc.ConstTypePtr{array.AsCTypePtr(), }
 
@@ -203,37 +190,34 @@ func (me *PackedVector3Array) AppendArray(array PackedVector3Array, )  {
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func (me *PackedVector3Array) RemoveAt(index int, )  {
+func (me *PackedVector3Array) RemoveAt(index int64, )  {
   name := StringNameFromStr("remove_at")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 2823966027) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  varg0 := NewIntFromInt(index)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&index)), }
-
-  pinner.Pin(&index)
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func (me *PackedVector3Array) Insert(at_index int, value Vector3, ) int {
+func (me *PackedVector3Array) Insert(at_index int64, value Vector3, ) int64 {
   name := StringNameFromStr("insert")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3892262309) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewInt()
+  defer ret.Destroy()
+  varg0 := NewIntFromInt(at_index)
+  defer varg0.Destroy()
 
-  var ret int
-  pinner.Pin(&ret)
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&at_index)), value.AsCTypePtr(), }
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), value.AsCTypePtr(), }
 
-  pinner.Pin(&at_index)
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) Fill(value Vector3, )  {
@@ -241,8 +225,6 @@ func (me *PackedVector3Array) Fill(value Vector3, )  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3726392409) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
 
@@ -250,31 +232,26 @@ func (me *PackedVector3Array) Fill(value Vector3, )  {
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func (me *PackedVector3Array) Resize(new_size int, ) int {
+func (me *PackedVector3Array) Resize(new_size int64, ) int64 {
   name := StringNameFromStr("resize")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 848867239) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewInt()
+  defer ret.Destroy()
+  varg0 := NewIntFromInt(new_size)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
-  var ret int
-  pinner.Pin(&ret)
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&new_size)), }
 
-  pinner.Pin(&new_size)
-
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) Clear()  {
   name := StringNameFromStr("clear")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3218959716) // FIXME: should cache?
-
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
 
   args := []gdc.ConstTypePtr{}
 
@@ -287,16 +264,14 @@ func (me *PackedVector3Array) Has(value Vector3, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 1749054343) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewBool()
+  defer ret.Destroy()
 
-  var ret bool
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) Reverse()  {
@@ -304,32 +279,28 @@ func (me *PackedVector3Array) Reverse()  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
   args := []gdc.ConstTypePtr{}
 
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func (me *PackedVector3Array) Slice(begin int, end int, ) PackedVector3Array {
+func (me *PackedVector3Array) Slice(begin int64, end int64, ) PackedVector3Array {
   name := StringNameFromStr("slice")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 2086131305) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewPackedVector3Array()
 
-  var ret PackedVector3Array
-  pinner.Pin(&ret)
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&begin)), gdc.ConstTypePtr(unsafe.Pointer(&end)), }
+  varg0 := NewIntFromInt(begin)
+  defer varg0.Destroy()
+  varg1 := NewIntFromInt(end)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
 
-  pinner.Pin(&begin)
-  pinner.Pin(&end)
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
 func (me *PackedVector3Array) ToByteArray() PackedByteArray {
@@ -337,16 +308,13 @@ func (me *PackedVector3Array) ToByteArray() PackedByteArray {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 247621236) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewPackedByteArray()
 
-  var ret PackedByteArray
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
 func (me *PackedVector3Array) Sort()  {
@@ -354,31 +322,27 @@ func (me *PackedVector3Array) Sort()  {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3218959716) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
   args := []gdc.ConstTypePtr{}
 
 
   giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
-func (me *PackedVector3Array) Bsearch(value Vector3, before bool, ) int {
+func (me *PackedVector3Array) Bsearch(value Vector3, before bool, ) int64 {
   name := StringNameFromStr("bsearch")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 219263630) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewInt()
+  defer ret.Destroy()
 
-  var ret int
-  pinner.Pin(&ret)
-  args := []gdc.ConstTypePtr{value.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&before)), }
+  varg1 := NewBoolFromBool(before)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), varg1.AsCTypePtr(), }
 
-  pinner.Pin(&before)
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) Duplicate() PackedVector3Array {
@@ -386,134 +350,127 @@ func (me *PackedVector3Array) Duplicate() PackedVector3Array {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 2754175465) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewPackedVector3Array()
 
-  var ret PackedVector3Array
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
-func (me *PackedVector3Array) Find(value Vector3, from int, ) int {
+func (me *PackedVector3Array) Find(value Vector3, from int64, ) int64 {
   name := StringNameFromStr("find")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3718155780) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewInt()
+  defer ret.Destroy()
 
-  var ret int
-  pinner.Pin(&ret)
-  args := []gdc.ConstTypePtr{value.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&from)), }
+  varg1 := NewIntFromInt(from)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), varg1.AsCTypePtr(), }
 
-  pinner.Pin(&from)
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
-func (me *PackedVector3Array) Rfind(value Vector3, from int, ) int {
+func (me *PackedVector3Array) Rfind(value Vector3, from int64, ) int64 {
   name := StringNameFromStr("rfind")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 3718155780) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewInt()
+  defer ret.Destroy()
 
-  var ret int
-  pinner.Pin(&ret)
-  args := []gdc.ConstTypePtr{value.AsCTypePtr(), gdc.ConstTypePtr(unsafe.Pointer(&from)), }
+  varg1 := NewIntFromInt(from)
+  defer varg1.Destroy()
+  args := []gdc.ConstTypePtr{value.AsCTypePtr(), varg1.AsCTypePtr(), }
 
-  pinner.Pin(&from)
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
-func (me *PackedVector3Array) Count(value Vector3, ) int {
+func (me *PackedVector3Array) Count(value Vector3, ) int64 {
   name := StringNameFromStr("count")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedVector3Array, name.AsCPtr(), 194580386) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewInt()
+  defer ret.Destroy()
 
-  var ret int
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 // Operators
 
 func (me *PackedVector3Array) EqualVariant(right Variant) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) NotEqualVariant(right Variant) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) Not() bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) MultiplyTransform3D(right Transform3D) PackedVector3Array {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
-  var ret PackedVector3Array
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector3Array()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return *ret
 }
 
 func (me *PackedVector3Array) InDictionary(right Dictionary) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) InArray(right Array) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) EqualPackedVector3Array(right PackedVector3Array) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) NotEqualPackedVector3Array(right PackedVector3Array) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *PackedVector3Array) AddPackedVector3Array(right PackedVector3Array) PackedVector3Array {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAdd, me.Type(), right.Type()) // FIXME: cache
-  var ret PackedVector3Array
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector3Array()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return *ret
 }
 
 // Members

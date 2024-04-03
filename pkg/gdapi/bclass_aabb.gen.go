@@ -109,16 +109,13 @@ func (me *AABB) Abs() AABB {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1576868580) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewAABB()
 
-  var ret AABB
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
 func (me *AABB) GetCenter() Vector3 {
@@ -126,33 +123,27 @@ func (me *AABB) GetCenter() Vector3 {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1776574132) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewVector3()
 
-  var ret Vector3
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
-func (me *AABB) GetVolume() float32 {
+func (me *AABB) GetVolume() float64 {
   name := StringNameFromStr("get_volume")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 466405837) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
-  var ret float32
-  pinner.Pin(&ret)
+  ret := NewFloat()
+  defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *AABB) HasVolume() bool {
@@ -160,16 +151,13 @@ func (me *AABB) HasVolume() bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 3918633141) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
-  var ret bool
-  pinner.Pin(&ret)
+  ret := NewBool()
+  defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *AABB) HasSurface() bool {
@@ -177,16 +165,13 @@ func (me *AABB) HasSurface() bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 3918633141) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
-  var ret bool
-  pinner.Pin(&ret)
+  ret := NewBool()
+  defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *AABB) HasPoint(point Vector3, ) bool {
@@ -194,16 +179,14 @@ func (me *AABB) HasPoint(point Vector3, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1749054343) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewBool()
+  defer ret.Destroy()
 
-  var ret bool
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *AABB) IsEqualApprox(aabb AABB, ) bool {
@@ -211,16 +194,14 @@ func (me *AABB) IsEqualApprox(aabb AABB, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 299946684) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewBool()
+  defer ret.Destroy()
 
-  var ret bool
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{aabb.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *AABB) IsFinite() bool {
@@ -228,16 +209,13 @@ func (me *AABB) IsFinite() bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 3918633141) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
-  var ret bool
-  pinner.Pin(&ret)
+  ret := NewBool()
+  defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *AABB) Intersects(with AABB, ) bool {
@@ -245,16 +223,14 @@ func (me *AABB) Intersects(with AABB, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 299946684) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewBool()
+  defer ret.Destroy()
 
-  var ret bool
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *AABB) Encloses(with AABB, ) bool {
@@ -262,16 +238,14 @@ func (me *AABB) Encloses(with AABB, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 299946684) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewBool()
+  defer ret.Destroy()
 
-  var ret bool
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *AABB) IntersectsPlane(plane Plane, ) bool {
@@ -279,16 +253,14 @@ func (me *AABB) IntersectsPlane(plane Plane, ) bool {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1150170233) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewBool()
+  defer ret.Destroy()
 
-  var ret bool
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{plane.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *AABB) Intersection(with AABB, ) AABB {
@@ -296,16 +268,14 @@ func (me *AABB) Intersection(with AABB, ) AABB {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1271470306) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewAABB()
 
-  var ret AABB
-  pinner.Pin(&ret)
+
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
 func (me *AABB) Merge(with AABB, ) AABB {
@@ -313,16 +283,14 @@ func (me *AABB) Merge(with AABB, ) AABB {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1271470306) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewAABB()
 
-  var ret AABB
-  pinner.Pin(&ret)
+
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
 func (me *AABB) Expand(to_point Vector3, ) AABB {
@@ -330,34 +298,30 @@ func (me *AABB) Expand(to_point Vector3, ) AABB {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 2851643018) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewAABB()
 
-  var ret AABB
-  pinner.Pin(&ret)
+
   args := []gdc.ConstTypePtr{to_point.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
-func (me *AABB) Grow(by float32, ) AABB {
+func (me *AABB) Grow(by float64, ) AABB {
   name := StringNameFromStr("grow")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 239217291) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewAABB()
 
-  var ret AABB
-  pinner.Pin(&ret)
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&by)), }
+  varg0 := NewFloatFromFloat32(by)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
-  pinner.Pin(&by)
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
 func (me *AABB) GetSupport(dir Vector3, ) Vector3 {
@@ -365,16 +329,14 @@ func (me *AABB) GetSupport(dir Vector3, ) Vector3 {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 2923479887) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewVector3()
 
-  var ret Vector3
-  pinner.Pin(&ret)
+
   args := []gdc.ConstTypePtr{dir.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
 func (me *AABB) GetLongestAxis() Vector3 {
@@ -382,50 +344,41 @@ func (me *AABB) GetLongestAxis() Vector3 {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1776574132) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewVector3()
 
-  var ret Vector3
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
-func (me *AABB) GetLongestAxisIndex() int {
+func (me *AABB) GetLongestAxisIndex() int64 {
   name := StringNameFromStr("get_longest_axis_index")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 3173160232) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
-  var ret int
-  pinner.Pin(&ret)
+  ret := NewInt()
+  defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
-func (me *AABB) GetLongestAxisSize() float32 {
+func (me *AABB) GetLongestAxisSize() float64 {
   name := StringNameFromStr("get_longest_axis_size")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 466405837) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
-  var ret float32
-  pinner.Pin(&ret)
+  ret := NewFloat()
+  defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
 func (me *AABB) GetShortestAxis() Vector3 {
@@ -433,68 +386,57 @@ func (me *AABB) GetShortestAxis() Vector3 {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1776574132) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewVector3()
 
-  var ret Vector3
-  pinner.Pin(&ret)
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
-func (me *AABB) GetShortestAxisIndex() int {
+func (me *AABB) GetShortestAxisIndex() int64 {
   name := StringNameFromStr("get_shortest_axis_index")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 3173160232) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
-  var ret int
-  pinner.Pin(&ret)
+  ret := NewInt()
+  defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
-func (me *AABB) GetShortestAxisSize() float32 {
+func (me *AABB) GetShortestAxisSize() float64 {
   name := StringNameFromStr("get_shortest_axis_size")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 466405837) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-
-  var ret float32
-  pinner.Pin(&ret)
+  ret := NewFloat()
+  defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return ret.Get()
 }
 
-func (me *AABB) GetEndpoint(idx int, ) Vector3 {
+func (me *AABB) GetEndpoint(idx int64, ) Vector3 {
   name := StringNameFromStr("get_endpoint")
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1394941017) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewVector3()
 
-  var ret Vector3
-  pinner.Pin(&ret)
-  args := []gdc.ConstTypePtr{gdc.ConstTypePtr(unsafe.Pointer(&idx)), }
+  varg0 := NewIntFromInt(idx)
+  defer varg0.Destroy()
+  args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
-  pinner.Pin(&idx)
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
 func (me *AABB) IntersectsSegment(from Vector3, to Vector3, ) Variant {
@@ -502,16 +444,15 @@ func (me *AABB) IntersectsSegment(from Vector3, to Vector3, ) Variant {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 2048133369) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewVariant()
 
-  var ret Variant
-  pinner.Pin(&ret)
+
+
   args := []gdc.ConstTypePtr{from.AsCTypePtr(), to.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
 func (me *AABB) IntersectsRay(from Vector3, dir Vector3, ) Variant {
@@ -519,74 +460,73 @@ func (me *AABB) IntersectsRay(from Vector3, dir Vector3, ) Variant {
   defer name.Destroy()
   methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 2048133369) // FIXME: should cache?
 
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+  ret := NewVariant()
 
-  var ret Variant
-  pinner.Pin(&ret)
+
+
   args := []gdc.ConstTypePtr{from.AsCTypePtr(), dir.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), gdc.TypePtr(&ret), len(args))
-  return ret
+  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  return *ret
 }
 
 // Operators
 
 func (me *AABB) EqualVariant(right Variant) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *AABB) NotEqualVariant(right Variant) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *AABB) Not() bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *AABB) EqualAABB(right AABB) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *AABB) NotEqualAABB(right AABB) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *AABB) MultiplyTransform3D(right Transform3D) AABB {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
-  var ret AABB
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewAABB()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return *ret
 }
 
 func (me *AABB) InDictionary(right Dictionary) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func (me *AABB) InArray(right Array) bool {
   op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
-  var ret bool
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Members
@@ -596,21 +536,18 @@ func (me *AABB) Position() Vector3 {
   defer name.Destroy()
 
   getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  var ret Vector3
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  return *ret
 }
 
 func (me *AABB) SetPosition(value Vector3) {
   name := StringNameFromStr("position")
   defer name.Destroy()
-
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-  pinner.Pin(&value)
+  valueV := value
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *AABB) Size() Vector3 {
@@ -618,21 +555,18 @@ func (me *AABB) Size() Vector3 {
   defer name.Destroy()
 
   getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  var ret Vector3
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  return *ret
 }
 
 func (me *AABB) SetSize(value Vector3) {
   name := StringNameFromStr("size")
   defer name.Destroy()
-
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-  pinner.Pin(&value)
+  valueV := value
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *AABB) End() Vector3 {
@@ -640,19 +574,16 @@ func (me *AABB) End() Vector3 {
   defer name.Destroy()
 
   getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  var ret Vector3
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  return *ret
 }
 
 func (me *AABB) SetEnd(value Vector3) {
   name := StringNameFromStr("end")
   defer name.Destroy()
-
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
-  pinner.Pin(&value)
+  valueV := value
 
   setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), gdc.ConstTypePtr(&value))
+  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
 }

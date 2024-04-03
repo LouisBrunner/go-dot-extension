@@ -17,6 +17,16 @@ func (me *ScriptLanguage) BaseClass() string {
   return "ScriptLanguage"
 }
 
+func NewScriptLanguage() *ScriptLanguage {
+  str := StringNameFromStr("ScriptLanguage") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ScriptLanguage{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

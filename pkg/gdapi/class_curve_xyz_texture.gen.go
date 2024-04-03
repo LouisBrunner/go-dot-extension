@@ -17,6 +17,16 @@ func (me *CurveXYZTexture) BaseClass() string {
   return "CurveXYZTexture"
 }
 
+func NewCurveXYZTexture() *CurveXYZTexture {
+  str := StringNameFromStr("CurveXYZTexture") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CurveXYZTexture{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,14 +45,16 @@ func (me *CurveXYZTexture) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *CurveXYZTexture) SetWidth(width int, )  {
+func  (me *CurveXYZTexture) SetWidth(width int64, )  {
   classNameV := StringNameFromStr("CurveXYZTexture")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CurveXYZTexture) SetCurveX(curve Curve, )  {
@@ -52,7 +64,9 @@ func  (me *CurveXYZTexture) SetCurveX(curve Curve, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CurveXYZTexture) GetCurveX() Curve {
@@ -61,10 +75,11 @@ func  (me *CurveXYZTexture) GetCurveX() Curve {
   methodNameV := StringNameFromStr("get_curve_x")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
-  var ret Curve
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCurve()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CurveXYZTexture) SetCurveY(curve Curve, )  {
@@ -74,7 +89,9 @@ func  (me *CurveXYZTexture) SetCurveY(curve Curve, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CurveXYZTexture) GetCurveY() Curve {
@@ -83,10 +100,11 @@ func  (me *CurveXYZTexture) GetCurveY() Curve {
   methodNameV := StringNameFromStr("get_curve_y")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
-  var ret Curve
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCurve()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CurveXYZTexture) SetCurveZ(curve Curve, )  {
@@ -96,7 +114,9 @@ func  (me *CurveXYZTexture) SetCurveZ(curve Curve, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CurveXYZTexture) GetCurveZ() Curve {
@@ -105,10 +125,11 @@ func  (me *CurveXYZTexture) GetCurveZ() Curve {
   methodNameV := StringNameFromStr("get_curve_z")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
-  var ret Curve
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCurve()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

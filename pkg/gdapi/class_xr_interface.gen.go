@@ -17,6 +17,16 @@ func (me *XRInterface) BaseClass() string {
   return "XRInterface"
 }
 
+func NewXRInterface() *XRInterface {
+  str := StringNameFromStr("XRInterface") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &XRInterface{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -77,22 +87,24 @@ func  (me *XRInterface) GetName() StringName {
   methodNameV := StringNameFromStr("get_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *XRInterface) GetCapabilities() int {
+func  (me *XRInterface) GetCapabilities() int64 {
   classNameV := StringNameFromStr("XRInterface")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_capabilities")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) IsPrimary() bool {
@@ -101,10 +113,11 @@ func  (me *XRInterface) IsPrimary() bool {
   methodNameV := StringNameFromStr("is_primary")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) SetPrimary(primary bool, )  {
@@ -114,7 +127,9 @@ func  (me *XRInterface) SetPrimary(primary bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&primary), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *XRInterface) IsInitialized() bool {
@@ -123,10 +138,11 @@ func  (me *XRInterface) IsInitialized() bool {
   methodNameV := StringNameFromStr("is_initialized")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) Initialize() bool {
@@ -135,10 +151,11 @@ func  (me *XRInterface) Initialize() bool {
   methodNameV := StringNameFromStr("initialize")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) Uninitialize()  {
@@ -148,7 +165,9 @@ func  (me *XRInterface) Uninitialize()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *XRInterface) GetSystemInfo() Dictionary {
@@ -157,10 +176,11 @@ func  (me *XRInterface) GetSystemInfo() Dictionary {
   methodNameV := StringNameFromStr("get_system_info")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2382534195) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *XRInterface) GetTrackingStatus() XRInterfaceTrackingStatus {
@@ -169,9 +189,10 @@ func  (me *XRInterface) GetTrackingStatus() XRInterfaceTrackingStatus {
   methodNameV := StringNameFromStr("get_tracking_status")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 167423259) // FIXME: should cache?
-  var ret XRInterfaceTrackingStatus
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret XRInterfaceTrackingStatus
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -181,32 +202,36 @@ func  (me *XRInterface) GetRenderTargetSize() Vector2 {
   methodNameV := StringNameFromStr("get_render_target_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1497962370) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *XRInterface) GetViewCount() int {
+func  (me *XRInterface) GetViewCount() int64 {
   classNameV := StringNameFromStr("XRInterface")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_view_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *XRInterface) TriggerHapticPulse(action_name String, tracker_name StringName, frequency float32, amplitude float32, duration_sec float32, delay_sec float32, )  {
+func  (me *XRInterface) TriggerHapticPulse(action_name String, tracker_name StringName, frequency float64, amplitude float64, duration_sec float64, delay_sec float64, )  {
   classNameV := StringNameFromStr("XRInterface")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("trigger_haptic_pulse")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3752640163) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action_name.AsCTypePtr()), gdc.ConstTypePtr(tracker_name.AsCTypePtr()), gdc.ConstTypePtr(&frequency), gdc.ConstTypePtr(&amplitude), gdc.ConstTypePtr(&duration_sec), gdc.ConstTypePtr(&delay_sec), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *XRInterface) SupportsPlayAreaMode(mode XRInterfacePlayAreaMode, ) bool {
@@ -215,10 +240,11 @@ func  (me *XRInterface) SupportsPlayAreaMode(mode XRInterfacePlayAreaMode, ) boo
   methodNameV := StringNameFromStr("supports_play_area_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3429955281) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) GetPlayAreaMode() XRInterfacePlayAreaMode {
@@ -227,9 +253,10 @@ func  (me *XRInterface) GetPlayAreaMode() XRInterfacePlayAreaMode {
   methodNameV := StringNameFromStr("get_play_area_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1615132885) // FIXME: should cache?
-  var ret XRInterfacePlayAreaMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret XRInterfacePlayAreaMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -239,10 +266,11 @@ func  (me *XRInterface) SetPlayAreaMode(mode XRInterfacePlayAreaMode, ) bool {
   methodNameV := StringNameFromStr("set_play_area_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3429955281) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) GetPlayArea() PackedVector3Array {
@@ -251,10 +279,11 @@ func  (me *XRInterface) GetPlayArea() PackedVector3Array {
   methodNameV := StringNameFromStr("get_play_area")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
-  var ret PackedVector3Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector3Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *XRInterface) GetAnchorDetectionIsEnabled() bool {
@@ -263,10 +292,11 @@ func  (me *XRInterface) GetAnchorDetectionIsEnabled() bool {
   methodNameV := StringNameFromStr("get_anchor_detection_is_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) SetAnchorDetectionIsEnabled(enable bool, )  {
@@ -276,19 +306,22 @@ func  (me *XRInterface) SetAnchorDetectionIsEnabled(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *XRInterface) GetCameraFeedId() int {
+func  (me *XRInterface) GetCameraFeedId() int64 {
   classNameV := StringNameFromStr("XRInterface")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_camera_feed_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) IsPassthroughSupported() bool {
@@ -297,10 +330,11 @@ func  (me *XRInterface) IsPassthroughSupported() bool {
   methodNameV := StringNameFromStr("is_passthrough_supported")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) IsPassthroughEnabled() bool {
@@ -309,10 +343,11 @@ func  (me *XRInterface) IsPassthroughEnabled() bool {
   methodNameV := StringNameFromStr("is_passthrough_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) StartPassthrough() bool {
@@ -321,10 +356,11 @@ func  (me *XRInterface) StartPassthrough() bool {
   methodNameV := StringNameFromStr("start_passthrough")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) StopPassthrough()  {
@@ -334,31 +370,35 @@ func  (me *XRInterface) StopPassthrough()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *XRInterface) GetTransformForView(view int, cam_transform Transform3D, ) Transform3D {
+func  (me *XRInterface) GetTransformForView(view int64, cam_transform Transform3D, ) Transform3D {
   classNameV := StringNameFromStr("XRInterface")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_transform_for_view")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 518934792) // FIXME: should cache?
-  var ret Transform3D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&view), gdc.ConstTypePtr(cam_transform.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTransform3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *XRInterface) GetProjectionForView(view int, aspect float32, near float32, far float32, ) Projection {
+func  (me *XRInterface) GetProjectionForView(view int64, aspect float64, near float64, far float64, ) Projection {
   classNameV := StringNameFromStr("XRInterface")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_projection_for_view")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3766090294) // FIXME: should cache?
-  var ret Projection
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&view), gdc.ConstTypePtr(&aspect), gdc.ConstTypePtr(&near), gdc.ConstTypePtr(&far), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewProjection()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *XRInterface) GetSupportedEnvironmentBlendModes() Array {
@@ -367,10 +407,11 @@ func  (me *XRInterface) GetSupportedEnvironmentBlendModes() Array {
   methodNameV := StringNameFromStr("get_supported_environment_blend_modes")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *XRInterface) SetEnvironmentBlendMode(mode XRInterfaceEnvironmentBlendMode, ) bool {
@@ -379,10 +420,11 @@ func  (me *XRInterface) SetEnvironmentBlendMode(mode XRInterfaceEnvironmentBlend
   methodNameV := StringNameFromStr("set_environment_blend_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 551152418) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *XRInterface) GetEnvironmentBlendMode() XRInterfaceEnvironmentBlendMode {
@@ -391,9 +433,10 @@ func  (me *XRInterface) GetEnvironmentBlendMode() XRInterfaceEnvironmentBlendMod
   methodNameV := StringNameFromStr("get_environment_blend_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1984334071) // FIXME: should cache?
-  var ret XRInterfaceEnvironmentBlendMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret XRInterfaceEnvironmentBlendMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

@@ -17,6 +17,16 @@ func (me *VBoxContainer) BaseClass() string {
   return "VBoxContainer"
 }
 
+func NewVBoxContainer() *VBoxContainer {
+  str := StringNameFromStr("VBoxContainer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VBoxContainer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

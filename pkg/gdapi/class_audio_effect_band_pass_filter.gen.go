@@ -17,6 +17,16 @@ func (me *AudioEffectBandPassFilter) BaseClass() string {
   return "AudioEffectBandPassFilter"
 }
 
+func NewAudioEffectBandPassFilter() *AudioEffectBandPassFilter {
+  str := StringNameFromStr("AudioEffectBandPassFilter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioEffectBandPassFilter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

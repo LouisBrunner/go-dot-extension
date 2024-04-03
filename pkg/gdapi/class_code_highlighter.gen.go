@@ -17,6 +17,16 @@ func (me *CodeHighlighter) BaseClass() string {
   return "CodeHighlighter"
 }
 
+func NewCodeHighlighter() *CodeHighlighter {
+  str := StringNameFromStr("CodeHighlighter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CodeHighlighter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *CodeHighlighter) AddKeywordColor(keyword String, color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1636512886) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(keyword.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) RemoveKeywordColor(keyword String, )  {
@@ -52,7 +64,9 @@ func  (me *CodeHighlighter) RemoveKeywordColor(keyword String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(keyword.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) HasKeywordColor(keyword String, ) bool {
@@ -61,10 +75,11 @@ func  (me *CodeHighlighter) HasKeywordColor(keyword String, ) bool {
   methodNameV := StringNameFromStr("has_keyword_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(keyword.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CodeHighlighter) GetKeywordColor(keyword String, ) Color {
@@ -73,10 +88,11 @@ func  (me *CodeHighlighter) GetKeywordColor(keyword String, ) Color {
   methodNameV := StringNameFromStr("get_keyword_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3855908743) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(keyword.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CodeHighlighter) SetKeywordColors(keywords Dictionary, )  {
@@ -86,7 +102,9 @@ func  (me *CodeHighlighter) SetKeywordColors(keywords Dictionary, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155329257) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(keywords.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) ClearKeywordColors()  {
@@ -96,7 +114,9 @@ func  (me *CodeHighlighter) ClearKeywordColors()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) GetKeywordColors() Dictionary {
@@ -105,10 +125,11 @@ func  (me *CodeHighlighter) GetKeywordColors() Dictionary {
   methodNameV := StringNameFromStr("get_keyword_colors")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CodeHighlighter) AddMemberKeywordColor(member_keyword String, color Color, )  {
@@ -118,7 +139,9 @@ func  (me *CodeHighlighter) AddMemberKeywordColor(member_keyword String, color C
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1636512886) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(member_keyword.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) RemoveMemberKeywordColor(member_keyword String, )  {
@@ -128,7 +151,9 @@ func  (me *CodeHighlighter) RemoveMemberKeywordColor(member_keyword String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(member_keyword.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) HasMemberKeywordColor(member_keyword String, ) bool {
@@ -137,10 +162,11 @@ func  (me *CodeHighlighter) HasMemberKeywordColor(member_keyword String, ) bool 
   methodNameV := StringNameFromStr("has_member_keyword_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(member_keyword.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CodeHighlighter) GetMemberKeywordColor(member_keyword String, ) Color {
@@ -149,10 +175,11 @@ func  (me *CodeHighlighter) GetMemberKeywordColor(member_keyword String, ) Color
   methodNameV := StringNameFromStr("get_member_keyword_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3855908743) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(member_keyword.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CodeHighlighter) SetMemberKeywordColors(member_keyword Dictionary, )  {
@@ -162,7 +189,9 @@ func  (me *CodeHighlighter) SetMemberKeywordColors(member_keyword Dictionary, ) 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155329257) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(member_keyword.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) ClearMemberKeywordColors()  {
@@ -172,7 +201,9 @@ func  (me *CodeHighlighter) ClearMemberKeywordColors()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) GetMemberKeywordColors() Dictionary {
@@ -181,10 +212,11 @@ func  (me *CodeHighlighter) GetMemberKeywordColors() Dictionary {
   methodNameV := StringNameFromStr("get_member_keyword_colors")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CodeHighlighter) AddColorRegion(start_key String, end_key String, color Color, line_only bool, )  {
@@ -194,7 +226,9 @@ func  (me *CodeHighlighter) AddColorRegion(start_key String, end_key String, col
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2924977451) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start_key.AsCTypePtr()), gdc.ConstTypePtr(end_key.AsCTypePtr()), gdc.ConstTypePtr(color.AsCTypePtr()), gdc.ConstTypePtr(&line_only), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) RemoveColorRegion(start_key String, )  {
@@ -204,7 +238,9 @@ func  (me *CodeHighlighter) RemoveColorRegion(start_key String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start_key.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) HasColorRegion(start_key String, ) bool {
@@ -213,10 +249,11 @@ func  (me *CodeHighlighter) HasColorRegion(start_key String, ) bool {
   methodNameV := StringNameFromStr("has_color_region")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(start_key.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CodeHighlighter) SetColorRegions(color_regions Dictionary, )  {
@@ -226,7 +263,9 @@ func  (me *CodeHighlighter) SetColorRegions(color_regions Dictionary, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155329257) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color_regions.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) ClearColorRegions()  {
@@ -236,7 +275,9 @@ func  (me *CodeHighlighter) ClearColorRegions()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) GetColorRegions() Dictionary {
@@ -245,10 +286,11 @@ func  (me *CodeHighlighter) GetColorRegions() Dictionary {
   methodNameV := StringNameFromStr("get_color_regions")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CodeHighlighter) SetFunctionColor(color Color, )  {
@@ -258,7 +300,9 @@ func  (me *CodeHighlighter) SetFunctionColor(color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) GetFunctionColor() Color {
@@ -267,10 +311,11 @@ func  (me *CodeHighlighter) GetFunctionColor() Color {
   methodNameV := StringNameFromStr("get_function_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CodeHighlighter) SetNumberColor(color Color, )  {
@@ -280,7 +325,9 @@ func  (me *CodeHighlighter) SetNumberColor(color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) GetNumberColor() Color {
@@ -289,10 +336,11 @@ func  (me *CodeHighlighter) GetNumberColor() Color {
   methodNameV := StringNameFromStr("get_number_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CodeHighlighter) SetSymbolColor(color Color, )  {
@@ -302,7 +350,9 @@ func  (me *CodeHighlighter) SetSymbolColor(color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) GetSymbolColor() Color {
@@ -311,10 +361,11 @@ func  (me *CodeHighlighter) GetSymbolColor() Color {
   methodNameV := StringNameFromStr("get_symbol_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CodeHighlighter) SetMemberVariableColor(color Color, )  {
@@ -324,7 +375,9 @@ func  (me *CodeHighlighter) SetMemberVariableColor(color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CodeHighlighter) GetMemberVariableColor() Color {
@@ -333,10 +386,11 @@ func  (me *CodeHighlighter) GetMemberVariableColor() Color {
   methodNameV := StringNameFromStr("get_member_variable_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

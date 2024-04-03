@@ -17,6 +17,16 @@ func (me *VisualShaderNodeCompare) BaseClass() string {
   return "VisualShaderNodeCompare"
 }
 
+func NewVisualShaderNodeCompare() *VisualShaderNodeCompare {
+  str := StringNameFromStr("VisualShaderNodeCompare") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeCompare{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -73,7 +83,9 @@ func  (me *VisualShaderNodeCompare) SetComparisonType(type_ VisualShaderNodeComp
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 516558320) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeCompare) GetComparisonType() VisualShaderNodeCompareComparisonType {
@@ -82,9 +94,10 @@ func  (me *VisualShaderNodeCompare) GetComparisonType() VisualShaderNodeCompareC
   methodNameV := StringNameFromStr("get_comparison_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3495315961) // FIXME: should cache?
-  var ret VisualShaderNodeCompareComparisonType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeCompareComparisonType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -95,7 +108,9 @@ func  (me *VisualShaderNodeCompare) SetFunction(func_ VisualShaderNodeCompareFun
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2370951349) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&func_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeCompare) GetFunction() VisualShaderNodeCompareFunction {
@@ -104,9 +119,10 @@ func  (me *VisualShaderNodeCompare) GetFunction() VisualShaderNodeCompareFunctio
   methodNameV := StringNameFromStr("get_function")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4089164265) // FIXME: should cache?
-  var ret VisualShaderNodeCompareFunction
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeCompareFunction
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -117,7 +133,9 @@ func  (me *VisualShaderNodeCompare) SetCondition(condition VisualShaderNodeCompa
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 918742392) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&condition), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeCompare) GetCondition() VisualShaderNodeCompareCondition {
@@ -126,9 +144,10 @@ func  (me *VisualShaderNodeCompare) GetCondition() VisualShaderNodeCompareCondit
   methodNameV := StringNameFromStr("get_condition")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3281078941) // FIXME: should cache?
-  var ret VisualShaderNodeCompareCondition
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeCompareCondition
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

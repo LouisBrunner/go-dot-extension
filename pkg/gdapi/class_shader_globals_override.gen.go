@@ -17,6 +17,16 @@ func (me *ShaderGlobalsOverride) BaseClass() string {
   return "ShaderGlobalsOverride"
 }
 
+func NewShaderGlobalsOverride() *ShaderGlobalsOverride {
+  str := StringNameFromStr("ShaderGlobalsOverride") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ShaderGlobalsOverride{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

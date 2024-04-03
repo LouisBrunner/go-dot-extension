@@ -17,6 +17,16 @@ func (me *EditorInspectorPlugin) BaseClass() string {
   return "EditorInspectorPlugin"
 }
 
+func NewEditorInspectorPlugin() *EditorInspectorPlugin {
+  str := StringNameFromStr("EditorInspectorPlugin") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorInspectorPlugin{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *EditorInspectorPlugin) AddCustomControl(control Control, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(control.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorInspectorPlugin) AddPropertyEditor(property String, editor Control, add_to_end bool, )  {
@@ -52,7 +64,9 @@ func  (me *EditorInspectorPlugin) AddPropertyEditor(property String, editor Cont
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3406284123) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(property.AsCTypePtr()), gdc.ConstTypePtr(editor.AsCTypePtr()), gdc.ConstTypePtr(&add_to_end), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorInspectorPlugin) AddPropertyEditorForMultipleProperties(label String, properties PackedStringArray, editor Control, )  {
@@ -62,7 +76,9 @@ func  (me *EditorInspectorPlugin) AddPropertyEditorForMultipleProperties(label S
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 788598683) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(properties.AsCTypePtr()), gdc.ConstTypePtr(editor.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

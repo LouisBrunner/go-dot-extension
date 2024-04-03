@@ -17,6 +17,16 @@ func (me *VisualShaderNodeVectorRefract) BaseClass() string {
   return "VisualShaderNodeVectorRefract"
 }
 
+func NewVisualShaderNodeVectorRefract() *VisualShaderNodeVectorRefract {
+  str := StringNameFromStr("VisualShaderNodeVectorRefract") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeVectorRefract{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

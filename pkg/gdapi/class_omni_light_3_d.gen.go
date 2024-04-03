@@ -17,6 +17,16 @@ func (me *OmniLight3D) BaseClass() string {
   return "OmniLight3D"
 }
 
+func NewOmniLight3D() *OmniLight3D {
+  str := StringNameFromStr("OmniLight3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &OmniLight3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -48,7 +58,9 @@ func  (me *OmniLight3D) SetShadowMode(mode OmniLight3DShadowMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 121862228) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OmniLight3D) GetShadowMode() OmniLight3DShadowMode {
@@ -57,9 +69,10 @@ func  (me *OmniLight3D) GetShadowMode() OmniLight3DShadowMode {
   methodNameV := StringNameFromStr("get_shadow_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4181586331) // FIXME: should cache?
-  var ret OmniLight3DShadowMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret OmniLight3DShadowMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

@@ -7,4 +7,6 @@ import (
 
 var Register = entry.Register
 
+var Logf = entry.Logf
+
 type Class = gdextension.Class

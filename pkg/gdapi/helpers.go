@@ -7,6 +7,7 @@ import (
 )
 import (
 	"fmt"
+	"reflect"
 	"unsafe"
 )
 
@@ -39,19 +40,46 @@ type objectLike interface {
 	SetBaseObject(ptr gdc.ObjectPtr)
 }
 
-func createObject(obj objectLike, ptr gdc.ConstTypePtr) any {
+func createObject(obj objectLike, ptr gdc.ObjectPtr) any {
 	obj.SetBaseObject(gdc.ObjectPtr(ptr))
 	return obj
 }
 
-func ObjectFromPtr(ptr gdc.ObjectPtr) Object {
-	return Object{
+func ObjectFromPtr(ptr gdc.ObjectPtr) *Object {
+	return &Object{
 		obj: ptr,
 	}
 }
 
 func DObjectFromPtr(className string, ptr gdc.ObjectPtr) (interface{}, error) {
-	panic("unimplemented") // TODO: HERE!
+	ctr, found := objectPtrConstructor[className]
+	if !found {
+		return nil, fmt.Errorf("no constructor found for class %v", className)
+	}
+	return ctr(ptr), nil
+}
+
+// Array
+
+func ConvertArrayToSlice[T any](array *Array) []T {
+	tType := reflect.TypeFor[T]()
+	isVariant := reflect.PointerTo(tType).Implements(reflect.TypeFor[BClass]())
+	size := array.Size()
+	slice := make([]T, size)
+	for i := int64(0); i < size; i += 1 {
+		item := array.PopFront()
+		if isVariant {
+			bclass, err := item.AsBClass()
+			if err != nil {
+				panic(err) // TODO: handle error
+			}
+			slice[i] = bclass.(T) // TODO: won't work
+		} else {
+			panic("not implemented")
+		}
+		array.PushBack(item)
+	}
+	return slice
 }
 
 // String

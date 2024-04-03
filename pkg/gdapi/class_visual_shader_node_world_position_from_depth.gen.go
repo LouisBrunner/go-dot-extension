@@ -17,6 +17,16 @@ func (me *VisualShaderNodeWorldPositionFromDepth) BaseClass() string {
   return "VisualShaderNodeWorldPositionFromDepth"
 }
 
+func NewVisualShaderNodeWorldPositionFromDepth() *VisualShaderNodeWorldPositionFromDepth {
+  str := StringNameFromStr("VisualShaderNodeWorldPositionFromDepth") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeWorldPositionFromDepth{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

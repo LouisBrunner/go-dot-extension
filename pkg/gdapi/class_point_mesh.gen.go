@@ -17,6 +17,16 @@ func (me *PointMesh) BaseClass() string {
   return "PointMesh"
 }
 
+func NewPointMesh() *PointMesh {
+  str := StringNameFromStr("PointMesh") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PointMesh{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

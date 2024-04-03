@@ -17,6 +17,16 @@ func (me *RDShaderSPIRV) BaseClass() string {
   return "RDShaderSPIRV"
 }
 
+func NewRDShaderSPIRV() *RDShaderSPIRV {
+  str := StringNameFromStr("RDShaderSPIRV") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &RDShaderSPIRV{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *RDShaderSPIRV) SetStageBytecode(stage RenderingDeviceShaderStage, byt
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3514097977) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage), gdc.ConstTypePtr(bytecode.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDShaderSPIRV) GetStageBytecode(stage RenderingDeviceShaderStage, ) PackedByteArray {
@@ -51,10 +63,11 @@ func  (me *RDShaderSPIRV) GetStageBytecode(stage RenderingDeviceShaderStage, ) P
   methodNameV := StringNameFromStr("get_stage_bytecode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3816765404) // FIXME: should cache?
-  var ret PackedByteArray
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedByteArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *RDShaderSPIRV) SetStageCompileError(stage RenderingDeviceShaderStage, compile_error String, )  {
@@ -64,7 +77,9 @@ func  (me *RDShaderSPIRV) SetStageCompileError(stage RenderingDeviceShaderStage,
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 620821314) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage), gdc.ConstTypePtr(compile_error.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDShaderSPIRV) GetStageCompileError(stage RenderingDeviceShaderStage, ) String {
@@ -73,10 +88,11 @@ func  (me *RDShaderSPIRV) GetStageCompileError(stage RenderingDeviceShaderStage,
   methodNameV := StringNameFromStr("get_stage_compile_error")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3354920045) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

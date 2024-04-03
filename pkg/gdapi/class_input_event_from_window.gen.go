@@ -17,6 +17,16 @@ func (me *InputEventFromWindow) BaseClass() string {
   return "InputEventFromWindow"
 }
 
+func NewInputEventFromWindow() *InputEventFromWindow {
+  str := StringNameFromStr("InputEventFromWindow") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &InputEventFromWindow{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *InputEventFromWindow) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *InputEventFromWindow) SetWindowId(id int, )  {
+func  (me *InputEventFromWindow) SetWindowId(id int64, )  {
   classNameV := StringNameFromStr("InputEventFromWindow")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_window_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *InputEventFromWindow) GetWindowId() int {
+func  (me *InputEventFromWindow) GetWindowId() int64 {
   classNameV := StringNameFromStr("InputEventFromWindow")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_window_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

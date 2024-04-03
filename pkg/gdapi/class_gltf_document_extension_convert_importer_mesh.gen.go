@@ -17,6 +17,16 @@ func (me *GLTFDocumentExtensionConvertImporterMesh) BaseClass() string {
   return "GLTFDocumentExtensionConvertImporterMesh"
 }
 
+func NewGLTFDocumentExtensionConvertImporterMesh() *GLTFDocumentExtensionConvertImporterMesh {
+  str := StringNameFromStr("GLTFDocumentExtensionConvertImporterMesh") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GLTFDocumentExtensionConvertImporterMesh{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

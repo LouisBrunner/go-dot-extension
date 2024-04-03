@@ -17,6 +17,16 @@ func (me *RDPipelineSpecializationConstant) BaseClass() string {
   return "RDPipelineSpecializationConstant"
 }
 
+func NewRDPipelineSpecializationConstant() *RDPipelineSpecializationConstant {
+  str := StringNameFromStr("RDPipelineSpecializationConstant") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &RDPipelineSpecializationConstant{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *RDPipelineSpecializationConstant) SetValue(value Variant, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1114965689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(value.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineSpecializationConstant) GetValue() Variant {
@@ -51,32 +63,36 @@ func  (me *RDPipelineSpecializationConstant) GetValue() Variant {
   methodNameV := StringNameFromStr("get_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1214101251) // FIXME: should cache?
-  var ret Variant
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVariant()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *RDPipelineSpecializationConstant) SetConstantId(constant_id int, )  {
+func  (me *RDPipelineSpecializationConstant) SetConstantId(constant_id int64, )  {
   classNameV := StringNameFromStr("RDPipelineSpecializationConstant")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_constant_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&constant_id), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *RDPipelineSpecializationConstant) GetConstantId() int {
+func  (me *RDPipelineSpecializationConstant) GetConstantId() int64 {
   classNameV := StringNameFromStr("RDPipelineSpecializationConstant")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_constant_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

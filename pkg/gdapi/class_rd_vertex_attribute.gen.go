@@ -17,6 +17,16 @@ func (me *RDVertexAttribute) BaseClass() string {
   return "RDVertexAttribute"
 }
 
+func NewRDVertexAttribute() *RDVertexAttribute {
+  str := StringNameFromStr("RDVertexAttribute") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &RDVertexAttribute{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,48 +45,54 @@ func (me *RDVertexAttribute) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *RDVertexAttribute) SetLocation(p_member int, )  {
+func  (me *RDVertexAttribute) SetLocation(p_member int64, )  {
   classNameV := StringNameFromStr("RDVertexAttribute")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_location")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *RDVertexAttribute) GetLocation() int {
+func  (me *RDVertexAttribute) GetLocation() int64 {
   classNameV := StringNameFromStr("RDVertexAttribute")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_location")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *RDVertexAttribute) SetOffset(p_member int, )  {
+func  (me *RDVertexAttribute) SetOffset(p_member int64, )  {
   classNameV := StringNameFromStr("RDVertexAttribute")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *RDVertexAttribute) GetOffset() int {
+func  (me *RDVertexAttribute) GetOffset() int64 {
   classNameV := StringNameFromStr("RDVertexAttribute")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *RDVertexAttribute) SetFormat(p_member RenderingDeviceDataFormat, )  {
@@ -86,7 +102,9 @@ func  (me *RDVertexAttribute) SetFormat(p_member RenderingDeviceDataFormat, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 565531219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDVertexAttribute) GetFormat() RenderingDeviceDataFormat {
@@ -95,32 +113,36 @@ func  (me *RDVertexAttribute) GetFormat() RenderingDeviceDataFormat {
   methodNameV := StringNameFromStr("get_format")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2235804183) // FIXME: should cache?
-  var ret RenderingDeviceDataFormat
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret RenderingDeviceDataFormat
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *RDVertexAttribute) SetStride(p_member int, )  {
+func  (me *RDVertexAttribute) SetStride(p_member int64, )  {
   classNameV := StringNameFromStr("RDVertexAttribute")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_stride")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *RDVertexAttribute) GetStride() int {
+func  (me *RDVertexAttribute) GetStride() int64 {
   classNameV := StringNameFromStr("RDVertexAttribute")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_stride")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *RDVertexAttribute) SetFrequency(p_member RenderingDeviceVertexFrequency, )  {
@@ -130,7 +152,9 @@ func  (me *RDVertexAttribute) SetFrequency(p_member RenderingDeviceVertexFrequen
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 522141836) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDVertexAttribute) GetFrequency() RenderingDeviceVertexFrequency {
@@ -139,9 +163,10 @@ func  (me *RDVertexAttribute) GetFrequency() RenderingDeviceVertexFrequency {
   methodNameV := StringNameFromStr("get_frequency")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4154106413) // FIXME: should cache?
-  var ret RenderingDeviceVertexFrequency
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret RenderingDeviceVertexFrequency
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

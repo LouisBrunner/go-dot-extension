@@ -17,6 +17,16 @@ func (me *VisualShaderNodeProximityFade) BaseClass() string {
   return "VisualShaderNodeProximityFade"
 }
 
+func NewVisualShaderNodeProximityFade() *VisualShaderNodeProximityFade {
+  str := StringNameFromStr("VisualShaderNodeProximityFade") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeProximityFade{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

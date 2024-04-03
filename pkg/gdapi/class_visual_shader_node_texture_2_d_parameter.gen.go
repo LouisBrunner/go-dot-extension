@@ -17,6 +17,16 @@ func (me *VisualShaderNodeTexture2DParameter) BaseClass() string {
   return "VisualShaderNodeTexture2DParameter"
 }
 
+func NewVisualShaderNodeTexture2DParameter() *VisualShaderNodeTexture2DParameter {
+  str := StringNameFromStr("VisualShaderNodeTexture2DParameter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeTexture2DParameter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *OpenXRHand) BaseClass() string {
   return "OpenXRHand"
 }
 
+func NewOpenXRHand() *OpenXRHand {
+  str := StringNameFromStr("OpenXRHand") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &OpenXRHand{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -56,7 +66,9 @@ func  (me *OpenXRHand) SetHand(hand OpenXRHandHands, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1849328560) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRHand) GetHand() OpenXRHandHands {
@@ -65,9 +77,10 @@ func  (me *OpenXRHand) GetHand() OpenXRHandHands {
   methodNameV := StringNameFromStr("get_hand")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2850644561) // FIXME: should cache?
-  var ret OpenXRHandHands
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret OpenXRHandHands
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -78,7 +91,9 @@ func  (me *OpenXRHand) SetHandSkeleton(hand_skeleton NodePath, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(hand_skeleton.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRHand) GetHandSkeleton() NodePath {
@@ -87,10 +102,11 @@ func  (me *OpenXRHand) GetHandSkeleton() NodePath {
   methodNameV := StringNameFromStr("get_hand_skeleton")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *OpenXRHand) SetMotionRange(motion_range OpenXRHandMotionRange, )  {
@@ -100,7 +116,9 @@ func  (me *OpenXRHand) SetMotionRange(motion_range OpenXRHandMotionRange, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3326516003) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&motion_range), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRHand) GetMotionRange() OpenXRHandMotionRange {
@@ -109,9 +127,10 @@ func  (me *OpenXRHand) GetMotionRange() OpenXRHandMotionRange {
   methodNameV := StringNameFromStr("get_motion_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2191822314) // FIXME: should cache?
-  var ret OpenXRHandMotionRange
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret OpenXRHandMotionRange
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

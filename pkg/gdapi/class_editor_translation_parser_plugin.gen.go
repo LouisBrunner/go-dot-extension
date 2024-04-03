@@ -17,6 +17,16 @@ func (me *EditorTranslationParserPlugin) BaseClass() string {
   return "EditorTranslationParserPlugin"
 }
 
+func NewEditorTranslationParserPlugin() *EditorTranslationParserPlugin {
+  str := StringNameFromStr("EditorTranslationParserPlugin") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorTranslationParserPlugin{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

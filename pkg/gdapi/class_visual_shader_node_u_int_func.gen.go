@@ -17,6 +17,16 @@ func (me *VisualShaderNodeUIntFunc) BaseClass() string {
   return "VisualShaderNodeUIntFunc"
 }
 
+func NewVisualShaderNodeUIntFunc() *VisualShaderNodeUIntFunc {
+  str := StringNameFromStr("VisualShaderNodeUIntFunc") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeUIntFunc{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -49,7 +59,9 @@ func  (me *VisualShaderNodeUIntFunc) SetFunction(func_ VisualShaderNodeUIntFuncF
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2273148961) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&func_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeUIntFunc) GetFunction() VisualShaderNodeUIntFuncFunction {
@@ -58,9 +70,10 @@ func  (me *VisualShaderNodeUIntFunc) GetFunction() VisualShaderNodeUIntFuncFunct
   methodNameV := StringNameFromStr("get_function")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4187123296) // FIXME: should cache?
-  var ret VisualShaderNodeUIntFuncFunction
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeUIntFuncFunction
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

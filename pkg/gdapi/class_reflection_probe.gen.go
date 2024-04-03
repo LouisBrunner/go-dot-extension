@@ -17,6 +17,16 @@ func (me *ReflectionProbe) BaseClass() string {
   return "ReflectionProbe"
 }
 
+func NewReflectionProbe() *ReflectionProbe {
+  str := StringNameFromStr("ReflectionProbe") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ReflectionProbe{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -48,26 +58,29 @@ func (me *ReflectionProbe) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *ReflectionProbe) SetIntensity(intensity float32, )  {
+func  (me *ReflectionProbe) SetIntensity(intensity float64, )  {
   classNameV := StringNameFromStr("ReflectionProbe")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_intensity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&intensity), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ReflectionProbe) GetIntensity() float32 {
+func  (me *ReflectionProbe) GetIntensity() float64 {
   classNameV := StringNameFromStr("ReflectionProbe")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_intensity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ReflectionProbe) SetAmbientMode(ambient ReflectionProbeAmbientMode, )  {
@@ -77,7 +90,9 @@ func  (me *ReflectionProbe) SetAmbientMode(ambient ReflectionProbeAmbientMode, )
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1748981278) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ambient), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ReflectionProbe) GetAmbientMode() ReflectionProbeAmbientMode {
@@ -86,9 +101,10 @@ func  (me *ReflectionProbe) GetAmbientMode() ReflectionProbeAmbientMode {
   methodNameV := StringNameFromStr("get_ambient_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1014607621) // FIXME: should cache?
-  var ret ReflectionProbeAmbientMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret ReflectionProbeAmbientMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -99,7 +115,9 @@ func  (me *ReflectionProbe) SetAmbientColor(ambient Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(ambient.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ReflectionProbe) GetAmbientColor() Color {
@@ -108,76 +126,86 @@ func  (me *ReflectionProbe) GetAmbientColor() Color {
   methodNameV := StringNameFromStr("get_ambient_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ReflectionProbe) SetAmbientColorEnergy(ambient_energy float32, )  {
+func  (me *ReflectionProbe) SetAmbientColorEnergy(ambient_energy float64, )  {
   classNameV := StringNameFromStr("ReflectionProbe")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_ambient_color_energy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ambient_energy), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ReflectionProbe) GetAmbientColorEnergy() float32 {
+func  (me *ReflectionProbe) GetAmbientColorEnergy() float64 {
   classNameV := StringNameFromStr("ReflectionProbe")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_ambient_color_energy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ReflectionProbe) SetMaxDistance(max_distance float32, )  {
+func  (me *ReflectionProbe) SetMaxDistance(max_distance float64, )  {
   classNameV := StringNameFromStr("ReflectionProbe")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_distance), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ReflectionProbe) GetMaxDistance() float32 {
+func  (me *ReflectionProbe) GetMaxDistance() float64 {
   classNameV := StringNameFromStr("ReflectionProbe")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ReflectionProbe) SetMeshLodThreshold(ratio float32, )  {
+func  (me *ReflectionProbe) SetMeshLodThreshold(ratio float64, )  {
   classNameV := StringNameFromStr("ReflectionProbe")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_mesh_lod_threshold")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ratio), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ReflectionProbe) GetMeshLodThreshold() float32 {
+func  (me *ReflectionProbe) GetMeshLodThreshold() float64 {
   classNameV := StringNameFromStr("ReflectionProbe")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_mesh_lod_threshold")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ReflectionProbe) SetSize(size Vector3, )  {
@@ -187,7 +215,9 @@ func  (me *ReflectionProbe) SetSize(size Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ReflectionProbe) GetSize() Vector3 {
@@ -196,10 +226,11 @@ func  (me *ReflectionProbe) GetSize() Vector3 {
   methodNameV := StringNameFromStr("get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ReflectionProbe) SetOriginOffset(origin_offset Vector3, )  {
@@ -209,7 +240,9 @@ func  (me *ReflectionProbe) SetOriginOffset(origin_offset Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(origin_offset.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ReflectionProbe) GetOriginOffset() Vector3 {
@@ -218,10 +251,11 @@ func  (me *ReflectionProbe) GetOriginOffset() Vector3 {
   methodNameV := StringNameFromStr("get_origin_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ReflectionProbe) SetAsInterior(enable bool, )  {
@@ -231,7 +265,9 @@ func  (me *ReflectionProbe) SetAsInterior(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ReflectionProbe) IsSetAsInterior() bool {
@@ -240,10 +276,11 @@ func  (me *ReflectionProbe) IsSetAsInterior() bool {
   methodNameV := StringNameFromStr("is_set_as_interior")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ReflectionProbe) SetEnableBoxProjection(enable bool, )  {
@@ -253,7 +290,9 @@ func  (me *ReflectionProbe) SetEnableBoxProjection(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ReflectionProbe) IsBoxProjectionEnabled() bool {
@@ -262,10 +301,11 @@ func  (me *ReflectionProbe) IsBoxProjectionEnabled() bool {
   methodNameV := StringNameFromStr("is_box_projection_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ReflectionProbe) SetEnableShadows(enable bool, )  {
@@ -275,7 +315,9 @@ func  (me *ReflectionProbe) SetEnableShadows(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ReflectionProbe) AreShadowsEnabled() bool {
@@ -284,32 +326,36 @@ func  (me *ReflectionProbe) AreShadowsEnabled() bool {
   methodNameV := StringNameFromStr("are_shadows_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ReflectionProbe) SetCullMask(layers int, )  {
+func  (me *ReflectionProbe) SetCullMask(layers int64, )  {
   classNameV := StringNameFromStr("ReflectionProbe")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_cull_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layers), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ReflectionProbe) GetCullMask() int {
+func  (me *ReflectionProbe) GetCullMask() int64 {
   classNameV := StringNameFromStr("ReflectionProbe")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_cull_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ReflectionProbe) SetUpdateMode(mode ReflectionProbeUpdateMode, )  {
@@ -319,7 +365,9 @@ func  (me *ReflectionProbe) SetUpdateMode(mode ReflectionProbeUpdateMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4090221187) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ReflectionProbe) GetUpdateMode() ReflectionProbeUpdateMode {
@@ -328,9 +376,10 @@ func  (me *ReflectionProbe) GetUpdateMode() ReflectionProbeUpdateMode {
   methodNameV := StringNameFromStr("get_update_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2367550552) // FIXME: should cache?
-  var ret ReflectionProbeUpdateMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret ReflectionProbeUpdateMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

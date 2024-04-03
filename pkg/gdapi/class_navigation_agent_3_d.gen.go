@@ -17,6 +17,16 @@ func (me *NavigationAgent3D) BaseClass() string {
   return "NavigationAgent3D"
 }
 
+func NewNavigationAgent3D() *NavigationAgent3D {
+  str := StringNameFromStr("NavigationAgent3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &NavigationAgent3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *NavigationAgent3D) GetRid() RID {
   methodNameV := StringNameFromStr("get_rid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRID()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationAgent3D) SetAvoidanceEnabled(enabled bool, )  {
@@ -54,7 +65,9 @@ func  (me *NavigationAgent3D) SetAvoidanceEnabled(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetAvoidanceEnabled() bool {
@@ -63,120 +76,136 @@ func  (me *NavigationAgent3D) GetAvoidanceEnabled() bool {
   methodNameV := StringNameFromStr("get_avoidance_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetPathDesiredDistance(desired_distance float32, )  {
+func  (me *NavigationAgent3D) SetPathDesiredDistance(desired_distance float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_path_desired_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&desired_distance), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetPathDesiredDistance() float32 {
+func  (me *NavigationAgent3D) GetPathDesiredDistance() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_path_desired_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetTargetDesiredDistance(desired_distance float32, )  {
+func  (me *NavigationAgent3D) SetTargetDesiredDistance(desired_distance float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_target_desired_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&desired_distance), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetTargetDesiredDistance() float32 {
+func  (me *NavigationAgent3D) GetTargetDesiredDistance() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_target_desired_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetRadius(radius float32, )  {
+func  (me *NavigationAgent3D) SetRadius(radius float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetRadius() float32 {
+func  (me *NavigationAgent3D) GetRadius() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetHeight(height float32, )  {
+func  (me *NavigationAgent3D) SetHeight(height float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&height), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetHeight() float32 {
+func  (me *NavigationAgent3D) GetHeight() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetPathHeightOffset(path_height_offset float32, )  {
+func  (me *NavigationAgent3D) SetPathHeightOffset(path_height_offset float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_path_height_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&path_height_offset), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetPathHeightOffset() float32 {
+func  (me *NavigationAgent3D) GetPathHeightOffset() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_path_height_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationAgent3D) SetUse3DAvoidance(enabled bool, )  {
@@ -186,7 +215,9 @@ func  (me *NavigationAgent3D) SetUse3DAvoidance(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetUse3DAvoidance() bool {
@@ -195,10 +226,11 @@ func  (me *NavigationAgent3D) GetUse3DAvoidance() bool {
   methodNameV := StringNameFromStr("get_use_3d_avoidance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationAgent3D) SetKeepYVelocity(enabled bool, )  {
@@ -208,7 +240,9 @@ func  (me *NavigationAgent3D) SetKeepYVelocity(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetKeepYVelocity() bool {
@@ -217,186 +251,211 @@ func  (me *NavigationAgent3D) GetKeepYVelocity() bool {
   methodNameV := StringNameFromStr("get_keep_y_velocity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetNeighborDistance(neighbor_distance float32, )  {
+func  (me *NavigationAgent3D) SetNeighborDistance(neighbor_distance float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_neighbor_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&neighbor_distance), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetNeighborDistance() float32 {
+func  (me *NavigationAgent3D) GetNeighborDistance() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_neighbor_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetMaxNeighbors(max_neighbors int, )  {
+func  (me *NavigationAgent3D) SetMaxNeighbors(max_neighbors int64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_neighbors")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_neighbors), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetMaxNeighbors() int {
+func  (me *NavigationAgent3D) GetMaxNeighbors() int64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_neighbors")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetTimeHorizonAgents(time_horizon float32, )  {
+func  (me *NavigationAgent3D) SetTimeHorizonAgents(time_horizon float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_time_horizon_agents")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time_horizon), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetTimeHorizonAgents() float32 {
+func  (me *NavigationAgent3D) GetTimeHorizonAgents() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_time_horizon_agents")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetTimeHorizonObstacles(time_horizon float32, )  {
+func  (me *NavigationAgent3D) SetTimeHorizonObstacles(time_horizon float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_time_horizon_obstacles")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time_horizon), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetTimeHorizonObstacles() float32 {
+func  (me *NavigationAgent3D) GetTimeHorizonObstacles() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_time_horizon_obstacles")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetMaxSpeed(max_speed float32, )  {
+func  (me *NavigationAgent3D) SetMaxSpeed(max_speed float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_speed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_speed), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetMaxSpeed() float32 {
+func  (me *NavigationAgent3D) GetMaxSpeed() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_speed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetPathMaxDistance(max_speed float32, )  {
+func  (me *NavigationAgent3D) SetPathMaxDistance(max_speed float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_path_max_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_speed), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetPathMaxDistance() float32 {
+func  (me *NavigationAgent3D) GetPathMaxDistance() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_path_max_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetNavigationLayers(navigation_layers int, )  {
+func  (me *NavigationAgent3D) SetNavigationLayers(navigation_layers int64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_navigation_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&navigation_layers), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetNavigationLayers() int {
+func  (me *NavigationAgent3D) GetNavigationLayers() int64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_navigation_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetNavigationLayerValue(layer_number int, value bool, )  {
+func  (me *NavigationAgent3D) SetNavigationLayerValue(layer_number int64, value bool, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_navigation_layer_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetNavigationLayerValue(layer_number int, ) bool {
+func  (me *NavigationAgent3D) GetNavigationLayerValue(layer_number int64, ) bool {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_navigation_layer_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationAgent3D) SetPathfindingAlgorithm(pathfinding_algorithm NavigationPathQueryParameters3DPathfindingAlgorithm, )  {
@@ -406,7 +465,9 @@ func  (me *NavigationAgent3D) SetPathfindingAlgorithm(pathfinding_algorithm Navi
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 394560454) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pathfinding_algorithm), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetPathfindingAlgorithm() NavigationPathQueryParameters3DPathfindingAlgorithm {
@@ -415,9 +476,10 @@ func  (me *NavigationAgent3D) GetPathfindingAlgorithm() NavigationPathQueryParam
   methodNameV := StringNameFromStr("get_pathfinding_algorithm")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3398491350) // FIXME: should cache?
-  var ret NavigationPathQueryParameters3DPathfindingAlgorithm
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret NavigationPathQueryParameters3DPathfindingAlgorithm
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -428,7 +490,9 @@ func  (me *NavigationAgent3D) SetPathPostprocessing(path_postprocessing Navigati
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2267362344) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&path_postprocessing), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetPathPostprocessing() NavigationPathQueryParameters3DPathPostProcessing {
@@ -437,9 +501,10 @@ func  (me *NavigationAgent3D) GetPathPostprocessing() NavigationPathQueryParamet
   methodNameV := StringNameFromStr("get_path_postprocessing")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3883858360) // FIXME: should cache?
-  var ret NavigationPathQueryParameters3DPathPostProcessing
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret NavigationPathQueryParameters3DPathPostProcessing
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -450,7 +515,9 @@ func  (me *NavigationAgent3D) SetPathMetadataFlags(flags NavigationPathQueryPara
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2713846708) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetPathMetadataFlags() NavigationPathQueryParameters3DPathMetadataFlags {
@@ -459,9 +526,10 @@ func  (me *NavigationAgent3D) GetPathMetadataFlags() NavigationPathQueryParamete
   methodNameV := StringNameFromStr("get_path_metadata_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1582332802) // FIXME: should cache?
-  var ret NavigationPathQueryParameters3DPathMetadataFlags
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret NavigationPathQueryParameters3DPathMetadataFlags
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -472,7 +540,9 @@ func  (me *NavigationAgent3D) SetNavigationMap(navigation_map RID, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_map.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetNavigationMap() RID {
@@ -481,10 +551,11 @@ func  (me *NavigationAgent3D) GetNavigationMap() RID {
   methodNameV := StringNameFromStr("get_navigation_map")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRID()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationAgent3D) SetTargetPosition(position Vector3, )  {
@@ -494,7 +565,9 @@ func  (me *NavigationAgent3D) SetTargetPosition(position Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetTargetPosition() Vector3 {
@@ -503,10 +576,11 @@ func  (me *NavigationAgent3D) GetTargetPosition() Vector3 {
   methodNameV := StringNameFromStr("get_target_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationAgent3D) GetNextPathPosition() Vector3 {
@@ -515,10 +589,11 @@ func  (me *NavigationAgent3D) GetNextPathPosition() Vector3 {
   methodNameV := StringNameFromStr("get_next_path_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3783033775) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationAgent3D) SetVelocityForced(velocity Vector3, )  {
@@ -528,7 +603,9 @@ func  (me *NavigationAgent3D) SetVelocityForced(velocity Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(velocity.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) SetVelocity(velocity Vector3, )  {
@@ -538,7 +615,9 @@ func  (me *NavigationAgent3D) SetVelocity(velocity Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(velocity.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetVelocity() Vector3 {
@@ -547,22 +626,24 @@ func  (me *NavigationAgent3D) GetVelocity() Vector3 {
   methodNameV := StringNameFromStr("get_velocity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3783033775) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *NavigationAgent3D) DistanceToTarget() float32 {
+func  (me *NavigationAgent3D) DistanceToTarget() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("distance_to_target")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationAgent3D) GetCurrentNavigationResult() NavigationPathQueryResult3D {
@@ -571,10 +652,11 @@ func  (me *NavigationAgent3D) GetCurrentNavigationResult() NavigationPathQueryRe
   methodNameV := StringNameFromStr("get_current_navigation_result")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 728825684) // FIXME: should cache?
-  var ret NavigationPathQueryResult3D
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNavigationPathQueryResult3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *NavigationAgent3D) GetCurrentNavigationPath() PackedVector3Array {
@@ -583,22 +665,24 @@ func  (me *NavigationAgent3D) GetCurrentNavigationPath() PackedVector3Array {
   methodNameV := StringNameFromStr("get_current_navigation_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
-  var ret PackedVector3Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector3Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *NavigationAgent3D) GetCurrentNavigationPathIndex() int {
+func  (me *NavigationAgent3D) GetCurrentNavigationPathIndex() int64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_current_navigation_path_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationAgent3D) IsTargetReached() bool {
@@ -607,10 +691,11 @@ func  (me *NavigationAgent3D) IsTargetReached() bool {
   methodNameV := StringNameFromStr("is_target_reached")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationAgent3D) IsTargetReachable() bool {
@@ -619,10 +704,11 @@ func  (me *NavigationAgent3D) IsTargetReachable() bool {
   methodNameV := StringNameFromStr("is_target_reachable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationAgent3D) IsNavigationFinished() bool {
@@ -631,10 +717,11 @@ func  (me *NavigationAgent3D) IsNavigationFinished() bool {
   methodNameV := StringNameFromStr("is_navigation_finished")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationAgent3D) GetFinalPosition() Vector3 {
@@ -643,120 +730,136 @@ func  (me *NavigationAgent3D) GetFinalPosition() Vector3 {
   methodNameV := StringNameFromStr("get_final_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3783033775) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *NavigationAgent3D) SetAvoidanceLayers(layers int, )  {
+func  (me *NavigationAgent3D) SetAvoidanceLayers(layers int64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_avoidance_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layers), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetAvoidanceLayers() int {
+func  (me *NavigationAgent3D) GetAvoidanceLayers() int64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_avoidance_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetAvoidanceMask(mask int, )  {
+func  (me *NavigationAgent3D) SetAvoidanceMask(mask int64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_avoidance_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetAvoidanceMask() int {
+func  (me *NavigationAgent3D) GetAvoidanceMask() int64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_avoidance_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetAvoidanceLayerValue(layer_number int, value bool, )  {
+func  (me *NavigationAgent3D) SetAvoidanceLayerValue(layer_number int64, value bool, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_avoidance_layer_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetAvoidanceLayerValue(layer_number int, ) bool {
+func  (me *NavigationAgent3D) GetAvoidanceLayerValue(layer_number int64, ) bool {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_avoidance_layer_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetAvoidanceMaskValue(mask_number int, value bool, )  {
+func  (me *NavigationAgent3D) SetAvoidanceMaskValue(mask_number int64, value bool, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_avoidance_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask_number), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetAvoidanceMaskValue(mask_number int, ) bool {
+func  (me *NavigationAgent3D) GetAvoidanceMaskValue(mask_number int64, ) bool {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_avoidance_mask_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask_number), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationAgent3D) SetAvoidancePriority(priority float32, )  {
+func  (me *NavigationAgent3D) SetAvoidancePriority(priority float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_avoidance_priority")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&priority), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetAvoidancePriority() float32 {
+func  (me *NavigationAgent3D) GetAvoidancePriority() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_avoidance_priority")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationAgent3D) SetDebugEnabled(enabled bool, )  {
@@ -766,7 +869,9 @@ func  (me *NavigationAgent3D) SetDebugEnabled(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetDebugEnabled() bool {
@@ -775,10 +880,11 @@ func  (me *NavigationAgent3D) GetDebugEnabled() bool {
   methodNameV := StringNameFromStr("get_debug_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationAgent3D) SetDebugUseCustom(enabled bool, )  {
@@ -788,7 +894,9 @@ func  (me *NavigationAgent3D) SetDebugUseCustom(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetDebugUseCustom() bool {
@@ -797,10 +905,11 @@ func  (me *NavigationAgent3D) GetDebugUseCustom() bool {
   methodNameV := StringNameFromStr("get_debug_use_custom")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *NavigationAgent3D) SetDebugPathCustomColor(color Color, )  {
@@ -810,7 +919,9 @@ func  (me *NavigationAgent3D) SetDebugPathCustomColor(color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationAgent3D) GetDebugPathCustomColor() Color {
@@ -819,32 +930,36 @@ func  (me *NavigationAgent3D) GetDebugPathCustomColor() Color {
   methodNameV := StringNameFromStr("get_debug_path_custom_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *NavigationAgent3D) SetDebugPathCustomPointSize(point_size float32, )  {
+func  (me *NavigationAgent3D) SetDebugPathCustomPointSize(point_size float64, )  {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_debug_path_custom_point_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point_size), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationAgent3D) GetDebugPathCustomPointSize() float32 {
+func  (me *NavigationAgent3D) GetDebugPathCustomPointSize() float64 {
   classNameV := StringNameFromStr("NavigationAgent3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_debug_path_custom_point_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *TabBar) BaseClass() string {
   return "TabBar"
 }
 
+func NewTabBar() *TabBar {
+  str := StringNameFromStr("TabBar") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &TabBar{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -51,60 +61,67 @@ func (me *TabBar) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *TabBar) SetTabCount(count int, )  {
+func  (me *TabBar) SetTabCount(count int64, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_tab_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetTabCount() int {
+func  (me *TabBar) GetTabCount() int64 {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tab_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TabBar) SetCurrentTab(tab_idx int, )  {
+func  (me *TabBar) SetCurrentTab(tab_idx int64, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_current_tab")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetCurrentTab() int {
+func  (me *TabBar) GetCurrentTab() int64 {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_current_tab")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TabBar) GetPreviousTab() int {
+func  (me *TabBar) GetPreviousTab() int64 {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_previous_tab")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TabBar) SelectPreviousAvailable() bool {
@@ -113,10 +130,11 @@ func  (me *TabBar) SelectPreviousAvailable() bool {
   methodNameV := StringNameFromStr("select_previous_available")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TabBar) SelectNextAvailable() bool {
@@ -125,218 +143,248 @@ func  (me *TabBar) SelectNextAvailable() bool {
   methodNameV := StringNameFromStr("select_next_available")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TabBar) SetTabTitle(tab_idx int, title String, )  {
+func  (me *TabBar) SetTabTitle(tab_idx int64, title String, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_tab_title")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(title.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetTabTitle(tab_idx int, ) String {
+func  (me *TabBar) GetTabTitle(tab_idx int64, ) String {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tab_title")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TabBar) SetTabTextDirection(tab_idx int, direction ControlTextDirection, )  {
+func  (me *TabBar) SetTabTextDirection(tab_idx int64, direction ControlTextDirection, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_tab_text_direction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1707680378) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(&direction), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetTabTextDirection(tab_idx int, ) ControlTextDirection {
+func  (me *TabBar) GetTabTextDirection(tab_idx int64, ) ControlTextDirection {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tab_text_direction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4235602388) // FIXME: should cache?
-  var ret ControlTextDirection
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret ControlTextDirection
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *TabBar) SetTabLanguage(tab_idx int, language String, )  {
+func  (me *TabBar) SetTabLanguage(tab_idx int64, language String, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_tab_language")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(language.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetTabLanguage(tab_idx int, ) String {
+func  (me *TabBar) GetTabLanguage(tab_idx int64, ) String {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tab_language")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TabBar) SetTabIcon(tab_idx int, icon Texture2D, )  {
+func  (me *TabBar) SetTabIcon(tab_idx int64, icon Texture2D, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_tab_icon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 666127730) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(icon.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetTabIcon(tab_idx int, ) Texture2D {
+func  (me *TabBar) GetTabIcon(tab_idx int64, ) Texture2D {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tab_icon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3536238170) // FIXME: should cache?
-  var ret Texture2D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTexture2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TabBar) SetTabIconMaxWidth(tab_idx int, width int, )  {
+func  (me *TabBar) SetTabIconMaxWidth(tab_idx int64, width int64, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_tab_icon_max_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(&width), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetTabIconMaxWidth(tab_idx int, ) int {
+func  (me *TabBar) GetTabIconMaxWidth(tab_idx int64, ) int64 {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tab_icon_max_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TabBar) SetTabButtonIcon(tab_idx int, icon Texture2D, )  {
+func  (me *TabBar) SetTabButtonIcon(tab_idx int64, icon Texture2D, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_tab_button_icon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 666127730) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(icon.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetTabButtonIcon(tab_idx int, ) Texture2D {
+func  (me *TabBar) GetTabButtonIcon(tab_idx int64, ) Texture2D {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tab_button_icon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3536238170) // FIXME: should cache?
-  var ret Texture2D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTexture2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TabBar) SetTabDisabled(tab_idx int, disabled bool, )  {
+func  (me *TabBar) SetTabDisabled(tab_idx int64, disabled bool, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_tab_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(&disabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) IsTabDisabled(tab_idx int, ) bool {
+func  (me *TabBar) IsTabDisabled(tab_idx int64, ) bool {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_tab_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TabBar) SetTabHidden(tab_idx int, hidden bool, )  {
+func  (me *TabBar) SetTabHidden(tab_idx int64, hidden bool, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_tab_hidden")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(&hidden), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) IsTabHidden(tab_idx int, ) bool {
+func  (me *TabBar) IsTabHidden(tab_idx int64, ) bool {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_tab_hidden")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TabBar) SetTabMetadata(tab_idx int, metadata Variant, )  {
+func  (me *TabBar) SetTabMetadata(tab_idx int64, metadata Variant, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_tab_metadata")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2152698145) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), gdc.ConstTypePtr(metadata.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetTabMetadata(tab_idx int, ) Variant {
+func  (me *TabBar) GetTabMetadata(tab_idx int64, ) Variant {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tab_metadata")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4227898402) // FIXME: should cache?
-  var ret Variant
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVariant()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TabBar) RemoveTab(tab_idx int, )  {
+func  (me *TabBar) RemoveTab(tab_idx int64, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_tab")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TabBar) AddTab(title String, icon Texture2D, )  {
@@ -346,19 +394,22 @@ func  (me *TabBar) AddTab(title String, icon Texture2D, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1465444425) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(title.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetTabIdxAtPoint(point Vector2, ) int {
+func  (me *TabBar) GetTabIdxAtPoint(point Vector2, ) int64 {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tab_idx_at_point")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3820158470) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TabBar) SetTabAlignment(alignment TabBarAlignmentMode, )  {
@@ -368,7 +419,9 @@ func  (me *TabBar) SetTabAlignment(alignment TabBarAlignmentMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2413632353) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TabBar) GetTabAlignment() TabBarAlignmentMode {
@@ -377,9 +430,10 @@ func  (me *TabBar) GetTabAlignment() TabBarAlignmentMode {
   methodNameV := StringNameFromStr("get_tab_alignment")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2178122193) // FIXME: should cache?
-  var ret TabBarAlignmentMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TabBarAlignmentMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -390,7 +444,9 @@ func  (me *TabBar) SetClipTabs(clip_tabs bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&clip_tabs), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TabBar) GetClipTabs() bool {
@@ -399,22 +455,24 @@ func  (me *TabBar) GetClipTabs() bool {
   methodNameV := StringNameFromStr("get_clip_tabs")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TabBar) GetTabOffset() int {
+func  (me *TabBar) GetTabOffset() int64 {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tab_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TabBar) GetOffsetButtonsVisible() bool {
@@ -423,42 +481,48 @@ func  (me *TabBar) GetOffsetButtonsVisible() bool {
   methodNameV := StringNameFromStr("get_offset_buttons_visible")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TabBar) EnsureTabVisible(idx int, )  {
+func  (me *TabBar) EnsureTabVisible(idx int64, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("ensure_tab_visible")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetTabRect(tab_idx int, ) Rect2 {
+func  (me *TabBar) GetTabRect(tab_idx int64, ) Rect2 {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tab_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3327874267) // FIXME: should cache?
-  var ret Rect2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tab_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRect2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *TabBar) MoveTab(from int, to int, )  {
+func  (me *TabBar) MoveTab(from int64, to int64, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("move_tab")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from), gdc.ConstTypePtr(&to), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TabBar) SetTabCloseDisplayPolicy(policy TabBarCloseButtonDisplayPolicy, )  {
@@ -468,7 +532,9 @@ func  (me *TabBar) SetTabCloseDisplayPolicy(policy TabBarCloseButtonDisplayPolic
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2212906737) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&policy), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TabBar) GetTabCloseDisplayPolicy() TabBarCloseButtonDisplayPolicy {
@@ -477,32 +543,36 @@ func  (me *TabBar) GetTabCloseDisplayPolicy() TabBarCloseButtonDisplayPolicy {
   methodNameV := StringNameFromStr("get_tab_close_display_policy")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2956568028) // FIXME: should cache?
-  var ret TabBarCloseButtonDisplayPolicy
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TabBarCloseButtonDisplayPolicy
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *TabBar) SetMaxTabWidth(width int, )  {
+func  (me *TabBar) SetMaxTabWidth(width int64, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_tab_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetMaxTabWidth() int {
+func  (me *TabBar) GetMaxTabWidth() int64 {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_tab_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TabBar) SetScrollingEnabled(enabled bool, )  {
@@ -512,7 +582,9 @@ func  (me *TabBar) SetScrollingEnabled(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TabBar) GetScrollingEnabled() bool {
@@ -521,10 +593,11 @@ func  (me *TabBar) GetScrollingEnabled() bool {
   methodNameV := StringNameFromStr("get_scrolling_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TabBar) SetDragToRearrangeEnabled(enabled bool, )  {
@@ -534,7 +607,9 @@ func  (me *TabBar) SetDragToRearrangeEnabled(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TabBar) GetDragToRearrangeEnabled() bool {
@@ -543,32 +618,36 @@ func  (me *TabBar) GetDragToRearrangeEnabled() bool {
   methodNameV := StringNameFromStr("get_drag_to_rearrange_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TabBar) SetTabsRearrangeGroup(group_id int, )  {
+func  (me *TabBar) SetTabsRearrangeGroup(group_id int64, )  {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_tabs_rearrange_group")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&group_id), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TabBar) GetTabsRearrangeGroup() int {
+func  (me *TabBar) GetTabsRearrangeGroup() int64 {
   classNameV := StringNameFromStr("TabBar")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_tabs_rearrange_group")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TabBar) SetScrollToSelected(enabled bool, )  {
@@ -578,7 +657,9 @@ func  (me *TabBar) SetScrollToSelected(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TabBar) GetScrollToSelected() bool {
@@ -587,10 +668,11 @@ func  (me *TabBar) GetScrollToSelected() bool {
   methodNameV := StringNameFromStr("get_scroll_to_selected")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TabBar) SetSelectWithRmb(enabled bool, )  {
@@ -600,7 +682,9 @@ func  (me *TabBar) SetSelectWithRmb(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TabBar) GetSelectWithRmb() bool {
@@ -609,10 +693,11 @@ func  (me *TabBar) GetSelectWithRmb() bool {
   methodNameV := StringNameFromStr("get_select_with_rmb")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TabBar) ClearTabs()  {
@@ -622,7 +707,9 @@ func  (me *TabBar) ClearTabs()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

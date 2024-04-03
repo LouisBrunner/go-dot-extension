@@ -17,6 +17,16 @@ func (me *HeightMapShape3D) BaseClass() string {
   return "HeightMapShape3D"
 }
 
+func NewHeightMapShape3D() *HeightMapShape3D {
+  str := StringNameFromStr("HeightMapShape3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &HeightMapShape3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,48 +45,54 @@ func (me *HeightMapShape3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *HeightMapShape3D) SetMapWidth(width int, )  {
+func  (me *HeightMapShape3D) SetMapWidth(width int64, )  {
   classNameV := StringNameFromStr("HeightMapShape3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_map_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *HeightMapShape3D) GetMapWidth() int {
+func  (me *HeightMapShape3D) GetMapWidth() int64 {
   classNameV := StringNameFromStr("HeightMapShape3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_map_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *HeightMapShape3D) SetMapDepth(height int, )  {
+func  (me *HeightMapShape3D) SetMapDepth(height int64, )  {
   classNameV := StringNameFromStr("HeightMapShape3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_map_depth")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&height), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *HeightMapShape3D) GetMapDepth() int {
+func  (me *HeightMapShape3D) GetMapDepth() int64 {
   classNameV := StringNameFromStr("HeightMapShape3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_map_depth")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *HeightMapShape3D) SetMapData(data PackedFloat32Array, )  {
@@ -86,7 +102,9 @@ func  (me *HeightMapShape3D) SetMapData(data PackedFloat32Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2899603908) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(data.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *HeightMapShape3D) GetMapData() PackedFloat32Array {
@@ -95,10 +113,11 @@ func  (me *HeightMapShape3D) GetMapData() PackedFloat32Array {
   methodNameV := StringNameFromStr("get_map_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 675695659) // FIXME: should cache?
-  var ret PackedFloat32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedFloat32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

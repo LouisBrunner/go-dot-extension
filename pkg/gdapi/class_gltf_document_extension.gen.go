@@ -17,6 +17,16 @@ func (me *GLTFDocumentExtension) BaseClass() string {
   return "GLTFDocumentExtension"
 }
 
+func NewGLTFDocumentExtension() *GLTFDocumentExtension {
+  str := StringNameFromStr("GLTFDocumentExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GLTFDocumentExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

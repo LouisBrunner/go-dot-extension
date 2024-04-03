@@ -17,6 +17,16 @@ func (me *SliderJoint3D) BaseClass() string {
   return "SliderJoint3D"
 }
 
+func NewSliderJoint3D() *SliderJoint3D {
+  str := StringNameFromStr("SliderJoint3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &SliderJoint3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -62,26 +72,29 @@ func (me *SliderJoint3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *SliderJoint3D) SetParam(param SliderJoint3DParam, value float32, )  {
+func  (me *SliderJoint3D) SetParam(param SliderJoint3DParam, value float64, )  {
   classNameV := StringNameFromStr("SliderJoint3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 918243683) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SliderJoint3D) GetParam(param SliderJoint3DParam, ) float32 {
+func  (me *SliderJoint3D) GetParam(param SliderJoint3DParam, ) float64 {
   classNameV := StringNameFromStr("SliderJoint3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 959925627) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

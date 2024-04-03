@@ -17,6 +17,16 @@ func (me *ORMMaterial3D) BaseClass() string {
   return "ORMMaterial3D"
 }
 
+func NewORMMaterial3D() *ORMMaterial3D {
+  str := StringNameFromStr("ORMMaterial3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ORMMaterial3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

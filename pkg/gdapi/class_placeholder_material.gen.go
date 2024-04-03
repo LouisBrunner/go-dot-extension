@@ -17,6 +17,16 @@ func (me *PlaceholderMaterial) BaseClass() string {
   return "PlaceholderMaterial"
 }
 
+func NewPlaceholderMaterial() *PlaceholderMaterial {
+  str := StringNameFromStr("PlaceholderMaterial") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PlaceholderMaterial{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *SpriteFrames) BaseClass() string {
   return "SpriteFrames"
 }
 
+func NewSpriteFrames() *SpriteFrames {
+  str := StringNameFromStr("SpriteFrames") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &SpriteFrames{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *SpriteFrames) AddAnimation(anim StringName, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SpriteFrames) HasAnimation(anim StringName, ) bool {
@@ -51,10 +63,11 @@ func  (me *SpriteFrames) HasAnimation(anim StringName, ) bool {
   methodNameV := StringNameFromStr("has_animation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *SpriteFrames) RemoveAnimation(anim StringName, )  {
@@ -64,7 +77,9 @@ func  (me *SpriteFrames) RemoveAnimation(anim StringName, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SpriteFrames) RenameAnimation(anim StringName, newname StringName, )  {
@@ -74,7 +89,9 @@ func  (me *SpriteFrames) RenameAnimation(anim StringName, newname StringName, ) 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3740211285) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(newname.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SpriteFrames) GetAnimationNames() PackedStringArray {
@@ -83,32 +100,36 @@ func  (me *SpriteFrames) GetAnimationNames() PackedStringArray {
   methodNameV := StringNameFromStr("get_animation_names")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
-  var ret PackedStringArray
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedStringArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SpriteFrames) SetAnimationSpeed(anim StringName, fps float32, )  {
+func  (me *SpriteFrames) SetAnimationSpeed(anim StringName, fps float64, )  {
   classNameV := StringNameFromStr("SpriteFrames")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_animation_speed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4135858297) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&fps), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SpriteFrames) GetAnimationSpeed(anim StringName, ) float32 {
+func  (me *SpriteFrames) GetAnimationSpeed(anim StringName, ) float64 {
   classNameV := StringNameFromStr("SpriteFrames")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_animation_speed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2349060816) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *SpriteFrames) SetAnimationLoop(anim StringName, loop bool, )  {
@@ -118,7 +139,9 @@ func  (me *SpriteFrames) SetAnimationLoop(anim StringName, loop bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2524380260) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&loop), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SpriteFrames) GetAnimationLoop(anim StringName, ) bool {
@@ -127,76 +150,86 @@ func  (me *SpriteFrames) GetAnimationLoop(anim StringName, ) bool {
   methodNameV := StringNameFromStr("get_animation_loop")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SpriteFrames) AddFrame(anim StringName, texture Texture2D, duration float32, at_position int, )  {
+func  (me *SpriteFrames) AddFrame(anim StringName, texture Texture2D, duration float64, at_position int64, )  {
   classNameV := StringNameFromStr("SpriteFrames")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_frame")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1351332740) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(&duration), gdc.ConstTypePtr(&at_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SpriteFrames) SetFrame(anim StringName, idx int, texture Texture2D, duration float32, )  {
+func  (me *SpriteFrames) SetFrame(anim StringName, idx int64, texture Texture2D, duration float64, )  {
   classNameV := StringNameFromStr("SpriteFrames")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_frame")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 56804795) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(&duration), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SpriteFrames) RemoveFrame(anim StringName, idx int, )  {
+func  (me *SpriteFrames) RemoveFrame(anim StringName, idx int64, )  {
   classNameV := StringNameFromStr("SpriteFrames")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_frame")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2415702435) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SpriteFrames) GetFrameCount(anim StringName, ) int {
+func  (me *SpriteFrames) GetFrameCount(anim StringName, ) int64 {
   classNameV := StringNameFromStr("SpriteFrames")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_frame_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2458036349) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SpriteFrames) GetFrameTexture(anim StringName, idx int, ) Texture2D {
+func  (me *SpriteFrames) GetFrameTexture(anim StringName, idx int64, ) Texture2D {
   classNameV := StringNameFromStr("SpriteFrames")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_frame_texture")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2900517879) // FIXME: should cache?
-  var ret Texture2D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTexture2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SpriteFrames) GetFrameDuration(anim StringName, idx int, ) float32 {
+func  (me *SpriteFrames) GetFrameDuration(anim StringName, idx int64, ) float64 {
   classNameV := StringNameFromStr("SpriteFrames")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_frame_duration")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1129309260) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *SpriteFrames) Clear(anim StringName, )  {
@@ -206,7 +239,9 @@ func  (me *SpriteFrames) Clear(anim StringName, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SpriteFrames) ClearAll()  {
@@ -216,7 +251,9 @@ func  (me *SpriteFrames) ClearAll()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

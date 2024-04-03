@@ -133,7 +133,9 @@ func (me *extension) propertyRevert(pInstance gdc.ClassInstancePtr, pName gdc.Co
 		me.Logf(LogLevelError, "could not convert return value for %s::%s: %s", instance.class.name, name, err.Error())
 		return gdc.Bool(0)
 	}
-	*(*gdc.VariantPtr)(rRet) = va
+
+	defer va.Destroy()
+	me.iface.VariantNewCopy(gdc.UninitializedVariantPtr(rRet), va.AsCPtr())
 	return gdc.Bool(1)
 }
 
@@ -153,7 +155,6 @@ func (me *extension) methodCall(methodUserdata unsafe.Pointer, pInstance gdc.Cla
 		if int(pArgumentCount) != len(argTypes) {
 			return nil, fmt.Errorf("expected %d arguments, got %d", len(argTypes), pArgumentCount)
 		}
-		fmt.Printf("pArgs: %p\n", pArgs)
 		received := unsafe.Slice(pArgs, int(pArgumentCount))
 		args := make([]reflect.Value, pArgumentCount)
 		for i, pArg := range received {
@@ -183,7 +184,8 @@ func (me *extension) methodCall(methodUserdata unsafe.Pointer, pInstance gdc.Cla
 		me.Logf(LogLevelError, "could not convert return value for %s: %s", method.name, err.Error())
 		return
 	}
-	*(*gdc.VariantPtr)(rReturn) = va
+	defer va.Destroy()
+	me.iface.VariantNewCopy(gdc.UninitializedVariantPtr(rReturn), va.AsCPtr())
 }
 
 func (me *extension) methodPtrcall(methodUserdata unsafe.Pointer, pInstance gdc.ClassInstancePtr, pArgs *gdc.ConstTypePtr, rRet gdc.TypePtr) {

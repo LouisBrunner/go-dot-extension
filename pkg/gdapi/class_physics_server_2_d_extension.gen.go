@@ -17,6 +17,16 @@ func (me *PhysicsServer2DExtension) BaseClass() string {
   return "PhysicsServer2DExtension"
 }
 
+func NewPhysicsServer2DExtension() *PhysicsServer2DExtension {
+  str := StringNameFromStr("PhysicsServer2DExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PhysicsServer2DExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,22 +51,24 @@ func  (me *PhysicsServer2DExtension) BodyTestMotionIsExcludingBody(body RID, ) b
   methodNameV := StringNameFromStr("body_test_motion_is_excluding_body")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *PhysicsServer2DExtension) BodyTestMotionIsExcludingObject(object int, ) bool {
+func  (me *PhysicsServer2DExtension) BodyTestMotionIsExcludingObject(object int64, ) bool {
   classNameV := StringNameFromStr("PhysicsServer2DExtension")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("body_test_motion_is_excluding_object")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&object), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

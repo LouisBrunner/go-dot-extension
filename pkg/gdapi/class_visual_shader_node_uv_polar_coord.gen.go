@@ -17,6 +17,16 @@ func (me *VisualShaderNodeUVPolarCoord) BaseClass() string {
   return "VisualShaderNodeUVPolarCoord"
 }
 
+func NewVisualShaderNodeUVPolarCoord() *VisualShaderNodeUVPolarCoord {
+  str := StringNameFromStr("VisualShaderNodeUVPolarCoord") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeUVPolarCoord{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

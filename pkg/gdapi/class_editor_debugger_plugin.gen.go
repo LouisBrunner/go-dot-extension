@@ -17,6 +17,16 @@ func (me *EditorDebuggerPlugin) BaseClass() string {
   return "EditorDebuggerPlugin"
 }
 
+func NewEditorDebuggerPlugin() *EditorDebuggerPlugin {
+  str := StringNameFromStr("EditorDebuggerPlugin") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorDebuggerPlugin{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,16 +45,17 @@ func (me *EditorDebuggerPlugin) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *EditorDebuggerPlugin) GetSession(id int, ) EditorDebuggerSession {
+func  (me *EditorDebuggerPlugin) GetSession(id int64, ) EditorDebuggerSession {
   classNameV := StringNameFromStr("EditorDebuggerPlugin")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_session")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3061968499) // FIXME: should cache?
-  var ret EditorDebuggerSession
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewEditorDebuggerSession()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *EditorDebuggerPlugin) GetSessions() Array {
@@ -53,10 +64,11 @@ func  (me *EditorDebuggerPlugin) GetSessions() Array {
   methodNameV := StringNameFromStr("get_sessions")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

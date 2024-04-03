@@ -17,6 +17,16 @@ func (me *VisualShaderNodeParticleMultiplyByAxisAngle) BaseClass() string {
   return "VisualShaderNodeParticleMultiplyByAxisAngle"
 }
 
+func NewVisualShaderNodeParticleMultiplyByAxisAngle() *VisualShaderNodeParticleMultiplyByAxisAngle {
+  str := StringNameFromStr("VisualShaderNodeParticleMultiplyByAxisAngle") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeParticleMultiplyByAxisAngle{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *VisualShaderNodeParticleMultiplyByAxisAngle) SetDegreesMode(enabled b
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeParticleMultiplyByAxisAngle) IsDegreesMode() bool {
@@ -51,10 +63,11 @@ func  (me *VisualShaderNodeParticleMultiplyByAxisAngle) IsDegreesMode() bool {
   methodNameV := StringNameFromStr("is_degrees_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

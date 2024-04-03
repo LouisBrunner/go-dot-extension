@@ -17,6 +17,16 @@ func (me *TubeTrailMesh) BaseClass() string {
   return "TubeTrailMesh"
 }
 
+func NewTubeTrailMesh() *TubeTrailMesh {
+  str := StringNameFromStr("TubeTrailMesh") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &TubeTrailMesh{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,114 +45,129 @@ func (me *TubeTrailMesh) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *TubeTrailMesh) SetRadius(radius float32, )  {
+func  (me *TubeTrailMesh) SetRadius(radius float64, )  {
   classNameV := StringNameFromStr("TubeTrailMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TubeTrailMesh) GetRadius() float32 {
+func  (me *TubeTrailMesh) GetRadius() float64 {
   classNameV := StringNameFromStr("TubeTrailMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TubeTrailMesh) SetRadialSteps(radial_steps int, )  {
+func  (me *TubeTrailMesh) SetRadialSteps(radial_steps int64, )  {
   classNameV := StringNameFromStr("TubeTrailMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_radial_steps")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radial_steps), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TubeTrailMesh) GetRadialSteps() int {
+func  (me *TubeTrailMesh) GetRadialSteps() int64 {
   classNameV := StringNameFromStr("TubeTrailMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_radial_steps")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TubeTrailMesh) SetSections(sections int, )  {
+func  (me *TubeTrailMesh) SetSections(sections int64, )  {
   classNameV := StringNameFromStr("TubeTrailMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_sections")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&sections), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TubeTrailMesh) GetSections() int {
+func  (me *TubeTrailMesh) GetSections() int64 {
   classNameV := StringNameFromStr("TubeTrailMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_sections")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TubeTrailMesh) SetSectionLength(section_length float32, )  {
+func  (me *TubeTrailMesh) SetSectionLength(section_length float64, )  {
   classNameV := StringNameFromStr("TubeTrailMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_section_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&section_length), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TubeTrailMesh) GetSectionLength() float32 {
+func  (me *TubeTrailMesh) GetSectionLength() float64 {
   classNameV := StringNameFromStr("TubeTrailMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_section_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *TubeTrailMesh) SetSectionRings(section_rings int, )  {
+func  (me *TubeTrailMesh) SetSectionRings(section_rings int64, )  {
   classNameV := StringNameFromStr("TubeTrailMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_section_rings")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&section_rings), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *TubeTrailMesh) GetSectionRings() int {
+func  (me *TubeTrailMesh) GetSectionRings() int64 {
   classNameV := StringNameFromStr("TubeTrailMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_section_rings")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TubeTrailMesh) SetCapTop(cap_top bool, )  {
@@ -152,7 +177,9 @@ func  (me *TubeTrailMesh) SetCapTop(cap_top bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cap_top), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TubeTrailMesh) IsCapTop() bool {
@@ -161,10 +188,11 @@ func  (me *TubeTrailMesh) IsCapTop() bool {
   methodNameV := StringNameFromStr("is_cap_top")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TubeTrailMesh) SetCapBottom(cap_bottom bool, )  {
@@ -174,7 +202,9 @@ func  (me *TubeTrailMesh) SetCapBottom(cap_bottom bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cap_bottom), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TubeTrailMesh) IsCapBottom() bool {
@@ -183,10 +213,11 @@ func  (me *TubeTrailMesh) IsCapBottom() bool {
   methodNameV := StringNameFromStr("is_cap_bottom")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *TubeTrailMesh) SetCurve(curve Curve, )  {
@@ -196,7 +227,9 @@ func  (me *TubeTrailMesh) SetCurve(curve Curve, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *TubeTrailMesh) GetCurve() Curve {
@@ -205,10 +238,11 @@ func  (me *TubeTrailMesh) GetCurve() Curve {
   methodNameV := StringNameFromStr("get_curve")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
-  var ret Curve
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCurve()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

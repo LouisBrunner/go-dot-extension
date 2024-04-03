@@ -17,6 +17,16 @@ func (me *VisualShaderNodeLinearSceneDepth) BaseClass() string {
   return "VisualShaderNodeLinearSceneDepth"
 }
 
+func NewVisualShaderNodeLinearSceneDepth() *VisualShaderNodeLinearSceneDepth {
+  str := StringNameFromStr("VisualShaderNodeLinearSceneDepth") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeLinearSceneDepth{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

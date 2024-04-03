@@ -17,6 +17,16 @@ func (me *VisualShaderNodeCustom) BaseClass() string {
   return "VisualShaderNodeCustom"
 }
 
+func NewVisualShaderNodeCustom() *VisualShaderNodeCustom {
+  str := StringNameFromStr("VisualShaderNodeCustom") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeCustom{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,16 +45,17 @@ func (me *VisualShaderNodeCustom) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *VisualShaderNodeCustom) GetOptionIndex(option int, ) int {
+func  (me *VisualShaderNodeCustom) GetOptionIndex(option int64, ) int64 {
   classNameV := StringNameFromStr("VisualShaderNodeCustom")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_option_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

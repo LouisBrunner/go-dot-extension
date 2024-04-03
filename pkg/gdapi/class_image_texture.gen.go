@@ -17,6 +17,16 @@ func (me *ImageTexture) BaseClass() string {
   return "ImageTexture"
 }
 
+func NewImageTexture() *ImageTexture {
+  str := StringNameFromStr("ImageTexture") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ImageTexture{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  ImageTextureCreateFromImage(image Image, ) ImageTexture {
   methodNameV := StringNameFromStr("create_from_image")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2775144163) // FIXME: should cache?
-  var ret ImageTexture
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewImageTexture()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ImageTexture) GetFormat() ImageFormat {
@@ -53,9 +64,10 @@ func  (me *ImageTexture) GetFormat() ImageFormat {
   methodNameV := StringNameFromStr("get_format")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3847873762) // FIXME: should cache?
-  var ret ImageFormat
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret ImageFormat
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -66,7 +78,9 @@ func  (me *ImageTexture) SetImage(image Image, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 532598488) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ImageTexture) Update(image Image, )  {
@@ -76,7 +90,9 @@ func  (me *ImageTexture) Update(image Image, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 532598488) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ImageTexture) SetSizeOverride(size Vector2i, )  {
@@ -86,7 +102,9 @@ func  (me *ImageTexture) SetSizeOverride(size Vector2i, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130785943) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

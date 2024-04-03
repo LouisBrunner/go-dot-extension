@@ -17,6 +17,16 @@ func (me *GrooveJoint2D) BaseClass() string {
   return "GrooveJoint2D"
 }
 
+func NewGrooveJoint2D() *GrooveJoint2D {
+  str := StringNameFromStr("GrooveJoint2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GrooveJoint2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,48 +45,54 @@ func (me *GrooveJoint2D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *GrooveJoint2D) SetLength(length float32, )  {
+func  (me *GrooveJoint2D) SetLength(length float64, )  {
   classNameV := StringNameFromStr("GrooveJoint2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GrooveJoint2D) GetLength() float32 {
+func  (me *GrooveJoint2D) GetLength() float64 {
   classNameV := StringNameFromStr("GrooveJoint2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GrooveJoint2D) SetInitialOffset(offset float32, )  {
+func  (me *GrooveJoint2D) SetInitialOffset(offset float64, )  {
   classNameV := StringNameFromStr("GrooveJoint2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_initial_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&offset), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GrooveJoint2D) GetInitialOffset() float32 {
+func  (me *GrooveJoint2D) GetInitialOffset() float64 {
   classNameV := StringNameFromStr("GrooveJoint2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_initial_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

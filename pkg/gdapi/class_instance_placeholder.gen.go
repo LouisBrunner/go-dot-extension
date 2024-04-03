@@ -17,6 +17,16 @@ func (me *InstancePlaceholder) BaseClass() string {
   return "InstancePlaceholder"
 }
 
+func NewInstancePlaceholder() *InstancePlaceholder {
+  str := StringNameFromStr("InstancePlaceholder") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &InstancePlaceholder{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *InstancePlaceholder) GetStoredValues(with_order bool, ) Dictionary {
   methodNameV := StringNameFromStr("get_stored_values")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2230153369) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&with_order), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *InstancePlaceholder) CreateInstance(replace bool, custom_scene PackedScene, ) Node {
@@ -53,10 +64,11 @@ func  (me *InstancePlaceholder) CreateInstance(replace bool, custom_scene Packed
   methodNameV := StringNameFromStr("create_instance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3794612210) // FIXME: should cache?
-  var ret Node
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&replace), gdc.ConstTypePtr(custom_scene.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNode()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *InstancePlaceholder) GetInstancePath() String {
@@ -65,10 +77,11 @@ func  (me *InstancePlaceholder) GetInstancePath() String {
   methodNameV := StringNameFromStr("get_instance_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

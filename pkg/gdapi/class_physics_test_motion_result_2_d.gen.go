@@ -17,6 +17,16 @@ func (me *PhysicsTestMotionResult2D) BaseClass() string {
   return "PhysicsTestMotionResult2D"
 }
 
+func NewPhysicsTestMotionResult2D() *PhysicsTestMotionResult2D {
+  str := StringNameFromStr("PhysicsTestMotionResult2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PhysicsTestMotionResult2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *PhysicsTestMotionResult2D) GetTravel() Vector2 {
   methodNameV := StringNameFromStr("get_travel")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PhysicsTestMotionResult2D) GetRemainder() Vector2 {
@@ -53,10 +64,11 @@ func  (me *PhysicsTestMotionResult2D) GetRemainder() Vector2 {
   methodNameV := StringNameFromStr("get_remainder")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PhysicsTestMotionResult2D) GetCollisionPoint() Vector2 {
@@ -65,10 +77,11 @@ func  (me *PhysicsTestMotionResult2D) GetCollisionPoint() Vector2 {
   methodNameV := StringNameFromStr("get_collision_point")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PhysicsTestMotionResult2D) GetCollisionNormal() Vector2 {
@@ -77,10 +90,11 @@ func  (me *PhysicsTestMotionResult2D) GetCollisionNormal() Vector2 {
   methodNameV := StringNameFromStr("get_collision_normal")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PhysicsTestMotionResult2D) GetColliderVelocity() Vector2 {
@@ -89,22 +103,24 @@ func  (me *PhysicsTestMotionResult2D) GetColliderVelocity() Vector2 {
   methodNameV := StringNameFromStr("get_collider_velocity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *PhysicsTestMotionResult2D) GetColliderId() int {
+func  (me *PhysicsTestMotionResult2D) GetColliderId() int64 {
   classNameV := StringNameFromStr("PhysicsTestMotionResult2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collider_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *PhysicsTestMotionResult2D) GetColliderRid() RID {
@@ -113,10 +129,11 @@ func  (me *PhysicsTestMotionResult2D) GetColliderRid() RID {
   methodNameV := StringNameFromStr("get_collider_rid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
-  var ret RID
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRID()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *PhysicsTestMotionResult2D) GetCollider() Object {
@@ -125,70 +142,76 @@ func  (me *PhysicsTestMotionResult2D) GetCollider() Object {
   methodNameV := StringNameFromStr("get_collider")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1981248198) // FIXME: should cache?
-  var ret Object
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewObject()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *PhysicsTestMotionResult2D) GetColliderShape() int {
+func  (me *PhysicsTestMotionResult2D) GetColliderShape() int64 {
   classNameV := StringNameFromStr("PhysicsTestMotionResult2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collider_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *PhysicsTestMotionResult2D) GetCollisionLocalShape() int {
+func  (me *PhysicsTestMotionResult2D) GetCollisionLocalShape() int64 {
   classNameV := StringNameFromStr("PhysicsTestMotionResult2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_local_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *PhysicsTestMotionResult2D) GetCollisionDepth() float32 {
+func  (me *PhysicsTestMotionResult2D) GetCollisionDepth() float64 {
   classNameV := StringNameFromStr("PhysicsTestMotionResult2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_depth")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *PhysicsTestMotionResult2D) GetCollisionSafeFraction() float32 {
+func  (me *PhysicsTestMotionResult2D) GetCollisionSafeFraction() float64 {
   classNameV := StringNameFromStr("PhysicsTestMotionResult2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_safe_fraction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *PhysicsTestMotionResult2D) GetCollisionUnsafeFraction() float32 {
+func  (me *PhysicsTestMotionResult2D) GetCollisionUnsafeFraction() float64 {
   classNameV := StringNameFromStr("PhysicsTestMotionResult2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_collision_unsafe_fraction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

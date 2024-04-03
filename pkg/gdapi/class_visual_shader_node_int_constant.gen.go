@@ -17,6 +17,16 @@ func (me *VisualShaderNodeIntConstant) BaseClass() string {
   return "VisualShaderNodeIntConstant"
 }
 
+func NewVisualShaderNodeIntConstant() *VisualShaderNodeIntConstant {
+  str := StringNameFromStr("VisualShaderNodeIntConstant") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeIntConstant{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *VisualShaderNodeIntConstant) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *VisualShaderNodeIntConstant) SetConstant(constant int, )  {
+func  (me *VisualShaderNodeIntConstant) SetConstant(constant int64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeIntConstant")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_constant")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&constant), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeIntConstant) GetConstant() int {
+func  (me *VisualShaderNodeIntConstant) GetConstant() int64 {
   classNameV := StringNameFromStr("VisualShaderNodeIntConstant")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_constant")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

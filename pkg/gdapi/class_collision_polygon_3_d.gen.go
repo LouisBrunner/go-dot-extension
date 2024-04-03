@@ -17,6 +17,16 @@ func (me *CollisionPolygon3D) BaseClass() string {
   return "CollisionPolygon3D"
 }
 
+func NewCollisionPolygon3D() *CollisionPolygon3D {
+  str := StringNameFromStr("CollisionPolygon3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CollisionPolygon3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *CollisionPolygon3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *CollisionPolygon3D) SetDepth(depth float32, )  {
+func  (me *CollisionPolygon3D) SetDepth(depth float64, )  {
   classNameV := StringNameFromStr("CollisionPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_depth")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&depth), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CollisionPolygon3D) GetDepth() float32 {
+func  (me *CollisionPolygon3D) GetDepth() float64 {
   classNameV := StringNameFromStr("CollisionPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_depth")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CollisionPolygon3D) SetPolygon(polygon PackedVector2Array, )  {
@@ -64,7 +77,9 @@ func  (me *CollisionPolygon3D) SetPolygon(polygon PackedVector2Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CollisionPolygon3D) GetPolygon() PackedVector2Array {
@@ -73,10 +88,11 @@ func  (me *CollisionPolygon3D) GetPolygon() PackedVector2Array {
   methodNameV := StringNameFromStr("get_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2961356807) // FIXME: should cache?
-  var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector2Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CollisionPolygon3D) SetDisabled(disabled bool, )  {
@@ -86,7 +102,9 @@ func  (me *CollisionPolygon3D) SetDisabled(disabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CollisionPolygon3D) IsDisabled() bool {
@@ -95,32 +113,36 @@ func  (me *CollisionPolygon3D) IsDisabled() bool {
   methodNameV := StringNameFromStr("is_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CollisionPolygon3D) SetMargin(margin float32, )  {
+func  (me *CollisionPolygon3D) SetMargin(margin float64, )  {
   classNameV := StringNameFromStr("CollisionPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_margin")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CollisionPolygon3D) GetMargin() float32 {
+func  (me *CollisionPolygon3D) GetMargin() float64 {
   classNameV := StringNameFromStr("CollisionPolygon3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_margin")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

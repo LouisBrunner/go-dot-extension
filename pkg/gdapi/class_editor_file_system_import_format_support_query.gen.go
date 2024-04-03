@@ -17,6 +17,16 @@ func (me *EditorFileSystemImportFormatSupportQuery) BaseClass() string {
   return "EditorFileSystemImportFormatSupportQuery"
 }
 
+func NewEditorFileSystemImportFormatSupportQuery() *EditorFileSystemImportFormatSupportQuery {
+  str := StringNameFromStr("EditorFileSystemImportFormatSupportQuery") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorFileSystemImportFormatSupportQuery{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

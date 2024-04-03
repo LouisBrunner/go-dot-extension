@@ -17,6 +17,16 @@ func (me *GraphEdit) BaseClass() string {
   return "GraphEdit"
 }
 
+func NewGraphEdit() *GraphEdit {
+  str := StringNameFromStr("GraphEdit") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GraphEdit{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,60 +51,68 @@ func (me *GraphEdit) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *GraphEdit) ConnectNode(from_node StringName, from_port int, to_node StringName, to_port int, ) Error {
+func  (me *GraphEdit) ConnectNode(from_node StringName, from_port int64, to_node StringName, to_port int64, ) Error {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("connect_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 195065850) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from_node.AsCTypePtr()), gdc.ConstTypePtr(&from_port), gdc.ConstTypePtr(to_node.AsCTypePtr()), gdc.ConstTypePtr(&to_port), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *GraphEdit) IsNodeConnected(from_node StringName, from_port int, to_node StringName, to_port int, ) bool {
+func  (me *GraphEdit) IsNodeConnected(from_node StringName, from_port int64, to_node StringName, to_port int64, ) bool {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_node_connected")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4216241294) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from_node.AsCTypePtr()), gdc.ConstTypePtr(&from_port), gdc.ConstTypePtr(to_node.AsCTypePtr()), gdc.ConstTypePtr(&to_port), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GraphEdit) DisconnectNode(from_node StringName, from_port int, to_node StringName, to_port int, )  {
+func  (me *GraphEdit) DisconnectNode(from_node StringName, from_port int64, to_node StringName, to_port int64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("disconnect_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1933654315) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from_node.AsCTypePtr()), gdc.ConstTypePtr(&from_port), gdc.ConstTypePtr(to_node.AsCTypePtr()), gdc.ConstTypePtr(&to_port), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) SetConnectionActivity(from_node StringName, from_port int, to_node StringName, to_port int, amount float32, )  {
+func  (me *GraphEdit) SetConnectionActivity(from_node StringName, from_port int64, to_node StringName, to_port int64, amount float64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_connection_activity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1141899943) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from_node.AsCTypePtr()), gdc.ConstTypePtr(&from_port), gdc.ConstTypePtr(to_node.AsCTypePtr()), gdc.ConstTypePtr(&to_port), gdc.ConstTypePtr(&amount), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) GetConnectionList() Dictionary {
+func  (me *GraphEdit) GetConnectionList() []Dictionary {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connection_list")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[Dictionary](ret)
 }
 
 func  (me *GraphEdit) ClearConnections()  {
@@ -104,7 +122,9 @@ func  (me *GraphEdit) ClearConnections()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) ForceConnectionDragEnd()  {
@@ -114,7 +134,9 @@ func  (me *GraphEdit) ForceConnectionDragEnd()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) GetScrollOffset() Vector2 {
@@ -123,10 +145,11 @@ func  (me *GraphEdit) GetScrollOffset() Vector2 {
   methodNameV := StringNameFromStr("get_scroll_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GraphEdit) SetScrollOffset(offset Vector2, )  {
@@ -136,79 +159,94 @@ func  (me *GraphEdit) SetScrollOffset(offset Vector2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) AddValidRightDisconnectType(type_ int, )  {
+func  (me *GraphEdit) AddValidRightDisconnectType(type_ int64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_valid_right_disconnect_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) RemoveValidRightDisconnectType(type_ int, )  {
+func  (me *GraphEdit) RemoveValidRightDisconnectType(type_ int64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_valid_right_disconnect_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) AddValidLeftDisconnectType(type_ int, )  {
+func  (me *GraphEdit) AddValidLeftDisconnectType(type_ int64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_valid_left_disconnect_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) RemoveValidLeftDisconnectType(type_ int, )  {
+func  (me *GraphEdit) RemoveValidLeftDisconnectType(type_ int64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_valid_left_disconnect_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) AddValidConnectionType(from_type int, to_type int, )  {
+func  (me *GraphEdit) AddValidConnectionType(from_type int64, to_type int64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_valid_connection_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_type), gdc.ConstTypePtr(&to_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) RemoveValidConnectionType(from_type int, to_type int, )  {
+func  (me *GraphEdit) RemoveValidConnectionType(from_type int64, to_type int64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_valid_connection_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_type), gdc.ConstTypePtr(&to_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) IsValidConnectionType(from_type int, to_type int, ) bool {
+func  (me *GraphEdit) IsValidConnectionType(from_type int64, to_type int64, ) bool {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_valid_connection_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2522259332) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_type), gdc.ConstTypePtr(&to_type), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) GetConnectionLine(from_node Vector2, to_node Vector2, ) PackedVector2Array {
@@ -217,10 +255,11 @@ func  (me *GraphEdit) GetConnectionLine(from_node Vector2, to_node Vector2, ) Pa
   methodNameV := StringNameFromStr("get_connection_line")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1562168077) // FIXME: should cache?
-  var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from_node.AsCTypePtr()), gdc.ConstTypePtr(to_node.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector2Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GraphEdit) SetPanningScheme(scheme GraphEditPanningScheme, )  {
@@ -230,7 +269,9 @@ func  (me *GraphEdit) SetPanningScheme(scheme GraphEditPanningScheme, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 18893313) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scheme), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) GetPanningScheme() GraphEditPanningScheme {
@@ -239,98 +280,111 @@ func  (me *GraphEdit) GetPanningScheme() GraphEditPanningScheme {
   methodNameV := StringNameFromStr("get_panning_scheme")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 549924446) // FIXME: should cache?
-  var ret GraphEditPanningScheme
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret GraphEditPanningScheme
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *GraphEdit) SetZoom(zoom float32, )  {
+func  (me *GraphEdit) SetZoom(zoom float64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_zoom")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&zoom), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) GetZoom() float32 {
+func  (me *GraphEdit) GetZoom() float64 {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_zoom")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GraphEdit) SetZoomMin(zoom_min float32, )  {
+func  (me *GraphEdit) SetZoomMin(zoom_min float64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_zoom_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&zoom_min), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) GetZoomMin() float32 {
+func  (me *GraphEdit) GetZoomMin() float64 {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_zoom_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GraphEdit) SetZoomMax(zoom_max float32, )  {
+func  (me *GraphEdit) SetZoomMax(zoom_max float64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_zoom_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&zoom_max), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) GetZoomMax() float32 {
+func  (me *GraphEdit) GetZoomMax() float64 {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_zoom_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GraphEdit) SetZoomStep(zoom_step float32, )  {
+func  (me *GraphEdit) SetZoomStep(zoom_step float64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_zoom_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&zoom_step), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) GetZoomStep() float32 {
+func  (me *GraphEdit) GetZoomStep() float64 {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_zoom_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetShowGrid(enable bool, )  {
@@ -340,7 +394,9 @@ func  (me *GraphEdit) SetShowGrid(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) IsShowingGrid() bool {
@@ -349,10 +405,11 @@ func  (me *GraphEdit) IsShowingGrid() bool {
   methodNameV := StringNameFromStr("is_showing_grid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetSnappingEnabled(enable bool, )  {
@@ -362,7 +419,9 @@ func  (me *GraphEdit) SetSnappingEnabled(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) IsSnappingEnabled() bool {
@@ -371,76 +430,86 @@ func  (me *GraphEdit) IsSnappingEnabled() bool {
   methodNameV := StringNameFromStr("is_snapping_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GraphEdit) SetSnappingDistance(pixels int, )  {
+func  (me *GraphEdit) SetSnappingDistance(pixels int64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_snapping_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pixels), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) GetSnappingDistance() int {
+func  (me *GraphEdit) GetSnappingDistance() int64 {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_snapping_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GraphEdit) SetConnectionLinesCurvature(curvature float32, )  {
+func  (me *GraphEdit) SetConnectionLinesCurvature(curvature float64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_connection_lines_curvature")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&curvature), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) GetConnectionLinesCurvature() float32 {
+func  (me *GraphEdit) GetConnectionLinesCurvature() float64 {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connection_lines_curvature")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GraphEdit) SetConnectionLinesThickness(pixels float32, )  {
+func  (me *GraphEdit) SetConnectionLinesThickness(pixels float64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_connection_lines_thickness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pixels), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) GetConnectionLinesThickness() float32 {
+func  (me *GraphEdit) GetConnectionLinesThickness() float64 {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_connection_lines_thickness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetConnectionLinesAntialiased(pixels bool, )  {
@@ -450,7 +519,9 @@ func  (me *GraphEdit) SetConnectionLinesAntialiased(pixels bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pixels), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) IsConnectionLinesAntialiased() bool {
@@ -459,10 +530,11 @@ func  (me *GraphEdit) IsConnectionLinesAntialiased() bool {
   methodNameV := StringNameFromStr("is_connection_lines_antialiased")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetMinimapSize(size Vector2, )  {
@@ -472,7 +544,9 @@ func  (me *GraphEdit) SetMinimapSize(size Vector2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) GetMinimapSize() Vector2 {
@@ -481,32 +555,36 @@ func  (me *GraphEdit) GetMinimapSize() Vector2 {
   methodNameV := StringNameFromStr("get_minimap_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *GraphEdit) SetMinimapOpacity(opacity float32, )  {
+func  (me *GraphEdit) SetMinimapOpacity(opacity float64, )  {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_minimap_opacity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&opacity), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GraphEdit) GetMinimapOpacity() float32 {
+func  (me *GraphEdit) GetMinimapOpacity() float64 {
   classNameV := StringNameFromStr("GraphEdit")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_minimap_opacity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetMinimapEnabled(enable bool, )  {
@@ -516,7 +594,9 @@ func  (me *GraphEdit) SetMinimapEnabled(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) IsMinimapEnabled() bool {
@@ -525,10 +605,11 @@ func  (me *GraphEdit) IsMinimapEnabled() bool {
   methodNameV := StringNameFromStr("is_minimap_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetShowMenu(hidden bool, )  {
@@ -538,7 +619,9 @@ func  (me *GraphEdit) SetShowMenu(hidden bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hidden), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) IsShowingMenu() bool {
@@ -547,10 +630,11 @@ func  (me *GraphEdit) IsShowingMenu() bool {
   methodNameV := StringNameFromStr("is_showing_menu")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetShowZoomLabel(enable bool, )  {
@@ -560,7 +644,9 @@ func  (me *GraphEdit) SetShowZoomLabel(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) IsShowingZoomLabel() bool {
@@ -569,10 +655,11 @@ func  (me *GraphEdit) IsShowingZoomLabel() bool {
   methodNameV := StringNameFromStr("is_showing_zoom_label")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetShowGridButtons(hidden bool, )  {
@@ -582,7 +669,9 @@ func  (me *GraphEdit) SetShowGridButtons(hidden bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hidden), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) IsShowingGridButtons() bool {
@@ -591,10 +680,11 @@ func  (me *GraphEdit) IsShowingGridButtons() bool {
   methodNameV := StringNameFromStr("is_showing_grid_buttons")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetShowZoomButtons(hidden bool, )  {
@@ -604,7 +694,9 @@ func  (me *GraphEdit) SetShowZoomButtons(hidden bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hidden), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) IsShowingZoomButtons() bool {
@@ -613,10 +705,11 @@ func  (me *GraphEdit) IsShowingZoomButtons() bool {
   methodNameV := StringNameFromStr("is_showing_zoom_buttons")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetShowMinimapButton(hidden bool, )  {
@@ -626,7 +719,9 @@ func  (me *GraphEdit) SetShowMinimapButton(hidden bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hidden), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) IsShowingMinimapButton() bool {
@@ -635,10 +730,11 @@ func  (me *GraphEdit) IsShowingMinimapButton() bool {
   methodNameV := StringNameFromStr("is_showing_minimap_button")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetShowArrangeButton(hidden bool, )  {
@@ -648,7 +744,9 @@ func  (me *GraphEdit) SetShowArrangeButton(hidden bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hidden), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) IsShowingArrangeButton() bool {
@@ -657,10 +755,11 @@ func  (me *GraphEdit) IsShowingArrangeButton() bool {
   methodNameV := StringNameFromStr("is_showing_arrange_button")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) SetRightDisconnects(enable bool, )  {
@@ -670,7 +769,9 @@ func  (me *GraphEdit) SetRightDisconnects(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) IsRightDisconnectsEnabled() bool {
@@ -679,10 +780,11 @@ func  (me *GraphEdit) IsRightDisconnectsEnabled() bool {
   methodNameV := StringNameFromStr("is_right_disconnects_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GraphEdit) GetMenuHbox() HBoxContainer {
@@ -691,10 +793,11 @@ func  (me *GraphEdit) GetMenuHbox() HBoxContainer {
   methodNameV := StringNameFromStr("get_menu_hbox")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3590609951) // FIXME: should cache?
-  var ret HBoxContainer
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewHBoxContainer()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GraphEdit) ArrangeNodes()  {
@@ -704,7 +807,9 @@ func  (me *GraphEdit) ArrangeNodes()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GraphEdit) SetSelected(node Node, )  {
@@ -714,7 +819,9 @@ func  (me *GraphEdit) SetSelected(node Node, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API
@@ -847,7 +954,7 @@ func (me *GraphEdit) DisconnectDuplicateNodesRequest(subs SignalSubscribers, fn 
   me.Disconnect(*sig, *subs.remove(fn))
 }
 
-type GraphEditDeleteNodesRequestSignalFn func(nodes StringName, )
+type GraphEditDeleteNodesRequestSignalFn func(nodes []StringName, )
 
 func (me *GraphEdit) ConnectDeleteNodesRequest(subs SignalSubscribers, fn GraphEditDeleteNodesRequestSignalFn) {
   sig := StringNameFromStr("delete_nodes_request")

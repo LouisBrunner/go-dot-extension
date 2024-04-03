@@ -17,6 +17,16 @@ func (me *ResourceImporterBMFont) BaseClass() string {
   return "ResourceImporterBMFont"
 }
 
+func NewResourceImporterBMFont() *ResourceImporterBMFont {
+  str := StringNameFromStr("ResourceImporterBMFont") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ResourceImporterBMFont{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

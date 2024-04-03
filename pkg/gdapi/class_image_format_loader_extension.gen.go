@@ -17,6 +17,16 @@ func (me *ImageFormatLoaderExtension) BaseClass() string {
   return "ImageFormatLoaderExtension"
 }
 
+func NewImageFormatLoaderExtension() *ImageFormatLoaderExtension {
+  str := StringNameFromStr("ImageFormatLoaderExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ImageFormatLoaderExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *ImageFormatLoaderExtension) AddFormatLoader()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ImageFormatLoaderExtension) RemoveFormatLoader()  {
@@ -52,7 +64,9 @@ func  (me *ImageFormatLoaderExtension) RemoveFormatLoader()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

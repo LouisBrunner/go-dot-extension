@@ -17,6 +17,16 @@ func (me *GDScript) BaseClass() string {
   return "GDScript"
 }
 
+func NewGDScript() *GDScript {
+  str := StringNameFromStr("GDScript") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GDScript{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,18 +51,18 @@ func  (me *GDScript) New(varargs ...Variant) Variant {
   methodNameV := StringNameFromStr("new")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1545262638) // FIXME: should cache?
-  var ret Variant
   cargs := []gdc.ConstVariantPtr{}
+  ret := NewVariant()
+
   for _, v := range varargs {
     cargs = append(cargs, v.AsCPtr())
   }
-  err := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), gdc.UninitializedVariantPtr(&ret), err)
-  if err.Error != gdc.CallOk {
-    panic(err) // TODO: return `err`?
+  cerr := &gdc.CallError{}
+  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
+  if cerr.Error != gdc.CallOk {
+    panic(cerr) // TODO: return `cerr`?
   }
-
-  return ret
+  return *ret
 }
 
 // Signals

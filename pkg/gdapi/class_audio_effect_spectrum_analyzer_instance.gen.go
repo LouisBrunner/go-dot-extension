@@ -17,6 +17,16 @@ func (me *AudioEffectSpectrumAnalyzerInstance) BaseClass() string {
   return "AudioEffectSpectrumAnalyzerInstance"
 }
 
+func NewAudioEffectSpectrumAnalyzerInstance() *AudioEffectSpectrumAnalyzerInstance {
+  str := StringNameFromStr("AudioEffectSpectrumAnalyzerInstance") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioEffectSpectrumAnalyzerInstance{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,16 +51,17 @@ func (me *AudioEffectSpectrumAnalyzerInstance) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *AudioEffectSpectrumAnalyzerInstance) GetMagnitudeForFrequencyRange(from_hz float32, to_hz float32, mode AudioEffectSpectrumAnalyzerInstanceMagnitudeMode, ) Vector2 {
+func  (me *AudioEffectSpectrumAnalyzerInstance) GetMagnitudeForFrequencyRange(from_hz float64, to_hz float64, mode AudioEffectSpectrumAnalyzerInstanceMagnitudeMode, ) Vector2 {
   classNameV := StringNameFromStr("AudioEffectSpectrumAnalyzerInstance")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_magnitude_for_frequency_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 797993915) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_hz), gdc.ConstTypePtr(&to_hz), gdc.ConstTypePtr(&mode), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

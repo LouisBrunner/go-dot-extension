@@ -17,6 +17,16 @@ func (me *StyleBoxEmpty) BaseClass() string {
   return "StyleBoxEmpty"
 }
 
+func NewStyleBoxEmpty() *StyleBoxEmpty {
+  str := StringNameFromStr("StyleBoxEmpty") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &StyleBoxEmpty{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

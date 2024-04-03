@@ -17,6 +17,16 @@ func (me *AudioEffectBandLimitFilter) BaseClass() string {
   return "AudioEffectBandLimitFilter"
 }
 
+func NewAudioEffectBandLimitFilter() *AudioEffectBandLimitFilter {
+  str := StringNameFromStr("AudioEffectBandLimitFilter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioEffectBandLimitFilter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

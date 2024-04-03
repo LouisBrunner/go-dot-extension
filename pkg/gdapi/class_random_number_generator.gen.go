@@ -17,6 +17,16 @@ func (me *RandomNumberGenerator) BaseClass() string {
   return "RandomNumberGenerator"
 }
 
+func NewRandomNumberGenerator() *RandomNumberGenerator {
+  str := StringNameFromStr("RandomNumberGenerator") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &RandomNumberGenerator{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,108 +45,119 @@ func (me *RandomNumberGenerator) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *RandomNumberGenerator) SetSeed(seed int, )  {
+func  (me *RandomNumberGenerator) SetSeed(seed int64, )  {
   classNameV := StringNameFromStr("RandomNumberGenerator")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_seed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&seed), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *RandomNumberGenerator) GetSeed() int {
+func  (me *RandomNumberGenerator) GetSeed() int64 {
   classNameV := StringNameFromStr("RandomNumberGenerator")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_seed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *RandomNumberGenerator) SetState(state int, )  {
+func  (me *RandomNumberGenerator) SetState(state int64, )  {
   classNameV := StringNameFromStr("RandomNumberGenerator")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&state), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *RandomNumberGenerator) GetState() int {
+func  (me *RandomNumberGenerator) GetState() int64 {
   classNameV := StringNameFromStr("RandomNumberGenerator")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *RandomNumberGenerator) Randi() int {
+func  (me *RandomNumberGenerator) Randi() int64 {
   classNameV := StringNameFromStr("RandomNumberGenerator")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("randi")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *RandomNumberGenerator) Randf() float32 {
+func  (me *RandomNumberGenerator) Randf() float64 {
   classNameV := StringNameFromStr("RandomNumberGenerator")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("randf")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *RandomNumberGenerator) Randfn(mean float32, deviation float32, ) float32 {
+func  (me *RandomNumberGenerator) Randfn(mean float64, deviation float64, ) float64 {
   classNameV := StringNameFromStr("RandomNumberGenerator")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("randfn")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 837325100) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mean), gdc.ConstTypePtr(&deviation), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *RandomNumberGenerator) RandfRange(from float32, to float32, ) float32 {
+func  (me *RandomNumberGenerator) RandfRange(from float64, to float64, ) float64 {
   classNameV := StringNameFromStr("RandomNumberGenerator")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("randf_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4269894367) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from), gdc.ConstTypePtr(&to), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *RandomNumberGenerator) RandiRange(from int, to int, ) int {
+func  (me *RandomNumberGenerator) RandiRange(from int64, to int64, ) int64 {
   classNameV := StringNameFromStr("RandomNumberGenerator")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("randi_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 50157827) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from), gdc.ConstTypePtr(&to), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *RandomNumberGenerator) Randomize()  {
@@ -146,7 +167,9 @@ func  (me *RandomNumberGenerator) Randomize()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *OpenXRActionMap) BaseClass() string {
   return "OpenXRActionMap"
 }
 
+func NewOpenXRActionMap() *OpenXRActionMap {
+  str := StringNameFromStr("OpenXRActionMap") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &OpenXRActionMap{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *OpenXRActionMap) SetActionSets(action_sets Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action_sets.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRActionMap) GetActionSets() Array {
@@ -51,22 +63,24 @@ func  (me *OpenXRActionMap) GetActionSets() Array {
   methodNameV := StringNameFromStr("get_action_sets")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *OpenXRActionMap) GetActionSetCount() int {
+func  (me *OpenXRActionMap) GetActionSetCount() int64 {
   classNameV := StringNameFromStr("OpenXRActionMap")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_action_set_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *OpenXRActionMap) FindActionSet(name String, ) OpenXRActionSet {
@@ -75,22 +89,24 @@ func  (me *OpenXRActionMap) FindActionSet(name String, ) OpenXRActionSet {
   methodNameV := StringNameFromStr("find_action_set")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1888809267) // FIXME: should cache?
-  var ret OpenXRActionSet
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewOpenXRActionSet()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *OpenXRActionMap) GetActionSet(idx int, ) OpenXRActionSet {
+func  (me *OpenXRActionMap) GetActionSet(idx int64, ) OpenXRActionSet {
   classNameV := StringNameFromStr("OpenXRActionMap")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_action_set")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1789580336) // FIXME: should cache?
-  var ret OpenXRActionSet
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewOpenXRActionSet()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *OpenXRActionMap) AddActionSet(action_set OpenXRActionSet, )  {
@@ -100,7 +116,9 @@ func  (me *OpenXRActionMap) AddActionSet(action_set OpenXRActionSet, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2093310581) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action_set.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRActionMap) RemoveActionSet(action_set OpenXRActionSet, )  {
@@ -110,7 +128,9 @@ func  (me *OpenXRActionMap) RemoveActionSet(action_set OpenXRActionSet, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2093310581) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action_set.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRActionMap) SetInteractionProfiles(interaction_profiles Array, )  {
@@ -120,7 +140,9 @@ func  (me *OpenXRActionMap) SetInteractionProfiles(interaction_profiles Array, )
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(interaction_profiles.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRActionMap) GetInteractionProfiles() Array {
@@ -129,22 +151,24 @@ func  (me *OpenXRActionMap) GetInteractionProfiles() Array {
   methodNameV := StringNameFromStr("get_interaction_profiles")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *OpenXRActionMap) GetInteractionProfileCount() int {
+func  (me *OpenXRActionMap) GetInteractionProfileCount() int64 {
   classNameV := StringNameFromStr("OpenXRActionMap")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_interaction_profile_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *OpenXRActionMap) FindInteractionProfile(name String, ) OpenXRInteractionProfile {
@@ -153,22 +177,24 @@ func  (me *OpenXRActionMap) FindInteractionProfile(name String, ) OpenXRInteract
   methodNameV := StringNameFromStr("find_interaction_profile")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3095875538) // FIXME: should cache?
-  var ret OpenXRInteractionProfile
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewOpenXRInteractionProfile()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *OpenXRActionMap) GetInteractionProfile(idx int, ) OpenXRInteractionProfile {
+func  (me *OpenXRActionMap) GetInteractionProfile(idx int64, ) OpenXRInteractionProfile {
   classNameV := StringNameFromStr("OpenXRActionMap")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_interaction_profile")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2546151210) // FIXME: should cache?
-  var ret OpenXRInteractionProfile
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewOpenXRInteractionProfile()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *OpenXRActionMap) AddInteractionProfile(interaction_profile OpenXRInteractionProfile, )  {
@@ -178,7 +204,9 @@ func  (me *OpenXRActionMap) AddInteractionProfile(interaction_profile OpenXRInte
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2697953512) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(interaction_profile.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRActionMap) RemoveInteractionProfile(interaction_profile OpenXRInteractionProfile, )  {
@@ -188,7 +216,9 @@ func  (me *OpenXRActionMap) RemoveInteractionProfile(interaction_profile OpenXRI
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2697953512) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(interaction_profile.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *OpenXRActionMap) CreateDefaultActionSets()  {
@@ -198,7 +228,9 @@ func  (me *OpenXRActionMap) CreateDefaultActionSets()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

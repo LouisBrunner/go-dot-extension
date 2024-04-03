@@ -17,6 +17,16 @@ func (me *HSplitContainer) BaseClass() string {
   return "HSplitContainer"
 }
 
+func NewHSplitContainer() *HSplitContainer {
+  str := StringNameFromStr("HSplitContainer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &HSplitContainer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

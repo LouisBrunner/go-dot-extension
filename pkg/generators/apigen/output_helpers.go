@@ -27,6 +27,7 @@ var outputFuncs = map[string]interface{}{
 	"isExported":  isExported,
 	"presents":    mapIsPresent,
 	"startsWith":  strings.HasPrefix,
+	"trimPrefix":  strings.TrimPrefix,
 	"ternary": func(cond bool, a, b string) string {
 		if cond {
 			return a
@@ -89,9 +90,9 @@ func mapType(t string) string {
 		t = strings.TrimPrefix(t, "typedarray::")
 		first, rest, found := strings.Cut(t, ":")
 		if found {
-			return rest
+			return fmt.Sprintf("[]%s", rest)
 		}
-		return first
+		return fmt.Sprintf("[]%s", first)
 	case strings.Contains(t, "::"):
 		return strings.ReplaceAll(t, "::", "")
 	case strings.Contains(t, ","):

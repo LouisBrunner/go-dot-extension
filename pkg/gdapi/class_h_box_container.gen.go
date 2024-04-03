@@ -17,6 +17,16 @@ func (me *HBoxContainer) BaseClass() string {
   return "HBoxContainer"
 }
 
+func NewHBoxContainer() *HBoxContainer {
+  str := StringNameFromStr("HBoxContainer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &HBoxContainer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

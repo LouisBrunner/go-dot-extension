@@ -17,6 +17,16 @@ func (me *VisualShaderNodeRemap) BaseClass() string {
   return "VisualShaderNodeRemap"
 }
 
+func NewVisualShaderNodeRemap() *VisualShaderNodeRemap {
+  str := StringNameFromStr("VisualShaderNodeRemap") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeRemap{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

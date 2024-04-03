@@ -17,6 +17,16 @@ func (me *RDPipelineColorBlendStateAttachment) BaseClass() string {
   return "RDPipelineColorBlendStateAttachment"
 }
 
+func NewRDPipelineColorBlendStateAttachment() *RDPipelineColorBlendStateAttachment {
+  str := StringNameFromStr("RDPipelineColorBlendStateAttachment") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &RDPipelineColorBlendStateAttachment{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetAsMix()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) SetEnableBlend(p_member bool, )  {
@@ -52,7 +64,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetEnableBlend(p_member bool, ) 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) GetEnableBlend() bool {
@@ -61,10 +75,11 @@ func  (me *RDPipelineColorBlendStateAttachment) GetEnableBlend() bool {
   methodNameV := StringNameFromStr("get_enable_blend")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) SetSrcColorBlendFactor(p_member RenderingDeviceBlendFactor, )  {
@@ -74,7 +89,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetSrcColorBlendFactor(p_member 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2251019273) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) GetSrcColorBlendFactor() RenderingDeviceBlendFactor {
@@ -83,9 +100,10 @@ func  (me *RDPipelineColorBlendStateAttachment) GetSrcColorBlendFactor() Renderi
   methodNameV := StringNameFromStr("get_src_color_blend_factor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3691288359) // FIXME: should cache?
-  var ret RenderingDeviceBlendFactor
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret RenderingDeviceBlendFactor
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -96,7 +114,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetDstColorBlendFactor(p_member 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2251019273) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) GetDstColorBlendFactor() RenderingDeviceBlendFactor {
@@ -105,9 +125,10 @@ func  (me *RDPipelineColorBlendStateAttachment) GetDstColorBlendFactor() Renderi
   methodNameV := StringNameFromStr("get_dst_color_blend_factor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3691288359) // FIXME: should cache?
-  var ret RenderingDeviceBlendFactor
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret RenderingDeviceBlendFactor
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -118,7 +139,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetColorBlendOp(p_member Renderi
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3073022720) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) GetColorBlendOp() RenderingDeviceBlendOperation {
@@ -127,9 +150,10 @@ func  (me *RDPipelineColorBlendStateAttachment) GetColorBlendOp() RenderingDevic
   methodNameV := StringNameFromStr("get_color_blend_op")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1385093561) // FIXME: should cache?
-  var ret RenderingDeviceBlendOperation
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret RenderingDeviceBlendOperation
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -140,7 +164,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetSrcAlphaBlendFactor(p_member 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2251019273) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) GetSrcAlphaBlendFactor() RenderingDeviceBlendFactor {
@@ -149,9 +175,10 @@ func  (me *RDPipelineColorBlendStateAttachment) GetSrcAlphaBlendFactor() Renderi
   methodNameV := StringNameFromStr("get_src_alpha_blend_factor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3691288359) // FIXME: should cache?
-  var ret RenderingDeviceBlendFactor
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret RenderingDeviceBlendFactor
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -162,7 +189,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetDstAlphaBlendFactor(p_member 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2251019273) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) GetDstAlphaBlendFactor() RenderingDeviceBlendFactor {
@@ -171,9 +200,10 @@ func  (me *RDPipelineColorBlendStateAttachment) GetDstAlphaBlendFactor() Renderi
   methodNameV := StringNameFromStr("get_dst_alpha_blend_factor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3691288359) // FIXME: should cache?
-  var ret RenderingDeviceBlendFactor
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret RenderingDeviceBlendFactor
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -184,7 +214,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetAlphaBlendOp(p_member Renderi
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3073022720) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) GetAlphaBlendOp() RenderingDeviceBlendOperation {
@@ -193,9 +225,10 @@ func  (me *RDPipelineColorBlendStateAttachment) GetAlphaBlendOp() RenderingDevic
   methodNameV := StringNameFromStr("get_alpha_blend_op")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1385093561) // FIXME: should cache?
-  var ret RenderingDeviceBlendOperation
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret RenderingDeviceBlendOperation
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -206,7 +239,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetWriteR(p_member bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) GetWriteR() bool {
@@ -215,10 +250,11 @@ func  (me *RDPipelineColorBlendStateAttachment) GetWriteR() bool {
   methodNameV := StringNameFromStr("get_write_r")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) SetWriteG(p_member bool, )  {
@@ -228,7 +264,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetWriteG(p_member bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) GetWriteG() bool {
@@ -237,10 +275,11 @@ func  (me *RDPipelineColorBlendStateAttachment) GetWriteG() bool {
   methodNameV := StringNameFromStr("get_write_g")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) SetWriteB(p_member bool, )  {
@@ -250,7 +289,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetWriteB(p_member bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) GetWriteB() bool {
@@ -259,10 +300,11 @@ func  (me *RDPipelineColorBlendStateAttachment) GetWriteB() bool {
   methodNameV := StringNameFromStr("get_write_b")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) SetWriteA(p_member bool, )  {
@@ -272,7 +314,9 @@ func  (me *RDPipelineColorBlendStateAttachment) SetWriteA(p_member bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDPipelineColorBlendStateAttachment) GetWriteA() bool {
@@ -281,10 +325,11 @@ func  (me *RDPipelineColorBlendStateAttachment) GetWriteA() bool {
   methodNameV := StringNameFromStr("get_write_a")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *Node3DGizmo) BaseClass() string {
   return "Node3DGizmo"
 }
 
+func NewNode3DGizmo() *Node3DGizmo {
+  str := StringNameFromStr("Node3DGizmo") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Node3DGizmo{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

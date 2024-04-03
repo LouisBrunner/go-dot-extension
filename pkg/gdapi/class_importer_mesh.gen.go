@@ -17,6 +17,16 @@ func (me *ImporterMesh) BaseClass() string {
   return "ImporterMesh"
 }
 
+func NewImporterMesh() *ImporterMesh {
+  str := StringNameFromStr("ImporterMesh") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ImporterMesh{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,31 +52,35 @@ func  (me *ImporterMesh) AddBlendShape(name String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ImporterMesh) GetBlendShapeCount() int {
+func  (me *ImporterMesh) GetBlendShapeCount() int64 {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_blend_shape_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ImporterMesh) GetBlendShapeName(blend_shape_idx int, ) String {
+func  (me *ImporterMesh) GetBlendShapeName(blend_shape_idx int64, ) String {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_blend_shape_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&blend_shape_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ImporterMesh) SetBlendShapeMode(mode MeshBlendShapeMode, )  {
@@ -76,7 +90,9 @@ func  (me *ImporterMesh) SetBlendShapeMode(mode MeshBlendShapeMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 227983991) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ImporterMesh) GetBlendShapeMode() MeshBlendShapeMode {
@@ -85,170 +101,189 @@ func  (me *ImporterMesh) GetBlendShapeMode() MeshBlendShapeMode {
   methodNameV := StringNameFromStr("get_blend_shape_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 836485024) // FIXME: should cache?
-  var ret MeshBlendShapeMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret MeshBlendShapeMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *ImporterMesh) AddSurface(primitive MeshPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, material Material, name String, flags int, )  {
+func  (me *ImporterMesh) AddSurface(primitive MeshPrimitiveType, arrays Array, blend_shapes []Array, lods Dictionary, material Material, name String, flags int64, )  {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_surface")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740448849) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&primitive), gdc.ConstTypePtr(arrays.AsCTypePtr()), gdc.ConstTypePtr(blend_shapes.AsCTypePtr()), gdc.ConstTypePtr(lods.AsCTypePtr()), gdc.ConstTypePtr(material.AsCTypePtr()), gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(&flags), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&primitive), gdc.ConstTypePtr(arrays.AsCTypePtr()), gdc.ConstTypePtr(&blend_shapes), gdc.ConstTypePtr(lods.AsCTypePtr()), gdc.ConstTypePtr(material.AsCTypePtr()), gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(&flags), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ImporterMesh) GetSurfaceCount() int {
+func  (me *ImporterMesh) GetSurfaceCount() int64 {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_surface_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ImporterMesh) GetSurfacePrimitiveType(surface_idx int, ) MeshPrimitiveType {
+func  (me *ImporterMesh) GetSurfacePrimitiveType(surface_idx int64, ) MeshPrimitiveType {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_surface_primitive_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3552571330) // FIXME: should cache?
-  var ret MeshPrimitiveType
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret MeshPrimitiveType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *ImporterMesh) GetSurfaceName(surface_idx int, ) String {
+func  (me *ImporterMesh) GetSurfaceName(surface_idx int64, ) String {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_surface_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ImporterMesh) GetSurfaceArrays(surface_idx int, ) Array {
+func  (me *ImporterMesh) GetSurfaceArrays(surface_idx int64, ) Array {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_surface_arrays")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 663333327) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ImporterMesh) GetSurfaceBlendShapeArrays(surface_idx int, blend_shape_idx int, ) Array {
+func  (me *ImporterMesh) GetSurfaceBlendShapeArrays(surface_idx int64, blend_shape_idx int64, ) Array {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_surface_blend_shape_arrays")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2345056839) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_idx), gdc.ConstTypePtr(&blend_shape_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ImporterMesh) GetSurfaceLodCount(surface_idx int, ) int {
+func  (me *ImporterMesh) GetSurfaceLodCount(surface_idx int64, ) int64 {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_surface_lod_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ImporterMesh) GetSurfaceLodSize(surface_idx int, lod_idx int, ) float32 {
+func  (me *ImporterMesh) GetSurfaceLodSize(surface_idx int64, lod_idx int64, ) float64 {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_surface_lod_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3085491603) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_idx), gdc.ConstTypePtr(&lod_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ImporterMesh) GetSurfaceLodIndices(surface_idx int, lod_idx int, ) PackedInt32Array {
+func  (me *ImporterMesh) GetSurfaceLodIndices(surface_idx int64, lod_idx int64, ) PackedInt32Array {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_surface_lod_indices")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265128013) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_idx), gdc.ConstTypePtr(&lod_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ImporterMesh) GetSurfaceMaterial(surface_idx int, ) Material {
+func  (me *ImporterMesh) GetSurfaceMaterial(surface_idx int64, ) Material {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_surface_material")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2897466400) // FIXME: should cache?
-  var ret Material
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewMaterial()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ImporterMesh) GetSurfaceFormat(surface_idx int, ) int {
+func  (me *ImporterMesh) GetSurfaceFormat(surface_idx int64, ) int64 {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_surface_format")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ImporterMesh) SetSurfaceName(surface_idx int, name String, )  {
+func  (me *ImporterMesh) SetSurfaceName(surface_idx int64, name String, )  {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_surface_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_idx), gdc.ConstTypePtr(name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ImporterMesh) SetSurfaceMaterial(surface_idx int, material Material, )  {
+func  (me *ImporterMesh) SetSurfaceMaterial(surface_idx int64, material Material, )  {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_surface_material")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3671737478) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_idx), gdc.ConstTypePtr(material.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ImporterMesh) GenerateLods(normal_merge_angle float32, normal_split_angle float32, bone_transform_array Array, )  {
+func  (me *ImporterMesh) GenerateLods(normal_merge_angle float64, normal_split_angle float64, bone_transform_array Array, )  {
   classNameV := StringNameFromStr("ImporterMesh")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("generate_lods")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2491878677) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&normal_merge_angle), gdc.ConstTypePtr(&normal_split_angle), gdc.ConstTypePtr(bone_transform_array.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ImporterMesh) GetMesh(base_mesh ArrayMesh, ) ArrayMesh {
@@ -257,10 +292,11 @@ func  (me *ImporterMesh) GetMesh(base_mesh ArrayMesh, ) ArrayMesh {
   methodNameV := StringNameFromStr("get_mesh")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1457573577) // FIXME: should cache?
-  var ret ArrayMesh
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(base_mesh.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArrayMesh()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ImporterMesh) Clear()  {
@@ -270,7 +306,9 @@ func  (me *ImporterMesh) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ImporterMesh) SetLightmapSizeHint(size Vector2i, )  {
@@ -280,7 +318,9 @@ func  (me *ImporterMesh) SetLightmapSizeHint(size Vector2i, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130785943) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ImporterMesh) GetLightmapSizeHint() Vector2i {
@@ -289,10 +329,11 @@ func  (me *ImporterMesh) GetLightmapSizeHint() Vector2i {
   methodNameV := StringNameFromStr("get_lightmap_size_hint")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690982128) // FIXME: should cache?
-  var ret Vector2i
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2i()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

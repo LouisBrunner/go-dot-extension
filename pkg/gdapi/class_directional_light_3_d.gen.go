@@ -17,6 +17,16 @@ func (me *DirectionalLight3D) BaseClass() string {
   return "DirectionalLight3D"
 }
 
+func NewDirectionalLight3D() *DirectionalLight3D {
+  str := StringNameFromStr("DirectionalLight3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &DirectionalLight3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -56,7 +66,9 @@ func  (me *DirectionalLight3D) SetShadowMode(mode DirectionalLight3DShadowMode, 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1261211726) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *DirectionalLight3D) GetShadowMode() DirectionalLight3DShadowMode {
@@ -65,9 +77,10 @@ func  (me *DirectionalLight3D) GetShadowMode() DirectionalLight3DShadowMode {
   methodNameV := StringNameFromStr("get_shadow_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2765228544) // FIXME: should cache?
-  var ret DirectionalLight3DShadowMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret DirectionalLight3DShadowMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -78,7 +91,9 @@ func  (me *DirectionalLight3D) SetBlendSplits(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *DirectionalLight3D) IsBlendSplitsEnabled() bool {
@@ -87,10 +102,11 @@ func  (me *DirectionalLight3D) IsBlendSplitsEnabled() bool {
   methodNameV := StringNameFromStr("is_blend_splits_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *DirectionalLight3D) SetSkyMode(mode DirectionalLight3DSkyMode, )  {
@@ -100,7 +116,9 @@ func  (me *DirectionalLight3D) SetSkyMode(mode DirectionalLight3DSkyMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2691194817) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *DirectionalLight3D) GetSkyMode() DirectionalLight3DSkyMode {
@@ -109,9 +127,10 @@ func  (me *DirectionalLight3D) GetSkyMode() DirectionalLight3DSkyMode {
   methodNameV := StringNameFromStr("get_sky_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3819982774) // FIXME: should cache?
-  var ret DirectionalLight3DSkyMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret DirectionalLight3DSkyMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

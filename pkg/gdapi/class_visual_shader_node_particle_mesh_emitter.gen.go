@@ -17,6 +17,16 @@ func (me *VisualShaderNodeParticleMeshEmitter) BaseClass() string {
   return "VisualShaderNodeParticleMeshEmitter"
 }
 
+func NewVisualShaderNodeParticleMeshEmitter() *VisualShaderNodeParticleMeshEmitter {
+  str := StringNameFromStr("VisualShaderNodeParticleMeshEmitter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeParticleMeshEmitter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *VisualShaderNodeParticleMeshEmitter) SetMesh(mesh Mesh, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 194775623) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeParticleMeshEmitter) GetMesh() Mesh {
@@ -51,10 +63,11 @@ func  (me *VisualShaderNodeParticleMeshEmitter) GetMesh() Mesh {
   methodNameV := StringNameFromStr("get_mesh")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1808005922) // FIXME: should cache?
-  var ret Mesh
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewMesh()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *VisualShaderNodeParticleMeshEmitter) SetUseAllSurfaces(enabled bool, )  {
@@ -64,7 +77,9 @@ func  (me *VisualShaderNodeParticleMeshEmitter) SetUseAllSurfaces(enabled bool, 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeParticleMeshEmitter) IsUseAllSurfaces() bool {
@@ -73,32 +88,36 @@ func  (me *VisualShaderNodeParticleMeshEmitter) IsUseAllSurfaces() bool {
   methodNameV := StringNameFromStr("is_use_all_surfaces")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNodeParticleMeshEmitter) SetSurfaceIndex(surface_index int, )  {
+func  (me *VisualShaderNodeParticleMeshEmitter) SetSurfaceIndex(surface_index int64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeParticleMeshEmitter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_surface_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surface_index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeParticleMeshEmitter) GetSurfaceIndex() int {
+func  (me *VisualShaderNodeParticleMeshEmitter) GetSurfaceIndex() int64 {
   classNameV := StringNameFromStr("VisualShaderNodeParticleMeshEmitter")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_surface_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

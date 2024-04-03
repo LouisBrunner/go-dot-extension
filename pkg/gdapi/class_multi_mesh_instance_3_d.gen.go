@@ -17,6 +17,16 @@ func (me *MultiMeshInstance3D) BaseClass() string {
   return "MultiMeshInstance3D"
 }
 
+func NewMultiMeshInstance3D() *MultiMeshInstance3D {
+  str := StringNameFromStr("MultiMeshInstance3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &MultiMeshInstance3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *MultiMeshInstance3D) SetMultimesh(multimesh MultiMesh, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2246127404) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(multimesh.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *MultiMeshInstance3D) GetMultimesh() MultiMesh {
@@ -51,10 +63,11 @@ func  (me *MultiMeshInstance3D) GetMultimesh() MultiMesh {
   methodNameV := StringNameFromStr("get_multimesh")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1385450523) // FIXME: should cache?
-  var ret MultiMesh
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewMultiMesh()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

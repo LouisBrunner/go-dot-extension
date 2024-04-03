@@ -17,6 +17,16 @@ func (me *AStarGrid2D) BaseClass() string {
   return "AStarGrid2D"
 }
 
+func NewAStarGrid2D() *AStarGrid2D {
+  str := StringNameFromStr("AStarGrid2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AStarGrid2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -60,7 +70,9 @@ func  (me *AStarGrid2D) SetRegion(region Rect2i, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1763793166) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) GetRegion() Rect2i {
@@ -69,10 +81,11 @@ func  (me *AStarGrid2D) GetRegion() Rect2i {
   methodNameV := StringNameFromStr("get_region")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 410525958) // FIXME: should cache?
-  var ret Rect2i
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRect2i()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AStarGrid2D) SetSize(size Vector2i, )  {
@@ -82,7 +95,9 @@ func  (me *AStarGrid2D) SetSize(size Vector2i, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130785943) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) GetSize() Vector2i {
@@ -91,10 +106,11 @@ func  (me *AStarGrid2D) GetSize() Vector2i {
   methodNameV := StringNameFromStr("get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690982128) // FIXME: should cache?
-  var ret Vector2i
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2i()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AStarGrid2D) SetOffset(offset Vector2, )  {
@@ -104,7 +120,9 @@ func  (me *AStarGrid2D) SetOffset(offset Vector2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) GetOffset() Vector2 {
@@ -113,10 +131,11 @@ func  (me *AStarGrid2D) GetOffset() Vector2 {
   methodNameV := StringNameFromStr("get_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AStarGrid2D) SetCellSize(cell_size Vector2, )  {
@@ -126,7 +145,9 @@ func  (me *AStarGrid2D) SetCellSize(cell_size Vector2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(cell_size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) GetCellSize() Vector2 {
@@ -135,22 +156,24 @@ func  (me *AStarGrid2D) GetCellSize() Vector2 {
   methodNameV := StringNameFromStr("get_cell_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *AStarGrid2D) IsInBounds(x int, y int, ) bool {
+func  (me *AStarGrid2D) IsInBounds(x int64, y int64, ) bool {
   classNameV := StringNameFromStr("AStarGrid2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_in_bounds")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2522259332) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AStarGrid2D) IsInBoundsv(id Vector2i, ) bool {
@@ -159,10 +182,11 @@ func  (me *AStarGrid2D) IsInBoundsv(id Vector2i, ) bool {
   methodNameV := StringNameFromStr("is_in_boundsv")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3900751641) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AStarGrid2D) IsDirty() bool {
@@ -171,10 +195,11 @@ func  (me *AStarGrid2D) IsDirty() bool {
   methodNameV := StringNameFromStr("is_dirty")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AStarGrid2D) Update()  {
@@ -184,7 +209,9 @@ func  (me *AStarGrid2D) Update()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) SetJumpingEnabled(enabled bool, )  {
@@ -194,7 +221,9 @@ func  (me *AStarGrid2D) SetJumpingEnabled(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) IsJumpingEnabled() bool {
@@ -203,10 +232,11 @@ func  (me *AStarGrid2D) IsJumpingEnabled() bool {
   methodNameV := StringNameFromStr("is_jumping_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AStarGrid2D) SetDiagonalMode(mode AStarGrid2DDiagonalMode, )  {
@@ -216,7 +246,9 @@ func  (me *AStarGrid2D) SetDiagonalMode(mode AStarGrid2DDiagonalMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1017829798) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) GetDiagonalMode() AStarGrid2DDiagonalMode {
@@ -225,9 +257,10 @@ func  (me *AStarGrid2D) GetDiagonalMode() AStarGrid2DDiagonalMode {
   methodNameV := StringNameFromStr("get_diagonal_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3129282674) // FIXME: should cache?
-  var ret AStarGrid2DDiagonalMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret AStarGrid2DDiagonalMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -238,7 +271,9 @@ func  (me *AStarGrid2D) SetDefaultComputeHeuristic(heuristic AStarGrid2DHeuristi
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1044375519) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&heuristic), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) GetDefaultComputeHeuristic() AStarGrid2DHeuristic {
@@ -247,9 +282,10 @@ func  (me *AStarGrid2D) GetDefaultComputeHeuristic() AStarGrid2DHeuristic {
   methodNameV := StringNameFromStr("get_default_compute_heuristic")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2074731422) // FIXME: should cache?
-  var ret AStarGrid2DHeuristic
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret AStarGrid2DHeuristic
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -260,7 +296,9 @@ func  (me *AStarGrid2D) SetDefaultEstimateHeuristic(heuristic AStarGrid2DHeurist
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1044375519) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&heuristic), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) GetDefaultEstimateHeuristic() AStarGrid2DHeuristic {
@@ -269,9 +307,10 @@ func  (me *AStarGrid2D) GetDefaultEstimateHeuristic() AStarGrid2DHeuristic {
   methodNameV := StringNameFromStr("get_default_estimate_heuristic")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2074731422) // FIXME: should cache?
-  var ret AStarGrid2DHeuristic
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret AStarGrid2DHeuristic
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -282,7 +321,9 @@ func  (me *AStarGrid2D) SetPointSolid(id Vector2i, solid bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1765703753) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), gdc.ConstTypePtr(&solid), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) IsPointSolid(id Vector2i, ) bool {
@@ -291,32 +332,36 @@ func  (me *AStarGrid2D) IsPointSolid(id Vector2i, ) bool {
   methodNameV := StringNameFromStr("is_point_solid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3900751641) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AStarGrid2D) SetPointWeightScale(id Vector2i, weight_scale float32, )  {
+func  (me *AStarGrid2D) SetPointWeightScale(id Vector2i, weight_scale float64, )  {
   classNameV := StringNameFromStr("AStarGrid2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_point_weight_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2262553149) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), gdc.ConstTypePtr(&weight_scale), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AStarGrid2D) GetPointWeightScale(id Vector2i, ) float32 {
+func  (me *AStarGrid2D) GetPointWeightScale(id Vector2i, ) float64 {
   classNameV := StringNameFromStr("AStarGrid2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_point_weight_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 719993801) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AStarGrid2D) FillSolidRegion(region Rect2i, solid bool, )  {
@@ -326,17 +371,21 @@ func  (me *AStarGrid2D) FillSolidRegion(region Rect2i, solid bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2261970063) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&solid), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AStarGrid2D) FillWeightScaleRegion(region Rect2i, weight_scale float32, )  {
+func  (me *AStarGrid2D) FillWeightScaleRegion(region Rect2i, weight_scale float64, )  {
   classNameV := StringNameFromStr("AStarGrid2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("fill_weight_scale_region")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2793244083) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&weight_scale), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) Clear()  {
@@ -346,7 +395,9 @@ func  (me *AStarGrid2D) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AStarGrid2D) GetPointPosition(id Vector2i, ) Vector2 {
@@ -355,10 +406,11 @@ func  (me *AStarGrid2D) GetPointPosition(id Vector2i, ) Vector2 {
   methodNameV := StringNameFromStr("get_point_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 108438297) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AStarGrid2D) GetPointPath(from_id Vector2i, to_id Vector2i, ) PackedVector2Array {
@@ -367,22 +419,25 @@ func  (me *AStarGrid2D) GetPointPath(from_id Vector2i, to_id Vector2i, ) PackedV
   methodNameV := StringNameFromStr("get_point_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 690373547) // FIXME: should cache?
-  var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from_id.AsCTypePtr()), gdc.ConstTypePtr(to_id.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector2Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *AStarGrid2D) GetIdPath(from_id Vector2i, to_id Vector2i, ) Vector2i {
+func  (me *AStarGrid2D) GetIdPath(from_id Vector2i, to_id Vector2i, ) []Vector2i {
   classNameV := StringNameFromStr("AStarGrid2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_id_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1989391000) // FIXME: should cache?
-  var ret Vector2i
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from_id.AsCTypePtr()), gdc.ConstTypePtr(to_id.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[Vector2i](ret)
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

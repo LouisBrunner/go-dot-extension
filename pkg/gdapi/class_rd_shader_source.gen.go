@@ -17,6 +17,16 @@ func (me *RDShaderSource) BaseClass() string {
   return "RDShaderSource"
 }
 
+func NewRDShaderSource() *RDShaderSource {
+  str := StringNameFromStr("RDShaderSource") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &RDShaderSource{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *RDShaderSource) SetStageSource(stage RenderingDeviceShaderStage, sour
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 620821314) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage), gdc.ConstTypePtr(source.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDShaderSource) GetStageSource(stage RenderingDeviceShaderStage, ) String {
@@ -51,10 +63,11 @@ func  (me *RDShaderSource) GetStageSource(stage RenderingDeviceShaderStage, ) St
   methodNameV := StringNameFromStr("get_stage_source")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3354920045) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *RDShaderSource) SetLanguage(language RenderingDeviceShaderLanguage, )  {
@@ -64,7 +77,9 @@ func  (me *RDShaderSource) SetLanguage(language RenderingDeviceShaderLanguage, )
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3422186742) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&language), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDShaderSource) GetLanguage() RenderingDeviceShaderLanguage {
@@ -73,9 +88,10 @@ func  (me *RDShaderSource) GetLanguage() RenderingDeviceShaderLanguage {
   methodNameV := StringNameFromStr("get_language")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1063538261) // FIXME: should cache?
-  var ret RenderingDeviceShaderLanguage
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret RenderingDeviceShaderLanguage
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

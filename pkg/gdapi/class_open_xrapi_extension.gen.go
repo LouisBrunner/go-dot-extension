@@ -17,6 +17,16 @@ func (me *OpenXRAPIExtension) BaseClass() string {
   return "OpenXRAPIExtension"
 }
 
+func NewOpenXRAPIExtension() *OpenXRAPIExtension {
+  str := StringNameFromStr("OpenXRAPIExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &OpenXRAPIExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,40 +45,43 @@ func (me *OpenXRAPIExtension) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *OpenXRAPIExtension) GetInstance() int {
+func  (me *OpenXRAPIExtension) GetInstance() int64 {
   classNameV := StringNameFromStr("OpenXRAPIExtension")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_instance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *OpenXRAPIExtension) GetSystemId() int {
+func  (me *OpenXRAPIExtension) GetSystemId() int64 {
   classNameV := StringNameFromStr("OpenXRAPIExtension")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_system_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *OpenXRAPIExtension) GetSession() int {
+func  (me *OpenXRAPIExtension) GetSession() int64 {
   classNameV := StringNameFromStr("OpenXRAPIExtension")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_session")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *OpenXRAPIExtension) TransformFromPose(pose unsafe.Pointer, ) Transform3D {
@@ -77,22 +90,24 @@ func  (me *OpenXRAPIExtension) TransformFromPose(pose unsafe.Pointer, ) Transfor
   methodNameV := StringNameFromStr("transform_from_pose")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3255299855) // FIXME: should cache?
-  var ret Transform3D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pose), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTransform3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *OpenXRAPIExtension) XrResult(result int, format String, args Array, ) bool {
+func  (me *OpenXRAPIExtension) XrResult(result int64, format String, args Array, ) bool {
   classNameV := StringNameFromStr("OpenXRAPIExtension")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("xr_result")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3886436197) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&result), gdc.ConstTypePtr(format.AsCTypePtr()), gdc.ConstTypePtr(args.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  OpenXRAPIExtensionOpenxrIsEnabled(check_run_in_editor bool, ) bool {
@@ -101,46 +116,50 @@ func  OpenXRAPIExtensionOpenxrIsEnabled(check_run_in_editor bool, ) bool {
   methodNameV := StringNameFromStr("openxr_is_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2703660260) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&check_run_in_editor), }
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *OpenXRAPIExtension) GetInstanceProcAddr(name String, ) int {
+func  (me *OpenXRAPIExtension) GetInstanceProcAddr(name String, ) int64 {
   classNameV := StringNameFromStr("OpenXRAPIExtension")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_instance_proc_addr")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1597066294) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *OpenXRAPIExtension) GetErrorString(result int, ) String {
+func  (me *OpenXRAPIExtension) GetErrorString(result int64, ) String {
   classNameV := StringNameFromStr("OpenXRAPIExtension")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_error_string")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 990163283) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&result), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *OpenXRAPIExtension) GetSwapchainFormatName(swapchain_format int, ) String {
+func  (me *OpenXRAPIExtension) GetSwapchainFormatName(swapchain_format int64, ) String {
   classNameV := StringNameFromStr("OpenXRAPIExtension")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_swapchain_format_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 990163283) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&swapchain_format), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *OpenXRAPIExtension) IsInitialized() bool {
@@ -149,10 +168,11 @@ func  (me *OpenXRAPIExtension) IsInitialized() bool {
   methodNameV := StringNameFromStr("is_initialized")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *OpenXRAPIExtension) IsRunning() bool {
@@ -161,34 +181,37 @@ func  (me *OpenXRAPIExtension) IsRunning() bool {
   methodNameV := StringNameFromStr("is_running")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *OpenXRAPIExtension) GetPlaySpace() int {
+func  (me *OpenXRAPIExtension) GetPlaySpace() int64 {
   classNameV := StringNameFromStr("OpenXRAPIExtension")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_play_space")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *OpenXRAPIExtension) GetNextFrameTime() int {
+func  (me *OpenXRAPIExtension) GetNextFrameTime() int64 {
   classNameV := StringNameFromStr("OpenXRAPIExtension")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_next_frame_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *OpenXRAPIExtension) CanRender() bool {
@@ -197,10 +220,11 @@ func  (me *OpenXRAPIExtension) CanRender() bool {
   methodNameV := StringNameFromStr("can_render")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

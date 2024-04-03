@@ -17,6 +17,16 @@ func (me *WebXRInterface) BaseClass() string {
   return "WebXRInterface"
 }
 
+func NewWebXRInterface() *WebXRInterface {
+  str := StringNameFromStr("WebXRInterface") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &WebXRInterface{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -50,7 +60,9 @@ func  (me *WebXRInterface) IsSessionSupported(session_mode String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(session_mode.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *WebXRInterface) SetSessionMode(session_mode String, )  {
@@ -60,7 +72,9 @@ func  (me *WebXRInterface) SetSessionMode(session_mode String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(session_mode.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *WebXRInterface) GetSessionMode() String {
@@ -69,10 +83,11 @@ func  (me *WebXRInterface) GetSessionMode() String {
   methodNameV := StringNameFromStr("get_session_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *WebXRInterface) SetRequiredFeatures(required_features String, )  {
@@ -82,7 +97,9 @@ func  (me *WebXRInterface) SetRequiredFeatures(required_features String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(required_features.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *WebXRInterface) GetRequiredFeatures() String {
@@ -91,10 +108,11 @@ func  (me *WebXRInterface) GetRequiredFeatures() String {
   methodNameV := StringNameFromStr("get_required_features")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *WebXRInterface) SetOptionalFeatures(optional_features String, )  {
@@ -104,7 +122,9 @@ func  (me *WebXRInterface) SetOptionalFeatures(optional_features String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(optional_features.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *WebXRInterface) GetOptionalFeatures() String {
@@ -113,10 +133,11 @@ func  (me *WebXRInterface) GetOptionalFeatures() String {
   methodNameV := StringNameFromStr("get_optional_features")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *WebXRInterface) GetReferenceSpaceType() String {
@@ -125,10 +146,11 @@ func  (me *WebXRInterface) GetReferenceSpaceType() String {
   methodNameV := StringNameFromStr("get_reference_space_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *WebXRInterface) SetRequestedReferenceSpaceTypes(requested_reference_space_types String, )  {
@@ -138,7 +160,9 @@ func  (me *WebXRInterface) SetRequestedReferenceSpaceTypes(requested_reference_s
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(requested_reference_space_types.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *WebXRInterface) GetRequestedReferenceSpaceTypes() String {
@@ -147,45 +171,49 @@ func  (me *WebXRInterface) GetRequestedReferenceSpaceTypes() String {
   methodNameV := StringNameFromStr("get_requested_reference_space_types")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *WebXRInterface) IsInputSourceActive(input_source_id int, ) bool {
+func  (me *WebXRInterface) IsInputSourceActive(input_source_id int64, ) bool {
   classNameV := StringNameFromStr("WebXRInterface")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_input_source_active")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_source_id), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *WebXRInterface) GetInputSourceTracker(input_source_id int, ) XRPositionalTracker {
+func  (me *WebXRInterface) GetInputSourceTracker(input_source_id int64, ) XRPositionalTracker {
   classNameV := StringNameFromStr("WebXRInterface")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_input_source_tracker")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 636011756) // FIXME: should cache?
-  var ret XRPositionalTracker
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_source_id), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewXRPositionalTracker()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *WebXRInterface) GetInputSourceTargetRayMode(input_source_id int, ) WebXRInterfaceTargetRayMode {
+func  (me *WebXRInterface) GetInputSourceTargetRayMode(input_source_id int64, ) WebXRInterfaceTargetRayMode {
   classNameV := StringNameFromStr("WebXRInterface")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_input_source_target_ray_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2852387453) // FIXME: should cache?
-  var ret WebXRInterfaceTargetRayMode
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_source_id), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret WebXRInterfaceTargetRayMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -195,32 +223,36 @@ func  (me *WebXRInterface) GetVisibilityState() String {
   methodNameV := StringNameFromStr("get_visibility_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *WebXRInterface) GetDisplayRefreshRate() float32 {
+func  (me *WebXRInterface) GetDisplayRefreshRate() float64 {
   classNameV := StringNameFromStr("WebXRInterface")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_display_refresh_rate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *WebXRInterface) SetDisplayRefreshRate(refresh_rate float32, )  {
+func  (me *WebXRInterface) SetDisplayRefreshRate(refresh_rate float64, )  {
   classNameV := StringNameFromStr("WebXRInterface")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_display_refresh_rate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&refresh_rate), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *WebXRInterface) GetAvailableDisplayRefreshRates() Array {
@@ -229,10 +261,11 @@ func  (me *WebXRInterface) GetAvailableDisplayRefreshRates() Array {
   methodNameV := StringNameFromStr("get_available_display_refresh_rates")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

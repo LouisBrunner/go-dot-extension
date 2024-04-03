@@ -17,6 +17,16 @@ func (me *SkeletonModification2DLookAt) BaseClass() string {
   return "SkeletonModification2DLookAt"
 }
 
+func NewSkeletonModification2DLookAt() *SkeletonModification2DLookAt {
+  str := StringNameFromStr("SkeletonModification2DLookAt") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &SkeletonModification2DLookAt{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *SkeletonModification2DLookAt) SetBone2DNode(bone2d_nodepath NodePath,
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(bone2d_nodepath.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SkeletonModification2DLookAt) GetBone2DNode() NodePath {
@@ -51,32 +63,36 @@ func  (me *SkeletonModification2DLookAt) GetBone2DNode() NodePath {
   methodNameV := StringNameFromStr("get_bone2d_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SkeletonModification2DLookAt) SetBoneIndex(bone_idx int, )  {
+func  (me *SkeletonModification2DLookAt) SetBoneIndex(bone_idx int64, )  {
   classNameV := StringNameFromStr("SkeletonModification2DLookAt")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_bone_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SkeletonModification2DLookAt) GetBoneIndex() int {
+func  (me *SkeletonModification2DLookAt) GetBoneIndex() int64 {
   classNameV := StringNameFromStr("SkeletonModification2DLookAt")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_bone_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *SkeletonModification2DLookAt) SetTargetNode(target_nodepath NodePath, )  {
@@ -86,7 +102,9 @@ func  (me *SkeletonModification2DLookAt) SetTargetNode(target_nodepath NodePath,
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(target_nodepath.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SkeletonModification2DLookAt) GetTargetNode() NodePath {
@@ -95,32 +113,36 @@ func  (me *SkeletonModification2DLookAt) GetTargetNode() NodePath {
   methodNameV := StringNameFromStr("get_target_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *SkeletonModification2DLookAt) SetAdditionalRotation(rotation float32, )  {
+func  (me *SkeletonModification2DLookAt) SetAdditionalRotation(rotation float64, )  {
   classNameV := StringNameFromStr("SkeletonModification2DLookAt")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_additional_rotation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rotation), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SkeletonModification2DLookAt) GetAdditionalRotation() float32 {
+func  (me *SkeletonModification2DLookAt) GetAdditionalRotation() float64 {
   classNameV := StringNameFromStr("SkeletonModification2DLookAt")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_additional_rotation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *SkeletonModification2DLookAt) SetEnableConstraint(enable_constraint bool, )  {
@@ -130,7 +152,9 @@ func  (me *SkeletonModification2DLookAt) SetEnableConstraint(enable_constraint b
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable_constraint), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SkeletonModification2DLookAt) GetEnableConstraint() bool {
@@ -139,54 +163,61 @@ func  (me *SkeletonModification2DLookAt) GetEnableConstraint() bool {
   methodNameV := StringNameFromStr("get_enable_constraint")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SkeletonModification2DLookAt) SetConstraintAngleMin(angle_min float32, )  {
+func  (me *SkeletonModification2DLookAt) SetConstraintAngleMin(angle_min float64, )  {
   classNameV := StringNameFromStr("SkeletonModification2DLookAt")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_constraint_angle_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle_min), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SkeletonModification2DLookAt) GetConstraintAngleMin() float32 {
+func  (me *SkeletonModification2DLookAt) GetConstraintAngleMin() float64 {
   classNameV := StringNameFromStr("SkeletonModification2DLookAt")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_constraint_angle_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *SkeletonModification2DLookAt) SetConstraintAngleMax(angle_max float32, )  {
+func  (me *SkeletonModification2DLookAt) SetConstraintAngleMax(angle_max float64, )  {
   classNameV := StringNameFromStr("SkeletonModification2DLookAt")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_constraint_angle_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle_max), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *SkeletonModification2DLookAt) GetConstraintAngleMax() float32 {
+func  (me *SkeletonModification2DLookAt) GetConstraintAngleMax() float64 {
   classNameV := StringNameFromStr("SkeletonModification2DLookAt")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_constraint_angle_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *SkeletonModification2DLookAt) SetConstraintAngleInvert(invert bool, )  {
@@ -196,7 +227,9 @@ func  (me *SkeletonModification2DLookAt) SetConstraintAngleInvert(invert bool, )
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&invert), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *SkeletonModification2DLookAt) GetConstraintAngleInvert() bool {
@@ -205,10 +238,11 @@ func  (me *SkeletonModification2DLookAt) GetConstraintAngleInvert() bool {
   methodNameV := StringNameFromStr("get_constraint_angle_invert")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

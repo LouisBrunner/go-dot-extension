@@ -17,6 +17,16 @@ func (me *VisualShaderNodeParticleRingEmitter) BaseClass() string {
   return "VisualShaderNodeParticleRingEmitter"
 }
 
+func NewVisualShaderNodeParticleRingEmitter() *VisualShaderNodeParticleRingEmitter {
+  str := StringNameFromStr("VisualShaderNodeParticleRingEmitter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeParticleRingEmitter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

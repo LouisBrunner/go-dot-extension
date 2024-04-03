@@ -17,6 +17,16 @@ func (me *OggPacketSequencePlayback) BaseClass() string {
   return "OggPacketSequencePlayback"
 }
 
+func NewOggPacketSequencePlayback() *OggPacketSequencePlayback {
+  str := StringNameFromStr("OggPacketSequencePlayback") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &OggPacketSequencePlayback{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

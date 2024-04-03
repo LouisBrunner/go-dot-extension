@@ -17,6 +17,16 @@ func (me *Popup) BaseClass() string {
   return "Popup"
 }
 
+func NewPopup() *Popup {
+  str := StringNameFromStr("Popup") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Popup{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

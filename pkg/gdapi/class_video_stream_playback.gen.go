@@ -17,6 +17,16 @@ func (me *VideoStreamPlayback) BaseClass() string {
   return "VideoStreamPlayback"
 }
 
+func NewVideoStreamPlayback() *VideoStreamPlayback {
+  str := StringNameFromStr("VideoStreamPlayback") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VideoStreamPlayback{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,16 +45,17 @@ func (me *VideoStreamPlayback) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *VideoStreamPlayback) MixAudio(num_frames int, buffer PackedFloat32Array, offset int, ) int {
+func  (me *VideoStreamPlayback) MixAudio(num_frames int64, buffer PackedFloat32Array, offset int64, ) int64 {
   classNameV := StringNameFromStr("VideoStreamPlayback")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("mix_audio")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 93876830) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&num_frames), gdc.ConstTypePtr(buffer.AsCTypePtr()), gdc.ConstTypePtr(&offset), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

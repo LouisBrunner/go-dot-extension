@@ -17,6 +17,16 @@ func (me *EditorSceneFormatImporter) BaseClass() string {
   return "EditorSceneFormatImporter"
 }
 
+func NewEditorSceneFormatImporter() *EditorSceneFormatImporter {
+  str := StringNameFromStr("EditorSceneFormatImporter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorSceneFormatImporter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Constants

@@ -17,6 +17,16 @@ func (me *EditorImportPlugin) BaseClass() string {
   return "EditorImportPlugin"
 }
 
+func NewEditorImportPlugin() *EditorImportPlugin {
+  str := StringNameFromStr("EditorImportPlugin") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorImportPlugin{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,9 +51,10 @@ func  (me *EditorImportPlugin) AppendImportExternalResource(path String, custom_
   methodNameV := StringNameFromStr("append_import_external_resource")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 320493106) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(custom_options.AsCTypePtr()), gdc.ConstTypePtr(custom_importer.AsCTypePtr()), gdc.ConstTypePtr(generator_parameters.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 

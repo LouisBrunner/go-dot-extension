@@ -17,6 +17,16 @@ func (me *JavaClass) BaseClass() string {
   return "JavaClass"
 }
 
+func NewJavaClass() *JavaClass {
+  str := StringNameFromStr("JavaClass") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &JavaClass{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

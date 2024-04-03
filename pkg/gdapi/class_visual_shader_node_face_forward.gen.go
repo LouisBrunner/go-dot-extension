@@ -17,6 +17,16 @@ func (me *VisualShaderNodeFaceForward) BaseClass() string {
   return "VisualShaderNodeFaceForward"
 }
 
+func NewVisualShaderNodeFaceForward() *VisualShaderNodeFaceForward {
+  str := StringNameFromStr("VisualShaderNodeFaceForward") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeFaceForward{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

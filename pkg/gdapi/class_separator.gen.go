@@ -17,6 +17,16 @@ func (me *Separator) BaseClass() string {
   return "Separator"
 }
 
+func NewSeparator() *Separator {
+  str := StringNameFromStr("Separator") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Separator{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *BackBufferCopy) BaseClass() string {
   return "BackBufferCopy"
 }
 
+func NewBackBufferCopy() *BackBufferCopy {
+  str := StringNameFromStr("BackBufferCopy") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &BackBufferCopy{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -49,7 +59,9 @@ func  (me *BackBufferCopy) SetRect(rect Rect2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2046264180) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rect.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *BackBufferCopy) GetRect() Rect2 {
@@ -58,10 +70,11 @@ func  (me *BackBufferCopy) GetRect() Rect2 {
   methodNameV := StringNameFromStr("get_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
-  var ret Rect2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRect2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *BackBufferCopy) SetCopyMode(copy_mode BackBufferCopyCopyMode, )  {
@@ -71,7 +84,9 @@ func  (me *BackBufferCopy) SetCopyMode(copy_mode BackBufferCopyCopyMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1713538590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&copy_mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *BackBufferCopy) GetCopyMode() BackBufferCopyCopyMode {
@@ -80,9 +95,10 @@ func  (me *BackBufferCopy) GetCopyMode() BackBufferCopyCopyMode {
   methodNameV := StringNameFromStr("get_copy_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3271169440) // FIXME: should cache?
-  var ret BackBufferCopyCopyMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret BackBufferCopyCopyMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

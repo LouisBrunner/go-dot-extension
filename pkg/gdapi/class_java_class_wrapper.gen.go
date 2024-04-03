@@ -17,6 +17,16 @@ func (me *JavaClassWrapper) BaseClass() string {
   return "JavaClassWrapper"
 }
 
+func NewJavaClassWrapper() *JavaClassWrapper {
+  str := StringNameFromStr("JavaClassWrapper") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &JavaClassWrapper{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *JavaClassWrapper) Wrap(name String, ) JavaClass {
   methodNameV := StringNameFromStr("wrap")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1124367868) // FIXME: should cache?
-  var ret JavaClass
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewJavaClass()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

@@ -17,6 +17,16 @@ func (me *RDAttachmentFormat) BaseClass() string {
   return "RDAttachmentFormat"
 }
 
+func NewRDAttachmentFormat() *RDAttachmentFormat {
+  str := StringNameFromStr("RDAttachmentFormat") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &RDAttachmentFormat{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *RDAttachmentFormat) SetFormat(p_member RenderingDeviceDataFormat, )  
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 565531219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDAttachmentFormat) GetFormat() RenderingDeviceDataFormat {
@@ -51,9 +63,10 @@ func  (me *RDAttachmentFormat) GetFormat() RenderingDeviceDataFormat {
   methodNameV := StringNameFromStr("get_format")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2235804183) // FIXME: should cache?
-  var ret RenderingDeviceDataFormat
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret RenderingDeviceDataFormat
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -64,7 +77,9 @@ func  (me *RDAttachmentFormat) SetSamples(p_member RenderingDeviceTextureSamples
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3774171498) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDAttachmentFormat) GetSamples() RenderingDeviceTextureSamples {
@@ -73,32 +88,36 @@ func  (me *RDAttachmentFormat) GetSamples() RenderingDeviceTextureSamples {
   methodNameV := StringNameFromStr("get_samples")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 407791724) // FIXME: should cache?
-  var ret RenderingDeviceTextureSamples
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret RenderingDeviceTextureSamples
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *RDAttachmentFormat) SetUsageFlags(p_member int, )  {
+func  (me *RDAttachmentFormat) SetUsageFlags(p_member int64, )  {
   classNameV := StringNameFromStr("RDAttachmentFormat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_usage_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *RDAttachmentFormat) GetUsageFlags() int {
+func  (me *RDAttachmentFormat) GetUsageFlags() int64 {
   classNameV := StringNameFromStr("RDAttachmentFormat")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_usage_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

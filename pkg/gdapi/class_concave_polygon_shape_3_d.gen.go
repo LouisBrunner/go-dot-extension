@@ -17,6 +17,16 @@ func (me *ConcavePolygonShape3D) BaseClass() string {
   return "ConcavePolygonShape3D"
 }
 
+func NewConcavePolygonShape3D() *ConcavePolygonShape3D {
+  str := StringNameFromStr("ConcavePolygonShape3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ConcavePolygonShape3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *ConcavePolygonShape3D) SetFaces(faces PackedVector3Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334873810) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(faces.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ConcavePolygonShape3D) GetFaces() PackedVector3Array {
@@ -51,10 +63,11 @@ func  (me *ConcavePolygonShape3D) GetFaces() PackedVector3Array {
   methodNameV := StringNameFromStr("get_faces")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
-  var ret PackedVector3Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector3Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ConcavePolygonShape3D) SetBackfaceCollisionEnabled(enabled bool, )  {
@@ -64,7 +77,9 @@ func  (me *ConcavePolygonShape3D) SetBackfaceCollisionEnabled(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ConcavePolygonShape3D) IsBackfaceCollisionEnabled() bool {
@@ -73,10 +88,11 @@ func  (me *ConcavePolygonShape3D) IsBackfaceCollisionEnabled() bool {
   methodNameV := StringNameFromStr("is_backface_collision_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *AudioEffectEQ) BaseClass() string {
   return "AudioEffectEQ"
 }
 
+func NewAudioEffectEQ() *AudioEffectEQ {
+  str := StringNameFromStr("AudioEffectEQ") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioEffectEQ{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,38 +45,42 @@ func (me *AudioEffectEQ) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *AudioEffectEQ) SetBandGainDb(band_idx int, volume_db float32, )  {
+func  (me *AudioEffectEQ) SetBandGainDb(band_idx int64, volume_db float64, )  {
   classNameV := StringNameFromStr("AudioEffectEQ")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_band_gain_db")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1602489585) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&band_idx), gdc.ConstTypePtr(&volume_db), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioEffectEQ) GetBandGainDb(band_idx int, ) float32 {
+func  (me *AudioEffectEQ) GetBandGainDb(band_idx int64, ) float64 {
   classNameV := StringNameFromStr("AudioEffectEQ")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_band_gain_db")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339986948) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&band_idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioEffectEQ) GetBandCount() int {
+func  (me *AudioEffectEQ) GetBandCount() int64 {
   classNameV := StringNameFromStr("AudioEffectEQ")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_band_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

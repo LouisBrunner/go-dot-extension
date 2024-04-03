@@ -17,6 +17,16 @@ func (me *JavaScriptBridge) BaseClass() string {
   return "JavaScriptBridge"
 }
 
+func NewJavaScriptBridge() *JavaScriptBridge {
+  str := StringNameFromStr("JavaScriptBridge") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &JavaScriptBridge{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *JavaScriptBridge) Eval(code String, use_global_execution_context bool
   methodNameV := StringNameFromStr("eval")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 218087648) // FIXME: should cache?
-  var ret Variant
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(code.AsCTypePtr()), gdc.ConstTypePtr(&use_global_execution_context), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVariant()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *JavaScriptBridge) GetInterface(interface_ String, ) JavaScriptObject {
@@ -53,10 +64,11 @@ func  (me *JavaScriptBridge) GetInterface(interface_ String, ) JavaScriptObject 
   methodNameV := StringNameFromStr("get_interface")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1355533281) // FIXME: should cache?
-  var ret JavaScriptObject
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(interface_.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewJavaScriptObject()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *JavaScriptBridge) CreateCallback(callable Callable, ) JavaScriptObject {
@@ -65,10 +77,11 @@ func  (me *JavaScriptBridge) CreateCallback(callable Callable, ) JavaScriptObjec
   methodNameV := StringNameFromStr("create_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 422818440) // FIXME: should cache?
-  var ret JavaScriptObject
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callable.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewJavaScriptObject()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *JavaScriptBridge) CreateObject(object String, varargs ...Variant) Variant {
@@ -77,18 +90,18 @@ func  (me *JavaScriptBridge) CreateObject(object String, varargs ...Variant) Var
   methodNameV := StringNameFromStr("create_object")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3093893586) // FIXME: should cache?
-  var ret Variant
   cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(object.AsCTypePtr()), }
+  ret := NewVariant()
+
   for _, v := range varargs {
     cargs = append(cargs, v.AsCPtr())
   }
-  err := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), gdc.UninitializedVariantPtr(&ret), err)
-  if err.Error != gdc.CallOk {
-    panic(err) // TODO: return `err`?
+  cerr := &gdc.CallError{}
+  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
+  if cerr.Error != gdc.CallOk {
+    panic(cerr) // TODO: return `cerr`?
   }
-
-  return ret
+  return *ret
 }
 
 func  (me *JavaScriptBridge) DownloadBuffer(buffer PackedByteArray, name String, mime String, )  {
@@ -98,7 +111,9 @@ func  (me *JavaScriptBridge) DownloadBuffer(buffer PackedByteArray, name String,
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3352272093) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(buffer.AsCTypePtr()), gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(mime.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *JavaScriptBridge) PwaNeedsUpdate() bool {
@@ -107,10 +122,11 @@ func  (me *JavaScriptBridge) PwaNeedsUpdate() bool {
   methodNameV := StringNameFromStr("pwa_needs_update")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *JavaScriptBridge) PwaUpdate() Error {
@@ -119,9 +135,10 @@ func  (me *JavaScriptBridge) PwaUpdate() Error {
   methodNameV := StringNameFromStr("pwa_update")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -132,7 +149,9 @@ func  (me *JavaScriptBridge) ForceFsSync()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

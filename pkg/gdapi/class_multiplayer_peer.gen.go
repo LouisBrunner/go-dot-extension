@@ -17,6 +17,16 @@ func (me *MultiplayerPeer) BaseClass() string {
   return "MultiplayerPeer"
 }
 
+func NewMultiplayerPeer() *MultiplayerPeer {
+  str := StringNameFromStr("MultiplayerPeer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &MultiplayerPeer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Constants
@@ -56,26 +66,29 @@ func (me *MultiplayerPeer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *MultiplayerPeer) SetTransferChannel(channel int, )  {
+func  (me *MultiplayerPeer) SetTransferChannel(channel int64, )  {
   classNameV := StringNameFromStr("MultiplayerPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_transfer_channel")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&channel), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MultiplayerPeer) GetTransferChannel() int {
+func  (me *MultiplayerPeer) GetTransferChannel() int64 {
   classNameV := StringNameFromStr("MultiplayerPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_transfer_channel")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *MultiplayerPeer) SetTransferMode(mode MultiplayerPeerTransferMode, )  {
@@ -85,7 +98,9 @@ func  (me *MultiplayerPeer) SetTransferMode(mode MultiplayerPeerTransferMode, ) 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 950411049) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *MultiplayerPeer) GetTransferMode() MultiplayerPeerTransferMode {
@@ -94,44 +109,49 @@ func  (me *MultiplayerPeer) GetTransferMode() MultiplayerPeerTransferMode {
   methodNameV := StringNameFromStr("get_transfer_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3369852622) // FIXME: should cache?
-  var ret MultiplayerPeerTransferMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret MultiplayerPeerTransferMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *MultiplayerPeer) SetTargetPeer(id int, )  {
+func  (me *MultiplayerPeer) SetTargetPeer(id int64, )  {
   classNameV := StringNameFromStr("MultiplayerPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_target_peer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MultiplayerPeer) GetPacketPeer() int {
+func  (me *MultiplayerPeer) GetPacketPeer() int64 {
   classNameV := StringNameFromStr("MultiplayerPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_packet_peer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MultiplayerPeer) GetPacketChannel() int {
+func  (me *MultiplayerPeer) GetPacketChannel() int64 {
   classNameV := StringNameFromStr("MultiplayerPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_packet_channel")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *MultiplayerPeer) GetPacketMode() MultiplayerPeerTransferMode {
@@ -140,9 +160,10 @@ func  (me *MultiplayerPeer) GetPacketMode() MultiplayerPeerTransferMode {
   methodNameV := StringNameFromStr("get_packet_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3369852622) // FIXME: should cache?
-  var ret MultiplayerPeerTransferMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret MultiplayerPeerTransferMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -153,7 +174,9 @@ func  (me *MultiplayerPeer) Poll()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *MultiplayerPeer) Close()  {
@@ -163,17 +186,21 @@ func  (me *MultiplayerPeer) Close()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MultiplayerPeer) DisconnectPeer(peer int, force bool, )  {
+func  (me *MultiplayerPeer) DisconnectPeer(peer int64, force bool, )  {
   classNameV := StringNameFromStr("MultiplayerPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("disconnect_peer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4023243586) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer), gdc.ConstTypePtr(&force), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *MultiplayerPeer) GetConnectionStatus() MultiplayerPeerConnectionStatus {
@@ -182,34 +209,37 @@ func  (me *MultiplayerPeer) GetConnectionStatus() MultiplayerPeerConnectionStatu
   methodNameV := StringNameFromStr("get_connection_status")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2147374275) // FIXME: should cache?
-  var ret MultiplayerPeerConnectionStatus
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret MultiplayerPeerConnectionStatus
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *MultiplayerPeer) GetUniqueId() int {
+func  (me *MultiplayerPeer) GetUniqueId() int64 {
   classNameV := StringNameFromStr("MultiplayerPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_unique_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MultiplayerPeer) GenerateUniqueId() int {
+func  (me *MultiplayerPeer) GenerateUniqueId() int64 {
   classNameV := StringNameFromStr("MultiplayerPeer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("generate_unique_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *MultiplayerPeer) SetRefuseNewConnections(enable bool, )  {
@@ -219,7 +249,9 @@ func  (me *MultiplayerPeer) SetRefuseNewConnections(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *MultiplayerPeer) IsRefusingNewConnections() bool {
@@ -228,10 +260,11 @@ func  (me *MultiplayerPeer) IsRefusingNewConnections() bool {
   methodNameV := StringNameFromStr("is_refusing_new_connections")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *MultiplayerPeer) IsServerRelaySupported() bool {
@@ -240,10 +273,11 @@ func  (me *MultiplayerPeer) IsServerRelaySupported() bool {
   methodNameV := StringNameFromStr("is_server_relay_supported")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

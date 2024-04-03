@@ -17,6 +17,16 @@ func (me *VisualShaderNodeGroupBase) BaseClass() string {
   return "VisualShaderNodeGroupBase"
 }
 
+func NewVisualShaderNodeGroupBase() *VisualShaderNodeGroupBase {
+  str := StringNameFromStr("VisualShaderNodeGroupBase") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeGroupBase{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *VisualShaderNodeGroupBase) SetInputs(inputs String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(inputs.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeGroupBase) GetInputs() String {
@@ -51,10 +63,11 @@ func  (me *VisualShaderNodeGroupBase) GetInputs() String {
   methodNameV := StringNameFromStr("get_inputs")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *VisualShaderNodeGroupBase) SetOutputs(outputs String, )  {
@@ -64,7 +77,9 @@ func  (me *VisualShaderNodeGroupBase) SetOutputs(outputs String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(outputs.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeGroupBase) GetOutputs() String {
@@ -73,10 +88,11 @@ func  (me *VisualShaderNodeGroupBase) GetOutputs() String {
   methodNameV := StringNameFromStr("get_outputs")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *VisualShaderNodeGroupBase) IsValidPortName(name String, ) bool {
@@ -85,54 +101,61 @@ func  (me *VisualShaderNodeGroupBase) IsValidPortName(name String, ) bool {
   methodNameV := StringNameFromStr("is_valid_port_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNodeGroupBase) AddInputPort(id int, type_ int, name String, )  {
+func  (me *VisualShaderNodeGroupBase) AddInputPort(id int64, type_ int64, name String, )  {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_input_port")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2285447957) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeGroupBase) RemoveInputPort(id int, )  {
+func  (me *VisualShaderNodeGroupBase) RemoveInputPort(id int64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_input_port")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeGroupBase) GetInputPortCount() int {
+func  (me *VisualShaderNodeGroupBase) GetInputPortCount() int64 {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_input_port_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNodeGroupBase) HasInputPort(id int, ) bool {
+func  (me *VisualShaderNodeGroupBase) HasInputPort(id int64, ) bool {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("has_input_port")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *VisualShaderNodeGroupBase) ClearInputPorts()  {
@@ -142,51 +165,59 @@ func  (me *VisualShaderNodeGroupBase) ClearInputPorts()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeGroupBase) AddOutputPort(id int, type_ int, name String, )  {
+func  (me *VisualShaderNodeGroupBase) AddOutputPort(id int64, type_ int64, name String, )  {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_output_port")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2285447957) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeGroupBase) RemoveOutputPort(id int, )  {
+func  (me *VisualShaderNodeGroupBase) RemoveOutputPort(id int64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_output_port")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeGroupBase) GetOutputPortCount() int {
+func  (me *VisualShaderNodeGroupBase) GetOutputPortCount() int64 {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_output_port_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNodeGroupBase) HasOutputPort(id int, ) bool {
+func  (me *VisualShaderNodeGroupBase) HasOutputPort(id int64, ) bool {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("has_output_port")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *VisualShaderNodeGroupBase) ClearOutputPorts()  {
@@ -196,71 +227,83 @@ func  (me *VisualShaderNodeGroupBase) ClearOutputPorts()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeGroupBase) SetInputPortName(id int, name String, )  {
+func  (me *VisualShaderNodeGroupBase) SetInputPortName(id int64, name String, )  {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_input_port_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), gdc.ConstTypePtr(name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeGroupBase) SetInputPortType(id int, type_ int, )  {
+func  (me *VisualShaderNodeGroupBase) SetInputPortType(id int64, type_ int64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_input_port_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeGroupBase) SetOutputPortName(id int, name String, )  {
+func  (me *VisualShaderNodeGroupBase) SetOutputPortName(id int64, name String, )  {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_output_port_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), gdc.ConstTypePtr(name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeGroupBase) SetOutputPortType(id int, type_ int, )  {
+func  (me *VisualShaderNodeGroupBase) SetOutputPortType(id int64, type_ int64, )  {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_output_port_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&type_), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNodeGroupBase) GetFreeInputPortId() int {
+func  (me *VisualShaderNodeGroupBase) GetFreeInputPortId() int64 {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_free_input_port_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNodeGroupBase) GetFreeOutputPortId() int {
+func  (me *VisualShaderNodeGroupBase) GetFreeOutputPortId() int64 {
   classNameV := StringNameFromStr("VisualShaderNodeGroupBase")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_free_output_port_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

@@ -17,6 +17,16 @@ func (me *CPUParticles3D) BaseClass() string {
   return "CPUParticles3D"
 }
 
+func NewCPUParticles3D() *CPUParticles3D {
+  str := StringNameFromStr("CPUParticles3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CPUParticles3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -86,27 +96,33 @@ func  (me *CPUParticles3D) SetEmitting(emitting bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&emitting), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) SetAmount(amount int, )  {
+func  (me *CPUParticles3D) SetAmount(amount int64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_amount")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) SetLifetime(secs float32, )  {
+func  (me *CPUParticles3D) SetLifetime(secs float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_lifetime")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&secs), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) SetOneShot(enable bool, )  {
@@ -116,47 +132,57 @@ func  (me *CPUParticles3D) SetOneShot(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) SetPreProcessTime(secs float32, )  {
+func  (me *CPUParticles3D) SetPreProcessTime(secs float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_pre_process_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&secs), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) SetExplosivenessRatio(ratio float32, )  {
+func  (me *CPUParticles3D) SetExplosivenessRatio(ratio float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_explosiveness_ratio")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ratio), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) SetRandomnessRatio(ratio float32, )  {
+func  (me *CPUParticles3D) SetRandomnessRatio(ratio float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_randomness_ratio")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ratio), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) SetLifetimeRandomness(random float32, )  {
+func  (me *CPUParticles3D) SetLifetimeRandomness(random float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_lifetime_randomness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&random), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) SetUseLocalCoordinates(enable bool, )  {
@@ -166,17 +192,21 @@ func  (me *CPUParticles3D) SetUseLocalCoordinates(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) SetFixedFps(fps int, )  {
+func  (me *CPUParticles3D) SetFixedFps(fps int64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_fixed_fps")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fps), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) SetFractionalDelta(enable bool, )  {
@@ -186,17 +216,21 @@ func  (me *CPUParticles3D) SetFractionalDelta(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) SetSpeedScale(scale float32, )  {
+func  (me *CPUParticles3D) SetSpeedScale(scale float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_speed_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scale), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) IsEmitting() bool {
@@ -205,34 +239,37 @@ func  (me *CPUParticles3D) IsEmitting() bool {
   methodNameV := StringNameFromStr("is_emitting")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) GetAmount() int {
+func  (me *CPUParticles3D) GetAmount() int64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_amount")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) GetLifetime() float32 {
+func  (me *CPUParticles3D) GetLifetime() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_lifetime")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CPUParticles3D) GetOneShot() bool {
@@ -241,58 +278,63 @@ func  (me *CPUParticles3D) GetOneShot() bool {
   methodNameV := StringNameFromStr("get_one_shot")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) GetPreProcessTime() float32 {
+func  (me *CPUParticles3D) GetPreProcessTime() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_pre_process_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) GetExplosivenessRatio() float32 {
+func  (me *CPUParticles3D) GetExplosivenessRatio() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_explosiveness_ratio")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) GetRandomnessRatio() float32 {
+func  (me *CPUParticles3D) GetRandomnessRatio() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_randomness_ratio")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) GetLifetimeRandomness() float32 {
+func  (me *CPUParticles3D) GetLifetimeRandomness() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_lifetime_randomness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CPUParticles3D) GetUseLocalCoordinates() bool {
@@ -301,22 +343,24 @@ func  (me *CPUParticles3D) GetUseLocalCoordinates() bool {
   methodNameV := StringNameFromStr("get_use_local_coordinates")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) GetFixedFps() int {
+func  (me *CPUParticles3D) GetFixedFps() int64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_fixed_fps")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CPUParticles3D) GetFractionalDelta() bool {
@@ -325,22 +369,24 @@ func  (me *CPUParticles3D) GetFractionalDelta() bool {
   methodNameV := StringNameFromStr("get_fractional_delta")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) GetSpeedScale() float32 {
+func  (me *CPUParticles3D) GetSpeedScale() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_speed_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CPUParticles3D) SetDrawOrder(order CPUParticles3DDrawOrder, )  {
@@ -350,7 +396,9 @@ func  (me *CPUParticles3D) SetDrawOrder(order CPUParticles3DDrawOrder, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1427401774) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&order), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetDrawOrder() CPUParticles3DDrawOrder {
@@ -359,9 +407,10 @@ func  (me *CPUParticles3D) GetDrawOrder() CPUParticles3DDrawOrder {
   methodNameV := StringNameFromStr("get_draw_order")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1321900776) // FIXME: should cache?
-  var ret CPUParticles3DDrawOrder
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret CPUParticles3DDrawOrder
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -372,7 +421,9 @@ func  (me *CPUParticles3D) SetMesh(mesh Mesh, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 194775623) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(mesh.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetMesh() Mesh {
@@ -381,10 +432,11 @@ func  (me *CPUParticles3D) GetMesh() Mesh {
   methodNameV := StringNameFromStr("get_mesh")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1808005922) // FIXME: should cache?
-  var ret Mesh
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewMesh()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) Restart()  {
@@ -394,7 +446,9 @@ func  (me *CPUParticles3D) Restart()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) SetDirection(direction Vector3, )  {
@@ -404,7 +458,9 @@ func  (me *CPUParticles3D) SetDirection(direction Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(direction.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetDirection() Vector3 {
@@ -413,98 +469,111 @@ func  (me *CPUParticles3D) GetDirection() Vector3 {
   methodNameV := StringNameFromStr("get_direction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *CPUParticles3D) SetSpread(degrees float32, )  {
+func  (me *CPUParticles3D) SetSpread(degrees float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_spread")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&degrees), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) GetSpread() float32 {
+func  (me *CPUParticles3D) GetSpread() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_spread")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) SetFlatness(amount float32, )  {
+func  (me *CPUParticles3D) SetFlatness(amount float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_flatness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) GetFlatness() float32 {
+func  (me *CPUParticles3D) GetFlatness() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_flatness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) SetParamMin(param CPUParticles3DParameter, value float32, )  {
+func  (me *CPUParticles3D) SetParamMin(param CPUParticles3DParameter, value float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_param_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 557936109) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) GetParamMin(param CPUParticles3DParameter, ) float32 {
+func  (me *CPUParticles3D) GetParamMin(param CPUParticles3DParameter, ) float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_param_min")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 597646162) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) SetParamMax(param CPUParticles3DParameter, value float32, )  {
+func  (me *CPUParticles3D) SetParamMax(param CPUParticles3DParameter, value float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_param_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 557936109) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) GetParamMax(param CPUParticles3DParameter, ) float32 {
+func  (me *CPUParticles3D) GetParamMax(param CPUParticles3DParameter, ) float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_param_max")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 597646162) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CPUParticles3D) SetParamCurve(param CPUParticles3DParameter, curve Curve, )  {
@@ -514,7 +583,9 @@ func  (me *CPUParticles3D) SetParamCurve(param CPUParticles3DParameter, curve Cu
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4044142537) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), gdc.ConstTypePtr(curve.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetParamCurve(param CPUParticles3DParameter, ) Curve {
@@ -523,10 +594,11 @@ func  (me *CPUParticles3D) GetParamCurve(param CPUParticles3DParameter, ) Curve 
   methodNameV := StringNameFromStr("get_param_curve")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4132790277) // FIXME: should cache?
-  var ret Curve
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCurve()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetColor(color Color, )  {
@@ -536,7 +608,9 @@ func  (me *CPUParticles3D) SetColor(color Color, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetColor() Color {
@@ -545,10 +619,11 @@ func  (me *CPUParticles3D) GetColor() Color {
   methodNameV := StringNameFromStr("get_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetColorRamp(ramp Gradient, )  {
@@ -558,7 +633,9 @@ func  (me *CPUParticles3D) SetColorRamp(ramp Gradient, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2756054477) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(ramp.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetColorRamp() Gradient {
@@ -567,10 +644,11 @@ func  (me *CPUParticles3D) GetColorRamp() Gradient {
   methodNameV := StringNameFromStr("get_color_ramp")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 132272999) // FIXME: should cache?
-  var ret Gradient
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewGradient()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetColorInitialRamp(ramp Gradient, )  {
@@ -580,7 +658,9 @@ func  (me *CPUParticles3D) SetColorInitialRamp(ramp Gradient, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2756054477) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(ramp.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetColorInitialRamp() Gradient {
@@ -589,10 +669,11 @@ func  (me *CPUParticles3D) GetColorInitialRamp() Gradient {
   methodNameV := StringNameFromStr("get_color_initial_ramp")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 132272999) // FIXME: should cache?
-  var ret Gradient
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewGradient()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetParticleFlag(particle_flag CPUParticles3DParticleFlags, enable bool, )  {
@@ -602,7 +683,9 @@ func  (me *CPUParticles3D) SetParticleFlag(particle_flag CPUParticles3DParticleF
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3515406498) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&particle_flag), gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetParticleFlag(particle_flag CPUParticles3DParticleFlags, ) bool {
@@ -611,10 +694,11 @@ func  (me *CPUParticles3D) GetParticleFlag(particle_flag CPUParticles3DParticleF
   methodNameV := StringNameFromStr("get_particle_flag")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2845201987) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&particle_flag), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CPUParticles3D) SetEmissionShape(shape CPUParticles3DEmissionShape, )  {
@@ -624,7 +708,9 @@ func  (me *CPUParticles3D) SetEmissionShape(shape CPUParticles3DEmissionShape, )
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 491823814) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shape), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetEmissionShape() CPUParticles3DEmissionShape {
@@ -633,32 +719,36 @@ func  (me *CPUParticles3D) GetEmissionShape() CPUParticles3DEmissionShape {
   methodNameV := StringNameFromStr("get_emission_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2961454842) // FIXME: should cache?
-  var ret CPUParticles3DEmissionShape
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret CPUParticles3DEmissionShape
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *CPUParticles3D) SetEmissionSphereRadius(radius float32, )  {
+func  (me *CPUParticles3D) SetEmissionSphereRadius(radius float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_emission_sphere_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) GetEmissionSphereRadius() float32 {
+func  (me *CPUParticles3D) GetEmissionSphereRadius() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_emission_sphere_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CPUParticles3D) SetEmissionBoxExtents(extents Vector3, )  {
@@ -668,7 +758,9 @@ func  (me *CPUParticles3D) SetEmissionBoxExtents(extents Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(extents.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetEmissionBoxExtents() Vector3 {
@@ -677,10 +769,11 @@ func  (me *CPUParticles3D) GetEmissionBoxExtents() Vector3 {
   methodNameV := StringNameFromStr("get_emission_box_extents")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetEmissionPoints(array PackedVector3Array, )  {
@@ -690,7 +783,9 @@ func  (me *CPUParticles3D) SetEmissionPoints(array PackedVector3Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334873810) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(array.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetEmissionPoints() PackedVector3Array {
@@ -699,10 +794,11 @@ func  (me *CPUParticles3D) GetEmissionPoints() PackedVector3Array {
   methodNameV := StringNameFromStr("get_emission_points")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
-  var ret PackedVector3Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector3Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetEmissionNormals(array PackedVector3Array, )  {
@@ -712,7 +808,9 @@ func  (me *CPUParticles3D) SetEmissionNormals(array PackedVector3Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334873810) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(array.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetEmissionNormals() PackedVector3Array {
@@ -721,10 +819,11 @@ func  (me *CPUParticles3D) GetEmissionNormals() PackedVector3Array {
   methodNameV := StringNameFromStr("get_emission_normals")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
-  var ret PackedVector3Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedVector3Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetEmissionColors(array PackedColorArray, )  {
@@ -734,7 +833,9 @@ func  (me *CPUParticles3D) SetEmissionColors(array PackedColorArray, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3546319833) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(array.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetEmissionColors() PackedColorArray {
@@ -743,10 +844,11 @@ func  (me *CPUParticles3D) GetEmissionColors() PackedColorArray {
   methodNameV := StringNameFromStr("get_emission_colors")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1392750486) // FIXME: should cache?
-  var ret PackedColorArray
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedColorArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetEmissionRingAxis(axis Vector3, )  {
@@ -756,7 +858,9 @@ func  (me *CPUParticles3D) SetEmissionRingAxis(axis Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(axis.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetEmissionRingAxis() Vector3 {
@@ -765,76 +869,86 @@ func  (me *CPUParticles3D) GetEmissionRingAxis() Vector3 {
   methodNameV := StringNameFromStr("get_emission_ring_axis")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *CPUParticles3D) SetEmissionRingHeight(height float32, )  {
+func  (me *CPUParticles3D) SetEmissionRingHeight(height float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_emission_ring_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&height), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) GetEmissionRingHeight() float32 {
+func  (me *CPUParticles3D) GetEmissionRingHeight() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_emission_ring_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) SetEmissionRingRadius(radius float32, )  {
+func  (me *CPUParticles3D) SetEmissionRingRadius(radius float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_emission_ring_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) GetEmissionRingRadius() float32 {
+func  (me *CPUParticles3D) GetEmissionRingRadius() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_emission_ring_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *CPUParticles3D) SetEmissionRingInnerRadius(inner_radius float32, )  {
+func  (me *CPUParticles3D) SetEmissionRingInnerRadius(inner_radius float64, )  {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_emission_ring_inner_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&inner_radius), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *CPUParticles3D) GetEmissionRingInnerRadius() float32 {
+func  (me *CPUParticles3D) GetEmissionRingInnerRadius() float64 {
   classNameV := StringNameFromStr("CPUParticles3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_emission_ring_inner_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CPUParticles3D) GetGravity() Vector3 {
@@ -843,10 +957,11 @@ func  (me *CPUParticles3D) GetGravity() Vector3 {
   methodNameV := StringNameFromStr("get_gravity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetGravity(accel_vec Vector3, )  {
@@ -856,7 +971,9 @@ func  (me *CPUParticles3D) SetGravity(accel_vec Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(accel_vec.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetSplitScale() bool {
@@ -865,10 +982,11 @@ func  (me *CPUParticles3D) GetSplitScale() bool {
   methodNameV := StringNameFromStr("get_split_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *CPUParticles3D) SetSplitScale(split_scale bool, )  {
@@ -878,7 +996,9 @@ func  (me *CPUParticles3D) SetSplitScale(split_scale bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&split_scale), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetScaleCurveX() Curve {
@@ -887,10 +1007,11 @@ func  (me *CPUParticles3D) GetScaleCurveX() Curve {
   methodNameV := StringNameFromStr("get_scale_curve_x")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
-  var ret Curve
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCurve()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetScaleCurveX(scale_curve Curve, )  {
@@ -900,7 +1021,9 @@ func  (me *CPUParticles3D) SetScaleCurveX(scale_curve Curve, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale_curve.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetScaleCurveY() Curve {
@@ -909,10 +1032,11 @@ func  (me *CPUParticles3D) GetScaleCurveY() Curve {
   methodNameV := StringNameFromStr("get_scale_curve_y")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
-  var ret Curve
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCurve()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetScaleCurveY(scale_curve Curve, )  {
@@ -922,7 +1046,9 @@ func  (me *CPUParticles3D) SetScaleCurveY(scale_curve Curve, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale_curve.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) GetScaleCurveZ() Curve {
@@ -931,10 +1057,11 @@ func  (me *CPUParticles3D) GetScaleCurveZ() Curve {
   methodNameV := StringNameFromStr("get_scale_curve_z")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
-  var ret Curve
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCurve()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *CPUParticles3D) SetScaleCurveZ(scale_curve Curve, )  {
@@ -944,7 +1071,9 @@ func  (me *CPUParticles3D) SetScaleCurveZ(scale_curve Curve, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale_curve.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *CPUParticles3D) ConvertFromParticles(particles Node, )  {
@@ -954,7 +1083,9 @@ func  (me *CPUParticles3D) ConvertFromParticles(particles Node, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(particles.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

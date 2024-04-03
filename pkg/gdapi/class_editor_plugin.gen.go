@@ -17,6 +17,16 @@ func (me *EditorPlugin) BaseClass() string {
   return "EditorPlugin"
 }
 
+func NewEditorPlugin() *EditorPlugin {
+  str := StringNameFromStr("EditorPlugin") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EditorPlugin{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -78,7 +88,9 @@ func  (me *EditorPlugin) AddControlToContainer(container EditorPluginCustomContr
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3092750152) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&container), gdc.ConstTypePtr(control.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddControlToBottomPanel(control Control, title String, ) Button {
@@ -87,10 +99,11 @@ func  (me *EditorPlugin) AddControlToBottomPanel(control Control, title String, 
   methodNameV := StringNameFromStr("add_control_to_bottom_panel")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3526039376) // FIXME: should cache?
-  var ret Button
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(control.AsCTypePtr()), gdc.ConstTypePtr(title.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewButton()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *EditorPlugin) AddControlToDock(slot EditorPluginDockSlot, control Control, )  {
@@ -100,7 +113,9 @@ func  (me *EditorPlugin) AddControlToDock(slot EditorPluginDockSlot, control Con
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3354871258) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot), gdc.ConstTypePtr(control.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveControlFromDocks(control Control, )  {
@@ -110,7 +125,9 @@ func  (me *EditorPlugin) RemoveControlFromDocks(control Control, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(control.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveControlFromBottomPanel(control Control, )  {
@@ -120,7 +137,9 @@ func  (me *EditorPlugin) RemoveControlFromBottomPanel(control Control, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(control.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveControlFromContainer(container EditorPluginCustomControlContainer, control Control, )  {
@@ -130,7 +149,9 @@ func  (me *EditorPlugin) RemoveControlFromContainer(container EditorPluginCustom
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3092750152) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&container), gdc.ConstTypePtr(control.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddToolMenuItem(name String, callable Callable, )  {
@@ -140,7 +161,9 @@ func  (me *EditorPlugin) AddToolMenuItem(name String, callable Callable, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2137474292) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(callable.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddToolSubmenuItem(name String, submenu PopupMenu, )  {
@@ -150,7 +173,9 @@ func  (me *EditorPlugin) AddToolSubmenuItem(name String, submenu PopupMenu, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1019428915) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(submenu.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveToolMenuItem(name String, )  {
@@ -160,7 +185,9 @@ func  (me *EditorPlugin) RemoveToolMenuItem(name String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) GetExportAsMenu() PopupMenu {
@@ -169,10 +196,11 @@ func  (me *EditorPlugin) GetExportAsMenu() PopupMenu {
   methodNameV := StringNameFromStr("get_export_as_menu")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1775878644) // FIXME: should cache?
-  var ret PopupMenu
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPopupMenu()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *EditorPlugin) AddCustomType(type_ String, base String, script Script, icon Texture2D, )  {
@@ -182,7 +210,9 @@ func  (me *EditorPlugin) AddCustomType(type_ String, base String, script Script,
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1986814599) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), gdc.ConstTypePtr(base.AsCTypePtr()), gdc.ConstTypePtr(script.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveCustomType(type_ String, )  {
@@ -192,7 +222,9 @@ func  (me *EditorPlugin) RemoveCustomType(type_ String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddAutoloadSingleton(name String, path String, )  {
@@ -202,7 +234,9 @@ func  (me *EditorPlugin) AddAutoloadSingleton(name String, path String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3186203200) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(path.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveAutoloadSingleton(name String, )  {
@@ -212,19 +246,22 @@ func  (me *EditorPlugin) RemoveAutoloadSingleton(name String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *EditorPlugin) UpdateOverlays() int {
+func  (me *EditorPlugin) UpdateOverlays() int64 {
   classNameV := StringNameFromStr("EditorPlugin")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("update_overlays")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *EditorPlugin) MakeBottomPanelItemVisible(item Control, )  {
@@ -234,7 +271,9 @@ func  (me *EditorPlugin) MakeBottomPanelItemVisible(item Control, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(item.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) HideBottomPanel()  {
@@ -244,7 +283,9 @@ func  (me *EditorPlugin) HideBottomPanel()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) GetUndoRedo() EditorUndoRedoManager {
@@ -253,10 +294,11 @@ func  (me *EditorPlugin) GetUndoRedo() EditorUndoRedoManager {
   methodNameV := StringNameFromStr("get_undo_redo")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 773492341) // FIXME: should cache?
-  var ret EditorUndoRedoManager
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewEditorUndoRedoManager()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *EditorPlugin) AddUndoRedoInspectorHookCallback(callable Callable, )  {
@@ -266,7 +308,9 @@ func  (me *EditorPlugin) AddUndoRedoInspectorHookCallback(callable Callable, )  
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1611583062) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callable.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveUndoRedoInspectorHookCallback(callable Callable, )  {
@@ -276,7 +320,9 @@ func  (me *EditorPlugin) RemoveUndoRedoInspectorHookCallback(callable Callable, 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1611583062) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callable.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) QueueSaveLayout()  {
@@ -286,7 +332,9 @@ func  (me *EditorPlugin) QueueSaveLayout()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddTranslationParserPlugin(parser EditorTranslationParserPlugin, )  {
@@ -296,7 +344,9 @@ func  (me *EditorPlugin) AddTranslationParserPlugin(parser EditorTranslationPars
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3116463128) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parser.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveTranslationParserPlugin(parser EditorTranslationParserPlugin, )  {
@@ -306,7 +356,9 @@ func  (me *EditorPlugin) RemoveTranslationParserPlugin(parser EditorTranslationP
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3116463128) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parser.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddImportPlugin(importer EditorImportPlugin, first_priority bool, )  {
@@ -316,7 +368,9 @@ func  (me *EditorPlugin) AddImportPlugin(importer EditorImportPlugin, first_prio
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3113975762) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(importer.AsCTypePtr()), gdc.ConstTypePtr(&first_priority), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveImportPlugin(importer EditorImportPlugin, )  {
@@ -326,7 +380,9 @@ func  (me *EditorPlugin) RemoveImportPlugin(importer EditorImportPlugin, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2312482773) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(importer.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddSceneFormatImporterPlugin(scene_format_importer EditorSceneFormatImporter, first_priority bool, )  {
@@ -336,7 +392,9 @@ func  (me *EditorPlugin) AddSceneFormatImporterPlugin(scene_format_importer Edit
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2764104752) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scene_format_importer.AsCTypePtr()), gdc.ConstTypePtr(&first_priority), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveSceneFormatImporterPlugin(scene_format_importer EditorSceneFormatImporter, )  {
@@ -346,7 +404,9 @@ func  (me *EditorPlugin) RemoveSceneFormatImporterPlugin(scene_format_importer E
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2637776123) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scene_format_importer.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddScenePostImportPlugin(scene_import_plugin EditorScenePostImportPlugin, first_priority bool, )  {
@@ -356,7 +416,9 @@ func  (me *EditorPlugin) AddScenePostImportPlugin(scene_import_plugin EditorScen
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3492436322) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scene_import_plugin.AsCTypePtr()), gdc.ConstTypePtr(&first_priority), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveScenePostImportPlugin(scene_import_plugin EditorScenePostImportPlugin, )  {
@@ -366,7 +428,9 @@ func  (me *EditorPlugin) RemoveScenePostImportPlugin(scene_import_plugin EditorS
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3045178206) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scene_import_plugin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddExportPlugin(plugin EditorExportPlugin, )  {
@@ -376,7 +440,9 @@ func  (me *EditorPlugin) AddExportPlugin(plugin EditorExportPlugin, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4095952207) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveExportPlugin(plugin EditorExportPlugin, )  {
@@ -386,7 +452,9 @@ func  (me *EditorPlugin) RemoveExportPlugin(plugin EditorExportPlugin, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4095952207) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddNode3DGizmoPlugin(plugin EditorNode3DGizmoPlugin, )  {
@@ -396,7 +464,9 @@ func  (me *EditorPlugin) AddNode3DGizmoPlugin(plugin EditorNode3DGizmoPlugin, ) 
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1541015022) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveNode3DGizmoPlugin(plugin EditorNode3DGizmoPlugin, )  {
@@ -406,7 +476,9 @@ func  (me *EditorPlugin) RemoveNode3DGizmoPlugin(plugin EditorNode3DGizmoPlugin,
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1541015022) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddInspectorPlugin(plugin EditorInspectorPlugin, )  {
@@ -416,7 +488,9 @@ func  (me *EditorPlugin) AddInspectorPlugin(plugin EditorInspectorPlugin, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 546395733) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveInspectorPlugin(plugin EditorInspectorPlugin, )  {
@@ -426,7 +500,9 @@ func  (me *EditorPlugin) RemoveInspectorPlugin(plugin EditorInspectorPlugin, )  
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 546395733) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) AddResourceConversionPlugin(plugin EditorResourceConversionPlugin, )  {
@@ -436,7 +512,9 @@ func  (me *EditorPlugin) AddResourceConversionPlugin(plugin EditorResourceConver
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2124849111) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveResourceConversionPlugin(plugin EditorResourceConversionPlugin, )  {
@@ -446,7 +524,9 @@ func  (me *EditorPlugin) RemoveResourceConversionPlugin(plugin EditorResourceCon
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2124849111) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(plugin.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) SetInputEventForwardingAlwaysEnabled()  {
@@ -456,7 +536,9 @@ func  (me *EditorPlugin) SetInputEventForwardingAlwaysEnabled()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) SetForceDrawOverForwardingEnabled()  {
@@ -466,7 +548,9 @@ func  (me *EditorPlugin) SetForceDrawOverForwardingEnabled()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) GetEditorInterface() EditorInterface {
@@ -475,10 +559,11 @@ func  (me *EditorPlugin) GetEditorInterface() EditorInterface {
   methodNameV := StringNameFromStr("get_editor_interface")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4223731786) // FIXME: should cache?
-  var ret EditorInterface
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewEditorInterface()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *EditorPlugin) GetScriptCreateDialog() ScriptCreateDialog {
@@ -487,10 +572,11 @@ func  (me *EditorPlugin) GetScriptCreateDialog() ScriptCreateDialog {
   methodNameV := StringNameFromStr("get_script_create_dialog")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3121871482) // FIXME: should cache?
-  var ret ScriptCreateDialog
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewScriptCreateDialog()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *EditorPlugin) AddDebuggerPlugin(script EditorDebuggerPlugin, )  {
@@ -500,7 +586,9 @@ func  (me *EditorPlugin) AddDebuggerPlugin(script EditorDebuggerPlugin, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3749880309) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(script.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) RemoveDebuggerPlugin(script EditorDebuggerPlugin, )  {
@@ -510,7 +598,9 @@ func  (me *EditorPlugin) RemoveDebuggerPlugin(script EditorDebuggerPlugin, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3749880309) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(script.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *EditorPlugin) GetPluginVersion() String {
@@ -519,10 +609,11 @@ func  (me *EditorPlugin) GetPluginVersion() String {
   methodNameV := StringNameFromStr("get_plugin_version")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

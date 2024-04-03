@@ -17,6 +17,16 @@ func (me *CSGCombiner3D) BaseClass() string {
   return "CSGCombiner3D"
 }
 
+func NewCSGCombiner3D() *CSGCombiner3D {
+  str := StringNameFromStr("CSGCombiner3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CSGCombiner3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

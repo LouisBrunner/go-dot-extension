@@ -17,6 +17,16 @@ func (me *RDShaderFile) BaseClass() string {
   return "RDShaderFile"
 }
 
+func NewRDShaderFile() *RDShaderFile {
+  str := StringNameFromStr("RDShaderFile") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &RDShaderFile{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *RDShaderFile) SetBytecode(bytecode RDShaderSPIRV, version StringName,
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1558064255) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(bytecode.AsCTypePtr()), gdc.ConstTypePtr(version.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDShaderFile) GetSpirv(version StringName, ) RDShaderSPIRV {
@@ -51,22 +63,25 @@ func  (me *RDShaderFile) GetSpirv(version StringName, ) RDShaderSPIRV {
   methodNameV := StringNameFromStr("get_spirv")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3340165340) // FIXME: should cache?
-  var ret RDShaderSPIRV
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(version.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRDShaderSPIRV()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *RDShaderFile) GetVersionList() StringName {
+func  (me *RDShaderFile) GetVersionList() []StringName {
   classNameV := StringNameFromStr("RDShaderFile")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_version_list")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[StringName](ret)
 }
 
 func  (me *RDShaderFile) SetBaseError(error String, )  {
@@ -76,7 +91,9 @@ func  (me *RDShaderFile) SetBaseError(error String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(error.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *RDShaderFile) GetBaseError() String {
@@ -85,10 +102,11 @@ func  (me *RDShaderFile) GetBaseError() String {
   methodNameV := StringNameFromStr("get_base_error")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

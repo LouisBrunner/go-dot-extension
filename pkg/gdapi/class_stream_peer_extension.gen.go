@@ -17,6 +17,16 @@ func (me *StreamPeerExtension) BaseClass() string {
   return "StreamPeerExtension"
 }
 
+func NewStreamPeerExtension() *StreamPeerExtension {
+  str := StringNameFromStr("StreamPeerExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &StreamPeerExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

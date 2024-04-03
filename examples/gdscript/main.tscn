@@ -12,6 +12,7 @@ offset_right = 1137.0
 offset_bottom = 634.0
 
 [node name="MyNode2D" type="MyNode2D" parent="."]
+speed = 17
 position = Vector2(545, 290)
 
 [node name="ColorRect" type="ColorRect" parent="MyNode2D"]

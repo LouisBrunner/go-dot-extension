@@ -17,6 +17,16 @@ func (me *ImageFormatLoader) BaseClass() string {
   return "ImageFormatLoader"
 }
 
+func NewImageFormatLoader() *ImageFormatLoader {
+  str := StringNameFromStr("ImageFormatLoader") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ImageFormatLoader{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

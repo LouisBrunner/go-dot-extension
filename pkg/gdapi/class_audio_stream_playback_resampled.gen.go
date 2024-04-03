@@ -17,6 +17,16 @@ func (me *AudioStreamPlaybackResampled) BaseClass() string {
   return "AudioStreamPlaybackResampled"
 }
 
+func NewAudioStreamPlaybackResampled() *AudioStreamPlaybackResampled {
+  str := StringNameFromStr("AudioStreamPlaybackResampled") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioStreamPlaybackResampled{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *AudioStreamPlaybackResampled) BeginResample()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

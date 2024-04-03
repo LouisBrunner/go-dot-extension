@@ -17,6 +17,16 @@ func (me *FlowContainer) BaseClass() string {
   return "FlowContainer"
 }
 
+func NewFlowContainer() *FlowContainer {
+  str := StringNameFromStr("FlowContainer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &FlowContainer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,16 +52,17 @@ func (me *FlowContainer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *FlowContainer) GetLineCount() int {
+func  (me *FlowContainer) GetLineCount() int64 {
   classNameV := StringNameFromStr("FlowContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_line_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *FlowContainer) SetAlignment(alignment FlowContainerAlignmentMode, )  {
@@ -61,7 +72,9 @@ func  (me *FlowContainer) SetAlignment(alignment FlowContainerAlignmentMode, )  
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 575250951) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FlowContainer) GetAlignment() FlowContainerAlignmentMode {
@@ -70,9 +83,10 @@ func  (me *FlowContainer) GetAlignment() FlowContainerAlignmentMode {
   methodNameV := StringNameFromStr("get_alignment")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3749743559) // FIXME: should cache?
-  var ret FlowContainerAlignmentMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret FlowContainerAlignmentMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -83,7 +97,9 @@ func  (me *FlowContainer) SetVertical(vertical bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vertical), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *FlowContainer) IsVertical() bool {
@@ -92,10 +108,11 @@ func  (me *FlowContainer) IsVertical() bool {
   methodNameV := StringNameFromStr("is_vertical")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

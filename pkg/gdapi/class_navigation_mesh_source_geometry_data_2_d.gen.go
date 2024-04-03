@@ -17,6 +17,16 @@ func (me *NavigationMeshSourceGeometryData2D) BaseClass() string {
   return "NavigationMeshSourceGeometryData2D"
 }
 
+func NewNavigationMeshSourceGeometryData2D() *NavigationMeshSourceGeometryData2D {
+  str := StringNameFromStr("NavigationMeshSourceGeometryData2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &NavigationMeshSourceGeometryData2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *NavigationMeshSourceGeometryData2D) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMeshSourceGeometryData2D) HasData() bool {
@@ -51,54 +63,63 @@ func  (me *NavigationMeshSourceGeometryData2D) HasData() bool {
   methodNameV := StringNameFromStr("has_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *NavigationMeshSourceGeometryData2D) SetTraversableOutlines(traversable_outlines PackedVector2Array, )  {
+func  (me *NavigationMeshSourceGeometryData2D) SetTraversableOutlines(traversable_outlines []PackedVector2Array, )  {
   classNameV := StringNameFromStr("NavigationMeshSourceGeometryData2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_traversable_outlines")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(traversable_outlines.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&traversable_outlines), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMeshSourceGeometryData2D) GetTraversableOutlines() PackedVector2Array {
+func  (me *NavigationMeshSourceGeometryData2D) GetTraversableOutlines() []PackedVector2Array {
   classNameV := StringNameFromStr("NavigationMeshSourceGeometryData2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_traversable_outlines")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
-  var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[PackedVector2Array](ret)
 }
 
-func  (me *NavigationMeshSourceGeometryData2D) SetObstructionOutlines(obstruction_outlines PackedVector2Array, )  {
+func  (me *NavigationMeshSourceGeometryData2D) SetObstructionOutlines(obstruction_outlines []PackedVector2Array, )  {
   classNameV := StringNameFromStr("NavigationMeshSourceGeometryData2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_obstruction_outlines")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstruction_outlines.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&obstruction_outlines), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *NavigationMeshSourceGeometryData2D) GetObstructionOutlines() PackedVector2Array {
+func  (me *NavigationMeshSourceGeometryData2D) GetObstructionOutlines() []PackedVector2Array {
   classNameV := StringNameFromStr("NavigationMeshSourceGeometryData2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_obstruction_outlines")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
-  var ret PackedVector2Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[PackedVector2Array](ret)
 }
 
 func  (me *NavigationMeshSourceGeometryData2D) AddTraversableOutline(shape_outline PackedVector2Array, )  {
@@ -108,7 +129,9 @@ func  (me *NavigationMeshSourceGeometryData2D) AddTraversableOutline(shape_outli
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shape_outline.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMeshSourceGeometryData2D) AddObstructionOutline(shape_outline PackedVector2Array, )  {
@@ -118,7 +141,9 @@ func  (me *NavigationMeshSourceGeometryData2D) AddObstructionOutline(shape_outli
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shape_outline.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *MeshConvexDecompositionSettings) BaseClass() string {
   return "MeshConvexDecompositionSettings"
 }
 
+func NewMeshConvexDecompositionSettings() *MeshConvexDecompositionSettings {
+  str := StringNameFromStr("MeshConvexDecompositionSettings") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &MeshConvexDecompositionSettings{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,180 +51,204 @@ func (me *MeshConvexDecompositionSettings) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *MeshConvexDecompositionSettings) SetMaxConcavity(max_concavity float32, )  {
+func  (me *MeshConvexDecompositionSettings) SetMaxConcavity(max_concavity float64, )  {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_concavity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_concavity), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MeshConvexDecompositionSettings) GetMaxConcavity() float32 {
+func  (me *MeshConvexDecompositionSettings) GetMaxConcavity() float64 {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_concavity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MeshConvexDecompositionSettings) SetSymmetryPlanesClippingBias(symmetry_planes_clipping_bias float32, )  {
+func  (me *MeshConvexDecompositionSettings) SetSymmetryPlanesClippingBias(symmetry_planes_clipping_bias float64, )  {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_symmetry_planes_clipping_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&symmetry_planes_clipping_bias), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MeshConvexDecompositionSettings) GetSymmetryPlanesClippingBias() float32 {
+func  (me *MeshConvexDecompositionSettings) GetSymmetryPlanesClippingBias() float64 {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_symmetry_planes_clipping_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MeshConvexDecompositionSettings) SetRevolutionAxesClippingBias(revolution_axes_clipping_bias float32, )  {
+func  (me *MeshConvexDecompositionSettings) SetRevolutionAxesClippingBias(revolution_axes_clipping_bias float64, )  {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_revolution_axes_clipping_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&revolution_axes_clipping_bias), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MeshConvexDecompositionSettings) GetRevolutionAxesClippingBias() float32 {
+func  (me *MeshConvexDecompositionSettings) GetRevolutionAxesClippingBias() float64 {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_revolution_axes_clipping_bias")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MeshConvexDecompositionSettings) SetMinVolumePerConvexHull(min_volume_per_convex_hull float32, )  {
+func  (me *MeshConvexDecompositionSettings) SetMinVolumePerConvexHull(min_volume_per_convex_hull float64, )  {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_min_volume_per_convex_hull")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&min_volume_per_convex_hull), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MeshConvexDecompositionSettings) GetMinVolumePerConvexHull() float32 {
+func  (me *MeshConvexDecompositionSettings) GetMinVolumePerConvexHull() float64 {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_min_volume_per_convex_hull")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MeshConvexDecompositionSettings) SetResolution(min_volume_per_convex_hull int, )  {
+func  (me *MeshConvexDecompositionSettings) SetResolution(min_volume_per_convex_hull int64, )  {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_resolution")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&min_volume_per_convex_hull), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MeshConvexDecompositionSettings) GetResolution() int {
+func  (me *MeshConvexDecompositionSettings) GetResolution() int64 {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_resolution")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MeshConvexDecompositionSettings) SetMaxNumVerticesPerConvexHull(max_num_vertices_per_convex_hull int, )  {
+func  (me *MeshConvexDecompositionSettings) SetMaxNumVerticesPerConvexHull(max_num_vertices_per_convex_hull int64, )  {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_num_vertices_per_convex_hull")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_num_vertices_per_convex_hull), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MeshConvexDecompositionSettings) GetMaxNumVerticesPerConvexHull() int {
+func  (me *MeshConvexDecompositionSettings) GetMaxNumVerticesPerConvexHull() int64 {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_num_vertices_per_convex_hull")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MeshConvexDecompositionSettings) SetPlaneDownsampling(plane_downsampling int, )  {
+func  (me *MeshConvexDecompositionSettings) SetPlaneDownsampling(plane_downsampling int64, )  {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_plane_downsampling")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&plane_downsampling), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MeshConvexDecompositionSettings) GetPlaneDownsampling() int {
+func  (me *MeshConvexDecompositionSettings) GetPlaneDownsampling() int64 {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_plane_downsampling")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MeshConvexDecompositionSettings) SetConvexHullDownsampling(convex_hull_downsampling int, )  {
+func  (me *MeshConvexDecompositionSettings) SetConvexHullDownsampling(convex_hull_downsampling int64, )  {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_convex_hull_downsampling")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&convex_hull_downsampling), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MeshConvexDecompositionSettings) GetConvexHullDownsampling() int {
+func  (me *MeshConvexDecompositionSettings) GetConvexHullDownsampling() int64 {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_convex_hull_downsampling")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *MeshConvexDecompositionSettings) SetNormalizeMesh(normalize_mesh bool, )  {
@@ -224,7 +258,9 @@ func  (me *MeshConvexDecompositionSettings) SetNormalizeMesh(normalize_mesh bool
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&normalize_mesh), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *MeshConvexDecompositionSettings) GetNormalizeMesh() bool {
@@ -233,10 +269,11 @@ func  (me *MeshConvexDecompositionSettings) GetNormalizeMesh() bool {
   methodNameV := StringNameFromStr("get_normalize_mesh")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *MeshConvexDecompositionSettings) SetMode(mode MeshConvexDecompositionSettingsMode, )  {
@@ -246,7 +283,9 @@ func  (me *MeshConvexDecompositionSettings) SetMode(mode MeshConvexDecomposition
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1668072869) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *MeshConvexDecompositionSettings) GetMode() MeshConvexDecompositionSettingsMode {
@@ -255,9 +294,10 @@ func  (me *MeshConvexDecompositionSettings) GetMode() MeshConvexDecompositionSet
   methodNameV := StringNameFromStr("get_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 23479454) // FIXME: should cache?
-  var ret MeshConvexDecompositionSettingsMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret MeshConvexDecompositionSettingsMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -268,7 +308,9 @@ func  (me *MeshConvexDecompositionSettings) SetConvexHullApproximation(convex_hu
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&convex_hull_approximation), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *MeshConvexDecompositionSettings) GetConvexHullApproximation() bool {
@@ -277,32 +319,36 @@ func  (me *MeshConvexDecompositionSettings) GetConvexHullApproximation() bool {
   methodNameV := StringNameFromStr("get_convex_hull_approximation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *MeshConvexDecompositionSettings) SetMaxConvexHulls(max_convex_hulls int, )  {
+func  (me *MeshConvexDecompositionSettings) SetMaxConvexHulls(max_convex_hulls int64, )  {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_convex_hulls")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_convex_hulls), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *MeshConvexDecompositionSettings) GetMaxConvexHulls() int {
+func  (me *MeshConvexDecompositionSettings) GetMaxConvexHulls() int64 {
   classNameV := StringNameFromStr("MeshConvexDecompositionSettings")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_convex_hulls")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *MeshConvexDecompositionSettings) SetProjectHullVertices(project_hull_vertices bool, )  {
@@ -312,7 +358,9 @@ func  (me *MeshConvexDecompositionSettings) SetProjectHullVertices(project_hull_
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&project_hull_vertices), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *MeshConvexDecompositionSettings) GetProjectHullVertices() bool {
@@ -321,10 +369,11 @@ func  (me *MeshConvexDecompositionSettings) GetProjectHullVertices() bool {
   methodNameV := StringNameFromStr("get_project_hull_vertices")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

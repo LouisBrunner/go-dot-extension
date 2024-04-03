@@ -17,6 +17,16 @@ func (me *AnimationTree) BaseClass() string {
   return "AnimationTree"
 }
 
+func NewAnimationTree() *AnimationTree {
+  str := StringNameFromStr("AnimationTree") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AnimationTree{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -49,7 +59,9 @@ func  (me *AnimationTree) SetTreeRoot(animation_node AnimationRootNode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2581683800) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(animation_node.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationTree) GetTreeRoot() AnimationRootNode {
@@ -58,10 +70,11 @@ func  (me *AnimationTree) GetTreeRoot() AnimationRootNode {
   methodNameV := StringNameFromStr("get_tree_root")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4110384712) // FIXME: should cache?
-  var ret AnimationRootNode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewAnimationRootNode()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AnimationTree) SetAdvanceExpressionBaseNode(path NodePath, )  {
@@ -71,7 +84,9 @@ func  (me *AnimationTree) SetAdvanceExpressionBaseNode(path NodePath, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationTree) GetAdvanceExpressionBaseNode() NodePath {
@@ -80,10 +95,11 @@ func  (me *AnimationTree) GetAdvanceExpressionBaseNode() NodePath {
   methodNameV := StringNameFromStr("get_advance_expression_base_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AnimationTree) SetAnimationPlayer(path NodePath, )  {
@@ -93,7 +109,9 @@ func  (me *AnimationTree) SetAnimationPlayer(path NodePath, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationTree) GetAnimationPlayer() NodePath {
@@ -102,10 +120,11 @@ func  (me *AnimationTree) GetAnimationPlayer() NodePath {
   methodNameV := StringNameFromStr("get_animation_player")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
-  var ret NodePath
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewNodePath()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AnimationTree) SetProcessCallback(mode AnimationTreeAnimationProcessCallback, )  {
@@ -115,7 +134,9 @@ func  (me *AnimationTree) SetProcessCallback(mode AnimationTreeAnimationProcessC
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1723352826) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationTree) GetProcessCallback() AnimationTreeAnimationProcessCallback {
@@ -124,9 +145,10 @@ func  (me *AnimationTree) GetProcessCallback() AnimationTreeAnimationProcessCall
   methodNameV := StringNameFromStr("get_process_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 891317132) // FIXME: should cache?
-  var ret AnimationTreeAnimationProcessCallback
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret AnimationTreeAnimationProcessCallback
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

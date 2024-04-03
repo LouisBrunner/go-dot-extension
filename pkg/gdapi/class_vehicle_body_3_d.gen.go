@@ -17,6 +17,16 @@ func (me *VehicleBody3D) BaseClass() string {
   return "VehicleBody3D"
 }
 
+func NewVehicleBody3D() *VehicleBody3D {
+  str := StringNameFromStr("VehicleBody3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VehicleBody3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,70 +45,79 @@ func (me *VehicleBody3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *VehicleBody3D) SetEngineForce(engine_force float32, )  {
+func  (me *VehicleBody3D) SetEngineForce(engine_force float64, )  {
   classNameV := StringNameFromStr("VehicleBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_engine_force")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&engine_force), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VehicleBody3D) GetEngineForce() float32 {
+func  (me *VehicleBody3D) GetEngineForce() float64 {
   classNameV := StringNameFromStr("VehicleBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_engine_force")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VehicleBody3D) SetBrake(brake float32, )  {
+func  (me *VehicleBody3D) SetBrake(brake float64, )  {
   classNameV := StringNameFromStr("VehicleBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_brake")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&brake), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VehicleBody3D) GetBrake() float32 {
+func  (me *VehicleBody3D) GetBrake() float64 {
   classNameV := StringNameFromStr("VehicleBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_brake")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VehicleBody3D) SetSteering(steering float32, )  {
+func  (me *VehicleBody3D) SetSteering(steering float64, )  {
   classNameV := StringNameFromStr("VehicleBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_steering")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&steering), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VehicleBody3D) GetSteering() float32 {
+func  (me *VehicleBody3D) GetSteering() float64 {
   classNameV := StringNameFromStr("VehicleBody3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_steering")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

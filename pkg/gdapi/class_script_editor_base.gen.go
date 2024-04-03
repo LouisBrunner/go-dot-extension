@@ -17,6 +17,16 @@ func (me *ScriptEditorBase) BaseClass() string {
   return "ScriptEditorBase"
 }
 
+func NewScriptEditorBase() *ScriptEditorBase {
+  str := StringNameFromStr("ScriptEditorBase") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ScriptEditorBase{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *ScriptEditorBase) GetBaseEditor() Control {
   methodNameV := StringNameFromStr("get_base_editor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2783021301) // FIXME: should cache?
-  var ret Control
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewControl()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ScriptEditorBase) AddSyntaxHighlighter(highlighter EditorSyntaxHighlighter, )  {
@@ -54,7 +65,9 @@ func  (me *ScriptEditorBase) AddSyntaxHighlighter(highlighter EditorSyntaxHighli
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1092774468) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(highlighter.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

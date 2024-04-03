@@ -42,11 +42,6 @@ func (me *extension) LogDetailedf(level LogLevel, description, function, file st
 		return
 	}
 
-	if level == LogLevelTrace {
-		// FIXME: not sure how to handle yet
-		return
-	}
-
 	msg := fmt.Sprintf(format, args...)
 
 	lineC := int(line)
@@ -70,6 +65,7 @@ func (me *extension) LogDetailedf(level LogLevel, description, function, file st
 		defer va.Destroy()
 		gdapi.Utilities.Print(*va)
 	case LogLevelDebug:
+	case LogLevelTrace:
 	default:
 		log.Printf("unknown log level %q for %q", level, msg)
 		me.iface.PrintWarningWithMessage(description, fmt.Sprintf("UNKNOWN LEVEL %q: %s", level, msg), function, file, lineC, notifyEditorC)

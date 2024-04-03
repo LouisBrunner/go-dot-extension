@@ -17,6 +17,16 @@ func (me *VisualShaderNodeSmoothStep) BaseClass() string {
   return "VisualShaderNodeSmoothStep"
 }
 
+func NewVisualShaderNodeSmoothStep() *VisualShaderNodeSmoothStep {
+  str := StringNameFromStr("VisualShaderNodeSmoothStep") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeSmoothStep{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -54,7 +64,9 @@ func  (me *VisualShaderNodeSmoothStep) SetOpType(op_type VisualShaderNodeSmoothS
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2427426148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&op_type), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNodeSmoothStep) GetOpType() VisualShaderNodeSmoothStepOpType {
@@ -63,9 +75,10 @@ func  (me *VisualShaderNodeSmoothStep) GetOpType() VisualShaderNodeSmoothStepOpT
   methodNameV := StringNameFromStr("get_op_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 359640855) // FIXME: should cache?
-  var ret VisualShaderNodeSmoothStepOpType
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret VisualShaderNodeSmoothStepOpType
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

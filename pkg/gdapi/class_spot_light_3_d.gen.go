@@ -17,6 +17,16 @@ func (me *SpotLight3D) BaseClass() string {
   return "SpotLight3D"
 }
 
+func NewSpotLight3D() *SpotLight3D {
+  str := StringNameFromStr("SpotLight3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &SpotLight3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

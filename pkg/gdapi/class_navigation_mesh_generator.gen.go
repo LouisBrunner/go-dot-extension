@@ -17,6 +17,16 @@ func (me *NavigationMeshGenerator) BaseClass() string {
   return "NavigationMeshGenerator"
 }
 
+func NewNavigationMeshGenerator() *NavigationMeshGenerator {
+  str := StringNameFromStr("NavigationMeshGenerator") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &NavigationMeshGenerator{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *NavigationMeshGenerator) Bake(navigation_mesh NavigationMesh, root_no
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1401173477) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_mesh.AsCTypePtr()), gdc.ConstTypePtr(root_node.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMeshGenerator) Clear(navigation_mesh NavigationMesh, )  {
@@ -52,7 +64,9 @@ func  (me *NavigationMeshGenerator) Clear(navigation_mesh NavigationMesh, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2923361153) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_mesh.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMeshGenerator) ParseSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, root_node Node, callback Callable, )  {
@@ -62,7 +76,9 @@ func  (me *NavigationMeshGenerator) ParseSourceGeometryData(navigation_mesh Navi
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 685862123) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_mesh.AsCTypePtr()), gdc.ConstTypePtr(source_geometry_data.AsCTypePtr()), gdc.ConstTypePtr(root_node.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *NavigationMeshGenerator) BakeFromSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, callback Callable, )  {
@@ -72,7 +88,9 @@ func  (me *NavigationMeshGenerator) BakeFromSourceGeometryData(navigation_mesh N
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2469318639) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_mesh.AsCTypePtr()), gdc.ConstTypePtr(source_geometry_data.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals

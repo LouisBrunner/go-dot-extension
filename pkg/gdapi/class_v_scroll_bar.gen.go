@@ -17,6 +17,16 @@ func (me *VScrollBar) BaseClass() string {
   return "VScrollBar"
 }
 
+func NewVScrollBar() *VScrollBar {
+  str := StringNameFromStr("VScrollBar") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VScrollBar{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

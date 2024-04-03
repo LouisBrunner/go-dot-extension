@@ -17,6 +17,16 @@ func (me *Performance) BaseClass() string {
   return "Performance"
 }
 
+func NewPerformance() *Performance {
+  str := StringNameFromStr("Performance") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Performance{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -73,16 +83,17 @@ func (me *Performance) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *Performance) GetMonitor(monitor PerformanceMonitor, ) float32 {
+func  (me *Performance) GetMonitor(monitor PerformanceMonitor, ) float64 {
   classNameV := StringNameFromStr("Performance")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_monitor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1943275655) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&monitor), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Performance) AddCustomMonitor(id StringName, callable Callable, arguments Array, )  {
@@ -92,7 +103,9 @@ func  (me *Performance) AddCustomMonitor(id StringName, callable Callable, argum
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4099036814) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), gdc.ConstTypePtr(callable.AsCTypePtr()), gdc.ConstTypePtr(arguments.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Performance) RemoveCustomMonitor(id StringName, )  {
@@ -102,7 +115,9 @@ func  (me *Performance) RemoveCustomMonitor(id StringName, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *Performance) HasCustomMonitor(id StringName, ) bool {
@@ -111,10 +126,11 @@ func  (me *Performance) HasCustomMonitor(id StringName, ) bool {
   methodNameV := StringNameFromStr("has_custom_monitor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2041966384) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *Performance) GetCustomMonitor(id StringName, ) Variant {
@@ -123,34 +139,38 @@ func  (me *Performance) GetCustomMonitor(id StringName, ) Variant {
   methodNameV := StringNameFromStr("get_custom_monitor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2138907829) // FIXME: should cache?
-  var ret Variant
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(id.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVariant()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Performance) GetMonitorModificationTime() int {
+func  (me *Performance) GetMonitorModificationTime() int64 {
   classNameV := StringNameFromStr("Performance")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_monitor_modification_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Performance) GetCustomMonitorNames() StringName {
+func  (me *Performance) GetCustomMonitorNames() []StringName {
   classNameV := StringNameFromStr("Performance")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_custom_monitor_names")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+  defer ret.Destroy()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ConvertArrayToSlice[StringName](ret)
 }
 
 // Signals

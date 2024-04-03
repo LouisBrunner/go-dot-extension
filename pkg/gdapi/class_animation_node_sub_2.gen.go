@@ -17,6 +17,16 @@ func (me *AnimationNodeSub2) BaseClass() string {
   return "AnimationNodeSub2"
 }
 
+func NewAnimationNodeSub2() *AnimationNodeSub2 {
+  str := StringNameFromStr("AnimationNodeSub2") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AnimationNodeSub2{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *PacketPeerExtension) BaseClass() string {
   return "PacketPeerExtension"
 }
 
+func NewPacketPeerExtension() *PacketPeerExtension {
+  str := StringNameFromStr("PacketPeerExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PacketPeerExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

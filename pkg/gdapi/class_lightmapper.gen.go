@@ -17,6 +17,16 @@ func (me *Lightmapper) BaseClass() string {
   return "Lightmapper"
 }
 
+func NewLightmapper() *Lightmapper {
+  str := StringNameFromStr("Lightmapper") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Lightmapper{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

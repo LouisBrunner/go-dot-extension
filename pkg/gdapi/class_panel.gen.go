@@ -17,6 +17,16 @@ func (me *Panel) BaseClass() string {
   return "Panel"
 }
 
+func NewPanel() *Panel {
+  str := StringNameFromStr("Panel") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Panel{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *CheckButton) BaseClass() string {
   return "CheckButton"
 }
 
+func NewCheckButton() *CheckButton {
+  str := StringNameFromStr("CheckButton") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &CheckButton{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

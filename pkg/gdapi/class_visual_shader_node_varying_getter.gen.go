@@ -17,6 +17,16 @@ func (me *VisualShaderNodeVaryingGetter) BaseClass() string {
   return "VisualShaderNodeVaryingGetter"
 }
 
+func NewVisualShaderNodeVaryingGetter() *VisualShaderNodeVaryingGetter {
+  str := StringNameFromStr("VisualShaderNodeVaryingGetter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeVaryingGetter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

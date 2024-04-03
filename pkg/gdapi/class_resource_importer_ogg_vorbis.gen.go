@@ -17,6 +17,16 @@ func (me *ResourceImporterOggVorbis) BaseClass() string {
   return "ResourceImporterOggVorbis"
 }
 
+func NewResourceImporterOggVorbis() *ResourceImporterOggVorbis {
+  str := StringNameFromStr("ResourceImporterOggVorbis") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ResourceImporterOggVorbis{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  ResourceImporterOggVorbisLoadFromBuffer(buffer PackedByteArray, ) AudioStr
   methodNameV := StringNameFromStr("load_from_buffer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 354904730) // FIXME: should cache?
-  var ret AudioStreamOggVorbis
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(buffer.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewAudioStreamOggVorbis()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  ResourceImporterOggVorbisLoadFromFile(path String, ) AudioStreamOggVorbis {
@@ -53,10 +64,11 @@ func  ResourceImporterOggVorbisLoadFromFile(path String, ) AudioStreamOggVorbis 
   methodNameV := StringNameFromStr("load_from_file")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 797568536) // FIXME: should cache?
-  var ret AudioStreamOggVorbis
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewAudioStreamOggVorbis()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 // Signals

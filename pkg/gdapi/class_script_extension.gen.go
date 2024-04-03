@@ -17,6 +17,16 @@ func (me *ScriptExtension) BaseClass() string {
   return "ScriptExtension"
 }
 
+func NewScriptExtension() *ScriptExtension {
+  str := StringNameFromStr("ScriptExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ScriptExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

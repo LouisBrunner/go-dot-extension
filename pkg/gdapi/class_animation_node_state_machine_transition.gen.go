@@ -17,6 +17,16 @@ func (me *AnimationNodeStateMachineTransition) BaseClass() string {
   return "AnimationNodeStateMachineTransition"
 }
 
+func NewAnimationNodeStateMachineTransition() *AnimationNodeStateMachineTransition {
+  str := StringNameFromStr("AnimationNodeStateMachineTransition") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AnimationNodeStateMachineTransition{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -56,7 +66,9 @@ func  (me *AnimationNodeStateMachineTransition) SetSwitchMode(mode AnimationNode
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2074906633) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeStateMachineTransition) GetSwitchMode() AnimationNodeStateMachineTransitionSwitchMode {
@@ -65,9 +77,10 @@ func  (me *AnimationNodeStateMachineTransition) GetSwitchMode() AnimationNodeSta
   methodNameV := StringNameFromStr("get_switch_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2138562085) // FIXME: should cache?
-  var ret AnimationNodeStateMachineTransitionSwitchMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret AnimationNodeStateMachineTransitionSwitchMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -78,7 +91,9 @@ func  (me *AnimationNodeStateMachineTransition) SetAdvanceMode(mode AnimationNod
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1210869868) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeStateMachineTransition) GetAdvanceMode() AnimationNodeStateMachineTransitionAdvanceMode {
@@ -87,9 +102,10 @@ func  (me *AnimationNodeStateMachineTransition) GetAdvanceMode() AnimationNodeSt
   methodNameV := StringNameFromStr("get_advance_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 61101689) // FIXME: should cache?
-  var ret AnimationNodeStateMachineTransitionAdvanceMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret AnimationNodeStateMachineTransitionAdvanceMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -100,7 +116,9 @@ func  (me *AnimationNodeStateMachineTransition) SetAdvanceCondition(name StringN
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeStateMachineTransition) GetAdvanceCondition() StringName {
@@ -109,32 +127,36 @@ func  (me *AnimationNodeStateMachineTransition) GetAdvanceCondition() StringName
   methodNameV := StringNameFromStr("get_advance_condition")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *AnimationNodeStateMachineTransition) SetXfadeTime(secs float32, )  {
+func  (me *AnimationNodeStateMachineTransition) SetXfadeTime(secs float64, )  {
   classNameV := StringNameFromStr("AnimationNodeStateMachineTransition")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_xfade_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&secs), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AnimationNodeStateMachineTransition) GetXfadeTime() float32 {
+func  (me *AnimationNodeStateMachineTransition) GetXfadeTime() float64 {
   classNameV := StringNameFromStr("AnimationNodeStateMachineTransition")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_xfade_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AnimationNodeStateMachineTransition) SetXfadeCurve(curve Curve, )  {
@@ -144,7 +166,9 @@ func  (me *AnimationNodeStateMachineTransition) SetXfadeCurve(curve Curve, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(curve.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeStateMachineTransition) GetXfadeCurve() Curve {
@@ -153,10 +177,11 @@ func  (me *AnimationNodeStateMachineTransition) GetXfadeCurve() Curve {
   methodNameV := StringNameFromStr("get_xfade_curve")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
-  var ret Curve
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCurve()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AnimationNodeStateMachineTransition) SetReset(reset bool, )  {
@@ -166,7 +191,9 @@ func  (me *AnimationNodeStateMachineTransition) SetReset(reset bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&reset), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeStateMachineTransition) IsReset() bool {
@@ -175,32 +202,36 @@ func  (me *AnimationNodeStateMachineTransition) IsReset() bool {
   methodNameV := StringNameFromStr("is_reset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AnimationNodeStateMachineTransition) SetPriority(priority int, )  {
+func  (me *AnimationNodeStateMachineTransition) SetPriority(priority int64, )  {
   classNameV := StringNameFromStr("AnimationNodeStateMachineTransition")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_priority")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&priority), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AnimationNodeStateMachineTransition) GetPriority() int {
+func  (me *AnimationNodeStateMachineTransition) GetPriority() int64 {
   classNameV := StringNameFromStr("AnimationNodeStateMachineTransition")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_priority")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AnimationNodeStateMachineTransition) SetAdvanceExpression(text String, )  {
@@ -210,7 +241,9 @@ func  (me *AnimationNodeStateMachineTransition) SetAdvanceExpression(text String
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeStateMachineTransition) GetAdvanceExpression() String {
@@ -219,10 +252,11 @@ func  (me *AnimationNodeStateMachineTransition) GetAdvanceExpression() String {
   methodNameV := StringNameFromStr("get_advance_expression")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

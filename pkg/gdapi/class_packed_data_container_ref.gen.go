@@ -17,6 +17,16 @@ func (me *PackedDataContainerRef) BaseClass() string {
   return "PackedDataContainerRef"
 }
 
+func NewPackedDataContainerRef() *PackedDataContainerRef {
+  str := StringNameFromStr("PackedDataContainerRef") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PackedDataContainerRef{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,16 +45,17 @@ func (me *PackedDataContainerRef) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *PackedDataContainerRef) Size() int {
+func  (me *PackedDataContainerRef) Size() int64 {
   classNameV := StringNameFromStr("PackedDataContainerRef")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

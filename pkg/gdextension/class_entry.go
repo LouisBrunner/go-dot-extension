@@ -110,7 +110,7 @@ func (me *classSignal) register(ext *extension, class *classEntry) {
 }
 
 func (me *classSignal) create(_ *extension, instance Class, obj gdc.ObjectPtr) {
-	reflectSetField(instance, me.name, *gdapi.NewSignalFromObjectStringName(gdapi.ObjectFromPtr(obj), me.namePtr))
+	reflectSetField(instance, me.name, *gdapi.NewSignalFromObjectStringName(*gdapi.ObjectFromPtr(obj), me.namePtr))
 }
 
 func (me *classSignal) free(_ *extension, instance Class) {

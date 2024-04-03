@@ -17,6 +17,16 @@ func (me *MarginContainer) BaseClass() string {
   return "MarginContainer"
 }
 
+func NewMarginContainer() *MarginContainer {
+  str := StringNameFromStr("MarginContainer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &MarginContainer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *GLTFPhysicsShape) BaseClass() string {
   return "GLTFPhysicsShape"
 }
 
+func NewGLTFPhysicsShape() *GLTFPhysicsShape {
+  str := StringNameFromStr("GLTFPhysicsShape") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GLTFPhysicsShape{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  GLTFPhysicsShapeFromNode(shape_node CollisionShape3D, ) GLTFPhysicsShape {
   methodNameV := StringNameFromStr("from_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3613751275) // FIXME: should cache?
-  var ret GLTFPhysicsShape
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shape_node.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewGLTFPhysicsShape()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFPhysicsShape) ToNode(cache_shapes bool, ) CollisionShape3D {
@@ -53,10 +64,11 @@ func  (me *GLTFPhysicsShape) ToNode(cache_shapes bool, ) CollisionShape3D {
   methodNameV := StringNameFromStr("to_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 563689933) // FIXME: should cache?
-  var ret CollisionShape3D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cache_shapes), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewCollisionShape3D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  GLTFPhysicsShapeFromDictionary(dictionary Dictionary, ) GLTFPhysicsShape {
@@ -65,10 +77,11 @@ func  GLTFPhysicsShapeFromDictionary(dictionary Dictionary, ) GLTFPhysicsShape {
   methodNameV := StringNameFromStr("from_dictionary")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2390691823) // FIXME: should cache?
-  var ret GLTFPhysicsShape
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(dictionary.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewGLTFPhysicsShape()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFPhysicsShape) ToDictionary() Dictionary {
@@ -77,10 +90,11 @@ func  (me *GLTFPhysicsShape) ToDictionary() Dictionary {
   methodNameV := StringNameFromStr("to_dictionary")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFPhysicsShape) GetShapeType() String {
@@ -89,10 +103,11 @@ func  (me *GLTFPhysicsShape) GetShapeType() String {
   methodNameV := StringNameFromStr("get_shape_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFPhysicsShape) SetShapeType(shape_type String, )  {
@@ -102,7 +117,9 @@ func  (me *GLTFPhysicsShape) SetShapeType(shape_type String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shape_type.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFPhysicsShape) GetSize() Vector3 {
@@ -111,10 +128,11 @@ func  (me *GLTFPhysicsShape) GetSize() Vector3 {
   methodNameV := StringNameFromStr("get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
-  var ret Vector3
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector3()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFPhysicsShape) SetSize(size Vector3, )  {
@@ -124,51 +142,59 @@ func  (me *GLTFPhysicsShape) SetSize(size Vector3, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GLTFPhysicsShape) GetRadius() float32 {
+func  (me *GLTFPhysicsShape) GetRadius() float64 {
   classNameV := StringNameFromStr("GLTFPhysicsShape")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GLTFPhysicsShape) SetRadius(radius float32, )  {
+func  (me *GLTFPhysicsShape) SetRadius(radius float64, )  {
   classNameV := StringNameFromStr("GLTFPhysicsShape")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GLTFPhysicsShape) GetHeight() float32 {
+func  (me *GLTFPhysicsShape) GetHeight() float64 {
   classNameV := StringNameFromStr("GLTFPhysicsShape")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GLTFPhysicsShape) SetHeight(height float32, )  {
+func  (me *GLTFPhysicsShape) SetHeight(height float64, )  {
   classNameV := StringNameFromStr("GLTFPhysicsShape")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&height), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFPhysicsShape) GetIsTrigger() bool {
@@ -177,10 +203,11 @@ func  (me *GLTFPhysicsShape) GetIsTrigger() bool {
   methodNameV := StringNameFromStr("get_is_trigger")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *GLTFPhysicsShape) SetIsTrigger(is_trigger bool, )  {
@@ -190,29 +217,34 @@ func  (me *GLTFPhysicsShape) SetIsTrigger(is_trigger bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&is_trigger), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GLTFPhysicsShape) GetMeshIndex() int {
+func  (me *GLTFPhysicsShape) GetMeshIndex() int64 {
   classNameV := StringNameFromStr("GLTFPhysicsShape")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_mesh_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GLTFPhysicsShape) SetMeshIndex(mesh_index int, )  {
+func  (me *GLTFPhysicsShape) SetMeshIndex(mesh_index int64, )  {
   classNameV := StringNameFromStr("GLTFPhysicsShape")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_mesh_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mesh_index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *GLTFPhysicsShape) GetImporterMesh() ImporterMesh {
@@ -221,10 +253,11 @@ func  (me *GLTFPhysicsShape) GetImporterMesh() ImporterMesh {
   methodNameV := StringNameFromStr("get_importer_mesh")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3161779525) // FIXME: should cache?
-  var ret ImporterMesh
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewImporterMesh()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *GLTFPhysicsShape) SetImporterMesh(importer_mesh ImporterMesh, )  {
@@ -234,7 +267,9 @@ func  (me *GLTFPhysicsShape) SetImporterMesh(importer_mesh ImporterMesh, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2255166972) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(importer_mesh.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

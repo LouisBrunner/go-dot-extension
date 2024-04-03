@@ -17,6 +17,16 @@ func (me *GPUParticlesCollision3D) BaseClass() string {
   return "GPUParticlesCollision3D"
 }
 
+func NewGPUParticlesCollision3D() *GPUParticlesCollision3D {
+  str := StringNameFromStr("GPUParticlesCollision3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GPUParticlesCollision3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *GPUParticlesCollision3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *GPUParticlesCollision3D) SetCullMask(mask int, )  {
+func  (me *GPUParticlesCollision3D) SetCullMask(mask int64, )  {
   classNameV := StringNameFromStr("GPUParticlesCollision3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_cull_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GPUParticlesCollision3D) GetCullMask() int {
+func  (me *GPUParticlesCollision3D) GetCullMask() int64 {
   classNameV := StringNameFromStr("GPUParticlesCollision3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_cull_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

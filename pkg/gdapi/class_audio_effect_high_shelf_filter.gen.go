@@ -17,6 +17,16 @@ func (me *AudioEffectHighShelfFilter) BaseClass() string {
   return "AudioEffectHighShelfFilter"
 }
 
+func NewAudioEffectHighShelfFilter() *AudioEffectHighShelfFilter {
+  str := StringNameFromStr("AudioEffectHighShelfFilter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioEffectHighShelfFilter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

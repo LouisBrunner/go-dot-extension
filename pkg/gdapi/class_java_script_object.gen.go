@@ -17,6 +17,16 @@ func (me *JavaScriptObject) BaseClass() string {
   return "JavaScriptObject"
 }
 
+func NewJavaScriptObject() *JavaScriptObject {
+  str := StringNameFromStr("JavaScriptObject") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &JavaScriptObject{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

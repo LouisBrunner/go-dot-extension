@@ -17,6 +17,16 @@ func (me *GPUParticlesAttractor3D) BaseClass() string {
   return "GPUParticlesAttractor3D"
 }
 
+func NewGPUParticlesAttractor3D() *GPUParticlesAttractor3D {
+  str := StringNameFromStr("GPUParticlesAttractor3D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &GPUParticlesAttractor3D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,92 +45,104 @@ func (me *GPUParticlesAttractor3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *GPUParticlesAttractor3D) SetCullMask(mask int, )  {
+func  (me *GPUParticlesAttractor3D) SetCullMask(mask int64, )  {
   classNameV := StringNameFromStr("GPUParticlesAttractor3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_cull_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GPUParticlesAttractor3D) GetCullMask() int {
+func  (me *GPUParticlesAttractor3D) GetCullMask() int64 {
   classNameV := StringNameFromStr("GPUParticlesAttractor3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_cull_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GPUParticlesAttractor3D) SetStrength(strength float32, )  {
+func  (me *GPUParticlesAttractor3D) SetStrength(strength float64, )  {
   classNameV := StringNameFromStr("GPUParticlesAttractor3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_strength")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&strength), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GPUParticlesAttractor3D) GetStrength() float32 {
+func  (me *GPUParticlesAttractor3D) GetStrength() float64 {
   classNameV := StringNameFromStr("GPUParticlesAttractor3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_strength")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GPUParticlesAttractor3D) SetAttenuation(attenuation float32, )  {
+func  (me *GPUParticlesAttractor3D) SetAttenuation(attenuation float64, )  {
   classNameV := StringNameFromStr("GPUParticlesAttractor3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_attenuation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&attenuation), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GPUParticlesAttractor3D) GetAttenuation() float32 {
+func  (me *GPUParticlesAttractor3D) GetAttenuation() float64 {
   classNameV := StringNameFromStr("GPUParticlesAttractor3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_attenuation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *GPUParticlesAttractor3D) SetDirectionality(amount float32, )  {
+func  (me *GPUParticlesAttractor3D) SetDirectionality(amount float64, )  {
   classNameV := StringNameFromStr("GPUParticlesAttractor3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_directionality")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *GPUParticlesAttractor3D) GetDirectionality() float32 {
+func  (me *GPUParticlesAttractor3D) GetDirectionality() float64 {
   classNameV := StringNameFromStr("GPUParticlesAttractor3D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_directionality")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

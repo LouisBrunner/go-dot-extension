@@ -17,6 +17,16 @@ func (me *RichTextEffect) BaseClass() string {
   return "RichTextEffect"
 }
 
+func NewRichTextEffect() *RichTextEffect {
+  str := StringNameFromStr("RichTextEffect") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &RichTextEffect{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

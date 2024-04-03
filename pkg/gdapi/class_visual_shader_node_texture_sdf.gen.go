@@ -17,6 +17,16 @@ func (me *VisualShaderNodeTextureSDF) BaseClass() string {
   return "VisualShaderNodeTextureSDF"
 }
 
+func NewVisualShaderNodeTextureSDF() *VisualShaderNodeTextureSDF {
+  str := StringNameFromStr("VisualShaderNodeTextureSDF") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeTextureSDF{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

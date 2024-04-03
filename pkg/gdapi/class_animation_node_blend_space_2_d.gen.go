@@ -17,6 +17,16 @@ func (me *AnimationNodeBlendSpace2D) BaseClass() string {
   return "AnimationNodeBlendSpace2D"
 }
 
+func NewAnimationNodeBlendSpace2D() *AnimationNodeBlendSpace2D {
+  str := StringNameFromStr("AnimationNodeBlendSpace2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AnimationNodeBlendSpace2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,124 +52,141 @@ func (me *AnimationNodeBlendSpace2D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *AnimationNodeBlendSpace2D) AddBlendPoint(node AnimationRootNode, pos Vector2, at_index int, )  {
+func  (me *AnimationNodeBlendSpace2D) AddBlendPoint(node AnimationRootNode, pos Vector2, at_index int64, )  {
   classNameV := StringNameFromStr("AnimationNodeBlendSpace2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_blend_point")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 402261981) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&at_index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AnimationNodeBlendSpace2D) SetBlendPointPosition(point int, pos Vector2, )  {
+func  (me *AnimationNodeBlendSpace2D) SetBlendPointPosition(point int64, pos Vector2, )  {
   classNameV := StringNameFromStr("AnimationNodeBlendSpace2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_blend_point_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 163021252) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point), gdc.ConstTypePtr(pos.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AnimationNodeBlendSpace2D) GetBlendPointPosition(point int, ) Vector2 {
+func  (me *AnimationNodeBlendSpace2D) GetBlendPointPosition(point int64, ) Vector2 {
   classNameV := StringNameFromStr("AnimationNodeBlendSpace2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_blend_point_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2299179447) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *AnimationNodeBlendSpace2D) SetBlendPointNode(point int, node AnimationRootNode, )  {
+func  (me *AnimationNodeBlendSpace2D) SetBlendPointNode(point int64, node AnimationRootNode, )  {
   classNameV := StringNameFromStr("AnimationNodeBlendSpace2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_blend_point_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4240341528) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point), gdc.ConstTypePtr(node.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AnimationNodeBlendSpace2D) GetBlendPointNode(point int, ) AnimationRootNode {
+func  (me *AnimationNodeBlendSpace2D) GetBlendPointNode(point int64, ) AnimationRootNode {
   classNameV := StringNameFromStr("AnimationNodeBlendSpace2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_blend_point_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 665599029) // FIXME: should cache?
-  var ret AnimationRootNode
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewAnimationRootNode()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *AnimationNodeBlendSpace2D) RemoveBlendPoint(point int, )  {
+func  (me *AnimationNodeBlendSpace2D) RemoveBlendPoint(point int64, )  {
   classNameV := StringNameFromStr("AnimationNodeBlendSpace2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_blend_point")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&point), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AnimationNodeBlendSpace2D) GetBlendPointCount() int {
+func  (me *AnimationNodeBlendSpace2D) GetBlendPointCount() int64 {
   classNameV := StringNameFromStr("AnimationNodeBlendSpace2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_blend_point_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AnimationNodeBlendSpace2D) AddTriangle(x int, y int, z int, at_index int, )  {
+func  (me *AnimationNodeBlendSpace2D) AddTriangle(x int64, y int64, z int64, at_index int64, )  {
   classNameV := StringNameFromStr("AnimationNodeBlendSpace2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_triangle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 753017335) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), gdc.ConstTypePtr(&z), gdc.ConstTypePtr(&at_index), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AnimationNodeBlendSpace2D) GetTrianglePoint(triangle int, point int, ) int {
+func  (me *AnimationNodeBlendSpace2D) GetTrianglePoint(triangle int64, point int64, ) int64 {
   classNameV := StringNameFromStr("AnimationNodeBlendSpace2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_triangle_point")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 50157827) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&triangle), gdc.ConstTypePtr(&point), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AnimationNodeBlendSpace2D) RemoveTriangle(triangle int, )  {
+func  (me *AnimationNodeBlendSpace2D) RemoveTriangle(triangle int64, )  {
   classNameV := StringNameFromStr("AnimationNodeBlendSpace2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_triangle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&triangle), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AnimationNodeBlendSpace2D) GetTriangleCount() int {
+func  (me *AnimationNodeBlendSpace2D) GetTriangleCount() int64 {
   classNameV := StringNameFromStr("AnimationNodeBlendSpace2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_triangle_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AnimationNodeBlendSpace2D) SetMinSpace(min_space Vector2, )  {
@@ -169,7 +196,9 @@ func  (me *AnimationNodeBlendSpace2D) SetMinSpace(min_space Vector2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(min_space.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeBlendSpace2D) GetMinSpace() Vector2 {
@@ -178,10 +207,11 @@ func  (me *AnimationNodeBlendSpace2D) GetMinSpace() Vector2 {
   methodNameV := StringNameFromStr("get_min_space")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AnimationNodeBlendSpace2D) SetMaxSpace(max_space Vector2, )  {
@@ -191,7 +221,9 @@ func  (me *AnimationNodeBlendSpace2D) SetMaxSpace(max_space Vector2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(max_space.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeBlendSpace2D) GetMaxSpace() Vector2 {
@@ -200,10 +232,11 @@ func  (me *AnimationNodeBlendSpace2D) GetMaxSpace() Vector2 {
   methodNameV := StringNameFromStr("get_max_space")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AnimationNodeBlendSpace2D) SetSnap(snap Vector2, )  {
@@ -213,7 +246,9 @@ func  (me *AnimationNodeBlendSpace2D) SetSnap(snap Vector2, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(snap.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeBlendSpace2D) GetSnap() Vector2 {
@@ -222,10 +257,11 @@ func  (me *AnimationNodeBlendSpace2D) GetSnap() Vector2 {
   methodNameV := StringNameFromStr("get_snap")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
-  var ret Vector2
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AnimationNodeBlendSpace2D) SetXLabel(text String, )  {
@@ -235,7 +271,9 @@ func  (me *AnimationNodeBlendSpace2D) SetXLabel(text String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeBlendSpace2D) GetXLabel() String {
@@ -244,10 +282,11 @@ func  (me *AnimationNodeBlendSpace2D) GetXLabel() String {
   methodNameV := StringNameFromStr("get_x_label")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AnimationNodeBlendSpace2D) SetYLabel(text String, )  {
@@ -257,7 +296,9 @@ func  (me *AnimationNodeBlendSpace2D) SetYLabel(text String, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeBlendSpace2D) GetYLabel() String {
@@ -266,10 +307,11 @@ func  (me *AnimationNodeBlendSpace2D) GetYLabel() String {
   methodNameV := StringNameFromStr("get_y_label")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AnimationNodeBlendSpace2D) SetAutoTriangles(enable bool, )  {
@@ -279,7 +321,9 @@ func  (me *AnimationNodeBlendSpace2D) SetAutoTriangles(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeBlendSpace2D) GetAutoTriangles() bool {
@@ -288,10 +332,11 @@ func  (me *AnimationNodeBlendSpace2D) GetAutoTriangles() bool {
   methodNameV := StringNameFromStr("get_auto_triangles")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AnimationNodeBlendSpace2D) SetBlendMode(mode AnimationNodeBlendSpace2DBlendMode, )  {
@@ -301,7 +346,9 @@ func  (me *AnimationNodeBlendSpace2D) SetBlendMode(mode AnimationNodeBlendSpace2
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 81193520) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeBlendSpace2D) GetBlendMode() AnimationNodeBlendSpace2DBlendMode {
@@ -310,9 +357,10 @@ func  (me *AnimationNodeBlendSpace2D) GetBlendMode() AnimationNodeBlendSpace2DBl
   methodNameV := StringNameFromStr("get_blend_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1398433632) // FIXME: should cache?
-  var ret AnimationNodeBlendSpace2DBlendMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret AnimationNodeBlendSpace2DBlendMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -323,7 +371,9 @@ func  (me *AnimationNodeBlendSpace2D) SetUseSync(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AnimationNodeBlendSpace2D) IsUsingSync() bool {
@@ -332,10 +382,11 @@ func  (me *AnimationNodeBlendSpace2D) IsUsingSync() bool {
   methodNameV := StringNameFromStr("is_using_sync")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

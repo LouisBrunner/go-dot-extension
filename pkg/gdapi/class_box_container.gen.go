@@ -17,6 +17,16 @@ func (me *BoxContainer) BaseClass() string {
   return "BoxContainer"
 }
 
+func NewBoxContainer() *BoxContainer {
+  str := StringNameFromStr("BoxContainer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &BoxContainer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -48,10 +58,11 @@ func  (me *BoxContainer) AddSpacer(begin bool, ) Control {
   methodNameV := StringNameFromStr("add_spacer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1326660695) // FIXME: should cache?
-  var ret Control
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&begin), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewControl()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *BoxContainer) SetAlignment(alignment BoxContainerAlignmentMode, )  {
@@ -61,7 +72,9 @@ func  (me *BoxContainer) SetAlignment(alignment BoxContainerAlignmentMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2456745134) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *BoxContainer) GetAlignment() BoxContainerAlignmentMode {
@@ -70,9 +83,10 @@ func  (me *BoxContainer) GetAlignment() BoxContainerAlignmentMode {
   methodNameV := StringNameFromStr("get_alignment")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1915476527) // FIXME: should cache?
-  var ret BoxContainerAlignmentMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret BoxContainerAlignmentMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -83,7 +97,9 @@ func  (me *BoxContainer) SetVertical(vertical bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vertical), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *BoxContainer) IsVertical() bool {
@@ -92,10 +108,11 @@ func  (me *BoxContainer) IsVertical() bool {
   methodNameV := StringNameFromStr("is_vertical")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

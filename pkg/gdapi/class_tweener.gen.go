@@ -17,6 +17,16 @@ func (me *Tweener) BaseClass() string {
   return "Tweener"
 }
 
+func NewTweener() *Tweener {
+  str := StringNameFromStr("Tweener") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Tweener{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

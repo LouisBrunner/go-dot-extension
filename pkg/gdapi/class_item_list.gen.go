@@ -17,6 +17,16 @@ func (me *ItemList) BaseClass() string {
   return "ItemList"
 }
 
+func NewItemList() *ItemList {
+  str := StringNameFromStr("ItemList") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ItemList{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -47,368 +57,417 @@ func (me *ItemList) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *ItemList) AddItem(text String, icon Texture2D, selectable bool, ) int {
+func  (me *ItemList) AddItem(text String, icon Texture2D, selectable bool, ) int64 {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 359861678) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), gdc.ConstTypePtr(&selectable), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ItemList) AddIconItem(icon Texture2D, selectable bool, ) int {
+func  (me *ItemList) AddIconItem(icon Texture2D, selectable bool, ) int64 {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_icon_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4256579627) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(icon.AsCTypePtr()), gdc.ConstTypePtr(&selectable), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ItemList) SetItemText(idx int, text String, )  {
+func  (me *ItemList) SetItemText(idx int64, text String, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_text")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(text.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetItemText(idx int, ) String {
+func  (me *ItemList) GetItemText(idx int64, ) String {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_text")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) SetItemIcon(idx int, icon Texture2D, )  {
+func  (me *ItemList) SetItemIcon(idx int64, icon Texture2D, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_icon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 666127730) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(icon.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetItemIcon(idx int, ) Texture2D {
+func  (me *ItemList) GetItemIcon(idx int64, ) Texture2D {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_icon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3536238170) // FIXME: should cache?
-  var ret Texture2D
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewTexture2D()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) SetItemTextDirection(idx int, direction ControlTextDirection, )  {
+func  (me *ItemList) SetItemTextDirection(idx int64, direction ControlTextDirection, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_text_direction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1707680378) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&direction), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetItemTextDirection(idx int, ) ControlTextDirection {
+func  (me *ItemList) GetItemTextDirection(idx int64, ) ControlTextDirection {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_text_direction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4235602388) // FIXME: should cache?
-  var ret ControlTextDirection
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret ControlTextDirection
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *ItemList) SetItemLanguage(idx int, language String, )  {
+func  (me *ItemList) SetItemLanguage(idx int64, language String, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_language")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(language.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetItemLanguage(idx int, ) String {
+func  (me *ItemList) GetItemLanguage(idx int64, ) String {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_language")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) SetItemIconTransposed(idx int, transposed bool, )  {
+func  (me *ItemList) SetItemIconTransposed(idx int64, transposed bool, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_icon_transposed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&transposed), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) IsItemIconTransposed(idx int, ) bool {
+func  (me *ItemList) IsItemIconTransposed(idx int64, ) bool {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_item_icon_transposed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ItemList) SetItemIconRegion(idx int, rect Rect2, )  {
+func  (me *ItemList) SetItemIconRegion(idx int64, rect Rect2, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_icon_region")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1356297692) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(rect.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetItemIconRegion(idx int, ) Rect2 {
+func  (me *ItemList) GetItemIconRegion(idx int64, ) Rect2 {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_icon_region")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3327874267) // FIXME: should cache?
-  var ret Rect2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRect2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) SetItemIconModulate(idx int, modulate Color, )  {
+func  (me *ItemList) SetItemIconModulate(idx int64, modulate Color, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_icon_modulate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2878471219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(modulate.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetItemIconModulate(idx int, ) Color {
+func  (me *ItemList) GetItemIconModulate(idx int64, ) Color {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_icon_modulate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3457211756) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) SetItemSelectable(idx int, selectable bool, )  {
+func  (me *ItemList) SetItemSelectable(idx int64, selectable bool, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_selectable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&selectable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) IsItemSelectable(idx int, ) bool {
+func  (me *ItemList) IsItemSelectable(idx int64, ) bool {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_item_selectable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ItemList) SetItemDisabled(idx int, disabled bool, )  {
+func  (me *ItemList) SetItemDisabled(idx int64, disabled bool, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&disabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) IsItemDisabled(idx int, ) bool {
+func  (me *ItemList) IsItemDisabled(idx int64, ) bool {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_item_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ItemList) SetItemMetadata(idx int, metadata Variant, )  {
+func  (me *ItemList) SetItemMetadata(idx int64, metadata Variant, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_metadata")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2152698145) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(metadata.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetItemMetadata(idx int, ) Variant {
+func  (me *ItemList) GetItemMetadata(idx int64, ) Variant {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_metadata")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4227898402) // FIXME: should cache?
-  var ret Variant
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVariant()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) SetItemCustomBgColor(idx int, custom_bg_color Color, )  {
+func  (me *ItemList) SetItemCustomBgColor(idx int64, custom_bg_color Color, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_custom_bg_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2878471219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(custom_bg_color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetItemCustomBgColor(idx int, ) Color {
+func  (me *ItemList) GetItemCustomBgColor(idx int64, ) Color {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_custom_bg_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3457211756) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) SetItemCustomFgColor(idx int, custom_fg_color Color, )  {
+func  (me *ItemList) SetItemCustomFgColor(idx int64, custom_fg_color Color, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_custom_fg_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2878471219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(custom_fg_color.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetItemCustomFgColor(idx int, ) Color {
+func  (me *ItemList) GetItemCustomFgColor(idx int64, ) Color {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_custom_fg_color")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3457211756) // FIXME: should cache?
-  var ret Color
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewColor()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) GetItemRect(idx int, expand bool, ) Rect2 {
+func  (me *ItemList) GetItemRect(idx int64, expand bool, ) Rect2 {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 159227807) // FIXME: should cache?
-  var ret Rect2
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&expand), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewRect2()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) SetItemTooltipEnabled(idx int, enable bool, )  {
+func  (me *ItemList) SetItemTooltipEnabled(idx int64, enable bool, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_tooltip_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) IsItemTooltipEnabled(idx int, ) bool {
+func  (me *ItemList) IsItemTooltipEnabled(idx int64, ) bool {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_item_tooltip_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ItemList) SetItemTooltip(idx int, tooltip String, )  {
+func  (me *ItemList) SetItemTooltip(idx int64, tooltip String, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_tooltip")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(tooltip.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetItemTooltip(idx int, ) String {
+func  (me *ItemList) GetItemTooltip(idx int64, ) String {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_tooltip")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) Select(idx int, single bool, )  {
+func  (me *ItemList) Select(idx int64, single bool, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("select")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 972357352) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&single), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) Deselect(idx int, )  {
+func  (me *ItemList) Deselect(idx int64, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("deselect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) DeselectAll()  {
@@ -418,19 +477,22 @@ func  (me *ItemList) DeselectAll()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) IsSelected(idx int, ) bool {
+func  (me *ItemList) IsSelected(idx int64, ) bool {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("is_selected")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ItemList) GetSelectedItems() PackedInt32Array {
@@ -439,52 +501,60 @@ func  (me *ItemList) GetSelectedItems() PackedInt32Array {
   methodNameV := StringNameFromStr("get_selected_items")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 969006518) // FIXME: should cache?
-  var ret PackedInt32Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewPackedInt32Array()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) MoveItem(from_idx int, to_idx int, )  {
+func  (me *ItemList) MoveItem(from_idx int64, to_idx int64, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("move_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_idx), gdc.ConstTypePtr(&to_idx), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) SetItemCount(count int, )  {
+func  (me *ItemList) SetItemCount(count int64, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_item_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetItemCount() int {
+func  (me *ItemList) GetItemCount() int64 {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ItemList) RemoveItem(idx int, )  {
+func  (me *ItemList) RemoveItem(idx int64, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) Clear()  {
@@ -494,7 +564,9 @@ func  (me *ItemList) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) SortItemsByText()  {
@@ -504,29 +576,34 @@ func  (me *ItemList) SortItemsByText()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) SetFixedColumnWidth(width int, )  {
+func  (me *ItemList) SetFixedColumnWidth(width int64, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_fixed_column_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetFixedColumnWidth() int {
+func  (me *ItemList) GetFixedColumnWidth() int64 {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_fixed_column_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ItemList) SetSameColumnWidth(enable bool, )  {
@@ -536,7 +613,9 @@ func  (me *ItemList) SetSameColumnWidth(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) IsSameColumnWidth() bool {
@@ -545,54 +624,61 @@ func  (me *ItemList) IsSameColumnWidth() bool {
   methodNameV := StringNameFromStr("is_same_column_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ItemList) SetMaxTextLines(lines int, )  {
+func  (me *ItemList) SetMaxTextLines(lines int64, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_text_lines")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&lines), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetMaxTextLines() int {
+func  (me *ItemList) GetMaxTextLines() int64 {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_text_lines")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ItemList) SetMaxColumns(amount int, )  {
+func  (me *ItemList) SetMaxColumns(amount int64, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_columns")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetMaxColumns() int {
+func  (me *ItemList) GetMaxColumns() int64 {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_columns")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ItemList) SetSelectMode(mode ItemListSelectMode, )  {
@@ -602,7 +688,9 @@ func  (me *ItemList) SetSelectMode(mode ItemListSelectMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 928267388) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) GetSelectMode() ItemListSelectMode {
@@ -611,9 +699,10 @@ func  (me *ItemList) GetSelectMode() ItemListSelectMode {
   methodNameV := StringNameFromStr("get_select_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1191945842) // FIXME: should cache?
-  var ret ItemListSelectMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret ItemListSelectMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -624,7 +713,9 @@ func  (me *ItemList) SetIconMode(mode ItemListIconMode, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2025053633) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) GetIconMode() ItemListIconMode {
@@ -633,9 +724,10 @@ func  (me *ItemList) GetIconMode() ItemListIconMode {
   methodNameV := StringNameFromStr("get_icon_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3353929232) // FIXME: should cache?
-  var ret ItemListIconMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret ItemListIconMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -646,7 +738,9 @@ func  (me *ItemList) SetFixedIconSize(size Vector2i, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130785943) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) GetFixedIconSize() Vector2i {
@@ -655,32 +749,36 @@ func  (me *ItemList) GetFixedIconSize() Vector2i {
   methodNameV := StringNameFromStr("get_fixed_icon_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690982128) // FIXME: should cache?
-  var ret Vector2i
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVector2i()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *ItemList) SetIconScale(scale float32, )  {
+func  (me *ItemList) SetIconScale(scale float64, )  {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_icon_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scale), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ItemList) GetIconScale() float32 {
+func  (me *ItemList) GetIconScale() float64 {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_icon_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ItemList) SetAllowRmbSelect(allow bool, )  {
@@ -690,7 +788,9 @@ func  (me *ItemList) SetAllowRmbSelect(allow bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) GetAllowRmbSelect() bool {
@@ -699,10 +799,11 @@ func  (me *ItemList) GetAllowRmbSelect() bool {
   methodNameV := StringNameFromStr("get_allow_rmb_select")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ItemList) SetAllowReselect(allow bool, )  {
@@ -712,7 +813,9 @@ func  (me *ItemList) SetAllowReselect(allow bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) GetAllowReselect() bool {
@@ -721,10 +824,11 @@ func  (me *ItemList) GetAllowReselect() bool {
   methodNameV := StringNameFromStr("get_allow_reselect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ItemList) SetAllowSearch(allow bool, )  {
@@ -734,7 +838,9 @@ func  (me *ItemList) SetAllowSearch(allow bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) GetAllowSearch() bool {
@@ -743,10 +849,11 @@ func  (me *ItemList) GetAllowSearch() bool {
   methodNameV := StringNameFromStr("get_allow_search")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ItemList) SetAutoHeight(enable bool, )  {
@@ -756,7 +863,9 @@ func  (me *ItemList) SetAutoHeight(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) HasAutoHeight() bool {
@@ -765,10 +874,11 @@ func  (me *ItemList) HasAutoHeight() bool {
   methodNameV := StringNameFromStr("has_auto_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ItemList) IsAnythingSelected() bool {
@@ -777,22 +887,24 @@ func  (me *ItemList) IsAnythingSelected() bool {
   methodNameV := StringNameFromStr("is_anything_selected")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ItemList) GetItemAtPosition(position Vector2, exact bool, ) int {
+func  (me *ItemList) GetItemAtPosition(position Vector2, exact bool, ) int64 {
   classNameV := StringNameFromStr("ItemList")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_item_at_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2300324924) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&exact), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ItemList) EnsureCurrentIsVisible()  {
@@ -802,7 +914,9 @@ func  (me *ItemList) EnsureCurrentIsVisible()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) GetVScrollBar() VScrollBar {
@@ -811,10 +925,11 @@ func  (me *ItemList) GetVScrollBar() VScrollBar {
   methodNameV := StringNameFromStr("get_v_scroll_bar")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2630340773) // FIXME: should cache?
-  var ret VScrollBar
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVScrollBar()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ItemList) SetTextOverrunBehavior(overrun_behavior TextServerOverrunBehavior, )  {
@@ -824,7 +939,9 @@ func  (me *ItemList) SetTextOverrunBehavior(overrun_behavior TextServerOverrunBe
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1008890932) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&overrun_behavior), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ItemList) GetTextOverrunBehavior() TextServerOverrunBehavior {
@@ -833,9 +950,10 @@ func  (me *ItemList) GetTextOverrunBehavior() TextServerOverrunBehavior {
   methodNameV := StringNameFromStr("get_text_overrun_behavior")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3779142101) // FIXME: should cache?
-  var ret TextServerOverrunBehavior
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret TextServerOverrunBehavior
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -846,7 +964,9 @@ func  (me *ItemList) ForceUpdateListSize()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

@@ -17,6 +17,16 @@ func (me *PhysicsDirectSpaceState3DExtension) BaseClass() string {
   return "PhysicsDirectSpaceState3DExtension"
 }
 
+func NewPhysicsDirectSpaceState3DExtension() *PhysicsDirectSpaceState3DExtension {
+  str := StringNameFromStr("PhysicsDirectSpaceState3DExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &PhysicsDirectSpaceState3DExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -41,10 +51,11 @@ func  (me *PhysicsDirectSpaceState3DExtension) IsBodyExcludedFromQuery(body RID,
   methodNameV := StringNameFromStr("is_body_excluded_from_query")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

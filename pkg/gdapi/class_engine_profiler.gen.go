@@ -17,6 +17,16 @@ func (me *EngineProfiler) BaseClass() string {
   return "EngineProfiler"
 }
 
+func NewEngineProfiler() *EngineProfiler {
+  str := StringNameFromStr("EngineProfiler") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &EngineProfiler{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

@@ -17,6 +17,16 @@ func (me *WebRTCPeerConnection) BaseClass() string {
   return "WebRTCPeerConnection"
 }
 
+func NewWebRTCPeerConnection() *WebRTCPeerConnection {
+  str := StringNameFromStr("WebRTCPeerConnection") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &WebRTCPeerConnection{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -69,7 +79,9 @@ func  WebRTCPeerConnectionSetDefaultExtension(extension_class StringName, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(extension_class.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *WebRTCPeerConnection) Initialize(configuration Dictionary, ) Error {
@@ -78,9 +90,10 @@ func  (me *WebRTCPeerConnection) Initialize(configuration Dictionary, ) Error {
   methodNameV := StringNameFromStr("initialize")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2625064318) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(configuration.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -90,10 +103,11 @@ func  (me *WebRTCPeerConnection) CreateDataChannel(label String, options Diction
   methodNameV := StringNameFromStr("create_data_channel")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1288557393) // FIXME: should cache?
-  var ret WebRTCDataChannel
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(options.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewWebRTCDataChannel()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *WebRTCPeerConnection) CreateOffer() Error {
@@ -102,9 +116,10 @@ func  (me *WebRTCPeerConnection) CreateOffer() Error {
   methodNameV := StringNameFromStr("create_offer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -114,9 +129,10 @@ func  (me *WebRTCPeerConnection) SetLocalDescription(type_ String, sdp String, )
   methodNameV := StringNameFromStr("set_local_description")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 852856452) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), gdc.ConstTypePtr(sdp.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -126,21 +142,23 @@ func  (me *WebRTCPeerConnection) SetRemoteDescription(type_ String, sdp String, 
   methodNameV := StringNameFromStr("set_remote_description")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 852856452) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), gdc.ConstTypePtr(sdp.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *WebRTCPeerConnection) AddIceCandidate(media String, index int, name String, ) Error {
+func  (me *WebRTCPeerConnection) AddIceCandidate(media String, index int64, name String, ) Error {
   classNameV := StringNameFromStr("WebRTCPeerConnection")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("add_ice_candidate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3958950400) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(media.AsCTypePtr()), gdc.ConstTypePtr(&index), gdc.ConstTypePtr(name.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -150,9 +168,10 @@ func  (me *WebRTCPeerConnection) Poll() Error {
   methodNameV := StringNameFromStr("poll")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
-  var ret Error
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret Error
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -163,7 +182,9 @@ func  (me *WebRTCPeerConnection) Close()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *WebRTCPeerConnection) GetConnectionState() WebRTCPeerConnectionConnectionState {
@@ -172,9 +193,10 @@ func  (me *WebRTCPeerConnection) GetConnectionState() WebRTCPeerConnectionConnec
   methodNameV := StringNameFromStr("get_connection_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2275710506) // FIXME: should cache?
-  var ret WebRTCPeerConnectionConnectionState
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret WebRTCPeerConnectionConnectionState
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -184,9 +206,10 @@ func  (me *WebRTCPeerConnection) GetGatheringState() WebRTCPeerConnectionGatheri
   methodNameV := StringNameFromStr("get_gathering_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4262591401) // FIXME: should cache?
-  var ret WebRTCPeerConnectionGatheringState
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret WebRTCPeerConnectionGatheringState
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -196,9 +219,10 @@ func  (me *WebRTCPeerConnection) GetSignalingState() WebRTCPeerConnectionSignali
   methodNameV := StringNameFromStr("get_signaling_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3342956226) // FIXME: should cache?
-  var ret WebRTCPeerConnectionSignalingState
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret WebRTCPeerConnectionSignalingState
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 

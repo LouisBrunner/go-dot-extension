@@ -17,6 +17,16 @@ func (me *MainLoop) BaseClass() string {
   return "MainLoop"
 }
 
+func NewMainLoop() *MainLoop {
+  str := StringNameFromStr("MainLoop") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &MainLoop{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Constants

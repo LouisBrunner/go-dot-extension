@@ -17,6 +17,16 @@ func (me *AudioEffectPanner) BaseClass() string {
   return "AudioEffectPanner"
 }
 
+func NewAudioEffectPanner() *AudioEffectPanner {
+  str := StringNameFromStr("AudioEffectPanner") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioEffectPanner{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -35,26 +45,29 @@ func (me *AudioEffectPanner) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *AudioEffectPanner) SetPan(cpanume float32, )  {
+func  (me *AudioEffectPanner) SetPan(cpanume float64, )  {
   classNameV := StringNameFromStr("AudioEffectPanner")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_pan")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cpanume), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioEffectPanner) GetPan() float32 {
+func  (me *AudioEffectPanner) GetPan() float64 {
   classNameV := StringNameFromStr("AudioEffectPanner")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_pan")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

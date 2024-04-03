@@ -17,6 +17,16 @@ func (me *WebRTCDataChannelExtension) BaseClass() string {
   return "WebRTCDataChannelExtension"
 }
 
+func NewWebRTCDataChannelExtension() *WebRTCDataChannelExtension {
+  str := StringNameFromStr("WebRTCDataChannelExtension") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &WebRTCDataChannelExtension{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

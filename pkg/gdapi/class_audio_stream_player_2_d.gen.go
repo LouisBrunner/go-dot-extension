@@ -17,6 +17,16 @@ func (me *AudioStreamPlayer2D) BaseClass() string {
   return "AudioStreamPlayer2D"
 }
 
+func NewAudioStreamPlayer2D() *AudioStreamPlayer2D {
+  str := StringNameFromStr("AudioStreamPlayer2D") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &AudioStreamPlayer2D{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  (me *AudioStreamPlayer2D) SetStream(stream AudioStream, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2210767741) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(stream.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AudioStreamPlayer2D) GetStream() AudioStream {
@@ -51,74 +63,85 @@ func  (me *AudioStreamPlayer2D) GetStream() AudioStream {
   methodNameV := StringNameFromStr("get_stream")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 160907539) // FIXME: should cache?
-  var ret AudioStream
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewAudioStream()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *AudioStreamPlayer2D) SetVolumeDb(volume_db float32, )  {
+func  (me *AudioStreamPlayer2D) SetVolumeDb(volume_db float64, )  {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_volume_db")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&volume_db), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioStreamPlayer2D) GetVolumeDb() float32 {
+func  (me *AudioStreamPlayer2D) GetVolumeDb() float64 {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_volume_db")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioStreamPlayer2D) SetPitchScale(pitch_scale float32, )  {
+func  (me *AudioStreamPlayer2D) SetPitchScale(pitch_scale float64, )  {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_pitch_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pitch_scale), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioStreamPlayer2D) GetPitchScale() float32 {
+func  (me *AudioStreamPlayer2D) GetPitchScale() float64 {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_pitch_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioStreamPlayer2D) Play(from_position float32, )  {
+func  (me *AudioStreamPlayer2D) Play(from_position float64, )  {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("play")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1958160172) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioStreamPlayer2D) Seek(to_position float32, )  {
+func  (me *AudioStreamPlayer2D) Seek(to_position float64, )  {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("seek")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&to_position), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AudioStreamPlayer2D) Stop()  {
@@ -128,7 +151,9 @@ func  (me *AudioStreamPlayer2D) Stop()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AudioStreamPlayer2D) IsPlaying() bool {
@@ -137,22 +162,24 @@ func  (me *AudioStreamPlayer2D) IsPlaying() bool {
   methodNameV := StringNameFromStr("is_playing")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioStreamPlayer2D) GetPlaybackPosition() float32 {
+func  (me *AudioStreamPlayer2D) GetPlaybackPosition() float64 {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_playback_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AudioStreamPlayer2D) SetBus(bus StringName, )  {
@@ -162,7 +189,9 @@ func  (me *AudioStreamPlayer2D) SetBus(bus StringName, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(bus.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AudioStreamPlayer2D) GetBus() StringName {
@@ -171,10 +200,11 @@ func  (me *AudioStreamPlayer2D) GetBus() StringName {
   methodNameV := StringNameFromStr("get_bus")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
-  var ret StringName
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewStringName()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *AudioStreamPlayer2D) SetAutoplay(enable bool, )  {
@@ -184,7 +214,9 @@ func  (me *AudioStreamPlayer2D) SetAutoplay(enable bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AudioStreamPlayer2D) IsAutoplayEnabled() bool {
@@ -193,76 +225,86 @@ func  (me *AudioStreamPlayer2D) IsAutoplayEnabled() bool {
   methodNameV := StringNameFromStr("is_autoplay_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioStreamPlayer2D) SetMaxDistance(pixels float32, )  {
+func  (me *AudioStreamPlayer2D) SetMaxDistance(pixels float64, )  {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pixels), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioStreamPlayer2D) GetMaxDistance() float32 {
+func  (me *AudioStreamPlayer2D) GetMaxDistance() float64 {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioStreamPlayer2D) SetAttenuation(curve float32, )  {
+func  (me *AudioStreamPlayer2D) SetAttenuation(curve float64, )  {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_attenuation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&curve), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioStreamPlayer2D) GetAttenuation() float32 {
+func  (me *AudioStreamPlayer2D) GetAttenuation() float64 {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_attenuation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioStreamPlayer2D) SetAreaMask(mask int, )  {
+func  (me *AudioStreamPlayer2D) SetAreaMask(mask int64, )  {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_area_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioStreamPlayer2D) GetAreaMask() int {
+func  (me *AudioStreamPlayer2D) GetAreaMask() int64 {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_area_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AudioStreamPlayer2D) SetStreamPaused(pause bool, )  {
@@ -272,7 +314,9 @@ func  (me *AudioStreamPlayer2D) SetStreamPaused(pause bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pause), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *AudioStreamPlayer2D) GetStreamPaused() bool {
@@ -281,54 +325,61 @@ func  (me *AudioStreamPlayer2D) GetStreamPaused() bool {
   methodNameV := StringNameFromStr("get_stream_paused")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioStreamPlayer2D) SetMaxPolyphony(max_polyphony int, )  {
+func  (me *AudioStreamPlayer2D) SetMaxPolyphony(max_polyphony int64, )  {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_max_polyphony")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_polyphony), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioStreamPlayer2D) GetMaxPolyphony() int {
+func  (me *AudioStreamPlayer2D) GetMaxPolyphony() int64 {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_max_polyphony")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *AudioStreamPlayer2D) SetPanningStrength(panning_strength float32, )  {
+func  (me *AudioStreamPlayer2D) SetPanningStrength(panning_strength float64, )  {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_panning_strength")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&panning_strength), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *AudioStreamPlayer2D) GetPanningStrength() float32 {
+func  (me *AudioStreamPlayer2D) GetPanningStrength() float64 {
   classNameV := StringNameFromStr("AudioStreamPlayer2D")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_panning_strength")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AudioStreamPlayer2D) HasStreamPlayback() bool {
@@ -337,10 +388,11 @@ func  (me *AudioStreamPlayer2D) HasStreamPlayback() bool {
   methodNameV := StringNameFromStr("has_stream_playback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *AudioStreamPlayer2D) GetStreamPlayback() AudioStreamPlayback {
@@ -349,10 +401,11 @@ func  (me *AudioStreamPlayer2D) GetStreamPlayback() AudioStreamPlayback {
   methodNameV := StringNameFromStr("get_stream_playback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 210135309) // FIXME: should cache?
-  var ret AudioStreamPlayback
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewAudioStreamPlayback()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

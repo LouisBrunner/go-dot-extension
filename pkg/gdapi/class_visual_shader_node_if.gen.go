@@ -17,6 +17,16 @@ func (me *VisualShaderNodeIf) BaseClass() string {
   return "VisualShaderNodeIf"
 }
 
+func NewVisualShaderNodeIf() *VisualShaderNodeIf {
+  str := StringNameFromStr("VisualShaderNodeIf") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNodeIf{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums

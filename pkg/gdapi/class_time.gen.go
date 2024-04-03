@@ -17,6 +17,16 @@ func (me *Time) BaseClass() string {
   return "Time"
 }
 
+func NewTime() *Time {
+  str := StringNameFromStr("Time") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &Time{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -62,76 +72,82 @@ func (me *Time) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *Time) GetDatetimeDictFromUnixTime(unix_time_val int, ) Dictionary {
+func  (me *Time) GetDatetimeDictFromUnixTime(unix_time_val int64, ) Dictionary {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_datetime_dict_from_unix_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3485342025) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&unix_time_val), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Time) GetDateDictFromUnixTime(unix_time_val int, ) Dictionary {
+func  (me *Time) GetDateDictFromUnixTime(unix_time_val int64, ) Dictionary {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_date_dict_from_unix_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3485342025) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&unix_time_val), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Time) GetTimeDictFromUnixTime(unix_time_val int, ) Dictionary {
+func  (me *Time) GetTimeDictFromUnixTime(unix_time_val int64, ) Dictionary {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_time_dict_from_unix_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3485342025) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&unix_time_val), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Time) GetDatetimeStringFromUnixTime(unix_time_val int, use_space bool, ) String {
+func  (me *Time) GetDatetimeStringFromUnixTime(unix_time_val int64, use_space bool, ) String {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_datetime_string_from_unix_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2311239925) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&unix_time_val), gdc.ConstTypePtr(&use_space), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Time) GetDateStringFromUnixTime(unix_time_val int, ) String {
+func  (me *Time) GetDateStringFromUnixTime(unix_time_val int64, ) String {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_date_string_from_unix_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&unix_time_val), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Time) GetTimeStringFromUnixTime(unix_time_val int, ) String {
+func  (me *Time) GetTimeStringFromUnixTime(unix_time_val int64, ) String {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_time_string_from_unix_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&unix_time_val), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Time) GetDatetimeDictFromDatetimeString(datetime String, weekday bool, ) Dictionary {
@@ -140,10 +156,11 @@ func  (me *Time) GetDatetimeDictFromDatetimeString(datetime String, weekday bool
   methodNameV := StringNameFromStr("get_datetime_dict_from_datetime_string")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3253569256) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(datetime.AsCTypePtr()), gdc.ConstTypePtr(&weekday), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Time) GetDatetimeStringFromDatetimeDict(datetime Dictionary, use_space bool, ) String {
@@ -152,46 +169,50 @@ func  (me *Time) GetDatetimeStringFromDatetimeDict(datetime Dictionary, use_spac
   methodNameV := StringNameFromStr("get_datetime_string_from_datetime_dict")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1898123706) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(datetime.AsCTypePtr()), gdc.ConstTypePtr(&use_space), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Time) GetUnixTimeFromDatetimeDict(datetime Dictionary, ) int {
+func  (me *Time) GetUnixTimeFromDatetimeDict(datetime Dictionary, ) int64 {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_unix_time_from_datetime_dict")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3021115443) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(datetime.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Time) GetUnixTimeFromDatetimeString(datetime String, ) int {
+func  (me *Time) GetUnixTimeFromDatetimeString(datetime String, ) int64 {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_unix_time_from_datetime_string")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1321353865) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(datetime.AsCTypePtr()), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Time) GetOffsetStringFromOffsetMinutes(offset_minutes int, ) String {
+func  (me *Time) GetOffsetStringFromOffsetMinutes(offset_minutes int64, ) String {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_offset_string_from_offset_minutes")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&offset_minutes), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Time) GetDatetimeDictFromSystem(utc bool, ) Dictionary {
@@ -200,10 +221,11 @@ func  (me *Time) GetDatetimeDictFromSystem(utc bool, ) Dictionary {
   methodNameV := StringNameFromStr("get_datetime_dict_from_system")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 205769976) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&utc), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Time) GetDateDictFromSystem(utc bool, ) Dictionary {
@@ -212,10 +234,11 @@ func  (me *Time) GetDateDictFromSystem(utc bool, ) Dictionary {
   methodNameV := StringNameFromStr("get_date_dict_from_system")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 205769976) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&utc), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Time) GetTimeDictFromSystem(utc bool, ) Dictionary {
@@ -224,10 +247,11 @@ func  (me *Time) GetTimeDictFromSystem(utc bool, ) Dictionary {
   methodNameV := StringNameFromStr("get_time_dict_from_system")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 205769976) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&utc), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Time) GetDatetimeStringFromSystem(utc bool, use_space bool, ) String {
@@ -236,10 +260,11 @@ func  (me *Time) GetDatetimeStringFromSystem(utc bool, use_space bool, ) String 
   methodNameV := StringNameFromStr("get_datetime_string_from_system")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1136425492) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&utc), gdc.ConstTypePtr(&use_space), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Time) GetDateStringFromSystem(utc bool, ) String {
@@ -248,10 +273,11 @@ func  (me *Time) GetDateStringFromSystem(utc bool, ) String {
   methodNameV := StringNameFromStr("get_date_string_from_system")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1162154673) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&utc), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Time) GetTimeStringFromSystem(utc bool, ) String {
@@ -260,10 +286,11 @@ func  (me *Time) GetTimeStringFromSystem(utc bool, ) String {
   methodNameV := StringNameFromStr("get_time_string_from_system")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1162154673) // FIXME: should cache?
-  var ret String
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&utc), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewString()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *Time) GetTimeZoneFromSystem() Dictionary {
@@ -272,46 +299,50 @@ func  (me *Time) GetTimeZoneFromSystem() Dictionary {
   methodNameV := StringNameFromStr("get_time_zone_from_system")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
-  var ret Dictionary
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewDictionary()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *Time) GetUnixTimeFromSystem() float32 {
+func  (me *Time) GetUnixTimeFromSystem() float64 {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_unix_time_from_system")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Time) GetTicksMsec() int {
+func  (me *Time) GetTicksMsec() int64 {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_ticks_msec")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *Time) GetTicksUsec() int {
+func  (me *Time) GetTicksUsec() int64 {
   classNameV := StringNameFromStr("Time")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_ticks_usec")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 // Signals

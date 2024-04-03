@@ -17,6 +17,16 @@ func (me *VisualShaderNode) BaseClass() string {
   return "VisualShaderNode"
 }
 
+func NewVisualShaderNode() *VisualShaderNode {
+  str := StringNameFromStr("VisualShaderNode") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &VisualShaderNode{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -49,70 +59,79 @@ func (me *VisualShaderNode) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *VisualShaderNode) GetDefaultInputPort(type_ VisualShaderNodePortType, ) int {
+func  (me *VisualShaderNode) GetDefaultInputPort(type_ VisualShaderNodePortType, ) int64 {
   classNameV := StringNameFromStr("VisualShaderNode")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_default_input_port")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1894493699) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNode) SetOutputPortForPreview(port int, )  {
+func  (me *VisualShaderNode) SetOutputPortForPreview(port int64, )  {
   classNameV := StringNameFromStr("VisualShaderNode")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_output_port_for_preview")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNode) GetOutputPortForPreview() int {
+func  (me *VisualShaderNode) GetOutputPortForPreview() int64 {
   classNameV := StringNameFromStr("VisualShaderNode")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_output_port_for_preview")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *VisualShaderNode) SetInputPortDefaultValue(port int, value Variant, prev_value Variant, )  {
+func  (me *VisualShaderNode) SetInputPortDefaultValue(port int64, value Variant, prev_value Variant, )  {
   classNameV := StringNameFromStr("VisualShaderNode")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_input_port_default_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 150923387) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), gdc.ConstTypePtr(value.AsCTypePtr()), gdc.ConstTypePtr(prev_value.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *VisualShaderNode) GetInputPortDefaultValue(port int, ) Variant {
+func  (me *VisualShaderNode) GetInputPortDefaultValue(port int64, ) Variant {
   classNameV := StringNameFromStr("VisualShaderNode")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_input_port_default_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4227898402) // FIXME: should cache?
-  var ret Variant
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVariant()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
-func  (me *VisualShaderNode) RemoveInputPortDefaultValue(port int, )  {
+func  (me *VisualShaderNode) RemoveInputPortDefaultValue(port int64, )  {
   classNameV := StringNameFromStr("VisualShaderNode")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("remove_input_port_default_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNode) ClearDefaultInputValues()  {
@@ -122,7 +141,9 @@ func  (me *VisualShaderNode) ClearDefaultInputValues()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNode) SetDefaultInputValues(values Array, )  {
@@ -132,7 +153,9 @@ func  (me *VisualShaderNode) SetDefaultInputValues(values Array, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(values.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *VisualShaderNode) GetDefaultInputValues() Array {
@@ -141,10 +164,11 @@ func  (me *VisualShaderNode) GetDefaultInputValues() Array {
   methodNameV := StringNameFromStr("get_default_input_values")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
-  var ret Array
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewArray()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

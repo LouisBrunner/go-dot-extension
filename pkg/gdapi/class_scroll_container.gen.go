@@ -17,6 +17,16 @@ func (me *ScrollContainer) BaseClass() string {
   return "ScrollContainer"
 }
 
+func NewScrollContainer() *ScrollContainer {
+  str := StringNameFromStr("ScrollContainer") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &ScrollContainer{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -43,92 +53,104 @@ func (me *ScrollContainer) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func  (me *ScrollContainer) SetHScroll(value int, )  {
+func  (me *ScrollContainer) SetHScroll(value int64, )  {
   classNameV := StringNameFromStr("ScrollContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_h_scroll")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ScrollContainer) GetHScroll() int {
+func  (me *ScrollContainer) GetHScroll() int64 {
   classNameV := StringNameFromStr("ScrollContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_h_scroll")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ScrollContainer) SetVScroll(value int, )  {
+func  (me *ScrollContainer) SetVScroll(value int64, )  {
   classNameV := StringNameFromStr("ScrollContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_v_scroll")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ScrollContainer) GetVScroll() int {
+func  (me *ScrollContainer) GetVScroll() int64 {
   classNameV := StringNameFromStr("ScrollContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_v_scroll")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ScrollContainer) SetHorizontalCustomStep(value float32, )  {
+func  (me *ScrollContainer) SetHorizontalCustomStep(value float64, )  {
   classNameV := StringNameFromStr("ScrollContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_horizontal_custom_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ScrollContainer) GetHorizontalCustomStep() float32 {
+func  (me *ScrollContainer) GetHorizontalCustomStep() float64 {
   classNameV := StringNameFromStr("ScrollContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_horizontal_custom_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
-func  (me *ScrollContainer) SetVerticalCustomStep(value float32, )  {
+func  (me *ScrollContainer) SetVerticalCustomStep(value float64, )  {
   classNameV := StringNameFromStr("ScrollContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_vertical_custom_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ScrollContainer) GetVerticalCustomStep() float32 {
+func  (me *ScrollContainer) GetVerticalCustomStep() float64 {
   classNameV := StringNameFromStr("ScrollContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_vertical_custom_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
-  var ret float32
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewFloat()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ScrollContainer) SetHorizontalScrollMode(enable ScrollContainerScrollMode, )  {
@@ -138,7 +160,9 @@ func  (me *ScrollContainer) SetHorizontalScrollMode(enable ScrollContainerScroll
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2750506364) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ScrollContainer) GetHorizontalScrollMode() ScrollContainerScrollMode {
@@ -147,9 +171,10 @@ func  (me *ScrollContainer) GetHorizontalScrollMode() ScrollContainerScrollMode 
   methodNameV := StringNameFromStr("get_horizontal_scroll_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3987985145) // FIXME: should cache?
-  var ret ScrollContainerScrollMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret ScrollContainerScrollMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
@@ -160,7 +185,9 @@ func  (me *ScrollContainer) SetVerticalScrollMode(enable ScrollContainerScrollMo
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2750506364) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ScrollContainer) GetVerticalScrollMode() ScrollContainerScrollMode {
@@ -169,32 +196,36 @@ func  (me *ScrollContainer) GetVerticalScrollMode() ScrollContainerScrollMode {
   methodNameV := StringNameFromStr("get_vertical_scroll_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3987985145) // FIXME: should cache?
-  var ret ScrollContainerScrollMode
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
+  var ret ScrollContainerScrollMode
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
-func  (me *ScrollContainer) SetDeadzone(deadzone int, )  {
+func  (me *ScrollContainer) SetDeadzone(deadzone int64, )  {
   classNameV := StringNameFromStr("ScrollContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("set_deadzone")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&deadzone), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
-func  (me *ScrollContainer) GetDeadzone() int {
+func  (me *ScrollContainer) GetDeadzone() int64 {
   classNameV := StringNameFromStr("ScrollContainer")
   defer classNameV.Destroy()
   methodNameV := StringNameFromStr("get_deadzone")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
-  var ret int
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewInt()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ScrollContainer) SetFollowFocus(enabled bool, )  {
@@ -204,7 +235,9 @@ func  (me *ScrollContainer) SetFollowFocus(enabled bool, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func  (me *ScrollContainer) IsFollowingFocus() bool {
@@ -213,10 +246,11 @@ func  (me *ScrollContainer) IsFollowingFocus() bool {
   methodNameV := StringNameFromStr("is_following_focus")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
-  var ret bool
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewBool()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return ret.Get()
 }
 
 func  (me *ScrollContainer) GetHScrollBar() HScrollBar {
@@ -225,10 +259,11 @@ func  (me *ScrollContainer) GetHScrollBar() HScrollBar {
   methodNameV := StringNameFromStr("get_h_scroll_bar")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4004517983) // FIXME: should cache?
-  var ret HScrollBar
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewHScrollBar()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ScrollContainer) GetVScrollBar() VScrollBar {
@@ -237,10 +272,11 @@ func  (me *ScrollContainer) GetVScrollBar() VScrollBar {
   methodNameV := StringNameFromStr("get_v_scroll_bar")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2630340773) // FIXME: should cache?
-  var ret VScrollBar
   cargs := []gdc.ConstTypePtr{}
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(&ret))
-  return ret
+  ret := NewVScrollBar()
+
+  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  return *ret
 }
 
 func  (me *ScrollContainer) EnsureControlVisible(control Control, )  {
@@ -250,7 +286,9 @@ func  (me *ScrollContainer) EnsureControlVisible(control Control, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(control.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+
 }
 // Properties
 // FIXME: can't seem to be able to use those from this side of the API

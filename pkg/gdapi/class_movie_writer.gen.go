@@ -17,6 +17,16 @@ func (me *MovieWriter) BaseClass() string {
   return "MovieWriter"
 }
 
+func NewMovieWriter() *MovieWriter {
+  str := StringNameFromStr("MovieWriter") // FIXME: should cache?
+  defer str.Destroy()
+
+	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
+  obj := &MovieWriter{}
+  obj.SetBaseObject(objPtr)
+  return obj
+}
+
 
 
 // Enums
@@ -42,7 +52,9 @@ func  MovieWriterAddWriter(writer MovieWriter, )  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4023702871) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(writer.AsCTypePtr()), }
+
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
+
 }
 
 // Signals
