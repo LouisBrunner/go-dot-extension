@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type AudioEffectCapture struct {
   AudioEffect
@@ -51,8 +54,11 @@ func  (me *AudioEffectCapture) CanGetBuffer(frames int64, ) bool {
   methodNameV := StringNameFromStr("can_get_buffer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frames), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frames) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&frames)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -64,8 +70,11 @@ func  (me *AudioEffectCapture) GetBuffer(frames int64, ) PackedVector2Array {
   methodNameV := StringNameFromStr("get_buffer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2649534757) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frames), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frames) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedVector2Array()
+  pinner.Pin(&frames)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -78,6 +87,8 @@ func  (me *AudioEffectCapture) ClearBuffer()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -89,7 +100,9 @@ func  (me *AudioEffectCapture) SetBufferLength(buffer_length_seconds float64, ) 
   methodNameV := StringNameFromStr("set_buffer_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&buffer_length_seconds), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&buffer_length_seconds) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -102,6 +115,8 @@ func  (me *AudioEffectCapture) GetBufferLength() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -115,6 +130,8 @@ func  (me *AudioEffectCapture) GetFramesAvailable() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -128,6 +145,8 @@ func  (me *AudioEffectCapture) GetDiscardedFrames() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -141,6 +160,8 @@ func  (me *AudioEffectCapture) GetBufferLengthFrames() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -154,6 +175,8 @@ func  (me *AudioEffectCapture) GetPushedFrames() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

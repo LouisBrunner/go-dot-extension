@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type Node2D struct {
   CanvasItem
@@ -51,7 +54,9 @@ func  (me *Node2D) SetPosition(position Vector2, )  {
   methodNameV := StringNameFromStr("set_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -63,7 +68,9 @@ func  (me *Node2D) SetRotation(radians float64, )  {
   methodNameV := StringNameFromStr("set_rotation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -75,7 +82,9 @@ func  (me *Node2D) SetRotationDegrees(degrees float64, )  {
   methodNameV := StringNameFromStr("set_rotation_degrees")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&degrees), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&degrees) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -87,7 +96,9 @@ func  (me *Node2D) SetSkew(radians float64, )  {
   methodNameV := StringNameFromStr("set_skew")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -99,7 +110,9 @@ func  (me *Node2D) SetScale(scale Vector2, )  {
   methodNameV := StringNameFromStr("set_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -112,6 +125,8 @@ func  (me *Node2D) GetPosition() Vector2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -125,6 +140,8 @@ func  (me *Node2D) GetRotation() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -138,6 +155,8 @@ func  (me *Node2D) GetRotationDegrees() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -151,6 +170,8 @@ func  (me *Node2D) GetSkew() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -164,6 +185,8 @@ func  (me *Node2D) GetScale() Vector2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -176,7 +199,9 @@ func  (me *Node2D) Rotate(radians float64, )  {
   methodNameV := StringNameFromStr("rotate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -188,7 +213,9 @@ func  (me *Node2D) MoveLocalX(delta float64, scaled bool, )  {
   methodNameV := StringNameFromStr("move_local_x")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2087892650) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delta), gdc.ConstTypePtr(&scaled), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delta) , gdc.ConstTypePtr(&scaled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -200,7 +227,9 @@ func  (me *Node2D) MoveLocalY(delta float64, scaled bool, )  {
   methodNameV := StringNameFromStr("move_local_y")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2087892650) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delta), gdc.ConstTypePtr(&scaled), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delta) , gdc.ConstTypePtr(&scaled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -212,7 +241,9 @@ func  (me *Node2D) Translate(offset Vector2, )  {
   methodNameV := StringNameFromStr("translate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -224,7 +255,9 @@ func  (me *Node2D) GlobalTranslate(offset Vector2, )  {
   methodNameV := StringNameFromStr("global_translate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -236,7 +269,9 @@ func  (me *Node2D) ApplyScale(ratio Vector2, )  {
   methodNameV := StringNameFromStr("apply_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(ratio.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{ratio.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -248,7 +283,9 @@ func  (me *Node2D) SetGlobalPosition(position Vector2, )  {
   methodNameV := StringNameFromStr("set_global_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -261,6 +298,8 @@ func  (me *Node2D) GetGlobalPosition() Vector2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -273,7 +312,9 @@ func  (me *Node2D) SetGlobalRotation(radians float64, )  {
   methodNameV := StringNameFromStr("set_global_rotation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -285,7 +326,9 @@ func  (me *Node2D) SetGlobalRotationDegrees(degrees float64, )  {
   methodNameV := StringNameFromStr("set_global_rotation_degrees")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&degrees), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&degrees) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -298,6 +341,8 @@ func  (me *Node2D) GetGlobalRotation() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -311,6 +356,8 @@ func  (me *Node2D) GetGlobalRotationDegrees() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -323,7 +370,9 @@ func  (me *Node2D) SetGlobalSkew(radians float64, )  {
   methodNameV := StringNameFromStr("set_global_skew")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -336,6 +385,8 @@ func  (me *Node2D) GetGlobalSkew() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -348,7 +399,9 @@ func  (me *Node2D) SetGlobalScale(scale Vector2, )  {
   methodNameV := StringNameFromStr("set_global_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -361,6 +414,8 @@ func  (me *Node2D) GetGlobalScale() Vector2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -373,7 +428,9 @@ func  (me *Node2D) SetTransform(xform Transform2D, )  {
   methodNameV := StringNameFromStr("set_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(xform.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{xform.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -385,7 +442,9 @@ func  (me *Node2D) SetGlobalTransform(xform Transform2D, )  {
   methodNameV := StringNameFromStr("set_global_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(xform.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{xform.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -397,7 +456,9 @@ func  (me *Node2D) LookAt(point Vector2, )  {
   methodNameV := StringNameFromStr("look_at")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{point.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -409,7 +470,9 @@ func  (me *Node2D) GetAngleTo(point Vector2, ) float64 {
   methodNameV := StringNameFromStr("get_angle_to")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2276447920) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{point.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -422,7 +485,9 @@ func  (me *Node2D) ToLocal(global_point Vector2, ) Vector2 {
   methodNameV := StringNameFromStr("to_local")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2656412154) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(global_point.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{global_point.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -435,7 +500,9 @@ func  (me *Node2D) ToGlobal(local_point Vector2, ) Vector2 {
   methodNameV := StringNameFromStr("to_global")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2656412154) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(local_point.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{local_point.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -448,7 +515,9 @@ func  (me *Node2D) GetRelativeTransformToParent(parent Node, ) Transform2D {
   methodNameV := StringNameFromStr("get_relative_transform_to_parent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 904556875) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parent.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{parent.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTransform2D()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

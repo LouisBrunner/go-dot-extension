@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type ArrayOccluder3D struct {
   Occluder3D
@@ -51,7 +54,9 @@ func  (me *ArrayOccluder3D) SetArrays(vertices PackedVector3Array, indices Packe
   methodNameV := StringNameFromStr("set_arrays")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3233972621) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(vertices.AsCTypePtr()), gdc.ConstTypePtr(indices.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{vertices.AsCTypePtr(), indices.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -63,7 +68,9 @@ func  (me *ArrayOccluder3D) SetVertices(vertices PackedVector3Array, )  {
   methodNameV := StringNameFromStr("set_vertices")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334873810) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(vertices.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{vertices.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -75,7 +82,9 @@ func  (me *ArrayOccluder3D) SetIndices(indices PackedInt32Array, )  {
   methodNameV := StringNameFromStr("set_indices")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(indices.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{indices.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

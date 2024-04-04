@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type VisualShaderNodeCustom struct {
   VisualShaderNode
@@ -51,8 +54,11 @@ func  (me *VisualShaderNodeCustom) GetOptionIndex(option int64, ) int64 {
   methodNameV := StringNameFromStr("get_option_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&option)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()

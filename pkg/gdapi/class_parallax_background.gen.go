@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type ParallaxBackground struct {
   CanvasLayer
@@ -51,7 +54,9 @@ func  (me *ParallaxBackground) SetScrollOffset(offset Vector2, )  {
   methodNameV := StringNameFromStr("set_scroll_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -64,6 +69,8 @@ func  (me *ParallaxBackground) GetScrollOffset() Vector2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -76,7 +83,9 @@ func  (me *ParallaxBackground) SetScrollBaseOffset(offset Vector2, )  {
   methodNameV := StringNameFromStr("set_scroll_base_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -89,6 +98,8 @@ func  (me *ParallaxBackground) GetScrollBaseOffset() Vector2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -101,7 +112,9 @@ func  (me *ParallaxBackground) SetScrollBaseScale(scale Vector2, )  {
   methodNameV := StringNameFromStr("set_scroll_base_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scale.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -114,6 +127,8 @@ func  (me *ParallaxBackground) GetScrollBaseScale() Vector2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -126,7 +141,9 @@ func  (me *ParallaxBackground) SetLimitBegin(offset Vector2, )  {
   methodNameV := StringNameFromStr("set_limit_begin")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -139,6 +156,8 @@ func  (me *ParallaxBackground) GetLimitBegin() Vector2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -151,7 +170,9 @@ func  (me *ParallaxBackground) SetLimitEnd(offset Vector2, )  {
   methodNameV := StringNameFromStr("set_limit_end")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -164,6 +185,8 @@ func  (me *ParallaxBackground) GetLimitEnd() Vector2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -176,7 +199,9 @@ func  (me *ParallaxBackground) SetIgnoreCameraZoom(ignore bool, )  {
   methodNameV := StringNameFromStr("set_ignore_camera_zoom")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ignore), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ignore) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -189,6 +214,8 @@ func  (me *ParallaxBackground) IsIgnoreCameraZoom() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type InputEventScreenTouch struct {
   InputEventFromWindow
@@ -51,7 +54,9 @@ func  (me *InputEventScreenTouch) SetIndex(index int64, )  {
   methodNameV := StringNameFromStr("set_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -64,6 +69,8 @@ func  (me *InputEventScreenTouch) GetIndex() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -76,7 +83,9 @@ func  (me *InputEventScreenTouch) SetPosition(position Vector2, )  {
   methodNameV := StringNameFromStr("set_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -89,6 +98,8 @@ func  (me *InputEventScreenTouch) GetPosition() Vector2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -101,7 +112,9 @@ func  (me *InputEventScreenTouch) SetPressed(pressed bool, )  {
   methodNameV := StringNameFromStr("set_pressed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -113,7 +126,9 @@ func  (me *InputEventScreenTouch) SetCanceled(canceled bool, )  {
   methodNameV := StringNameFromStr("set_canceled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&canceled), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&canceled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -125,7 +140,9 @@ func  (me *InputEventScreenTouch) SetDoubleTap(double_tap bool, )  {
   methodNameV := StringNameFromStr("set_double_tap")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&double_tap), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&double_tap) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -138,6 +155,8 @@ func  (me *InputEventScreenTouch) IsDoubleTap() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

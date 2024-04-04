@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type WebRTCMultiplayerPeer struct {
   MultiplayerPeer
@@ -51,7 +54,9 @@ func  (me *WebRTCMultiplayerPeer) CreateServer(channels_config Array, ) Error {
   methodNameV := StringNameFromStr("create_server")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2865356025) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(channels_config.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{channels_config.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -64,8 +69,11 @@ func  (me *WebRTCMultiplayerPeer) CreateClient(peer_id int64, channels_config Ar
   methodNameV := StringNameFromStr("create_client")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2641732907) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id), gdc.ConstTypePtr(channels_config.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id) , channels_config.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&peer_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -77,8 +85,11 @@ func  (me *WebRTCMultiplayerPeer) CreateMesh(peer_id int64, channels_config Arra
   methodNameV := StringNameFromStr("create_mesh")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2641732907) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id), gdc.ConstTypePtr(channels_config.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id) , channels_config.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&peer_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -90,8 +101,12 @@ func  (me *WebRTCMultiplayerPeer) AddPeer(peer WebRTCPeerConnection, peer_id int
   methodNameV := StringNameFromStr("add_peer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4078953270) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(peer.AsCTypePtr()), gdc.ConstTypePtr(&peer_id), gdc.ConstTypePtr(&unreliable_lifetime), }
+  cargs := []gdc.ConstTypePtr{peer.AsCTypePtr(), gdc.ConstTypePtr(&peer_id) , gdc.ConstTypePtr(&unreliable_lifetime) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&peer_id)
+  pinner.Pin(&unreliable_lifetime)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -103,7 +118,9 @@ func  (me *WebRTCMultiplayerPeer) RemovePeer(peer_id int64, )  {
   methodNameV := StringNameFromStr("remove_peer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -115,8 +132,11 @@ func  (me *WebRTCMultiplayerPeer) HasPeer(peer_id int64, ) bool {
   methodNameV := StringNameFromStr("has_peer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3067735520) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&peer_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -128,8 +148,11 @@ func  (me *WebRTCMultiplayerPeer) GetPeer(peer_id int64, ) Dictionary {
   methodNameV := StringNameFromStr("get_peer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3554694381) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
+  pinner.Pin(&peer_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -142,6 +165,8 @@ func  (me *WebRTCMultiplayerPeer) GetPeers() Dictionary {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2382534195) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type SkeletonModification2DFABRIK struct {
   SkeletonModification2D
@@ -51,7 +54,9 @@ func  (me *SkeletonModification2DFABRIK) SetTargetNode(target_nodepath NodePath,
   methodNameV := StringNameFromStr("set_target_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(target_nodepath.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{target_nodepath.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -64,6 +69,8 @@ func  (me *SkeletonModification2DFABRIK) GetTargetNode() NodePath {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewNodePath()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -76,7 +83,9 @@ func  (me *SkeletonModification2DFABRIK) SetFabrikDataChainLength(length int64, 
   methodNameV := StringNameFromStr("set_fabrik_data_chain_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -89,6 +98,8 @@ func  (me *SkeletonModification2DFABRIK) GetFabrikDataChainLength() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -101,7 +112,9 @@ func  (me *SkeletonModification2DFABRIK) SetFabrikJointBone2DNode(joint_idx int6
   methodNameV := StringNameFromStr("set_fabrik_joint_bone2d_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761262315) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx), gdc.ConstTypePtr(bone2d_nodepath.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx) , bone2d_nodepath.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -113,8 +126,11 @@ func  (me *SkeletonModification2DFABRIK) GetFabrikJointBone2DNode(joint_idx int6
   methodNameV := StringNameFromStr("get_fabrik_joint_bone2d_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 408788394) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewNodePath()
+  pinner.Pin(&joint_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -126,7 +142,9 @@ func  (me *SkeletonModification2DFABRIK) SetFabrikJointBoneIndex(joint_idx int64
   methodNameV := StringNameFromStr("set_fabrik_joint_bone_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx), gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx) , gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -138,8 +156,11 @@ func  (me *SkeletonModification2DFABRIK) GetFabrikJointBoneIndex(joint_idx int64
   methodNameV := StringNameFromStr("get_fabrik_joint_bone_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&joint_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -151,7 +172,9 @@ func  (me *SkeletonModification2DFABRIK) SetFabrikJointMagnetPosition(joint_idx 
   methodNameV := StringNameFromStr("set_fabrik_joint_magnet_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 163021252) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx), gdc.ConstTypePtr(magnet_position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx) , magnet_position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -163,8 +186,11 @@ func  (me *SkeletonModification2DFABRIK) GetFabrikJointMagnetPosition(joint_idx 
   methodNameV := StringNameFromStr("get_fabrik_joint_magnet_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2299179447) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&joint_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -176,7 +202,9 @@ func  (me *SkeletonModification2DFABRIK) SetFabrikJointUseTargetRotation(joint_i
   methodNameV := StringNameFromStr("set_fabrik_joint_use_target_rotation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx), gdc.ConstTypePtr(&use_target_rotation), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx) , gdc.ConstTypePtr(&use_target_rotation) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -188,8 +216,11 @@ func  (me *SkeletonModification2DFABRIK) GetFabrikJointUseTargetRotation(joint_i
   methodNameV := StringNameFromStr("get_fabrik_joint_use_target_rotation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&joint_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&joint_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()

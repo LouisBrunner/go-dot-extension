@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type SceneState struct {
   RefCounted
@@ -60,6 +63,8 @@ func  (me *SceneState) GetNodeCount() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -72,8 +77,11 @@ func  (me *SceneState) GetNodeType(idx int64, ) StringName {
   methodNameV := StringNameFromStr("get_node_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 659327637) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewStringName()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -85,8 +93,11 @@ func  (me *SceneState) GetNodeName(idx int64, ) StringName {
   methodNameV := StringNameFromStr("get_node_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 659327637) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewStringName()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -98,8 +109,12 @@ func  (me *SceneState) GetNodePath(idx int64, for_parent bool, ) NodePath {
   methodNameV := StringNameFromStr("get_node_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2272487792) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&for_parent), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&for_parent) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewNodePath()
+  pinner.Pin(&idx)
+  pinner.Pin(&for_parent)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -111,8 +126,11 @@ func  (me *SceneState) GetNodeOwnerPath(idx int64, ) NodePath {
   methodNameV := StringNameFromStr("get_node_owner_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 408788394) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewNodePath()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -124,8 +142,11 @@ func  (me *SceneState) IsNodeInstancePlaceholder(idx int64, ) bool {
   methodNameV := StringNameFromStr("is_node_instance_placeholder")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -137,8 +158,11 @@ func  (me *SceneState) GetNodeInstancePlaceholder(idx int64, ) String {
   methodNameV := StringNameFromStr("get_node_instance_placeholder")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -150,8 +174,11 @@ func  (me *SceneState) GetNodeInstance(idx int64, ) PackedScene {
   methodNameV := StringNameFromStr("get_node_instance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 511017218) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedScene()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -163,8 +190,11 @@ func  (me *SceneState) GetNodeGroups(idx int64, ) PackedStringArray {
   methodNameV := StringNameFromStr("get_node_groups")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 647634434) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedStringArray()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -176,8 +206,11 @@ func  (me *SceneState) GetNodeIndex(idx int64, ) int64 {
   methodNameV := StringNameFromStr("get_node_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -189,8 +222,11 @@ func  (me *SceneState) GetNodePropertyCount(idx int64, ) int64 {
   methodNameV := StringNameFromStr("get_node_property_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -202,8 +238,12 @@ func  (me *SceneState) GetNodePropertyName(idx int64, prop_idx int64, ) StringNa
   methodNameV := StringNameFromStr("get_node_property_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 351665558) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&prop_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&prop_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewStringName()
+  pinner.Pin(&idx)
+  pinner.Pin(&prop_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -215,8 +255,12 @@ func  (me *SceneState) GetNodePropertyValue(idx int64, prop_idx int64, ) Variant
   methodNameV := StringNameFromStr("get_node_property_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 678354945) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&prop_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&prop_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
+  pinner.Pin(&idx)
+  pinner.Pin(&prop_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -229,6 +273,8 @@ func  (me *SceneState) GetConnectionCount() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -241,8 +287,11 @@ func  (me *SceneState) GetConnectionSource(idx int64, ) NodePath {
   methodNameV := StringNameFromStr("get_connection_source")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 408788394) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewNodePath()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -254,8 +303,11 @@ func  (me *SceneState) GetConnectionSignal(idx int64, ) StringName {
   methodNameV := StringNameFromStr("get_connection_signal")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 659327637) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewStringName()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -267,8 +319,11 @@ func  (me *SceneState) GetConnectionTarget(idx int64, ) NodePath {
   methodNameV := StringNameFromStr("get_connection_target")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 408788394) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewNodePath()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -280,8 +335,11 @@ func  (me *SceneState) GetConnectionMethod(idx int64, ) StringName {
   methodNameV := StringNameFromStr("get_connection_method")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 659327637) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewStringName()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -293,8 +351,11 @@ func  (me *SceneState) GetConnectionFlags(idx int64, ) int64 {
   methodNameV := StringNameFromStr("get_connection_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -306,8 +367,11 @@ func  (me *SceneState) GetConnectionBinds(idx int64, ) Array {
   methodNameV := StringNameFromStr("get_connection_binds")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 663333327) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -319,8 +383,11 @@ func  (me *SceneState) GetConnectionUnbinds(idx int64, ) int64 {
   methodNameV := StringNameFromStr("get_connection_unbinds")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()

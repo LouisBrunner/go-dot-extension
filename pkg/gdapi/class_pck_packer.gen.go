@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type PCKPacker struct {
   RefCounted
@@ -51,8 +54,12 @@ func  (me *PCKPacker) PckStart(pck_name String, alignment int64, key String, enc
   methodNameV := StringNameFromStr("pck_start")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 508410629) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pck_name.AsCTypePtr()), gdc.ConstTypePtr(&alignment), gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(&encrypt_directory), }
+  cargs := []gdc.ConstTypePtr{pck_name.AsCTypePtr(), gdc.ConstTypePtr(&alignment) , key.AsCTypePtr(), gdc.ConstTypePtr(&encrypt_directory) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&alignment)
+  pinner.Pin(&encrypt_directory)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -64,8 +71,11 @@ func  (me *PCKPacker) AddFile(pck_path String, source_path String, encrypt bool,
   methodNameV := StringNameFromStr("add_file")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2215643711) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pck_path.AsCTypePtr()), gdc.ConstTypePtr(source_path.AsCTypePtr()), gdc.ConstTypePtr(&encrypt), }
+  cargs := []gdc.ConstTypePtr{pck_path.AsCTypePtr(), source_path.AsCTypePtr(), gdc.ConstTypePtr(&encrypt) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&encrypt)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -77,8 +87,11 @@ func  (me *PCKPacker) Flush(verbose bool, ) Error {
   methodNameV := StringNameFromStr("flush")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1633102583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&verbose), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&verbose) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&verbose)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret

@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type OpenXRInteractionProfileMetadata struct {
   Object
@@ -51,7 +54,9 @@ func  (me *OpenXRInteractionProfileMetadata) RegisterProfileRename(old_name Stri
   methodNameV := StringNameFromStr("register_profile_rename")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3186203200) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(old_name.AsCTypePtr()), gdc.ConstTypePtr(new_name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{old_name.AsCTypePtr(), new_name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -63,7 +68,9 @@ func  (me *OpenXRInteractionProfileMetadata) RegisterTopLevelPath(display_name S
   methodNameV := StringNameFromStr("register_top_level_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 254767734) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(display_name.AsCTypePtr()), gdc.ConstTypePtr(openxr_path.AsCTypePtr()), gdc.ConstTypePtr(openxr_extension_name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{display_name.AsCTypePtr(), openxr_path.AsCTypePtr(), openxr_extension_name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -75,7 +82,9 @@ func  (me *OpenXRInteractionProfileMetadata) RegisterInteractionProfile(display_
   methodNameV := StringNameFromStr("register_interaction_profile")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 254767734) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(display_name.AsCTypePtr()), gdc.ConstTypePtr(openxr_path.AsCTypePtr()), gdc.ConstTypePtr(openxr_extension_name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{display_name.AsCTypePtr(), openxr_path.AsCTypePtr(), openxr_extension_name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -87,7 +96,9 @@ func  (me *OpenXRInteractionProfileMetadata) RegisterIoPath(interaction_profile 
   methodNameV := StringNameFromStr("register_io_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3443511926) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(interaction_profile.AsCTypePtr()), gdc.ConstTypePtr(display_name.AsCTypePtr()), gdc.ConstTypePtr(toplevel_path.AsCTypePtr()), gdc.ConstTypePtr(openxr_path.AsCTypePtr()), gdc.ConstTypePtr(openxr_extension_name.AsCTypePtr()), gdc.ConstTypePtr(&action_type), }
+  cargs := []gdc.ConstTypePtr{interaction_profile.AsCTypePtr(), display_name.AsCTypePtr(), toplevel_path.AsCTypePtr(), openxr_path.AsCTypePtr(), openxr_extension_name.AsCTypePtr(), gdc.ConstTypePtr(&action_type) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

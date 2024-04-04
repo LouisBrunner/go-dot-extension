@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type EditorImportPlugin struct {
   ResourceImporter
@@ -51,7 +54,9 @@ func  (me *EditorImportPlugin) AppendImportExternalResource(path String, custom_
   methodNameV := StringNameFromStr("append_import_external_resource")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 320493106) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(custom_options.AsCTypePtr()), gdc.ConstTypePtr(custom_importer.AsCTypePtr()), gdc.ConstTypePtr(generator_parameters.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), custom_options.AsCTypePtr(), custom_importer.AsCTypePtr(), generator_parameters.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))

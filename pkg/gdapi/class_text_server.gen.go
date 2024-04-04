@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type TextServer struct {
   RefCounted
@@ -235,8 +238,11 @@ func  (me *TextServer) HasFeature(feature TextServerFeature, ) bool {
   methodNameV := StringNameFromStr("has_feature")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3967367083) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&feature)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -249,6 +255,8 @@ func  (me *TextServer) GetName() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -262,6 +270,8 @@ func  (me *TextServer) GetFeatures() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -274,7 +284,9 @@ func  (me *TextServer) LoadSupportData(filename String, ) bool {
   methodNameV := StringNameFromStr("load_support_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2323990056) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(filename.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{filename.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -288,6 +300,8 @@ func  (me *TextServer) GetSupportDataFilename() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -301,6 +315,8 @@ func  (me *TextServer) GetSupportDataInfo() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -313,7 +329,9 @@ func  (me *TextServer) SaveSupportData(filename String, ) bool {
   methodNameV := StringNameFromStr("save_support_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(filename.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{filename.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -326,7 +344,9 @@ func  (me *TextServer) IsLocaleRightToLeft(locale String, ) bool {
   methodNameV := StringNameFromStr("is_locale_right_to_left")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(locale.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{locale.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -339,7 +359,9 @@ func  (me *TextServer) NameToTag(name String, ) int64 {
   methodNameV := StringNameFromStr("name_to_tag")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1321353865) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -352,8 +374,11 @@ func  (me *TextServer) TagToName(tag int64, ) String {
   methodNameV := StringNameFromStr("tag_to_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tag), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tag) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&tag)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -365,7 +390,9 @@ func  (me *TextServer) Has(rid RID, ) bool {
   methodNameV := StringNameFromStr("has")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3521089500) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -378,7 +405,9 @@ func  (me *TextServer) FreeRid(rid RID, )  {
   methodNameV := StringNameFromStr("free_rid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -391,6 +420,8 @@ func  (me *TextServer) CreateFont() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -403,7 +434,9 @@ func  (me *TextServer) CreateFontLinkedVariation(font_rid RID, ) RID {
   methodNameV := StringNameFromStr("create_font_linked_variation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 41030802) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -416,7 +449,9 @@ func  (me *TextServer) FontSetData(font_rid RID, data PackedByteArray, )  {
   methodNameV := StringNameFromStr("font_set_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1355495400) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(data.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), data.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -428,7 +463,9 @@ func  (me *TextServer) FontSetFaceIndex(font_rid RID, face_index int64, )  {
   methodNameV := StringNameFromStr("font_set_face_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&face_index), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&face_index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -440,7 +477,9 @@ func  (me *TextServer) FontGetFaceIndex(font_rid RID, ) int64 {
   methodNameV := StringNameFromStr("font_get_face_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -453,7 +492,9 @@ func  (me *TextServer) FontGetFaceCount(font_rid RID, ) int64 {
   methodNameV := StringNameFromStr("font_get_face_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -466,7 +507,9 @@ func  (me *TextServer) FontSetStyle(font_rid RID, style TextServerFontStyle, )  
   methodNameV := StringNameFromStr("font_set_style")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 898466325) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&style), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&style) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -478,7 +521,9 @@ func  (me *TextServer) FontGetStyle(font_rid RID, ) TextServerFontStyle {
   methodNameV := StringNameFromStr("font_get_style")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3082502592) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret TextServerFontStyle
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -491,7 +536,9 @@ func  (me *TextServer) FontSetName(font_rid RID, name String, )  {
   methodNameV := StringNameFromStr("font_set_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2726140452) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -503,7 +550,9 @@ func  (me *TextServer) FontGetName(font_rid RID, ) String {
   methodNameV := StringNameFromStr("font_get_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 642473191) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -516,7 +565,9 @@ func  (me *TextServer) FontGetOtNameStrings(font_rid RID, ) Dictionary {
   methodNameV := StringNameFromStr("font_get_ot_name_strings")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1882737106) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -529,7 +580,9 @@ func  (me *TextServer) FontSetStyleName(font_rid RID, name String, )  {
   methodNameV := StringNameFromStr("font_set_style_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2726140452) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -541,7 +594,9 @@ func  (me *TextServer) FontGetStyleName(font_rid RID, ) String {
   methodNameV := StringNameFromStr("font_get_style_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 642473191) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -554,7 +609,9 @@ func  (me *TextServer) FontSetWeight(font_rid RID, weight int64, )  {
   methodNameV := StringNameFromStr("font_set_weight")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&weight), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&weight) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -566,7 +623,9 @@ func  (me *TextServer) FontGetWeight(font_rid RID, ) int64 {
   methodNameV := StringNameFromStr("font_get_weight")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -579,7 +638,9 @@ func  (me *TextServer) FontSetStretch(font_rid RID, weight int64, )  {
   methodNameV := StringNameFromStr("font_set_stretch")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&weight), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&weight) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -591,7 +652,9 @@ func  (me *TextServer) FontGetStretch(font_rid RID, ) int64 {
   methodNameV := StringNameFromStr("font_get_stretch")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -604,7 +667,9 @@ func  (me *TextServer) FontSetAntialiasing(font_rid RID, antialiasing TextServer
   methodNameV := StringNameFromStr("font_set_antialiasing")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 958337235) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&antialiasing), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&antialiasing) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -616,7 +681,9 @@ func  (me *TextServer) FontGetAntialiasing(font_rid RID, ) TextServerFontAntiali
   methodNameV := StringNameFromStr("font_get_antialiasing")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3389420495) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret TextServerFontAntialiasing
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -629,7 +696,9 @@ func  (me *TextServer) FontSetGenerateMipmaps(font_rid RID, generate_mipmaps boo
   methodNameV := StringNameFromStr("font_set_generate_mipmaps")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&generate_mipmaps), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&generate_mipmaps) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -641,7 +710,9 @@ func  (me *TextServer) FontGetGenerateMipmaps(font_rid RID, ) bool {
   methodNameV := StringNameFromStr("font_get_generate_mipmaps")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -654,7 +725,9 @@ func  (me *TextServer) FontSetMultichannelSignedDistanceField(font_rid RID, msdf
   methodNameV := StringNameFromStr("font_set_multichannel_signed_distance_field")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&msdf), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&msdf) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -666,7 +739,9 @@ func  (me *TextServer) FontIsMultichannelSignedDistanceField(font_rid RID, ) boo
   methodNameV := StringNameFromStr("font_is_multichannel_signed_distance_field")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -679,7 +754,9 @@ func  (me *TextServer) FontSetMsdfPixelRange(font_rid RID, msdf_pixel_range int6
   methodNameV := StringNameFromStr("font_set_msdf_pixel_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&msdf_pixel_range), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&msdf_pixel_range) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -691,7 +768,9 @@ func  (me *TextServer) FontGetMsdfPixelRange(font_rid RID, ) int64 {
   methodNameV := StringNameFromStr("font_get_msdf_pixel_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -704,7 +783,9 @@ func  (me *TextServer) FontSetMsdfSize(font_rid RID, msdf_size int64, )  {
   methodNameV := StringNameFromStr("font_set_msdf_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&msdf_size), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&msdf_size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -716,7 +797,9 @@ func  (me *TextServer) FontGetMsdfSize(font_rid RID, ) int64 {
   methodNameV := StringNameFromStr("font_get_msdf_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -729,7 +812,9 @@ func  (me *TextServer) FontSetFixedSize(font_rid RID, fixed_size int64, )  {
   methodNameV := StringNameFromStr("font_set_fixed_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&fixed_size), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&fixed_size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -741,7 +826,9 @@ func  (me *TextServer) FontGetFixedSize(font_rid RID, ) int64 {
   methodNameV := StringNameFromStr("font_get_fixed_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -754,7 +841,9 @@ func  (me *TextServer) FontSetFixedSizeScaleMode(font_rid RID, fixed_size_scale_
   methodNameV := StringNameFromStr("font_set_fixed_size_scale_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1029390307) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&fixed_size_scale_mode), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&fixed_size_scale_mode) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -766,7 +855,9 @@ func  (me *TextServer) FontGetFixedSizeScaleMode(font_rid RID, ) TextServerFixed
   methodNameV := StringNameFromStr("font_get_fixed_size_scale_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4113120379) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret TextServerFixedSizeScaleMode
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -779,7 +870,9 @@ func  (me *TextServer) FontSetAllowSystemFallback(font_rid RID, allow_system_fal
   methodNameV := StringNameFromStr("font_set_allow_system_fallback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&allow_system_fallback), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&allow_system_fallback) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -791,7 +884,9 @@ func  (me *TextServer) FontIsAllowSystemFallback(font_rid RID, ) bool {
   methodNameV := StringNameFromStr("font_is_allow_system_fallback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -804,7 +899,9 @@ func  (me *TextServer) FontSetForceAutohinter(font_rid RID, force_autohinter boo
   methodNameV := StringNameFromStr("font_set_force_autohinter")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&force_autohinter), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&force_autohinter) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -816,7 +913,9 @@ func  (me *TextServer) FontIsForceAutohinter(font_rid RID, ) bool {
   methodNameV := StringNameFromStr("font_is_force_autohinter")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -829,7 +928,9 @@ func  (me *TextServer) FontSetHinting(font_rid RID, hinting TextServerHinting, )
   methodNameV := StringNameFromStr("font_set_hinting")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1520010864) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&hinting), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&hinting) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -841,7 +942,9 @@ func  (me *TextServer) FontGetHinting(font_rid RID, ) TextServerHinting {
   methodNameV := StringNameFromStr("font_get_hinting")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3971592737) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret TextServerHinting
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -854,7 +957,9 @@ func  (me *TextServer) FontSetSubpixelPositioning(font_rid RID, subpixel_positio
   methodNameV := StringNameFromStr("font_set_subpixel_positioning")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3830459669) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&subpixel_positioning), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&subpixel_positioning) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -866,7 +971,9 @@ func  (me *TextServer) FontGetSubpixelPositioning(font_rid RID, ) TextServerSubp
   methodNameV := StringNameFromStr("font_get_subpixel_positioning")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2752233671) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret TextServerSubpixelPositioning
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -879,7 +986,9 @@ func  (me *TextServer) FontSetEmbolden(font_rid RID, strength float64, )  {
   methodNameV := StringNameFromStr("font_set_embolden")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&strength), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&strength) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -891,7 +1000,9 @@ func  (me *TextServer) FontGetEmbolden(font_rid RID, ) float64 {
   methodNameV := StringNameFromStr("font_get_embolden")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -904,7 +1015,9 @@ func  (me *TextServer) FontSetSpacing(font_rid RID, spacing TextServerSpacingTyp
   methodNameV := StringNameFromStr("font_set_spacing")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1307259930) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&spacing), gdc.ConstTypePtr(&value), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&spacing) , gdc.ConstTypePtr(&value) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -916,8 +1029,11 @@ func  (me *TextServer) FontGetSpacing(font_rid RID, spacing TextServerSpacingTyp
   methodNameV := StringNameFromStr("font_get_spacing")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1213653558) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&spacing), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&spacing) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&spacing)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -929,7 +1045,9 @@ func  (me *TextServer) FontSetTransform(font_rid RID, transform Transform2D, )  
   methodNameV := StringNameFromStr("font_set_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1246044741) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(transform.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), transform.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -941,7 +1059,9 @@ func  (me *TextServer) FontGetTransform(font_rid RID, ) Transform2D {
   methodNameV := StringNameFromStr("font_get_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 213527486) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTransform2D()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -954,7 +1074,9 @@ func  (me *TextServer) FontSetVariationCoordinates(font_rid RID, variation_coord
   methodNameV := StringNameFromStr("font_set_variation_coordinates")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1217542888) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(variation_coordinates.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), variation_coordinates.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -966,7 +1088,9 @@ func  (me *TextServer) FontGetVariationCoordinates(font_rid RID, ) Dictionary {
   methodNameV := StringNameFromStr("font_get_variation_coordinates")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1882737106) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -979,7 +1103,9 @@ func  (me *TextServer) FontSetOversampling(font_rid RID, oversampling float64, )
   methodNameV := StringNameFromStr("font_set_oversampling")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&oversampling), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&oversampling) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -991,7 +1117,9 @@ func  (me *TextServer) FontGetOversampling(font_rid RID, ) float64 {
   methodNameV := StringNameFromStr("font_get_oversampling")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1004,7 +1132,9 @@ func  (me *TextServer) FontGetSizeCacheList(font_rid RID, ) []Vector2i {
   methodNameV := StringNameFromStr("font_get_size_cache_list")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2684255073) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -1018,7 +1148,9 @@ func  (me *TextServer) FontClearSizeCache(font_rid RID, )  {
   methodNameV := StringNameFromStr("font_clear_size_cache")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1030,7 +1162,9 @@ func  (me *TextServer) FontRemoveSizeCache(font_rid RID, size Vector2i, )  {
   methodNameV := StringNameFromStr("font_remove_size_cache")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2450610377) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1042,7 +1176,9 @@ func  (me *TextServer) FontSetAscent(font_rid RID, size int64, ascent float64, )
   methodNameV := StringNameFromStr("font_set_ascent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1892459533) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&ascent), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&ascent) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1054,8 +1190,11 @@ func  (me *TextServer) FontGetAscent(font_rid RID, size int64, ) float64 {
   methodNameV := StringNameFromStr("font_get_ascent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 755457166) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1067,7 +1206,9 @@ func  (me *TextServer) FontSetDescent(font_rid RID, size int64, descent float64,
   methodNameV := StringNameFromStr("font_set_descent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1892459533) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&descent), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&descent) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1079,8 +1220,11 @@ func  (me *TextServer) FontGetDescent(font_rid RID, size int64, ) float64 {
   methodNameV := StringNameFromStr("font_get_descent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 755457166) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1092,7 +1236,9 @@ func  (me *TextServer) FontSetUnderlinePosition(font_rid RID, size int64, underl
   methodNameV := StringNameFromStr("font_set_underline_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1892459533) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&underline_position), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&underline_position) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1104,8 +1250,11 @@ func  (me *TextServer) FontGetUnderlinePosition(font_rid RID, size int64, ) floa
   methodNameV := StringNameFromStr("font_get_underline_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 755457166) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1117,7 +1266,9 @@ func  (me *TextServer) FontSetUnderlineThickness(font_rid RID, size int64, under
   methodNameV := StringNameFromStr("font_set_underline_thickness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1892459533) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&underline_thickness), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&underline_thickness) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1129,8 +1280,11 @@ func  (me *TextServer) FontGetUnderlineThickness(font_rid RID, size int64, ) flo
   methodNameV := StringNameFromStr("font_get_underline_thickness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 755457166) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1142,7 +1296,9 @@ func  (me *TextServer) FontSetScale(font_rid RID, size int64, scale float64, )  
   methodNameV := StringNameFromStr("font_set_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1892459533) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&scale), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&scale) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1154,8 +1310,11 @@ func  (me *TextServer) FontGetScale(font_rid RID, size int64, ) float64 {
   methodNameV := StringNameFromStr("font_get_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 755457166) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1167,7 +1326,9 @@ func  (me *TextServer) FontGetTextureCount(font_rid RID, size Vector2i, ) int64 
   methodNameV := StringNameFromStr("font_get_texture_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1311001310) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1180,7 +1341,9 @@ func  (me *TextServer) FontClearTextures(font_rid RID, size Vector2i, )  {
   methodNameV := StringNameFromStr("font_clear_textures")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2450610377) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1192,7 +1355,9 @@ func  (me *TextServer) FontRemoveTexture(font_rid RID, size Vector2i, texture_in
   methodNameV := StringNameFromStr("font_remove_texture")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3810512262) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&texture_index), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&texture_index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1204,7 +1369,9 @@ func  (me *TextServer) FontSetTextureImage(font_rid RID, size Vector2i, texture_
   methodNameV := StringNameFromStr("font_set_texture_image")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2354485091) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&texture_index), gdc.ConstTypePtr(image.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&texture_index) , image.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1216,8 +1383,11 @@ func  (me *TextServer) FontGetTextureImage(font_rid RID, size Vector2i, texture_
   methodNameV := StringNameFromStr("font_get_texture_image")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2451761155) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&texture_index), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&texture_index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewImage()
+  pinner.Pin(&texture_index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1229,7 +1399,9 @@ func  (me *TextServer) FontSetTextureOffsets(font_rid RID, size Vector2i, textur
   methodNameV := StringNameFromStr("font_set_texture_offsets")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3005398047) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&texture_index), gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&texture_index) , offset.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1241,8 +1413,11 @@ func  (me *TextServer) FontGetTextureOffsets(font_rid RID, size Vector2i, textur
   methodNameV := StringNameFromStr("font_get_texture_offsets")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3420028887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&texture_index), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&texture_index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
+  pinner.Pin(&texture_index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1254,7 +1429,9 @@ func  (me *TextServer) FontGetGlyphList(font_rid RID, size Vector2i, ) PackedInt
   methodNameV := StringNameFromStr("font_get_glyph_list")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 46086620) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1267,7 +1444,9 @@ func  (me *TextServer) FontClearGlyphs(font_rid RID, size Vector2i, )  {
   methodNameV := StringNameFromStr("font_clear_glyphs")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2450610377) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1279,7 +1458,9 @@ func  (me *TextServer) FontRemoveGlyph(font_rid RID, size Vector2i, glyph int64,
   methodNameV := StringNameFromStr("font_remove_glyph")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3810512262) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&glyph), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&glyph) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1291,8 +1472,12 @@ func  (me *TextServer) FontGetGlyphAdvance(font_rid RID, size int64, glyph int64
   methodNameV := StringNameFromStr("font_get_glyph_advance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2555689501) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&glyph), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&glyph) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&size)
+  pinner.Pin(&glyph)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1304,7 +1489,9 @@ func  (me *TextServer) FontSetGlyphAdvance(font_rid RID, size int64, glyph int64
   methodNameV := StringNameFromStr("font_set_glyph_advance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3219397315) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&glyph), gdc.ConstTypePtr(advance.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&glyph) , advance.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1316,8 +1503,11 @@ func  (me *TextServer) FontGetGlyphOffset(font_rid RID, size Vector2i, glyph int
   methodNameV := StringNameFromStr("font_get_glyph_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 513728628) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&glyph), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&glyph) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&glyph)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1329,7 +1519,9 @@ func  (me *TextServer) FontSetGlyphOffset(font_rid RID, size Vector2i, glyph int
   methodNameV := StringNameFromStr("font_set_glyph_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1812632090) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&glyph), gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&glyph) , offset.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1341,8 +1533,11 @@ func  (me *TextServer) FontGetGlyphSize(font_rid RID, size Vector2i, glyph int64
   methodNameV := StringNameFromStr("font_get_glyph_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 513728628) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&glyph), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&glyph) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&glyph)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1354,7 +1549,9 @@ func  (me *TextServer) FontSetGlyphSize(font_rid RID, size Vector2i, glyph int64
   methodNameV := StringNameFromStr("font_set_glyph_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1812632090) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&glyph), gdc.ConstTypePtr(gl_size.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&glyph) , gl_size.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1366,8 +1563,11 @@ func  (me *TextServer) FontGetGlyphUvRect(font_rid RID, size Vector2i, glyph int
   methodNameV := StringNameFromStr("font_get_glyph_uv_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2274268786) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&glyph), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&glyph) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRect2()
+  pinner.Pin(&glyph)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1379,7 +1579,9 @@ func  (me *TextServer) FontSetGlyphUvRect(font_rid RID, size Vector2i, glyph int
   methodNameV := StringNameFromStr("font_set_glyph_uv_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1973324081) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&glyph), gdc.ConstTypePtr(uv_rect.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&glyph) , uv_rect.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1391,8 +1593,11 @@ func  (me *TextServer) FontGetGlyphTextureIdx(font_rid RID, size Vector2i, glyph
   methodNameV := StringNameFromStr("font_get_glyph_texture_idx")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4292800474) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&glyph), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&glyph) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&glyph)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1404,7 +1609,9 @@ func  (me *TextServer) FontSetGlyphTextureIdx(font_rid RID, size Vector2i, glyph
   methodNameV := StringNameFromStr("font_set_glyph_texture_idx")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4254580980) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&glyph), gdc.ConstTypePtr(&texture_idx), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&glyph) , gdc.ConstTypePtr(&texture_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1416,8 +1623,11 @@ func  (me *TextServer) FontGetGlyphTextureRid(font_rid RID, size Vector2i, glyph
   methodNameV := StringNameFromStr("font_get_glyph_texture_rid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1451696141) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&glyph), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&glyph) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
+  pinner.Pin(&glyph)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1429,8 +1639,11 @@ func  (me *TextServer) FontGetGlyphTextureSize(font_rid RID, size Vector2i, glyp
   methodNameV := StringNameFromStr("font_get_glyph_texture_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 513728628) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&glyph), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&glyph) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&glyph)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1442,8 +1655,12 @@ func  (me *TextServer) FontGetGlyphContours(font RID, size int64, index int64, )
   methodNameV := StringNameFromStr("font_get_glyph_contours")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2903964473) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{font.AsCTypePtr(), gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
+  pinner.Pin(&size)
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1455,9 +1672,12 @@ func  (me *TextServer) FontGetKerningList(font_rid RID, size int64, ) []Vector2i
   methodNameV := StringNameFromStr("font_get_kerning_list")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1778388067) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
+  pinner.Pin(&size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ConvertArrayToSlice[Vector2i](ret)
@@ -1469,7 +1689,9 @@ func  (me *TextServer) FontClearKerningMap(font_rid RID, size int64, )  {
   methodNameV := StringNameFromStr("font_clear_kerning_map")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1481,7 +1703,9 @@ func  (me *TextServer) FontRemoveKerning(font_rid RID, size int64, glyph_pair Ve
   methodNameV := StringNameFromStr("font_remove_kerning")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2141860016) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(glyph_pair.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , glyph_pair.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1493,7 +1717,9 @@ func  (me *TextServer) FontSetKerning(font_rid RID, size int64, glyph_pair Vecto
   methodNameV := StringNameFromStr("font_set_kerning")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3630965883) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(glyph_pair.AsCTypePtr()), gdc.ConstTypePtr(kerning.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , glyph_pair.AsCTypePtr(), kerning.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1505,8 +1731,11 @@ func  (me *TextServer) FontGetKerning(font_rid RID, size int64, glyph_pair Vecto
   methodNameV := StringNameFromStr("font_get_kerning")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1019980169) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(glyph_pair.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , glyph_pair.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1518,8 +1747,13 @@ func  (me *TextServer) FontGetGlyphIndex(font_rid RID, size int64, char int64, v
   methodNameV := StringNameFromStr("font_get_glyph_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1765635060) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&char), gdc.ConstTypePtr(&variation_selector), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&char) , gdc.ConstTypePtr(&variation_selector) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&size)
+  pinner.Pin(&char)
+  pinner.Pin(&variation_selector)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1531,8 +1765,12 @@ func  (me *TextServer) FontGetCharFromGlyphIndex(font_rid RID, size int64, glyph
   methodNameV := StringNameFromStr("font_get_char_from_glyph_index")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2156738276) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&glyph_index), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&glyph_index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&size)
+  pinner.Pin(&glyph_index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1544,8 +1782,11 @@ func  (me *TextServer) FontHasChar(font_rid RID, char int64, ) bool {
   methodNameV := StringNameFromStr("font_has_char")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3120086654) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(&char), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&char) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&char)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1557,7 +1798,9 @@ func  (me *TextServer) FontGetSupportedChars(font_rid RID, ) String {
   methodNameV := StringNameFromStr("font_get_supported_chars")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 642473191) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1570,7 +1813,9 @@ func  (me *TextServer) FontRenderRange(font_rid RID, size Vector2i, start int64,
   methodNameV := StringNameFromStr("font_render_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4254580980) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&start), gdc.ConstTypePtr(&end), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&start) , gdc.ConstTypePtr(&end) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1582,7 +1827,9 @@ func  (me *TextServer) FontRenderGlyph(font_rid RID, size Vector2i, index int64,
   methodNameV := StringNameFromStr("font_render_glyph")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3810512262) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1594,7 +1841,9 @@ func  (me *TextServer) FontDrawGlyph(font_rid RID, canvas RID, size int64, pos V
   methodNameV := StringNameFromStr("font_draw_glyph")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1339057948) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(canvas.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&index), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), canvas.AsCTypePtr(), gdc.ConstTypePtr(&size) , pos.AsCTypePtr(), gdc.ConstTypePtr(&index) , color.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1606,7 +1855,9 @@ func  (me *TextServer) FontDrawGlyphOutline(font_rid RID, canvas RID, size int64
   methodNameV := StringNameFromStr("font_draw_glyph_outline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2626165733) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(canvas.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&outline_size), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&index), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), canvas.AsCTypePtr(), gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&outline_size) , pos.AsCTypePtr(), gdc.ConstTypePtr(&index) , color.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1618,7 +1869,9 @@ func  (me *TextServer) FontIsLanguageSupported(font_rid RID, language String, ) 
   methodNameV := StringNameFromStr("font_is_language_supported")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3199320846) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), language.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1631,7 +1884,9 @@ func  (me *TextServer) FontSetLanguageSupportOverride(font_rid RID, language Str
   methodNameV := StringNameFromStr("font_set_language_support_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2313957094) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), gdc.ConstTypePtr(&supported), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), language.AsCTypePtr(), gdc.ConstTypePtr(&supported) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1643,7 +1898,9 @@ func  (me *TextServer) FontGetLanguageSupportOverride(font_rid RID, language Str
   methodNameV := StringNameFromStr("font_get_language_support_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2829184646) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), language.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1656,7 +1913,9 @@ func  (me *TextServer) FontRemoveLanguageSupportOverride(font_rid RID, language 
   methodNameV := StringNameFromStr("font_remove_language_support_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2726140452) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), language.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1668,7 +1927,9 @@ func  (me *TextServer) FontGetLanguageSupportOverrides(font_rid RID, ) PackedStr
   methodNameV := StringNameFromStr("font_get_language_support_overrides")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2801473409) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedStringArray()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1681,7 +1942,9 @@ func  (me *TextServer) FontIsScriptSupported(font_rid RID, script String, ) bool
   methodNameV := StringNameFromStr("font_is_script_supported")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3199320846) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(script.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), script.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1694,7 +1957,9 @@ func  (me *TextServer) FontSetScriptSupportOverride(font_rid RID, script String,
   methodNameV := StringNameFromStr("font_set_script_support_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2313957094) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(script.AsCTypePtr()), gdc.ConstTypePtr(&supported), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), script.AsCTypePtr(), gdc.ConstTypePtr(&supported) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1706,7 +1971,9 @@ func  (me *TextServer) FontGetScriptSupportOverride(font_rid RID, script String,
   methodNameV := StringNameFromStr("font_get_script_support_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2829184646) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(script.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), script.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1719,7 +1986,9 @@ func  (me *TextServer) FontRemoveScriptSupportOverride(font_rid RID, script Stri
   methodNameV := StringNameFromStr("font_remove_script_support_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2726140452) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(script.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), script.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1731,7 +2000,9 @@ func  (me *TextServer) FontGetScriptSupportOverrides(font_rid RID, ) PackedStrin
   methodNameV := StringNameFromStr("font_get_script_support_overrides")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2801473409) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedStringArray()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1744,7 +2015,9 @@ func  (me *TextServer) FontSetOpentypeFeatureOverrides(font_rid RID, overrides D
   methodNameV := StringNameFromStr("font_set_opentype_feature_overrides")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1217542888) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), gdc.ConstTypePtr(overrides.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), overrides.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1756,7 +2029,9 @@ func  (me *TextServer) FontGetOpentypeFeatureOverrides(font_rid RID, ) Dictionar
   methodNameV := StringNameFromStr("font_get_opentype_feature_overrides")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1882737106) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1769,7 +2044,9 @@ func  (me *TextServer) FontSupportedFeatureList(font_rid RID, ) Dictionary {
   methodNameV := StringNameFromStr("font_supported_feature_list")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1882737106) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1782,7 +2059,9 @@ func  (me *TextServer) FontSupportedVariationList(font_rid RID, ) Dictionary {
   methodNameV := StringNameFromStr("font_supported_variation_list")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1882737106) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(font_rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1796,6 +2075,8 @@ func  (me *TextServer) FontGetGlobalOversampling() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1808,7 +2089,9 @@ func  (me *TextServer) FontSetGlobalOversampling(oversampling float64, )  {
   methodNameV := StringNameFromStr("font_set_global_oversampling")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&oversampling), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&oversampling) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1820,8 +2103,12 @@ func  (me *TextServer) GetHexCodeBoxSize(size int64, index int64, ) Vector2 {
   methodNameV := StringNameFromStr("get_hex_code_box_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3016396712) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size) , gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&size)
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1833,7 +2120,9 @@ func  (me *TextServer) DrawHexCodeBox(canvas RID, size int64, pos Vector2, index
   methodNameV := StringNameFromStr("draw_hex_code_box")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1602046441) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas.AsCTypePtr()), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&index), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{canvas.AsCTypePtr(), gdc.ConstTypePtr(&size) , pos.AsCTypePtr(), gdc.ConstTypePtr(&index) , color.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1845,8 +2134,12 @@ func  (me *TextServer) CreateShapedText(direction TextServerDirection, orientati
   methodNameV := StringNameFromStr("create_shaped_text")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1231398698) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&direction), gdc.ConstTypePtr(&orientation), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&direction) , gdc.ConstTypePtr(&orientation) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
+  pinner.Pin(&direction)
+  pinner.Pin(&orientation)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1858,7 +2151,9 @@ func  (me *TextServer) ShapedTextClear(rid RID, )  {
   methodNameV := StringNameFromStr("shaped_text_clear")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1870,7 +2165,9 @@ func  (me *TextServer) ShapedTextSetDirection(shaped RID, direction TextServerDi
   methodNameV := StringNameFromStr("shaped_text_set_direction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1551430183) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&direction), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&direction) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1882,7 +2179,9 @@ func  (me *TextServer) ShapedTextGetDirection(shaped RID, ) TextServerDirection 
   methodNameV := StringNameFromStr("shaped_text_get_direction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3065904362) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret TextServerDirection
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -1895,7 +2194,9 @@ func  (me *TextServer) ShapedTextGetInferredDirection(shaped RID, ) TextServerDi
   methodNameV := StringNameFromStr("shaped_text_get_inferred_direction")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3065904362) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret TextServerDirection
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -1908,7 +2209,9 @@ func  (me *TextServer) ShapedTextSetBidiOverride(shaped RID, override Array, )  
   methodNameV := StringNameFromStr("shaped_text_set_bidi_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 684822712) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(override.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), override.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1920,7 +2223,9 @@ func  (me *TextServer) ShapedTextSetCustomPunctuation(shaped RID, punct String, 
   methodNameV := StringNameFromStr("shaped_text_set_custom_punctuation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2726140452) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(punct.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), punct.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1932,7 +2237,9 @@ func  (me *TextServer) ShapedTextGetCustomPunctuation(shaped RID, ) String {
   methodNameV := StringNameFromStr("shaped_text_get_custom_punctuation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 642473191) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1945,7 +2252,9 @@ func  (me *TextServer) ShapedTextSetOrientation(shaped RID, orientation TextServ
   methodNameV := StringNameFromStr("shaped_text_set_orientation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3019609126) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&orientation), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&orientation) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1957,7 +2266,9 @@ func  (me *TextServer) ShapedTextGetOrientation(shaped RID, ) TextServerOrientat
   methodNameV := StringNameFromStr("shaped_text_get_orientation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3142708106) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret TextServerOrientation
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -1970,7 +2281,9 @@ func  (me *TextServer) ShapedTextSetPreserveInvalid(shaped RID, enabled bool, ) 
   methodNameV := StringNameFromStr("shaped_text_set_preserve_invalid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1982,7 +2295,9 @@ func  (me *TextServer) ShapedTextGetPreserveInvalid(shaped RID, ) bool {
   methodNameV := StringNameFromStr("shaped_text_get_preserve_invalid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1995,7 +2310,9 @@ func  (me *TextServer) ShapedTextSetPreserveControl(shaped RID, enabled bool, ) 
   methodNameV := StringNameFromStr("shaped_text_set_preserve_control")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2007,7 +2324,9 @@ func  (me *TextServer) ShapedTextGetPreserveControl(shaped RID, ) bool {
   methodNameV := StringNameFromStr("shaped_text_get_preserve_control")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2020,7 +2339,9 @@ func  (me *TextServer) ShapedTextSetSpacing(shaped RID, spacing TextServerSpacin
   methodNameV := StringNameFromStr("shaped_text_set_spacing")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1307259930) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&spacing), gdc.ConstTypePtr(&value), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&spacing) , gdc.ConstTypePtr(&value) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2032,8 +2353,11 @@ func  (me *TextServer) ShapedTextGetSpacing(shaped RID, spacing TextServerSpacin
   methodNameV := StringNameFromStr("shaped_text_get_spacing")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1213653558) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&spacing), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&spacing) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&spacing)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2045,8 +2369,12 @@ func  (me *TextServer) ShapedTextAddString(shaped RID, text String, fonts []RID,
   methodNameV := StringNameFromStr("shaped_text_add_string")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 623473029) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(&fonts), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(opentype_features.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), gdc.ConstTypePtr(meta.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), text.AsCTypePtr(), gdc.ConstTypePtr(&fonts) , gdc.ConstTypePtr(&size) , opentype_features.AsCTypePtr(), language.AsCTypePtr(), meta.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&fonts)
+  pinner.Pin(&size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2058,8 +2386,13 @@ func  (me *TextServer) ShapedTextAddObject(shaped RID, key Variant, size Vector2
   methodNameV := StringNameFromStr("shaped_text_add_object")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3664424789) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&inline_align), gdc.ConstTypePtr(&length), gdc.ConstTypePtr(&baseline), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), key.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&inline_align) , gdc.ConstTypePtr(&length) , gdc.ConstTypePtr(&baseline) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&inline_align)
+  pinner.Pin(&length)
+  pinner.Pin(&baseline)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2071,8 +2404,12 @@ func  (me *TextServer) ShapedTextResizeObject(shaped RID, key Variant, size Vect
   methodNameV := StringNameFromStr("shaped_text_resize_object")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 790361552) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&inline_align), gdc.ConstTypePtr(&baseline), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), key.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&inline_align) , gdc.ConstTypePtr(&baseline) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&inline_align)
+  pinner.Pin(&baseline)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2084,7 +2421,9 @@ func  (me *TextServer) ShapedGetSpanCount(shaped RID, ) int64 {
   methodNameV := StringNameFromStr("shaped_get_span_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2097,8 +2436,11 @@ func  (me *TextServer) ShapedGetSpanMeta(shaped RID, index int64, ) Variant {
   methodNameV := StringNameFromStr("shaped_get_span_meta")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4069510997) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2110,7 +2452,9 @@ func  (me *TextServer) ShapedSetSpanUpdateFont(shaped RID, index int64, fonts []
   methodNameV := StringNameFromStr("shaped_set_span_update_font")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2022725822) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&index), gdc.ConstTypePtr(&fonts), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(opentype_features.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&index) , gdc.ConstTypePtr(&fonts) , gdc.ConstTypePtr(&size) , opentype_features.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2122,8 +2466,12 @@ func  (me *TextServer) ShapedTextSubstr(shaped RID, start int64, length int64, )
   methodNameV := StringNameFromStr("shaped_text_substr")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1937682086) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&start), gdc.ConstTypePtr(&length), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&start) , gdc.ConstTypePtr(&length) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
+  pinner.Pin(&start)
+  pinner.Pin(&length)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2135,7 +2483,9 @@ func  (me *TextServer) ShapedTextGetParent(shaped RID, ) RID {
   methodNameV := StringNameFromStr("shaped_text_get_parent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814569979) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2148,8 +2498,12 @@ func  (me *TextServer) ShapedTextFitToWidth(shaped RID, width float64, justifica
   methodNameV := StringNameFromStr("shaped_text_fit_to_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 530670926) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&justification_flags), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&width) , gdc.ConstTypePtr(&justification_flags) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&width)
+  pinner.Pin(&justification_flags)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2161,7 +2515,9 @@ func  (me *TextServer) ShapedTextTabAlign(shaped RID, tab_stops PackedFloat32Arr
   methodNameV := StringNameFromStr("shaped_text_tab_align")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1283669550) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(tab_stops.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), tab_stops.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2174,7 +2530,9 @@ func  (me *TextServer) ShapedTextShape(shaped RID, ) bool {
   methodNameV := StringNameFromStr("shaped_text_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3521089500) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2187,7 +2545,9 @@ func  (me *TextServer) ShapedTextIsReady(shaped RID, ) bool {
   methodNameV := StringNameFromStr("shaped_text_is_ready")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2200,7 +2560,9 @@ func  (me *TextServer) ShapedTextHasVisibleChars(shaped RID, ) bool {
   methodNameV := StringNameFromStr("shaped_text_has_visible_chars")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2213,7 +2575,9 @@ func  (me *TextServer) ShapedTextGetGlyphs(shaped RID, ) []Dictionary {
   methodNameV := StringNameFromStr("shaped_text_get_glyphs")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2684255073) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -2227,7 +2591,9 @@ func  (me *TextServer) ShapedTextSortLogical(shaped RID, ) []Dictionary {
   methodNameV := StringNameFromStr("shaped_text_sort_logical")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2670461153) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -2241,7 +2607,9 @@ func  (me *TextServer) ShapedTextGetGlyphCount(shaped RID, ) int64 {
   methodNameV := StringNameFromStr("shaped_text_get_glyph_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2254,7 +2622,9 @@ func  (me *TextServer) ShapedTextGetRange(shaped RID, ) Vector2i {
   methodNameV := StringNameFromStr("shaped_text_get_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 733700038) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2267,8 +2637,13 @@ func  (me *TextServer) ShapedTextGetLineBreaksAdv(shaped RID, width PackedFloat3
   methodNameV := StringNameFromStr("shaped_text_get_line_breaks_adv")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2376991424) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(width.AsCTypePtr()), gdc.ConstTypePtr(&start), gdc.ConstTypePtr(&once), gdc.ConstTypePtr(&break_flags), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), width.AsCTypePtr(), gdc.ConstTypePtr(&start) , gdc.ConstTypePtr(&once) , gdc.ConstTypePtr(&break_flags) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
+  pinner.Pin(&start)
+  pinner.Pin(&once)
+  pinner.Pin(&break_flags)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2280,8 +2655,13 @@ func  (me *TextServer) ShapedTextGetLineBreaks(shaped RID, width float64, start 
   methodNameV := StringNameFromStr("shaped_text_get_line_breaks")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2651359741) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&start), gdc.ConstTypePtr(&break_flags), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&width) , gdc.ConstTypePtr(&start) , gdc.ConstTypePtr(&break_flags) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
+  pinner.Pin(&width)
+  pinner.Pin(&start)
+  pinner.Pin(&break_flags)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2293,8 +2673,11 @@ func  (me *TextServer) ShapedTextGetWordBreaks(shaped RID, grapheme_flags TextSe
   methodNameV := StringNameFromStr("shaped_text_get_word_breaks")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 185957063) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&grapheme_flags), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&grapheme_flags) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
+  pinner.Pin(&grapheme_flags)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2306,7 +2689,9 @@ func  (me *TextServer) ShapedTextGetTrimPos(shaped RID, ) int64 {
   methodNameV := StringNameFromStr("shaped_text_get_trim_pos")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2319,7 +2704,9 @@ func  (me *TextServer) ShapedTextGetEllipsisPos(shaped RID, ) int64 {
   methodNameV := StringNameFromStr("shaped_text_get_ellipsis_pos")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2332,7 +2719,9 @@ func  (me *TextServer) ShapedTextGetEllipsisGlyphs(shaped RID, ) []Dictionary {
   methodNameV := StringNameFromStr("shaped_text_get_ellipsis_glyphs")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2684255073) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -2346,7 +2735,9 @@ func  (me *TextServer) ShapedTextGetEllipsisGlyphCount(shaped RID, ) int64 {
   methodNameV := StringNameFromStr("shaped_text_get_ellipsis_glyph_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2359,7 +2750,9 @@ func  (me *TextServer) ShapedTextOverrunTrimToWidth(shaped RID, width float64, o
   methodNameV := StringNameFromStr("shaped_text_overrun_trim_to_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2723146520) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&overrun_trim_flags), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&width) , gdc.ConstTypePtr(&overrun_trim_flags) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2371,7 +2764,9 @@ func  (me *TextServer) ShapedTextGetObjects(shaped RID, ) Array {
   methodNameV := StringNameFromStr("shaped_text_get_objects")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2684255073) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2384,7 +2779,9 @@ func  (me *TextServer) ShapedTextGetObjectRect(shaped RID, key Variant, ) Rect2 
   methodNameV := StringNameFromStr("shaped_text_get_object_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 447978354) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(key.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), key.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRect2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2397,7 +2794,9 @@ func  (me *TextServer) ShapedTextGetSize(shaped RID, ) Vector2 {
   methodNameV := StringNameFromStr("shaped_text_get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2440833711) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2410,7 +2809,9 @@ func  (me *TextServer) ShapedTextGetAscent(shaped RID, ) float64 {
   methodNameV := StringNameFromStr("shaped_text_get_ascent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2423,7 +2824,9 @@ func  (me *TextServer) ShapedTextGetDescent(shaped RID, ) float64 {
   methodNameV := StringNameFromStr("shaped_text_get_descent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2436,7 +2839,9 @@ func  (me *TextServer) ShapedTextGetWidth(shaped RID, ) float64 {
   methodNameV := StringNameFromStr("shaped_text_get_width")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2449,7 +2854,9 @@ func  (me *TextServer) ShapedTextGetUnderlinePosition(shaped RID, ) float64 {
   methodNameV := StringNameFromStr("shaped_text_get_underline_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2462,7 +2869,9 @@ func  (me *TextServer) ShapedTextGetUnderlineThickness(shaped RID, ) float64 {
   methodNameV := StringNameFromStr("shaped_text_get_underline_thickness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2475,8 +2884,11 @@ func  (me *TextServer) ShapedTextGetCarets(shaped RID, position int64, ) Diction
   methodNameV := StringNameFromStr("shaped_text_get_carets")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1574219346) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&position), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&position) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
+  pinner.Pin(&position)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2488,8 +2900,12 @@ func  (me *TextServer) ShapedTextGetSelection(shaped RID, start int64, end int64
   methodNameV := StringNameFromStr("shaped_text_get_selection")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3714187733) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&start), gdc.ConstTypePtr(&end), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&start) , gdc.ConstTypePtr(&end) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedVector2Array()
+  pinner.Pin(&start)
+  pinner.Pin(&end)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2501,8 +2917,11 @@ func  (me *TextServer) ShapedTextHitTestGrapheme(shaped RID, coords float64, ) i
   methodNameV := StringNameFromStr("shaped_text_hit_test_grapheme")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3149310417) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&coords), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&coords) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&coords)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2514,8 +2933,11 @@ func  (me *TextServer) ShapedTextHitTestPosition(shaped RID, coords float64, ) i
   methodNameV := StringNameFromStr("shaped_text_hit_test_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3149310417) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&coords), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&coords) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&coords)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2527,8 +2949,11 @@ func  (me *TextServer) ShapedTextGetGraphemeBounds(shaped RID, pos int64, ) Vect
   methodNameV := StringNameFromStr("shaped_text_get_grapheme_bounds")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2546185844) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&pos), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&pos) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&pos)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2540,8 +2965,11 @@ func  (me *TextServer) ShapedTextNextGraphemePos(shaped RID, pos int64, ) int64 
   methodNameV := StringNameFromStr("shaped_text_next_grapheme_pos")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1120910005) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&pos), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&pos) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&pos)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2553,8 +2981,11 @@ func  (me *TextServer) ShapedTextPrevGraphemePos(shaped RID, pos int64, ) int64 
   methodNameV := StringNameFromStr("shaped_text_prev_grapheme_pos")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1120910005) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&pos), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&pos) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&pos)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2566,7 +2997,9 @@ func  (me *TextServer) ShapedTextGetCharacterBreaks(shaped RID, ) PackedInt32Arr
   methodNameV := StringNameFromStr("shaped_text_get_character_breaks")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 788230395) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2579,8 +3012,11 @@ func  (me *TextServer) ShapedTextNextCharacterPos(shaped RID, pos int64, ) int64
   methodNameV := StringNameFromStr("shaped_text_next_character_pos")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1120910005) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&pos), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&pos) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&pos)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2592,8 +3028,11 @@ func  (me *TextServer) ShapedTextPrevCharacterPos(shaped RID, pos int64, ) int64
   methodNameV := StringNameFromStr("shaped_text_prev_character_pos")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1120910005) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&pos), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&pos) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&pos)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2605,8 +3044,11 @@ func  (me *TextServer) ShapedTextClosestCharacterPos(shaped RID, pos int64, ) in
   methodNameV := StringNameFromStr("shaped_text_closest_character_pos")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1120910005) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&pos), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&pos) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&pos)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -2618,7 +3060,9 @@ func  (me *TextServer) ShapedTextDraw(shaped RID, canvas RID, pos Vector2, clip_
   methodNameV := StringNameFromStr("shaped_text_draw")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 880389142) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(canvas.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&clip_l), gdc.ConstTypePtr(&clip_r), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), canvas.AsCTypePtr(), pos.AsCTypePtr(), gdc.ConstTypePtr(&clip_l) , gdc.ConstTypePtr(&clip_r) , color.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2630,7 +3074,9 @@ func  (me *TextServer) ShapedTextDrawOutline(shaped RID, canvas RID, pos Vector2
   methodNameV := StringNameFromStr("shaped_text_draw_outline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2559184194) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(canvas.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&clip_l), gdc.ConstTypePtr(&clip_r), gdc.ConstTypePtr(&outline_size), gdc.ConstTypePtr(color.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), canvas.AsCTypePtr(), pos.AsCTypePtr(), gdc.ConstTypePtr(&clip_l) , gdc.ConstTypePtr(&clip_r) , gdc.ConstTypePtr(&outline_size) , color.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2642,8 +3088,12 @@ func  (me *TextServer) ShapedTextGetDominantDirectionInRange(shaped RID, start i
   methodNameV := StringNameFromStr("shaped_text_get_dominant_direction_in_range")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3326907668) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shaped.AsCTypePtr()), gdc.ConstTypePtr(&start), gdc.ConstTypePtr(&end), }
+  cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&start) , gdc.ConstTypePtr(&end) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret TextServerDirection
+  pinner.Pin(&start)
+  pinner.Pin(&end)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -2655,7 +3105,9 @@ func  (me *TextServer) FormatNumber(number String, language String, ) String {
   methodNameV := StringNameFromStr("format_number")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2664628024) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(number.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{number.AsCTypePtr(), language.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2668,7 +3120,9 @@ func  (me *TextServer) ParseNumber(number String, language String, ) String {
   methodNameV := StringNameFromStr("parse_number")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2664628024) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(number.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{number.AsCTypePtr(), language.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2681,7 +3135,9 @@ func  (me *TextServer) PercentSign(language String, ) String {
   methodNameV := StringNameFromStr("percent_sign")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 993269549) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(language.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{language.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2694,8 +3150,11 @@ func  (me *TextServer) StringGetWordBreaks(string_ String, language String, char
   methodNameV := StringNameFromStr("string_get_word_breaks")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 581857818) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(string_.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), gdc.ConstTypePtr(&chars_per_line), }
+  cargs := []gdc.ConstTypePtr{string_.AsCTypePtr(), language.AsCTypePtr(), gdc.ConstTypePtr(&chars_per_line) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
+  pinner.Pin(&chars_per_line)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2707,7 +3166,9 @@ func  (me *TextServer) StringGetCharacterBreaks(string_ String, language String,
   methodNameV := StringNameFromStr("string_get_character_breaks")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2333794773) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(string_.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{string_.AsCTypePtr(), language.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2720,7 +3181,9 @@ func  (me *TextServer) IsConfusable(string_ String, dict PackedStringArray, ) in
   methodNameV := StringNameFromStr("is_confusable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1433197768) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(string_.AsCTypePtr()), gdc.ConstTypePtr(dict.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{string_.AsCTypePtr(), dict.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2733,7 +3196,9 @@ func  (me *TextServer) SpoofCheck(string_ String, ) bool {
   methodNameV := StringNameFromStr("spoof_check")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(string_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{string_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2746,7 +3211,9 @@ func  (me *TextServer) StripDiacritics(string_ String, ) String {
   methodNameV := StringNameFromStr("strip_diacritics")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3135753539) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(string_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{string_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2759,7 +3226,9 @@ func  (me *TextServer) IsValidIdentifier(string_ String, ) bool {
   methodNameV := StringNameFromStr("is_valid_identifier")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(string_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{string_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2772,7 +3241,9 @@ func  (me *TextServer) StringToUpper(string_ String, language String, ) String {
   methodNameV := StringNameFromStr("string_to_upper")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2664628024) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(string_.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{string_.AsCTypePtr(), language.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2785,7 +3256,9 @@ func  (me *TextServer) StringToLower(string_ String, language String, ) String {
   methodNameV := StringNameFromStr("string_to_lower")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2664628024) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(string_.AsCTypePtr()), gdc.ConstTypePtr(language.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{string_.AsCTypePtr(), language.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2798,9 +3271,12 @@ func  (me *TextServer) ParseStructuredText(parser_type TextServerStructuredTextP
   methodNameV := StringNameFromStr("parse_structured_text")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3310685015) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&parser_type), gdc.ConstTypePtr(args.AsCTypePtr()), gdc.ConstTypePtr(text.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&parser_type) , args.AsCTypePtr(), text.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
+  pinner.Pin(&parser_type)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ConvertArrayToSlice[Vector3i](ret)

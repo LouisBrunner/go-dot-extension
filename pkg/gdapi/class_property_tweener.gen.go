@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type PropertyTweener struct {
   Tweener
@@ -51,7 +54,9 @@ func  (me *PropertyTweener) From(value Variant, ) PropertyTweener {
   methodNameV := StringNameFromStr("from")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4190193059) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(value.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{value.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPropertyTweener()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -65,6 +70,8 @@ func  (me *PropertyTweener) FromCurrent() PropertyTweener {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4279177709) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPropertyTweener()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -78,6 +85,8 @@ func  (me *PropertyTweener) AsRelative() PropertyTweener {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4279177709) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPropertyTweener()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -90,8 +99,11 @@ func  (me *PropertyTweener) SetTrans(trans TweenTransitionType, ) PropertyTweene
   methodNameV := StringNameFromStr("set_trans")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1899107404) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&trans), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&trans) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPropertyTweener()
+  pinner.Pin(&trans)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -103,8 +115,11 @@ func  (me *PropertyTweener) SetEase(ease TweenEaseType, ) PropertyTweener {
   methodNameV := StringNameFromStr("set_ease")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1080455622) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ease), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ease) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPropertyTweener()
+  pinner.Pin(&ease)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -116,8 +131,11 @@ func  (me *PropertyTweener) SetDelay(delay float64, ) PropertyTweener {
   methodNameV := StringNameFromStr("set_delay")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2171559331) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delay), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delay) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPropertyTweener()
+  pinner.Pin(&delay)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret

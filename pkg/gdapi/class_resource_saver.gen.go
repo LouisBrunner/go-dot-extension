@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type ResourceSaver struct {
   Object
@@ -63,8 +66,11 @@ func  (me *ResourceSaver) Save(resource Resource, path String, flags ResourceSav
   methodNameV := StringNameFromStr("save")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2983274697) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(resource.AsCTypePtr()), gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&flags), }
+  cargs := []gdc.ConstTypePtr{resource.AsCTypePtr(), path.AsCTypePtr(), gdc.ConstTypePtr(&flags) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&flags)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -76,7 +82,9 @@ func  (me *ResourceSaver) GetRecognizedExtensions(type_ Resource, ) PackedString
   methodNameV := StringNameFromStr("get_recognized_extensions")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4223597960) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(type_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{type_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedStringArray()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -89,7 +97,9 @@ func  (me *ResourceSaver) AddResourceFormatSaver(format_saver ResourceFormatSave
   methodNameV := StringNameFromStr("add_resource_format_saver")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 362894272) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(format_saver.AsCTypePtr()), gdc.ConstTypePtr(&at_front), }
+  cargs := []gdc.ConstTypePtr{format_saver.AsCTypePtr(), gdc.ConstTypePtr(&at_front) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -101,7 +111,9 @@ func  (me *ResourceSaver) RemoveResourceFormatSaver(format_saver ResourceFormatS
   methodNameV := StringNameFromStr("remove_resource_format_saver")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3373026878) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(format_saver.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{format_saver.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

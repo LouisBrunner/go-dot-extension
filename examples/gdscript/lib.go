@@ -20,6 +20,7 @@ type MyNode2D struct {
 
 func (n *MyNode2D) Move(vec gdapi.Vector2) {
 	n.Node2D.SetPosition(vec.MultiplyInt(int64(n.Speed)))
+	n.printSecret()
 }
 
 func (n *MyNode2D) X_Ready() {
@@ -30,7 +31,7 @@ func (n *MyNode2D) X_Ready() {
 func (n *MyNode2D) Monitor(other gdapi.CanvasItem) {
 	var sub gdapi.CanvasItemDrawSignalFn
 	sub = func() {
-		fmt.Println("Other has been drawed")
+		fmt.Println("Other has been drawn")
 		other.DisconnectDraw(n.subs, sub)
 	}
 	other.ConnectDraw(n.subs, sub)

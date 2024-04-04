@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type SceneTree struct {
   MainLoop
@@ -60,6 +63,8 @@ func  (me *SceneTree) GetRoot() Window {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1757182445) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewWindow()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -72,7 +77,9 @@ func  (me *SceneTree) HasGroup(name StringName, ) bool {
   methodNameV := StringNameFromStr("has_group")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -86,6 +93,8 @@ func  (me *SceneTree) IsAutoAcceptQuit() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -98,7 +107,9 @@ func  (me *SceneTree) SetAutoAcceptQuit(enabled bool, )  {
   methodNameV := StringNameFromStr("set_auto_accept_quit")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -111,6 +122,8 @@ func  (me *SceneTree) IsQuitOnGoBack() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -123,7 +136,9 @@ func  (me *SceneTree) SetQuitOnGoBack(enabled bool, )  {
   methodNameV := StringNameFromStr("set_quit_on_go_back")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -135,7 +150,9 @@ func  (me *SceneTree) SetDebugCollisionsHint(enable bool, )  {
   methodNameV := StringNameFromStr("set_debug_collisions_hint")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -148,6 +165,8 @@ func  (me *SceneTree) IsDebuggingCollisionsHint() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -160,7 +179,9 @@ func  (me *SceneTree) SetDebugPathsHint(enable bool, )  {
   methodNameV := StringNameFromStr("set_debug_paths_hint")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -173,6 +194,8 @@ func  (me *SceneTree) IsDebuggingPathsHint() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -185,7 +208,9 @@ func  (me *SceneTree) SetDebugNavigationHint(enable bool, )  {
   methodNameV := StringNameFromStr("set_debug_navigation_hint")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -198,6 +223,8 @@ func  (me *SceneTree) IsDebuggingNavigationHint() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -210,7 +237,9 @@ func  (me *SceneTree) SetEditedSceneRoot(scene Node, )  {
   methodNameV := StringNameFromStr("set_edited_scene_root")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(scene.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{scene.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -223,6 +252,8 @@ func  (me *SceneTree) GetEditedSceneRoot() Node {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3160264692) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewNode()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -235,7 +266,9 @@ func  (me *SceneTree) SetPause(enable bool, )  {
   methodNameV := StringNameFromStr("set_pause")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -248,6 +281,8 @@ func  (me *SceneTree) IsPaused() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -260,8 +295,14 @@ func  (me *SceneTree) CreateTimer(time_sec float64, process_always bool, process
   methodNameV := StringNameFromStr("create_timer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2709170273) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time_sec), gdc.ConstTypePtr(&process_always), gdc.ConstTypePtr(&process_in_physics), gdc.ConstTypePtr(&ignore_time_scale), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time_sec) , gdc.ConstTypePtr(&process_always) , gdc.ConstTypePtr(&process_in_physics) , gdc.ConstTypePtr(&ignore_time_scale) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewSceneTreeTimer()
+  pinner.Pin(&time_sec)
+  pinner.Pin(&process_always)
+  pinner.Pin(&process_in_physics)
+  pinner.Pin(&ignore_time_scale)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -274,6 +315,8 @@ func  (me *SceneTree) CreateTween() Tween {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3426978995) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTween()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -287,6 +330,8 @@ func  (me *SceneTree) GetProcessedTweens() []Tween {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -301,6 +346,8 @@ func  (me *SceneTree) GetNodeCount() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -314,6 +361,8 @@ func  (me *SceneTree) GetFrame() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -326,7 +375,9 @@ func  (me *SceneTree) Quit(exit_code int64, )  {
   methodNameV := StringNameFromStr("quit")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1995695955) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&exit_code), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&exit_code) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -338,7 +389,9 @@ func  (me *SceneTree) QueueDelete(obj Object, )  {
   methodNameV := StringNameFromStr("queue_delete")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3975164845) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obj.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{obj.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -350,11 +403,22 @@ func  (me *SceneTree) CallGroupFlags(flags int64, group StringName, method Strin
   methodNameV := StringNameFromStr("call_group_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1527739229) // FIXME: should cache?
-  cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(&flags), gdc.ConstVariantPtr(group.AsCTypePtr()), gdc.ConstVariantPtr(method.AsCTypePtr()), }
-
+  cargs := make([]gdc.ConstVariantPtr, 0, 3 + len(varargs))
+  intVar0 := NewIntFromInt(flags)
+  defer intVar0.Destroy()
+  var0 := intVar0.AsVariant()
+  defer var0.Destroy()
+  cargs = append(cargs, var0.AsCPtr())
+  var1 := group.AsVariant()
+  defer var1.Destroy()
+  cargs = append(cargs, var1.AsCPtr())
+  var2 := method.AsVariant()
+  defer var2.Destroy()
+  cargs = append(cargs, var2.AsCPtr())
   for _, v := range varargs {
     cargs = append(cargs, v.AsCPtr())
   }
+
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, cerr)
   if cerr.Error != gdc.CallOk {
@@ -369,7 +433,9 @@ func  (me *SceneTree) NotifyGroupFlags(call_flags int64, group StringName, notif
   methodNameV := StringNameFromStr("notify_group_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1245489420) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&call_flags), gdc.ConstTypePtr(group.AsCTypePtr()), gdc.ConstTypePtr(&notification), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&call_flags) , group.AsCTypePtr(), gdc.ConstTypePtr(&notification) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -381,7 +447,9 @@ func  (me *SceneTree) SetGroupFlags(call_flags int64, group StringName, property
   methodNameV := StringNameFromStr("set_group_flags")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3497599527) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&call_flags), gdc.ConstTypePtr(group.AsCTypePtr()), gdc.ConstTypePtr(property.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&call_flags) , group.AsCTypePtr(), property.AsCTypePtr(), value.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -393,11 +461,17 @@ func  (me *SceneTree) CallGroup(group StringName, method StringName, varargs ...
   methodNameV := StringNameFromStr("call_group")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1257962832) // FIXME: should cache?
-  cargs := []gdc.ConstVariantPtr{gdc.ConstVariantPtr(group.AsCTypePtr()), gdc.ConstVariantPtr(method.AsCTypePtr()), }
-
+  cargs := make([]gdc.ConstVariantPtr, 0, 2 + len(varargs))
+  var0 := group.AsVariant()
+  defer var0.Destroy()
+  cargs = append(cargs, var0.AsCPtr())
+  var1 := method.AsVariant()
+  defer var1.Destroy()
+  cargs = append(cargs, var1.AsCPtr())
   for _, v := range varargs {
     cargs = append(cargs, v.AsCPtr())
   }
+
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, cerr)
   if cerr.Error != gdc.CallOk {
@@ -412,7 +486,9 @@ func  (me *SceneTree) NotifyGroup(group StringName, notification int64, )  {
   methodNameV := StringNameFromStr("notify_group")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2415702435) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(group.AsCTypePtr()), gdc.ConstTypePtr(&notification), }
+  cargs := []gdc.ConstTypePtr{group.AsCTypePtr(), gdc.ConstTypePtr(&notification) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -424,7 +500,9 @@ func  (me *SceneTree) SetGroup(group StringName, property String, value Variant,
   methodNameV := StringNameFromStr("set_group")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1279312029) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(group.AsCTypePtr()), gdc.ConstTypePtr(property.AsCTypePtr()), gdc.ConstTypePtr(value.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{group.AsCTypePtr(), property.AsCTypePtr(), value.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -436,7 +514,9 @@ func  (me *SceneTree) GetNodesInGroup(group StringName, ) []Node {
   methodNameV := StringNameFromStr("get_nodes_in_group")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 689397652) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(group.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{group.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -450,7 +530,9 @@ func  (me *SceneTree) GetFirstNodeInGroup(group StringName, ) Node {
   methodNameV := StringNameFromStr("get_first_node_in_group")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4071044623) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(group.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{group.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewNode()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -463,7 +545,9 @@ func  (me *SceneTree) SetCurrentScene(child_node Node, )  {
   methodNameV := StringNameFromStr("set_current_scene")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(child_node.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{child_node.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -476,6 +560,8 @@ func  (me *SceneTree) GetCurrentScene() Node {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3160264692) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewNode()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -488,7 +574,9 @@ func  (me *SceneTree) ChangeSceneToFile(path String, ) Error {
   methodNameV := StringNameFromStr("change_scene_to_file")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -501,7 +589,9 @@ func  (me *SceneTree) ChangeSceneToPacked(packed_scene PackedScene, ) Error {
   methodNameV := StringNameFromStr("change_scene_to_packed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 107349098) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(packed_scene.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{packed_scene.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -515,6 +605,8 @@ func  (me *SceneTree) ReloadCurrentScene() Error {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -528,6 +620,8 @@ func  (me *SceneTree) UnloadCurrentScene()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -539,7 +633,9 @@ func  (me *SceneTree) SetMultiplayer(multiplayer MultiplayerAPI, root_path NodeP
   methodNameV := StringNameFromStr("set_multiplayer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2385607013) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(multiplayer.AsCTypePtr()), gdc.ConstTypePtr(root_path.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{multiplayer.AsCTypePtr(), root_path.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -551,7 +647,9 @@ func  (me *SceneTree) GetMultiplayer(for_path NodePath, ) MultiplayerAPI {
   methodNameV := StringNameFromStr("get_multiplayer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3453401404) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(for_path.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{for_path.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewMultiplayerAPI()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -564,7 +662,9 @@ func  (me *SceneTree) SetMultiplayerPollEnabled(enabled bool, )  {
   methodNameV := StringNameFromStr("set_multiplayer_poll_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -577,6 +677,8 @@ func  (me *SceneTree) IsMultiplayerPollEnabled() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

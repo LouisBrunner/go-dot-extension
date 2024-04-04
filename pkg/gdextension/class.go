@@ -2,6 +2,7 @@ package gdextension
 
 import (
 	"fmt"
+	"reflect"
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
@@ -23,8 +24,14 @@ func (me *classInstance) String() string {
 	return str
 }
 
-func (me *extension) createClass(class *classEntry) gdc.ObjectPtr {
+func (me *extension) createClass(class *classEntry) (fobj gdc.ObjectPtr) {
 	obj := me.iface.ClassdbConstructObject(class.parentNamePtr.AsCPtr())
+	defer func() {
+		if fobj == nil {
+			me.iface.ObjectDestroy(obj)
+		}
+	}()
+
 	id := me.iface.ObjectGetInstanceId(gdc.ConstObjectPtr(obj))
 	instance := &classInstance{
 		class:    class,
@@ -35,13 +42,26 @@ func (me *extension) createClass(class *classEntry) gdc.ObjectPtr {
 	instance.instance.SetBaseObject(obj)
 
 	for _, property := range class.properties {
-		property.create(me, instance.instance)
+		err := property.create(me, instance.instance)
+		if err != nil {
+			me.Logf(LogLevelError, "error: %s", err.Error())
+			return nil
+		}
 	}
 	for _, signal := range class.signals {
 		signal.create(me, instance.instance, obj)
 	}
 	for _, subscriber := range class.subscribers {
-		subscriber.create(me, instance.instance)
+		err := subscriber.create(me, instance.instance)
+		if err != nil {
+			me.Logf(LogLevelError, "error: %s", err.Error())
+			return nil
+		}
+	}
+
+	initializable, is := instance.instance.(Initializable)
+	if is {
+		initializable.Init()
 	}
 
 	class.mutex.Lock()
@@ -124,4 +144,51 @@ func (me *extension) unregisterClass(class *classEntry) {
 	me.iface.ClassdbUnregisterExtensionClass(me.pLibrary, class.namePtr.AsCPtr())
 	class.namePtr.Destroy()
 	class.parentNamePtr.Destroy()
+}
+
+func nameForClass(typ reflect.Type, instance any) (string, error) {
+	if typ.Kind() != reflect.Pointer && typ.Elem().Kind() != reflect.Struct {
+		return "", fmt.Errorf("expected a pointer to struct but got %s (%T)", typ.Kind(), instance)
+	}
+	return typ.Elem().Name(), nil
+}
+
+func (me *extension) CreateClass(typ reflect.Type) (any, error) {
+	name, err := nameForClass(typ, reflect.New(typ).Elem().Interface())
+	if err != nil {
+		return nil, err
+	}
+
+	entry, found := me.registered[name]
+	if !found {
+		return nil, fmt.Errorf("class %q is not registered", name)
+	}
+
+	obj := me.iface.ClassdbConstructObject(entry.namePtr.AsCPtr())
+	id := me.iface.ObjectGetInstanceId(gdc.ConstObjectPtr(obj))
+
+	entry.mutex.Lock()
+	defer entry.mutex.Unlock()
+
+	for _, instance := range entry.instances {
+		if instance.id == id {
+			return instance.instance, nil
+		}
+	}
+	return nil, fmt.Errorf("internal error: could not find instance %d of class %q", id, name)
+}
+
+func CreateClass[T Class](me Extension) (*T, error) {
+	typ := reflect.TypeFor[T]()
+
+	instance, err := me.CreateClass(typ)
+	if err != nil {
+		return nil, err
+	}
+
+	actualInstance, cast := instance.(T)
+	if !cast {
+		return nil, fmt.Errorf("could not cast %T to %T", instance, actualInstance)
+	}
+	return &actualInstance, nil
 }

@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type PhysicsDirectSpaceState3D struct {
   Object
@@ -51,9 +54,12 @@ func  (me *PhysicsDirectSpaceState3D) IntersectPoint(parameters PhysicsPointQuer
   methodNameV := StringNameFromStr("intersect_point")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 975173756) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), gdc.ConstTypePtr(&max_results), }
+  cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), gdc.ConstTypePtr(&max_results) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
+  pinner.Pin(&max_results)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ConvertArrayToSlice[Dictionary](ret)
@@ -65,7 +71,9 @@ func  (me *PhysicsDirectSpaceState3D) IntersectRay(parameters PhysicsRayQueryPar
   methodNameV := StringNameFromStr("intersect_ray")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3957970750) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -78,9 +86,12 @@ func  (me *PhysicsDirectSpaceState3D) IntersectShape(parameters PhysicsShapeQuer
   methodNameV := StringNameFromStr("intersect_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3762137681) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), gdc.ConstTypePtr(&max_results), }
+  cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), gdc.ConstTypePtr(&max_results) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
+  pinner.Pin(&max_results)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ConvertArrayToSlice[Dictionary](ret)
@@ -92,7 +103,9 @@ func  (me *PhysicsDirectSpaceState3D) CastMotion(parameters PhysicsShapeQueryPar
   methodNameV := StringNameFromStr("cast_motion")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1778757334) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedFloat32Array()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -105,9 +118,12 @@ func  (me *PhysicsDirectSpaceState3D) CollideShape(parameters PhysicsShapeQueryP
   methodNameV := StringNameFromStr("collide_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3762137681) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), gdc.ConstTypePtr(&max_results), }
+  cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), gdc.ConstTypePtr(&max_results) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
+  pinner.Pin(&max_results)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ConvertArrayToSlice[Vector3](ret)
@@ -119,7 +135,9 @@ func  (me *PhysicsDirectSpaceState3D) GetRestInfo(parameters PhysicsShapeQueryPa
   methodNameV := StringNameFromStr("get_rest_info")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1376751592) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type XRInterfaceExtension struct {
   XRInterface
@@ -52,6 +55,8 @@ func  (me *XRInterfaceExtension) GetColorTexture() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -65,6 +70,8 @@ func  (me *XRInterfaceExtension) GetDepthTexture() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -78,6 +85,8 @@ func  (me *XRInterfaceExtension) GetVelocityTexture() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -90,7 +99,9 @@ func  (me *XRInterfaceExtension) AddBlit(render_target RID, src_rect Rect2, dst_
   methodNameV := StringNameFromStr("add_blit")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 258596971) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(render_target.AsCTypePtr()), gdc.ConstTypePtr(src_rect.AsCTypePtr()), gdc.ConstTypePtr(dst_rect.AsCTypePtr()), gdc.ConstTypePtr(&use_layer), gdc.ConstTypePtr(&layer), gdc.ConstTypePtr(&apply_lens_distortion), gdc.ConstTypePtr(eye_center.AsCTypePtr()), gdc.ConstTypePtr(&k1), gdc.ConstTypePtr(&k2), gdc.ConstTypePtr(&upscale), gdc.ConstTypePtr(&aspect_ratio), }
+  cargs := []gdc.ConstTypePtr{render_target.AsCTypePtr(), src_rect.AsCTypePtr(), dst_rect.AsCTypePtr(), gdc.ConstTypePtr(&use_layer) , gdc.ConstTypePtr(&layer) , gdc.ConstTypePtr(&apply_lens_distortion) , eye_center.AsCTypePtr(), gdc.ConstTypePtr(&k1) , gdc.ConstTypePtr(&k2) , gdc.ConstTypePtr(&upscale) , gdc.ConstTypePtr(&aspect_ratio) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -102,7 +113,9 @@ func  (me *XRInterfaceExtension) GetRenderTargetTexture(render_target RID, ) RID
   methodNameV := StringNameFromStr("get_render_target_texture")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 41030802) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(render_target.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{render_target.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

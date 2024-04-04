@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type Skeleton3D struct {
   Node3D
@@ -57,7 +60,9 @@ func  (me *Skeleton3D) AddBone(name String, )  {
   methodNameV := StringNameFromStr("add_bone")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -69,7 +74,9 @@ func  (me *Skeleton3D) FindBone(name String, ) int64 {
   methodNameV := StringNameFromStr("find_bone")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1321353865) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -82,8 +89,11 @@ func  (me *Skeleton3D) GetBoneName(bone_idx int64, ) String {
   methodNameV := StringNameFromStr("get_bone_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -95,7 +105,9 @@ func  (me *Skeleton3D) SetBoneName(bone_idx int64, name String, )  {
   methodNameV := StringNameFromStr("set_bone_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), gdc.ConstTypePtr(name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -107,8 +119,11 @@ func  (me *Skeleton3D) GetBoneParent(bone_idx int64, ) int64 {
   methodNameV := StringNameFromStr("get_bone_parent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -120,7 +135,9 @@ func  (me *Skeleton3D) SetBoneParent(bone_idx int64, parent_idx int64, )  {
   methodNameV := StringNameFromStr("set_bone_parent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), gdc.ConstTypePtr(&parent_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , gdc.ConstTypePtr(&parent_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -133,6 +150,8 @@ func  (me *Skeleton3D) GetBoneCount() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -146,6 +165,8 @@ func  (me *Skeleton3D) GetVersion() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -158,7 +179,9 @@ func  (me *Skeleton3D) UnparentBoneAndRest(bone_idx int64, )  {
   methodNameV := StringNameFromStr("unparent_bone_and_rest")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -170,8 +193,11 @@ func  (me *Skeleton3D) GetBoneChildren(bone_idx int64, ) PackedInt32Array {
   methodNameV := StringNameFromStr("get_bone_children")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1706082319) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -184,6 +210,8 @@ func  (me *Skeleton3D) GetParentlessBones() PackedInt32Array {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -196,8 +224,11 @@ func  (me *Skeleton3D) GetBoneRest(bone_idx int64, ) Transform3D {
   methodNameV := StringNameFromStr("get_bone_rest")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965739696) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTransform3D()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -209,7 +240,9 @@ func  (me *Skeleton3D) SetBoneRest(bone_idx int64, rest Transform3D, )  {
   methodNameV := StringNameFromStr("set_bone_rest")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3616898986) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), gdc.ConstTypePtr(rest.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , rest.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -221,8 +254,11 @@ func  (me *Skeleton3D) GetBoneGlobalRest(bone_idx int64, ) Transform3D {
   methodNameV := StringNameFromStr("get_bone_global_rest")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965739696) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTransform3D()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -235,6 +271,8 @@ func  (me *Skeleton3D) CreateSkinFromRestTransforms() Skin {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1032037385) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewSkin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -247,7 +285,9 @@ func  (me *Skeleton3D) RegisterSkin(skin Skin, ) SkinReference {
   methodNameV := StringNameFromStr("register_skin")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3405789568) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(skin.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{skin.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewSkinReference()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -261,6 +301,8 @@ func  (me *Skeleton3D) LocalizeRests()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -273,6 +315,8 @@ func  (me *Skeleton3D) ClearBones()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -284,8 +328,11 @@ func  (me *Skeleton3D) GetBonePose(bone_idx int64, ) Transform3D {
   methodNameV := StringNameFromStr("get_bone_pose")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965739696) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTransform3D()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -297,7 +344,9 @@ func  (me *Skeleton3D) SetBonePosePosition(bone_idx int64, position Vector3, )  
   methodNameV := StringNameFromStr("set_bone_pose_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1530502735) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -309,7 +358,9 @@ func  (me *Skeleton3D) SetBonePoseRotation(bone_idx int64, rotation Quaternion, 
   methodNameV := StringNameFromStr("set_bone_pose_rotation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2823819782) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), gdc.ConstTypePtr(rotation.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , rotation.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -321,7 +372,9 @@ func  (me *Skeleton3D) SetBonePoseScale(bone_idx int64, scale Vector3, )  {
   methodNameV := StringNameFromStr("set_bone_pose_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1530502735) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), gdc.ConstTypePtr(scale.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , scale.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -333,8 +386,11 @@ func  (me *Skeleton3D) GetBonePosePosition(bone_idx int64, ) Vector3 {
   methodNameV := StringNameFromStr("get_bone_pose_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 711720468) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector3()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -346,8 +402,11 @@ func  (me *Skeleton3D) GetBonePoseRotation(bone_idx int64, ) Quaternion {
   methodNameV := StringNameFromStr("get_bone_pose_rotation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 476865136) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewQuaternion()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -359,8 +418,11 @@ func  (me *Skeleton3D) GetBonePoseScale(bone_idx int64, ) Vector3 {
   methodNameV := StringNameFromStr("get_bone_pose_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 711720468) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector3()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -372,7 +434,9 @@ func  (me *Skeleton3D) ResetBonePose(bone_idx int64, )  {
   methodNameV := StringNameFromStr("reset_bone_pose")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -385,6 +449,8 @@ func  (me *Skeleton3D) ResetBonePoses()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -396,8 +462,11 @@ func  (me *Skeleton3D) IsBoneEnabled(bone_idx int64, ) bool {
   methodNameV := StringNameFromStr("is_bone_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -409,7 +478,9 @@ func  (me *Skeleton3D) SetBoneEnabled(bone_idx int64, enabled bool, )  {
   methodNameV := StringNameFromStr("set_bone_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 972357352) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -422,6 +493,8 @@ func  (me *Skeleton3D) ClearBonesGlobalPoseOverride()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -433,7 +506,9 @@ func  (me *Skeleton3D) SetBoneGlobalPoseOverride(bone_idx int64, pose Transform3
   methodNameV := StringNameFromStr("set_bone_global_pose_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3483398371) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), gdc.ConstTypePtr(pose.AsCTypePtr()), gdc.ConstTypePtr(&amount), gdc.ConstTypePtr(&persistent), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , pose.AsCTypePtr(), gdc.ConstTypePtr(&amount) , gdc.ConstTypePtr(&persistent) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -445,8 +520,11 @@ func  (me *Skeleton3D) GetBoneGlobalPoseOverride(bone_idx int64, ) Transform3D {
   methodNameV := StringNameFromStr("get_bone_global_pose_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965739696) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTransform3D()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -458,8 +536,11 @@ func  (me *Skeleton3D) GetBoneGlobalPose(bone_idx int64, ) Transform3D {
   methodNameV := StringNameFromStr("get_bone_global_pose")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965739696) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTransform3D()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -471,8 +552,11 @@ func  (me *Skeleton3D) GetBoneGlobalPoseNoOverride(bone_idx int64, ) Transform3D
   methodNameV := StringNameFromStr("get_bone_global_pose_no_override")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965739696) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTransform3D()
+  pinner.Pin(&bone_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -485,6 +569,8 @@ func  (me *Skeleton3D) ForceUpdateAllBoneTransforms()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -496,7 +582,9 @@ func  (me *Skeleton3D) ForceUpdateBoneChildTransform(bone_idx int64, )  {
   methodNameV := StringNameFromStr("force_update_bone_child_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -508,7 +596,9 @@ func  (me *Skeleton3D) SetMotionScale(motion_scale float64, )  {
   methodNameV := StringNameFromStr("set_motion_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&motion_scale), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&motion_scale) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -521,6 +611,8 @@ func  (me *Skeleton3D) GetMotionScale() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -533,7 +625,9 @@ func  (me *Skeleton3D) SetShowRestOnly(enabled bool, )  {
   methodNameV := StringNameFromStr("set_show_rest_only")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -546,6 +640,8 @@ func  (me *Skeleton3D) IsShowRestOnly() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -558,7 +654,9 @@ func  (me *Skeleton3D) SetAnimatePhysicalBones(enabled bool, )  {
   methodNameV := StringNameFromStr("set_animate_physical_bones")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -571,6 +669,8 @@ func  (me *Skeleton3D) GetAnimatePhysicalBones() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -584,6 +684,8 @@ func  (me *Skeleton3D) PhysicalBonesStopSimulation()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -595,7 +697,9 @@ func  (me *Skeleton3D) PhysicalBonesStartSimulation(bones []StringName, )  {
   methodNameV := StringNameFromStr("physical_bones_start_simulation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2787316981) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bones), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bones) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -607,7 +711,9 @@ func  (me *Skeleton3D) PhysicalBonesAddCollisionException(exception RID, )  {
   methodNameV := StringNameFromStr("physical_bones_add_collision_exception")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(exception.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{exception.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -619,7 +725,9 @@ func  (me *Skeleton3D) PhysicalBonesRemoveCollisionException(exception RID, )  {
   methodNameV := StringNameFromStr("physical_bones_remove_collision_exception")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(exception.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{exception.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

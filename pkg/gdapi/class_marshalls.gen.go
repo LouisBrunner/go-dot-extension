@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type Marshalls struct {
   Object
@@ -51,8 +54,11 @@ func  (me *Marshalls) VariantToBase64(variant Variant, full_objects bool, ) Stri
   methodNameV := StringNameFromStr("variant_to_base64")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3876248563) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(variant.AsCTypePtr()), gdc.ConstTypePtr(&full_objects), }
+  cargs := []gdc.ConstTypePtr{variant.AsCTypePtr(), gdc.ConstTypePtr(&full_objects) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&full_objects)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -64,8 +70,11 @@ func  (me *Marshalls) Base64ToVariant(base64_str String, allow_objects bool, ) V
   methodNameV := StringNameFromStr("base64_to_variant")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 218087648) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(base64_str.AsCTypePtr()), gdc.ConstTypePtr(&allow_objects), }
+  cargs := []gdc.ConstTypePtr{base64_str.AsCTypePtr(), gdc.ConstTypePtr(&allow_objects) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
+  pinner.Pin(&allow_objects)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -77,7 +86,9 @@ func  (me *Marshalls) RawToBase64(array PackedByteArray, ) String {
   methodNameV := StringNameFromStr("raw_to_base64")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3999417757) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(array.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{array.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -90,7 +101,9 @@ func  (me *Marshalls) Base64ToRaw(base64_str String, ) PackedByteArray {
   methodNameV := StringNameFromStr("base64_to_raw")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 659035735) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(base64_str.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{base64_str.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedByteArray()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -103,7 +116,9 @@ func  (me *Marshalls) Utf8ToBase64(utf8_str String, ) String {
   methodNameV := StringNameFromStr("utf8_to_base64")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1703090593) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(utf8_str.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{utf8_str.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -116,7 +131,9 @@ func  (me *Marshalls) Base64ToUtf8(base64_str String, ) String {
   methodNameV := StringNameFromStr("base64_to_utf8")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1703090593) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(base64_str.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{base64_str.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

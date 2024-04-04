@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type WorkerThreadPool struct {
   Object
@@ -51,8 +54,11 @@ func  (me *WorkerThreadPool) AddTask(action Callable, high_priority bool, descri
   methodNameV := StringNameFromStr("add_task")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3745067146) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&high_priority), gdc.ConstTypePtr(description.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{action.AsCTypePtr(), gdc.ConstTypePtr(&high_priority) , description.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&high_priority)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -64,8 +70,11 @@ func  (me *WorkerThreadPool) IsTaskCompleted(task_id int64, ) bool {
   methodNameV := StringNameFromStr("is_task_completed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&task_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&task_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&task_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -77,8 +86,11 @@ func  (me *WorkerThreadPool) WaitForTaskCompletion(task_id int64, ) Error {
   methodNameV := StringNameFromStr("wait_for_task_completion")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844576869) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&task_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&task_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&task_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -90,8 +102,13 @@ func  (me *WorkerThreadPool) AddGroupTask(action Callable, elements int64, tasks
   methodNameV := StringNameFromStr("add_group_task")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1801953219) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(action.AsCTypePtr()), gdc.ConstTypePtr(&elements), gdc.ConstTypePtr(&tasks_needed), gdc.ConstTypePtr(&high_priority), gdc.ConstTypePtr(description.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{action.AsCTypePtr(), gdc.ConstTypePtr(&elements) , gdc.ConstTypePtr(&tasks_needed) , gdc.ConstTypePtr(&high_priority) , description.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&elements)
+  pinner.Pin(&tasks_needed)
+  pinner.Pin(&high_priority)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -103,8 +120,11 @@ func  (me *WorkerThreadPool) IsGroupTaskCompleted(group_id int64, ) bool {
   methodNameV := StringNameFromStr("is_group_task_completed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&group_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&group_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&group_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -116,8 +136,11 @@ func  (me *WorkerThreadPool) GetGroupProcessedElementCount(group_id int64, ) int
   methodNameV := StringNameFromStr("get_group_processed_element_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&group_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&group_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&group_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -129,7 +152,9 @@ func  (me *WorkerThreadPool) WaitForGroupTaskCompletion(group_id int64, )  {
   methodNameV := StringNameFromStr("wait_for_group_task_completion")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&group_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&group_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

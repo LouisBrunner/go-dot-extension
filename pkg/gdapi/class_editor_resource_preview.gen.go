@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type EditorResourcePreview struct {
   Node
@@ -51,7 +54,9 @@ func  (me *EditorResourcePreview) QueueResourcePreview(path String, receiver Obj
   methodNameV := StringNameFromStr("queue_resource_preview")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 233177534) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(receiver.AsCTypePtr()), gdc.ConstTypePtr(receiver_func.AsCTypePtr()), gdc.ConstTypePtr(userdata.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), receiver.AsCTypePtr(), receiver_func.AsCTypePtr(), userdata.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -63,7 +68,9 @@ func  (me *EditorResourcePreview) QueueEditedResourcePreview(resource Resource, 
   methodNameV := StringNameFromStr("queue_edited_resource_preview")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1608376650) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(resource.AsCTypePtr()), gdc.ConstTypePtr(receiver.AsCTypePtr()), gdc.ConstTypePtr(receiver_func.AsCTypePtr()), gdc.ConstTypePtr(userdata.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{resource.AsCTypePtr(), receiver.AsCTypePtr(), receiver_func.AsCTypePtr(), userdata.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -75,7 +82,9 @@ func  (me *EditorResourcePreview) AddPreviewGenerator(generator EditorResourcePr
   methodNameV := StringNameFromStr("add_preview_generator")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 332288124) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(generator.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{generator.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -87,7 +96,9 @@ func  (me *EditorResourcePreview) RemovePreviewGenerator(generator EditorResourc
   methodNameV := StringNameFromStr("remove_preview_generator")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 332288124) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(generator.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{generator.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -99,7 +110,9 @@ func  (me *EditorResourcePreview) CheckForInvalidation(path String, )  {
   methodNameV := StringNameFromStr("check_for_invalidation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

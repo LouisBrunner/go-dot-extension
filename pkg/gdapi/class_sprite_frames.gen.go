@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type SpriteFrames struct {
   Resource
@@ -51,7 +54,9 @@ func  (me *SpriteFrames) AddAnimation(anim StringName, )  {
   methodNameV := StringNameFromStr("add_animation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -63,7 +68,9 @@ func  (me *SpriteFrames) HasAnimation(anim StringName, ) bool {
   methodNameV := StringNameFromStr("has_animation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -76,7 +83,9 @@ func  (me *SpriteFrames) RemoveAnimation(anim StringName, )  {
   methodNameV := StringNameFromStr("remove_animation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -88,7 +97,9 @@ func  (me *SpriteFrames) RenameAnimation(anim StringName, newname StringName, ) 
   methodNameV := StringNameFromStr("rename_animation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3740211285) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(newname.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), newname.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -101,6 +112,8 @@ func  (me *SpriteFrames) GetAnimationNames() PackedStringArray {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedStringArray()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -113,7 +126,9 @@ func  (me *SpriteFrames) SetAnimationSpeed(anim StringName, fps float64, )  {
   methodNameV := StringNameFromStr("set_animation_speed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4135858297) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&fps), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), gdc.ConstTypePtr(&fps) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -125,7 +140,9 @@ func  (me *SpriteFrames) GetAnimationSpeed(anim StringName, ) float64 {
   methodNameV := StringNameFromStr("get_animation_speed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2349060816) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -138,7 +155,9 @@ func  (me *SpriteFrames) SetAnimationLoop(anim StringName, loop bool, )  {
   methodNameV := StringNameFromStr("set_animation_loop")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2524380260) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&loop), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), gdc.ConstTypePtr(&loop) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -150,7 +169,9 @@ func  (me *SpriteFrames) GetAnimationLoop(anim StringName, ) bool {
   methodNameV := StringNameFromStr("get_animation_loop")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -163,7 +184,9 @@ func  (me *SpriteFrames) AddFrame(anim StringName, texture Texture2D, duration f
   methodNameV := StringNameFromStr("add_frame")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1351332740) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(&duration), gdc.ConstTypePtr(&at_position), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), texture.AsCTypePtr(), gdc.ConstTypePtr(&duration) , gdc.ConstTypePtr(&at_position) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -175,7 +198,9 @@ func  (me *SpriteFrames) SetFrame(anim StringName, idx int64, texture Texture2D,
   methodNameV := StringNameFromStr("set_frame")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 56804795) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(texture.AsCTypePtr()), gdc.ConstTypePtr(&duration), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), gdc.ConstTypePtr(&idx) , texture.AsCTypePtr(), gdc.ConstTypePtr(&duration) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -187,7 +212,9 @@ func  (me *SpriteFrames) RemoveFrame(anim StringName, idx int64, )  {
   methodNameV := StringNameFromStr("remove_frame")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2415702435) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -199,7 +226,9 @@ func  (me *SpriteFrames) GetFrameCount(anim StringName, ) int64 {
   methodNameV := StringNameFromStr("get_frame_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2458036349) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -212,8 +241,11 @@ func  (me *SpriteFrames) GetFrameTexture(anim StringName, idx int64, ) Texture2D
   methodNameV := StringNameFromStr("get_frame_texture")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2900517879) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTexture2D()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -225,8 +257,11 @@ func  (me *SpriteFrames) GetFrameDuration(anim StringName, idx int64, ) float64 
   methodNameV := StringNameFromStr("get_frame_duration")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1129309260) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -238,7 +273,9 @@ func  (me *SpriteFrames) Clear(anim StringName, )  {
   methodNameV := StringNameFromStr("clear")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(anim.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{anim.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -251,6 +288,8 @@ func  (me *SpriteFrames) ClearAll()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

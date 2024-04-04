@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type MethodTweener struct {
   Tweener
@@ -51,8 +54,11 @@ func  (me *MethodTweener) SetDelay(delay float64, ) MethodTweener {
   methodNameV := StringNameFromStr("set_delay")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 266477812) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delay), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delay) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewMethodTweener()
+  pinner.Pin(&delay)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -64,8 +70,11 @@ func  (me *MethodTweener) SetTrans(trans TweenTransitionType, ) MethodTweener {
   methodNameV := StringNameFromStr("set_trans")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3740975367) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&trans), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&trans) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewMethodTweener()
+  pinner.Pin(&trans)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -77,8 +86,11 @@ func  (me *MethodTweener) SetEase(ease TweenEaseType, ) MethodTweener {
   methodNameV := StringNameFromStr("set_ease")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 315540545) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ease), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ease) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewMethodTweener()
+  pinner.Pin(&ease)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret

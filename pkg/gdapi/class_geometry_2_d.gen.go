@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type Geometry2D struct {
   Object
@@ -75,8 +78,11 @@ func  (me *Geometry2D) IsPointInCircle(point Vector2, circle_position Vector2, c
   methodNameV := StringNameFromStr("is_point_in_circle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2929491703) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), gdc.ConstTypePtr(circle_position.AsCTypePtr()), gdc.ConstTypePtr(&circle_radius), }
+  cargs := []gdc.ConstTypePtr{point.AsCTypePtr(), circle_position.AsCTypePtr(), gdc.ConstTypePtr(&circle_radius) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&circle_radius)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -88,8 +94,11 @@ func  (me *Geometry2D) SegmentIntersectsCircle(segment_from Vector2, segment_to 
   methodNameV := StringNameFromStr("segment_intersects_circle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1356928167) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(segment_from.AsCTypePtr()), gdc.ConstTypePtr(segment_to.AsCTypePtr()), gdc.ConstTypePtr(circle_position.AsCTypePtr()), gdc.ConstTypePtr(&circle_radius), }
+  cargs := []gdc.ConstTypePtr{segment_from.AsCTypePtr(), segment_to.AsCTypePtr(), circle_position.AsCTypePtr(), gdc.ConstTypePtr(&circle_radius) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&circle_radius)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -101,7 +110,9 @@ func  (me *Geometry2D) SegmentIntersectsSegment(from_a Vector2, to_a Vector2, fr
   methodNameV := StringNameFromStr("segment_intersects_segment")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2058025344) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from_a.AsCTypePtr()), gdc.ConstTypePtr(to_a.AsCTypePtr()), gdc.ConstTypePtr(from_b.AsCTypePtr()), gdc.ConstTypePtr(to_b.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{from_a.AsCTypePtr(), to_a.AsCTypePtr(), from_b.AsCTypePtr(), to_b.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -114,7 +125,9 @@ func  (me *Geometry2D) LineIntersectsLine(from_a Vector2, dir_a Vector2, from_b 
   methodNameV := StringNameFromStr("line_intersects_line")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2058025344) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(from_a.AsCTypePtr()), gdc.ConstTypePtr(dir_a.AsCTypePtr()), gdc.ConstTypePtr(from_b.AsCTypePtr()), gdc.ConstTypePtr(dir_b.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{from_a.AsCTypePtr(), dir_a.AsCTypePtr(), from_b.AsCTypePtr(), dir_b.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -127,7 +140,9 @@ func  (me *Geometry2D) GetClosestPointsBetweenSegments(p1 Vector2, q1 Vector2, p
   methodNameV := StringNameFromStr("get_closest_points_between_segments")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3344690961) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(p1.AsCTypePtr()), gdc.ConstTypePtr(q1.AsCTypePtr()), gdc.ConstTypePtr(p2.AsCTypePtr()), gdc.ConstTypePtr(q2.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{p1.AsCTypePtr(), q1.AsCTypePtr(), p2.AsCTypePtr(), q2.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedVector2Array()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -140,7 +155,9 @@ func  (me *Geometry2D) GetClosestPointToSegment(point Vector2, s1 Vector2, s2 Ve
   methodNameV := StringNameFromStr("get_closest_point_to_segment")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4172901909) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), gdc.ConstTypePtr(s1.AsCTypePtr()), gdc.ConstTypePtr(s2.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{point.AsCTypePtr(), s1.AsCTypePtr(), s2.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -153,7 +170,9 @@ func  (me *Geometry2D) GetClosestPointToSegmentUncapped(point Vector2, s1 Vector
   methodNameV := StringNameFromStr("get_closest_point_to_segment_uncapped")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4172901909) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), gdc.ConstTypePtr(s1.AsCTypePtr()), gdc.ConstTypePtr(s2.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{point.AsCTypePtr(), s1.AsCTypePtr(), s2.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -166,7 +185,9 @@ func  (me *Geometry2D) PointIsInsideTriangle(point Vector2, a Vector2, b Vector2
   methodNameV := StringNameFromStr("point_is_inside_triangle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1025948137) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), gdc.ConstTypePtr(a.AsCTypePtr()), gdc.ConstTypePtr(b.AsCTypePtr()), gdc.ConstTypePtr(c.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{point.AsCTypePtr(), a.AsCTypePtr(), b.AsCTypePtr(), c.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -179,7 +200,9 @@ func  (me *Geometry2D) IsPolygonClockwise(polygon PackedVector2Array, ) bool {
   methodNameV := StringNameFromStr("is_polygon_clockwise")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1361156557) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{polygon.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -192,7 +215,9 @@ func  (me *Geometry2D) IsPointInPolygon(point Vector2, polygon PackedVector2Arra
   methodNameV := StringNameFromStr("is_point_in_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 738277916) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(point.AsCTypePtr()), gdc.ConstTypePtr(polygon.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{point.AsCTypePtr(), polygon.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -205,7 +230,9 @@ func  (me *Geometry2D) TriangulatePolygon(polygon PackedVector2Array, ) PackedIn
   methodNameV := StringNameFromStr("triangulate_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1389921771) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{polygon.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -218,7 +245,9 @@ func  (me *Geometry2D) TriangulateDelaunay(points PackedVector2Array, ) PackedIn
   methodNameV := StringNameFromStr("triangulate_delaunay")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1389921771) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(points.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{points.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -231,7 +260,9 @@ func  (me *Geometry2D) ConvexHull(points PackedVector2Array, ) PackedVector2Arra
   methodNameV := StringNameFromStr("convex_hull")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2004331998) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(points.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{points.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedVector2Array()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -244,7 +275,9 @@ func  (me *Geometry2D) DecomposePolygonInConvex(polygon PackedVector2Array, ) []
   methodNameV := StringNameFromStr("decompose_polygon_in_convex")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3982393695) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{polygon.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -258,7 +291,9 @@ func  (me *Geometry2D) MergePolygons(polygon_a PackedVector2Array, polygon_b Pac
   methodNameV := StringNameFromStr("merge_polygons")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3637387053) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon_a.AsCTypePtr()), gdc.ConstTypePtr(polygon_b.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{polygon_a.AsCTypePtr(), polygon_b.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -272,7 +307,9 @@ func  (me *Geometry2D) ClipPolygons(polygon_a PackedVector2Array, polygon_b Pack
   methodNameV := StringNameFromStr("clip_polygons")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3637387053) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon_a.AsCTypePtr()), gdc.ConstTypePtr(polygon_b.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{polygon_a.AsCTypePtr(), polygon_b.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -286,7 +323,9 @@ func  (me *Geometry2D) IntersectPolygons(polygon_a PackedVector2Array, polygon_b
   methodNameV := StringNameFromStr("intersect_polygons")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3637387053) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon_a.AsCTypePtr()), gdc.ConstTypePtr(polygon_b.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{polygon_a.AsCTypePtr(), polygon_b.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -300,7 +339,9 @@ func  (me *Geometry2D) ExcludePolygons(polygon_a PackedVector2Array, polygon_b P
   methodNameV := StringNameFromStr("exclude_polygons")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3637387053) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon_a.AsCTypePtr()), gdc.ConstTypePtr(polygon_b.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{polygon_a.AsCTypePtr(), polygon_b.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -314,7 +355,9 @@ func  (me *Geometry2D) ClipPolylineWithPolygon(polyline PackedVector2Array, poly
   methodNameV := StringNameFromStr("clip_polyline_with_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3637387053) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polyline.AsCTypePtr()), gdc.ConstTypePtr(polygon.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{polyline.AsCTypePtr(), polygon.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -328,7 +371,9 @@ func  (me *Geometry2D) IntersectPolylineWithPolygon(polyline PackedVector2Array,
   methodNameV := StringNameFromStr("intersect_polyline_with_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3637387053) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polyline.AsCTypePtr()), gdc.ConstTypePtr(polygon.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{polyline.AsCTypePtr(), polygon.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -342,9 +387,13 @@ func  (me *Geometry2D) OffsetPolygon(polygon PackedVector2Array, delta float64, 
   methodNameV := StringNameFromStr("offset_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1275354010) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polygon.AsCTypePtr()), gdc.ConstTypePtr(&delta), gdc.ConstTypePtr(&join_type), }
+  cargs := []gdc.ConstTypePtr{polygon.AsCTypePtr(), gdc.ConstTypePtr(&delta) , gdc.ConstTypePtr(&join_type) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
+  pinner.Pin(&delta)
+  pinner.Pin(&join_type)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ConvertArrayToSlice[PackedVector2Array](ret)
@@ -356,9 +405,14 @@ func  (me *Geometry2D) OffsetPolyline(polyline PackedVector2Array, delta float64
   methodNameV := StringNameFromStr("offset_polyline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2328231778) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(polyline.AsCTypePtr()), gdc.ConstTypePtr(&delta), gdc.ConstTypePtr(&join_type), gdc.ConstTypePtr(&end_type), }
+  cargs := []gdc.ConstTypePtr{polyline.AsCTypePtr(), gdc.ConstTypePtr(&delta) , gdc.ConstTypePtr(&join_type) , gdc.ConstTypePtr(&end_type) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
+  pinner.Pin(&delta)
+  pinner.Pin(&join_type)
+  pinner.Pin(&end_type)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ConvertArrayToSlice[PackedVector2Array](ret)
@@ -370,7 +424,9 @@ func  (me *Geometry2D) MakeAtlas(sizes PackedVector2Array, ) Dictionary {
   methodNameV := StringNameFromStr("make_atlas")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1337682371) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(sizes.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{sizes.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

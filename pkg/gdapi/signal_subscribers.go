@@ -1,11 +1,19 @@
 package gdapi
 
 import (
+	"fmt"
 	"log"
 	"reflect"
 
 	"github.com/google/uuid"
 )
+
+func CreateSignalSubscribers() *SignalSubscribers {
+	return &SignalSubscribers{
+		subs:    make(map[string]subscriber),
+		subsRef: make(map[Subcriber]string),
+	}
+}
 
 type Subcriber interface{}
 
@@ -21,21 +29,7 @@ type SignalSubscribers struct {
 	subsRef      map[Subcriber]string
 }
 
-func NewSignalSubscribers() SignalSubscribers {
-	subClass := StringNameFromStr("SignalSubscribers") // FIXME: cache?
-	defer subClass.Destroy()
-
-	obj := giface.ClassdbConstructObject(subClass.AsCPtr())
-
-	ssubs := SignalSubscribers{
-		subs:    make(map[string]subscriber),
-		subsRef: make(map[Subcriber]string),
-	}
-	ssubs.SetBaseObject(obj)
-	return ssubs
-}
-
-func (me *SignalSubscribers) X_Init() {
+func (me *SignalSubscribers) Init() {
 	me.dispatchName = *StringNameFromStr("dispatch")
 }
 
@@ -49,7 +43,25 @@ func (me *SignalSubscribers) Destroy() {
 }
 
 func (me *SignalSubscribers) add(sub interface{}) Callable {
+	fmt.Printf("SignalSubscribers.add: %+v\n", sub)
+	fmt.Printf("SignalSubscribers.add: %+v\n", me)
 	callable := NewCallableFromObjectStringName(me.Object, me.dispatchName)
+	defer callable.Destroy()
+	fnID := uuid.New().String()
+	fnIDVar := StringFromStr(fnID).AsVariant()
+	defer fnIDVar.Destroy()
+	boundCallable := callable.Bind(*fnIDVar)
+	me.subs[fnID] = subscriber{
+		fn:   sub,
+		call: boundCallable,
+	}
+	return boundCallable
+}
+
+func (me *SignalSubscribers) add2(sub interface{}, obj Object) Callable {
+	fmt.Printf("SignalSubscribers.add: %+v\n", sub)
+	fmt.Printf("SignalSubscribers.add: %+v\n", me)
+	callable := NewCallableFromObjectStringName(obj, me.dispatchName)
 	defer callable.Destroy()
 	fnID := uuid.New().String()
 	fnIDVar := StringFromStr(fnID).AsVariant()

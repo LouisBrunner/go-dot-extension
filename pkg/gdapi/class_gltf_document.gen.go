@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type GLTFDocument struct {
   Resource
@@ -58,8 +61,11 @@ func  (me *GLTFDocument) AppendFromFile(path String, state GLTFState, flags int6
   methodNameV := StringNameFromStr("append_from_file")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866380864) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(state.AsCTypePtr()), gdc.ConstTypePtr(&flags), gdc.ConstTypePtr(base_path.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), state.AsCTypePtr(), gdc.ConstTypePtr(&flags) , base_path.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&flags)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -71,8 +77,11 @@ func  (me *GLTFDocument) AppendFromBuffer(bytes PackedByteArray, base_path Strin
   methodNameV := StringNameFromStr("append_from_buffer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1616081266) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(bytes.AsCTypePtr()), gdc.ConstTypePtr(base_path.AsCTypePtr()), gdc.ConstTypePtr(state.AsCTypePtr()), gdc.ConstTypePtr(&flags), }
+  cargs := []gdc.ConstTypePtr{bytes.AsCTypePtr(), base_path.AsCTypePtr(), state.AsCTypePtr(), gdc.ConstTypePtr(&flags) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&flags)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -84,8 +93,11 @@ func  (me *GLTFDocument) AppendFromScene(node Node, state GLTFState, flags int64
   methodNameV := StringNameFromStr("append_from_scene")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1622574258) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(node.AsCTypePtr()), gdc.ConstTypePtr(state.AsCTypePtr()), gdc.ConstTypePtr(&flags), }
+  cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), state.AsCTypePtr(), gdc.ConstTypePtr(&flags) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&flags)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -97,8 +109,13 @@ func  (me *GLTFDocument) GenerateScene(state GLTFState, bake_fps float64, trimmi
   methodNameV := StringNameFromStr("generate_scene")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 596118388) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(state.AsCTypePtr()), gdc.ConstTypePtr(&bake_fps), gdc.ConstTypePtr(&trimming), gdc.ConstTypePtr(&remove_immutable_tracks), }
+  cargs := []gdc.ConstTypePtr{state.AsCTypePtr(), gdc.ConstTypePtr(&bake_fps) , gdc.ConstTypePtr(&trimming) , gdc.ConstTypePtr(&remove_immutable_tracks) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewNode()
+  pinner.Pin(&bake_fps)
+  pinner.Pin(&trimming)
+  pinner.Pin(&remove_immutable_tracks)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -110,7 +127,9 @@ func  (me *GLTFDocument) GenerateBuffer(state GLTFState, ) PackedByteArray {
   methodNameV := StringNameFromStr("generate_buffer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 741783455) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(state.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{state.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedByteArray()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -123,7 +142,9 @@ func  (me *GLTFDocument) WriteToFilesystem(state GLTFState, path String, ) Error
   methodNameV := StringNameFromStr("write_to_filesystem")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1784551478) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(state.AsCTypePtr()), gdc.ConstTypePtr(path.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{state.AsCTypePtr(), path.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -136,7 +157,9 @@ func  (me *GLTFDocument) SetImageFormat(image_format String, )  {
   methodNameV := StringNameFromStr("set_image_format")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image_format.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{image_format.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -149,6 +172,8 @@ func  (me *GLTFDocument) GetImageFormat() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -161,7 +186,9 @@ func  (me *GLTFDocument) SetLossyQuality(lossy_quality float64, )  {
   methodNameV := StringNameFromStr("set_lossy_quality")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&lossy_quality), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&lossy_quality) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -174,6 +201,8 @@ func  (me *GLTFDocument) GetLossyQuality() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -186,7 +215,9 @@ func  (me *GLTFDocument) SetRootNodeMode(root_node_mode GLTFDocumentRootNodeMode
   methodNameV := StringNameFromStr("set_root_node_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 463633402) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&root_node_mode), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&root_node_mode) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -199,6 +230,8 @@ func  (me *GLTFDocument) GetRootNodeMode() GLTFDocumentRootNodeMode {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 948057992) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret GLTFDocumentRootNodeMode
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -211,7 +244,9 @@ func  GLTFDocumentRegisterGltfDocumentExtension(extension GLTFDocumentExtension,
   methodNameV := StringNameFromStr("register_gltf_document_extension")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3752678331) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(extension.AsCTypePtr()), gdc.ConstTypePtr(&first_priority), }
+  cargs := []gdc.ConstTypePtr{extension.AsCTypePtr(), gdc.ConstTypePtr(&first_priority) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
 
@@ -223,7 +258,9 @@ func  GLTFDocumentUnregisterGltfDocumentExtension(extension GLTFDocumentExtensio
   methodNameV := StringNameFromStr("unregister_gltf_document_extension")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2684415758) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(extension.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{extension.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
 

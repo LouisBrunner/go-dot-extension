@@ -128,8 +128,13 @@ func (me *classSignal) unregister(_ *extension, _ *classEntry) {
 
 type classSubscriber string
 
-func (me classSubscriber) create(_ *extension, instance Class) {
-	reflectSetFieldUnsafe(instance, string(me), gdapi.NewSignalSubscribers())
+func (me classSubscriber) create(ext *extension, instance Class) error {
+	subInstance, err := CreateClass[*gdapi.SignalSubscribers](ext)
+	if err != nil {
+		return err
+	}
+	reflectSetFieldUnsafe(instance, string(me), **subInstance)
+	return nil
 }
 
 func (me classSubscriber) free(ext *extension, instance Class) {

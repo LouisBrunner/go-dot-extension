@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type RegEx struct {
   RefCounted
@@ -51,7 +54,9 @@ func  RegExCreateFromString(pattern String, ) RegEx {
   methodNameV := StringNameFromStr("create_from_string")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2150300909) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pattern.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{pattern.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRegEx()
 
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -65,6 +70,8 @@ func  (me *RegEx) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -76,7 +83,9 @@ func  (me *RegEx) Compile(pattern String, ) Error {
   methodNameV := StringNameFromStr("compile")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(pattern.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{pattern.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -89,8 +98,12 @@ func  (me *RegEx) Search(subject String, offset int64, end int64, ) RegExMatch {
   methodNameV := StringNameFromStr("search")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3365977994) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(subject.AsCTypePtr()), gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(&end), }
+  cargs := []gdc.ConstTypePtr{subject.AsCTypePtr(), gdc.ConstTypePtr(&offset) , gdc.ConstTypePtr(&end) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRegExMatch()
+  pinner.Pin(&offset)
+  pinner.Pin(&end)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -102,9 +115,13 @@ func  (me *RegEx) SearchAll(subject String, offset int64, end int64, ) []RegExMa
   methodNameV := StringNameFromStr("search_all")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 849021363) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(subject.AsCTypePtr()), gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(&end), }
+  cargs := []gdc.ConstTypePtr{subject.AsCTypePtr(), gdc.ConstTypePtr(&offset) , gdc.ConstTypePtr(&end) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
+  pinner.Pin(&offset)
+  pinner.Pin(&end)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ConvertArrayToSlice[RegExMatch](ret)
@@ -116,8 +133,13 @@ func  (me *RegEx) Sub(subject String, replacement String, all bool, offset int64
   methodNameV := StringNameFromStr("sub")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 54019702) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(subject.AsCTypePtr()), gdc.ConstTypePtr(replacement.AsCTypePtr()), gdc.ConstTypePtr(&all), gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(&end), }
+  cargs := []gdc.ConstTypePtr{subject.AsCTypePtr(), replacement.AsCTypePtr(), gdc.ConstTypePtr(&all) , gdc.ConstTypePtr(&offset) , gdc.ConstTypePtr(&end) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&all)
+  pinner.Pin(&offset)
+  pinner.Pin(&end)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -130,6 +152,8 @@ func  (me *RegEx) IsValid() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -143,6 +167,8 @@ func  (me *RegEx) GetPattern() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -156,6 +182,8 @@ func  (me *RegEx) GetGroupCount() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -169,6 +197,8 @@ func  (me *RegEx) GetNames() PackedStringArray {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedStringArray()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

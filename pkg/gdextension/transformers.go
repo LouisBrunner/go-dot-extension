@@ -62,22 +62,22 @@ func (me *extension) reflectFromType(val gdc.ConstTypePtr, expected reflect.Type
 		str := gdapi.StringFromPtr(val)
 		return reflect.ValueOf(string(str.String())), nil
 	case reflect.Struct, reflect.Interface:
-		switch reflect.ValueOf(val).Elem().Interface().(type) {
-		case gdapi.Object:
+		switch reflect.New(expected).Interface().(type) {
+		case *gdapi.Object:
 			obj, err := me.objectFromPtr(expected, gdc.ObjectPtr(val))
 			if err != nil {
 				return reflect.ValueOf(nil), err
 			}
-			return reflect.ValueOf(obj), nil
-		case gdapi.Variant:
-			return reflect.ValueOf(gdapi.NewVariantWith(gdc.VariantPtr(val))), nil
+			return reflect.ValueOf(obj).Elem(), nil
+		case *gdapi.Variant:
+			return reflect.ValueOf(gdapi.NewVariantWith(gdc.VariantPtr(val))).Elem(), nil
 		case gdapi.BClass:
 			bclassType, _ := bclassForType(expected)
 			bclass, err := gdapi.BClassFromPtr(bclassType, val)
 			if err != nil {
 				return reflect.ValueOf(nil), err
 			}
-			return reflect.ValueOf(bclass), nil
+			return reflect.ValueOf(bclass).Elem(), nil
 		}
 	case reflect.Pointer:
 		typ, err := me.reflectFromType(val, expected.Elem())
@@ -86,7 +86,7 @@ func (me *extension) reflectFromType(val gdc.ConstTypePtr, expected reflect.Type
 		}
 		return typ.Addr(), nil
 	}
-	return reflect.ValueOf(nil), fmt.Errorf("unsupported type: %s", expected.Kind())
+	return reflect.ValueOf(nil), fmt.Errorf("unsupported type: %s", expected)
 }
 
 func typeFromReflect(val reflect.Value) (gdc.TypePtr, error) {

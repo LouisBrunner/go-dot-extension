@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type AudioStreamPlaybackPolyphonic struct {
   AudioStreamPlayback
@@ -57,8 +60,13 @@ func  (me *AudioStreamPlaybackPolyphonic) PlayStream(stream AudioStream, from_of
   methodNameV := StringNameFromStr("play_stream")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 604492179) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(stream.AsCTypePtr()), gdc.ConstTypePtr(&from_offset), gdc.ConstTypePtr(&volume_db), gdc.ConstTypePtr(&pitch_scale), }
+  cargs := []gdc.ConstTypePtr{stream.AsCTypePtr(), gdc.ConstTypePtr(&from_offset) , gdc.ConstTypePtr(&volume_db) , gdc.ConstTypePtr(&pitch_scale) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&from_offset)
+  pinner.Pin(&volume_db)
+  pinner.Pin(&pitch_scale)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -70,7 +78,9 @@ func  (me *AudioStreamPlaybackPolyphonic) SetStreamVolume(stream int64, volume_d
   methodNameV := StringNameFromStr("set_stream_volume")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1602489585) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream), gdc.ConstTypePtr(&volume_db), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream) , gdc.ConstTypePtr(&volume_db) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -82,7 +92,9 @@ func  (me *AudioStreamPlaybackPolyphonic) SetStreamPitchScale(stream int64, pitc
   methodNameV := StringNameFromStr("set_stream_pitch_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1602489585) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream), gdc.ConstTypePtr(&pitch_scale), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream) , gdc.ConstTypePtr(&pitch_scale) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -94,8 +106,11 @@ func  (me *AudioStreamPlaybackPolyphonic) IsStreamPlaying(stream int64, ) bool {
   methodNameV := StringNameFromStr("is_stream_playing")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&stream)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -107,7 +122,9 @@ func  (me *AudioStreamPlaybackPolyphonic) StopStream(stream int64, )  {
   methodNameV := StringNameFromStr("stop_stream")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

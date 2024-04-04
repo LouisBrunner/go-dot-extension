@@ -45,17 +45,18 @@ func parseTag(tag string) *tagData {
 }
 
 var reservedMethods = []string{
+	"Init",
 	"Destroy",
 }
 
 func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 	instance := ctr()
 	typ := reflect.TypeOf(instance)
-	if typ.Kind() != reflect.Pointer && typ.Elem().Kind() != reflect.Struct {
-		return nil, fmt.Errorf("expected a pointer to struct but got %s (%T)", typ.Kind(), instance)
+	className, err := nameForClass(typ, instance)
+	if err != nil {
+		return nil, err
 	}
 
-	className := typ.Elem().Name()
 	namePtr := *gdapi.StringNameFromStr(className)
 	parentPtr := *gdapi.StringNameFromStr(instance.BaseClass())
 
@@ -137,6 +138,18 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 			continue
 		}
 		if _, found := ignoredMethods[method.Name]; found {
+			switch method.Name {
+			case "Init":
+				_, is := instance.(Initializable)
+				if !is {
+					return nil, fmt.Errorf("method %q of class %q: does not follow the correct signature", method.Name, className)
+				}
+			case "Destroy":
+				_, is := instance.(Destroyable)
+				if !is {
+					return nil, fmt.Errorf("method %q of class %q: does not follow the correct signature", method.Name, className)
+				}
+			}
 			continue
 		}
 

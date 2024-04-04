@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type ImageTexture3D struct {
   Texture3D
@@ -51,8 +54,16 @@ func  (me *ImageTexture3D) Create(format ImageFormat, width int64, height int64,
   methodNameV := StringNameFromStr("create")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130379827) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&format), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&depth), gdc.ConstTypePtr(&use_mipmaps), gdc.ConstTypePtr(&data), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&format) , gdc.ConstTypePtr(&width) , gdc.ConstTypePtr(&height) , gdc.ConstTypePtr(&depth) , gdc.ConstTypePtr(&use_mipmaps) , gdc.ConstTypePtr(&data) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&format)
+  pinner.Pin(&width)
+  pinner.Pin(&height)
+  pinner.Pin(&depth)
+  pinner.Pin(&use_mipmaps)
+  pinner.Pin(&data)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -64,7 +75,9 @@ func  (me *ImageTexture3D) Update(data []Image, )  {
   methodNameV := StringNameFromStr("update")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&data), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&data) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

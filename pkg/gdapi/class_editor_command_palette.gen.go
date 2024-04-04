@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type EditorCommandPalette struct {
   ConfirmationDialog
@@ -51,7 +54,9 @@ func  (me *EditorCommandPalette) AddCommand(command_name String, key_name String
   methodNameV := StringNameFromStr("add_command")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 864043298) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(command_name.AsCTypePtr()), gdc.ConstTypePtr(key_name.AsCTypePtr()), gdc.ConstTypePtr(binded_callable.AsCTypePtr()), gdc.ConstTypePtr(shortcut_text.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{command_name.AsCTypePtr(), key_name.AsCTypePtr(), binded_callable.AsCTypePtr(), shortcut_text.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -63,7 +68,9 @@ func  (me *EditorCommandPalette) RemoveCommand(key_name String, )  {
   methodNameV := StringNameFromStr("remove_command")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(key_name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{key_name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

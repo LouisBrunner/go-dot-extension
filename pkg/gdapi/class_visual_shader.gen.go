@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type VisualShader struct {
   Shader
@@ -93,7 +96,9 @@ func  (me *VisualShader) SetMode(mode ShaderMode, )  {
   methodNameV := StringNameFromStr("set_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3978014962) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -105,7 +110,9 @@ func  (me *VisualShader) AddNode(type_ VisualShaderType, node VisualShaderNode, 
   methodNameV := StringNameFromStr("add_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1560769431) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(node.AsCTypePtr()), gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , node.AsCTypePtr(), position.AsCTypePtr(), gdc.ConstTypePtr(&id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -117,8 +124,12 @@ func  (me *VisualShader) GetNode(type_ VisualShaderType, id int64, ) VisualShade
   methodNameV := StringNameFromStr("get_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3784670312) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVisualShaderNode()
+  pinner.Pin(&type_)
+  pinner.Pin(&id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -130,7 +141,9 @@ func  (me *VisualShader) SetNodePosition(type_ VisualShaderType, id int64, posit
   methodNameV := StringNameFromStr("set_node_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2726660721) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&id) , position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -142,8 +155,12 @@ func  (me *VisualShader) GetNodePosition(type_ VisualShaderType, id int64, ) Vec
   methodNameV := StringNameFromStr("get_node_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2175036082) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&type_)
+  pinner.Pin(&id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -155,8 +172,11 @@ func  (me *VisualShader) GetNodeList(type_ VisualShaderType, ) PackedInt32Array 
   methodNameV := StringNameFromStr("get_node_list")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2370592410) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
+  pinner.Pin(&type_)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -168,8 +188,11 @@ func  (me *VisualShader) GetValidNodeId(type_ VisualShaderType, ) int64 {
   methodNameV := StringNameFromStr("get_valid_node_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 629467342) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&type_)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -181,7 +204,9 @@ func  (me *VisualShader) RemoveNode(type_ VisualShaderType, id int64, )  {
   methodNameV := StringNameFromStr("remove_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844050912) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -193,7 +218,9 @@ func  (me *VisualShader) ReplaceNode(type_ VisualShaderType, id int64, new_class
   methodNameV := StringNameFromStr("replace_node")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3144735253) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(new_class.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&id) , new_class.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -205,8 +232,15 @@ func  (me *VisualShader) IsNodeConnection(type_ VisualShaderType, from_node int6
   methodNameV := StringNameFromStr("is_node_connection")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3922381898) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&from_node), gdc.ConstTypePtr(&from_port), gdc.ConstTypePtr(&to_node), gdc.ConstTypePtr(&to_port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&from_node) , gdc.ConstTypePtr(&from_port) , gdc.ConstTypePtr(&to_node) , gdc.ConstTypePtr(&to_port) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&type_)
+  pinner.Pin(&from_node)
+  pinner.Pin(&from_port)
+  pinner.Pin(&to_node)
+  pinner.Pin(&to_port)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -218,8 +252,15 @@ func  (me *VisualShader) CanConnectNodes(type_ VisualShaderType, from_node int64
   methodNameV := StringNameFromStr("can_connect_nodes")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3922381898) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&from_node), gdc.ConstTypePtr(&from_port), gdc.ConstTypePtr(&to_node), gdc.ConstTypePtr(&to_port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&from_node) , gdc.ConstTypePtr(&from_port) , gdc.ConstTypePtr(&to_node) , gdc.ConstTypePtr(&to_port) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&type_)
+  pinner.Pin(&from_node)
+  pinner.Pin(&from_port)
+  pinner.Pin(&to_node)
+  pinner.Pin(&to_port)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -231,8 +272,15 @@ func  (me *VisualShader) ConnectNodes(type_ VisualShaderType, from_node int64, f
   methodNameV := StringNameFromStr("connect_nodes")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3081049573) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&from_node), gdc.ConstTypePtr(&from_port), gdc.ConstTypePtr(&to_node), gdc.ConstTypePtr(&to_port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&from_node) , gdc.ConstTypePtr(&from_port) , gdc.ConstTypePtr(&to_node) , gdc.ConstTypePtr(&to_port) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&type_)
+  pinner.Pin(&from_node)
+  pinner.Pin(&from_port)
+  pinner.Pin(&to_node)
+  pinner.Pin(&to_port)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -244,7 +292,9 @@ func  (me *VisualShader) DisconnectNodes(type_ VisualShaderType, from_node int64
   methodNameV := StringNameFromStr("disconnect_nodes")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2268060358) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&from_node), gdc.ConstTypePtr(&from_port), gdc.ConstTypePtr(&to_node), gdc.ConstTypePtr(&to_port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&from_node) , gdc.ConstTypePtr(&from_port) , gdc.ConstTypePtr(&to_node) , gdc.ConstTypePtr(&to_port) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -256,7 +306,9 @@ func  (me *VisualShader) ConnectNodesForced(type_ VisualShaderType, from_node in
   methodNameV := StringNameFromStr("connect_nodes_forced")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2268060358) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&from_node), gdc.ConstTypePtr(&from_port), gdc.ConstTypePtr(&to_node), gdc.ConstTypePtr(&to_port), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&from_node) , gdc.ConstTypePtr(&from_port) , gdc.ConstTypePtr(&to_node) , gdc.ConstTypePtr(&to_port) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -268,9 +320,12 @@ func  (me *VisualShader) GetNodeConnections(type_ VisualShaderType, ) []Dictiona
   methodNameV := StringNameFromStr("get_node_connections")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1441964831) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
+  pinner.Pin(&type_)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ConvertArrayToSlice[Dictionary](ret)
@@ -282,7 +337,9 @@ func  (me *VisualShader) SetGraphOffset(offset Vector2, )  {
   methodNameV := StringNameFromStr("set_graph_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -295,6 +352,8 @@ func  (me *VisualShader) GetGraphOffset() Vector2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -307,7 +366,9 @@ func  (me *VisualShader) AddVarying(name String, mode VisualShaderVaryingMode, t
   methodNameV := StringNameFromStr("add_varying")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2084110726) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(&type_), }
+  cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), gdc.ConstTypePtr(&mode) , gdc.ConstTypePtr(&type_) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -319,7 +380,9 @@ func  (me *VisualShader) RemoveVarying(name String, )  {
   methodNameV := StringNameFromStr("remove_varying")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -331,7 +394,9 @@ func  (me *VisualShader) HasVarying(name String, ) bool {
   methodNameV := StringNameFromStr("has_varying")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

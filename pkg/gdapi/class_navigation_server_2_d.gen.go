@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type NavigationServer2D struct {
   Object
@@ -52,6 +55,8 @@ func  (me *NavigationServer2D) GetMaps() []RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -66,6 +71,8 @@ func  (me *NavigationServer2D) MapCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -78,7 +85,9 @@ func  (me *NavigationServer2D) MapSetActive(map_ RID, active bool, )  {
   methodNameV := StringNameFromStr("map_set_active")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), gdc.ConstTypePtr(&active), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), gdc.ConstTypePtr(&active) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -90,7 +99,9 @@ func  (me *NavigationServer2D) MapIsActive(map_ RID, ) bool {
   methodNameV := StringNameFromStr("map_is_active")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -103,7 +114,9 @@ func  (me *NavigationServer2D) MapSetCellSize(map_ RID, cell_size float64, )  {
   methodNameV := StringNameFromStr("map_set_cell_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), gdc.ConstTypePtr(&cell_size), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), gdc.ConstTypePtr(&cell_size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -115,7 +128,9 @@ func  (me *NavigationServer2D) MapGetCellSize(map_ RID, ) float64 {
   methodNameV := StringNameFromStr("map_get_cell_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -128,7 +143,9 @@ func  (me *NavigationServer2D) MapSetUseEdgeConnections(map_ RID, enabled bool, 
   methodNameV := StringNameFromStr("map_set_use_edge_connections")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -140,7 +157,9 @@ func  (me *NavigationServer2D) MapGetUseEdgeConnections(map_ RID, ) bool {
   methodNameV := StringNameFromStr("map_get_use_edge_connections")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -153,7 +172,9 @@ func  (me *NavigationServer2D) MapSetEdgeConnectionMargin(map_ RID, margin float
   methodNameV := StringNameFromStr("map_set_edge_connection_margin")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), gdc.ConstTypePtr(&margin), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), gdc.ConstTypePtr(&margin) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -165,7 +186,9 @@ func  (me *NavigationServer2D) MapGetEdgeConnectionMargin(map_ RID, ) float64 {
   methodNameV := StringNameFromStr("map_get_edge_connection_margin")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -178,7 +201,9 @@ func  (me *NavigationServer2D) MapSetLinkConnectionRadius(map_ RID, radius float
   methodNameV := StringNameFromStr("map_set_link_connection_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), gdc.ConstTypePtr(&radius), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), gdc.ConstTypePtr(&radius) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -190,7 +215,9 @@ func  (me *NavigationServer2D) MapGetLinkConnectionRadius(map_ RID, ) float64 {
   methodNameV := StringNameFromStr("map_get_link_connection_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -203,8 +230,12 @@ func  (me *NavigationServer2D) MapGetPath(map_ RID, origin Vector2, destination 
   methodNameV := StringNameFromStr("map_get_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3146466012) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), gdc.ConstTypePtr(origin.AsCTypePtr()), gdc.ConstTypePtr(destination.AsCTypePtr()), gdc.ConstTypePtr(&optimize), gdc.ConstTypePtr(&navigation_layers), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), origin.AsCTypePtr(), destination.AsCTypePtr(), gdc.ConstTypePtr(&optimize) , gdc.ConstTypePtr(&navigation_layers) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedVector2Array()
+  pinner.Pin(&optimize)
+  pinner.Pin(&navigation_layers)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -216,7 +247,9 @@ func  (me *NavigationServer2D) MapGetClosestPoint(map_ RID, to_point Vector2, ) 
   methodNameV := StringNameFromStr("map_get_closest_point")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1358334418) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), gdc.ConstTypePtr(to_point.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), to_point.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -229,7 +262,9 @@ func  (me *NavigationServer2D) MapGetClosestPointOwner(map_ RID, to_point Vector
   methodNameV := StringNameFromStr("map_get_closest_point_owner")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1353467510) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), gdc.ConstTypePtr(to_point.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), to_point.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -242,7 +277,9 @@ func  (me *NavigationServer2D) MapGetLinks(map_ RID, ) []RID {
   methodNameV := StringNameFromStr("map_get_links")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2684255073) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -256,7 +293,9 @@ func  (me *NavigationServer2D) MapGetRegions(map_ RID, ) []RID {
   methodNameV := StringNameFromStr("map_get_regions")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2684255073) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -270,7 +309,9 @@ func  (me *NavigationServer2D) MapGetAgents(map_ RID, ) []RID {
   methodNameV := StringNameFromStr("map_get_agents")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2684255073) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -284,7 +325,9 @@ func  (me *NavigationServer2D) MapGetObstacles(map_ RID, ) []RID {
   methodNameV := StringNameFromStr("map_get_obstacles")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2684255073) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -298,7 +341,9 @@ func  (me *NavigationServer2D) MapForceUpdate(map_ RID, )  {
   methodNameV := StringNameFromStr("map_force_update")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -310,7 +355,9 @@ func  (me *NavigationServer2D) QueryPath(parameters NavigationPathQueryParameter
   methodNameV := StringNameFromStr("query_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3394638789) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(parameters.AsCTypePtr()), gdc.ConstTypePtr(result.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), result.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -323,6 +370,8 @@ func  (me *NavigationServer2D) RegionCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -335,7 +384,9 @@ func  (me *NavigationServer2D) RegionSetEnabled(region RID, enabled bool, )  {
   methodNameV := StringNameFromStr("region_set_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -347,7 +398,9 @@ func  (me *NavigationServer2D) RegionGetEnabled(region RID, ) bool {
   methodNameV := StringNameFromStr("region_get_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -360,7 +413,9 @@ func  (me *NavigationServer2D) RegionSetUseEdgeConnections(region RID, enabled b
   methodNameV := StringNameFromStr("region_set_use_edge_connections")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -372,7 +427,9 @@ func  (me *NavigationServer2D) RegionGetUseEdgeConnections(region RID, ) bool {
   methodNameV := StringNameFromStr("region_get_use_edge_connections")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -385,7 +442,9 @@ func  (me *NavigationServer2D) RegionSetEnterCost(region RID, enter_cost float64
   methodNameV := StringNameFromStr("region_set_enter_cost")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&enter_cost), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), gdc.ConstTypePtr(&enter_cost) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -397,7 +456,9 @@ func  (me *NavigationServer2D) RegionGetEnterCost(region RID, ) float64 {
   methodNameV := StringNameFromStr("region_get_enter_cost")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -410,7 +471,9 @@ func  (me *NavigationServer2D) RegionSetTravelCost(region RID, travel_cost float
   methodNameV := StringNameFromStr("region_set_travel_cost")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&travel_cost), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), gdc.ConstTypePtr(&travel_cost) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -422,7 +485,9 @@ func  (me *NavigationServer2D) RegionGetTravelCost(region RID, ) float64 {
   methodNameV := StringNameFromStr("region_get_travel_cost")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -435,7 +500,9 @@ func  (me *NavigationServer2D) RegionSetOwnerId(region RID, owner_id int64, )  {
   methodNameV := StringNameFromStr("region_set_owner_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&owner_id), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), gdc.ConstTypePtr(&owner_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -447,7 +514,9 @@ func  (me *NavigationServer2D) RegionGetOwnerId(region RID, ) int64 {
   methodNameV := StringNameFromStr("region_get_owner_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -460,7 +529,9 @@ func  (me *NavigationServer2D) RegionOwnsPoint(region RID, point Vector2, ) bool
   methodNameV := StringNameFromStr("region_owns_point")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 219849798) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(point.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), point.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -473,7 +544,9 @@ func  (me *NavigationServer2D) RegionSetMap(region RID, map_ RID, )  {
   methodNameV := StringNameFromStr("region_set_map")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 395945892) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -485,7 +558,9 @@ func  (me *NavigationServer2D) RegionGetMap(region RID, ) RID {
   methodNameV := StringNameFromStr("region_get_map")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814569979) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -498,7 +573,9 @@ func  (me *NavigationServer2D) RegionSetNavigationLayers(region RID, navigation_
   methodNameV := StringNameFromStr("region_set_navigation_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&navigation_layers), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), gdc.ConstTypePtr(&navigation_layers) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -510,7 +587,9 @@ func  (me *NavigationServer2D) RegionGetNavigationLayers(region RID, ) int64 {
   methodNameV := StringNameFromStr("region_get_navigation_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -523,7 +602,9 @@ func  (me *NavigationServer2D) RegionSetTransform(region RID, transform Transfor
   methodNameV := StringNameFromStr("region_set_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1246044741) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(transform.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), transform.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -535,7 +616,9 @@ func  (me *NavigationServer2D) RegionSetNavigationPolygon(region RID, navigation
   methodNameV := StringNameFromStr("region_set_navigation_polygon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3633623451) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(navigation_polygon.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), navigation_polygon.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -547,7 +630,9 @@ func  (me *NavigationServer2D) RegionGetConnectionsCount(region RID, ) int64 {
   methodNameV := StringNameFromStr("region_get_connections_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -560,8 +645,11 @@ func  (me *NavigationServer2D) RegionGetConnectionPathwayStart(region RID, conne
   methodNameV := StringNameFromStr("region_get_connection_pathway_start")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2546185844) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&connection), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), gdc.ConstTypePtr(&connection) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&connection)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -573,8 +661,11 @@ func  (me *NavigationServer2D) RegionGetConnectionPathwayEnd(region RID, connect
   methodNameV := StringNameFromStr("region_get_connection_pathway_end")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2546185844) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&connection), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), gdc.ConstTypePtr(&connection) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&connection)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -587,6 +678,8 @@ func  (me *NavigationServer2D) LinkCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -599,7 +692,9 @@ func  (me *NavigationServer2D) LinkSetMap(link RID, map_ RID, )  {
   methodNameV := StringNameFromStr("link_set_map")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 395945892) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -611,7 +706,9 @@ func  (me *NavigationServer2D) LinkGetMap(link RID, ) RID {
   methodNameV := StringNameFromStr("link_get_map")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814569979) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -624,7 +721,9 @@ func  (me *NavigationServer2D) LinkSetEnabled(link RID, enabled bool, )  {
   methodNameV := StringNameFromStr("link_set_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -636,7 +735,9 @@ func  (me *NavigationServer2D) LinkGetEnabled(link RID, ) bool {
   methodNameV := StringNameFromStr("link_get_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -649,7 +750,9 @@ func  (me *NavigationServer2D) LinkSetBidirectional(link RID, bidirectional bool
   methodNameV := StringNameFromStr("link_set_bidirectional")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), gdc.ConstTypePtr(&bidirectional), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), gdc.ConstTypePtr(&bidirectional) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -661,7 +764,9 @@ func  (me *NavigationServer2D) LinkIsBidirectional(link RID, ) bool {
   methodNameV := StringNameFromStr("link_is_bidirectional")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -674,7 +779,9 @@ func  (me *NavigationServer2D) LinkSetNavigationLayers(link RID, navigation_laye
   methodNameV := StringNameFromStr("link_set_navigation_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), gdc.ConstTypePtr(&navigation_layers), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), gdc.ConstTypePtr(&navigation_layers) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -686,7 +793,9 @@ func  (me *NavigationServer2D) LinkGetNavigationLayers(link RID, ) int64 {
   methodNameV := StringNameFromStr("link_get_navigation_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -699,7 +808,9 @@ func  (me *NavigationServer2D) LinkSetStartPosition(link RID, position Vector2, 
   methodNameV := StringNameFromStr("link_set_start_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3201125042) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -711,7 +822,9 @@ func  (me *NavigationServer2D) LinkGetStartPosition(link RID, ) Vector2 {
   methodNameV := StringNameFromStr("link_get_start_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2440833711) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -724,7 +837,9 @@ func  (me *NavigationServer2D) LinkSetEndPosition(link RID, position Vector2, ) 
   methodNameV := StringNameFromStr("link_set_end_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3201125042) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -736,7 +851,9 @@ func  (me *NavigationServer2D) LinkGetEndPosition(link RID, ) Vector2 {
   methodNameV := StringNameFromStr("link_get_end_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2440833711) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -749,7 +866,9 @@ func  (me *NavigationServer2D) LinkSetEnterCost(link RID, enter_cost float64, ) 
   methodNameV := StringNameFromStr("link_set_enter_cost")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), gdc.ConstTypePtr(&enter_cost), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), gdc.ConstTypePtr(&enter_cost) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -761,7 +880,9 @@ func  (me *NavigationServer2D) LinkGetEnterCost(link RID, ) float64 {
   methodNameV := StringNameFromStr("link_get_enter_cost")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -774,7 +895,9 @@ func  (me *NavigationServer2D) LinkSetTravelCost(link RID, travel_cost float64, 
   methodNameV := StringNameFromStr("link_set_travel_cost")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), gdc.ConstTypePtr(&travel_cost), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), gdc.ConstTypePtr(&travel_cost) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -786,7 +909,9 @@ func  (me *NavigationServer2D) LinkGetTravelCost(link RID, ) float64 {
   methodNameV := StringNameFromStr("link_get_travel_cost")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -799,7 +924,9 @@ func  (me *NavigationServer2D) LinkSetOwnerId(link RID, owner_id int64, )  {
   methodNameV := StringNameFromStr("link_set_owner_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), gdc.ConstTypePtr(&owner_id), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), gdc.ConstTypePtr(&owner_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -811,7 +938,9 @@ func  (me *NavigationServer2D) LinkGetOwnerId(link RID, ) int64 {
   methodNameV := StringNameFromStr("link_get_owner_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(link.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{link.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -825,6 +954,8 @@ func  (me *NavigationServer2D) AgentCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -837,7 +968,9 @@ func  (me *NavigationServer2D) AgentSetAvoidanceEnabled(agent RID, enabled bool,
   methodNameV := StringNameFromStr("agent_set_avoidance_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -849,7 +982,9 @@ func  (me *NavigationServer2D) AgentGetAvoidanceEnabled(agent RID, ) bool {
   methodNameV := StringNameFromStr("agent_get_avoidance_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -862,7 +997,9 @@ func  (me *NavigationServer2D) AgentSetMap(agent RID, map_ RID, )  {
   methodNameV := StringNameFromStr("agent_set_map")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 395945892) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -874,7 +1011,9 @@ func  (me *NavigationServer2D) AgentGetMap(agent RID, ) RID {
   methodNameV := StringNameFromStr("agent_get_map")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814569979) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -887,7 +1026,9 @@ func  (me *NavigationServer2D) AgentSetPaused(agent RID, paused bool, )  {
   methodNameV := StringNameFromStr("agent_set_paused")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(&paused), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), gdc.ConstTypePtr(&paused) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -899,7 +1040,9 @@ func  (me *NavigationServer2D) AgentGetPaused(agent RID, ) bool {
   methodNameV := StringNameFromStr("agent_get_paused")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -912,7 +1055,9 @@ func  (me *NavigationServer2D) AgentSetNeighborDistance(agent RID, distance floa
   methodNameV := StringNameFromStr("agent_set_neighbor_distance")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(&distance), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), gdc.ConstTypePtr(&distance) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -924,7 +1069,9 @@ func  (me *NavigationServer2D) AgentSetMaxNeighbors(agent RID, count int64, )  {
   methodNameV := StringNameFromStr("agent_set_max_neighbors")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(&count), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), gdc.ConstTypePtr(&count) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -936,7 +1083,9 @@ func  (me *NavigationServer2D) AgentSetTimeHorizonAgents(agent RID, time_horizon
   methodNameV := StringNameFromStr("agent_set_time_horizon_agents")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(&time_horizon), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), gdc.ConstTypePtr(&time_horizon) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -948,7 +1097,9 @@ func  (me *NavigationServer2D) AgentSetTimeHorizonObstacles(agent RID, time_hori
   methodNameV := StringNameFromStr("agent_set_time_horizon_obstacles")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(&time_horizon), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), gdc.ConstTypePtr(&time_horizon) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -960,7 +1111,9 @@ func  (me *NavigationServer2D) AgentSetRadius(agent RID, radius float64, )  {
   methodNameV := StringNameFromStr("agent_set_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(&radius), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), gdc.ConstTypePtr(&radius) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -972,7 +1125,9 @@ func  (me *NavigationServer2D) AgentSetMaxSpeed(agent RID, max_speed float64, ) 
   methodNameV := StringNameFromStr("agent_set_max_speed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(&max_speed), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), gdc.ConstTypePtr(&max_speed) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -984,7 +1139,9 @@ func  (me *NavigationServer2D) AgentSetVelocityForced(agent RID, velocity Vector
   methodNameV := StringNameFromStr("agent_set_velocity_forced")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3201125042) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(velocity.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), velocity.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -996,7 +1153,9 @@ func  (me *NavigationServer2D) AgentSetVelocity(agent RID, velocity Vector2, )  
   methodNameV := StringNameFromStr("agent_set_velocity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3201125042) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(velocity.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), velocity.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1008,7 +1167,9 @@ func  (me *NavigationServer2D) AgentSetPosition(agent RID, position Vector2, )  
   methodNameV := StringNameFromStr("agent_set_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3201125042) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1020,7 +1181,9 @@ func  (me *NavigationServer2D) AgentIsMapChanged(agent RID, ) bool {
   methodNameV := StringNameFromStr("agent_is_map_changed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1033,7 +1196,9 @@ func  (me *NavigationServer2D) AgentSetAvoidanceCallback(agent RID, callback Cal
   methodNameV := StringNameFromStr("agent_set_avoidance_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3379118538) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1045,7 +1210,9 @@ func  (me *NavigationServer2D) AgentSetAvoidanceLayers(agent RID, layers int64, 
   methodNameV := StringNameFromStr("agent_set_avoidance_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(&layers), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), gdc.ConstTypePtr(&layers) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1057,7 +1224,9 @@ func  (me *NavigationServer2D) AgentSetAvoidanceMask(agent RID, mask int64, )  {
   methodNameV := StringNameFromStr("agent_set_avoidance_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(&mask), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), gdc.ConstTypePtr(&mask) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1069,7 +1238,9 @@ func  (me *NavigationServer2D) AgentSetAvoidancePriority(agent RID, priority flo
   methodNameV := StringNameFromStr("agent_set_avoidance_priority")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(agent.AsCTypePtr()), gdc.ConstTypePtr(&priority), }
+  cargs := []gdc.ConstTypePtr{agent.AsCTypePtr(), gdc.ConstTypePtr(&priority) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1082,6 +1253,8 @@ func  (me *NavigationServer2D) ObstacleCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1094,7 +1267,9 @@ func  (me *NavigationServer2D) ObstacleSetAvoidanceEnabled(obstacle RID, enabled
   methodNameV := StringNameFromStr("obstacle_set_avoidance_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstacle.AsCTypePtr()), gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{obstacle.AsCTypePtr(), gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1106,7 +1281,9 @@ func  (me *NavigationServer2D) ObstacleGetAvoidanceEnabled(obstacle RID, ) bool 
   methodNameV := StringNameFromStr("obstacle_get_avoidance_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstacle.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{obstacle.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1119,7 +1296,9 @@ func  (me *NavigationServer2D) ObstacleSetMap(obstacle RID, map_ RID, )  {
   methodNameV := StringNameFromStr("obstacle_set_map")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 395945892) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstacle.AsCTypePtr()), gdc.ConstTypePtr(map_.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{obstacle.AsCTypePtr(), map_.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1131,7 +1310,9 @@ func  (me *NavigationServer2D) ObstacleGetMap(obstacle RID, ) RID {
   methodNameV := StringNameFromStr("obstacle_get_map")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814569979) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstacle.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{obstacle.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1144,7 +1325,9 @@ func  (me *NavigationServer2D) ObstacleSetPaused(obstacle RID, paused bool, )  {
   methodNameV := StringNameFromStr("obstacle_set_paused")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstacle.AsCTypePtr()), gdc.ConstTypePtr(&paused), }
+  cargs := []gdc.ConstTypePtr{obstacle.AsCTypePtr(), gdc.ConstTypePtr(&paused) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1156,7 +1339,9 @@ func  (me *NavigationServer2D) ObstacleGetPaused(obstacle RID, ) bool {
   methodNameV := StringNameFromStr("obstacle_get_paused")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstacle.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{obstacle.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1169,7 +1354,9 @@ func  (me *NavigationServer2D) ObstacleSetRadius(obstacle RID, radius float64, )
   methodNameV := StringNameFromStr("obstacle_set_radius")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstacle.AsCTypePtr()), gdc.ConstTypePtr(&radius), }
+  cargs := []gdc.ConstTypePtr{obstacle.AsCTypePtr(), gdc.ConstTypePtr(&radius) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1181,7 +1368,9 @@ func  (me *NavigationServer2D) ObstacleSetVelocity(obstacle RID, velocity Vector
   methodNameV := StringNameFromStr("obstacle_set_velocity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3201125042) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstacle.AsCTypePtr()), gdc.ConstTypePtr(velocity.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{obstacle.AsCTypePtr(), velocity.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1193,7 +1382,9 @@ func  (me *NavigationServer2D) ObstacleSetPosition(obstacle RID, position Vector
   methodNameV := StringNameFromStr("obstacle_set_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3201125042) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstacle.AsCTypePtr()), gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{obstacle.AsCTypePtr(), position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1205,7 +1396,9 @@ func  (me *NavigationServer2D) ObstacleSetVertices(obstacle RID, vertices Packed
   methodNameV := StringNameFromStr("obstacle_set_vertices")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 29476483) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstacle.AsCTypePtr()), gdc.ConstTypePtr(vertices.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{obstacle.AsCTypePtr(), vertices.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1217,7 +1410,9 @@ func  (me *NavigationServer2D) ObstacleSetAvoidanceLayers(obstacle RID, layers i
   methodNameV := StringNameFromStr("obstacle_set_avoidance_layers")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(obstacle.AsCTypePtr()), gdc.ConstTypePtr(&layers), }
+  cargs := []gdc.ConstTypePtr{obstacle.AsCTypePtr(), gdc.ConstTypePtr(&layers) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1229,7 +1424,9 @@ func  (me *NavigationServer2D) ParseSourceGeometryData(navigation_polygon Naviga
   methodNameV := StringNameFromStr("parse_source_geometry_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1176164995) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_polygon.AsCTypePtr()), gdc.ConstTypePtr(source_geometry_data.AsCTypePtr()), gdc.ConstTypePtr(root_node.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{navigation_polygon.AsCTypePtr(), source_geometry_data.AsCTypePtr(), root_node.AsCTypePtr(), callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1241,7 +1438,9 @@ func  (me *NavigationServer2D) BakeFromSourceGeometryData(navigation_polygon Nav
   methodNameV := StringNameFromStr("bake_from_source_geometry_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2909414286) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_polygon.AsCTypePtr()), gdc.ConstTypePtr(source_geometry_data.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{navigation_polygon.AsCTypePtr(), source_geometry_data.AsCTypePtr(), callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1253,7 +1452,9 @@ func  (me *NavigationServer2D) BakeFromSourceGeometryDataAsync(navigation_polygo
   methodNameV := StringNameFromStr("bake_from_source_geometry_data_async")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2909414286) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_polygon.AsCTypePtr()), gdc.ConstTypePtr(source_geometry_data.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{navigation_polygon.AsCTypePtr(), source_geometry_data.AsCTypePtr(), callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1265,7 +1466,9 @@ func  (me *NavigationServer2D) FreeRid(rid RID, )  {
   methodNameV := StringNameFromStr("free_rid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1277,7 +1480,9 @@ func  (me *NavigationServer2D) SetDebugEnabled(enabled bool, )  {
   methodNameV := StringNameFromStr("set_debug_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1290,6 +1495,8 @@ func  (me *NavigationServer2D) GetDebugEnabled() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

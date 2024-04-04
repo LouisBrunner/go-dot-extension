@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type EditorFeatureProfile struct {
   RefCounted
@@ -64,7 +67,9 @@ func  (me *EditorFeatureProfile) SetDisableClass(class_name StringName, disable 
   methodNameV := StringNameFromStr("set_disable_class")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2524380260) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(class_name.AsCTypePtr()), gdc.ConstTypePtr(&disable), }
+  cargs := []gdc.ConstTypePtr{class_name.AsCTypePtr(), gdc.ConstTypePtr(&disable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -76,7 +81,9 @@ func  (me *EditorFeatureProfile) IsClassDisabled(class_name StringName, ) bool {
   methodNameV := StringNameFromStr("is_class_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(class_name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{class_name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -89,7 +96,9 @@ func  (me *EditorFeatureProfile) SetDisableClassEditor(class_name StringName, di
   methodNameV := StringNameFromStr("set_disable_class_editor")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2524380260) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(class_name.AsCTypePtr()), gdc.ConstTypePtr(&disable), }
+  cargs := []gdc.ConstTypePtr{class_name.AsCTypePtr(), gdc.ConstTypePtr(&disable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -101,7 +110,9 @@ func  (me *EditorFeatureProfile) IsClassEditorDisabled(class_name StringName, ) 
   methodNameV := StringNameFromStr("is_class_editor_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(class_name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{class_name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -114,7 +125,9 @@ func  (me *EditorFeatureProfile) SetDisableClassProperty(class_name StringName, 
   methodNameV := StringNameFromStr("set_disable_class_property")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 865197084) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(class_name.AsCTypePtr()), gdc.ConstTypePtr(property.AsCTypePtr()), gdc.ConstTypePtr(&disable), }
+  cargs := []gdc.ConstTypePtr{class_name.AsCTypePtr(), property.AsCTypePtr(), gdc.ConstTypePtr(&disable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -126,7 +139,9 @@ func  (me *EditorFeatureProfile) IsClassPropertyDisabled(class_name StringName, 
   methodNameV := StringNameFromStr("is_class_property_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 471820014) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(class_name.AsCTypePtr()), gdc.ConstTypePtr(property.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{class_name.AsCTypePtr(), property.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -139,7 +154,9 @@ func  (me *EditorFeatureProfile) SetDisableFeature(feature EditorFeatureProfileF
   methodNameV := StringNameFromStr("set_disable_feature")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1884871044) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature), gdc.ConstTypePtr(&disable), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature) , gdc.ConstTypePtr(&disable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -151,8 +168,11 @@ func  (me *EditorFeatureProfile) IsFeatureDisabled(feature EditorFeatureProfileF
   methodNameV := StringNameFromStr("is_feature_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2974403161) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&feature)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -164,8 +184,11 @@ func  (me *EditorFeatureProfile) GetFeatureName(feature EditorFeatureProfileFeat
   methodNameV := StringNameFromStr("get_feature_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3401335809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&feature)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -177,7 +200,9 @@ func  (me *EditorFeatureProfile) SaveToFile(path String, ) Error {
   methodNameV := StringNameFromStr("save_to_file")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -190,7 +215,9 @@ func  (me *EditorFeatureProfile) LoadFromFile(path String, ) Error {
   methodNameV := StringNameFromStr("load_from_file")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))

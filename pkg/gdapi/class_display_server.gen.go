@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type DisplayServer struct {
   Object
@@ -208,8 +211,11 @@ func  (me *DisplayServer) HasFeature(feature DisplayServerFeature, ) bool {
   methodNameV := StringNameFromStr("has_feature")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334065950) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feature) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&feature)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -222,6 +228,8 @@ func  (me *DisplayServer) GetName() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -234,7 +242,9 @@ func  (me *DisplayServer) GlobalMenuSetPopupCallbacks(menu_root String, open_cal
   methodNameV := StringNameFromStr("global_menu_set_popup_callbacks")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3893727526) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(open_callback.AsCTypePtr()), gdc.ConstTypePtr(close_callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), open_callback.AsCTypePtr(), close_callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -246,8 +256,11 @@ func  (me *DisplayServer) GlobalMenuAddSubmenuItem(menu_root String, label Strin
   methodNameV := StringNameFromStr("global_menu_add_submenu_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2828985934) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(submenu.AsCTypePtr()), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), label.AsCTypePtr(), submenu.AsCTypePtr(), gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -259,8 +272,12 @@ func  (me *DisplayServer) GlobalMenuAddItem(menu_root String, label String, call
   methodNameV := StringNameFromStr("global_menu_add_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3401266716) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), label.AsCTypePtr(), callback.AsCTypePtr(), key_callback.AsCTypePtr(), tag.AsCTypePtr(), gdc.ConstTypePtr(&accelerator) , gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&accelerator)
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -272,8 +289,12 @@ func  (me *DisplayServer) GlobalMenuAddCheckItem(menu_root String, label String,
   methodNameV := StringNameFromStr("global_menu_add_check_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3401266716) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), label.AsCTypePtr(), callback.AsCTypePtr(), key_callback.AsCTypePtr(), tag.AsCTypePtr(), gdc.ConstTypePtr(&accelerator) , gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&accelerator)
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -285,8 +306,12 @@ func  (me *DisplayServer) GlobalMenuAddIconItem(menu_root String, icon Texture2D
   methodNameV := StringNameFromStr("global_menu_add_icon_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4245856523) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), icon.AsCTypePtr(), label.AsCTypePtr(), callback.AsCTypePtr(), key_callback.AsCTypePtr(), tag.AsCTypePtr(), gdc.ConstTypePtr(&accelerator) , gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&accelerator)
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -298,8 +323,12 @@ func  (me *DisplayServer) GlobalMenuAddIconCheckItem(menu_root String, icon Text
   methodNameV := StringNameFromStr("global_menu_add_icon_check_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4245856523) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), icon.AsCTypePtr(), label.AsCTypePtr(), callback.AsCTypePtr(), key_callback.AsCTypePtr(), tag.AsCTypePtr(), gdc.ConstTypePtr(&accelerator) , gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&accelerator)
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -311,8 +340,12 @@ func  (me *DisplayServer) GlobalMenuAddRadioCheckItem(menu_root String, label St
   methodNameV := StringNameFromStr("global_menu_add_radio_check_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3401266716) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), label.AsCTypePtr(), callback.AsCTypePtr(), key_callback.AsCTypePtr(), tag.AsCTypePtr(), gdc.ConstTypePtr(&accelerator) , gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&accelerator)
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -324,8 +357,12 @@ func  (me *DisplayServer) GlobalMenuAddIconRadioCheckItem(menu_root String, icon
   methodNameV := StringNameFromStr("global_menu_add_icon_radio_check_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4245856523) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(icon.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), icon.AsCTypePtr(), label.AsCTypePtr(), callback.AsCTypePtr(), key_callback.AsCTypePtr(), tag.AsCTypePtr(), gdc.ConstTypePtr(&accelerator) , gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&accelerator)
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -337,8 +374,14 @@ func  (me *DisplayServer) GlobalMenuAddMultistateItem(menu_root String, label St
   methodNameV := StringNameFromStr("global_menu_add_multistate_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3431222859) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(label.AsCTypePtr()), gdc.ConstTypePtr(&max_states), gdc.ConstTypePtr(&default_state), gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(key_callback.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), gdc.ConstTypePtr(&accelerator), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), label.AsCTypePtr(), gdc.ConstTypePtr(&max_states) , gdc.ConstTypePtr(&default_state) , callback.AsCTypePtr(), key_callback.AsCTypePtr(), tag.AsCTypePtr(), gdc.ConstTypePtr(&accelerator) , gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&max_states)
+  pinner.Pin(&default_state)
+  pinner.Pin(&accelerator)
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -350,8 +393,11 @@ func  (me *DisplayServer) GlobalMenuAddSeparator(menu_root String, index int64, 
   methodNameV := StringNameFromStr("global_menu_add_separator")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3214812433) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -363,7 +409,9 @@ func  (me *DisplayServer) GlobalMenuGetItemIndexFromText(menu_root String, text 
   methodNameV := StringNameFromStr("global_menu_get_item_index_from_text")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2878152881) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(text.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), text.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -376,7 +424,9 @@ func  (me *DisplayServer) GlobalMenuGetItemIndexFromTag(menu_root String, tag Va
   methodNameV := StringNameFromStr("global_menu_get_item_index_from_tag")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2941063483) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(tag.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), tag.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -389,8 +439,11 @@ func  (me *DisplayServer) GlobalMenuIsItemChecked(menu_root String, idx int64, )
   methodNameV := StringNameFromStr("global_menu_is_item_checked")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3511468594) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -402,8 +455,11 @@ func  (me *DisplayServer) GlobalMenuIsItemCheckable(menu_root String, idx int64,
   methodNameV := StringNameFromStr("global_menu_is_item_checkable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3511468594) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -415,8 +471,11 @@ func  (me *DisplayServer) GlobalMenuIsItemRadioCheckable(menu_root String, idx i
   methodNameV := StringNameFromStr("global_menu_is_item_radio_checkable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3511468594) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -428,8 +487,11 @@ func  (me *DisplayServer) GlobalMenuGetItemCallback(menu_root String, idx int64,
   methodNameV := StringNameFromStr("global_menu_get_item_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 748666903) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewCallable()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -441,8 +503,11 @@ func  (me *DisplayServer) GlobalMenuGetItemKeyCallback(menu_root String, idx int
   methodNameV := StringNameFromStr("global_menu_get_item_key_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 748666903) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewCallable()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -454,8 +519,11 @@ func  (me *DisplayServer) GlobalMenuGetItemTag(menu_root String, idx int64, ) Va
   methodNameV := StringNameFromStr("global_menu_get_item_tag")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 330672633) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -467,8 +535,11 @@ func  (me *DisplayServer) GlobalMenuGetItemText(menu_root String, idx int64, ) S
   methodNameV := StringNameFromStr("global_menu_get_item_text")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 591067909) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -480,8 +551,11 @@ func  (me *DisplayServer) GlobalMenuGetItemSubmenu(menu_root String, idx int64, 
   methodNameV := StringNameFromStr("global_menu_get_item_submenu")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 591067909) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -493,8 +567,11 @@ func  (me *DisplayServer) GlobalMenuGetItemAccelerator(menu_root String, idx int
   methodNameV := StringNameFromStr("global_menu_get_item_accelerator")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 936065394) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Key
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -506,8 +583,11 @@ func  (me *DisplayServer) GlobalMenuIsItemDisabled(menu_root String, idx int64, 
   methodNameV := StringNameFromStr("global_menu_is_item_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3511468594) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -519,8 +599,11 @@ func  (me *DisplayServer) GlobalMenuIsItemHidden(menu_root String, idx int64, ) 
   methodNameV := StringNameFromStr("global_menu_is_item_hidden")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3511468594) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -532,8 +615,11 @@ func  (me *DisplayServer) GlobalMenuGetItemTooltip(menu_root String, idx int64, 
   methodNameV := StringNameFromStr("global_menu_get_item_tooltip")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 591067909) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -545,8 +631,11 @@ func  (me *DisplayServer) GlobalMenuGetItemState(menu_root String, idx int64, ) 
   methodNameV := StringNameFromStr("global_menu_get_item_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3422818498) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -558,8 +647,11 @@ func  (me *DisplayServer) GlobalMenuGetItemMaxStates(menu_root String, idx int64
   methodNameV := StringNameFromStr("global_menu_get_item_max_states")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3422818498) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -571,8 +663,11 @@ func  (me *DisplayServer) GlobalMenuGetItemIcon(menu_root String, idx int64, ) T
   methodNameV := StringNameFromStr("global_menu_get_item_icon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3591713183) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTexture2D()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -584,8 +679,11 @@ func  (me *DisplayServer) GlobalMenuGetItemIndentationLevel(menu_root String, id
   methodNameV := StringNameFromStr("global_menu_get_item_indentation_level")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3422818498) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -597,7 +695,9 @@ func  (me *DisplayServer) GlobalMenuSetItemChecked(menu_root String, idx int64, 
   methodNameV := StringNameFromStr("global_menu_set_item_checked")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4108344793) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&checked), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&checked) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -609,7 +709,9 @@ func  (me *DisplayServer) GlobalMenuSetItemCheckable(menu_root String, idx int64
   methodNameV := StringNameFromStr("global_menu_set_item_checkable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4108344793) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&checkable), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&checkable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -621,7 +723,9 @@ func  (me *DisplayServer) GlobalMenuSetItemRadioCheckable(menu_root String, idx 
   methodNameV := StringNameFromStr("global_menu_set_item_radio_checkable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4108344793) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&checkable), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&checkable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -633,7 +737,9 @@ func  (me *DisplayServer) GlobalMenuSetItemCallback(menu_root String, idx int64,
   methodNameV := StringNameFromStr("global_menu_set_item_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3809915389) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -645,7 +751,9 @@ func  (me *DisplayServer) GlobalMenuSetItemHoverCallbacks(menu_root String, idx 
   methodNameV := StringNameFromStr("global_menu_set_item_hover_callbacks")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3809915389) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -657,7 +765,9 @@ func  (me *DisplayServer) GlobalMenuSetItemKeyCallback(menu_root String, idx int
   methodNameV := StringNameFromStr("global_menu_set_item_key_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3809915389) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(key_callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , key_callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -669,7 +779,9 @@ func  (me *DisplayServer) GlobalMenuSetItemTag(menu_root String, idx int64, tag 
   methodNameV := StringNameFromStr("global_menu_set_item_tag")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 453659863) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(tag.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , tag.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -681,7 +793,9 @@ func  (me *DisplayServer) GlobalMenuSetItemText(menu_root String, idx int64, tex
   methodNameV := StringNameFromStr("global_menu_set_item_text")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 965966136) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(text.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , text.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -693,7 +807,9 @@ func  (me *DisplayServer) GlobalMenuSetItemSubmenu(menu_root String, idx int64, 
   methodNameV := StringNameFromStr("global_menu_set_item_submenu")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 965966136) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(submenu.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , submenu.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -705,7 +821,9 @@ func  (me *DisplayServer) GlobalMenuSetItemAccelerator(menu_root String, idx int
   methodNameV := StringNameFromStr("global_menu_set_item_accelerator")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 566943293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&keycode), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&keycode) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -717,7 +835,9 @@ func  (me *DisplayServer) GlobalMenuSetItemDisabled(menu_root String, idx int64,
   methodNameV := StringNameFromStr("global_menu_set_item_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4108344793) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&disabled), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&disabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -729,7 +849,9 @@ func  (me *DisplayServer) GlobalMenuSetItemHidden(menu_root String, idx int64, h
   methodNameV := StringNameFromStr("global_menu_set_item_hidden")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4108344793) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&hidden), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&hidden) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -741,7 +863,9 @@ func  (me *DisplayServer) GlobalMenuSetItemTooltip(menu_root String, idx int64, 
   methodNameV := StringNameFromStr("global_menu_set_item_tooltip")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 965966136) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(tooltip.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , tooltip.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -753,7 +877,9 @@ func  (me *DisplayServer) GlobalMenuSetItemState(menu_root String, idx int64, st
   methodNameV := StringNameFromStr("global_menu_set_item_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3474840532) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&state), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&state) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -765,7 +891,9 @@ func  (me *DisplayServer) GlobalMenuSetItemMaxStates(menu_root String, idx int64
   methodNameV := StringNameFromStr("global_menu_set_item_max_states")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3474840532) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&max_states), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&max_states) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -777,7 +905,9 @@ func  (me *DisplayServer) GlobalMenuSetItemIcon(menu_root String, idx int64, ico
   methodNameV := StringNameFromStr("global_menu_set_item_icon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3201338066) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(icon.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , icon.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -789,7 +919,9 @@ func  (me *DisplayServer) GlobalMenuSetItemIndentationLevel(menu_root String, id
   methodNameV := StringNameFromStr("global_menu_set_item_indentation_level")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3474840532) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), gdc.ConstTypePtr(&level), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&level) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -801,7 +933,9 @@ func  (me *DisplayServer) GlobalMenuGetItemCount(menu_root String, ) int64 {
   methodNameV := StringNameFromStr("global_menu_get_item_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1321353865) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -814,7 +948,9 @@ func  (me *DisplayServer) GlobalMenuRemoveItem(menu_root String, idx int64, )  {
   methodNameV := StringNameFromStr("global_menu_remove_item")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2956805083) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -826,7 +962,9 @@ func  (me *DisplayServer) GlobalMenuClear(menu_root String, )  {
   methodNameV := StringNameFromStr("global_menu_clear")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(menu_root.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{menu_root.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -839,6 +977,8 @@ func  (me *DisplayServer) TtsIsSpeaking() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -852,6 +992,8 @@ func  (me *DisplayServer) TtsIsPaused() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -865,6 +1007,8 @@ func  (me *DisplayServer) TtsGetVoices() []Dictionary {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -878,7 +1022,9 @@ func  (me *DisplayServer) TtsGetVoicesForLanguage(language String, ) PackedStrin
   methodNameV := StringNameFromStr("tts_get_voices_for_language")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4291131558) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(language.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{language.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedStringArray()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -891,7 +1037,9 @@ func  (me *DisplayServer) TtsSpeak(text String, voice String, volume int64, pitc
   methodNameV := StringNameFromStr("tts_speak")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 903992738) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(voice.AsCTypePtr()), gdc.ConstTypePtr(&volume), gdc.ConstTypePtr(&pitch), gdc.ConstTypePtr(&rate), gdc.ConstTypePtr(&utterance_id), gdc.ConstTypePtr(&interrupt), }
+  cargs := []gdc.ConstTypePtr{text.AsCTypePtr(), voice.AsCTypePtr(), gdc.ConstTypePtr(&volume) , gdc.ConstTypePtr(&pitch) , gdc.ConstTypePtr(&rate) , gdc.ConstTypePtr(&utterance_id) , gdc.ConstTypePtr(&interrupt) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -904,6 +1052,8 @@ func  (me *DisplayServer) TtsPause()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -916,6 +1066,8 @@ func  (me *DisplayServer) TtsResume()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -928,6 +1080,8 @@ func  (me *DisplayServer) TtsStop()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -939,7 +1093,9 @@ func  (me *DisplayServer) TtsSetUtteranceCallback(event DisplayServerTTSUtteranc
   methodNameV := StringNameFromStr("tts_set_utterance_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 109679083) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&event), gdc.ConstTypePtr(callable.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&event) , callable.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -952,6 +1108,8 @@ func  (me *DisplayServer) IsDarkModeSupported() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -965,6 +1123,8 @@ func  (me *DisplayServer) IsDarkMode() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -978,6 +1138,8 @@ func  (me *DisplayServer) GetAccentColor() Color {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewColor()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -990,7 +1152,9 @@ func  (me *DisplayServer) MouseSetMode(mouse_mode DisplayServerMouseMode, )  {
   methodNameV := StringNameFromStr("mouse_set_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 348288463) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mouse_mode), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mouse_mode) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1003,6 +1167,8 @@ func  (me *DisplayServer) MouseGetMode() DisplayServerMouseMode {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1353961651) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret DisplayServerMouseMode
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -1015,7 +1181,9 @@ func  (me *DisplayServer) WarpMouse(position Vector2i, )  {
   methodNameV := StringNameFromStr("warp_mouse")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130785943) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1028,6 +1196,8 @@ func  (me *DisplayServer) MouseGetPosition() Vector2i {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690982128) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1041,6 +1211,8 @@ func  (me *DisplayServer) MouseGetButtonState() MouseButtonMask {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2512161324) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret MouseButtonMask
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -1053,7 +1225,9 @@ func  (me *DisplayServer) ClipboardSet(clipboard String, )  {
   methodNameV := StringNameFromStr("clipboard_set")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(clipboard.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{clipboard.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1066,6 +1240,8 @@ func  (me *DisplayServer) ClipboardGet() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1079,6 +1255,8 @@ func  (me *DisplayServer) ClipboardGetImage() Image {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4190603485) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewImage()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1092,6 +1270,8 @@ func  (me *DisplayServer) ClipboardHas() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1105,6 +1285,8 @@ func  (me *DisplayServer) ClipboardHasImage() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1117,7 +1299,9 @@ func  (me *DisplayServer) ClipboardSetPrimary(clipboard_primary String, )  {
   methodNameV := StringNameFromStr("clipboard_set_primary")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(clipboard_primary.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{clipboard_primary.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1130,6 +1314,8 @@ func  (me *DisplayServer) ClipboardGetPrimary() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1143,6 +1329,8 @@ func  (me *DisplayServer) GetDisplayCutouts() []Rect2 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -1157,6 +1345,8 @@ func  (me *DisplayServer) GetDisplaySafeArea() Rect2i {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 410525958) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRect2i()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1170,6 +1360,8 @@ func  (me *DisplayServer) GetScreenCount() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1183,6 +1375,8 @@ func  (me *DisplayServer) GetPrimaryScreen() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1196,6 +1390,8 @@ func  (me *DisplayServer) GetKeyboardFocusScreen() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1208,7 +1404,9 @@ func  (me *DisplayServer) GetScreenFromRect(rect Rect2, ) int64 {
   methodNameV := StringNameFromStr("get_screen_from_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 741354659) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rect.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{rect.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1221,8 +1419,11 @@ func  (me *DisplayServer) ScreenGetPosition(screen int64, ) Vector2i {
   methodNameV := StringNameFromStr("screen_get_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1725937825) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
+  pinner.Pin(&screen)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1234,8 +1435,11 @@ func  (me *DisplayServer) ScreenGetSize(screen int64, ) Vector2i {
   methodNameV := StringNameFromStr("screen_get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1725937825) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
+  pinner.Pin(&screen)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1247,8 +1451,11 @@ func  (me *DisplayServer) ScreenGetUsableRect(screen int64, ) Rect2i {
   methodNameV := StringNameFromStr("screen_get_usable_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2439012528) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRect2i()
+  pinner.Pin(&screen)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1260,8 +1467,11 @@ func  (me *DisplayServer) ScreenGetDpi(screen int64, ) int64 {
   methodNameV := StringNameFromStr("screen_get_dpi")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 181039630) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&screen)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1273,8 +1483,11 @@ func  (me *DisplayServer) ScreenGetScale(screen int64, ) float64 {
   methodNameV := StringNameFromStr("screen_get_scale")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 909105437) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&screen)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1287,6 +1500,8 @@ func  (me *DisplayServer) IsTouchscreenAvailable() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3323674545) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1300,6 +1515,8 @@ func  (me *DisplayServer) ScreenGetMaxScale() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1312,8 +1529,11 @@ func  (me *DisplayServer) ScreenGetRefreshRate(screen int64, ) float64 {
   methodNameV := StringNameFromStr("screen_get_refresh_rate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 909105437) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&screen)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1325,7 +1545,9 @@ func  (me *DisplayServer) ScreenGetPixel(position Vector2i, ) Color {
   methodNameV := StringNameFromStr("screen_get_pixel")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1532707496) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewColor()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1338,8 +1560,11 @@ func  (me *DisplayServer) ScreenGetImage(screen int64, ) Image {
   methodNameV := StringNameFromStr("screen_get_image")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3813388802) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewImage()
+  pinner.Pin(&screen)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1351,7 +1576,9 @@ func  (me *DisplayServer) ScreenSetOrientation(orientation DisplayServerScreenOr
   methodNameV := StringNameFromStr("screen_set_orientation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2211511631) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&orientation), gdc.ConstTypePtr(&screen), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&orientation) , gdc.ConstTypePtr(&screen) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1363,8 +1590,11 @@ func  (me *DisplayServer) ScreenGetOrientation(screen int64, ) DisplayServerScre
   methodNameV := StringNameFromStr("screen_get_orientation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 133818562) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret DisplayServerScreenOrientation
+  pinner.Pin(&screen)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -1376,7 +1606,9 @@ func  (me *DisplayServer) ScreenSetKeepOn(enable bool, )  {
   methodNameV := StringNameFromStr("screen_set_keep_on")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1389,6 +1621,8 @@ func  (me *DisplayServer) ScreenIsKeptOn() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1402,6 +1636,8 @@ func  (me *DisplayServer) GetWindowList() PackedInt32Array {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPackedInt32Array()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1414,7 +1650,9 @@ func  (me *DisplayServer) GetWindowAtScreenPosition(position Vector2i, ) int64 {
   methodNameV := StringNameFromStr("get_window_at_screen_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2485466453) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1427,8 +1665,12 @@ func  (me *DisplayServer) WindowGetNativeHandle(handle_type DisplayServerHandleT
   methodNameV := StringNameFromStr("window_get_native_handle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1096425680) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&handle_type), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&handle_type) , gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&handle_type)
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1441,6 +1683,8 @@ func  (me *DisplayServer) WindowGetActivePopup() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1453,7 +1697,9 @@ func  (me *DisplayServer) WindowSetPopupSafeRect(window int64, rect Rect2i, )  {
   methodNameV := StringNameFromStr("window_set_popup_safe_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3317281434) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window), gdc.ConstTypePtr(rect.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window) , rect.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1465,8 +1711,11 @@ func  (me *DisplayServer) WindowGetPopupSafeRect(window int64, ) Rect2i {
   methodNameV := StringNameFromStr("window_get_popup_safe_rect")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2161169500) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRect2i()
+  pinner.Pin(&window)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1478,7 +1727,9 @@ func  (me *DisplayServer) WindowSetTitle(title String, window_id int64, )  {
   methodNameV := StringNameFromStr("window_set_title")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 441246282) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(title.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{title.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1490,8 +1741,11 @@ func  (me *DisplayServer) WindowGetTitleSize(title String, window_id int64, ) Ve
   methodNameV := StringNameFromStr("window_get_title_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2925301799) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(title.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{title.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1503,7 +1757,9 @@ func  (me *DisplayServer) WindowSetMousePassthrough(region PackedVector2Array, w
   methodNameV := StringNameFromStr("window_set_mouse_passthrough")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1993637420) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(region.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{region.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1515,8 +1771,11 @@ func  (me *DisplayServer) WindowGetCurrentScreen(window_id int64, ) int64 {
   methodNameV := StringNameFromStr("window_get_current_screen")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1528,7 +1787,9 @@ func  (me *DisplayServer) WindowSetCurrentScreen(screen int64, window_id int64, 
   methodNameV := StringNameFromStr("window_set_current_screen")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2230941749) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen) , gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1540,8 +1801,11 @@ func  (me *DisplayServer) WindowGetPosition(window_id int64, ) Vector2i {
   methodNameV := StringNameFromStr("window_get_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 763922886) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1553,8 +1817,11 @@ func  (me *DisplayServer) WindowGetPositionWithDecorations(window_id int64, ) Ve
   methodNameV := StringNameFromStr("window_get_position_with_decorations")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 763922886) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1566,7 +1833,9 @@ func  (me *DisplayServer) WindowSetPosition(position Vector2i, window_id int64, 
   methodNameV := StringNameFromStr("window_set_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1578,8 +1847,11 @@ func  (me *DisplayServer) WindowGetSize(window_id int64, ) Vector2i {
   methodNameV := StringNameFromStr("window_get_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 763922886) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1591,7 +1863,9 @@ func  (me *DisplayServer) WindowSetSize(size Vector2i, window_id int64, )  {
   methodNameV := StringNameFromStr("window_set_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(size.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1603,7 +1877,9 @@ func  (me *DisplayServer) WindowSetRectChangedCallback(callback Callable, window
   methodNameV := StringNameFromStr("window_set_rect_changed_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1091192925) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{callback.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1615,7 +1891,9 @@ func  (me *DisplayServer) WindowSetWindowEventCallback(callback Callable, window
   methodNameV := StringNameFromStr("window_set_window_event_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1091192925) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{callback.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1627,7 +1905,9 @@ func  (me *DisplayServer) WindowSetInputEventCallback(callback Callable, window_
   methodNameV := StringNameFromStr("window_set_input_event_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1091192925) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{callback.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1639,7 +1919,9 @@ func  (me *DisplayServer) WindowSetInputTextCallback(callback Callable, window_i
   methodNameV := StringNameFromStr("window_set_input_text_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1091192925) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{callback.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1651,7 +1933,9 @@ func  (me *DisplayServer) WindowSetDropFilesCallback(callback Callable, window_i
   methodNameV := StringNameFromStr("window_set_drop_files_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1091192925) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(callback.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{callback.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1663,8 +1947,11 @@ func  (me *DisplayServer) WindowGetAttachedInstanceId(window_id int64, ) int64 {
   methodNameV := StringNameFromStr("window_get_attached_instance_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1676,8 +1963,11 @@ func  (me *DisplayServer) WindowGetMaxSize(window_id int64, ) Vector2i {
   methodNameV := StringNameFromStr("window_get_max_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 763922886) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1689,7 +1979,9 @@ func  (me *DisplayServer) WindowSetMaxSize(max_size Vector2i, window_id int64, )
   methodNameV := StringNameFromStr("window_set_max_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(max_size.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{max_size.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1701,8 +1993,11 @@ func  (me *DisplayServer) WindowGetMinSize(window_id int64, ) Vector2i {
   methodNameV := StringNameFromStr("window_get_min_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 763922886) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1714,7 +2009,9 @@ func  (me *DisplayServer) WindowSetMinSize(min_size Vector2i, window_id int64, )
   methodNameV := StringNameFromStr("window_set_min_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(min_size.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{min_size.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1726,8 +2023,11 @@ func  (me *DisplayServer) WindowGetSizeWithDecorations(window_id int64, ) Vector
   methodNameV := StringNameFromStr("window_get_size_with_decorations")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 763922886) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1739,8 +2039,11 @@ func  (me *DisplayServer) WindowGetMode(window_id int64, ) DisplayServerWindowMo
   methodNameV := StringNameFromStr("window_get_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2185728461) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret DisplayServerWindowMode
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -1752,7 +2055,9 @@ func  (me *DisplayServer) WindowSetMode(mode DisplayServerWindowMode, window_id 
   methodNameV := StringNameFromStr("window_set_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1319965401) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1764,7 +2069,9 @@ func  (me *DisplayServer) WindowSetFlag(flag DisplayServerWindowFlags, enabled b
   methodNameV := StringNameFromStr("window_set_flag")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 254894155) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), gdc.ConstTypePtr(&enabled), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag) , gdc.ConstTypePtr(&enabled) , gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1776,8 +2083,12 @@ func  (me *DisplayServer) WindowGetFlag(flag DisplayServerWindowFlags, window_id
   methodNameV := StringNameFromStr("window_get_flag")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 802816991) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag) , gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&flag)
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1789,7 +2100,9 @@ func  (me *DisplayServer) WindowSetWindowButtonsOffset(offset Vector2i, window_i
   methodNameV := StringNameFromStr("window_set_window_buttons_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(offset.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1801,8 +2114,11 @@ func  (me *DisplayServer) WindowGetSafeTitleMargins(window_id int64, ) Vector3i 
   methodNameV := StringNameFromStr("window_get_safe_title_margins")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2295066620) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector3i()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1814,7 +2130,9 @@ func  (me *DisplayServer) WindowRequestAttention(window_id int64, )  {
   methodNameV := StringNameFromStr("window_request_attention")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1995695955) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1826,7 +2144,9 @@ func  (me *DisplayServer) WindowMoveToForeground(window_id int64, )  {
   methodNameV := StringNameFromStr("window_move_to_foreground")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1995695955) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1838,8 +2158,11 @@ func  (me *DisplayServer) WindowIsFocused(window_id int64, ) bool {
   methodNameV := StringNameFromStr("window_is_focused")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1051549951) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1851,8 +2174,11 @@ func  (me *DisplayServer) WindowCanDraw(window_id int64, ) bool {
   methodNameV := StringNameFromStr("window_can_draw")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1051549951) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1864,7 +2190,9 @@ func  (me *DisplayServer) WindowSetTransient(window_id int64, parent_window_id i
   methodNameV := StringNameFromStr("window_set_transient")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), gdc.ConstTypePtr(&parent_window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , gdc.ConstTypePtr(&parent_window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1876,7 +2204,9 @@ func  (me *DisplayServer) WindowSetExclusive(window_id int64, exclusive bool, ) 
   methodNameV := StringNameFromStr("window_set_exclusive")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), gdc.ConstTypePtr(&exclusive), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , gdc.ConstTypePtr(&exclusive) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1888,7 +2218,9 @@ func  (me *DisplayServer) WindowSetImeActive(active bool, window_id int64, )  {
   methodNameV := StringNameFromStr("window_set_ime_active")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1661950165) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active) , gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1900,7 +2232,9 @@ func  (me *DisplayServer) WindowSetImePosition(position Vector2i, window_id int6
   methodNameV := StringNameFromStr("window_set_ime_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2019273902) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1912,7 +2246,9 @@ func  (me *DisplayServer) WindowSetVsyncMode(vsync_mode DisplayServerVSyncMode, 
   methodNameV := StringNameFromStr("window_set_vsync_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2179333492) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vsync_mode), gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vsync_mode) , gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1924,8 +2260,11 @@ func  (me *DisplayServer) WindowGetVsyncMode(window_id int64, ) DisplayServerVSy
   methodNameV := StringNameFromStr("window_get_vsync_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 578873795) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret DisplayServerVSyncMode
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -1937,8 +2276,11 @@ func  (me *DisplayServer) WindowIsMaximizeAllowed(window_id int64, ) bool {
   methodNameV := StringNameFromStr("window_is_maximize_allowed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1051549951) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&window_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&window_id)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1951,6 +2293,8 @@ func  (me *DisplayServer) WindowMaximizeOnTitleDblClick() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1964,6 +2308,8 @@ func  (me *DisplayServer) WindowMinimizeOnTitleDblClick() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1977,6 +2323,8 @@ func  (me *DisplayServer) ImeGetSelection() Vector2i {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690982128) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2i()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1990,6 +2338,8 @@ func  (me *DisplayServer) ImeGetText() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2002,7 +2352,9 @@ func  (me *DisplayServer) VirtualKeyboardShow(existing_text String, position Rec
   methodNameV := StringNameFromStr("virtual_keyboard_show")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3042891259) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(existing_text.AsCTypePtr()), gdc.ConstTypePtr(position.AsCTypePtr()), gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&max_length), gdc.ConstTypePtr(&cursor_start), gdc.ConstTypePtr(&cursor_end), }
+  cargs := []gdc.ConstTypePtr{existing_text.AsCTypePtr(), position.AsCTypePtr(), gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&max_length) , gdc.ConstTypePtr(&cursor_start) , gdc.ConstTypePtr(&cursor_end) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2015,6 +2367,8 @@ func  (me *DisplayServer) VirtualKeyboardHide()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2027,6 +2381,8 @@ func  (me *DisplayServer) VirtualKeyboardGetHeight() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2039,7 +2395,9 @@ func  (me *DisplayServer) CursorSetShape(shape DisplayServerCursorShape, )  {
   methodNameV := StringNameFromStr("cursor_set_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2026291549) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shape), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shape) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2052,6 +2410,8 @@ func  (me *DisplayServer) CursorGetShape() DisplayServerCursorShape {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1087724927) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret DisplayServerCursorShape
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -2064,7 +2424,9 @@ func  (me *DisplayServer) CursorSetCustomImage(cursor Resource, shape DisplaySer
   methodNameV := StringNameFromStr("cursor_set_custom_image")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1816663697) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(cursor.AsCTypePtr()), gdc.ConstTypePtr(&shape), gdc.ConstTypePtr(hotspot.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{cursor.AsCTypePtr(), gdc.ConstTypePtr(&shape) , hotspot.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2077,6 +2439,8 @@ func  (me *DisplayServer) GetSwapCancelOk() bool {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2089,7 +2453,9 @@ func  (me *DisplayServer) EnableForStealingFocus(process_id int64, )  {
   methodNameV := StringNameFromStr("enable_for_stealing_focus")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&process_id), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&process_id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2101,7 +2467,9 @@ func  (me *DisplayServer) DialogShow(title String, description String, buttons P
   methodNameV := StringNameFromStr("dialog_show")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4115553226) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(title.AsCTypePtr()), gdc.ConstTypePtr(description.AsCTypePtr()), gdc.ConstTypePtr(buttons.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{title.AsCTypePtr(), description.AsCTypePtr(), buttons.AsCTypePtr(), callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -2114,7 +2482,9 @@ func  (me *DisplayServer) DialogInputText(title String, description String, exis
   methodNameV := StringNameFromStr("dialog_input_text")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3088703427) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(title.AsCTypePtr()), gdc.ConstTypePtr(description.AsCTypePtr()), gdc.ConstTypePtr(existing_text.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{title.AsCTypePtr(), description.AsCTypePtr(), existing_text.AsCTypePtr(), callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -2127,8 +2497,12 @@ func  (me *DisplayServer) FileDialogShow(title String, current_directory String,
   methodNameV := StringNameFromStr("file_dialog_show")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1531299078) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(title.AsCTypePtr()), gdc.ConstTypePtr(current_directory.AsCTypePtr()), gdc.ConstTypePtr(filename.AsCTypePtr()), gdc.ConstTypePtr(&show_hidden), gdc.ConstTypePtr(&mode), gdc.ConstTypePtr(filters.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{title.AsCTypePtr(), current_directory.AsCTypePtr(), filename.AsCTypePtr(), gdc.ConstTypePtr(&show_hidden) , gdc.ConstTypePtr(&mode) , filters.AsCTypePtr(), callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Error
+  pinner.Pin(&show_hidden)
+  pinner.Pin(&mode)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -2141,6 +2515,8 @@ func  (me *DisplayServer) KeyboardGetLayoutCount() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2154,6 +2530,8 @@ func  (me *DisplayServer) KeyboardGetCurrentLayout() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2166,7 +2544,9 @@ func  (me *DisplayServer) KeyboardSetCurrentLayout(index int64, )  {
   methodNameV := StringNameFromStr("keyboard_set_current_layout")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2178,8 +2558,11 @@ func  (me *DisplayServer) KeyboardGetLayoutLanguage(index int64, ) String {
   methodNameV := StringNameFromStr("keyboard_get_layout_language")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2191,8 +2574,11 @@ func  (me *DisplayServer) KeyboardGetLayoutName(index int64, ) String {
   methodNameV := StringNameFromStr("keyboard_get_layout_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&index)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2204,8 +2590,11 @@ func  (me *DisplayServer) KeyboardGetKeycodeFromPhysical(keycode Key, ) Key {
   methodNameV := StringNameFromStr("keyboard_get_keycode_from_physical")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3447613187) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keycode), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keycode) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Key
+  pinner.Pin(&keycode)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -2217,8 +2606,11 @@ func  (me *DisplayServer) KeyboardGetLabelFromPhysical(keycode Key, ) Key {
   methodNameV := StringNameFromStr("keyboard_get_label_from_physical")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3447613187) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keycode), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keycode) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret Key
+  pinner.Pin(&keycode)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -2231,6 +2623,8 @@ func  (me *DisplayServer) ProcessEvents()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2243,6 +2637,8 @@ func  (me *DisplayServer) ForceProcessAndDropEvents()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2254,7 +2650,9 @@ func  (me *DisplayServer) SetNativeIcon(filename String, )  {
   methodNameV := StringNameFromStr("set_native_icon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(filename.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{filename.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2266,7 +2664,9 @@ func  (me *DisplayServer) SetIcon(image Image, )  {
   methodNameV := StringNameFromStr("set_icon")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 532598488) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(image.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{image.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -2279,6 +2679,8 @@ func  (me *DisplayServer) TabletGetDriverCount() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2291,8 +2693,11 @@ func  (me *DisplayServer) TabletGetDriverName(idx int64, ) String {
   methodNameV := StringNameFromStr("tablet_get_driver_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
+  pinner.Pin(&idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -2305,6 +2710,8 @@ func  (me *DisplayServer) TabletGetCurrentDriver() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -2317,7 +2724,9 @@ func  (me *DisplayServer) TabletSetCurrentDriver(name String, )  {
   methodNameV := StringNameFromStr("tablet_set_current_driver")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(name.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

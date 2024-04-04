@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type Font struct {
   Resource
@@ -51,7 +54,9 @@ func  (me *Font) SetFallbacks(fallbacks []Font, )  {
   methodNameV := StringNameFromStr("set_fallbacks")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fallbacks), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fallbacks) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -64,6 +69,8 @@ func  (me *Font) GetFallbacks() []Font {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -77,8 +84,16 @@ func  (me *Font) FindVariation(variation_coordinates Dictionary, face_index int6
   methodNameV := StringNameFromStr("find_variation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3344325384) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(variation_coordinates.AsCTypePtr()), gdc.ConstTypePtr(&face_index), gdc.ConstTypePtr(&strength), gdc.ConstTypePtr(transform.AsCTypePtr()), gdc.ConstTypePtr(&spacing_top), gdc.ConstTypePtr(&spacing_bottom), gdc.ConstTypePtr(&spacing_space), gdc.ConstTypePtr(&spacing_glyph), }
+  cargs := []gdc.ConstTypePtr{variation_coordinates.AsCTypePtr(), gdc.ConstTypePtr(&face_index) , gdc.ConstTypePtr(&strength) , transform.AsCTypePtr(), gdc.ConstTypePtr(&spacing_top) , gdc.ConstTypePtr(&spacing_bottom) , gdc.ConstTypePtr(&spacing_space) , gdc.ConstTypePtr(&spacing_glyph) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
+  pinner.Pin(&face_index)
+  pinner.Pin(&strength)
+  pinner.Pin(&spacing_top)
+  pinner.Pin(&spacing_bottom)
+  pinner.Pin(&spacing_space)
+  pinner.Pin(&spacing_glyph)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -91,6 +106,8 @@ func  (me *Font) GetRids() []RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
@@ -104,8 +121,11 @@ func  (me *Font) GetHeight(font_size int64, ) float64 {
   methodNameV := StringNameFromStr("get_height")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 378113874) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&font_size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -117,8 +137,11 @@ func  (me *Font) GetAscent(font_size int64, ) float64 {
   methodNameV := StringNameFromStr("get_ascent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 378113874) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&font_size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -130,8 +153,11 @@ func  (me *Font) GetDescent(font_size int64, ) float64 {
   methodNameV := StringNameFromStr("get_descent")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 378113874) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&font_size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -143,8 +169,11 @@ func  (me *Font) GetUnderlinePosition(font_size int64, ) float64 {
   methodNameV := StringNameFromStr("get_underline_position")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 378113874) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&font_size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -156,8 +185,11 @@ func  (me *Font) GetUnderlineThickness(font_size int64, ) float64 {
   methodNameV := StringNameFromStr("get_underline_thickness")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 378113874) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&font_size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -170,6 +202,8 @@ func  (me *Font) GetFontName() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -183,6 +217,8 @@ func  (me *Font) GetFontStyleName() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -196,6 +232,8 @@ func  (me *Font) GetOtNameStrings() Dictionary {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -209,6 +247,8 @@ func  (me *Font) GetFontStyle() TextServerFontStyle {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2520224254) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret TextServerFontStyle
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -222,6 +262,8 @@ func  (me *Font) GetFontWeight() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -235,6 +277,8 @@ func  (me *Font) GetFontStretch() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -247,8 +291,11 @@ func  (me *Font) GetSpacing(spacing TextServerSpacingType, ) int64 {
   methodNameV := StringNameFromStr("get_spacing")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1310880908) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&spacing), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&spacing) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&spacing)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -261,6 +308,8 @@ func  (me *Font) GetOpentypeFeatures() Dictionary {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -273,7 +322,9 @@ func  (me *Font) SetCacheCapacity(single_line int64, multi_line int64, )  {
   methodNameV := StringNameFromStr("set_cache_capacity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&single_line), gdc.ConstTypePtr(&multi_line), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&single_line) , gdc.ConstTypePtr(&multi_line) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -285,8 +336,16 @@ func  (me *Font) GetStringSize(text String, alignment HorizontalAlignment, width
   methodNameV := StringNameFromStr("get_string_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1868866121) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(&alignment), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&font_size), gdc.ConstTypePtr(&justification_flags), gdc.ConstTypePtr(&direction), gdc.ConstTypePtr(&orientation), }
+  cargs := []gdc.ConstTypePtr{text.AsCTypePtr(), gdc.ConstTypePtr(&alignment) , gdc.ConstTypePtr(&width) , gdc.ConstTypePtr(&font_size) , gdc.ConstTypePtr(&justification_flags) , gdc.ConstTypePtr(&direction) , gdc.ConstTypePtr(&orientation) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&alignment)
+  pinner.Pin(&width)
+  pinner.Pin(&font_size)
+  pinner.Pin(&justification_flags)
+  pinner.Pin(&direction)
+  pinner.Pin(&orientation)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -298,8 +357,18 @@ func  (me *Font) GetMultilineStringSize(text String, alignment HorizontalAlignme
   methodNameV := StringNameFromStr("get_multiline_string_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 519636710) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(&alignment), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&font_size), gdc.ConstTypePtr(&max_lines), gdc.ConstTypePtr(&brk_flags), gdc.ConstTypePtr(&justification_flags), gdc.ConstTypePtr(&direction), gdc.ConstTypePtr(&orientation), }
+  cargs := []gdc.ConstTypePtr{text.AsCTypePtr(), gdc.ConstTypePtr(&alignment) , gdc.ConstTypePtr(&width) , gdc.ConstTypePtr(&font_size) , gdc.ConstTypePtr(&max_lines) , gdc.ConstTypePtr(&brk_flags) , gdc.ConstTypePtr(&justification_flags) , gdc.ConstTypePtr(&direction) , gdc.ConstTypePtr(&orientation) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&alignment)
+  pinner.Pin(&width)
+  pinner.Pin(&font_size)
+  pinner.Pin(&max_lines)
+  pinner.Pin(&brk_flags)
+  pinner.Pin(&justification_flags)
+  pinner.Pin(&direction)
+  pinner.Pin(&orientation)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -311,7 +380,9 @@ func  (me *Font) DrawString(canvas_item RID, pos Vector2, text String, alignment
   methodNameV := StringNameFromStr("draw_string")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1983721962) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas_item.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(&alignment), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&font_size), gdc.ConstTypePtr(modulate.AsCTypePtr()), gdc.ConstTypePtr(&justification_flags), gdc.ConstTypePtr(&direction), gdc.ConstTypePtr(&orientation), }
+  cargs := []gdc.ConstTypePtr{canvas_item.AsCTypePtr(), pos.AsCTypePtr(), text.AsCTypePtr(), gdc.ConstTypePtr(&alignment) , gdc.ConstTypePtr(&width) , gdc.ConstTypePtr(&font_size) , modulate.AsCTypePtr(), gdc.ConstTypePtr(&justification_flags) , gdc.ConstTypePtr(&direction) , gdc.ConstTypePtr(&orientation) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -323,7 +394,9 @@ func  (me *Font) DrawMultilineString(canvas_item RID, pos Vector2, text String, 
   methodNameV := StringNameFromStr("draw_multiline_string")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1171506176) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas_item.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(&alignment), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&font_size), gdc.ConstTypePtr(&max_lines), gdc.ConstTypePtr(modulate.AsCTypePtr()), gdc.ConstTypePtr(&brk_flags), gdc.ConstTypePtr(&justification_flags), gdc.ConstTypePtr(&direction), gdc.ConstTypePtr(&orientation), }
+  cargs := []gdc.ConstTypePtr{canvas_item.AsCTypePtr(), pos.AsCTypePtr(), text.AsCTypePtr(), gdc.ConstTypePtr(&alignment) , gdc.ConstTypePtr(&width) , gdc.ConstTypePtr(&font_size) , gdc.ConstTypePtr(&max_lines) , modulate.AsCTypePtr(), gdc.ConstTypePtr(&brk_flags) , gdc.ConstTypePtr(&justification_flags) , gdc.ConstTypePtr(&direction) , gdc.ConstTypePtr(&orientation) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -335,7 +408,9 @@ func  (me *Font) DrawStringOutline(canvas_item RID, pos Vector2, text String, al
   methodNameV := StringNameFromStr("draw_string_outline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 623754045) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas_item.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(&alignment), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&font_size), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(modulate.AsCTypePtr()), gdc.ConstTypePtr(&justification_flags), gdc.ConstTypePtr(&direction), gdc.ConstTypePtr(&orientation), }
+  cargs := []gdc.ConstTypePtr{canvas_item.AsCTypePtr(), pos.AsCTypePtr(), text.AsCTypePtr(), gdc.ConstTypePtr(&alignment) , gdc.ConstTypePtr(&width) , gdc.ConstTypePtr(&font_size) , gdc.ConstTypePtr(&size) , modulate.AsCTypePtr(), gdc.ConstTypePtr(&justification_flags) , gdc.ConstTypePtr(&direction) , gdc.ConstTypePtr(&orientation) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -347,7 +422,9 @@ func  (me *Font) DrawMultilineStringOutline(canvas_item RID, pos Vector2, text S
   methodNameV := StringNameFromStr("draw_multiline_string_outline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3206388178) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas_item.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(text.AsCTypePtr()), gdc.ConstTypePtr(&alignment), gdc.ConstTypePtr(&width), gdc.ConstTypePtr(&font_size), gdc.ConstTypePtr(&max_lines), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(modulate.AsCTypePtr()), gdc.ConstTypePtr(&brk_flags), gdc.ConstTypePtr(&justification_flags), gdc.ConstTypePtr(&direction), gdc.ConstTypePtr(&orientation), }
+  cargs := []gdc.ConstTypePtr{canvas_item.AsCTypePtr(), pos.AsCTypePtr(), text.AsCTypePtr(), gdc.ConstTypePtr(&alignment) , gdc.ConstTypePtr(&width) , gdc.ConstTypePtr(&font_size) , gdc.ConstTypePtr(&max_lines) , gdc.ConstTypePtr(&size) , modulate.AsCTypePtr(), gdc.ConstTypePtr(&brk_flags) , gdc.ConstTypePtr(&justification_flags) , gdc.ConstTypePtr(&direction) , gdc.ConstTypePtr(&orientation) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -359,8 +436,12 @@ func  (me *Font) GetCharSize(char int64, font_size int64, ) Vector2 {
   methodNameV := StringNameFromStr("get_char_size")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3016396712) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&char), gdc.ConstTypePtr(&font_size), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&char) , gdc.ConstTypePtr(&font_size) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&char)
+  pinner.Pin(&font_size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -372,8 +453,12 @@ func  (me *Font) DrawChar(canvas_item RID, pos Vector2, char int64, font_size in
   methodNameV := StringNameFromStr("draw_char")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3815617597) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas_item.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&char), gdc.ConstTypePtr(&font_size), gdc.ConstTypePtr(modulate.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{canvas_item.AsCTypePtr(), pos.AsCTypePtr(), gdc.ConstTypePtr(&char) , gdc.ConstTypePtr(&font_size) , modulate.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&char)
+  pinner.Pin(&font_size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -385,8 +470,13 @@ func  (me *Font) DrawCharOutline(canvas_item RID, pos Vector2, char int64, font_
   methodNameV := StringNameFromStr("draw_char_outline")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 209525354) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(canvas_item.AsCTypePtr()), gdc.ConstTypePtr(pos.AsCTypePtr()), gdc.ConstTypePtr(&char), gdc.ConstTypePtr(&font_size), gdc.ConstTypePtr(&size), gdc.ConstTypePtr(modulate.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{canvas_item.AsCTypePtr(), pos.AsCTypePtr(), gdc.ConstTypePtr(&char) , gdc.ConstTypePtr(&font_size) , gdc.ConstTypePtr(&size) , modulate.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&char)
+  pinner.Pin(&font_size)
+  pinner.Pin(&size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -398,8 +488,11 @@ func  (me *Font) HasChar(char int64, ) bool {
   methodNameV := StringNameFromStr("has_char")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&char), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&char) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&char)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -412,6 +505,8 @@ func  (me *Font) GetSupportedChars() String {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewString()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -424,7 +519,9 @@ func  (me *Font) IsLanguageSupported(language String, ) bool {
   methodNameV := StringNameFromStr("is_language_supported")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(language.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{language.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -437,7 +534,9 @@ func  (me *Font) IsScriptSupported(script String, ) bool {
   methodNameV := StringNameFromStr("is_script_supported")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(script.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{script.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -451,6 +550,8 @@ func  (me *Font) GetSupportedFeatureList() Dictionary {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -464,6 +565,8 @@ func  (me *Font) GetSupportedVariationList() Dictionary {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3102165223) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewDictionary()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -477,6 +580,8 @@ func  (me *Font) GetFaceCount() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())

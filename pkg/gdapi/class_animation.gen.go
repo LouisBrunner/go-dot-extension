@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type Animation struct {
   Resource
@@ -101,8 +104,12 @@ func  (me *Animation) AddTrack(type_ AnimationTrackType, at_position int64, ) in
   methodNameV := StringNameFromStr("add_track")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3843682357) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&at_position), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&at_position) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&type_)
+  pinner.Pin(&at_position)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -114,7 +121,9 @@ func  (me *Animation) RemoveTrack(track_idx int64, )  {
   methodNameV := StringNameFromStr("remove_track")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -127,6 +136,8 @@ func  (me *Animation) GetTrackCount() int64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -139,8 +150,11 @@ func  (me *Animation) TrackGetType(track_idx int64, ) AnimationTrackType {
   methodNameV := StringNameFromStr("track_get_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3445944217) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret AnimationTrackType
+  pinner.Pin(&track_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -152,8 +166,11 @@ func  (me *Animation) TrackGetPath(track_idx int64, ) NodePath {
   methodNameV := StringNameFromStr("track_get_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 408788394) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewNodePath()
+  pinner.Pin(&track_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -165,7 +182,9 @@ func  (me *Animation) TrackSetPath(track_idx int64, path NodePath, )  {
   methodNameV := StringNameFromStr("track_set_path")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761262315) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(path.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , path.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -177,8 +196,11 @@ func  (me *Animation) FindTrack(path NodePath, type_ AnimationTrackType, ) int64
   methodNameV := StringNameFromStr("find_track")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 245376003) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&type_), }
+  cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), gdc.ConstTypePtr(&type_) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&type_)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -190,7 +212,9 @@ func  (me *Animation) TrackMoveUp(track_idx int64, )  {
   methodNameV := StringNameFromStr("track_move_up")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -202,7 +226,9 @@ func  (me *Animation) TrackMoveDown(track_idx int64, )  {
   methodNameV := StringNameFromStr("track_move_down")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -214,7 +240,9 @@ func  (me *Animation) TrackMoveTo(track_idx int64, to_idx int64, )  {
   methodNameV := StringNameFromStr("track_move_to")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&to_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&to_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -226,7 +254,9 @@ func  (me *Animation) TrackSwap(track_idx int64, with_idx int64, )  {
   methodNameV := StringNameFromStr("track_swap")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&with_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&with_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -238,7 +268,9 @@ func  (me *Animation) TrackSetImported(track_idx int64, imported bool, )  {
   methodNameV := StringNameFromStr("track_set_imported")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&imported), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&imported) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -250,8 +282,11 @@ func  (me *Animation) TrackIsImported(track_idx int64, ) bool {
   methodNameV := StringNameFromStr("track_is_imported")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&track_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -263,7 +298,9 @@ func  (me *Animation) TrackSetEnabled(track_idx int64, enabled bool, )  {
   methodNameV := StringNameFromStr("track_set_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -275,8 +312,11 @@ func  (me *Animation) TrackIsEnabled(track_idx int64, ) bool {
   methodNameV := StringNameFromStr("track_is_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&track_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -288,8 +328,12 @@ func  (me *Animation) PositionTrackInsertKey(track_idx int64, time float64, posi
   methodNameV := StringNameFromStr("position_track_insert_key")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2540608232) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time) , position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -301,8 +345,12 @@ func  (me *Animation) RotationTrackInsertKey(track_idx int64, time float64, rota
   methodNameV := StringNameFromStr("rotation_track_insert_key")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4165004800) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(rotation.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time) , rotation.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -314,8 +362,12 @@ func  (me *Animation) ScaleTrackInsertKey(track_idx int64, time float64, scale V
   methodNameV := StringNameFromStr("scale_track_insert_key")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2540608232) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(scale.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time) , scale.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -327,8 +379,13 @@ func  (me *Animation) BlendShapeTrackInsertKey(track_idx int64, time float64, am
   methodNameV := StringNameFromStr("blend_shape_track_insert_key")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1534913637) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(&amount), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time) , gdc.ConstTypePtr(&amount) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time)
+  pinner.Pin(&amount)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -340,8 +397,12 @@ func  (me *Animation) PositionTrackInterpolate(track_idx int64, time_sec float64
   methodNameV := StringNameFromStr("position_track_interpolate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3285246857) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time_sec) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector3()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time_sec)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -353,8 +414,12 @@ func  (me *Animation) RotationTrackInterpolate(track_idx int64, time_sec float64
   methodNameV := StringNameFromStr("rotation_track_interpolate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1988711975) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time_sec) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewQuaternion()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time_sec)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -366,8 +431,12 @@ func  (me *Animation) ScaleTrackInterpolate(track_idx int64, time_sec float64, )
   methodNameV := StringNameFromStr("scale_track_interpolate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3285246857) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time_sec) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector3()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time_sec)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -379,8 +448,12 @@ func  (me *Animation) BlendShapeTrackInterpolate(track_idx int64, time_sec float
   methodNameV := StringNameFromStr("blend_shape_track_interpolate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1900462983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time_sec) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time_sec)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -392,8 +465,13 @@ func  (me *Animation) TrackInsertKey(track_idx int64, time float64, key Variant,
   methodNameV := StringNameFromStr("track_insert_key")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 808952278) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(&transition), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time) , key.AsCTypePtr(), gdc.ConstTypePtr(&transition) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time)
+  pinner.Pin(&transition)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -405,7 +483,9 @@ func  (me *Animation) TrackRemoveKey(track_idx int64, key_idx int64, )  {
   methodNameV := StringNameFromStr("track_remove_key")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3937882851) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -417,7 +497,9 @@ func  (me *Animation) TrackRemoveKeyAtTime(track_idx int64, time float64, )  {
   methodNameV := StringNameFromStr("track_remove_key_at_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1602489585) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -429,7 +511,9 @@ func  (me *Animation) TrackSetKeyValue(track_idx int64, key int64, value Variant
   methodNameV := StringNameFromStr("track_set_key_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2060538656) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key), gdc.ConstTypePtr(value.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key) , value.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -441,7 +525,9 @@ func  (me *Animation) TrackSetKeyTransition(track_idx int64, key_idx int64, tran
   methodNameV := StringNameFromStr("track_set_key_transition")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3506521499) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), gdc.ConstTypePtr(&transition), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , gdc.ConstTypePtr(&transition) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -453,7 +539,9 @@ func  (me *Animation) TrackSetKeyTime(track_idx int64, key_idx int64, time float
   methodNameV := StringNameFromStr("track_set_key_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3506521499) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), gdc.ConstTypePtr(&time), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , gdc.ConstTypePtr(&time) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -465,8 +553,12 @@ func  (me *Animation) TrackGetKeyTransition(track_idx int64, key_idx int64, ) fl
   methodNameV := StringNameFromStr("track_get_key_transition")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3085491603) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -478,8 +570,11 @@ func  (me *Animation) TrackGetKeyCount(track_idx int64, ) int64 {
   methodNameV := StringNameFromStr("track_get_key_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&track_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -491,8 +586,12 @@ func  (me *Animation) TrackGetKeyValue(track_idx int64, key_idx int64, ) Variant
   methodNameV := StringNameFromStr("track_get_key_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 678354945) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -504,8 +603,12 @@ func  (me *Animation) TrackGetKeyTime(track_idx int64, key_idx int64, ) float64 
   methodNameV := StringNameFromStr("track_get_key_time")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3085491603) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -517,8 +620,13 @@ func  (me *Animation) TrackFindKey(track_idx int64, time float64, find_mode Anim
   methodNameV := StringNameFromStr("track_find_key")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3245197284) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(&find_mode), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time) , gdc.ConstTypePtr(&find_mode) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time)
+  pinner.Pin(&find_mode)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -530,7 +638,9 @@ func  (me *Animation) TrackSetInterpolationType(track_idx int64, interpolation A
   methodNameV := StringNameFromStr("track_set_interpolation_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4112932513) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&interpolation), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&interpolation) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -542,8 +652,11 @@ func  (me *Animation) TrackGetInterpolationType(track_idx int64, ) AnimationInte
   methodNameV := StringNameFromStr("track_get_interpolation_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1530756894) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret AnimationInterpolationType
+  pinner.Pin(&track_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -555,7 +668,9 @@ func  (me *Animation) TrackSetInterpolationLoopWrap(track_idx int64, interpolati
   methodNameV := StringNameFromStr("track_set_interpolation_loop_wrap")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&interpolation), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&interpolation) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -567,8 +682,11 @@ func  (me *Animation) TrackGetInterpolationLoopWrap(track_idx int64, ) bool {
   methodNameV := StringNameFromStr("track_get_interpolation_loop_wrap")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&track_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -580,8 +698,11 @@ func  (me *Animation) TrackIsCompressed(track_idx int64, ) bool {
   methodNameV := StringNameFromStr("track_is_compressed")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&track_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -593,7 +714,9 @@ func  (me *Animation) ValueTrackSetUpdateMode(track_idx int64, mode AnimationUpd
   methodNameV := StringNameFromStr("value_track_set_update_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2854058312) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&mode), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&mode) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -605,8 +728,11 @@ func  (me *Animation) ValueTrackGetUpdateMode(track_idx int64, ) AnimationUpdate
   methodNameV := StringNameFromStr("value_track_get_update_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1440326473) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret AnimationUpdateMode
+  pinner.Pin(&track_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
@@ -618,8 +744,12 @@ func  (me *Animation) ValueTrackInterpolate(track_idx int64, time_sec float64, )
   methodNameV := StringNameFromStr("value_track_interpolate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 491147702) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time_sec) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time_sec)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -631,8 +761,12 @@ func  (me *Animation) MethodTrackGetName(track_idx int64, key_idx int64, ) Strin
   methodNameV := StringNameFromStr("method_track_get_name")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 351665558) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewStringName()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -644,8 +778,12 @@ func  (me *Animation) MethodTrackGetParams(track_idx int64, key_idx int64, ) Arr
   methodNameV := StringNameFromStr("method_track_get_params")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2345056839) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewArray()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -657,8 +795,13 @@ func  (me *Animation) BezierTrackInsertKey(track_idx int64, time float64, value 
   methodNameV := StringNameFromStr("bezier_track_insert_key")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3656773645) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(&value), gdc.ConstTypePtr(in_handle.AsCTypePtr()), gdc.ConstTypePtr(out_handle.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time) , gdc.ConstTypePtr(&value) , in_handle.AsCTypePtr(), out_handle.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time)
+  pinner.Pin(&value)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -670,7 +813,9 @@ func  (me *Animation) BezierTrackSetKeyValue(track_idx int64, key_idx int64, val
   methodNameV := StringNameFromStr("bezier_track_set_key_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3506521499) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), gdc.ConstTypePtr(&value), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , gdc.ConstTypePtr(&value) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -682,7 +827,9 @@ func  (me *Animation) BezierTrackSetKeyInHandle(track_idx int64, key_idx int64, 
   methodNameV := StringNameFromStr("bezier_track_set_key_in_handle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1719223284) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), gdc.ConstTypePtr(in_handle.AsCTypePtr()), gdc.ConstTypePtr(&balanced_value_time_ratio), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , in_handle.AsCTypePtr(), gdc.ConstTypePtr(&balanced_value_time_ratio) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -694,7 +841,9 @@ func  (me *Animation) BezierTrackSetKeyOutHandle(track_idx int64, key_idx int64,
   methodNameV := StringNameFromStr("bezier_track_set_key_out_handle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1719223284) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), gdc.ConstTypePtr(out_handle.AsCTypePtr()), gdc.ConstTypePtr(&balanced_value_time_ratio), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , out_handle.AsCTypePtr(), gdc.ConstTypePtr(&balanced_value_time_ratio) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -706,8 +855,12 @@ func  (me *Animation) BezierTrackGetKeyValue(track_idx int64, key_idx int64, ) f
   methodNameV := StringNameFromStr("bezier_track_get_key_value")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3085491603) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -719,8 +872,12 @@ func  (me *Animation) BezierTrackGetKeyInHandle(track_idx int64, key_idx int64, 
   methodNameV := StringNameFromStr("bezier_track_get_key_in_handle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3016396712) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -732,8 +889,12 @@ func  (me *Animation) BezierTrackGetKeyOutHandle(track_idx int64, key_idx int64,
   methodNameV := StringNameFromStr("bezier_track_get_key_out_handle")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3016396712) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector2()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -745,8 +906,12 @@ func  (me *Animation) BezierTrackInterpolate(track_idx int64, time float64, ) fl
   methodNameV := StringNameFromStr("bezier_track_interpolate")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1900462983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -758,8 +923,14 @@ func  (me *Animation) AudioTrackInsertKey(track_idx int64, time float64, stream 
   methodNameV := StringNameFromStr("audio_track_insert_key")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4021027286) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(stream.AsCTypePtr()), gdc.ConstTypePtr(&start_offset), gdc.ConstTypePtr(&end_offset), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time) , stream.AsCTypePtr(), gdc.ConstTypePtr(&start_offset) , gdc.ConstTypePtr(&end_offset) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time)
+  pinner.Pin(&start_offset)
+  pinner.Pin(&end_offset)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -771,7 +942,9 @@ func  (me *Animation) AudioTrackSetKeyStream(track_idx int64, key_idx int64, str
   methodNameV := StringNameFromStr("audio_track_set_key_stream")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3886397084) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), gdc.ConstTypePtr(stream.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , stream.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -783,7 +956,9 @@ func  (me *Animation) AudioTrackSetKeyStartOffset(track_idx int64, key_idx int64
   methodNameV := StringNameFromStr("audio_track_set_key_start_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3506521499) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), gdc.ConstTypePtr(&offset), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , gdc.ConstTypePtr(&offset) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -795,7 +970,9 @@ func  (me *Animation) AudioTrackSetKeyEndOffset(track_idx int64, key_idx int64, 
   methodNameV := StringNameFromStr("audio_track_set_key_end_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3506521499) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), gdc.ConstTypePtr(&offset), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , gdc.ConstTypePtr(&offset) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -807,8 +984,12 @@ func  (me *Animation) AudioTrackGetKeyStream(track_idx int64, key_idx int64, ) R
   methodNameV := StringNameFromStr("audio_track_get_key_stream")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 635277205) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewResource()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -820,8 +1001,12 @@ func  (me *Animation) AudioTrackGetKeyStartOffset(track_idx int64, key_idx int64
   methodNameV := StringNameFromStr("audio_track_get_key_start_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3085491603) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -833,8 +1018,12 @@ func  (me *Animation) AudioTrackGetKeyEndOffset(track_idx int64, key_idx int64, 
   methodNameV := StringNameFromStr("audio_track_get_key_end_offset")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3085491603) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -846,7 +1035,9 @@ func  (me *Animation) AudioTrackSetUseBlend(track_idx int64, enable bool, )  {
   methodNameV := StringNameFromStr("audio_track_set_use_blend")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&enable), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&enable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -858,8 +1049,11 @@ func  (me *Animation) AudioTrackIsUseBlend(track_idx int64, ) bool {
   methodNameV := StringNameFromStr("audio_track_is_use_blend")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&track_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -871,8 +1065,12 @@ func  (me *Animation) AnimationTrackInsertKey(track_idx int64, time float64, ani
   methodNameV := StringNameFromStr("animation_track_insert_key")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 158676774) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(animation.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&time) , animation.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&time)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -884,7 +1082,9 @@ func  (me *Animation) AnimationTrackSetKeyAnimation(track_idx int64, key_idx int
   methodNameV := StringNameFromStr("animation_track_set_key_animation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 117615382) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), gdc.ConstTypePtr(animation.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , animation.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -896,8 +1096,12 @@ func  (me *Animation) AnimationTrackGetKeyAnimation(track_idx int64, key_idx int
   methodNameV := StringNameFromStr("animation_track_get_key_animation")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 351665558) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&key_idx), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , gdc.ConstTypePtr(&key_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewStringName()
+  pinner.Pin(&track_idx)
+  pinner.Pin(&key_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -909,7 +1113,9 @@ func  (me *Animation) SetLength(time_sec float64, )  {
   methodNameV := StringNameFromStr("set_length")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time_sec), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time_sec) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -922,6 +1128,8 @@ func  (me *Animation) GetLength() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -934,7 +1142,9 @@ func  (me *Animation) SetLoopMode(loop_mode AnimationLoopMode, )  {
   methodNameV := StringNameFromStr("set_loop_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3155355575) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&loop_mode), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&loop_mode) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -947,6 +1157,8 @@ func  (me *Animation) GetLoopMode() AnimationLoopMode {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1988889481) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret AnimationLoopMode
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -959,7 +1171,9 @@ func  (me *Animation) SetStep(size_sec float64, )  {
   methodNameV := StringNameFromStr("set_step")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size_sec), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size_sec) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -972,6 +1186,8 @@ func  (me *Animation) GetStep() float64 {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -985,6 +1201,8 @@ func  (me *Animation) Clear()  {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -996,7 +1214,9 @@ func  (me *Animation) CopyTrack(track_idx int64, to_animation Animation, )  {
   methodNameV := StringNameFromStr("copy_track")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 148001024) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(to_animation.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx) , to_animation.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1008,7 +1228,9 @@ func  (me *Animation) Compress(page_size int64, fps int64, split_tolerance float
   methodNameV := StringNameFromStr("compress")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3608408117) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&page_size), gdc.ConstTypePtr(&fps), gdc.ConstTypePtr(&split_tolerance), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&page_size) , gdc.ConstTypePtr(&fps) , gdc.ConstTypePtr(&split_tolerance) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

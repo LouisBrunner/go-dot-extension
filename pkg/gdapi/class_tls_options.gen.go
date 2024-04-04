@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type TLSOptions struct {
   RefCounted
@@ -51,7 +54,9 @@ func  TLSOptionsClient(trusted_chain X509Certificate, common_name_override Strin
   methodNameV := StringNameFromStr("client")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3565000357) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(trusted_chain.AsCTypePtr()), gdc.ConstTypePtr(common_name_override.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{trusted_chain.AsCTypePtr(), common_name_override.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTLSOptions()
 
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -64,7 +69,9 @@ func  TLSOptionsClientUnsafe(trusted_chain X509Certificate, ) TLSOptions {
   methodNameV := StringNameFromStr("client_unsafe")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2090251749) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(trusted_chain.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{trusted_chain.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTLSOptions()
 
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -77,7 +84,9 @@ func  TLSOptionsServer(key CryptoKey, certificate X509Certificate, ) TLSOptions 
   methodNameV := StringNameFromStr("server")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36969539) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(key.AsCTypePtr()), gdc.ConstTypePtr(certificate.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{key.AsCTypePtr(), certificate.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTLSOptions()
 
   giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())

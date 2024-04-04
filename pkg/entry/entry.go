@@ -18,8 +18,6 @@ import (
 
 var DebugMode = false
 
-var gext gdextension.Extension
-
 //export go_dot_gdextension_entry
 func go_dot_gdextension_entry(pGetProcAddress C.GDExtensionInterfaceGetProcAddress, pLibrary C.GDExtensionClassLibraryPtr, rInitialization *C.GDExtensionInitialization) C.GDExtensionBool {
 	level := gdextension.LogLevelWarning
@@ -44,12 +42,4 @@ func go_dot_gdextension_entry(pGetProcAddress C.GDExtensionInterfaceGetProcAddre
 		gdc.InitializationInitializeFn(gdc.Callbacks.GetInitializationInitializeCallback()),
 		gdc.InitializationDeinitializeFn(gdc.Callbacks.GetInitializationDeinitializeCallback()),
 	))
-}
-
-func Logf(level gdextension.LogLevel, format string, v ...interface{}) {
-	if gext == nil {
-		log.Printf(format, v...)
-		return
-	}
-	gext.Logf(level, format, v...)
 }

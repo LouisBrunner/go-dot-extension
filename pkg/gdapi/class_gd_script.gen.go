@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type GDScript struct {
   Script
@@ -51,12 +54,12 @@ func  (me *GDScript) New(varargs ...Variant) Variant {
   methodNameV := StringNameFromStr("new")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1545262638) // FIXME: should cache?
-  cargs := []gdc.ConstVariantPtr{}
-  ret := NewVariant()
-
+  cargs := make([]gdc.ConstVariantPtr, 0, 0 + len(varargs))
   for _, v := range varargs {
     cargs = append(cargs, v.AsCPtr())
   }
+  ret := NewVariant()
+
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {

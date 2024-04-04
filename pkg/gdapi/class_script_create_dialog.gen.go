@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type ScriptCreateDialog struct {
   ConfirmationDialog
@@ -51,7 +54,9 @@ func  (me *ScriptCreateDialog) Config(inherits String, path String, built_in_ena
   methodNameV := StringNameFromStr("config")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 869314288) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(inherits.AsCTypePtr()), gdc.ConstTypePtr(path.AsCTypePtr()), gdc.ConstTypePtr(&built_in_enabled), gdc.ConstTypePtr(&load_enabled), }
+  cargs := []gdc.ConstTypePtr{inherits.AsCTypePtr(), path.AsCTypePtr(), gdc.ConstTypePtr(&built_in_enabled) , gdc.ConstTypePtr(&load_enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

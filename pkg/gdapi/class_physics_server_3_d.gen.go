@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type PhysicsServer3D struct {
   Object
@@ -266,6 +269,8 @@ func  (me *PhysicsServer3D) WorldBoundaryShapeCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -279,6 +284,8 @@ func  (me *PhysicsServer3D) SeparationRayShapeCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -292,6 +299,8 @@ func  (me *PhysicsServer3D) SphereShapeCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -305,6 +314,8 @@ func  (me *PhysicsServer3D) BoxShapeCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -318,6 +329,8 @@ func  (me *PhysicsServer3D) CapsuleShapeCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -331,6 +344,8 @@ func  (me *PhysicsServer3D) CylinderShapeCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -344,6 +359,8 @@ func  (me *PhysicsServer3D) ConvexPolygonShapeCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -357,6 +374,8 @@ func  (me *PhysicsServer3D) ConcavePolygonShapeCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -370,6 +389,8 @@ func  (me *PhysicsServer3D) HeightmapShapeCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -383,6 +404,8 @@ func  (me *PhysicsServer3D) CustomShapeCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -395,7 +418,9 @@ func  (me *PhysicsServer3D) ShapeSetData(shape RID, data Variant, )  {
   methodNameV := StringNameFromStr("shape_set_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3175752987) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shape.AsCTypePtr()), gdc.ConstTypePtr(data.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shape.AsCTypePtr(), data.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -407,7 +432,9 @@ func  (me *PhysicsServer3D) ShapeGetType(shape RID, ) PhysicsServer3DShapeType {
   methodNameV := StringNameFromStr("shape_get_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3418923367) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shape.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shape.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret PhysicsServer3DShapeType
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -420,7 +447,9 @@ func  (me *PhysicsServer3D) ShapeGetData(shape RID, ) Variant {
   methodNameV := StringNameFromStr("shape_get_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4171304767) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(shape.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{shape.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -434,6 +463,8 @@ func  (me *PhysicsServer3D) SpaceCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -446,7 +477,9 @@ func  (me *PhysicsServer3D) SpaceSetActive(space RID, active bool, )  {
   methodNameV := StringNameFromStr("space_set_active")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(space.AsCTypePtr()), gdc.ConstTypePtr(&active), }
+  cargs := []gdc.ConstTypePtr{space.AsCTypePtr(), gdc.ConstTypePtr(&active) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -458,7 +491,9 @@ func  (me *PhysicsServer3D) SpaceIsActive(space RID, ) bool {
   methodNameV := StringNameFromStr("space_is_active")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(space.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{space.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -471,7 +506,9 @@ func  (me *PhysicsServer3D) SpaceSetParam(space RID, param PhysicsServer3DSpaceP
   methodNameV := StringNameFromStr("space_set_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2406017470) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(space.AsCTypePtr()), gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+  cargs := []gdc.ConstTypePtr{space.AsCTypePtr(), gdc.ConstTypePtr(&param) , gdc.ConstTypePtr(&value) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -483,8 +520,11 @@ func  (me *PhysicsServer3D) SpaceGetParam(space RID, param PhysicsServer3DSpaceP
   methodNameV := StringNameFromStr("space_get_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1523206731) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(space.AsCTypePtr()), gdc.ConstTypePtr(&param), }
+  cargs := []gdc.ConstTypePtr{space.AsCTypePtr(), gdc.ConstTypePtr(&param) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&param)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -496,7 +536,9 @@ func  (me *PhysicsServer3D) SpaceGetDirectState(space RID, ) PhysicsDirectSpaceS
   methodNameV := StringNameFromStr("space_get_direct_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2048616813) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(space.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{space.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPhysicsDirectSpaceState3D()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -510,6 +552,8 @@ func  (me *PhysicsServer3D) AreaCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -522,7 +566,9 @@ func  (me *PhysicsServer3D) AreaSetSpace(area RID, space RID, )  {
   methodNameV := StringNameFromStr("area_set_space")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 395945892) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(space.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), space.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -534,7 +580,9 @@ func  (me *PhysicsServer3D) AreaGetSpace(area RID, ) RID {
   methodNameV := StringNameFromStr("area_get_space")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814569979) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -547,7 +595,9 @@ func  (me *PhysicsServer3D) AreaAddShape(area RID, shape RID, transform Transfor
   methodNameV := StringNameFromStr("area_add_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3711419014) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(shape.AsCTypePtr()), gdc.ConstTypePtr(transform.AsCTypePtr()), gdc.ConstTypePtr(&disabled), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), shape.AsCTypePtr(), transform.AsCTypePtr(), gdc.ConstTypePtr(&disabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -559,7 +609,9 @@ func  (me *PhysicsServer3D) AreaSetShape(area RID, shape_idx int64, shape RID, )
   methodNameV := StringNameFromStr("area_set_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2310537182) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), gdc.ConstTypePtr(shape.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , shape.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -571,7 +623,9 @@ func  (me *PhysicsServer3D) AreaSetShapeTransform(area RID, shape_idx int64, tra
   methodNameV := StringNameFromStr("area_set_shape_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 675327471) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), gdc.ConstTypePtr(transform.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , transform.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -583,7 +637,9 @@ func  (me *PhysicsServer3D) AreaSetShapeDisabled(area RID, shape_idx int64, disa
   methodNameV := StringNameFromStr("area_set_shape_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2658558584) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), gdc.ConstTypePtr(&disabled), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , gdc.ConstTypePtr(&disabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -595,7 +651,9 @@ func  (me *PhysicsServer3D) AreaGetShapeCount(area RID, ) int64 {
   methodNameV := StringNameFromStr("area_get_shape_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -608,8 +666,11 @@ func  (me *PhysicsServer3D) AreaGetShape(area RID, shape_idx int64, ) RID {
   methodNameV := StringNameFromStr("area_get_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1066463050) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
+  pinner.Pin(&shape_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -621,8 +682,11 @@ func  (me *PhysicsServer3D) AreaGetShapeTransform(area RID, shape_idx int64, ) T
   methodNameV := StringNameFromStr("area_get_shape_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1050775521) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTransform3D()
+  pinner.Pin(&shape_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -634,7 +698,9 @@ func  (me *PhysicsServer3D) AreaRemoveShape(area RID, shape_idx int64, )  {
   methodNameV := StringNameFromStr("area_remove_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -646,7 +712,9 @@ func  (me *PhysicsServer3D) AreaClearShapes(area RID, )  {
   methodNameV := StringNameFromStr("area_clear_shapes")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -658,7 +726,9 @@ func  (me *PhysicsServer3D) AreaSetCollisionLayer(area RID, layer int64, )  {
   methodNameV := StringNameFromStr("area_set_collision_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&layer), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&layer) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -670,7 +740,9 @@ func  (me *PhysicsServer3D) AreaGetCollisionLayer(area RID, ) int64 {
   methodNameV := StringNameFromStr("area_get_collision_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -683,7 +755,9 @@ func  (me *PhysicsServer3D) AreaSetCollisionMask(area RID, mask int64, )  {
   methodNameV := StringNameFromStr("area_set_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&mask), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&mask) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -695,7 +769,9 @@ func  (me *PhysicsServer3D) AreaGetCollisionMask(area RID, ) int64 {
   methodNameV := StringNameFromStr("area_get_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -708,7 +784,9 @@ func  (me *PhysicsServer3D) AreaSetParam(area RID, param PhysicsServer3DAreaPara
   methodNameV := StringNameFromStr("area_set_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2980114638) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&param), gdc.ConstTypePtr(value.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&param) , value.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -720,7 +798,9 @@ func  (me *PhysicsServer3D) AreaSetTransform(area RID, transform Transform3D, ) 
   methodNameV := StringNameFromStr("area_set_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3935195649) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(transform.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), transform.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -732,8 +812,11 @@ func  (me *PhysicsServer3D) AreaGetParam(area RID, param PhysicsServer3DAreaPara
   methodNameV := StringNameFromStr("area_get_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 890056067) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&param), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&param) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
+  pinner.Pin(&param)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -745,7 +828,9 @@ func  (me *PhysicsServer3D) AreaGetTransform(area RID, ) Transform3D {
   methodNameV := StringNameFromStr("area_get_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1128465797) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTransform3D()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -758,7 +843,9 @@ func  (me *PhysicsServer3D) AreaAttachObjectInstanceId(area RID, id int64, )  {
   methodNameV := StringNameFromStr("area_attach_object_instance_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&id), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -770,7 +857,9 @@ func  (me *PhysicsServer3D) AreaGetObjectInstanceId(area RID, ) int64 {
   methodNameV := StringNameFromStr("area_get_object_instance_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -783,7 +872,9 @@ func  (me *PhysicsServer3D) AreaSetMonitorCallback(area RID, callback Callable, 
   methodNameV := StringNameFromStr("area_set_monitor_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3379118538) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -795,7 +886,9 @@ func  (me *PhysicsServer3D) AreaSetAreaMonitorCallback(area RID, callback Callab
   methodNameV := StringNameFromStr("area_set_area_monitor_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3379118538) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -807,7 +900,9 @@ func  (me *PhysicsServer3D) AreaSetMonitorable(area RID, monitorable bool, )  {
   methodNameV := StringNameFromStr("area_set_monitorable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&monitorable), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&monitorable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -819,7 +914,9 @@ func  (me *PhysicsServer3D) AreaSetRayPickable(area RID, enable bool, )  {
   methodNameV := StringNameFromStr("area_set_ray_pickable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(area.AsCTypePtr()), gdc.ConstTypePtr(&enable), }
+  cargs := []gdc.ConstTypePtr{area.AsCTypePtr(), gdc.ConstTypePtr(&enable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -832,6 +929,8 @@ func  (me *PhysicsServer3D) BodyCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -844,7 +943,9 @@ func  (me *PhysicsServer3D) BodySetSpace(body RID, space RID, )  {
   methodNameV := StringNameFromStr("body_set_space")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 395945892) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(space.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), space.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -856,7 +957,9 @@ func  (me *PhysicsServer3D) BodyGetSpace(body RID, ) RID {
   methodNameV := StringNameFromStr("body_get_space")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814569979) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -869,7 +972,9 @@ func  (me *PhysicsServer3D) BodySetMode(body RID, mode PhysicsServer3DBodyMode, 
   methodNameV := StringNameFromStr("body_set_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 606803466) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&mode), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&mode) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -881,7 +986,9 @@ func  (me *PhysicsServer3D) BodyGetMode(body RID, ) PhysicsServer3DBodyMode {
   methodNameV := StringNameFromStr("body_get_mode")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2488819728) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret PhysicsServer3DBodyMode
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -894,7 +1001,9 @@ func  (me *PhysicsServer3D) BodySetCollisionLayer(body RID, layer int64, )  {
   methodNameV := StringNameFromStr("body_set_collision_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&layer), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&layer) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -906,7 +1015,9 @@ func  (me *PhysicsServer3D) BodyGetCollisionLayer(body RID, ) int64 {
   methodNameV := StringNameFromStr("body_get_collision_layer")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -919,7 +1030,9 @@ func  (me *PhysicsServer3D) BodySetCollisionMask(body RID, mask int64, )  {
   methodNameV := StringNameFromStr("body_set_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&mask), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&mask) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -931,7 +1044,9 @@ func  (me *PhysicsServer3D) BodyGetCollisionMask(body RID, ) int64 {
   methodNameV := StringNameFromStr("body_get_collision_mask")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -944,7 +1059,9 @@ func  (me *PhysicsServer3D) BodySetCollisionPriority(body RID, priority float64,
   methodNameV := StringNameFromStr("body_set_collision_priority")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794382983) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&priority), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&priority) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -956,7 +1073,9 @@ func  (me *PhysicsServer3D) BodyGetCollisionPriority(body RID, ) float64 {
   methodNameV := StringNameFromStr("body_get_collision_priority")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 866169185) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -969,7 +1088,9 @@ func  (me *PhysicsServer3D) BodyAddShape(body RID, shape RID, transform Transfor
   methodNameV := StringNameFromStr("body_add_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3711419014) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(shape.AsCTypePtr()), gdc.ConstTypePtr(transform.AsCTypePtr()), gdc.ConstTypePtr(&disabled), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), shape.AsCTypePtr(), transform.AsCTypePtr(), gdc.ConstTypePtr(&disabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -981,7 +1102,9 @@ func  (me *PhysicsServer3D) BodySetShape(body RID, shape_idx int64, shape RID, )
   methodNameV := StringNameFromStr("body_set_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2310537182) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), gdc.ConstTypePtr(shape.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , shape.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -993,7 +1116,9 @@ func  (me *PhysicsServer3D) BodySetShapeTransform(body RID, shape_idx int64, tra
   methodNameV := StringNameFromStr("body_set_shape_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 675327471) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), gdc.ConstTypePtr(transform.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , transform.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1005,7 +1130,9 @@ func  (me *PhysicsServer3D) BodySetShapeDisabled(body RID, shape_idx int64, disa
   methodNameV := StringNameFromStr("body_set_shape_disabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2658558584) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), gdc.ConstTypePtr(&disabled), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , gdc.ConstTypePtr(&disabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1017,7 +1144,9 @@ func  (me *PhysicsServer3D) BodyGetShapeCount(body RID, ) int64 {
   methodNameV := StringNameFromStr("body_get_shape_count")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1030,8 +1159,11 @@ func  (me *PhysicsServer3D) BodyGetShape(body RID, shape_idx int64, ) RID {
   methodNameV := StringNameFromStr("body_get_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1066463050) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
+  pinner.Pin(&shape_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1043,8 +1175,11 @@ func  (me *PhysicsServer3D) BodyGetShapeTransform(body RID, shape_idx int64, ) T
   methodNameV := StringNameFromStr("body_get_shape_transform")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1050775521) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewTransform3D()
+  pinner.Pin(&shape_idx)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1056,7 +1191,9 @@ func  (me *PhysicsServer3D) BodyRemoveShape(body RID, shape_idx int64, )  {
   methodNameV := StringNameFromStr("body_remove_shape")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&shape_idx), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&shape_idx) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1068,7 +1205,9 @@ func  (me *PhysicsServer3D) BodyClearShapes(body RID, )  {
   methodNameV := StringNameFromStr("body_clear_shapes")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1080,7 +1219,9 @@ func  (me *PhysicsServer3D) BodyAttachObjectInstanceId(body RID, id int64, )  {
   methodNameV := StringNameFromStr("body_attach_object_instance_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&id), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&id) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1092,7 +1233,9 @@ func  (me *PhysicsServer3D) BodyGetObjectInstanceId(body RID, ) int64 {
   methodNameV := StringNameFromStr("body_get_object_instance_id")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1105,7 +1248,9 @@ func  (me *PhysicsServer3D) BodySetEnableContinuousCollisionDetection(body RID, 
   methodNameV := StringNameFromStr("body_set_enable_continuous_collision_detection")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&enable), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&enable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1117,7 +1262,9 @@ func  (me *PhysicsServer3D) BodyIsContinuousCollisionDetectionEnabled(body RID, 
   methodNameV := StringNameFromStr("body_is_continuous_collision_detection_enabled")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1130,7 +1277,9 @@ func  (me *PhysicsServer3D) BodySetParam(body RID, param PhysicsServer3DBodyPara
   methodNameV := StringNameFromStr("body_set_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 910941953) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&param), gdc.ConstTypePtr(value.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&param) , value.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1142,8 +1291,11 @@ func  (me *PhysicsServer3D) BodyGetParam(body RID, param PhysicsServer3DBodyPara
   methodNameV := StringNameFromStr("body_get_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3385027841) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&param), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&param) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
+  pinner.Pin(&param)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1155,7 +1307,9 @@ func  (me *PhysicsServer3D) BodyResetMassProperties(body RID, )  {
   methodNameV := StringNameFromStr("body_reset_mass_properties")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1167,7 +1321,9 @@ func  (me *PhysicsServer3D) BodySetState(body RID, state PhysicsServer3DBodyStat
   methodNameV := StringNameFromStr("body_set_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 599977762) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&state), gdc.ConstTypePtr(value.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&state) , value.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1179,8 +1335,11 @@ func  (me *PhysicsServer3D) BodyGetState(body RID, state PhysicsServer3DBodyStat
   methodNameV := StringNameFromStr("body_get_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1850449534) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&state), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&state) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVariant()
+  pinner.Pin(&state)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
@@ -1192,7 +1351,9 @@ func  (me *PhysicsServer3D) BodyApplyCentralImpulse(body RID, impulse Vector3, )
   methodNameV := StringNameFromStr("body_apply_central_impulse")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(impulse.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), impulse.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1204,7 +1365,9 @@ func  (me *PhysicsServer3D) BodyApplyImpulse(body RID, impulse Vector3, position
   methodNameV := StringNameFromStr("body_apply_impulse")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 390416203) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(impulse.AsCTypePtr()), gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), impulse.AsCTypePtr(), position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1216,7 +1379,9 @@ func  (me *PhysicsServer3D) BodyApplyTorqueImpulse(body RID, impulse Vector3, ) 
   methodNameV := StringNameFromStr("body_apply_torque_impulse")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(impulse.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), impulse.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1228,7 +1393,9 @@ func  (me *PhysicsServer3D) BodyApplyCentralForce(body RID, force Vector3, )  {
   methodNameV := StringNameFromStr("body_apply_central_force")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(force.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), force.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1240,7 +1407,9 @@ func  (me *PhysicsServer3D) BodyApplyForce(body RID, force Vector3, position Vec
   methodNameV := StringNameFromStr("body_apply_force")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 390416203) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(force.AsCTypePtr()), gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), force.AsCTypePtr(), position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1252,7 +1421,9 @@ func  (me *PhysicsServer3D) BodyApplyTorque(body RID, torque Vector3, )  {
   methodNameV := StringNameFromStr("body_apply_torque")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(torque.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), torque.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1264,7 +1435,9 @@ func  (me *PhysicsServer3D) BodyAddConstantCentralForce(body RID, force Vector3,
   methodNameV := StringNameFromStr("body_add_constant_central_force")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(force.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), force.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1276,7 +1449,9 @@ func  (me *PhysicsServer3D) BodyAddConstantForce(body RID, force Vector3, positi
   methodNameV := StringNameFromStr("body_add_constant_force")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 390416203) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(force.AsCTypePtr()), gdc.ConstTypePtr(position.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), force.AsCTypePtr(), position.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1288,7 +1463,9 @@ func  (me *PhysicsServer3D) BodyAddConstantTorque(body RID, torque Vector3, )  {
   methodNameV := StringNameFromStr("body_add_constant_torque")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(torque.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), torque.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1300,7 +1477,9 @@ func  (me *PhysicsServer3D) BodySetConstantForce(body RID, force Vector3, )  {
   methodNameV := StringNameFromStr("body_set_constant_force")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(force.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), force.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1312,7 +1491,9 @@ func  (me *PhysicsServer3D) BodyGetConstantForce(body RID, ) Vector3 {
   methodNameV := StringNameFromStr("body_get_constant_force")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 531438156) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector3()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1325,7 +1506,9 @@ func  (me *PhysicsServer3D) BodySetConstantTorque(body RID, torque Vector3, )  {
   methodNameV := StringNameFromStr("body_set_constant_torque")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(torque.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), torque.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1337,7 +1520,9 @@ func  (me *PhysicsServer3D) BodyGetConstantTorque(body RID, ) Vector3 {
   methodNameV := StringNameFromStr("body_get_constant_torque")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 531438156) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector3()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1350,7 +1535,9 @@ func  (me *PhysicsServer3D) BodySetAxisVelocity(body RID, axis_velocity Vector3,
   methodNameV := StringNameFromStr("body_set_axis_velocity")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(axis_velocity.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), axis_velocity.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1362,7 +1549,9 @@ func  (me *PhysicsServer3D) BodySetAxisLock(body RID, axis PhysicsServer3DBodyAx
   methodNameV := StringNameFromStr("body_set_axis_lock")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2020836892) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&axis), gdc.ConstTypePtr(&lock), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&axis) , gdc.ConstTypePtr(&lock) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1374,8 +1563,11 @@ func  (me *PhysicsServer3D) BodyIsAxisLocked(body RID, axis PhysicsServer3DBodyA
   methodNameV := StringNameFromStr("body_is_axis_locked")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 587853580) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&axis), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&axis) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&axis)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1387,7 +1579,9 @@ func  (me *PhysicsServer3D) BodyAddCollisionException(body RID, excepted_body RI
   methodNameV := StringNameFromStr("body_add_collision_exception")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 395945892) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(excepted_body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), excepted_body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1399,7 +1593,9 @@ func  (me *PhysicsServer3D) BodyRemoveCollisionException(body RID, excepted_body
   methodNameV := StringNameFromStr("body_remove_collision_exception")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 395945892) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(excepted_body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), excepted_body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1411,7 +1607,9 @@ func  (me *PhysicsServer3D) BodySetMaxContactsReported(body RID, amount int64, )
   methodNameV := StringNameFromStr("body_set_max_contacts_reported")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&amount), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&amount) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1423,7 +1621,9 @@ func  (me *PhysicsServer3D) BodyGetMaxContactsReported(body RID, ) int64 {
   methodNameV := StringNameFromStr("body_get_max_contacts_reported")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1436,7 +1636,9 @@ func  (me *PhysicsServer3D) BodySetOmitForceIntegration(body RID, enable bool, )
   methodNameV := StringNameFromStr("body_set_omit_force_integration")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&enable), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&enable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1448,7 +1650,9 @@ func  (me *PhysicsServer3D) BodyIsOmittingForceIntegration(body RID, ) bool {
   methodNameV := StringNameFromStr("body_is_omitting_force_integration")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1461,7 +1665,9 @@ func  (me *PhysicsServer3D) BodySetForceIntegrationCallback(body RID, callable C
   methodNameV := StringNameFromStr("body_set_force_integration_callback")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3059434249) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(callable.AsCTypePtr()), gdc.ConstTypePtr(userdata.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), callable.AsCTypePtr(), userdata.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1473,7 +1679,9 @@ func  (me *PhysicsServer3D) BodySetRayPickable(body RID, enable bool, )  {
   methodNameV := StringNameFromStr("body_set_ray_pickable")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(&enable), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), gdc.ConstTypePtr(&enable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1485,7 +1693,9 @@ func  (me *PhysicsServer3D) BodyTestMotion(body RID, parameters PhysicsTestMotio
   methodNameV := StringNameFromStr("body_test_motion")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1944921792) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), gdc.ConstTypePtr(parameters.AsCTypePtr()), gdc.ConstTypePtr(result.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), parameters.AsCTypePtr(), result.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1498,7 +1708,9 @@ func  (me *PhysicsServer3D) BodyGetDirectState(body RID, ) PhysicsDirectBodyStat
   methodNameV := StringNameFromStr("body_get_direct_state")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3029727957) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewPhysicsDirectBodyState3D()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1511,7 +1723,9 @@ func  (me *PhysicsServer3D) SoftBodyGetBounds(body RID, ) AABB {
   methodNameV := StringNameFromStr("soft_body_get_bounds")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 974181306) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(body.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewAABB()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1525,6 +1739,8 @@ func  (me *PhysicsServer3D) JointCreate() RID {
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 529393457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewRID()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1537,7 +1753,9 @@ func  (me *PhysicsServer3D) JointClear(joint RID, )  {
   methodNameV := StringNameFromStr("joint_clear")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1549,7 +1767,9 @@ func  (me *PhysicsServer3D) JointMakePin(joint RID, body_A RID, local_A Vector3,
   methodNameV := StringNameFromStr("joint_make_pin")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4280171926) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(body_A.AsCTypePtr()), gdc.ConstTypePtr(local_A.AsCTypePtr()), gdc.ConstTypePtr(body_B.AsCTypePtr()), gdc.ConstTypePtr(local_B.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), body_A.AsCTypePtr(), local_A.AsCTypePtr(), body_B.AsCTypePtr(), local_B.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1561,7 +1781,9 @@ func  (me *PhysicsServer3D) PinJointSetParam(joint RID, param PhysicsServer3DPin
   methodNameV := StringNameFromStr("pin_joint_set_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 810685294) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&param) , gdc.ConstTypePtr(&value) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1573,8 +1795,11 @@ func  (me *PhysicsServer3D) PinJointGetParam(joint RID, param PhysicsServer3DPin
   methodNameV := StringNameFromStr("pin_joint_get_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2817972347) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&param), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&param) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&param)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1586,7 +1811,9 @@ func  (me *PhysicsServer3D) PinJointSetLocalA(joint RID, local_A Vector3, )  {
   methodNameV := StringNameFromStr("pin_joint_set_local_a")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(local_A.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), local_A.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1598,7 +1825,9 @@ func  (me *PhysicsServer3D) PinJointGetLocalA(joint RID, ) Vector3 {
   methodNameV := StringNameFromStr("pin_joint_get_local_a")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 531438156) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector3()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1611,7 +1840,9 @@ func  (me *PhysicsServer3D) PinJointSetLocalB(joint RID, local_B Vector3, )  {
   methodNameV := StringNameFromStr("pin_joint_set_local_b")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227306858) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(local_B.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), local_B.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1623,7 +1854,9 @@ func  (me *PhysicsServer3D) PinJointGetLocalB(joint RID, ) Vector3 {
   methodNameV := StringNameFromStr("pin_joint_get_local_b")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 531438156) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewVector3()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1636,7 +1869,9 @@ func  (me *PhysicsServer3D) JointMakeHinge(joint RID, body_A RID, hinge_A Transf
   methodNameV := StringNameFromStr("joint_make_hinge")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1684107643) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(body_A.AsCTypePtr()), gdc.ConstTypePtr(hinge_A.AsCTypePtr()), gdc.ConstTypePtr(body_B.AsCTypePtr()), gdc.ConstTypePtr(hinge_B.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), body_A.AsCTypePtr(), hinge_A.AsCTypePtr(), body_B.AsCTypePtr(), hinge_B.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1648,7 +1883,9 @@ func  (me *PhysicsServer3D) HingeJointSetParam(joint RID, param PhysicsServer3DH
   methodNameV := StringNameFromStr("hinge_joint_set_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3165502333) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&param) , gdc.ConstTypePtr(&value) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1660,8 +1897,11 @@ func  (me *PhysicsServer3D) HingeJointGetParam(joint RID, param PhysicsServer3DH
   methodNameV := StringNameFromStr("hinge_joint_get_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2129207581) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&param), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&param) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&param)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1673,7 +1913,9 @@ func  (me *PhysicsServer3D) HingeJointSetFlag(joint RID, flag PhysicsServer3DHin
   methodNameV := StringNameFromStr("hinge_joint_set_flag")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1601626188) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&flag), gdc.ConstTypePtr(&enabled), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&flag) , gdc.ConstTypePtr(&enabled) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1685,8 +1927,11 @@ func  (me *PhysicsServer3D) HingeJointGetFlag(joint RID, flag PhysicsServer3DHin
   methodNameV := StringNameFromStr("hinge_joint_get_flag")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4165147865) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&flag), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&flag) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&flag)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1698,7 +1943,9 @@ func  (me *PhysicsServer3D) JointMakeSlider(joint RID, body_A RID, local_ref_A T
   methodNameV := StringNameFromStr("joint_make_slider")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1684107643) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(body_A.AsCTypePtr()), gdc.ConstTypePtr(local_ref_A.AsCTypePtr()), gdc.ConstTypePtr(body_B.AsCTypePtr()), gdc.ConstTypePtr(local_ref_B.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), body_A.AsCTypePtr(), local_ref_A.AsCTypePtr(), body_B.AsCTypePtr(), local_ref_B.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1710,7 +1957,9 @@ func  (me *PhysicsServer3D) SliderJointSetParam(joint RID, param PhysicsServer3D
   methodNameV := StringNameFromStr("slider_joint_set_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2264833593) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&param) , gdc.ConstTypePtr(&value) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1722,8 +1971,11 @@ func  (me *PhysicsServer3D) SliderJointGetParam(joint RID, param PhysicsServer3D
   methodNameV := StringNameFromStr("slider_joint_get_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3498644957) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&param), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&param) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&param)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1735,7 +1987,9 @@ func  (me *PhysicsServer3D) JointMakeConeTwist(joint RID, body_A RID, local_ref_
   methodNameV := StringNameFromStr("joint_make_cone_twist")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1684107643) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(body_A.AsCTypePtr()), gdc.ConstTypePtr(local_ref_A.AsCTypePtr()), gdc.ConstTypePtr(body_B.AsCTypePtr()), gdc.ConstTypePtr(local_ref_B.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), body_A.AsCTypePtr(), local_ref_A.AsCTypePtr(), body_B.AsCTypePtr(), local_ref_B.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1747,7 +2001,9 @@ func  (me *PhysicsServer3D) ConeTwistJointSetParam(joint RID, param PhysicsServe
   methodNameV := StringNameFromStr("cone_twist_joint_set_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 808587618) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&param) , gdc.ConstTypePtr(&value) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1759,8 +2015,11 @@ func  (me *PhysicsServer3D) ConeTwistJointGetParam(joint RID, param PhysicsServe
   methodNameV := StringNameFromStr("cone_twist_joint_get_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1134789658) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&param), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&param) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&param)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1772,7 +2031,9 @@ func  (me *PhysicsServer3D) JointGetType(joint RID, ) PhysicsServer3DJointType {
   methodNameV := StringNameFromStr("joint_get_type")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4290791900) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   var ret PhysicsServer3DJointType
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
@@ -1785,7 +2046,9 @@ func  (me *PhysicsServer3D) JointSetSolverPriority(joint RID, priority int64, ) 
   methodNameV := StringNameFromStr("joint_set_solver_priority")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3411492887) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&priority), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&priority) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1797,7 +2060,9 @@ func  (me *PhysicsServer3D) JointGetSolverPriority(joint RID, ) int64 {
   methodNameV := StringNameFromStr("joint_get_solver_priority")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2198884583) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1810,7 +2075,9 @@ func  (me *PhysicsServer3D) JointDisableCollisionsBetweenBodies(joint RID, disab
   methodNameV := StringNameFromStr("joint_disable_collisions_between_bodies")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1265174801) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&disable), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&disable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1822,7 +2089,9 @@ func  (me *PhysicsServer3D) JointIsDisabledCollisionsBetweenBodies(joint RID, ) 
   methodNameV := StringNameFromStr("joint_is_disabled_collisions_between_bodies")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
@@ -1835,7 +2104,9 @@ func  (me *PhysicsServer3D) JointMakeGeneric6Dof(joint RID, body_A RID, local_re
   methodNameV := StringNameFromStr("joint_make_generic_6dof")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1684107643) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(body_A.AsCTypePtr()), gdc.ConstTypePtr(local_ref_A.AsCTypePtr()), gdc.ConstTypePtr(body_B.AsCTypePtr()), gdc.ConstTypePtr(local_ref_B.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), body_A.AsCTypePtr(), local_ref_A.AsCTypePtr(), body_B.AsCTypePtr(), local_ref_B.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1847,7 +2118,9 @@ func  (me *PhysicsServer3D) Generic6DofJointSetParam(joint RID, axis Vector3Axis
   methodNameV := StringNameFromStr("generic_6dof_joint_set_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2600081391) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&axis), gdc.ConstTypePtr(&param), gdc.ConstTypePtr(&value), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&axis) , gdc.ConstTypePtr(&param) , gdc.ConstTypePtr(&value) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1859,8 +2132,12 @@ func  (me *PhysicsServer3D) Generic6DofJointGetParam(joint RID, axis Vector3Axis
   methodNameV := StringNameFromStr("generic_6dof_joint_get_param")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 467122058) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&axis), gdc.ConstTypePtr(&param), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&axis) , gdc.ConstTypePtr(&param) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewFloat()
+  pinner.Pin(&axis)
+  pinner.Pin(&param)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1872,7 +2149,9 @@ func  (me *PhysicsServer3D) Generic6DofJointSetFlag(joint RID, axis Vector3Axis,
   methodNameV := StringNameFromStr("generic_6dof_joint_set_flag")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3570926903) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&axis), gdc.ConstTypePtr(&flag), gdc.ConstTypePtr(&enable), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&axis) , gdc.ConstTypePtr(&flag) , gdc.ConstTypePtr(&enable) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1884,8 +2163,12 @@ func  (me *PhysicsServer3D) Generic6DofJointGetFlag(joint RID, axis Vector3Axis,
   methodNameV := StringNameFromStr("generic_6dof_joint_get_flag")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4158090196) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(joint.AsCTypePtr()), gdc.ConstTypePtr(&axis), gdc.ConstTypePtr(&flag), }
+  cargs := []gdc.ConstTypePtr{joint.AsCTypePtr(), gdc.ConstTypePtr(&axis) , gdc.ConstTypePtr(&flag) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewBool()
+  pinner.Pin(&axis)
+  pinner.Pin(&flag)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
@@ -1897,7 +2180,9 @@ func  (me *PhysicsServer3D) FreeRid(rid RID, )  {
   methodNameV := StringNameFromStr("free_rid")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(rid.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{rid.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1909,7 +2194,9 @@ func  (me *PhysicsServer3D) SetActive(active bool, )  {
   methodNameV := StringNameFromStr("set_active")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -1921,8 +2208,11 @@ func  (me *PhysicsServer3D) GetProcessInfo(process_info PhysicsServer3DProcessIn
   methodNameV := StringNameFromStr("get_process_info")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1332958745) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&process_info), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&process_info) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewInt()
+  pinner.Pin(&process_info)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()

@@ -2,11 +2,14 @@
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 {{$Class := mapClass .Name -}}
 type {{$Class}} struct {
@@ -62,29 +65,25 @@ func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .
   methodNameV := StringNameFromStr("{{.Name}}")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), {{.Hash}}) // FIXME: should cache?
-{{- $vartype := ternary .IsVarArg "ConstVariantPtr" "ConstTypePtr"}}
-  cargs := []gdc.{{$vartype}}{
-    {{- range .Arguments}}
-{{- if isExported (mapType .Type) -}}
-  {{- if startsWith .Type "enum::" -}}
-    gdc.{{$vartype}}(&{{mapName .Name}})
-  {{- else if startsWith .Type "bitfield::" -}}
-    gdc.{{$vartype}}(&{{mapName .Name}})
-  {{- else -}}
-    gdc.{{$vartype}}({{mapName .Name}}.AsCTypePtr())
-  {{- end -}}
-{{- else -}}
-  gdc.{{$vartype}}(&{{mapName .Name}})
-{{- end -}}
-    , {{ end -}}
-  }
-
 {{- if .IsVarArg}}
-{{if .ReturnValue}}  ret := NewVariant()
-{{end}}
+  cargs := make([]gdc.ConstVariantPtr, 0, {{len .Arguments}} + len(varargs)){{range $i, $e := .Arguments}}
+{{if eq (mapWideType .Type) "Variant"}}
+  cargs = append(cargs, {{mapName .Name}}.AsCPtr())
+{{- else if eq (mapWideType .Type) "int64"}}  intVar{{$i}} := NewIntFromInt({{mapName .Name}})
+  defer intVar{{$i}}.Destroy()
+  var{{$i}} := intVar{{$i}}.AsVariant()
+  defer var{{$i}}.Destroy()
+  cargs = append(cargs, var{{$i}}.AsCPtr())
+{{- else}}  var{{$i}} := {{mapName .Name}}.AsVariant()
+  defer var{{$i}}.Destroy()
+  cargs = append(cargs, var{{$i}}.AsCPtr())
+{{- end -}}
+{{- end}}
   for _, v := range varargs {
     cargs = append(cargs, v.AsCPtr())
   }
+{{if .ReturnValue}}  ret := NewVariant()
+{{end}}
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), gdc.Int(len(cargs)), {{if .ReturnValue}}ret.asUninitialized(){{else}}nil{{end}}, cerr)
   if cerr.Error != gdc.CallOk {
@@ -101,6 +100,17 @@ defer ret.Destroy()
 return *ret
 {{- end}}{{end}}
 {{else}}
+  cargs := []gdc.ConstTypePtr{
+    {{- range .Arguments}}
+{{- if or (not (isExported (mapType .Type))) (or (startsWith .Type "enum::") (startsWith .Type "bitfield::")) -}}
+    gdc.ConstTypePtr(&{{mapName .Name}}) {{/* TODO: not sure about this */}}
+{{- else -}}
+    {{mapName .Name}}.AsCTypePtr()
+{{- end -}}
+    , {{ end -}}
+  }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 {{if .ReturnValue}}  {{if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::") -}}
 var ret {{mapType .ReturnValue.Type}}
 {{- else if startsWith .ReturnValue.Type "typedarray::" -}}
@@ -108,6 +118,11 @@ ret := NewArray()
   defer ret.Destroy()
 {{- else -}}
 ret := New{{mapClass .ReturnValue.Type}}()
+{{- end}}
+{{- range .Arguments}}
+{{- if or (not (isExported (mapType .Type))) (or (startsWith .Type "enum::") (startsWith .Type "bitfield::"))}}
+  pinner.Pin(&{{mapName .Name}})
+{{- end -}}
 {{- end}}
 {{end}}
   giface.ObjectMethodBindPtrcall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), {{if .ReturnValue -}}

@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type NavigationMeshGenerator struct {
   Object
@@ -51,7 +54,9 @@ func  (me *NavigationMeshGenerator) Bake(navigation_mesh NavigationMesh, root_no
   methodNameV := StringNameFromStr("bake")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1401173477) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_mesh.AsCTypePtr()), gdc.ConstTypePtr(root_node.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{navigation_mesh.AsCTypePtr(), root_node.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -63,7 +68,9 @@ func  (me *NavigationMeshGenerator) Clear(navigation_mesh NavigationMesh, )  {
   methodNameV := StringNameFromStr("clear")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2923361153) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_mesh.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{navigation_mesh.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -75,7 +82,9 @@ func  (me *NavigationMeshGenerator) ParseSourceGeometryData(navigation_mesh Navi
   methodNameV := StringNameFromStr("parse_source_geometry_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 685862123) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_mesh.AsCTypePtr()), gdc.ConstTypePtr(source_geometry_data.AsCTypePtr()), gdc.ConstTypePtr(root_node.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{navigation_mesh.AsCTypePtr(), source_geometry_data.AsCTypePtr(), root_node.AsCTypePtr(), callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 
@@ -87,7 +96,9 @@ func  (me *NavigationMeshGenerator) BakeFromSourceGeometryData(navigation_mesh N
   methodNameV := StringNameFromStr("bake_from_source_geometry_data")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2469318639) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(navigation_mesh.AsCTypePtr()), gdc.ConstTypePtr(source_geometry_data.AsCTypePtr()), gdc.ConstTypePtr(callback.AsCTypePtr()), }
+  cargs := []gdc.ConstTypePtr{navigation_mesh.AsCTypePtr(), source_geometry_data.AsCTypePtr(), callback.AsCTypePtr(), }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
 

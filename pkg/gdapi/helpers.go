@@ -59,6 +59,13 @@ func DObjectFromPtr(className string, ptr gdc.ObjectPtr) (interface{}, error) {
 	return ctr(ptr), nil
 }
 
+func (me *Object) AsVariant() *Variant {
+	va := newVariant()
+	fn := giface.GetVariantFromTypeConstructor(me.Type())
+	giface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+	return va
+}
+
 // Array
 
 func ConvertArrayToSlice[T any](array *Array) []T {

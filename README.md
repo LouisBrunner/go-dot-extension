@@ -138,7 +138,6 @@ You can find examples in the `examples` folder.
 - `Signal`s have no arguments in the Godot documentation/type hint system
 - potential panic when using functions which return `Array`s (bad support for the cast from `Variant`)
 - potential panic when using varargs functions (bad error handling)
-- potential panic when using functions which deal with enums (bad pointer passing)
 
 ## Acknowledgements
 

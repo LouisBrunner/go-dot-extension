@@ -3,11 +3,14 @@ package gdapi
 
 import (
   "unsafe"
+  "runtime"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
-var _ unsafe.Pointer // FIXME: avoid unused import warning
+// FIXME: avoid unused import warning
+var _ unsafe.Pointer
+var _ runtime.Pinner
 
 type CallbackTweener struct {
   Tweener
@@ -51,8 +54,11 @@ func  (me *CallbackTweener) SetDelay(delay float64, ) CallbackTweener {
   methodNameV := StringNameFromStr("set_delay")
   defer methodNameV.Destroy()
   methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3008182292) // FIXME: should cache?
-  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delay), }
+  cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delay) , }
+  pinner := runtime.Pinner{}
+  defer pinner.Unpin()
   ret := NewCallbackTweener()
+  pinner.Pin(&delay)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret

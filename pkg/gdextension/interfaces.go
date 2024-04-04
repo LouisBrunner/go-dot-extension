@@ -1,6 +1,8 @@
 package gdextension
 
 import (
+	"reflect"
+
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdapi"
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
@@ -12,7 +14,13 @@ type Class interface {
 	Set(name gdapi.StringName, value gdapi.Variant)
 }
 
+type Initializable interface {
+	Class
+	Init()
+}
+
 type Destroyable interface {
+	Class
 	Destroy()
 }
 
@@ -24,4 +32,5 @@ type Extension interface {
 	Initialize(rInitialization *gdc.InitializationRaw, init gdc.InitializationInitializeFn, fini gdc.InitializationDeinitializeFn) gdc.Bool
 	Logf(level LogLevel, format string, args ...interface{})
 	LogDetailedf(level LogLevel, description, function, file string, line int32, notifyEditor bool, format string, args ...interface{})
+	CreateClass(typ reflect.Type) (any, error)
 }
