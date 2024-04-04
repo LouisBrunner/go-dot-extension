@@ -87,6 +87,11 @@ func (me *Variant) Destroy() {
 	me.pinner.Unpin()
 }
 
+func (me *Variant) Assign(value Variant) {
+	me.Destroy()
+	me.iface.VariantNewCopy(me.asUninitialized(), value.AsCPtr())
+}
+
 func (me *Variant) String() string {
 	const maxLength = 1024
 	stringified := StringFromStr(strings.Repeat("a", maxLength))

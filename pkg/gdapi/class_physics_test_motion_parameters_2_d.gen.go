@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -177,7 +179,12 @@ func  (me *PhysicsTestMotionParameters2D) GetExcludeBodies() []RID {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[RID](ret)
+  sliceRet, err := ConvertArrayToSlice[RID](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *PhysicsTestMotionParameters2D) SetExcludeBodies(exclude_list []RID, )  {
@@ -207,7 +214,12 @@ func  (me *PhysicsTestMotionParameters2D) GetExcludeObjects() []int {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[int](ret)
+  sliceRet, err := ConvertArrayToSlice[int](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *PhysicsTestMotionParameters2D) SetExcludeObjects(exclude_list []int, )  {

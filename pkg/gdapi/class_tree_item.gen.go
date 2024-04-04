@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -1599,7 +1601,12 @@ func  (me *TreeItem) GetChildren() []TreeItem {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[TreeItem](ret)
+  sliceRet, err := ConvertArrayToSlice[TreeItem](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *TreeItem) GetIndex() int64 {
@@ -1662,7 +1669,8 @@ func  (me *TreeItem) CallRecursive(method StringName, varargs ...Variant)  {
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return
   }
 
 }

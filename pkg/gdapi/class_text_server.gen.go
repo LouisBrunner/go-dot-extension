@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -1139,7 +1141,12 @@ func  (me *TextServer) FontGetSizeCacheList(font_rid RID, ) []Vector2i {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Vector2i](ret)
+  sliceRet, err := ConvertArrayToSlice[Vector2i](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *TextServer) FontClearSizeCache(font_rid RID, )  {
@@ -1680,7 +1687,12 @@ func  (me *TextServer) FontGetKerningList(font_rid RID, size int64, ) []Vector2i
   pinner.Pin(&size)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Vector2i](ret)
+  sliceRet, err := ConvertArrayToSlice[Vector2i](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *TextServer) FontClearKerningMap(font_rid RID, size int64, )  {
@@ -2582,7 +2594,12 @@ func  (me *TextServer) ShapedTextGetGlyphs(shaped RID, ) []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *TextServer) ShapedTextSortLogical(shaped RID, ) []Dictionary {
@@ -2598,7 +2615,12 @@ func  (me *TextServer) ShapedTextSortLogical(shaped RID, ) []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *TextServer) ShapedTextGetGlyphCount(shaped RID, ) int64 {
@@ -2726,7 +2748,12 @@ func  (me *TextServer) ShapedTextGetEllipsisGlyphs(shaped RID, ) []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *TextServer) ShapedTextGetEllipsisGlyphCount(shaped RID, ) int64 {
@@ -3279,7 +3306,12 @@ func  (me *TextServer) ParseStructuredText(parser_type TextServerStructuredTextP
   pinner.Pin(&parser_type)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Vector3i](ret)
+  sliceRet, err := ConvertArrayToSlice[Vector3i](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 // Signals

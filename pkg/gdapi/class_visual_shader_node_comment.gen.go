@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 

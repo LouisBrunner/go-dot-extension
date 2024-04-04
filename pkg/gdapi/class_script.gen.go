@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -196,7 +198,12 @@ func  (me *Script) GetScriptPropertyList() []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Script) GetScriptMethodList() []Dictionary {
@@ -212,7 +219,12 @@ func  (me *Script) GetScriptMethodList() []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Script) GetScriptSignalList() []Dictionary {
@@ -228,7 +240,12 @@ func  (me *Script) GetScriptSignalList() []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Script) GetScriptConstantMap() Dictionary {

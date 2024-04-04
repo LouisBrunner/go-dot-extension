@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -118,7 +120,8 @@ func  (me *EditorUndoRedoManager) AddDoMethod(object Object, method StringName, 
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return
   }
 
 }
@@ -143,7 +146,8 @@ func  (me *EditorUndoRedoManager) AddUndoMethod(object Object, method StringName
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return
   }
 
 }

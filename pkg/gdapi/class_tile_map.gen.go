@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -824,7 +826,12 @@ func  (me *TileMap) GetSurroundingCells(coords Vector2i, ) []Vector2i {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Vector2i](ret)
+  sliceRet, err := ConvertArrayToSlice[Vector2i](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *TileMap) GetUsedCells(layer int64, ) []Vector2i {
@@ -841,7 +848,12 @@ func  (me *TileMap) GetUsedCells(layer int64, ) []Vector2i {
   pinner.Pin(&layer)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Vector2i](ret)
+  sliceRet, err := ConvertArrayToSlice[Vector2i](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *TileMap) GetUsedCellsById(layer int64, source_id int64, atlas_coords Vector2i, alternative_tile int64, ) []Vector2i {
@@ -860,7 +872,12 @@ func  (me *TileMap) GetUsedCellsById(layer int64, source_id int64, atlas_coords 
   pinner.Pin(&alternative_tile)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Vector2i](ret)
+  sliceRet, err := ConvertArrayToSlice[Vector2i](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *TileMap) GetUsedRect() Rect2i {

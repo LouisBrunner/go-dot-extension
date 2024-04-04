@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -336,7 +338,12 @@ func  (me *SceneTree) GetProcessedTweens() []Tween {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Tween](ret)
+  sliceRet, err := ConvertArrayToSlice[Tween](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *SceneTree) GetNodeCount() int64 {
@@ -422,7 +429,8 @@ func  (me *SceneTree) CallGroupFlags(flags int64, group StringName, method Strin
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return
   }
 
 }
@@ -475,7 +483,8 @@ func  (me *SceneTree) CallGroup(group StringName, method StringName, varargs ...
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), nil, cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return
   }
 
 }
@@ -521,7 +530,12 @@ func  (me *SceneTree) GetNodesInGroup(group StringName, ) []Node {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Node](ret)
+  sliceRet, err := ConvertArrayToSlice[Node](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *SceneTree) GetFirstNodeInGroup(group StringName, ) Node {

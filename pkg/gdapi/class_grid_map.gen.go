@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -652,7 +654,12 @@ func  (me *GridMap) GetUsedCells() []Vector3i {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Vector3i](ret)
+  sliceRet, err := ConvertArrayToSlice[Vector3i](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GridMap) GetUsedCellsByItem(item int64, ) []Vector3i {
@@ -669,7 +676,12 @@ func  (me *GridMap) GetUsedCellsByItem(item int64, ) []Vector3i {
   pinner.Pin(&item)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Vector3i](ret)
+  sliceRet, err := ConvertArrayToSlice[Vector3i](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GridMap) GetMeshes() Array {

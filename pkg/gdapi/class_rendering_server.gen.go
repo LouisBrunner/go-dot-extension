@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -995,7 +997,12 @@ func  (me *RenderingServer) Texture3DGet(texture RID, ) []Image {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Image](ret)
+  sliceRet, err := ConvertArrayToSlice[Image](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *RenderingServer) TextureReplace(texture RID, by_texture RID, )  {
@@ -1203,7 +1210,12 @@ func  (me *RenderingServer) GetShaderParameterList(shader RID, ) []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *RenderingServer) ShaderGetParameterDefault(shader RID, name StringName, ) Variant {
@@ -1603,7 +1615,12 @@ func  (me *RenderingServer) MeshSurfaceGetBlendShapeArrays(mesh RID, surface int
   pinner.Pin(&surface)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Array](ret)
+  sliceRet, err := ConvertArrayToSlice[Array](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *RenderingServer) MeshGetSurfaceCount(mesh RID, ) int64 {
@@ -5818,7 +5835,12 @@ func  (me *RenderingServer) InstanceGeometryGetShaderParameterList(instance RID,
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *RenderingServer) InstancesCullAabb(aabb AABB, scenario RID, ) PackedInt64Array {
@@ -5881,7 +5903,12 @@ func  (me *RenderingServer) BakeRenderUv2(base RID, material_overrides []RID, im
   pinner.Pin(&material_overrides)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Image](ret)
+  sliceRet, err := ConvertArrayToSlice[Image](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *RenderingServer) CanvasCreate() RID {
@@ -7093,7 +7120,12 @@ func  (me *RenderingServer) GlobalShaderParameterGetList() []StringName {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[StringName](ret)
+  sliceRet, err := ConvertArrayToSlice[StringName](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *RenderingServer) GlobalShaderParameterSet(name StringName, value Variant, )  {

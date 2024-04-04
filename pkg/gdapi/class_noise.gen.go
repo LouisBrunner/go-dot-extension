@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -188,7 +190,12 @@ func  (me *Noise) GetImage3D(width int64, height int64, depth int64, invert bool
   pinner.Pin(&normalize)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Image](ret)
+  sliceRet, err := ConvertArrayToSlice[Image](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Noise) GetSeamlessImage3D(width int64, height int64, depth int64, invert bool, skirt float64, normalize bool, ) []Image {
@@ -210,7 +217,12 @@ func  (me *Noise) GetSeamlessImage3D(width int64, height int64, depth int64, inv
   pinner.Pin(&normalize)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Image](ret)
+  sliceRet, err := ConvertArrayToSlice[Image](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 // Signals

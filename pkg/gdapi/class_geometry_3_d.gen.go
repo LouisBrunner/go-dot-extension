@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -77,7 +79,12 @@ func  (me *Geometry3D) BuildBoxPlanes(extents Vector3, ) []Plane {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Plane](ret)
+  sliceRet, err := ConvertArrayToSlice[Plane](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry3D) BuildCylinderPlanes(radius float64, height float64, sides int64, axis Vector3Axis, ) []Plane {
@@ -97,7 +104,12 @@ func  (me *Geometry3D) BuildCylinderPlanes(radius float64, height float64, sides
   pinner.Pin(&axis)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Plane](ret)
+  sliceRet, err := ConvertArrayToSlice[Plane](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry3D) BuildCapsulePlanes(radius float64, height float64, sides int64, lats int64, axis Vector3Axis, ) []Plane {
@@ -118,7 +130,12 @@ func  (me *Geometry3D) BuildCapsulePlanes(radius float64, height float64, sides 
   pinner.Pin(&axis)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Plane](ret)
+  sliceRet, err := ConvertArrayToSlice[Plane](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry3D) GetClosestPointsBetweenSegments(p1 Vector3, p2 Vector3, q1 Vector3, q2 Vector3, ) PackedVector3Array {

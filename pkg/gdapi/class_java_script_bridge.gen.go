@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -108,11 +110,11 @@ func  (me *JavaScriptBridge) CreateObject(object String, varargs ...Variant) Var
     cargs = append(cargs, v.AsCPtr())
   }
   ret := NewVariant()
-
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return *ret
   }
   return *ret
 }

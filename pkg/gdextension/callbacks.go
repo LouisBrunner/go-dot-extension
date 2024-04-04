@@ -158,7 +158,7 @@ func (me *extension) methodCall(methodUserdata unsafe.Pointer, pInstance gdc.Cla
 		received := unsafe.Slice(pArgs, int(pArgumentCount))
 		args := make([]reflect.Value, pArgumentCount)
 		for i, pArg := range received {
-			val, err := nativeFromVariant(pArg, argTypes[i])
+			val, err := gdapi.NativeFromVariantPtr(pArg, argTypes[i])
 			if err != nil {
 				return nil, err
 			}

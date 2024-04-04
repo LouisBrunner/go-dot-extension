@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"log"
+	"os"
 	"unsafe"
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
@@ -37,9 +38,21 @@ func go_dot_gdextension_entry(pGetProcAddress C.GDExtensionInterfaceGetProcAddre
 	gext = ext
 	ext.Logf(gdextension.LogLevelDebug, "entry point called")
 	ext.Register(globalRegisteredClasses...)
-	return C.GDExtensionBool(ext.Initialize(
+	res := C.GDExtensionBool(ext.Initialize(
 		gdc.InitializationRawFromUnsafe(unsafe.Pointer(rInitialization)),
 		gdc.InitializationInitializeFn(gdc.Callbacks.GetInitializationInitializeCallback()),
 		gdc.InitializationDeinitializeFn(gdc.Callbacks.GetInitializationDeinitializeCallback()),
 	))
+	gdc.Callbacks.SetInitializationDeinitializeHandler(func(userdata unsafe.Pointer, pLevel gdc.InitializationLevel) {
+		ext.Deinitialize(userdata, pLevel)
+		if pLevel == gdc.InitializationCore {
+			exit()
+		}
+	})
+	return res
+}
+
+func exit() {
+	// TODO: no way to avoid this???
+	os.Exit(0)
 }

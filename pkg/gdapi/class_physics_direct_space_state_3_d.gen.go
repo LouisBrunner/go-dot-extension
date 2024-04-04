@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -62,7 +64,12 @@ func  (me *PhysicsDirectSpaceState3D) IntersectPoint(parameters PhysicsPointQuer
   pinner.Pin(&max_results)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *PhysicsDirectSpaceState3D) IntersectRay(parameters PhysicsRayQueryParameters3D, ) Dictionary {
@@ -94,7 +101,12 @@ func  (me *PhysicsDirectSpaceState3D) IntersectShape(parameters PhysicsShapeQuer
   pinner.Pin(&max_results)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *PhysicsDirectSpaceState3D) CastMotion(parameters PhysicsShapeQueryParameters3D, ) PackedFloat32Array {
@@ -126,7 +138,12 @@ func  (me *PhysicsDirectSpaceState3D) CollideShape(parameters PhysicsShapeQueryP
   pinner.Pin(&max_results)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Vector3](ret)
+  sliceRet, err := ConvertArrayToSlice[Vector3](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *PhysicsDirectSpaceState3D) GetRestInfo(parameters PhysicsShapeQueryParameters3D, ) Dictionary {

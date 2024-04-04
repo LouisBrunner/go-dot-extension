@@ -1,7 +1,6 @@
 package gdapi
 
 import (
-	"fmt"
 	"log"
 	"reflect"
 
@@ -43,25 +42,7 @@ func (me *SignalSubscribers) Destroy() {
 }
 
 func (me *SignalSubscribers) add(sub interface{}) Callable {
-	fmt.Printf("SignalSubscribers.add: %+v\n", sub)
-	fmt.Printf("SignalSubscribers.add: %+v\n", me)
 	callable := NewCallableFromObjectStringName(me.Object, me.dispatchName)
-	defer callable.Destroy()
-	fnID := uuid.New().String()
-	fnIDVar := StringFromStr(fnID).AsVariant()
-	defer fnIDVar.Destroy()
-	boundCallable := callable.Bind(*fnIDVar)
-	me.subs[fnID] = subscriber{
-		fn:   sub,
-		call: boundCallable,
-	}
-	return boundCallable
-}
-
-func (me *SignalSubscribers) add2(sub interface{}, obj Object) Callable {
-	fmt.Printf("SignalSubscribers.add: %+v\n", sub)
-	fmt.Printf("SignalSubscribers.add: %+v\n", me)
-	callable := NewCallableFromObjectStringName(obj, me.dispatchName)
 	defer callable.Destroy()
 	fnID := uuid.New().String()
 	fnIDVar := StringFromStr(fnID).AsVariant()

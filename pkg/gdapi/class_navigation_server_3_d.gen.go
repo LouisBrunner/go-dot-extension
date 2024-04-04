@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -74,7 +76,12 @@ func  (me *NavigationServer3D) GetMaps() []RID {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[RID](ret)
+  sliceRet, err := ConvertArrayToSlice[RID](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *NavigationServer3D) MapCreate() RID {
@@ -386,7 +393,12 @@ func  (me *NavigationServer3D) MapGetLinks(map_ RID, ) []RID {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[RID](ret)
+  sliceRet, err := ConvertArrayToSlice[RID](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *NavigationServer3D) MapGetRegions(map_ RID, ) []RID {
@@ -402,7 +414,12 @@ func  (me *NavigationServer3D) MapGetRegions(map_ RID, ) []RID {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[RID](ret)
+  sliceRet, err := ConvertArrayToSlice[RID](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *NavigationServer3D) MapGetAgents(map_ RID, ) []RID {
@@ -418,7 +435,12 @@ func  (me *NavigationServer3D) MapGetAgents(map_ RID, ) []RID {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[RID](ret)
+  sliceRet, err := ConvertArrayToSlice[RID](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *NavigationServer3D) MapGetObstacles(map_ RID, ) []RID {
@@ -434,7 +456,12 @@ func  (me *NavigationServer3D) MapGetObstacles(map_ RID, ) []RID {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[RID](ret)
+  sliceRet, err := ConvertArrayToSlice[RID](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *NavigationServer3D) MapForceUpdate(map_ RID, )  {

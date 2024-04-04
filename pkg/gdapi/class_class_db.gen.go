@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -197,7 +199,12 @@ func  (me *ClassDB) ClassGetSignalList(class StringName, no_inheritance bool, ) 
   pinner.Pin(&no_inheritance)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *ClassDB) ClassGetPropertyList(class StringName, no_inheritance bool, ) []Dictionary {
@@ -214,7 +221,12 @@ func  (me *ClassDB) ClassGetPropertyList(class StringName, no_inheritance bool, 
   pinner.Pin(&no_inheritance)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *ClassDB) ClassGetProperty(object Object, property StringName, ) Variant {
@@ -277,7 +289,12 @@ func  (me *ClassDB) ClassGetMethodList(class StringName, no_inheritance bool, ) 
   pinner.Pin(&no_inheritance)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *ClassDB) ClassGetIntegerConstantList(class StringName, no_inheritance bool, ) PackedStringArray {

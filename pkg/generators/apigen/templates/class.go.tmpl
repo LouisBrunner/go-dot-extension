@@ -1,13 +1,15 @@
 {{template "preamble"}}
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -83,17 +85,28 @@ func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .
     cargs = append(cargs, v.AsCPtr())
   }
 {{if .ReturnValue}}  ret := NewVariant()
-{{end}}
+{{- if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::")}}
+  defer ret.Destroy()
+{{- end}}{{end}}
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), gdc.Int(len(cargs)), {{if .ReturnValue}}ret.asUninitialized(){{else}}nil{{end}}, cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return{{if .ReturnValue}} {{if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::") -}}
+{{mapType .ReturnValue.Type}}(-1)
+{{- else if startsWith .ReturnValue.Type "typedarray::" -}}
+nil
+{{- else if isExported (mapType .ReturnValue.Type) -}}
+*ret
+{{- else -}}
+DO_NOT_COMPILE_UNREACHABLE
+{{- end}}{{end}}
   }
 {{if .ReturnValue}}  {{if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::") -}}
-defer ret.Destroy()
-  retInt, err := ret.AsInt()
+retInt, err := ret.AsInt()
   if err != nil {
-    panic(err) // TODO: return `err`?
+    log.Printf("Error converting return value to int enum: %v", err) // FIXME: bad logging
+    return {{mapType .ReturnValue.Type}}(-1)
   }
   return {{mapType .ReturnValue.Type}}(retInt.Get())
 {{- else -}}
@@ -132,14 +145,19 @@ gdc.TypePtr(unsafe.Pointer(&ret))
 ret.AsTypePtr()
 {{- end -}}
 {{- else}}nil{{end}})
-{{if .ReturnValue}}  return {{if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::") -}}
-ret
+{{if .ReturnValue}}  {{if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::") -}}
+return ret
 {{- else if startsWith .ReturnValue.Type "typedarray::" -}}
-ConvertArrayToSlice[{{trimPrefix (mapWideType .ReturnValue.Type) "[]"}}](ret)
+sliceRet, err := ConvertArrayToSlice[{{trimPrefix (mapWideType .ReturnValue.Type) "[]"}}](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 {{- else if isExported (mapType .ReturnValue.Type) -}}
-*ret
+return *ret
 {{- else -}}
-ret.Get()
+return ret.Get()
 {{- end}}
 {{- end}}
 {{end -}}

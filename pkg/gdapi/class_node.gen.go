@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -262,7 +264,12 @@ func  (me *Node) GetChildren(include_internal bool, ) []Node {
   pinner.Pin(&include_internal)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Node](ret)
+  sliceRet, err := ConvertArrayToSlice[Node](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Node) GetChild(idx int64, include_internal bool, ) Node {
@@ -374,7 +381,12 @@ func  (me *Node) FindChildren(pattern String, type_ String, recursive bool, owne
   pinner.Pin(&owned)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Node](ret)
+  sliceRet, err := ConvertArrayToSlice[Node](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Node) FindParent(pattern String, ) Node {
@@ -568,7 +580,12 @@ func  (me *Node) GetGroups() []StringName {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[StringName](ret)
+  sliceRet, err := ConvertArrayToSlice[StringName](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Node) SetOwner(owner Node, )  {
@@ -1562,16 +1579,17 @@ func  (me *Node) Rpc(method StringName, varargs ...Variant) Error {
     cargs = append(cargs, v.AsCPtr())
   }
   ret := NewVariant()
-
+  defer ret.Destroy()
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return Error(-1)
   }
-  defer ret.Destroy()
   retInt, err := ret.AsInt()
   if err != nil {
-    panic(err) // TODO: return `err`?
+    log.Printf("Error converting return value to int enum: %v", err) // FIXME: bad logging
+    return Error(-1)
   }
   return Error(retInt.Get())
 }
@@ -1595,16 +1613,17 @@ func  (me *Node) RpcId(peer_id int64, method StringName, varargs ...Variant) Err
     cargs = append(cargs, v.AsCPtr())
   }
   ret := NewVariant()
-
+  defer ret.Destroy()
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return Error(-1)
   }
-  defer ret.Destroy()
   retInt, err := ret.AsInt()
   if err != nil {
-    panic(err) // TODO: return `err`?
+    log.Printf("Error converting return value to int enum: %v", err) // FIXME: bad logging
+    return Error(-1)
   }
   return Error(retInt.Get())
 }
@@ -1637,11 +1656,11 @@ func  (me *Node) CallDeferredThreadGroup(method StringName, varargs ...Variant) 
     cargs = append(cargs, v.AsCPtr())
   }
   ret := NewVariant()
-
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return *ret
   }
   return *ret
 }
@@ -1688,11 +1707,11 @@ func  (me *Node) CallThreadSafe(method StringName, varargs ...Variant) Variant {
     cargs = append(cargs, v.AsCPtr())
   }
   ret := NewVariant()
-
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return *ret
   }
   return *ret
 }

@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -184,7 +186,12 @@ func  (me *CodeEdit) GetAutoIndentPrefixes() []String {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[String](ret)
+  sliceRet, err := ConvertArrayToSlice[String](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *CodeEdit) DoIndent()  {
@@ -884,7 +891,12 @@ func  (me *CodeEdit) GetFoldedLines() []int {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[int](ret)
+  sliceRet, err := ConvertArrayToSlice[int](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *CodeEdit) CreateCodeRegion()  {
@@ -1061,7 +1073,12 @@ func  (me *CodeEdit) GetStringDelimiters() []String {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[String](ret)
+  sliceRet, err := ConvertArrayToSlice[String](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *CodeEdit) IsInString(line int64, column int64, ) int64 {
@@ -1165,7 +1182,12 @@ func  (me *CodeEdit) GetCommentDelimiters() []String {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[String](ret)
+  sliceRet, err := ConvertArrayToSlice[String](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *CodeEdit) IsInComment(line int64, column int64, ) int64 {
@@ -1349,7 +1371,12 @@ func  (me *CodeEdit) GetCodeCompletionOptions() []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *CodeEdit) GetCodeCompletionOption(index int64, ) Dictionary {
@@ -1481,7 +1508,12 @@ func  (me *CodeEdit) GetCodeCompletionPrefixes() []String {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[String](ret)
+  sliceRet, err := ConvertArrayToSlice[String](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *CodeEdit) SetLineLengthGuidelines(guideline_columns []int, )  {
@@ -1511,7 +1543,12 @@ func  (me *CodeEdit) GetLineLengthGuidelines() []int {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[int](ret)
+  sliceRet, err := ConvertArrayToSlice[int](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *CodeEdit) SetSymbolLookupOnClickEnabled(enable bool, )  {

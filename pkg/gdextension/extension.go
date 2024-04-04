@@ -47,13 +47,7 @@ func New(pGetProcAddr gdc.InterfaceGetProcAddress, pLibrary gdc.ClassLibraryPtr,
 			ext.Logf(LogLevelError, "error: %s", err.Error())
 		}
 	})
-	gdc.Callbacks.SetInitializationDeinitializeHandler(func(userdata unsafe.Pointer, pLevel gdc.InitializationLevel) {
-		ext.Logf(LogLevelDebug, "uninitializing module (level=%v)", pLevel)
-		err := ext.onFini(pLevel)
-		if err != nil {
-			ext.Logf(LogLevelError, "error: %s", err.Error())
-		}
-	})
+	gdc.Callbacks.SetInitializationDeinitializeHandler(ext.Deinitialize)
 
 	ext.addClassCallbacks()
 	return ext, nil
@@ -112,4 +106,12 @@ func (me *extension) onFini(level gdc.InitializationLevel) error {
 		me.unregisterClass(entry)
 	}
 	return nil
+}
+
+func (me *extension) Deinitialize(userdata unsafe.Pointer, level gdc.InitializationLevel) {
+	me.Logf(LogLevelDebug, "uninitializing module (level=%v)", level)
+	err := me.onFini(level)
+	if err != nil {
+		me.Logf(LogLevelError, "error: %s", err.Error())
+	}
 }

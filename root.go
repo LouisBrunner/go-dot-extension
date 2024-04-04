@@ -9,4 +9,7 @@ var Register = entry.Register
 
 var Logf = entry.Logf
 
+var MarshalDict = gdextension.MarshalDict
+var UnmarshalDict = gdextension.UnmarshalDict
+
 type Class = gdextension.Class

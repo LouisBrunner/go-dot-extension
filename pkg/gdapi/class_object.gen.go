@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -168,7 +170,12 @@ func  (me *Object) GetPropertyList() []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Object) GetMethodList() []Dictionary {
@@ -184,7 +191,12 @@ func  (me *Object) GetMethodList() []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Object) PropertyCanRevert(property StringName, ) bool {
@@ -361,7 +373,12 @@ func  (me *Object) GetMetaList() []StringName {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[StringName](ret)
+  sliceRet, err := ConvertArrayToSlice[StringName](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Object) AddUserSignal(signal String, arguments Array, )  {
@@ -407,16 +424,17 @@ func  (me *Object) EmitSignal(signal StringName, varargs ...Variant) Error {
     cargs = append(cargs, v.AsCPtr())
   }
   ret := NewVariant()
-
+  defer ret.Destroy()
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return Error(-1)
   }
-  defer ret.Destroy()
   retInt, err := ret.AsInt()
   if err != nil {
-    panic(err) // TODO: return `err`?
+    log.Printf("Error converting return value to int enum: %v", err) // FIXME: bad logging
+    return Error(-1)
   }
   return Error(retInt.Get())
 }
@@ -435,11 +453,11 @@ func  (me *Object) Call(method StringName, varargs ...Variant) Variant {
     cargs = append(cargs, v.AsCPtr())
   }
   ret := NewVariant()
-
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return *ret
   }
   return *ret
 }
@@ -458,11 +476,11 @@ func  (me *Object) CallDeferred(method StringName, varargs ...Variant) Variant {
     cargs = append(cargs, v.AsCPtr())
   }
   ret := NewVariant()
-
   cerr := &gdc.CallError{}
   giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
-    panic(cerr) // TODO: return `cerr`?
+    log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
+    return *ret
   }
   return *ret
 }
@@ -539,7 +557,12 @@ func  (me *Object) GetSignalList() []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Object) GetSignalConnectionList(signal StringName, ) []Dictionary {
@@ -555,7 +578,12 @@ func  (me *Object) GetSignalConnectionList(signal StringName, ) []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Object) GetIncomingConnections() []Dictionary {
@@ -571,7 +599,12 @@ func  (me *Object) GetIncomingConnections() []Dictionary {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Dictionary](ret)
+  sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Object) Connect(signal StringName, callable Callable, flags int64, ) Error {

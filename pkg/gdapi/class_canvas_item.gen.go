@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -1336,7 +1338,7 @@ type CanvasItemDrawSignalFn func()
 func (me *CanvasItem) ConnectDraw(subs SignalSubscribers, fn CanvasItemDrawSignalFn) {
   sig := StringNameFromStr("draw")
   defer sig.Destroy()
-  me.Connect(*sig, subs.add2(fn, me.Object), 0)
+  me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *CanvasItem) DisconnectDraw(subs SignalSubscribers, fn CanvasItemDrawSignalFn) {

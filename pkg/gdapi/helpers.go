@@ -7,7 +7,6 @@ import (
 )
 import (
 	"fmt"
-	"reflect"
 	"unsafe"
 )
 
@@ -68,25 +67,76 @@ func (me *Object) AsVariant() *Variant {
 
 // Array
 
-func ConvertArrayToSlice[T any](array *Array) []T {
-	tType := reflect.TypeFor[T]()
-	isVariant := reflect.PointerTo(tType).Implements(reflect.TypeFor[BClass]())
+func (me *Array) Get(i int64) Variant {
+	varPtr := me.iface.ArrayOperatorIndexConst(me.AsCTypePtr(), gdc.Int(i))
+	va := NewVariantWithC(gdc.ConstVariantPtr(varPtr))
+	return *va
+}
+
+func (me *Array) Set(i int64, value Variant) {
+	varPtr := me.iface.ArrayOperatorIndex(me.AsTypePtr(), gdc.Int(i))
+	va := NewVariantWith(varPtr)
+	va.Assign(value)
+}
+
+func ConvertArrayToSlice[T any](array *Array) ([]T, error) {
 	size := array.Size()
 	slice := make([]T, size)
 	for i := int64(0); i < size; i += 1 {
-		item := array.PopFront()
-		if isVariant {
-			bclass, err := item.AsBClass()
-			if err != nil {
-				panic(err) // TODO: handle error
-			}
-			slice[i] = bclass.(T) // TODO: won't work
-		} else {
-			panic("not implemented")
+		item := array.Get(i)
+		converted, err := NativeFromVariantT[T](item)
+		if err != nil {
+			return nil, fmt.Errorf("error converting item %d (%v): %w", i, item, err)
 		}
-		array.PushBack(item)
+		slice[i] = *converted
 	}
-	return slice
+	return slice, nil
+}
+
+func ConvertArrayToUnknownSlice(array *Array) ([]any, error) {
+	size := array.Size()
+	slice := make([]any, size)
+	for i := int64(0); i < size; i += 1 {
+		item := array.Get(i)
+		converted, err := NativeFromVariant(item, nil)
+		if err != nil {
+			return nil, err
+		}
+		slice[i] = converted
+	}
+	return slice, nil
+}
+
+// Dictionary
+
+func (me *Dictionary) GetStringKeyWithDefault(key string, defaultValue Variant) Variant {
+	keyVar := StringFromStr(key).AsVariant()
+	defer keyVar.Destroy()
+	return me.Get(*keyVar, defaultValue)
+}
+
+func (me *Dictionary) GetStringKey(key string) Variant {
+	keyVar := StringFromStr(key).AsVariant()
+	defer keyVar.Destroy()
+	return me.GetVariantKey(*keyVar)
+}
+
+func (me *Dictionary) GetVariantKey(key Variant) Variant {
+	varPtr := me.iface.DictionaryOperatorIndexConst(me.AsCTypePtr(), key.AsCPtr())
+	va := NewVariantWithC(gdc.ConstVariantPtr(varPtr))
+	return *va
+}
+
+func (me *Dictionary) SetStringKey(key string, value Variant) {
+	keyVar := StringFromStr(key).AsVariant()
+	defer keyVar.Destroy()
+	me.Set(*keyVar, value)
+}
+
+func (me *Dictionary) Set(key, value Variant) {
+	varPtr := me.iface.DictionaryOperatorIndex(me.AsTypePtr(), key.AsCPtr())
+	va := NewVariantWith(varPtr)
+	va.Assign(value)
 }
 
 // String

@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -258,7 +260,12 @@ func  (me *GLTFState) GetNodes() []GLTFNode {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[GLTFNode](ret)
+  sliceRet, err := ConvertArrayToSlice[GLTFNode](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetNodes(nodes []GLTFNode, )  {
@@ -288,7 +295,12 @@ func  (me *GLTFState) GetBuffers() []PackedByteArray {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[PackedByteArray](ret)
+  sliceRet, err := ConvertArrayToSlice[PackedByteArray](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetBuffers(buffers []PackedByteArray, )  {
@@ -318,7 +330,12 @@ func  (me *GLTFState) GetBufferViews() []GLTFBufferView {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[GLTFBufferView](ret)
+  sliceRet, err := ConvertArrayToSlice[GLTFBufferView](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetBufferViews(buffer_views []GLTFBufferView, )  {
@@ -348,7 +365,12 @@ func  (me *GLTFState) GetAccessors() []GLTFAccessor {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[GLTFAccessor](ret)
+  sliceRet, err := ConvertArrayToSlice[GLTFAccessor](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetAccessors(accessors []GLTFAccessor, )  {
@@ -378,7 +400,12 @@ func  (me *GLTFState) GetMeshes() []GLTFMesh {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[GLTFMesh](ret)
+  sliceRet, err := ConvertArrayToSlice[GLTFMesh](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetMeshes(meshes []GLTFMesh, )  {
@@ -440,7 +467,12 @@ func  (me *GLTFState) GetMaterials() []Material {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Material](ret)
+  sliceRet, err := ConvertArrayToSlice[Material](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetMaterials(materials []Material, )  {
@@ -586,7 +618,12 @@ func  (me *GLTFState) GetTextures() []GLTFTexture {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[GLTFTexture](ret)
+  sliceRet, err := ConvertArrayToSlice[GLTFTexture](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetTextures(textures []GLTFTexture, )  {
@@ -616,7 +653,12 @@ func  (me *GLTFState) GetTextureSamplers() []GLTFTextureSampler {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[GLTFTextureSampler](ret)
+  sliceRet, err := ConvertArrayToSlice[GLTFTextureSampler](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetTextureSamplers(texture_samplers []GLTFTextureSampler, )  {
@@ -646,7 +688,12 @@ func  (me *GLTFState) GetImages() []Texture2D {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Texture2D](ret)
+  sliceRet, err := ConvertArrayToSlice[Texture2D](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetImages(images []Texture2D, )  {
@@ -676,7 +723,12 @@ func  (me *GLTFState) GetSkins() []GLTFSkin {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[GLTFSkin](ret)
+  sliceRet, err := ConvertArrayToSlice[GLTFSkin](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetSkins(skins []GLTFSkin, )  {
@@ -706,7 +758,12 @@ func  (me *GLTFState) GetCameras() []GLTFCamera {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[GLTFCamera](ret)
+  sliceRet, err := ConvertArrayToSlice[GLTFCamera](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetCameras(cameras []GLTFCamera, )  {
@@ -736,7 +793,12 @@ func  (me *GLTFState) GetLights() []GLTFLight {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[GLTFLight](ret)
+  sliceRet, err := ConvertArrayToSlice[GLTFLight](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetLights(lights []GLTFLight, )  {
@@ -766,7 +828,12 @@ func  (me *GLTFState) GetUniqueNames() []String {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[String](ret)
+  sliceRet, err := ConvertArrayToSlice[String](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetUniqueNames(unique_names []String, )  {
@@ -796,7 +863,12 @@ func  (me *GLTFState) GetUniqueAnimationNames() []String {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[String](ret)
+  sliceRet, err := ConvertArrayToSlice[String](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetUniqueAnimationNames(unique_animation_names []String, )  {
@@ -826,7 +898,12 @@ func  (me *GLTFState) GetSkeletons() []GLTFSkeleton {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[GLTFSkeleton](ret)
+  sliceRet, err := ConvertArrayToSlice[GLTFSkeleton](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetSkeletons(skeletons []GLTFSkeleton, )  {
@@ -885,7 +962,12 @@ func  (me *GLTFState) GetAnimations() []GLTFAnimation {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[GLTFAnimation](ret)
+  sliceRet, err := ConvertArrayToSlice[GLTFAnimation](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *GLTFState) SetAnimations(animations []GLTFAnimation, )  {

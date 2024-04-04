@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -75,7 +77,12 @@ func  (me *Font) GetFallbacks() []Font {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[Font](ret)
+  sliceRet, err := ConvertArrayToSlice[Font](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Font) FindVariation(variation_coordinates Dictionary, face_index int64, strength float64, transform Transform2D, spacing_top int64, spacing_bottom int64, spacing_space int64, spacing_glyph int64, ) RID {
@@ -112,7 +119,12 @@ func  (me *Font) GetRids() []RID {
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[RID](ret)
+  sliceRet, err := ConvertArrayToSlice[RID](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Font) GetHeight(font_size int64, ) float64 {

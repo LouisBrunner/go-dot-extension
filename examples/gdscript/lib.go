@@ -29,6 +29,8 @@ func (n *MyNode2D) X_Ready() {
 }
 
 func (n *MyNode2D) Monitor(other gdapi.CanvasItem) {
+	fmt.Printf("Other properties: %+v\n", other.GetPropertyList())
+
 	var sub gdapi.CanvasItemDrawSignalFn
 	sub = func() {
 		fmt.Println("Other has been drawn")
@@ -37,9 +39,51 @@ func (n *MyNode2D) Monitor(other gdapi.CanvasItem) {
 	other.ConnectDraw(n.subs, sub)
 }
 
+type receivedDataSub struct {
+	SubKey string `json:"sub_key"`
+}
+
+type receivedData struct {
+	StringKey int64           `json:"String Key"`
+	SubDict   receivedDataSub `json:"sub_dict"`
+}
+
+func (n *MyNode2D) Report(data gdapi.Dictionary) {
+	fmt.Printf("Received data: %v\n", data)
+
+	var receivedMap map[string]interface{}
+	err := gde.UnmarshalDict(data, &receivedMap)
+	if err != nil {
+		fmt.Printf("Error unmarshalling data (dict): %v\n", err)
+		return
+	}
+	fmt.Printf("Received data (map): %v\n", receivedMap)
+
+	var received receivedData
+	err = gde.UnmarshalDict(data, &received)
+	if err != nil {
+		fmt.Printf("Error unmarshalling data (struct): %v\n", err)
+		return
+	}
+	fmt.Printf("Received data (struct): %v\n", received)
+}
+
+type secretData struct {
+	SomeInfo      float32
+	SomeOtherData []string `json:"some_other_data2"`
+}
+
 func (n *MyNode2D) printSecret() {
 	fmt.Println(n.secret)
-	n.SecretPrinted.Emit(*gdapi.NewBoolFromBool(true).AsVariant())
+	dict, err := gde.MarshalDict(secretData{
+		SomeInfo:      3.14,
+		SomeOtherData: []string{"Hello", "World"},
+	})
+	if err != nil {
+		fmt.Println("Error marshalling secret data:", err)
+		return
+	}
+	n.SecretPrinted.Emit(*dict.AsVariant())
 }
 
 func newMyNode2D() gde.Class {

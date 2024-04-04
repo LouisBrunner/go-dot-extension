@@ -115,116 +115,6 @@ func typeFromReflect(val reflect.Value) (gdc.TypePtr, error) {
 	return nil, fmt.Errorf("unsupported type: %s", val.Kind())
 }
 
-func findExpected(obj any, expected reflect.Type) (interface{}, error) {
-	val := reflect.ValueOf(obj).Elem()
-
-	if val.Type() == expected {
-		return val.Interface(), nil
-	}
-
-	for i := 0; i < val.NumField(); i += 1 {
-		field := val.Field(i)
-		if field.Type() == expected {
-			return field.Interface(), nil
-		}
-		if field.Kind() == reflect.Struct {
-			res, err := findExpected(field.Addr().Interface(), expected)
-			if err == nil {
-				return res, nil
-			}
-		}
-	}
-
-	return nil, fmt.Errorf("could not find expected type %s in %s", expected, val.Type())
-}
-
-func nativeFromVariant(vaRaw gdc.ConstVariantPtr, expected reflect.Type) (any, error) {
-	va := gdapi.NewVariantWithC(vaRaw)
-	switch va.Type() {
-	case gdc.VariantTypeNil:
-		if expected.Kind() != reflect.Ptr {
-			return nil, fmt.Errorf("cannot convert nil to %s", expected.Kind())
-		}
-		return reflect.Zero(expected), nil
-	case gdc.VariantTypeBool:
-		if expected.Kind() != reflect.Bool {
-			return nil, fmt.Errorf("cannot convert bool to %s", expected.Kind())
-		}
-		b, err := va.AsBool()
-		if err != nil {
-			return nil, err
-		}
-		return bool(b.Get()), nil
-	case gdc.VariantTypeInt:
-		i, err := va.AsInt()
-		if err != nil {
-			return nil, err
-		}
-		switch expected.Kind() {
-		case reflect.Int:
-			return int(i.Get()), nil
-		case reflect.Int8:
-			return int8(i.Get()), nil
-		case reflect.Int16:
-			return int16(i.Get()), nil
-		case reflect.Int32:
-			return int32(i.Get()), nil
-		case reflect.Int64:
-			return int64(i.Get()), nil
-		case reflect.Uint:
-			return uint(i.Get()), nil
-		case reflect.Uint8:
-			return uint8(i.Get()), nil
-		case reflect.Uint16:
-			return uint16(i.Get()), nil
-		case reflect.Uint32:
-			return uint32(i.Get()), nil
-		case reflect.Uint64:
-			return uint64(i.Get()), nil
-		}
-		return nil, fmt.Errorf("cannot convert int to %s", expected.Kind())
-	case gdc.VariantTypeFloat:
-		f, err := va.AsFloat()
-		if err != nil {
-			return nil, err
-		}
-		switch expected.Kind() {
-		case reflect.Float32:
-			return float32(f.Get()), nil
-		case reflect.Float64:
-			return float64(f.Get()), nil
-		}
-		return nil, fmt.Errorf("cannot convert float to %s", expected.Kind())
-	case gdc.VariantTypeString:
-		if expected.Kind() != reflect.String {
-			return nil, fmt.Errorf("cannot convert string to %s", expected.Kind())
-		}
-		s, err := va.AsString()
-		if err != nil {
-			return nil, err
-		}
-		return string(s.String()), nil
-	case gdc.VariantTypeObject:
-		if expected.Kind() != reflect.Struct {
-			return nil, fmt.Errorf("cannot convert object to %s", expected.Kind())
-		}
-		obj, err := va.AsObject()
-		if err != nil {
-			return nil, err
-		}
-		return findExpected(obj, expected)
-	default:
-		if expected.Kind() != reflect.Interface {
-			return nil, fmt.Errorf("cannot convert bclass %v to %s", va.Type(), expected.Kind())
-		}
-		bclass, err := va.AsBClass()
-		if err != nil {
-			return nil, err
-		}
-		return bclass, nil
-	}
-}
-
 func variantFromReflect(val reflect.Value) (*gdapi.Variant, error) {
 	switch val.Kind() {
 	case reflect.Bool:
@@ -241,9 +131,9 @@ func variantFromReflect(val reflect.Value) (*gdapi.Variant, error) {
 		for i := 0; i < val.Len(); i++ {
 			va, err := variantFromReflect(val.Index(i))
 			if err != nil {
-				return nil, err
+				return nil, fmt.Errorf("error marshalling array element %d: %w", i, err)
 			}
-			arr.PushBack(*gdapi.NewVariantWith(gdc.VariantPtr(va)))
+			arr.PushBack(*va)
 		}
 		return arr.AsVariant(), nil
 	case reflect.Struct:

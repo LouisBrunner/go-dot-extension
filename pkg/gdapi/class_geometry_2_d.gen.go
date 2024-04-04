@@ -2,13 +2,15 @@
 package gdapi
 
 import (
-  "unsafe"
+  "log"
   "runtime"
+  "unsafe"
 
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
+var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
@@ -282,7 +284,12 @@ func  (me *Geometry2D) DecomposePolygonInConvex(polygon PackedVector2Array, ) []
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[PackedVector2Array](ret)
+  sliceRet, err := ConvertArrayToSlice[PackedVector2Array](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry2D) MergePolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array, ) []PackedVector2Array {
@@ -298,7 +305,12 @@ func  (me *Geometry2D) MergePolygons(polygon_a PackedVector2Array, polygon_b Pac
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[PackedVector2Array](ret)
+  sliceRet, err := ConvertArrayToSlice[PackedVector2Array](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry2D) ClipPolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array, ) []PackedVector2Array {
@@ -314,7 +326,12 @@ func  (me *Geometry2D) ClipPolygons(polygon_a PackedVector2Array, polygon_b Pack
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[PackedVector2Array](ret)
+  sliceRet, err := ConvertArrayToSlice[PackedVector2Array](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry2D) IntersectPolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array, ) []PackedVector2Array {
@@ -330,7 +347,12 @@ func  (me *Geometry2D) IntersectPolygons(polygon_a PackedVector2Array, polygon_b
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[PackedVector2Array](ret)
+  sliceRet, err := ConvertArrayToSlice[PackedVector2Array](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry2D) ExcludePolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array, ) []PackedVector2Array {
@@ -346,7 +368,12 @@ func  (me *Geometry2D) ExcludePolygons(polygon_a PackedVector2Array, polygon_b P
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[PackedVector2Array](ret)
+  sliceRet, err := ConvertArrayToSlice[PackedVector2Array](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry2D) ClipPolylineWithPolygon(polyline PackedVector2Array, polygon PackedVector2Array, ) []PackedVector2Array {
@@ -362,7 +389,12 @@ func  (me *Geometry2D) ClipPolylineWithPolygon(polyline PackedVector2Array, poly
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[PackedVector2Array](ret)
+  sliceRet, err := ConvertArrayToSlice[PackedVector2Array](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry2D) IntersectPolylineWithPolygon(polyline PackedVector2Array, polygon PackedVector2Array, ) []PackedVector2Array {
@@ -378,7 +410,12 @@ func  (me *Geometry2D) IntersectPolylineWithPolygon(polyline PackedVector2Array,
   defer ret.Destroy()
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[PackedVector2Array](ret)
+  sliceRet, err := ConvertArrayToSlice[PackedVector2Array](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry2D) OffsetPolygon(polygon PackedVector2Array, delta float64, join_type Geometry2DPolyJoinType, ) []PackedVector2Array {
@@ -396,7 +433,12 @@ func  (me *Geometry2D) OffsetPolygon(polygon PackedVector2Array, delta float64, 
   pinner.Pin(&join_type)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[PackedVector2Array](ret)
+  sliceRet, err := ConvertArrayToSlice[PackedVector2Array](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry2D) OffsetPolyline(polyline PackedVector2Array, delta float64, join_type Geometry2DPolyJoinType, end_type Geometry2DPolyEndType, ) []PackedVector2Array {
@@ -415,7 +457,12 @@ func  (me *Geometry2D) OffsetPolyline(polyline PackedVector2Array, delta float64
   pinner.Pin(&end_type)
 
   giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-  return ConvertArrayToSlice[PackedVector2Array](ret)
+  sliceRet, err := ConvertArrayToSlice[PackedVector2Array](ret)
+  if err != nil {
+    log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+    return nil
+  }
+return sliceRet
 }
 
 func  (me *Geometry2D) MakeAtlas(sizes PackedVector2Array, ) Dictionary {
