@@ -8,11 +8,21 @@ import (
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
+type ConstantsDefinition struct {
+	Constants map[string]int
+	Enums     map[string]map[string]int
+}
+
 type Class interface {
 	BaseClass() string
 	SetBaseObject(obj gdc.ObjectPtr)
 	Get(name gdapi.StringName) gdapi.Variant
 	Set(name gdapi.StringName, value gdapi.Variant)
+}
+
+type ClassWithConstants interface {
+	Class
+	Constants() ConstantsDefinition
 }
 
 type Initializable interface {

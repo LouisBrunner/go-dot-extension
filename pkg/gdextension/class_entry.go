@@ -1,6 +1,7 @@
 package gdextension
 
 import (
+	"fmt"
 	"reflect"
 	"runtime"
 	"sync"
@@ -148,6 +149,32 @@ func (me classSubscriber) free(ext *extension, instance Class) {
 	}
 }
 
+type classConstant struct {
+	enumName  string
+	valueName string
+
+	enumNamePtr  gdapi.StringName
+	valueNamePtr gdapi.StringName
+
+	value int
+}
+
+func (me *classConstant) getName() string {
+	if me.enumName == "" {
+		return fmt.Sprintf("%s (value %d)", me.valueName, me.value)
+	}
+	return fmt.Sprintf("%s.%s (value %d)", me.enumName, me.valueName, me.value)
+}
+
+func (me *classConstant) register(ext *extension, class *classEntry) {
+	ext.iface.ClassdbRegisterExtensionClassIntegerConstant(ext.pLibrary, class.namePtr.AsCPtr(), me.enumNamePtr.AsCPtr(), me.valueNamePtr.AsCPtr(), gdc.Int(me.value), gdc.Bool(0))
+}
+
+func (me *classConstant) unregister(_ *extension, _ *classEntry) {
+	me.enumNamePtr.Destroy()
+	me.valueNamePtr.Destroy()
+}
+
 type classEntry struct {
 	name        string
 	constructor ClassConstructor
@@ -155,6 +182,7 @@ type classEntry struct {
 	methods     []classMethod
 	signals     []classSignal
 	subscribers []classSubscriber
+	constants   []classConstant
 
 	parentNamePtr gdapi.StringName
 	namePtr       gdapi.StringName

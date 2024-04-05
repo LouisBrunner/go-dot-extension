@@ -14,3 +14,4 @@ var UnmarshalDict = gdextension.UnmarshalDict
 
 type Class = gdextension.Class
 type Signal = gdextension.Signal
+type ConstantsDefinition = gdextension.ConstantsDefinition

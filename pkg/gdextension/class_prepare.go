@@ -46,6 +46,7 @@ func parseTag(tag string) *tagData {
 
 var reservedMethods = []string{
 	"Init",
+	"Constants",
 	"Destroy",
 }
 
@@ -64,6 +65,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 	methods := make([]classMethod, 0, typ.NumMethod())
 	signals := make([]classSignal, 0)
 	subscribers := make([]classSubscriber, 0)
+	constants := make([]classConstant, 0)
 
 	ignoredMethods := map[string]struct{}{}
 	for _, method := range reservedMethods {
@@ -144,6 +146,27 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 				if !is {
 					return nil, fmt.Errorf("method %q of class %q: does not follow the correct signature", method.Name, className)
 				}
+			case "Constants":
+				withConstants, is := instance.(ClassWithConstants)
+				if !is {
+					return nil, fmt.Errorf("method %q of class %q: does not follow the correct signature", method.Name, className)
+				}
+				def := withConstants.Constants()
+				for name, value := range def.Constants {
+					constants = append(constants, classConstant{
+						valueName: strcase.ToScreamingSnake(name),
+						value:     value,
+					})
+				}
+				for enumName, values := range def.Enums {
+					for valueName, value := range values {
+						constants = append(constants, classConstant{
+							enumName:  strcase.ToCamel(enumName),
+							valueName: strcase.ToScreamingSnake(valueName),
+							value:     value,
+						})
+					}
+				}
 			case "Destroy":
 				_, is := instance.(Destroyable)
 				if !is {
@@ -161,6 +184,12 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 		methods = append(methods, *methodPtr)
 	}
 
+	for i, constant := range constants {
+		constant.enumNamePtr = *gdapi.StringNameFromStr(constant.enumName)
+		constant.valueNamePtr = *gdapi.StringNameFromStr(constant.valueName)
+		constants[i] = constant
+	}
+
 	return &classEntry{
 		name:          className,
 		constructor:   ctr,
@@ -168,6 +197,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 		methods:       methods,
 		signals:       signals,
 		subscribers:   subscribers,
+		constants:     constants,
 		parentNamePtr: parentPtr,
 		namePtr:       namePtr,
 		instances:     make(map[uint64]*classInstance),
