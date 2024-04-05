@@ -108,7 +108,7 @@ func NewRDFramebufferPass() *RDFramebufferPass {
 // Constants
 
 var (
-  RDFramebufferPassAttachmentUnused = "-1" // TODO: construct correctly
+  RDFramebufferPassAttachmentUnused = -1
 )
 
 // Enums

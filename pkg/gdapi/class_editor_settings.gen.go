@@ -144,7 +144,7 @@ func NewEditorSettings() *EditorSettings {
 // Constants
 
 var (
-  EditorSettingsNotificationEditorSettingsChanged = "10000" // TODO: construct correctly
+  EditorSettingsNotificationEditorSettingsChanged = 10000
 )
 
 // Enums

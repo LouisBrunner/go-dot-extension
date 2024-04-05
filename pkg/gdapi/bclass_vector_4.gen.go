@@ -258,6 +258,42 @@ func initVector4Ptrs(iface gdc.Interface) {
   }
   ptrsForVector4.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeVector4))
   ptrsForVector4.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeVector4))
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ZERO")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector4, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector4()
+    if err != nil {
+      panic("Failed to get constant value ZERO: " + err.Error())
+    }
+    Vector4Zero = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ONE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector4, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector4()
+    if err != nil {
+      panic("Failed to get constant value ONE: " + err.Error())
+    }
+    Vector4One = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("INF")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector4, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector4()
+    if err != nil {
+      panic("Failed to get constant value INF: " + err.Error())
+    }
+    Vector4Inf = *cnst
+  }
 }
 
 type Vector4 struct {
@@ -269,9 +305,9 @@ type Vector4 struct {
 // Constants
 
 var (
-  Vector4Zero = "Vector4(0, 0, 0, 0)" // TODO: construct correctly
-  Vector4One = "Vector4(1, 1, 1, 1)" // TODO: construct correctly
-  Vector4Inf = "Vector4(inf, inf, inf, inf)" // TODO: construct correctly
+  Vector4Zero Vector4
+  Vector4One Vector4
+  Vector4Inf Vector4
 )
 
 // Enums
@@ -375,6 +411,7 @@ func (me *Vector4) AsCTypePtr() gdc.ConstTypePtr {
 func (me *Vector4) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+
 
 // Methods
 

@@ -4,8 +4,9 @@
 
 // Constants
 
-var (
-{{range .Constants}}{{if ne .Type "int"}}  {{$.Name}}{{pascalCased (lowerCased .Name)}} = "{{.Value}}" // TODO: construct correctly
+var ({{/* Constants with int type are redundant with enums IIRC */}}
+{{range .Constants}}{{if eq .Type ""}}  {{$.Name}}{{pascalCased (lowerCased .Name)}} = {{.Value}}
+{{else if ne .Type "int"}}  {{$.Name}}{{pascalCased (lowerCased .Name)}} {{$Class}}
 {{end}}{{end -}}
 )
 {{- end}}
@@ -18,5 +19,27 @@ const ({{$name := .Name}}
 {{range .Values}}  {{$.Name}}{{$name}}{{pascalCased (lowerCased .Name)}} {{$.Name}}{{$name}} = {{.Value}}
 {{end -}}
 )
+{{- end}}
+{{- end}}
+
+{{- define "class_init_constants"}}
+{{- $Class := mapClass .Name -}}
+{{- if .Constants}}
+{{- range .Constants}}
+{{- if and (ne .Type "") (ne .Type "int")}}
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("{{.Name}}")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantType{{pascalCased $.Name}}, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.As{{$Class}}()
+    if err != nil {
+      panic("Failed to get constant value {{.Name}}: " + err.Error())
+    }
+    {{$.Name}}{{pascalCased (lowerCased .Name)}} = *cnst
+  }
+{{- end}}
+{{- end}}
 {{- end}}
 {{- end}}

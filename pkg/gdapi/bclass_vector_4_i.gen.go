@@ -152,6 +152,54 @@ func initVector4iPtrs(iface gdc.Interface) {
   }
   ptrsForVector4i.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeVector4I))
   ptrsForVector4i.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeVector4I))
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ZERO")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector4I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector4i()
+    if err != nil {
+      panic("Failed to get constant value ZERO: " + err.Error())
+    }
+    Vector4iZero = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ONE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector4I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector4i()
+    if err != nil {
+      panic("Failed to get constant value ONE: " + err.Error())
+    }
+    Vector4iOne = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MIN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector4I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector4i()
+    if err != nil {
+      panic("Failed to get constant value MIN: " + err.Error())
+    }
+    Vector4iMin = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MAX")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector4I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector4i()
+    if err != nil {
+      panic("Failed to get constant value MAX: " + err.Error())
+    }
+    Vector4iMax = *cnst
+  }
 }
 
 type Vector4i struct {
@@ -163,10 +211,10 @@ type Vector4i struct {
 // Constants
 
 var (
-  Vector4iZero = "Vector4i(0, 0, 0, 0)" // TODO: construct correctly
-  Vector4iOne = "Vector4i(1, 1, 1, 1)" // TODO: construct correctly
-  Vector4iMin = "Vector4i(-2147483648, -2147483648, -2147483648, -2147483648)" // TODO: construct correctly
-  Vector4iMax = "Vector4i(2147483647, 2147483647, 2147483647, 2147483647)" // TODO: construct correctly
+  Vector4iZero Vector4i
+  Vector4iOne Vector4i
+  Vector4iMin Vector4i
+  Vector4iMax Vector4i
 )
 
 // Enums
@@ -270,6 +318,7 @@ func (me *Vector4i) AsCTypePtr() gdc.ConstTypePtr {
 func (me *Vector4i) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+
 
 // Methods
 

@@ -78,7 +78,7 @@ func NewAudioStreamPlaybackPolyphonic() *AudioStreamPlaybackPolyphonic {
 // Constants
 
 var (
-  AudioStreamPlaybackPolyphonicInvalidId = "-1" // TODO: construct correctly
+  AudioStreamPlaybackPolyphonicInvalidId = -1
 )
 
 // Enums

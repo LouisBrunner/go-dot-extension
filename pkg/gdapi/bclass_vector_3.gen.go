@@ -352,6 +352,186 @@ func initVector3Ptrs(iface gdc.Interface) {
   }
   ptrsForVector3.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeVector3))
   ptrsForVector3.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeVector3))
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ZERO")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value ZERO: " + err.Error())
+    }
+    Vector3Zero = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ONE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value ONE: " + err.Error())
+    }
+    Vector3One = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("INF")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value INF: " + err.Error())
+    }
+    Vector3Inf = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LEFT")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value LEFT: " + err.Error())
+    }
+    Vector3Left = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("RIGHT")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value RIGHT: " + err.Error())
+    }
+    Vector3Right = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("UP")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value UP: " + err.Error())
+    }
+    Vector3Up = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DOWN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value DOWN: " + err.Error())
+    }
+    Vector3Down = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FORWARD")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value FORWARD: " + err.Error())
+    }
+    Vector3Forward = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("BACK")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value BACK: " + err.Error())
+    }
+    Vector3Back = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MODEL_LEFT")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value MODEL_LEFT: " + err.Error())
+    }
+    Vector3ModelLeft = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MODEL_RIGHT")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value MODEL_RIGHT: " + err.Error())
+    }
+    Vector3ModelRight = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MODEL_TOP")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value MODEL_TOP: " + err.Error())
+    }
+    Vector3ModelTop = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MODEL_BOTTOM")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value MODEL_BOTTOM: " + err.Error())
+    }
+    Vector3ModelBottom = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MODEL_FRONT")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value MODEL_FRONT: " + err.Error())
+    }
+    Vector3ModelFront = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MODEL_REAR")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector3, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector3()
+    if err != nil {
+      panic("Failed to get constant value MODEL_REAR: " + err.Error())
+    }
+    Vector3ModelRear = *cnst
+  }
 }
 
 type Vector3 struct {
@@ -363,21 +543,21 @@ type Vector3 struct {
 // Constants
 
 var (
-  Vector3Zero = "Vector3(0, 0, 0)" // TODO: construct correctly
-  Vector3One = "Vector3(1, 1, 1)" // TODO: construct correctly
-  Vector3Inf = "Vector3(inf, inf, inf)" // TODO: construct correctly
-  Vector3Left = "Vector3(-1, 0, 0)" // TODO: construct correctly
-  Vector3Right = "Vector3(1, 0, 0)" // TODO: construct correctly
-  Vector3Up = "Vector3(0, 1, 0)" // TODO: construct correctly
-  Vector3Down = "Vector3(0, -1, 0)" // TODO: construct correctly
-  Vector3Forward = "Vector3(0, 0, -1)" // TODO: construct correctly
-  Vector3Back = "Vector3(0, 0, 1)" // TODO: construct correctly
-  Vector3ModelLeft = "Vector3(1, 0, 0)" // TODO: construct correctly
-  Vector3ModelRight = "Vector3(-1, 0, 0)" // TODO: construct correctly
-  Vector3ModelTop = "Vector3(0, 1, 0)" // TODO: construct correctly
-  Vector3ModelBottom = "Vector3(0, -1, 0)" // TODO: construct correctly
-  Vector3ModelFront = "Vector3(0, 0, 1)" // TODO: construct correctly
-  Vector3ModelRear = "Vector3(0, 0, -1)" // TODO: construct correctly
+  Vector3Zero Vector3
+  Vector3One Vector3
+  Vector3Inf Vector3
+  Vector3Left Vector3
+  Vector3Right Vector3
+  Vector3Up Vector3
+  Vector3Down Vector3
+  Vector3Forward Vector3
+  Vector3Back Vector3
+  Vector3ModelLeft Vector3
+  Vector3ModelRight Vector3
+  Vector3ModelTop Vector3
+  Vector3ModelBottom Vector3
+  Vector3ModelFront Vector3
+  Vector3ModelRear Vector3
 )
 
 // Enums
@@ -479,6 +659,7 @@ func (me *Vector3) AsCTypePtr() gdc.ConstTypePtr {
 func (me *Vector3) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+
 
 // Methods
 

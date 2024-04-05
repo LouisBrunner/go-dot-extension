@@ -316,8 +316,8 @@ func NewObject() *Object {
 // Constants
 
 var (
-  ObjectNotificationPostinitialize = "0" // TODO: construct correctly
-  ObjectNotificationPredelete = "1" // TODO: construct correctly
+  ObjectNotificationPostinitialize = 0
+  ObjectNotificationPredelete = 1
 )
 
 // Enums

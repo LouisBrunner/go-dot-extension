@@ -150,6 +150,54 @@ func initTransform3DPtrs(iface gdc.Interface) {
   }
   ptrsForTransform3D.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeTransform3D))
   ptrsForTransform3D.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeTransform3D))
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("IDENTITY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeTransform3D, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsTransform3D()
+    if err != nil {
+      panic("Failed to get constant value IDENTITY: " + err.Error())
+    }
+    Transform3DIdentity = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FLIP_X")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeTransform3D, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsTransform3D()
+    if err != nil {
+      panic("Failed to get constant value FLIP_X: " + err.Error())
+    }
+    Transform3DFlipX = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FLIP_Y")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeTransform3D, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsTransform3D()
+    if err != nil {
+      panic("Failed to get constant value FLIP_Y: " + err.Error())
+    }
+    Transform3DFlipY = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FLIP_Z")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeTransform3D, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsTransform3D()
+    if err != nil {
+      panic("Failed to get constant value FLIP_Z: " + err.Error())
+    }
+    Transform3DFlipZ = *cnst
+  }
 }
 
 type Transform3D struct {
@@ -161,10 +209,10 @@ type Transform3D struct {
 // Constants
 
 var (
-  Transform3DIdentity = "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)" // TODO: construct correctly
-  Transform3DFlipX = "Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)" // TODO: construct correctly
-  Transform3DFlipY = "Transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 0, 0, 0)" // TODO: construct correctly
-  Transform3DFlipZ = "Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)" // TODO: construct correctly
+  Transform3DIdentity Transform3D
+  Transform3DFlipX Transform3D
+  Transform3DFlipY Transform3D
+  Transform3DFlipZ Transform3D
 )
 
 // Enums
@@ -264,6 +312,7 @@ func (me *Transform3D) AsCTypePtr() gdc.ConstTypePtr {
 func (me *Transform3D) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+
 
 // Methods
 

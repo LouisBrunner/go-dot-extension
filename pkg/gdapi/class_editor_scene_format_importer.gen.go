@@ -53,13 +53,13 @@ func NewEditorSceneFormatImporter() *EditorSceneFormatImporter {
 // Constants
 
 var (
-  EditorSceneFormatImporterImportScene = "1" // TODO: construct correctly
-  EditorSceneFormatImporterImportAnimation = "2" // TODO: construct correctly
-  EditorSceneFormatImporterImportFailOnMissingDependencies = "4" // TODO: construct correctly
-  EditorSceneFormatImporterImportGenerateTangentArrays = "8" // TODO: construct correctly
-  EditorSceneFormatImporterImportUseNamedSkinBinds = "16" // TODO: construct correctly
-  EditorSceneFormatImporterImportDiscardMeshesAndMaterials = "32" // TODO: construct correctly
-  EditorSceneFormatImporterImportForceDisableMeshCompression = "64" // TODO: construct correctly
+  EditorSceneFormatImporterImportScene = 1
+  EditorSceneFormatImporterImportAnimation = 2
+  EditorSceneFormatImporterImportFailOnMissingDependencies = 4
+  EditorSceneFormatImporterImportGenerateTangentArrays = 8
+  EditorSceneFormatImporterImportUseNamedSkinBinds = 16
+  EditorSceneFormatImporterImportDiscardMeshesAndMaterials = 32
+  EditorSceneFormatImporterImportForceDisableMeshCompression = 64
 )
 
 // Enums

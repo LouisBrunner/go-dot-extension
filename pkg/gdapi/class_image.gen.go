@@ -462,8 +462,8 @@ func NewImage() *Image {
 // Constants
 
 var (
-  ImageMaxWidth = "16777216" // TODO: construct correctly
-  ImageMaxHeight = "16777216" // TODO: construct correctly
+  ImageMaxWidth = 16777216
+  ImageMaxHeight = 16777216
 )
 
 // Enums

@@ -258,6 +258,10 @@ func (me *PackedInt64Array) AsCTypePtr() gdc.ConstTypePtr {
 func (me *PackedInt64Array) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+func (me *PackedInt64Array) Get(i int64) int64 {
+  ret := me.iface.PackedInt64ArrayOperatorIndexConst(me.AsCTypePtr(), gdc.Int(i))
+  return *ret
+}
 
 // Methods
 

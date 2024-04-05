@@ -468,11 +468,11 @@ func NewNode3D() *Node3D {
 // Constants
 
 var (
-  Node3DNotificationTransformChanged = "2000" // TODO: construct correctly
-  Node3DNotificationEnterWorld = "41" // TODO: construct correctly
-  Node3DNotificationExitWorld = "42" // TODO: construct correctly
-  Node3DNotificationVisibilityChanged = "43" // TODO: construct correctly
-  Node3DNotificationLocalTransformChanged = "44" // TODO: construct correctly
+  Node3DNotificationTransformChanged = 2000
+  Node3DNotificationEnterWorld = 41
+  Node3DNotificationExitWorld = 42
+  Node3DNotificationVisibilityChanged = 43
+  Node3DNotificationLocalTransformChanged = 44
 )
 
 // Enums

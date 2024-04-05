@@ -66,6 +66,7 @@ func init{{$Class}}Ptrs(iface gdc.Interface) {
   ptrsFor{{$Class}}.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantType{{pascalCased $.Name}}))
   ptrsFor{{$Class}}.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantType{{pascalCased $.Name}}))
 {{- end}}
+{{- template "class_init_constants" .}}
 }
 
 type {{$Class}} struct {
@@ -166,7 +167,13 @@ func (me *{{$Class}}) asUninitialized() gdc.UninitializedTypePtr {
 func (me *{{$Class}}) Get() {{mapWideType .Name}} {
   return *(*{{mapWideType .Name}})(unsafe.Pointer(me.data))
 }
-{{end}}
+{{- else if startsWith $Class "Packed" -}}
+func (me *{{$Class}}) Get(i int64) {{mapPackedType $Class}} {
+  ret := me.iface.{{$Class}}OperatorIndexConst(me.AsCTypePtr(), gdc.Int(i))
+  return {{castPackedType $Class "ret"}}
+}
+{{- end}}
+
 // Methods
 {{- range .Methods}}
 

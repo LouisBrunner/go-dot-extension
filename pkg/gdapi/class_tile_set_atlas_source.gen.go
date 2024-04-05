@@ -294,9 +294,9 @@ func NewTileSetAtlasSource() *TileSetAtlasSource {
 // Constants
 
 var (
-  TileSetAtlasSourceTransformFlipH = "4096" // TODO: construct correctly
-  TileSetAtlasSourceTransformFlipV = "8192" // TODO: construct correctly
-  TileSetAtlasSourceTransformTranspose = "16384" // TODO: construct correctly
+  TileSetAtlasSourceTransformFlipH = 4096
+  TileSetAtlasSourceTransformFlipV = 8192
+  TileSetAtlasSourceTransformTranspose = 16384
 )
 
 // Enums

@@ -239,6 +239,7 @@ func (me *Callable) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
+
 // Methods
 
 func (me *Callable) Callv(arguments Array, ) Variant {

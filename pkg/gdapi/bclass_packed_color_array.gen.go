@@ -258,6 +258,10 @@ func (me *PackedColorArray) AsCTypePtr() gdc.ConstTypePtr {
 func (me *PackedColorArray) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+func (me *PackedColorArray) Get(i int64) Color {
+  ret := me.iface.PackedColorArrayOperatorIndexConst(me.AsCTypePtr(), gdc.Int(i))
+  return *ColorFromPtr(gdc.ConstTypePtr(ret))
+}
 
 // Methods
 

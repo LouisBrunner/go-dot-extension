@@ -52,16 +52,16 @@ func NewMainLoop() *MainLoop {
 // Constants
 
 var (
-  MainLoopNotificationOsMemoryWarning = "2009" // TODO: construct correctly
-  MainLoopNotificationTranslationChanged = "2010" // TODO: construct correctly
-  MainLoopNotificationWmAbout = "2011" // TODO: construct correctly
-  MainLoopNotificationCrash = "2012" // TODO: construct correctly
-  MainLoopNotificationOsImeUpdate = "2013" // TODO: construct correctly
-  MainLoopNotificationApplicationResumed = "2014" // TODO: construct correctly
-  MainLoopNotificationApplicationPaused = "2015" // TODO: construct correctly
-  MainLoopNotificationApplicationFocusIn = "2016" // TODO: construct correctly
-  MainLoopNotificationApplicationFocusOut = "2017" // TODO: construct correctly
-  MainLoopNotificationTextServerChanged = "2018" // TODO: construct correctly
+  MainLoopNotificationOsMemoryWarning = 2009
+  MainLoopNotificationTranslationChanged = 2010
+  MainLoopNotificationWmAbout = 2011
+  MainLoopNotificationCrash = 2012
+  MainLoopNotificationOsImeUpdate = 2013
+  MainLoopNotificationApplicationResumed = 2014
+  MainLoopNotificationApplicationPaused = 2015
+  MainLoopNotificationApplicationFocusIn = 2016
+  MainLoopNotificationApplicationFocusOut = 2017
+  MainLoopNotificationTextServerChanged = 2018
 )
 
 // Enums

@@ -185,6 +185,7 @@ func (me *Signal) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
+
 // Methods
 
 func (me *Signal) IsNull() bool {

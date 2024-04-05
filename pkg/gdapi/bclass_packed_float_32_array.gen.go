@@ -258,6 +258,10 @@ func (me *PackedFloat32Array) AsCTypePtr() gdc.ConstTypePtr {
 func (me *PackedFloat32Array) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+func (me *PackedFloat32Array) Get(i int64) float32 {
+  ret := me.iface.PackedFloat32ArrayOperatorIndexConst(me.AsCTypePtr(), gdc.Int(i))
+  return *ret
+}
 
 // Methods
 

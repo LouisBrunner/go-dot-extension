@@ -204,6 +204,42 @@ func initTransform2DPtrs(iface gdc.Interface) {
   }
   ptrsForTransform2D.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeTransform2D))
   ptrsForTransform2D.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeTransform2D))
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("IDENTITY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeTransform2D, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsTransform2D()
+    if err != nil {
+      panic("Failed to get constant value IDENTITY: " + err.Error())
+    }
+    Transform2DIdentity = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FLIP_X")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeTransform2D, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsTransform2D()
+    if err != nil {
+      panic("Failed to get constant value FLIP_X: " + err.Error())
+    }
+    Transform2DFlipX = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FLIP_Y")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeTransform2D, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsTransform2D()
+    if err != nil {
+      panic("Failed to get constant value FLIP_Y: " + err.Error())
+    }
+    Transform2DFlipY = *cnst
+  }
 }
 
 type Transform2D struct {
@@ -215,9 +251,9 @@ type Transform2D struct {
 // Constants
 
 var (
-  Transform2DIdentity = "Transform2D(1, 0, 0, 1, 0, 0)" // TODO: construct correctly
-  Transform2DFlipX = "Transform2D(-1, 0, 0, 1, 0, 0)" // TODO: construct correctly
-  Transform2DFlipY = "Transform2D(1, 0, 0, -1, 0, 0)" // TODO: construct correctly
+  Transform2DIdentity Transform2D
+  Transform2DFlipX Transform2D
+  Transform2DFlipY Transform2D
 )
 
 // Enums
@@ -320,6 +356,7 @@ func (me *Transform2D) AsCTypePtr() gdc.ConstTypePtr {
 func (me *Transform2D) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+
 
 // Methods
 

@@ -138,11 +138,11 @@ func NewENetPacketPeer() *ENetPacketPeer {
 // Constants
 
 var (
-  ENetPacketPeerPacketLossScale = "65536" // TODO: construct correctly
-  ENetPacketPeerPacketThrottleScale = "32" // TODO: construct correctly
-  ENetPacketPeerFlagReliable = "1" // TODO: construct correctly
-  ENetPacketPeerFlagUnsequenced = "2" // TODO: construct correctly
-  ENetPacketPeerFlagUnreliableFragment = "8" // TODO: construct correctly
+  ENetPacketPeerPacketLossScale = 65536
+  ENetPacketPeerPacketThrottleScale = 32
+  ENetPacketPeerFlagReliable = 1
+  ENetPacketPeerFlagUnsequenced = 2
+  ENetPacketPeerFlagUnreliableFragment = 8
 )
 
 // Enums

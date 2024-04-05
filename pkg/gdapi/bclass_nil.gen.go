@@ -265,6 +265,7 @@ func (me *Nil) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
+
 // Methods
 
 // Operators

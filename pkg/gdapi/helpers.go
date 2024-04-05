@@ -121,31 +121,31 @@ func ConvertArrayToUnknownSlice(array *Array) ([]any, error) {
 
 // Dictionary
 
-func (me *Dictionary) GetStringKeyWithDefault(key string, defaultValue Variant) Variant {
+func (me *Dictionary) LookupWithDefault(key string, defaultValue Variant) Variant {
 	keyVar := StringFromStr(key).AsVariant()
 	defer keyVar.Destroy()
 	return me.Get(*keyVar, defaultValue)
 }
 
-func (me *Dictionary) GetStringKey(key string) Variant {
+func (me *Dictionary) Lookup(key string) Variant {
 	keyVar := StringFromStr(key).AsVariant()
 	defer keyVar.Destroy()
-	return me.GetVariantKey(*keyVar)
+	return me.LookupWithVariant(*keyVar)
 }
 
-func (me *Dictionary) GetVariantKey(key Variant) Variant {
+func (me *Dictionary) LookupWithVariant(key Variant) Variant {
 	varPtr := me.iface.DictionaryOperatorIndexConst(me.AsCTypePtr(), key.AsCPtr())
 	va := NewVariantWithC(gdc.ConstVariantPtr(varPtr))
 	return *va
 }
 
-func (me *Dictionary) SetStringKey(key string, value Variant) {
+func (me *Dictionary) Set(key string, value Variant) {
 	keyVar := StringFromStr(key).AsVariant()
 	defer keyVar.Destroy()
-	me.Set(*keyVar, value)
+	me.SetWithVariant(*keyVar, value)
 }
 
-func (me *Dictionary) Set(key, value Variant) {
+func (me *Dictionary) SetWithVariant(key, value Variant) {
 	varPtr := me.iface.DictionaryOperatorIndex(me.AsTypePtr(), key.AsCPtr())
 	AssignVariant(varPtr, value)
 }

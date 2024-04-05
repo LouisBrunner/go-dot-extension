@@ -40,7 +40,7 @@ func (me *classProperty) create(ext *extension, instance Class) error {
 		if err != nil {
 			return err
 		}
-		reflectSetProperty(instance, me, bclass)
+		reflectSetProperty(instance, me, reflect.ValueOf(bclass).Elem().Interface())
 	}
 	return nil
 }

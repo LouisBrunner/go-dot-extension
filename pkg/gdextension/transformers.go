@@ -119,9 +119,10 @@ func variantFromReflect(val reflect.Value) (*gdapi.Variant, error) {
 	switch val.Kind() {
 	case reflect.Bool:
 		return gdapi.NewBoolFromBool(val.Bool()).AsVariant(), nil
-	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64,
-		reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		return gdapi.NewIntFromInt(val.Int()).AsVariant(), nil
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+		return gdapi.NewIntFromInt(int64(val.Uint())).AsVariant(), nil
 	case reflect.Float32, reflect.Float64:
 		return gdapi.NewFloatFromFloat32(val.Float()).AsVariant(), nil
 	case reflect.String:

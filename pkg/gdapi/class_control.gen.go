@@ -825,17 +825,17 @@ func NewControl() *Control {
 // Constants
 
 var (
-  ControlNotificationResized = "40" // TODO: construct correctly
-  ControlNotificationMouseEnter = "41" // TODO: construct correctly
-  ControlNotificationMouseExit = "42" // TODO: construct correctly
-  ControlNotificationMouseEnterSelf = "60" // TODO: construct correctly
-  ControlNotificationMouseExitSelf = "61" // TODO: construct correctly
-  ControlNotificationFocusEnter = "43" // TODO: construct correctly
-  ControlNotificationFocusExit = "44" // TODO: construct correctly
-  ControlNotificationThemeChanged = "45" // TODO: construct correctly
-  ControlNotificationScrollBegin = "47" // TODO: construct correctly
-  ControlNotificationScrollEnd = "48" // TODO: construct correctly
-  ControlNotificationLayoutDirectionChanged = "49" // TODO: construct correctly
+  ControlNotificationResized = 40
+  ControlNotificationMouseEnter = 41
+  ControlNotificationMouseExit = 42
+  ControlNotificationMouseEnterSelf = 60
+  ControlNotificationMouseExitSelf = 61
+  ControlNotificationFocusEnter = 43
+  ControlNotificationFocusExit = 44
+  ControlNotificationThemeChanged = 45
+  ControlNotificationScrollBegin = 47
+  ControlNotificationScrollEnd = 48
+  ControlNotificationLayoutDirectionChanged = 49
 )
 
 // Enums

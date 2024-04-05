@@ -324,7 +324,7 @@ func NewSkeleton3D() *Skeleton3D {
 // Constants
 
 var (
-  Skeleton3DNotificationUpdateSkeleton = "50" // TODO: construct correctly
+  Skeleton3DNotificationUpdateSkeleton = 50
 )
 
 // Enums

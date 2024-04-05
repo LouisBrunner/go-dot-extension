@@ -739,8 +739,8 @@ func NewWindow() *Window {
 // Constants
 
 var (
-  WindowNotificationVisibilityChanged = "30" // TODO: construct correctly
-  WindowNotificationThemeChanged = "32" // TODO: construct correctly
+  WindowNotificationVisibilityChanged = 30
+  WindowNotificationThemeChanged = 32
 )
 
 // Enums

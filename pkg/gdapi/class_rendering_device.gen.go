@@ -624,8 +624,8 @@ func NewRenderingDevice() *RenderingDevice {
 // Constants
 
 var (
-  RenderingDeviceInvalidId = "-1" // TODO: construct correctly
-  RenderingDeviceInvalidFormatId = "-1" // TODO: construct correctly
+  RenderingDeviceInvalidId = -1
+  RenderingDeviceInvalidFormatId = -1
 )
 
 // Enums

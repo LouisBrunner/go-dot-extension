@@ -508,6 +508,7 @@ func (me *Array) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
+
 // Methods
 
 func (me *Array) Size() int64 {

@@ -486,6 +486,10 @@ func (me *PackedByteArray) AsCTypePtr() gdc.ConstTypePtr {
 func (me *PackedByteArray) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+func (me *PackedByteArray) Get(i int64) byte {
+  ret := me.iface.PackedByteArrayOperatorIndexConst(me.AsCTypePtr(), gdc.Int(i))
+  return *ret
+}
 
 // Methods
 

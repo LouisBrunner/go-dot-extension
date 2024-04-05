@@ -258,6 +258,10 @@ func (me *PackedStringArray) AsCTypePtr() gdc.ConstTypePtr {
 func (me *PackedStringArray) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+func (me *PackedStringArray) Get(i int64) string {
+  ret := me.iface.PackedStringArrayOperatorIndexConst(me.AsCTypePtr(), gdc.Int(i))
+  return StringFromPtr(gdc.ConstTypePtr(ret)).String()
+}
 
 // Methods
 

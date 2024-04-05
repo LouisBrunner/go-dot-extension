@@ -14,20 +14,22 @@ import (
 )
 
 var outputFuncs = map[string]interface{}{
-	"pascalCased": strcase.ToCamel,
-	"lowerCased":  strings.ToLower,
-	"mapMethod":   mapMethod,
-	"mapName":     mapName,
-	"mapType":     mapType,
-	"mapWideType": mapWideType,
-	"mapLiteral":  mapLiteral,
-	"mapClass":    mapClass,
-	"mapOperator": mapOperator,
-	"replace":     strings.ReplaceAll,
-	"isExported":  isExported,
-	"presents":    mapIsPresent,
-	"startsWith":  strings.HasPrefix,
-	"trimPrefix":  strings.TrimPrefix,
+	"pascalCased":    strcase.ToCamel,
+	"lowerCased":     strings.ToLower,
+	"mapMethod":      mapMethod,
+	"mapName":        mapName,
+	"mapType":        mapType,
+	"mapWideType":    mapWideType,
+	"mapLiteral":     mapLiteral,
+	"mapClass":       mapClass,
+	"mapOperator":    mapOperator,
+	"replace":        strings.ReplaceAll,
+	"isExported":     isExported,
+	"presents":       mapIsPresent,
+	"startsWith":     strings.HasPrefix,
+	"trimPrefix":     strings.TrimPrefix,
+	"mapPackedType":  mapPackedType,
+	"castPackedType": castPackedType,
 	"ternary": func(cond bool, a, b string) string {
 		if cond {
 			return a
@@ -249,4 +251,34 @@ func mapIsPresent(obj interface{}, name string) bool {
 
 func isExported(name string) bool {
 	return unicode.IsUpper(rune(name[0]))
+}
+
+func mapPackedType(t string) string {
+	core := strings.ToLower(strings.TrimSuffix(strings.TrimPrefix(t, "Packed"), "Array"))
+	switch core {
+	case "color":
+		return "Color"
+	case "vector2":
+		return "Vector2"
+	case "vector3":
+		return "Vector3"
+	}
+	return core
+}
+
+func castPackedType(t, name string) string {
+	core := strings.ToLower(strings.TrimSuffix(strings.TrimPrefix(t, "Packed"), "Array"))
+	switch core {
+	case "int32":
+		return fmt.Sprintf("%s(*%s)", core, name)
+	case "string":
+		return fmt.Sprintf("StringFromPtr(gdc.ConstTypePtr(%s)).String()", name)
+	case "color":
+		return fmt.Sprintf("*ColorFromPtr(gdc.ConstTypePtr(%s))", name)
+	case "vector2":
+		return fmt.Sprintf("*Vector2FromPtr(gdc.ConstTypePtr(%s))", name)
+	case "vector3":
+		return fmt.Sprintf("*Vector3FromPtr(gdc.ConstTypePtr(%s))", name)
+	}
+	return fmt.Sprintf("*%s", name)
 }

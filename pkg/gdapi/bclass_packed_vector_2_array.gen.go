@@ -260,6 +260,10 @@ func (me *PackedVector2Array) AsCTypePtr() gdc.ConstTypePtr {
 func (me *PackedVector2Array) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+func (me *PackedVector2Array) Get(i int64) Vector2 {
+  ret := me.iface.PackedVector2ArrayOperatorIndexConst(me.AsCTypePtr(), gdc.Int(i))
+  return *Vector2FromPtr(gdc.ConstTypePtr(ret))
+}
 
 // Methods
 

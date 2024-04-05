@@ -132,7 +132,7 @@ func NewAnimatedTexture() *AnimatedTexture {
 // Constants
 
 var (
-  AnimatedTextureMaxFrames = "256" // TODO: construct correctly
+  AnimatedTextureMaxFrames = 256
 )
 
 // Enums

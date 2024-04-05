@@ -232,6 +232,30 @@ func initProjectionPtrs(iface gdc.Interface) {
   }
   ptrsForProjection.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeProjection))
   ptrsForProjection.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeProjection))
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("IDENTITY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeProjection, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsProjection()
+    if err != nil {
+      panic("Failed to get constant value IDENTITY: " + err.Error())
+    }
+    ProjectionIdentity = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ZERO")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeProjection, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsProjection()
+    if err != nil {
+      panic("Failed to get constant value ZERO: " + err.Error())
+    }
+    ProjectionZero = *cnst
+  }
 }
 
 type Projection struct {
@@ -243,8 +267,8 @@ type Projection struct {
 // Constants
 
 var (
-  ProjectionIdentity = "Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)" // TODO: construct correctly
-  ProjectionZero = "Projection(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)" // TODO: construct correctly
+  ProjectionIdentity Projection
+  ProjectionZero Projection
 )
 
 // Enums
@@ -346,6 +370,7 @@ func (me *Projection) AsCTypePtr() gdc.ConstTypePtr {
 func (me *Projection) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+
 
 // Methods
 

@@ -96,7 +96,7 @@ func NewResourceUID() *ResourceUID {
 // Constants
 
 var (
-  ResourceUIDInvalidId = "-1" // TODO: construct correctly
+  ResourceUIDInvalidId = -1
 )
 
 // Enums

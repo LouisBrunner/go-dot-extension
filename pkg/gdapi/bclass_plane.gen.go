@@ -158,6 +158,42 @@ func initPlanePtrs(iface gdc.Interface) {
   }
   ptrsForPlane.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypePlane))
   ptrsForPlane.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypePlane))
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PLANE_YZ")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypePlane, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsPlane()
+    if err != nil {
+      panic("Failed to get constant value PLANE_YZ: " + err.Error())
+    }
+    PlanePlaneYz = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PLANE_XZ")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypePlane, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsPlane()
+    if err != nil {
+      panic("Failed to get constant value PLANE_XZ: " + err.Error())
+    }
+    PlanePlaneXz = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PLANE_XY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypePlane, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsPlane()
+    if err != nil {
+      panic("Failed to get constant value PLANE_XY: " + err.Error())
+    }
+    PlanePlaneXy = *cnst
+  }
 }
 
 type Plane struct {
@@ -169,9 +205,9 @@ type Plane struct {
 // Constants
 
 var (
-  PlanePlaneYz = "Plane(1, 0, 0, 0)" // TODO: construct correctly
-  PlanePlaneXz = "Plane(0, 1, 0, 0)" // TODO: construct correctly
-  PlanePlaneXy = "Plane(0, 0, 1, 0)" // TODO: construct correctly
+  PlanePlaneYz Plane
+  PlanePlaneXz Plane
+  PlanePlaneXy Plane
 )
 
 // Enums
@@ -292,6 +328,7 @@ func (me *Plane) AsCTypePtr() gdc.ConstTypePtr {
 func (me *Plane) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+
 
 // Methods
 

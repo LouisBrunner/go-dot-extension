@@ -330,7 +330,7 @@ func NewGridMap() *GridMap {
 // Constants
 
 var (
-  GridMapInvalidCellItem = "-1" // TODO: construct correctly
+  GridMapInvalidCellItem = -1
 )
 
 // Enums

@@ -565,13 +565,13 @@ func NewCanvasItem() *CanvasItem {
 // Constants
 
 var (
-  CanvasItemNotificationTransformChanged = "2000" // TODO: construct correctly
-  CanvasItemNotificationLocalTransformChanged = "35" // TODO: construct correctly
-  CanvasItemNotificationDraw = "30" // TODO: construct correctly
-  CanvasItemNotificationVisibilityChanged = "31" // TODO: construct correctly
-  CanvasItemNotificationEnterCanvas = "32" // TODO: construct correctly
-  CanvasItemNotificationExitCanvas = "33" // TODO: construct correctly
-  CanvasItemNotificationWorld2DChanged = "36" // TODO: construct correctly
+  CanvasItemNotificationTransformChanged = 2000
+  CanvasItemNotificationLocalTransformChanged = 35
+  CanvasItemNotificationDraw = 30
+  CanvasItemNotificationVisibilityChanged = 31
+  CanvasItemNotificationEnterCanvas = 32
+  CanvasItemNotificationExitCanvas = 33
+  CanvasItemNotificationWorld2DChanged = 36
 )
 
 // Enums

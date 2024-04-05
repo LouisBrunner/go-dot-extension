@@ -134,6 +134,7 @@ func (me *RID) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
+
 // Methods
 
 func (me *RID) IsValid() bool {

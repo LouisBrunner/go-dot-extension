@@ -210,6 +210,18 @@ func initQuaternionPtrs(iface gdc.Interface) {
   }
   ptrsForQuaternion.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeQuaternion))
   ptrsForQuaternion.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeQuaternion))
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("IDENTITY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeQuaternion, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsQuaternion()
+    if err != nil {
+      panic("Failed to get constant value IDENTITY: " + err.Error())
+    }
+    QuaternionIdentity = *cnst
+  }
 }
 
 type Quaternion struct {
@@ -221,7 +233,7 @@ type Quaternion struct {
 // Constants
 
 var (
-  QuaternionIdentity = "Quaternion(0, 0, 0, 1)" // TODO: construct correctly
+  QuaternionIdentity Quaternion
 )
 
 // Enums
@@ -334,6 +346,7 @@ func (me *Quaternion) AsCTypePtr() gdc.ConstTypePtr {
 func (me *Quaternion) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+
 
 // Methods
 

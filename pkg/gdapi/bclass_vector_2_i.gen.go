@@ -142,6 +142,102 @@ func initVector2iPtrs(iface gdc.Interface) {
   }
   ptrsForVector2i.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeVector2I))
   ptrsForVector2i.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeVector2I))
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ZERO")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector2I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector2i()
+    if err != nil {
+      panic("Failed to get constant value ZERO: " + err.Error())
+    }
+    Vector2iZero = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ONE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector2I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector2i()
+    if err != nil {
+      panic("Failed to get constant value ONE: " + err.Error())
+    }
+    Vector2iOne = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MIN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector2I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector2i()
+    if err != nil {
+      panic("Failed to get constant value MIN: " + err.Error())
+    }
+    Vector2iMin = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MAX")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector2I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector2i()
+    if err != nil {
+      panic("Failed to get constant value MAX: " + err.Error())
+    }
+    Vector2iMax = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LEFT")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector2I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector2i()
+    if err != nil {
+      panic("Failed to get constant value LEFT: " + err.Error())
+    }
+    Vector2iLeft = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("RIGHT")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector2I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector2i()
+    if err != nil {
+      panic("Failed to get constant value RIGHT: " + err.Error())
+    }
+    Vector2iRight = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("UP")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector2I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector2i()
+    if err != nil {
+      panic("Failed to get constant value UP: " + err.Error())
+    }
+    Vector2iUp = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DOWN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeVector2I, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsVector2i()
+    if err != nil {
+      panic("Failed to get constant value DOWN: " + err.Error())
+    }
+    Vector2iDown = *cnst
+  }
 }
 
 type Vector2i struct {
@@ -153,14 +249,14 @@ type Vector2i struct {
 // Constants
 
 var (
-  Vector2iZero = "Vector2i(0, 0)" // TODO: construct correctly
-  Vector2iOne = "Vector2i(1, 1)" // TODO: construct correctly
-  Vector2iMin = "Vector2i(-2147483648, -2147483648)" // TODO: construct correctly
-  Vector2iMax = "Vector2i(2147483647, 2147483647)" // TODO: construct correctly
-  Vector2iLeft = "Vector2i(-1, 0)" // TODO: construct correctly
-  Vector2iRight = "Vector2i(1, 0)" // TODO: construct correctly
-  Vector2iUp = "Vector2i(0, -1)" // TODO: construct correctly
-  Vector2iDown = "Vector2i(0, 1)" // TODO: construct correctly
+  Vector2iZero Vector2i
+  Vector2iOne Vector2i
+  Vector2iMin Vector2i
+  Vector2iMax Vector2i
+  Vector2iLeft Vector2i
+  Vector2iRight Vector2i
+  Vector2iUp Vector2i
+  Vector2iDown Vector2i
 )
 
 // Enums
@@ -260,6 +356,7 @@ func (me *Vector2i) AsCTypePtr() gdc.ConstTypePtr {
 func (me *Vector2i) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+
 
 // Methods
 

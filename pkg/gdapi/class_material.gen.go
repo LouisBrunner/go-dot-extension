@@ -88,8 +88,8 @@ func NewMaterial() *Material {
 // Constants
 
 var (
-  MaterialRenderPriorityMax = "127" // TODO: construct correctly
-  MaterialRenderPriorityMin = "-128" // TODO: construct correctly
+  MaterialRenderPriorityMax = 127
+  MaterialRenderPriorityMin = -128
 )
 
 // Enums

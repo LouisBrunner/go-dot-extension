@@ -426,10 +426,10 @@ func NewGLTFState() *GLTFState {
 // Constants
 
 var (
-  GLTFStateHandleBinaryDiscardTextures = "0" // TODO: construct correctly
-  GLTFStateHandleBinaryExtractTextures = "1" // TODO: construct correctly
-  GLTFStateHandleBinaryEmbedAsBasisu = "2" // TODO: construct correctly
-  GLTFStateHandleBinaryEmbedAsUncompressed = "3" // TODO: construct correctly
+  GLTFStateHandleBinaryDiscardTextures = 0
+  GLTFStateHandleBinaryExtractTextures = 1
+  GLTFStateHandleBinaryEmbedAsBasisu = 2
+  GLTFStateHandleBinaryEmbedAsUncompressed = 3
 )
 
 // Enums

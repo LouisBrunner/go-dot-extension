@@ -62,8 +62,8 @@ func NewContainer() *Container {
 // Constants
 
 var (
-  ContainerNotificationPreSortChildren = "50" // TODO: construct correctly
-  ContainerNotificationSortChildren = "51" // TODO: construct correctly
+  ContainerNotificationPreSortChildren = 50
+  ContainerNotificationSortChildren = 51
 )
 
 // Enums

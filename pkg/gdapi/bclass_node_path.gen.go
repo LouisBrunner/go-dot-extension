@@ -191,6 +191,7 @@ func (me *NodePath) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
+
 // Methods
 
 func (me *NodePath) IsAbsolute() bool {

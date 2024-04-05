@@ -304,6 +304,7 @@ func (me *AABB) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
+
 // Methods
 
 func (me *AABB) Abs() AABB {

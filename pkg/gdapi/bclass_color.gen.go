@@ -306,6 +306,1758 @@ func initColorPtrs(iface gdc.Interface) {
   }
   ptrsForColor.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeColor))
   ptrsForColor.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeColor))
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ALICE_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value ALICE_BLUE: " + err.Error())
+    }
+    ColorAliceBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ANTIQUE_WHITE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value ANTIQUE_WHITE: " + err.Error())
+    }
+    ColorAntiqueWhite = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("AQUA")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value AQUA: " + err.Error())
+    }
+    ColorAqua = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("AQUAMARINE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value AQUAMARINE: " + err.Error())
+    }
+    ColorAquamarine = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("AZURE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value AZURE: " + err.Error())
+    }
+    ColorAzure = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("BEIGE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value BEIGE: " + err.Error())
+    }
+    ColorBeige = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("BISQUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value BISQUE: " + err.Error())
+    }
+    ColorBisque = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("BLACK")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value BLACK: " + err.Error())
+    }
+    ColorBlack = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("BLANCHED_ALMOND")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value BLANCHED_ALMOND: " + err.Error())
+    }
+    ColorBlanchedAlmond = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value BLUE: " + err.Error())
+    }
+    ColorBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("BLUE_VIOLET")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value BLUE_VIOLET: " + err.Error())
+    }
+    ColorBlueViolet = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("BROWN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value BROWN: " + err.Error())
+    }
+    ColorBrown = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("BURLYWOOD")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value BURLYWOOD: " + err.Error())
+    }
+    ColorBurlywood = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("CADET_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value CADET_BLUE: " + err.Error())
+    }
+    ColorCadetBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("CHARTREUSE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value CHARTREUSE: " + err.Error())
+    }
+    ColorChartreuse = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("CHOCOLATE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value CHOCOLATE: " + err.Error())
+    }
+    ColorChocolate = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("CORAL")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value CORAL: " + err.Error())
+    }
+    ColorCoral = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("CORNFLOWER_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value CORNFLOWER_BLUE: " + err.Error())
+    }
+    ColorCornflowerBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("CORNSILK")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value CORNSILK: " + err.Error())
+    }
+    ColorCornsilk = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("CRIMSON")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value CRIMSON: " + err.Error())
+    }
+    ColorCrimson = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("CYAN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value CYAN: " + err.Error())
+    }
+    ColorCyan = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_BLUE: " + err.Error())
+    }
+    ColorDarkBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_CYAN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_CYAN: " + err.Error())
+    }
+    ColorDarkCyan = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_GOLDENROD")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_GOLDENROD: " + err.Error())
+    }
+    ColorDarkGoldenrod = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_GRAY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_GRAY: " + err.Error())
+    }
+    ColorDarkGray = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_GREEN: " + err.Error())
+    }
+    ColorDarkGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_KHAKI")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_KHAKI: " + err.Error())
+    }
+    ColorDarkKhaki = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_MAGENTA")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_MAGENTA: " + err.Error())
+    }
+    ColorDarkMagenta = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_OLIVE_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_OLIVE_GREEN: " + err.Error())
+    }
+    ColorDarkOliveGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_ORANGE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_ORANGE: " + err.Error())
+    }
+    ColorDarkOrange = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_ORCHID")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_ORCHID: " + err.Error())
+    }
+    ColorDarkOrchid = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_RED")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_RED: " + err.Error())
+    }
+    ColorDarkRed = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_SALMON")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_SALMON: " + err.Error())
+    }
+    ColorDarkSalmon = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_SEA_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_SEA_GREEN: " + err.Error())
+    }
+    ColorDarkSeaGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_SLATE_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_SLATE_BLUE: " + err.Error())
+    }
+    ColorDarkSlateBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_SLATE_GRAY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_SLATE_GRAY: " + err.Error())
+    }
+    ColorDarkSlateGray = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_TURQUOISE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_TURQUOISE: " + err.Error())
+    }
+    ColorDarkTurquoise = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DARK_VIOLET")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DARK_VIOLET: " + err.Error())
+    }
+    ColorDarkViolet = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DEEP_PINK")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DEEP_PINK: " + err.Error())
+    }
+    ColorDeepPink = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DEEP_SKY_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DEEP_SKY_BLUE: " + err.Error())
+    }
+    ColorDeepSkyBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DIM_GRAY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DIM_GRAY: " + err.Error())
+    }
+    ColorDimGray = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("DODGER_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value DODGER_BLUE: " + err.Error())
+    }
+    ColorDodgerBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FIREBRICK")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value FIREBRICK: " + err.Error())
+    }
+    ColorFirebrick = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FLORAL_WHITE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value FLORAL_WHITE: " + err.Error())
+    }
+    ColorFloralWhite = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FOREST_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value FOREST_GREEN: " + err.Error())
+    }
+    ColorForestGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FUCHSIA")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value FUCHSIA: " + err.Error())
+    }
+    ColorFuchsia = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("GAINSBORO")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value GAINSBORO: " + err.Error())
+    }
+    ColorGainsboro = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("GHOST_WHITE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value GHOST_WHITE: " + err.Error())
+    }
+    ColorGhostWhite = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("GOLD")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value GOLD: " + err.Error())
+    }
+    ColorGold = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("GOLDENROD")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value GOLDENROD: " + err.Error())
+    }
+    ColorGoldenrod = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("GRAY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value GRAY: " + err.Error())
+    }
+    ColorGray = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value GREEN: " + err.Error())
+    }
+    ColorGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("GREEN_YELLOW")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value GREEN_YELLOW: " + err.Error())
+    }
+    ColorGreenYellow = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("HONEYDEW")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value HONEYDEW: " + err.Error())
+    }
+    ColorHoneydew = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("HOT_PINK")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value HOT_PINK: " + err.Error())
+    }
+    ColorHotPink = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("INDIAN_RED")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value INDIAN_RED: " + err.Error())
+    }
+    ColorIndianRed = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("INDIGO")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value INDIGO: " + err.Error())
+    }
+    ColorIndigo = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("IVORY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value IVORY: " + err.Error())
+    }
+    ColorIvory = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("KHAKI")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value KHAKI: " + err.Error())
+    }
+    ColorKhaki = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LAVENDER")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LAVENDER: " + err.Error())
+    }
+    ColorLavender = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LAVENDER_BLUSH")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LAVENDER_BLUSH: " + err.Error())
+    }
+    ColorLavenderBlush = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LAWN_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LAWN_GREEN: " + err.Error())
+    }
+    ColorLawnGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LEMON_CHIFFON")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LEMON_CHIFFON: " + err.Error())
+    }
+    ColorLemonChiffon = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_BLUE: " + err.Error())
+    }
+    ColorLightBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_CORAL")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_CORAL: " + err.Error())
+    }
+    ColorLightCoral = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_CYAN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_CYAN: " + err.Error())
+    }
+    ColorLightCyan = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_GOLDENROD")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_GOLDENROD: " + err.Error())
+    }
+    ColorLightGoldenrod = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_GRAY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_GRAY: " + err.Error())
+    }
+    ColorLightGray = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_GREEN: " + err.Error())
+    }
+    ColorLightGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_PINK")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_PINK: " + err.Error())
+    }
+    ColorLightPink = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_SALMON")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_SALMON: " + err.Error())
+    }
+    ColorLightSalmon = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_SEA_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_SEA_GREEN: " + err.Error())
+    }
+    ColorLightSeaGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_SKY_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_SKY_BLUE: " + err.Error())
+    }
+    ColorLightSkyBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_SLATE_GRAY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_SLATE_GRAY: " + err.Error())
+    }
+    ColorLightSlateGray = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_STEEL_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_STEEL_BLUE: " + err.Error())
+    }
+    ColorLightSteelBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIGHT_YELLOW")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIGHT_YELLOW: " + err.Error())
+    }
+    ColorLightYellow = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIME")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIME: " + err.Error())
+    }
+    ColorLime = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LIME_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LIME_GREEN: " + err.Error())
+    }
+    ColorLimeGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("LINEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value LINEN: " + err.Error())
+    }
+    ColorLinen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MAGENTA")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MAGENTA: " + err.Error())
+    }
+    ColorMagenta = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MAROON")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MAROON: " + err.Error())
+    }
+    ColorMaroon = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MEDIUM_AQUAMARINE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MEDIUM_AQUAMARINE: " + err.Error())
+    }
+    ColorMediumAquamarine = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MEDIUM_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MEDIUM_BLUE: " + err.Error())
+    }
+    ColorMediumBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MEDIUM_ORCHID")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MEDIUM_ORCHID: " + err.Error())
+    }
+    ColorMediumOrchid = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MEDIUM_PURPLE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MEDIUM_PURPLE: " + err.Error())
+    }
+    ColorMediumPurple = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MEDIUM_SEA_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MEDIUM_SEA_GREEN: " + err.Error())
+    }
+    ColorMediumSeaGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MEDIUM_SLATE_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MEDIUM_SLATE_BLUE: " + err.Error())
+    }
+    ColorMediumSlateBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MEDIUM_SPRING_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MEDIUM_SPRING_GREEN: " + err.Error())
+    }
+    ColorMediumSpringGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MEDIUM_TURQUOISE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MEDIUM_TURQUOISE: " + err.Error())
+    }
+    ColorMediumTurquoise = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MEDIUM_VIOLET_RED")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MEDIUM_VIOLET_RED: " + err.Error())
+    }
+    ColorMediumVioletRed = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MIDNIGHT_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MIDNIGHT_BLUE: " + err.Error())
+    }
+    ColorMidnightBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MINT_CREAM")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MINT_CREAM: " + err.Error())
+    }
+    ColorMintCream = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MISTY_ROSE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MISTY_ROSE: " + err.Error())
+    }
+    ColorMistyRose = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("MOCCASIN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value MOCCASIN: " + err.Error())
+    }
+    ColorMoccasin = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("NAVAJO_WHITE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value NAVAJO_WHITE: " + err.Error())
+    }
+    ColorNavajoWhite = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("NAVY_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value NAVY_BLUE: " + err.Error())
+    }
+    ColorNavyBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("OLD_LACE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value OLD_LACE: " + err.Error())
+    }
+    ColorOldLace = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("OLIVE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value OLIVE: " + err.Error())
+    }
+    ColorOlive = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("OLIVE_DRAB")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value OLIVE_DRAB: " + err.Error())
+    }
+    ColorOliveDrab = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ORANGE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value ORANGE: " + err.Error())
+    }
+    ColorOrange = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ORANGE_RED")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value ORANGE_RED: " + err.Error())
+    }
+    ColorOrangeRed = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ORCHID")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value ORCHID: " + err.Error())
+    }
+    ColorOrchid = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PALE_GOLDENROD")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value PALE_GOLDENROD: " + err.Error())
+    }
+    ColorPaleGoldenrod = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PALE_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value PALE_GREEN: " + err.Error())
+    }
+    ColorPaleGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PALE_TURQUOISE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value PALE_TURQUOISE: " + err.Error())
+    }
+    ColorPaleTurquoise = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PALE_VIOLET_RED")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value PALE_VIOLET_RED: " + err.Error())
+    }
+    ColorPaleVioletRed = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PAPAYA_WHIP")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value PAPAYA_WHIP: " + err.Error())
+    }
+    ColorPapayaWhip = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PEACH_PUFF")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value PEACH_PUFF: " + err.Error())
+    }
+    ColorPeachPuff = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PERU")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value PERU: " + err.Error())
+    }
+    ColorPeru = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PINK")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value PINK: " + err.Error())
+    }
+    ColorPink = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PLUM")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value PLUM: " + err.Error())
+    }
+    ColorPlum = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("POWDER_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value POWDER_BLUE: " + err.Error())
+    }
+    ColorPowderBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("PURPLE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value PURPLE: " + err.Error())
+    }
+    ColorPurple = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("REBECCA_PURPLE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value REBECCA_PURPLE: " + err.Error())
+    }
+    ColorRebeccaPurple = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("RED")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value RED: " + err.Error())
+    }
+    ColorRed = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ROSY_BROWN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value ROSY_BROWN: " + err.Error())
+    }
+    ColorRosyBrown = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("ROYAL_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value ROYAL_BLUE: " + err.Error())
+    }
+    ColorRoyalBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SADDLE_BROWN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SADDLE_BROWN: " + err.Error())
+    }
+    ColorSaddleBrown = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SALMON")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SALMON: " + err.Error())
+    }
+    ColorSalmon = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SANDY_BROWN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SANDY_BROWN: " + err.Error())
+    }
+    ColorSandyBrown = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SEA_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SEA_GREEN: " + err.Error())
+    }
+    ColorSeaGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SEASHELL")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SEASHELL: " + err.Error())
+    }
+    ColorSeashell = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SIENNA")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SIENNA: " + err.Error())
+    }
+    ColorSienna = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SILVER")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SILVER: " + err.Error())
+    }
+    ColorSilver = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SKY_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SKY_BLUE: " + err.Error())
+    }
+    ColorSkyBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SLATE_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SLATE_BLUE: " + err.Error())
+    }
+    ColorSlateBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SLATE_GRAY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SLATE_GRAY: " + err.Error())
+    }
+    ColorSlateGray = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SNOW")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SNOW: " + err.Error())
+    }
+    ColorSnow = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("SPRING_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value SPRING_GREEN: " + err.Error())
+    }
+    ColorSpringGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("STEEL_BLUE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value STEEL_BLUE: " + err.Error())
+    }
+    ColorSteelBlue = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("TAN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value TAN: " + err.Error())
+    }
+    ColorTan = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("TEAL")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value TEAL: " + err.Error())
+    }
+    ColorTeal = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("THISTLE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value THISTLE: " + err.Error())
+    }
+    ColorThistle = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("TOMATO")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value TOMATO: " + err.Error())
+    }
+    ColorTomato = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("TRANSPARENT")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value TRANSPARENT: " + err.Error())
+    }
+    ColorTransparent = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("TURQUOISE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value TURQUOISE: " + err.Error())
+    }
+    ColorTurquoise = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("VIOLET")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value VIOLET: " + err.Error())
+    }
+    ColorViolet = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("WEB_GRAY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value WEB_GRAY: " + err.Error())
+    }
+    ColorWebGray = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("WEB_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value WEB_GREEN: " + err.Error())
+    }
+    ColorWebGreen = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("WEB_MAROON")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value WEB_MAROON: " + err.Error())
+    }
+    ColorWebMaroon = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("WEB_PURPLE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value WEB_PURPLE: " + err.Error())
+    }
+    ColorWebPurple = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("WHEAT")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value WHEAT: " + err.Error())
+    }
+    ColorWheat = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("WHITE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value WHITE: " + err.Error())
+    }
+    ColorWhite = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("WHITE_SMOKE")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value WHITE_SMOKE: " + err.Error())
+    }
+    ColorWhiteSmoke = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("YELLOW")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value YELLOW: " + err.Error())
+    }
+    ColorYellow = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("YELLOW_GREEN")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeColor, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsColor()
+    if err != nil {
+      panic("Failed to get constant value YELLOW_GREEN: " + err.Error())
+    }
+    ColorYellowGreen = *cnst
+  }
 }
 
 type Color struct {
@@ -317,152 +2069,152 @@ type Color struct {
 // Constants
 
 var (
-  ColorAliceBlue = "Color(0.941176, 0.972549, 1, 1)" // TODO: construct correctly
-  ColorAntiqueWhite = "Color(0.980392, 0.921569, 0.843137, 1)" // TODO: construct correctly
-  ColorAqua = "Color(0, 1, 1, 1)" // TODO: construct correctly
-  ColorAquamarine = "Color(0.498039, 1, 0.831373, 1)" // TODO: construct correctly
-  ColorAzure = "Color(0.941176, 1, 1, 1)" // TODO: construct correctly
-  ColorBeige = "Color(0.960784, 0.960784, 0.862745, 1)" // TODO: construct correctly
-  ColorBisque = "Color(1, 0.894118, 0.768627, 1)" // TODO: construct correctly
-  ColorBlack = "Color(0, 0, 0, 1)" // TODO: construct correctly
-  ColorBlanchedAlmond = "Color(1, 0.921569, 0.803922, 1)" // TODO: construct correctly
-  ColorBlue = "Color(0, 0, 1, 1)" // TODO: construct correctly
-  ColorBlueViolet = "Color(0.541176, 0.168627, 0.886275, 1)" // TODO: construct correctly
-  ColorBrown = "Color(0.647059, 0.164706, 0.164706, 1)" // TODO: construct correctly
-  ColorBurlywood = "Color(0.870588, 0.721569, 0.529412, 1)" // TODO: construct correctly
-  ColorCadetBlue = "Color(0.372549, 0.619608, 0.627451, 1)" // TODO: construct correctly
-  ColorChartreuse = "Color(0.498039, 1, 0, 1)" // TODO: construct correctly
-  ColorChocolate = "Color(0.823529, 0.411765, 0.117647, 1)" // TODO: construct correctly
-  ColorCoral = "Color(1, 0.498039, 0.313726, 1)" // TODO: construct correctly
-  ColorCornflowerBlue = "Color(0.392157, 0.584314, 0.929412, 1)" // TODO: construct correctly
-  ColorCornsilk = "Color(1, 0.972549, 0.862745, 1)" // TODO: construct correctly
-  ColorCrimson = "Color(0.862745, 0.0784314, 0.235294, 1)" // TODO: construct correctly
-  ColorCyan = "Color(0, 1, 1, 1)" // TODO: construct correctly
-  ColorDarkBlue = "Color(0, 0, 0.545098, 1)" // TODO: construct correctly
-  ColorDarkCyan = "Color(0, 0.545098, 0.545098, 1)" // TODO: construct correctly
-  ColorDarkGoldenrod = "Color(0.721569, 0.52549, 0.0431373, 1)" // TODO: construct correctly
-  ColorDarkGray = "Color(0.662745, 0.662745, 0.662745, 1)" // TODO: construct correctly
-  ColorDarkGreen = "Color(0, 0.392157, 0, 1)" // TODO: construct correctly
-  ColorDarkKhaki = "Color(0.741176, 0.717647, 0.419608, 1)" // TODO: construct correctly
-  ColorDarkMagenta = "Color(0.545098, 0, 0.545098, 1)" // TODO: construct correctly
-  ColorDarkOliveGreen = "Color(0.333333, 0.419608, 0.184314, 1)" // TODO: construct correctly
-  ColorDarkOrange = "Color(1, 0.54902, 0, 1)" // TODO: construct correctly
-  ColorDarkOrchid = "Color(0.6, 0.196078, 0.8, 1)" // TODO: construct correctly
-  ColorDarkRed = "Color(0.545098, 0, 0, 1)" // TODO: construct correctly
-  ColorDarkSalmon = "Color(0.913725, 0.588235, 0.478431, 1)" // TODO: construct correctly
-  ColorDarkSeaGreen = "Color(0.560784, 0.737255, 0.560784, 1)" // TODO: construct correctly
-  ColorDarkSlateBlue = "Color(0.282353, 0.239216, 0.545098, 1)" // TODO: construct correctly
-  ColorDarkSlateGray = "Color(0.184314, 0.309804, 0.309804, 1)" // TODO: construct correctly
-  ColorDarkTurquoise = "Color(0, 0.807843, 0.819608, 1)" // TODO: construct correctly
-  ColorDarkViolet = "Color(0.580392, 0, 0.827451, 1)" // TODO: construct correctly
-  ColorDeepPink = "Color(1, 0.0784314, 0.576471, 1)" // TODO: construct correctly
-  ColorDeepSkyBlue = "Color(0, 0.74902, 1, 1)" // TODO: construct correctly
-  ColorDimGray = "Color(0.411765, 0.411765, 0.411765, 1)" // TODO: construct correctly
-  ColorDodgerBlue = "Color(0.117647, 0.564706, 1, 1)" // TODO: construct correctly
-  ColorFirebrick = "Color(0.698039, 0.133333, 0.133333, 1)" // TODO: construct correctly
-  ColorFloralWhite = "Color(1, 0.980392, 0.941176, 1)" // TODO: construct correctly
-  ColorForestGreen = "Color(0.133333, 0.545098, 0.133333, 1)" // TODO: construct correctly
-  ColorFuchsia = "Color(1, 0, 1, 1)" // TODO: construct correctly
-  ColorGainsboro = "Color(0.862745, 0.862745, 0.862745, 1)" // TODO: construct correctly
-  ColorGhostWhite = "Color(0.972549, 0.972549, 1, 1)" // TODO: construct correctly
-  ColorGold = "Color(1, 0.843137, 0, 1)" // TODO: construct correctly
-  ColorGoldenrod = "Color(0.854902, 0.647059, 0.12549, 1)" // TODO: construct correctly
-  ColorGray = "Color(0.745098, 0.745098, 0.745098, 1)" // TODO: construct correctly
-  ColorGreen = "Color(0, 1, 0, 1)" // TODO: construct correctly
-  ColorGreenYellow = "Color(0.678431, 1, 0.184314, 1)" // TODO: construct correctly
-  ColorHoneydew = "Color(0.941176, 1, 0.941176, 1)" // TODO: construct correctly
-  ColorHotPink = "Color(1, 0.411765, 0.705882, 1)" // TODO: construct correctly
-  ColorIndianRed = "Color(0.803922, 0.360784, 0.360784, 1)" // TODO: construct correctly
-  ColorIndigo = "Color(0.294118, 0, 0.509804, 1)" // TODO: construct correctly
-  ColorIvory = "Color(1, 1, 0.941176, 1)" // TODO: construct correctly
-  ColorKhaki = "Color(0.941176, 0.901961, 0.54902, 1)" // TODO: construct correctly
-  ColorLavender = "Color(0.901961, 0.901961, 0.980392, 1)" // TODO: construct correctly
-  ColorLavenderBlush = "Color(1, 0.941176, 0.960784, 1)" // TODO: construct correctly
-  ColorLawnGreen = "Color(0.486275, 0.988235, 0, 1)" // TODO: construct correctly
-  ColorLemonChiffon = "Color(1, 0.980392, 0.803922, 1)" // TODO: construct correctly
-  ColorLightBlue = "Color(0.678431, 0.847059, 0.901961, 1)" // TODO: construct correctly
-  ColorLightCoral = "Color(0.941176, 0.501961, 0.501961, 1)" // TODO: construct correctly
-  ColorLightCyan = "Color(0.878431, 1, 1, 1)" // TODO: construct correctly
-  ColorLightGoldenrod = "Color(0.980392, 0.980392, 0.823529, 1)" // TODO: construct correctly
-  ColorLightGray = "Color(0.827451, 0.827451, 0.827451, 1)" // TODO: construct correctly
-  ColorLightGreen = "Color(0.564706, 0.933333, 0.564706, 1)" // TODO: construct correctly
-  ColorLightPink = "Color(1, 0.713726, 0.756863, 1)" // TODO: construct correctly
-  ColorLightSalmon = "Color(1, 0.627451, 0.478431, 1)" // TODO: construct correctly
-  ColorLightSeaGreen = "Color(0.12549, 0.698039, 0.666667, 1)" // TODO: construct correctly
-  ColorLightSkyBlue = "Color(0.529412, 0.807843, 0.980392, 1)" // TODO: construct correctly
-  ColorLightSlateGray = "Color(0.466667, 0.533333, 0.6, 1)" // TODO: construct correctly
-  ColorLightSteelBlue = "Color(0.690196, 0.768627, 0.870588, 1)" // TODO: construct correctly
-  ColorLightYellow = "Color(1, 1, 0.878431, 1)" // TODO: construct correctly
-  ColorLime = "Color(0, 1, 0, 1)" // TODO: construct correctly
-  ColorLimeGreen = "Color(0.196078, 0.803922, 0.196078, 1)" // TODO: construct correctly
-  ColorLinen = "Color(0.980392, 0.941176, 0.901961, 1)" // TODO: construct correctly
-  ColorMagenta = "Color(1, 0, 1, 1)" // TODO: construct correctly
-  ColorMaroon = "Color(0.690196, 0.188235, 0.376471, 1)" // TODO: construct correctly
-  ColorMediumAquamarine = "Color(0.4, 0.803922, 0.666667, 1)" // TODO: construct correctly
-  ColorMediumBlue = "Color(0, 0, 0.803922, 1)" // TODO: construct correctly
-  ColorMediumOrchid = "Color(0.729412, 0.333333, 0.827451, 1)" // TODO: construct correctly
-  ColorMediumPurple = "Color(0.576471, 0.439216, 0.858824, 1)" // TODO: construct correctly
-  ColorMediumSeaGreen = "Color(0.235294, 0.701961, 0.443137, 1)" // TODO: construct correctly
-  ColorMediumSlateBlue = "Color(0.482353, 0.407843, 0.933333, 1)" // TODO: construct correctly
-  ColorMediumSpringGreen = "Color(0, 0.980392, 0.603922, 1)" // TODO: construct correctly
-  ColorMediumTurquoise = "Color(0.282353, 0.819608, 0.8, 1)" // TODO: construct correctly
-  ColorMediumVioletRed = "Color(0.780392, 0.0823529, 0.521569, 1)" // TODO: construct correctly
-  ColorMidnightBlue = "Color(0.0980392, 0.0980392, 0.439216, 1)" // TODO: construct correctly
-  ColorMintCream = "Color(0.960784, 1, 0.980392, 1)" // TODO: construct correctly
-  ColorMistyRose = "Color(1, 0.894118, 0.882353, 1)" // TODO: construct correctly
-  ColorMoccasin = "Color(1, 0.894118, 0.709804, 1)" // TODO: construct correctly
-  ColorNavajoWhite = "Color(1, 0.870588, 0.678431, 1)" // TODO: construct correctly
-  ColorNavyBlue = "Color(0, 0, 0.501961, 1)" // TODO: construct correctly
-  ColorOldLace = "Color(0.992157, 0.960784, 0.901961, 1)" // TODO: construct correctly
-  ColorOlive = "Color(0.501961, 0.501961, 0, 1)" // TODO: construct correctly
-  ColorOliveDrab = "Color(0.419608, 0.556863, 0.137255, 1)" // TODO: construct correctly
-  ColorOrange = "Color(1, 0.647059, 0, 1)" // TODO: construct correctly
-  ColorOrangeRed = "Color(1, 0.270588, 0, 1)" // TODO: construct correctly
-  ColorOrchid = "Color(0.854902, 0.439216, 0.839216, 1)" // TODO: construct correctly
-  ColorPaleGoldenrod = "Color(0.933333, 0.909804, 0.666667, 1)" // TODO: construct correctly
-  ColorPaleGreen = "Color(0.596078, 0.984314, 0.596078, 1)" // TODO: construct correctly
-  ColorPaleTurquoise = "Color(0.686275, 0.933333, 0.933333, 1)" // TODO: construct correctly
-  ColorPaleVioletRed = "Color(0.858824, 0.439216, 0.576471, 1)" // TODO: construct correctly
-  ColorPapayaWhip = "Color(1, 0.937255, 0.835294, 1)" // TODO: construct correctly
-  ColorPeachPuff = "Color(1, 0.854902, 0.72549, 1)" // TODO: construct correctly
-  ColorPeru = "Color(0.803922, 0.521569, 0.247059, 1)" // TODO: construct correctly
-  ColorPink = "Color(1, 0.752941, 0.796078, 1)" // TODO: construct correctly
-  ColorPlum = "Color(0.866667, 0.627451, 0.866667, 1)" // TODO: construct correctly
-  ColorPowderBlue = "Color(0.690196, 0.878431, 0.901961, 1)" // TODO: construct correctly
-  ColorPurple = "Color(0.627451, 0.12549, 0.941176, 1)" // TODO: construct correctly
-  ColorRebeccaPurple = "Color(0.4, 0.2, 0.6, 1)" // TODO: construct correctly
-  ColorRed = "Color(1, 0, 0, 1)" // TODO: construct correctly
-  ColorRosyBrown = "Color(0.737255, 0.560784, 0.560784, 1)" // TODO: construct correctly
-  ColorRoyalBlue = "Color(0.254902, 0.411765, 0.882353, 1)" // TODO: construct correctly
-  ColorSaddleBrown = "Color(0.545098, 0.270588, 0.0745098, 1)" // TODO: construct correctly
-  ColorSalmon = "Color(0.980392, 0.501961, 0.447059, 1)" // TODO: construct correctly
-  ColorSandyBrown = "Color(0.956863, 0.643137, 0.376471, 1)" // TODO: construct correctly
-  ColorSeaGreen = "Color(0.180392, 0.545098, 0.341176, 1)" // TODO: construct correctly
-  ColorSeashell = "Color(1, 0.960784, 0.933333, 1)" // TODO: construct correctly
-  ColorSienna = "Color(0.627451, 0.321569, 0.176471, 1)" // TODO: construct correctly
-  ColorSilver = "Color(0.752941, 0.752941, 0.752941, 1)" // TODO: construct correctly
-  ColorSkyBlue = "Color(0.529412, 0.807843, 0.921569, 1)" // TODO: construct correctly
-  ColorSlateBlue = "Color(0.415686, 0.352941, 0.803922, 1)" // TODO: construct correctly
-  ColorSlateGray = "Color(0.439216, 0.501961, 0.564706, 1)" // TODO: construct correctly
-  ColorSnow = "Color(1, 0.980392, 0.980392, 1)" // TODO: construct correctly
-  ColorSpringGreen = "Color(0, 1, 0.498039, 1)" // TODO: construct correctly
-  ColorSteelBlue = "Color(0.27451, 0.509804, 0.705882, 1)" // TODO: construct correctly
-  ColorTan = "Color(0.823529, 0.705882, 0.54902, 1)" // TODO: construct correctly
-  ColorTeal = "Color(0, 0.501961, 0.501961, 1)" // TODO: construct correctly
-  ColorThistle = "Color(0.847059, 0.74902, 0.847059, 1)" // TODO: construct correctly
-  ColorTomato = "Color(1, 0.388235, 0.278431, 1)" // TODO: construct correctly
-  ColorTransparent = "Color(1, 1, 1, 0)" // TODO: construct correctly
-  ColorTurquoise = "Color(0.25098, 0.878431, 0.815686, 1)" // TODO: construct correctly
-  ColorViolet = "Color(0.933333, 0.509804, 0.933333, 1)" // TODO: construct correctly
-  ColorWebGray = "Color(0.501961, 0.501961, 0.501961, 1)" // TODO: construct correctly
-  ColorWebGreen = "Color(0, 0.501961, 0, 1)" // TODO: construct correctly
-  ColorWebMaroon = "Color(0.501961, 0, 0, 1)" // TODO: construct correctly
-  ColorWebPurple = "Color(0.501961, 0, 0.501961, 1)" // TODO: construct correctly
-  ColorWheat = "Color(0.960784, 0.870588, 0.701961, 1)" // TODO: construct correctly
-  ColorWhite = "Color(1, 1, 1, 1)" // TODO: construct correctly
-  ColorWhiteSmoke = "Color(0.960784, 0.960784, 0.960784, 1)" // TODO: construct correctly
-  ColorYellow = "Color(1, 1, 0, 1)" // TODO: construct correctly
-  ColorYellowGreen = "Color(0.603922, 0.803922, 0.196078, 1)" // TODO: construct correctly
+  ColorAliceBlue Color
+  ColorAntiqueWhite Color
+  ColorAqua Color
+  ColorAquamarine Color
+  ColorAzure Color
+  ColorBeige Color
+  ColorBisque Color
+  ColorBlack Color
+  ColorBlanchedAlmond Color
+  ColorBlue Color
+  ColorBlueViolet Color
+  ColorBrown Color
+  ColorBurlywood Color
+  ColorCadetBlue Color
+  ColorChartreuse Color
+  ColorChocolate Color
+  ColorCoral Color
+  ColorCornflowerBlue Color
+  ColorCornsilk Color
+  ColorCrimson Color
+  ColorCyan Color
+  ColorDarkBlue Color
+  ColorDarkCyan Color
+  ColorDarkGoldenrod Color
+  ColorDarkGray Color
+  ColorDarkGreen Color
+  ColorDarkKhaki Color
+  ColorDarkMagenta Color
+  ColorDarkOliveGreen Color
+  ColorDarkOrange Color
+  ColorDarkOrchid Color
+  ColorDarkRed Color
+  ColorDarkSalmon Color
+  ColorDarkSeaGreen Color
+  ColorDarkSlateBlue Color
+  ColorDarkSlateGray Color
+  ColorDarkTurquoise Color
+  ColorDarkViolet Color
+  ColorDeepPink Color
+  ColorDeepSkyBlue Color
+  ColorDimGray Color
+  ColorDodgerBlue Color
+  ColorFirebrick Color
+  ColorFloralWhite Color
+  ColorForestGreen Color
+  ColorFuchsia Color
+  ColorGainsboro Color
+  ColorGhostWhite Color
+  ColorGold Color
+  ColorGoldenrod Color
+  ColorGray Color
+  ColorGreen Color
+  ColorGreenYellow Color
+  ColorHoneydew Color
+  ColorHotPink Color
+  ColorIndianRed Color
+  ColorIndigo Color
+  ColorIvory Color
+  ColorKhaki Color
+  ColorLavender Color
+  ColorLavenderBlush Color
+  ColorLawnGreen Color
+  ColorLemonChiffon Color
+  ColorLightBlue Color
+  ColorLightCoral Color
+  ColorLightCyan Color
+  ColorLightGoldenrod Color
+  ColorLightGray Color
+  ColorLightGreen Color
+  ColorLightPink Color
+  ColorLightSalmon Color
+  ColorLightSeaGreen Color
+  ColorLightSkyBlue Color
+  ColorLightSlateGray Color
+  ColorLightSteelBlue Color
+  ColorLightYellow Color
+  ColorLime Color
+  ColorLimeGreen Color
+  ColorLinen Color
+  ColorMagenta Color
+  ColorMaroon Color
+  ColorMediumAquamarine Color
+  ColorMediumBlue Color
+  ColorMediumOrchid Color
+  ColorMediumPurple Color
+  ColorMediumSeaGreen Color
+  ColorMediumSlateBlue Color
+  ColorMediumSpringGreen Color
+  ColorMediumTurquoise Color
+  ColorMediumVioletRed Color
+  ColorMidnightBlue Color
+  ColorMintCream Color
+  ColorMistyRose Color
+  ColorMoccasin Color
+  ColorNavajoWhite Color
+  ColorNavyBlue Color
+  ColorOldLace Color
+  ColorOlive Color
+  ColorOliveDrab Color
+  ColorOrange Color
+  ColorOrangeRed Color
+  ColorOrchid Color
+  ColorPaleGoldenrod Color
+  ColorPaleGreen Color
+  ColorPaleTurquoise Color
+  ColorPaleVioletRed Color
+  ColorPapayaWhip Color
+  ColorPeachPuff Color
+  ColorPeru Color
+  ColorPink Color
+  ColorPlum Color
+  ColorPowderBlue Color
+  ColorPurple Color
+  ColorRebeccaPurple Color
+  ColorRed Color
+  ColorRosyBrown Color
+  ColorRoyalBlue Color
+  ColorSaddleBrown Color
+  ColorSalmon Color
+  ColorSandyBrown Color
+  ColorSeaGreen Color
+  ColorSeashell Color
+  ColorSienna Color
+  ColorSilver Color
+  ColorSkyBlue Color
+  ColorSlateBlue Color
+  ColorSlateGray Color
+  ColorSnow Color
+  ColorSpringGreen Color
+  ColorSteelBlue Color
+  ColorTan Color
+  ColorTeal Color
+  ColorThistle Color
+  ColorTomato Color
+  ColorTransparent Color
+  ColorTurquoise Color
+  ColorViolet Color
+  ColorWebGray Color
+  ColorWebGreen Color
+  ColorWebMaroon Color
+  ColorWebPurple Color
+  ColorWheat Color
+  ColorWhite Color
+  ColorWhiteSmoke Color
+  ColorYellow Color
+  ColorYellowGreen Color
 )
 
 // Enums
@@ -587,6 +2339,7 @@ func (me *Color) AsCTypePtr() gdc.ConstTypePtr {
 func (me *Color) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+
 
 // Methods
 

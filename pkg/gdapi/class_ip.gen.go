@@ -108,8 +108,8 @@ func NewIP() *IP {
 // Constants
 
 var (
-  IPResolverMaxQueries = "256" // TODO: construct correctly
-  IPResolverInvalidId = "-1" // TODO: construct correctly
+  IPResolverMaxQueries = 256
+  IPResolverInvalidId = -1
 )
 
 // Enums

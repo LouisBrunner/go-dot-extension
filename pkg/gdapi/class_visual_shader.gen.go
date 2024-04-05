@@ -168,8 +168,8 @@ func NewVisualShader() *VisualShader {
 // Constants
 
 var (
-  VisualShaderNodeIdInvalid = "-1" // TODO: construct correctly
-  VisualShaderNodeIdOutput = "0" // TODO: construct correctly
+  VisualShaderNodeIdInvalid = -1
+  VisualShaderNodeIdOutput = 0
 )
 
 // Enums

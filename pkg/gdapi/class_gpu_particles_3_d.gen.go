@@ -372,7 +372,7 @@ func NewGPUParticles3D() *GPUParticles3D {
 // Constants
 
 var (
-  GPUParticles3DMaxDrawPasses = "4" // TODO: construct correctly
+  GPUParticles3DMaxDrawPasses = 4
 )
 
 // Enums

@@ -188,6 +188,54 @@ func initBasisPtrs(iface gdc.Interface) {
   }
   ptrsForBasis.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeBasis))
   ptrsForBasis.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeBasis))
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("IDENTITY")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeBasis, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsBasis()
+    if err != nil {
+      panic("Failed to get constant value IDENTITY: " + err.Error())
+    }
+    BasisIdentity = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FLIP_X")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeBasis, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsBasis()
+    if err != nil {
+      panic("Failed to get constant value FLIP_X: " + err.Error())
+    }
+    BasisFlipX = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FLIP_Y")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeBasis, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsBasis()
+    if err != nil {
+      panic("Failed to get constant value FLIP_Y: " + err.Error())
+    }
+    BasisFlipY = *cnst
+  }
+  {
+    va := *newVariant()
+    defer va.Destroy()
+    name := StringNameFromStr("FLIP_Z")
+    defer name.Destroy()
+    iface.VariantGetConstantValue(gdc.VariantTypeBasis, name.AsCPtr(), va.asUninitialized())
+    cnst, err := va.AsBasis()
+    if err != nil {
+      panic("Failed to get constant value FLIP_Z: " + err.Error())
+    }
+    BasisFlipZ = *cnst
+  }
 }
 
 type Basis struct {
@@ -199,10 +247,10 @@ type Basis struct {
 // Constants
 
 var (
-  BasisIdentity = "Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)" // TODO: construct correctly
-  BasisFlipX = "Basis(-1, 0, 0, 0, 1, 0, 0, 0, 1)" // TODO: construct correctly
-  BasisFlipY = "Basis(1, 0, 0, 0, -1, 0, 0, 0, 1)" // TODO: construct correctly
-  BasisFlipZ = "Basis(1, 0, 0, 0, 1, 0, 0, 0, -1)" // TODO: construct correctly
+  BasisIdentity Basis
+  BasisFlipX Basis
+  BasisFlipY Basis
+  BasisFlipZ Basis
 )
 
 // Enums
@@ -303,6 +351,7 @@ func (me *Basis) AsCTypePtr() gdc.ConstTypePtr {
 func (me *Basis) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
+
 
 // Methods
 

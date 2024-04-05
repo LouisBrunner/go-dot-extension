@@ -114,12 +114,12 @@ func NewAnimationNodeBlendTree() *AnimationNodeBlendTree {
 // Constants
 
 var (
-  AnimationNodeBlendTreeConnectionOk = "0" // TODO: construct correctly
-  AnimationNodeBlendTreeConnectionErrorNoInput = "1" // TODO: construct correctly
-  AnimationNodeBlendTreeConnectionErrorNoInputIndex = "2" // TODO: construct correctly
-  AnimationNodeBlendTreeConnectionErrorNoOutput = "3" // TODO: construct correctly
-  AnimationNodeBlendTreeConnectionErrorSameNode = "4" // TODO: construct correctly
-  AnimationNodeBlendTreeConnectionErrorConnectionExists = "5" // TODO: construct correctly
+  AnimationNodeBlendTreeConnectionOk = 0
+  AnimationNodeBlendTreeConnectionErrorNoInput = 1
+  AnimationNodeBlendTreeConnectionErrorNoInputIndex = 2
+  AnimationNodeBlendTreeConnectionErrorNoOutput = 3
+  AnimationNodeBlendTreeConnectionErrorSameNode = 4
+  AnimationNodeBlendTreeConnectionErrorConnectionExists = 5
 )
 
 // Enums

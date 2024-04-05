@@ -31,7 +31,7 @@ func MarshalDict(data any) (*gdapi.Dictionary, error) {
 		if err != nil {
 			return nil, fmt.Errorf("error marshalling value for key %q: %w", key, err)
 		}
-		dict.SetStringKey(key, *va)
+		dict.Set(key, *va)
 	}
 	return dict, nil
 }
@@ -46,7 +46,7 @@ func dictToMap(dict gdapi.Dictionary) (map[string]interface{}, error) {
 		keyVar := keys.Get(i)
 		key := keyVar.String()
 
-		value := dict.GetVariantKey(keyVar)
+		value := dict.LookupWithVariant(keyVar)
 		switch value.Type() {
 		case gdc.VariantTypeDictionary:
 			subDict, err := value.AsDictionary()

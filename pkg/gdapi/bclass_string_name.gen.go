@@ -815,6 +815,7 @@ func (me *StringName) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
+
 // Methods
 
 func (me *StringName) CasecmpTo(to String, ) int64 {

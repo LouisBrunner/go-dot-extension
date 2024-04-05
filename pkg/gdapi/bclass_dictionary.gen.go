@@ -211,6 +211,7 @@ func (me *Dictionary) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
+
 // Methods
 
 func (me *Dictionary) Size() int64 {

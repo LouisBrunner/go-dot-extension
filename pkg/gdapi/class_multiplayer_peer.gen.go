@@ -150,8 +150,8 @@ func NewMultiplayerPeer() *MultiplayerPeer {
 // Constants
 
 var (
-  MultiplayerPeerTargetPeerBroadcast = "0" // TODO: construct correctly
-  MultiplayerPeerTargetPeerServer = "1" // TODO: construct correctly
+  MultiplayerPeerTargetPeerBroadcast = 0
+  MultiplayerPeerTargetPeerServer = 1
 )
 
 // Enums

@@ -254,6 +254,7 @@ func (me *Rect2i) asUninitialized() gdc.UninitializedTypePtr {
   return gdc.UninitializedTypePtr(me.AsTypePtr())
 }
 
+
 // Methods
 
 func (me *Rect2i) GetCenter() Vector2i {
